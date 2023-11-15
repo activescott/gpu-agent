@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "prep": "mkdir public/js; mkdir public/images; npm run prep-bootstrap && npm run prep-bootstrap-icons",
+    "prep-bootstrap": "cp -f node_modules/bootstrap/dist/js/bootstrap.bundle.min.js public/js/",
+    "prep-bootstrap-icons": "cp -f node_modules/bootstrap-icons/bootstrap-icons.svg public/images/",
+    "predev": "npm run prep",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
@@ -12,6 +16,8 @@
     "lint-fix": "prettier --write \"{,!(node_modules)/**/}*.{ts,tsx,md,yml,json,html}\" && npm run eslint -- --fix"
   },
   "dependencies": {
+    "bootstrap": "^5.3.2",
+    "bootstrap-icons": "^1.11.1",
     "next": "14.0.2",
     "react": "^18",
     "react-dom": "^18"

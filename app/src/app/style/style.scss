@@ -1,0 +1,17 @@
+// see https://nextjs.org/docs/app/building-your-application/styling/sass
+
+// Ping Poet Tetradic Color Scheme
+$color_dogwood_rose: #d11363;
+$color_fulvous_orange: #d28314;
+$color_emerald_green: #14d283;
+$color_flicker_blue: #1463d2;
+
+// customize bootstrap theme colors: https://getbootstrap.com/docs/5.3/customize/sass/#variable-defaults
+$primary: $color_dogwood_rose;
+//$secondary: $color_fulvous_orange;
+
+// use media queries and only make color modes automatic: https://getbootstrap.com/docs/5.3/customize/color-modes/#building-with-sass
+$color-mode-type: media-query;
+
+// Import Bootstrap (see https://getbootstrap.com/docs/5.0/customize/sass/)
+@import "../../../node_modules/bootstrap/scss/bootstrap";

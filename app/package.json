@@ -6,19 +6,24 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint-next": "next lint",
+    "eslint": "eslint . --ext ts,tsx,js,jsx",
+    "lint": "prettier -l \"{,!(node_modules)/**/}*.{ts,tsx,md,yml,json,html}\" && npm run eslint",
+    "lint-fix": "prettier --write \"{,!(node_modules)/**/}*.{ts,tsx,md,yml,json,html}\" && npm run eslint -- --fix"
   },
   "dependencies": {
+    "next": "14.0.2",
     "react": "^18",
-    "react-dom": "^18",
-    "next": "14.0.2"
+    "react-dom": "^18"
   },
   "devDependencies": {
-    "typescript": "^5",
+    "@activescott/eslint-config": "^2.3.6",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "eslint": "^8",
-    "eslint-config-next": "14.0.2"
+    "eslint-config-next": "14.0.2",
+    "eslint-plugin-unicorn": "^49.0.0",
+    "typescript": "^5"
   }
 }

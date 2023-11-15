@@ -1,0 +1,62 @@
+# https://nextjs.org/docs/pages/building-your-application/configuring/eslint
+# https://eslint.org/docs/latest/use/configure/configuration-files#extending-configuration-files
+extends:
+  - "@activescott/eslint-config"
+  - prettier
+  - plugin:unicorn/recommended
+  - plugin:react/recommended
+  - plugin:react/jsx-runtime
+  - plugin:react-hooks/recommended
+  - plugin:@next/next/recommended
+  # for https://github.com/import-js/eslint-plugin-import#typescript
+  - plugin:import/recommended
+  # for https://github.com/import-js/eslint-plugin-import#typescript
+  - plugin:import/typescript
+
+settings:
+  # for https://github.com/jsx-eslint/eslint-plugin-react#configuration
+  react:
+    version: detect
+  # for https://github.com/import-js/eslint-plugin-import#typescript
+  import/resolver:
+    typescript: true
+    node: true
+
+rules:
+  unicorn/prevent-abbreviations: off
+  # because next.js doesn't support it:
+  unicorn/prefer-node-protocol: off
+  # this rule is a bit pedantic:
+  "@typescript-eslint/explicit-function-return-type":
+    - "error"
+    - allowFunctionsWithoutTypeParameters: true
+  # I agree reduce can be abused, but not always...
+  unicorn/no-array-reduce: off
+  # arguable:
+  unicorn/no-null: off
+  # disagree, new Array(...) with one argument is legit:
+  unicorn/no-new-array: off
+  # -1 is the default "not found" result in JS array methods:
+  no-magic-numbers:
+    - "warn"
+    - ignore: [-1, 1, 0]
+  # wtf is this a warn?
+  "@typescript-eslint/no-explicit-any": "error"
+  # handy because this causes re-renders and is so easy to miss: https://github.com/jsx-eslint/eslint-plugin-react/blob/HEAD/docs/rules/jsx-no-bind.md
+  #react/jsx-no-bind: "warn"
+  # default hyphenated camel case looks weird to me.
+  unicorn/filename-case:
+    - error
+    - cases:
+        camelCase: true
+        pascalCase: true
+  import/no-unused-modules:
+    - warn
+    - unusedExports: true
+      missingExports: true
+      ignoreExports:
+        # because next page.tsx layout.tsx and route.ts require a default exported module and no code explicitly imports it.
+        - "**/page.tsx"
+        - "**/layout.tsx"
+  # Because https://eslint.org/blog/2022/07/interesting-bugs-caught-by-no-constant-binary-expression/
+  no-constant-binary-expression: "error"

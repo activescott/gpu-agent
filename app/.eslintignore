@@ -1,0 +1,10 @@
+node_modules/
+/dist/
+/.next/
+.nyc_output/
+coverage/
+/public/
+jest.config.ts
+next.config.js
+next-env.d.ts
+/src/mdx-components.tsx

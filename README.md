@@ -5,6 +5,9 @@
 - [+] Create a page for the accelerators/GPUs from the benchmark
 - [+] create sitemap
 - [ ] get site published under domain
+- [+] fix: update site metadata (page titles at least - the home page title still talks about next)
+- [ ] add posthog
+- [ ] submit sitemap to google and bing
 - [ ] Identify the SKU/UPC in the eBay API. Confirm that it exists on accelerators/GPUs
 - [ ] Get a list of SKU/UPC for each GPU/Accelerator device products in the test
 - [ ] Start pulling items from eBay into appropriate GPU/accelerator device categories - filter by SKU. If we don't have a SKU for the GPU/Accelerator then put it in an "unknown" accelerator group and flag it to be researched.

@@ -4,16 +4,27 @@ export default function Home() {
   return (
     <main>
       <div>
-        <h1>Smart Price Comparison Shopping for GPUs for Machine Learning</h1>
+        <h1>
+          Compare GPU & AI Accelerator Card Performance Metrics to their Cost
+        </h1>
         <BootstrapIcon icon="shop" />
         <p>
-          This site provides a listing of available GPUs and machine-learning
-          accelerators that support deep-learning model training and model
-          inference for AI. Each listing provides a set of statistics based on
-          industry benchmarks related to the accelerator card&apos;s performance
-          for machine learning compared to it&apos;s price. So you always can
-          buy a price based on is cost to operate and based on its speed and
-          power requirements.
+          Welcome to the ultimate resource for software engineers, data
+          scientists, and SREs in the world of machine learning: a one-stop
+          platform where performance meets value. We understand the criticality
+          of precise hardware performance in AI model training and inference.
+          That's why we've gathered the most rigorous MLPerf benchmarks for all
+          leading GPUs and AI accelerators, offering you a unique window into
+          their capabilities. Our platform is more than just a comparison tool;
+          it's an insightful guide to making informed decisions. With us, you'll
+          find not just raw performance statistics, but a comprehensive
+          breakdown of price by crucial performance metrics, ensuring you get
+          the most out of every dollar spent. No more back-orders or unavailable
+          items; every product listed is ready for immediate purchase. And the
+          best part? This invaluable tool is entirely free, thanks to our
+          affiliate partnerships. So, dive into our site, be surprised by the
+          revealing performance metrics of every GPU and AI Accelerator on the
+          market, and if you're compelled, make an informed purchase right now!
         </p>
         <p>
           The site is 100% free to use and does not require any registration.

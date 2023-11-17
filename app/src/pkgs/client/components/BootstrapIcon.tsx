@@ -35,7 +35,7 @@ export const BootstrapIcon = ({
 }
 
 // NOTE: generated with regex in the svg sprite: find:  .*?id="([^"]+)"  replace:  | "$1"\n
-export type BootstrapIconNames =
+type BootstrapIconNames =
   | "0-circle"
   | "0-circle-fill"
   | "0-square"

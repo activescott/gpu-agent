@@ -1,5 +1,7 @@
 import { MetadataRoute } from "next"
 import { data } from "./sitemap.json"
+import { ISOMORPHIC_CONFIG } from "@/pkgs/isomorphic/config"
+import { IterableElement } from "type-fest"
 
 /* eslint-disable import/no-unused-modules */
 
@@ -8,12 +10,23 @@ import { data } from "./sitemap.json"
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date()
   const today = new Date(now.getFullYear(), now.getMonth(), now.getDate())
-  const host_url = "https://coinpoet.com"
-  return data.map((item) => {
-    return {
-      url: `${host_url}${item.path}`,
+  const domain_url = `https://${ISOMORPHIC_CONFIG.NEXT_PUBLIC_DOMAIN()}`
+  type SitemapItem = IterableElement<MetadataRoute.Sitemap>
+  const items = [
+    ...data.map((item) => {
+      return {
+        url: `${domain_url}${item.path}`,
+        changeFrequency: "weekly",
+        priority: 0.8,
+      } satisfies SitemapItem
+    }),
+    {
+      url: `${domain_url}/`,
       changeFrequency: "daily",
-      priority: 0.8,
-    }
-  }) as MetadataRoute.Sitemap
+      lastModified: today,
+      priority: 0.9,
+    } satisfies SitemapItem,
+  ]
+
+  return items
 }

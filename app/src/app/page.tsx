@@ -8,11 +8,12 @@ export default function Home() {
         <BootstrapIcon icon="shop" />
         <p>
           This site provides a listing of available GPUs and machine-learning
-          accelerators that support model training and model inference. Each
-          listing provides a set of statistics based on industry benchmarks
-          related to the accelerator card's performance for machine learning
-          compared to it's price. So you always can buy a price based on is cost
-          to operate and based on its speed and power requirements.
+          accelerators that support deep-learning model training and model
+          inference for AI. Each listing provides a set of statistics based on
+          industry benchmarks related to the accelerator card&apos;s performance
+          for machine learning compared to it&apos;s price. So you always can
+          buy a price based on is cost to operate and based on its speed and
+          power requirements.
         </p>
         <p>
           The site is 100% free to use and does not require any registration.

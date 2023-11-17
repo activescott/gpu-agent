@@ -21,7 +21,7 @@ export const SiteFooter = () => {
           <li className="nav-item">Machine Learning GPUs & Accelerators</li>
           {data
             .filter((item) => item.path.startsWith("/ml/gpu"))
-            .map((item, index) => (
+            .map((item) => (
               <li className="nav-item" key={item.path}>
                 <a className="nav-link" href={item.path}>
                   {item.path.slice(item.path.lastIndexOf("/") + 1)}

@@ -1,0 +1,40 @@
+{
+  "data": [
+    {
+      "path": "/policy/terms"
+    },
+    {
+      "path": "/policy/privacy"
+    },
+    {
+      "path": "/ml/models/rnn-t"
+    },
+    {
+      "path": "/ml/models/retinanet"
+    },
+    {
+      "path": "/ml/models/resnet"
+    },
+    {
+      "path": "/ml/models/llama-2"
+    },
+    {
+      "path": "/ml/models/gpt-j"
+    },
+    {
+      "path": "/ml/models/dlrm-v2"
+    },
+    {
+      "path": "/ml/models/bert"
+    },
+    {
+      "path": "/ml/models/3d-unet"
+    },
+    {
+      "path": "/ml/gpu/specifications"
+    },
+    {
+      "path": "/ml/gpu/nvidia-l40"
+    }
+  ]
+}

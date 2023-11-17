@@ -1,0 +1,36 @@
+# About Machine Learning Model ResNet
+
+ResNet, short for Residual Network, introduced by Kaiming He, Xiangyu Zhang, Shaoqing Ren, and Jian Sun from Microsoft Research in 2015, marked a significant breakthrough in the field of deep learning for image recognition. ResNet addresses the degradation problem in very deep networks by introducing a novel deep residual learning framework. This framework makes it feasible to train networks with unprecedented depth (up to 152 layers), resulting in major improvements in accuracy on challenging datasets like ImageNet and CIFAR-10. The innovative use of residual blocks allows for easier optimization and better performance, establishing ResNet as a foundational model in deep learning for visual recognition tasks.
+
+## Model Card for ResNet
+
+- **Model Details:**
+  - **Developers:** Kaiming He, Xiangyu Zhang, Shaoqing Ren, Jian Sun at Microsoft Research
+  - **Creation Date:** 2015
+  - **Model Version:** Original
+  - **Model Type:** Deep Convolutional Neural Network
+  - **Training Algorithms:** Residual Learning
+  - **Paper:** [Deep Residual Learning for Image Recognition](https://arxiv.org/abs/1512.03385)
+  - **Citation Details:** Provided in the paper
+  - **License:** Open Source
+- **Intended Use:**
+  - **Primary Uses:** Image classification, object detection
+  - **Primary Users:** Computer vision researchers, practitioners
+  - **Out-of-Scope Use Cases:** Non-visual data applications
+- **Factors:**
+  - **Relevant Factors:** Image properties (resolution, variety)
+  - **Evaluation Factors:** Image classification and object detection accuracy
+- **Metrics:**
+  - **Performance Measures:** Top-1 and top-5 error rates on ImageNet
+  - **Decision Thresholds:** Not specified
+  - **Variation Approaches:** Comparisons with plain networks
+- **Evaluation Data:**
+  - **Datasets:** ImageNet, CIFAR-10
+  - **Motivation:** To demonstrate effectiveness on common benchmarks
+  - **Preprocessing:** Standard image processing techniques
+- **Training Data:** Similar to Evaluation Data (ImageNet, CIFAR-10)
+- **Quantitative Analyses:**
+  - **Unitary Results:** Performance metrics like error rates on benchmarks
+  - **Intersectional Results:** Not specified
+- **Ethical Considerations:** Importance of addressing biases in training data for generalization
+- **Caveats and Recommendations:** Suitable for visual recognition tasks; additional testing recommended for novel applications.

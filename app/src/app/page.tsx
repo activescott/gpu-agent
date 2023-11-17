@@ -13,18 +13,19 @@ export default function Home() {
           scientists, and SREs in the world of machine learning: a one-stop
           platform where performance meets value. We understand the criticality
           of precise hardware performance in AI model training and inference.
-          That's why we've gathered the most rigorous MLPerf benchmarks for all
-          leading GPUs and AI accelerators, offering you a unique window into
-          their capabilities. Our platform is more than just a comparison tool;
-          it's an insightful guide to making informed decisions. With us, you'll
-          find not just raw performance statistics, but a comprehensive
-          breakdown of price by crucial performance metrics, ensuring you get
-          the most out of every dollar spent. No more back-orders or unavailable
-          items; every product listed is ready for immediate purchase. And the
-          best part? This invaluable tool is entirely free, thanks to our
-          affiliate partnerships. So, dive into our site, be surprised by the
-          revealing performance metrics of every GPU and AI Accelerator on the
-          market, and if you're compelled, make an informed purchase right now!
+          That&apos;s why we&apos;ve gathered the most rigorous MLPerf
+          benchmarks for all leading GPUs and AI accelerators, offering you a
+          unique window into their capabilities. Our platform is more than just
+          a comparison tool; it&apos;s an insightful guide to making informed
+          decisions. With us, you&apos;ll find not just raw performance
+          statistics, but a comprehensive breakdown of price by crucial
+          performance metrics, ensuring you get the most out of every dollar
+          spent. No more back-orders or unavailable items; every product listed
+          is ready for immediate purchase. And the best part? This invaluable
+          tool is entirely free, thanks to our affiliate partnerships. So, dive
+          into our site, be surprised by the revealing performance metrics of
+          every GPU and AI Accelerator on the market, and if you&apos;re
+          compelled, make an informed purchase right now!
         </p>
         <p>
           The site is 100% free to use and does not require any registration.

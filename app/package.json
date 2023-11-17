@@ -16,6 +16,10 @@
     "lint-fix": "prettier --write \"{,!(node_modules)/**/}*.{ts,tsx,md,yml,json,html}\" && npm run eslint -- --fix"
   },
   "dependencies": {
+    "@mdx-js/loader": "^3.0.0",
+    "@mdx-js/react": "^3.0.0",
+    "@next/mdx": "^14.0.2",
+    "@types/mdx": "^2.0.10",
     "bootstrap": "^5.3.2",
     "bootstrap-icons": "^1.11.1",
     "next": "14.0.2",

@@ -1,5 +1,8 @@
 .DS_Store
 
+node_modules/
+
 # bundles updated at build time:
 app/public/js/bootstrap.bundle.min.js
 app/public/images/bootstrap-icons.svg
+data/.DS_Store

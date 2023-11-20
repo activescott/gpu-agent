@@ -16,11 +16,23 @@ const pageFiles = glob.sync(`${appDir}/**/page.mdx`, { cwd: __dirname })
 const items = pageFiles
   .filter((file) => file != `${appDir}/page.tsx`)
   .map((file) => {
+    // get the relative path:
     const relativePath = file
       .replace(`${appDir}`, "")
       .replace(/\/page\.mdx$/, "")
+
+    // if the file ends with an mdx extension, assume it is a markdown file and extract the first line with a heading and use it as a title (remove the markdown heading prefix):
+    const title = file.endsWith(".mdx")
+      ? fs
+          .readFileSync(file, "utf8")
+          .split("\n")
+          .find((line) => line.startsWith("#"))
+          ?.replace(/^#+\s*/, "")
+      : path.basename(file)
+
     return {
       path: relativePath,
+      title,
     }
   })
 

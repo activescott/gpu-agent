@@ -1,40 +1,104 @@
 {
   "data": [
     {
-      "path": "/policy/terms"
+      "path": "/policy/terms",
+      "title": "Terms of Service"
     },
     {
-      "path": "/policy/privacy"
+      "path": "/policy/privacy",
+      "title": "Privacy & Cookies Policy"
     },
     {
-      "path": "/ml/models/rnn-t"
+      "path": "/ml/models/rnn-t",
+      "title": "About Machine Learning Model RNN-T"
     },
     {
-      "path": "/ml/models/retinanet"
+      "path": "/ml/models/retinanet",
+      "title": "About Machine Learning Model RetinaNet"
     },
     {
-      "path": "/ml/models/resnet"
+      "path": "/ml/models/resnet",
+      "title": "About Machine Learning Model ResNet"
     },
     {
-      "path": "/ml/models/llama-2"
+      "path": "/ml/models/llama-2",
+      "title": "About Machine Learning Model Llama-2"
     },
     {
-      "path": "/ml/models/gpt-j"
+      "path": "/ml/models/gpt-j",
+      "title": "About Machine Learning Model GPT-J"
     },
     {
-      "path": "/ml/models/dlrm-v2"
+      "path": "/ml/models/dlrm-v2",
+      "title": "About Machine Learning Model DLRM"
     },
     {
-      "path": "/ml/models/bert"
+      "path": "/ml/models/bert",
+      "title": "About Machine Learning Model BERT"
     },
     {
-      "path": "/ml/models/3d-unet"
+      "path": "/ml/models/3d-unet",
+      "title": "About Machine Learning Model 3D-UNet"
     },
     {
-      "path": "/ml/gpu/specifications"
+      "path": "/ml/gpu/specifications",
+      "title": "Technical Specifications Relevant for Machine Learning Accelerators and GPUs"
     },
     {
-      "path": "/ml/gpu/nvidia-l40"
+      "path": "/ml/gpu/qualcomm-cloud-ai-100-pcie-hhhl",
+      "title": "Qualcomm Cloud AI 100 PCIe/HHHL Machine Learning Accelerator"
+    },
+    {
+      "path": "/ml/gpu/nvidia-t4",
+      "title": "NVIDIA T4 Machine Learning GPU"
+    },
+    {
+      "path": "/ml/gpu/nvidia-rtx-a5000-gpu",
+      "title": "NVIDIA RTX A5000 Machine Learning GPU"
+    },
+    {
+      "path": "/ml/gpu/nvidia-l40",
+      "title": "NVIDIA L40 Machine Learning GPU"
+    },
+    {
+      "path": "/ml/gpu/nvidia-l4",
+      "title": "Nvidia L4 Machine Learning Accelerator"
+    },
+    {
+      "path": "/ml/gpu/nvidia-h100-sxm-80gb",
+      "title": "Nvidia H100-SXM-80GB Machine Learning Accelerator"
+    },
+    {
+      "path": "/ml/gpu/nvidia-gh200-grace-hopper-superchip",
+      "title": "NVIDIA GH200-Grace Hopper Superchip Machine Learning Accelerator"
+    },
+    {
+      "path": "/ml/gpu/nvidia-a40",
+      "title": "NVIDIA A40 Machine Learning GPU"
+    },
+    {
+      "path": "/ml/gpu/nvidia-a30",
+      "title": "NVIDIA A30 Machine Learning Accelerator"
+    },
+    {
+      "path": "/ml/gpu/nvidia-a100-sxm-80gb-cts",
+      "title": "Nvidia A100-SXM-80GB CTS Machine Learning Accelerator"
+    },
+    {
+      "path": "/ml/gpu/nvidia-a100-sxm-80gb",
+      "title": "Nvidia A100-SXM-80GB Machine Learning Accelerator"
+    },
+    {
+      "path": "/ml/gpu/nvidia-a100-pcie-80gb",
+      "title": "NVIDIA A100-PCIE-80GB Machine Learning Accelerator"
+    },
+    {
+      "path": "/ml/gpu/nvidia-a10-pci-24gb",
+      "title": "NVIDIA A10-PCI-24GB Machine Learning GPU"
+    },
+    {
+      "path": "/ml/gpu/intel-habana-gaudi2",
+      "title": "Intel Habana Gaudi2 Machine Learning Accelerator"
     }
   ]
 }

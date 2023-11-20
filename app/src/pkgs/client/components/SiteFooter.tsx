@@ -12,7 +12,7 @@ export const SiteFooter = () => {
             .map((item) => (
               <li className="nav-item" key={item.path}>
                 <a className="nav-link" href={item.path}>
-                  {item.path.slice(item.path.lastIndexOf("/") + 1)}
+                  {item.title}
                 </a>
               </li>
             ))}
@@ -24,7 +24,7 @@ export const SiteFooter = () => {
             .map((item) => (
               <li className="nav-item" key={item.path}>
                 <a className="nav-link" href={item.path}>
-                  {item.path.slice(item.path.lastIndexOf("/") + 1)}
+                  {item.title}
                 </a>
               </li>
             ))}

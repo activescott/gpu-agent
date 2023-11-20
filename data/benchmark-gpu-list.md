@@ -5,14 +5,13 @@
 - nvidia a100-pcie-80gb
 - nvidia l40
 - nvidia a100-sxm-80gb cts
-- nvidia l4-pcie-24gb
 - nvidia a100-sxm-80gb
 - qualcomm cloud ai 100 pcie/hhhl standard
+- qualcomm cloud ai 100 pcie/hhhl pro
 - nvidia a40
 - habana gaudi2
 - nvidia rtx a5000 gpu
-- qualcomm cloud ai 100 pcie/hhhl pro
 - nvidia gh200-gracehopper-superchip
+
 - nvidia a10-pci-24gb
 - nvidia a30
-- tpu v5e

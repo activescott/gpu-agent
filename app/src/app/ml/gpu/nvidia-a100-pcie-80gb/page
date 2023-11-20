@@ -1,0 +1,18 @@
+# NVIDIA A100-PCIe-80GB Machine Learning Accelerator
+
+NVIDIA's A100-PCIe-80GB, launched in 2021, is a part of the Ampere architecture series, representing a significant leap in GPU computing power. With 80GB of HBM2e memory, this accelerator is designed for the most demanding AI and high-performance computing workloads. The A100-PCIe-80GB is known for its impressive FP32 performance and high tensor core count, making it a top choice for both training and inference in large-scale machine learning models. Its advanced architecture allows for efficient data processing, making it a cornerstone in modern AI research and development.
+
+## Specifications
+
+- **GPU Architecture**: NVIDIA Ampere Architecture, GA100 graphics processor
+- **Memory Size**: 80GB HBM2e
+- **Memory Bandwidth**: 1,935 GB/s
+- **Tensor Cores**: 432
+- **GPU Clock Rate**: Base Clock 1065 MHz, Boost Clock 1410 MHz
+- **Max Power Consumption**: 300W
+- **FP32 TFLOPS**: 19.5 TFLOPS
+
+## References
+
+- [NVIDIA A100 Official Page](https://www.nvidia.com/en-us/data-center/a100/)
+- [TechPowerUp - NVIDIA A100 PCIe 80 GB](https://www.techpowerup.com/gpu-specs/a100-pcie-80-gb.c3821)

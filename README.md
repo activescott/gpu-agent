@@ -4,8 +4,9 @@
 
 - [+] Create a page for the accelerators/GPUs from the benchmark
 - [+] create sitemap
-- [ ] get site published under domain
+- [+] get site published under domain
 - [+] fix: update site metadata (page titles at least - the home page title still talks about next)
+- [x] feat: add remaining GPUs
 - [ ] add posthog
 - [ ] submit sitemap to google and bing
 - [ ] Identify the SKU/UPC in the eBay API. Confirm that it exists on accelerators/GPUs
@@ -24,3 +25,4 @@
 - [x] Model Page Prompt: When using arXiv, be sure that it is the paper that describes and introduces the model, not one that merely references it.
 - [x] Model Page Prompt: Prefer arXiv over hugging face.
 - [ ] Solicit info from the community on all model pages - especially unknown GPU/accelerator ones. Have a 👍👎 on information accuracy for models and gpu pages
+- [ ] investigate amazon and newegg affiliate programs: https://promotions.newegg.com/affiliate_program/affiliate.html

@@ -1,5 +1,7 @@
 # Shopping Agent: Smart Price Comparisons
 
+Compare GPU & AI Accelerator Card Performance Metrics to their Cost
+
 ## Operations
 
 - Main URL: https://coinpoet.com/

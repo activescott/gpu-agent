@@ -1,4 +1,9 @@
-# Yap
+# Shopping Agent: Smart Price Comparisons
+
+## Operations
+
+- Main URL: https://coinpoet.com/
+- Hosted via https://vercel.com/pingpoet/shopping-agent
 
 ## Todo
 

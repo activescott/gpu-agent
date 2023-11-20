@@ -62,11 +62,11 @@
     },
     {
       "path": "/ml/gpu/nvidia-l4",
-      "title": "Nvidia L4 Machine Learning Accelerator"
+      "title": "NVIDIA L4 Machine Learning Accelerator"
     },
     {
       "path": "/ml/gpu/nvidia-h100-sxm-80gb",
-      "title": "Nvidia H100-SXM-80GB Machine Learning Accelerator"
+      "title": "NVIDIA H100-SXM-80GB Machine Learning Accelerator"
     },
     {
       "path": "/ml/gpu/nvidia-gh200-grace-hopper-superchip",
@@ -82,11 +82,11 @@
     },
     {
       "path": "/ml/gpu/nvidia-a100-sxm-80gb-cts",
-      "title": "Nvidia A100-SXM-80GB CTS Machine Learning Accelerator"
+      "title": "NVIDIA A100-SXM-80GB CTS Machine Learning Accelerator"
     },
     {
       "path": "/ml/gpu/nvidia-a100-sxm-80gb",
-      "title": "Nvidia A100-SXM-80GB Machine Learning Accelerator"
+      "title": "NVIDIA A100-SXM-80GB Machine Learning Accelerator"
     },
     {
       "path": "/ml/gpu/nvidia-a100-pcie-80gb",

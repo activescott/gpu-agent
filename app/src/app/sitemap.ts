@@ -16,7 +16,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...data.map((item) => {
       return {
         url: `${domain_url}${item.path}`,
-        changeFrequency: "weekly",
+        changeFrequency: "monthly",
         priority: 0.8,
       } satisfies SitemapItem
     }),

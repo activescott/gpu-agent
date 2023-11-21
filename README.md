@@ -44,3 +44,65 @@ Compare GPU & AI Accelerator Card Performance Metrics to their Cost
 - [x] Model Page Prompt: Prefer arXiv over hugging face.
 - [ ] Solicit info from the community on all model pages - especially unknown GPU/accelerator ones. Have a 👍👎 on information accuracy for models and gpu pages
 - [ ] investigate amazon and newegg affiliate programs: https://promotions.newegg.com/affiliate_program/affiliate.html
+
+## Notes
+
+### Metrics
+
+Hardware Spec Performance Metrics:
+
+- FP32 TFLOPS per $100:
+  1 TF / $1000 = 0.1
+  50TF / $1000 = 5.0
+  50TF / $ 500 = 10.0
+
+Inference Data Center Performance Metrics:
+
+### MLPerf Benchmark Notes
+
+- [Benchmark MLPerf Inference: Datacenter | MLCommons V3.1](https://mlcommons.org/benchmarks/inference-datacenter/)
+- [Reddi, Vijay Janapa, et al. "Mlperf inference benchmark." 2020 ACM/IEEE 47th Annual International Symposium on Computer Architecture (ISCA). IEEE, 2020.](https://doi.org/10.48550/arXiv.1911.02549)
+- [MLPerf AI Benchmarks | NVIDIA](https://www.nvidia.com/en-us/data-center/resources/mlperf-benchmarks/)
+- [code for the MLPerf™ Inference v3.1 benchmark](https://github.com/mlcommons/inference_results_v3.1)
+- [MLPerf Results Highlight Growing Importance of Generative AI and Storage - MLCommons (v3.1)](https://mlcommons.org/2023/09/mlperf-results-highlight-growing-importance-of-generative-ai-and-storage/)
+- [MLPerf Inference Rules](https://github.com/mlcommons/inference_policies/blob/7d64c050239086c232c9ac050b892b4fef0599ce/inference_rules.adoc#benchmarks-1)
+- [MLPerf Inference v3.1 Performance Benchmarks, Offline Scenario, Closed Division | NVIDIA Data Center Deep Learning Product | NVIDIA Developer](https://developer.nvidia.com/deep-learning-performance-training-inference/ai-inference)
+
+NOTE: There are **Server** vs **Offline** scenarios:
+
+- The server scenario represents online applications where query arrival is random and latency is important. A representative use case is services such as live translation on a website. The random query arrival rate constrains various performance optimizations. The server scenario’s performance metric is the Poisson parameter that indicates the **queries-per-second (QPS)** achievable while meeting the QoS requirement.
+- The offline scenario represents batch-processing applications where all data is immediately available and latency is unconstrained. A representative use case is identifying the people and locations in a photo album. The metric for the offline scenario is throughput measured in **samples per second**.
+
+WE USE OFFLINE SCENARIO. Why? Rather arbitrary, but it allows hardware to perform at it's absolute best.
+
+#### Inference Data Center
+
+The MLPerf Inference Datacenter benchmarks:
+
+| Area     | Task                       | Model         | Model-ID   | Metric               | Metric Example 1                        | Metric Alternative           |
+| -------- | -------------------------- | ------------- | ---------- | -------------------- | --------------------------------------- | ---------------------------- |
+| Vision   | Image classification       | Resnet50-v1.5 | ResNet     | Samples/s per Dollar | 12881.7 samples/s ÷ $5000 = 2.57634     | Dollars per Sample: ....0.39 |
+| Vision   | Object detection           | Retinanet     | Retinanet  | Samples/s per Dollar | 144.896 samples/s ÷ $5000 = 0.0289792   | Dollars per Sample: ...34.50 |
+| Vision   | Medical image segmentation | 3D UNET       | 3D-UNet    | Samples/s per Dollar | .1.0733 samples/s ÷ $5000 = 0.00021466  | Dollars per sample: 4,658.53 |
+| Speech   | Speech-to-text             | RNNT          | RNN-T      | Samples/s per Dollar | 3754.56 samples/s ÷ $5000 = 0.75        | Dollars per sample: ....1.33 |
+| Language | Language processing        | BERT-large    | BERT       | Samples/s per Dollar | 539.238 samples/s ÷ $5000 = 0.1078476   | Dollars per sample: ....9.27 |
+| Language | Large Language Model       | GPT-J 6B      | gptj-99    | Samples/s per Dollar | 1.30094 samples/s ÷ $5000 = 0.000260188 | Dollars per sample: 3,843.37 |
+| Commerce | Recommendation             | DLRM-DCNv2    | dlrm-v2-99 | Samples/s per Dollar | 3305.38 samples/s ÷ $5000 = 0.661076    | Dollars per sample: ....1.51 |
+
+Assumptions:
+
+- Offline (not Server)
+- We use only scenarios where "# of Accelerators" is 1
+- We use Closed division with no constraints.
+
+### Misc
+
+- Benchmark MLBench is a different benchmark than the MLCommons MLPerf and (not updated lately). It is open, well documented, and provides helm charts to easily reproduce it at https://mlbench.readthedocs.io/en/latest/benchmark-tasks.html
+
+### GPUs to Consider Adding
+
+- NVIDIA Tesla M10 32GB: These are available used for ~$150 at least occasionally
+
+```
+
+```

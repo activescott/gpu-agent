@@ -1,17 +1,14 @@
-- nvidia l4
-- nvidia h100-pcie-80gb
-- nvidia h100-sxm-80gb
-- nvidia t4
-- nvidia a100-pcie-80gb
-- nvidia l40
-- nvidia a100-sxm-80gb cts
-- nvidia a100-sxm-80gb
-- qualcomm cloud ai 100 pcie/hhhl standard
-- qualcomm cloud ai 100 pcie/hhhl pro
-- nvidia a40
-- habana gaudi2
-- nvidia rtx a5000 gpu
-- nvidia gh200-gracehopper-superchip
-
-- nvidia a10-pci-24gb
-- nvidia a30
+Intel Habana Gaudi2
+NVIDIA A10-PCI-24GB
+NVIDIA A100-PCIE-80GB
+NVIDIA A100-SXM-80GB
+NVIDIA A100-SXM-80GB CTS
+NVIDIA A30
+NVIDIA A40
+NVIDIA GH200-Grace Hopper Superchip
+NVIDIA H100-SXM-80GB
+NVIDIA L4
+NVIDIA L40
+NVIDIA RTX A5000
+NVIDIA T4
+Qualcomm Cloud AI 100 PCIe/HHHL

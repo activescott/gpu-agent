@@ -7,7 +7,6 @@ import path from "path"
 const __dirname = path.dirname(new URL(import.meta.url).pathname)
 
 const appDir = path.join(__dirname, "../app/src/app")
-const sitemapFile = path.join(__dirname, "../app/src/app/sitemap.json")
 
 // Find all page.tsx files under the app directory
 const pageFiles = glob.sync(`${appDir}/**/page.mdx`, { cwd: __dirname })
@@ -35,6 +34,8 @@ const items = pageFiles
       title,
     }
   })
-  .filter((item) => !item.path.startsWith("/z-hide-verify-impact"))
+  .filter((item) => item.path.startsWith("/ml/gpu"))
+  .map((item) => item.title.replace(/(.+)Machine Learning .+$/, "$1"))
 
-fs.writeFileSync(sitemapFile, JSON.stringify({ data: items }, null, 2))
+// Output the list of titles to the console
+items.forEach((item) => console.log(item))

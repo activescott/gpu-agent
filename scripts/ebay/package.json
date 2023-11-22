@@ -1,0 +1,7 @@
+{
+  "type": "module",
+  "dependencies": {
+    "@types/ebay-oauth-nodejs-client": "^1.2.4",
+    "ebay-oauth-nodejs-client": "^1.2.2"
+  }
+}

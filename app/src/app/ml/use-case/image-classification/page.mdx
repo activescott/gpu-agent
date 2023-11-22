@@ -1,0 +1,42 @@
+export const _metadata = {
+  prompt: `Write a markdown file that explains the computer science technique of *image classification* is in the context machine learning. Include a summary section and then 3 other sections that expand on different aspects of the technique. Other sections to include are history / evolution of the technique including breakthroughs, common uses for the technique and hardware considerations. In Hardware Considerations explain which of GPU specifications among Memory Size, Memory Bandwidth, number of Cores and Clock Rate are most important for optimizing inference and how does that differ for training or fine-tuning. Use a table with the values High/Medium/Low compare each GPU specification and its importance for inference vs Training/Fine-Tuning. Do not include a "conclusion" section at the end.`,
+}
+
+# Image Classification: A Machine Learning Technique
+
+## Summary
+
+Image classification is a fundamental technique in computer vision that involves identifying and categorizing objects, scenes, or actions within images. It utilizes machine learning algorithms to extract meaningful features from images and assign them to predefined classes. This technique has revolutionized various industries, enabling applications such as self-driving cars, medical image analysis, and product identification.
+
+## History and Evolution
+
+The origins of image classification can be traced back to the 1960s with the development of pattern recognition algorithms. Early approaches focused on extracting handcrafted features from images, such as edges, corners, and shapes. However, these methods struggled to handle complex images and variations in lighting, pose, and perspective.
+
+The advent of deep learning in the 2010s marked a significant breakthrough in image classification. Convolutional neural networks (CNNs), a type of deep neural network, revolutionized the field by automatically learning complex features from raw image data. CNNs have achieved remarkable performance, surpassing human-level accuracy in various image classification tasks.
+
+## Common Uses of Image Classification
+
+Image classification has found widespread applications across various industries, including:
+
+- **Self-driving cars:** Identifying traffic signs, pedestrians, and other vehicles to navigate safely.
+
+- **Medical image analysis:** Detecting and classifying abnormalities in X-rays, CT scans, and MRI images for diagnosis.
+
+- **Product identification:** Classifying products in warehouses and retail stores for inventory management and product retrieval.
+
+- **Social media:** Classifying images and videos for content moderation, recommendation systems, and targeted advertising.
+
+## Hardware Considerations for Image Classification
+
+The performance of image classification models is heavily influenced by hardware capabilities. Among GPU specifications, Memory Bandwidth, number of Cores, and Clock Rate play critical roles in optimizing inference and training/fine-tuning.
+
+| GPU Specification | Inference | Training/Fine-Tuning |
+| ----------------- | --------- | -------------------- |
+| Memory Size       | High      | Medium               |
+| Memory Bandwidth  | High      | High                 |
+| Number of Cores   | Medium    | High                 |
+| Clock Rate        | Medium    | High                 |
+
+**Inference:** During inference, the model processes input images to generate predictions. Memory Bandwidth is crucial for efficient data transfer between memory and processing units. A large number of Cores and high Clock Rate improve processing speed, enabling faster predictions.
+
+**Training/Fine-Tuning:** During training or fine-tuning, the model is updated to improve its performance. Memory Size is essential for storing the model parameters and training data. A large number of Cores and high Clock Rate accelerate the training process.

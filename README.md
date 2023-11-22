@@ -16,12 +16,8 @@ Compare GPU & AI Accelerator Card Performance Metrics to their Cost
 - [+] fix: update site metadata (page titles at least - the home page title still talks about next)
 - [+] feat: add remaining GPUs
 - [ ] feat: return a listing page of eBay GPU Items
-  - [ ] Determine how to search? Search for various GPU names? How to confirm that the model/ePID (ePID is the eBay product identifier of a product from the eBay product catalog) is actually a GPU and not a GPU accessory like a shroud or something?
-    - NOTE: There is no Video Cards/GPU category on the eBay US Sandbox. The closest thing is probably one of these:
-      - [Motherboards](https://www.sandbox.ebay.com/sch/1244/i.html)
-      - 2 items good quality: [Interface/Add-On Cards](https://www.sandbox.ebay.com/sch/182088/i.html)
-      - 1 item: [CPUs/Processors](https://www.sandbox.ebay.com/sch/164/i.html)
-      - 1 item: [Video Capture & TV Tuner Cards](https://www.sandbox.ebay.com/sch/3761/i.html)
+  - [+] Determine how to search? Can use search endpoint with aspect filter
+- [ ] feat: choose listings by **use case**. Buyers want to buy a card for a use case. Then it sorts/ranks by appropriate metric and showcases appropriate metric
 - [ ] add posthog
 - [ ] feat: ensure affiliate links are used: See [Header for affiliate information](https://developers.ebay.com/api-docs/buy/static/api-browse.html#affiliate-header)
 - [ ] feat: filter listings:

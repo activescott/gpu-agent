@@ -1,4 +1,6 @@
-import { data } from "../../../app/sitemap.json"
+import sitemapJson from "../../../app/sitemap.json"
+
+const entries = Array.from(sitemapJson.data)
 
 export const SiteFooter = () => {
   const start_year = 2023
@@ -6,9 +8,9 @@ export const SiteFooter = () => {
     <footer className="pt-5 mx-2 my-5 text-muted border-top fw-lighter">
       <div className="d-flex">
         <ul className="nav flex-column mx-4">
-          <li className="nav-item">Machine Learning Models</li>
-          {data
-            .filter((item) => item.path.startsWith("/ml/models"))
+          <li className="nav-item">Machine Learning Use Cases</li>
+          {entries
+            .filter((item) => item.path.startsWith("/ml/use-case"))
             .map((item) => (
               <li className="nav-item" key={item.path}>
                 <a className="nav-link" href={item.path}>
@@ -19,8 +21,20 @@ export const SiteFooter = () => {
         </ul>
         <ul className="nav flex-column">
           <li className="nav-item">Machine Learning GPUs & Accelerators</li>
-          {data
+          {entries
             .filter((item) => item.path.startsWith("/ml/gpu"))
+            .map((item) => (
+              <li className="nav-item" key={item.path}>
+                <a className="nav-link" href={item.path}>
+                  {item.title}
+                </a>
+              </li>
+            ))}
+        </ul>
+        <ul className="nav flex-column mx-4">
+          <li className="nav-item">Machine Learning Models</li>
+          {entries
+            .filter((item) => item.path.startsWith("/ml/models"))
             .map((item) => (
               <li className="nav-item" key={item.path}>
                 <a className="nav-link" href={item.path}>

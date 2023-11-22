@@ -25,6 +25,8 @@
     "next": "14.0.2",
     "react": "^18",
     "react-dom": "^18",
+    "rehype-add-classes": "^1.0.0",
+    "remark-gfm": "^4.0.0",
     "sass": "^1.69.5",
     "type-fest": "^4.8.1"
   },

@@ -1,0 +1,50 @@
+export const _metadata = {
+  prompt: `Write a markdown file that explains the computer science technique of *deep learning recommendation models* in the context machine learning. Include a summary section and then 3 other sections that expand on different aspects of the technique. Other sections to include are history / evolution of the technique, common uses for the technique and hardware considerations. In the history/evolution section be sure to mention 1-3 state-of-the-art models that are open source and available to self-hosting. If closed-source models from commercial entities represent the state-of-the-art in the field, then mention 1-2 of those too. In Hardware Considerations explain which of GPU specifications among Memory Size, Memory Bandwidth, number of Cores and Clock Rate are most important for optimizing inference and how does that differ for training or fine-tuning. Use a table with the values High/Medium/Low compare each GPU specification and its importance for inference vs Training/Fine-Tuning. Do not include a "conclusion" section at the end.`,
+}
+
+# Deep Learning Recommendation Models (DLRMs) in Machine Learning
+
+## Summary
+
+Deep Learning Recommendation Models (DLRMs) are a class of machine learning models that leverage deep learning techniques to provide personalized recommendations to users. These models are typically used in scenarios where there is a need to predict user preferences based on large-scale data. DLRMs have become integral in various industries, from e-commerce to content streaming, due to their ability to handle vast amounts of data and complex features.
+
+## History and Evolution
+
+The evolution of deep learning recommendation models has been marked by significant advancements over the years. Early models were simplistic, focusing on collaborative filtering techniques. However, with the advent of deep learning, these models have evolved to become more sophisticated and capable of handling complex, non-linear relationships in data.
+
+### Notable Models
+
+- **Open-Source Models**:
+
+  1. **LightFM**: A Python implementation that combines collaborative filtering with content-based methods.
+  2. **Neural Collaborative Filtering (NCF)**: Utilizes a neural network to model user-item interactions.
+  3. **DeepFM**: Integrates the factorization machine approach with deep learning for feature learning in sparse data.
+
+- **Commercial Models**:
+  1. **Amazon Personalize**: Leverages AWS's deep learning technology to provide customized recommendations.
+  2. **Google Recommendations AI**: Uses Google's state-of-the-art machine learning to offer personalized recommendations.
+
+## Common Uses
+
+Deep learning recommendation models are employed in various fields, including:
+
+- **E-commerce**: For personalized product recommendations.
+- **Streaming Services**: To suggest content based on user preferences.
+- **Social Media**: In curating feeds and content suggestions.
+- **Online Advertising**: To target ads more effectively.
+
+## Hardware Considerations
+
+The performance of DLRMs heavily depends on the hardware used, particularly in training and inference phases. Key GPU specifications include Memory Size, Memory Bandwidth, Number of Cores, and Clock Rate.
+
+| GPU Specification | Importance for Inference | Importance for Training/Fine-Tuning |
+| ----------------- | ------------------------ | ----------------------------------- |
+| Memory Size       | High                     | High                                |
+| Memory Bandwidth  | Medium                   | High                                |
+| Number of Cores   | High                     | High                                |
+| Clock Rate        | Low                      | Medium                              |
+
+- **Memory Size**: Crucial for both inference and training, as it determines how much data can be processed at once.
+- **Memory Bandwidth**: More important for training due to the need to frequently access and update large datasets.
+- **Number of Cores**: Essential for parallel processing capabilities in both phases.
+- **Clock Rate**: Less critical but can impact the speed of processing individual tasks.

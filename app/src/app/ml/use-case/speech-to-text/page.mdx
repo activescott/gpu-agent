@@ -1,0 +1,48 @@
+export const metadata = {
+  prompt: `Write a markdown file that explains the computer science technique of *speech-to-text* is in the context machine learning. Include a summary section and then 3 other sections that expand on different aspects of the technique. Other sections to include are history / evolution of the technique including breakthroughs, common uses for the technique and hardware considerations. In Hardware Considerations explain which of GPU specifications among Memory Size, Memory Bandwidth, number of Cores and Clock Rate are most important for optimizing inference and how does that differ for training or fine-tuning. Use a table with the values High/Medium/Low compare each GPU specification and its importance for inference vs Training/Fine-Tuning. Do not include a "conclusion" section at the end.`,
+}
+
+# Speech-to-Text: A Machine Learning Approach
+
+## Summary
+
+Speech-to-text (STT), also known as automatic speech recognition (ASR), is a technology that converts spoken language into text. It is a crucial component of many modern technologies, such as voice assistants, dictation software, and real-time transcription services. STT relies on machine learning techniques to extract meaningful patterns from acoustic signals and translate them into corresponding words and sentences.
+
+## History and Evolution
+
+The history of STT dates back to the early days of computing, with researchers experimenting with various techniques to recognize spoken digits and isolated words. Significant breakthroughs occurred in the 1980s and 1990s with the development of hidden Markov models (HMMs) and statistical language models (SLMs), which enabled more accurate and robust STT systems.
+
+In recent years, deep learning has revolutionized the field of STT. Deep neural networks, particularly recurrent neural networks (RNNs) and their variants, such as long short-term memory (LSTM) networks, have achieved remarkable performance in STT tasks. These models can effectively learn complex patterns in large amounts of speech data, leading to significant improvements in accuracy and robustness.
+
+## Common Uses of Speech-to-Text
+
+STT has a wide range of applications in various fields, including:
+
+- **Voice Assistants:** STT is the backbone of voice assistants like Amazon Alexa, Apple Siri, and Google Assistant, enabling users to interact with devices using their voice.
+
+- **Dictation Software:** STT powers dictation software that allows users to convert their spoken words into text, increasing productivity and accessibility.
+
+- **Real-time Transcription:** STT is used in real-time transcription services for live events, lectures, and meetings, providing accurate and immediate text transcripts.
+
+- **Accessibility Tools:** STT enhances accessibility for individuals with hearing impairments by enabling them to communicate and access information through speech.
+
+## Hardware Considerations for Speech-to-Text
+
+The performance of STT models depends on various hardware factors, including:
+
+- **Memory Size:** Sufficient memory is crucial for storing large speech datasets and intermediate model representations during training and inference.
+
+- **Memory Bandwidth:** High memory bandwidth ensures efficient data transfer between memory and the processor, enabling faster model processing.
+
+- **Number of Cores:** A higher number of cores allows for parallel processing of large speech datasets, reducing training and inference times.
+
+- **Clock Rate:** A higher clock rate accelerates individual processing operations, improving model performance.
+
+| GPU Specification | Inference Importance | Training/Fine-Tuning Importance |
+| ----------------- | -------------------- | ------------------------------- |
+| Memory Size       | Medium               | High                            |
+| Memory Bandwidth  | High                 | High                            |
+| Number of Cores   | Medium               | High                            |
+| Clock Rate        | Medium               | High                            |
+
+In general, memory bandwidth and clock rate are more critical for inference, as they directly impact the speed of processing speech data in real time. Memory size and the number of cores are more important for training and fine-tuning, as they allow for faster processing of large training datasets.

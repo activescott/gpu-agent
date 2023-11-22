@@ -1,6 +1,6 @@
 import sitemapJson from "../../../app/sitemap.json"
 
-const entries = Array.from(sitemapJson.data)
+const entries = [...sitemapJson.data]
 
 export const SiteFooter = () => {
   const start_year = 2023

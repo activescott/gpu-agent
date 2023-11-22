@@ -1,0 +1,15 @@
+{
+  "extends": "@tsconfig/node18/tsconfig.json",
+  "include": ["./src/**/*"],
+  "exclude": [
+    "**/*.spec.ts",
+    "dist",
+    "node_modules",
+    "example/**/*",
+    "tests/**/*"
+  ],
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "outDir": "dist/es"
+  }
+}

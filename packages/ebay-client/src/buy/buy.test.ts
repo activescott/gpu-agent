@@ -4,10 +4,9 @@ import { BuyApiOptions, createBuyApi } from "../buy/buy.js"
 import { fetchImpl } from "../util/fetch.js"
 import { asMockedFunction } from "../util/testing.js"
 import { chainAsync } from "irritable-iterable"
-import { readFileSync } from "fs"
 import { readFile } from "fs/promises"
 
-//const __dirname = dirname(import.meta) ???
+/* eslint-disable no-magic-numbers */
 
 //////////
 // mocking
@@ -26,7 +25,7 @@ describe("createBuyApi", () => {
     expect(createBuyApi(options)).toBeDefined()
   })
 
-  it("should fail if there no creds", () => {
+  it("should fail if there no credentials", () => {
     expect(() => createBuyApi({} as unknown as BuyApiOptions)).toThrow(
       /missing credentials/,
     )
@@ -89,7 +88,7 @@ describe("search", () => {
     expect(mockFetch).toHaveBeenCalledTimes(2)
     const call2 = mockFetch.mock.calls[1]
     const options = call2[1]
-    const headers = (options as any).headers as Record<string, string>
+    const headers = options.headers as Record<string, string>
 
     expect(headers).toHaveProperty("X-EBAY-C-ENDUSERCTX")
     const value = headers["X-EBAY-C-ENDUSERCTX"]
@@ -197,7 +196,7 @@ describe("getItem", () => {
   it.todo("should rate limit")
 })
 
-const mockAuthTokenResponse = async () =>
+const mockAuthTokenResponse = async (): Promise<Response> =>
   new Response(
     JSON.stringify({
       access_token: "foo",
@@ -206,16 +205,16 @@ const mockAuthTokenResponse = async () =>
     } satisfies EbayClientCredentialsGrantResponse),
   )
 
-const mockDefaultSearchResponse = async () =>
+const mockDefaultSearchResponse = async (): Promise<Response> =>
   new Response(JSON.stringify({ itemSummaries: [] }))
 
-async function consumeGenerator(
-  asyncGenerator: AsyncGenerator<any>,
+async function consumeGenerator<T>(
+  asyncGenerator: AsyncGenerator<T>,
 ): Promise<void> {
   await chainAsync(asyncGenerator).collect()
 }
 
-async function loadMockJsonAsResponse(filename: string) {
+async function loadMockJsonAsResponse(filename: string): Promise<Response> {
   const filepath = path.resolve(
     __dirname,
     "../../data/test-data/mock",

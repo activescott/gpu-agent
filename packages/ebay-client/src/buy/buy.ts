@@ -5,6 +5,7 @@ import {
   MapEbayEnvironmentToUrl,
 } from "../auth.js"
 import { fetchImpl } from "../util/fetch.js"
+import { secondsToMilliseconds } from "../util/time.js"
 import { AspectFilter, Category, ItemSummary } from "./types.js"
 
 export function createBuyApi(options: BuyApiOptions): BuyApi {
@@ -65,30 +66,31 @@ export interface BuyApiOptions {
 class BuyApiImpl implements BuyApi {
   private authToken?: AuthToken
 
-  constructor(private options: BuyApiOptions) {
+  public constructor(private options: BuyApiOptions) {
     if (!options.credentials) {
       throw new Error("missing credentials")
     }
   }
+
   public async *search(
     options: SearchOptions,
-  ) /*: AsyncGenerator<never, void, unknown>*/ {
+  ): AsyncGenerator<ItemSummary, void, unknown> {
     let page = await this.searchPage(options)
     while (page) {
-      for (let item of page.itemSummaries) {
+      for (const item of page.itemSummaries) {
         yield item
       }
       // handle the paging:
       if (!page.next) {
         return
       }
-      let resp = await this.httpGet(new URL(page.next))
+      const resp = await this.httpGet(new URL(page.next))
       page = (await resp.json()) as SearchPageResponse
     }
   }
 
   /** Does a search but returns a raw result from eBay api as a single page. */
-  async searchPage({
+  private async searchPage({
     query,
     filterCategory,
   }: SearchOptions): Promise<SearchPageResponse> {
@@ -109,7 +111,7 @@ class BuyApiImpl implements BuyApi {
     return MapEbayEnvironmentToUrl[this.options.credentials.environment]
   }
 
-  async httpGet(url: URL): Promise<Response> {
+  private async httpGet(url: URL): Promise<Response> {
     const options = {
       method: "GET",
       headers: {
@@ -123,7 +125,7 @@ class BuyApiImpl implements BuyApi {
     return fetchImpl(url.href, options)
   }
 
-  async getAccessToken(): Promise<string> {
+  private async getAccessToken(): Promise<string> {
     if (this.authToken && this.authToken.expires_at > Date.now()) {
       return this.authToken.access_token
     }
@@ -155,7 +157,7 @@ class BuyApiImpl implements BuyApi {
       this.authToken = {
         access_token: json.access_token,
         token_type: json.token_type,
-        expires_at: Date.now() + json.expires_in * 1000,
+        expires_at: Date.now() + secondsToMilliseconds(json.expires_in),
       }
     } catch (error) {
       throw new Error(`failed to get auth token`, { cause: error })

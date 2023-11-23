@@ -47,10 +47,11 @@ Compare GPU & AI Accelerator Card Performance Metrics to their Cost
 
 Hardware Spec Performance Metrics:
 
-- FP32 TFLOPS per $100:
-  1 TF / $1000 = 0.1
-  50TF / $1000 = 5.0
-  50TF / $ 500 = 10.0
+- FP32 $/TFLOP/s (Overheard: [Flops really are quite cheap by now, e.g. vision inference chip ~$2/teraflop/s (for 8 bit ops)](https://news.ycombinator.com/item?id=38380510))
+
+  - $1000 / 1 TF = $ 1/TFLOP/s
+  - $1000 / 50TF = $20/TFLOP/s
+  - $ 500 / 50TF = $10/TFLOP/s
 
 Inference Data Center Performance Metrics:
 
@@ -93,7 +94,7 @@ The MLPerf Inference Datacenter benchmarks:
 
 ### Ebay
 
-- [XML Flow Tutorial: Listing an Item](https://developer.ebay.com/devzone/xml/docs/HowTo/XML_ListingAndSelling/ListingAndSelling_listing.html)
+- Search API: https://developer.ebay.com/api-docs/buy/browse/resources/item_summary/methods/search
 - Restful APIs: https://developer.ebay.com/develop/apis/restful-apis
 - https://developer.ebay.com/
 - https://sandbox.ebay.com/

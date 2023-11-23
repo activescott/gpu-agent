@@ -1,0 +1,247 @@
+{
+  "href": "https://api.ebay.com/buy/browse/v1/item_summary/search?q=NVIDIA+RTX+A5000&limit=3&offset=0",
+  "total": 5619,
+  "next": "https://api.ebay.com/buy/browse/v1/item_summary/search?q=NVIDIA+RTX+A5000&limit=3&offset=3",
+  "limit": 3,
+  "offset": 0,
+  "itemSummaries": [
+    {
+      "itemId": "v1|296057072805|0",
+      "title": "NVIDIA RTX A5000 24GB GDDR6 Graphics Card",
+      "leafCategoryIds": ["27386"],
+      "categories": [
+        {
+          "categoryId": "27386",
+          "categoryName": "Graphics/Video Cards"
+        },
+        {
+          "categoryId": "58058",
+          "categoryName": "Computers/Tablets & Networking"
+        },
+        {
+          "categoryId": "175673",
+          "categoryName": "Computer Components & Parts"
+        }
+      ],
+      "image": {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/nIQAAOSwWqNk9uTr/s-l225.jpg"
+      },
+      "price": {
+        "value": "1500.00",
+        "currency": "USD"
+      },
+      "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C296057072805%7C0",
+      "seller": {
+        "username": "scrambled-2023-11-21-20_18_27",
+        "feedbackPercentage": "0.0",
+        "feedbackScore": 6
+      },
+      "condition": "Used",
+      "conditionId": "3000",
+      "thumbnailImages": [
+        {
+          "imageUrl": "https://i.ebayimg.com/images/g/nIQAAOSwWqNk9uTr/s-l1200.jpg"
+        }
+      ],
+      "shippingOptions": [
+        {
+          "shippingCostType": "FIXED",
+          "shippingCost": {
+            "value": "0.00",
+            "currency": "USD"
+          }
+        }
+      ],
+      "buyingOptions": ["FIXED_PRICE", "BEST_OFFER"],
+      "epid": "9056689554",
+      "itemAffiliateWebUrl": "https://www.ebay.com/itm/296057072805?hash=item44ee606ca5%3Ag%3AnIQAAOSwWqNk9uTr&amdata=enc%3AAQAIAAAA4AXPXAWzcF9QRbNlX9CEwuV8RJrQPZSGVyifwU4vggTaJa42bw2KEtOtfCjnwyQ2FxP1O%2BQtNhtHDTzDDsSnomLue8SyH4siUwixbXg7EbIR%2FS1j1eq%2FppJv9lLkkJVM93rESuYGG8HlPsnIS%2Fpp3fOvsyHlV%2BGHLVrnICYOfwrnOO%2FKxFQMiyEtA66uU91wC5fXN9USFG%2FH%2FFEb4uIpBdci%2F98zJ5xpvbp4XHWwBGnllv6bJ8cQuhz8Nf1ks4JmHU9Z67B%2BKmMPGrVdYYgI2nnVQXJUBfLKXI%2FUFtJ%2FTWB1&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=%253CePNCampaignId%253E&customid=%253CreferenceId%253E&toolid=10049",
+      "itemWebUrl": "https://www.ebay.com/itm/296057072805?hash=item44ee606ca5:g:nIQAAOSwWqNk9uTr&amdata=enc%3AAQAIAAAA4AXPXAWzcF9QRbNlX9CEwuV8RJrQPZSGVyifwU4vggTaJa42bw2KEtOtfCjnwyQ2FxP1O%2BQtNhtHDTzDDsSnomLue8SyH4siUwixbXg7EbIR%2FS1j1eq%2FppJv9lLkkJVM93rESuYGG8HlPsnIS%2Fpp3fOvsyHlV%2BGHLVrnICYOfwrnOO%2FKxFQMiyEtA66uU91wC5fXN9USFG%2FH%2FFEb4uIpBdci%2F98zJ5xpvbp4XHWwBGnllv6bJ8cQuhz8Nf1ks4JmHU9Z67B%2BKmMPGrVdYYgI2nnVQXJUBfLKXI%2FUFtJ%2FTWB1",
+      "itemLocation": {
+        "country": "AE"
+      },
+      "additionalImages": [
+        {
+          "imageUrl": "https://i.ebayimg.com/thumbs/images/g/m0MAAOSw4ghk9uTx/s-l225.jpg"
+        },
+        {
+          "imageUrl": "https://i.ebayimg.com/thumbs/images/g/QPUAAOSwYOxk9uT0/s-l225.jpg"
+        },
+        {
+          "imageUrl": "https://i.ebayimg.com/thumbs/images/g/3rAAAOSwDyVk9uT5/s-l225.jpg"
+        },
+        {
+          "imageUrl": "https://i.ebayimg.com/thumbs/images/g/4SMAAOSwBEdk9uT~/s-l225.jpg"
+        },
+        {
+          "imageUrl": "https://i.ebayimg.com/thumbs/images/g/tCYAAOSwYqRk9uUH/s-l225.jpg"
+        },
+        {
+          "imageUrl": "https://i.ebayimg.com/thumbs/images/g/b9YAAOSwjUpk9uUM/s-l225.jpg"
+        },
+        {
+          "imageUrl": "https://i.ebayimg.com/thumbs/images/g/L-8AAOSwohlk9uUS/s-l225.jpg"
+        }
+      ],
+      "adultOnly": false,
+      "legacyItemId": "296057072805",
+      "availableCoupons": false,
+      "itemCreationDate": "2023-11-19T16:34:58.000Z",
+      "topRatedBuyingExperience": false,
+      "priorityListing": true,
+      "listingMarketplaceId": "EBAY_US"
+    },
+    {
+      "itemId": "v1|176033835717|0",
+      "title": "PNY NVIDIA RTX A5000 24GB GDDR6 Graphics Card - NEW!!!   Sealed !!!! - OFFER !",
+      "leafCategoryIds": ["27386"],
+      "categories": [
+        {
+          "categoryId": "27386",
+          "categoryName": "Graphics/Video Cards"
+        },
+        {
+          "categoryId": "58058",
+          "categoryName": "Computers/Tablets & Networking"
+        },
+        {
+          "categoryId": "175673",
+          "categoryName": "Computer Components & Parts"
+        }
+      ],
+      "image": {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/uwEAAOSwcL1lVGqn/s-l225.jpg"
+      },
+      "price": {
+        "value": "1370.00",
+        "currency": "USD"
+      },
+      "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C176033835717%7C0",
+      "seller": {
+        "username": "scrambled-1700626646684",
+        "feedbackPercentage": "0.0",
+        "feedbackScore": 245
+      },
+      "marketingPrice": {
+        "originalPrice": {
+          "value": "2354.54",
+          "currency": "USD"
+        },
+        "discountPercentage": "42",
+        "discountAmount": {
+          "value": "984.54",
+          "currency": "USD"
+        }
+      },
+      "condition": "New",
+      "conditionId": "1000",
+      "thumbnailImages": [
+        {
+          "imageUrl": "https://i.ebayimg.com/images/g/uwEAAOSwcL1lVGqn/s-l960.jpg"
+        }
+      ],
+      "shippingOptions": [
+        {
+          "shippingCostType": "CALCULATED",
+          "shippingCost": {
+            "value": "198.00",
+            "currency": "USD"
+          }
+        }
+      ],
+      "buyingOptions": ["FIXED_PRICE", "BEST_OFFER"],
+      "epid": "4046133076",
+      "itemAffiliateWebUrl": "https://www.ebay.com/itm/176033835717?hash=item28fc6f2ac5%3Ag%3AuwEAAOSwcL1lVGqn&amdata=enc%3AAQAIAAAA4ITRmkrIVJDGETigFd9OJpfyFHxkq52S7L8KT3KMxeUAhS22jh89E78j1LgR6VzEDY5mCR1e4UOwlHG4jeFkH%2F7brmchIy9nzIDOTZtkFzAvEAW3ZTHtg4c0S04wv7D7hZm0eF2s9vAOsRPH1r%2FiQMwE%2FPiC7RWzEYirvAff4HxWDeoy7nyUcf7W3aTJZMcef%2BQgAniDNGysxgETCgT8U6tlQkGV0mX62dz3m0MKJMd1D1JneMoekrRwlaJkBswGw87kiiRv%2BSNkRe2RCEPl8UnkkhhtatAVtwaU%2FfYezBzJ&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=%253CePNCampaignId%253E&customid=%253CreferenceId%253E&toolid=10049",
+      "itemWebUrl": "https://www.ebay.com/itm/176033835717?hash=item28fc6f2ac5:g:uwEAAOSwcL1lVGqn&amdata=enc%3AAQAIAAAA4ITRmkrIVJDGETigFd9OJpfyFHxkq52S7L8KT3KMxeUAhS22jh89E78j1LgR6VzEDY5mCR1e4UOwlHG4jeFkH%2F7brmchIy9nzIDOTZtkFzAvEAW3ZTHtg4c0S04wv7D7hZm0eF2s9vAOsRPH1r%2FiQMwE%2FPiC7RWzEYirvAff4HxWDeoy7nyUcf7W3aTJZMcef%2BQgAniDNGysxgETCgT8U6tlQkGV0mX62dz3m0MKJMd1D1JneMoekrRwlaJkBswGw87kiiRv%2BSNkRe2RCEPl8UnkkhhtatAVtwaU%2FfYezBzJ",
+      "itemLocation": {
+        "country": "IL"
+      },
+      "additionalImages": [
+        {
+          "imageUrl": "https://i.ebayimg.com/thumbs/images/g/YU0AAOSw5gBlVGqn/s-l225.jpg"
+        },
+        {
+          "imageUrl": "https://i.ebayimg.com/thumbs/images/g/8UwAAOSwkxdlVGqn/s-l225.jpg"
+        },
+        {
+          "imageUrl": "https://i.ebayimg.com/thumbs/images/g/-kQAAOSwFlplVGqn/s-l225.jpg"
+        }
+      ],
+      "adultOnly": false,
+      "legacyItemId": "176033835717",
+      "availableCoupons": false,
+      "itemCreationDate": "2023-11-15T06:55:59.000Z",
+      "topRatedBuyingExperience": false,
+      "priorityListing": true,
+      "listingMarketplaceId": "EBAY_US"
+    },
+    {
+      "itemId": "v1|353853667734|0",
+      "title": "NVIDIA AMPERE NVLINK BRIDGE 3-SLOT for RTX A6000 RTX A5000",
+      "leafCategoryIds": ["16145"],
+      "categories": [
+        {
+          "categoryId": "16145",
+          "categoryName": "Other Components & Parts"
+        },
+        {
+          "categoryId": "58058",
+          "categoryName": "Computers/Tablets & Networking"
+        },
+        {
+          "categoryId": "175673",
+          "categoryName": "Computer Components & Parts"
+        }
+      ],
+      "image": {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/mCYAAOSwANNh3q0u/s-l225.jpg"
+      },
+      "price": {
+        "value": "211.99",
+        "currency": "USD"
+      },
+      "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C353853667734%7C0",
+      "seller": {
+        "username": "scrambled-2023-11-21-20_19_26",
+        "feedbackPercentage": "94.9",
+        "feedbackScore": 17433
+      },
+      "condition": "New",
+      "conditionId": "1000",
+      "thumbnailImages": [
+        {
+          "imageUrl": "https://i.ebayimg.com/images/g/mCYAAOSwANNh3q0u/s-l500.jpg"
+        }
+      ],
+      "shippingOptions": [
+        {
+          "shippingCostType": "FIXED",
+          "shippingCost": {
+            "value": "10.00",
+            "currency": "USD"
+          }
+        }
+      ],
+      "buyingOptions": ["FIXED_PRICE"],
+      "itemAffiliateWebUrl": "https://www.ebay.com/itm/353853667734?hash=item5263527996%3Ag%3AmCYAAOSwANNh3q0u&amdata=enc%3AAQAIAAAA4Fv3dkxfH1UY2QfCSwDN8W84ZqyzDSUbsAQWx2BEv7jMQsSuDcVO2m%2FPbIjUYyLanV7GQQMlJIjVxeTJp%2BudlYG%2FFCCbNhB%2FyxIujL5YV19lEkwtE08kID5llNAtpp65Ue%2BEXwV3qFl4gk%2FupBPUI8M4q6R5oOnqaLoCh2pMxiuPR2rLMAoA%2FfRx4iyv4sICd8Jjxx8CxZPBt7kCGQOdX6oUvhjL%2F5OKIS1aYvDDZypEZYFTnPyD4wEaZ6%2BkuoueF1EJsIbeaEjpKw8GbvoizLzI%2BLLRp%2FvaPKq%2B5GBPTMmK&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=%253CePNCampaignId%253E&customid=%253CreferenceId%253E&toolid=10049",
+      "itemWebUrl": "https://www.ebay.com/itm/353853667734?hash=item5263527996:g:mCYAAOSwANNh3q0u&amdata=enc%3AAQAIAAAA4Fv3dkxfH1UY2QfCSwDN8W84ZqyzDSUbsAQWx2BEv7jMQsSuDcVO2m%2FPbIjUYyLanV7GQQMlJIjVxeTJp%2BudlYG%2FFCCbNhB%2FyxIujL5YV19lEkwtE08kID5llNAtpp65Ue%2BEXwV3qFl4gk%2FupBPUI8M4q6R5oOnqaLoCh2pMxiuPR2rLMAoA%2FfRx4iyv4sICd8Jjxx8CxZPBt7kCGQOdX6oUvhjL%2F5OKIS1aYvDDZypEZYFTnPyD4wEaZ6%2BkuoueF1EJsIbeaEjpKw8GbvoizLzI%2BLLRp%2FvaPKq%2B5GBPTMmK",
+      "itemLocation": {
+        "country": "KR"
+      },
+      "additionalImages": [
+        {
+          "imageUrl": "https://i.ebayimg.com/thumbs/images/g/mHkAAOSwc~xh3q0v/s-l225.jpg"
+        },
+        {
+          "imageUrl": "https://i.ebayimg.com/thumbs/images/g/CrQAAOSwQP5h3q0w/s-l225.jpg"
+        }
+      ],
+      "adultOnly": false,
+      "legacyItemId": "353853667734",
+      "availableCoupons": false,
+      "itemCreationDate": "2022-01-12T11:06:27.000Z",
+      "topRatedBuyingExperience": false,
+      "priorityListing": true,
+      "listingMarketplaceId": "EBAY_US"
+    }
+  ]
+}

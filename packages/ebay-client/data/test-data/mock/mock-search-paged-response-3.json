@@ -1,0 +1,24 @@
+{
+  "href": "https://api.ebay.com/buy/browse/v1/item_summary/search?q=NVIDIA+RTX+A5000&limit=3&offset=6",
+  "total": 5619,
+
+  "limit": 3,
+  "offset": 6,
+  "itemSummaries": [
+    {
+      "itemId": "v1|296057072805|0",
+      "title": "NVIDIA RTX A5000 24GB GDDR6 Graphics Card",
+      "leafCategoryIds": ["27386"]
+    },
+    {
+      "itemId": "v1|296057072805|0",
+      "title": "NVIDIA RTX A5000 24GB GDDR6 Graphics Card",
+      "leafCategoryIds": ["27386"]
+    },
+    {
+      "itemId": "v1|296057072805|0",
+      "title": "NVIDIA RTX A5000 24GB GDDR6 Graphics Card",
+      "leafCategoryIds": ["27386"]
+    }
+  ]
+}

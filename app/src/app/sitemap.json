@@ -2,135 +2,168 @@
   "data": [
     {
       "path": "/shop/nvidia-t4",
-      "title": "Price Compare NVIDIA T4 GPUs"
+      "title": "Price Compare NVIDIA T4 GPUs",
+      "lastModified": "2023-11-25T07:26:05.000Z"
     },
     {
       "path": "/policy/terms",
-      "title": "Terms of Service"
+      "title": "Terms of Service",
+      "lastModified": "2023-11-17T07:32:49.000Z"
     },
     {
       "path": "/policy/privacy",
-      "title": "Privacy & Cookies Policy"
+      "title": "Privacy & Cookies Policy",
+      "lastModified": "2023-11-17T07:32:49.000Z"
     },
     {
       "path": "/ml/use-case/speech-to-text",
-      "title": "Speech-to-Text: A Machine Learning Approach"
+      "title": "Speech-to-Text: A Machine Learning Approach",
+      "lastModified": "2023-11-22T20:31:49.000Z"
     },
     {
       "path": "/ml/use-case/recommendation-systems",
-      "title": "Deep Learning Recommendation Models (DLRMs) in Machine Learning"
+      "title": "Deep Learning Recommendation Models (DLRMs) in Machine Learning",
+      "lastModified": "2023-11-22T20:31:49.000Z"
     },
     {
       "path": "/ml/use-case/object-detection",
-      "title": "Object Detection: A Machine Learning Technique for Recognizing Objects in Images and Videos"
+      "title": "Object Detection: A Machine Learning Technique for Recognizing Objects in Images and Videos",
+      "lastModified": "2023-11-22T20:31:49.000Z"
     },
     {
       "path": "/ml/use-case/medical-image-segmentation",
-      "title": "Medical Image Segmentation: A Machine Learning Perspective"
+      "title": "Medical Image Segmentation: A Machine Learning Perspective",
+      "lastModified": "2023-11-22T20:31:49.000Z"
     },
     {
       "path": "/ml/use-case/large-language-model-llm",
-      "title": "Large Language Models (LLMs) in Machine Learning"
+      "title": "Large Language Models (LLMs) in Machine Learning",
+      "lastModified": "2023-11-22T20:31:49.000Z"
     },
     {
       "path": "/ml/use-case/language-processing",
-      "title": "Language Processing in Machine Learning"
+      "title": "Language Processing in Machine Learning",
+      "lastModified": "2023-11-22T20:31:49.000Z"
     },
     {
       "path": "/ml/use-case/image-classification",
-      "title": "Image Classification: A Machine Learning Technique"
+      "title": "Image Classification: A Machine Learning Technique",
+      "lastModified": "2023-11-22T20:31:49.000Z"
     },
     {
       "path": "/ml/models/rnn-t",
-      "title": "About Machine Learning Model RNN-T"
+      "title": "About Machine Learning Model RNN-T",
+      "lastModified": "2023-11-20T01:06:23.000Z"
     },
     {
       "path": "/ml/models/retinanet",
-      "title": "About Machine Learning Model RetinaNet"
+      "title": "About Machine Learning Model RetinaNet",
+      "lastModified": "2023-11-17T08:01:03.000Z"
     },
     {
       "path": "/ml/models/resnet",
-      "title": "About Machine Learning Model ResNet"
+      "title": "About Machine Learning Model ResNet",
+      "lastModified": "2023-11-17T08:01:03.000Z"
     },
     {
       "path": "/ml/models/llama-2",
-      "title": "About Machine Learning Model Llama-2"
+      "title": "About Machine Learning Model Llama-2",
+      "lastModified": "2023-11-17T08:01:03.000Z"
     },
     {
       "path": "/ml/models/gpt-j",
-      "title": "About Machine Learning Model GPT-J"
+      "title": "About Machine Learning Model GPT-J",
+      "lastModified": "2023-11-17T08:01:03.000Z"
     },
     {
       "path": "/ml/models/dlrm-v2",
-      "title": "About Machine Learning Model DLRM"
+      "title": "About Machine Learning Model DLRM",
+      "lastModified": "2023-11-17T08:01:03.000Z"
     },
     {
       "path": "/ml/models/bert",
-      "title": "About Machine Learning Model BERT"
+      "title": "About Machine Learning Model BERT",
+      "lastModified": "2023-11-17T08:01:03.000Z"
     },
     {
       "path": "/ml/models/3d-unet",
-      "title": "About Machine Learning Model 3D-UNet"
+      "title": "About Machine Learning Model 3D-UNet",
+      "lastModified": "2023-11-17T08:01:03.000Z"
     },
     {
       "path": "/ml/gpu/specifications",
-      "title": "Technical Specifications Relevant for Machine Learning GPUs & Accelerators"
+      "title": "Technical Specifications Relevant for Machine Learning GPUs & Accelerators",
+      "lastModified": "2023-11-22T21:35:43.000Z"
     },
     {
       "path": "/ml/gpu/qualcomm-cloud-ai-100-pcie-hhhl",
-      "title": "Qualcomm Cloud AI 100 PCIe/HHHL Machine Learning Accelerator"
+      "title": "Qualcomm Cloud AI 100 PCIe/HHHL Machine Learning Accelerator",
+      "lastModified": "2023-11-20T01:06:23.000Z"
     },
     {
       "path": "/ml/gpu/nvidia-t4",
-      "title": "NVIDIA T4 Machine Learning GPU"
+      "title": "NVIDIA T4 Machine Learning GPU",
+      "lastModified": "2023-11-20T01:06:23.000Z"
     },
     {
       "path": "/ml/gpu/nvidia-rtx-a5000-gpu",
-      "title": "NVIDIA RTX A5000 Machine Learning GPU"
+      "title": "NVIDIA RTX A5000 Machine Learning GPU",
+      "lastModified": "2023-11-20T01:06:23.000Z"
     },
     {
       "path": "/ml/gpu/nvidia-l40",
-      "title": "NVIDIA L40 Machine Learning GPU"
+      "title": "NVIDIA L40 Machine Learning GPU",
+      "lastModified": "2023-11-21T07:25:37.000Z"
     },
     {
       "path": "/ml/gpu/nvidia-l4",
-      "title": "NVIDIA L4 Machine Learning Accelerator"
+      "title": "NVIDIA L4 Machine Learning Accelerator",
+      "lastModified": "2023-11-20T01:13:08.000Z"
     },
     {
       "path": "/ml/gpu/nvidia-h100-sxm-80gb",
-      "title": "NVIDIA H100-SXM-80GB Machine Learning Accelerator"
+      "title": "NVIDIA H100-SXM-80GB Machine Learning Accelerator",
+      "lastModified": "2023-11-20T01:13:08.000Z"
     },
     {
       "path": "/ml/gpu/nvidia-gh200-grace-hopper-superchip",
-      "title": "NVIDIA GH200-Grace Hopper Superchip Machine Learning Accelerator"
+      "title": "NVIDIA GH200-Grace Hopper Superchip Machine Learning Accelerator",
+      "lastModified": "2023-11-20T01:06:23.000Z"
     },
     {
       "path": "/ml/gpu/nvidia-a40",
-      "title": "NVIDIA A40 Machine Learning GPU"
+      "title": "NVIDIA A40 Machine Learning GPU",
+      "lastModified": "2023-11-20T01:06:23.000Z"
     },
     {
       "path": "/ml/gpu/nvidia-a30",
-      "title": "NVIDIA A30 Machine Learning Accelerator"
+      "title": "NVIDIA A30 Machine Learning Accelerator",
+      "lastModified": "2023-11-20T01:06:23.000Z"
     },
     {
       "path": "/ml/gpu/nvidia-a100-sxm-80gb-cts",
-      "title": "NVIDIA A100-SXM-80GB CTS Machine Learning Accelerator"
+      "title": "NVIDIA A100-SXM-80GB CTS Machine Learning Accelerator",
+      "lastModified": "2023-11-20T01:13:08.000Z"
     },
     {
       "path": "/ml/gpu/nvidia-a100-sxm-80gb",
-      "title": "NVIDIA A100-SXM-80GB Machine Learning Accelerator"
+      "title": "NVIDIA A100-SXM-80GB Machine Learning Accelerator",
+      "lastModified": "2023-11-20T01:13:08.000Z"
     },
     {
       "path": "/ml/gpu/nvidia-a100-pcie-80gb",
-      "title": "NVIDIA A100-PCIE-80GB Machine Learning Accelerator"
+      "title": "NVIDIA A100-PCIE-80GB Machine Learning Accelerator",
+      "lastModified": "2023-11-22T20:31:49.000Z"
     },
     {
       "path": "/ml/gpu/nvidia-a10-pci-24gb",
-      "title": "NVIDIA A10-PCI-24GB Machine Learning GPU"
+      "title": "NVIDIA A10-PCI-24GB Machine Learning GPU",
+      "lastModified": "2023-11-20T01:06:23.000Z"
     },
     {
       "path": "/ml/gpu/intel-habana-gaudi2",
-      "title": "Intel Habana Gaudi2 Machine Learning Accelerator"
+      "title": "Intel Habana Gaudi2 Machine Learning Accelerator",
+      "lastModified": "2023-11-20T01:06:23.000Z"
     }
   ]
 }

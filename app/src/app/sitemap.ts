@@ -20,6 +20,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         url: `${domain_url}${item.path}`,
         changeFrequency: "monthly",
         priority: 0.8,
+        lastModified: item.lastModified,
       } satisfies SitemapItem
     }),
     {

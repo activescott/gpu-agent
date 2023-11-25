@@ -3,6 +3,25 @@
 import * as glob from "glob"
 import fs from "fs"
 import path from "path"
+import gitLastUpdated from "./DateGitLastUpdated.js"
+
+type SiteMapItem = {
+  // relative path
+  path: string
+  // page title
+  title: string
+  // lastModified is consistent w/ Next.js
+  lastModified?: string | Date
+  changeFrequency?:
+    | "always"
+    | "hourly"
+    | "daily"
+    | "weekly"
+    | "monthly"
+    | "yearly"
+    | "never"
+  priority?: number
+}
 
 const __dirname = path.dirname(new URL(import.meta.url).pathname)
 
@@ -28,10 +47,13 @@ const items = pageFiles
       ? parseTitleFromTsx(file)
       : path.basename(file)
 
+    const lastModified = gitLastUpdated(file)
+
     return {
       path: relativePath,
       title,
-    }
+      lastModified,
+    } satisfies SiteMapItem
   })
   .filter((item) => !item.path.startsWith("/z-hide-verify-impact"))
   .filter((item) => !item.path.startsWith("/_junk"))

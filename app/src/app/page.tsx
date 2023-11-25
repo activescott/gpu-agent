@@ -1,3 +1,4 @@
+import type { Metadata } from "next"
 import sitemapJson from "./sitemap.json"
 const entries = [...sitemapJson.data]
 

@@ -10,7 +10,7 @@ export const SiteFooter = () => {
         <ul className="nav flex-column mx-4">
           <li className="nav-item">Shop GPUs</li>
           {entries
-            .filter((item) => item.path.startsWith("/shop"))
+            .filter((item) => item.path.startsWith("/ml/shop"))
             .map((item) => (
               <li className="nav-item" key={item.path}>
                 <a className="nav-link" href={item.path}>
@@ -22,7 +22,7 @@ export const SiteFooter = () => {
         <ul className="nav flex-column mx-4">
           <li className="nav-item">Machine Learning Use Cases</li>
           {entries
-            .filter((item) => item.path.startsWith("/ml/use-case"))
+            .filter((item) => item.path.startsWith("/ml/info/use-case"))
             .map((item) => (
               <li className="nav-item" key={item.path}>
                 <a className="nav-link" href={item.path}>
@@ -34,7 +34,7 @@ export const SiteFooter = () => {
         <ul className="nav flex-column">
           <li className="nav-item">Machine Learning GPUs & Accelerators</li>
           {entries
-            .filter((item) => item.path.startsWith("/ml/gpu"))
+            .filter((item) => item.path.startsWith("/ml/info/gpu"))
             .map((item) => (
               <li className="nav-item" key={item.path}>
                 <a className="nav-link" href={item.path}>
@@ -46,7 +46,7 @@ export const SiteFooter = () => {
         <ul className="nav flex-column mx-4">
           <li className="nav-item">Machine Learning Models</li>
           {entries
-            .filter((item) => item.path.startsWith("/ml/models"))
+            .filter((item) => item.path.startsWith("/ml/info/models"))
             .map((item) => (
               <li className="nav-item" key={item.path}>
                 <a className="nav-link" href={item.path}>

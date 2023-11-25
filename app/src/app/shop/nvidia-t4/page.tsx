@@ -15,6 +15,14 @@ const log = createDiag("shopping-agent:shop:nvidia-t4")
 // revalidate the data at most every hour:
 export const revalidate = 3600
 
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "Price Compare NVIDIA T4 GPUs",
+  description: "Compare prices for NVIDIA T4 GPUs",
+  alternates: { canonical: "https://coinpoet.com/shop/nvidia-t4" },
+}
+
 async function getListingsUncached() {
   log.info("fetching listings")
   const options: BuyApiOptions = {

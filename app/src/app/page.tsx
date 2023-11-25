@@ -1,13 +1,31 @@
-import { BootstrapIcon } from "@/pkgs/client/components/BootstrapIcon"
+import sitemapJson from "./sitemap.json"
+const entries = [...sitemapJson.data]
 
 export default function Home() {
   return (
     <main>
       <div>
         <h1>
-          Compare GPU & AI Accelerator Card Performance Metrics to their Cost
+          Compare Price & Benchmarked Performance of GPUs & AI Accelerators{" "}
         </h1>
-        <BootstrapIcon icon="shop" />
+        <div>
+          <p>
+            Compare prices to training or inference performance for the
+            following GPUs:
+          </p>
+          <ul className="nav flex-column mx-4">
+            {entries
+              .filter((item) => item.path.startsWith("/shop"))
+              .map((item) => (
+                <li className="nav-item" key={item.path}>
+                  <a className="nav-link" href={item.path}>
+                    {item.title}
+                  </a>
+                </li>
+              ))}
+          </ul>
+        </div>
+
         <p>
           Welcome to the ultimate resource for software engineers, data
           scientists, and SREs in the world of machine learning: a one-stop

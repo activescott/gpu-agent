@@ -10,7 +10,7 @@ const appDir = path.join(__dirname, "../app/src/app")
 const sitemapFile = path.join(__dirname, "../app/src/app/sitemap.json")
 
 // Find all page.tsx files under the app directory
-const pageFiles = glob.sync(`${appDir}/**/page.mdx`, { cwd: __dirname })
+const pageFiles = glob.sync(`${appDir}/**/page.{mdx,tsx}`, { cwd: __dirname })
 
 // Generate li elements for each page file
 const items = pageFiles
@@ -23,11 +23,9 @@ const items = pageFiles
 
     // if the file ends with an mdx extension, assume it is a markdown file and extract the first line with a heading and use it as a title (remove the markdown heading prefix):
     const title = file.endsWith(".mdx")
-      ? fs
-          .readFileSync(file, "utf8")
-          .split("\n")
-          .find((line) => line.startsWith("#"))
-          ?.replace(/^#+\s*/, "")
+      ? parseTitleFromMdx(file)
+      : file.endsWith(".tsx")
+      ? parseTitleFromTsx(file)
       : path.basename(file)
 
     return {
@@ -36,5 +34,27 @@ const items = pageFiles
     }
   })
   .filter((item) => !item.path.startsWith("/z-hide-verify-impact"))
+  .filter((item) => !item.path.startsWith("/_junk"))
 
 fs.writeFileSync(sitemapFile, JSON.stringify({ data: items }, null, 2))
+
+function parseTitleFromMdx(file: string) {
+  return fs
+    .readFileSync(file, "utf8")
+    .split("\n")
+    .find((line) => line.startsWith("#"))
+    ?.replace(/^#+\s*/, "")
+}
+
+function parseTitleFromTsx(file: string): string {
+  const contents = fs.readFileSync(file, "utf8")
+
+  const metadataRegex =
+    /export const metadata:\s*Metadata\s*=\s*\{[\s\n]*title:\s*"([^"]+)"/
+  const match = metadataRegex.exec(contents)
+
+  if (match) {
+    return match[1]
+  }
+  return path.basename(file)
+}

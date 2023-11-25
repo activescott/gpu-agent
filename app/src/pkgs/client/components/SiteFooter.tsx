@@ -8,6 +8,18 @@ export const SiteFooter = () => {
     <footer className="pt-5 mx-2 my-5 text-muted border-top fw-lighter">
       <div className="d-flex">
         <ul className="nav flex-column mx-4">
+          <li className="nav-item">Shop GPUs</li>
+          {entries
+            .filter((item) => item.path.startsWith("/shop"))
+            .map((item) => (
+              <li className="nav-item" key={item.path}>
+                <a className="nav-link" href={item.path}>
+                  {item.title}
+                </a>
+              </li>
+            ))}
+        </ul>
+        <ul className="nav flex-column mx-4">
           <li className="nav-item">Machine Learning Use Cases</li>
           {entries
             .filter((item) => item.path.startsWith("/ml/use-case"))

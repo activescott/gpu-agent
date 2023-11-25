@@ -1,6 +1,10 @@
 {
   "data": [
     {
+      "path": "/shop/nvidia-t4/page.tsx",
+      "title": "Price Compare NVIDIA T4 GPUs"
+    },
+    {
       "path": "/policy/terms",
       "title": "Terms of Service"
     },
@@ -70,7 +74,7 @@
     },
     {
       "path": "/ml/gpu/specifications",
-      "title": "Technical Specifications Relevant for Machine Learning Accelerators and GPUs"
+      "title": "Technical Specifications Relevant for Machine Learning GPUs & Accelerators"
     },
     {
       "path": "/ml/gpu/qualcomm-cloud-ai-100-pcie-hhhl",

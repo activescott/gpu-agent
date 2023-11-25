@@ -23,7 +23,7 @@ export default function Home() {
           </p>
           <ul className="nav flex-column mx-4">
             {entries
-              .filter((item) => item.path.startsWith("/shop"))
+              .filter((item) => item.path.startsWith("/ml/shop"))
               .map((item) => (
                 <li className="nav-item" key={item.path}>
                   <a className="nav-link" href={item.path}>

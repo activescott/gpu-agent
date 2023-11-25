@@ -19,7 +19,7 @@ const items = pageFiles
     // get the relative path:
     const relativePath = file
       .replace(`${appDir}`, "")
-      .replace(/\/page\.mdx$/, "")
+      .replace(/\/page\.(mdx|tsx)$/, "")
 
     // if the file ends with an mdx extension, assume it is a markdown file and extract the first line with a heading and use it as a title (remove the markdown heading prefix):
     const title = file.endsWith(".mdx")

@@ -1,6 +1,13 @@
 import sitemapJson from "./sitemap.json"
 const entries = [...sitemapJson.data]
 
+export const metadata: Metadata = {
+  title: "Buy GPUs with side-by-side Price Comparison & Benchmarks",
+  description:
+    "Buy GPUs for training and inference with side-by-side price/performance comparisons. Compare price to performance from industry-standard benchmarks for training and inference.",
+  alternates: { canonical: "https://coinpoet.com/" },
+}
+
 export default function Home() {
   return (
     <main>

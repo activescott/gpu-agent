@@ -26,8 +26,8 @@ export interface EbayOAuthCredentials {
 }
 
 export enum EbayEnvironment {
-  SANDBOX,
-  PRODUCTION,
+  SANDBOX = "SANDBOX",
+  PRODUCTION = "PRODUCTION",
 }
 
 export const MapEbayEnvironmentToUrl = {

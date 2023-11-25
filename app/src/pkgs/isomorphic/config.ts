@@ -6,6 +6,20 @@ export const ISOMORPHIC_CONFIG = {
     returnOrThrow("NEXT_PUBLIC_DOMAIN", process.env.NEXT_PUBLIC_DOMAIN),
 }
 
+export const SERVER_CONFIG = {
+  EBAY_CLIENT_ID: (): string =>
+    returnOrThrow("EBAY_CLIENT_ID", process.env.EBAY_CLIENT_ID),
+  EBAY_CLIENT_SECRET: (): string =>
+    returnOrThrow("EBAY_CLIENT_SECRET", process.env.EBAY_CLIENT_SECRET),
+  EBAY_ENVIRONMENT: (): string =>
+    returnOrThrow("EBAY_ENVIRONMENT", process.env.EBAY_ENVIRONMENT),
+  EBAY_AFFILIATE_CAMPAIGN_ID: (): string =>
+    returnOrThrow(
+      "EBAY_AFFILIATE_CAMPAIGN_ID",
+      process.env.EBAY_AFFILIATE_CAMPAIGN_ID,
+    ),
+}
+
 const returnOrThrow = (key: string, value: string | undefined): string => {
   if (!value) {
     throw new Error(`Missing environment variable ${key}`)

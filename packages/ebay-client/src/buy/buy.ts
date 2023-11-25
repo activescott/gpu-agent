@@ -1,3 +1,4 @@
+import { createDiag } from "@activescott/diag"
 import {
   AuthToken,
   EbayClientCredentialsGrantResponse,
@@ -8,6 +9,8 @@ import { fetchImpl } from "../util/fetch.js"
 import { secondsToMilliseconds } from "../util/time.js"
 import { AspectFilter, Category, ItemSummary } from "./types.js"
 
+const logger = createDiag("ebay-client:buy")
+
 export function createBuyApi(options: BuyApiOptions): BuyApi {
   return new BuyApiImpl(options)
 }
@@ -15,7 +18,12 @@ export function createBuyApi(options: BuyApiOptions): BuyApi {
 export interface BuyApi {
   // TODO: allow searching by aspects: https://developer.ebay.com/api-docs/buy/browse/resources/item_summary/methods/search#uri.aspect_filter
   // see https://developer.ebay.com/api-docs/buy/browse/resources/item_summary/methods/search
-  search(options: SearchOptions): AsyncGenerator<ItemSummary, void, unknown>
+  search(options: SearchOptions): Promise<SearchResponse>
+}
+
+export interface SearchResponse {
+  total: number
+  items: AsyncGenerator<ItemSummary, void, unknown>
 }
 
 export interface SearchOptions {
@@ -26,6 +34,7 @@ export interface SearchOptions {
 }
 
 interface PagedResponseInfo {
+  total: number
   limit: number
   /**
    * The URI for the next page of results.
@@ -72,28 +81,11 @@ class BuyApiImpl implements BuyApi {
     }
   }
 
-  public async *search(
-    options: SearchOptions,
-  ): AsyncGenerator<ItemSummary, void, unknown> {
-    let page = await this.searchPage(options)
-    while (page) {
-      for (const item of page.itemSummaries) {
-        yield item
-      }
-      // handle the paging:
-      if (!page.next) {
-        return
-      }
-      const resp = await this.httpGet(new URL(page.next))
-      page = (await resp.json()) as SearchPageResponse
-    }
-  }
-
-  /** Does a search but returns a raw result from eBay api as a single page. */
-  private async searchPage({
+  public async search({
     query,
     filterCategory,
-  }: SearchOptions): Promise<SearchPageResponse> {
+  }: SearchOptions): Promise<SearchResponse> {
+    // use options to get the first page of results:
     const url = new URL("/buy/browse/v1/item_summary/search", this.baseUrl())
     if (query) {
       url.searchParams.append("q", query)
@@ -101,10 +93,30 @@ class BuyApiImpl implements BuyApi {
     if (filterCategory) {
       url.searchParams.append("category_ids", filterCategory.categoryId)
     }
-
     const resp = await this.httpGet(url)
-    const json = (await resp.json()) as SearchPageResponse
-    return json
+    const firstPage = (await resp.json()) as SearchPageResponse
+
+    return {
+      total: firstPage.total,
+      // now searchItems will continue to return items as needed
+      items: this.searchItems(firstPage),
+    }
+  }
+
+  private async *searchItems(
+    page: SearchPageResponse,
+  ): AsyncGenerator<ItemSummary, void, unknown> {
+    while (page) {
+      for (const item of page.itemSummaries) {
+        yield item
+      }
+      // after yielding the page items, get the next page. Conveniently ebay provides the HATEOS url to get it
+      if (!page.next) {
+        return
+      }
+      const resp = await this.httpGet(new URL(page.next))
+      page = (await resp.json()) as SearchPageResponse
+    }
   }
 
   private baseUrl(): string {
@@ -126,41 +138,44 @@ class BuyApiImpl implements BuyApi {
   }
 
   private async getAccessToken(): Promise<string> {
-    if (this.authToken && this.authToken.expires_at > Date.now()) {
-      return this.authToken.access_token
-    }
+    if (!this.authToken || this.authToken.expires_at <= Date.now()) {
+      logger.info("fetching access token from", this.baseUrl)
+      try {
+        // https://developer.ebay.com/api-docs/static/oauth-client-credentials-grant.html
+        const form = new URLSearchParams()
+        form.append("grant_type", "client_credentials")
+        form.append("scope", "https://api.ebay.com/oauth/api_scope")
 
-    try {
-      // https://developer.ebay.com/api-docs/static/oauth-client-credentials-grant.html
-      const form = new FormData()
-      form.append("grant_type", "client_credentials")
-      form.append("scope", "https://api.ebay.com/oauth/api_scope")
-      const base64 = Buffer.from(
-        `${this.options.credentials.clientID}:${this.options.credentials.clientSecret}`,
-      ).toString("base64")
-      const options = {
-        method: "POST",
-        headers: {
-          Authorization: `Basic ${base64}`,
-        },
-        body: form,
-      }
+        const base64 = Buffer.from(
+          `${this.options.credentials.clientID}:${this.options.credentials.clientSecret}`,
+        ).toString("base64")
+        const options = {
+          method: "POST",
+          headers: {
+            Authorization: `Basic ${base64}`,
+            "Content-Type": "application/x-www-form-urlencoded",
+            Accept: "application/json",
+          },
+          body: form.toString(),
+        }
 
-      const url = new URL(`/identity/v1/oauth2/token`, this.baseUrl())
-      const result = await fetchImpl(url.href, options)
-      if (!result.ok) {
-        throw new Error(
-          `failed to get auth token: ${result.status} ${result.statusText}`,
-        )
+        const url = new URL(`/identity/v1/oauth2/token`, this.baseUrl())
+        const result = await fetchImpl(url.href, options)
+        if (!result.ok) {
+          throw new Error(
+            `failed to get auth token: ${result.status} ${result.statusText}`,
+          )
+        }
+        const json = (await result.json()) as EbayClientCredentialsGrantResponse
+        this.authToken = {
+          access_token: json.access_token,
+          token_type: json.token_type,
+          expires_at: Date.now() + secondsToMilliseconds(json.expires_in),
+        }
+      } catch (error) {
+        throw new Error(`failed to get auth token`, { cause: error })
       }
-      const json = (await result.json()) as EbayClientCredentialsGrantResponse
-      this.authToken = {
-        access_token: json.access_token,
-        token_type: json.token_type,
-        expires_at: Date.now() + secondsToMilliseconds(json.expires_in),
-      }
-    } catch (error) {
-      throw new Error(`failed to get auth token`, { cause: error })
     }
+    return this.authToken.access_token
   }
 }

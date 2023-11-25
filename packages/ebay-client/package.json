@@ -2,9 +2,17 @@
   "name": "ebay-client",
   "type": "module",
   "version": "1.0.0",
-  "module": "dist/es/index.js",
+  "//main": "main should not be required beyond node v10 per https://nodejs.org/docs/latest-v18.x/api/packages.html#package-entry-points",
+  "main-X": "dist/cjs/index.js",
+  "//exports": "see https://nodejs.org/docs/latest-v18.x/api/packages.html#package-entry-points",
+  "exports": {
+    ".": "./dist/es/index.js",
+    "./categories/US_EBAY": "./dist/es/categories/EBAY_US.js"
+  },
+  "types": "dist/es/index.d.ts",
   "files": [
     "dist/",
+    "!dist/cjs/",
     "!**/*.test.js",
     "!**/*.test.d.ts",
     "!**/__mocks__/"
@@ -18,7 +26,8 @@
     "eslint": "eslint . --ext ts,tsx,js,jsx",
     "lint": "prettier -l \"{,!(node_modules)/**/}*.{ts,tsx,md,yml,json,html}\" && npm run eslint",
     "lint-fix": "prettier --write \"{,!(node_modules)/**/}*.{ts,tsx,md,yml,json,html}\" && npm run eslint --fix",
-    "build:es": "rm -rfd ./dist/es; ./node_modules/.bin/tsc --project tsconfig.json",
+    "build:es": "rm -rfd ./dist/es; ./node_modules/.bin/tsc --project tsconfig.es.json",
+    "build:cjs": "rm -rfd ./dist/cjs; ./node_modules/.bin/tsc --project tsconfig.cjs.json",
     "build": "rm -rfd ./dist && npm run build:es",
     "clean": "rm -rf node_modules",
     "dev": "./node_modules/.bin/jest --watch",

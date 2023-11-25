@@ -49,7 +49,8 @@ describe("search", () => {
       .mockImplementationOnce(mockAuthTokenResponse)
       .mockImplementationOnce(mockDefaultSearchResponse)
 
-    await consumeGenerator(api.search({ query: "foo" }))
+    const found = await api.search({ query: "foo" })
+    await consumeGenerator(found.items)
 
     expect(mockFetch).toHaveBeenCalledTimes(2)
     expect(mockFetch.mock.calls[0][0]).toMatch(/identity\/v1\/oauth2\/token/)
@@ -63,7 +64,8 @@ describe("search", () => {
       .mockImplementationOnce(mockAuthTokenResponse)
       .mockImplementationOnce(mockDefaultSearchResponse)
 
-    await consumeGenerator(api.search({ query: "foo" }))
+    const found = await api.search({ query: "foo" })
+    await consumeGenerator(found.items)
 
     expect(mockFetch).toHaveBeenCalledTimes(2)
     const call = mockFetch.mock.calls[1]
@@ -83,7 +85,8 @@ describe("search", () => {
       .mockImplementationOnce(mockAuthTokenResponse)
       .mockImplementationOnce(mockDefaultSearchResponse)
 
-    await consumeGenerator(api.search({ query: "foo" }))
+    const found = await api.search({ query: "foo" })
+    await consumeGenerator(found.items)
 
     expect(mockFetch).toHaveBeenCalledTimes(2)
     const call2 = mockFetch.mock.calls[1]
@@ -106,7 +109,8 @@ describe("search", () => {
       .mockImplementationOnce(mockAuthTokenResponse)
       .mockImplementationOnce(mockDefaultSearchResponse)
 
-    await consumeGenerator(api.search({ query: "foo" }))
+    const found = await api.search({ query: "foo" })
+    await consumeGenerator(found.items)
     expect(mockFetch).toHaveBeenCalledTimes(2)
 
     const call = mockFetch.mock.calls[1]
@@ -126,7 +130,7 @@ describe("search", () => {
       .mockImplementationOnce(mockAuthTokenResponse)
       .mockImplementationOnce(mockDefaultSearchResponse)
 
-    const items = api.search({
+    const found = await api.search({
       filterAspect: {
         category: { categoryId: "27386" },
         aspects: [
@@ -137,7 +141,7 @@ describe("search", () => {
         ],
       },
     })
-    await consumeGenerator(items)
+    await consumeGenerator(found.items)
     expect(mockFetch).toHaveBeenCalledTimes(2)
   })
 
@@ -152,7 +156,7 @@ describe("search", () => {
       .mockImplementationOnce(mockAuthTokenResponse)
       .mockImplementationOnce(mockDefaultSearchResponse)
 
-    const items = api.search({
+    const { items } = await api.search({
       filterCategory: { categoryId: "27386" },
     })
     await consumeGenerator(items)
@@ -180,9 +184,12 @@ describe("search", () => {
         loadMockJsonAsResponse("mock-search-paged-response-3.json"),
       )
 
-    const items = api.search({ query: "foo" })
+    const { items } = await api.search({ query: "foo" })
     const collected = await chainAsync(items).collect()
     expect(collected).toHaveLength(9)
+
+    // make sure fetch wasn't called unexpectedly for any reason:
+    expect(mockFetch).toHaveBeenCalledTimes(4)
   })
 
   // for this one search for multiple brands or something

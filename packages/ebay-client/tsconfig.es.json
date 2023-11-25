@@ -1,0 +1,12 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "moduleResolution": "Node16",
+    "outDir": "dist/es",
+    "module": "Node16",
+    // << Recommended node-18 config in TS Repo EXCEPT for module:Node16: https://github.com/microsoft/TypeScript/wiki/Node-Target-Mapping#node-18
+    "lib": ["ES2022"],
+    "target": "ES2022"
+    // >>
+  }
+}

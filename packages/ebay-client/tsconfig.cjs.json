@@ -1,0 +1,11 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "outDir": "dist/cjs",
+    // << Recommended node-18 config in TS Repo: https://github.com/microsoft/TypeScript/wiki/Node-Target-Mapping#node-18
+    "module": "commonjs",
+    "lib": ["ES2022"],
+    "target": "ES2022"
+    // >>
+  }
+}

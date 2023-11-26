@@ -6,7 +6,9 @@ Compare GPU & AI Accelerator Card Performance Metrics to their Cost
 
 - Main URL: https://coinpoet.com/
 - Hosted via https://vercel.com/pingpoet/shopping-agent
-- Sitemap in https://www.bing.com/webmasters and https://search.google.com/u/1/search-console?resource_id=sc-domain%3Acoinpoet.com
+- Sitemap/SEO at:
+  - https://www.bing.com/webmasters (use Live (Microsoft Personal))
+  - https://search.google.com/u/1/search-console?resource_id=sc-domain%3Acoinpoet.com
 - Analytics at https://app.posthog.com/home (use scott@coinpoet.com)
 
 ## Todo
@@ -18,14 +20,34 @@ Compare GPU & AI Accelerator Card Performance Metrics to their Cost
 - [+] feat: add remaining GPUs
 - [+] feat: return a listing page of eBay GPU Items (simplest)
   - [+] Determine how to search? Can use search endpoint with aspect filter
+- [+] add posthog
+- [+] submit sitemap to google and bing
+- [ ] Listings note used/new
+- [ ] Listings note buy now/auction
+- [ ] Listings note memory size
+
+- [ ] Listings by Performance "Machine Learning Performance per Dollar": FP16, FP32, FP8, INT8 OP/s, Memory bandwidth, memory size
+
+  - We have to match every listing to a GPU. requires getItem and checking MPN or GPTI? Ask chat gpt? Assume?! Heuristics like description does not have "GPU NOT INCLUDED" or does not have "GB" in the title?
+
 - [ ] feat: choose listings by **use case**. Buyers want to buy a card for a use case. Then it sorts/ranks by appropriate metric and showcases appropriate metric
 
   - URLs like /ml/shop/use-case/image-classification
+  - [ ] Collect info metrics for use cases:
+
+    - Which model us used for the use case (see table below)
+    - List of GPUs and their benchmarked rate for the model (in the MLPerf Inference Data Center raw data)
+
+  - [ ] Collect following info for GPUs:
+
+    - [ ] Benchmarked rate for the Inference Use case @ 1GPU from DC benchmark. Record the following about each card benchmark:
+      - A benchmark ID like MLPerf-Inference-DataCenter-v3.1
+      - Model benchmarked (models linked to another "models" table, which can be linked ot use cases)
+      - The citation of where the data came from with a URL to coinpoet.com/ml/learn...
+      - FUTURE: FP16, FP32, FP8, INT8 OP/s, Memory bandwidth, memory size
 
   - [+] feat: ensure affiliate links are used: See [Header for affiliate information](https://developers.ebay.com/api-docs/buy/static/api-browse.html#affiliate-header)
 
-- [+] add posthog
-- [+] submit sitemap to google and bing
 - [ ] heading nav with at least logo in the left to make easy to navigate back to the main page. High level links to shop, models, etc. would be good though -maybe menus.
 - [ ] Identify the SKU/UPC in the eBay API. Confirm that it exists on accelerators/GPUs
 - [ ] Get a list of SKU/UPC for each GPU/Accelerator device products in the test
@@ -58,6 +80,15 @@ Hardware Spec Performance Metrics:
   - $1000 / 1 TF = $ 1/TFLOP/s
   - $1000 / 50TF = $20/TFLOP/s
   - $ 500 / 50TF = $10/TFLOP/s
+
+- $ / FP16 TFLOP/s
+- $ / FP8 TFLOP/s
+- $ / INT8 TFLOP/s
+- Because of https://timdettmers.com/2023/01/30/which-gpu-for-deep-learning/#The_Most_Important_GPU_Specs_for_Deep_Learning_Processing_Speed:
+  - $ / Tensor Core Count
+  - $ / GB/s memory bandwidth
+  - $ / KB shared memory size
+  - $ / MB L2 Cache size
 
 Inference Data Center Performance Metrics:
 
@@ -125,6 +156,7 @@ Future Goals:
 #### GPUs to Consider Adding
 
 - NVIDIA Tesla M10 32GB: These are available used for ~$150 at least occasionally
+- Also see GPUs at https://timdettmers.com/2023/01/30/which-gpu-for-deep-learning/#Raw_Performance_Ranking_of_GPUs. This paper is great overall but unclear if benchmark is reproducable. The relative performance isn't explained AFAICT
 
 #### Business Model
 

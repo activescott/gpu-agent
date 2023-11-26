@@ -7,6 +7,7 @@ Compare GPU & AI Accelerator Card Performance Metrics to their Cost
 - Main URL: https://coinpoet.com/
 - Hosted via https://vercel.com/pingpoet/shopping-agent
 - Sitemap in https://www.bing.com/webmasters and https://search.google.com/u/1/search-console
+- Analytics at https://app.posthog.com/home (use scott@coinpoet.com)
 
 ## Todo
 
@@ -18,7 +19,7 @@ Compare GPU & AI Accelerator Card Performance Metrics to their Cost
 - [ ] feat: return a listing page of eBay GPU Items
   - [+] Determine how to search? Can use search endpoint with aspect filter
 - [ ] feat: choose listings by **use case**. Buyers want to buy a card for a use case. Then it sorts/ranks by appropriate metric and showcases appropriate metric
-- [ ] add posthog
+- [+] add posthog
 - [ ] feat: ensure affiliate links are used: See [Header for affiliate information](https://developers.ebay.com/api-docs/buy/static/api-browse.html#affiliate-header)
 - [ ] feat: filter listings:
       [ ] Sample 4: Retrieve the Item Aspects by Keyword Search: https://developer.ebay.com/api-docs/buy/browse/resources/item_summary/methods/search#s0-1-22-6-7-7-6-RetrievetheItemAspectsbyKeywordSearch-3

@@ -8,6 +8,16 @@ const nextConfig = {
   // MDX configuration: https://nextjs.org/docs/app/building-your-application/configuring/mdx
   pageExtensions: ["mdx", "ts", "tsx"],
 
+  async rewrites() {
+    return [
+      // posthog reverse-proxy ingestion per https://posthog.com/docs/advanced/proxy/nextjs
+      {
+        source: "/a/:path*",
+        destination: "https://app.posthog.com/:path*",
+      },
+    ]
+  },
+
   // Optionally, add any other Next.js config below
 }
 

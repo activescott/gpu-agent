@@ -4,6 +4,16 @@
 export const ISOMORPHIC_CONFIG = {
   NEXT_PUBLIC_DOMAIN: (): string =>
     returnOrThrow("NEXT_PUBLIC_DOMAIN", process.env.NEXT_PUBLIC_DOMAIN),
+  NEXT_PUBLIC_POSTHOG_KEY: (): string =>
+    returnOrThrow(
+      "NEXT_PUBLIC_POSTHOG_KEY",
+      process.env.NEXT_PUBLIC_POSTHOG_KEY,
+    ),
+  NEXT_PUBLIC_POSTHOG_HOST: (): string =>
+    returnOrThrow(
+      "NEXT_PUBLIC_POSTHOG_HOST",
+      process.env.NEXT_PUBLIC_POSTHOG_HOST,
+    ),
 }
 
 export const SERVER_CONFIG = {

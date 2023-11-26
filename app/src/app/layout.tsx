@@ -2,6 +2,10 @@ import type { Metadata } from "next"
 import "./style/style.scss"
 import Script from "next/script"
 import { SiteFooter } from "@/pkgs/client/components/SiteFooter"
+import {
+  AnalyticsPageView,
+  AnalyticsProvider,
+} from "@/pkgs/client/analytics/provider"
 
 export const metadata: Metadata = {
   title: "Coin Poet AI Shopping Agent",
@@ -16,11 +20,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <Script src="/js/bootstrap.bundle.min.js" />
       <body>
-        <main className="p-3">{children}</main>
-        <SiteFooter />
+        <AnalyticsProvider>
+          <main className="p-3">{children}</main>
+          <SiteFooter />
+        </AnalyticsProvider>
       </body>
+      <AnalyticsPageView />
+      <Script src="/js/bootstrap.bundle.min.js" />
     </html>
   )
 }

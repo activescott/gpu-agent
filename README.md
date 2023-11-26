@@ -6,7 +6,7 @@ Compare GPU & AI Accelerator Card Performance Metrics to their Cost
 
 - Main URL: https://coinpoet.com/
 - Hosted via https://vercel.com/pingpoet/shopping-agent
-- Sitemap in https://www.bing.com/webmasters and https://search.google.com/u/1/search-console
+- Sitemap in https://www.bing.com/webmasters and https://search.google.com/u/1/search-console?resource_id=sc-domain%3Acoinpoet.com
 - Analytics at https://app.posthog.com/home (use scott@coinpoet.com)
 
 ## Todo
@@ -16,14 +16,17 @@ Compare GPU & AI Accelerator Card Performance Metrics to their Cost
 - [+] get site published under domain
 - [+] fix: update site metadata (page titles at least - the home page title still talks about next)
 - [+] feat: add remaining GPUs
-- [ ] feat: return a listing page of eBay GPU Items
+- [+] feat: return a listing page of eBay GPU Items (simplest)
   - [+] Determine how to search? Can use search endpoint with aspect filter
 - [ ] feat: choose listings by **use case**. Buyers want to buy a card for a use case. Then it sorts/ranks by appropriate metric and showcases appropriate metric
+
+  - URLs like /ml/shop/use-case/image-classification
+
+  - [+] feat: ensure affiliate links are used: See [Header for affiliate information](https://developers.ebay.com/api-docs/buy/static/api-browse.html#affiliate-header)
+
 - [+] add posthog
-- [ ] feat: ensure affiliate links are used: See [Header for affiliate information](https://developers.ebay.com/api-docs/buy/static/api-browse.html#affiliate-header)
-- [ ] feat: filter listings:
-      [ ] Sample 4: Retrieve the Item Aspects by Keyword Search: https://developer.ebay.com/api-docs/buy/browse/resources/item_summary/methods/search#s0-1-22-6-7-7-6-RetrievetheItemAspectsbyKeywordSearch-3
 - [+] submit sitemap to google and bing
+- [ ] heading nav with at least logo in the left to make easy to navigate back to the main page. High level links to shop, models, etc. would be good though -maybe menus.
 - [ ] Identify the SKU/UPC in the eBay API. Confirm that it exists on accelerators/GPUs
 - [ ] Get a list of SKU/UPC for each GPU/Accelerator device products in the test
 - [ ] Start pulling items from eBay into appropriate GPU/accelerator device categories - filter by SKU. If we don't have a SKU for the GPU/Accelerator then put it in an "unknown" accelerator group and flag it to be researched.
@@ -34,13 +37,15 @@ Compare GPU & AI Accelerator Card Performance Metrics to their Cost
 ### Later
 
 - [ ] Add a header/nav
+- [ ] Detect changes to shop pages and submit them to https://www.indexnow.org
 - [ ] add contact us page
+- [ ] Solicit info from the community on all model pages - especially unknown GPU/accelerator ones. Have a 👍👎 on information accuracy for models and gpu pages
+  - [ ] Ideally give people the opportunity to edit the pages by putting info pages in their own repo and triggering deploys based on them changing.
+- [ ] investigate amazon and newegg affiliate programs: https://promotions.newegg.com/affiliate_program/affiliate.html
 - [x] Model Page Prompt: Look for BibTeX information on the pages and consider any "to cite this model" kind of indications as the authoritative link for the model.
 - [x] Model Page Prompt: Include https://catalog.ngc.nvidia.com as a research source
 - [x] Model Page Prompt: When using arXiv, be sure that it is the paper that describes and introduces the model, not one that merely references it.
 - [x] Model Page Prompt: Prefer arXiv over hugging face.
-- [ ] Solicit info from the community on all model pages - especially unknown GPU/accelerator ones. Have a 👍👎 on information accuracy for models and gpu pages
-- [ ] investigate amazon and newegg affiliate programs: https://promotions.newegg.com/affiliate_program/affiliate.html
 
 ## Notes
 

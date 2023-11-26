@@ -6,6 +6,7 @@ import {
   AnalyticsPageView,
   AnalyticsProvider,
 } from "@/pkgs/client/analytics/provider"
+import { SiteHeader } from "@/pkgs/client/components/SiteHeader"
 
 export const metadata: Metadata = {
   title: "Coin Poet AI Shopping Agent",
@@ -22,6 +23,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <AnalyticsProvider>
+          <SiteHeader />
           <main className="p-3">{children}</main>
           <SiteFooter />
         </AnalyticsProvider>

@@ -15,6 +15,13 @@ const nextConfig = {
         source: "/a/:path*",
         destination: "https://app.posthog.com/:path*",
       },
+      /* proxy ebay images as content blockers block them from a different domain
+      images could be in https://i.ebayimg.com/thumbs/images/... or https://i.ebayimg.com/images/...
+      */
+      {
+        source: "/ei/:path*",
+        destination: "https://i.ebayimg.com/:path*",
+      },
     ]
   },
 

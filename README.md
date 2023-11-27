@@ -22,12 +22,12 @@ Compare GPU & AI Accelerator Card Performance Metrics to their Cost
   - [+] Determine how to search? Can use search endpoint with aspect filter
 - [+] add posthog
 - [+] submit sitemap to google and bing
-- [ ] Listings note used/new
-- [ ] Listings note buy now/auction
-- [ ] Listings note memory size
-- [ ] Listings note Performance / $ for FP16, FP32, FP8, INT8 OP/s, Memory bandwidth, memory size
+- [+] Listings note used/new
+- [+] Listings note buy now/auction
+- [+] Listings note memory size
+- [+] Listings note Performance / $ for FP16, FP32, FP8, INT8 OP/s, Memory bandwidth, memory size
 
-- [ ] Listings by Performance "Machine Learning Performance per Dollar": FP16, FP32, FP8, INT8 OP/s, Memory bandwidth, memory size
+- [ ] Remove bogus listings that aren't the actual GPU
 
   - We have to match every listing to a GPU. requires getItem and checking MPN or GPTI? Ask chat gpt? Assume?! Heuristics like description does not have "GPU NOT INCLUDED" or does not have "GB" in the title?
 
@@ -114,6 +114,7 @@ Assumptions:
 - [Benchmark MLPerf Inference: Datacenter | MLCommons V3.1](https://mlcommons.org/benchmarks/inference-datacenter/)
 - [Reddi, Vijay Janapa, et al. "Mlperf inference benchmark." 2020 ACM/IEEE 47th Annual International Symposium on Computer Architecture (ISCA). IEEE, 2020.](https://doi.org/10.48550/arXiv.1911.02549)
 - [MLPerf AI Benchmarks | NVIDIA](https://www.nvidia.com/en-us/data-center/resources/mlperf-benchmarks/)
+- [NVIDIA Data Center Deep Learning Product MLPerf Inference & more](https://developer.nvidia.com/deep-learning-performance-training-inference/ai-inference)
 - [code for the MLPerf™ Inference v3.1 benchmark](https://github.com/mlcommons/inference_results_v3.1)
 - [MLPerf Results Highlight Growing Importance of Generative AI and Storage - MLCommons (v3.1)](https://mlcommons.org/2023/09/mlperf-results-highlight-growing-importance-of-generative-ai-and-storage/)
 - [MLPerf Inference Rules](https://github.com/mlcommons/inference_policies/blob/7d64c050239086c232c9ac050b892b4fef0599ce/inference_rules.adoc#benchmarks-1)

@@ -13,6 +13,8 @@ import path from "path"
 import type { Metadata } from "next"
 import { arrayToAsyncIterable } from "@/pkgs/isomorphic/collection"
 import { BootstrapIcon } from "@/pkgs/client/components/BootstrapIcon"
+import { SvgIcon } from "@/pkgs/client/components/SvgIcon"
+import { SpecPill } from "@/pkgs/client/components/SpecPill"
 
 const log = createDiag("shopping-agent:shop:nvidia-t4")
 
@@ -139,15 +141,15 @@ export default async function Page() {
         {listings.map((item) => (
           <ListingCard
             key={item.itemId}
-            {...{
+            item={{
               itemId: item.itemId,
               itemUrl: item.itemAffiliateWebUrl!,
               priceValue: item.price.value,
               title: item.title,
               imageUrl: proxyImageUrl(chooseBestImageUrl(item)),
-              buyingOptions: item.buyingOptions,
               condition: item.condition,
             }}
+            specs={NVIDIA_T4_SPECS}
           />
         ))}
       </div>
@@ -169,22 +171,46 @@ function proxyImageUrl(imageUrl: string): string {
   return imageUrl.replace(EBAY_IMAGE_HOST, EBAY_IMAGE_PROXY_PATH)
 }
 
-interface ListingCardProps {
-  itemId: string
-  itemUrl: string
-  priceValue: string
-  title: string
-  imageUrl: string
-  condition: string | undefined
+interface GpuSpecs {
+  tensorCoreCount: number
+  fp32TFLOPS: number
+  fp16TFLOPS: number
+  int8TOPS: number
+  memoryCapacityGB: number
+  memoryBandwidthGBs: number
 }
-const ListingCard = ({
-  itemId,
-  itemUrl,
-  priceValue,
-  title,
-  imageUrl,
-  condition,
-}: ListingCardProps) => {
+
+const NVIDIA_T4_SPECS: GpuSpecs = {
+  tensorCoreCount: 320,
+  fp32TFLOPS: 8.1,
+  fp16TFLOPS: 65,
+  int8TOPS: 130,
+  memoryCapacityGB: 16,
+  memoryBandwidthGBs: 320,
+}
+
+interface ListingCardProps {
+  item: {
+    itemId: string
+    itemUrl: string
+    priceValue: string
+    title: string
+    imageUrl: string
+    condition: string | undefined
+  }
+  specs: GpuSpecs
+}
+
+const formatPrice = (price: number) => {
+  return new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+  }).format(price)
+}
+
+const ListingCard = ({ item, specs }: ListingCardProps) => {
+  const { itemId, itemUrl, priceValue, title, imageUrl, condition } = item
+  const cost = Number(priceValue)
   return (
     <div key={itemId} className="card m-1" style={{ width: "18rem" }}>
       <img
@@ -198,6 +224,21 @@ const ListingCard = ({
         <p className="card-text">
           <Pill>${priceValue}</Pill>
           {condition && <Pill>{condition}</Pill>}
+          <SpecPill infoTipText="Dollars per 32-bit floating-point operations per second indicates how much you pay for each trillion operations per second. Lower is better.">
+            {formatPrice(cost / specs.fp32TFLOPS)} / FP32 TFLOPs{" "}
+          </SpecPill>
+          <SpecPill infoTipText="Dollars per 16-bit floating-point operations per second indicates how much you pay for each trillion operations per second. Lower is better.">
+            {formatPrice(cost / specs.fp16TFLOPS)} / FP16 TFLOPs{" "}
+          </SpecPill>
+          <SpecPill infoTipText="Dollars per 8-bit integer operations per second indicates how much you pay for each trillion operations per second. Lower is better.">
+            {formatPrice(cost / specs.int8TOPS)} / Int8 TOPs{" "}
+          </SpecPill>
+          <SpecPill infoTipText="Indicates how much you pay for each GB of memory capacity. Lower is better.">
+            {formatPrice(cost / specs.memoryCapacityGB)} / GB{" "}
+          </SpecPill>
+          <SpecPill infoTipText="Indicates how much you're pay for each GBs of memory bandwidth. Lower is better.">
+            {formatPrice(cost / specs.memoryBandwidthGBs)} / GBs{" "}
+          </SpecPill>
         </p>
         <a
           href={itemUrl}
@@ -208,7 +249,8 @@ const ListingCard = ({
           Buy Now
         </a>
       </div>
-      <div className="card-footer text-end">
+      <div className="card-footer d-flex" style={{ gap: "0.5em" }}>
+        <SvgIcon icon="ebay" className="me-auto" />
         <span className="fs-6 fw-lighter fst-italic">
           Is this accurate?
           <a className="" target="_blank">

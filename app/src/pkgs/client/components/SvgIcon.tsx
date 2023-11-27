@@ -2,6 +2,7 @@ interface Props {
   icon: string
   svgViewBox?: string
   size?: "small" | "medium" | "large"
+  className?: string
 }
 
 export const SvgIcon = (props: Props): JSX.Element => {
@@ -14,7 +15,11 @@ export const SvgIcon = (props: Props): JSX.Element => {
     props.size === "small" ? { width: "24px", height: "24px" } : {}
 
   return (
-    <svg viewBox={props.svgViewBox} style={svgStyle}>
+    <svg
+      className={props.className}
+      viewBox={props.svgViewBox}
+      style={svgStyle}
+    >
       <use href={`/images/${props.icon}.svg#root`}></use>
     </svg>
   )

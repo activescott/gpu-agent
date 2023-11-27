@@ -9,6 +9,7 @@ interface Props {
   icon: BootstrapIconNames
   size?: "xs" | "small" | "medium" | "large"
   alt?: string
+  onClick?: () => void
 }
 
 /**
@@ -18,6 +19,7 @@ export const BootstrapIcon = ({
   icon,
   alt,
   size = "small",
+  onClick,
 }: Props): ReactElement => {
   const styleMap = {
     xs: { width: "16px", height: "16px" },
@@ -28,7 +30,12 @@ export const BootstrapIcon = ({
   const svgStyle = styleMap[size]
 
   return (
-    <svg style={svgStyle} aria-label={alt} fill="currentColor">
+    <svg
+      style={svgStyle}
+      aria-label={alt}
+      fill="currentColor"
+      onClick={onClick}
+    >
       <use href={`/images/bootstrap-icons.svg#${icon}`}></use>
     </svg>
   )

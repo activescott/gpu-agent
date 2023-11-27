@@ -32,7 +32,7 @@
       },
       "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C296057072805%7C0",
       "seller": {
-        "username": "scrambled-2023-11-21-20_18_27",
+        "username": "scrambled",
         "feedbackPercentage": "0.0",
         "feedbackScore": 6
       },
@@ -117,7 +117,7 @@
       },
       "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C176033835717%7C0",
       "seller": {
-        "username": "scrambled-1700626646684",
+        "username": "scrambled",
         "feedbackPercentage": "0.0",
         "feedbackScore": 245
       },
@@ -201,7 +201,7 @@
       },
       "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C353853667734%7C0",
       "seller": {
-        "username": "scrambled-2023-11-21-20_19_26",
+        "username": "scrambled",
         "feedbackPercentage": "94.9",
         "feedbackScore": 17433
       },

@@ -25,6 +25,7 @@ Compare GPU & AI Accelerator Card Performance Metrics to their Cost
 - [ ] Listings note used/new
 - [ ] Listings note buy now/auction
 - [ ] Listings note memory size
+- [ ] Listings note Performance / $ for FP16, FP32, FP8, INT8 OP/s, Memory bandwidth, memory size
 
 - [ ] Listings by Performance "Machine Learning Performance per Dollar": FP16, FP32, FP8, INT8 OP/s, Memory bandwidth, memory size
 

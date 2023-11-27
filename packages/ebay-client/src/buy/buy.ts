@@ -31,7 +31,18 @@ export interface SearchOptions {
   filterCategory?: Pick<Category, "categoryId"> &
     Partial<Pick<Category, "categoryName">>
   filterAspect?: AspectFilter
+  /** Determines some of the fields present in the response. See https://developer.ebay.com/api-docs/buy/browse/resources/item_summary/methods/search#uri.fieldgroups */
+  fieldgroups?: SearchFieldGroup[]
 }
+
+type SearchFieldGroup =
+  | "ASPECT_REFINEMENTS"
+  | "BUYING_OPTION_REFINEMENTS"
+  | "CATEGORY_REFINEMENTS"
+  | "CONDITION_REFINEMENTS"
+  | "EXTENDED"
+  | "MATCHING_ITEMS"
+  | "FULL"
 
 interface PagedResponseInfo {
   total: number
@@ -84,6 +95,7 @@ class BuyApiImpl implements BuyApi {
   public async search({
     query,
     filterCategory,
+    fieldgroups,
   }: SearchOptions): Promise<SearchResponse> {
     // use options to get the first page of results:
     const url = new URL("/buy/browse/v1/item_summary/search", this.baseUrl())
@@ -92,6 +104,9 @@ class BuyApiImpl implements BuyApi {
     }
     if (filterCategory) {
       url.searchParams.append("category_ids", filterCategory.categoryId)
+    }
+    if (fieldgroups) {
+      url.searchParams.append("fieldgroups", fieldgroups.join(","))
     }
     const resp = await this.httpGet(url)
     const firstPage = (await resp.json()) as SearchPageResponse
@@ -139,7 +154,7 @@ class BuyApiImpl implements BuyApi {
 
   private async getAccessToken(): Promise<string> {
     if (!this.authToken || this.authToken.expires_at <= Date.now()) {
-      logger.info("fetching access token from", this.baseUrl)
+      logger.debug("fetching access token from", this.baseUrl())
       try {
         // https://developer.ebay.com/api-docs/static/oauth-client-credentials-grant.html
         const form = new URLSearchParams()

@@ -1,6 +1,10 @@
 // keys should be from the .env.* files
 // NOTE: you must use the dot-syntax on process.env. or the keys won't be there (at least on the client)
 
+export function isProduction(): boolean {
+  return process.env.NODE_ENV === "production"
+}
+
 export const ISOMORPHIC_CONFIG = {
   NEXT_PUBLIC_DOMAIN: (): string =>
     returnOrThrow("NEXT_PUBLIC_DOMAIN", process.env.NEXT_PUBLIC_DOMAIN),

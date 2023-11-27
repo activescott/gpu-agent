@@ -49,6 +49,8 @@ export interface ItemSummary {
   listingMarketplaceId: string
   seller: Seller
   categories?: Category[]
+  condition?: string
+  conditionId?: string
   /**
    * The URL to the View Item page of the item which includes the affiliate tracking ID.
    *

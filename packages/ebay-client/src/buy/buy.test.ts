@@ -192,6 +192,8 @@ describe("search", () => {
     expect(mockFetch).toHaveBeenCalledTimes(4)
   })
 
+  it.todo("should send fieldgroups")
+
   // for this one search for multiple brands or something
   it.todo("should send aspect filter with multiple values for one aspect")
 })

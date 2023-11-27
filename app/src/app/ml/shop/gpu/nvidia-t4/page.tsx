@@ -208,6 +208,14 @@ const formatPrice = (price: number) => {
   }).format(price)
 }
 
+const formatPriceInteger = (price: number) => {
+  return new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+    maximumFractionDigits: 0,
+  }).format(price)
+}
+
 const ListingCard = ({ item, specs }: ListingCardProps) => {
   const { itemId, itemUrl, priceValue, title, imageUrl, condition } = item
   const cost = Number(priceValue)
@@ -222,7 +230,7 @@ const ListingCard = ({ item, specs }: ListingCardProps) => {
       <div className="card-body">
         <h5 className="card-title">{title}</h5>
         <p className="card-text">
-          <Pill>${priceValue}</Pill>
+          <Pill>{formatPriceInteger(cost)}</Pill>
           {condition && <Pill>{condition}</Pill>}
           <SpecPill infoTipText="Dollars per 32-bit floating-point operations per second indicates how much you pay for each trillion operations per second. Lower is better.">
             {formatPrice(cost / specs.fp32TFLOPS)} / FP32 TFLOPs{" "}

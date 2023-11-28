@@ -12,9 +12,9 @@ import fs from "fs"
 import path from "path"
 import type { Metadata } from "next"
 import { arrayToAsyncIterable } from "@/pkgs/isomorphic/collection"
-import { BootstrapIcon } from "@/pkgs/client/components/BootstrapIcon"
 import { SvgIcon } from "@/pkgs/client/components/SvgIcon"
 import { SpecPill } from "@/pkgs/client/components/SpecPill"
+import { AccuracyFeedbackSurvey } from "../../../../../pkgs/client/components/AccuracyFeedbackSurvey"
 
 const log = createDiag("shopping-agent:shop:nvidia-t4")
 
@@ -108,6 +108,8 @@ async function getListingsUncached(): Promise<AsyncIterable<ItemSummary>> {
 
 const getListings = cache(getListingsUncached)
 
+const cardName = "NVIDIA T4"
+
 export default async function Page() {
   const items = await getListings()
 
@@ -126,6 +128,15 @@ export default async function Page() {
       log.info("item is not fixed price", item.itemId)
       continue
     }
+    // if it doesn't include T4 in the title, skip it:
+    if (!item.title.toLowerCase().includes("t4")) {
+      log.info("item does not include T4 in title", item.itemId, item.title)
+      continue
+    }
+    //  if it doesn't include 16GB in the title, skip it:
+    if (!item.title.toLowerCase().includes("16gb")) {
+      continue
+    }
 
     listings.push(item)
     // eslint-disable-next-line no-magic-numbers
@@ -136,7 +147,7 @@ export default async function Page() {
 
   return (
     <main>
-      <h1>Listings</h1>
+      <h1>{cardName} Listings</h1>
       <div id="listingContainer" className="d-flex flex-wrap">
         {listings.map((item) => (
           <ListingCard
@@ -259,16 +270,7 @@ const ListingCard = ({ item, specs }: ListingCardProps) => {
       </div>
       <div className="card-footer d-flex" style={{ gap: "0.5em" }}>
         <SvgIcon icon="ebay" className="me-auto" />
-        <span className="fs-6 fw-lighter fst-italic">
-          Is this accurate?
-          <a className="" target="_blank">
-            <BootstrapIcon icon="hand-thumbs-up" size="xs" />
-          </a>{" "}
-          /
-          <a className="" target="_blank">
-            <BootstrapIcon icon="hand-thumbs-down" size="xs" />
-          </a>
-        </span>
+        {AccuracyFeedbackSurvey()}
       </div>
     </div>
   )

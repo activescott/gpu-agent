@@ -1,8 +1,18 @@
 // keys should be from the .env.* files
 // NOTE: you must use the dot-syntax on process.env. or the keys won't be there (at least on the client)
 
+import { PHASE_PRODUCTION_BUILD } from "next/constants"
+
 export function isProduction(): boolean {
   return process.env.NODE_ENV === "production"
+}
+
+/**
+ * Returns true when doing a `next build`.
+ * NOTE: Based on my testing YMMV. I didn't see explicit documentation on this.
+ */
+export function isNextProductionBuild(): boolean {
+  return process.env.NEXT_PHASE === PHASE_PRODUCTION_BUILD
 }
 
 export const ISOMORPHIC_CONFIG = {

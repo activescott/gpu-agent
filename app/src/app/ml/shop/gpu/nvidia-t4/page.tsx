@@ -7,7 +7,11 @@ import {
   ItemSummary,
 } from "ebay-client"
 import EBAY_US from "ebay-client/categories/US_EBAY"
-import { SERVER_CONFIG, isProduction } from "@/pkgs/isomorphic/config"
+import {
+  SERVER_CONFIG,
+  isNextProductionBuild,
+  isProduction,
+} from "@/pkgs/isomorphic/config"
 import fs from "fs"
 import path from "path"
 import type { Metadata } from "next"
@@ -66,7 +70,11 @@ async function loadListingsFromJson(): Promise<ItemSummary[]> {
 }
 
 async function getListingsUncached(): Promise<AsyncIterable<ItemSummary>> {
-  if (!isProduction() && fs.existsSync(getJsonListingsPath())) {
+  if (
+    !isProduction() &&
+    !isNextProductionBuild() &&
+    fs.existsSync(getJsonListingsPath())
+  ) {
     log.info("loading listings from json (non-production)")
     const listings = await loadListingsFromJson()
     return arrayToAsyncIterable(listings)

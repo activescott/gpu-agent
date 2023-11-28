@@ -31,6 +31,7 @@ export const SpecPill = ({ children, infoTipText }: SpecPillProps) => {
         ref={setReferenceElement}
       >
         {children}
+        &nbsp;
         <BootstrapIcon
           icon="info-circle"
           size="xs"

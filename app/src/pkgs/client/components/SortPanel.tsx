@@ -74,7 +74,7 @@ const SortPanel = ({ value, onChange }: SortPanelProps) => {
           name="sortDirection"
           id="ascending"
           checked={value.ascending}
-          onChange={(e) => {
+          onChange={() => {
             onChange({
               ...value,
               ascending: true,
@@ -92,7 +92,7 @@ const SortPanel = ({ value, onChange }: SortPanelProps) => {
           name="sortDirection"
           id="descending"
           checked={!value.ascending}
-          onChange={(e) => {
+          onChange={() => {
             onChange({
               ...value,
               ascending: false,

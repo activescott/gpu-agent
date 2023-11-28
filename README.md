@@ -43,6 +43,8 @@ Compare GPU & AI Accelerator Card Performance Metrics to their Cost
 
 - [ ] feat: add "Top 5 GPUs for \<Spec\>" on home page
 
+- [ ] feat: add a "more info" to each description page tooltip so people can learn more about the specs. Update the info page to be more specific about when to choose which metric.
+
 - [ ] feat: cards show country being sold from
 - [ ] feat: cards now show quantity available
 - [ ] feat: color "attribute pills" one color and "metric pills" another color. Allow filtering by attribute pills.

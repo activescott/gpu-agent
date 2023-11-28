@@ -82,11 +82,19 @@ function getJsonListingsPath(): string {
 async function dumpListingsToJson(
   items: AsyncIterable<ItemSummary>,
 ): Promise<ItemSummary[]> {
-  log.info("Dumping listings to json:", getJsonListingsPath())
+  log.info("Dumping listings to json at", getJsonListingsPath())
   let count = 0
   const listings: ItemSummary[] = []
   for await (const item of items) {
-    listings.push(item)
+    const mapped = {
+      ...item,
+      seller: {
+        ...item.seller,
+        username:
+          "redacted-" + (Number.MAX_SAFE_INTEGER * Math.random()).toString(),
+      },
+    }
+    listings.push(mapped)
     // eslint-disable-next-line no-magic-numbers
     if (++count > 100) {
       break

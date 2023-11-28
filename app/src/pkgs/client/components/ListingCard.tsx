@@ -30,10 +30,10 @@ interface ListingCardProps {
 }
 
 export const ListingCard = ({ item, specs }: ListingCardProps) => {
-  const { itemId, itemUrl, priceValue, title, imageUrl, condition } = item
+  const { itemUrl, priceValue, title, imageUrl, condition } = item
   const cost = Number(priceValue)
   return (
-    <div key={itemId} className="card m-1" style={{ width: "18rem" }}>
+    <div className="card m-1" style={{ width: "18rem" }}>
       <img
         src={imageUrl}
         className="card-img-top mx-auto mt-1"

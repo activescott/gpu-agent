@@ -1,9 +1,12 @@
 "use client"
-import { useSortPanel } from "@/pkgs/client/components/SortPanel"
+import { useSorting } from "@/pkgs/client/components/SortPanel"
 import { ItemSummary } from "ebay-client"
 import { GpuSpecKey, GpuSpecs } from "../../isomorphic/specs"
 import { ListingCard } from "./ListingCard"
 import { useState } from "react"
+import { createDiag } from "@activescott/diag"
+
+const log = createDiag("shopping-agent:ListingGallery")
 
 interface ListingItem {
   specs: GpuSpecs
@@ -14,31 +17,31 @@ interface ListingGalleryProps {
   listings: ListingItem[]
 }
 
-interface SortValue {
-  specKey: GpuSpecKey
-  ascending: boolean
-}
-
 export function ListingGallery({ listings }: ListingGalleryProps): JSX.Element {
-  const [sortValue, setSortValue] = useState<SortValue>({
-    specKey: "fp32TFLOPS",
+  const initialSort = {
+    specKey: "fp32TFLOPS" as GpuSpecKey,
     ascending: true,
-  })
-  const { sortComponent } = useSortPanel(sortValue, setSortValue)
+  }
 
-  listings.sort((a, b) => {
-    const { specKey, ascending } = sortValue
-    const aValue = Number(a.item.price.value) / a.specs[specKey]
-    const bValue = Number(b.item.price.value) / b.specs[specKey]
-    return ascending ? aValue - bValue : bValue - aValue
+  const [sortedListings, setSortedListings] = useState<ListingItem[]>(() => {
+    return sortListings(listings, initialSort)
+  })
+
+  const { sortPanel } = useSorting(initialSort, (sortValue) => {
+    log.debug(
+      "sorting change: sorting by %s %s",
+      sortValue.specKey,
+      sortValue.ascending,
+    )
+    setSortedListings(sortListings(listings, sortValue))
   })
 
   return (
     <div id="listingContainer" className="d-flex flex-wrap">
-      {sortComponent}
-      {listings.map(({ item, specs }) => (
+      {sortPanel}
+      {sortedListings.map(({ item, specs }, index) => (
         <ListingCard
-          key={item.itemId}
+          key={`${item.itemId}-${index.toString()}`}
           item={{
             itemId: item.itemId,
             itemUrl: item.itemAffiliateWebUrl!,
@@ -52,6 +55,21 @@ export function ListingGallery({ listings }: ListingGalleryProps): JSX.Element {
       ))}
     </div>
   )
+}
+
+interface SortValue {
+  specKey: GpuSpecKey
+  ascending: boolean
+}
+
+function sortListings(listings: ListingItem[], sortValue: SortValue) {
+  const sorted = listings.sort((a, b) => {
+    const { specKey, ascending } = sortValue
+    const aValue = Number(a.item.price.value) / a.specs[specKey]
+    const bValue = Number(b.item.price.value) / b.specs[specKey]
+    return ascending ? aValue - bValue : bValue - aValue
+  })
+  return sorted
 }
 
 function chooseBestImageUrl(item: ItemSummary): string {

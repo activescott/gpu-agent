@@ -88,7 +88,10 @@ export default async function Page() {
     <main>
       <h1>{cardName} Listings</h1>
       <ListingGallery
-        listings={items.map((item) => ({ item, specs: NVIDIA_T4_SPECS }))}
+        listings={items.map((item) => ({
+          item,
+          specs: NVIDIA_T4_SPECS,
+        }))}
       />
     </main>
   )

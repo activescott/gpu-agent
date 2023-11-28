@@ -27,9 +27,15 @@ Compare GPU & AI Accelerator Card Performance Metrics to their Cost
 - [+] Listings note memory size
 - [+] Listings note Performance / $ for FP16, FP32, FP8, INT8 OP/s, Memory bandwidth, memory size
 
-- [ ] Remove bogus listings that aren't the actual GPU
+- [+] fix: remove bogus listings that aren't the actual GPU (simple filter)
+- [ ] remove the "Is this accurate" thing until it works.
 
-  - We have to match every listing to a GPU. requires getItem and checking MPN or GPTI? Ask chat gpt? Assume?! Heuristics like description does not have "GPU NOT INCLUDED" or does not have "GB" in the title?
+  - We have to match every listing to a GPU. requires getItem and checking MPN or GPTI? Ask chat gpt? Assume?! Heuristics like description does not have "GPU NOT INCLUDED" or does not have "GB" in the title? - Looks like "16GB" works good on the T4. Weak heuristic but works!
+
+- [ ] feat: add sorting/ranking
+- [ ] feat: add ability to filter within a range
+- [ ] feat: add ability to delete specs from the cards
+- [ ] feat: add more GPUs w/ hardware-only specs
 
 - [ ] feat: choose listings by **use case**. Buyers want to buy a card for a use case. Then it sorts/ranks by appropriate metric and showcases appropriate metric
 

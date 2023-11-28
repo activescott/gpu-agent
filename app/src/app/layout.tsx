@@ -27,8 +27,8 @@ export default function RootLayout({
           <main className="p-3">{children}</main>
           <SiteFooter />
         </AnalyticsProvider>
+        <AnalyticsPageView />
       </body>
-      <AnalyticsPageView />
       <Script src="/js/bootstrap.bundle.min.js" />
     </html>
   )

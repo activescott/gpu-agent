@@ -42,7 +42,7 @@ export const ListingCard = ({ item, specs }: ListingCardProps) => {
       />
       <div className="card-body">
         <h5 className="card-title">{title}</h5>
-        <p className="card-text">
+        <div className="card-text">
           <Pill>{formatPriceInteger(cost)}</Pill>
           {condition && <Pill>{condition}</Pill>}
           {GpuSpecKeys.map((specKey) => (
@@ -54,7 +54,7 @@ export const ListingCard = ({ item, specs }: ListingCardProps) => {
               {GpuSpecsDescription[specKey].unit}
             </SpecPill>
           ))}
-        </p>
+        </div>
         <a
           href={itemUrl}
           className="btn btn-primary btn-sm"

@@ -45,6 +45,7 @@ Compare GPU & AI Accelerator Card Performance Metrics to their Cost
 
 - [ ] feat: cards show country being sold from
 - [ ] feat: cards now show quantity available
+- [ ] feat: color "attribute pills" one color and "metric pills" another color. Allow filtering by attribute pills.
 - [ ] feat: add ability to filter within a range
 - [ ] feat: add ability to delete specs from the cards
 - [ ] feat: add more GPUs w/ hardware-only specs

@@ -56,8 +56,8 @@ const SortPanel = ({ value, onChange }: SortPanelProps) => {
           log.debug(`${e.target.id} changed: %o`, selectedOptions(e.target))
           const first = e.target.selectedOptions[0]
           onChange({
+            ...value,
             specKey: first.value as GpuSpecKey,
-            ascending: true,
           })
         }}
       >
@@ -77,7 +77,7 @@ const SortPanel = ({ value, onChange }: SortPanelProps) => {
           onChange={(e) => {
             onChange({
               ...value,
-              ascending: e.target.checked,
+              ascending: true,
             })
           }}
         />
@@ -91,10 +91,11 @@ const SortPanel = ({ value, onChange }: SortPanelProps) => {
           className="btn-check"
           name="sortDirection"
           id="descending"
+          checked={!value.ascending}
           onChange={(e) => {
             onChange({
               ...value,
-              ascending: !e.target.checked,
+              ascending: false,
             })
           }}
         />

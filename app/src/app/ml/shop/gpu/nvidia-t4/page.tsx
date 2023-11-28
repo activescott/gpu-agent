@@ -18,6 +18,15 @@ export const metadata: Metadata = {
 
 const cardName = "NVIDIA T4"
 
+const NVIDIA_T4_SPECS: GpuSpecs = {
+  tensorCoreCount: 320,
+  fp32TFLOPS: 8.1,
+  fp16TFLOPS: 65,
+  int8TOPS: 130,
+  memoryCapacityGB: 16,
+  memoryBandwidthGBs: 320,
+}
+
 export default async function Page() {
   const iterableItems = await getListings()
 
@@ -83,13 +92,4 @@ export default async function Page() {
       />
     </main>
   )
-}
-
-const NVIDIA_T4_SPECS: GpuSpecs = {
-  tensorCoreCount: 320,
-  fp32TFLOPS: 8.1,
-  fp16TFLOPS: 65,
-  int8TOPS: 130,
-  memoryCapacityGB: 16,
-  memoryBandwidthGBs: 320,
 }

@@ -31,8 +31,7 @@ export const GpuSpecsDescription: Record<GpuSpecKey, GpuSpecItem> = {
     unit: "Tensor Core",
     description:
       "Tensor Cores are processors that perform efficient matrix multiplication, and are very useful for deep neural networks.",
-    descriptionDollarsPer:
-      "Dollars per 32-bit floating-point operations per second indicates how much you pay for each trillion operations per second. Lower is better.",
+    descriptionDollarsPer: "How much you pay per tensor core. Lower is better.",
   },
   fp32TFLOPS: {
     label: "FP32 TFLOPs",

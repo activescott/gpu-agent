@@ -28,7 +28,7 @@ Compare GPU & AI Accelerator Card Performance Metrics to their Cost
 - [+] Listings note Performance / $ for FP16, FP32, FP8, INT8 OP/s, Memory bandwidth, memory size
 
 - [+] fix: remove bogus listings that aren't the actual GPU (simple filter)
-- [ ] remove the "Is this accurate" thing until it works.
+- [+] fix: remove the "Is this accurate" thing until it works.
 
   - We have to match every listing to a GPU. requires getItem and checking MPN or GPTI? Ask chat gpt? Assume?! Heuristics like description does not have "GPU NOT INCLUDED" or does not have "GB" in the title? - Looks like "16GB" works good on the T4. Weak heuristic but works!
 

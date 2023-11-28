@@ -128,16 +128,38 @@ export default async function Page() {
       log.info("item is not fixed price", item.itemId)
       continue
     }
-    // if it doesn't include T4 in the title, skip it:
-    if (!item.title.toLowerCase().includes("t4")) {
-      log.info("item does not include T4 in title", item.itemId, item.title)
-      continue
-    }
-    //  if it doesn't include 16GB in the title, skip it:
-    if (!item.title.toLowerCase().includes("16gb")) {
-      continue
-    }
 
+    // if it doesn't include some required keywords, it's probably not a card, so don't s how it:
+    const requiredKeywords = ["16gb", "t4"]
+    if (
+      !requiredKeywords.every((requiredKeyword) =>
+        item.title.toLowerCase().includes(requiredKeyword),
+      )
+    ) {
+      // log any that don't appear to be common infractions:
+      const commonMistakeWords = [
+        "bracket",
+        "geforce",
+        "quadro",
+        "fan attachment",
+        "fan adapter",
+        "Shroud",
+        "blower fan",
+        "FX 5500",
+      ].map((word) => word.toLowerCase())
+      if (
+        !commonMistakeWords.some((accessory) =>
+          item.title.toLowerCase().includes(accessory),
+        )
+      ) {
+        log.warn(
+          `item title doesn't include required keyword and isn't a common accessory: %s: %s`,
+          item.itemId,
+          item.title,
+        )
+      }
+      continue
+    }
     listings.push(item)
     // eslint-disable-next-line no-magic-numbers
     if (++count > 50) {
@@ -270,7 +292,7 @@ const ListingCard = ({ item, specs }: ListingCardProps) => {
       </div>
       <div className="card-footer d-flex" style={{ gap: "0.5em" }}>
         <SvgIcon icon="ebay" className="me-auto" />
-        {AccuracyFeedbackSurvey()}
+        <AccuracyFeedbackSurvey />
       </div>
     </div>
   )

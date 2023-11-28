@@ -16,7 +16,8 @@
     "lint-next": "next lint",
     "eslint": "eslint . --ext ts,tsx,js,jsx",
     "lint": "prettier -l \"{,!(node_modules)/**/}*.{ts,tsx,md,yml,json,html}\" && npm run eslint",
-    "lint-fix": "prettier --write \"{,!(node_modules)/**/}*.{ts,tsx,md,yml,json,html}\" && npm run eslint -- --fix"
+    "lint-fix": "prettier --write \"{,!(node_modules)/**/}*.{ts,tsx,md,yml,json,html}\" && npm run eslint -- --fix",
+    "prepare": "cd .. && husky install app/.husky"
   },
   "dependencies": {
     "@activescott/diag": "^2.0.0",
@@ -47,6 +48,7 @@
     "eslint": "^8",
     "eslint-config-next": "14.0.2",
     "eslint-plugin-unicorn": "^49.0.0",
+    "husky": "^8.0.3",
     "typescript": "^5"
   }
 }

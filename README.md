@@ -10,6 +10,15 @@ Compare GPU & AI Accelerator Card Performance Metrics to their Cost
   - https://www.bing.com/webmasters (use Live (Microsoft Personal))
   - https://search.google.com/u/1/search-console?resource_id=sc-domain%3Acoinpoet.com
 - Analytics at https://app.posthog.com/home (use scott@coinpoet.com)
+- Database at Neon.tech - sign in with scott@coinpoet.com
+
+## Development
+
+### Database / Prisma
+
+- `npx prisma migrate dev --name init`: Create the first migration and push it to the DB. Nukes the old stuff. Can re-run this but should nuke the migrations folder too to flatten all migrations. This nukes the DB.
+- `npx prisma migrate dev`: It is safe to kinda run all the time in dev environments. It will do any migrations _if necessary_ and update the TS types.
+- `npx prisma migrate reset`: Nukes the DB and re-applies all schemas.
 
 ## Todo
 
@@ -40,6 +49,7 @@ Compare GPU & AI Accelerator Card Performance Metrics to their Cost
   - shop/gpu/specs/dollars-per-fp16-flops
   - shop/gpu/specs/dollars-per-memory-gb
   - shop/gpu/specs/dollars-per-memory-bandwidth-gbs
+  - requires loading listings for each type of GPU we have specs for
 
 - [ ] feat: add "Top 5 GPUs for \<Spec\>" on home page
 

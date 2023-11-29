@@ -3,7 +3,7 @@ import {
   GpuSpecKeys,
   GpuSpecKey,
   GpuSpecsDescription,
-} from "@/pkgs/isomorphic/specs"
+} from "@/pkgs/isomorphic/model/specs"
 import { createDiag } from "@activescott/diag"
 import { BootstrapIcon } from "./BootstrapIcon"
 import { useState } from "react"

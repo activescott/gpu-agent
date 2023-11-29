@@ -1,7 +1,7 @@
 "use client"
 import { useSorting } from "@/pkgs/client/components/SortPanel"
 import { ItemSummary } from "ebay-client"
-import { GpuSpecKey, GpuSpecs } from "../../isomorphic/specs"
+import { GpuSpecKey, GpuSpecs } from "../../isomorphic/model/specs"
 import { ListingCard } from "./ListingCard"
 import { useState } from "react"
 import { createDiag } from "@activescott/diag"

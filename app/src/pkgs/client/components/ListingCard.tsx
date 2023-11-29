@@ -5,7 +5,7 @@ import {
   GpuSpecKeys,
   GpuSpecs,
   GpuSpecsDescription,
-} from "../../isomorphic/specs"
+} from "@/pkgs/isomorphic/model/specs"
 
 const formatPriceInteger = (price: number) => {
   // formats to integer /if possible/; otherwise will show decimal as needed

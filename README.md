@@ -197,7 +197,6 @@ Future Goals:
 - eBay pays 1.5% (max $550 payout per item) for Computers/Tablets & Networking
   - For a $5000 card it is $75
   - For a $20,000 card it is $300
--
 
 #### Lookup UPC Codes
 

@@ -24,7 +24,9 @@
     "//prisma-generate": "generates the types for the prisma client",
     "prisma-generate": "npx prisma generate",
     "prisma-dev": "npx prisma migrate dev",
-    "prisma-reset": "npx prisma migrate reset"
+    "prisma-reset": "npx prisma migrate reset",
+    "prisma-nuke": "npm run prisma-validate && rm -rf prisma/migrations && npm run prisma-dev && npm run prisma-reset",
+    "prisma-seed": "npx prisma db seed"
   },
   "prisma": {
     "//seed": "seeds the database with bootstrap or test data. See https://www.prisma.io/docs/guides/migrate/seed-database.",

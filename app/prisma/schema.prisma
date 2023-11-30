@@ -27,6 +27,10 @@ model gpu {
   // track when the listings were fetched and updated in Listings
   lastCachedListings DateTime?
 
+  // references for the specs:
+  references        String[]
+
+
   // for the prisma relation for Listing.gpu/gpuName
   Listing   Listing[]
 

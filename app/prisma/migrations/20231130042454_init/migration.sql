@@ -9,6 +9,7 @@ CREATE TABLE "gpu" (
     "memoryCapacityGB" DOUBLE PRECISION NOT NULL,
     "memoryBandwidthGBs" DOUBLE PRECISION NOT NULL,
     "lastCachedListings" TIMESTAMP(3),
+    "references" TEXT[],
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 

@@ -16,7 +16,22 @@ async function main() {
       memoryBandwidthGBs: 320,
     },
   })
-  console.log("Seeded t4: ", t4)
+  console.log("Seeded:", t4)
+  const testGpu = await prisma.gpu.upsert({
+    where: { name: "test-gpu" },
+    update: {},
+    create: {
+      name: "test-gpu",
+      label: "Test GPU",
+      tensorCoreCount: 1,
+      fp32TFLOPS: 1.1,
+      fp16TFLOPS: 1,
+      int8TOPS: 1,
+      memoryCapacityGB: 1,
+      memoryBandwidthGBs: 1,
+    },
+  })
+  console.log("Seeded: ", testGpu)
 }
 
 main()

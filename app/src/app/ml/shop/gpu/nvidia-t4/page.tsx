@@ -1,9 +1,12 @@
 import { createDiag } from "@activescott/diag"
-import { ItemSummary } from "ebay-client"
 import { Metadata } from "next"
-import { getListings } from "@/pkgs/server/listings"
-import { GpuSpecs } from "@/pkgs/isomorphic/specs"
+import { fetchListingsWithCache } from "@/pkgs/server/listings"
 import { ListingGallery } from "@/pkgs/client/components/ListingGallery"
+import { getGpu } from "@/pkgs/server/db/GpuRepository"
+import { Gpu } from "@/pkgs/isomorphic/model"
+import { chain } from "irritable-iterable"
+import { ISOMORPHIC_CONFIG } from "@/pkgs/isomorphic/config"
+import { Integer } from "type-fest"
 
 const log = createDiag("shopping-agent:shop:nvidia-t4")
 
@@ -18,77 +21,63 @@ export const metadata: Metadata = {
 
 const cardName = "NVIDIA T4"
 
-const NVIDIA_T4_SPECS: GpuSpecs = {
-  tensorCoreCount: 320,
-  fp32TFLOPS: 8.1,
-  fp16TFLOPS: 65,
-  int8TOPS: 130,
-  memoryCapacityGB: 16,
-  memoryBandwidthGBs: 320,
-}
-
 export default async function Page() {
-  const iterableItems = await getListings()
-
-  // TODO: add a slice function to irritable-iterable
-  const items: ItemSummary[] = []
-  let count = 0
-
-  // TODO: Eliminate this loop. Add first(n) to irritable-iterable
-  for await (const item of iterableItems) {
-    // filter items:
-    if (typeof item.itemAffiliateWebUrl !== "string") {
-      log.error("item has no affiliate link", item.itemId)
-      continue
-    }
-    if (!item.buyingOptions.includes("FIXED_PRICE")) {
-      log.info("item is not fixed price", item.itemId)
-      continue
-    }
-
-    // if it doesn't include some required keywords, it's probably not a card, so don't s how it:
-    const requiredKeywords = ["16gb", "t4"]
-    if (
-      !requiredKeywords.every((requiredKeyword) =>
-        item.title.toLowerCase().includes(requiredKeyword),
-      )
-    ) {
-      // log any that don't appear to be common infractions:
-      const commonMistakeWords = [
-        "bracket",
-        "geforce",
-        "quadro",
-        "fan attachment",
-        "fan adapter",
-        "Shroud",
-        "blower fan",
-        "FX 5500",
-      ].map((word) => word.toLowerCase())
+  const NVIDIA_T4_SPECS: Gpu = await getGpu("nvidia-t4")
+  const allListings = await fetchListingsWithCache("nvidia-t4")
+  const listings = chain(allListings)
+    .filter((item) => {
+      if (typeof item.itemAffiliateWebUrl !== "string") {
+        log.error("item has no affiliate link", item.itemId)
+        return false
+      }
+      if (!item.buyingOptions.includes("FIXED_PRICE")) {
+        log.info("item is not fixed price", item.itemId)
+        return false
+      }
+      return true
+    })
+    .filter((item) => {
+      // if it doesn't include some required keywords, it's probably not a card, so don't show it:
+      const requiredKeywords = ["16gb", "t4"]
       if (
-        !commonMistakeWords.some((accessory) =>
-          item.title.toLowerCase().includes(accessory),
+        !requiredKeywords.every((requiredKeyword) =>
+          item.title.toLowerCase().includes(requiredKeyword),
         )
       ) {
-        log.warn(
-          `item title doesn't include required keyword and isn't a common accessory: %s: %s`,
-          item.itemId,
-          item.title,
-        )
+        // log any that don't appear to be common non-cards:
+        const commonMistakeWords = [
+          "bracket",
+          "geforce",
+          "quadro",
+          "fan attachment",
+          "fan adapter",
+          "Shroud",
+          "blower fan",
+          "FX 5500",
+        ].map((word) => word.toLowerCase())
+        if (
+          !commonMistakeWords.some((accessory) =>
+            item.title.toLowerCase().includes(accessory),
+          )
+        ) {
+          log.warn(
+            `item title doesn't include required keyword and isn't a common accessory: %s: %s`,
+            item.itemId,
+            item.title,
+          )
+        }
+        return false
       }
-      continue
-    }
-    items.push(item)
-    // eslint-disable-next-line no-magic-numbers
-    if (++count > 50) {
-      break
-    }
-  }
+      return true
+    })
+    .head(ISOMORPHIC_CONFIG.MAX_LISTINGS_PER_PAGE() as Integer<number>)
+    .collect()
 
   return (
     <main>
       <h1>{cardName} Listings</h1>
       <ListingGallery
-        listings={items.map((item) => ({
+        listings={listings.map((item) => ({
           item,
           specs: NVIDIA_T4_SPECS,
         }))}

@@ -59,6 +59,15 @@ rules:
         - "**/page.tsx"
         - "**/page.ts"
         - "**/layout.tsx"
-
   # Because https://eslint.org/blog/2022/07/interesting-bugs-caught-by-no-constant-binary-expression/
   no-constant-binary-expression: "error"
+overrides:
+  - files:
+      - "**/*.test.ts"
+      - "**/*.test.tsx"
+    rules:
+      no-console: off
+      no-magic-numbers: off
+      # because inline snapshots have weird indentation sometime
+      unicorn/template-indent: off
+      import/no-unused-modules: off

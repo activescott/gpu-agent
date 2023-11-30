@@ -66,6 +66,8 @@ export interface ItemSummary {
 
   /** An ePID is the eBay product identifier of a product from the eBay product catalog. This indicates the product in which the item belongs.  */
   epid?: string
+  // The date and time when the item listing was created.
+  itemCreationDate?: Date
 }
 
 export interface Price {

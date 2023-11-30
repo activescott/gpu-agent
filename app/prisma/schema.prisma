@@ -13,18 +13,59 @@ datasource db {
 
 model gpu {
   // unique name for the card; also primary key
-  name    String @id @unique
+  name  String @id @unique
   label String
 
   // Specs:
-  tensorCoreCount     Float
-  fp32TFLOPS          Float
-  fp16TFLOPS          Float
-  int8TOPS            Float
-  memoryCapacityGB    Float
-  memoryBandwidthGBs  Float
+  tensorCoreCount    Float
+  fp32TFLOPS         Float
+  fp16TFLOPS         Float
+  int8TOPS           Float
+  memoryCapacityGB   Float
+  memoryBandwidthGBs Float
 
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  // track when the listings were fetched and updated in Listings
+  lastCachedListings DateTime?
+
+  // for the prisma relation for Listing.gpu/gpuName
+  Listing   Listing[]
+
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
 }
 
+model Listing {
+  itemId String  @id @unique
+  // we use this as a soft-delete
+  // ebay doesn't provide the sold status of an item - the items just don't come back from the search endpoints.
+  // so we use this to mark items as stale and not return them.
+  stale  Boolean @default(false)
+
+  title                    String
+  priceValue               String
+  priceCurrency            String
+  buyingOptions            String[] // e.g. | "FIXED_PRICE" | "AUCTION" | "BEST_OFFER" | "CLASSIFIED_AD"
+  imageUrl                 String
+  adultOnly                Boolean
+  itemHref                 String
+  leafCategoryIds          String[]
+  listingMarketplaceId     String?
+  sellerUsername           String
+  sellerFeedbackPercentage String
+  sellerFeedbackScore      Int
+  condition                String?
+  conditionId              String?
+  itemAffiliateWebUrl      String
+  // we flatten these from a list.
+  thumbnailImageUrl        String
+  epid                     String
+  itemCreationDate         DateTime?
+
+  // relation per https://www.prisma.io/docs/concepts/components/prisma-schema/relations/one-to-many-relations
+  // when gpu is deleted, so are its listings
+  gpu     gpu    @relation(fields: [gpuName], references: [name], onDelete: NoAction, onUpdate: Cascade)
+  gpuName String
+
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}

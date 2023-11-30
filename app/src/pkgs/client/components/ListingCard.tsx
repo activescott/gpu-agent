@@ -6,6 +6,7 @@ import {
   GpuSpecs,
   GpuSpecsDescription,
 } from "@/pkgs/isomorphic/model/specs"
+import { Listing } from "@/pkgs/isomorphic/model"
 
 const formatPriceInteger = (price: number) => {
   // formats to integer /if possible/; otherwise will show decimal as needed
@@ -18,19 +19,13 @@ const formatPriceInteger = (price: number) => {
 }
 
 interface ListingCardProps {
-  item: {
-    itemId: string
-    itemUrl: string
-    priceValue: string
-    title: string
-    imageUrl: string
-    condition: string | undefined
-  }
+  item: Listing
   specs: GpuSpecs
 }
 
 export const ListingCard = ({ item, specs }: ListingCardProps) => {
-  const { itemUrl, priceValue, title, imageUrl, condition } = item
+  const { itemAffiliateWebUrl, priceValue, title, condition } = item
+  const imageUrl = chooseBestImageUrl(item)
   const cost = Number(priceValue)
   return (
     <div className="card m-1" style={{ width: "18rem" }}>
@@ -56,7 +51,7 @@ export const ListingCard = ({ item, specs }: ListingCardProps) => {
           ))}
         </div>
         <a
-          href={itemUrl}
+          href={itemAffiliateWebUrl}
           className="btn btn-primary btn-sm"
           target="_blank"
           rel="noreferrer"
@@ -69,4 +64,12 @@ export const ListingCard = ({ item, specs }: ListingCardProps) => {
       </div>
     </div>
   )
+}
+
+function chooseBestImageUrl(item: Listing): string {
+  // thumbnailImages is conditional, but usually the same image as image, but smaller.
+  if (item.thumbnailImageUrl) {
+    return item.thumbnailImageUrl
+  }
+  return item.imageUrl
 }

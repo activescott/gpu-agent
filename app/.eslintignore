@@ -8,3 +8,4 @@ jest.config.ts
 next.config.js
 next-env.d.ts
 /src/mdx-components.tsx
+/src/app/sitemap.json

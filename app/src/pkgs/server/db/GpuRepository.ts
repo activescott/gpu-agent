@@ -1,17 +1,25 @@
-import { PrismaClient } from "@prisma/client"
 import { Gpu } from "@/pkgs/isomorphic/model"
-
-export async function listGpus(prisma = new PrismaClient()): Promise<Gpu[]> {
-  return prisma.gpu.findMany()
-}
+import { PrismaClientWithinTransaction, prismaSingleton } from "./db"
 
 export async function getGpu(
   name: string,
-  prisma = new PrismaClient(),
+  prisma: PrismaClientWithinTransaction = prismaSingleton,
 ): Promise<Gpu> {
   const result = await prisma.gpu.findUnique({ where: { name } })
   if (!result) {
     throw new Error(`Gpu not found: ${name}`)
   }
   return result
+}
+
+export async function updateGpuLastCachedListings(
+  name: string,
+  prisma: PrismaClientWithinTransaction = prismaSingleton,
+): Promise<void> {
+  await prisma.gpu.update({
+    where: { name },
+    data: {
+      lastCachedListings: new Date(),
+    },
+  })
 }

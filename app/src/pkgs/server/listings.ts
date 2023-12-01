@@ -107,7 +107,7 @@ export async function fetchListingsForGpuWithCache(
     log.info("listings for %s are still fresh, returning cached", gpuName)
     // return the cached listings
     const cached = await listListingsForGpu(gpuName)
-    log.info("found %s cached listings for %s", gpuName, cached.length)
+    log.info("found %s cached listings for %s", cached.length, gpuName)
     return cached
   }
   log.info("listings for %s are stale, fetching from ebay", gpuName)

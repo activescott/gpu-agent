@@ -1,6 +1,7 @@
 import { Listing } from "@/pkgs/isomorphic/model"
 import { createDiag } from "@activescott/diag"
 import { PrismaClientWithinTransaction, prismaSingleton } from "./db"
+import { omit } from "lodash"
 
 const log = createDiag("shopping-agent:ListingRepository")
 
@@ -28,7 +29,11 @@ export async function addListingsForGpu(
 ): Promise<void> {
   log.info(`Adding ${listings.length} listings for ${gpuName}`)
 
-  const mapped = listings.map((listing) => ({ ...listing, gpuName }))
+  // NOTE: prisma doesn't like the hydrated gpu object in thelistings, so we omit them here and only add gpuName
+  const mapped = listings.map((listing) => ({
+    ...omit(listing, "gpu"),
+    gpuName,
+  }))
   await prisma.listing.createMany({
     data: mapped,
     skipDuplicates: true,

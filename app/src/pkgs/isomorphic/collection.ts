@@ -3,3 +3,11 @@ export async function* arrayToAsyncIterable<T>(array: T[]): AsyncIterable<T> {
     yield item
   }
 }
+
+export function* flattenIterables<TItem>(
+  iterables: Iterable<TItem>[],
+): Iterable<TItem> {
+  for (const iterable of iterables) {
+    yield* iterable
+  }
+}

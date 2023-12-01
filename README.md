@@ -42,6 +42,12 @@ Compare GPU & AI Accelerator Card Performance Metrics to their Cost
   - We have to match every listing to a GPU. requires getItem and checking MPN or GPTI? Ask chat gpt? Assume?! Heuristics like description does not have "GPU NOT INCLUDED" or does not have "GB" in the title? - Looks like "16GB" works good on the T4. Weak heuristic but works!
 
 - [+] feat: add sorting/ranking
+- [+] feat: new page with multiple gpus and price compare http://localhost:3000/ml/shop/gpu (only 2 gpus)
+- [ ] feat: added NVIDIA A30 GPUs (add to seed with specs)
+- [ ] feat: added NVIDIA A30 GPUs (add to seed with specs)
+- [ ] feat: added NVIDIA A10 24GB GPU (add to seed with specs)
+- [ ] feat: added NVIDIA A100 80GB GPU (add to seed with specs)
+- [ ] feat: added NVIDIA H100 80GB GPU (add to seed with specs)
 - [ ] feat: add pages for dollars per spec:
 
   - shop/gpu/specs/dollars-per-tensor-core
@@ -91,6 +97,7 @@ Compare GPU & AI Accelerator Card Performance Metrics to their Cost
 
 ### Later
 
+- [ ] TODO: should have used redis via vercel KV or Upstash instead of postgres. Postgres is pretty slow. Seeing 500ms responses.
 - [ ] Add a header/nav
 - [ ] Detect changes to shop pages and submit them to https://www.indexnow.org
 - [ ] add contact us page

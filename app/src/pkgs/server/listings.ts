@@ -11,13 +11,20 @@ import {
   isProduction,
 } from "@/pkgs/isomorphic/config"
 import fs from "fs"
-import { arrayToAsyncIterable } from "@/pkgs/isomorphic/collection"
+import {
+  arrayToAsyncIterable,
+  flattenIterables,
+} from "@/pkgs/isomorphic/collection"
 import path from "path"
 import { createDiag } from "@activescott/diag"
-import { Listing, convertEbayItemToListing } from "../isomorphic/model"
+import { Gpu, Listing, convertEbayItemToListing } from "../isomorphic/model"
 import { chainAsync, headAsync } from "irritable-iterable"
 import { appRoot } from "./path"
-import { getGpu, updateGpuLastCachedListings } from "./db/GpuRepository"
+import {
+  getGpu,
+  listGpus,
+  updateGpuLastCachedListings,
+} from "./db/GpuRepository"
 import {
   addListingsForGpu,
   listListingsForGpu,
@@ -26,64 +33,67 @@ import {
 } from "./db/ListingRepository"
 import { withTransaction } from "./db/db"
 import { Integer } from "type-fest"
+import { createFilterForGpu } from "./listingFilters"
 
 const log = createDiag("shopping-agent:shop:listings")
 
-async function fetchListingsDirectFromEbay(
-  gpuName: string,
+async function fetchListingsForGpuDirectFromEbay(
+  gpu: Gpu,
 ): Promise<AsyncIterable<Listing>> {
+  let rawListings: AsyncIterable<ItemSummary>
   if (
     !isProduction() &&
     !isNextBuild() &&
-    fs.existsSync(getTestListingsPath())
+    fs.existsSync(getTestListingsPath(gpu.name))
   ) {
     log.info("loading test listings from json (non-production)")
-    const listings = await loadTestListingsFromJson()
-    const converted = listings.map((item) => convertEbayItemToListing(item))
-    return arrayToAsyncIterable(converted)
+    rawListings = arrayToAsyncIterable(await loadTestListingsFromJson(gpu.name))
+  } else {
+    log.info("fetching listings from ebay")
+    const options: BuyApiOptions = {
+      credentials: {
+        environment: SERVER_CONFIG.EBAY_ENVIRONMENT() as EbayEnvironment,
+        clientID: SERVER_CONFIG.EBAY_CLIENT_ID(),
+        clientSecret: SERVER_CONFIG.EBAY_CLIENT_SECRET(),
+      },
+      affiliateCampaignId: SERVER_CONFIG.EBAY_AFFILIATE_CAMPAIGN_ID(),
+    }
+
+    const videoCards =
+      EBAY_US.Root["Computers/Tablets & Networking"][
+        "Computer Components & Parts"
+      ]["Graphics/Video Cards"]
+
+    const ebay = createBuyApi(options)
+    const response = await ebay.search({
+      query: gpu.label,
+      filterCategory: videoCards,
+      // NOTE: don't bother with fieldgroups EXTENDED to add shortDescription. It
+      //   isn't helpful at all despite what the docs say, it doesn't include
+      //   title+aspects, it is just a concise summary of the actual
+      //   seller-provided description which varies in value.
+      // fieldgroups: ["MATCHING_ITEMS", "EXTENDED"],
+    })
+    rawListings = response.items
+
+    if (!fs.existsSync(getTestListingsPath(gpu.name))) {
+      log.info("writing listings to json (non-production, json not found)")
+      rawListings = arrayToAsyncIterable(
+        await dumpTestListingsToJson(gpu.name, response.items),
+      )
+    }
   }
-
-  log.info("fetching listings from ebay")
-  const options: BuyApiOptions = {
-    credentials: {
-      environment: SERVER_CONFIG.EBAY_ENVIRONMENT() as EbayEnvironment,
-      clientID: SERVER_CONFIG.EBAY_CLIENT_ID(),
-      clientSecret: SERVER_CONFIG.EBAY_CLIENT_SECRET(),
-    },
-    affiliateCampaignId: SERVER_CONFIG.EBAY_AFFILIATE_CAMPAIGN_ID(),
-  }
-
-  const videoCards =
-    EBAY_US.Root["Computers/Tablets & Networking"][
-      "Computer Components & Parts"
-    ]["Graphics/Video Cards"]
-
-  const ebay = createBuyApi(options)
-  const response = await ebay.search({
-    query: gpuName,
-    filterCategory: videoCards,
-    // NOTE: don't bother with fieldgroups EXTENDED to add shortDescription. It
-    //   isn't helpful at all despite what the docs say, it doesn't include
-    //   title+aspects, it is just a concise summary of the actual
-    //   seller-provided description which varies in value.
-    // fieldgroups: ["MATCHING_ITEMS", "EXTENDED"],
-  })
-
-  if (!isProduction()) {
-    log.info("writing listings to json (non-production, json not found)")
-    const items = await dumpTestListingsToJson(response.items)
-    const converted = items.map((item) => convertEbayItemToListing(item))
-    return arrayToAsyncIterable(converted)
-  }
-  return chainAsync(response.items).map((item) =>
-    convertEbayItemToListing(item),
-  )
+  return chainAsync(rawListings)
+    .map((item) => convertEbayItemToListing(item, gpu))
+    .filter(createFilterForGpu(gpu))
+    .head(SERVER_CONFIG.MAX_LISTINGS_TO_CACHE_PER_GPU() as Integer<number>)
 }
 
-export async function fetchListingsWithCache(
+export async function fetchListingsForGpuWithCache(
   gpuName: string,
 ): Promise<Iterable<Listing>> {
   log.debug("checking DB to see if listings need updated for gpu %s", gpuName)
+  // NOTE: there is a race condition here: Between the time we read the GPU and lastCachedListings and the time we update them below another request may cause the same listings to be fetched again. This is ok, we will just update the lastCachedListings again and the listings will be cached again. This is a small window, doesn't have much impact when it happens.
   const gpu = await getGpu(gpuName)
   const now = new Date()
   const lastCachedListings = gpu.lastCachedListings
@@ -97,12 +107,12 @@ export async function fetchListingsWithCache(
     log.info("listings for %s are still fresh, returning cached", gpuName)
     // return the cached listings
     const cached = await listListingsForGpu(gpuName)
-    log.info("found %s cached listings for %s", cached.length)
+    log.info("found %s cached listings for %s", gpuName, cached.length)
     return cached
   }
   log.info("listings for %s are stale, fetching from ebay", gpuName)
   // fetch from ebay and update the GPU repository
-  const fetched = await fetchListingsDirectFromEbay(gpu.label)
+  const fetched = await fetchListingsForGpuDirectFromEbay(gpu)
   //  note ebay-client will fetch them ALL and there could be a LOT so we limit it here:
   const limited = headAsync(
     fetched,
@@ -132,19 +142,28 @@ export async function fetchListingsWithCache(
   return collected
 }
 
-function getTestListingsPath(): string {
-  const listingsResponseId = "nvidia-t4"
+export async function fetchListingsForAllGPUsWithCache(): Promise<
+  Iterable<Listing>
+> {
+  const gpus = await listGpus()
+  const fetches = gpus.map((gpu) => fetchListingsForGpuWithCache(gpu.name))
+  const listings = await Promise.all(fetches)
+  return flattenIterables(listings)
+}
+
+function getTestListingsPath(gpuName: string): string {
   return path.resolve(
     appRoot(),
     "../../data/test-data/api-responses",
-    `${listingsResponseId}-listings.json`,
+    `search-listings-${gpuName}.json`,
   )
 }
 
 async function dumpTestListingsToJson(
+  gpuName: string,
   items: AsyncIterable<ItemSummary>,
 ): Promise<ItemSummary[]> {
-  log.info("Dumping listings to json at", getTestListingsPath())
+  log.info("Dumping listings to json at", getTestListingsPath(gpuName))
   let count = 0
   const listings: ItemSummary[] = []
   for await (const item of items) {
@@ -157,18 +176,19 @@ async function dumpTestListingsToJson(
       },
     }
     listings.push(mapped)
-    // eslint-disable-next-line no-magic-numbers
-    if (++count > 100) {
+    if (++count > SERVER_CONFIG.MAX_LISTINGS_TO_CACHE_PER_GPU()) {
       break
     }
   }
-  // eslint-disable-next-line no-magic-numbers
-  const json = JSON.stringify(listings, null, 2)
-  fs.writeFileSync(getTestListingsPath(), json)
+  const INDENT = 2
+  const json = JSON.stringify(listings, null, INDENT)
+  fs.writeFileSync(getTestListingsPath(gpuName), json)
   return listings
 }
 
-export async function loadTestListingsFromJson(): Promise<ItemSummary[]> {
-  const json = fs.readFileSync(getTestListingsPath(), "utf8")
+export async function loadTestListingsFromJson(
+  gpuName: string,
+): Promise<ItemSummary[]> {
+  const json = fs.readFileSync(getTestListingsPath(gpuName), "utf8")
   return JSON.parse(json)
 }

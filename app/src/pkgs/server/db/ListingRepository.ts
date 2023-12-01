@@ -14,6 +14,9 @@ export async function listListingsForGpu(
       gpuName,
       stale: includeStale,
     },
+    include: {
+      gpu: true,
+    },
   })
   return res
 }
@@ -30,7 +33,6 @@ export async function addListingsForGpu(
     data: mapped,
     skipDuplicates: true,
   })
-
   log.info(`Adding ${listings.length} listings for ${gpuName} completed.`)
 }
 

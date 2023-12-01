@@ -1,6 +1,11 @@
 import { Gpu } from "@/pkgs/isomorphic/model"
 import { PrismaClientWithinTransaction, prismaSingleton } from "./db"
 
+export async function listGpus(includeTestGpus = false): Promise<Gpu[]> {
+  const gpus = await prismaSingleton.gpu.findMany()
+  return gpus.filter((gpu) => gpu.name !== "test-gpu" || includeTestGpus)
+}
+
 export async function getGpu(
   name: string,
   prisma: PrismaClientWithinTransaction = prismaSingleton,

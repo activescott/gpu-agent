@@ -31,8 +31,10 @@ const sitemapFile = path.join(__dirname, "../app/src/app/sitemap.json")
 // Find all page.tsx files under the app directory
 const pageFiles = glob.sync(`${appDir}/**/page.{mdx,tsx}`, { cwd: __dirname })
 
+const SLUG_IN_PATH_REGEX = /\[.*\]/
+
 // Generate li elements for each page file
-const items = pageFiles
+const discoveredPages = pageFiles
   .filter((file) => file != `${appDir}/page.tsx`)
   .map((file) => {
     // get the relative path:
@@ -55,9 +57,29 @@ const items = pageFiles
       lastModified,
     } satisfies SiteMapItem
   })
-  .filter((item) => !item.path.startsWith("/z-hide-verify-impact"))
-  .filter((item) => !item.path.startsWith("/_junk"))
+  // remove any dirs that begin with _
+  .filter((item) => !item.path.startsWith("/_"))
+  // remove slugs:
+  .filter((item) => !SLUG_IN_PATH_REGEX.test(item.path))
+  // /ml/shop/gpu/page.tsx has dynamic generated metadata. So we add it manually below
+  .filter((item) => item.path !== "/ml/shop/gpu")
 
+// these pages are generated dynamically in app/src/app/ml/shop/gpu/[gpuSlug]/page.tsx
+const shopGpuPages = [
+  { name: "nvidia-t4", label: "NVIDIA T4" },
+  { name: "nvidia-rtx-a5000", label: "NVIDIA RTX A5000" },
+].map(({ name, label }) => ({
+  path: `/ml/shop/gpu/${name}`,
+  title: `Price Compare ${label} GPUs`,
+}))
+const primaryShopPages = [
+  {
+    path: `/ml/shop/gpu`,
+    title: `Price Compare GPUs for Machine Learning`,
+  },
+]
+
+const items = [...primaryShopPages, ...shopGpuPages, ...discoveredPages]
 fs.writeFileSync(sitemapFile, JSON.stringify({ data: items }, null, 2))
 
 function parseTitleFromMdx(file: string) {

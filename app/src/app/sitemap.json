@@ -1,6 +1,18 @@
 {
   "data": [
     {
+      "path": "/ml/shop/gpu",
+      "title": "Price Compare GPUs for Machine Learning"
+    },
+    {
+      "path": "/ml/shop/gpu/nvidia-t4",
+      "title": "Price Compare NVIDIA T4 GPUs"
+    },
+    {
+      "path": "/ml/shop/gpu/nvidia-rtx-a5000",
+      "title": "Price Compare NVIDIA RTX A5000 GPUs"
+    },
+    {
       "path": "/policy/terms",
       "title": "Terms of Service",
       "lastModified": "2023-11-17T07:32:49.000Z"
@@ -9,11 +21,6 @@
       "path": "/policy/privacy",
       "title": "Privacy & Cookies Policy",
       "lastModified": "2023-11-17T07:32:49.000Z"
-    },
-    {
-      "path": "/ml/shop/gpu/nvidia-t4",
-      "title": "Price Compare NVIDIA T4 GPUs",
-      "lastModified": "2023-11-28T21:55:20.000Z"
     },
     {
       "path": "/ml/learn/use-case/speech-to-text",

@@ -40,7 +40,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 interface SitemapJsonItem {
   path: string
   title: string
-  lastModified: string
+  lastModified?: string
 }
 
 function chooseChangeFrequency(

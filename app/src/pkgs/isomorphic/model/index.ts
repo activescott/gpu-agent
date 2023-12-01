@@ -31,9 +31,13 @@ export interface Listing {
   thumbnailImageUrl: string
   epid: string
   itemCreationDate?: Date | null
+  gpu: Gpu
 }
 
-export function convertEbayItemToListing(listing: ItemSummary): Listing {
+export function convertEbayItemToListing(
+  listing: ItemSummary,
+  gpu: Gpu,
+): Listing {
   return {
     itemId: listing.itemId,
     stale: false,
@@ -57,6 +61,7 @@ export function convertEbayItemToListing(listing: ItemSummary): Listing {
       : "",
     epid: listing.epid ?? "",
     itemCreationDate: listing.itemCreationDate,
+    gpu,
   }
 }
 

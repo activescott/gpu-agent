@@ -1,0 +1,1717 @@
+[
+  {
+    "itemId": "v1|354890985183|0",
+    "title": "Tesla A30 graphics card 24G Nvidia AI deep learning GPU acceleration has V100",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/eocAAOSwsqtko4vQ/s-l225.jpg"
+    },
+    "price": {
+      "value": "4488.00",
+      "currency": "USD"
+    },
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C354890985183%7C0",
+    "seller": {
+      "username": "redacted-3982904241476561.5",
+      "feedbackPercentage": "98.5",
+      "feedbackScore": 78
+    },
+    "condition": "New",
+    "conditionId": "1000",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/eocAAOSwsqtko4vQ/s-l960.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "80.00",
+          "currency": "USD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE"
+    ],
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/354890985183?hash=item52a126aedf%3Ag%3AeocAAOSwsqtko4vQ&amdata=enc%3AAQAIAAAA4Ow8zKbpaZsizISD5uS5uinCn8qw0TBKBG9bS%2F5ov8KO8j45eky3xKLPfes%2B3jIr8Gr4zEW5HaRYTbazhkuJwqkJlFiKEyQPHi9A5Jym2Cp%2FEPLCRlgXToIHJO35A%2F5VNleYEtM5lBcUbI8YqrBSaX6jt2AwA6x4y%2B2c40ei%2B3zB%2Ba116gO51hMz6DyU129%2FLYMdWCMPYPaMhEOSClxPNDYA86y3Qn5yqkw%2FociiwmYPSn%2FLWlG97IZ1sf%2Fl25%2Fzhb2Kli7ALHuVRmy3fzkxDZW9P8%2FVAu19tOBNhQPmpycC&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/354890985183?hash=item52a126aedf:g:eocAAOSwsqtko4vQ&amdata=enc%3AAQAIAAAA4Ow8zKbpaZsizISD5uS5uinCn8qw0TBKBG9bS%2F5ov8KO8j45eky3xKLPfes%2B3jIr8Gr4zEW5HaRYTbazhkuJwqkJlFiKEyQPHi9A5Jym2Cp%2FEPLCRlgXToIHJO35A%2F5VNleYEtM5lBcUbI8YqrBSaX6jt2AwA6x4y%2B2c40ei%2B3zB%2Ba116gO51hMz6DyU129%2FLYMdWCMPYPaMhEOSClxPNDYA86y3Qn5yqkw%2FociiwmYPSn%2FLWlG97IZ1sf%2Fl25%2Fzhb2Kli7ALHuVRmy3fzkxDZW9P8%2FVAu19tOBNhQPmpycC",
+    "itemLocation": {
+      "country": "CN"
+    },
+    "additionalImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/88oAAOSw5glko4vR/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/RqYAAOSwsY5ko4vS/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/aGQAAOSwHCBko4vT/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/kgwAAOSwS2tko4vU/s-l225.jpg"
+      }
+    ],
+    "adultOnly": false,
+    "legacyItemId": "354890985183",
+    "availableCoupons": false,
+    "itemCreationDate": "2023-07-05T03:03:27.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": true,
+    "listingMarketplaceId": "EBAY_US"
+  },
+  {
+    "itemId": "v1|285399734867|587311254885",
+    "title": "Nvidia Tesla GPU Cooling Fans and Shroud Mounting A30 A40 A100 Accelerator Card",
+    "itemGroupHref": "https://api.ebay.com/buy/browse/v1/item/get_items_by_item_group?item_group_id=285399734867",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/rJYAAOSwJCFkvxTB/s-l225.jpg"
+    },
+    "price": {
+      "value": "24.98",
+      "currency": "USD"
+    },
+    "itemGroupType": "SELLER_DEFINED_VARIATIONS",
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C285399734867%7C587311254885",
+    "seller": {
+      "username": "redacted-6390749898934169",
+      "feedbackPercentage": "99.6",
+      "feedbackScore": 2133
+    },
+    "condition": "New",
+    "conditionId": "1000",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/rJYAAOSwJCFkvxTB/s-l1600.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "0.00",
+          "currency": "USD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE"
+    ],
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/285399734867?hash=item4273265a53%3Ag%3ArJYAAOSwJCFkvxTB&amdata=enc%3AAQAIAAAA4Du8D%2Fkk94SH418WF1f31%2FLm9oVlpMWUPOI0LdoAiDUTQiQhzhccB9MH1UOH6nmIto2lwPGZnXEq5DsbRnbsJO2ID%2FRZmnnkMtCEkTpr4Z5yUNu8UdqTDstxIUT1x7inHTc7nRv3YqsQQexHnYgM632vhb1m%2FA%2BmJ74KjKkISOwa88LSDi7lTIGVgjpMEpUr4Uidg73RF%2FCbdfXgv5hf68RNSH2Ya%2BAUeA8LtN1X%2BuFqH3TQ5U5PZu5qrDGzcFqdmc39xWcEm0ftd9y83%2B6buNtggpgAlx%2BDDjzMq%2FeH%2Flrz&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/285399734867?hash=item4273265a53:g:rJYAAOSwJCFkvxTB&amdata=enc%3AAQAIAAAA4Du8D%2Fkk94SH418WF1f31%2FLm9oVlpMWUPOI0LdoAiDUTQiQhzhccB9MH1UOH6nmIto2lwPGZnXEq5DsbRnbsJO2ID%2FRZmnnkMtCEkTpr4Z5yUNu8UdqTDstxIUT1x7inHTc7nRv3YqsQQexHnYgM632vhb1m%2FA%2BmJ74KjKkISOwa88LSDi7lTIGVgjpMEpUr4Uidg73RF%2FCbdfXgv5hf68RNSH2Ya%2BAUeA8LtN1X%2BuFqH3TQ5U5PZu5qrDGzcFqdmc39xWcEm0ftd9y83%2B6buNtggpgAlx%2BDDjzMq%2FeH%2Flrz",
+    "itemLocation": {
+      "postalCode": "786**",
+      "country": "US"
+    },
+    "adultOnly": false,
+    "legacyItemId": "285399734867",
+    "availableCoupons": false,
+    "itemCreationDate": "2023-07-25T00:34:46.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": true,
+    "listingMarketplaceId": "EBAY_US"
+  },
+  {
+    "itemId": "v1|285308613921|587184024132",
+    "title": "Nvidia Tesla GPU Cooling Fans and Shroud Mounting A30 A40 A100 Accelerator Card",
+    "itemGroupHref": "https://api.ebay.com/buy/browse/v1/item/get_items_by_item_group?item_group_id=285308613921",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/FzQAAOSwiQVkdldL/s-l225.jpg"
+    },
+    "price": {
+      "value": "28.98",
+      "currency": "USD"
+    },
+    "itemGroupType": "SELLER_DEFINED_VARIATIONS",
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C285308613921%7C587184024132",
+    "seller": {
+      "username": "redacted-319177061622907.94",
+      "feedbackPercentage": "99.6",
+      "feedbackScore": 2133
+    },
+    "condition": "New",
+    "conditionId": "1000",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/FzQAAOSwiQVkdldL/s-l1600.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "0.00",
+          "currency": "USD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE"
+    ],
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/285308613921?hash=item426db7f521%3Ag%3AFzQAAOSwiQVkdldL&amdata=enc%3AAQAIAAAA4JnMV2zGidclpU36dL%2BAS4IQbu9DLbDBnMRBYKSnv3v37pGeK%2FHaBL2s%2FsmXjg3E83oBWW3y2G0QJlM2%2FuMTdHVB4sBPvXquhopp77QAO7q0YV2GLg6QBSyeliTt2fObgyrTAb4nVW2bPGSXdBIRS1vSCTH7h3%2BPMnzwcA%2FpJaH0O8aDsHCGxWcztqog7xt2l389ScXF5aBy%2BcOPe0JPXiWThO5NrfZ0cYVfq%2FJjxasPUd0pewfnyZP5OLX4gHWRiK1%2B4YpwG3Gec1yxU%2BPfmnibSUtO1lAoOLSpOORBlvgz&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/285308613921?hash=item426db7f521:g:FzQAAOSwiQVkdldL&amdata=enc%3AAQAIAAAA4JnMV2zGidclpU36dL%2BAS4IQbu9DLbDBnMRBYKSnv3v37pGeK%2FHaBL2s%2FsmXjg3E83oBWW3y2G0QJlM2%2FuMTdHVB4sBPvXquhopp77QAO7q0YV2GLg6QBSyeliTt2fObgyrTAb4nVW2bPGSXdBIRS1vSCTH7h3%2BPMnzwcA%2FpJaH0O8aDsHCGxWcztqog7xt2l389ScXF5aBy%2BcOPe0JPXiWThO5NrfZ0cYVfq%2FJjxasPUd0pewfnyZP5OLX4gHWRiK1%2B4YpwG3Gec1yxU%2BPfmnibSUtO1lAoOLSpOORBlvgz",
+    "itemLocation": {
+      "postalCode": "786**",
+      "country": "US"
+    },
+    "adultOnly": false,
+    "legacyItemId": "285308613921",
+    "availableCoupons": false,
+    "itemCreationDate": "2023-05-30T20:14:36.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": true,
+    "listingMarketplaceId": "EBAY_US"
+  },
+  {
+    "itemId": "v1|305272499033|0",
+    "title": "NVIDIA A30 TENSOR CORE GPU ACCELERATOR - PCIE GEN4 X16 - 24GB HBM2 - EXCELLENT",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/hiUAAOSwxddlVoEf/s-l225.jpg"
+    },
+    "price": {
+      "value": "4300.00",
+      "currency": "USD"
+    },
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C305272499033%7C0",
+    "seller": {
+      "username": "redacted-5409525423401391",
+      "feedbackPercentage": "100.0",
+      "feedbackScore": 170
+    },
+    "condition": "Open box",
+    "conditionId": "1500",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/hiUAAOSwxddlVoEf/s-l1600.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "0.00",
+          "currency": "USD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE",
+      "BEST_OFFER"
+    ],
+    "epid": "9046134481",
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/305272499033?hash=item4713a8ab59%3Ag%3AhiUAAOSwxddlVoEf&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/305272499033?hash=item4713a8ab59:g:hiUAAOSwxddlVoEf",
+    "itemLocation": {
+      "postalCode": "928**",
+      "country": "US"
+    },
+    "additionalImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/u7sAAOSwYXtlVoEf/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/lKkAAOSwf-1lVoEf/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/CBIAAOSwFlplVoEf/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/4CAAAOSwcwZlVoEf/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/fN0AAOSwf7xlVoEf/s-l225.jpg"
+      }
+    ],
+    "adultOnly": false,
+    "legacyItemId": "305272499033",
+    "availableCoupons": false,
+    "itemCreationDate": "2023-11-16T20:58:51.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": false,
+    "listingMarketplaceId": "EBAY_US"
+  },
+  {
+    "itemId": "v1|196093790682|0",
+    "title": "DELL NVIDIA A30 TENSOR CORE GPU ACCELERATOR 24GB HBM2 AMPERE GPGPU RV08M",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/SRUAAOSwxaNlaP~h/s-l225.jpg"
+    },
+    "price": {
+      "value": "4450.00",
+      "currency": "USD"
+    },
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C196093790682%7C0",
+    "seller": {
+      "username": "redacted-2500059491519489.5",
+      "feedbackPercentage": "100.0",
+      "feedbackScore": 10514
+    },
+    "condition": "Used",
+    "conditionId": "3000",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/SRUAAOSwxaNlaP~h/s-l1600.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "17.87",
+          "currency": "USD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE"
+    ],
+    "epid": "14062668551",
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/196093790682?hash=item2da819c9da%3Ag%3ASRUAAOSwxaNlaP%7Eh&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/196093790682?hash=item2da819c9da:g:SRUAAOSwxaNlaP~h",
+    "itemLocation": {
+      "postalCode": "913**",
+      "country": "US"
+    },
+    "additionalImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/SRYAAOSwxaNlaP~h/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/1pMAAOSwMrhlaP~h/s-l225.jpg"
+      }
+    ],
+    "adultOnly": false,
+    "legacyItemId": "196093790682",
+    "availableCoupons": false,
+    "itemCreationDate": "2023-11-22T23:33:38.000Z",
+    "topRatedBuyingExperience": true,
+    "priorityListing": false,
+    "listingMarketplaceId": "EBAY_US"
+  },
+  {
+    "itemId": "v1|404577370214|0",
+    "title": "NVIDIA A30 TENSOR CORE GPU ACCELERATOR 24GB HBM2",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/mC4AAOSwK6RlO2vR/s-l225.jpg"
+    },
+    "price": {
+      "value": "5500.00",
+      "currency": "USD"
+    },
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C404577370214%7C0",
+    "seller": {
+      "username": "redacted-2883117657361899.5",
+      "feedbackPercentage": "100.0",
+      "feedbackScore": 16
+    },
+    "condition": "Open box",
+    "conditionId": "1500",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/mC4AAOSwK6RlO2vR/s-l960.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "0.00",
+          "currency": "USD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE"
+    ],
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/404577370214?hash=item5e32b0c066%3Ag%3AmC4AAOSwK6RlO2vR&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/404577370214?hash=item5e32b0c066:g:mC4AAOSwK6RlO2vR",
+    "itemLocation": {
+      "postalCode": "774**",
+      "country": "US"
+    },
+    "adultOnly": false,
+    "legacyItemId": "404577370214",
+    "availableCoupons": false,
+    "itemCreationDate": "2023-10-27T13:52:13.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": false,
+    "listingMarketplaceId": "EBAY_US"
+  },
+  {
+    "itemId": "v1|266539050072|0",
+    "title": "EVGA GeForce GTX 960 4GB 128 Bit PCIe 3.0 SSC GAMING ACX 2.0+ 04G-P4-3966-KR A30",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/FDQAAOSw5JtlZli2/s-l225.jpg"
+    },
+    "price": {
+      "value": "48.99",
+      "currency": "USD"
+    },
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C266539050072%7C0",
+    "seller": {
+      "username": "redacted-4003797937231811.5",
+      "feedbackPercentage": "98.0",
+      "feedbackScore": 7936
+    },
+    "condition": "Used",
+    "conditionId": "3000",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/FDQAAOSw5JtlZli2/s-l1600.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "0.00",
+          "currency": "USD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE"
+    ],
+    "epid": "220409131",
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/266539050072?hash=item3e0ef72458%3Ag%3AFDQAAOSw5JtlZli2&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/266539050072?hash=item3e0ef72458:g:FDQAAOSw5JtlZli2",
+    "itemLocation": {
+      "postalCode": "937**",
+      "country": "US"
+    },
+    "additionalImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/wpcAAOSwTaZlZli1/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/cT8AAOSwpINlZli3/s-l225.jpg"
+      }
+    ],
+    "adultOnly": false,
+    "legacyItemId": "266539050072",
+    "availableCoupons": false,
+    "itemCreationDate": "2023-11-28T21:16:45.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": false,
+    "listingMarketplaceId": "EBAY_US"
+  },
+  {
+    "itemId": "v1|195947590500|0",
+    "title": "A30 24GB Nvidia Tensor Core GPU Accelerator GPU 165W Ampere PCIe Passive NEW",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/QNoAAOSw1etk5Wzt/s-l225.jpg"
+    },
+    "price": {
+      "value": "4500.00",
+      "currency": "USD"
+    },
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C195947590500%7C0",
+    "seller": {
+      "username": "redacted-6943298780089477",
+      "feedbackPercentage": "98.7",
+      "feedbackScore": 6870
+    },
+    "condition": "Open box",
+    "conditionId": "1500",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/QNoAAOSw1etk5Wzt/s-l1600.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "0.00",
+          "currency": "USD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE",
+      "BEST_OFFER"
+    ],
+    "epid": "5052039215",
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/195947590500?hash=item2d9f62f364%3Ag%3AQNoAAOSw1etk5Wzt&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/195947590500?hash=item2d9f62f364:g:QNoAAOSw1etk5Wzt",
+    "itemLocation": {
+      "country": "CN"
+    },
+    "additionalImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/fDQAAOSwdqpk5Wzu/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/9vcAAOSwBXxk5Wzv/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/HS8AAOSwqTlk5Wzw/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/vUsAAOSw~t1k5Wzx/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/SgkAAOSw82Zk5Wzz/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/L-YAAOSwlGtk5Wz0/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/6JIAAOSwlyBk5Wz2/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/7SUAAOSwtpZk5Wz5/s-l225.jpg"
+      }
+    ],
+    "adultOnly": false,
+    "legacyItemId": "195947590500",
+    "availableCoupons": false,
+    "itemCreationDate": "2023-08-24T02:24:43.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": false,
+    "listingMarketplaceId": "EBAY_US"
+  },
+  {
+    "itemId": "v1|225770831542|0",
+    "title": "NVIDIA TESLA A30 24GB HBM2 Tensor Core GPU DEEP LEARNING Graphics card",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/nvgAAOSwiSFlAX-q/s-l225.jpg"
+    },
+    "price": {
+      "value": "4980.00",
+      "currency": "USD"
+    },
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C225770831542%7C0",
+    "seller": {
+      "username": "redacted-6129140707874257",
+      "feedbackPercentage": "100.0",
+      "feedbackScore": 553
+    },
+    "condition": "New",
+    "conditionId": "1000",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/nvgAAOSwiSFlAX-q/s-l1200.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "0.00",
+          "currency": "USD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE",
+      "BEST_OFFER"
+    ],
+    "epid": "22062200024",
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/225770831542?hash=item3490fd7eb6%3Ag%3AnvgAAOSwiSFlAX-q&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/225770831542?hash=item3490fd7eb6:g:nvgAAOSwiSFlAX-q",
+    "itemLocation": {
+      "country": "CN"
+    },
+    "additionalImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/yeQAAOSwgOdlAX-q/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/yaQAAOSwYXllAX-r/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/B2YAAOSwK7VlAX-s/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/Oe8AAOSwRWxlAX-t/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/Ue8AAOSwpqZlAX-u/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/XKUAAOSwckJlAX-v/s-l225.jpg"
+      }
+    ],
+    "adultOnly": false,
+    "legacyItemId": "225770831542",
+    "availableCoupons": false,
+    "itemCreationDate": "2023-09-14T09:24:10.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": false,
+    "listingMarketplaceId": "EBAY_US"
+  },
+  {
+    "itemId": "v1|204548475216|0",
+    "title": "NVIDIA A30 24GB HBM2 Data Center Graphics Card PCIE",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/XUQAAOSw5lBlXFKj/s-l225.jpg"
+    },
+    "price": {
+      "value": "7420.00",
+      "currency": "USD"
+    },
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C204548475216%7C0",
+    "seller": {
+      "username": "redacted-7466865871238597",
+      "feedbackPercentage": "0.0",
+      "feedbackScore": 0
+    },
+    "condition": "New",
+    "conditionId": "1000",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/XUQAAOSw5lBlXFKj/s-l1600.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "30.00",
+          "currency": "USD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE",
+      "BEST_OFFER"
+    ],
+    "epid": "9046134481",
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/204548475216?hash=item2fa00a0950%3Ag%3AXUQAAOSw5lBlXFKj&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/204548475216?hash=item2fa00a0950:g:XUQAAOSw5lBlXFKj",
+    "itemLocation": {
+      "country": "CN"
+    },
+    "additionalImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/V8cAAOSw5phlXFKp/s-l225.jpg"
+      }
+    ],
+    "adultOnly": false,
+    "legacyItemId": "204548475216",
+    "availableCoupons": false,
+    "itemCreationDate": "2023-11-22T06:49:35.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": false,
+    "listingMarketplaceId": "EBAY_US"
+  },
+  {
+    "itemId": "v1|285447821703|587380016873",
+    "title": "Nvidia Tesla GPU Cooling Single Fan Shroud Mount A30 A40 A800 Accelerator Card",
+    "itemGroupHref": "https://api.ebay.com/buy/browse/v1/item/get_items_by_item_group?item_group_id=285447821703",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/Hx4AAOSwzwtkqz8P/s-l225.jpg"
+    },
+    "price": {
+      "value": "24.98",
+      "currency": "USD"
+    },
+    "itemGroupType": "SELLER_DEFINED_VARIATIONS",
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C285447821703%7C587380016873",
+    "seller": {
+      "username": "redacted-5417976572265325",
+      "feedbackPercentage": "99.6",
+      "feedbackScore": 2133
+    },
+    "condition": "New",
+    "conditionId": "1000",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/Hx4AAOSwzwtkqz8P/s-l1600.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "0.00",
+          "currency": "USD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE"
+    ],
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/285447821703?hash=item4276041987%3Ag%3AHx4AAOSwzwtkqz8P&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/285447821703?hash=item4276041987:g:Hx4AAOSwzwtkqz8P",
+    "itemLocation": {
+      "postalCode": "786**",
+      "country": "US"
+    },
+    "adultOnly": false,
+    "legacyItemId": "285447821703",
+    "availableCoupons": false,
+    "itemCreationDate": "2023-08-26T16:21:36.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": false,
+    "listingMarketplaceId": "EBAY_US"
+  },
+  {
+    "itemId": "v1|386116803560|0",
+    "title": "NVIDIA TESLA A30 24GB HBM2 Tensor Core GPU DEEP LEARNING Graphics card",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/nvgAAOSwiSFlAX-q/s-l225.jpg"
+    },
+    "price": {
+      "value": "4979.17",
+      "currency": "USD",
+      "convertedFromValue": "6751.00",
+      "convertedFromCurrency": "CAD"
+    },
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C386116803560%7C0",
+    "seller": {
+      "username": "redacted-8887947010377413",
+      "feedbackPercentage": "100.0",
+      "feedbackScore": 51
+    },
+    "condition": "New",
+    "conditionId": "1000",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/nvgAAOSwiSFlAX-q/s-l1200.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "29.50",
+          "currency": "USD",
+          "convertedFromValue": "40.00",
+          "convertedFromCurrency": "CAD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE",
+      "BEST_OFFER"
+    ],
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/386116803560?hash=item59e65adbe8%3Ag%3AnvgAAOSwiSFlAX-q&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/386116803560?hash=item59e65adbe8:g:nvgAAOSwiSFlAX-q",
+    "itemLocation": {
+      "country": "CN"
+    },
+    "additionalImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/yeQAAOSwgOdlAX-q/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/yaQAAOSwYXllAX-r/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/B2YAAOSwK7VlAX-s/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/Oe8AAOSwRWxlAX-t/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/Ue8AAOSwpqZlAX-u/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/XKUAAOSwckJlAX-v/s-l225.jpg"
+      }
+    ],
+    "adultOnly": false,
+    "legacyItemId": "386116803560",
+    "availableCoupons": false,
+    "itemCreationDate": "2023-09-14T09:24:13.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": false
+  },
+  {
+    "itemId": "v1|285399736573|587311393309",
+    "title": "Nvidia Tesla GPU Cooling Fans and Shroud Mounting A800 A16 A30X Accelerator Card",
+    "itemGroupHref": "https://api.ebay.com/buy/browse/v1/item/get_items_by_item_group?item_group_id=285399736573",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/rJYAAOSwJCFkvxTB/s-l225.jpg"
+    },
+    "price": {
+      "value": "28.98",
+      "currency": "USD"
+    },
+    "itemGroupType": "SELLER_DEFINED_VARIATIONS",
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C285399736573%7C587311393309",
+    "seller": {
+      "username": "redacted-2874707732149647.5",
+      "feedbackPercentage": "99.6",
+      "feedbackScore": 2133
+    },
+    "condition": "New",
+    "conditionId": "1000",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/rJYAAOSwJCFkvxTB/s-l1600.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "0.00",
+          "currency": "USD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE"
+    ],
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/285399736573?hash=item42732660fd%3Ag%3ArJYAAOSwJCFkvxTB&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/285399736573?hash=item42732660fd:g:rJYAAOSwJCFkvxTB",
+    "itemLocation": {
+      "postalCode": "786**",
+      "country": "US"
+    },
+    "adultOnly": false,
+    "legacyItemId": "285399736573",
+    "availableCoupons": false,
+    "itemCreationDate": "2023-07-25T00:36:10.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": false,
+    "listingMarketplaceId": "EBAY_US"
+  },
+  {
+    "itemId": "v1|285308611457|587184019674",
+    "title": "Nvidia Tesla GPU Cooling Fans and Shroud Mounting A800 A16 A30X Accelerator Card",
+    "itemGroupHref": "https://api.ebay.com/buy/browse/v1/item/get_items_by_item_group?item_group_id=285308611457",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/FzQAAOSwiQVkdldL/s-l225.jpg"
+    },
+    "price": {
+      "value": "39.49",
+      "currency": "USD"
+    },
+    "itemGroupType": "SELLER_DEFINED_VARIATIONS",
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C285308611457%7C587184019674",
+    "seller": {
+      "username": "redacted-6008230857341407",
+      "feedbackPercentage": "99.6",
+      "feedbackScore": 2133
+    },
+    "condition": "New",
+    "conditionId": "1000",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/FzQAAOSwiQVkdldL/s-l1600.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "0.00",
+          "currency": "USD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE"
+    ],
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/285308611457?hash=item426db7eb81%3Ag%3AFzQAAOSwiQVkdldL&amdata=enc%3AAQAIAAAA4ChbMbsr0Z1EObZ31TvP12FtNGaL7vrAS9%2FuwW5mEUQv7o4mwm6boNK19PWxOZ2hj1NKHzDX7%2FZGhfEplYBxajwTKY11z8afe4hN2yvE8BtZJyhujt7AWULfv2KyIY0rIDyWpIFsgzma2laXmsrM3bjkBPzx6nAi7pt3ietCiM5tGF9ODorpnOaGuPReK3wxh07Wye%2FIg0X45RPyhbaOGpOi5H%2Bap9hlwbzeE9lzzeXtTI65AGjp63exH3mT3PSKFkuJDywVBevmJqWzUmGyZ4KZD8Hkcg2%2BmkM%2FyocA6UL9&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/285308611457?hash=item426db7eb81:g:FzQAAOSwiQVkdldL&amdata=enc%3AAQAIAAAA4ChbMbsr0Z1EObZ31TvP12FtNGaL7vrAS9%2FuwW5mEUQv7o4mwm6boNK19PWxOZ2hj1NKHzDX7%2FZGhfEplYBxajwTKY11z8afe4hN2yvE8BtZJyhujt7AWULfv2KyIY0rIDyWpIFsgzma2laXmsrM3bjkBPzx6nAi7pt3ietCiM5tGF9ODorpnOaGuPReK3wxh07Wye%2FIg0X45RPyhbaOGpOi5H%2Bap9hlwbzeE9lzzeXtTI65AGjp63exH3mT3PSKFkuJDywVBevmJqWzUmGyZ4KZD8Hkcg2%2BmkM%2FyocA6UL9",
+    "itemLocation": {
+      "postalCode": "786**",
+      "country": "US"
+    },
+    "adultOnly": false,
+    "legacyItemId": "285308611457",
+    "availableCoupons": false,
+    "itemCreationDate": "2023-05-30T20:10:51.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": true,
+    "listingMarketplaceId": "EBAY_US"
+  },
+  {
+    "itemId": "v1|285373461431|587268911754",
+    "title": "Nvidia Tesla GPU Cooling Single Fan Shroud Mounting A100 A30X Accelerator Card",
+    "itemGroupHref": "https://api.ebay.com/buy/browse/v1/item/get_items_by_item_group?item_group_id=285373461431",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/Hx4AAOSwzwtkqz8P/s-l225.jpg"
+    },
+    "price": {
+      "value": "24.98",
+      "currency": "USD"
+    },
+    "itemGroupType": "SELLER_DEFINED_VARIATIONS",
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C285373461431%7C587268911754",
+    "seller": {
+      "username": "redacted-1254735876701711.8",
+      "feedbackPercentage": "99.6",
+      "feedbackScore": 2133
+    },
+    "condition": "New",
+    "conditionId": "1000",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/Hx4AAOSwzwtkqz8P/s-l1600.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "0.00",
+          "currency": "USD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE"
+    ],
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/285373461431?hash=item42719573b7%3Ag%3AHx4AAOSwzwtkqz8P&amdata=enc%3AAQAIAAAA4FLHAtFo%2F6JWSkE4ssJYosEzC40L50thu5e%2B1PXLMs42F4Iw9%2FHZ0w6nkhRKliAlEIkgcDeRdfU1mZlI2MU20wN3Ckm9LGPHKSLILdcVTv7qLB5OPOh1kz8amEuas6o6U2oJWy2G%2Bj7zCLWwAR9EiSNijQ%2BFUkjzhuE5ZWsF4%2FFvPGfWNZ9vnye7fSC8dvRBnJ41QnfWfnskHh5EvSZJC5qWKBNsecO9vLQma4TXmMFarUOilyTUb1FUliVDJzSCrPlNYEMFsHgLXYP8CG%2BeyRR3vI7obkJGUdDN1sGdgeI9&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/285373461431?hash=item42719573b7:g:Hx4AAOSwzwtkqz8P&amdata=enc%3AAQAIAAAA4FLHAtFo%2F6JWSkE4ssJYosEzC40L50thu5e%2B1PXLMs42F4Iw9%2FHZ0w6nkhRKliAlEIkgcDeRdfU1mZlI2MU20wN3Ckm9LGPHKSLILdcVTv7qLB5OPOh1kz8amEuas6o6U2oJWy2G%2Bj7zCLWwAR9EiSNijQ%2BFUkjzhuE5ZWsF4%2FFvPGfWNZ9vnye7fSC8dvRBnJ41QnfWfnskHh5EvSZJC5qWKBNsecO9vLQma4TXmMFarUOilyTUb1FUliVDJzSCrPlNYEMFsHgLXYP8CG%2BeyRR3vI7obkJGUdDN1sGdgeI9",
+    "itemLocation": {
+      "postalCode": "786**",
+      "country": "US"
+    },
+    "adultOnly": false,
+    "legacyItemId": "285373461431",
+    "availableCoupons": false,
+    "itemCreationDate": "2023-07-09T23:20:11.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": true,
+    "listingMarketplaceId": "EBAY_US"
+  },
+  {
+    "itemId": "v1|175799429613|0",
+    "title": "A30 24GB Nvidia Tensor Core GPU Accelerator GPU 165W Ampere PCIe Passive ",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/kaAAAOSwnvNjtT8F/s-l225.jpg"
+    },
+    "price": {
+      "value": "6999.00",
+      "currency": "USD"
+    },
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C175799429613%7C0",
+    "seller": {
+      "username": "redacted-8253408217562351",
+      "feedbackPercentage": "99.8",
+      "feedbackScore": 3089
+    },
+    "condition": "Open box",
+    "conditionId": "1500",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/kaAAAOSwnvNjtT8F/s-l225.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "0.00",
+          "currency": "USD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE",
+      "BEST_OFFER"
+    ],
+    "epid": "5052039215",
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/175799429613?hash=item28ee7669ed%3Ag%3AkaAAAOSwnvNjtT8F&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/175799429613?hash=item28ee7669ed:g:kaAAAOSwnvNjtT8F",
+    "itemLocation": {
+      "postalCode": "******",
+      "country": "CN"
+    },
+    "additionalImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/fjgAAOSw9MVjtT8H/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/TEAAAOSwv49jtT8N/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/PuMAAOSw-4BjtT8P/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/nEYAAOSwDo9jtT8S/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/j4AAAOSwtzpjtT8U/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/fhcAAOSwQnNjtT8W/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/qkAAAOSwai1jtT8a/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/EkkAAOSwsr9jtT8e/s-l225.jpg"
+      }
+    ],
+    "adultOnly": false,
+    "legacyItemId": "175799429613",
+    "availableCoupons": false,
+    "itemCreationDate": "2023-07-03T20:01:51.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": false,
+    "listingMarketplaceId": "EBAY_US"
+  },
+  {
+    "itemId": "v1|204414033438|0",
+    "title": "Nvidia A30 24GB Tensor Core GPU Accelerator Graphics Card Ampere PCIe Passive",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/RBUAAOSwCtxkx-6x/s-l225.jpg"
+    },
+    "price": {
+      "value": "4700.00",
+      "currency": "USD"
+    },
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C204414033438%7C0",
+    "seller": {
+      "username": "redacted-8679527876486249",
+      "feedbackPercentage": "98.4",
+      "feedbackScore": 195
+    },
+    "marketingPrice": {
+      "originalPrice": {
+        "value": "5000.00",
+        "currency": "USD"
+      },
+      "discountPercentage": "6",
+      "discountAmount": {
+        "value": "300.00",
+        "currency": "USD"
+      },
+      "priceTreatment": "MARKDOWN"
+    },
+    "condition": "Open box",
+    "conditionId": "1500",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/RBUAAOSwCtxkx-6x/s-l1600.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "0.00",
+          "currency": "USD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE",
+      "BEST_OFFER"
+    ],
+    "epid": "5052039215",
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/204414033438?hash=item2f98069e1e%3Ag%3ARBUAAOSwCtxkx-6x&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/204414033438?hash=item2f98069e1e:g:RBUAAOSwCtxkx-6x",
+    "itemLocation": {
+      "country": "CN"
+    },
+    "additionalImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/~K4AAOSwPo5kx-6y/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/5iIAAOSwrmNkx-60/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/c28AAOSwJThkx-63/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/pwoAAOSwxTxkx-66/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/y38AAOSwaIBkx-67/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/AyEAAOSwM2Jkx-69/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/x2sAAOSwZXZkx-6-/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/-jEAAOSwLu5kx-7E/s-l225.jpg"
+      }
+    ],
+    "adultOnly": false,
+    "legacyItemId": "204414033438",
+    "availableCoupons": false,
+    "itemCreationDate": "2023-08-01T17:26:40.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": false,
+    "listingMarketplaceId": "EBAY_US"
+  },
+  {
+    "itemId": "v1|185627165386|0",
+    "title": "48GB A30 Nvidia Tensor Core GPU Accelerator GPU  Ampere PCIe Passive",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/DoMAAOSwrS1jUg6k/s-l225.jpg"
+    },
+    "price": {
+      "value": "8709.99",
+      "currency": "USD"
+    },
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C185627165386%7C0",
+    "seller": {
+      "username": "redacted-162128676376105.97",
+      "feedbackPercentage": "93.0",
+      "feedbackScore": 239
+    },
+    "condition": "Open box",
+    "conditionId": "1500",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/DoMAAOSwrS1jUg6k/s-l960.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "0.00",
+          "currency": "USD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE",
+      "BEST_OFFER"
+    ],
+    "epid": "5052039215",
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/185627165386?hash=item2b383dc2ca%3Ag%3ADoMAAOSwrS1jUg6k&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/185627165386?hash=item2b383dc2ca:g:DoMAAOSwrS1jUg6k",
+    "itemLocation": {
+      "country": "CN"
+    },
+    "additionalImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/khwAAOSwJ6BjUg6m/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/SzcAAOSw4GdjUg6p/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/bYYAAOSw4gVjUg6r/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/ZDkAAOSwWlRjUg6t/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/aHwAAOSwQ9RjUg6v/s-l225.jpg"
+      }
+    ],
+    "adultOnly": false,
+    "legacyItemId": "185627165386",
+    "availableCoupons": false,
+    "itemCreationDate": "2022-10-22T16:22:52.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": false,
+    "listingMarketplaceId": "EBAY_US"
+  },
+  {
+    "itemId": "v1|125972319476|0",
+    "title": "NEW Nvidia A30 24GB GPU Tensor Core Accelerator GPU Ampere PCIe Passive 165W",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/mFEAAOSwruxkgURC/s-l225.jpg"
+    },
+    "price": {
+      "value": "4748.91",
+      "currency": "USD"
+    },
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C125972319476%7C0",
+    "seller": {
+      "username": "redacted-1773712778416691.8",
+      "feedbackPercentage": "98.9",
+      "feedbackScore": 645
+    },
+    "marketingPrice": {
+      "originalPrice": {
+        "value": "4998.85",
+        "currency": "USD"
+      },
+      "discountPercentage": "5",
+      "discountAmount": {
+        "value": "249.94",
+        "currency": "USD"
+      },
+      "priceTreatment": "MARKDOWN"
+    },
+    "condition": "New",
+    "conditionId": "1000",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/mFEAAOSwruxkgURC/s-l1600.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "0.00",
+          "currency": "USD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE",
+      "BEST_OFFER"
+    ],
+    "epid": "5052039215",
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/125972319476?hash=item1d54890cf4%3Ag%3AmFEAAOSwruxkgURC&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/125972319476?hash=item1d54890cf4:g:mFEAAOSwruxkgURC",
+    "itemLocation": {
+      "country": "CN"
+    },
+    "additionalImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/6qUAAOSwgBtkgUSF/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/KL8AAOSwmdtkgUSJ/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/ER8AAOSwmWNkgUSL/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/oUcAAOSw81tkgUSN/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/AY8AAOSwCKZkgUSP/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/BzcAAOSwwetkgUSR/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/s~0AAOSwq5RkgUSc/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/mmIAAOSwrmdkgUSf/s-l225.jpg"
+      }
+    ],
+    "adultOnly": false,
+    "legacyItemId": "125972319476",
+    "availableCoupons": false,
+    "itemCreationDate": "2023-06-12T16:32:09.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": false,
+    "listingMarketplaceId": "EBAY_US"
+  },
+  {
+    "itemId": "v1|334689832238|0",
+    "title": "A30 24GB Nvidia Tensor Core GPU Accelerator GPU 165W Ampere PCIe Passive NEW",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/kaAAAOSwnvNjtT8F/s-l225.jpg"
+    },
+    "price": {
+      "value": "5000.00",
+      "currency": "USD"
+    },
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C334689832238%7C0",
+    "seller": {
+      "username": "redacted-6273420915375089",
+      "feedbackPercentage": "98.6",
+      "feedbackScore": 100337
+    },
+    "condition": "Open box",
+    "conditionId": "1500",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/kaAAAOSwnvNjtT8F/s-l1600.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "0.00",
+          "currency": "USD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE",
+      "BEST_OFFER"
+    ],
+    "epid": "5052039215",
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/334689832238?hash=item4ded118d2e%3Ag%3AkaAAAOSwnvNjtT8F&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/334689832238?hash=item4ded118d2e:g:kaAAAOSwnvNjtT8F",
+    "itemLocation": {
+      "country": "CN"
+    },
+    "additionalImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/fjgAAOSw9MVjtT8H/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/TEAAAOSwv49jtT8N/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/PuMAAOSw-4BjtT8P/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/nEYAAOSwDo9jtT8S/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/j4AAAOSwtzpjtT8U/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/fhcAAOSwQnNjtT8W/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/qkAAAOSwai1jtT8a/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/EkkAAOSwsr9jtT8e/s-l225.jpg"
+      }
+    ],
+    "adultOnly": false,
+    "legacyItemId": "334689832238",
+    "availableCoupons": false,
+    "itemCreationDate": "2023-01-05T08:56:49.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": false,
+    "listingMarketplaceId": "EBAY_US"
+  },
+  {
+    "itemId": "v1|126025650415|0",
+    "title": "A30 24GB Nvidia Tensor Core GPU Accelerator GPU 165W Ampere PCIe Passive NEW",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/IdQAAOSwaIBkvXTc/s-l225.jpg"
+    },
+    "price": {
+      "value": "4654.99",
+      "currency": "USD"
+    },
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C126025650415%7C0",
+    "seller": {
+      "username": "redacted-8325329629129625",
+      "feedbackPercentage": "98.9",
+      "feedbackScore": 1491
+    },
+    "marketingPrice": {
+      "originalPrice": {
+        "value": "4899.99",
+        "currency": "USD"
+      },
+      "discountPercentage": "5",
+      "discountAmount": {
+        "value": "245.00",
+        "currency": "USD"
+      },
+      "priceTreatment": "MARKDOWN"
+    },
+    "condition": "New",
+    "conditionId": "1000",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/IdQAAOSwaIBkvXTc/s-l1600.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "0.00",
+          "currency": "USD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE",
+      "BEST_OFFER"
+    ],
+    "epid": "5052039215",
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/126025650415?hash=item1d57b6d0ef%3Ag%3AIdQAAOSwaIBkvXTc&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/126025650415?hash=item1d57b6d0ef:g:IdQAAOSwaIBkvXTc",
+    "itemLocation": {
+      "country": "CN"
+    },
+    "additionalImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/oV4AAOSwCtlkvXTe/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/bl0AAOSwOZ5kvXTf/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/MWsAAOSwqFdkvXTh/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/d-MAAOSwHGpkvXTi/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/rugAAOSwMuNkvXTj/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/NVEAAOSwCJlkvXTl/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/sXgAAOSwbPNkvXTo/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/LIIAAOSwSwpkvXTq/s-l225.jpg"
+      }
+    ],
+    "adultOnly": false,
+    "legacyItemId": "126025650415",
+    "availableCoupons": false,
+    "itemCreationDate": "2023-07-24T18:44:03.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": false,
+    "listingMarketplaceId": "EBAY_US"
+  }
+]

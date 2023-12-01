@@ -29,7 +29,8 @@ model gpu {
 
   // references for the specs:
   references        String[]
-
+  // custom-written summary for the GPU. Used on info pages
+  summary           String @default("")
 
   // for the prisma relation for Listing.gpu/gpuName
   Listing   Listing[]

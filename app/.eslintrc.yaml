@@ -71,3 +71,10 @@ overrides:
       # because inline snapshots have weird indentation sometime
       unicorn/template-indent: off
       import/no-unused-modules: off
+  - files:
+      - "src/scripts/**/*.ts"
+    rules:
+      unicorn/filename-case: off
+      unicorn/prefer-top-level-await: off
+      import/no-unused-modules: off
+      no-console: off

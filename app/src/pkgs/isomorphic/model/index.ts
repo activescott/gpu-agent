@@ -6,6 +6,8 @@ export interface Gpu extends GpuSpecs {
   label: string
   // lastCachedListings is stored in the database to help us track cache of listings. | null because prisma :/
   lastCachedListings?: Date | null
+  summary: string
+  references: string[]
 }
 
 export interface Listing {

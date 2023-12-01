@@ -5,12 +5,28 @@
       "title": "Price Compare GPUs for Machine Learning"
     },
     {
+      "path": "/ml/shop/gpu/nvidia-rtx-a5000",
+      "title": "Price Compare NVIDIA RTX A5000 GPUs"
+    },
+    {
+      "path": "/ml/shop/gpu/nvidia-a30",
+      "title": "Price Compare NVIDIA A30 GPUs"
+    },
+    {
       "path": "/ml/shop/gpu/nvidia-t4",
       "title": "Price Compare NVIDIA T4 GPUs"
     },
     {
-      "path": "/ml/shop/gpu/nvidia-rtx-a5000",
-      "title": "Price Compare NVIDIA RTX A5000 GPUs"
+      "path": "/ml/learn/gpu/nvidia-rtx-a5000",
+      "title": "NVIDIA RTX A5000 GPU Machine Learning Specification"
+    },
+    {
+      "path": "/ml/learn/gpu/nvidia-a30",
+      "title": "NVIDIA A30 GPU Machine Learning Specification"
+    },
+    {
+      "path": "/ml/learn/gpu/nvidia-t4",
+      "title": "NVIDIA T4 GPU Machine Learning Specification"
     },
     {
       "path": "/policy/terms",
@@ -95,81 +111,6 @@
     {
       "path": "/ml/learn/models/3d-unet",
       "title": "About Machine Learning Model 3D-UNet",
-      "lastModified": "2023-11-26T05:00:45.000Z"
-    },
-    {
-      "path": "/ml/learn/gpu/specifications",
-      "title": "Technical Specifications Relevant for Machine Learning GPUs & Accelerators",
-      "lastModified": "2023-11-27T08:30:19.000Z"
-    },
-    {
-      "path": "/ml/learn/gpu/qualcomm-cloud-ai-100-pcie-hhhl",
-      "title": "Qualcomm Cloud AI 100 PCIe/HHHL Machine Learning Accelerator",
-      "lastModified": "2023-11-26T05:00:45.000Z"
-    },
-    {
-      "path": "/ml/learn/gpu/nvidia-t4",
-      "title": "NVIDIA T4 Machine Learning GPU",
-      "lastModified": "2023-11-26T22:48:21.000Z"
-    },
-    {
-      "path": "/ml/learn/gpu/nvidia-rtx-a5000-gpu",
-      "title": "NVIDIA RTX A5000 Machine Learning GPU",
-      "lastModified": "2023-11-26T05:00:45.000Z"
-    },
-    {
-      "path": "/ml/learn/gpu/nvidia-l40",
-      "title": "NVIDIA L40 Machine Learning GPU",
-      "lastModified": "2023-11-26T05:00:45.000Z"
-    },
-    {
-      "path": "/ml/learn/gpu/nvidia-l4",
-      "title": "NVIDIA L4 Machine Learning Accelerator",
-      "lastModified": "2023-11-26T05:00:45.000Z"
-    },
-    {
-      "path": "/ml/learn/gpu/nvidia-h100-sxm-80gb",
-      "title": "NVIDIA H100-SXM-80GB Machine Learning Accelerator",
-      "lastModified": "2023-11-26T05:00:45.000Z"
-    },
-    {
-      "path": "/ml/learn/gpu/nvidia-gh200-grace-hopper-superchip",
-      "title": "NVIDIA GH200-Grace Hopper Superchip Machine Learning Accelerator",
-      "lastModified": "2023-11-26T05:00:45.000Z"
-    },
-    {
-      "path": "/ml/learn/gpu/nvidia-a40",
-      "title": "NVIDIA A40 Machine Learning GPU",
-      "lastModified": "2023-11-26T05:00:45.000Z"
-    },
-    {
-      "path": "/ml/learn/gpu/nvidia-a30",
-      "title": "NVIDIA A30 Machine Learning Accelerator",
-      "lastModified": "2023-11-26T05:00:45.000Z"
-    },
-    {
-      "path": "/ml/learn/gpu/nvidia-a100-sxm-80gb-cts",
-      "title": "NVIDIA A100-SXM-80GB CTS Machine Learning Accelerator",
-      "lastModified": "2023-11-26T05:00:45.000Z"
-    },
-    {
-      "path": "/ml/learn/gpu/nvidia-a100-sxm-80gb",
-      "title": "NVIDIA A100-SXM-80GB Machine Learning Accelerator",
-      "lastModified": "2023-11-26T05:00:45.000Z"
-    },
-    {
-      "path": "/ml/learn/gpu/nvidia-a100-pcie-80gb",
-      "title": "NVIDIA A100-PCIE-80GB Machine Learning Accelerator",
-      "lastModified": "2023-11-26T05:00:45.000Z"
-    },
-    {
-      "path": "/ml/learn/gpu/nvidia-a10-pci-24gb",
-      "title": "NVIDIA A10-PCI-24GB Machine Learning GPU",
-      "lastModified": "2023-11-26T05:00:45.000Z"
-    },
-    {
-      "path": "/ml/learn/gpu/intel-habana-gaudi2",
-      "title": "Intel Habana Gaudi2 Machine Learning Accelerator",
       "lastModified": "2023-11-26T05:00:45.000Z"
     }
   ]

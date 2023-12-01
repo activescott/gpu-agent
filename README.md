@@ -44,7 +44,7 @@ Compare GPU & AI Accelerator Card Performance Metrics to their Cost
 - [+] feat: add sorting/ranking
 - [+] feat: new page with multiple gpus and price compare http://localhost:3000/ml/shop/gpu (only 2 gpus)
 - [+] feat: "attribute pills" are differentiated from "spec pills"
-- [ ] feat: added NVIDIA A30 GPUs (add to seed with specs)
+- [+] feat: added NVIDIA A30 GPUs (add to seed with specs)
 - [ ] feat: added NVIDIA A30 GPUs (add to seed with specs)
 - [ ] feat: added NVIDIA A10 24GB GPU (add to seed with specs)
 - [ ] feat: added NVIDIA A100 80GB GPU (add to seed with specs)

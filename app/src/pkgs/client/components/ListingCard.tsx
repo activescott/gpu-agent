@@ -29,17 +29,27 @@ export const ListingCard = ({ item, specs }: ListingCardProps) => {
   const cost = Number(priceValue)
   return (
     <div className="card m-1" style={{ width: "18rem" }}>
-      <img
-        src={imageUrl}
-        className="card-img-top mx-auto mt-1"
-        alt={title}
-        style={{ maxWidth: "215px", maxHeight: "215px" }}
-      />
+      <div
+        style={{
+          height: "215px",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <img
+          src={imageUrl}
+          className="card-img-top mx-auto mt-1"
+          alt={title}
+          style={{ maxWidth: "215px", maxHeight: "215px" }}
+        />
+      </div>
       <div className="card-body">
         <h5 className="card-title">{title}</h5>
         <div className="card-text">
           <Pill>{formatPriceInteger(cost)}</Pill>
           {condition && <Pill>{condition}</Pill>}
+          <br />
           {GpuSpecKeys.map((specKey) => (
             <SpecPill
               key={specKey}

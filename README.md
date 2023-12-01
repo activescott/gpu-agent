@@ -59,6 +59,8 @@ Compare GPU & AI Accelerator Card Performance Metrics to their Cost
 
 - [ ] feat: add "Top 5 GPUs for \<Spec\>" on home page
 
+- [ ] fix: support items that have multiple items (update $/perf specs) e.g. "**_ LOT OF 10 GPU's_** NVIDIA RTX A5000 24GB GDDR6"
+
 - [ ] feat: add a "more info" to each description page tooltip so people can learn more about the specs. Update the info page to be more specific about when to choose which metric.
 
 - [ ] feat: cards show country being sold from

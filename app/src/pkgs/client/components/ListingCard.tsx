@@ -50,17 +50,17 @@ export const ListingCard = ({ item, specs }: ListingCardProps) => {
             </SpecPill>
           ))}
         </div>
+      </div>
+      <div className="card-footer d-flex">
         <a
           href={itemAffiliateWebUrl}
-          className="btn btn-primary btn-sm"
+          className="btn btn-primary my-1 me-auto"
           target="_blank"
           rel="noreferrer"
         >
           Buy Now
         </a>
-      </div>
-      <div className="card-footer d-flex" style={{ gap: "0.5em" }}>
-        <SvgIcon icon="ebay" className="me-auto" />
+        <SvgIcon icon="ebay" className="" />
       </div>
     </div>
   )

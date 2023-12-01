@@ -15,3 +15,16 @@ $color-mode-type: media-query;
 
 // Import Bootstrap (see https://getbootstrap.com/docs/5.0/customize/sass/)
 @import "../../../node_modules/bootstrap/scss/bootstrap";
+
+@include color-mode(dark) {
+  .text-bg-inverse {
+    background-color: $light;
+    color: $dark;
+  }
+}
+@include color-mode(light) {
+  .text-bg-inverse {
+    background-color: $dark;
+    color: $light;
+  }
+}

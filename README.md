@@ -43,6 +43,7 @@ Compare GPU & AI Accelerator Card Performance Metrics to their Cost
 
 - [+] feat: add sorting/ranking
 - [+] feat: new page with multiple gpus and price compare http://localhost:3000/ml/shop/gpu (only 2 gpus)
+- [+] feat: "attribute pills" are differentiated from "spec pills"
 - [ ] feat: added NVIDIA A30 GPUs (add to seed with specs)
 - [ ] feat: added NVIDIA A30 GPUs (add to seed with specs)
 - [ ] feat: added NVIDIA A10 24GB GPU (add to seed with specs)
@@ -59,13 +60,13 @@ Compare GPU & AI Accelerator Card Performance Metrics to their Cost
 
 - [ ] feat: add "Top 5 GPUs for \<Spec\>" on home page
 
+- [ ] feat: can filter by attributes and attribute pills
 - [ ] fix: support items that have multiple items (update $/perf specs) e.g. "**_ LOT OF 10 GPU's_** NVIDIA RTX A5000 24GB GDDR6"
 
 - [ ] feat: add a "more info" to each description page tooltip so people can learn more about the specs. Update the info page to be more specific about when to choose which metric.
 
 - [ ] feat: cards show country being sold from
 - [ ] feat: cards now show quantity available
-- [ ] feat: color "attribute pills" one color and "metric pills" another color. Allow filtering by attribute pills.
 - [ ] feat: add ability to filter within a range
 - [ ] feat: add ability to delete specs from the cards
 - [ ] feat: add more GPUs w/ hardware-only specs

@@ -27,7 +27,7 @@ export function ListingGallery({ listings }: ListingGalleryProps): JSX.Element {
     return sortListings(listings, initialSort)
   })
 
-  const { sortPanel } = useSorting(initialSort, (sortValue) => {
+  const { sortPanel, sortValue } = useSorting(initialSort, (sortValue) => {
     log.debug(
       "sorting change: sorting by %s %s",
       sortValue.specKey,
@@ -44,6 +44,7 @@ export function ListingGallery({ listings }: ListingGalleryProps): JSX.Element {
           key={`${item.itemId}-${index.toString()}`}
           item={item}
           specs={specs}
+          highlightSpec={sortValue.specKey}
         />
       ))}
     </div>

@@ -1,7 +1,8 @@
 import { SvgIcon } from "@/pkgs/client/components/SvgIcon"
 import { SpecPill } from "@/pkgs/client/components/SpecPill"
-import { Pill } from "./Pill"
+import { AttributePill } from "./AttributePill"
 import {
+  GpuSpecKey,
   GpuSpecKeys,
   GpuSpecs,
   GpuSpecsDescription,
@@ -21,9 +22,14 @@ const formatPriceInteger = (price: number) => {
 interface ListingCardProps {
   item: Listing
   specs: GpuSpecs
+  highlightSpec: GpuSpecKey
 }
 
-export const ListingCard = ({ item, specs }: ListingCardProps) => {
+export const ListingCard = ({
+  item,
+  specs,
+  highlightSpec,
+}: ListingCardProps) => {
   const { itemAffiliateWebUrl, priceValue, title, condition } = item
   const imageUrl = chooseBestImageUrl(item)
   const cost = Number(priceValue)
@@ -47,13 +53,14 @@ export const ListingCard = ({ item, specs }: ListingCardProps) => {
       <div className="card-body">
         <h5 className="card-title">{title}</h5>
         <div className="card-text">
-          <Pill>{formatPriceInteger(cost)}</Pill>
-          {condition && <Pill>{condition}</Pill>}
+          <AttributePill>{formatPriceInteger(cost)}</AttributePill>
+          {condition && <AttributePill>{condition}</AttributePill>}
           <br />
           {GpuSpecKeys.map((specKey) => (
             <SpecPill
               key={specKey}
               infoTipText={GpuSpecsDescription[specKey].descriptionDollarsPer}
+              color={specKey === highlightSpec ? "primary" : "secondary"}
             >
               {formatPriceInteger(cost / specs[specKey])} /{" "}
               {GpuSpecsDescription[specKey].unit}

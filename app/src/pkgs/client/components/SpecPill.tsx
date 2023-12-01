@@ -7,12 +7,27 @@ interface SpecPillProps {
   children: ReactNode
   infoTipText: string
   infoTipLink?: string
+  color?: BootstrapBackgroundColors
 }
+
+type BootstrapBackgroundColors =
+  | "primary"
+  | "secondary"
+  | "success"
+  | "danger"
+  | "warning"
+  | "info"
+  | "light"
+  | "dark"
 
 /**
  * A pill for a GPU specification.
  */
-export const SpecPill = ({ children, infoTipText }: SpecPillProps) => {
+export const SpecPill = ({
+  children,
+  infoTipText,
+  color = "secondary",
+}: SpecPillProps) => {
   const [showTip, setShowTip] = useState(false)
   // see https://popper.js.org/react-popper/v2/
   const [referenceElement, setReferenceElement] =
@@ -27,7 +42,7 @@ export const SpecPill = ({ children, infoTipText }: SpecPillProps) => {
   return (
     <>
       <span
-        className="badge rounded-pill text-bg-secondary mx-1"
+        className={`badge rounded-pill text-bg-${color} mx-1`}
         ref={setReferenceElement}
       >
         {children}

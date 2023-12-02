@@ -1,0 +1,3595 @@
+[
+  {
+    "itemId": "v1|295660420662|0",
+    "title": "Nvidia A100 80GB PCI-E 4.0 Graphics Card Part# 900-21001-0020-000, Model# P1001B",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/0KcAAOSwXk5lET0y/s-l225.jpg"
+    },
+    "price": {
+      "value": "23799.99",
+      "currency": "USD"
+    },
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C295660420662%7C0",
+    "seller": {
+      "username": "redacted-2260882836962889.5",
+      "feedbackPercentage": "100.0",
+      "feedbackScore": 5687
+    },
+    "condition": "New",
+    "conditionId": "1000",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/0KcAAOSwXk5lET0y/s-l960.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "50.00",
+          "currency": "USD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE",
+      "BEST_OFFER"
+    ],
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/295660420662?hash=item44d6bbfe36%3Ag%3A0KcAAOSwXk5lET0y&amdata=enc%3AAQAIAAAA4My3YTJ8dGt1%2Fvm1TbqSh1BLgBoSlatMueCqt2mG3DBYqj1v7A7a85gOWlno%2Fd06fp%2BRR0WoiSOx5G%2B4PUlvoG2sX0yBtAGgbuWjIXrZH2jgJUorlDsAT9Spu2zgDAEEjminboIg1LXk%2FGSHTTNGPhEq1oaMAzvPJjwk%2B%2BriJliEq2G6D9N7k2ro6RKpnT5y1PfdFOpOxKSoEmabYQAdcLkeJ7wk1AZaM1qeSWdpZLrhL7ppZEXPSGdtWyf4F6zevN8yMGDN2NmYp%2B1f3ESc0Uo09DS42dwnsCXIeo%2Bk6kvf&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/295660420662?hash=item44d6bbfe36:g:0KcAAOSwXk5lET0y&amdata=enc%3AAQAIAAAA4My3YTJ8dGt1%2Fvm1TbqSh1BLgBoSlatMueCqt2mG3DBYqj1v7A7a85gOWlno%2Fd06fp%2BRR0WoiSOx5G%2B4PUlvoG2sX0yBtAGgbuWjIXrZH2jgJUorlDsAT9Spu2zgDAEEjminboIg1LXk%2FGSHTTNGPhEq1oaMAzvPJjwk%2B%2BriJliEq2G6D9N7k2ro6RKpnT5y1PfdFOpOxKSoEmabYQAdcLkeJ7wk1AZaM1qeSWdpZLrhL7ppZEXPSGdtWyf4F6zevN8yMGDN2NmYp%2B1f3ESc0Uo09DS42dwnsCXIeo%2Bk6kvf",
+    "itemLocation": {
+      "postalCode": "******",
+      "country": "CN"
+    },
+    "additionalImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/bS4AAOSwalFlET0y/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/bEQAAOSwclJlET0z/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/7hMAAOSwmEZlET0z/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/7LAAAOSw7itlET00/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/AY4AAOSw7y9lET01/s-l225.jpg"
+      }
+    ],
+    "adultOnly": false,
+    "legacyItemId": "295660420662",
+    "availableCoupons": false,
+    "itemCreationDate": "2023-04-28T10:00:30.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": true,
+    "listingMarketplaceId": "EBAY_US"
+  },
+  {
+    "itemId": "v1|386063648701|0",
+    "title": "NVIDIA Tesla a100 Amp GPU accelerometer 40GB graphics card deep learning AI 400w",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/QfIAAOSwP3dgYXem/s-l225.jpg"
+    },
+    "price": {
+      "value": "6288.00",
+      "currency": "USD"
+    },
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C386063648701%7C0",
+    "seller": {
+      "username": "redacted-1123542384071855.9",
+      "feedbackPercentage": "98.7",
+      "feedbackScore": 856
+    },
+    "condition": "New",
+    "conditionId": "1000",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/QfIAAOSwP3dgYXem/s-l225.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "0.00",
+          "currency": "USD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE"
+    ],
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/386063648701?hash=item59e32fc7bd%3Ag%3AQfIAAOSwP3dgYXem&amdata=enc%3AAQAIAAAA4KzHLDALnCUh146Ly3pvtiJtkPjVzYWX%2FGwreusjOzw%2Fkds8DaxSR8Bcs4TgVPKLDbi8%2Bb0r06ylGXfSF%2FVN50nQZtusYrtF15lVGtd7e8%2F6U4Q7vuD2SqsYY4dAGmKHhlDB%2FJzSjjvlyKeyi0PiXidsMAVDO%2FEBnynlP5X%2BD0rQXeGcQMXNbAbrdeSaCw5f6cacxsgNLxbupsMYQfbjjuAoIT9PwEuFUQu84PktO25EAVqn7V63Z1Nh8OGxsgTxoppCUwf0HYsl6XLvsBfYAmtPBksn8RTXB8rTfDO5XsUU&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/386063648701?hash=item59e32fc7bd:g:QfIAAOSwP3dgYXem&amdata=enc%3AAQAIAAAA4KzHLDALnCUh146Ly3pvtiJtkPjVzYWX%2FGwreusjOzw%2Fkds8DaxSR8Bcs4TgVPKLDbi8%2Bb0r06ylGXfSF%2FVN50nQZtusYrtF15lVGtd7e8%2F6U4Q7vuD2SqsYY4dAGmKHhlDB%2FJzSjjvlyKeyi0PiXidsMAVDO%2FEBnynlP5X%2BD0rQXeGcQMXNbAbrdeSaCw5f6cacxsgNLxbupsMYQfbjjuAoIT9PwEuFUQu84PktO25EAVqn7V63Z1Nh8OGxsgTxoppCUwf0HYsl6XLvsBfYAmtPBksn8RTXB8rTfDO5XsUU",
+    "itemLocation": {
+      "country": "CN"
+    },
+    "additionalImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/SlAAAOSwmPVgYXer/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/SqMAAOSweOVi4kVn/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/bOMAAOSwcbVgYXet/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/xs8AAOSwWuBi4kVv/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/SKwAAOSwf7Ni4kVy/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/NIkAAOSwCTJi4kV8/s-l225.jpg"
+      }
+    ],
+    "adultOnly": false,
+    "legacyItemId": "386063648701",
+    "availableCoupons": false,
+    "itemCreationDate": "2023-08-30T11:17:18.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": true,
+    "listingMarketplaceId": "EBAY_US"
+  },
+  {
+    "itemId": "v1|335029449172|0",
+    "title": "Nvidia A100 80GB PCI-E 4.0 Graphics Card Part# 900-21001-0020-000, Model# P1001B",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/VgIAAOSwXi1glHb-/s-l225.jpg"
+    },
+    "price": {
+      "value": "16899.00",
+      "currency": "USD"
+    },
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C335029449172%7C0",
+    "seller": {
+      "username": "redacted-4118362714569291.5",
+      "feedbackPercentage": "100.0",
+      "feedbackScore": 295
+    },
+    "condition": "New",
+    "conditionId": "1000",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/VgIAAOSwXi1glHb-/s-l640.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "149.00",
+          "currency": "USD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE",
+      "BEST_OFFER"
+    ],
+    "epid": "24060856379",
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/335029449172?hash=item4e014fb1d4%3Ag%3AVgIAAOSwXi1glHb-&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/335029449172?hash=item4e014fb1d4:g:VgIAAOSwXi1glHb-",
+    "itemLocation": {
+      "postalCode": "606**",
+      "country": "US"
+    },
+    "adultOnly": false,
+    "legacyItemId": "335029449172",
+    "availableCoupons": false,
+    "itemCreationDate": "2023-09-14T22:43:19.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": false,
+    "listingMarketplaceId": "EBAY_US"
+  },
+  {
+    "itemId": "v1|334699950822|0",
+    "title": "Nvidia A100 40GB PCI-E 4.0 SXM4 Graphics Card Part",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/IsYAAOSwjVhjv3S6/s-l225.jpg"
+    },
+    "price": {
+      "value": "5990.00",
+      "currency": "USD"
+    },
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C334699950822%7C0",
+    "seller": {
+      "username": "redacted-3523110195198327.5",
+      "feedbackPercentage": "98.6",
+      "feedbackScore": 100338
+    },
+    "condition": "New",
+    "conditionId": "1000",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/IsYAAOSwjVhjv3S6/s-l1600.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "0.00",
+          "currency": "USD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE",
+      "BEST_OFFER"
+    ],
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/334699950822?hash=item4dedabf2e6%3Ag%3AIsYAAOSwjVhjv3S6&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/334699950822?hash=item4dedabf2e6:g:IsYAAOSwjVhjv3S6",
+    "itemLocation": {
+      "country": "CN"
+    },
+    "additionalImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/RfwAAOSwMZBjv3S7/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/BhAAAOSwBuFjv3S8/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/eWYAAOSwQi9jv3S-/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/6foAAOSwlb5jv3S~/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/OU4AAOSwy6Bjv3TB/s-l225.jpg"
+      }
+    ],
+    "adultOnly": false,
+    "legacyItemId": "334699950822",
+    "availableCoupons": false,
+    "itemCreationDate": "2023-01-13T03:00:07.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": false,
+    "listingMarketplaceId": "EBAY_US"
+  },
+  {
+    "itemId": "v1|235092334717|0",
+    "title": "NVIDIA A100 80 GB HBM2e PCIe Tensor Core GPU - Graphics Card 900-21001-0020-100",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/-HUAAOSwJmlktG2A/s-l225.jpg"
+    },
+    "price": {
+      "value": "22400.00",
+      "currency": "USD"
+    },
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C235092334717%7C0",
+    "seller": {
+      "username": "redacted-7426168920727375",
+      "feedbackPercentage": "99.3",
+      "feedbackScore": 1184
+    },
+    "condition": "New",
+    "conditionId": "1000",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/-HUAAOSwJmlktG2A/s-l1200.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "0.00",
+          "currency": "USD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE"
+    ],
+    "epid": "3061833694",
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/235092334717?hash=item36bc98587d%3Ag%3A-HUAAOSwJmlktG2A&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/235092334717?hash=item36bc98587d:g:-HUAAOSwJmlktG2A",
+    "itemLocation": {
+      "postalCode": "358**",
+      "country": "US"
+    },
+    "adultOnly": false,
+    "legacyItemId": "235092334717",
+    "availableCoupons": false,
+    "itemCreationDate": "2023-07-16T22:20:10.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": false,
+    "listingMarketplaceId": "EBAY_US"
+  },
+  {
+    "itemId": "v1|155675092907|0",
+    "title": "Nvidia A100 80GB PCI-E 4.0 SXM4 Graphics Card Part",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/VAwAAOSwJ4pjJYg6/s-l225.jpg"
+    },
+    "price": {
+      "value": "17199.00",
+      "currency": "USD"
+    },
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C155675092907%7C0",
+    "seller": {
+      "username": "redacted-5691207573091973",
+      "feedbackPercentage": "100.0",
+      "feedbackScore": 9539
+    },
+    "condition": "New",
+    "conditionId": "1000",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/VAwAAOSwJ4pjJYg6/s-l1600.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "100.00",
+          "currency": "USD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE",
+      "BEST_OFFER"
+    ],
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/155675092907?hash=item243ef567ab%3Ag%3AVAwAAOSwJ4pjJYg6&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/155675092907?hash=item243ef567ab:g:VAwAAOSwJ4pjJYg6",
+    "itemLocation": {
+      "country": "CN"
+    },
+    "additionalImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/xEEAAOSwLeRjJYg8/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/LXEAAOSwGNRjJYg-/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/JmgAAOSwkWBjJYhA/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/QQsAAOSwTChjJYhC/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/SYMAAOSwB2ljJYhE/s-l225.jpg"
+      }
+    ],
+    "adultOnly": false,
+    "legacyItemId": "155675092907",
+    "availableCoupons": false,
+    "itemCreationDate": "2023-07-20T09:17:11.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": false,
+    "listingMarketplaceId": "EBAY_US"
+  },
+  {
+    "itemId": "v1|166451384140|0",
+    "title": "NVIDIA Ampere A100 80GB PCIe 4.0 Dual Slot Graphic Card 900-21001-0020-000",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/WxsAAOSwCCJlXHr6/s-l225.jpg"
+    },
+    "price": {
+      "value": "20900.00",
+      "currency": "USD"
+    },
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C166451384140%7C0",
+    "seller": {
+      "username": "redacted-3370171905761451.5",
+      "feedbackPercentage": "100.0",
+      "feedbackScore": 148
+    },
+    "condition": "New",
+    "conditionId": "1000",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/WxsAAOSwCCJlXHr6/s-l1200.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "0.00",
+          "currency": "USD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE",
+      "BEST_OFFER"
+    ],
+    "epid": "24060856379",
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/166451384140?hash=item26c1468f4c%3Ag%3AWxsAAOSwCCJlXHr6&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/166451384140?hash=item26c1468f4c:g:WxsAAOSwCCJlXHr6",
+    "itemLocation": {
+      "country": "IL"
+    },
+    "additionalImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/Kk8AAOSwXdJlXHrP/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/DU0AAOSwoHNlXHtO/s-l225.jpg"
+      }
+    ],
+    "adultOnly": false,
+    "legacyItemId": "166451384140",
+    "availableCoupons": false,
+    "itemCreationDate": "2023-11-21T09:48:06.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": false,
+    "listingMarketplaceId": "EBAY_US"
+  },
+  {
+    "itemId": "v1|305208652170|0",
+    "title": "NVIDIA A100 40GB 5120-bit HBM2 PCI Express 4.0 x16 FHFL Workstation Video Card",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/phgAAOSwzr1k7G8L/s-l225.jpg"
+    },
+    "price": {
+      "value": "8699.68",
+      "currency": "USD"
+    },
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C305208652170%7C0",
+    "seller": {
+      "username": "redacted-1265932877748661.8",
+      "feedbackPercentage": "98.5",
+      "feedbackScore": 5815
+    },
+    "condition": "Used",
+    "conditionId": "3000",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/phgAAOSwzr1k7G8L/s-l1600.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "0.00",
+          "currency": "USD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE",
+      "BEST_OFFER"
+    ],
+    "epid": "14046138204",
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/305208652170?hash=item470fda718a%3Ag%3AphgAAOSwzr1k7G8L&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/305208652170?hash=item470fda718a:g:phgAAOSwzr1k7G8L",
+    "itemLocation": {
+      "postalCode": "926**",
+      "country": "US"
+    },
+    "additionalImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/~6YAAOSwCtBlLWwP/s-l225.jpg"
+      }
+    ],
+    "adultOnly": false,
+    "legacyItemId": "305208652170",
+    "availableCoupons": false,
+    "itemCreationDate": "2023-10-16T17:00:04.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": false,
+    "listingMarketplaceId": "EBAY_US"
+  },
+  {
+    "itemId": "v1|175979565421|0",
+    "title": "Nvidia A100 40GB PCI-E 4.0 SXM4 graphics card assembly",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/PmYAAOSwmaFkiBhj/s-l225.jpg"
+    },
+    "price": {
+      "value": "6288.00",
+      "currency": "USD"
+    },
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C175979565421%7C0",
+    "seller": {
+      "username": "redacted-2865787053285609.5",
+      "feedbackPercentage": "99.8",
+      "feedbackScore": 3090
+    },
+    "condition": "New",
+    "conditionId": "1000",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/PmYAAOSwmaFkiBhj/s-l225.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "0.00",
+          "currency": "USD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE",
+      "BEST_OFFER"
+    ],
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/175979565421?hash=item28f933116d%3Ag%3APmYAAOSwmaFkiBhj&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/175979565421?hash=item28f933116d:g:PmYAAOSwmaFkiBhj",
+    "itemLocation": {
+      "postalCode": "******",
+      "country": "CN"
+    },
+    "additionalImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/3hcAAOSwRQNkiBhJ/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/eLYAAOSw0axkiBhS/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/7xwAAOSwlYlkiBha/s-l225.jpg"
+      }
+    ],
+    "adultOnly": false,
+    "legacyItemId": "175979565421",
+    "availableCoupons": false,
+    "itemCreationDate": "2023-10-23T07:20:27.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": false,
+    "listingMarketplaceId": "EBAY_US"
+  },
+  {
+    "itemId": "v1|394754053923|0",
+    "title": "Nvidia A100 80GB PCI-E 4.0 SXM4 Graphics Card Part",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/xM4AAOSwHzZkSORK/s-l225.jpg"
+    },
+    "price": {
+      "value": "17299.00",
+      "currency": "USD"
+    },
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C394754053923%7C0",
+    "seller": {
+      "username": "redacted-1476590812760191.8",
+      "feedbackPercentage": "100.0",
+      "feedbackScore": 799
+    },
+    "condition": "New",
+    "conditionId": "1000",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/xM4AAOSwHzZkSORK/s-l960.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "100.00",
+          "currency": "USD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE",
+      "BEST_OFFER"
+    ],
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/394754053923?hash=item5be92cd723%3Ag%3AxM4AAOSwHzZkSORK&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/394754053923?hash=item5be92cd723:g:xM4AAOSwHzZkSORK",
+    "itemLocation": {
+      "postalCode": "*****",
+      "country": "CN"
+    },
+    "additionalImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/sfUAAOSw~cJkSORM/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/0~4AAOSw2IFkSORQ/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/04EAAOSwpEVkSORY/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/cxoAAOSw4P5kSORb/s-l225.jpg"
+      }
+    ],
+    "adultOnly": false,
+    "legacyItemId": "394754053923",
+    "availableCoupons": false,
+    "itemCreationDate": "2023-07-20T09:12:55.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": false,
+    "listingMarketplaceId": "EBAY_US"
+  },
+  {
+    "itemId": "v1|175799376248|0",
+    "title": "NVIDIA Tesla a100 Amp GPU accelerometer 40GB graphics card deep learning AI 400w",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/QfIAAOSwP3dgYXem/s-l225.jpg"
+    },
+    "price": {
+      "value": "6288.00",
+      "currency": "USD"
+    },
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C175799376248%7C0",
+    "seller": {
+      "username": "redacted-6505296786108103",
+      "feedbackPercentage": "99.8",
+      "feedbackScore": 3090
+    },
+    "condition": "New",
+    "conditionId": "1000",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/QfIAAOSwP3dgYXem/s-l225.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "0.00",
+          "currency": "USD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE",
+      "BEST_OFFER"
+    ],
+    "epid": "26042475154",
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/175799376248?hash=item28ee759978%3Ag%3AQfIAAOSwP3dgYXem&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/175799376248?hash=item28ee759978:g:QfIAAOSwP3dgYXem",
+    "itemLocation": {
+      "postalCode": "******",
+      "country": "CN"
+    },
+    "additionalImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/SlAAAOSwmPVgYXer/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/SqMAAOSweOVi4kVn/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/bOMAAOSwcbVgYXet/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/xs8AAOSwWuBi4kVv/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/SKwAAOSwf7Ni4kVy/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/NIkAAOSwCTJi4kV8/s-l225.jpg"
+      }
+    ],
+    "adultOnly": false,
+    "legacyItemId": "175799376248",
+    "availableCoupons": false,
+    "itemCreationDate": "2023-07-03T19:18:38.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": false,
+    "listingMarketplaceId": "EBAY_US"
+  },
+  {
+    "itemId": "v1|225704327900|0",
+    "title": "5pcs Nvidia A100 40GB PCI-E 4.0 SXM4 Graphics Card Part",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/f64AAOSwKM5kyhDI/s-l225.jpg"
+    },
+    "price": {
+      "value": "30000.00",
+      "currency": "USD"
+    },
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C225704327900%7C0",
+    "seller": {
+      "username": "redacted-7101729869995335",
+      "feedbackPercentage": "98.6",
+      "feedbackScore": 100338
+    },
+    "condition": "New",
+    "conditionId": "1000",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/f64AAOSwKM5kyhDI/s-l1600.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "0.00",
+          "currency": "USD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE"
+    ],
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/225704327900?hash=item348d06badc%3Ag%3Af64AAOSwKM5kyhDI&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/225704327900?hash=item348d06badc:g:f64AAOSwKM5kyhDI",
+    "itemLocation": {
+      "country": "CN"
+    },
+    "additionalImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/G40AAOSwieRkyhDK/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/UbMAAOSwl5NkyhDM/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/XpgAAOSwdVVkyhDN/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/R0YAAOSw171kyhDP/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/Q6oAAOSwZAtkyhDR/s-l225.jpg"
+      }
+    ],
+    "adultOnly": false,
+    "legacyItemId": "225704327900",
+    "availableCoupons": false,
+    "itemCreationDate": "2023-08-03T08:16:34.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": false,
+    "listingMarketplaceId": "EBAY_US"
+  },
+  {
+    "itemId": "v1|186079733804|0",
+    "title": "NVIDIA 900-21001-0020-000 Ampere A100 80 GB PCIe 4.0 Graphic Card Dual Slot GPU",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/0MEAAOSwNhZlAy2O/s-l225.jpg"
+    },
+    "price": {
+      "value": "27789.00",
+      "currency": "USD"
+    },
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C186079733804%7C0",
+    "seller": {
+      "username": "redacted-7150543655019833",
+      "feedbackPercentage": "100.0",
+      "feedbackScore": 1554
+    },
+    "condition": "New",
+    "conditionId": "1000",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/0MEAAOSwNhZlAy2O/s-l960.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "0.00",
+          "currency": "USD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE"
+    ],
+    "epid": "24060856379",
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/186079733804?hash=item2b5337682c%3Ag%3A0MEAAOSwNhZlAy2O&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/186079733804?hash=item2b5337682c:g:0MEAAOSwNhZlAy2O",
+    "itemLocation": {
+      "postalCode": "949**",
+      "country": "US"
+    },
+    "additionalImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/rI0AAOSwb6xlAywp/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/iyIAAOSwU31lAyy4/s-l225.jpg"
+      }
+    ],
+    "adultOnly": false,
+    "legacyItemId": "186079733804",
+    "availableCoupons": false,
+    "itemCreationDate": "2023-09-14T16:03:12.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": false,
+    "listingMarketplaceId": "EBAY_US"
+  },
+  {
+    "itemId": "v1|386203547539|0",
+    "title": "NVIDIA Tesla A100 80G Deep Learning GPU Computing Graphics Card PCI-E",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/pvUAAOSwgudlDFxU/s-l225.jpg"
+    },
+    "price": {
+      "value": "28000.00",
+      "currency": "USD"
+    },
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C386203547539%7C0",
+    "seller": {
+      "username": "redacted-3039951363151881.5",
+      "feedbackPercentage": "98.7",
+      "feedbackScore": 856
+    },
+    "condition": "New",
+    "conditionId": "1000",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/pvUAAOSwgudlDFxU/s-l225.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "0.00",
+          "currency": "USD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE"
+    ],
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/386203547539?hash=item59eb867793%3Ag%3ApvUAAOSwgudlDFxU&amdata=enc%3AAQAIAAAA4PsG7XjT0wFkEg%2FiZBF1q02pxWEky0gWz8uwqmcrJZJKMtaBuTMkLc6%2FpOY0ONVHKtWitiIYaLeodZAnCvJqNOk5NR679Dxx7LVjR0ONN2qqtbeczWjPEsH2iRmFuup7VhfkFTFKFn5vll%2Binisz8cnN7e35gWgVXuCs8%2BDF5HYzIwv2Ov2y%2Bp8HxesVz6LfLr8KbNJ3tgAj6oB2jNrmCQrt7Faq6OSNyI9gfGj9TLf28ivtIDNwnWAfWvmsnylX5srp12YHjIn7Xz2mq0S%2BZkm3mlCqJujECz6euBzRJakM&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/386203547539?hash=item59eb867793:g:pvUAAOSwgudlDFxU&amdata=enc%3AAQAIAAAA4PsG7XjT0wFkEg%2FiZBF1q02pxWEky0gWz8uwqmcrJZJKMtaBuTMkLc6%2FpOY0ONVHKtWitiIYaLeodZAnCvJqNOk5NR679Dxx7LVjR0ONN2qqtbeczWjPEsH2iRmFuup7VhfkFTFKFn5vll%2Binisz8cnN7e35gWgVXuCs8%2BDF5HYzIwv2Ov2y%2Bp8HxesVz6LfLr8KbNJ3tgAj6oB2jNrmCQrt7Faq6OSNyI9gfGj9TLf28ivtIDNwnWAfWvmsnylX5srp12YHjIn7Xz2mq0S%2BZkm3mlCqJujECz6euBzRJakM",
+    "itemLocation": {
+      "country": "CN"
+    },
+    "additionalImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/eUEAAOSw-E9lDFxX/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/5MMAAOSw7b5lDFxb/s-l225.jpg"
+      }
+    ],
+    "adultOnly": false,
+    "legacyItemId": "386203547539",
+    "availableCoupons": false,
+    "itemCreationDate": "2023-10-16T14:20:19.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": true,
+    "listingMarketplaceId": "EBAY_US"
+  },
+  {
+    "itemId": "v1|115962028346|0",
+    "title": "HP NVIDIA A100 AMPERE 40GB HBM2 PASSIVE GPU GRAPHICS CARD - P35962-001",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/kWgAAOSw26NksU1f/s-l225.jpg"
+    },
+    "price": {
+      "value": "12297.44",
+      "currency": "USD",
+      "convertedFromValue": "9714.00",
+      "convertedFromCurrency": "GBP"
+    },
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C115962028346%7C0",
+    "seller": {
+      "username": "redacted-3686173891784481.5",
+      "feedbackPercentage": "100.0",
+      "feedbackScore": 3643
+    },
+    "condition": "Excellent - Refurbished",
+    "conditionId": "2010",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/kWgAAOSw26NksU1f/s-l1600.jpg"
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE",
+      "BEST_OFFER"
+    ],
+    "epid": "15055658000",
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/115962028346?hash=item1affe0213a%3Ag%3AkWgAAOSw26NksU1f&amdata=enc%3AAQAIAAAA4E%2FWVvXB9QZ4C0ys04PMeJ2nUGq67HCmUMVsU4tBLSNv4PfyvzAPO3hzbpd3pL%2BOK3RgFFGzFjlQbnlpqshAaTORiRIZPcWdCtpLbStEvrDpoJ6fSYEz7ksg2%2Bp3%2B1iCc0%2BJIw%2B4T%2FToMobBEiToRnDeFznZ1aR8R%2F72nvghg2V5OuAtQUj3X%2B9jQJUNE437gN8a0UhsWVj5Vk2CnIUHYj0tkojFWqGPgxCqOBpAuGMoQn8hNWKCF6qt7wqT9VjS073R63qu4Y4qvfYjN4gzArTeABD%2B4I%2FXJnXtdlEttRoy&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/115962028346?hash=item1affe0213a:g:kWgAAOSw26NksU1f&amdata=enc%3AAQAIAAAA4E%2FWVvXB9QZ4C0ys04PMeJ2nUGq67HCmUMVsU4tBLSNv4PfyvzAPO3hzbpd3pL%2BOK3RgFFGzFjlQbnlpqshAaTORiRIZPcWdCtpLbStEvrDpoJ6fSYEz7ksg2%2Bp3%2B1iCc0%2BJIw%2B4T%2FToMobBEiToRnDeFznZ1aR8R%2F72nvghg2V5OuAtQUj3X%2B9jQJUNE437gN8a0UhsWVj5Vk2CnIUHYj0tkojFWqGPgxCqOBpAuGMoQn8hNWKCF6qt7wqT9VjS073R63qu4Y4qvfYjN4gzArTeABD%2B4I%2FXJnXtdlEttRoy",
+    "itemLocation": {
+      "postalCode": "RG12***",
+      "country": "GB"
+    },
+    "additionalImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/FBwAAOSwF81ksU1f/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/khwAAOSwD29ksU1f/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/PHAAAOSwe0xksU1f/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/DrAAAOSwos5ksU1f/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/-6gAAOSw6n5ksU1f/s-l225.jpg"
+      }
+    ],
+    "adultOnly": false,
+    "legacyItemId": "115962028346",
+    "availableCoupons": false,
+    "itemCreationDate": "2023-11-02T13:07:50.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": true,
+    "listingMarketplaceId": "EBAY_GB"
+  },
+  {
+    "itemId": "v1|325679259341|0",
+    "title": "Bracket For NVIDIA TESLA A100 A800 40G 80G  GPU Graphics Video Card",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/TqkAAOSwWHZkeqhG/s-l225.jpg"
+    },
+    "price": {
+      "value": "9.48",
+      "currency": "USD"
+    },
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C325679259341%7C0",
+    "seller": {
+      "username": "redacted-3194107469673519.5",
+      "feedbackPercentage": "99.6",
+      "feedbackScore": 661
+    },
+    "marketingPrice": {
+      "originalPrice": {
+        "value": "9.98",
+        "currency": "USD"
+      },
+      "discountPercentage": "5",
+      "discountAmount": {
+        "value": "0.50",
+        "currency": "USD"
+      },
+      "priceTreatment": "MARKDOWN"
+    },
+    "condition": "New",
+    "conditionId": "1000",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/TqkAAOSwWHZkeqhG/s-l960.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "5.00",
+          "currency": "USD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE"
+    ],
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/325679259341?hash=item4bd3ff1ecd%3Ag%3ATqkAAOSwWHZkeqhG&amdata=enc%3AAQAIAAAA4NaEl%2BZmAppeJPTe%2BwSYS8llZ4pWmahxIvOkCuZ8L6aNX10bbq%2FSDC3gSKB6f%2BqJyRAknZjNLBfflpo78QovZcwZDP0znv0qn1D5EQjzOA3rtjHQpKBkREHl0lXBWWzFST%2Fe6dBGwkXlAMLMaOWbBqd3tYSwUmqGxGhpkKApncTyc71bXbWIeYA%2F8jPV%2BeHQ0Ow7ODZLk2WjktFr8Tf%2Fc7zxTsMqpzRMuGell4vap%2FYFLMwcOrhe%2FiKy44ybJh5yjm2L36ZvCuZAp26NtY3vhHvTJa0djWWVn83YGY5J5TdH&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/325679259341?hash=item4bd3ff1ecd:g:TqkAAOSwWHZkeqhG&amdata=enc%3AAQAIAAAA4NaEl%2BZmAppeJPTe%2BwSYS8llZ4pWmahxIvOkCuZ8L6aNX10bbq%2FSDC3gSKB6f%2BqJyRAknZjNLBfflpo78QovZcwZDP0znv0qn1D5EQjzOA3rtjHQpKBkREHl0lXBWWzFST%2Fe6dBGwkXlAMLMaOWbBqd3tYSwUmqGxGhpkKApncTyc71bXbWIeYA%2F8jPV%2BeHQ0Ow7ODZLk2WjktFr8Tf%2Fc7zxTsMqpzRMuGell4vap%2FYFLMwcOrhe%2FiKy44ybJh5yjm2L36ZvCuZAp26NtY3vhHvTJa0djWWVn83YGY5J5TdH",
+    "itemLocation": {
+      "country": "CN"
+    },
+    "additionalImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/7y8AAOSwTixkvkdM/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/lRAAAOSwLwFkt41W/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/jdEAAOSwCXJkeqg1/s-l225.jpg"
+      }
+    ],
+    "adultOnly": false,
+    "legacyItemId": "325679259341",
+    "availableCoupons": false,
+    "itemCreationDate": "2023-06-04T02:42:44.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": true,
+    "listingMarketplaceId": "EBAY_US"
+  },
+  {
+    "itemId": "v1|195251005774|0",
+    "title": "Nvidia Tesla A100 Ampere GPU Accelarator 40GB Graphics Card Deep learning AI",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/peUAAOSws6Ji41ny/s-l225.jpg"
+    },
+    "price": {
+      "value": "6350.00",
+      "currency": "USD"
+    },
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C195251005774%7C0",
+    "seller": {
+      "username": "redacted-3882615389387169.5",
+      "feedbackPercentage": "98.7",
+      "feedbackScore": 6871
+    },
+    "condition": "New",
+    "conditionId": "1000",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/peUAAOSws6Ji41ny/s-l1600.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "0.00",
+          "currency": "USD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE",
+      "BEST_OFFER"
+    ],
+    "epid": "26042475154",
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/195251005774?hash=item2d75dde94e%3Ag%3ApeUAAOSws6Ji41ny&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/195251005774?hash=item2d75dde94e:g:peUAAOSws6Ji41ny",
+    "itemLocation": {
+      "country": "CN"
+    },
+    "additionalImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/ovoAAOSwPgdi41nk/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/Qi0AAOSwzV1i41nm/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/4qIAAOSwR-li41np/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/v8sAAOSwWyRi41nr/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/Qg0AAOSw3v5i41nu/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/oHIAAOSw4NNi41n0/s-l225.jpg"
+      }
+    ],
+    "adultOnly": false,
+    "legacyItemId": "195251005774",
+    "availableCoupons": false,
+    "itemCreationDate": "2022-07-29T03:58:55.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": false,
+    "listingMarketplaceId": "EBAY_US"
+  },
+  {
+    "itemId": "v1|126143344571|0",
+    "title": "NVIDIA Tesla A100 80GB GPU PCIE Graphics Card Deep Learning GPU Computing Server",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/QoEAAOSwnRtlL5Pk/s-l225.jpg"
+    },
+    "price": {
+      "value": "22381.99",
+      "currency": "USD"
+    },
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C126143344571%7C0",
+    "seller": {
+      "username": "redacted-5065500247355987",
+      "feedbackPercentage": "98.9",
+      "feedbackScore": 645
+    },
+    "marketingPrice": {
+      "originalPrice": {
+        "value": "23559.99",
+        "currency": "USD"
+      },
+      "discountPercentage": "5",
+      "discountAmount": {
+        "value": "1178.00",
+        "currency": "USD"
+      },
+      "priceTreatment": "MARKDOWN"
+    },
+    "condition": "New",
+    "conditionId": "1000",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/QoEAAOSwnRtlL5Pk/s-l960.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "0.00",
+          "currency": "USD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE"
+    ],
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/126143344571?hash=item1d5ebaafbb%3Ag%3AQoEAAOSwnRtlL5Pk&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/126143344571?hash=item1d5ebaafbb:g:QoEAAOSwnRtlL5Pk",
+    "itemLocation": {
+      "postalCode": "******",
+      "country": "CN"
+    },
+    "adultOnly": false,
+    "legacyItemId": "126143344571",
+    "availableCoupons": false,
+    "itemCreationDate": "2023-10-19T14:41:35.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": false,
+    "listingMarketplaceId": "EBAY_US"
+  },
+  {
+    "itemId": "v1|295994761852|0",
+    "title": "NVIDIA Tesla A100 80G PCIe Deep Learning GPU Computing Graphics Card",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/954AAOSwL2hlMJjd/s-l225.jpg"
+    },
+    "price": {
+      "value": "19000.00",
+      "currency": "USD"
+    },
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C295994761852%7C0",
+    "seller": {
+      "username": "redacted-8391605950634695",
+      "feedbackPercentage": "98.2",
+      "feedbackScore": 55
+    },
+    "condition": "New",
+    "conditionId": "1000",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/954AAOSwL2hlMJjd/s-l960.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "0.00",
+          "currency": "USD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE",
+      "BEST_OFFER"
+    ],
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/295994761852?hash=item44eaa9a27c%3Ag%3A954AAOSwL2hlMJjd&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/295994761852?hash=item44eaa9a27c:g:954AAOSwL2hlMJjd",
+    "itemLocation": {
+      "postalCode": "******",
+      "country": "CN"
+    },
+    "additionalImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/oUEAAOSwlHdlMJje/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/QXcAAOSwMaZlMJjh/s-l225.jpg"
+      }
+    ],
+    "adultOnly": false,
+    "legacyItemId": "295994761852",
+    "availableCoupons": false,
+    "itemCreationDate": "2023-10-20T02:48:10.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": false,
+    "listingMarketplaceId": "EBAY_US"
+  },
+  {
+    "itemId": "v1|175913320817|0",
+    "title": "NVIDIA Tesla A100 80G Deep Learning GPU Computing Graphics Card PCI-E ",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/pvUAAOSwgudlDFxU/s-l225.jpg"
+    },
+    "price": {
+      "value": "28000.00",
+      "currency": "USD"
+    },
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C175913320817%7C0",
+    "seller": {
+      "username": "redacted-6867353813221801",
+      "feedbackPercentage": "99.8",
+      "feedbackScore": 3090
+    },
+    "condition": "New",
+    "conditionId": "1000",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/pvUAAOSwgudlDFxU/s-l640.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "0.00",
+          "currency": "USD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE",
+      "BEST_OFFER"
+    ],
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/175913320817?hash=item28f5404171%3Ag%3ApvUAAOSwgudlDFxU&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/175913320817?hash=item28f5404171:g:pvUAAOSwgudlDFxU",
+    "itemLocation": {
+      "postalCode": "******",
+      "country": "CN"
+    },
+    "additionalImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/eUEAAOSw-E9lDFxX/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/5MMAAOSw7b5lDFxb/s-l225.jpg"
+      }
+    ],
+    "adultOnly": false,
+    "legacyItemId": "175913320817",
+    "availableCoupons": false,
+    "itemCreationDate": "2023-09-22T15:08:24.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": false,
+    "listingMarketplaceId": "EBAY_US"
+  },
+  {
+    "itemId": "v1|395025853535|0",
+    "title": "Nvidia A100 40GB PCI-E 4.0 SXM4 Graphics Card Part",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/bEQAAOSwSD9lZGbu/s-l225.jpg"
+    },
+    "price": {
+      "value": "7599.00",
+      "currency": "USD"
+    },
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C395025853535%7C0",
+    "seller": {
+      "username": "redacted-5644916914361383",
+      "feedbackPercentage": "99.1",
+      "feedbackScore": 419
+    },
+    "condition": "New",
+    "conditionId": "1000",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/bEQAAOSwSD9lZGbu/s-l1600.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "0.00",
+          "currency": "USD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE",
+      "BEST_OFFER"
+    ],
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/395025853535?hash=item5bf9602c5f%3Ag%3AbEQAAOSwSD9lZGbu&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/395025853535?hash=item5bf9602c5f:g:bEQAAOSwSD9lZGbu",
+    "itemLocation": {
+      "postalCode": "******",
+      "country": "CN"
+    },
+    "additionalImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/jTsAAOSw4illZGbw/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/8h4AAOSwtdllZGbz/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/fGgAAOSwx2plZGb1/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/eI8AAOSwtjtlZGb4/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/3RAAAOSw5pZlZGb8/s-l225.jpg"
+      }
+    ],
+    "adultOnly": false,
+    "legacyItemId": "395025853535",
+    "availableCoupons": false,
+    "itemCreationDate": "2023-11-28T09:56:56.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": false,
+    "listingMarketplaceId": "EBAY_US"
+  },
+  {
+    "itemId": "v1|204470860547|0",
+    "title": "New NVIDIA Tesla A100 80G Deep Learning GPU Computing Graphics Card PCIE Version",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/J38AAOSwsHplDA2L/s-l225.jpg"
+    },
+    "price": {
+      "value": "26666.59",
+      "currency": "USD"
+    },
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C204470860547%7C0",
+    "seller": {
+      "username": "redacted-2852396440213869.5",
+      "feedbackPercentage": "0.0",
+      "feedbackScore": 0
+    },
+    "condition": "New",
+    "conditionId": "1000",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/J38AAOSwsHplDA2L/s-l1600.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "56.00",
+          "currency": "USD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE",
+      "BEST_OFFER"
+    ],
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/204470860547?hash=item2f9b69bb03%3Ag%3AJ38AAOSwsHplDA2L&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/204470860547?hash=item2f9b69bb03:g:J38AAOSwsHplDA2L",
+    "itemLocation": {
+      "country": "CN"
+    },
+    "additionalImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/TGoAAOSwKQhlDA2M/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/rLwAAOSwbPhlDA2M/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/9q8AAOSwvgZlDA2a/s-l225.jpg"
+      }
+    ],
+    "adultOnly": false,
+    "legacyItemId": "204470860547",
+    "availableCoupons": false,
+    "itemCreationDate": "2023-09-22T10:00:15.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": false,
+    "listingMarketplaceId": "EBAY_US"
+  },
+  {
+    "itemId": "v1|115837460357|0",
+    "title": "Nvidia Tesla A100 40GB GPU Ampere Accelarator Graphics Card Deep learning AI",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/QloAAOSwocdkjXUA/s-l225.jpg"
+    },
+    "price": {
+      "value": "6288.00",
+      "currency": "USD"
+    },
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C115837460357%7C0",
+    "seller": {
+      "username": "redacted-2285095144980397.5",
+      "feedbackPercentage": "97.5",
+      "feedbackScore": 7821
+    },
+    "condition": "New",
+    "conditionId": "1000",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/QloAAOSwocdkjXUA/s-l960.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "0.00",
+          "currency": "USD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE",
+      "BEST_OFFER"
+    ],
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/115837460357?hash=item1af8735f85%3Ag%3AQloAAOSwocdkjXUA&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/115837460357?hash=item1af8735f85:g:QloAAOSwocdkjXUA",
+    "itemLocation": {
+      "postalCode": "******",
+      "country": "CN"
+    },
+    "additionalImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/yugAAOSwKFdkjXUB/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/wJ0AAOSwdaBkjXUD/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/xv0AAOSwBg1kjXUE/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/HocAAOSwLQlkjXUH/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/mTEAAOSwWepkjXUJ/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/wf4AAOSwrAFkjXUL/s-l225.jpg"
+      }
+    ],
+    "adultOnly": false,
+    "legacyItemId": "115837460357",
+    "availableCoupons": false,
+    "itemCreationDate": "2023-06-20T15:56:03.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": false,
+    "listingMarketplaceId": "EBAY_US"
+  },
+  {
+    "itemId": "v1|385962650750|0",
+    "title": "Nvidia A100 40GB PCI-E 4.0 SXM4 Graphics Card Part",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/lggAAOSwFJlk2ez1/s-l225.jpg"
+    },
+    "price": {
+      "value": "7219.05",
+      "currency": "USD"
+    },
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C385962650750%7C0",
+    "seller": {
+      "username": "redacted-6626280567851693",
+      "feedbackPercentage": "99.6",
+      "feedbackScore": 249
+    },
+    "marketingPrice": {
+      "originalPrice": {
+        "value": "7599.00",
+        "currency": "USD"
+      },
+      "discountPercentage": "5",
+      "discountAmount": {
+        "value": "379.95",
+        "currency": "USD"
+      },
+      "priceTreatment": "MARKDOWN"
+    },
+    "condition": "New",
+    "conditionId": "1000",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/lggAAOSwFJlk2ez1/s-l1600.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "0.00",
+          "currency": "USD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE",
+      "BEST_OFFER"
+    ],
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/385962650750?hash=item59dd2aac7e%3Ag%3AlggAAOSwFJlk2ez1&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/385962650750?hash=item59dd2aac7e:g:lggAAOSwFJlk2ez1",
+    "itemLocation": {
+      "postalCode": "******",
+      "country": "CN"
+    },
+    "additionalImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/MWMAAOSwjzhk2ez0/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/WnUAAOSwD2hk2ez3/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/xjcAAOSwkSFk2ez4/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/rXwAAOSwC-Jk2ez6/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/pe4AAOSwpidk2ez7/s-l225.jpg"
+      }
+    ],
+    "adultOnly": false,
+    "legacyItemId": "385962650750",
+    "availableCoupons": false,
+    "itemCreationDate": "2023-08-15T09:00:42.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": false,
+    "listingMarketplaceId": "EBAY_US"
+  },
+  {
+    "itemId": "v1|225726612580|0",
+    "title": "Nvidia A100 40GB PCI-E 4.0 SXM4 Graphics Card Part",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/EFgAAOSwgPdk2ezz/s-l225.jpg"
+    },
+    "price": {
+      "value": "7219.05",
+      "currency": "USD"
+    },
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C225726612580%7C0",
+    "seller": {
+      "username": "redacted-7079292813214985",
+      "feedbackPercentage": "99.6",
+      "feedbackScore": 449
+    },
+    "marketingPrice": {
+      "originalPrice": {
+        "value": "7599.00",
+        "currency": "USD"
+      },
+      "discountPercentage": "5",
+      "discountAmount": {
+        "value": "379.95",
+        "currency": "USD"
+      },
+      "priceTreatment": "MARKDOWN"
+    },
+    "condition": "New",
+    "conditionId": "1000",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/EFgAAOSwgPdk2ezz/s-l1600.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "0.00",
+          "currency": "USD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE",
+      "BEST_OFFER"
+    ],
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/225726612580?hash=item348e5ac464%3Ag%3AEFgAAOSwgPdk2ezz&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/225726612580?hash=item348e5ac464:g:EFgAAOSwgPdk2ezz",
+    "itemLocation": {
+      "postalCode": "******",
+      "country": "CN"
+    },
+    "additionalImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/kIAAAOSwMmNk2ez0/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/57QAAOSw91Zk2ez2/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/QUoAAOSwPW5k2ez3/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/jiEAAOSwvlJk2ez5/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/ez4AAOSwWi1k2ez6/s-l225.jpg"
+      }
+    ],
+    "adultOnly": false,
+    "legacyItemId": "225726612580",
+    "availableCoupons": false,
+    "itemCreationDate": "2023-08-15T09:00:52.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": false,
+    "listingMarketplaceId": "EBAY_US"
+  },
+  {
+    "itemId": "v1|304572392242|0",
+    "title": "NVIDIA A100 40 GB HBM2 VRAM 900-21001-0000-000",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/IEIAAOSw-mFjuLmq/s-l225.jpg"
+    },
+    "price": {
+      "value": "12500.00",
+      "currency": "USD"
+    },
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C304572392242%7C0",
+    "seller": {
+      "username": "redacted-4579581857247637",
+      "feedbackPercentage": "100.0",
+      "feedbackScore": 811
+    },
+    "condition": "Open box",
+    "conditionId": "1500",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/IEIAAOSw-mFjuLmq/s-l1600.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "0.00",
+          "currency": "USD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE"
+    ],
+    "epid": "14046138204",
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/304572392242?hash=item46e9ede332%3Ag%3AIEIAAOSw-mFjuLmq&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/304572392242?hash=item46e9ede332:g:IEIAAOSw-mFjuLmq",
+    "itemLocation": {
+      "postalCode": "325**",
+      "country": "US"
+    },
+    "additionalImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/tWIAAOSw8TNjuLm5/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/FdoAAOSw0w9juLm5/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/WXIAAOSw4TljuLmk/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/TZIAAOSwhJ5juLmv/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/MiwAAOSwcopi2xVX/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/eYMAAOSwNl5juLmf/s-l225.jpg"
+      }
+    ],
+    "adultOnly": false,
+    "legacyItemId": "304572392242",
+    "availableCoupons": false,
+    "itemCreationDate": "2022-07-22T21:55:40.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": false,
+    "listingMarketplaceId": "EBAY_US"
+  },
+  {
+    "itemId": "v1|225758822575|0",
+    "title": "Nvidia Tesla A100 40GB PCI-E 4.0 SXM4 Graphics Card Part",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/kLQAAOSw-s5k9VII/s-l225.jpg"
+    },
+    "price": {
+      "value": "6288.00",
+      "currency": "USD"
+    },
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C225758822575%7C0",
+    "seller": {
+      "username": "redacted-4338785828675729.5",
+      "feedbackPercentage": "94.5",
+      "feedbackScore": 1340
+    },
+    "condition": "New",
+    "conditionId": "1000",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/kLQAAOSw-s5k9VII/s-l1200.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "0.00",
+          "currency": "USD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE",
+      "BEST_OFFER"
+    ],
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/225758822575?hash=item34904640af%3Ag%3AkLQAAOSw-s5k9VII&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/225758822575?hash=item34904640af:g:kLQAAOSw-s5k9VII",
+    "itemLocation": {
+      "country": "CN"
+    },
+    "additionalImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/yIMAAOSwplJk9VIJ/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/T~kAAOSwmfFk9VIJ/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/yOsAAOSwjzJk9VIJ/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/2KkAAOSwsqFk9VIJ/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/Oz8AAOSwySVk9VII/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/iPMAAOSwV0Jk9VIH/s-l225.jpg"
+      }
+    ],
+    "adultOnly": false,
+    "legacyItemId": "225758822575",
+    "availableCoupons": false,
+    "itemCreationDate": "2023-09-05T17:13:27.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": false,
+    "listingMarketplaceId": "EBAY_US"
+  },
+  {
+    "itemId": "v1|354874352528|0",
+    "title": "Nvidia  A100 Ampere GPU Accelarator 40GB SXM OEM Graphics Card Deep learning AI",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/FBUAAOSwl6Zk4tUN/s-l225.jpg"
+    },
+    "price": {
+      "value": "6898.00",
+      "currency": "USD"
+    },
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C354874352528%7C0",
+    "seller": {
+      "username": "redacted-7830298926327127",
+      "feedbackPercentage": "100.0",
+      "feedbackScore": 7
+    },
+    "condition": "New",
+    "conditionId": "1000",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/FBUAAOSwl6Zk4tUN/s-l1200.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "56.00",
+          "currency": "USD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE"
+    ],
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/354874352528?hash=item52a028e390%3Ag%3AFBUAAOSwl6Zk4tUN&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/354874352528?hash=item52a028e390:g:FBUAAOSwl6Zk4tUN",
+    "itemLocation": {
+      "country": "CN"
+    },
+    "additionalImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/AwUAAOSwsVpkmSki/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/eZwAAOSwrFdkmSlg/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/49wAAOSw~ENkmSlg/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/nD0AAOSwjjBk4tUW/s-l225.jpg"
+      }
+    ],
+    "adultOnly": false,
+    "legacyItemId": "354874352528",
+    "availableCoupons": false,
+    "itemCreationDate": "2023-06-27T05:52:21.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": false,
+    "listingMarketplaceId": "EBAY_US"
+  },
+  {
+    "itemId": "v1|394819038675|0",
+    "title": "Nvidia Tesla A100 80GB GPU SXM4 Ampere Accelarator Graphics Card Deeplearning AI",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/r4cAAOSwg9dk3cpA/s-l225.jpg"
+    },
+    "price": {
+      "value": "19425.00",
+      "currency": "USD"
+    },
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C394819038675%7C0",
+    "seller": {
+      "username": "redacted-2911281268428229.5",
+      "feedbackPercentage": "96.7",
+      "feedbackScore": 86
+    },
+    "condition": "New",
+    "conditionId": "1000",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/r4cAAOSwg9dk3cpA/s-l960.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "0.00",
+          "currency": "USD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE",
+      "BEST_OFFER"
+    ],
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/394819038675?hash=item5bed0c6dd3%3Ag%3Ar4cAAOSwg9dk3cpA&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/394819038675?hash=item5bed0c6dd3:g:r4cAAOSwg9dk3cpA",
+    "itemLocation": {
+      "postalCode": "******",
+      "country": "CN"
+    },
+    "additionalImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/PB4AAOSwu8lk3cpB/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/pioAAOSwuTxk3cpD/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/QJAAAOSw7OZk3cpV/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/9~0AAOSw5Mpk3cpY/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/pf4AAOSw891k3cpb/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/WrIAAOSwa3Nk3cpd/s-l225.jpg"
+      }
+    ],
+    "adultOnly": false,
+    "legacyItemId": "394819038675",
+    "availableCoupons": false,
+    "itemCreationDate": "2023-08-18T07:23:28.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": false,
+    "listingMarketplaceId": "EBAY_US"
+  },
+  {
+    "itemId": "v1|225783461721|0",
+    "title": "Nvidia Tesla A100 SXM4 GPU Accelarator 40GB graphics card deep learning AI",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/JfsAAOSwyWdlC~DL/s-l225.jpg"
+    },
+    "price": {
+      "value": "6289.00",
+      "currency": "USD"
+    },
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C225783461721%7C0",
+    "seller": {
+      "username": "redacted-2479288973619341.5",
+      "feedbackPercentage": "94.5",
+      "feedbackScore": 1340
+    },
+    "condition": "New",
+    "conditionId": "1000",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/JfsAAOSwyWdlC~DL/s-l1600.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "0.00",
+          "currency": "USD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE",
+      "BEST_OFFER"
+    ],
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/225783461721?hash=item3491be3759%3Ag%3AJfsAAOSwyWdlC%7EDL&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/225783461721?hash=item3491be3759:g:JfsAAOSwyWdlC~DL",
+    "itemLocation": {
+      "country": "CN"
+    },
+    "additionalImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/uvAAAOSw435lC~DK/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/EXAAAOSwnNplC~DJ/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/0-gAAOSwAvJlC~DJ/s-l225.jpg"
+      }
+    ],
+    "adultOnly": false,
+    "legacyItemId": "225783461721",
+    "availableCoupons": false,
+    "itemCreationDate": "2023-09-22T14:30:56.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": false,
+    "listingMarketplaceId": "EBAY_US"
+  },
+  {
+    "itemId": "v1|395011176856|0",
+    "title": "Nvidia Tesla A100 80GB GPU SXM4 Ampere Accelarator Graphics Card Deeplearning AI",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/60oAAOSwijNlWt1J/s-l225.jpg"
+    },
+    "price": {
+      "value": "19425.00",
+      "currency": "USD"
+    },
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C395011176856%7C0",
+    "seller": {
+      "username": "redacted-3042925553210401.5",
+      "feedbackPercentage": "0.0",
+      "feedbackScore": 0
+    },
+    "condition": "New",
+    "conditionId": "1000",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/60oAAOSwijNlWt1J/s-l960.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "0.00",
+          "currency": "USD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE",
+      "BEST_OFFER"
+    ],
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/395011176856?hash=item5bf8803998%3Ag%3A60oAAOSwijNlWt1J&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/395011176856?hash=item5bf8803998:g:60oAAOSwijNlWt1J",
+    "itemLocation": {
+      "postalCode": "******",
+      "country": "CN"
+    },
+    "additionalImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/C8sAAOSwPRtlWt1M/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/7eEAAOSwPm9lWt1O/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/0PQAAOSw4ZtlWt1R/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/OW0AAOSwnPFlWt1S/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/IqIAAOSwh6plWt1Y/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/Dy0AAOSwhP9lWt1b/s-l225.jpg"
+      }
+    ],
+    "adultOnly": false,
+    "legacyItemId": "395011176856",
+    "availableCoupons": false,
+    "itemCreationDate": "2023-11-21T07:53:30.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": false,
+    "listingMarketplaceId": "EBAY_US"
+  },
+  {
+    "itemId": "v1|364309590314|0",
+    "title": "Nvidia Tesla A100 Ampere GPU Accelarator 40GB Graphics Card Deep learning AI",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/D-EAAOSwk2dkj7RG/s-l225.jpg"
+    },
+    "price": {
+      "value": "7599.00",
+      "currency": "USD"
+    },
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C364309590314%7C0",
+    "seller": {
+      "username": "redacted-7838674812187941",
+      "feedbackPercentage": "99.4",
+      "feedbackScore": 1895
+    },
+    "condition": "New",
+    "conditionId": "1000",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/D-EAAOSwk2dkj7RG/s-l960.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "0.00",
+          "currency": "USD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE",
+      "BEST_OFFER"
+    ],
+    "epid": "26042475154",
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/364309590314?hash=item54d28b312a%3Ag%3AD-EAAOSwk2dkj7RG&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/364309590314?hash=item54d28b312a:g:D-EAAOSwk2dkj7RG",
+    "itemLocation": {
+      "postalCode": "******",
+      "country": "CN"
+    },
+    "additionalImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/HtgAAOSwne1kj7RH/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/Dw8AAOSwUX1kj7RI/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/-ZIAAOSwOedkj7RL/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/ii4AAOSwCmNkj7RM/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/7zYAAOSw24lkj7RO/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/BBsAAOSwAJpkj7RQ/s-l225.jpg"
+      }
+    ],
+    "adultOnly": false,
+    "legacyItemId": "364309590314",
+    "availableCoupons": false,
+    "itemCreationDate": "2023-06-20T01:51:12.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": false,
+    "listingMarketplaceId": "EBAY_US"
+  },
+  {
+    "itemId": "v1|155598875339|0",
+    "title": "NVIDIA Dual 8 to 8 Graphics Power Cable 030-0571-000 TESLA  A100 V100 P100 P40",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/jpYAAOSw045i~eNQ/s-l225.jpg"
+    },
+    "price": {
+      "value": "5.99",
+      "currency": "USD"
+    },
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C155598875339%7C0",
+    "seller": {
+      "username": "redacted-2868940280690863.5",
+      "feedbackPercentage": "100.0",
+      "feedbackScore": 9539
+    },
+    "marketingPrice": {
+      "originalPrice": {
+        "value": "6.21",
+        "currency": "USD"
+      },
+      "discountPercentage": "4",
+      "discountAmount": {
+        "value": "0.22",
+        "currency": "USD"
+      }
+    },
+    "condition": "New",
+    "conditionId": "1000",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/jpYAAOSw045i~eNQ/s-l1200.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "3.99",
+          "currency": "USD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE",
+      "BEST_OFFER"
+    ],
+    "epid": "21012461239",
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/155598875339?hash=item243a6a6acb%3Ag%3AjpYAAOSw045i%7EeNQ&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/155598875339?hash=item243a6a6acb:g:jpYAAOSw045i~eNQ",
+    "itemLocation": {
+      "country": "CN"
+    },
+    "additionalImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/GTYAAOSwR1Ji~eNS/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/6ygAAOSwIx1i~eNT/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/bEcAAOSwKidi~eNU/s-l225.jpg"
+      }
+    ],
+    "adultOnly": false,
+    "legacyItemId": "155598875339",
+    "availableCoupons": false,
+    "itemCreationDate": "2023-06-10T01:39:44.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": false,
+    "listingMarketplaceId": "EBAY_US"
+  },
+  {
+    "itemId": "v1|394782390567|0",
+    "title": "Nvidia Tesla A100 40GB HBM2e  Ampere Accelarator Graphics Card Deeplearning AI",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/FGoAAOSw9RtkyNxU/s-l225.jpg"
+    },
+    "price": {
+      "value": "9199.00",
+      "currency": "USD"
+    },
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C394782390567%7C0",
+    "seller": {
+      "username": "redacted-6570515284051579",
+      "feedbackPercentage": "96.7",
+      "feedbackScore": 86
+    },
+    "condition": "New",
+    "conditionId": "1000",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/FGoAAOSw9RtkyNxU/s-l960.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "0.00",
+          "currency": "USD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE",
+      "BEST_OFFER"
+    ],
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/394782390567?hash=item5beadd3927%3Ag%3AFGoAAOSw9RtkyNxU&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/394782390567?hash=item5beadd3927:g:FGoAAOSw9RtkyNxU",
+    "itemLocation": {
+      "postalCode": "******",
+      "country": "CN"
+    },
+    "additionalImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/~TcAAOSw-RFkyNxV/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/3FEAAOSw7IFkyNxX/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/~GUAAOSwrAxkyNxY/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/PEIAAOSw13FkyNxa/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/AR8AAOSwP9tkyNxb/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/KgIAAOSwy59kyNxd/s-l225.jpg"
+      }
+    ],
+    "adultOnly": false,
+    "legacyItemId": "394782390567",
+    "availableCoupons": false,
+    "itemCreationDate": "2023-08-02T10:24:54.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": false,
+    "listingMarketplaceId": "EBAY_US"
+  },
+  {
+    "itemId": "v1|295841934593|0",
+    "title": "Nvidia Tesla A100 Ampere GPU Accelarator 40GB Graphics Card Deep learning AI",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/anIAAOSwbCZkwjVK/s-l225.jpg"
+    },
+    "price": {
+      "value": "7899.95",
+      "currency": "USD"
+    },
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C295841934593%7C0",
+    "seller": {
+      "username": "redacted-2610729832275529.5",
+      "feedbackPercentage": "100.0",
+      "feedbackScore": 5687
+    },
+    "condition": "New",
+    "conditionId": "1000",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/anIAAOSwbCZkwjVK/s-l960.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "80.00",
+          "currency": "USD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE",
+      "BEST_OFFER"
+    ],
+    "epid": "26042475154",
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/295841934593?hash=item44e18dad01%3Ag%3AanIAAOSwbCZkwjVK&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/295841934593?hash=item44e18dad01:g:anIAAOSwbCZkwjVK",
+    "itemLocation": {
+      "postalCode": "******",
+      "country": "CN"
+    },
+    "additionalImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/-zAAAOSwuFFkwjVL/s-l225.jpg"
+      }
+    ],
+    "adultOnly": false,
+    "legacyItemId": "295841934593",
+    "availableCoupons": false,
+    "itemCreationDate": "2023-07-28T09:14:02.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": false,
+    "listingMarketplaceId": "EBAY_US"
+  },
+  {
+    "itemId": "v1|115995860938|0",
+    "title": "DELL NVIDIA A100 AMPERE 80GB HBM2e PASSIVE GPU GRAPHICS CARD - 575TK",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/mXkAAOSwkpplaL3g/s-l225.jpg"
+    },
+    "price": {
+      "value": "26584.95",
+      "currency": "USD",
+      "convertedFromValue": "21000.00",
+      "convertedFromCurrency": "GBP"
+    },
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C115995860938%7C0",
+    "seller": {
+      "username": "redacted-3726169314333585.5",
+      "feedbackPercentage": "100.0",
+      "feedbackScore": 3643
+    },
+    "condition": "Excellent - Refurbished",
+    "conditionId": "2010",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/mXkAAOSwkpplaL3g/s-l1600.jpg"
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE",
+      "BEST_OFFER"
+    ],
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/115995860938?hash=item1b01e45fca%3Ag%3AmXkAAOSwkpplaL3g&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/115995860938?hash=item1b01e45fca:g:mXkAAOSwkpplaL3g",
+    "itemLocation": {
+      "postalCode": "RG12***",
+      "country": "GB"
+    },
+    "additionalImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/ws4AAOSwIzllaL3g/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/50QAAOSw-A1laL3g/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/QPkAAOSwIaBlaL3g/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/vFEAAOSwku9laL3g/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/Z18AAOSwR6FlaL3g/s-l225.jpg"
+      }
+    ],
+    "adultOnly": false,
+    "legacyItemId": "115995860938",
+    "availableCoupons": false,
+    "itemCreationDate": "2023-11-30T17:01:42.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": false,
+    "listingMarketplaceId": "EBAY_GB"
+  },
+  {
+    "itemId": "v1|126143540221|0",
+    "title": "NVIDIA Tesla A100 80GB GPU PCIE Graphics Card Deep Learning GPU Computing Server",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/uHMAAOSwtBtlL4GH/s-l225.jpg"
+    },
+    "price": {
+      "value": "22381.99",
+      "currency": "USD"
+    },
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C126143540221%7C0",
+    "seller": {
+      "username": "redacted-4294085057175115.5",
+      "feedbackPercentage": "98.9",
+      "feedbackScore": 1492
+    },
+    "marketingPrice": {
+      "originalPrice": {
+        "value": "23559.99",
+        "currency": "USD"
+      },
+      "discountPercentage": "5",
+      "discountAmount": {
+        "value": "1178.00",
+        "currency": "USD"
+      },
+      "priceTreatment": "MARKDOWN"
+    },
+    "condition": "New",
+    "conditionId": "1000",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/uHMAAOSwtBtlL4GH/s-l960.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "0.00",
+          "currency": "USD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE"
+    ],
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/126143540221?hash=item1d5ebdabfd%3Ag%3AuHMAAOSwtBtlL4GH&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/126143540221?hash=item1d5ebdabfd:g:uHMAAOSwtBtlL4GH",
+    "itemLocation": {
+      "postalCode": "******",
+      "country": "CN"
+    },
+    "adultOnly": false,
+    "legacyItemId": "126143540221",
+    "availableCoupons": false,
+    "itemCreationDate": "2023-10-19T16:28:03.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": false,
+    "listingMarketplaceId": "EBAY_US"
+  },
+  {
+    "itemId": "v1|175967890397|0",
+    "title": "NVIDIA Tesla a100 Amp GPU accelerometer 40GB graphics card deep learning AI 250w",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/QfIAAOSwP3dgYXem/s-l225.jpg"
+    },
+    "price": {
+      "value": "12800.00",
+      "currency": "USD"
+    },
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C175967890397%7C0",
+    "seller": {
+      "username": "redacted-7943414180726753",
+      "feedbackPercentage": "99.8",
+      "feedbackScore": 3090
+    },
+    "condition": "New",
+    "conditionId": "1000",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/QfIAAOSwP3dgYXem/s-l225.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "0.00",
+          "currency": "USD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE",
+      "BEST_OFFER"
+    ],
+    "epid": "26042475154",
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/175967890397?hash=item28f880ebdd%3Ag%3AQfIAAOSwP3dgYXem&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/175967890397?hash=item28f880ebdd:g:QfIAAOSwP3dgYXem",
+    "itemLocation": {
+      "postalCode": "******",
+      "country": "CN"
+    },
+    "additionalImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/SlAAAOSwmPVgYXer/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/SqMAAOSweOVi4kVn/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/bOMAAOSwcbVgYXet/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/xs8AAOSwWuBi4kVv/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/SKwAAOSwf7Ni4kVy/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/NIkAAOSwCTJi4kV8/s-l225.jpg"
+      }
+    ],
+    "adultOnly": false,
+    "legacyItemId": "175967890397",
+    "availableCoupons": false,
+    "itemCreationDate": "2023-10-17T16:35:22.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": false,
+    "listingMarketplaceId": "EBAY_US"
+  },
+  {
+    "itemId": "v1|295989607404|0",
+    "title": "NEW NVIDIA Tesla A100 80G Deep Learning GPU Computing Graphics Card PCIE Version",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/ToUAAOSw7ltlLLnG/s-l225.jpg"
+    },
+    "price": {
+      "value": "23500.00",
+      "currency": "USD"
+    },
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C295989607404%7C0",
+    "seller": {
+      "username": "redacted-8429450405813911",
+      "feedbackPercentage": "98.2",
+      "feedbackScore": 55
+    },
+    "condition": "New",
+    "conditionId": "1000",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/ToUAAOSw7ltlLLnG/s-l960.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "0.00",
+          "currency": "USD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE",
+      "BEST_OFFER"
+    ],
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/295989607404?hash=item44ea5afbec%3Ag%3AToUAAOSw7ltlLLnG&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/295989607404?hash=item44ea5afbec:g:ToUAAOSw7ltlLLnG",
+    "itemLocation": {
+      "postalCode": "******",
+      "country": "CN"
+    },
+    "additionalImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/jXEAAOSwhnhlLLnI/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/dfEAAOSwV4xlLLnL/s-l225.jpg"
+      }
+    ],
+    "adultOnly": false,
+    "legacyItemId": "295989607404",
+    "availableCoupons": false,
+    "itemCreationDate": "2023-10-17T04:19:31.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": false,
+    "listingMarketplaceId": "EBAY_US"
+  },
+  {
+    "itemId": "v1|155525749800|0",
+    "title": "Nvidia A100 40GB PCI-E 4.0 SXM4 Graphics Card Part",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/w4wAAOSwgN9kSlCM/s-l225.jpg"
+    },
+    "price": {
+      "value": "7200.00",
+      "currency": "USD"
+    },
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C155525749800%7C0",
+    "seller": {
+      "username": "redacted-2390379406686751.5",
+      "feedbackPercentage": "99.1",
+      "feedbackScore": 37492
+    },
+    "condition": "New",
+    "conditionId": "1000",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/w4wAAOSwgN9kSlCM/s-l1600.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "0.00",
+          "currency": "USD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE",
+      "BEST_OFFER"
+    ],
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/155525749800?hash=item24360e9c28%3Ag%3Aw4wAAOSwgN9kSlCM&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/155525749800?hash=item24360e9c28:g:w4wAAOSwgN9kSlCM",
+    "itemLocation": {
+      "country": "CN"
+    },
+    "additionalImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/ZYwAAOSwZoRkSlCN/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/IrYAAOSwHUtkSlCP/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/1tEAAOSwO7lkSlCQ/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/owcAAOSwbpNkSlCS/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/fxYAAOSwxz5kSlCa/s-l225.jpg"
+      }
+    ],
+    "adultOnly": false,
+    "legacyItemId": "155525749800",
+    "availableCoupons": false,
+    "itemCreationDate": "2023-04-28T10:38:28.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": false,
+    "listingMarketplaceId": "EBAY_US"
+  },
+  {
+    "itemId": "v1|126038670841|0",
+    "title": "Nvidia Tesla A100 Ampere GPU Accelarator 40GB SXM4 Graphics Card Deep learning",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/riMAAOSwlaRky2lW/s-l225.jpg"
+    },
+    "price": {
+      "value": "6666.00",
+      "currency": "USD"
+    },
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C126038670841%7C0",
+    "seller": {
+      "username": "redacted-948538924364749.9",
+      "feedbackPercentage": "98.9",
+      "feedbackScore": 1492
+    },
+    "condition": "New",
+    "conditionId": "1000",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/riMAAOSwlaRky2lW/s-l960.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "0.00",
+          "currency": "USD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE",
+      "BEST_OFFER"
+    ],
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/126038670841?hash=item1d587d7df9%3Ag%3AriMAAOSwlaRky2lW&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/126038670841?hash=item1d587d7df9:g:riMAAOSwlaRky2lW",
+    "itemLocation": {
+      "postalCode": "******",
+      "country": "CN"
+    },
+    "additionalImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/thMAAOSwQxZky2lY/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/mWkAAOSwlbNky2lZ/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/FGMAAOSw6SJky2lb/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/J0gAAOSwrNxky2lc/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/PhAAAOSwx6xky2le/s-l225.jpg"
+      }
+    ],
+    "adultOnly": false,
+    "legacyItemId": "126038670841",
+    "availableCoupons": false,
+    "itemCreationDate": "2023-08-04T08:46:34.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": false,
+    "listingMarketplaceId": "EBAY_US"
+  },
+  {
+    "itemId": "v1|394740799900|0",
+    "title": "Nvidia Tesla A100 40GB GPU SXM4 Ampere Accelarator Graphics Card Deeplearning AI",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/PToAAOSwTF1kr9JI/s-l225.jpg"
+    },
+    "price": {
+      "value": "6288.00",
+      "currency": "USD"
+    },
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C394740799900%7C0",
+    "seller": {
+      "username": "redacted-6487509367683095",
+      "feedbackPercentage": "96.7",
+      "feedbackScore": 86
+    },
+    "condition": "New",
+    "conditionId": "1000",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/PToAAOSwTF1kr9JI/s-l960.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "0.00",
+          "currency": "USD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE",
+      "BEST_OFFER"
+    ],
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/394740799900?hash=item5be862999c%3Ag%3APToAAOSwTF1kr9JI&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/394740799900?hash=item5be862999c:g:PToAAOSwTF1kr9JI",
+    "itemLocation": {
+      "postalCode": "******",
+      "country": "CN"
+    },
+    "additionalImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/lucAAOSwoZZkr9JK/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/POYAAOSwjuFkr9JL/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/YtYAAOSwCkBkr9JN/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/8VUAAOSwrSpkr9JU/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/vyoAAOSw-EJkr9Jc/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/tFIAAOSw43dkr9Ji/s-l225.jpg"
+      }
+    ],
+    "adultOnly": false,
+    "legacyItemId": "394740799900",
+    "availableCoupons": false,
+    "itemCreationDate": "2023-07-14T10:31:34.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": false,
+    "listingMarketplaceId": "EBAY_US"
+  },
+  {
+    "itemId": "v1|386172339873|0",
+    "title": "Nvidia Tesla A100 40GB Accelarator Graphics Card Ampere GPU Deep learning SXM4",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/4IUAAOSw70xlH25H/s-l225.jpg"
+    },
+    "price": {
+      "value": "7200.00",
+      "currency": "USD"
+    },
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C386172339873%7C0",
+    "seller": {
+      "username": "redacted-5777921484768335",
+      "feedbackPercentage": "97.3",
+      "feedbackScore": 320
+    },
+    "condition": "New",
+    "conditionId": "1000",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/4IUAAOSw70xlH25H/s-l960.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "0.00",
+          "currency": "USD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE",
+      "BEST_OFFER"
+    ],
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/386172339873?hash=item59e9aa46a1%3Ag%3A4IUAAOSw70xlH25H&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/386172339873?hash=item59e9aa46a1:g:4IUAAOSw70xlH25H",
+    "itemLocation": {
+      "postalCode": "******",
+      "country": "CN"
+    },
+    "additionalImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/6KEAAOSwfcNlH25u/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/FSIAAOSwaxZlH250/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/0b0AAOSwPzNlH254/s-l225.jpg"
+      }
+    ],
+    "adultOnly": false,
+    "legacyItemId": "386172339873",
+    "availableCoupons": false,
+    "itemCreationDate": "2023-10-07T02:19:09.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": false,
+    "listingMarketplaceId": "EBAY_US"
+  },
+  {
+    "itemId": "v1|373517919756|0",
+    "title": "Nvidia Tesla A100 Ampere GPU Accelarator 40GB Graphics Card Deep learning AI",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/QfIAAOSwP3dgYXem/s-l225.jpg"
+    },
+    "price": {
+      "value": "12000.00",
+      "currency": "USD"
+    },
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C373517919756%7C0",
+    "seller": {
+      "username": "redacted-7010633086470207",
+      "feedbackPercentage": "98.6",
+      "feedbackScore": 100338
+    },
+    "condition": "New",
+    "conditionId": "1000",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/QfIAAOSwP3dgYXem/s-l960.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "0.00",
+          "currency": "USD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE",
+      "BEST_OFFER"
+    ],
+    "epid": "26042475154",
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/373517919756?hash=item56f767260c%3Ag%3AQfIAAOSwP3dgYXem&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/373517919756?hash=item56f767260c:g:QfIAAOSwP3dgYXem",
+    "itemLocation": {
+      "country": "CN"
+    },
+    "additionalImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/SlAAAOSwmPVgYXer/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/SqMAAOSweOVi4kVn/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/bOMAAOSwcbVgYXet/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/xs8AAOSwWuBi4kVv/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/SKwAAOSwf7Ni4kVy/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/NIkAAOSwCTJi4kV8/s-l225.jpg"
+      }
+    ],
+    "adultOnly": false,
+    "legacyItemId": "373517919756",
+    "availableCoupons": false,
+    "itemCreationDate": "2021-03-29T06:49:49.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": false,
+    "listingMarketplaceId": "EBAY_US"
+  }
+]

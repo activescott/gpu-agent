@@ -4,7 +4,7 @@ import * as glob from "glob"
 import fs from "fs"
 import path from "path"
 import gitLastUpdated from "./DateGitLastUpdated.js"
-import { PrismaClient } from "@prisma/client"
+import { PrismaClient, gpu } from "@prisma/client"
 
 type SiteMapItem = {
   // relative path
@@ -75,11 +75,15 @@ async function main() {
   })
   // these pages are generated dynamically in app/src/app/ml/shop/gpu/[gpuSlug]/page.tsx
 
-  const learnGpuPages = gpuList.map(({ name, label }) => ({
+  const learnGpuPages = gpuList.map(({ name, label }: gpu) => ({
     path: `/ml/learn/gpu/${name}`,
     title: `${label} GPU Machine Learning Specification`,
   }))
-  const shopGpuPages = gpuList.map(({ name, label }) => ({
+  const learnGpuSpecsPage = {
+    path: "/ml/learn/gpu/specifications",
+    title: "GPU Machine Learning Specification",
+  }
+  const shopGpuPages = gpuList.map(({ name, label }: gpu) => ({
     path: `/ml/shop/gpu/${name}`,
     title: `Price Compare ${label} GPUs`,
   }))
@@ -93,6 +97,7 @@ async function main() {
   const items = [
     ...primaryShopPages,
     ...shopGpuPages,
+    learnGpuSpecsPage,
     ...learnGpuPages,
     ...discoveredPages,
   ]

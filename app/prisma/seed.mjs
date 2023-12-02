@@ -57,8 +57,10 @@ async function main() {
       name: "nvidia-a30",
       label: "NVIDIA A30",
       tensorCoreCount: 224,
-      fp32TFLOPS: 10.32,
-      fp16TFLOPS: 10.32,
+      // NOTE: This is the Tensor Core FP32 performance, not the CUDA FP32 performance. Noted in the data sheet as "NVIDIA A30 delivers 165 teraFLOPS (TFLOPS) of TF32 deep learning performance."
+      fp32TFLOPS: 165,
+      // NOTE: This is the Tensor Core FP16 performance, not the CUDA FP16 performance.
+      fp16TFLOPS: 165,
       int8TOPS: 330,
       memoryCapacityGB: 24,
       memoryBandwidthGBs: 933.3,
@@ -67,6 +69,40 @@ async function main() {
       references: [
         "https://www.nvidia.com/en-us/data-center/products/a30-gpu/",
         "https://www.techpowerup.com/gpu-specs/a30-pcie.c3792",
+      ],
+    },
+    {
+      name: "nvidia-a40",
+      label: "NVIDIA A40",
+      tensorCoreCount: 336,
+      fp32TFLOPS: 37.4,
+      fp16TFLOPS: 37.4,
+      int8TOPS: 299.3,
+      memoryCapacityGB: 48,
+      memoryBandwidthGBs: 696,
+      summary:
+        "The NVIDIA A40, launched in October 2020, is a professional-grade GPU built on the GA102 processor. It is tailored for high-end machine learning applications, offering exceptional performance in both AI training and inference tasks. The A40's introduction marks a significant milestone in GPU technology, showcasing advancements in memory capacity, bandwidth, and processing power, suitable for the most demanding AI workloads.",
+      references: [
+        "https://www.nvidia.com/en-us/data-center/a40/",
+        "https://www.techpowerup.com/gpu-specs/a40-pcie.c3700",
+      ],
+    },
+    {
+      name: "nvidia-a100-pcie",
+      label: "NVIDIA A100 PCIe",
+      tensorCoreCount: 432,
+      // NOTE: This is the Tensor Core FP32 performance, not the CUDA FP32 performance. The A40 for example doesn't have such a spec (only CUDA).
+      fp32TFLOPS: 156,
+      fp16TFLOPS: 312,
+      int8TOPS: 624,
+      memoryCapacityGB: 80,
+      memoryBandwidthGBs: 1_935,
+      summary:
+        "The NVIDIA A100-PCIE-80GB, launched in June 2021, is a formidable accelerator in the field of machine learning and artificial intelligence. Built on NVIDIA's advanced Ampere architecture, this accelerator is designed for high-performance computing, deep learning training, and inference tasks. With its massive 80 GB of HBM2e memory and superior memory bandwidth of 1,935 GB/s, it caters to the most demanding AI workloads. The inclusion of 432 tensor cores significantly accelerates machine learning applications, making it a go-to choice for researchers and data scientists. Operating at a base clock of 1065 MHz and a boost clock up to 1410 MHz, it delivers impressive computational power, capped at a maximum power consumption of 300 watts. The A100-PCIE-80GB is notable for its high FP32 performance of 19.5 TFLOPS, emphasizing its capability in handling floating-point operations efficiently.",
+      references: [
+        "https://www.nvidia.com/en-us/data-center/a100/",
+        "https://developer.nvidia.com/blog/nvidia-ampere-architecture-in-depth/",
+        "https://www.techpowerup.com/gpu-specs/a100-pcie-80-gb.c3821",
       ],
     },
   ]

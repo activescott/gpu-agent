@@ -77,3 +77,19 @@ export async function markListingsFreshForGpu(
     },
   })
 }
+
+export async function getAverageGpuPrice(
+  gpuName: string,
+  prisma: PrismaClientWithinTransaction = prismaSingleton,
+): Promise<number> {
+  const result =
+    (await prisma.$queryRaw`select AVG("priceValue"::float) from "Listing"
+  WHERE "gpuName" = ${gpuName};`) as RowWithAvg[]
+
+  if (result.length === 0 || !result[0].avg) {
+    return 0
+  }
+  return result[0].avg
+}
+
+type RowWithAvg = { avg: number }

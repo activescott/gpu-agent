@@ -1,3 +1,5 @@
+import Link from "next/link"
+
 # Technical Specifications Relevant for Machine Learning GPUs & Accelerators
 
 The technical specifications that are typically crucial for evaluating machine learning accelerators and GPUs include:
@@ -42,14 +44,8 @@ Overall, TOPS and TFLOPS are important measures of GPU performance. They can be 
 
 The specific integer and floating-point operations that are regularly measured for GPUs include:
 
-- **FP32 (single-precision floating-point)**: This is the most common type of floating-point operation, and it is used in a wide range of applications, including graphics rendering, scientific computing, and machine learning. FP32 operations are typically measured in teraflops (TFLOPS).
+- **FP32 (single-precision floating-point)**: FP32 is the most common type of floating-point operation, and it is used in a wide range of applications, including graphics rendering, scientific computing, and machine learning. FP32 operations are typically measured in teraflops (TFLOPS).
+- **FP16 (half-precision floating-point)**: FP16 is a floating-point operation on numbers using 16 bits. It's less precise than FP32 but offers greater computational speed and reduced memory usage. In machine learning, FP16 is often used for training and deploying neural networks where high precision is less critical, enabling faster computations and lower memory and power consumption. This format is particularly beneficial in scenarios where model size and speed are more important than the highest level of accuracy, such as in mobile and edge computing applications.
+- **INT8 (8-bit integer)**: INT8 is an integer format using 8 bits. In contrast, FP32, it represents much smaller numbers with lower precision. Quantizing from FP32 to INT8 involves converting the high-precision FP32 values into simpler INT8 integers and will degrade the accuracy of the model in many cases.
 
-- **FP64 (double-precision floating-point)**: This type of floating-point operation is less common than FP32, but it is used in applications that require higher precision, such as scientific computing and high-performance computing. FP64 operations are typically measured in teraflops (TFLOPS).
-
-- **INT8 (8-bit integer)**: This type of integer operation is used in applications that require low precision, such as image processing and video compression. INT8 operations are typically measured in giga-operations per second (GOPS).
-
-- **INT16 (16-bit integer)**: This type of integer operation is used in applications that require higher precision than INT8, but lower precision than FP32. INT16 operations are typically measured in mega-operations per second (MOPS).
-
-- **INT32 (32-bit integer)**: This type of integer operation is used in a wide range of applications, including graphics rendering and scientific computing. INT32 operations are typically measured in giga-operations per second (GOPS).
-
-- **INT64 (64-bit integer)**: This type of integer operation is used in applications that require high precision, such as scientific computing and high-performance computing. INT64 operations are typically measured in gigaflops (GFLOPS).
+These metrics get even more interesting when considering the rapidly evolving space of Quantiziation. Read more about quantization in machine learning at <Link href="/ml/learn/quantization">Quantization in Machine Learning and Deep Learning</Link>.

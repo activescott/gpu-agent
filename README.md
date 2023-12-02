@@ -45,9 +45,9 @@ Compare GPU & AI Accelerator Card Performance Metrics to their Cost
 - [+] feat: new page with multiple gpus and price compare http://localhost:3000/ml/shop/gpu (only 2 gpus)
 - [+] feat: "attribute pills" are differentiated from "spec pills"
 - [+] feat: added NVIDIA A30 GPUs (add to seed with specs)
-- [ ] feat: added NVIDIA A30 GPUs (add to seed with specs)
+- [+] feat: added NVIDIA A100 80GB GPU (add to seed with specs)
+- [ ] feat: added NVIDIA A40 GPUs (add to seed with specs)
 - [ ] feat: added NVIDIA A10 24GB GPU (add to seed with specs)
-- [ ] feat: added NVIDIA A100 80GB GPU (add to seed with specs)
 - [ ] feat: added NVIDIA H100 80GB GPU (add to seed with specs)
 - [ ] feat: add pages for dollars per spec:
 
@@ -113,6 +113,17 @@ Compare GPU & AI Accelerator Card Performance Metrics to their Cost
 - [x] Model Page Prompt: Prefer arXiv over hugging face.
 
 ## Notes
+
+### Marketing
+
+- identify few select people on hackernews and ask for feedback
+- identify some gpu hardware people on youtube or websites and ask them for feedback
+- post to:
+  - hackernews
+  - https://betalist.com
+  - producthunt
+- spin up adwords campaigns. Run a/b tests and measure with posthog to start identifying what resonates.
+- integrate
 
 ### Metrics
 

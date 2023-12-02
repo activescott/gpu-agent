@@ -1,6 +1,10 @@
 import { convertEbayItemToListing } from "@/pkgs/isomorphic/model"
 import { loadTestListingsFromJson } from "../listings"
-import { addListingsForGpu, listListingsForGpu } from "./ListingRepository"
+import {
+  addListingsForGpu,
+  getAverageGpuPrice,
+  listListingsForGpu,
+} from "./ListingRepository"
 
 describe("addListingsForGpu", () => {
   it.skip("dev should add listings for a gpu", async () => {
@@ -29,4 +33,13 @@ const TestGpu = {
   int8TOPS: 1,
   memoryCapacityGB: 1,
   memoryBandwidthGBs: 1,
+  summary: "Test GPU Summary",
+  references: [],
 }
+
+describe("getAverageGpuPrice", () => {
+  it.skip("should return a number", async () => {
+    const result = await getAverageGpuPrice("nvidia-a100-pcie")
+    expect(result).toStrictEqual(21_887.993_333_333_336)
+  })
+})

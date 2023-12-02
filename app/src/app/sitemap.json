@@ -5,10 +5,6 @@
       "title": "Price Compare GPUs for Machine Learning"
     },
     {
-      "path": "/ml/shop/gpu/nvidia-rtx-a5000",
-      "title": "Price Compare NVIDIA RTX A5000 GPUs"
-    },
-    {
       "path": "/ml/shop/gpu/nvidia-a30",
       "title": "Price Compare NVIDIA A30 GPUs"
     },
@@ -17,8 +13,20 @@
       "title": "Price Compare NVIDIA T4 GPUs"
     },
     {
-      "path": "/ml/learn/gpu/nvidia-rtx-a5000",
-      "title": "NVIDIA RTX A5000 GPU Machine Learning Specification"
+      "path": "/ml/shop/gpu/nvidia-rtx-a5000",
+      "title": "Price Compare NVIDIA RTX A5000 GPUs"
+    },
+    {
+      "path": "/ml/shop/gpu/nvidia-a100-pcie",
+      "title": "Price Compare NVIDIA A100 PCIe GPUs"
+    },
+    {
+      "path": "/ml/shop/gpu/nvidia-a40",
+      "title": "Price Compare NVIDIA A40 GPUs"
+    },
+    {
+      "path": "/ml/learn/gpu/specifications",
+      "title": "GPU Machine Learning Specification"
     },
     {
       "path": "/ml/learn/gpu/nvidia-a30",
@@ -27,6 +35,18 @@
     {
       "path": "/ml/learn/gpu/nvidia-t4",
       "title": "NVIDIA T4 GPU Machine Learning Specification"
+    },
+    {
+      "path": "/ml/learn/gpu/nvidia-rtx-a5000",
+      "title": "NVIDIA RTX A5000 GPU Machine Learning Specification"
+    },
+    {
+      "path": "/ml/learn/gpu/nvidia-a100-pcie",
+      "title": "NVIDIA A100 PCIe GPU Machine Learning Specification"
+    },
+    {
+      "path": "/ml/learn/gpu/nvidia-a40",
+      "title": "NVIDIA A40 GPU Machine Learning Specification"
     },
     {
       "path": "/policy/terms",
@@ -72,6 +92,10 @@
       "path": "/ml/learn/use-case/image-classification",
       "title": "Image Classification: A Machine Learning Technique",
       "lastModified": "2023-11-26T05:00:45.000Z"
+    },
+    {
+      "path": "/ml/learn/quantization",
+      "title": "Quantization in Machine Learning and Deep Learning"
     },
     {
       "path": "/ml/learn/models/rnn-t",

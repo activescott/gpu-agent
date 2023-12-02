@@ -1,7 +1,12 @@
+import { createDiag } from "@activescott/diag"
+
+const log = createDiag("shopping-agent:path")
+
 export function appRoot(): string {
-  const appRoot = process.env.npm_package_json
+  let appRoot = process.env.npm_package_json
   if (!appRoot) {
-    throw new Error("expected npm_package_json env var to be set")
+    log.error("expected npm_package_json env var to be set")
+    appRoot = process.cwd()
   }
   return appRoot
 }

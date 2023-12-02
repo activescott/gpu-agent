@@ -9,6 +9,11 @@ import {
 } from "@/pkgs/isomorphic/model/specs"
 import { Listing } from "@/pkgs/isomorphic/model"
 import Image from "next/image"
+import {
+  AnalyticsActions,
+  AnalyticsReporter,
+  useAnalytics,
+} from "../analytics/reporter"
 
 const formatPriceInteger = (price: number) => {
   // formats to integer /if possible/; otherwise will show decimal as needed
@@ -31,6 +36,7 @@ export const ListingCard = ({
   specs,
   highlightSpec,
 }: ListingCardProps) => {
+  const analytics = useAnalytics()
   const { itemAffiliateWebUrl, priceValue, title, condition } = item
   const imageUrl = chooseBestImageUrl(item)
   const cost = Number(priceValue)
@@ -73,6 +79,7 @@ export const ListingCard = ({
       <div className="card-footer d-flex">
         <a
           href={itemAffiliateWebUrl}
+          onClick={() => trackBuyNowEvent(analytics, item)}
           className="btn btn-primary my-1 me-auto"
           target="_blank"
           rel="noreferrer"
@@ -83,6 +90,17 @@ export const ListingCard = ({
       </div>
     </div>
   )
+}
+
+const trackBuyNowEvent = (
+  analytics: AnalyticsReporter,
+  item: Listing,
+): void => {
+  analytics.trackAction(AnalyticsActions.BuyNow, {
+    "listing-id": item.itemId,
+    "gpu-name": item.gpu.name,
+    "listing-price": item.priceValue,
+  })
 }
 
 function chooseBestImageUrl(item: Listing): string {

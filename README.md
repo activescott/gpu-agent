@@ -46,6 +46,7 @@ Compare GPU & AI Accelerator Card Performance Metrics to their Cost
 - [+] feat: "attribute pills" are differentiated from "spec pills"
 - [+] feat: added NVIDIA A30 GPUs (add to seed with specs)
 - [+] feat: added NVIDIA A100 80GB GPU (add to seed with specs)
+- [+] fix: spec pill tips are dismissed clicking anywhere for Micah :)
 - [ ] feat: added NVIDIA A40 GPUs (add to seed with specs)
 - [ ] feat: added NVIDIA A10 24GB GPU (add to seed with specs)
 - [ ] feat: added NVIDIA H100 80GB GPU (add to seed with specs)

@@ -56,18 +56,25 @@ export const SpecPill = ({
 
       {showTip && (
         <div
-          ref={setPopperElement}
-          style={styles.popper}
-          {...attributes.popper}
-          role="tooltip"
-          className="tooltip show"
+          id="infotip-backdrop"
+          className="modal d-block"
+          tabIndex={-1}
+          onClick={() => setShowTip(false)}
         >
           <div
-            className="tooltip-arrow"
-            ref={setArrowElement}
-            style={styles.arrow}
-          ></div>
-          <div className="tooltip-inner">{infoTipText}</div>
+            ref={setPopperElement}
+            style={styles.popper}
+            {...attributes.popper}
+            role="tooltip"
+            className="tooltip show"
+          >
+            <div
+              className="tooltip-arrow"
+              ref={setArrowElement}
+              style={styles.arrow}
+            ></div>
+            <div className="tooltip-inner">{infoTipText}</div>
+          </div>
         </div>
       )}
     </>

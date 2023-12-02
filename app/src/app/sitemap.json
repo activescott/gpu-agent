@@ -5,48 +5,56 @@
       "title": "Price Compare GPUs for Machine Learning"
     },
     {
-      "path": "/ml/shop/gpu/nvidia-a30",
-      "title": "Price Compare NVIDIA A30 GPUs"
-    },
-    {
-      "path": "/ml/shop/gpu/nvidia-t4",
-      "title": "Price Compare NVIDIA T4 GPUs"
-    },
-    {
-      "path": "/ml/shop/gpu/nvidia-rtx-a5000",
-      "title": "Price Compare NVIDIA RTX A5000 GPUs"
+      "path": "/ml/shop/gpu/nvidia-a10",
+      "title": "Price Compare NVIDIA A10 GPUs"
     },
     {
       "path": "/ml/shop/gpu/nvidia-a100-pcie",
       "title": "Price Compare NVIDIA A100 PCIe GPUs"
     },
     {
+      "path": "/ml/shop/gpu/nvidia-a30",
+      "title": "Price Compare NVIDIA A30 GPUs"
+    },
+    {
       "path": "/ml/shop/gpu/nvidia-a40",
       "title": "Price Compare NVIDIA A40 GPUs"
+    },
+    {
+      "path": "/ml/shop/gpu/nvidia-rtx-a5000",
+      "title": "Price Compare NVIDIA RTX A5000 GPUs"
+    },
+    {
+      "path": "/ml/shop/gpu/nvidia-t4",
+      "title": "Price Compare NVIDIA T4 GPUs"
     },
     {
       "path": "/ml/learn/gpu/specifications",
       "title": "GPU Machine Learning Specification"
     },
     {
-      "path": "/ml/learn/gpu/nvidia-a30",
-      "title": "NVIDIA A30 GPU Machine Learning Specification"
-    },
-    {
-      "path": "/ml/learn/gpu/nvidia-t4",
-      "title": "NVIDIA T4 GPU Machine Learning Specification"
-    },
-    {
-      "path": "/ml/learn/gpu/nvidia-rtx-a5000",
-      "title": "NVIDIA RTX A5000 GPU Machine Learning Specification"
+      "path": "/ml/learn/gpu/nvidia-a10",
+      "title": "NVIDIA A10 GPU Machine Learning Specification"
     },
     {
       "path": "/ml/learn/gpu/nvidia-a100-pcie",
       "title": "NVIDIA A100 PCIe GPU Machine Learning Specification"
     },
     {
+      "path": "/ml/learn/gpu/nvidia-a30",
+      "title": "NVIDIA A30 GPU Machine Learning Specification"
+    },
+    {
       "path": "/ml/learn/gpu/nvidia-a40",
       "title": "NVIDIA A40 GPU Machine Learning Specification"
+    },
+    {
+      "path": "/ml/learn/gpu/nvidia-rtx-a5000",
+      "title": "NVIDIA RTX A5000 GPU Machine Learning Specification"
+    },
+    {
+      "path": "/ml/learn/gpu/nvidia-t4",
+      "title": "NVIDIA T4 GPU Machine Learning Specification"
     },
     {
       "path": "/policy/terms",

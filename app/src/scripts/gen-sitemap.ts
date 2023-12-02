@@ -46,9 +46,9 @@ async function main() {
       // if the file ends with an mdx extension, assume it is a markdown file and extract the first line with a heading and use it as a title (remove the markdown heading prefix):
       const title: string = file.endsWith(".mdx")
         ? parseTitleFromMdx(file)
-        : (file.endsWith(".tsx")
+        : file.endsWith(".tsx")
           ? parseTitleFromTsx(file)
-          : path.basename(file))
+          : path.basename(file)
 
       const lastModified = gitLastUpdated(file)
 
@@ -73,20 +73,27 @@ async function main() {
       NOT: { name: "test-gpu" },
     },
   })
-  // these pages are generated dynamically in app/src/app/ml/shop/gpu/[gpuSlug]/page.tsx
-
-  const learnGpuPages = gpuList.map(({ name, label }: gpu) => ({
-    path: `/ml/learn/gpu/${name}`,
-    title: `${label} GPU Machine Learning Specification`,
-  }))
+  const collator = new Intl.Collator("en")
+  const comparePagesByPath = (a: SiteMapItem, b: SiteMapItem) =>
+    collator.compare(a.path, b.path)
+  // /ml/learn/gpu/ gpu pages are generated dynamically in app/src/app/ml/shop/gpu/[gpuSlug]/page.tsx
+  const learnGpuPages = gpuList
+    .map(({ name, label }: gpu) => ({
+      path: `/ml/learn/gpu/${name}`,
+      title: `${label} GPU Machine Learning Specification`,
+    }))
+    .sort(comparePagesByPath)
+  // this page is a static page in that directory that we need to override to get the right title
   const learnGpuSpecsPage = {
     path: "/ml/learn/gpu/specifications",
     title: "GPU Machine Learning Specification",
   }
-  const shopGpuPages = gpuList.map(({ name, label }: gpu) => ({
-    path: `/ml/shop/gpu/${name}`,
-    title: `Price Compare ${label} GPUs`,
-  }))
+  const shopGpuPages = gpuList
+    .map(({ name, label }: gpu) => ({
+      path: `/ml/shop/gpu/${name}`,
+      title: `Price Compare ${label} GPUs`,
+    }))
+    .sort(comparePagesByPath)
   const primaryShopPages = [
     {
       path: `/ml/shop/gpu`,

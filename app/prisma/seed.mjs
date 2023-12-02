@@ -105,6 +105,25 @@ async function main() {
         "https://www.techpowerup.com/gpu-specs/a100-pcie-80-gb.c3821",
       ],
     },
+    //https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/a10/pdf/a10-datasheet.pdf
+    {
+      name: "nvidia-a10",
+      label: "NVIDIA A10",
+      tensorCoreCount: 288,
+      fp32TFLOPS: 31.2,
+      // NOTE: FP16 Tensor Core
+      fp16TFLOPS: 125,
+      // NOTE: INT8 Tensor Core
+      int8TOPS: 250,
+      memoryCapacityGB: 24,
+      memoryBandwidthGBs: 600,
+      summary:
+        "The NVIDIA A10-PCI-24GB is a high-performance GPU designed for professional applications, including machine learning and AI. Launched in April 2021, it features the GA102 graphics processor, offering robust performance for machine learning inference and training. The A10-PCI-24GB stands out for its balance of power efficiency and computing capability, making it a suitable choice for a range of AI-driven tasks. Its architecture allows for efficient handling of AI workloads, and the large memory size caters to demanding applications.",
+      references: [
+        "https://www.nvidia.com/en-us/data-center/products/a10-gpu/",
+        "https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/a10/pdf/a10-datasheet.pdf",
+      ],
+    },
   ]
 
   for (const gpu of gpus) {

@@ -1,3 +1,4 @@
+"use client"
 import { SvgIcon } from "@/pkgs/client/components/SvgIcon"
 import { SpecPill } from "@/pkgs/client/components/SpecPill"
 import { AttributePill } from "./AttributePill"
@@ -26,7 +27,7 @@ const fmtDecimal = new Intl.NumberFormat("en-US", {
   maximumFractionDigits: 2,
 })
 
-const formatPrice = (price: number) => {
+export const formatPrice = (price: number) => {
   if (price < 1) return fmtDecimal.format(price)
   return fmtInteger.format(price)
 }
@@ -98,7 +99,7 @@ export const ListingCard = ({
   )
 }
 
-const trackBuyNowEvent = (
+export const trackBuyNowEvent = (
   analytics: AnalyticsReporter,
   item: Listing,
 ): void => {
@@ -109,7 +110,7 @@ const trackBuyNowEvent = (
   })
 }
 
-function chooseBestImageUrl(item: Listing): string {
+export function chooseBestImageUrl(item: Listing): string {
   // thumbnailImages is conditional, but usually the same image as image, but smaller.
   if (item.thumbnailImageUrl) {
     return item.thumbnailImageUrl

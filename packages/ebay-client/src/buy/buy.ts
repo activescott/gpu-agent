@@ -121,16 +121,23 @@ class BuyApiImpl implements BuyApi {
   private async *searchItems(
     page: SearchPageResponse,
   ): AsyncGenerator<ItemSummary, void, unknown> {
-    while (page) {
-      for (const item of page.itemSummaries) {
-        yield item
+    try {
+      while (page) {
+        for (const item of page.itemSummaries) {
+          yield item
+        }
+        // after yielding the page items, get the next page. Conveniently ebay provides the HATEOS url to get it
+        if (!page.next) {
+          return
+        }
+        const resp = await this.httpGet(new URL(page.next))
+        page = (await resp.json()) as SearchPageResponse
       }
-      // after yielding the page items, get the next page. Conveniently ebay provides the HATEOS url to get it
-      if (!page.next) {
-        return
-      }
-      const resp = await this.httpGet(new URL(page.next))
-      page = (await resp.json()) as SearchPageResponse
+    } catch (error) {
+      logger.error("error searching items. Details:", {
+        cause: error,
+        page: page,
+      })
     }
   }
 

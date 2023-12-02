@@ -51,7 +51,7 @@ Compare GPU & AI Accelerator Card Performance Metrics to their Cost
 - [+] feat: added NVIDIA A40 GPUs (add to seed with specs)
 - [+] feat: added NVIDIA A10 24GB GPU
 - [+] feat: added NVIDIA H100-pcie 80GB GPU
-- [+] feat: add pages for cost per spec:
+- [+] feat: add pages for cost per spec
 
   - shop/gpu/performance/cost-per-fp32-flops
   - shop/gpu/performance/cost-per-tensor-core
@@ -60,7 +60,7 @@ Compare GPU & AI Accelerator Card Performance Metrics to their Cost
   - shop/gpu/performance/cost-per-memory-bandwidth-gbs
   - requires loading listings for each type of GPU we have specs for
 
-- [ ] feat: add "Top 5 GPUs for \<Spec\>" on home page
+- [+] feat: add "Top 5 GPUs for \<Spec\>" on home page
 
 - [ ] feat: can filter by attributes and attribute pills
 - [ ] fix: support items that have multiple items (update $/perf specs) e.g. "**_ LOT OF 10 GPU's_** NVIDIA RTX A5000 24GB GDDR6"

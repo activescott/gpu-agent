@@ -28,3 +28,9 @@ $color-mode-type: media-query;
     color: $light;
   }
 }
+
+.underline-on-hover {
+  &:hover {
+    text-decoration: underline !important;
+  }
+}

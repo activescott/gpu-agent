@@ -13,6 +13,10 @@
       "title": "Compare GPU Prices by FP32 TFLOPs"
     },
     {
+      "path": "/ml/shop/gpu/performance/cost-per-int8-tops",
+      "title": "Compare GPU Prices by Int8 TOPs"
+    },
+    {
       "path": "/ml/shop/gpu/performance/cost-per-memory-bandwidth-gbs",
       "title": "Compare GPU Prices by Memory Bandwidth (GB/s)"
     },
@@ -173,6 +177,10 @@
       "path": "/ml/learn/models/3d-unet",
       "title": "About Machine Learning Model 3D-UNet",
       "lastModified": "2023-11-26T05:00:45.000Z"
+    },
+    {
+      "path": "/about",
+      "title": "/Users/scott/src/pingpoet/shopping-agent/app/src/app/about"
     }
   ]
 }

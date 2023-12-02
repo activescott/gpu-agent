@@ -1,65 +1,67 @@
 import type { Metadata } from "next"
-import sitemapJson from "./sitemap.json"
-const entries = [...sitemapJson.data]
+import { GpuSpecKeys, GpuSpecsDescription } from "@/pkgs/isomorphic/model/specs"
+import { ContainerCard } from "@/pkgs/client/components/ContainerCard"
+import { mapSpecToSlug } from "./ml/shop/gpu/performance/slugs"
+import Link from "next/link"
+import { topNListingsByCostPerformance } from "@/pkgs/server/db/ListingRepository"
+import { ListingCardSmall } from "@/pkgs/client/components/ListingCardSmall"
+
+// revalidate the data at most every N seconds: https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#revalidate
+const MINUTES = 10
+const SECONDS_PER_MINUTE = 60
+export const revalidate = MINUTES * SECONDS_PER_MINUTE
 
 export const metadata: Metadata = {
-  title: "Buy GPUs with side-by-side Price Comparison & Benchmarks",
+  title: "Best GPUs for the Money: Buy on Price-Performance Ratios",
   description:
     "Buy GPUs for training and inference with side-by-side price/performance comparisons. Compare price to performance from industry-standard benchmarks for training and inference.",
   alternates: { canonical: "https://coinpoet.com/" },
 }
 
-export default function Home() {
-  return (
-    <main>
-      <div>
-        <h1>
-          Compare Price & Benchmarked Performance of GPUs & AI Accelerators{" "}
-        </h1>
-        <div>
-          <p>
-            Compare prices to training or inference performance for the
-            following GPUs:
-          </p>
-          <ul className="nav flex-column mx-4">
-            {entries
-              .filter((item) => item.path.startsWith("/ml/shop"))
-              .map((item) => (
-                <li className="nav-item" key={item.path}>
-                  <a className="nav-link" href={item.path}>
-                    {item.title}
-                  </a>
-                </li>
-              ))}
-          </ul>
-        </div>
+export default async function Page() {
+  const TOP_N = 3
+  const promises = GpuSpecKeys.map(async (spec) => {
+    const listings = await topNListingsByCostPerformance(spec, TOP_N)
+    return { spec, listings }
+  })
+  const specsAndListings = await Promise.all(promises)
 
+  return (
+    <div>
+      <h1>Compare Price & Benchmarked of GPUs</h1>
+      <div>
         <p>
-          Welcome to the ultimate resource for software engineers, data
-          scientists, and SREs in the world of machine learning: a one-stop
-          platform where performance meets value. We understand the criticality
-          of precise hardware performance in AI model training and inference.
-          That&apos;s why we&apos;ve gathered the most rigorous MLPerf
-          benchmarks for all leading GPUs and AI accelerators, offering you a
-          unique window into their capabilities. Our platform is more than just
-          a comparison tool; it&apos;s an insightful guide to making informed
-          decisions. With us, you&apos;ll find not just raw performance
-          statistics, but a comprehensive breakdown of price by crucial
-          performance metrics, ensuring you get the most out of every dollar
-          spent. No more back-orders or unavailable items; every product listed
-          is ready for immediate purchase. And the best part? This invaluable
-          tool is entirely free, thanks to our affiliate partnerships. So, dive
-          into our site, be surprised by the revealing performance metrics of
-          every GPU and AI Accelerator on the market, and if you&apos;re
-          compelled, make an informed purchase right now!
+          Use this site to find GPUs available for immediate purchase. Choose
+          the best GPU for your needs by the price to performance ratios to
+          choose the best card for your needs.
         </p>
-        <p>
-          The site is 100% free to use and does not require any registration.
-          You do not pay us any money. When you click a link to a product and
-          purchase an item, it may generate a small referral fee for us at no
-          cost to you. Thank you for your support! 🙏
-        </p>
+        <div className="d-flex flex-wrap">
+          {specsAndListings.map(({ spec, listings }) => {
+            return (
+              <ContainerCard
+                key={spec}
+                header={`Top ${TOP_N} GPUs by $ / ${GpuSpecsDescription[spec].label}`}
+              >
+                {listings.map((listing) => (
+                  <ListingCardSmall
+                    key={listing.itemId}
+                    item={listing}
+                    specs={listing.gpu}
+                    highlightSpec={spec}
+                  />
+                ))}
+                <div>
+                  <Link
+                    href={`/ml/shop/gpu/performance/${mapSpecToSlug(spec)}`}
+                  >
+                    More GPUs...
+                  </Link>
+                </div>
+              </ContainerCard>
+            )
+          })}
+        </div>
       </div>
-    </main>
+    </div>
   )
 }

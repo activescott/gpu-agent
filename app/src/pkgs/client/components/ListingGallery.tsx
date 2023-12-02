@@ -15,11 +15,17 @@ interface ListingItem {
 
 interface ListingGalleryProps {
   listings: ListingItem[]
+  hideSort?: boolean
+  initialSortKey: GpuSpecKey
 }
 
-export function ListingGallery({ listings }: ListingGalleryProps): JSX.Element {
+export function ListingGallery({
+  listings,
+  hideSort = false,
+  initialSortKey,
+}: ListingGalleryProps): JSX.Element {
   const initialSort = {
-    specKey: "fp32TFLOPS" as GpuSpecKey,
+    specKey: initialSortKey,
     ascending: true,
   }
 
@@ -38,7 +44,7 @@ export function ListingGallery({ listings }: ListingGalleryProps): JSX.Element {
 
   return (
     <div id="listingContainer" className="d-flex flex-wrap">
-      {sortPanel}
+      {hideSort == false && sortPanel}
       {sortedListings.map(({ item, specs }, index) => (
         <ListingCard
           key={`${item.itemId}-${index.toString()}`}

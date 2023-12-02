@@ -5,6 +5,26 @@
       "title": "Price Compare GPUs for Machine Learning"
     },
     {
+      "path": "/ml/shop/gpu/performance/cost-per-fp16-flops",
+      "title": "Compare GPU Prices by FP16 TFLOPs"
+    },
+    {
+      "path": "/ml/shop/gpu/performance/cost-per-fp32-flops",
+      "title": "Compare GPU Prices by FP32 TFLOPs"
+    },
+    {
+      "path": "/ml/shop/gpu/performance/cost-per-memory-bandwidth-gbs",
+      "title": "Compare GPU Prices by Memory Bandwidth (GB/s)"
+    },
+    {
+      "path": "/ml/shop/gpu/performance/cost-per-memory-gb",
+      "title": "Compare GPU Prices by Memory Capacity (GB)"
+    },
+    {
+      "path": "/ml/shop/gpu/performance/cost-per-tensor-core",
+      "title": "Compare GPU Prices by Tensor Core Count"
+    },
+    {
       "path": "/ml/shop/gpu/nvidia-a10",
       "title": "Price Compare NVIDIA A10 GPUs"
     },

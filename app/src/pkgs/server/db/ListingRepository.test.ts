@@ -4,6 +4,7 @@ import {
   addListingsForGpu,
   getAverageGpuPrice,
   listListingsForGpu,
+  topNListingsByCostPerformance,
 } from "./ListingRepository"
 
 describe("addListingsForGpu", () => {
@@ -41,5 +42,13 @@ describe("getAverageGpuPrice", () => {
   it.skip("should return a number", async () => {
     const result = await getAverageGpuPrice("nvidia-a100-pcie")
     expect(result).toStrictEqual(21_887.993_333_333_336)
+  })
+})
+
+describe("topNListingsByCostPerformance", () => {
+  it.skip("should return listings", async () => {
+    const listings = await topNListingsByCostPerformance("fp32TFLOPS", 3)
+    console.log("top n listings:", listings)
+    expect(listings).toHaveLength(3)
   })
 })

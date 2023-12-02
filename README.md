@@ -51,13 +51,13 @@ Compare GPU & AI Accelerator Card Performance Metrics to their Cost
 - [+] feat: added NVIDIA A40 GPUs (add to seed with specs)
 - [+] feat: added NVIDIA A10 24GB GPU
 - [+] feat: added NVIDIA H100-pcie 80GB GPU
-- [ ] feat: add pages for dollars per spec:
+- [+] feat: add pages for cost per spec:
 
-  - shop/gpu/specs/cost-per-fp32-flops
-  - shop/gpu/specs/cost-per-tensor-core
-  - shop/gpu/specs/cost-per-fp16-flops
-  - shop/gpu/specs/cost-per-memory-gb
-  - shop/gpu/specs/cost-per-memory-bandwidth-gbs
+  - shop/gpu/performance/cost-per-fp32-flops
+  - shop/gpu/performance/cost-per-tensor-core
+  - shop/gpu/performance/cost-per-fp16-flops
+  - shop/gpu/performance/cost-per-memory-gb
+  - shop/gpu/performance/cost-per-memory-bandwidth-gbs
   - requires loading listings for each type of GPU we have specs for
 
 - [ ] feat: add "Top 5 GPUs for \<Spec\>" on home page

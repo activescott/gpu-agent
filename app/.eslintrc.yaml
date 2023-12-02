@@ -77,3 +77,5 @@ overrides:
       unicorn/prefer-top-level-await: off
       import/no-unused-modules: off
       no-console: off
+      unicorn/prefer-module: off
+      unicorn/no-process-exit: off

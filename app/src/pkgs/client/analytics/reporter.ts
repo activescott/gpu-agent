@@ -39,9 +39,7 @@ class PosthogAnalyticsReporterImp implements AnalyticsReporter {
 }
 
 class NoopAnalyticsReporterImp implements AnalyticsReporter {
-  public constructor() {
-    trace.warn("using noop analytics reporter")
-  }
+  public constructor() {}
 
   public trackAction(
     action: AnalyticsActions,

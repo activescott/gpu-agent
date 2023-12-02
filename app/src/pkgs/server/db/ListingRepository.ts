@@ -1,7 +1,9 @@
 import { Listing } from "@/pkgs/isomorphic/model"
 import { createDiag } from "@activescott/diag"
 import { PrismaClientWithinTransaction, prismaSingleton } from "./db"
-import { omit } from "lodash"
+import { omit, pick } from "lodash"
+import { GpuSpecKey, GpuSpecKeys } from "@/pkgs/isomorphic/model/specs"
+import { Prisma } from "@prisma/client"
 
 const log = createDiag("shopping-agent:ListingRepository")
 
@@ -93,3 +95,44 @@ export async function getAverageGpuPrice(
 }
 
 type RowWithAvg = { avg: number }
+
+export async function topNListingsByCostPerformance(
+  spec: GpuSpecKey,
+  n: number,
+  prisma: PrismaClientWithinTransaction = prismaSingleton,
+): Promise<Listing[]> {
+  const specFieldName = Prisma.raw(`"gpu"."${spec}"`)
+
+  type ListingWithGpu = Prisma.$ListingPayload["scalars"] &
+    Prisma.$gpuPayload["scalars"]
+  const result = await prisma.$queryRaw<ListingWithGpu[]>(Prisma.sql`
+    SELECT 
+      *
+    FROM "Listing"
+    INNER JOIN "gpu" ON "Listing"."gpuName" = "gpu"."name"
+    WHERE "Listing"."stale" = false
+    ORDER BY ("Listing"."priceValue"::float / ${specFieldName}::float)
+    LIMIT ${n}
+  `)
+
+  return result.map((row) => {
+    const listing = omit(row, "gpu")
+    const gpuSpecs = pick(row, GpuSpecKeys)
+    const gpuKeys = [
+      "name",
+      "label",
+      "lastCachedListings",
+      "summary",
+      "references",
+    ] as (keyof ListingWithGpu)[]
+    const gpu = pick(row, gpuKeys)
+
+    return {
+      ...listing,
+      gpu: {
+        ...gpu,
+        ...gpuSpecs,
+      },
+    }
+  })
+}

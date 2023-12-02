@@ -24,6 +24,7 @@ export default async function Page() {
           item,
           specs: item.gpu,
         }))}
+        initialSortKey="fp32TFLOPS"
       />
     </main>
   )

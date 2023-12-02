@@ -1,0 +1,15 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": "../..",
+    "outDir": "./.tsc",
+    "noEmit": false,
+    "module": "Node16",
+    "moduleResolution": "Node16"
+    /*
+    NOTE: explicitly NOT using the paths @/ alias here and in files called by this script since it's resolved by next, and we run gen-sitemap as a script
+    */
+  },
+
+  "include": ["next-env.d.ts", "**/*.ts", ".next/types/**/*.ts"]
+}

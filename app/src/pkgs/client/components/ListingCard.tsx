@@ -15,14 +15,20 @@ import {
   useAnalytics,
 } from "../analytics/reporter"
 
-const formatPriceInteger = (price: number) => {
-  // formats to integer /if possible/; otherwise will show decimal as needed
-  return new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD",
-    maximumFractionDigits: 2,
-    maximumSignificantDigits: 1,
-  }).format(price)
+const fmtInteger = new Intl.NumberFormat("en-US", {
+  style: "currency",
+  currency: "USD",
+  maximumFractionDigits: 0,
+})
+const fmtDecimal = new Intl.NumberFormat("en-US", {
+  style: "currency",
+  currency: "USD",
+  maximumFractionDigits: 2,
+})
+
+const formatPrice = (price: number) => {
+  if (price < 1) return fmtDecimal.format(price)
+  return fmtInteger.format(price)
 }
 
 interface ListingCardProps {
@@ -61,7 +67,7 @@ export const ListingCard = ({
       <div className="card-body">
         <h5 className="card-title">{title}</h5>
         <div className="card-text">
-          <AttributePill>{formatPriceInteger(cost)}</AttributePill>
+          <AttributePill>{formatPrice(cost)}</AttributePill>
           {condition && <AttributePill>{condition}</AttributePill>}
           <br />
           {GpuSpecKeys.map((specKey) => (
@@ -70,7 +76,7 @@ export const ListingCard = ({
               infoTipText={GpuSpecsDescription[specKey].descriptionDollarsPer}
               color={specKey === highlightSpec ? "primary" : "secondary"}
             >
-              {formatPriceInteger(cost / specs[specKey])} /{" "}
+              {formatPrice(cost / specs[specKey])} /{" "}
               {GpuSpecsDescription[specKey].unit}
             </SpecPill>
           ))}

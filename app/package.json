@@ -9,7 +9,7 @@
     "predev": "npm run prep",
     "dev": "DEBUG=shopping-agent:*,ebay-client:* next dev",
     "preinstall": "cd ../packages/ebay-client && npm i && npm run build",
-    "gen-sitemap": "cd ./src/scripts && npx ts-node-esm gen-sitemap.ts",
+    "gen-sitemap": "cd ./src/scripts && npx ts-node gen-sitemap.ts",
     "prebuild": "npm run prep && npm run gen-sitemap",
     "build": "next build",
     "start": "DEBUG=shopping-agent:*,ebay-client:* next start",

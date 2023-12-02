@@ -1,10 +1,16 @@
-#!/usr/bin/env -S npx ts-node-esm
-
 import * as glob from "glob"
 import fs from "fs"
 import path from "path"
-import gitLastUpdated from "./DateGitLastUpdated.js"
+import gitLastUpdated from "./DateGitLastUpdated"
 import { PrismaClient, gpu } from "@prisma/client"
+import {
+  listPerformanceSlugs,
+  mapSlugToPageTitle,
+} from "../app/ml/shop/gpu/performance/slugs"
+
+//////////////////////////////////////////////////
+// NOTE: the easiest thing to do here is avoid the @/ import aliases since next seems to resolve those as a bundler and we're not running any bundler in this script
+//////////////////////////////////////////////////
 
 type SiteMapItem = {
   // relative path
@@ -24,7 +30,7 @@ type SiteMapItem = {
   priority?: number
 }
 
-const __dirname = path.dirname(new URL(import.meta.url).pathname)
+//const __dirname = path.dirname(new URL(import.meta.url).pathname)
 const appDir = path.join(__dirname, "../app")
 const sitemapFile = path.join(appDir, "sitemap.json")
 
@@ -91,6 +97,14 @@ async function main() {
     path: "/ml/learn/gpu/specifications",
     title: "GPU Machine Learning Specification",
   }
+  const performanceSlugs = listPerformanceSlugs()
+  const shopGpuPerformancePages = performanceSlugs
+    .map((slug) => ({
+      path: `/ml/shop/gpu/performance/${slug}`,
+      title: mapSlugToPageTitle(slug),
+    }))
+    .sort(comparePagesByPath)
+
   const shopGpuPages = gpuList
     .map(({ name, label }: gpu) => ({
       path: `/ml/shop/gpu/${name}`,
@@ -106,6 +120,7 @@ async function main() {
 
   const items = [
     ...primaryShopPages,
+    ...shopGpuPerformancePages,
     ...shopGpuPages,
     learnGpuSpecsPage,
     ...learnGpuPages,

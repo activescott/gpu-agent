@@ -53,11 +53,11 @@ Compare GPU & AI Accelerator Card Performance Metrics to their Cost
 - [+] feat: added NVIDIA H100-pcie 80GB GPU
 - [ ] feat: add pages for dollars per spec:
 
-  - shop/gpu/specs/dollars-per-tensor-core
-  - shop/gpu/specs/dollars-per-fp32-flops
-  - shop/gpu/specs/dollars-per-fp16-flops
-  - shop/gpu/specs/dollars-per-memory-gb
-  - shop/gpu/specs/dollars-per-memory-bandwidth-gbs
+  - shop/gpu/specs/cost-per-fp32-flops
+  - shop/gpu/specs/cost-per-tensor-core
+  - shop/gpu/specs/cost-per-fp16-flops
+  - shop/gpu/specs/cost-per-memory-gb
+  - shop/gpu/specs/cost-per-memory-bandwidth-gbs
   - requires loading listings for each type of GPU we have specs for
 
 - [ ] feat: add "Top 5 GPUs for \<Spec\>" on home page

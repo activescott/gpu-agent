@@ -24,6 +24,15 @@ const nextConfig = {
       },
     ]
   },
+  async redirects() {
+    return [
+      {
+        source: "/ml/info/:path*",
+        destination: "/ml/learn/:path*",
+        permanent: true,
+      },
+    ]
+  },
 
   // Optionally, add any other Next.js config below
 }

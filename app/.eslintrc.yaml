@@ -57,7 +57,6 @@ rules:
       ignoreExports:
         # because next page.tsx layout.tsx and route.ts require a default exported module and no code explicitly imports it.
         - "**/page.tsx"
-        - "**/page.ts"
         - "**/layout.tsx"
   # Because https://eslint.org/blog/2022/07/interesting-bugs-caught-by-no-constant-binary-expression/
   no-constant-binary-expression: "error"

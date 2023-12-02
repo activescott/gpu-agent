@@ -6,7 +6,7 @@ export const SiteFooter = () => {
   const start_year = 2023
   return (
     <footer className="pt-5 mx-2 my-5 text-muted border-top fw-lighter">
-      <div className="d-flex">
+      <div className="d-flex  w-100 flex-wrap">
         <ul className="nav flex-column mx-4">
           <li className="nav-item">Shop GPUs</li>
           {entries

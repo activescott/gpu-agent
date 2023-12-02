@@ -50,7 +50,7 @@ Compare GPU & AI Accelerator Card Performance Metrics to their Cost
 - [+] fix: content was wider than device on mobile causing weird scrolling for Micah :)
 - [+] feat: added NVIDIA A40 GPUs (add to seed with specs)
 - [+] feat: added NVIDIA A10 24GB GPU
-- [ ] feat: added NVIDIA H100 80GB GPU
+- [+] feat: added NVIDIA H100-pcie 80GB GPU
 - [ ] feat: add pages for dollars per spec:
 
   - shop/gpu/specs/dollars-per-tensor-core

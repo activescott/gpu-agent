@@ -1,0 +1,821 @@
+[
+  {
+    "itemId": "v1|285539337148|0",
+    "title": "NVIDIA H100 80GB Compute Card PCIe HBM2e 350W 900-21010-0000-000 GPU AI Card",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/d8wAAOSwHcdlQS1O/s-l225.jpg"
+    },
+    "price": {
+      "value": "31999.46",
+      "currency": "USD"
+    },
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C285539337148%7C0",
+    "seller": {
+      "username": "redacted-5735744690541987",
+      "feedbackPercentage": "98.5",
+      "feedbackScore": 5815
+    },
+    "condition": "New",
+    "conditionId": "1000",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/d8wAAOSwHcdlQS1O/s-l960.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "0.00",
+          "currency": "USD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE"
+    ],
+    "epid": "7061812207",
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/285539337148?hash=item427b7883bc%3Ag%3Ad8wAAOSwHcdlQS1O&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/285539337148?hash=item427b7883bc:g:d8wAAOSwHcdlQS1O",
+    "itemLocation": {
+      "postalCode": "926**",
+      "country": "US"
+    },
+    "adultOnly": false,
+    "legacyItemId": "285539337148",
+    "availableCoupons": false,
+    "itemCreationDate": "2023-10-31T16:40:44.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": false,
+    "listingMarketplaceId": "EBAY_US"
+  },
+  {
+    "itemId": "v1|195972662019|0",
+    "title": "Nvidia H100 PCIE CARDS TENSOR CORE Memory 80GB HBM2e 2.0 TB/sec NEW IN STOCK",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/yYcAAOSwDx1k-60k/s-l225.jpg"
+    },
+    "price": {
+      "value": "30450.00",
+      "currency": "USD"
+    },
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C195972662019%7C0",
+    "seller": {
+      "username": "redacted-2510030216428735.5",
+      "feedbackPercentage": "100.0",
+      "feedbackScore": 2
+    },
+    "condition": "New",
+    "conditionId": "1000",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/yYcAAOSwDx1k-60k/s-l960.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "100.00",
+          "currency": "USD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE",
+      "BEST_OFFER"
+    ],
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/195972662019?hash=item2da0e18303%3Ag%3AyYcAAOSwDx1k-60k&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/195972662019?hash=item2da0e18303:g:yYcAAOSwDx1k-60k",
+    "itemLocation": {
+      "postalCode": "970**",
+      "country": "US"
+    },
+    "additionalImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/83IAAOSwknRk-6z~/s-l225.jpg"
+      }
+    ],
+    "adultOnly": false,
+    "legacyItemId": "195972662019",
+    "availableCoupons": false,
+    "itemCreationDate": "2023-09-09T05:24:52.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": false,
+    "listingMarketplaceId": "EBAY_US"
+  },
+  {
+    "itemId": "v1|364604421257|0",
+    "title": "NVIDIA H100 80GB Compute Card PCIe HBM2e 350W 900-21010-0000-000 GPU AI Card",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/QG0AAOSw7wNlZiFv/s-l225.jpg"
+    },
+    "price": {
+      "value": "31000.00",
+      "currency": "USD"
+    },
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C364604421257%7C0",
+    "seller": {
+      "username": "redacted-1284325953029575.8",
+      "feedbackPercentage": "100.0",
+      "feedbackScore": 13
+    },
+    "condition": "Used",
+    "conditionId": "3000",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/QG0AAOSw7wNlZiFv/s-l1600.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "0.00",
+          "currency": "USD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE",
+      "BEST_OFFER"
+    ],
+    "epid": "7061812207",
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/364604421257?hash=item54e41df489%3Ag%3AQG0AAOSw7wNlZiFv&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/364604421257?hash=item54e41df489:g:QG0AAOSw7wNlZiFv",
+    "itemLocation": {
+      "postalCode": "926**",
+      "country": "US"
+    },
+    "adultOnly": false,
+    "legacyItemId": "364604421257",
+    "availableCoupons": false,
+    "itemCreationDate": "2023-11-28T23:38:07.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": false,
+    "listingMarketplaceId": "EBAY_US"
+  },
+  {
+    "itemId": "v1|386203557728|0",
+    "title": "NVIDIA Tesla H100 80GB GPU PCIe Version 900-21010-000-000 Not SXM version",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/N24AAOSw785lLUly/s-l225.jpg"
+    },
+    "price": {
+      "value": "40740.00",
+      "currency": "USD"
+    },
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C386203557728%7C0",
+    "seller": {
+      "username": "redacted-6063128892756759",
+      "feedbackPercentage": "98.7",
+      "feedbackScore": 856
+    },
+    "condition": "New",
+    "conditionId": "1000",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/N24AAOSw785lLUly/s-l1600.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "0.00",
+          "currency": "USD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE"
+    ],
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/386203557728?hash=item59eb869f60%3Ag%3AN24AAOSw785lLUly&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/386203557728?hash=item59eb869f60:g:N24AAOSw785lLUly",
+    "itemLocation": {
+      "country": "CN"
+    },
+    "additionalImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/U2wAAOSwlO5lLUl7/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/IOAAAOSwFCllLUmE/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/8l8AAOSwFRplLUmJ/s-l225.jpg"
+      }
+    ],
+    "adultOnly": false,
+    "legacyItemId": "386203557728",
+    "availableCoupons": false,
+    "itemCreationDate": "2023-10-17T14:32:51.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": false,
+    "listingMarketplaceId": "EBAY_US"
+  },
+  {
+    "itemId": "v1|175983150398|0",
+    "title": "NVIDIA Tesla H100 80GB GPU PCIe version 900-21010-000-000 no SXM version",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/N24AAOSw785lLUly/s-l225.jpg"
+    },
+    "price": {
+      "value": "49000.00",
+      "currency": "USD"
+    },
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C175983150398%7C0",
+    "seller": {
+      "username": "redacted-5342771942689687",
+      "feedbackPercentage": "99.8",
+      "feedbackScore": 3090
+    },
+    "condition": "New",
+    "conditionId": "1000",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/N24AAOSw785lLUly/s-l225.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "0.00",
+          "currency": "USD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE",
+      "BEST_OFFER"
+    ],
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/175983150398?hash=item28f969c53e%3Ag%3AN24AAOSw785lLUly&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/175983150398?hash=item28f969c53e:g:N24AAOSw785lLUly",
+    "itemLocation": {
+      "postalCode": "******",
+      "country": "CN"
+    },
+    "additionalImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/U2wAAOSwlO5lLUl7/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/IOAAAOSwFCllLUmE/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/8l8AAOSwFRplLUmJ/s-l225.jpg"
+      }
+    ],
+    "adultOnly": false,
+    "legacyItemId": "175983150398",
+    "availableCoupons": false,
+    "itemCreationDate": "2023-10-24T17:20:13.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": false,
+    "listingMarketplaceId": "EBAY_US"
+  },
+  {
+    "itemId": "v1|314981032359|0",
+    "title": "DELL NVIDIA H100 PCIE GPU 80GB 5120 BIT HBM2E GRAPHICS CARD DGP4C",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/aZ4AAOSwaI9lXo99/s-l225.jpg"
+    },
+    "price": {
+      "value": "34950.00",
+      "currency": "USD"
+    },
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C314981032359%7C0",
+    "seller": {
+      "username": "redacted-6023304618894039",
+      "feedbackPercentage": "100.0",
+      "feedbackScore": 10514
+    },
+    "condition": "Open box",
+    "conditionId": "1500",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/aZ4AAOSwaI9lXo99/s-l1600.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "139.00",
+          "currency": "USD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE"
+    ],
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/314981032359?hash=item49565521a7%3Ag%3AaZ4AAOSwaI9lXo99&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/314981032359?hash=item49565521a7:g:aZ4AAOSwaI9lXo99",
+    "itemLocation": {
+      "postalCode": "913**",
+      "country": "US"
+    },
+    "additionalImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/rGsAAOSwSW5lXo99/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/7NkAAOSwpOhlXo99/s-l225.jpg"
+      }
+    ],
+    "adultOnly": false,
+    "legacyItemId": "314981032359",
+    "availableCoupons": false,
+    "itemCreationDate": "2023-11-22T23:19:37.000Z",
+    "topRatedBuyingExperience": true,
+    "priorityListing": false,
+    "listingMarketplaceId": "EBAY_US"
+  },
+  {
+    "itemId": "v1|204533910254|0",
+    "title": "NVIDIA TESLA Server Graphics Card New 80G  H100 PCIE",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/nY0AAOSwBrNlTFj1/s-l225.jpg"
+    },
+    "price": {
+      "value": "43555.00",
+      "currency": "USD"
+    },
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C204533910254%7C0",
+    "seller": {
+      "username": "redacted-7429437581702949",
+      "feedbackPercentage": "0.0",
+      "feedbackScore": 0
+    },
+    "condition": "New",
+    "conditionId": "1000",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/nY0AAOSwBrNlTFj1/s-l1200.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "30.00",
+          "currency": "USD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE",
+      "BEST_OFFER"
+    ],
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/204533910254?hash=item2f9f2bcaee%3Ag%3AnY0AAOSwBrNlTFj1&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/204533910254?hash=item2f9f2bcaee:g:nY0AAOSwBrNlTFj1",
+    "itemLocation": {
+      "country": "CN"
+    },
+    "additionalImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/trAAAOSw9zVlTFj6/s-l225.jpg"
+      }
+    ],
+    "adultOnly": false,
+    "legacyItemId": "204533910254",
+    "availableCoupons": false,
+    "itemCreationDate": "2023-11-10T03:59:09.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": false,
+    "listingMarketplaceId": "EBAY_US"
+  },
+  {
+    "itemId": "v1|115937900742|0",
+    "title": "NVIDIA Tesla H100 80GB GPU PCIe Version 900-21010-000-000 , Not SXM version",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/rZUAAOSwv3VlI~k4/s-l225.jpg"
+    },
+    "price": {
+      "value": "40745.00",
+      "currency": "USD"
+    },
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C115937900742%7C0",
+    "seller": {
+      "username": "redacted-3836002884381625.5",
+      "feedbackPercentage": "97.5",
+      "feedbackScore": 7821
+    },
+    "condition": "New",
+    "conditionId": "1000",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/rZUAAOSwv3VlI~k4/s-l960.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "0.00",
+          "currency": "USD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE",
+      "BEST_OFFER"
+    ],
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/115937900742?hash=item1afe6ff8c6%3Ag%3ArZUAAOSwv3VlI%7Ek4&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/115937900742?hash=item1afe6ff8c6:g:rZUAAOSwv3VlI~k4",
+    "itemLocation": {
+      "country": "CN"
+    },
+    "additionalImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/ezkAAOSwyxNlI~k7/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/WHMAAOSwoN9lI~k9/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/WP8AAOSwSYRlI~lB/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/2yYAAOSwG~dlI~lC/s-l225.jpg"
+      }
+    ],
+    "adultOnly": false,
+    "legacyItemId": "115937900742",
+    "availableCoupons": false,
+    "itemCreationDate": "2023-10-10T13:07:54.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": false,
+    "listingMarketplaceId": "EBAY_US"
+  },
+  {
+    "itemId": "v1|225892098296|0",
+    "title": "NVIDIA Tesla H100 80GB GPU PCIe version 900-21010-000-000 no SXM version",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/K7AAAOSwDcNlZbyK/s-l225.jpg"
+    },
+    "price": {
+      "value": "48995.00",
+      "currency": "USD"
+    },
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C225892098296%7C0",
+    "seller": {
+      "username": "redacted-2776385981618117.5",
+      "feedbackPercentage": "94.5",
+      "feedbackScore": 1340
+    },
+    "condition": "New",
+    "conditionId": "1000",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/K7AAAOSwDcNlZbyK/s-l500.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "0.00",
+          "currency": "USD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE",
+      "BEST_OFFER"
+    ],
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/225892098296?hash=item349837e0f8%3Ag%3AK7AAAOSwDcNlZbyK&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/225892098296?hash=item349837e0f8:g:K7AAAOSwDcNlZbyK",
+    "itemLocation": {
+      "country": "CN"
+    },
+    "additionalImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/vWIAAOSwbetlZbyM/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/bJoAAOSw7vplZbyK/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/Q~YAAOSwc8FlZbyK/s-l225.jpg"
+      }
+    ],
+    "adultOnly": false,
+    "legacyItemId": "225892098296",
+    "availableCoupons": false,
+    "itemCreationDate": "2023-11-29T10:15:35.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": false,
+    "listingMarketplaceId": "EBAY_US"
+  },
+  {
+    "itemId": "v1|235266859086|0",
+    "title": "NVIDIA Tesla H100 80GB GPU PCIe version 900-21010-000-000 non SXM version",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/N24AAOSw785lLUly/s-l225.jpg"
+    },
+    "price": {
+      "value": "49000.00",
+      "currency": "USD"
+    },
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C235266859086%7C0",
+    "seller": {
+      "username": "redacted-8595186093987935",
+      "feedbackPercentage": "97.8",
+      "feedbackScore": 102
+    },
+    "condition": "New",
+    "conditionId": "1000",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/N24AAOSw785lLUly/s-l225.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "0.00",
+          "currency": "USD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE",
+      "BEST_OFFER"
+    ],
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/235266859086?hash=item36c6ff604e%3Ag%3AN24AAOSw785lLUly&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/235266859086?hash=item36c6ff604e:g:N24AAOSw785lLUly",
+    "itemLocation": {
+      "postalCode": "******",
+      "country": "CN"
+    },
+    "additionalImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/U2wAAOSwlO5lLUl7/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/IOAAAOSwFCllLUmE/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/8l8AAOSwFRplLUmJ/s-l225.jpg"
+      }
+    ],
+    "adultOnly": false,
+    "legacyItemId": "235266859086",
+    "availableCoupons": false,
+    "itemCreationDate": "2023-10-24T17:30:00.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": false,
+    "listingMarketplaceId": "EBAY_US"
+  },
+  {
+    "itemId": "v1|134779469872|0",
+    "title": "NVIDIA Tesla H100 80GB GPU PCIe version 900-21010-000-000 no SXM version",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/N24AAOSw785lLUly/s-l225.jpg"
+    },
+    "price": {
+      "value": "49000.00",
+      "currency": "USD"
+    },
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C134779469872%7C0",
+    "seller": {
+      "username": "redacted-3824207565986849.5",
+      "feedbackPercentage": "100.0",
+      "feedbackScore": 4896
+    },
+    "condition": "New",
+    "conditionId": "1000",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/N24AAOSw785lLUly/s-l225.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "0.00",
+          "currency": "USD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE",
+      "BEST_OFFER"
+    ],
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/134779469872?hash=item1f617b8030%3Ag%3AN24AAOSw785lLUly&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/134779469872?hash=item1f617b8030:g:N24AAOSw785lLUly",
+    "itemLocation": {
+      "postalCode": "******",
+      "country": "CN"
+    },
+    "additionalImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/U2wAAOSwlO5lLUl7/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/IOAAAOSwFCllLUmE/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/8l8AAOSwFRplLUmJ/s-l225.jpg"
+      }
+    ],
+    "adultOnly": false,
+    "legacyItemId": "134779469872",
+    "availableCoupons": false,
+    "itemCreationDate": "2023-10-24T17:20:28.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": false,
+    "listingMarketplaceId": "EBAY_US"
+  }
+]

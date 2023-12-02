@@ -8,6 +8,7 @@ import {
   GpuSpecsDescription,
 } from "@/pkgs/isomorphic/model/specs"
 import { Listing } from "@/pkgs/isomorphic/model"
+import Image from "next/image"
 
 const formatPriceInteger = (price: number) => {
   // formats to integer /if possible/; otherwise will show decimal as needed
@@ -43,11 +44,12 @@ export const ListingCard = ({
           alignItems: "center",
         }}
       >
-        <img
+        <Image
           src={imageUrl}
           className="card-img-top mx-auto mt-1"
           alt={title}
-          style={{ maxWidth: "215px", maxHeight: "215px" }}
+          width={215}
+          height={215}
         />
       </div>
       <div className="card-body">

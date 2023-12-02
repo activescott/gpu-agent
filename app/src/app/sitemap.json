@@ -95,7 +95,8 @@
     },
     {
       "path": "/ml/learn/quantization",
-      "title": "Quantization in Machine Learning and Deep Learning"
+      "title": "Quantization in Machine Learning and Deep Learning",
+      "lastModified": "2023-12-02T05:19:39.000Z"
     },
     {
       "path": "/ml/learn/models/rnn-t",

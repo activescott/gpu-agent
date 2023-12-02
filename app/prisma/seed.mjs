@@ -105,7 +105,6 @@ async function main() {
         "https://www.techpowerup.com/gpu-specs/a100-pcie-80-gb.c3821",
       ],
     },
-    //https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/a10/pdf/a10-datasheet.pdf
     {
       name: "nvidia-a10",
       label: "NVIDIA A10",
@@ -122,6 +121,28 @@ async function main() {
       references: [
         "https://www.nvidia.com/en-us/data-center/products/a10-gpu/",
         "https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/a10/pdf/a10-datasheet.pdf",
+      ],
+    },
+    {
+      name: "nvidia-h100-pcie",
+      label: "NVIDIA H100 PCIe",
+      tensorCoreCount: 456,
+      // NOTE: FP32 Tensor Core
+      fp32TFLOPS: 756,
+      // NOTE: FP16 Tensor Core
+      fp16TFLOPS: 1_513,
+      // NOTE: INT8 Tensor Core
+      int8TOPS: 3_026,
+      memoryCapacityGB: 80,
+      memoryBandwidthGBs: 2039,
+      summary:
+        "The NVIDIA H100 PCIe 80GB is a state-of-the-art professional graphics card designed primarily for machine learning and high-performance computing applications. Launched in March 2023, it is built on the innovative Hopper GH100 architecture and utilizes the 4 nm process by TSMC. The H100 PCIe 80GB stands out for its substantial memory capacity and high-speed memory bandwidth, making it exceptionally suitable for handling large datasets and complex machine learning models. Its tensor cores significantly accelerate machine learning operations. The Hopper architecture, as seen in the H100 and H200 GPUs, introduces several technological innovations aimed at enhancing performance in AI training and inference. These GPUs are distinguished by their massive transistor count and advanced memory technologies, like HBM3 and HBM2e, supporting up to 80 GB of memory. The H100 supports HBM2e memory, while the H200 supports the faster HBM3 memory system, which can deliver up to 3 TB/s, a significant increase over the previous generation's capabilities.",
+      references: [
+        "https://resources.nvidia.com/en-us-tensor-core/nvidia-tensor-core-gpu-datasheet",
+        "https://www.nvidia.com/en-us/data-center/h100/",
+        "https://www.techpowerup.com/gpu-specs/h100-pcie-80-gb.c3899",
+        "https://en.wikipedia.org/wiki/Hopper_(microarchitecture)",
+        "https://www.nvidia.com/en-us/data-center/technologies/hopper-architecture/",
       ],
     },
   ]

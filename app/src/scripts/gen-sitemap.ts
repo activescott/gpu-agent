@@ -44,11 +44,14 @@ async function main() {
         .replace(/\/page\.(mdx|tsx)$/, "")
 
       // if the file ends with an mdx extension, assume it is a markdown file and extract the first line with a heading and use it as a title (remove the markdown heading prefix):
-      const title: string = file.endsWith(".mdx")
-        ? parseTitleFromMdx(file)
-        : file.endsWith(".tsx")
-          ? parseTitleFromTsx(file)
-          : path.basename(file)
+      let title = ""
+      if (file.endsWith(".mdx")) {
+        title = parseTitleFromMdx(file)
+      } else if (file.endsWith(".tsx")) {
+        title = parseTitleFromTsx(file)
+      } else {
+        path.basename(file)
+      }
 
       const lastModified = gitLastUpdated(file)
 

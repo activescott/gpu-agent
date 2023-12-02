@@ -9,7 +9,7 @@ import { Integer } from "type-fest"
 
 const log = createDiag("shopping-agent:shop:gpuSlug")
 
-// revalidate the data at most every hour:
+// revalidate the data at most every hour: https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#revalidate
 export const revalidate = 3600
 
 export async function generateStaticParams() {

@@ -12,7 +12,7 @@ import {
   trackBuyNowEvent,
 } from "./ListingCard"
 import Image from "next/image"
-import { AttributePill } from "./AttributePill"
+import { AttributePill, CountryPill } from "./AttributePill"
 import { SpecPill } from "./SpecPill"
 import Link from "next/link"
 
@@ -28,7 +28,13 @@ export function ListingCardSmall({
   highlightSpec,
 }: ListingCardProps): JSX.Element {
   const analytics = useAnalytics()
-  const { itemAffiliateWebUrl, priceValue, title, condition } = item
+  const {
+    itemAffiliateWebUrl,
+    priceValue,
+    title,
+    condition,
+    itemLocationCountry,
+  } = item
   const imageUrl = chooseBestImageUrl(item)
   const cost = Number(priceValue)
 
@@ -67,6 +73,9 @@ export function ListingCardSmall({
             <div className="card-text text-align-start">
               <AttributePill>{formatPrice(cost)}</AttributePill>
               {condition && <AttributePill>{condition}</AttributePill>}
+              {itemLocationCountry && (
+                <CountryPill isoCountryCode={itemLocationCountry}></CountryPill>
+              )}
               <SpecPill
                 key={highlightSpec}
                 infoTipText={

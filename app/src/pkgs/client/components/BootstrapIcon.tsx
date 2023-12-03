@@ -6,7 +6,7 @@ interface Props {
   /**
    * See them all at https://icons.getbootstrap.com/
    */
-  icon: BootstrapIconNames
+  icon: BootstrapIconName
   size?: "xs" | "small" | "medium" | "large"
   alt?: string
   onClick?: () => void
@@ -42,7 +42,7 @@ export const BootstrapIcon = ({
 }
 
 // NOTE: generated with regex in the svg sprite: find:  .*?id="([^"]+)"  replace:  | "$1"\n
-type BootstrapIconNames =
+export type BootstrapIconName =
   | "0-circle"
   | "0-circle-fill"
   | "0-square"

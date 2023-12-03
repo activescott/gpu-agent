@@ -7,6 +7,8 @@ import {
   AnalyticsProvider,
 } from "@/pkgs/client/analytics/provider"
 import { SiteHeader } from "@/pkgs/client/components/SiteHeader"
+import { Alert } from "@/pkgs/client/components/Alert"
+import Link from "next/link"
 
 export const metadata: Metadata = {
   title: "Coin Poet AI Shopping Agent",
@@ -24,6 +26,13 @@ export default function RootLayout({
       <body>
         <AnalyticsProvider>
           <SiteHeader />
+          <Alert kind="info">
+            This site is in beta. Please{" "}
+            <Link href="/contact" className="alert-link">
+              drop us a line
+            </Link>{" "}
+            and let us know what you like and what can be better. 🙏
+          </Alert>
           <main className="p-3">{children}</main>
           <SiteFooter />
         </AnalyticsProvider>

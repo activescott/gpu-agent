@@ -68,6 +68,7 @@ export interface ItemSummary {
   epid?: string
   // The date and time when the item listing was created.
   itemCreationDate?: Date
+  itemLocation?: ItemLocation
 }
 
 export interface Price {

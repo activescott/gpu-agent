@@ -37,6 +37,10 @@
       "title": "Price Compare NVIDIA A100 PCIe GPUs"
     },
     {
+      "path": "/ml/shop/gpu/nvidia-a100-sxm",
+      "title": "Price Compare NVIDIA A100 SXM GPUs"
+    },
+    {
       "path": "/ml/shop/gpu/nvidia-a30",
       "title": "Price Compare NVIDIA A30 GPUs"
     },
@@ -67,6 +71,10 @@
     {
       "path": "/ml/learn/gpu/nvidia-a100-pcie",
       "title": "NVIDIA A100 PCIe GPU Machine Learning Specification"
+    },
+    {
+      "path": "/ml/learn/gpu/nvidia-a100-sxm",
+      "title": "NVIDIA A100 SXM GPU Machine Learning Specification"
     },
     {
       "path": "/ml/learn/gpu/nvidia-a30",

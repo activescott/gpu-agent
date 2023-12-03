@@ -98,11 +98,33 @@ async function main() {
       memoryCapacityGB: 80,
       memoryBandwidthGBs: 1_935,
       summary:
-        "The NVIDIA A100-PCIE-80GB, launched in June 2021, is a formidable accelerator in the field of machine learning and artificial intelligence. Built on NVIDIA's advanced Ampere architecture, this accelerator is designed for high-performance computing, deep learning training, and inference tasks. With its massive 80 GB of HBM2e memory and superior memory bandwidth of 1,935 GB/s, it caters to the most demanding AI workloads. The inclusion of 432 tensor cores significantly accelerates machine learning applications, making it a go-to choice for researchers and data scientists. Operating at a base clock of 1065 MHz and a boost clock up to 1410 MHz, it delivers impressive computational power, capped at a maximum power consumption of 300 watts. The A100-PCIE-80GB is notable for its high FP32 performance of 19.5 TFLOPS, emphasizing its capability in handling floating-point operations efficiently.",
+        "The NVIDIA A100 PCIe 80GB was announced in May 2020, is a formidable accelerator in the field of machine learning and artificial intelligence. Built on NVIDIA's advanced Ampere architecture, this accelerator is designed for high-performance computing, deep learning training, and inference tasks. With its massive 80 GB of HBM2e memory and superior memory bandwidth of 1,935 GB/s, it caters to the most demanding AI workloads. The inclusion of 432 tensor cores significantly accelerates machine learning applications, making it a go-to choice for researchers and data scientists. Operating at a base clock of 1065 MHz and a boost clock up to 1410 MHz, it delivers impressive computational power, capped at a maximum power consumption of 300 watts. The A100-PCIE-80GB is notable for its high FP32 performance of 19.5 TFLOPS, emphasizing its capability in handling floating-point operations efficiently.",
       references: [
         "https://www.nvidia.com/en-us/data-center/a100/",
+        "https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/a100/pdf/nvidia-a100-datasheet-nvidia-us-2188504-web.pdf",
         "https://developer.nvidia.com/blog/nvidia-ampere-architecture-in-depth/",
         "https://www.techpowerup.com/gpu-specs/a100-pcie-80-gb.c3821",
+      ],
+    },
+    {
+      name: "nvidia-a100-sxm",
+      label: "NVIDIA A100 SXM",
+      tensorCoreCount: 432,
+      // NOTE This is the Tensor Core FP32 performance, not the CUDA FP32 performance. The A40 for example doesn't have such a spec (only CUDA).
+      fp32TFLOPS: 156,
+      fp16TFLOPS: 312,
+      int8TOPS: 624,
+      memoryCapacityGB: 80,
+      memoryBandwidthGBs: 2_039,
+      summary:
+        "The NVIDIA A100 SXM4 80GB was announced in May 2020. It is a powerhouse of machine learning and high-performance computing. With its NVIDIA Ampere architecture and 80 GB HBM2e memory, it delivers exceptional performance for AI, data analytics, and HPC applications. Its massive memory bandwidth and the inclusion of tensor cores accelerate machine learning applications, making it ideal for demanding data-intensive tasks. It is unique from the NVIDIA A100 PCIe 80GB using the SXM (Server PCI Express Module) socket solution for connecting NVIDIA compute accelerators that enables it to have higher GPU memory bandwidth than the PCIe version.",
+      references: [
+        "https://www.nvidia.com/en-us/data-center/a100/",
+        "https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/a100/pdf/nvidia-a100-datasheet-nvidia-us-2188504-web.pdf",
+        "https://en.wikipedia.org/wiki/SXM_(socket)",
+        "https://en.wikipedia.org/wiki/Ampere_(microarchitecture)",
+        "https://images.nvidia.com/aem-dam/en-zz/Solutions/data-center/nvidia-ampere-architecture-whitepaper.pdf",
+        "https://www.techpowerup.com/gpu-specs/a100-sxm4-80-gb.c3746",
       ],
     },
     {

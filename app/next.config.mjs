@@ -31,6 +31,21 @@ const nextConfig = {
         destination: "/ml/learn/:path*",
         permanent: true,
       },
+      {
+        source: "/ml/learn/gpu/nvidia-rtx-a5000-gpu",
+        destination: "/ml/learn/gpu/nvidia-rtx-a5000",
+        permanent: true,
+      },
+      {
+        source: "/ml/learn/gpu/nvidia-a10-pci-24gb",
+        destination: "/ml/learn/gpu/nvidia-a10",
+        permanent: true,
+      },
+      {
+        source: "/ml/learn/gpu/nvidia-a100-sxm-80gb",
+        destination: "/ml/learn/gpu/nvidia-a100-sxm",
+        permanent: true,
+      },
     ]
   },
 

@@ -28,7 +28,7 @@
     },
     "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C354890985183%7C0",
     "seller": {
-      "username": "redacted-3982904241476561.5",
+      "username": "redacted-2608352837312297.5",
       "feedbackPercentage": "98.5",
       "feedbackScore": 78
     },
@@ -51,8 +51,8 @@
     "buyingOptions": [
       "FIXED_PRICE"
     ],
-    "itemAffiliateWebUrl": "https://www.ebay.com/itm/354890985183?hash=item52a126aedf%3Ag%3AeocAAOSwsqtko4vQ&amdata=enc%3AAQAIAAAA4Ow8zKbpaZsizISD5uS5uinCn8qw0TBKBG9bS%2F5ov8KO8j45eky3xKLPfes%2B3jIr8Gr4zEW5HaRYTbazhkuJwqkJlFiKEyQPHi9A5Jym2Cp%2FEPLCRlgXToIHJO35A%2F5VNleYEtM5lBcUbI8YqrBSaX6jt2AwA6x4y%2B2c40ei%2B3zB%2Ba116gO51hMz6DyU129%2FLYMdWCMPYPaMhEOSClxPNDYA86y3Qn5yqkw%2FociiwmYPSn%2FLWlG97IZ1sf%2Fl25%2Fzhb2Kli7ALHuVRmy3fzkxDZW9P8%2FVAu19tOBNhQPmpycC&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
-    "itemWebUrl": "https://www.ebay.com/itm/354890985183?hash=item52a126aedf:g:eocAAOSwsqtko4vQ&amdata=enc%3AAQAIAAAA4Ow8zKbpaZsizISD5uS5uinCn8qw0TBKBG9bS%2F5ov8KO8j45eky3xKLPfes%2B3jIr8Gr4zEW5HaRYTbazhkuJwqkJlFiKEyQPHi9A5Jym2Cp%2FEPLCRlgXToIHJO35A%2F5VNleYEtM5lBcUbI8YqrBSaX6jt2AwA6x4y%2B2c40ei%2B3zB%2Ba116gO51hMz6DyU129%2FLYMdWCMPYPaMhEOSClxPNDYA86y3Qn5yqkw%2FociiwmYPSn%2FLWlG97IZ1sf%2Fl25%2Fzhb2Kli7ALHuVRmy3fzkxDZW9P8%2FVAu19tOBNhQPmpycC",
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/354890985183?hash=item52a126aedf%3Ag%3AeocAAOSwsqtko4vQ&amdata=enc%3AAQAIAAAA4Ow8zKbpaZsizISD5uS5uinCn8qw0TBKBG9bS%2F5ov8KO8j45eky3xKLPfes%2B3jIr8Gr4zEW5HaRYTbazhkuJwqkJlFiKEyQPHi9A5Jym2Cp%2FEPLCRlgXToIHJO35A%2F5VNjGIhmRQp4yB%2Fb35Cl8BptTVNCtHayKu%2Bdq84ND1zQuOM148OczDbH1Vl6sXLl3hH56l8MkD39iFxiF3nDO1MiV2l6NpuZDi3YNkQMSryCxelzoMjWawNNNfHYyOhG650ipnKgi8XcOJ5WM915PTWI8mXwKV92sBod1YOplxQcvJ&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/354890985183?hash=item52a126aedf:g:eocAAOSwsqtko4vQ&amdata=enc%3AAQAIAAAA4Ow8zKbpaZsizISD5uS5uinCn8qw0TBKBG9bS%2F5ov8KO8j45eky3xKLPfes%2B3jIr8Gr4zEW5HaRYTbazhkuJwqkJlFiKEyQPHi9A5Jym2Cp%2FEPLCRlgXToIHJO35A%2F5VNjGIhmRQp4yB%2Fb35Cl8BptTVNCtHayKu%2Bdq84ND1zQuOM148OczDbH1Vl6sXLl3hH56l8MkD39iFxiF3nDO1MiV2l6NpuZDi3YNkQMSryCxelzoMjWawNNNfHYyOhG650ipnKgi8XcOJ5WM915PTWI8mXwKV92sBod1YOplxQcvJ",
     "itemLocation": {
       "country": "CN"
     },
@@ -109,9 +109,9 @@
     "itemGroupType": "SELLER_DEFINED_VARIATIONS",
     "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C285399734867%7C587311254885",
     "seller": {
-      "username": "redacted-6390749898934169",
-      "feedbackPercentage": "99.6",
-      "feedbackScore": 2133
+      "username": "redacted-3370786264618749.5",
+      "feedbackPercentage": "99.4",
+      "feedbackScore": 2137
     },
     "condition": "New",
     "conditionId": "1000",
@@ -132,8 +132,8 @@
     "buyingOptions": [
       "FIXED_PRICE"
     ],
-    "itemAffiliateWebUrl": "https://www.ebay.com/itm/285399734867?hash=item4273265a53%3Ag%3ArJYAAOSwJCFkvxTB&amdata=enc%3AAQAIAAAA4Du8D%2Fkk94SH418WF1f31%2FLm9oVlpMWUPOI0LdoAiDUTQiQhzhccB9MH1UOH6nmIto2lwPGZnXEq5DsbRnbsJO2ID%2FRZmnnkMtCEkTpr4Z5yUNu8UdqTDstxIUT1x7inHTc7nRv3YqsQQexHnYgM632vhb1m%2FA%2BmJ74KjKkISOwa88LSDi7lTIGVgjpMEpUr4Uidg73RF%2FCbdfXgv5hf68RNSH2Ya%2BAUeA8LtN1X%2BuFqH3TQ5U5PZu5qrDGzcFqdmc39xWcEm0ftd9y83%2B6buNtggpgAlx%2BDDjzMq%2FeH%2Flrz&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
-    "itemWebUrl": "https://www.ebay.com/itm/285399734867?hash=item4273265a53:g:rJYAAOSwJCFkvxTB&amdata=enc%3AAQAIAAAA4Du8D%2Fkk94SH418WF1f31%2FLm9oVlpMWUPOI0LdoAiDUTQiQhzhccB9MH1UOH6nmIto2lwPGZnXEq5DsbRnbsJO2ID%2FRZmnnkMtCEkTpr4Z5yUNu8UdqTDstxIUT1x7inHTc7nRv3YqsQQexHnYgM632vhb1m%2FA%2BmJ74KjKkISOwa88LSDi7lTIGVgjpMEpUr4Uidg73RF%2FCbdfXgv5hf68RNSH2Ya%2BAUeA8LtN1X%2BuFqH3TQ5U5PZu5qrDGzcFqdmc39xWcEm0ftd9y83%2B6buNtggpgAlx%2BDDjzMq%2FeH%2Flrz",
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/285399734867?hash=item4273265a53%3Ag%3ArJYAAOSwJCFkvxTB&amdata=enc%3AAQAIAAAA4Du8D%2Fkk94SH418WF1f31%2FLm9oVlpMWUPOI0LdoAiDUTQiQhzhccB9MH1UOH6nmIto2lwPGZnXEq5DsbRnbsJO2ID%2FRZmnnkMtCEkTpr4Z5yUNu8UdqTDstxIUT1x7inHRj5onbv74Tuh%2Bd0qqEhTADdwT421pvejqr24rPcD2Nr5aErCIsPmqtdI6kDtp4tTRiNcpk%2FKJiEAqnH%2Bb4njQvDWB4lo%2BssVSuRG224UPnOYsfKqVB46AX9JTzPy0h0dj3PCrWXLqfhXdmM5EtEg7xqfMsPEKDQsSHnW3RSgoUA&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/285399734867?hash=item4273265a53:g:rJYAAOSwJCFkvxTB&amdata=enc%3AAQAIAAAA4Du8D%2Fkk94SH418WF1f31%2FLm9oVlpMWUPOI0LdoAiDUTQiQhzhccB9MH1UOH6nmIto2lwPGZnXEq5DsbRnbsJO2ID%2FRZmnnkMtCEkTpr4Z5yUNu8UdqTDstxIUT1x7inHRj5onbv74Tuh%2Bd0qqEhTADdwT421pvejqr24rPcD2Nr5aErCIsPmqtdI6kDtp4tTRiNcpk%2FKJiEAqnH%2Bb4njQvDWB4lo%2BssVSuRG224UPnOYsfKqVB46AX9JTzPy0h0dj3PCrWXLqfhXdmM5EtEg7xqfMsPEKDQsSHnW3RSgoUA",
     "itemLocation": {
       "postalCode": "786**",
       "country": "US"
@@ -147,7 +147,7 @@
     "listingMarketplaceId": "EBAY_US"
   },
   {
-    "itemId": "v1|285308613921|587184024132",
+    "itemId": "v1|285308613921|587184024130",
     "title": "Nvidia Tesla GPU Cooling Fans and Shroud Mounting A30 A40 A100 Accelerator Card",
     "itemGroupHref": "https://api.ebay.com/buy/browse/v1/item/get_items_by_item_group?item_group_id=285308613921",
     "leafCategoryIds": [
@@ -175,11 +175,11 @@
       "currency": "USD"
     },
     "itemGroupType": "SELLER_DEFINED_VARIATIONS",
-    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C285308613921%7C587184024132",
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C285308613921%7C587184024130",
     "seller": {
-      "username": "redacted-319177061622907.94",
-      "feedbackPercentage": "99.6",
-      "feedbackScore": 2133
+      "username": "redacted-8222393824152731",
+      "feedbackPercentage": "99.4",
+      "feedbackScore": 2137
     },
     "condition": "New",
     "conditionId": "1000",
@@ -200,8 +200,8 @@
     "buyingOptions": [
       "FIXED_PRICE"
     ],
-    "itemAffiliateWebUrl": "https://www.ebay.com/itm/285308613921?hash=item426db7f521%3Ag%3AFzQAAOSwiQVkdldL&amdata=enc%3AAQAIAAAA4JnMV2zGidclpU36dL%2BAS4IQbu9DLbDBnMRBYKSnv3v37pGeK%2FHaBL2s%2FsmXjg3E83oBWW3y2G0QJlM2%2FuMTdHVB4sBPvXquhopp77QAO7q0YV2GLg6QBSyeliTt2fObgyrTAb4nVW2bPGSXdBIRS1vSCTH7h3%2BPMnzwcA%2FpJaH0O8aDsHCGxWcztqog7xt2l389ScXF5aBy%2BcOPe0JPXiWThO5NrfZ0cYVfq%2FJjxasPUd0pewfnyZP5OLX4gHWRiK1%2B4YpwG3Gec1yxU%2BPfmnibSUtO1lAoOLSpOORBlvgz&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
-    "itemWebUrl": "https://www.ebay.com/itm/285308613921?hash=item426db7f521:g:FzQAAOSwiQVkdldL&amdata=enc%3AAQAIAAAA4JnMV2zGidclpU36dL%2BAS4IQbu9DLbDBnMRBYKSnv3v37pGeK%2FHaBL2s%2FsmXjg3E83oBWW3y2G0QJlM2%2FuMTdHVB4sBPvXquhopp77QAO7q0YV2GLg6QBSyeliTt2fObgyrTAb4nVW2bPGSXdBIRS1vSCTH7h3%2BPMnzwcA%2FpJaH0O8aDsHCGxWcztqog7xt2l389ScXF5aBy%2BcOPe0JPXiWThO5NrfZ0cYVfq%2FJjxasPUd0pewfnyZP5OLX4gHWRiK1%2B4YpwG3Gec1yxU%2BPfmnibSUtO1lAoOLSpOORBlvgz",
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/285308613921?hash=item426db7f521%3Ag%3AFzQAAOSwiQVkdldL&amdata=enc%3AAQAIAAAA4JnMV2zGidclpU36dL%2BAS4IQbu9DLbDBnMRBYKSnv3v37pGeK%2FHaBL2s%2FsmXjg3E83oBWW3y2G0QJlM2%2FuMTdHVB4sBPvXquhopp77QAO7q0YV2GLg6QBSyeliTt2fObg12P1T1mqaleuvBUue04RjJd5nQ0Wx6ZpkR%2Fly3O5lD837YRWL0Z%2BltRLJKVOk1ft3lQZGQyy5WdG2f%2Fp4vqG0oorBVuNsQJYzgr%2B94lbVLpkkf96OI95NpcxK3iktOt8EedPf6n99tScq4xrreneIM1tKxBLMLJNLgOa0VA4Q67&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/285308613921?hash=item426db7f521:g:FzQAAOSwiQVkdldL&amdata=enc%3AAQAIAAAA4JnMV2zGidclpU36dL%2BAS4IQbu9DLbDBnMRBYKSnv3v37pGeK%2FHaBL2s%2FsmXjg3E83oBWW3y2G0QJlM2%2FuMTdHVB4sBPvXquhopp77QAO7q0YV2GLg6QBSyeliTt2fObg12P1T1mqaleuvBUue04RjJd5nQ0Wx6ZpkR%2Fly3O5lD837YRWL0Z%2BltRLJKVOk1ft3lQZGQyy5WdG2f%2Fp4vqG0oorBVuNsQJYzgr%2B94lbVLpkkf96OI95NpcxK3iktOt8EedPf6n99tScq4xrreneIM1tKxBLMLJNLgOa0VA4Q67",
     "itemLocation": {
       "postalCode": "786**",
       "country": "US"
@@ -243,7 +243,7 @@
     },
     "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C305272499033%7C0",
     "seller": {
-      "username": "redacted-5409525423401391",
+      "username": "redacted-6426046320075027",
       "feedbackPercentage": "100.0",
       "feedbackScore": 170
     },
@@ -328,7 +328,7 @@
     },
     "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C196093790682%7C0",
     "seller": {
-      "username": "redacted-2500059491519489.5",
+      "username": "redacted-5180224262788463",
       "feedbackPercentage": "100.0",
       "feedbackScore": 10514
     },
@@ -375,72 +375,6 @@
     "listingMarketplaceId": "EBAY_US"
   },
   {
-    "itemId": "v1|404577370214|0",
-    "title": "NVIDIA A30 TENSOR CORE GPU ACCELERATOR 24GB HBM2",
-    "leafCategoryIds": [
-      "27386"
-    ],
-    "categories": [
-      {
-        "categoryId": "27386",
-        "categoryName": "Graphics/Video Cards"
-      },
-      {
-        "categoryId": "58058",
-        "categoryName": "Computers/Tablets & Networking"
-      },
-      {
-        "categoryId": "175673",
-        "categoryName": "Computer Components & Parts"
-      }
-    ],
-    "image": {
-      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/mC4AAOSwK6RlO2vR/s-l225.jpg"
-    },
-    "price": {
-      "value": "5500.00",
-      "currency": "USD"
-    },
-    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C404577370214%7C0",
-    "seller": {
-      "username": "redacted-2883117657361899.5",
-      "feedbackPercentage": "100.0",
-      "feedbackScore": 16
-    },
-    "condition": "Open box",
-    "conditionId": "1500",
-    "thumbnailImages": [
-      {
-        "imageUrl": "https://i.ebayimg.com/images/g/mC4AAOSwK6RlO2vR/s-l960.jpg"
-      }
-    ],
-    "shippingOptions": [
-      {
-        "shippingCostType": "FIXED",
-        "shippingCost": {
-          "value": "0.00",
-          "currency": "USD"
-        }
-      }
-    ],
-    "buyingOptions": [
-      "FIXED_PRICE"
-    ],
-    "itemAffiliateWebUrl": "https://www.ebay.com/itm/404577370214?hash=item5e32b0c066%3Ag%3AmC4AAOSwK6RlO2vR&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
-    "itemWebUrl": "https://www.ebay.com/itm/404577370214?hash=item5e32b0c066:g:mC4AAOSwK6RlO2vR",
-    "itemLocation": {
-      "postalCode": "774**",
-      "country": "US"
-    },
-    "adultOnly": false,
-    "legacyItemId": "404577370214",
-    "availableCoupons": false,
-    "itemCreationDate": "2023-10-27T13:52:13.000Z",
-    "topRatedBuyingExperience": false,
-    "priorityListing": false,
-    "listingMarketplaceId": "EBAY_US"
-  },
-  {
     "itemId": "v1|266539050072|0",
     "title": "EVGA GeForce GTX 960 4GB 128 Bit PCIe 3.0 SSC GAMING ACX 2.0+ 04G-P4-3966-KR A30",
     "leafCategoryIds": [
@@ -469,9 +403,9 @@
     },
     "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C266539050072%7C0",
     "seller": {
-      "username": "redacted-4003797937231811.5",
-      "feedbackPercentage": "98.0",
-      "feedbackScore": 7936
+      "username": "redacted-40449082375117.99",
+      "feedbackPercentage": "97.9",
+      "feedbackScore": 7942
     },
     "condition": "Used",
     "conditionId": "3000",
@@ -516,6 +450,72 @@
     "listingMarketplaceId": "EBAY_US"
   },
   {
+    "itemId": "v1|404577370214|0",
+    "title": "NVIDIA A30 TENSOR CORE GPU ACCELERATOR 24GB HBM2",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/mC4AAOSwK6RlO2vR/s-l225.jpg"
+    },
+    "price": {
+      "value": "5500.00",
+      "currency": "USD"
+    },
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C404577370214%7C0",
+    "seller": {
+      "username": "redacted-5428230959309105",
+      "feedbackPercentage": "100.0",
+      "feedbackScore": 16
+    },
+    "condition": "Open box",
+    "conditionId": "1500",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/mC4AAOSwK6RlO2vR/s-l960.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "0.00",
+          "currency": "USD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE"
+    ],
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/404577370214?hash=item5e32b0c066%3Ag%3AmC4AAOSwK6RlO2vR&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/404577370214?hash=item5e32b0c066:g:mC4AAOSwK6RlO2vR",
+    "itemLocation": {
+      "postalCode": "774**",
+      "country": "US"
+    },
+    "adultOnly": false,
+    "legacyItemId": "404577370214",
+    "availableCoupons": false,
+    "itemCreationDate": "2023-10-27T13:52:13.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": false,
+    "listingMarketplaceId": "EBAY_US"
+  },
+  {
     "itemId": "v1|195947590500|0",
     "title": "A30 24GB Nvidia Tensor Core GPU Accelerator GPU 165W Ampere PCIe Passive NEW",
     "leafCategoryIds": [
@@ -544,9 +544,9 @@
     },
     "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C195947590500%7C0",
     "seller": {
-      "username": "redacted-6943298780089477",
+      "username": "redacted-1841130808056483.8",
       "feedbackPercentage": "98.7",
-      "feedbackScore": 6870
+      "feedbackScore": 6871
     },
     "condition": "Open box",
     "conditionId": "1500",
@@ -609,6 +609,78 @@
     "listingMarketplaceId": "EBAY_US"
   },
   {
+    "itemId": "v1|204548475216|0",
+    "title": "NVIDIA A30 24GB HBM2 Data Center Graphics Card PCIE",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/XUQAAOSw5lBlXFKj/s-l225.jpg"
+    },
+    "price": {
+      "value": "7420.00",
+      "currency": "USD"
+    },
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C204548475216%7C0",
+    "seller": {
+      "username": "redacted-2640132390211807.5",
+      "feedbackPercentage": "0.0",
+      "feedbackScore": 0
+    },
+    "condition": "New",
+    "conditionId": "1000",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/XUQAAOSw5lBlXFKj/s-l1600.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "30.00",
+          "currency": "USD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE",
+      "BEST_OFFER"
+    ],
+    "epid": "9046134481",
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/204548475216?hash=item2fa00a0950%3Ag%3AXUQAAOSw5lBlXFKj&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/204548475216?hash=item2fa00a0950:g:XUQAAOSw5lBlXFKj",
+    "itemLocation": {
+      "country": "CN"
+    },
+    "additionalImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/V8cAAOSw5phlXFKp/s-l225.jpg"
+      }
+    ],
+    "adultOnly": false,
+    "legacyItemId": "204548475216",
+    "availableCoupons": false,
+    "itemCreationDate": "2023-11-22T06:49:35.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": false,
+    "listingMarketplaceId": "EBAY_US"
+  },
+  {
     "itemId": "v1|225770831542|0",
     "title": "NVIDIA TESLA A30 24GB HBM2 Tensor Core GPU DEEP LEARNING Graphics card",
     "leafCategoryIds": [
@@ -637,9 +709,9 @@
     },
     "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C225770831542%7C0",
     "seller": {
-      "username": "redacted-6129140707874257",
+      "username": "redacted-7014980520936213",
       "feedbackPercentage": "100.0",
-      "feedbackScore": 553
+      "feedbackScore": 554
     },
     "condition": "New",
     "conditionId": "1000",
@@ -696,78 +768,6 @@
     "listingMarketplaceId": "EBAY_US"
   },
   {
-    "itemId": "v1|204548475216|0",
-    "title": "NVIDIA A30 24GB HBM2 Data Center Graphics Card PCIE",
-    "leafCategoryIds": [
-      "27386"
-    ],
-    "categories": [
-      {
-        "categoryId": "27386",
-        "categoryName": "Graphics/Video Cards"
-      },
-      {
-        "categoryId": "58058",
-        "categoryName": "Computers/Tablets & Networking"
-      },
-      {
-        "categoryId": "175673",
-        "categoryName": "Computer Components & Parts"
-      }
-    ],
-    "image": {
-      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/XUQAAOSw5lBlXFKj/s-l225.jpg"
-    },
-    "price": {
-      "value": "7420.00",
-      "currency": "USD"
-    },
-    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C204548475216%7C0",
-    "seller": {
-      "username": "redacted-7466865871238597",
-      "feedbackPercentage": "0.0",
-      "feedbackScore": 0
-    },
-    "condition": "New",
-    "conditionId": "1000",
-    "thumbnailImages": [
-      {
-        "imageUrl": "https://i.ebayimg.com/images/g/XUQAAOSw5lBlXFKj/s-l1600.jpg"
-      }
-    ],
-    "shippingOptions": [
-      {
-        "shippingCostType": "FIXED",
-        "shippingCost": {
-          "value": "30.00",
-          "currency": "USD"
-        }
-      }
-    ],
-    "buyingOptions": [
-      "FIXED_PRICE",
-      "BEST_OFFER"
-    ],
-    "epid": "9046134481",
-    "itemAffiliateWebUrl": "https://www.ebay.com/itm/204548475216?hash=item2fa00a0950%3Ag%3AXUQAAOSw5lBlXFKj&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
-    "itemWebUrl": "https://www.ebay.com/itm/204548475216?hash=item2fa00a0950:g:XUQAAOSw5lBlXFKj",
-    "itemLocation": {
-      "country": "CN"
-    },
-    "additionalImages": [
-      {
-        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/V8cAAOSw5phlXFKp/s-l225.jpg"
-      }
-    ],
-    "adultOnly": false,
-    "legacyItemId": "204548475216",
-    "availableCoupons": false,
-    "itemCreationDate": "2023-11-22T06:49:35.000Z",
-    "topRatedBuyingExperience": false,
-    "priorityListing": false,
-    "listingMarketplaceId": "EBAY_US"
-  },
-  {
     "itemId": "v1|285447821703|587380016873",
     "title": "Nvidia Tesla GPU Cooling Single Fan Shroud Mount A30 A40 A800 Accelerator Card",
     "itemGroupHref": "https://api.ebay.com/buy/browse/v1/item/get_items_by_item_group?item_group_id=285447821703",
@@ -798,9 +798,9 @@
     "itemGroupType": "SELLER_DEFINED_VARIATIONS",
     "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C285447821703%7C587380016873",
     "seller": {
-      "username": "redacted-5417976572265325",
-      "feedbackPercentage": "99.6",
-      "feedbackScore": 2133
+      "username": "redacted-7976097257229719",
+      "feedbackPercentage": "99.4",
+      "feedbackScore": 2137
     },
     "condition": "New",
     "conditionId": "1000",
@@ -859,14 +859,14 @@
       "imageUrl": "https://i.ebayimg.com/thumbs/images/g/nvgAAOSwiSFlAX-q/s-l225.jpg"
     },
     "price": {
-      "value": "4979.17",
+      "value": "4994.45",
       "currency": "USD",
       "convertedFromValue": "6751.00",
       "convertedFromCurrency": "CAD"
     },
     "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C386116803560%7C0",
     "seller": {
-      "username": "redacted-8887947010377413",
+      "username": "redacted-7552518475068581",
       "feedbackPercentage": "100.0",
       "feedbackScore": 51
     },
@@ -881,7 +881,7 @@
       {
         "shippingCostType": "FIXED",
         "shippingCost": {
-          "value": "29.50",
+          "value": "29.59",
           "currency": "USD",
           "convertedFromValue": "40.00",
           "convertedFromCurrency": "CAD"
@@ -955,9 +955,9 @@
     "itemGroupType": "SELLER_DEFINED_VARIATIONS",
     "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C285399736573%7C587311393309",
     "seller": {
-      "username": "redacted-2874707732149647.5",
-      "feedbackPercentage": "99.6",
-      "feedbackScore": 2133
+      "username": "redacted-6068714266654475",
+      "feedbackPercentage": "99.4",
+      "feedbackScore": 2137
     },
     "condition": "New",
     "conditionId": "1000",
@@ -993,7 +993,7 @@
     "listingMarketplaceId": "EBAY_US"
   },
   {
-    "itemId": "v1|285308611457|587184019674",
+    "itemId": "v1|285308611457|587184019672",
     "title": "Nvidia Tesla GPU Cooling Fans and Shroud Mounting A800 A16 A30X Accelerator Card",
     "itemGroupHref": "https://api.ebay.com/buy/browse/v1/item/get_items_by_item_group?item_group_id=285308611457",
     "leafCategoryIds": [
@@ -1021,11 +1021,11 @@
       "currency": "USD"
     },
     "itemGroupType": "SELLER_DEFINED_VARIATIONS",
-    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C285308611457%7C587184019674",
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C285308611457%7C587184019672",
     "seller": {
-      "username": "redacted-6008230857341407",
-      "feedbackPercentage": "99.6",
-      "feedbackScore": 2133
+      "username": "redacted-7533214448076593",
+      "feedbackPercentage": "99.4",
+      "feedbackScore": 2137
     },
     "condition": "New",
     "conditionId": "1000",
@@ -1046,8 +1046,8 @@
     "buyingOptions": [
       "FIXED_PRICE"
     ],
-    "itemAffiliateWebUrl": "https://www.ebay.com/itm/285308611457?hash=item426db7eb81%3Ag%3AFzQAAOSwiQVkdldL&amdata=enc%3AAQAIAAAA4ChbMbsr0Z1EObZ31TvP12FtNGaL7vrAS9%2FuwW5mEUQv7o4mwm6boNK19PWxOZ2hj1NKHzDX7%2FZGhfEplYBxajwTKY11z8afe4hN2yvE8BtZJyhujt7AWULfv2KyIY0rIDyWpIFsgzma2laXmsrM3bjkBPzx6nAi7pt3ietCiM5tGF9ODorpnOaGuPReK3wxh07Wye%2FIg0X45RPyhbaOGpOi5H%2Bap9hlwbzeE9lzzeXtTI65AGjp63exH3mT3PSKFkuJDywVBevmJqWzUmGyZ4KZD8Hkcg2%2BmkM%2FyocA6UL9&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
-    "itemWebUrl": "https://www.ebay.com/itm/285308611457?hash=item426db7eb81:g:FzQAAOSwiQVkdldL&amdata=enc%3AAQAIAAAA4ChbMbsr0Z1EObZ31TvP12FtNGaL7vrAS9%2FuwW5mEUQv7o4mwm6boNK19PWxOZ2hj1NKHzDX7%2FZGhfEplYBxajwTKY11z8afe4hN2yvE8BtZJyhujt7AWULfv2KyIY0rIDyWpIFsgzma2laXmsrM3bjkBPzx6nAi7pt3ietCiM5tGF9ODorpnOaGuPReK3wxh07Wye%2FIg0X45RPyhbaOGpOi5H%2Bap9hlwbzeE9lzzeXtTI65AGjp63exH3mT3PSKFkuJDywVBevmJqWzUmGyZ4KZD8Hkcg2%2BmkM%2FyocA6UL9",
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/285308611457?hash=item426db7eb81%3Ag%3AFzQAAOSwiQVkdldL&amdata=enc%3AAQAIAAAA4ChbMbsr0Z1EObZ31TvP12FtNGaL7vrAS9%2FuwW5mEUQv7o4mwm6boNK19PWxOZ2hj1NKHzDX7%2FZGhfEplYBxajwTKY11z8afe4hN2yvE8BtZJyhujt7AWULfv2KyIY0rID1Y3V%2B4stKAaaWFnBv5PHxaH%2Fn6Kg15nC5eeU5NWK3wB9CdkJkTn29OnW1aYYEQE%2F9k8VFUG2fJ9%2BmgSH5UBS%2FC%2FDYhrnl1PEuwz1HmYbLxaN9iWdgaw6rg613aGkLaLFtQBOThzqVLS9HW1ubs4JhLzdK2tCsDRThMdhqnn4rh&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/285308611457?hash=item426db7eb81:g:FzQAAOSwiQVkdldL&amdata=enc%3AAQAIAAAA4ChbMbsr0Z1EObZ31TvP12FtNGaL7vrAS9%2FuwW5mEUQv7o4mwm6boNK19PWxOZ2hj1NKHzDX7%2FZGhfEplYBxajwTKY11z8afe4hN2yvE8BtZJyhujt7AWULfv2KyIY0rID1Y3V%2B4stKAaaWFnBv5PHxaH%2Fn6Kg15nC5eeU5NWK3wB9CdkJkTn29OnW1aYYEQE%2F9k8VFUG2fJ9%2BmgSH5UBS%2FC%2FDYhrnl1PEuwz1HmYbLxaN9iWdgaw6rg613aGkLaLFtQBOThzqVLS9HW1ubs4JhLzdK2tCsDRThMdhqnn4rh",
     "itemLocation": {
       "postalCode": "786**",
       "country": "US"
@@ -1061,7 +1061,7 @@
     "listingMarketplaceId": "EBAY_US"
   },
   {
-    "itemId": "v1|285373461431|587268911754",
+    "itemId": "v1|285373461431|587268911755",
     "title": "Nvidia Tesla GPU Cooling Single Fan Shroud Mounting A100 A30X Accelerator Card",
     "itemGroupHref": "https://api.ebay.com/buy/browse/v1/item/get_items_by_item_group?item_group_id=285373461431",
     "leafCategoryIds": [
@@ -1089,11 +1089,11 @@
       "currency": "USD"
     },
     "itemGroupType": "SELLER_DEFINED_VARIATIONS",
-    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C285373461431%7C587268911754",
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C285373461431%7C587268911755",
     "seller": {
-      "username": "redacted-1254735876701711.8",
-      "feedbackPercentage": "99.6",
-      "feedbackScore": 2133
+      "username": "redacted-6230709909695549",
+      "feedbackPercentage": "99.4",
+      "feedbackScore": 2137
     },
     "condition": "New",
     "conditionId": "1000",
@@ -1114,8 +1114,8 @@
     "buyingOptions": [
       "FIXED_PRICE"
     ],
-    "itemAffiliateWebUrl": "https://www.ebay.com/itm/285373461431?hash=item42719573b7%3Ag%3AHx4AAOSwzwtkqz8P&amdata=enc%3AAQAIAAAA4FLHAtFo%2F6JWSkE4ssJYosEzC40L50thu5e%2B1PXLMs42F4Iw9%2FHZ0w6nkhRKliAlEIkgcDeRdfU1mZlI2MU20wN3Ckm9LGPHKSLILdcVTv7qLB5OPOh1kz8amEuas6o6U2oJWy2G%2Bj7zCLWwAR9EiSNijQ%2BFUkjzhuE5ZWsF4%2FFvPGfWNZ9vnye7fSC8dvRBnJ41QnfWfnskHh5EvSZJC5qWKBNsecO9vLQma4TXmMFarUOilyTUb1FUliVDJzSCrPlNYEMFsHgLXYP8CG%2BeyRR3vI7obkJGUdDN1sGdgeI9&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
-    "itemWebUrl": "https://www.ebay.com/itm/285373461431?hash=item42719573b7:g:Hx4AAOSwzwtkqz8P&amdata=enc%3AAQAIAAAA4FLHAtFo%2F6JWSkE4ssJYosEzC40L50thu5e%2B1PXLMs42F4Iw9%2FHZ0w6nkhRKliAlEIkgcDeRdfU1mZlI2MU20wN3Ckm9LGPHKSLILdcVTv7qLB5OPOh1kz8amEuas6o6U2oJWy2G%2Bj7zCLWwAR9EiSNijQ%2BFUkjzhuE5ZWsF4%2FFvPGfWNZ9vnye7fSC8dvRBnJ41QnfWfnskHh5EvSZJC5qWKBNsecO9vLQma4TXmMFarUOilyTUb1FUliVDJzSCrPlNYEMFsHgLXYP8CG%2BeyRR3vI7obkJGUdDN1sGdgeI9",
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/285373461431?hash=item42719573b7%3Ag%3AHx4AAOSwzwtkqz8P&amdata=enc%3AAQAIAAAA4FLHAtFo%2F6JWSkE4ssJYosEzC40L50thu5e%2B1PXLMs42F4Iw9%2FHZ0w6nkhRKliAlEIkgcDeRdfU1mZlI2MU20wN3Ckm9LGPHKSLILdcVTv7qLB5OPOh1kz8amEuas6o6U3w2CvmGI%2F%2FTjyvf4IJbfpgJmmiWV3etCqTn43cTa5raAr2XswaJGSIN3snS%2FmMdlZ2uVlZjrggfsX27Pgr%2BIxi62gvFmfUxoC3gyL9gvuO6ZxYwmPaOTegT2vCErSSAnfgOsiWm3vjWeiVnz4ywrwwxRc33eH6aDI6EOH7yx6j5&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/285373461431?hash=item42719573b7:g:Hx4AAOSwzwtkqz8P&amdata=enc%3AAQAIAAAA4FLHAtFo%2F6JWSkE4ssJYosEzC40L50thu5e%2B1PXLMs42F4Iw9%2FHZ0w6nkhRKliAlEIkgcDeRdfU1mZlI2MU20wN3Ckm9LGPHKSLILdcVTv7qLB5OPOh1kz8amEuas6o6U3w2CvmGI%2F%2FTjyvf4IJbfpgJmmiWV3etCqTn43cTa5raAr2XswaJGSIN3snS%2FmMdlZ2uVlZjrggfsX27Pgr%2BIxi62gvFmfUxoC3gyL9gvuO6ZxYwmPaOTegT2vCErSSAnfgOsiWm3vjWeiVnz4ywrwwxRc33eH6aDI6EOH7yx6j5",
     "itemLocation": {
       "postalCode": "786**",
       "country": "US"
@@ -1157,9 +1157,9 @@
     },
     "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C175799429613%7C0",
     "seller": {
-      "username": "redacted-8253408217562351",
+      "username": "redacted-3402637406772825.5",
       "feedbackPercentage": "99.8",
-      "feedbackScore": 3089
+      "feedbackScore": 3090
     },
     "condition": "Open box",
     "conditionId": "1500",
@@ -1251,9 +1251,9 @@
     },
     "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C204414033438%7C0",
     "seller": {
-      "username": "redacted-8679527876486249",
-      "feedbackPercentage": "98.4",
-      "feedbackScore": 195
+      "username": "redacted-5092461391641843",
+      "feedbackPercentage": "98.5",
+      "feedbackScore": 198
     },
     "marketingPrice": {
       "originalPrice": {
@@ -1356,7 +1356,7 @@
     },
     "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C185627165386%7C0",
     "seller": {
-      "username": "redacted-162128676376105.97",
+      "username": "redacted-6989381972524079",
       "feedbackPercentage": "93.0",
       "feedbackScore": 239
     },
@@ -1440,9 +1440,9 @@
     },
     "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C125972319476%7C0",
     "seller": {
-      "username": "redacted-1773712778416691.8",
-      "feedbackPercentage": "98.9",
-      "feedbackScore": 645
+      "username": "redacted-3530519162867307.5",
+      "feedbackPercentage": "99.0",
+      "feedbackScore": 649
     },
     "marketingPrice": {
       "originalPrice": {
@@ -1545,9 +1545,9 @@
     },
     "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C334689832238%7C0",
     "seller": {
-      "username": "redacted-6273420915375089",
+      "username": "redacted-1617916927839131.8",
       "feedbackPercentage": "98.6",
-      "feedbackScore": 100337
+      "feedbackScore": 100338
     },
     "condition": "Open box",
     "conditionId": "1500",
@@ -1638,9 +1638,9 @@
     },
     "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C126025650415%7C0",
     "seller": {
-      "username": "redacted-8325329629129625",
-      "feedbackPercentage": "98.9",
-      "feedbackScore": 1491
+      "username": "redacted-7589196064071845",
+      "feedbackPercentage": "98.8",
+      "feedbackScore": 1493
     },
     "marketingPrice": {
       "originalPrice": {

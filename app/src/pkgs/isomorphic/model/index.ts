@@ -33,6 +33,8 @@ export interface Listing {
   thumbnailImageUrl: string
   epid: string
   itemCreationDate?: Date | null
+  // string | null because prisma :/
+  itemLocationCountry?: string | null
   gpu: Gpu
 }
 
@@ -64,6 +66,7 @@ export function convertEbayItemToListing(
     epid: listing.epid ?? "",
     itemCreationDate: listing.itemCreationDate,
     gpu,
+    itemLocationCountry: listing.itemLocation?.country,
   }
 }
 

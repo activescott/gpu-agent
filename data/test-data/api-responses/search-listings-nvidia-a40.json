@@ -28,9 +28,9 @@
     },
     "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C126214169989%7C0",
     "seller": {
-      "username": "redacted-4021707882211115.5",
+      "username": "redacted-5277759559619217",
       "feedbackPercentage": "99.3",
-      "feedbackScore": 7279
+      "feedbackScore": 7281
     },
     "condition": "Excellent - Refurbished",
     "conditionId": "2010",
@@ -51,8 +51,8 @@
     "buyingOptions": [
       "FIXED_PRICE"
     ],
-    "itemAffiliateWebUrl": "https://www.ebay.com/itm/126214169989?hash=item1d62f36585%3Ag%3AGFsAAOSwEfNlaLsO&amdata=enc%3AAQAIAAAA4E0%2Bo1PAWxGdj1xKZauCFa%2FJx9KSj9dF64VG%2FRgqEPDDNq37%2FvAOIJ%2FO1X2U1YNWpWZSbZcWrY7qCFeeuhdbYuYvD3Q8C5PLr669ep5UnILd2qYd7EVjJqBpy9yvt8FGVdZ%2Fm4vFtc%2BY%2FsZsatDDTerUOtyL7P2LZSa0M0ylmlsOYvJC%2FNizIThXMNEsRy12PaBFAxFBogOaTCYYdUKNZhgJ2dc9UAfR2LoZeTGtFCnm8LqgV8h9HaoB1fkQTMRSiZxakpIOhhOFbTNG8p5w98gKTddejQ9Cw0IoeaZ50dpK&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
-    "itemWebUrl": "https://www.ebay.com/itm/126214169989?hash=item1d62f36585:g:GFsAAOSwEfNlaLsO&amdata=enc%3AAQAIAAAA4E0%2Bo1PAWxGdj1xKZauCFa%2FJx9KSj9dF64VG%2FRgqEPDDNq37%2FvAOIJ%2FO1X2U1YNWpWZSbZcWrY7qCFeeuhdbYuYvD3Q8C5PLr669ep5UnILd2qYd7EVjJqBpy9yvt8FGVdZ%2Fm4vFtc%2BY%2FsZsatDDTerUOtyL7P2LZSa0M0ylmlsOYvJC%2FNizIThXMNEsRy12PaBFAxFBogOaTCYYdUKNZhgJ2dc9UAfR2LoZeTGtFCnm8LqgV8h9HaoB1fkQTMRSiZxakpIOhhOFbTNG8p5w98gKTddejQ9Cw0IoeaZ50dpK",
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/126214169989?hash=item1d62f36585%3Ag%3AGFsAAOSwEfNlaLsO&amdata=enc%3AAQAIAAAA4E0%2Bo1PAWxGdj1xKZauCFa%2FJx9KSj9dF64VG%2FRgqEPDDNq37%2FvAOIJ%2FO1X2U1YNWpWZSbZcWrY7qCFeeuhdbYuYvD3Q8C5PLr669ep5UnILd2qYd7EVjJqBpy9yvt8FGVedoKj0CXFgipJFXydnZrCcPLqrq573Bl9dKdBq9kFO3Hoe0oupZMqk3iXOsT1EU1FxKWF1qaw%2BN2pM4fhSW1MmV5RcDmcaCm2djAC7svYktTl0vgNzFsnrom%2Ba%2BCiLhV9yFelCGxBQJtxmAtc0gYjU%2FNnCtobaOP4Ezp%2BVM8Hmu&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/126214169989?hash=item1d62f36585:g:GFsAAOSwEfNlaLsO&amdata=enc%3AAQAIAAAA4E0%2Bo1PAWxGdj1xKZauCFa%2FJx9KSj9dF64VG%2FRgqEPDDNq37%2FvAOIJ%2FO1X2U1YNWpWZSbZcWrY7qCFeeuhdbYuYvD3Q8C5PLr669ep5UnILd2qYd7EVjJqBpy9yvt8FGVedoKj0CXFgipJFXydnZrCcPLqrq573Bl9dKdBq9kFO3Hoe0oupZMqk3iXOsT1EU1FxKWF1qaw%2BN2pM4fhSW1MmV5RcDmcaCm2djAC7svYktTl0vgNzFsnrom%2Ba%2BCiLhV9yFelCGxBQJtxmAtc0gYjU%2FNnCtobaOP4Ezp%2BVM8Hmu",
     "itemLocation": {
       "postalCode": "774**",
       "country": "US"
@@ -111,7 +111,7 @@
     },
     "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C354988971802%7C0",
     "seller": {
-      "username": "redacted-5719764901019429",
+      "username": "redacted-226730972976439.97",
       "feedbackPercentage": "98.5",
       "feedbackScore": 78
     },
@@ -135,8 +135,8 @@
       "FIXED_PRICE",
       "BEST_OFFER"
     ],
-    "itemAffiliateWebUrl": "https://www.ebay.com/itm/354988971802?hash=item52a6fdd71a%3Ag%3Au-4AAOSw9KVk3e0Z&amdata=enc%3AAQAIAAAA4CarSFSMZhgcHFKGwPyQllJUHKv2HC767ocm8ASqzh18oYWJ786emcJvHqluPt4TEGCiy89SOk876MLm0R9UtMeXU2sXqBMJrpbmk2uGqZUuw4hshoo7pgWzX8QqLsDjcGWsrlfKRiQb73kaulzCtecSt7guhrf5G%2BT9wzCKzRXoaMFWCCnuaKMkr0NJqMXt0VmVZP%2B0D6V0bSoLpipEW976OgOOW2sjzCHLp7XmjdAuV%2FI2uDNDanSumd25gOWGK9mHYcaN2yXRyOKU%2FjKTY5QVLNH%2BKZrrKVipJMnzSzvC&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
-    "itemWebUrl": "https://www.ebay.com/itm/354988971802?hash=item52a6fdd71a:g:u-4AAOSw9KVk3e0Z&amdata=enc%3AAQAIAAAA4CarSFSMZhgcHFKGwPyQllJUHKv2HC767ocm8ASqzh18oYWJ786emcJvHqluPt4TEGCiy89SOk876MLm0R9UtMeXU2sXqBMJrpbmk2uGqZUuw4hshoo7pgWzX8QqLsDjcGWsrlfKRiQb73kaulzCtecSt7guhrf5G%2BT9wzCKzRXoaMFWCCnuaKMkr0NJqMXt0VmVZP%2B0D6V0bSoLpipEW976OgOOW2sjzCHLp7XmjdAuV%2FI2uDNDanSumd25gOWGK9mHYcaN2yXRyOKU%2FjKTY5QVLNH%2BKZrrKVipJMnzSzvC",
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/354988971802?hash=item52a6fdd71a%3Ag%3Au-4AAOSw9KVk3e0Z&amdata=enc%3AAQAIAAAA4CarSFSMZhgcHFKGwPyQllJUHKv2HC767ocm8ASqzh18oYWJ786emcJvHqluPt4TEGCiy89SOk876MLm0R9UtMeXU2sXqBMJrpbmk2uGqZUuw4hshoo7pgWzX8QqLsDjcCkfuD0O3QQrUSS%2BB%2Fq8y6zCSv%2FXRNKmyHMFW7MgHinwsQBPTn0YvuyPkAbXvdmAXa1YIagOtX%2BkjQ4s2xOemnayFfcECvhrYFathAgknDwCzKC0xYoe8w7b%2BzxOKjy%2BsL7sDr2WxumOpq6W6lLsiAnwG4xUDqXTcmdSmmIPcfj5&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/354988971802?hash=item52a6fdd71a:g:u-4AAOSw9KVk3e0Z&amdata=enc%3AAQAIAAAA4CarSFSMZhgcHFKGwPyQllJUHKv2HC767ocm8ASqzh18oYWJ786emcJvHqluPt4TEGCiy89SOk876MLm0R9UtMeXU2sXqBMJrpbmk2uGqZUuw4hshoo7pgWzX8QqLsDjcCkfuD0O3QQrUSS%2BB%2Fq8y6zCSv%2FXRNKmyHMFW7MgHinwsQBPTn0YvuyPkAbXvdmAXa1YIagOtX%2BkjQ4s2xOemnayFfcECvhrYFathAgknDwCzKC0xYoe8w7b%2BzxOKjy%2BsL7sDr2WxumOpq6W6lLsiAnwG4xUDqXTcmdSmmIPcfj5",
     "itemLocation": {
       "country": "CN"
     },
@@ -185,9 +185,9 @@
     },
     "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C385969673740%7C0",
     "seller": {
-      "username": "redacted-6245053582865691",
+      "username": "redacted-8070567236472619",
       "feedbackPercentage": "100.0",
-      "feedbackScore": 8418
+      "feedbackScore": 8419
     },
     "condition": "Used",
     "conditionId": "3000",
@@ -261,7 +261,7 @@
     },
     "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C374192509164%7C0",
     "seller": {
-      "username": "redacted-1700444274330559.8",
+      "username": "redacted-1090311799141117.9",
       "feedbackPercentage": "98.6",
       "feedbackScore": 100338
     },
@@ -316,8 +316,8 @@
     "listingMarketplaceId": "EBAY_US"
   },
   {
-    "itemId": "v1|266540764351|0",
-    "title": "GIGABYTE GeForce GTX 1650 WINDFORCE OC GDDR5 Graphics Card 4GB A40 - SAME DAY",
+    "itemId": "v1|404577379076|0",
+    "title": "900-2G133-0100-030 NVIDIA Tesla A40 48GB PCIe4.0 GPU Graphics Card",
     "leafCategoryIds": [
       "27386"
     ],
@@ -336,23 +336,23 @@
       }
     ],
     "image": {
-      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/M7gAAOSwkshlZ5J5/s-l225.jpg"
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/3GAAAOSwuMVlO206/s-l225.jpg"
     },
     "price": {
-      "value": "89.99",
+      "value": "5990.00",
       "currency": "USD"
     },
-    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C266540764351%7C0",
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C404577379076%7C0",
     "seller": {
-      "username": "redacted-3335483278597607.5",
-      "feedbackPercentage": "98.0",
-      "feedbackScore": 7936
+      "username": "redacted-6790244759795753",
+      "feedbackPercentage": "100.0",
+      "feedbackScore": 16
     },
-    "condition": "Used",
-    "conditionId": "3000",
+    "condition": "Open box",
+    "conditionId": "1500",
     "thumbnailImages": [
       {
-        "imageUrl": "https://i.ebayimg.com/images/g/M7gAAOSwkshlZ5J5/s-l1600.jpg"
+        "imageUrl": "https://i.ebayimg.com/images/g/3GAAAOSwuMVlO206/s-l960.jpg"
       }
     ],
     "shippingOptions": [
@@ -367,31 +367,22 @@
     "buyingOptions": [
       "FIXED_PRICE"
     ],
-    "epid": "3031619521",
-    "itemAffiliateWebUrl": "https://www.ebay.com/itm/266540764351?hash=item3e0f114cbf%3Ag%3AM7gAAOSwkshlZ5J5&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
-    "itemWebUrl": "https://www.ebay.com/itm/266540764351?hash=item3e0f114cbf:g:M7gAAOSwkshlZ5J5",
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/404577379076?hash=item5e32b0e304%3Ag%3A3GAAAOSwuMVlO206&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/404577379076?hash=item5e32b0e304:g:3GAAAOSwuMVlO206",
     "itemLocation": {
-      "postalCode": "937**",
+      "postalCode": "774**",
       "country": "US"
     },
-    "additionalImages": [
-      {
-        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/~6YAAOSw~q5lZ5J5/s-l225.jpg"
-      },
-      {
-        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/-PMAAOSwD0tlZ5J4/s-l225.jpg"
-      }
-    ],
     "adultOnly": false,
-    "legacyItemId": "266540764351",
+    "legacyItemId": "404577379076",
     "availableCoupons": false,
-    "itemCreationDate": "2023-11-29T19:38:51.000Z",
+    "itemCreationDate": "2023-10-27T13:58:02.000Z",
     "topRatedBuyingExperience": false,
     "priorityListing": false,
     "listingMarketplaceId": "EBAY_US"
   },
   {
-    "itemId": "v1|285399734867|587311254886",
+    "itemId": "v1|285399734867|587311254884",
     "title": "Nvidia Tesla GPU Cooling Fans and Shroud Mounting A30 A40 A100 Accelerator Card",
     "itemGroupHref": "https://api.ebay.com/buy/browse/v1/item/get_items_by_item_group?item_group_id=285399734867",
     "leafCategoryIds": [
@@ -419,11 +410,11 @@
       "currency": "USD"
     },
     "itemGroupType": "SELLER_DEFINED_VARIATIONS",
-    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C285399734867%7C587311254886",
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C285399734867%7C587311254884",
     "seller": {
-      "username": "redacted-3267347189164719.5",
-      "feedbackPercentage": "99.6",
-      "feedbackScore": 2136
+      "username": "redacted-245619352337729.97",
+      "feedbackPercentage": "99.4",
+      "feedbackScore": 2137
     },
     "condition": "New",
     "conditionId": "1000",
@@ -487,7 +478,7 @@
     },
     "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C354889300399%7C0",
     "seller": {
-      "username": "redacted-235406103167921.97",
+      "username": "redacted-593110114984409.9",
       "feedbackPercentage": "100.0",
       "feedbackScore": 7
     },
@@ -526,72 +517,6 @@
     "listingMarketplaceId": "EBAY_US"
   },
   {
-    "itemId": "v1|404577379076|0",
-    "title": "900-2G133-0100-030 NVIDIA Tesla A40 48GB PCIe4.0 GPU Graphics Card",
-    "leafCategoryIds": [
-      "27386"
-    ],
-    "categories": [
-      {
-        "categoryId": "27386",
-        "categoryName": "Graphics/Video Cards"
-      },
-      {
-        "categoryId": "58058",
-        "categoryName": "Computers/Tablets & Networking"
-      },
-      {
-        "categoryId": "175673",
-        "categoryName": "Computer Components & Parts"
-      }
-    ],
-    "image": {
-      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/3GAAAOSwuMVlO206/s-l225.jpg"
-    },
-    "price": {
-      "value": "5990.00",
-      "currency": "USD"
-    },
-    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C404577379076%7C0",
-    "seller": {
-      "username": "redacted-2301670939806425.5",
-      "feedbackPercentage": "100.0",
-      "feedbackScore": 16
-    },
-    "condition": "Open box",
-    "conditionId": "1500",
-    "thumbnailImages": [
-      {
-        "imageUrl": "https://i.ebayimg.com/images/g/3GAAAOSwuMVlO206/s-l960.jpg"
-      }
-    ],
-    "shippingOptions": [
-      {
-        "shippingCostType": "FIXED",
-        "shippingCost": {
-          "value": "0.00",
-          "currency": "USD"
-        }
-      }
-    ],
-    "buyingOptions": [
-      "FIXED_PRICE"
-    ],
-    "itemAffiliateWebUrl": "https://www.ebay.com/itm/404577379076?hash=item5e32b0e304%3Ag%3A3GAAAOSwuMVlO206&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
-    "itemWebUrl": "https://www.ebay.com/itm/404577379076?hash=item5e32b0e304:g:3GAAAOSwuMVlO206",
-    "itemLocation": {
-      "postalCode": "774**",
-      "country": "US"
-    },
-    "adultOnly": false,
-    "legacyItemId": "404577379076",
-    "availableCoupons": false,
-    "itemCreationDate": "2023-10-27T13:58:02.000Z",
-    "topRatedBuyingExperience": false,
-    "priorityListing": false,
-    "listingMarketplaceId": "EBAY_US"
-  },
-  {
     "itemId": "v1|185979515845|0",
     "title": "NEW DELL NVIDIA A40 AMPERE 48GB GDDR6 PASSIVE GPU GRAPHICS CARD W6GX6 TCSA40M-PM",
     "leafCategoryIds": [
@@ -620,9 +545,9 @@
     },
     "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C185979515845%7C0",
     "seller": {
-      "username": "redacted-8615704072901543",
+      "username": "redacted-6319954876954511",
       "feedbackPercentage": "99.9",
-      "feedbackScore": 48271
+      "feedbackScore": 48278
     },
     "condition": "New",
     "conditionId": "1000",
@@ -704,7 +629,7 @@
     },
     "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C175799455311%7C0",
     "seller": {
-      "username": "redacted-4697301780867571",
+      "username": "redacted-968659781606661.9",
       "feedbackPercentage": "99.8",
       "feedbackScore": 3090
     },
@@ -790,9 +715,9 @@
     "itemGroupType": "SELLER_DEFINED_VARIATIONS",
     "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C285308613921%7C587184024130",
     "seller": {
-      "username": "redacted-8282376925743149",
-      "feedbackPercentage": "99.6",
-      "feedbackScore": 2136
+      "username": "redacted-2584588783933179.5",
+      "feedbackPercentage": "99.4",
+      "feedbackScore": 2137
     },
     "condition": "New",
     "conditionId": "1000",
@@ -851,14 +776,14 @@
       "imageUrl": "https://i.ebayimg.com/thumbs/images/g/CosAAOSwlf9k~~oR/s-l225.jpg"
     },
     "price": {
-      "value": "10980.57",
+      "value": "11014.28",
       "currency": "USD",
       "convertedFromValue": "14888.00",
       "convertedFromCurrency": "CAD"
     },
     "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C386114036810%7C0",
     "seller": {
-      "username": "redacted-8300363086270915",
+      "username": "redacted-8961215909919903",
       "feedbackPercentage": "100.0",
       "feedbackScore": 51
     },
@@ -873,7 +798,7 @@
       {
         "shippingCostType": "FIXED",
         "shippingCost": {
-          "value": "29.50",
+          "value": "29.59",
           "currency": "USD",
           "convertedFromValue": "40.00",
           "convertedFromCurrency": "CAD"
@@ -905,8 +830,9 @@
     "priorityListing": false
   },
   {
-    "itemId": "v1|325716436082|0",
-    "title": "Bracket For NVIDIA TESLA A40 GPU Graphics Video Card",
+    "itemId": "v1|285447821703|587380016873",
+    "title": "Nvidia Tesla GPU Cooling Single Fan Shroud Mount A30 A40 A800 Accelerator Card",
+    "itemGroupHref": "https://api.ebay.com/buy/browse/v1/item/get_items_by_item_group?item_group_id=285447821703",
     "leafCategoryIds": [
       "27386"
     ],
@@ -925,15 +851,82 @@
       }
     ],
     "image": {
-      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/eScAAOSw0olkoUvD/s-l225.jpg"
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/Hx4AAOSwzwtkqz8P/s-l225.jpg"
+    },
+    "price": {
+      "value": "24.98",
+      "currency": "USD"
+    },
+    "itemGroupType": "SELLER_DEFINED_VARIATIONS",
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C285447821703%7C587380016873",
+    "seller": {
+      "username": "redacted-4516686625953097",
+      "feedbackPercentage": "99.4",
+      "feedbackScore": 2137
+    },
+    "condition": "New",
+    "conditionId": "1000",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/Hx4AAOSwzwtkqz8P/s-l1600.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "0.00",
+          "currency": "USD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE"
+    ],
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/285447821703?hash=item4276041987%3Ag%3AHx4AAOSwzwtkqz8P&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/285447821703?hash=item4276041987:g:Hx4AAOSwzwtkqz8P",
+    "itemLocation": {
+      "postalCode": "786**",
+      "country": "US"
+    },
+    "adultOnly": false,
+    "legacyItemId": "285447821703",
+    "availableCoupons": false,
+    "itemCreationDate": "2023-08-26T16:21:36.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": false,
+    "listingMarketplaceId": "EBAY_US"
+  },
+  {
+    "itemId": "v1|325743224679|0",
+    "title": "Bracket For NVIDIA Tesla A40 4U Graphics Video Card",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/Me8AAOSwObNkvkZS/s-l225.jpg"
     },
     "price": {
       "value": "9.48",
       "currency": "USD"
     },
-    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C325716436082%7C0",
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C325743224679%7C0",
     "seller": {
-      "username": "redacted-8026295181276513",
+      "username": "redacted-501232820299295.94",
       "feedbackPercentage": "99.6",
       "feedbackScore": 661
     },
@@ -953,7 +946,7 @@
     "conditionId": "1000",
     "thumbnailImages": [
       {
-        "imageUrl": "https://i.ebayimg.com/images/g/eScAAOSw0olkoUvD/s-l1600.jpg"
+        "imageUrl": "https://i.ebayimg.com/images/g/Me8AAOSwObNkvkZS/s-l960.jpg"
       }
     ],
     "shippingOptions": [
@@ -968,20 +961,26 @@
     "buyingOptions": [
       "FIXED_PRICE"
     ],
-    "itemAffiliateWebUrl": "https://www.ebay.com/itm/325716436082?hash=item4bd6366472%3Ag%3AeScAAOSw0olkoUvD&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
-    "itemWebUrl": "https://www.ebay.com/itm/325716436082?hash=item4bd6366472:g:eScAAOSw0olkoUvD",
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/325743224679?hash=item4bd7cf2767%3Ag%3AMe8AAOSwObNkvkZS&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/325743224679?hash=item4bd7cf2767:g:Me8AAOSwObNkvkZS",
     "itemLocation": {
       "country": "CN"
     },
     "additionalImages": [
       {
-        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/bDwAAOSwNdpkoUvE/s-l225.jpg"
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/61UAAOSwA4hkvkZV/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/TNIAAOSwzDJkvkZW/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/iKQAAOSwZ9FkvkZZ/s-l225.jpg"
       }
     ],
     "adultOnly": false,
-    "legacyItemId": "325716436082",
+    "legacyItemId": "325743224679",
     "availableCoupons": false,
-    "itemCreationDate": "2023-07-03T10:07:52.000Z",
+    "itemCreationDate": "2023-07-25T09:38:28.000Z",
     "topRatedBuyingExperience": false,
     "priorityListing": false,
     "listingMarketplaceId": "EBAY_US"
@@ -1015,7 +1014,7 @@
     },
     "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C126089178777%7C0",
     "seller": {
-      "username": "redacted-2411662034285411.5",
+      "username": "redacted-621525387636511.9",
       "feedbackPercentage": "93.7",
       "feedbackScore": 2357
     },
@@ -1040,8 +1039,8 @@
       "BEST_OFFER"
     ],
     "epid": "3046145604",
-    "itemAffiliateWebUrl": "https://www.ebay.com/itm/126089178777?hash=item1d5b802e99%3Ag%3AHa4AAOSwGPBk%7Ex95&amdata=enc%3AAQAIAAAA4ExHG4fyS0hPQ1r5AOVry1f2aa8YNtaoBvKTgvyrYkmuw0ygpz1C6RpclggPnqm6gKvML3bLFyi66I7wNTUtAfNXbQYuDG6v9sbTQUo3tzENp4%2Fhl9i5ABwaNe88tSNTHGWzM0fM5%2BnDCX4D0WZ0ZyvFHLGkmIcLwBsGNzgrj7dsf7ggYGfPPcHGahjbkDcTNc0tCymK0WhmF2nsBwqWoa4ljsRgQztI9hBm4dM7yw2g1mS6UF4GjLyU%2BSeG7EzGqgdg6YTxDbo7E0JkefFw6XnaaKYkfm0WSvVx7t9cLIso&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
-    "itemWebUrl": "https://www.ebay.com/itm/126089178777?hash=item1d5b802e99:g:Ha4AAOSwGPBk~x95&amdata=enc%3AAQAIAAAA4ExHG4fyS0hPQ1r5AOVry1f2aa8YNtaoBvKTgvyrYkmuw0ygpz1C6RpclggPnqm6gKvML3bLFyi66I7wNTUtAfNXbQYuDG6v9sbTQUo3tzENp4%2Fhl9i5ABwaNe88tSNTHGWzM0fM5%2BnDCX4D0WZ0ZyvFHLGkmIcLwBsGNzgrj7dsf7ggYGfPPcHGahjbkDcTNc0tCymK0WhmF2nsBwqWoa4ljsRgQztI9hBm4dM7yw2g1mS6UF4GjLyU%2BSeG7EzGqgdg6YTxDbo7E0JkefFw6XnaaKYkfm0WSvVx7t9cLIso",
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/126089178777?hash=item1d5b802e99%3Ag%3AHa4AAOSwGPBk%7Ex95&amdata=enc%3AAQAIAAAA4ExHG4fyS0hPQ1r5AOVry1f2aa8YNtaoBvKTgvyrYkmuw0ygpz1C6RpclggPnqm6gKvML3bLFyi66I7wNTUtAfNXbQYuDG6v9sbTQUo3tzENp4%2Fhl9i5ABwaNe88tSNTHJhaF1L1VrUOlgxNPccnBqa%2FnHS6FCFQWzdZT58YLXyQiwrV9%2BsPaFp3ZlBXnFRMwGJnJMWNaVCDujkE%2FuUkCuaZFk2FpP0Y4tyFQySZM8GcTVGoNGW4EHEziapr0OXuIBuffwbF94ojkIkp%2F7XGJ4uRdoMA%2Fpi%2BzuQ%2BHBw4uN5%2F&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/126089178777?hash=item1d5b802e99:g:Ha4AAOSwGPBk~x95&amdata=enc%3AAQAIAAAA4ExHG4fyS0hPQ1r5AOVry1f2aa8YNtaoBvKTgvyrYkmuw0ygpz1C6RpclggPnqm6gKvML3bLFyi66I7wNTUtAfNXbQYuDG6v9sbTQUo3tzENp4%2Fhl9i5ABwaNe88tSNTHJhaF1L1VrUOlgxNPccnBqa%2FnHS6FCFQWzdZT58YLXyQiwrV9%2BsPaFp3ZlBXnFRMwGJnJMWNaVCDujkE%2FuUkCuaZFk2FpP0Y4tyFQySZM8GcTVGoNGW4EHEziapr0OXuIBuffwbF94ojkIkp%2F7XGJ4uRdoMA%2Fpi%2BzuQ%2BHBw4uN5%2F",
     "itemLocation": {
       "postalCode": "331**",
       "country": "US"
@@ -1078,16 +1077,16 @@
       "imageUrl": "https://i.ebayimg.com/thumbs/images/g/2~EAAOSww3VksSJd/s-l225.jpg"
     },
     "price": {
-      "value": "6000.60",
+      "value": "5988.04",
       "currency": "USD",
       "convertedFromValue": "4740.00",
       "convertedFromCurrency": "GBP"
     },
     "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C115945850858%7C0",
     "seller": {
-      "username": "redacted-6847922038452079",
+      "username": "redacted-90835458722185.98",
       "feedbackPercentage": "100.0",
-      "feedbackScore": 3643
+      "feedbackScore": 3645
     },
     "condition": "Excellent - Refurbished",
     "conditionId": "2010",
@@ -1100,8 +1099,8 @@
       "FIXED_PRICE",
       "BEST_OFFER"
     ],
-    "itemAffiliateWebUrl": "https://www.ebay.com/itm/115945850858?hash=item1afee947ea%3Ag%3A2%7EEAAOSww3VksSJd&amdata=enc%3AAQAIAAAA4B%2F5IKY68WmqoV3iVTyjwRKjY24TR7NEEu6n7yFLpMliHVdRFW8ZAI%2BBjb0MYT8743uknqst6yp79Yc%2BqLgSXv9vst7yFpkplRQXtRMlYVrV69b83oP3TCf0sKwZvpa26Q2bwl%2FtbyGi9pkI%2BvXvTTJ3FAmKokU0ooMQQiblms6zDve89b9Rgt5a04xGFnZsRl%2BdOZ9AHcmL947%2F9J9yeQgD3%2FwQAZ%2Bk7UAqRhGCYNEsleIR3HXKowZnPYlvBRqj04H%2FP2ytFwoouEU6Yg7urd%2BNG36EH%2BaWNegZEvhL2ScQ&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
-    "itemWebUrl": "https://www.ebay.com/itm/115945850858?hash=item1afee947ea:g:2~EAAOSww3VksSJd&amdata=enc%3AAQAIAAAA4B%2F5IKY68WmqoV3iVTyjwRKjY24TR7NEEu6n7yFLpMliHVdRFW8ZAI%2BBjb0MYT8743uknqst6yp79Yc%2BqLgSXv9vst7yFpkplRQXtRMlYVrV69b83oP3TCf0sKwZvpa26Q2bwl%2FtbyGi9pkI%2BvXvTTJ3FAmKokU0ooMQQiblms6zDve89b9Rgt5a04xGFnZsRl%2BdOZ9AHcmL947%2F9J9yeQgD3%2FwQAZ%2Bk7UAqRhGCYNEsleIR3HXKowZnPYlvBRqj04H%2FP2ytFwoouEU6Yg7urd%2BNG36EH%2BaWNegZEvhL2ScQ",
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/115945850858?hash=item1afee947ea%3Ag%3A2%7EEAAOSww3VksSJd&amdata=enc%3AAQAIAAAA4B%2F5IKY68WmqoV3iVTyjwRKjY24TR7NEEu6n7yFLpMliHVdRFW8ZAI%2BBjb0MYT8743uknqst6yp79Yc%2BqLgSXv9vst7yFpkplRQXtRMlYVrV69b83oP3TCf0sKwZvpa26essk4gaO9V9UNl8f4%2BTHthibUbzHxLyn8He%2BKK0qB2pq47XDZ5WDYKelmIewTqDNnBW0IedHOF3gFG0q4y8i1%2F5i84OacoWcFPuRt8z%2FOD7VuKgnqmcvRx9o1xYFoCG464Bn4lM%2FcHgy45EXAkhevnXr56M2WlnhsJ%2BRKZkN%2FeO&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/115945850858?hash=item1afee947ea:g:2~EAAOSww3VksSJd&amdata=enc%3AAQAIAAAA4B%2F5IKY68WmqoV3iVTyjwRKjY24TR7NEEu6n7yFLpMliHVdRFW8ZAI%2BBjb0MYT8743uknqst6yp79Yc%2BqLgSXv9vst7yFpkplRQXtRMlYVrV69b83oP3TCf0sKwZvpa26essk4gaO9V9UNl8f4%2BTHthibUbzHxLyn8He%2BKK0qB2pq47XDZ5WDYKelmIewTqDNnBW0IedHOF3gFG0q4y8i1%2F5i84OacoWcFPuRt8z%2FOD7VuKgnqmcvRx9o1xYFoCG464Bn4lM%2FcHgy45EXAkhevnXr56M2WlnhsJ%2BRKZkN%2FeO",
     "itemLocation": {
       "postalCode": "RG12***",
       "country": "GB"
@@ -1132,8 +1131,8 @@
     "listingMarketplaceId": "EBAY_GB"
   },
   {
-    "itemId": "v1|325743224679|0",
-    "title": "Bracket For NVIDIA Tesla A40 4U Graphics Video Card",
+    "itemId": "v1|325716436082|0",
+    "title": "Bracket For NVIDIA TESLA A40 GPU Graphics Video Card",
     "leafCategoryIds": [
       "27386"
     ],
@@ -1152,15 +1151,15 @@
       }
     ],
     "image": {
-      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/Me8AAOSwObNkvkZS/s-l225.jpg"
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/eScAAOSw0olkoUvD/s-l225.jpg"
     },
     "price": {
       "value": "9.48",
       "currency": "USD"
     },
-    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C325743224679%7C0",
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C325716436082%7C0",
     "seller": {
-      "username": "redacted-8728867649823457",
+      "username": "redacted-7982825873021021",
       "feedbackPercentage": "99.6",
       "feedbackScore": 661
     },
@@ -1180,7 +1179,7 @@
     "conditionId": "1000",
     "thumbnailImages": [
       {
-        "imageUrl": "https://i.ebayimg.com/images/g/Me8AAOSwObNkvkZS/s-l960.jpg"
+        "imageUrl": "https://i.ebayimg.com/images/g/eScAAOSw0olkoUvD/s-l1600.jpg"
       }
     ],
     "shippingOptions": [
@@ -1195,96 +1194,22 @@
     "buyingOptions": [
       "FIXED_PRICE"
     ],
-    "itemAffiliateWebUrl": "https://www.ebay.com/itm/325743224679?hash=item4bd7cf2767%3Ag%3AMe8AAOSwObNkvkZS&amdata=enc%3AAQAIAAAA4KXufsbUyQbFrdcIgS67R89pvcdWxbobe3yGlrrIGWSLXg76dTnTZr%2BTQT9z%2FYilpieDcztPac0gEB6AR9IF4eVca4L%2FlQK91q7FENKWdPZv8vWEfHbXyOYbcOLG%2FLiJVxOEX04Uy9gsn7nlFGMAxm8Tti3OJQEi51y3UTedEC%2BK7eKrxz%2FVsQHYPuBPpUQ1BoTcQdr3r%2BuQOL3BL%2Fb4XxrNPAbOaEsB6U4YaQXL5KU2WSZ7aN98FcDJCf6E6hxGNOCGWK%2BygpyiMccB513pCjDMEEYXx3yjTr6VPyXkXoMw&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
-    "itemWebUrl": "https://www.ebay.com/itm/325743224679?hash=item4bd7cf2767:g:Me8AAOSwObNkvkZS&amdata=enc%3AAQAIAAAA4KXufsbUyQbFrdcIgS67R89pvcdWxbobe3yGlrrIGWSLXg76dTnTZr%2BTQT9z%2FYilpieDcztPac0gEB6AR9IF4eVca4L%2FlQK91q7FENKWdPZv8vWEfHbXyOYbcOLG%2FLiJVxOEX04Uy9gsn7nlFGMAxm8Tti3OJQEi51y3UTedEC%2BK7eKrxz%2FVsQHYPuBPpUQ1BoTcQdr3r%2BuQOL3BL%2Fb4XxrNPAbOaEsB6U4YaQXL5KU2WSZ7aN98FcDJCf6E6hxGNOCGWK%2BygpyiMccB513pCjDMEEYXx3yjTr6VPyXkXoMw",
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/325716436082?hash=item4bd6366472%3Ag%3AeScAAOSw0olkoUvD&amdata=enc%3AAQAIAAAA4K5HrKCOlG5S41yUXjP4NScIHpRP4fInR22dRK0jcT6l0QUaCZi7U%2FUDHgyPuDAmhQ7cR8V7ikQYNBTfPqldrmP9XIU1maiNhrVOUzVQfDIzzRODXZiThqhNftpaIq25L63vmxbDaapyMQ%2BZDEUiAyMG%2FHxPyB3b5uw8XBTaLfTOG68WUFNOmmE0dwKQl2bKbbiwZ1e6E7ornJIRBEJzFTS3k91VPfYM4HcTyggIoN0U%2FD5UeZAE08aoffx%2B2M82FkLfOxDvmFoFJ60Qy6e5kFDBMHGfL9sFXuVqEJlQYeu8&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/325716436082?hash=item4bd6366472:g:eScAAOSw0olkoUvD&amdata=enc%3AAQAIAAAA4K5HrKCOlG5S41yUXjP4NScIHpRP4fInR22dRK0jcT6l0QUaCZi7U%2FUDHgyPuDAmhQ7cR8V7ikQYNBTfPqldrmP9XIU1maiNhrVOUzVQfDIzzRODXZiThqhNftpaIq25L63vmxbDaapyMQ%2BZDEUiAyMG%2FHxPyB3b5uw8XBTaLfTOG68WUFNOmmE0dwKQl2bKbbiwZ1e6E7ornJIRBEJzFTS3k91VPfYM4HcTyggIoN0U%2FD5UeZAE08aoffx%2B2M82FkLfOxDvmFoFJ60Qy6e5kFDBMHGfL9sFXuVqEJlQYeu8",
     "itemLocation": {
       "country": "CN"
     },
     "additionalImages": [
       {
-        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/61UAAOSwA4hkvkZV/s-l225.jpg"
-      },
-      {
-        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/TNIAAOSwzDJkvkZW/s-l225.jpg"
-      },
-      {
-        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/iKQAAOSwZ9FkvkZZ/s-l225.jpg"
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/bDwAAOSwNdpkoUvE/s-l225.jpg"
       }
     ],
     "adultOnly": false,
-    "legacyItemId": "325743224679",
+    "legacyItemId": "325716436082",
     "availableCoupons": false,
-    "itemCreationDate": "2023-07-25T09:38:28.000Z",
+    "itemCreationDate": "2023-07-03T10:07:52.000Z",
     "topRatedBuyingExperience": false,
     "priorityListing": true,
-    "listingMarketplaceId": "EBAY_US"
-  },
-  {
-    "itemId": "v1|285447821703|587380016873",
-    "title": "Nvidia Tesla GPU Cooling Single Fan Shroud Mount A30 A40 A800 Accelerator Card",
-    "itemGroupHref": "https://api.ebay.com/buy/browse/v1/item/get_items_by_item_group?item_group_id=285447821703",
-    "leafCategoryIds": [
-      "27386"
-    ],
-    "categories": [
-      {
-        "categoryId": "27386",
-        "categoryName": "Graphics/Video Cards"
-      },
-      {
-        "categoryId": "58058",
-        "categoryName": "Computers/Tablets & Networking"
-      },
-      {
-        "categoryId": "175673",
-        "categoryName": "Computer Components & Parts"
-      }
-    ],
-    "image": {
-      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/Hx4AAOSwzwtkqz8P/s-l225.jpg"
-    },
-    "price": {
-      "value": "24.98",
-      "currency": "USD"
-    },
-    "itemGroupType": "SELLER_DEFINED_VARIATIONS",
-    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C285447821703%7C587380016873",
-    "seller": {
-      "username": "redacted-8007576592076473",
-      "feedbackPercentage": "99.6",
-      "feedbackScore": 2136
-    },
-    "condition": "New",
-    "conditionId": "1000",
-    "thumbnailImages": [
-      {
-        "imageUrl": "https://i.ebayimg.com/images/g/Hx4AAOSwzwtkqz8P/s-l1600.jpg"
-      }
-    ],
-    "shippingOptions": [
-      {
-        "shippingCostType": "FIXED",
-        "shippingCost": {
-          "value": "0.00",
-          "currency": "USD"
-        }
-      }
-    ],
-    "buyingOptions": [
-      "FIXED_PRICE"
-    ],
-    "itemAffiliateWebUrl": "https://www.ebay.com/itm/285447821703?hash=item4276041987%3Ag%3AHx4AAOSwzwtkqz8P&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
-    "itemWebUrl": "https://www.ebay.com/itm/285447821703?hash=item4276041987:g:Hx4AAOSwzwtkqz8P",
-    "itemLocation": {
-      "postalCode": "786**",
-      "country": "US"
-    },
-    "adultOnly": false,
-    "legacyItemId": "285447821703",
-    "availableCoupons": false,
-    "itemCreationDate": "2023-08-26T16:21:36.000Z",
-    "topRatedBuyingExperience": false,
-    "priorityListing": false,
     "listingMarketplaceId": "EBAY_US"
   },
   {
@@ -1316,7 +1241,7 @@
     },
     "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C204548482406%7C0",
     "seller": {
-      "username": "redacted-6328530863882615",
+      "username": "redacted-7606772790536681",
       "feedbackPercentage": "0.0",
       "feedbackScore": 0
     },
@@ -1388,9 +1313,9 @@
     },
     "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C125985392009%7C0",
     "seller": {
-      "username": "redacted-924857093091741.9",
-      "feedbackPercentage": "98.9",
-      "feedbackScore": 1492
+      "username": "redacted-4199037379152147.5",
+      "feedbackPercentage": "98.8",
+      "feedbackScore": 1493
     },
     "condition": "New",
     "conditionId": "1000",
@@ -1471,7 +1396,7 @@
     },
     "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C115569811271%7C0",
     "seller": {
-      "username": "redacted-3187702124231097.5",
+      "username": "redacted-7782282577401063",
       "feedbackPercentage": "97.5",
       "feedbackScore": 7821
     },
@@ -1555,9 +1480,9 @@
     },
     "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C225769129189%7C0",
     "seller": {
-      "username": "redacted-2810916572570691.5",
+      "username": "redacted-3474116136048311.5",
       "feedbackPercentage": "100.0",
-      "feedbackScore": 553
+      "feedbackScore": 554
     },
     "condition": "New",
     "conditionId": "1000",
@@ -1629,9 +1554,9 @@
     },
     "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C125973498388%7C0",
     "seller": {
-      "username": "redacted-1450583581128777.8",
-      "feedbackPercentage": "98.9",
-      "feedbackScore": 645
+      "username": "redacted-4684196805874739",
+      "feedbackPercentage": "99.0",
+      "feedbackScore": 649
     },
     "condition": "New",
     "conditionId": "1000",

@@ -31,7 +31,7 @@ export async function addListingsForGpu(
 ): Promise<void> {
   log.info(`Adding ${listings.length} listings for ${gpuName}`)
 
-  // NOTE: prisma doesn't like the hydrated gpu object in thelistings, so we omit them here and only add gpuName
+  // NOTE: prisma doesn't like the hydrated gpu object in the listings, so we omit them here and only add gpuName
   const mapped = listings.map((listing) => ({
     ...omit(listing, "gpu"),
     gpuName,

@@ -1,7 +1,7 @@
 "use client"
 import { SvgIcon } from "@/pkgs/client/components/SvgIcon"
 import { SpecPill } from "@/pkgs/client/components/SpecPill"
-import { AttributePill } from "./AttributePill"
+import { AttributePill, CountryPill } from "./AttributePill"
 import {
   GpuSpecKey,
   GpuSpecKeys,
@@ -44,7 +44,14 @@ export const ListingCard = ({
   highlightSpec,
 }: ListingCardProps) => {
   const analytics = useAnalytics()
-  const { itemAffiliateWebUrl, priceValue, title, condition } = item
+  const {
+    itemAffiliateWebUrl,
+    priceValue,
+    title,
+    condition,
+    itemLocationCountry,
+  } = item
+
   const imageUrl = chooseBestImageUrl(item)
   const cost = Number(priceValue)
   return (
@@ -70,6 +77,9 @@ export const ListingCard = ({
         <div className="card-text">
           <AttributePill>{formatPrice(cost)}</AttributePill>
           {condition && <AttributePill>{condition}</AttributePill>}
+          {itemLocationCountry && (
+            <CountryPill isoCountryCode={itemLocationCountry}></CountryPill>
+          )}
           <br />
           {GpuSpecKeys.map((specKey) => (
             <SpecPill

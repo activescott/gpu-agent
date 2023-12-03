@@ -28,9 +28,9 @@
     },
     "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C285539337148%7C0",
     "seller": {
-      "username": "redacted-5735744690541987",
+      "username": "redacted-8618243876684297",
       "feedbackPercentage": "98.5",
-      "feedbackScore": 5815
+      "feedbackScore": 5816
     },
     "condition": "New",
     "conditionId": "1000",
@@ -95,7 +95,7 @@
     },
     "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C195972662019%7C0",
     "seller": {
-      "username": "redacted-2510030216428735.5",
+      "username": "redacted-98853450097047.98",
       "feedbackPercentage": "100.0",
       "feedbackScore": 2
     },
@@ -167,7 +167,7 @@
     },
     "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C364604421257%7C0",
     "seller": {
-      "username": "redacted-1284325953029575.8",
+      "username": "redacted-7595916092986469",
       "feedbackPercentage": "100.0",
       "feedbackScore": 13
     },
@@ -235,9 +235,9 @@
     },
     "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C386203557728%7C0",
     "seller": {
-      "username": "redacted-6063128892756759",
+      "username": "redacted-8168013366995229",
       "feedbackPercentage": "98.7",
-      "feedbackScore": 856
+      "feedbackScore": 857
     },
     "condition": "New",
     "conditionId": "1000",
@@ -283,6 +283,80 @@
     "listingMarketplaceId": "EBAY_US"
   },
   {
+    "itemId": "v1|314981032359|0",
+    "title": "DELL NVIDIA H100 PCIE GPU 80GB 5120 BIT HBM2E GRAPHICS CARD DGP4C",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/aZ4AAOSwaI9lXo99/s-l225.jpg"
+    },
+    "price": {
+      "value": "34950.00",
+      "currency": "USD"
+    },
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C314981032359%7C0",
+    "seller": {
+      "username": "redacted-8633347897463707",
+      "feedbackPercentage": "100.0",
+      "feedbackScore": 10514
+    },
+    "condition": "Open box",
+    "conditionId": "1500",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/aZ4AAOSwaI9lXo99/s-l1600.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "139.00",
+          "currency": "USD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE"
+    ],
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/314981032359?hash=item49565521a7%3Ag%3AaZ4AAOSwaI9lXo99&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/314981032359?hash=item49565521a7:g:aZ4AAOSwaI9lXo99",
+    "itemLocation": {
+      "postalCode": "913**",
+      "country": "US"
+    },
+    "additionalImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/rGsAAOSwSW5lXo99/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/7NkAAOSwpOhlXo99/s-l225.jpg"
+      }
+    ],
+    "adultOnly": false,
+    "legacyItemId": "314981032359",
+    "availableCoupons": false,
+    "itemCreationDate": "2023-11-22T23:19:37.000Z",
+    "topRatedBuyingExperience": true,
+    "priorityListing": false,
+    "listingMarketplaceId": "EBAY_US"
+  },
+  {
     "itemId": "v1|175983150398|0",
     "title": "NVIDIA Tesla H100 80GB GPU PCIe version 900-21010-000-000 no SXM version",
     "leafCategoryIds": [
@@ -311,7 +385,7 @@
     },
     "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C175983150398%7C0",
     "seller": {
-      "username": "redacted-5342771942689687",
+      "username": "redacted-4693302528402069",
       "feedbackPercentage": "99.8",
       "feedbackScore": 3090
     },
@@ -361,80 +435,6 @@
     "listingMarketplaceId": "EBAY_US"
   },
   {
-    "itemId": "v1|314981032359|0",
-    "title": "DELL NVIDIA H100 PCIE GPU 80GB 5120 BIT HBM2E GRAPHICS CARD DGP4C",
-    "leafCategoryIds": [
-      "27386"
-    ],
-    "categories": [
-      {
-        "categoryId": "27386",
-        "categoryName": "Graphics/Video Cards"
-      },
-      {
-        "categoryId": "58058",
-        "categoryName": "Computers/Tablets & Networking"
-      },
-      {
-        "categoryId": "175673",
-        "categoryName": "Computer Components & Parts"
-      }
-    ],
-    "image": {
-      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/aZ4AAOSwaI9lXo99/s-l225.jpg"
-    },
-    "price": {
-      "value": "34950.00",
-      "currency": "USD"
-    },
-    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C314981032359%7C0",
-    "seller": {
-      "username": "redacted-6023304618894039",
-      "feedbackPercentage": "100.0",
-      "feedbackScore": 10514
-    },
-    "condition": "Open box",
-    "conditionId": "1500",
-    "thumbnailImages": [
-      {
-        "imageUrl": "https://i.ebayimg.com/images/g/aZ4AAOSwaI9lXo99/s-l1600.jpg"
-      }
-    ],
-    "shippingOptions": [
-      {
-        "shippingCostType": "FIXED",
-        "shippingCost": {
-          "value": "139.00",
-          "currency": "USD"
-        }
-      }
-    ],
-    "buyingOptions": [
-      "FIXED_PRICE"
-    ],
-    "itemAffiliateWebUrl": "https://www.ebay.com/itm/314981032359?hash=item49565521a7%3Ag%3AaZ4AAOSwaI9lXo99&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
-    "itemWebUrl": "https://www.ebay.com/itm/314981032359?hash=item49565521a7:g:aZ4AAOSwaI9lXo99",
-    "itemLocation": {
-      "postalCode": "913**",
-      "country": "US"
-    },
-    "additionalImages": [
-      {
-        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/rGsAAOSwSW5lXo99/s-l225.jpg"
-      },
-      {
-        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/7NkAAOSwpOhlXo99/s-l225.jpg"
-      }
-    ],
-    "adultOnly": false,
-    "legacyItemId": "314981032359",
-    "availableCoupons": false,
-    "itemCreationDate": "2023-11-22T23:19:37.000Z",
-    "topRatedBuyingExperience": true,
-    "priorityListing": false,
-    "listingMarketplaceId": "EBAY_US"
-  },
-  {
     "itemId": "v1|204533910254|0",
     "title": "NVIDIA TESLA Server Graphics Card New 80G  H100 PCIE",
     "leafCategoryIds": [
@@ -463,7 +463,7 @@
     },
     "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C204533910254%7C0",
     "seller": {
-      "username": "redacted-7429437581702949",
+      "username": "redacted-2620278187272889.5",
       "feedbackPercentage": "0.0",
       "feedbackScore": 0
     },
@@ -534,7 +534,7 @@
     },
     "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C115937900742%7C0",
     "seller": {
-      "username": "redacted-3836002884381625.5",
+      "username": "redacted-3780961332022755.5",
       "feedbackPercentage": "97.5",
       "feedbackScore": 7821
     },
@@ -614,7 +614,7 @@
     },
     "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C225892098296%7C0",
     "seller": {
-      "username": "redacted-2776385981618117.5",
+      "username": "redacted-6552154723421603",
       "feedbackPercentage": "94.5",
       "feedbackScore": 1340
     },
@@ -691,7 +691,7 @@
     },
     "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C235266859086%7C0",
     "seller": {
-      "username": "redacted-8595186093987935",
+      "username": "redacted-8181068980197023",
       "feedbackPercentage": "97.8",
       "feedbackScore": 102
     },
@@ -769,9 +769,9 @@
     },
     "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C134779469872%7C0",
     "seller": {
-      "username": "redacted-3824207565986849.5",
+      "username": "redacted-6457432751276537",
       "feedbackPercentage": "100.0",
-      "feedbackScore": 4896
+      "feedbackScore": 4897
     },
     "condition": "New",
     "conditionId": "1000",

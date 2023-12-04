@@ -53,6 +53,18 @@
       "title": "Price Compare NVIDIA H100 PCIe GPUs"
     },
     {
+      "path": "/ml/shop/gpu/nvidia-l4",
+      "title": "Price Compare NVIDIA L4 GPUs"
+    },
+    {
+      "path": "/ml/shop/gpu/nvidia-l40",
+      "title": "Price Compare NVIDIA L40 GPUs"
+    },
+    {
+      "path": "/ml/shop/gpu/nvidia-l40s",
+      "title": "Price Compare NVIDIA L40S GPUs"
+    },
+    {
       "path": "/ml/shop/gpu/nvidia-rtx-a5000",
       "title": "Price Compare NVIDIA RTX A5000 GPUs"
     },
@@ -87,6 +99,18 @@
     {
       "path": "/ml/learn/gpu/nvidia-h100-pcie",
       "title": "NVIDIA H100 PCIe GPU Machine Learning Specification"
+    },
+    {
+      "path": "/ml/learn/gpu/nvidia-l4",
+      "title": "NVIDIA L4 GPU Machine Learning Specification"
+    },
+    {
+      "path": "/ml/learn/gpu/nvidia-l40",
+      "title": "NVIDIA L40 GPU Machine Learning Specification"
+    },
+    {
+      "path": "/ml/learn/gpu/nvidia-l40s",
+      "title": "NVIDIA L40S GPU Machine Learning Specification"
     },
     {
       "path": "/ml/learn/gpu/nvidia-rtx-a5000",

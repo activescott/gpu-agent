@@ -1,0 +1,508 @@
+[
+  {
+    "itemId": "v1|404577393296|0",
+    "title": "NVIDIA Tesla L4 24GB Graphic Card",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/cWwAAOSwB5plO26d/s-l225.jpg"
+    },
+    "price": {
+      "value": "3745.00",
+      "currency": "USD"
+    },
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C404577393296%7C0",
+    "seller": {
+      "username": "redacted-1383986869110645.8",
+      "feedbackPercentage": "100.0",
+      "feedbackScore": 16
+    },
+    "condition": "Open box",
+    "conditionId": "1500",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/cWwAAOSwB5plO26d/s-l960.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "0.00",
+          "currency": "USD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE"
+    ],
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/404577393296?hash=item5e32b11a90%3Ag%3AcWwAAOSwB5plO26d&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/404577393296?hash=item5e32b11a90:g:cWwAAOSwB5plO26d",
+    "itemLocation": {
+      "postalCode": "774**",
+      "country": "US"
+    },
+    "adultOnly": false,
+    "legacyItemId": "404577393296",
+    "availableCoupons": false,
+    "itemCreationDate": "2023-10-27T14:06:03.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": false,
+    "listingMarketplaceId": "EBAY_US"
+  },
+  {
+    "itemId": "v1|404586531490|0",
+    "title": "900-2G193-0000-000 NVIDIA Tesla L4 75W 24GB Graphic Card",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/jv4AAOSwzs5lQLJn/s-l225.jpg"
+    },
+    "price": {
+      "value": "3890.00",
+      "currency": "USD"
+    },
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C404586531490%7C0",
+    "seller": {
+      "username": "redacted-2932788987102327.5",
+      "feedbackPercentage": "100.0",
+      "feedbackScore": 16
+    },
+    "condition": "Open box",
+    "conditionId": "1500",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/jv4AAOSwzs5lQLJn/s-l1200.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "0.00",
+          "currency": "USD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE"
+    ],
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/404586531490?hash=item5e333c8aa2%3Ag%3Ajv4AAOSwzs5lQLJn&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/404586531490?hash=item5e333c8aa2:g:jv4AAOSwzs5lQLJn",
+    "itemLocation": {
+      "postalCode": "774**",
+      "country": "US"
+    },
+    "adultOnly": false,
+    "legacyItemId": "404586531490",
+    "availableCoupons": false,
+    "itemCreationDate": "2023-10-31T13:54:52.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": false,
+    "listingMarketplaceId": "EBAY_US"
+  },
+  {
+    "itemId": "v1|354889400461|0",
+    "title": "NVIDIA L4 Tensor Core GPU 24GB DEEP Learning",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/cEEAAOSwszlkoqMt/s-l225.jpg"
+    },
+    "price": {
+      "value": "3689.00",
+      "currency": "USD"
+    },
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C354889400461%7C0",
+    "seller": {
+      "username": "redacted-8454469531252433",
+      "feedbackPercentage": "100.0",
+      "feedbackScore": 7
+    },
+    "condition": "Open box",
+    "conditionId": "1500",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/cEEAAOSwszlkoqMt/s-l1200.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "56.00",
+          "currency": "USD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE",
+      "BEST_OFFER"
+    ],
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/354889400461?hash=item52a10e808d%3Ag%3AcEEAAOSwszlkoqMt&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/354889400461?hash=item52a10e808d:g:cEEAAOSwszlkoqMt",
+    "itemLocation": {
+      "country": "CN"
+    },
+    "additionalImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/7lYAAOSwWGFkoqVN/s-l225.jpg"
+      }
+    ],
+    "adultOnly": false,
+    "legacyItemId": "354889400461",
+    "availableCoupons": false,
+    "itemCreationDate": "2023-07-04T10:40:17.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": false,
+    "listingMarketplaceId": "EBAY_US"
+  },
+  {
+    "itemId": "v1|166343745798|0",
+    "title": "NVIDIA QUADRO NVS 310 512MB PCI-E LOW PROFILE DUAL DISPLAY PORT VIDEO CARD L4-9",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/6JUAAOSwRQ1lDdBT/s-l225.jpg"
+    },
+    "price": {
+      "value": "11.49",
+      "currency": "USD"
+    },
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C166343745798%7C0",
+    "seller": {
+      "username": "redacted-4517934788649863",
+      "feedbackPercentage": "99.9",
+      "feedbackScore": 13285
+    },
+    "condition": "Used",
+    "conditionId": "3000",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/6JUAAOSwRQ1lDdBT/s-l1600.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "0.00",
+          "currency": "USD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE",
+      "BEST_OFFER"
+    ],
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/166343745798?hash=item26badc2106%3Ag%3A6JUAAOSwRQ1lDdBT&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/166343745798?hash=item26badc2106:g:6JUAAOSwRQ1lDdBT",
+    "itemLocation": {
+      "postalCode": "276**",
+      "country": "US"
+    },
+    "additionalImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/ebUAAOSwA6ZlDdBU/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/t8UAAOSw4AFlDdBW/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/QxkAAOSwu6tlDdBX/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/9rQAAOSwUaBlDdBY/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/8hYAAOSwhoxlDdBa/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/BeIAAOSwgfJlDdBb/s-l225.jpg"
+      }
+    ],
+    "adultOnly": false,
+    "legacyItemId": "166343745798",
+    "availableCoupons": false,
+    "itemCreationDate": "2023-09-22T17:32:57.000Z",
+    "topRatedBuyingExperience": true,
+    "priorityListing": false,
+    "listingMarketplaceId": "EBAY_US"
+  },
+  {
+    "itemId": "v1|304602147663|0",
+    "title": "HP HP Nvidia Quadro K1200 4GB 4x DVI Trader Trading Graphics Video Card T7T59AT",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/k1cAAOSw~0hi~nYn/s-l225.jpg"
+    },
+    "price": {
+      "value": "235.00",
+      "currency": "USD"
+    },
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C304602147663%7C0",
+    "seller": {
+      "username": "redacted-4258841071606329.5",
+      "feedbackPercentage": "99.9",
+      "feedbackScore": 25701
+    },
+    "condition": "Used",
+    "conditionId": "3000",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/k1cAAOSw~0hi~nYn/s-l960.jpg"
+      }
+    ],
+    "pickupOptions": [
+      {
+        "pickupLocationType": "ARRANGED_LOCATION"
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE",
+      "BEST_OFFER"
+    ],
+    "epid": "12021192296",
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/304602147663?hash=item46ebb3eb4f%3Ag%3Ak1cAAOSw%7E0hi%7EnYn&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/304602147663?hash=item46ebb3eb4f:g:k1cAAOSw~0hi~nYn",
+    "itemLocation": {
+      "postalCode": "601**",
+      "country": "US"
+    },
+    "additionalImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/gbAAAOSwclli~n7s/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/dHUAAOSwEBNi~n7s/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/N8IAAOSw4BVgSlbP/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/iMgAAOSw1X1i~n7s/s-l225.jpg"
+      }
+    ],
+    "adultOnly": false,
+    "legacyItemId": "304602147663",
+    "availableCoupons": false,
+    "itemCreationDate": "2022-08-18T18:12:45.000Z",
+    "topRatedBuyingExperience": true,
+    "priorityListing": false,
+    "listingMarketplaceId": "EBAY_US"
+  },
+  {
+    "itemId": "v1|125041343459|0",
+    "title": "ZOTAC GeForce GTX 1650 LP GDDR6 Graphics Board ZT-T16520H-10L 4GB VD7426",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/UPoAAOSwQxhhsObm/s-l225.jpg"
+    },
+    "price": {
+      "value": "274.93",
+      "currency": "USD"
+    },
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C125041343459%7C0",
+    "seller": {
+      "username": "redacted-6483310721205101",
+      "feedbackPercentage": "99.6",
+      "feedbackScore": 12579
+    },
+    "condition": "New",
+    "conditionId": "1000",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/UPoAAOSwQxhhsObm/s-l500.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "36.98",
+          "currency": "USD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE"
+    ],
+    "epid": "13050674080",
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/125041343459?hash=item1d1d0b7be3%3Ag%3AUPoAAOSwQxhhsObm&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/125041343459?hash=item1d1d0b7be3:g:UPoAAOSwQxhhsObm",
+    "itemLocation": {
+      "country": "JP"
+    },
+    "adultOnly": false,
+    "legacyItemId": "125041343459",
+    "availableCoupons": false,
+    "itemCreationDate": "2021-12-08T17:09:56.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": false,
+    "listingMarketplaceId": "EBAY_US"
+  },
+  {
+    "itemId": "v1|334569300026|0",
+    "title": "ZOTAC NVIDIA GeForce GTX 960 2GB GDDR5 Dual Slot Graphics Card ZT-90301-10M   L4",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/y1sAAOSwSXFjLPd6/s-l225.jpg"
+    },
+    "price": {
+      "value": "89.99",
+      "currency": "USD"
+    },
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C334569300026%7C0",
+    "seller": {
+      "username": "redacted-6458540028474077",
+      "feedbackPercentage": "98.7",
+      "feedbackScore": 3711
+    },
+    "condition": "Used",
+    "conditionId": "3000",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/y1sAAOSwSXFjLPd6/s-l1600.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "0.00",
+          "currency": "USD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE"
+    ],
+    "epid": "218253061",
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/334569300026?hash=item4de5e2603a%3Ag%3Ay1sAAOSwSXFjLPd6&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/334569300026?hash=item4de5e2603a:g:y1sAAOSwSXFjLPd6",
+    "itemLocation": {
+      "postalCode": "940**",
+      "country": "US"
+    },
+    "additionalImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/ErgAAOSwb6JjLPeC/s-l225.jpg"
+      }
+    ],
+    "adultOnly": false,
+    "legacyItemId": "334569300026",
+    "availableCoupons": false,
+    "itemCreationDate": "2022-09-23T00:31:50.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": false,
+    "listingMarketplaceId": "EBAY_US"
+  }
+]

@@ -23,6 +23,8 @@ model gpu {
   int8TOPS           Float
   memoryCapacityGB   Float
   memoryBandwidthGBs Float
+  // maximum thermal design power was added later and not all GPUs have it listed in our DB. See the seed.
+  maxTDPWatts        Float?
 
   // track when the listings were fetched and updated in Listings
   lastCachedListings DateTime?

@@ -1,0 +1,1146 @@
+[
+  {
+    "itemId": "v1|355254826995|0",
+    "title": "Tesla NVIDIA L40 48GB Deep Learning GPU Compute Graphics Card",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/M3QAAOSwlqFlbAeG/s-l225.jpg"
+    },
+    "price": {
+      "value": "7299.00",
+      "currency": "USD"
+    },
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C355254826995%7C0",
+    "seller": {
+      "username": "redacted-6982523156196651",
+      "feedbackPercentage": "100.0",
+      "feedbackScore": 305
+    },
+    "condition": "Open box",
+    "conditionId": "1500",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/M3QAAOSwlqFlbAeG/s-l960.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "CALCULATED"
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE",
+      "BEST_OFFER"
+    ],
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/355254826995?hash=item52b6d677f3%3Ag%3AM3QAAOSwlqFlbAeG&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/355254826995?hash=item52b6d677f3:g:M3QAAOSwlqFlbAeG",
+    "itemLocation": {
+      "postalCode": "774**",
+      "country": "US"
+    },
+    "additionalImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/xSoAAOSwAt5lbAd4/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/djkAAOSwalFlbAeS/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/mNkAAOSwbntlbAeV/s-l225.jpg"
+      }
+    ],
+    "adultOnly": false,
+    "legacyItemId": "355254826995",
+    "availableCoupons": false,
+    "itemCreationDate": "2023-12-03T04:45:47.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": false,
+    "listingMarketplaceId": "EBAY_US"
+  },
+  {
+    "itemId": "v1|256117489590|0",
+    "title": "NVIDIA 900-2G133-0080-000 NVIDIA Ada L40S 48GB GDDR6 PCIe Gen 4th 350W GPU Card",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/kG0AAOSwd~JlMZjB/s-l225.jpg"
+    },
+    "price": {
+      "value": "12480.00",
+      "currency": "USD"
+    },
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C256117489590%7C0",
+    "seller": {
+      "username": "redacted-1576518542867147.8",
+      "feedbackPercentage": "100.0",
+      "feedbackScore": 1479
+    },
+    "condition": "New",
+    "conditionId": "1000",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/kG0AAOSwd~JlMZjB/s-l1200.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "0.00",
+          "currency": "USD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE"
+    ],
+    "epid": "6063399597",
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/256117489590?hash=item3ba1cabfb6%3Ag%3AkG0AAOSwd%7EJlMZjB&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/256117489590?hash=item3ba1cabfb6:g:kG0AAOSwd~JlMZjB",
+    "itemLocation": {
+      "postalCode": "951**",
+      "country": "US"
+    },
+    "additionalImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/Y1kAAOSwqddlMZjc/s-l225.jpg"
+      }
+    ],
+    "adultOnly": false,
+    "legacyItemId": "256117489590",
+    "availableCoupons": false,
+    "itemCreationDate": "2023-06-21T20:54:14.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": false,
+    "listingMarketplaceId": "EBAY_US"
+  },
+  {
+    "itemId": "v1|266436975382|0",
+    "title": "NVIDIA L40S 48 GB GDDR6 Graphics Card - PCIe 4.0 x16 - Ada - 900-2G133-0080-000",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/Rm8AAOSwFQ1lGvmd/s-l225.jpg"
+    },
+    "price": {
+      "value": "12482.99",
+      "currency": "USD"
+    },
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C266436975382%7C0",
+    "seller": {
+      "username": "redacted-4022641241075717.5",
+      "feedbackPercentage": "99.3",
+      "feedbackScore": 1187
+    },
+    "condition": "New",
+    "conditionId": "1000",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/Rm8AAOSwFQ1lGvmd/s-l960.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "0.00",
+          "currency": "USD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE"
+    ],
+    "epid": "6063399597",
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/266436975382?hash=item3e08e19b16%3Ag%3ARm8AAOSwFQ1lGvmd&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/266436975382?hash=item3e08e19b16:g:Rm8AAOSwFQ1lGvmd",
+    "itemLocation": {
+      "postalCode": "358**",
+      "country": "US"
+    },
+    "adultOnly": false,
+    "legacyItemId": "266436975382",
+    "availableCoupons": false,
+    "itemCreationDate": "2023-10-02T17:06:27.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": false,
+    "listingMarketplaceId": "EBAY_US"
+  },
+  {
+    "itemId": "v1|285589830625|587569077373",
+    "title": "Nvidia Tesla GPU Cooling Fan Shroud L40 L40G H100 Accelerator Card EXTRA SMALL",
+    "itemGroupHref": "https://api.ebay.com/buy/browse/v1/item/get_items_by_item_group?item_group_id=285589830625",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/rsUAAOSw8GZlbLhx/s-l225.jpg"
+    },
+    "price": {
+      "value": "19.98",
+      "currency": "USD"
+    },
+    "itemGroupType": "SELLER_DEFINED_VARIATIONS",
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C285589830625%7C587569077373",
+    "seller": {
+      "username": "redacted-823202733351321.9",
+      "feedbackPercentage": "99.4",
+      "feedbackScore": 2151
+    },
+    "condition": "New",
+    "conditionId": "1000",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/rsUAAOSw8GZlbLhx/s-l1600.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "0.00",
+          "currency": "USD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE"
+    ],
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/285589830625?hash=item427e7afbe1%3Ag%3ArsUAAOSw8GZlbLhx&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/285589830625?hash=item427e7afbe1:g:rsUAAOSw8GZlbLhx",
+    "itemLocation": {
+      "postalCode": "786**",
+      "country": "US"
+    },
+    "additionalImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/nJUAAOSwN4FlbLhz/s-l225.jpg"
+      }
+    ],
+    "adultOnly": false,
+    "legacyItemId": "285589830625",
+    "availableCoupons": false,
+    "itemCreationDate": "2023-12-03T17:26:22.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": false,
+    "listingMarketplaceId": "EBAY_US"
+  },
+  {
+    "itemId": "v1|166374671920|0",
+    "title": "NVIDIA L40S 48GB Deep learningrendering GPU operation acceleration Graphics Card",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/QsUAAOSwXtFlJ8La/s-l225.jpg"
+    },
+    "price": {
+      "value": "22999.00",
+      "currency": "USD"
+    },
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C166374671920%7C0",
+    "seller": {
+      "username": "redacted-2422987688718045.5",
+      "feedbackPercentage": "99.1",
+      "feedbackScore": 37496
+    },
+    "condition": "New",
+    "conditionId": "1000",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/QsUAAOSwXtFlJ8La/s-l960.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "0.00",
+          "currency": "USD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE",
+      "BEST_OFFER"
+    ],
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/166374671920?hash=item26bcb40630%3Ag%3AQsUAAOSwXtFlJ8La&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/166374671920?hash=item26bcb40630:g:QsUAAOSwXtFlJ8La",
+    "itemLocation": {
+      "postalCode": "******",
+      "country": "CN"
+    },
+    "additionalImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/XNAAAOSwVKdlJ8Ld/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/YJ0AAOSw-CtlJ8Lf/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/jbAAAOSw7vBlJ8Li/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/x9QAAOSwUI9lJ8Lk/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/1tcAAOSwoUZlJ8Lm/s-l225.jpg"
+      }
+    ],
+    "adultOnly": false,
+    "legacyItemId": "166374671920",
+    "availableCoupons": false,
+    "itemCreationDate": "2023-10-13T09:57:08.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": false,
+    "listingMarketplaceId": "EBAY_US"
+  },
+  {
+    "itemId": "v1|285399584126|587310942763",
+    "title": "Nvidia Tesla GPU Cooling Fans and Shroud Mounting L40 L40G H100 Accelerator Card",
+    "itemGroupHref": "https://api.ebay.com/buy/browse/v1/item/get_items_by_item_group?item_group_id=285399584126",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/37YAAOSw2OplbKT6/s-l225.jpg"
+    },
+    "price": {
+      "value": "24.98",
+      "currency": "USD"
+    },
+    "itemGroupType": "SELLER_DEFINED_VARIATIONS",
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C285399584126%7C587310942763",
+    "seller": {
+      "username": "redacted-610603969848037.9",
+      "feedbackPercentage": "99.4",
+      "feedbackScore": 2151
+    },
+    "condition": "New",
+    "conditionId": "1000",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/37YAAOSw2OplbKT6/s-l1600.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "0.00",
+          "currency": "USD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE"
+    ],
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/285399584126?hash=item4273240d7e%3Ag%3A37YAAOSw2OplbKT6&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/285399584126?hash=item4273240d7e:g:37YAAOSw2OplbKT6",
+    "itemLocation": {
+      "postalCode": "786**",
+      "country": "US"
+    },
+    "additionalImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/5T8AAOSwIX1k-Q3f/s-l225.jpg"
+      }
+    ],
+    "adultOnly": false,
+    "legacyItemId": "285399584126",
+    "availableCoupons": false,
+    "itemCreationDate": "2023-07-24T22:20:20.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": false,
+    "listingMarketplaceId": "EBAY_US"
+  },
+  {
+    "itemId": "v1|285308616595|587184234479",
+    "title": "Nvidia Tesla GPU Cooling Fans and Shroud Mounting L40 L40G H100 Accelerator Card",
+    "itemGroupHref": "https://api.ebay.com/buy/browse/v1/item/get_items_by_item_group?item_group_id=285308616595",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/TVUAAOSwXABlbKH0/s-l225.jpg"
+    },
+    "price": {
+      "value": "39.49",
+      "currency": "USD"
+    },
+    "itemGroupType": "SELLER_DEFINED_VARIATIONS",
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C285308616595%7C587184234479",
+    "seller": {
+      "username": "redacted-6464334751287791",
+      "feedbackPercentage": "99.4",
+      "feedbackScore": 2151
+    },
+    "condition": "New",
+    "conditionId": "1000",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/TVUAAOSwXABlbKH0/s-l1600.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "0.00",
+          "currency": "USD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE"
+    ],
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/285308616595?hash=item426db7ff93%3Ag%3ATVUAAOSwXABlbKH0&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/285308616595?hash=item426db7ff93:g:TVUAAOSwXABlbKH0",
+    "itemLocation": {
+      "postalCode": "786**",
+      "country": "US"
+    },
+    "additionalImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/FzQAAOSwiQVkdldL/s-l225.jpg"
+      }
+    ],
+    "adultOnly": false,
+    "legacyItemId": "285308616595",
+    "availableCoupons": false,
+    "itemCreationDate": "2023-05-30T20:18:31.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": false,
+    "listingMarketplaceId": "EBAY_US"
+  },
+  {
+    "itemId": "v1|285553507992|587514144996",
+    "title": "Nvidia Tesla GPU Cooling Fan Shroud L40 CNX Accelerator Card EXTRA SMALL",
+    "itemGroupHref": "https://api.ebay.com/buy/browse/v1/item/get_items_by_item_group?item_group_id=285553507992",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/S4oAAOSwJLhlbNXV/s-l225.jpg"
+    },
+    "price": {
+      "value": "9.89",
+      "currency": "USD"
+    },
+    "itemGroupType": "SELLER_DEFINED_VARIATIONS",
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C285553507992%7C587514144996",
+    "seller": {
+      "username": "redacted-5531812901583641",
+      "feedbackPercentage": "99.4",
+      "feedbackScore": 2151
+    },
+    "condition": "New",
+    "conditionId": "1000",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/S4oAAOSwJLhlbNXV/s-l1200.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "0.00",
+          "currency": "USD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE"
+    ],
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/285553507992?hash=item427c50be98%3Ag%3AS4oAAOSwJLhlbNXV&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/285553507992?hash=item427c50be98:g:S4oAAOSwJLhlbNXV",
+    "itemLocation": {
+      "postalCode": "786**",
+      "country": "US"
+    },
+    "adultOnly": false,
+    "legacyItemId": "285553507992",
+    "availableCoupons": false,
+    "itemCreationDate": "2023-11-10T19:04:17.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": false,
+    "listingMarketplaceId": "EBAY_US"
+  },
+  {
+    "itemId": "v1|185848503797|0",
+    "title": "Full Height Bracket for nVIDIA L40 GPU",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/Fm0AAOSwgSJkMeer/s-l225.jpg"
+    },
+    "price": {
+      "value": "10.00",
+      "currency": "USD"
+    },
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C185848503797%7C0",
+    "seller": {
+      "username": "redacted-8499676773094999",
+      "feedbackPercentage": "100.0",
+      "feedbackScore": 504
+    },
+    "condition": "New",
+    "conditionId": "1000",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/Fm0AAOSwgSJkMeer/s-l1600.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "0.00",
+          "currency": "USD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE"
+    ],
+    "epid": "1972918193",
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/185848503797?hash=item2b456f1df5%3Ag%3AFm0AAOSwgSJkMeer&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/185848503797?hash=item2b456f1df5:g:Fm0AAOSwgSJkMeer",
+    "itemLocation": {
+      "postalCode": "331**",
+      "country": "US"
+    },
+    "additionalImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/MRcAAOSwhSVkMeeq/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/5c4AAOSwAApkMeeq/s-l225.jpg"
+      }
+    ],
+    "adultOnly": false,
+    "legacyItemId": "185848503797",
+    "availableCoupons": false,
+    "itemCreationDate": "2023-04-08T22:15:01.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": false,
+    "listingMarketplaceId": "EBAY_US"
+  },
+  {
+    "itemId": "v1|204505995505|0",
+    "title": "Deep learningrendering GPU operation acceleration Graphics Card NVIDIA L40S 48GB",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/AqwAAOSwix9lL-wV/s-l225.jpg"
+    },
+    "price": {
+      "value": "23000.00",
+      "currency": "USD"
+    },
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C204505995505%7C0",
+    "seller": {
+      "username": "redacted-6658155818093953",
+      "feedbackPercentage": "98.5",
+      "feedbackScore": 199
+    },
+    "condition": "New",
+    "conditionId": "1000",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/AqwAAOSwix9lL-wV/s-l960.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "0.00",
+          "currency": "USD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE",
+      "BEST_OFFER"
+    ],
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/204505995505?hash=item2f9d81d8f1%3Ag%3AAqwAAOSwix9lL-wV&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/204505995505?hash=item2f9d81d8f1:g:AqwAAOSwix9lL-wV",
+    "itemLocation": {
+      "postalCode": "******",
+      "country": "CN"
+    },
+    "additionalImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/Gh4AAOSwNpNlL-wa/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/q~IAAOSwVN5lL-wc/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/dxcAAOSwTvhlL-wh/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/EWwAAOSwb7FlL-wk/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/CXQAAOSwh~plL-wm/s-l225.jpg"
+      }
+    ],
+    "adultOnly": false,
+    "legacyItemId": "204505995505",
+    "availableCoupons": false,
+    "itemCreationDate": "2023-10-19T14:31:18.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": false,
+    "listingMarketplaceId": "EBAY_US"
+  },
+  {
+    "itemId": "v1|126143470673|0",
+    "title": "Deep learningrendering GPU operation acceleration Graphics Card NVIDIA L40S 48GB",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/wrwAAOSwKwJlL~om/s-l225.jpg"
+    },
+    "price": {
+      "value": "22500.00",
+      "currency": "USD"
+    },
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C126143470673%7C0",
+    "seller": {
+      "username": "redacted-1611695476207273.8",
+      "feedbackPercentage": "98.9",
+      "feedbackScore": 1494
+    },
+    "condition": "New",
+    "conditionId": "1000",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/wrwAAOSwKwJlL~om/s-l960.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "0.00",
+          "currency": "USD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE",
+      "BEST_OFFER"
+    ],
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/126143470673?hash=item1d5ebc9c51%3Ag%3AwrwAAOSwKwJlL%7Eom&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/126143470673?hash=item1d5ebc9c51:g:wrwAAOSwKwJlL~om",
+    "itemLocation": {
+      "postalCode": "******",
+      "country": "CN"
+    },
+    "additionalImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/s2gAAOSww8FlL~or/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/J2EAAOSw24FlL~ot/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/JRgAAOSwSA1lL~ow/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/f38AAOSwPQxlL~oy/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/uhkAAOSwyn1lL~o0/s-l225.jpg"
+      }
+    ],
+    "adultOnly": false,
+    "legacyItemId": "126143470673",
+    "availableCoupons": false,
+    "itemCreationDate": "2023-10-19T15:31:15.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": false,
+    "listingMarketplaceId": "EBAY_US"
+  },
+  {
+    "itemId": "v1|225814433178|0",
+    "title": "Deep learningrendering GPU operation acceleration Graphics Card NVIDIA L40S 48GB",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/~ywAAOSwM6plJ8ut/s-l225.jpg"
+    },
+    "price": {
+      "value": "16590.00",
+      "currency": "USD"
+    },
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C225814433178%7C0",
+    "seller": {
+      "username": "redacted-2147793615353617.8",
+      "feedbackPercentage": "99.6",
+      "feedbackScore": 451
+    },
+    "condition": "New",
+    "conditionId": "1000",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/~ywAAOSwM6plJ8ut/s-l960.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "0.00",
+          "currency": "USD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE",
+      "BEST_OFFER"
+    ],
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/225814433178?hash=item349396cd9a%3Ag%3A%7EywAAOSwM6plJ8ut&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/225814433178?hash=item349396cd9a:g:~ywAAOSwM6plJ8ut",
+    "itemLocation": {
+      "postalCode": "******",
+      "country": "CN"
+    },
+    "additionalImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/9X8AAOSwQ~hlJ8uu/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/JZkAAOSw6cVlJ8uw/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/vrMAAOSwN49lJ8uy/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/sI0AAOSwwhVlJ8u1/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/-kcAAOSwoEZlJ8u4/s-l225.jpg"
+      }
+    ],
+    "adultOnly": false,
+    "legacyItemId": "225814433178",
+    "availableCoupons": false,
+    "itemCreationDate": "2023-10-13T10:46:16.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": false,
+    "listingMarketplaceId": "EBAY_US"
+  },
+  {
+    "itemId": "v1|285399581846|587310882254",
+    "title": "Nvidia Tesla GPU Cooling Fans and Shroud Mounting L40 CNX Accelerator Card 80MM",
+    "itemGroupHref": "https://api.ebay.com/buy/browse/v1/item/get_items_by_item_group?item_group_id=285399581846",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/JwAAAOSwKBBlbKUf/s-l225.jpg"
+    },
+    "price": {
+      "value": "24.98",
+      "currency": "USD"
+    },
+    "itemGroupType": "SELLER_DEFINED_VARIATIONS",
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C285399581846%7C587310882254",
+    "seller": {
+      "username": "redacted-1001016269843705.9",
+      "feedbackPercentage": "99.4",
+      "feedbackScore": 2151
+    },
+    "condition": "New",
+    "conditionId": "1000",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/JwAAAOSwKBBlbKUf/s-l1600.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "0.00",
+          "currency": "USD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE"
+    ],
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/285399581846?hash=item4273240496%3Ag%3AJwAAAOSwKBBlbKUf&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/285399581846?hash=item4273240496:g:JwAAAOSwKBBlbKUf",
+    "itemLocation": {
+      "postalCode": "786**",
+      "country": "US"
+    },
+    "additionalImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/994AAOSwOlBkvvQa/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/DOoAAOSwmOFkkydD/s-l225.jpg"
+      }
+    ],
+    "adultOnly": false,
+    "legacyItemId": "285399581846",
+    "availableCoupons": false,
+    "itemCreationDate": "2023-07-24T22:19:19.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": false,
+    "listingMarketplaceId": "EBAY_US"
+  },
+  {
+    "itemId": "v1|285308616957|587184125836",
+    "title": "Nvidia Tesla GPU Cooling Fans and Shroud Mounting L40 CNX Accelerator Card",
+    "itemGroupHref": "https://api.ebay.com/buy/browse/v1/item/get_items_by_item_group?item_group_id=285308616957",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/48UAAOSwAMtlbKHi/s-l225.jpg"
+    },
+    "price": {
+      "value": "39.49",
+      "currency": "USD"
+    },
+    "itemGroupType": "SELLER_DEFINED_VARIATIONS",
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C285308616957%7C587184125836",
+    "seller": {
+      "username": "redacted-5566647785205407",
+      "feedbackPercentage": "99.4",
+      "feedbackScore": 2151
+    },
+    "condition": "New",
+    "conditionId": "1000",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/48UAAOSwAMtlbKHi/s-l1600.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "0.00",
+          "currency": "USD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE"
+    ],
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/285308616957?hash=item426db800fd%3Ag%3A48UAAOSwAMtlbKHi&amdata=enc%3AAQAIAAAA4FsyShqxV4aHi3mD%2F2uBkkPY52xpWooytHyQloRrt8cQaTua6SdhcECshBgOMEvDHxG%2F6XfsAdqWAJOE2NVoqhbK6LgHlpCzKSRfITN9KlQ5RMUjHYFO%2BT%2BCo9TZIee0yTmnPrVHOY%2FjwH%2FYfOe1VnBRQZ%2F%2FYx%2FZ1lVTNcBiY2Fe54nxJa85LyTnBGkj83cehnSWfLjqpy8JPPnHeo%2FtOFsJH7VJWFzSpoVYpxZLNKdM9My9DQuCmNf0jzdRZpD0DZg1SBKeQd%2FUrX2cP7aOPf%2BLSmFoy9NsEP%2B1Gq1ipful&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/285308616957?hash=item426db800fd:g:48UAAOSwAMtlbKHi&amdata=enc%3AAQAIAAAA4FsyShqxV4aHi3mD%2F2uBkkPY52xpWooytHyQloRrt8cQaTua6SdhcECshBgOMEvDHxG%2F6XfsAdqWAJOE2NVoqhbK6LgHlpCzKSRfITN9KlQ5RMUjHYFO%2BT%2BCo9TZIee0yTmnPrVHOY%2FjwH%2FYfOe1VnBRQZ%2F%2FYx%2FZ1lVTNcBiY2Fe54nxJa85LyTnBGkj83cehnSWfLjqpy8JPPnHeo%2FtOFsJH7VJWFzSpoVYpxZLNKdM9My9DQuCmNf0jzdRZpD0DZg1SBKeQd%2FUrX2cP7aOPf%2BLSmFoy9NsEP%2B1Gq1ipful",
+    "itemLocation": {
+      "postalCode": "786**",
+      "country": "US"
+    },
+    "additionalImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/FzQAAOSwiQVkdldL/s-l225.jpg"
+      }
+    ],
+    "adultOnly": false,
+    "legacyItemId": "285308616957",
+    "availableCoupons": false,
+    "itemCreationDate": "2023-05-30T20:19:09.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": true,
+    "listingMarketplaceId": "EBAY_US"
+  },
+  {
+    "itemId": "v1|126143470238|0",
+    "title": "Deep learningrendering GPU operation acceleration Graphics Card NVIDIA L40S 48GB",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/Ny0AAOSw90VlLkoZ/s-l225.jpg"
+    },
+    "price": {
+      "value": "22999.00",
+      "currency": "USD"
+    },
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C126143470238%7C0",
+    "seller": {
+      "username": "redacted-2412524766310905.5",
+      "feedbackPercentage": "99.0",
+      "feedbackScore": 651
+    },
+    "condition": "New",
+    "conditionId": "1000",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/Ny0AAOSw90VlLkoZ/s-l960.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "0.00",
+          "currency": "USD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE",
+      "BEST_OFFER"
+    ],
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/126143470238?hash=item1d5ebc9a9e%3Ag%3ANy0AAOSw90VlLkoZ&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/126143470238?hash=item1d5ebc9a9e:g:Ny0AAOSw90VlLkoZ",
+    "itemLocation": {
+      "postalCode": "******",
+      "country": "CN"
+    },
+    "additionalImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/69AAAOSwv8RlLkoa/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/9KEAAOSwYldlLkoc/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/WBYAAOSwl4VlLkod/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/-tAAAOSwq-llLkof/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/WjAAAOSwPqBlLkog/s-l225.jpg"
+      }
+    ],
+    "adultOnly": false,
+    "legacyItemId": "126143470238",
+    "availableCoupons": false,
+    "itemCreationDate": "2023-10-19T15:30:53.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": false,
+    "listingMarketplaceId": "EBAY_US"
+  }
+]

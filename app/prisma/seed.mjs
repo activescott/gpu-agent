@@ -167,6 +167,71 @@ async function main() {
         "https://www.nvidia.com/en-us/data-center/technologies/hopper-architecture/",
       ],
     },
+    {
+      name: "nvidia-l4",
+      label: "NVIDIA L4",
+      tensorCoreCount: 240,
+      fp32TFLOPS: 120,
+      fp16TFLOPS: 242,
+      int8TOPS: 485,
+      memoryCapacityGB: 24,
+      memoryBandwidthGBs: 300,
+      summary:
+        "The NVIDIA L4 GPU was introduced in March 2023. It, along with the L40 are the NVIDIA Ada Lovelace architecture built using the Built on the 5 nm process. The L4 uses the AD104 graphics processor, fourth-generation Tensor Cores, deep learning super sampling (DLSS 3) and 24 GB GDDR6 memory. The L4 is unique in that its maximum power draw is only 72 W which is quite low compared with other Tensor Core GPUs such as the such as the L40 at 300W and L40S at 350W. It is a single-slot PCIe 4.0 x16 card without connectivity for monitors.",
+      maxTDPWatts: 72,
+      references: [
+        "https://www.nvidia.com/en-us/data-center/l4/",
+        "https://nvdam.widen.net/s/rvq98gbwsw/l4-datasheet-2595652",
+        "https://en.wikipedia.org/wiki/List_of_Nvidia_graphics_processing_units",
+        "https://www.techpowerup.com/gpu-specs/l4.c4091",
+        "https://www.nvidia.com/en-us/technologies/ada-architecture/",
+        "https://developer.nvidia.com/blog/supercharging-ai-video-and-ai-inference-performance-with-nvidia-l4-gpus/",
+      ],
+    },
+    {
+      // NOTE: L40S is a newer version of the L40. L40 used 1 AD102 GPU chip.
+      name: "nvidia-l40",
+      label: "NVIDIA L40",
+      tensorCoreCount: 568,
+      fp32TFLOPS: 90.5, //the L40 @ 90.5 per https://images.nvidia.com/content/Solutions/data-center/vgpu-L40-datasheet.pdf
+      fp16TFLOPS: 181.05, // L40 is 181.05
+      int8TOPS: 362, // L40 was 362 according to https://images.nvidia.com/aem-dam/Solutions/Data-Center/l4/nvidia-ada-gpu-architecture-whitepaper-v2.1.pdf
+      memoryCapacityGB: 48,
+      memoryBandwidthGBs: 864,
+      maxTDPWatts: 300,
+      summary: `The NVIDIA L40 GPU was introduced in September 2022. It is based on the AD102 chip from the Ada Lovelace architecture. It is optimized for graphics and AI-enabled 2D, video and 3D image generation. It uses the PCIe Gen4 x16 interconnect and Unlike the NVIDIA L4, it allows connecting monitors with 4x DisplayPort connectors.
+      `,
+      references: [
+        "https://images.nvidia.com/content/Solutions/data-center/vgpu-L40-datasheet.pdf",
+        "https://images.nvidia.com/aem-dam/Solutions/Data-Center/l4/nvidia-ada-gpu-architecture-whitepaper-v2.1.pdf",
+        "https://nvidianews.nvidia.com/news/nvidia-announces-ovx-computing-systems-the-graphics-and-simulation-foundation-for-the-metaverse-powered-by-ada-lovelace-gpu",
+      ],
+    },
+    {
+      // NOTE: L40S is a newer version of the L40. L40 used 1 AD102 GPU chip.
+      name: "nvidia-l40s",
+      label: "NVIDIA L40S",
+      tensorCoreCount: 568,
+      fp32TFLOPS: 183, // MUCH higher compared to the L40 @ 90.5 per https://images.nvidia.com/content/Solutions/data-center/vgpu-L40-datasheet.pdf
+      fp16TFLOPS: 362, // L40 is 181.05
+      int8TOPS: 1466, // From https://www.exxactcorp.com/blog/components/NVIDIA-L40S-GPU-Compared-to-A100-and-H100-Tensor-Core-GPU. L40 was 362 according to https://images.nvidia.com/aem-dam/Solutions/Data-Center/l4/nvidia-ada-gpu-architecture-whitepaper-v2.1.pdf
+      memoryCapacityGB: 48,
+      memoryBandwidthGBs: 864,
+      maxTDPWatts: 350,
+      summary: `The NVIDIA L40S GPU was introduced in August 2023. It is the successor to the NVIDIA L40 and like the L40 is based on the AD102 chip from the Ada Lovelace architecture. Compared with the L40 it has nearly double the TF32 Tensor Core TFLOPS and FP16 Tensor Core performance, and increases the maximum power draw from 300W to 350W. It is targeted for generative AI and graphics and video applications. It lacks FP64 precision, but has great FP32, FP16 and mixed-precision performance. It uses the PCIe Gen4 x16 interconnect and Unlike the NVIDIA L4, it allows connecting monitors with 4x DisplayPort connectors.
+      `,
+      references: [
+        // PRIMARY:
+        "https://www.nvidia.com/en-us/data-center/l40s/",
+        "https://www.exxactcorp.com/blog/components/NVIDIA-L40S-GPU-Compared-to-A100-and-H100-Tensor-Core-GPU",
+        "https://resources.nvidia.com/en-us-l40s/nvidia-l40s-product",
+        "https://nvidianews.nvidia.com/news/nvidia-global-data-center-system-manufacturers-to-supercharge-generative-ai-and-industrial-digitalization",
+        // mentions AD102:
+        "https://flyytech.com/2023/08/08/nvidia-completes-proviz-ada-lovelace-lineup-with-three-new-graphics-cards/",
+
+        "https://www.nvidia.com/en-us/technologies/ada-architecture/",
+      ],
+    },
   ]
 
   for (const gpu of gpus) {

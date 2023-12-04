@@ -11,9 +11,10 @@ import { Alert } from "@/pkgs/client/components/Alert"
 import Link from "next/link"
 
 export const metadata: Metadata = {
-  title: "Coin Poet AI Shopping Agent",
+  title: "Real-Time GPU Price/Performance Tracker - Coin Poet",
+  // NOTE:  must be 25-160 characters:
   description:
-    "Discover the best value GPUs and AI accelerators: Compare prices based on performance metrics and buy immediately with direct links - 100% free and no registration required",
+    "Discover the best cost-effective GPUs for machine learning with real-time price tracking and performance ranking, tailored for ML engineers and hobbyists.",
 }
 
 export default function RootLayout({

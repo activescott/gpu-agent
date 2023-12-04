@@ -1,24 +1,72 @@
 import Link from "next/link"
+import { Feature } from "../../../../../pkgs/client/components/Feature"
 
-# Technical Specifications Relevant for Machine Learning GPUs & Accelerators
+# Demystifying Technical Specifications for Machine Learning GPUs & Accelerators
 
-When evaluating GPUs for training or inference of large deep learning models, some crucial key technical specifications should be considered:
+When selecting GPUs for training or deploying large deep learning models, several crucial technical specifications should be carefully considered:
 
-- **Tensor Cores**: Tensor cores are specialized chips that efficiently perform matrix multiplication, the fundamental operation in deep learning. Since deep learning workloads are generally highly paralizable, generally more tensor cores will generally improve the performance of deep learning workloads.
-- **Memory Capacity**: Amount of onboard memory, usually measured in GB. Larger models require more memory for both training and inference.
-- **Memory Bandwidth**: The rate at which data can be read from or stored into a memory by the GPU is measured in GB/s. In many cases Tensor Cores are idel waiting on matricies to be moved in and out of memory.
+<div className="row g-4 py-4 row-cols-1 row-cols-lg-3">
+  <Feature title="Tensor Cores: The Engines of Deep Learning" icon="cpu">
+    Tensor cores are specialized hardware accelerators designed to efficiently
+    execute matrix multiplication, the cornerstone of deep learning
+    computations. Since deep learning workloads are highly parallelizable,
+    having a greater number of tensor cores generally translates to improved
+    performance.
+  </Feature>
+  <Feature title="Memory Capacity: Storing the Data" icon="memory">
+    The amount of onboard memory, typically measured in gigabytes (GB),
+    determines the capacity to store the training data and intermediate results.
+    Larger models demand more memory, both for training and inference.
+  </Feature>
+  <Feature
+    title="Memory Bandwidth: Accessing Data Efficiently"
+    icon="speedometer"
+  >
+    Memory bandwidth measures the rate at which data can be transferred to and
+    from the GPU, measured in gigabytes per second (GB/s). In many cases, tensor
+    cores may be idle while waiting for matrices to be moved in and out of
+    memory. Adequate memory bandwidth is essential for optimal performance.
+  </Feature>
+</div>
 
-Deep learning models can be trained and deployed using different precision levels, such as single-precision (FP32), half-precision (FP16), or mixed precision (FP32/FP16). Each GPU has different performance for different precision levels which can have a dramatic impact training and inference performance.
+## Precision Matters: Balancing Accuracy and Efficiency
 
-- **FP32 Performance**: 32-bit floating point performance indicates the GPU's speed of processing 32-bit floating-point operations. Measured in teraflops (TFLOPS).
-- **FP16 Performance**: 16-bit floating point performance indicates the GPU's speed of processing 16-bit floating-point operations. Measured in teraflops (TFLOPS).
-- **INT8 Performance**: 8-bit integer performance indicates the GPU's speed of processing 8-bit integer operations. Measured in tera-operations per second (TOPS).
-- **Max Power Consumption**: The maximum amount of power consumed by the card, measured in watts.
+Deep learning models can be trained and deployed using different precision levels, such as single-precision (FP32), half-precision (FP16), or mixed precision (FP32/FP16). Each GPU has different performance for different precision levels, significantly impacting training and inference performance.
 
-## Which Percision is Best?
+<div className="row g-4 pt-4 row-cols-1 row-cols-lg-3">
+  <Feature title="FP32 Performance" icon="graph-up">
+    Measured in teraflops (TFLOPS), FP32 performance indicates the GPU's speed
+    in processing 32-bit floating-point operations.
+  </Feature>
+  <Feature title="FP16 Performance" icon="lightning">
+    Also measured in teraflops (TFLOPS), FP16 performance indicates the GPU's
+    speed in handling 16-bit floating-point operations.
+  </Feature>
+  <Feature title="INT8 Performance" icon="hdd-stack">
+    Measured in tera-operations per second (TOPS), INT8 performance indicates
+    the GPU's speed in processing 8-bit integer operations.
+  </Feature>
+</div>
 
-The most commonly used precision levels in state-of-the-art (SOTA) deep learning models are FP32 and FP16. FP32 (single-precision) is the standard precision format for deep learning, offering high accuracy but also requiring significant computational resources and memory bandwidth. FP16 (half-precision) offers a balance between accuracy and efficiency, reducing memory requirements and computational costs by using 16-bit floating-point numbers instead of 32-bit.
+<div className="my-4">
+  <em>
+    Compare the performance of different GPUs available for sale now{" "}
+    <Link href="/ml/shop/gpu">here on Coin Poet</Link>.
+  </em>
+</div>
 
-Some models will degrade in accuracy dramatically when using lower precision and some won't. Generally you'll have to look at the particular type of model you're training or running inference with to see which percisions are relevant.
+## Choosing the Right Precision: A Delicate Balance
 
-However, techniques are evolving to use lower precisions effectively the rapidly evolving space of Quantiziation. Read more at <Link href="/ml/learn/quantization">Quantization in Machine Learning and Deep Learning</Link>.
+The most commonly used precision levels in state-of-the-art (SOTA) deep learning models are FP32 and FP16. FP32 (single-precision) is the standard precision format, offering high accuracy but also demanding significant computational resources and memory bandwidth. FP16 (half-precision) strikes a balance between accuracy and efficiency, reducing memory requirements and computational costs by using 16-bit floating-point numbers instead of 32-bit.
+
+The choice of precision depends on the specific model and application. Some models may experience significant accuracy degradation when using lower precision, while others may not. Generally, it's essential to evaluate the particular model and its intended use to determine the relevant precision levels.
+
+### Quantization: Evolving Techniques for Lower Precision
+
+Quantization techniques are continuously evolving to enable effective use of lower precisions in deep learning. These techniques, such as post-training quantization, involve optimizing the model's weights and activations to lower precision formats without compromising accuracy.
+
+For a deeper dive into quantization techniques, refer to the article:
+
+<Link href="/ml/learn/quantization">
+  Quantization in Machine Learning and Deep Learning
+</Link>

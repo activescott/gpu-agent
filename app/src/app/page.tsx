@@ -31,9 +31,14 @@ export default async function Page() {
       <h1>Compare Price & Benchmarked of GPUs</h1>
       <div>
         <p>
-          Use this site to find GPUs available for immediate purchase. Choose
-          the best GPU for your needs by the price to performance ratios to
-          choose the best card for your needs.
+          Use this site to find machine learning GPUs available for immediate
+          purchase. Compare price-to-performance ratios to find the best cards
+          on the market.
+        </p>
+        <p>
+          Not sure where to begin? Learn about what to look for in a GPU for
+          machine learning <Link href="/ml/learn/gpu/specifications">here</Link>
+          .
         </p>
         <div className="d-flex flex-wrap">
           {specsAndListings.map(({ spec, listings }) => {

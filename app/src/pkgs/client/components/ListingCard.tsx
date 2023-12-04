@@ -15,6 +15,7 @@ import {
   AnalyticsReporter,
   useAnalytics,
 } from "../analytics/reporter"
+import Link from "next/link"
 
 const fmtInteger = new Intl.NumberFormat("en-US", {
   style: "currency",
@@ -64,16 +65,34 @@ export const ListingCard = ({
           alignItems: "center",
         }}
       >
-        <Image
-          src={imageUrl}
-          className="card-img-top mx-auto mt-1"
-          alt={title}
-          width={215}
-          height={215}
-        />
+        <Link
+          href={itemAffiliateWebUrl}
+          onClick={() => {
+            trackBuyNowEvent(analytics, item, "listing-image")
+          }}
+          className="text-decoration-none text-reset text underline-on-hover"
+        >
+          <Image
+            src={imageUrl}
+            className="card-img-top mx-auto mt-1"
+            alt={title}
+            width={215}
+            height={215}
+          />
+        </Link>
       </div>
       <div className="card-body">
-        <h5 className="card-title">{title}</h5>
+        <h5 className="card-title">
+          <Link
+            href={itemAffiliateWebUrl}
+            onClick={() => {
+              trackBuyNowEvent(analytics, item, "listing-title")
+            }}
+            className="text-decoration-none text-reset text underline-on-hover"
+          >
+            {title}
+          </Link>
+        </h5>
         <div className="card-text">
           <AttributePill>{formatPrice(cost)}</AttributePill>
           {condition && <AttributePill>{condition}</AttributePill>}
@@ -96,7 +115,7 @@ export const ListingCard = ({
       <div className="card-footer d-flex">
         <a
           href={itemAffiliateWebUrl}
-          onClick={() => trackBuyNowEvent(analytics, item)}
+          onClick={() => trackBuyNowEvent(analytics, item, "buy-button")}
           className="btn btn-primary my-1 me-auto"
           target="_blank"
           rel="noreferrer"
@@ -112,11 +131,13 @@ export const ListingCard = ({
 export const trackBuyNowEvent = (
   analytics: AnalyticsReporter,
   item: Listing,
+  clickType: "listing-title" | "buy-button" | "listing-image",
 ): void => {
   analytics.trackAction(AnalyticsActions.BuyNow, {
     "listing-id": item.itemId,
     "gpu-name": item.gpu.name,
     "listing-price": item.priceValue,
+    "click-type": clickType,
   })
 }
 

@@ -45,7 +45,7 @@ export function ListingCardSmall({
           <Link
             href={itemAffiliateWebUrl}
             onClick={() => {
-              trackBuyNowEvent(analytics, item)
+              trackBuyNowEvent(analytics, item, "listing-image")
             }}
           >
             <Image
@@ -63,7 +63,7 @@ export function ListingCardSmall({
               <Link
                 href={itemAffiliateWebUrl}
                 onClick={() => {
-                  trackBuyNowEvent(analytics, item)
+                  trackBuyNowEvent(analytics, item, "listing-title")
                 }}
                 className="text-decoration-none text-reset text underline-on-hover"
               >

@@ -46,6 +46,16 @@ const nextConfig = {
         destination: "/ml/learn/gpu/nvidia-a100-sxm",
         permanent: true,
       },
+      {
+        source: "/ml/learn/gpu/nvidia-l4",
+        destination: "/ml/learn/gpu/nvidia-l4",
+        permanent: true,
+      },
+      {
+        source: "/ml/learn/gpu/nvidia-l40",
+        destination: "/ml/learn/gpu/nvidia-l40",
+        permanent: true,
+      },
     ]
   },
 

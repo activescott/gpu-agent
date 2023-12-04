@@ -1,4 +1,6 @@
 import { PrismaClient } from "@prisma/client"
+import { stripIndent } from "common-tags"
+
 const prisma = new PrismaClient()
 
 async function main() {
@@ -158,7 +160,33 @@ async function main() {
       memoryCapacityGB: 80,
       memoryBandwidthGBs: 2039,
       summary:
-        "The NVIDIA H100 PCIe 80GB is a state-of-the-art professional graphics card designed primarily for machine learning and high-performance computing applications. Launched in March 2023, it is built on the innovative Hopper GH100 architecture and utilizes the 4 nm process by TSMC. The H100 PCIe 80GB stands out for its substantial memory capacity and high-speed memory bandwidth, making it exceptionally suitable for handling large datasets and complex machine learning models. Its tensor cores significantly accelerate machine learning operations. The Hopper architecture, as seen in the H100 and H200 GPUs, introduces several technological innovations aimed at enhancing performance in AI training and inference. These GPUs are distinguished by their massive transistor count and advanced memory technologies, like HBM3 and HBM2e, supporting up to 80 GB of memory. The H100 supports HBM2e memory, while the H200 supports the faster HBM3 memory system, which can deliver up to 3 TB/s, a significant increase over the previous generation's capabilities.",
+        "The NVIDIA H100 PCIe 80GB is a professional graphics card designed primarily for machine learning and high-performance computing applications. Launched in March 2023, it is built on the innovative Hopper GH100 architecture and utilizes the 4 nm process by TSMC. The H100 PCIe 80GB stands out for its substantial memory capacity and high-speed memory bandwidth, making it exceptionally suitable for handling large datasets and complex machine learning models. Its tensor cores significantly accelerate machine learning operations. The Hopper architecture, as seen in the H100 and H200 GPUs, introduces several technological innovations aimed at enhancing performance in AI training and inference. These GPUs are distinguished by their massive transistor count and advanced memory technologies, like HBM3 and HBM2e, supporting up to 80 GB of memory. The H100 supports HBM2e memory, while the H200 supports the faster HBM3 memory system, which can deliver up to 3 TB/s, a significant increase over the previous generation's capabilities.",
+      references: [
+        "https://resources.nvidia.com/en-us-tensor-core/nvidia-tensor-core-gpu-datasheet",
+        "https://www.nvidia.com/en-us/data-center/h100/",
+        "https://www.techpowerup.com/gpu-specs/h100-pcie-80-gb.c3899",
+        "https://en.wikipedia.org/wiki/Hopper_(microarchitecture)",
+        "https://www.nvidia.com/en-us/data-center/technologies/hopper-architecture/",
+      ],
+    },
+    {
+      name: "nvidia-h100-sxm",
+      label: "NVIDIA H100 SXM",
+      tensorCoreCount: 528,
+      // NOTE: FP32 Tensor Core
+      fp32TFLOPS: 989,
+      // NOTE: FP16 Tensor Core
+      fp16TFLOPS: 1_979,
+      // NOTE: INT8 Tensor Core
+      int8TOPS: 3_958,
+      memoryCapacityGB: 80,
+      memoryBandwidthGBs: 3_350,
+      summary: stripIndent`The NVIDIA H100 SXM 80GB is a professional graphics card designed primarily for machine learning and high-performance computing applications. Launched in March 2023, it is built on the innovative Hopper GH100 architecture and utilizes the 4 nm process by TSMC. The H100 80GB stands out for its substantial memory capacity and high-speed memory bandwidth, making it exceptionally suitable for handling large datasets and complex machine learning models. Its tensor cores significantly accelerate machine learning operations. The Hopper architecture, as seen in the H100 and H200 GPUs, introduces several technological innovations aimed at enhancing performance in AI training and inference. These GPUs are distinguished by their massive transistor count and advanced memory technologies, like HBM3 and HBM2e, supporting up to 80 GB of memory. The H100 supports HBM2e memory, while the H200 supports the faster HBM3 memory system, which can deliver up to 3 TB/s, a significant increase over the previous generation's capabilities.
+      
+      The H100 has versions supporting the PCIe or the SXM (Server PCI Express Module) sockets. The SXM socket enables higher GPU memory bandwidth than the PCIe version.
+      
+      The H100 SXM version has more tensor cores (528 vs 456) and higher performance generally (e.g. 989 FP32 TFLOPs vs 756 FP32 TFLOPs). 
+        `,
       references: [
         "https://resources.nvidia.com/en-us-tensor-core/nvidia-tensor-core-gpu-datasheet",
         "https://www.nvidia.com/en-us/data-center/h100/",
@@ -199,7 +227,7 @@ async function main() {
       memoryCapacityGB: 48,
       memoryBandwidthGBs: 864,
       maxTDPWatts: 300,
-      summary: `The NVIDIA L40 GPU was introduced in September 2022. It is based on the AD102 chip from the Ada Lovelace architecture. It is optimized for graphics and AI-enabled 2D, video and 3D image generation. It uses the PCIe Gen4 x16 interconnect and Unlike the NVIDIA L4, it allows connecting monitors with 4x DisplayPort connectors.
+      summary: stripIndent`The NVIDIA L40 GPU was introduced in September 2022. It is based on the AD102 chip from the Ada Lovelace architecture. It is optimized for graphics and AI-enabled 2D, video and 3D image generation. It uses the PCIe Gen4 x16 interconnect and Unlike the NVIDIA L4, it allows connecting monitors with 4x DisplayPort connectors.
       `,
       references: [
         "https://images.nvidia.com/content/Solutions/data-center/vgpu-L40-datasheet.pdf",
@@ -218,7 +246,7 @@ async function main() {
       memoryCapacityGB: 48,
       memoryBandwidthGBs: 864,
       maxTDPWatts: 350,
-      summary: `The NVIDIA L40S GPU was introduced in August 2023. It is the successor to the NVIDIA L40 and like the L40 is based on the AD102 chip from the Ada Lovelace architecture. Compared with the L40 it has nearly double the TF32 Tensor Core TFLOPS and FP16 Tensor Core performance, and increases the maximum power draw from 300W to 350W. It is targeted for generative AI and graphics and video applications. It lacks FP64 precision, but has great FP32, FP16 and mixed-precision performance. It uses the PCIe Gen4 x16 interconnect and Unlike the NVIDIA L4, it allows connecting monitors with 4x DisplayPort connectors.
+      summary: stripIndent`The NVIDIA L40S GPU was introduced in August 2023. It is the successor to the NVIDIA L40 and like the L40 is based on the AD102 chip from the Ada Lovelace architecture. Compared with the L40 it has nearly double the TF32 Tensor Core TFLOPS and FP16 Tensor Core performance, and increases the maximum power draw from 300W to 350W. It is targeted for generative AI and graphics and video applications. It lacks FP64 precision, but has great FP32, FP16 and mixed-precision performance. It uses the PCIe Gen4 x16 interconnect and Unlike the NVIDIA L4, it allows connecting monitors with 4x DisplayPort connectors.
       `,
       references: [
         // PRIMARY:

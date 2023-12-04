@@ -63,6 +63,7 @@ Compare GPU & AI Accelerator Card Performance Metrics to their Cost
 - [+] feat: add "Top 5 GPUs for \<Spec\>" on home page
 - [+] feat: cards show country being sold from
 - [+] feat: add feedback alert on top of pages that requests feedback
+- [ ] fix: h100 SXM version shows listings that are not SXM because the title has 'NOT SXM' or 'NO SXM' in the title. reject those listings.
 
 - [ ] feat: can filter by attributes and attribute pills
 

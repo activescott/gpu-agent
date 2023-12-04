@@ -41,7 +41,8 @@ const TestGpu = {
 describe("getAverageGpuPrice", () => {
   it.skip("should return a number", async () => {
     const result = await getAverageGpuPrice("nvidia-a100-pcie")
-    expect(result).toStrictEqual(21_887.993_333_333_336)
+    expect(result.price).toStrictEqual(21_887.993_333_333_336)
+    expect(result.activeListingCount).toStrictEqual(3)
   })
 })
 

@@ -43,6 +43,7 @@
     "@types/mdx": "^2.0.10",
     "bootstrap": "^5.3.2",
     "bootstrap-icons": "^1.11.1",
+    "common-tags": "^1.8.2",
     "ebay-client": "file:../packages/ebay-client",
     "glob": "^10.3.10",
     "irritable-iterable": "^1.4.0",

@@ -53,6 +53,10 @@
       "title": "Price Compare NVIDIA H100 PCIe GPUs"
     },
     {
+      "path": "/ml/shop/gpu/nvidia-h100-sxm",
+      "title": "Price Compare NVIDIA H100 SXM GPUs"
+    },
+    {
       "path": "/ml/shop/gpu/nvidia-l4",
       "title": "Price Compare NVIDIA L4 GPUs"
     },
@@ -99,6 +103,10 @@
     {
       "path": "/ml/learn/gpu/nvidia-h100-pcie",
       "title": "NVIDIA H100 PCIe GPU Machine Learning Specification"
+    },
+    {
+      "path": "/ml/learn/gpu/nvidia-h100-sxm",
+      "title": "NVIDIA H100 SXM GPU Machine Learning Specification"
     },
     {
       "path": "/ml/learn/gpu/nvidia-l4",

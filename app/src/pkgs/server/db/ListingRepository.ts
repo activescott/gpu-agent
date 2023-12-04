@@ -83,18 +83,21 @@ export async function markListingsFreshForGpu(
 export async function getAverageGpuPrice(
   gpuName: string,
   prisma: PrismaClientWithinTransaction = prismaSingleton,
-): Promise<number> {
+): Promise<{ price: number; activeListingCount: number }> {
+  type RowShape = { price: number; count: number }
+
   const result =
-    (await prisma.$queryRaw`select AVG("priceValue"::float) from "Listing"
-  WHERE "gpuName" = ${gpuName};`) as RowWithAvg[]
+    (await prisma.$queryRaw`select AVG("priceValue"::float) as price, COUNT(*)::float as count from "Listing"
+  WHERE 
+    "gpuName" = ${gpuName}
+    AND "stale" = false
+  ;`) as RowShape[]
 
-  if (result.length === 0 || !result[0].avg) {
-    return 0
+  if (result.length === 0 || !result[0].price) {
+    return { price: 0, activeListingCount: 0 }
   }
-  return result[0].avg
+  return { price: result[0].price, activeListingCount: result[0].count }
 }
-
-type RowWithAvg = { avg: number }
 
 export async function topNListingsByCostPerformance(
   spec: GpuSpecKey,
@@ -115,7 +118,8 @@ export async function topNListingsByCostPerformance(
     LIMIT ${n}
   `)
 
-  return result.map((row) => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  return result.map((row: ListingWithGpu) => {
     const listing = omit(row, "gpu")
     const gpuSpecs = pick(row, GpuSpecKeys)
     const gpuKeys = [

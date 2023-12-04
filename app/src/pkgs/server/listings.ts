@@ -34,6 +34,7 @@ import {
 import { withTransaction } from "./db/db"
 import { Integer } from "type-fest"
 import { createFilterForGpu } from "./listingFilters"
+import { secondsToMilliseconds } from "../isomorphic/duration"
 
 const log = createDiag("shopping-agent:shop:listings")
 
@@ -124,17 +125,21 @@ export async function fetchListingsForGpuWithCache(
     collected.length,
     gpuName,
   )
-
-  await withTransaction(async (prisma) => {
-    await markListingsStaleForGpu(gpuName, prisma)
-    await addListingsForGpu(collected, gpuName, prisma)
-    // addListings will skip any duplicates and not add them again, so here we mark those as stale
-    const promised = [
-      markListingsFreshForGpu(gpuName, collected, prisma),
-      updateGpuLastCachedListings(gpuName, prisma),
-    ]
-    await Promise.all(promised)
-  })
+  // eslint-disable-next-line no-magic-numbers
+  const INSERT_TRANSACTION_TIMEOUT = secondsToMilliseconds(20)
+  await withTransaction(
+    async (prisma) => {
+      await markListingsStaleForGpu(gpuName, prisma)
+      await addListingsForGpu(collected, gpuName, prisma)
+      // addListings will skip any duplicates and not add them again, so here we mark those as stale
+      const promised = [
+        markListingsFreshForGpu(gpuName, collected, prisma),
+        updateGpuLastCachedListings(gpuName, prisma),
+      ]
+      await Promise.all(promised)
+    },
+    { timeout: INSERT_TRANSACTION_TIMEOUT },
+  )
   log.info(
     "caching listings for gpu %s complete. Returning cached listings.",
     gpuName,

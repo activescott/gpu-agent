@@ -2,50 +2,23 @@ import Link from "next/link"
 
 # Technical Specifications Relevant for Machine Learning GPUs & Accelerators
 
-The technical specifications that are typically crucial for evaluating machine learning accelerators and GPUs include:
+When evaluating GPUs for training or inference of large deep learning models, some crucial key technical specifications should be considered:
 
-- **GPU Architecture**: The design and model of the GPU.
-- **Memory Size**: Amount of onboard memory, usually measured in GB.
-- **Memory Bandwidth**: The rate at which data can be read from or stored into a memory by the GPU, measured in GB/s.
-- **Tensor Cores**: Specialized cores for accelerating deep learning tasks.
-- **GPU Clock Rate**: The speed at which the GPU's core operates, measured in MHz or GHz.
+- **Tensor Cores**: Tensor cores are specialized chips that efficiently perform matrix multiplication, the fundamental operation in deep learning. Since deep learning workloads are generally highly paralizable, generally more tensor cores will generally improve the performance of deep learning workloads.
+- **Memory Capacity**: Amount of onboard memory, usually measured in GB. Larger models require more memory for both training and inference.
+- **Memory Bandwidth**: The rate at which data can be read from or stored into a memory by the GPU is measured in GB/s. In many cases Tensor Cores are idel waiting on matricies to be moved in and out of memory.
+
+Deep learning models can be trained and deployed using different precision levels, such as single-precision (FP32), half-precision (FP16), or mixed precision (FP32/FP16). Each GPU has different performance for different precision levels which can have a dramatic impact training and inference performance.
+
+- **FP32 Performance**: 32-bit floating point performance indicates the GPU's speed of processing 32-bit floating-point operations. Measured in teraflops (TFLOPS).
+- **FP16 Performance**: 16-bit floating point performance indicates the GPU's speed of processing 16-bit floating-point operations. Measured in teraflops (TFLOPS).
+- **INT8 Performance**: 8-bit integer performance indicates the GPU's speed of processing 8-bit integer operations. Measured in tera-operations per second (TOPS).
 - **Max Power Consumption**: The maximum amount of power consumed by the card, measured in watts.
-- **FP32 Performance**: Floating point 32 performance, indicating the GPU's efficiency in handling 32-bit floating-point operations. Measured in teraflops (TFLOPS)
-- **Compute Performance**: Indicates the overall computational power. Measured in teraflops (TFLOPS).
 
-## TFLOPs & TOPS
+## Which Percision is Best?
 
-In the context of GPU performance, TOPS (tera-operations per second) and TFLOPs (tera-floating-point operations per second) are both measures of a GPU's ability to perform arithmetic operations. However, there is a key difference between the two:
+The most commonly used precision levels in state-of-the-art (SOTA) deep learning models are FP32 and FP16. FP32 (single-precision) is the standard precision format for deep learning, offering high accuracy but also requiring significant computational resources and memory bandwidth. FP16 (half-precision) offers a balance between accuracy and efficiency, reducing memory requirements and computational costs by using 16-bit floating-point numbers instead of 32-bit.
 
-- **TOPS** measures the total number of arithmetic operations that a GPU can perform per second, regardless of the type of operation. This includes integer operations, such as addition and subtraction, as well as floating-point operations, such as multiplication and division.
-- **TFLOPS** measures the number of floating-point operations that a GPU can perform per second. Floating-point operations are more complex than integer operations, and they are used in a wider range of applications, including graphics rendering, scientific computing, and machine learning.
+Some models will degrade in accuracy dramatically when using lower precision and some won't. Generally you'll have to look at the particular type of model you're training or running inference with to see which percisions are relevant.
 
-As a result, TFLOPS is generally considered to be a more important measure of GPU performance than TOPS. This is because floating-point operations are more demanding than integer operations, and they are used in a wider range of applications.
-
-Here is a table that summarizes the key differences between TOPS and TFLOPS:
-
-| Feature            | TOPS                                                       | TFLOPS                                                     |
-| ------------------ | ---------------------------------------------------------- | ---------------------------------------------------------- |
-| Type of operations | All arithmetic operations                                  | Floating-point operations                                  |
-| Importance         | Less important                                             | More important                                             |
-| Applications       | Graphics rendering, scientific computing, machine learning | Graphics rendering, scientific computing, machine learning |
-
-In addition to TOPS and TFLOPS, there are also other measures of GPU performance, such as memory bandwidth and power consumption. However, TOPS and TFLOPS are the most commonly used measures for comparing the performance of GPUs.
-
-Here are some examples of how TOPS and TFLOPS are used in measuring the performance of GPUs:
-
-- **Benchmarks:** Benchmarks are programs that are designed to test the performance of a GPU. Benchmarks typically use a variety of workloads, including graphics rendering, scientific computing, and machine learning. The results of benchmarks are often reported in TOPS or TFLOPS.
-- **Product specifications:** GPU manufacturers often list the TOPS or TFLOPS performance of their GPUs in product specifications. This information can be used to compare the performance of different GPUs.
-- **Software performance tuning:** Software developers can use TOPS and TFLOPS to optimize the performance of their software for GPUs. For example, a developer might use TFLOPS to measure the performance of their code on different GPUs and then make changes to their code to improve performance on the GPUs that have the highest TFLOPS ratings.
-
-Overall, TOPS and TFLOPS are important measures of GPU performance. They can be used to compare the performance of different GPUs, to optimize the performance of software, and to understand the performance characteristics of different workloads.
-
-## Specific GPU Performnace Operation Measurements
-
-The specific integer and floating-point operations that are regularly measured for GPUs include:
-
-- **FP32 (single-precision floating-point)**: FP32 is the most common type of floating-point operation, and it is used in a wide range of applications, including graphics rendering, scientific computing, and machine learning. FP32 operations are typically measured in teraflops (TFLOPS).
-- **FP16 (half-precision floating-point)**: FP16 is a floating-point operation on numbers using 16 bits. It's less precise than FP32 but offers greater computational speed and reduced memory usage. In machine learning, FP16 is often used for training and deploying neural networks where high precision is less critical, enabling faster computations and lower memory and power consumption. This format is particularly beneficial in scenarios where model size and speed are more important than the highest level of accuracy, such as in mobile and edge computing applications.
-- **INT8 (8-bit integer)**: INT8 is an integer format using 8 bits. In contrast, FP32, it represents much smaller numbers with lower precision. Quantizing from FP32 to INT8 involves converting the high-precision FP32 values into simpler INT8 integers and will degrade the accuracy of the model in many cases.
-
-These metrics get even more interesting when considering the rapidly evolving space of Quantiziation. Read more about quantization in machine learning at <Link href="/ml/learn/quantization">Quantization in Machine Learning and Deep Learning</Link>.
+However, techniques are evolving to use lower precisions effectively the rapidly evolving space of Quantiziation. Read more at <Link href="/ml/learn/quantization">Quantization in Machine Learning and Deep Learning</Link>.

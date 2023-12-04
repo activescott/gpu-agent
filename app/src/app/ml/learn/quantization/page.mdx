@@ -4,26 +4,29 @@ import { FormatCurrency } from "@/pkgs/client/components/FormatCurrency"
 
 # Quantization in Machine Learning and Deep Learning
 
-Generally FP32 is the most common precision used for training new models and FP16, INT8 and others are used when **quanitizing**. If you quantize from higher precision values to lower precision values, you lose precision which might degrade model prediction quality. So why do it?
+Floating-point precision (FP32) is the most common precision used for training new models, while FP16, INT8, and others are employed for quantization. Quantization involves converting higher-precision values to lower-precision values, resulting in a loss of precision that may degrade model prediction quality. However, quantization offers several benefits:
 
-Just to do inference on a large language model (LLM) such as BLOOM-176B, you would need to **have 8x NVIDIA 80GB A100 GPUs**. Currently the **NVIDIA A100 80GBs have an average price of <FormatCurrency currencyValue={await getAverageGpuPrice("nvidia-a100-pcie")} />** on Coin Poet where you can <Link href="/ml/shop/gpu/nvidia-a100-pcie">price and purchase NVIDIA A100 80GB GPUs</Link>.
+Just to do inference on a large language model (LLM) such as BLOOM-176B, you would need to **have 8x NVIDIA 80GB A100 GPUs**[^3]. Currently the **NVIDIA A100 80GBs have an average price of <FormatCurrency currencyValue={(await getAverageGpuPrice("nvidia-a100-pcie")).price} />** on Coin Poet where you can <Link href="/ml/shop/gpu/nvidia-a100-pcie">price and purchase NVIDIA A100 80GB GPUs</Link>.
 
 To fine-tune BLOOM-176B, you'd need 72 of these GPUs!
 
-Quanitizing has the following benefits:
+Quantitizing has the following benefits:
 
 - Reduced Memory Usage: For example, FP16 requires half the memory footprint of FP32 and INT8 half the memory of FP16. This enables training of larger models or larger mini-batches on the same hardware.
-- Faster Computation: On many GPUs or TPUs, using FP16 or INT8 can speed up arithmetic operations over FP32, reducing training time.
-- Improved Resource Utilization: Some GPUs are optimized for FP16 operations, allowing more efficient use of these resources.
+- Faster Computation: On many GPUs or TPUs (Tensor Processing Units), using FP16 or INT8 can speed up arithmetic operations over FP32, reducing training time.
+- Improved Resource Utilization: Certain GPUs are optimized for FP16 operations, allowing for more efficient utilization of these resources.
 
-Is this necessary?
+## Is Quantization Necessary?
 
 FP16 is increasingly being used right from the start of training new models, particularly in deep learning. This approach is known as mixed precision training. It combines the use of FP32 and FP16 to optimize the training process.
 
-Quanitizion is rapidly evolving. For example, in 2023 the 'LLM.int8() paper'[^1] demonstrated that quantitizing down to 8-bit from 16-bit while keeping a couple of dimensions in high precision maintains zero-shot LLM performance.
-In their 2023 study, Liu et al. demonstrated that 4-bit floating-point quantization could effectively reduce model size without substantially compromising performance [^2]. I'm sure there are many others, but I am aware of these.
+Quantization is rapidly evolving. For example, in 2023 the 'LLM.int8() paper'[^1] demonstrated that quantitizing down to 8-bit from 16-bit while keeping a couple of dimensions in high precision maintains zero-shot LLM performance.
+In their 2023 study, Liu et al. demonstrated that 4-bit floating-point quantization could effectively reduce model size without substantially compromising performance [^2]. I'm sure there are others, but I am aware of these.
 
-If you want to get a more intuitive understanding, I recommend Tim Dettmers's blog post [LLM.int8() and Emergent Features](https://timdettmers.com/2022/08/17/llm-int8-and-emergent-features/) and [A Gentle Introduction to 8-bit Matrix Multiplication for transformers at scale using Hugging Face Transformers, Accelerate and bitsandbytes by Hugging Face](https://huggingface.co/blog/hf-bitsandbytes-integration).
+To gain a more intuitive understanding of quantization, I recommend Tim Dettmers' blog posts:
+
+- [LLM.int8() and Emergent Features](https://timdettmers.com/2022/08/17/llm-int8-and-emergent-features/)
+- [A Gentle Introduction to 8-bit Matrix Multiplication for transformers at scale using Hugging Face Transformers, Accelerate and bitsandbytes by Hugging Face](https://huggingface.co/blog/hf-bitsandbytes-integration).
 
 [^1]: [Dettmers, Tim, et al. "Llm. int8 (): 8-bit matrix multiplication for transformers at scale." arXiv preprint arXiv:2208.07339 (2022).](https://arxiv.org/abs/2310.16836)
 [^2]: [Liu, Shih-yang, et al. "LLM-FP4: 4-Bit Floating-Point Quantized Transformers." arXiv preprint arXiv:2310.16836 (2023).](https://arxiv.org/abs/2310.16836)

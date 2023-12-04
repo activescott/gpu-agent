@@ -43,6 +43,8 @@ async function fetchListingsForGpuDirectFromEbay(
 ): Promise<AsyncIterable<Listing>> {
   let rawListings: AsyncIterable<ItemSummary>
   if (
+    // eslint-disable-next-line no-constant-binary-expression, no-constant-condition
+    false &&
     !isProduction() &&
     !isNextBuild() &&
     fs.existsSync(getTestListingsPath(gpu.name))
@@ -109,7 +111,11 @@ export async function fetchListingsForGpuWithCache(
     // return the cached listings
     const cached = await listListingsForGpu(gpuName)
     log.info("found %s cached listings for %s", cached.length, gpuName)
-    return cached
+    if (cached.length > 0) {
+      return cached
+    } else {
+      log.info("Since there are zero cached listings, fetching from ebay..")
+    }
   }
   log.info("listings for %s are stale, fetching from ebay", gpuName)
   // fetch from ebay and update the GPU repository

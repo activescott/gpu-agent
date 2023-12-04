@@ -77,7 +77,7 @@ async function fetchListingsForGpuDirectFromEbay(
     })
     rawListings = response.items
 
-    if (!fs.existsSync(getTestListingsPath(gpu.name))) {
+    if (!isProduction() && !fs.existsSync(getTestListingsPath(gpu.name))) {
       log.info("writing listings to json (non-production, json not found)")
       rawListings = arrayToAsyncIterable(
         await dumpTestListingsToJson(gpu.name, response.items),

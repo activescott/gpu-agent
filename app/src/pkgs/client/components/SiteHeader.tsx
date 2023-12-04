@@ -10,8 +10,7 @@ export const SiteHeader = () => {
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
       <div className="container-fluid">
         <Link className="navbar-brand" href="/">
-          <SvgIcon icon="quill_pen_feather-rose" svgViewBox="0 0 64 64" /> Coin
-          Poet
+          <SvgIcon icon="coinpoet-card" svgViewBox="0 0 16 16" /> Coin Poet
         </Link>
         <button
           className="navbar-toggler"

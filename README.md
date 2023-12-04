@@ -63,7 +63,6 @@ Compare GPU & AI Accelerator Card Performance Metrics to their Cost
 - [+] feat: add "Top 5 GPUs for \<Spec\>" on home page
 - [+] feat: cards show country being sold from
 - [+] feat: add feedback alert on top of pages that requests feedback
-- [ ] fix: h100 SXM version shows listings that are not SXM because the title has 'NOT SXM' or 'NO SXM' in the title. reject those listings.
 
 - [ ] feat: can filter by attributes and attribute pills
 
@@ -96,6 +95,7 @@ Compare GPU & AI Accelerator Card Performance Metrics to their Cost
 
   - [+] feat: ensure affiliate links are used: See [Header for affiliate information](https://developers.ebay.com/api-docs/buy/static/api-browse.html#affiliate-header)
 
+- [ ] feat: add gpu for intel-habana-gaudi2 and redirect /ml/learn/gpu/intel-habana-gaudi2
 - [ ] heading nav with at least logo in the left to make easy to navigate back to the main page. High level links to shop, models, etc. would be good though -maybe menus.
 - [ ] Identify the SKU/UPC in the eBay API. Confirm that it exists on accelerators/GPUs
 - [ ] Get a list of SKU/UPC for each GPU/Accelerator device products in the test

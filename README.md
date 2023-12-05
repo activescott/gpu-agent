@@ -64,19 +64,6 @@ Compare GPU & AI Accelerator Card Performance Metrics to their Cost
 - [+] feat: cards show country being sold from
 - [+] feat: add feedback alert on top of pages that requests feedback
 
-- [ ] feat: can filter by attributes and attribute pills
-
-- [ ] fix: add lot size attribute and metrics support items that have multiple items (update $/perf specs) e.g. "**_ LOT OF 10 GPU's_** NVIDIA RTX A5000 24GB GDDR6"
-- [ ] fix: add quantity attribute
-
-- [ ] feat: add a "more info" to each description page tooltip so people can learn more about the specs. Update the info page to be more specific about when to choose which metric.
-
-- [ ] feat: cards now show quantity available
-- [ ] feat: add ability to filter within a range
-- [ ] feat: add ability to delete specs from the cards
-- [ ] feat: add more GPUs w/ hardware-only specs
-- [ ] feat: allow dismissing tooltip on clickout
-
 - [ ] feat: choose listings by **use case**. Buyers want to buy a card for a use case. Then it sorts/ranks by appropriate metric and showcases appropriate metric
 
   - URLs like /ml/shop/use-case/image-classification
@@ -94,6 +81,20 @@ Compare GPU & AI Accelerator Card Performance Metrics to their Cost
       - FUTURE: FP16, FP32, FP8, INT8 OP/s, Memory bandwidth, memory size
 
   - [+] feat: ensure affiliate links are used: See [Header for affiliate information](https://developers.ebay.com/api-docs/buy/static/api-browse.html#affiliate-header)
+
+- [ ] feat: remove all "for parts not working" listings
+- [ ] feat: can filter by attributes and attribute pills
+
+- [ ] fix: add lot size attribute and metrics support items that have multiple items (update $/perf specs) e.g. "**_ LOT OF 10 GPU's_** NVIDIA RTX A5000 24GB GDDR6"
+- [ ] fix: add quantity attribute
+
+- [ ] feat: add a "more info" to each description page tooltip so people can learn more about the specs. Update the info page to be more specific about when to choose which metric.
+
+- [ ] feat: cards now show quantity available
+- [ ] feat: add ability to filter within a range
+- [ ] feat: add ability to delete specs from the cards
+- [ ] feat: add more GPUs w/ hardware-only specs
+- [ ] feat: allow dismissing tooltip on clickout
 
 - [ ] feat: add gpu for intel-habana-gaudi2 and redirect /ml/learn/gpu/intel-habana-gaudi2
 - [ ] heading nav with at least logo in the left to make easy to navigate back to the main page. High level links to shop, models, etc. would be good though -maybe menus.
@@ -119,6 +120,8 @@ Compare GPU & AI Accelerator Card Performance Metrics to their Cost
 - [x] Model Page Prompt: Prefer arXiv over hugging face.
 
 ## Notes
+
+What to do with https://lambdalabs.com/gpu-benchmarks
 
 ### Marketing
 

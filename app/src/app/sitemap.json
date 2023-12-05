@@ -49,6 +49,10 @@
       "title": "Price Compare NVIDIA A40 GPUs"
     },
     {
+      "path": "/ml/shop/gpu/nvidia-geforce-rtx-4090",
+      "title": "Price Compare NVIDIA GeForce RTX 4090 GPUs"
+    },
+    {
       "path": "/ml/shop/gpu/nvidia-h100-pcie",
       "title": "Price Compare NVIDIA H100 PCIe GPUs"
     },
@@ -99,6 +103,10 @@
     {
       "path": "/ml/learn/gpu/nvidia-a40",
       "title": "NVIDIA A40 GPU Machine Learning Specification"
+    },
+    {
+      "path": "/ml/learn/gpu/nvidia-geforce-rtx-4090",
+      "title": "NVIDIA GeForce RTX 4090 GPU Machine Learning Specification"
     },
     {
       "path": "/ml/learn/gpu/nvidia-h100-pcie",

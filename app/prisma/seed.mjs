@@ -260,6 +260,24 @@ async function main() {
         "https://www.nvidia.com/en-us/technologies/ada-architecture/",
       ],
     },
+    {
+      name: "nvidia-geforce-rtx-4090",
+      label: "NVIDIA GeForce RTX 4090",
+      tensorCoreCount: 512,
+      fp32TFLOPS: 82.6,
+      // NOTE: "Peak FP16 Tensor TFLOPS with FP16 Accumulate" as that's what NVIDIA publishes
+      fp16TFLOPS: 330.3,
+      int8TOPS: 660.6,
+      memoryCapacityGB: 24,
+      memoryBandwidthGBs: 1008,
+      maxTDPWatts: 450,
+      summary: stripIndent`The NVIDIA GeForce RTX 4090 is a graphics card released in 2023, featuring the latest Ada Lovelace architecture. While primarily aimed at gamers, the RTX 4090 also offers impressive capabilities for machine learning tasks, particularly inference and training workloads that benefit from its large memory and high core count. It uses a PCI-Express 4.0 x16 host interface`,
+      references: [
+        "https://images.nvidia.com/aem-dam/Solutions/Data-Center/l4/nvidia-ada-gpu-architecture-whitepaper-v2.1.pdf",
+        "https://www.nvidia.com/en-us/geforce/graphics-cards/40-series/rtx-4090/",
+        "https://lambdalabs.com/blog/nvidia-rtx-4090-vs-rtx-3090-deep-learning-benchmark",
+      ],
+    },
   ]
 
   for (const gpu of gpus) {

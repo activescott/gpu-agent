@@ -63,6 +63,7 @@ Compare GPU & AI Accelerator Card Performance Metrics to their Cost
 - [+] feat: add "Top 5 GPUs for \<Spec\>" on home page
 - [+] feat: cards show country being sold from
 - [+] feat: add feedback alert on top of pages that requests feedback
+- [+] feat: remove all "for parts not working" listings
 
 - [ ] feat: choose listings by **use case**. Buyers want to buy a card for a use case. Then it sorts/ranks by appropriate metric and showcases appropriate metric
 
@@ -82,7 +83,6 @@ Compare GPU & AI Accelerator Card Performance Metrics to their Cost
 
   - [+] feat: ensure affiliate links are used: See [Header for affiliate information](https://developers.ebay.com/api-docs/buy/static/api-browse.html#affiliate-header)
 
-- [ ] feat: remove all "for parts not working" listings
 - [ ] feat: can filter by attributes and attribute pills
 
 - [ ] fix: add lot size attribute and metrics support items that have multiple items (update $/perf specs) e.g. "**_ LOT OF 10 GPU's_** NVIDIA RTX A5000 24GB GDDR6"

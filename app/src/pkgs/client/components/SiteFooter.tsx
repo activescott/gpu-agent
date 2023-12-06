@@ -19,6 +19,37 @@ export const SiteFooter = () => {
               </li>
             ))}
         </ul>
+
+        <ul className="nav flex-column">
+          <li className="nav-item">Best Performing GPUs for the Money</li>
+          {entries
+            .filter((item) => item.path.startsWith("/ml/learn/gpu/ranking"))
+            .map((item) => (
+              <li className="nav-item" key={item.path}>
+                <a className="nav-link" href={item.path}>
+                  {item.title}
+                </a>
+              </li>
+            ))}
+        </ul>
+
+        <ul className="nav flex-column">
+          <li className="nav-item">Machine Learning GPUs & Accelerators</li>
+          {entries
+            .filter(
+              (item) =>
+                item.path.startsWith("/ml/learn/gpu") &&
+                !item.path.startsWith("/ml/learn/gpu/ranking"),
+            )
+            .map((item) => (
+              <li className="nav-item" key={item.path}>
+                <a className="nav-link" href={item.path}>
+                  {item.title}
+                </a>
+              </li>
+            ))}
+        </ul>
+
         <ul className="nav flex-column mx-4">
           <li className="nav-item">Machine Learning Use Cases</li>
           {entries
@@ -31,18 +62,7 @@ export const SiteFooter = () => {
               </li>
             ))}
         </ul>
-        <ul className="nav flex-column">
-          <li className="nav-item">Machine Learning GPUs & Accelerators</li>
-          {entries
-            .filter((item) => item.path.startsWith("/ml/learn/gpu"))
-            .map((item) => (
-              <li className="nav-item" key={item.path}>
-                <a className="nav-link" href={item.path}>
-                  {item.title}
-                </a>
-              </li>
-            ))}
-        </ul>
+
         <ul className="nav flex-column mx-4">
           <li className="nav-item">Machine Learning Models</li>
           {entries

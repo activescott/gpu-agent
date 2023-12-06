@@ -81,6 +81,30 @@
       "title": "Price Compare NVIDIA T4 GPUs"
     },
     {
+      "path": "/ml/learn/gpu/ranking/fp16-flops",
+      "title": "Best performing GPUs for the money: Ranked by $ per FP16 TFLOPs"
+    },
+    {
+      "path": "/ml/learn/gpu/ranking/fp32-flops",
+      "title": "Best performing GPUs for the money: Ranked by $ per FP32 TFLOPs"
+    },
+    {
+      "path": "/ml/learn/gpu/ranking/int8-tops",
+      "title": "Best performing GPUs for the money: Ranked by $ per Int8 TOPs"
+    },
+    {
+      "path": "/ml/learn/gpu/ranking/memory-bandwidth-gbs",
+      "title": "Best performing GPUs for the money: Ranked by $ per Memory Bandwidth (GB/s)"
+    },
+    {
+      "path": "/ml/learn/gpu/ranking/memory-gb",
+      "title": "Best performing GPUs for the money: Ranked by $ per Memory Capacity (GB)"
+    },
+    {
+      "path": "/ml/learn/gpu/ranking/tensor-cores",
+      "title": "Best performing GPUs for the money: Ranked by $ per Tensor Core Count"
+    },
+    {
       "path": "/ml/learn/gpu/specifications",
       "title": "GPU Machine Learning Specification"
     },
@@ -184,7 +208,7 @@
     {
       "path": "/ml/learn/quantization",
       "title": "Quantization in Machine Learning and Deep Learning",
-      "lastModified": "2023-12-04T19:52:39.000Z"
+      "lastModified": "2023-12-06T02:14:00.000Z"
     },
     {
       "path": "/ml/learn/models/rnn-t",

@@ -7,9 +7,14 @@ import {
   listPerformanceSlugs,
   mapSlugToPageTitle,
 } from "../app/ml/shop/gpu/performance/slugs"
+import {
+  gpuRankingCanonicalPath,
+  gpuRankingTitle,
+  listGpuRankingSlugs,
+} from "../app/ml/learn/gpu/ranking/slugs"
 
 //////////////////////////////////////////////////
-// NOTE: the easiest thing to do here is avoid the @/ import aliases since next seems to resolve those as a bundler and we're not running any bundler in this script
+// NOTE: ABOVE the easiest thing to do here is avoid the @/ import aliases since next seems to resolve those as a bundler and we're not running any bundler in this script
 //////////////////////////////////////////////////
 
 type SiteMapItem = {
@@ -105,13 +110,20 @@ async function main() {
     }))
     .sort(comparePagesByPath)
 
+  const gpuRankingPages = listGpuRankingSlugs()
+    .map((slug) => ({
+      path: "/" + gpuRankingCanonicalPath(slug),
+      title: gpuRankingTitle(slug),
+    }))
+    .sort(comparePagesByPath)
+
   const shopGpuPages = gpuList
     .map(({ name, label }: gpu) => ({
       path: `/ml/shop/gpu/${name}`,
       title: `Price Compare ${label} GPUs`,
     }))
     .sort(comparePagesByPath)
-  const primaryShopPages = [
+  const priorityShopPages = [
     {
       path: `/ml/shop/gpu`,
       title: `Price Compare GPUs for Machine Learning`,
@@ -119,9 +131,10 @@ async function main() {
   ]
 
   const items = [
-    ...primaryShopPages,
+    ...priorityShopPages,
     ...shopGpuPerformancePages,
     ...shopGpuPages,
+    ...gpuRankingPages,
     learnGpuSpecsPage,
     ...learnGpuPages,
     ...discoveredPages,

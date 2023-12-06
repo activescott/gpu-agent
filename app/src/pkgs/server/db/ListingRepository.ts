@@ -80,23 +80,29 @@ export async function markListingsFreshForGpu(
   })
 }
 
-export async function getAverageGpuPrice(
+export async function getPriceStats(
   gpuName: string,
   prisma: PrismaClientWithinTransaction = prismaSingleton,
-): Promise<{ price: number; activeListingCount: number }> {
-  type RowShape = { price: number; count: number }
+): Promise<{ avgPrice: number; minPrice: number; activeListingCount: number }> {
+  type RowShape = { avgPrice: number; minPrice: number; count: number }
 
-  const result =
-    (await prisma.$queryRaw`select AVG("priceValue"::float) as price, COUNT(*)::float as count from "Listing"
+  const result = (await prisma.$queryRaw`select 
+    AVG("priceValue"::float) as "avgPrice", 
+    MIN("priceValue"::float) as "minPrice", 
+    COUNT(*)::float as count from "Listing"
   WHERE 
     "gpuName" = ${gpuName}
     AND "stale" = false
   ;`) as RowShape[]
 
-  if (result.length === 0 || !result[0].price) {
-    return { price: 0, activeListingCount: 0 }
+  if (result.length === 0) {
+    return { avgPrice: 0, minPrice: 0, activeListingCount: 0 }
   }
-  return { price: result[0].price, activeListingCount: result[0].count }
+  return {
+    avgPrice: result[0].avgPrice,
+    minPrice: result[0].minPrice,
+    activeListingCount: result[0].count,
+  }
 }
 
 export async function topNListingsByCostPerformance(

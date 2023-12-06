@@ -18,12 +18,28 @@ function allListingFilters(item: Listing): boolean {
   return true
 }
 
+const conditionFilter = (item: Listing): boolean => {
+  // https://developer.ebay.com/devzone/finding/CallRef/Enums/conditionIdList.html
+  const FOR_PARTS_NOT_WORKING = "7000"
+  return item.conditionId !== FOR_PARTS_NOT_WORKING
+}
+
 type Predicate = (item: Listing) => boolean
 
 /**
  * Creates a filter for filtering listings for the specified GPU.
  */
 export function createFilterForGpu(gpu: Gpu): Predicate {
+  const requiredKeywordsFilter = createRequiredKeywordsFilter(gpu)
+
+  return composePredicates(
+    allListingFilters,
+    conditionFilter,
+    requiredKeywordsFilter,
+  )
+}
+
+function createRequiredKeywordsFilter(gpu: Gpu) {
   const memKeyword = `${gpu.memoryCapacityGB}gb`
   // TODO: this keyword filtering heuristic is probably not good enough and we should add "requiredTitleKeywords" "" and
   const nameKeywords = gpu.label.split(" ")
@@ -32,7 +48,7 @@ export function createFilterForGpu(gpu: Gpu): Predicate {
   )
   log.info("Filtering GPUs with keywords: %s", requiredKeywords)
 
-  const gpuFilter = (item: Listing): boolean => {
+  const requiredKeywordsFilter = (item: Listing): boolean => {
     // if it doesn't include some required keywords, it's probably not a card, so don't show it:
     if (
       !requiredKeywords.every((requiredKeyword) =>
@@ -86,8 +102,7 @@ export function createFilterForGpu(gpu: Gpu): Predicate {
     }
     return true
   }
-
-  return composePredicates(allListingFilters, gpuFilter)
+  return requiredKeywordsFilter
 }
 
 function composePredicates(...predicates: Predicate[]): Predicate {

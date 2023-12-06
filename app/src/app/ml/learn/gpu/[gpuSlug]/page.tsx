@@ -3,7 +3,7 @@ import {
   getGpu as getGpuWithoutCache,
   listGpus,
 } from "@/pkgs/server/db/GpuRepository"
-import { getAverageGpuPrice } from "@/pkgs/server/db/ListingRepository"
+import { getPriceStats } from "@/pkgs/server/db/ListingRepository"
 import { createDiag } from "@activescott/diag"
 import { memoize } from "lodash"
 
@@ -39,11 +39,11 @@ export async function generateMetadata({ params }: GpuParams) {
 export default async function Page({ params }: GpuParams) {
   const { gpuSlug } = params
   const gpu = await getGpu(gpuSlug)
-  const listings = await getAverageGpuPrice(gpu.name)
+  const listings = await getPriceStats(gpu.name)
   return (
     <GpuInfo
       gpu={gpu}
-      averagePrice={listings.price}
+      averagePrice={listings.avgPrice}
       activeListingCount={listings.activeListingCount}
     />
   )

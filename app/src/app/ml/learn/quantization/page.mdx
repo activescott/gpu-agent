@@ -1,12 +1,12 @@
 import Link from "next/link"
-import { getAverageGpuPrice } from "@/pkgs/server/db/ListingRepository"
+import { getPriceStats } from "@/pkgs/server/db/ListingRepository"
 import { FormatCurrency } from "@/pkgs/client/components/FormatCurrency"
 
 # Quantization in Machine Learning and Deep Learning
 
 Floating-point precision (FP32) is the most common precision used for training new models, while FP16, INT8, and others are employed for quantization. Quantization involves converting higher-precision values to lower-precision values, resulting in a loss of precision that may degrade model prediction quality. However, quantization offers several benefits:
 
-Just to do inference on a large language model (LLM) such as BLOOM-176B, you would need to **have 8x NVIDIA 80GB A100 GPUs**[^3]. Currently the **NVIDIA A100 80GBs have an average price of <FormatCurrency currencyValue={(await getAverageGpuPrice("nvidia-a100-pcie")).price} />** on Coin Poet where you can <Link href="/ml/shop/gpu/nvidia-a100-pcie">price and purchase NVIDIA A100 80GB GPUs</Link>.
+Just to do inference on a large language model (LLM) such as BLOOM-176B, you would need to **have 8x NVIDIA 80GB A100 GPUs**[^3]. Currently the **NVIDIA A100 80GBs have an average price of <FormatCurrency currencyValue={(await getPriceStats("nvidia-a100-pcie")).price} />** on Coin Poet where you can <Link href="/ml/shop/gpu/nvidia-a100-pcie">price and purchase NVIDIA A100 80GB GPUs</Link>.
 
 To fine-tune BLOOM-176B, you'd need 72 of these GPUs!
 

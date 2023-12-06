@@ -12,6 +12,21 @@ Compare GPU & AI Accelerator Card Performance Metrics to their Cost
 - Analytics at https://app.posthog.com/home (use scott@coinpoet.com)
 - Database at Neon.tech - sign in with scott@coinpoet.com
 
+### Runbooks
+
+#### Force the ebay listing cache to refresh
+
+- Go to db at https://console.neon.tech/app/projects/withered-morning-85129862/query?query=update+lastCachedListings
+- Run the following query (replacing GPU name in where as needed):
+
+```sql
+update gpu
+SET "lastCachedListings" = NULL
+WHERE "name" IN
+('nvidia-geforce-rtx-4090')
+;
+```
+
 ## Development
 
 ### Database / Prisma

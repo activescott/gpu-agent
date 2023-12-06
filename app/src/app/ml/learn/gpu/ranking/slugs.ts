@@ -27,12 +27,12 @@ export function listGpuRankingSlugs(): GpuSpecSlug[] {
 
 export function gpuRankingTitle(slug: GpuSpecSlug): string {
   const desc = GpuSpecsDescription[mapSlugToSpec(slug)]
-  return `Best performing GPUs for the money: Ranked by $ per ${desc.label}`
+  return `GPUs Ranked by $ / ${desc.label}`
 }
 
 export function gpuRankingDescription(slug: GpuSpecSlug): string {
   const desc = GpuSpecsDescription[mapSlugToSpec(slug)]
-  return `Top GPUs with performance specifications ranked by the $ per ${desc.label} cost-performance ratio.`
+  return `Best GPUs for the money with performance specifications ranked by the $ per ${desc.label} cost-performance ratio.`
 }
 
 export function gpuRankingCanonicalPath(slug: GpuSpecSlug): string {

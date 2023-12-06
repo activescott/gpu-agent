@@ -10,6 +10,7 @@ import {
 import { listGpus } from "@/pkgs/server/db/GpuRepository"
 import { getPriceStats } from "@/pkgs/server/db/ListingRepository"
 import { GpuSpecsTable, PricedGpu } from "./GpuSpecsTable"
+import Link from "next/link"
 
 // revalidate the data at most every hour: https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#revalidate
 export const revalidate = 3600
@@ -57,6 +58,10 @@ export default async function Page({ params }: GpuSpecSlugParams) {
   return (
     <>
       <h1>GPUs Ranked by Cost per {desc.label}</h1>
+      <p>
+        Something missing? <Link href="/contact">Let us know</Link> and
+        we&apos;ll add it if we can.
+      </p>
       <GpuSpecsTable
         primarySpecInitial={primarySpec}
         gpusInitial={unsortedPricedGpus}

@@ -1,9 +1,17 @@
 import Link from "next/link"
 import { SvgIcon } from "./SvgIcon"
-import sitemapJson from "../../../app/sitemap.json"
-import { SitemapJsonItem } from "@/app/sitemap.types"
+import dynamic from "next/dynamic"
 
-const entries: SitemapJsonItem[] = [...sitemapJson.data]
+/*
+NOTE: Deliberately forcing a lazily-loaded client component by forcing some
+  components to render on the client so that the header doesn't get read by
+  search engine crawlers before the page content. Bing warned on it.
+  This reduced the SSR-rendered nav from 154 lines to 30!
+*/
+const SiteHeaderNavItems = dynamic(
+  () => import("./SiteHeaderClientComponents"),
+  { ssr: false },
+)
 
 export const SiteHeader = () => {
   return (
@@ -24,78 +32,9 @@ export const SiteHeader = () => {
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav">
-            <li className="nav-item dropdown">
-              <a
-                className="nav-link dropdown-toggle"
-                href="#"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                Shop
-              </a>
-              <ul className="dropdown-menu">
-                {entries
-                  .filter((item) => item.path.startsWith("/ml/shop"))
-                  .map((item) => (
-                    <li className="dropdown-item" key={item.path}>
-                      <a className="nav-link" href={item.path}>
-                        {item.title}
-                      </a>
-                    </li>
-                  ))}
-              </ul>
-            </li>
-            {/* Learn Use Cases*/}
-            <DropDownForSitemapEntries
-              label="Learn Use Cases"
-              entries={entries}
-              pathPrefixFilter="/ml/learn/use-case"
-            />
-            <DropDownForSitemapEntries
-              label="Learn GPUs & Accelerators"
-              entries={entries}
-              pathPrefixFilter="/ml/learn/gpu"
-            />
-          </ul>
+          <SiteHeaderNavItems />
         </div>
       </div>
     </nav>
-  )
-}
-
-const DropDownForSitemapEntries = ({
-  label,
-  entries,
-  pathPrefixFilter,
-}: {
-  label: string
-  entries: SitemapJsonItem[]
-  pathPrefixFilter: string
-}) => {
-  return (
-    <li className="nav-item dropdown">
-      <a
-        className="nav-link dropdown-toggle"
-        href="#"
-        role="button"
-        data-bs-toggle="dropdown"
-        aria-expanded="false"
-      >
-        {label}
-      </a>
-      <ul className="dropdown-menu">
-        {entries
-          .filter((item) => item.path.startsWith(pathPrefixFilter))
-          .map((item) => (
-            <li className="dropdown-item" key={item.path}>
-              <a className="nav-link" href={item.path}>
-                {item.title}
-              </a>
-            </li>
-          ))}
-      </ul>
-    </li>
   )
 }

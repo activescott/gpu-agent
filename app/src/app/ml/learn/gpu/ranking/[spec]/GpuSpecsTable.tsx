@@ -65,85 +65,87 @@ export function GpuSpecsTable({
   }, [primarySpec, ascending, gpusInitial])
 
   return (
-    <table className="table table-hover">
-      <thead>
-        <tr>
-          <th style={{ textAlign: "right" }}>GPU</th>
+    <div className="table-responsive-lg">
+      <table className="table table-hover">
+        <thead>
+          <tr>
+            <th style={{ textAlign: "right" }}>GPU</th>
 
-          {Object.values(GpuSpecKeys).map((specKey) => (
-            <th
-              key={specKey}
-              style={{ textAlign: "right" }}
-              className={specKey === primarySpec ? "table-active" : ""}
-              onClick={() => {
-                if (specKey === primarySpec) {
-                  setAscending(!ascending)
-                } else {
-                  setPrimarySpec(specKey)
-                  setAscending(true)
-                }
-              }}
-            >
-              $ <span className="fw-light">/</span>{" "}
-              {GpuSpecsDescription[specKey].label}{" "}
-              {specKey === primarySpec ? (
-                <BootstrapIcon icon={sortOrderIcon} size="xs" />
-              ) : (
-                <BootstrapIcon icon={unsortedIcon} size="xs" />
-              )}
-            </th>
-          ))}
-          <th style={{ textAlign: "right" }}>Minimum Price</th>
-          <th style={{ textAlign: "right" }}>Available for Sale</th>
-        </tr>
-      </thead>
-      <tbody>
-        {gpus.map((gpu, index) => (
-          <tr key={`${index}-${gpu.gpu.name}`}>
-            <td style={{ textAlign: "right" }}>
-              {gpu.gpu.label} {gpu.gpu.memoryCapacityGB}GB
-            </td>
             {Object.values(GpuSpecKeys).map((specKey) => (
-              <td
+              <th
                 key={specKey}
                 style={{ textAlign: "right" }}
                 className={specKey === primarySpec ? "table-active" : ""}
+                onClick={() => {
+                  if (specKey === primarySpec) {
+                    setAscending(!ascending)
+                  } else {
+                    setPrimarySpec(specKey)
+                    setAscending(true)
+                  }
+                }}
               >
+                $ <span className="fw-light">/</span>{" "}
+                {GpuSpecsDescription[specKey].label}{" "}
+                {specKey === primarySpec ? (
+                  <BootstrapIcon icon={sortOrderIcon} size="xs" />
+                ) : (
+                  <BootstrapIcon icon={unsortedIcon} size="xs" />
+                )}
+              </th>
+            ))}
+            <th style={{ textAlign: "right" }}>Minimum Price</th>
+            <th style={{ textAlign: "right" }}>Available for Sale</th>
+          </tr>
+        </thead>
+        <tbody>
+          {gpus.map((gpu, index) => (
+            <tr key={`${index}-${gpu.gpu.name}`}>
+              <td style={{ textAlign: "right" }}>
+                {gpu.gpu.label} {gpu.gpu.memoryCapacityGB}GB
+              </td>
+              {Object.values(GpuSpecKeys).map((specKey) => (
+                <td
+                  key={specKey}
+                  style={{ textAlign: "right" }}
+                  className={specKey === primarySpec ? "table-active" : ""}
+                >
+                  {gpu.price.activeListingCount > 0 ? (
+                    <>
+                      <FormatCurrency
+                        currencyValue={dollarsPerSpec(
+                          gpu.gpu,
+                          gpu.price.minPrice,
+                          specKey,
+                        )}
+                      />
+                    </>
+                  ) : (
+                    "n/a"
+                  )}
+                </td>
+              ))}
+              <td style={{ textAlign: "right" }}>
                 {gpu.price.activeListingCount > 0 ? (
-                  <>
+                  <Link href={`/ml/shop/gpu/${gpu.gpu.name}`}>
                     <FormatCurrency
-                      currencyValue={dollarsPerSpec(
-                        gpu.gpu,
-                        gpu.price.minPrice,
-                        specKey,
-                      )}
+                      forceInteger
+                      currencyValue={gpu.price.minPrice}
                     />
-                  </>
+                  </Link>
                 ) : (
                   "n/a"
                 )}
               </td>
-            ))}
-            <td style={{ textAlign: "right" }}>
-              {gpu.price.activeListingCount > 0 ? (
+              <td style={{ textAlign: "right" }}>
                 <Link href={`/ml/shop/gpu/${gpu.gpu.name}`}>
-                  <FormatCurrency
-                    forceInteger
-                    currencyValue={gpu.price.minPrice}
-                  />
+                  {gpu.price.activeListingCount}
                 </Link>
-              ) : (
-                "n/a"
-              )}
-            </td>
-            <td style={{ textAlign: "right" }}>
-              <Link href={`/ml/shop/gpu/${gpu.gpu.name}`}>
-                {gpu.price.activeListingCount}
-              </Link>
-            </td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   )
 }

@@ -15,7 +15,7 @@ const SiteHeaderNavItems = dynamic(
 
 export const SiteHeader = () => {
   return (
-    <nav className="navbar navbar-expand-lg bg-body-tertiary">
+    <nav className="navbar navbar-expand-md bg-body-tertiary">
       <div className="container-fluid">
         <Link className="navbar-brand" href="/">
           <SvgIcon icon="coinpoet-card" svgViewBox="0 0 16 16" /> Coin Poet

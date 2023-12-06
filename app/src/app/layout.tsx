@@ -11,10 +11,11 @@ import { Alert } from "@/pkgs/client/components/Alert"
 import Link from "next/link"
 
 export const metadata: Metadata = {
-  title: "Real-Time GPU Price/Performance Tracker - Coin Poet",
-  // NOTE:  must be 25-160 characters:
+  // must be <70 characters:
+  title: "GPUs Ranked by Price/Performance - CoinPoet.com",
+  // NOTE:  must be <160 characters:
   description:
-    "Discover the best cost-effective GPUs for machine learning with real-time price tracking and performance ranking, tailored for ML engineers and hobbyists.",
+    "Find the best GPUs for the money with price/performance comparisons on specifications such as Tensor Cores, memory bandwidth, FP32/FP16 FLOPs, and more.",
 }
 
 export default function RootLayout({

@@ -136,7 +136,10 @@ WHERE "name" IN
 
 ## Notes
 
-What to do with https://lambdalabs.com/gpu-benchmarks
+- Interesting benchmarks at https://lambdalabs.com/gpu-benchmarks but not that many cards. They do have a repo to repro the benchmarks
+- https://github.com/jef/streetmerchant/blob/main/src/store/lookup.ts has a scraper. Says it works with gamestop but it doesn't appear to. It also only supports specific links.
+- Gamestop has an affiliate program for 1.5% and VERY good prices on GPU: https://www.gamestop.com/affiliate.html
+- NOTE: Best buy pays 0.0% to affiliates for computer hardware cards :/
 
 ### Marketing
 

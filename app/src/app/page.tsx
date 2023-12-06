@@ -7,14 +7,11 @@ import { topNListingsByCostPerformance } from "@/pkgs/server/db/ListingRepositor
 import { ListingCardSmall } from "@/pkgs/client/components/ListingCardSmall"
 
 // revalidate the data at most every N seconds: https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#revalidate
-const MINUTES = 10
+const MINUTES = 20
 const SECONDS_PER_MINUTE = 60
 export const revalidate = MINUTES * SECONDS_PER_MINUTE
 
 export const metadata: Metadata = {
-  title: "Best GPUs for the Money: Buy on Price-Performance Ratios",
-  description:
-    "Buy GPUs for training and inference with side-by-side price/performance comparisons. Compare price to performance from industry-standard benchmarks for training and inference.",
   alternates: { canonical: "https://coinpoet.com/" },
 }
 

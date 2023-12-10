@@ -100,6 +100,7 @@ WHERE "name" IN
 
 - [ ] feat: add AMD rx 5xx cards for reddit dude and reply
 - [ ] feat: add fps metrics (e.g. maybe @4K or something?) Then post that to reddit. Those gamers like fps
+  - _In addition to our own graphics cards benchmarks, we use various trusted sources for validating gaming benchmarks including TechPowerUp, TomsHardware, AnandTech, TechSpot, and many more._ – https://www.gpucheck.com/gpu-benchmark-graphics-card-comparison-chart
 - [ ] feat: can filter by attributes and attribute pills
 
 - [ ] fix: add lot size attribute and metrics support items that have multiple items (update $/perf specs) e.g. "**_ LOT OF 10 GPU's_** NVIDIA RTX A5000 24GB GDDR6"

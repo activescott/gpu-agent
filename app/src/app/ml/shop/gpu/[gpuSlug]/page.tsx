@@ -28,8 +28,8 @@ export async function generateMetadata({ params }: GpuParams) {
   log.debug("generateStaticMetadata for gpu ", gpuSlug)
   const gpu = await getGpu(gpuSlug)
   return {
-    title: `Price Compare ${gpu.label}`,
-    description: `Compare prices for ${gpu.label}`,
+    title: `Best Prices for ${gpu.label}`,
+    description: `Compare prices across the Internet for ${gpu.label}`,
     alternates: { canonical: `https://coinpoet.com/ml/shop/gpu/${gpuSlug}` },
   }
 }

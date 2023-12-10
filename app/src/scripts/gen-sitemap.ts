@@ -74,6 +74,8 @@ async function main() {
     })
     // remove any dirs that begin with _
     .filter((item) => !item.path.startsWith("/_"))
+    // remove /bye which is just an affiliate tracking redirect
+    .filter((item) => !item.path.startsWith("/bye"))
     // remove slugs:
     .filter((item) => !SLUG_IN_PATH_REGEX.test(item.path))
     // skip the /ml/learn/gpu/**/* pages because we'll generate them from the gpus in the DB below:

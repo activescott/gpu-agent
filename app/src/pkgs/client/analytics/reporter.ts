@@ -8,12 +8,13 @@ const trace = createDiag("shopping-agent:analytics")
 
 export enum AnalyticsActions {
   BuyNow = "Buy Now",
+  RedirectToAffiliate = "Redirect to Affiliate",
 }
 
 // avoid any here and be more constrained
 type AnalyticsReporterProperty = string | number | boolean
 
-export interface AnalyticsReporter {
+interface AnalyticsReporter {
   trackAction: (
     action: AnalyticsActions,
     properties?: Record<string, AnalyticsReporterProperty>,

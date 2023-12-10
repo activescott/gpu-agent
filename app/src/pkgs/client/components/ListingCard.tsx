@@ -10,12 +10,7 @@ import {
 } from "@/pkgs/isomorphic/model/specs"
 import { Listing } from "@/pkgs/isomorphic/model"
 import Image from "next/image"
-import {
-  AnalyticsActions,
-  AnalyticsReporter,
-  useAnalytics,
-} from "../analytics/reporter"
-import Link from "next/link"
+import { ListingAffiliateLink } from "./ListingAffiliateLink"
 
 const fmtInteger = new Intl.NumberFormat("en-US", {
   style: "currency",
@@ -44,7 +39,6 @@ export const ListingCard = ({
   specs,
   highlightSpec,
 }: ListingCardProps) => {
-  const analytics = useAnalytics()
   const {
     itemAffiliateWebUrl,
     priceValue,
@@ -65,11 +59,9 @@ export const ListingCard = ({
           alignItems: "center",
         }}
       >
-        <Link
-          href={itemAffiliateWebUrl}
-          onClick={() => {
-            trackBuyNowEvent(analytics, item, "listing-image")
-          }}
+        <ListingAffiliateLink
+          to={itemAffiliateWebUrl}
+          listing={item}
           className="text-decoration-none text-reset text underline-on-hover"
         >
           <Image
@@ -79,19 +71,17 @@ export const ListingCard = ({
             width={215}
             height={215}
           />
-        </Link>
+        </ListingAffiliateLink>
       </div>
       <div className="card-body">
         <h5 className="card-title">
-          <Link
-            href={itemAffiliateWebUrl}
-            onClick={() => {
-              trackBuyNowEvent(analytics, item, "listing-title")
-            }}
+          <ListingAffiliateLink
+            to={itemAffiliateWebUrl}
+            listing={item}
             className="text-decoration-none text-reset text underline-on-hover"
           >
             {title}
-          </Link>
+          </ListingAffiliateLink>
         </h5>
         <div className="card-text">
           <AttributePill>{formatPrice(cost)}</AttributePill>
@@ -113,32 +103,17 @@ export const ListingCard = ({
         </div>
       </div>
       <div className="card-footer d-flex">
-        <a
-          href={itemAffiliateWebUrl}
-          onClick={() => trackBuyNowEvent(analytics, item, "buy-button")}
+        <ListingAffiliateLink
+          to={itemAffiliateWebUrl}
+          listing={item}
           className="btn btn-primary my-1 me-auto"
-          target="_blank"
-          rel="noreferrer"
         >
           Buy Now
-        </a>
+        </ListingAffiliateLink>
         <SvgIcon icon="ebay" className="" />
       </div>
     </div>
   )
-}
-
-export const trackBuyNowEvent = (
-  analytics: AnalyticsReporter,
-  item: Listing,
-  clickType: "listing-title" | "buy-button" | "listing-image",
-): void => {
-  analytics.trackAction(AnalyticsActions.BuyNow, {
-    "listing-id": item.itemId,
-    "gpu-name": item.gpu.name,
-    "listing-price": item.priceValue,
-    "click-type": clickType,
-  })
 }
 
 export function chooseBestImageUrl(item: Listing): string {

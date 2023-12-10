@@ -98,6 +98,8 @@ WHERE "name" IN
 
   - [+] feat: ensure affiliate links are used: See [Header for affiliate information](https://developers.ebay.com/api-docs/buy/static/api-browse.html#affiliate-header)
 
+- [ ] feat: add AMD rx 5xx cards for reddit dude and reply
+- [ ] feat: add fps metrics (e.g. maybe @4K or something?) Then post that to reddit. Those gamers like fps
 - [ ] feat: can filter by attributes and attribute pills
 
 - [ ] fix: add lot size attribute and metrics support items that have multiple items (update $/perf specs) e.g. "**_ LOT OF 10 GPU's_** NVIDIA RTX A5000 24GB GDDR6"
@@ -128,7 +130,9 @@ WHERE "name" IN
 - [ ] add contact us page
 - [ ] Solicit info from the community on all model pages - especially unknown GPU/accelerator ones. Have a 👍👎 on information accuracy for models and gpu pages
   - [ ] Ideally give people the opportunity to edit the pages by putting info pages in their own repo and triggering deploys based on them changing.
-- [ ] investigate amazon and newegg affiliate programs: https://promotions.newegg.com/affiliate_program/affiliate.html
+- [ ] investigate affiliate programs:
+  - Gamestop has an affiliate program for 1.5% and VERY good prices on GPU: https://www.gamestop.com/affiliate.html
+  - amazon and newegg affiliate programs: https://promotions.newegg.com/affiliate_program/affiliate.html
 - [x] Model Page Prompt: Look for BibTeX information on the pages and consider any "to cite this model" kind of indications as the authoritative link for the model.
 - [x] Model Page Prompt: Include https://catalog.ngc.nvidia.com as a research source
 - [x] Model Page Prompt: When using arXiv, be sure that it is the paper that describes and introduces the model, not one that merely references it.
@@ -138,7 +142,7 @@ WHERE "name" IN
 
 - Interesting benchmarks at https://lambdalabs.com/gpu-benchmarks but not that many cards. They do have a repo to repro the benchmarks
 - https://github.com/jef/streetmerchant/blob/main/src/store/lookup.ts has a scraper. Says it works with gamestop but it doesn't appear to. It also only supports specific links.
-- Gamestop has an affiliate program for 1.5% and VERY good prices on GPU: https://www.gamestop.com/affiliate.html
+
 - NOTE: Best buy pays 0.0% to affiliates for computer hardware cards :/
 
 ### Marketing

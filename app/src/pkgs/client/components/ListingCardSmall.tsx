@@ -5,16 +5,11 @@ import {
   GpuSpecs,
   GpuSpecsDescription,
 } from "@/pkgs/isomorphic/model/specs"
-import { useAnalytics } from "../analytics/reporter"
-import {
-  chooseBestImageUrl,
-  formatPrice,
-  trackBuyNowEvent,
-} from "./ListingCard"
+import { chooseBestImageUrl, formatPrice } from "./ListingCard"
 import Image from "next/image"
 import { AttributePill, CountryPill } from "./AttributePill"
 import { SpecPill } from "./SpecPill"
-import Link from "next/link"
+import { ListingAffiliateLink } from "./ListingAffiliateLink"
 
 interface ListingCardProps {
   item: Listing
@@ -27,7 +22,6 @@ export function ListingCardSmall({
   specs,
   highlightSpec,
 }: ListingCardProps): JSX.Element {
-  const analytics = useAnalytics()
   const {
     itemAffiliateWebUrl,
     priceValue,
@@ -42,12 +36,7 @@ export function ListingCardSmall({
     <div className="card mb-3" style={{ maxWidth: "540px" }}>
       <div className="row g-0">
         <div className="col-md-4">
-          <Link
-            href={itemAffiliateWebUrl}
-            onClick={() => {
-              trackBuyNowEvent(analytics, item, "listing-image")
-            }}
-          >
+          <ListingAffiliateLink to={itemAffiliateWebUrl} listing={item}>
             <Image
               src={imageUrl}
               className="card-img-top mx-auto mt-1"
@@ -55,20 +44,18 @@ export function ListingCardSmall({
               width={128}
               height={128}
             />
-          </Link>
+          </ListingAffiliateLink>
         </div>
         <div className="col-md-8">
           <div className="card-body">
             <h5 className="card-title">
-              <Link
-                href={itemAffiliateWebUrl}
-                onClick={() => {
-                  trackBuyNowEvent(analytics, item, "listing-title")
-                }}
+              <ListingAffiliateLink
+                to={itemAffiliateWebUrl}
+                listing={item}
                 className="text-decoration-none text-reset text underline-on-hover"
               >
                 {title}
-              </Link>
+              </ListingAffiliateLink>
             </h5>
             <div className="card-text text-align-start">
               <AttributePill>{formatPrice(cost)}</AttributePill>

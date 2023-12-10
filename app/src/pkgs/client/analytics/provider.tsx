@@ -4,6 +4,9 @@ import { PostHogProvider } from "posthog-js/react"
 import { usePathname, useSearchParams } from "next/navigation"
 import { Suspense, useEffect } from "react"
 import { ISOMORPHIC_CONFIG } from "@/pkgs/isomorphic/config"
+import { createDiag } from "@activescott/diag"
+
+const log = createDiag("shopping-agent:analytics:provider")
 
 // POSTHOG INFO: https://posthog.com/docs/libraries/next-js
 if (typeof window !== "undefined") {
@@ -38,6 +41,8 @@ function AnalyticsPageViewInner(): JSX.Element {
       posthog.capture("$pageview", {
         $current_url: url,
       })
+    } else {
+      log.error("AnalyticsPageView: no pathname")
     }
   }, [pathname, searchParams])
 

@@ -102,7 +102,9 @@ export function GpuSpecsTable({
           {gpus.map((gpu, index) => (
             <tr key={`${index}-${gpu.gpu.name}`}>
               <td style={{ textAlign: "right" }}>
-                {gpu.gpu.label} {gpu.gpu.memoryCapacityGB}GB
+                <Link href={`/ml/shop/gpu/${gpu.gpu.name}`}>
+                  {gpu.gpu.label} {gpu.gpu.memoryCapacityGB}GB
+                </Link>
               </td>
               {Object.values(GpuSpecKeys).map((specKey) => (
                 <td

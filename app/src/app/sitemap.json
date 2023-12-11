@@ -106,59 +106,59 @@
     },
     {
       "path": "/ml/learn/gpu/specifications",
-      "title": "GPU Machine Learning Specification"
+      "title": "GPU Performance Specifications for Machine Learning"
     },
     {
       "path": "/ml/learn/gpu/nvidia-a10",
-      "title": "NVIDIA A10 GPU Machine Learning Specification"
+      "title": "NVIDIA A10 Specifications for Machine Learning"
     },
     {
       "path": "/ml/learn/gpu/nvidia-a100-pcie",
-      "title": "NVIDIA A100 PCIe GPU Machine Learning Specification"
+      "title": "NVIDIA A100 PCIe Specifications for Machine Learning"
     },
     {
       "path": "/ml/learn/gpu/nvidia-a100-sxm",
-      "title": "NVIDIA A100 SXM GPU Machine Learning Specification"
+      "title": "NVIDIA A100 SXM Specifications for Machine Learning"
     },
     {
       "path": "/ml/learn/gpu/nvidia-a30",
-      "title": "NVIDIA A30 GPU Machine Learning Specification"
+      "title": "NVIDIA A30 Specifications for Machine Learning"
     },
     {
       "path": "/ml/learn/gpu/nvidia-a40",
-      "title": "NVIDIA A40 GPU Machine Learning Specification"
+      "title": "NVIDIA A40 Specifications for Machine Learning"
     },
     {
       "path": "/ml/learn/gpu/nvidia-geforce-rtx-4090",
-      "title": "NVIDIA GeForce RTX 4090 GPU Machine Learning Specification"
+      "title": "NVIDIA GeForce RTX 4090 Specifications for Machine Learning"
     },
     {
       "path": "/ml/learn/gpu/nvidia-h100-pcie",
-      "title": "NVIDIA H100 PCIe GPU Machine Learning Specification"
+      "title": "NVIDIA H100 PCIe Specifications for Machine Learning"
     },
     {
       "path": "/ml/learn/gpu/nvidia-h100-sxm",
-      "title": "NVIDIA H100 SXM GPU Machine Learning Specification"
+      "title": "NVIDIA H100 SXM Specifications for Machine Learning"
     },
     {
       "path": "/ml/learn/gpu/nvidia-l4",
-      "title": "NVIDIA L4 GPU Machine Learning Specification"
+      "title": "NVIDIA L4 Specifications for Machine Learning"
     },
     {
       "path": "/ml/learn/gpu/nvidia-l40",
-      "title": "NVIDIA L40 GPU Machine Learning Specification"
+      "title": "NVIDIA L40 Specifications for Machine Learning"
     },
     {
       "path": "/ml/learn/gpu/nvidia-l40s",
-      "title": "NVIDIA L40S GPU Machine Learning Specification"
+      "title": "NVIDIA L40S Specifications for Machine Learning"
     },
     {
       "path": "/ml/learn/gpu/nvidia-rtx-a5000",
-      "title": "NVIDIA RTX A5000 GPU Machine Learning Specification"
+      "title": "NVIDIA RTX A5000 Specifications for Machine Learning"
     },
     {
       "path": "/ml/learn/gpu/nvidia-t4",
-      "title": "NVIDIA T4 GPU Machine Learning Specification"
+      "title": "NVIDIA T4 Specifications for Machine Learning"
     },
     {
       "path": "/policy/terms",
@@ -173,7 +173,7 @@
     {
       "path": "/ml/learn",
       "title": "What to Look for in a GPU for Machine Learning",
-      "lastModified": "2023-12-11T01:00:17.000Z"
+      "lastModified": "2023-12-11T01:05:10.000Z"
     },
     {
       "path": "/ml/learn/use-case/speech-to-text",
@@ -229,6 +229,10 @@
       "path": "/ml/learn/models/resnet",
       "title": "About Machine Learning Model ResNet",
       "lastModified": "2023-11-26T05:00:45.000Z"
+    },
+    {
+      "path": "/ml/learn/models/mistral-7b",
+      "title": "About Machine Learning Model Mistral-7B"
     },
     {
       "path": "/ml/learn/models/llama-2",

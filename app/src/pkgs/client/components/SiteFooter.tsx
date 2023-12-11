@@ -1,80 +1,16 @@
-import sitemapJson from "../../../app/sitemap.json"
-
-const entries = [...sitemapJson.data]
+import Link from "next/link"
 
 export const SiteFooter = () => {
   const start_year = 2023
   return (
     <footer className="pt-5 mx-2 my-5 text-muted border-top fw-lighter">
-      <div className="d-flex  w-100 flex-wrap">
-        <ul className="nav flex-column mx-4">
-          <li className="nav-item">Shop GPUs</li>
-          {entries
-            .filter((item) => item.path.startsWith("/ml/shop"))
-            .map((item) => (
-              <li className="nav-item" key={item.path}>
-                <a className="nav-link" href={item.path}>
-                  {item.title}
-                </a>
-              </li>
-            ))}
-        </ul>
-
-        <ul className="nav flex-column">
-          <li className="nav-item">Best Performing GPUs for the Money</li>
-          {entries
-            .filter((item) => item.path.startsWith("/ml/learn/gpu/ranking"))
-            .map((item) => (
-              <li className="nav-item" key={item.path}>
-                <a className="nav-link" href={item.path}>
-                  {item.title}
-                </a>
-              </li>
-            ))}
-        </ul>
-
-        <ul className="nav flex-column">
-          <li className="nav-item">Machine Learning GPUs & Accelerators</li>
-          {entries
-            .filter(
-              (item) =>
-                item.path.startsWith("/ml/learn/gpu") &&
-                !item.path.startsWith("/ml/learn/gpu/ranking"),
-            )
-            .map((item) => (
-              <li className="nav-item" key={item.path}>
-                <a className="nav-link" href={item.path}>
-                  {item.title}
-                </a>
-              </li>
-            ))}
-        </ul>
-
-        <ul className="nav flex-column mx-4">
-          <li className="nav-item">Machine Learning Use Cases</li>
-          {entries
-            .filter((item) => item.path.startsWith("/ml/learn/use-case"))
-            .map((item) => (
-              <li className="nav-item" key={item.path}>
-                <a className="nav-link" href={item.path}>
-                  {item.title}
-                </a>
-              </li>
-            ))}
-        </ul>
-
-        <ul className="nav flex-column mx-4">
-          <li className="nav-item">Machine Learning Models</li>
-          {entries
-            .filter((item) => item.path.startsWith("/ml/learn/models"))
-            .map((item) => (
-              <li className="nav-item" key={item.path}>
-                <a className="nav-link" href={item.path}>
-                  {item.title}
-                </a>
-              </li>
-            ))}
-        </ul>
+      <div className="w-100 d-flex justify-content-around flex-wrap">
+        <FooterLink href="/ml/shop/gpu" label="Browse GPUs for Sale" />
+        <FooterLink href="/ml/learn/gpu/ranking" label="GPU Rankings" />
+        <FooterLink
+          href="/ml/learn"
+          label="Learn about GPUs for Machine Learning"
+        />
       </div>
       <div>
         <div className="muted fst-italic">
@@ -115,3 +51,9 @@ export const SiteFooter = () => {
     </footer>
   )
 }
+
+const FooterLink = ({ href, label }: { href: string; label: string }) => (
+  <Link href={href} className="mx-2">
+    {label}
+  </Link>
+)

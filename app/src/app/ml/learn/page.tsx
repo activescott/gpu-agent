@@ -1,10 +1,15 @@
+import { Metadata } from "next"
 import { Feature } from "../../../pkgs/client/components/Feature"
 import sitemapJson from "../../sitemap.json"
+
+export const metadata: Metadata = {
+  title: "What to Look for in a GPU for Machine Learning",
+}
 
 export default function Page() {
   return (
     <div>
-      <h1>What You Need in a GPU for Machine Learning</h1>
+      <h1>{metadata.title as string}</h1>
       <p>
         Some research we&apos;ve put together on GPUs for machine learning is
         below.

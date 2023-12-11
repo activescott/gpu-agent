@@ -171,6 +171,11 @@
       "lastModified": "2023-11-17T07:32:49.000Z"
     },
     {
+      "path": "/ml/learn",
+      "title": "What to Look for in a GPU for Machine Learning",
+      "lastModified": "2023-12-11T01:00:17.000Z"
+    },
+    {
       "path": "/ml/learn/use-case/speech-to-text",
       "title": "Speech-to-Text: A Machine Learning Approach",
       "lastModified": "2023-11-26T05:00:45.000Z"
@@ -208,7 +213,7 @@
     {
       "path": "/ml/learn/quantization",
       "title": "Quantization in Machine Learning and Deep Learning",
-      "lastModified": "2023-12-06T02:14:00.000Z"
+      "lastModified": "2023-12-10T19:56:27.000Z"
     },
     {
       "path": "/ml/learn/models/rnn-t",

@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE "gpu" ALTER COLUMN "tensorCoreCount" DROP NOT NULL,
+ALTER COLUMN "int8TOPS" DROP NOT NULL;

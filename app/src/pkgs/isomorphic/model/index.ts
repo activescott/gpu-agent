@@ -49,7 +49,8 @@ export function convertEbayItemToListing(
     priceValue: listing.price.value,
     priceCurrency: listing.price.currency,
     buyingOptions: listing.buyingOptions,
-    imageUrl: proxyImageUrl(listing.image.imageUrl),
+    // listing.image is documented as required, but I've seen it null
+    imageUrl: listing.image ? proxyImageUrl(listing.image.imageUrl) : "",
     adultOnly: listing.adultOnly,
     itemHref: listing.itemHref,
     leafCategoryIds: listing.leafCategoryIds,

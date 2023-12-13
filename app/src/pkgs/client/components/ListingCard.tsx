@@ -11,6 +11,7 @@ import {
 import { Listing } from "@/pkgs/isomorphic/model"
 import Image from "next/image"
 import { ListingAffiliateLink } from "./ListingAffiliateLink"
+import { divideSafe } from "@/pkgs/isomorphic/math"
 
 const fmtInteger = new Intl.NumberFormat("en-US", {
   style: "currency",
@@ -96,7 +97,7 @@ export const ListingCard = ({
               infoTipText={GpuSpecsDescription[specKey].descriptionDollarsPer}
               color={specKey === highlightSpec ? "primary" : "secondary"}
             >
-              {formatPrice(cost / specs[specKey])} /{" "}
+              {formatPrice(divideSafe(cost, specs[specKey]))} /{" "}
               {GpuSpecsDescription[specKey].unit}
             </SpecPill>
           ))}

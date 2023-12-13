@@ -278,6 +278,77 @@ async function main() {
         "https://lambdalabs.com/blog/nvidia-rtx-4090-vs-rtx-3090-deep-learning-benchmark",
       ],
     },
+    {
+      name: "amd-radeon-rx-580x",
+      label: "AMD Radeon RX 580X",
+      tensorCoreCount: undefined, // N/A
+      fp32TFLOPS: 6.2,
+      fp16TFLOPS: 6.2,
+      int8TOPS: undefined, //"[More Information Needed]"
+      memoryCapacityGB: 8,
+      memoryBandwidthGBs: 256.0,
+      maxTDPWatts: 185,
+      summary:
+        "The AMD Radeon RX 580X, launched on April 11th, 2018, is built on a 14 nm process and features the Polaris 20 graphics processor. It's a dual-slot card with a maximum power draw of 185 W and supports DirectX 12.",
+      references: [
+        "https://www.amd.com/en/products/specifications/graphics",
+        "https://www.tomshardware.com/reviews/amd-radeon-rx-580-review,5020.html",
+        "https://www.techpowerup.com/gpu-specs/radeon-rx-580x.c3190",
+      ],
+    },
+    {
+      name: "amd-radeon-rx-590",
+      label: "AMD Radeon RX 590",
+      tensorCoreCount: undefined, // N/A
+      fp32TFLOPS: 7.1,
+      fp16TFLOPS: 7.1,
+      int8TOPS: undefined, //"[More Information Needed]"
+      memoryCapacityGB: 8,
+      memoryBandwidthGBs: 256.0,
+      maxTDPWatts: 175,
+      summary:
+        "The AMD Radeon RX 590, launched on November 15th, 2018, uses the 12 nm process with the Polaris 30 graphics processor. It's a performance-segment card with a dual-slot form factor and a TDP of 175 W.",
+      references: [
+        "https://www.amd.com/en/products/specifications/graphics",
+        "https://www.tomshardware.com/reviews/amd-radeon-rx-590,5907.html",
+        "https://www.techpowerup.com/gpu-specs/radeon-rx-590.c3322",
+      ],
+    },
+
+    {
+      name: "amd-radeon-rx-7900-xtx",
+      label: "AMD Radeon RX 7900 XTX",
+      tensorCoreCount: undefined,
+      fp32TFLOPS: 61,
+      fp16TFLOPS: 123,
+      int8TOPS: 123,
+      memoryCapacityGB: 24,
+      memoryBandwidthGBs: 960,
+      maxTDPWatts: 355,
+      summary:
+        "The AMD Radeon RX 7900 XTX, launched on December 13, 2022, is AMD's flagship graphics card featuring a significant performance boost over its predecessors.",
+      references: [
+        "https://www.amd.com/en/products/specifications/graphics",
+        "https://www.tomshardware.com/reviews/amd-radeon-rx-7900-xtx-and-xt-review-shooting-for-the-top",
+      ],
+    },
+    {
+      name: "amd-radeon-rx-7900-xt",
+      label: "AMD Radeon RX 7900 XT",
+      tensorCoreCount: undefined,
+      fp32TFLOPS: 52,
+      fp16TFLOPS: 103,
+      int8TOPS: 103,
+      memoryCapacityGB: 20,
+      memoryBandwidthGBs: 800,
+      maxTDPWatts: 315,
+      summary:
+        "The AMD Radeon RX 7900 XT, released alongside the RX 7900 XTX on December 13, 2022, offers slightly lower specifications but remains a strong contender in the high-performance GPU market.",
+      references: [
+        "https://www.amd.com/en/products/specifications/graphics",
+        "https://www.tomshardware.com/reviews/amd-radeon-rx-7900-xtx-and-xt-review-shooting-for-the-top",
+      ],
+    },
   ]
 
   for (const gpu of gpus) {

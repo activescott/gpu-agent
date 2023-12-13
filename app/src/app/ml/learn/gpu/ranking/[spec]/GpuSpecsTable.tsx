@@ -10,6 +10,7 @@ import { Gpu } from "@/pkgs/isomorphic/model"
 import { useEffect, useState } from "react"
 import { BootstrapIcon } from "@/pkgs/client/components/BootstrapIcon"
 import { composeComparers } from "@/pkgs/isomorphic/collection"
+import { divideSafe } from "@/pkgs/isomorphic/math"
 
 export type PricedGpu = {
   gpu: Gpu
@@ -17,7 +18,7 @@ export type PricedGpu = {
 }
 
 const dollarsPerSpec = (gpu: Gpu, dollars: number, spec: GpuSpecKey): number =>
-  dollars / gpu[spec]
+  divideSafe(dollars, gpu[spec])
 
 function sortGpus(
   gpus: PricedGpu[],

@@ -79,6 +79,18 @@ WHERE "name" IN
 - [+] feat: cards show country being sold from
 - [+] feat: add feedback alert on top of pages that requests feedback
 - [+] feat: remove all "for parts not working" listings
+- [+] feat: add AMD rx 5xx cards for reddit dude and reply
+
+- [ ] feat: finish adwords setup with gtag and consent mode:
+
+  - Setup consent mode: https://support.google.com/google-ads/answer/10000067#zippy=%2Cconsent-mode-behaviors-in-your-conversion-tracking-tags
+  - Opt users in/out based on `posthog.has_opted_out_capturing`: https://posthog.com/docs/libraries/js#opt-users-out
+  - add Google to privacy/cookies page
+  - Get google tag insertion code at https://ads.google.com/aw/tagsettings?ocid=1548733621&euid=1052306284&__u=3432655116&uscid=1548733621&__c=7631249229&authuser=0&hl=en_US&utm_campaign=US-en-xs-ip-gmb_aw_serp_ia2_ca-sf-dw-uao-unqsi-CPyasKOxhIMDFfotfQkdUPwFbA-unqsi-uao-agembe-acce&utm_medium=et&utm_source=gmb&sourceid=emp&workflowSessionId=a61953D53-E319-4FCA-A500-10AD3D4B2B6A--1#
+
+- [ ] feat: add fps metrics (e.g. maybe @4K or something?) Then post that to reddit. Those gamers like fps
+
+  - _In addition to our own graphics cards benchmarks, we use various trusted sources for validating gaming benchmarks including TechPowerUp, TomsHardware, AnandTech, TechSpot, and many more._ – https://www.gpucheck.com/gpu-benchmark-graphics-card-comparison-chart
 
 - [ ] feat: choose listings by **use case**. Buyers want to buy a card for a use case. Then it sorts/ranks by appropriate metric and showcases appropriate metric
 
@@ -98,9 +110,6 @@ WHERE "name" IN
 
   - [+] feat: ensure affiliate links are used: See [Header for affiliate information](https://developers.ebay.com/api-docs/buy/static/api-browse.html#affiliate-header)
 
-- [ ] feat: add AMD rx 5xx cards for reddit dude and reply
-- [ ] feat: add fps metrics (e.g. maybe @4K or something?) Then post that to reddit. Those gamers like fps
-  - _In addition to our own graphics cards benchmarks, we use various trusted sources for validating gaming benchmarks including TechPowerUp, TomsHardware, AnandTech, TechSpot, and many more._ – https://www.gpucheck.com/gpu-benchmark-graphics-card-comparison-chart
 - [ ] feat: can filter by attributes and attribute pills
 
 - [ ] fix: add lot size attribute and metrics support items that have multiple items (update $/perf specs) e.g. "**_ LOT OF 10 GPU's_** NVIDIA RTX A5000 24GB GDDR6"

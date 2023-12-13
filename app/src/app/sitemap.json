@@ -29,6 +29,22 @@
       "title": "Compare GPU Prices by Tensor Core Count"
     },
     {
+      "path": "/ml/shop/gpu/amd-radeon-rx-580x",
+      "title": "Price Compare AMD Radeon RX 580X GPUs"
+    },
+    {
+      "path": "/ml/shop/gpu/amd-radeon-rx-590",
+      "title": "Price Compare AMD Radeon RX 590 GPUs"
+    },
+    {
+      "path": "/ml/shop/gpu/amd-radeon-rx-7900-xt",
+      "title": "Price Compare AMD Radeon RX 7900 XT GPUs"
+    },
+    {
+      "path": "/ml/shop/gpu/amd-radeon-rx-7900-xtx",
+      "title": "Price Compare AMD Radeon RX 7900 XTX GPUs"
+    },
+    {
       "path": "/ml/shop/gpu/nvidia-a10",
       "title": "Price Compare NVIDIA A10 GPUs"
     },
@@ -107,6 +123,22 @@
     {
       "path": "/ml/learn/gpu/specifications",
       "title": "GPU Performance Specifications for Machine Learning"
+    },
+    {
+      "path": "/ml/learn/gpu/amd-radeon-rx-580x",
+      "title": "AMD Radeon RX 580X Specifications for Machine Learning"
+    },
+    {
+      "path": "/ml/learn/gpu/amd-radeon-rx-590",
+      "title": "AMD Radeon RX 590 Specifications for Machine Learning"
+    },
+    {
+      "path": "/ml/learn/gpu/amd-radeon-rx-7900-xt",
+      "title": "AMD Radeon RX 7900 XT Specifications for Machine Learning"
+    },
+    {
+      "path": "/ml/learn/gpu/amd-radeon-rx-7900-xtx",
+      "title": "AMD Radeon RX 7900 XTX Specifications for Machine Learning"
     },
     {
       "path": "/ml/learn/gpu/nvidia-a10",
@@ -232,7 +264,8 @@
     },
     {
       "path": "/ml/learn/models/mistral-7b",
-      "title": "About Machine Learning Model Mistral-7B"
+      "title": "About Machine Learning Model Mistral-7B",
+      "lastModified": "2023-12-11T07:53:52.000Z"
     },
     {
       "path": "/ml/learn/models/llama-2",

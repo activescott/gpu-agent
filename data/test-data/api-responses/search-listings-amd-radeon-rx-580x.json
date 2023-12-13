@@ -1,0 +1,1020 @@
+[
+  {
+    "itemId": "v1|126177002535|0",
+    "title": "Apple 2019 AMD Radeon Pro 580X 8GB RAM Mac Pro 7,1 A1991 MPX Module Graphic card",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/3U8AAOSwY1llTAPQ/s-l225.jpg"
+    },
+    "price": {
+      "value": "110.00",
+      "currency": "USD"
+    },
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C126177002535%7C0",
+    "seller": {
+      "username": "redacted-3249673543383663.5",
+      "feedbackPercentage": "100.0",
+      "feedbackScore": 109
+    },
+    "condition": "Used",
+    "conditionId": "3000",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/3U8AAOSwY1llTAPQ/s-l1600.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "0.00",
+          "currency": "USD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE",
+      "BEST_OFFER"
+    ],
+    "epid": "13063553709",
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/126177002535?hash=item1d60bc4427%3Ag%3A3U8AAOSwY1llTAPQ&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/126177002535?hash=item1d60bc4427:g:3U8AAOSwY1llTAPQ",
+    "itemLocation": {
+      "postalCode": "305**",
+      "country": "US"
+    },
+    "additionalImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/ByAAAOSwYuhlTAP4/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/uVMAAOSw~MllTAQH/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/hDQAAOSwZTVlTAQU/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/N7cAAOSwk4JlTAQk/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/HZUAAOSwrFplTAQ1/s-l225.jpg"
+      }
+    ],
+    "adultOnly": false,
+    "legacyItemId": "126177002535",
+    "availableCoupons": false,
+    "itemCreationDate": "2023-11-08T22:03:50.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": false,
+    "listingMarketplaceId": "EBAY_US"
+  },
+  {
+    "itemId": "v1|305249635846|0",
+    "title": "AMD Radeon Pro 580X 8GB MPX Video Card for 2019 Mac Pro",
+    "leafCategoryIds": [
+      "27386",
+      "111418"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "111418",
+        "categoryName": "Apple Desktops & All-In-Ones"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "171957",
+        "categoryName": "Desktops & All-In-Ones"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/pH4AAOSwD6plRozW/s-l225.jpg"
+    },
+    "price": {
+      "value": "198.00",
+      "currency": "USD"
+    },
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C305249635846%7C0",
+    "seller": {
+      "username": "redacted-3033719560703003.5",
+      "feedbackPercentage": "100.0",
+      "feedbackScore": 495
+    },
+    "condition": "Used",
+    "conditionId": "3000",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/pH4AAOSwD6plRozW/s-l1600.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "0.00",
+          "currency": "USD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE",
+      "BEST_OFFER"
+    ],
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/305249635846?hash=item47124bce06%3Ag%3ApH4AAOSwD6plRozW&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/305249635846?hash=item47124bce06:g:pH4AAOSwD6plRozW",
+    "itemLocation": {
+      "postalCode": "170**",
+      "country": "US"
+    },
+    "additionalImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/oZUAAOSwyRllRozd/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/J9QAAOSw24hlRozf/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/EPIAAOSwqhVlRozd/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/U8UAAOSw8L1lRozb/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/VK4AAOSwbFhlRozc/s-l225.jpg"
+      }
+    ],
+    "adultOnly": false,
+    "legacyItemId": "305249635846",
+    "availableCoupons": false,
+    "itemCreationDate": "2023-11-04T18:26:44.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": false,
+    "listingMarketplaceId": "EBAY_US"
+  },
+  {
+    "itemId": "v1|364283618765|0",
+    "title": "AMD Radeon Pro RX 580X 8GB 3xDP HDMI VR Ready GDDR5 Video Card Dell 65VH5",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/Y~gAAOSwtFRj0UP9/s-l225.jpg"
+    },
+    "price": {
+      "value": "299.99",
+      "currency": "USD"
+    },
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C364283618765%7C0",
+    "seller": {
+      "username": "redacted-8502190539814749",
+      "feedbackPercentage": "100.0",
+      "feedbackScore": 11435
+    },
+    "condition": "Used",
+    "conditionId": "3000",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/Y~gAAOSwtFRj0UP9/s-l1600.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "0.00",
+          "currency": "USD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE",
+      "BEST_OFFER"
+    ],
+    "epid": "24048337318",
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/364283618765?hash=item54d0fee5cd%3Ag%3AY%7EgAAOSwtFRj0UP9&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/364283618765?hash=item54d0fee5cd:g:Y~gAAOSwtFRj0UP9",
+    "itemLocation": {
+      "postalCode": "766**",
+      "country": "US"
+    },
+    "additionalImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/W4IAAOSwYThj0UQG/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/7oIAAOSwgrhj0UQP/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/4AoAAOSwtnlj0UQe/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/TGIAAOSwFZ1j0UQo/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/sNgAAOSw9ndj0UQl/s-l225.jpg"
+      }
+    ],
+    "adultOnly": false,
+    "legacyItemId": "364283618765",
+    "availableCoupons": false,
+    "itemCreationDate": "2023-06-01T18:55:40.000Z",
+    "topRatedBuyingExperience": true,
+    "priorityListing": false,
+    "listingMarketplaceId": "EBAY_US"
+  },
+  {
+    "itemId": "v1|386320355094|0",
+    "title": "Apple AMD Radeon Pro 580X 8GB RAM MPX Module Graphics Card For Parts Please Read",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/XxIAAOSw9bZlZLQD/s-l225.jpg"
+    },
+    "price": {
+      "value": "106.58",
+      "currency": "USD"
+    },
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C386320355094%7C0",
+    "seller": {
+      "username": "redacted-8401802447157219",
+      "feedbackPercentage": "99.6",
+      "feedbackScore": 177422
+    },
+    "condition": "For parts or not working",
+    "conditionId": "7000",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/XxIAAOSw9bZlZLQD/s-l1600.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "0.00",
+          "currency": "USD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE"
+    ],
+    "epid": "24037991148",
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/386320355094?hash=item59f27ccf16%3Ag%3AXxIAAOSw9bZlZLQD&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/386320355094?hash=item59f27ccf16:g:XxIAAOSw9bZlZLQD",
+    "itemLocation": {
+      "postalCode": "641**",
+      "country": "US"
+    },
+    "additionalImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/QZkAAOSw5S1lZLQC/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/r9IAAOSw1lhlZLQC/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/owAAAOSwFj1lZLQE/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/GasAAOSwvDZlZLQD/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/e90AAOSwdahlZLQG/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/VIUAAOSwvhRlZLQD/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/Z-YAAOSwkbBlZLQC/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/BW4AAOSwHXBlZLQD/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/EH0AAOSwKC5lZLQE/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/Wi0AAOSwWA5lZLQD/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/FNgAAOSwsQllZLQD/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/-qkAAOSwtjtlZLQD/s-l225.jpg"
+      }
+    ],
+    "adultOnly": false,
+    "legacyItemId": "386320355094",
+    "availableCoupons": false,
+    "itemCreationDate": "2023-11-27T15:17:32.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": false,
+    "listingMarketplaceId": "EBAY_US"
+  },
+  {
+    "itemId": "v1|126224658616|0",
+    "title": "AMD Radeon Pro 580X 8GB RAM MPX Module / GPU for Apple 2019 Mac Pro (7,1 A1991)",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/0i8AAOSwkfhlcQVY/s-l225.jpg"
+    },
+    "price": {
+      "value": "100.00",
+      "currency": "USD"
+    },
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C126224658616%7C0",
+    "seller": {
+      "username": "redacted-6103892303890273",
+      "feedbackPercentage": "100.0",
+      "feedbackScore": 476
+    },
+    "condition": "Used",
+    "conditionId": "3000",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/0i8AAOSwkfhlcQVY/s-l1600.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "0.00",
+          "currency": "USD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE"
+    ],
+    "epid": "24037991148",
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/126224658616?hash=item1d639370b8%3Ag%3A0i8AAOSwkfhlcQVY&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/126224658616?hash=item1d639370b8:g:0i8AAOSwkfhlcQVY",
+    "itemLocation": {
+      "postalCode": "931**",
+      "country": "US"
+    },
+    "additionalImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/CnIAAOSwsGdlcQVY/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/oDEAAOSwIc1lcQVY/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/odcAAOSwvZplcQVZ/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/uvsAAOSwiFxlcQVY/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/YqcAAOSwHixlcQVY/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/TRoAAOSwd4ZlcQVY/s-l225.jpg"
+      }
+    ],
+    "adultOnly": false,
+    "legacyItemId": "126224658616",
+    "availableCoupons": false,
+    "itemCreationDate": "2023-12-06T23:36:55.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": false,
+    "listingMarketplaceId": "EBAY_US"
+  },
+  {
+    "itemId": "v1|166461055127|0",
+    "title": "AMD RADEON RX 580X 4GB GDDR5 GRAPHICS CARD MOTHERBOARD DEFECTIVE",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/0A0AAOSwUTBlYq4c/s-l225.jpg"
+    },
+    "price": {
+      "value": "77.88",
+      "currency": "USD"
+    },
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C166461055127%7C0",
+    "seller": {
+      "username": "redacted-3667433028267411.5",
+      "feedbackPercentage": "97.7",
+      "feedbackScore": 8099
+    },
+    "marketingPrice": {
+      "originalPrice": {
+        "value": "147.97",
+        "currency": "USD"
+      },
+      "discountPercentage": "47",
+      "discountAmount": {
+        "value": "70.09",
+        "currency": "USD"
+      },
+      "priceTreatment": "LIST_PRICE"
+    },
+    "condition": "For parts or not working",
+    "conditionId": "7000",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/0A0AAOSwUTBlYq4c/s-l640.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "0.00",
+          "currency": "USD"
+        },
+        "minEstimatedDeliveryDate": "2023-12-15T08:00:00.000Z",
+        "maxEstimatedDeliveryDate": "2023-12-18T08:00:00.000Z",
+        "guaranteedDelivery": true
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE",
+      "BEST_OFFER"
+    ],
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/166461055127?hash=item26c1da2097%3Ag%3A0A0AAOSwUTBlYq4c&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/166461055127?hash=item26c1da2097:g:0A0AAOSwUTBlYq4c",
+    "itemLocation": {
+      "postalCode": "761**",
+      "country": "US"
+    },
+    "additionalImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/VMwAAOSws8plYq4d/s-l225.jpg"
+      }
+    ],
+    "adultOnly": false,
+    "legacyItemId": "166461055127",
+    "availableCoupons": false,
+    "itemCreationDate": "2023-11-26T02:30:07.000Z",
+    "topRatedBuyingExperience": true,
+    "priorityListing": false,
+    "listingMarketplaceId": "EBAY_US"
+  },
+  {
+    "itemId": "v1|335159090384|0",
+    "title": "Apple Radeon Pro 580X MPX Graphic Card Module - PCIe 3.0",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/XLwAAOSw9GBldcP8/s-l225.jpg"
+    },
+    "price": {
+      "value": "70.00",
+      "currency": "USD"
+    },
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C335159090384%7C0",
+    "seller": {
+      "username": "redacted-7342894150931175",
+      "feedbackPercentage": "100.0",
+      "feedbackScore": 182
+    },
+    "condition": "Open box",
+    "conditionId": "1500",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/XLwAAOSw9GBldcP8/s-l640.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "CALCULATED"
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE",
+      "BEST_OFFER"
+    ],
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/335159090384?hash=item4e0909dcd0%3Ag%3AXLwAAOSw9GBldcP8&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/335159090384?hash=item4e0909dcd0:g:XLwAAOSw9GBldcP8",
+    "itemLocation": {
+      "postalCode": "211**",
+      "country": "US"
+    },
+    "adultOnly": false,
+    "legacyItemId": "335159090384",
+    "availableCoupons": false,
+    "itemCreationDate": "2023-12-10T14:01:32.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": false,
+    "listingMarketplaceId": "EBAY_US"
+  },
+  {
+    "itemId": "v1|335140771945|0",
+    "title": "Apple 2019 Mac Pro AMD Radeon Pro 580X 8GB GPU MPX Module",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/gqcAAOSwQ65lZee9/s-l225.jpg"
+    },
+    "price": {
+      "value": "135.00",
+      "currency": "USD"
+    },
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C335140771945%7C0",
+    "seller": {
+      "username": "redacted-7391871091739445",
+      "feedbackPercentage": "100.0",
+      "feedbackScore": 130
+    },
+    "condition": "Used",
+    "conditionId": "3000",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/gqcAAOSwQ65lZee9/s-l1600.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "9.95",
+          "currency": "USD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE",
+      "BEST_OFFER"
+    ],
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/335140771945?hash=item4e07f25869%3Ag%3AgqcAAOSwQ65lZee9&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/335140771945?hash=item4e07f25869:g:gqcAAOSwQ65lZee9",
+    "itemLocation": {
+      "postalCode": "109**",
+      "country": "US"
+    },
+    "additionalImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/3voAAOSw07xlZee9/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/UPcAAOSw4HVlZee9/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/5-oAAOSwxDFlZee9/s-l225.jpg"
+      }
+    ],
+    "adultOnly": false,
+    "legacyItemId": "335140771945",
+    "availableCoupons": false,
+    "itemCreationDate": "2023-11-28T13:16:03.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": false,
+    "listingMarketplaceId": "EBAY_US"
+  },
+  {
+    "itemId": "v1|115837764274|0",
+    "title": "AMD Radeon Pro 580X 8GB RAM MPX Module / GPU for Apple 2019 Mac Pro (7,1 A1991)",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/kigAAOSwY2VkkN67/s-l225.jpg"
+    },
+    "price": {
+      "value": "299.01",
+      "currency": "USD"
+    },
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C115837764274%7C0",
+    "seller": {
+      "username": "redacted-4065234265016285.5",
+      "feedbackPercentage": "99.8",
+      "feedbackScore": 8611
+    },
+    "condition": "Used",
+    "conditionId": "3000",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/kigAAOSwY2VkkN67/s-l1600.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "0.00",
+          "currency": "USD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE"
+    ],
+    "epid": "24037991148",
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/115837764274?hash=item1af87802b2%3Ag%3AkigAAOSwY2VkkN67&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/115837764274?hash=item1af87802b2:g:kigAAOSwY2VkkN67",
+    "itemLocation": {
+      "postalCode": "913**",
+      "country": "US"
+    },
+    "additionalImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/AZMAAOSwUbJkkN67/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/~I8AAOSws2FkkN67/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/-oYAAOSw2sdkkN67/s-l225.jpg"
+      }
+    ],
+    "adultOnly": false,
+    "legacyItemId": "115837764274",
+    "availableCoupons": false,
+    "itemCreationDate": "2023-06-19T23:13:56.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": false,
+    "listingMarketplaceId": "EBAY_US"
+  },
+  {
+    "itemId": "v1|194967988250|0",
+    "title": "Radeon Pro 580X MPX Module 8GB (Radeon 580)  for 7,1 Mac Pro",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/RxQAAOSwm-9iUkpb/s-l225.jpg"
+    },
+    "price": {
+      "value": "213.20",
+      "currency": "USD",
+      "convertedFromValue": "325.00",
+      "convertedFromCurrency": "AUD"
+    },
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C194967988250%7C0",
+    "seller": {
+      "username": "redacted-1733086483530095.8",
+      "feedbackPercentage": "100.0",
+      "feedbackScore": 281
+    },
+    "condition": "Used",
+    "conditionId": "3000",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/RxQAAOSwm-9iUkpb/s-l1600.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "101.68",
+          "currency": "USD",
+          "convertedFromValue": "155.00",
+          "convertedFromCurrency": "AUD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE"
+    ],
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/194967988250?hash=item2d64ff681a%3Ag%3ARxQAAOSwm-9iUkpb&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/194967988250?hash=item2d64ff681a:g:RxQAAOSwm-9iUkpb",
+    "itemLocation": {
+      "postalCode": "2***",
+      "country": "AU"
+    },
+    "additionalImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/ur4AAOSwxkxiUkpd/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/pHwAAOSw~IBiUkpe/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/mHUAAOSwqhpiUkpg/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/eeYAAOSwiGViUkph/s-l225.jpg"
+      }
+    ],
+    "adultOnly": false,
+    "legacyItemId": "194967988250",
+    "availableCoupons": false,
+    "itemCreationDate": "2022-04-10T03:13:09.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": false,
+    "listingMarketplaceId": "EBAY_AU"
+  },
+  {
+    "itemId": "v1|314744866609|0",
+    "title": "AMD Radeon Pro 580X 8GB RAM MPX Module / GPU for Apple 2019 Mac Pro (7,1 A1991)",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/tK8AAOSwEQZkx--8/s-l225.jpg"
+    },
+    "price": {
+      "value": "300.00",
+      "currency": "USD"
+    },
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C314744866609%7C0",
+    "seller": {
+      "username": "redacted-7471842493584095",
+      "feedbackPercentage": "100.0",
+      "feedbackScore": 5
+    },
+    "condition": "Used",
+    "conditionId": "3000",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/tK8AAOSwEQZkx--8/s-l1600.jpg"
+      }
+    ],
+    "pickupOptions": [
+      {
+        "pickupLocationType": "ARRANGED_LOCATION"
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE",
+      "BEST_OFFER"
+    ],
+    "epid": "24037991148",
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/314744866609?hash=item4948418731%3Ag%3AtK8AAOSwEQZkx--8&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/314744866609?hash=item4948418731:g:tK8AAOSwEQZkx--8",
+    "itemLocation": {
+      "postalCode": "282**",
+      "country": "US"
+    },
+    "additionalImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/jjYAAOSwu-Vkx--8/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/LYYAAOSwK~9kx--8/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/a-kAAOSwNodkx--8/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/z~UAAOSwpXFkx--9/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/X2kAAOSwmVlkx--9/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/8n4AAOSwiQ1kx--9/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/s9cAAOSwEnVkx--9/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/7scAAOSwsQBkx--9/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/ZeAAAOSwSI1kx--9/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/F30AAOSwQAxkx--9/s-l225.jpg"
+      }
+    ],
+    "adultOnly": false,
+    "legacyItemId": "314744866609",
+    "availableCoupons": false,
+    "itemCreationDate": "2023-08-02T05:31:48.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": false,
+    "listingMarketplaceId": "EBAY_US"
+  },
+  {
+    "itemId": "v1|274920172539|0",
+    "title": "DATALAND RX580 X-Serial 8GB GDDR5 2048SP Graphics Card Video Card HDMI DVI DP",
+    "leafCategoryIds": [
+      "27386"
+    ],
+    "categories": [
+      {
+        "categoryId": "27386",
+        "categoryName": "Graphics/Video Cards"
+      },
+      {
+        "categoryId": "58058",
+        "categoryName": "Computers/Tablets & Networking"
+      },
+      {
+        "categoryId": "175673",
+        "categoryName": "Computer Components & Parts"
+      }
+    ],
+    "image": {
+      "imageUrl": "https://i.ebayimg.com/thumbs/images/g/YowAAOSweBBiNATQ/s-l225.jpg"
+    },
+    "price": {
+      "value": "125.00",
+      "currency": "USD"
+    },
+    "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C274920172539%7C0",
+    "seller": {
+      "username": "redacted-4913972405677721",
+      "feedbackPercentage": "100.0",
+      "feedbackScore": 343
+    },
+    "condition": "Used",
+    "conditionId": "3000",
+    "thumbnailImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/images/g/YowAAOSweBBiNATQ/s-l640.jpg"
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingCostType": "FIXED",
+        "shippingCost": {
+          "value": "30.00",
+          "currency": "USD"
+        }
+      }
+    ],
+    "buyingOptions": [
+      "FIXED_PRICE",
+      "BEST_OFFER"
+    ],
+    "itemAffiliateWebUrl": "https://www.ebay.com/itm/274920172539?hash=item400284ebfb%3Ag%3AYowAAOSweBBiNATQ&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339023605&customid=&toolid=10049",
+    "itemWebUrl": "https://www.ebay.com/itm/274920172539?hash=item400284ebfb:g:YowAAOSweBBiNATQ",
+    "itemLocation": {
+      "country": "CN"
+    },
+    "additionalImages": [
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/09QAAOSwp7ViNATe/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/hgcAAOSwK3tiNATk/s-l225.jpg"
+      },
+      {
+        "imageUrl": "https://i.ebayimg.com/thumbs/images/g/PK8AAOSwbv1iNATp/s-l225.jpg"
+      }
+    ],
+    "adultOnly": false,
+    "legacyItemId": "274920172539",
+    "availableCoupons": false,
+    "itemCreationDate": "2021-08-25T13:09:11.000Z",
+    "topRatedBuyingExperience": false,
+    "priorityListing": false,
+    "listingMarketplaceId": "EBAY_US"
+  }
+]

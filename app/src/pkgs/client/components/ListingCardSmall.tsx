@@ -10,6 +10,7 @@ import Image from "next/image"
 import { AttributePill, CountryPill } from "./AttributePill"
 import { SpecPill } from "./SpecPill"
 import { ListingAffiliateLink } from "./ListingAffiliateLink"
+import { divideSafe } from "@/pkgs/isomorphic/math"
 
 interface ListingCardProps {
   item: Listing
@@ -72,7 +73,7 @@ export function ListingCardSmall({
                   highlightSpec === highlightSpec ? "primary" : "secondary"
                 }
               >
-                {formatPrice(cost / specs[highlightSpec])} /{" "}
+                {formatPrice(divideSafe(cost, specs[highlightSpec]))} /{" "}
                 {GpuSpecsDescription[highlightSpec].unit}
               </SpecPill>
             </div>

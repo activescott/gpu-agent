@@ -5,6 +5,7 @@ import { ListingCard } from "./ListingCard"
 import { useState } from "react"
 import { createDiag } from "@activescott/diag"
 import { Listing } from "@/pkgs/isomorphic/model"
+import { divideSafe } from "@/pkgs/isomorphic/math"
 
 const log = createDiag("shopping-agent:ListingGallery")
 
@@ -65,8 +66,14 @@ interface SortValue {
 function sortListings(listings: ListingItem[], sortValue: SortValue) {
   const sorted = listings.sort((a, b) => {
     const { specKey, ascending } = sortValue
-    const aValue = Number.parseFloat(a.item.priceValue) / a.specs[specKey]
-    const bValue = Number.parseFloat(b.item.priceValue) / b.specs[specKey]
+    const aValue = divideSafe(
+      Number.parseFloat(a.item.priceValue),
+      a.specs[specKey],
+    )
+    const bValue = divideSafe(
+      Number.parseFloat(b.item.priceValue),
+      b.specs[specKey],
+    )
     return ascending ? aValue - bValue : bValue - aValue
   })
   return sorted

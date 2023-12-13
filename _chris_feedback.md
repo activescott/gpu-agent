@@ -10,7 +10,9 @@ Interesting site! You're probably aware of some of the following feedback, but h
 
 - [ ] 2. I wondered how often your data is updated. I've seen some manually curated sites for this sort of thing that feel out of date after a while, but if it's real-time you could reinforce this to build credibility with some copy or a little icon or banner or something.
 
-- [ ] 3. The information architecture feels off. Everything feels "big" and it feels very busy for a relatively consistent/small amount of information. I'd look at all of the ecommerce websites out there and follow their general styling (font size, font treatment, layout, etc.). I think it'd make it feel more familiar and easier to consume and navigate for someone browsing an array of products.
+- [-] 3. The information architecture feels off. Everything feels "big" and it feels very busy for a relatively consistent/small amount of information. I'd look at all of the ecommerce websites out there and follow their general styling (font size, font treatment, layout, etc.). I think it'd make it feel more familiar and easier to consume and navigate for someone browsing an array of products.
+
+  - Partially addressed by adding the rankings area more as an experiment.
 
 - [ ] 4. I bet there are some organic ways users might like to browse to your other sections even without using the top nav. You already have the "More GPUs" links at the bottom, but it took me a minute to find them. I just expected to be able to click on the header to get the full list.
 

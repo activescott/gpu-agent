@@ -14,7 +14,7 @@ export default function Page() {
         Some research we&apos;ve put together on GPUs for machine learning is
         below.
       </p>
-      <div className="row g-4 py-4 row-cols-1 row-cols-lg-3">
+      <div className="row g-4 py-4 row-cols-1 row-cols-lg-2">
         <Feature
           title="Machine Learning GPU Frequently Asked Questions"
           icon="person-raised-hand"
@@ -28,7 +28,7 @@ export default function Page() {
             ))}
         </Feature>
 
-        <Feature title="Use cases for Machine Learning" icon="puzzle">
+        <Feature title="Use Cases for Machine Learning" icon="puzzle">
           {sitemapJson.data
             .filter((item) => item.path.startsWith("/ml/learn/use-case"))
             .map((item) => (
@@ -38,23 +38,21 @@ export default function Page() {
             ))}
         </Feature>
 
-        <Feature
-          title="Machine Learning GPUs & Accelerators"
-          icon="motherboard"
-        >
+        <Feature title="Machine Learning Models" icon="layers">
           {sitemapJson.data
-            .filter((item) => item.path.startsWith("/ml/learn/gpu"))
-            .filter((item) => !item.path.startsWith("/ml/learn/gpu/ranking"))
+            .filter((item) => item.path.startsWith("/ml/learn/models"))
+
             .map((item) => (
               <li key={item.path}>
                 <a href={item.path}>{item.title}</a>
               </li>
             ))}
         </Feature>
-        <Feature title="Machine Learning Models" icon="layers">
-          {sitemapJson.data
-            .filter((item) => item.path.startsWith("/ml/learn/models"))
 
+        <Feature title="GPU Specifications" icon="motherboard">
+          {sitemapJson.data
+            .filter((item) => item.path.startsWith("/ml/learn/gpu"))
+            .filter((item) => !item.path.startsWith("/ml/learn/gpu/ranking"))
             .map((item) => (
               <li key={item.path}>
                 <a href={item.path}>{item.title}</a>

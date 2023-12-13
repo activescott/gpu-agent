@@ -23,6 +23,7 @@ export const GpuSpecKeys: GpuSpecKey[] = [
 interface GpuSpecItem {
   label: string
   unit: string
+  unitShortest: string
   description: string
   descriptionDollarsPer: string
 }
@@ -30,7 +31,8 @@ interface GpuSpecItem {
 export const GpuSpecsDescription: Record<GpuSpecKey, GpuSpecItem> = {
   tensorCoreCount: {
     label: "Tensor Core Count",
-    unit: "Tensor Core",
+    unit: "Tensor Cores",
+    unitShortest: "Cores",
     description:
       "Tensor Cores are processors that perform efficient matrix multiplication, and are very useful for deep neural networks.",
     descriptionDollarsPer: "How much you pay per tensor core. Lower is better.",
@@ -38,6 +40,7 @@ export const GpuSpecsDescription: Record<GpuSpecKey, GpuSpecItem> = {
   fp32TFLOPS: {
     label: "FP32 TFLOPs",
     unit: "FP32 TFLOPs",
+    unitShortest: "TFLOPs",
     description:
       "The number of 32-bit floating-point operations per second the card can perform in trillions.",
     descriptionDollarsPer:
@@ -46,6 +49,7 @@ export const GpuSpecsDescription: Record<GpuSpecKey, GpuSpecItem> = {
   fp16TFLOPS: {
     label: "FP16 TFLOPs",
     unit: "FP16 TFLOPs",
+    unitShortest: "TFLOPs",
     description:
       "The number of 16-bit operations per second the card can perform in trillions.",
     descriptionDollarsPer:
@@ -54,6 +58,7 @@ export const GpuSpecsDescription: Record<GpuSpecKey, GpuSpecItem> = {
   int8TOPS: {
     label: "Int8 TOPs",
     unit: "Int8 TOPs",
+    unitShortest: "TOPs",
     description:
       "The number of 8-bit operations per second the card can perform in trillions.",
     descriptionDollarsPer:
@@ -62,6 +67,7 @@ export const GpuSpecsDescription: Record<GpuSpecKey, GpuSpecItem> = {
   memoryCapacityGB: {
     label: "Memory Capacity (GB)",
     unit: "GB",
+    unitShortest: "GB",
     description: "The amount of memory the card has in gigabytes.",
     descriptionDollarsPer:
       "Dollars-per-gigabyte is how much you pay for each GB of memory capacity. Lower is better.",
@@ -69,6 +75,7 @@ export const GpuSpecsDescription: Record<GpuSpecKey, GpuSpecItem> = {
   memoryBandwidthGBs: {
     label: "Memory Bandwidth (GB/s)",
     unit: "GB/s",
+    unitShortest: "GB/s",
     description:
       "The rate that data can be transferred between memory and the processor in gigabytes per second.",
     descriptionDollarsPer:

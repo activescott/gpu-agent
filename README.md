@@ -80,7 +80,7 @@ WHERE "name" IN
 - [+] feat: add feedback alert on top of pages that requests feedback
 - [+] feat: remove all "for parts not working" listings
 - [+] feat: add AMD rx 5xx cards for reddit dude and reply
-
+- [ ] feat: ranking table now contains actual muted value in each cell
 - [ ] feat: finish adwords setup with gtag and consent mode:
 
   - Setup consent mode: https://support.google.com/google-ads/answer/10000067#zippy=%2Cconsent-mode-behaviors-in-your-conversion-tracking-tags

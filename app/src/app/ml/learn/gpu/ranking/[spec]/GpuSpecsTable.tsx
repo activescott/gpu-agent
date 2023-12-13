@@ -126,6 +126,11 @@ export function GpuSpecsTable({
                   ) : (
                     "n/a"
                   )}
+                  <div className="m-0 p-0 fs-6 fw-lighter text-muted">
+                    {gpu.gpu[specKey]
+                      ? `${gpu.gpu[specKey]} ${GpuSpecsDescription[specKey].unitShortest}`
+                      : "n/a"}
+                  </div>
                 </td>
               ))}
               <td style={{ textAlign: "right" }}>

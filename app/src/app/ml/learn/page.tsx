@@ -15,6 +15,19 @@ export default function Page() {
         below.
       </p>
       <div className="row g-4 py-4 row-cols-1 row-cols-lg-3">
+        <Feature
+          title="Machine Learning GPU Frequently Asked Questions"
+          icon="person-raised-hand"
+        >
+          {sitemapJson.data
+            .filter((item) => item.path.startsWith("/ml/learn/faq"))
+            .map((item) => (
+              <li key={item.path}>
+                <a href={item.path}>{item.title}</a>
+              </li>
+            ))}
+        </Feature>
+
         <Feature title="Use cases for Machine Learning" icon="puzzle">
           {sitemapJson.data
             .filter((item) => item.path.startsWith("/ml/learn/use-case"))

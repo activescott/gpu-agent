@@ -293,6 +293,10 @@
       "lastModified": "2023-11-26T05:00:45.000Z"
     },
     {
+      "path": "/ml/learn/faq/how-much-gpu-memory-for-llm",
+      "title": "How much memory does my GPU need to run an LLM?"
+    },
+    {
       "path": "/contact",
       "title": "page.tsx",
       "lastModified": "2023-12-03T19:52:27.000Z"

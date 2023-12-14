@@ -90,6 +90,9 @@ WHERE "name" IN
   - Get google tag insertion code at https://ads.google.com/aw/tagsettings?ocid=1548733621&euid=1052306284&__u=3432655116&uscid=1548733621&__c=7631249229&authuser=0&hl=en_US&utm_campaign=US-en-xs-ip-gmb_aw_serp_ia2_ca-sf-dw-uao-unqsi-CPyasKOxhIMDFfotfQkdUPwFbA-unqsi-uao-agembe-acce&utm_medium=et&utm_source=gmb&sourceid=emp&workflowSessionId=a61953D53-E319-4FCA-A500-10AD3D4B2B6A--1#
 
 - [ ] feat: add an ML FAQ about "Which Specifications matter for LLMs?" It should cite https://www.baseten.co/blog/llm-transformer-inference-guide/ for formulas and cite Tim Dettmers' article showing that memory bandwidth is usually teh constraint at https://timdettmers.com/2023/01/30/which-gpu-for-deep-learning/#
+- [ ] feat: Add FAQ: "Do AMD GPUs work for Machine Learning": See
+      [2023/12 Added ROCm support to vLLM](https://github.com/vllm-project/vllm) and https://embeddedllm.com/blog/vllm_rocm/
+
 - [ ] feat: add fps metrics (e.g. maybe @1440 or 4K or something?) Then post that to reddit. Those gamers like fps
 
   - _In addition to our own graphics cards benchmarks, we use various trusted sources for validating gaming benchmarks including TechPowerUp, TomsHardware, AnandTech, TechSpot, and many more._ – https://www.gpucheck.com/gpu-benchmark-graphics-card-comparison-chart
@@ -111,6 +114,9 @@ WHERE "name" IN
       - FUTURE: FP16, FP32, FP8, INT8 OP/s, Memory bandwidth, memory size
 
   - [+] feat: ensure affiliate links are used: See [Header for affiliate information](https://developers.ebay.com/api-docs/buy/static/api-browse.html#affiliate-header)
+
+- [ ] feat: add AMD Radeon PRO W7900: https://www.amd.com/en/products/professional-graphics/amd-radeon-pro-w7900
+- [ ] feat: add AMD Radeon PRO W7800 https://www.amd.com/en/products/professional-graphics/amd-radeon-pro-w7800
 
 - [ ] feat: can filter by attributes and attribute pills
 

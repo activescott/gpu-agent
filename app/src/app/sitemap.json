@@ -205,7 +205,7 @@
     {
       "path": "/ml/learn",
       "title": "What to Look for in a GPU for Machine Learning",
-      "lastModified": "2023-12-11T01:05:10.000Z"
+      "lastModified": "2023-12-13T22:53:21.000Z"
     },
     {
       "path": "/ml/learn/use-case/speech-to-text",
@@ -294,7 +294,8 @@
     },
     {
       "path": "/ml/learn/faq/how-much-gpu-memory-for-llm",
-      "title": "How much memory does my GPU need to run an LLM?"
+      "title": "How much memory does my GPU need to run an LLM?",
+      "lastModified": "2023-12-13T22:53:21.000Z"
     },
     {
       "path": "/contact",

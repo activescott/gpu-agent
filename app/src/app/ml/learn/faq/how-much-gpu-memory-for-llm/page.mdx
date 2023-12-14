@@ -4,32 +4,33 @@ import { Alert } from "../../../../../pkgs/client/components/Alert"
 
 ## Inference
 
-For this section, lets assume we're talking about inference (getting the LLM to generate output based on a prompt) not training or fine-tuning.
+For this section, let's assume we're talking about inference (getting the LLM to generate output based on a prompt), not training or fine-tuning.
 
-The way to estimate this is to take the precision of the model (usually "single precision" 16-bit per parameter) multiplied by the number of parameters. Consider that 16 bites is 2 bytes and gigabytes is 1 billion bytes. So for your 34B parameter model, you can clculate it as simply as
+The way to estimate this is to take the precision of the model (usually "half-precision," 16-bit per parameter) multiplied by the number of parameters. Consider that 16 bits is equal to 2 bytes and a gigabyte is 1 billion bytes. So, for your 34-billion parameter model, you can calculate it as simply as:
 
-So for a 34-billion parameter model with 16-bit precision (2 bytes), it is calculated as follows:
-
-```
-34 * 2 bytes = 68 GB
-```
-
-Similarly, if model is a "double-precision" size parameters at 32 bits, or 4 bytes, then calculate it as follows:
+For a 34-billion parameter model with 16-bit precision (2 bytes), it is calculated as follows:
 
 ```
-34 * 4 = 136 GB
+34 billion parameters * 2 bytes/parameter = 68 billion bytes ≈ 68 GB
+```
+
+Similarly, if a model uses "double-precision" size parameters at 32 bits, or 4 bytes, then calculate it as follows:
+
+```
+34 billion parameters * 4 bytes/parameter = 136 billion bytes ≈ 136 GB
+
 ```
 
 {/* prettier-ignore */}
 <Alert kind="success">We track GPU prices and provide rankings for machine-learning cost/performance, such as [GPUs Ranked by Cost per Memory Capacity](/ml/learn/gpu/ranking/memory-gb).</Alert>
 
-The largest memory on a single GPU available as far as I know of are the [NVIDIA A100](/ml/learn/gpu/nvidia-a100-pcie) and the [NVIDIA H100](/ml/learn/gpu/nvidia-h100-pcie) each offering 80GB of GPU RAM.
+The largest memory on a single GPU available, as far as I know, are the [NVIDIA A100](/ml/learn/gpu/nvidia-a100-pcie) and the [NVIDIA H100](/ml/learn/gpu/nvidia-h100-pcie), each offering 80GB of GPU RAM.
 
-Due to this large memory requirement, usually the larger models are [quantitized down to lower precision](/ml/learn/quantization) which can reduce accuracy in some cases but makes them feasible on single-GPU machines.
+Due to these large memory requirements, usually, the larger models are [quantitized down to lower precision](/ml/learn/quantization), which can reduce accuracy in some cases but makes them feasible on single-GPU machines.
 
-There are some ways to optimize throughput in the face of limited memory, such as [vLLM](https://blog.vllm.ai/2023/06/20/vllm.html) which is reasonably easy to get going if you're familiar with linux.
+There are some ways to optimize throughput in the face of limited memory, such as [vLLM](https://blog.vllm.ai/2023/06/20/vllm.html), which is reasonably easy to set up if you're familiar with Linux.
 
-Some other good reading that I've run across on this topic:
+Some other good reading that I've come across on this topic:
 
 - [Optimizing LLMs for Speed and Memory](https://huggingface.co/docs/transformers/llm_tutorial_optimization)
 - [How to train a 10x bigger transformer with 24x less compute](https://huggingface.co/blog/how-to-train)

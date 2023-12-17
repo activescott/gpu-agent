@@ -6,3 +6,4 @@ node_modules/
 app/public/js/bootstrap.bundle.min.js
 app/public/images/bootstrap-icons.svg
 data/MLPerf benchmarks/**/*.numbers
+data/**/*.numbers

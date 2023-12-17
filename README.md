@@ -82,6 +82,7 @@ WHERE "name" IN
 - [+] feat: add AMD rx 5xx cards for reddit dude and reply
 - [+] feat: ranking table now contains actual muted value in each cell
 - [+] feat: add Machine Learning GPU Frequently Asked Questions under ml/learn
+- [ ] feat: link to specs page from ranking page
 - [ ] feat: finish adwords setup with gtag and consent mode:
 
   - Setup consent mode: https://support.google.com/google-ads/answer/10000067#zippy=%2Cconsent-mode-behaviors-in-your-conversion-tracking-tags
@@ -89,9 +90,13 @@ WHERE "name" IN
   - add Google to privacy/cookies page
   - Get google tag insertion code at https://ads.google.com/aw/tagsettings?ocid=1548733621&euid=1052306284&__u=3432655116&uscid=1548733621&__c=7631249229&authuser=0&hl=en_US&utm_campaign=US-en-xs-ip-gmb_aw_serp_ia2_ca-sf-dw-uao-unqsi-CPyasKOxhIMDFfotfQkdUPwFbA-unqsi-uao-agembe-acce&utm_medium=et&utm_source=gmb&sourceid=emp&workflowSessionId=a61953D53-E319-4FCA-A500-10AD3D4B2B6A--1#
 
+- [ ] feat: add faq page for FP32, etc.: https://www.reddit.com/r/gpu/comments/18bvu6t/comment/kda57ex/?utm_source=share&utm_medium=web2x&context=3
 - [ ] feat: add an ML FAQ about "Which Specifications matter for LLMs?" It should cite https://www.baseten.co/blog/llm-transformer-inference-guide/ for formulas and cite Tim Dettmers' article showing that memory bandwidth is usually teh constraint at https://timdettmers.com/2023/01/30/which-gpu-for-deep-learning/#
-- [ ] feat: Add FAQ: "Do AMD GPUs work for Machine Learning": See
-      [2023/12 Added ROCm support to vLLM](https://github.com/vllm-project/vllm) and https://embeddedllm.com/blog/vllm_rocm/
+
+- [ ] feat: Add FAQ: "Do AMD GPUs work for Machine Learning":
+
+  - See [2023/12 Added ROCm support to vLLM](https://github.com/vllm-project/vllm) and https://embeddedllm.com/blog/vllm_rocm/ and https://embeddedllm.com/blog/vllm_rocm/
+  - https://www.amd.com/en/products/software/rocm.html#rocm-for-ai
 
 - [ ] feat: add fps metrics (e.g. maybe @1440 or 4K or something?) Then post that to reddit. Those gamers like fps
 
@@ -117,6 +122,7 @@ WHERE "name" IN
 
 - [ ] feat: add AMD Radeon PRO W7900: https://www.amd.com/en/products/professional-graphics/amd-radeon-pro-w7900
 - [ ] feat: add AMD Radeon PRO W7800 https://www.amd.com/en/products/professional-graphics/amd-radeon-pro-w7800
+- [ ] feat: add AMD Radeon PRO W7700 https://www.amd.com/en/products/professional-graphics/amd-radeon-pro-w7700
 
 - [ ] feat: can filter by attributes and attribute pills
 

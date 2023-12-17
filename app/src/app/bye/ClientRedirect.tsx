@@ -4,7 +4,7 @@ import {
   useAnalytics,
 } from "@/pkgs/client/analytics/reporter"
 import { createDiag } from "@activescott/diag"
-import { redirect, useSearchParams } from "next/navigation"
+import { RedirectType, redirect, useSearchParams } from "next/navigation"
 import { useEffect } from "react"
 
 const log = createDiag("shopping-agent:ClientRedirect")
@@ -22,7 +22,7 @@ export default function ClientRedirect() {
     analytics.trackAction(AnalyticsActions.RedirectToAffiliate, {
       to: window.location.search,
     })
-    redirect(to)
+    redirect(to, RedirectType.replace)
   }, [searchParams, analytics])
 
   return (

@@ -65,7 +65,9 @@ export const ListingCard = ({
           listing={item}
           className="text-decoration-none text-reset text underline-on-hover"
         >
+          {/* NOTE: unoptimized because this is eating through optimizations of vercel. see https://vercel.com/docs/image-optimization/managing-image-optimization-costs */}
           <Image
+            unoptimized
             src={imageUrl}
             className="card-img-top mx-auto mt-1"
             alt={title}

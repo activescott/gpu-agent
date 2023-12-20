@@ -47,16 +47,6 @@ const nextConfig = {
         permanent: true,
       },
       {
-        source: "/ml/learn/gpu/nvidia-l4",
-        destination: "/ml/learn/gpu/nvidia-l4",
-        permanent: true,
-      },
-      {
-        source: "/ml/learn/gpu/nvidia-l40",
-        destination: "/ml/learn/gpu/nvidia-l40",
-        permanent: true,
-      },
-      {
         source: "/ml/learn/gpu/nvidia-h100-sxm-80gb",
         destination: "/ml/learn/gpu/nvidia-h100-sxm",
         permanent: true,

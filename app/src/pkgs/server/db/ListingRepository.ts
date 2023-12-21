@@ -29,7 +29,7 @@ export async function addListingsForGpu(
   gpuName: string,
   prisma: PrismaClientWithinTransaction = prismaSingleton,
 ): Promise<void> {
-  log.info(`Adding ${listings.length} listings for ${gpuName}`)
+  log.info(`Adding ${listings.length} listings for ${gpuName}...`)
 
   // NOTE: prisma doesn't like the hydrated gpu object in the listings, so we omit them here and only add gpuName
   const mapped = listings.map((listing) => ({
@@ -47,7 +47,7 @@ export async function markListingsStaleForGpu(
   gpuName: string,
   prisma: PrismaClientWithinTransaction = prismaSingleton,
 ): Promise<void> {
-  log.info(`Marking stale listings for ${gpuName}`)
+  log.info(`Marking stale listings for ${gpuName}...`)
   await prisma.listing.updateMany({
     where: {
       gpuName,

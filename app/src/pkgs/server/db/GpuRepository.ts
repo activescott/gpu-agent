@@ -18,13 +18,32 @@ export async function getGpu(
 }
 
 export async function updateGpuLastCachedListings(
-  name: string,
+  gpuName: string,
   prisma: PrismaClientWithinTransaction = prismaSingleton,
 ): Promise<void> {
-  await prisma.gpu.update({
-    where: { name },
-    data: {
+  await prisma.gpuLastCachedListings.upsert({
+    create: {
+      gpuName,
       lastCachedListings: new Date(),
     },
+    update: {
+      lastCachedListings: new Date(),
+    },
+    where: {
+      gpuName,
+    },
   })
+}
+
+export async function getGpuLastCachedListings(
+  gpuName: string,
+  prisma: PrismaClientWithinTransaction = prismaSingleton,
+): Promise<Date | null> {
+  const result = await prisma.gpuLastCachedListings.findUnique({
+    where: { gpuName },
+  })
+  if (result) {
+    return result.lastCachedListings
+  }
+  return null
 }

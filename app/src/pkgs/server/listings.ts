@@ -22,6 +22,7 @@ import { chainAsync, headAsync } from "irritable-iterable"
 import { appRoot } from "./path"
 import {
   getGpu,
+  getGpuLastCachedListings,
   listGpus,
   updateGpuLastCachedListings,
 } from "./db/GpuRepository"
@@ -97,9 +98,8 @@ export async function fetchListingsForGpuWithCache(
 ): Promise<Iterable<Listing>> {
   log.debug("checking DB to see if listings need updated for gpu %s", gpuName)
   // NOTE: there is a race condition here: Between the time we read the GPU and lastCachedListings and the time we update them below another request may cause the same listings to be fetched again. This is ok, we will just update the lastCachedListings again and the listings will be cached again. This is a small window, doesn't have much impact when it happens.
-  const gpu = await getGpu(gpuName)
   const now = new Date()
-  const lastCachedListings = gpu.lastCachedListings
+  const lastCachedListings = await getGpuLastCachedListings(gpuName)
   log.info("last cached listings for %s at %s", gpuName, lastCachedListings)
   // eslint-disable-next-line no-magic-numbers
   const ONE_HOUR_MS = 1000 * 60 * 60
@@ -119,6 +119,7 @@ export async function fetchListingsForGpuWithCache(
   }
   log.info("listings for %s are stale, fetching from ebay", gpuName)
   // fetch from ebay and update the GPU repository
+  const gpu = await getGpu(gpuName)
   const fetched = await fetchListingsForGpuDirectFromEbay(gpu)
   //  note ebay-client will fetch them ALL and there could be a LOT so we limit it here:
   const limited = headAsync(
@@ -132,19 +133,22 @@ export async function fetchListingsForGpuWithCache(
     gpuName,
   )
   // eslint-disable-next-line no-magic-numbers
-  const INSERT_TRANSACTION_TIMEOUT = secondsToMilliseconds(20)
+  const INSERT_TRANSACTION_TIMEOUT = secondsToMilliseconds(15)
+  // max wait: The maximum amount of time Prisma Client will wait to acquire a transaction from the database. The default value is 2 seconds.
+  // eslint-disable-next-line no-magic-numbers
+  const WAIT_TRANSACTION_TIMEOUT = secondsToMilliseconds(5)
   await withTransaction(
     async (prisma) => {
       await markListingsStaleForGpu(gpuName, prisma)
       await addListingsForGpu(collected, gpuName, prisma)
       // addListings will skip any duplicates and not add them again, so here we mark those as stale
       const promised = [
-        markListingsFreshForGpu(gpuName, collected, prisma),
-        updateGpuLastCachedListings(gpuName, prisma),
+        await markListingsFreshForGpu(gpuName, collected, prisma),
+        await updateGpuLastCachedListings(gpuName, prisma),
       ]
       await Promise.all(promised)
     },
-    { timeout: INSERT_TRANSACTION_TIMEOUT },
+    { timeout: INSERT_TRANSACTION_TIMEOUT, maxWait: WAIT_TRANSACTION_TIMEOUT },
   )
   log.info(
     "caching listings for gpu %s complete. Returning cached listings.",

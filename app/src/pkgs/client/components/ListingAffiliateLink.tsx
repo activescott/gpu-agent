@@ -9,6 +9,15 @@ interface AffiliateLinkProps {
   children: React.ReactNode
 }
 
+/**
+ * Returns the affiliate link + analytics tracking for the specified listing.
+ * NOTE: Be careful that this link is always clearly marked according to EPN
+ *   Code of Conduct they require "It must be clear for end users where they are
+ *   being directed at all times." per
+ *   https://partnernetwork.ebay.com/page/network-agreement#prohibited and they
+ *   contacted me for violation on this before when it wasn't super obvious (it
+ *   also wasn't flagrantly misleading).
+ */
 export function ListingAffiliateLink({
   to,
   children,

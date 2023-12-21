@@ -60,32 +60,18 @@ export const ListingCard = ({
           alignItems: "center",
         }}
       >
-        <ListingAffiliateLink
-          to={itemAffiliateWebUrl}
-          listing={item}
-          className="text-decoration-none text-reset text underline-on-hover"
-        >
-          {/* NOTE: unoptimized because this is eating through optimizations of vercel. see https://vercel.com/docs/image-optimization/managing-image-optimization-costs */}
-          <Image
-            unoptimized
-            src={imageUrl}
-            className="card-img-top mx-auto mt-1"
-            alt={title}
-            width={215}
-            height={215}
-          />
-        </ListingAffiliateLink>
+        {/* NOTE: unoptimized because this is eating through optimizations of vercel. see https://vercel.com/docs/image-optimization/managing-image-optimization-costs */}
+        <Image
+          unoptimized
+          src={imageUrl}
+          className="card-img-top mx-auto mt-1"
+          alt={title}
+          width={215}
+          height={215}
+        />
       </div>
       <div className="card-body">
-        <h5 className="card-title">
-          <ListingAffiliateLink
-            to={itemAffiliateWebUrl}
-            listing={item}
-            className="text-decoration-none text-reset text underline-on-hover"
-          >
-            {title}
-          </ListingAffiliateLink>
-        </h5>
+        <h5 className="card-title">{title}</h5>
         <div className="card-text">
           <AttributePill>{formatPrice(cost)}</AttributePill>
           {condition && <AttributePill>{condition}</AttributePill>}
@@ -111,9 +97,11 @@ export const ListingCard = ({
           listing={item}
           className="btn btn-primary my-1 me-auto"
         >
-          Buy Now
+          Buy &nbsp;
+          <span className="fs-small text-muted">
+            @ <SvgIcon icon="ebay" />
+          </span>
         </ListingAffiliateLink>
-        <SvgIcon icon="ebay" className="" />
       </div>
     </div>
   )

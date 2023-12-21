@@ -3,12 +3,17 @@ import { ReactNode } from "react"
 export const AttributePill = ({
   children,
   tooltip,
+  className = "",
 }: {
   children: ReactNode
   tooltip?: string
+  className?: string
 }) => {
   return (
-    <span className="badge rounded-pill text-bg-inverse mx-1" title={tooltip}>
+    <span
+      className={`badge rounded-pill text-bg-inverse mx-1 ${className}`}
+      title={tooltip}
+    >
       {children}
     </span>
   )

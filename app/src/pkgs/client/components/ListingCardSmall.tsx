@@ -11,6 +11,7 @@ import { AttributePill, CountryPill } from "./AttributePill"
 import { SpecPill } from "./SpecPill"
 import { ListingAffiliateLink } from "./ListingAffiliateLink"
 import { divideSafe } from "@/pkgs/isomorphic/math"
+import { SvgIcon } from "./SvgIcon"
 
 interface ListingCardProps {
   item: Listing
@@ -24,11 +25,11 @@ export function ListingCardSmall({
   highlightSpec,
 }: ListingCardProps): JSX.Element {
   const {
-    itemAffiliateWebUrl,
     priceValue,
     title,
     condition,
     itemLocationCountry,
+    itemAffiliateWebUrl,
   } = item
   const imageUrl = chooseBestImageUrl(item)
   const cost = Number(priceValue)
@@ -37,31 +38,26 @@ export function ListingCardSmall({
     <div className="card mb-3" style={{ maxWidth: "540px" }}>
       <div className="row g-0">
         <div className="col-md-4">
-          <ListingAffiliateLink to={itemAffiliateWebUrl} listing={item}>
-            {/* NOTE: unoptimized because this is eating through optimizations of vercel. see https://vercel.com/docs/image-optimization/managing-image-optimization-costs */}
-            <Image
-              unoptimized
-              src={imageUrl}
-              className="card-img-top mx-auto mt-1"
-              alt={title}
-              width={128}
-              height={128}
-            />
-          </ListingAffiliateLink>
+          {/* NOTE: unoptimized because this is eating through optimizations of vercel. see https://vercel.com/docs/image-optimization/managing-image-optimization-costs */}
+          <Image
+            unoptimized
+            src={imageUrl}
+            className="card-img-top mx-auto mt-1"
+            alt={title}
+            width={128}
+            height={128}
+          />
         </div>
         <div className="col-md-8">
           <div className="card-body">
-            <h5 className="card-title">
-              <ListingAffiliateLink
-                to={itemAffiliateWebUrl}
-                listing={item}
-                className="text-decoration-none text-reset text underline-on-hover"
-              >
-                {title}
-              </ListingAffiliateLink>
-            </h5>
+            <h5 className="card-title">{title}</h5>
             <div className="card-text text-align-start">
-              <AttributePill>{formatPrice(cost)}</AttributePill>
+              <ListingAffiliateLink to={itemAffiliateWebUrl} listing={item}>
+                <AttributePill className="underline-on-hover">
+                  {formatPrice(cost)} <span className="fw-lighter">@</span>{" "}
+                  <SvgIcon icon="ebay" size="xs" />
+                </AttributePill>
+              </ListingAffiliateLink>
               {condition && <AttributePill>{condition}</AttributePill>}
               {itemLocationCountry && (
                 <CountryPill isoCountryCode={itemLocationCountry}></CountryPill>

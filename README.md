@@ -83,6 +83,7 @@ WHERE "name" IN
 - [+] feat: ranking table now contains actual muted value in each cell
 - [+] feat: add Machine Learning GPU Frequently Asked Questions under ml/learn
 - [+] feat: add gpu architecture and gpu hardware operations
+- [+] fix: make ebay links clear for end users where they are being directed per EPN Code of Conduct Section III.C
 - [ ] feat: link to specs page from ranking page
 - [ ] feat: finish adwords setup with gtag and consent mode:
 

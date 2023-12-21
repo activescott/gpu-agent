@@ -37,36 +37,36 @@ WHERE "name" IN
 
 ## Todo
 
-- [+] Create a page for the accelerators/GPUs from the benchmark
-- [+] create sitemap
-- [+] get site published under domain
-- [+] fix: update site metadata (page titles at least - the home page title still talks about next)
-- [+] feat: add remaining GPUs
-- [+] feat: return a listing page of eBay GPU Items (simplest)
-  - [+] Determine how to search? Can use search endpoint with aspect filter
-- [+] add posthog
-- [+] submit sitemap to google and bing
-- [+] Listings note used/new
-- [+] Listings note buy now/auction
-- [+] Listings note memory size
-- [+] Listings note Performance / $ for FP16, FP32, FP8, INT8 OP/s, Memory bandwidth, memory size
+- [x] Create a page for the accelerators/GPUs from the benchmark
+- [x] create sitemap
+- [x] get site published under domain
+- [x] fix: update site metadata (page titles at least - the home page title still talks about next)
+- [x] feat: add remaining GPUs
+- [x] feat: return a listing page of eBay GPU Items (simplest)
+  - [x] Determine how to search? Can use search endpoint with aspect filter
+- [x] add posthog
+- [x] submit sitemap to google and bing
+- [x] Listings note used/new
+- [x] Listings note buy now/auction
+- [x] Listings note memory size
+- [x] Listings note Performance / $ for FP16, FP32, FP8, INT8 OP/s, Memory bandwidth, memory size
 
-- [+] fix: remove bogus listings that aren't the actual GPU (simple filter)
-- [+] fix: remove the "Is this accurate" thing until it works.
+- [x] fix: remove bogus listings that aren't the actual GPU (simple filter)
+- [x] fix: remove the "Is this accurate" thing until it works.
 
   - We have to match every listing to a GPU. requires getItem and checking MPN or GPTI? Ask chat gpt? Assume?! Heuristics like description does not have "GPU NOT INCLUDED" or does not have "GB" in the title? - Looks like "16GB" works good on the T4. Weak heuristic but works!
 
-- [+] feat: add sorting/ranking
-- [+] feat: new page with multiple gpus and price compare http://localhost:3000/ml/shop/gpu (only 2 gpus)
-- [+] feat: "attribute pills" are differentiated from "spec pills"
-- [+] feat: added NVIDIA A30 GPUs (add to seed with specs)
-- [+] feat: added NVIDIA A100 80GB GPU (add to seed with specs)
-- [+] fix: spec pill tips are dismissed clicking anywhere for Micah :)
-- [+] fix: content was wider than device on mobile causing weird scrolling for Micah :)
-- [+] feat: added NVIDIA A40 GPUs (add to seed with specs)
-- [+] feat: added NVIDIA A10 24GB GPU
-- [+] feat: added NVIDIA H100-pcie 80GB GPU
-- [+] feat: add pages for cost per spec
+- [x] feat: add sorting/ranking
+- [x] feat: new page with multiple gpus and price compare http://localhost:3000/ml/shop/gpu (only 2 gpus)
+- [x] feat: "attribute pills" are differentiated from "spec pills"
+- [x] feat: added NVIDIA A30 GPUs (add to seed with specs)
+- [x] feat: added NVIDIA A100 80GB GPU (add to seed with specs)
+- [x] fix: spec pill tips are dismissed clicking anywhere for Micah :)
+- [x] fix: content was wider than device on mobile causing weird scrolling for Micah :)
+- [x] feat: added NVIDIA A40 GPUs (add to seed with specs)
+- [x] feat: added NVIDIA A10 24GB GPU
+- [x] feat: added NVIDIA H100-pcie 80GB GPU
+- [x] feat: add pages for cost per spec
 
   - shop/gpu/performance/cost-per-fp32-flops
   - shop/gpu/performance/cost-per-tensor-core
@@ -75,26 +75,26 @@ WHERE "name" IN
   - shop/gpu/performance/cost-per-memory-bandwidth-gbs
   - requires loading listings for each type of GPU we have specs for
 
-- [+] feat: add "Top 5 GPUs for \<Spec\>" on home page
-- [+] feat: cards show country being sold from
-- [+] feat: add feedback alert on top of pages that requests feedback
-- [+] feat: remove all "for parts not working" listings
-- [+] feat: add AMD rx 5xx cards for reddit dude and reply
-- [+] feat: ranking table now contains actual muted value in each cell
-- [+] feat: add Machine Learning GPU Frequently Asked Questions under ml/learn
-- [+] feat: add gpu architecture and gpu hardware operations
-- [+] fix: make ebay links clear for end users where they are being directed per EPN Code of Conduct Section III.C
-- [+] feat: link to specs page from ranking page
-- [+] fix: sitemap last modified is incorrect for info pages
+- [x] feat: add "Top 5 GPUs for \<Spec\>" on home page
+- [x] feat: cards show country being sold from
+- [x] feat: add feedback alert on top of pages that requests feedback
+- [x] feat: remove all "for parts not working" listings
+- [x] feat: add AMD rx 5xx cards for reddit dude and reply
+- [x] feat: ranking table now contains actual muted value in each cell
+- [x] feat: add Machine Learning GPU Frequently Asked Questions under ml/learn
+- [x] feat: add gpu architecture and gpu hardware operations
+- [x] fix: make ebay links clear for end users where they are being directed per EPN Code of Conduct Section III.C
+- [x] feat: link to specs page from ranking page
+- [x] fix: sitemap last modified is incorrect for info pages
 
       gen-sitemap is using gpu.updatedAt to determine if /ml/learn/gpu/{slug} have been updated. But that field gets updated when gpu.lastCachedListings is updated too. Move gpu.lastCachedListings to it's own table.
 
-- [ ] feat: finish adwords setup with gtag and consent mode:
+- [x] feat: adwords setup with gtag and consent mode
 
-  - Setup consent mode: https://support.google.com/google-ads/answer/10000067#zippy=%2Cconsent-mode-behaviors-in-your-conversion-tracking-tags
-  - Opt users in/out based on `posthog.has_opted_out_capturing`: https://posthog.com/docs/libraries/js#opt-users-out
-  - add Google to privacy/cookies page
-  - Get google tag insertion code at https://ads.google.com/aw/tagsettings?ocid=1548733621&euid=1052306284&__u=3432655116&uscid=1548733621&__c=7631249229&authuser=0&hl=en_US&utm_campaign=US-en-xs-ip-gmb_aw_serp_ia2_ca-sf-dw-uao-unqsi-CPyasKOxhIMDFfotfQkdUPwFbA-unqsi-uao-agembe-acce&utm_medium=et&utm_source=gmb&sourceid=emp&workflowSessionId=a61953D53-E319-4FCA-A500-10AD3D4B2B6A--1#
+  - [x] Opt users in/out based on `posthog.has_opted_out_capturing`: https://posthog.com/docs/libraries/js#opt-users-out
+  - [x] add Google to privacy/cookies page
+  - [x] Use gtag('consent',...) to tell google which cookies are allowed or not: https://developers.google.com/tag-platform/gtagjs/reference#consent
+  - [x] Get google tag insertion code at https://ads.google.com/aw/tagsettings?ocid=1548733621&euid=1052306284&__u=3432655116&uscid=1548733621&__c=7631249229&authuser=0&hl=en_US&utm_campaign=US-en-xs-ip-gmb_aw_serp_ia2_ca-sf-dw-uao-unqsi-CPyasKOxhIMDFfotfQkdUPwFbA-unqsi-uao-agembe-acce&utm_medium=et&utm_source=gmb&sourceid=emp&workflowSessionId=a61953D53-E319-4FCA-A500-10AD3D4B2B6A--1#
 
 - [ ] feat: add faq page for FP32, etc.: https://www.reddit.com/r/gpu/comments/18bvu6t/comment/kda57ex/?utm_source=share&utm_medium=web2x&context=3
 - [ ] feat: add an ML FAQ about "Which Specifications matter for LLMs?" It should cite https://www.baseten.co/blog/llm-transformer-inference-guide/ for formulas and cite Tim Dettmers' article showing that memory bandwidth is usually teh constraint at https://timdettmers.com/2023/01/30/which-gpu-for-deep-learning/#
@@ -124,7 +124,7 @@ WHERE "name" IN
       - The citation of where the data came from with a URL to coinpoet.com/ml/learn...
       - FUTURE: FP16, FP32, FP8, INT8 OP/s, Memory bandwidth, memory size
 
-  - [+] feat: ensure affiliate links are used: See [Header for affiliate information](https://developers.ebay.com/api-docs/buy/static/api-browse.html#affiliate-header)
+  - [x] feat: ensure affiliate links are used: See [Header for affiliate information](https://developers.ebay.com/api-docs/buy/static/api-browse.html#affiliate-header)
 
 - [ ] feat: add AMD Radeon PRO W7900: https://www.amd.com/en/products/professional-graphics/amd-radeon-pro-w7900
 - [ ] feat: add AMD Radeon PRO W7800 https://www.amd.com/en/products/professional-graphics/amd-radeon-pro-w7800

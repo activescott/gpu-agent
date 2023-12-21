@@ -9,6 +9,7 @@ import {
 import { SiteHeader } from "@/pkgs/client/components/SiteHeader"
 import { Alert } from "@/pkgs/client/components/Alert"
 import Link from "next/link"
+import { GoogleAdsTag } from "@/pkgs/client/analytics/GoogleAdsTag"
 
 export const metadata: Metadata = {
   // must be <70 characters:
@@ -39,8 +40,9 @@ export default function RootLayout({
           <SiteFooter />
         </AnalyticsProvider>
         <AnalyticsPageView />
+        <Script src="/js/bootstrap.bundle.min.js" />
+        <GoogleAdsTag />
       </body>
-      <Script src="/js/bootstrap.bundle.min.js" />
     </html>
   )
 }

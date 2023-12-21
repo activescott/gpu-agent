@@ -1,9 +1,11 @@
 import Link from "next/link"
+import CookieBanner from "./CookieBanner"
 
 export const SiteFooter = () => {
   const start_year = 2023
   return (
     <footer className="pt-5 mx-2 my-5 text-muted border-top fw-lighter">
+      <CookieBanner />
       <div className="w-100 d-flex justify-content-around flex-wrap">
         <FooterLink href="/ml/shop/gpu" label="Browse GPUs for Sale" />
         <FooterLink href="/ml/learn/gpu/ranking" label="GPU Rankings" />

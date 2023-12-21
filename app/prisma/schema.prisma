@@ -29,9 +29,6 @@ model gpu {
   // This is a list of the supported precisions for hardware-accelerated generalized matrix multiplication operations (GEMM).
   supportedHardwareOperations String[]
 
-  // track when the listings were fetched and updated in Listings
-  lastCachedListings DateTime?
-
   // references for the specs:
   references        String[]
   // custom-written summary for the GPU. Used on info pages

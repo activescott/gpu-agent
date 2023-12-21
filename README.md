@@ -20,10 +20,8 @@ Compare GPU & AI Accelerator Card Performance Metrics to their Cost
 - Run the following query (replacing GPU name in where as needed):
 
 ```sql
-update gpu
-SET "lastCachedListings" = NULL
-WHERE "name" IN
-('nvidia-geforce-rtx-4090')
+DELETE FROM "GpuLastCachedListings"
+WHERE "gpuName" IN ('nvidia-l4', 'nvidia-l40', 'nvidia-l40s')
 ;
 ```
 

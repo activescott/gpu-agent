@@ -129,7 +129,7 @@ export function GpuSpecsTable({
                   <div className="m-0 p-0 fs-6 fw-lighter text-muted">
                     <Link
                       href={`/ml/learn/gpu/${gpu.gpu.name}`}
-                      className="link-opacity-25 link-opacity-100-hover link-secondary link-underline-opacity-0 link-underline-opacity-100-hover"
+                      className="link-opacity-75 link-opacity-100-hover link-secondary link-underline-opacity-0 link-underline-opacity-100-hover"
                     >
                       {gpu.gpu[specKey]
                         ? `${gpu.gpu[specKey]} ${GpuSpecsDescription[specKey].unitShortest}`

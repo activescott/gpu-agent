@@ -50,7 +50,7 @@ async function fetchListingsForGpuDirectFromEbay(
     !isNextBuild() &&
     fs.existsSync(getTestListingsPath(gpu.name))
   ) {
-    log.info("loading test listings from json (non-production)")
+    log.warn("loading test listings from json (non-production)")
     rawListings = arrayToAsyncIterable(await loadTestListingsFromJson(gpu.name))
   } else {
     log.info("fetching listings from ebay")

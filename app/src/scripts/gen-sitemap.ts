@@ -94,9 +94,10 @@ async function main() {
     collator.compare(a.path, b.path)
   // /ml/learn/gpu/ gpu pages are generated dynamically in app/src/app/ml/shop/gpu/[gpuSlug]/page.tsx
   const learnGpuPages = gpuList
-    .map(({ name, label }: gpu) => ({
+    .map(({ name, label, updatedAt }: gpu) => ({
       path: `/ml/learn/gpu/${name}`,
       title: `${label} Specifications for Machine Learning`,
+      lastModified: updatedAt,
     }))
     .sort(comparePagesByPath)
   // this page is a static page in that directory that we need to override to get the right title

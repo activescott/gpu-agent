@@ -82,6 +82,7 @@ WHERE "name" IN
 - [+] feat: add AMD rx 5xx cards for reddit dude and reply
 - [+] feat: ranking table now contains actual muted value in each cell
 - [+] feat: add Machine Learning GPU Frequently Asked Questions under ml/learn
+- [+] feat: add gpu architecture and gpu hardware operations
 - [ ] feat: link to specs page from ranking page
 - [ ] feat: finish adwords setup with gtag and consent mode:
 

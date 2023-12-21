@@ -4,6 +4,13 @@ import { ItemSummary } from "ebay-client"
 export interface Gpu extends GpuSpecs {
   name: string
   label: string
+  gpuArchitecture: string
+  /**
+   * A list of the supported precisions for hardware-accelerated generalized matrix multiplication operations (GEMM).
+   * Each value indicates a precision that is supported. In most cases this won't matter that much as the result will be reflected in OPS specs such as @see GpuSpecs.fp32TFLOPS or @see GpuSpecs.fp32TFLOPS. However, in some cases such as BF16, it may be less than clear that the GPU does or does not support the precision in those operations.
+   * For example, the Turing and Volta Nvidia architectures support FP16, but not BF16.
+   */
+  supportedHardwareOperations: string[]
   // lastCachedListings is stored in the database to help us track cache of listings. | null because prisma :/
   lastCachedListings?: Date | null
   summary: string

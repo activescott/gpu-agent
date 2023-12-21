@@ -32,6 +32,11 @@ export function GpuInfo({
             {GpuSpecsDescription[key].label}: {gpu[key]}
           </li>
         ))}
+        <li key="gpuArchitecture">GPU Architecture: {gpu.gpuArchitecture}</li>
+        <li key="hardwareOperations">
+          Hardware-Accelerated Generalized Matrix Multiplication (GEMM)
+          Operations: {gpu.supportedHardwareOperations.sort().join(", ")}
+        </li>
       </ul>
 
       <div className="row g-4 py-5 row-cols-1 row-cols-lg-3">

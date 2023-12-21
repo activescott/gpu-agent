@@ -17,14 +17,17 @@ model gpu {
   label String
 
   // Specs:
-  tensorCoreCount    Float?
-  fp32TFLOPS         Float
-  fp16TFLOPS         Float
-  int8TOPS           Float?
-  memoryCapacityGB   Float
-  memoryBandwidthGBs Float
+  tensorCoreCount             Float?
+  fp32TFLOPS                  Float
+  fp16TFLOPS                  Float
+  int8TOPS                    Float?
+  memoryCapacityGB            Float
+  memoryBandwidthGBs          Float
   // maximum thermal design power was added later and not all GPUs have it listed in our DB. See the seed.
-  maxTDPWatts        Float?
+  maxTDPWatts                 Float?
+  gpuArchitecture             String
+  // This is a list of the supported precisions for hardware-accelerated generalized matrix multiplication operations (GEMM).
+  supportedHardwareOperations String[]
 
   // track when the listings were fetched and updated in Listings
   lastCachedListings DateTime?

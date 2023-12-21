@@ -126,71 +126,88 @@
     },
     {
       "path": "/ml/learn/gpu/amd-radeon-rx-580x",
-      "title": "AMD Radeon RX 580X Specifications for Machine Learning"
+      "title": "AMD Radeon RX 580X Specifications for Machine Learning",
+      "lastModified": "2023-12-21T03:00:55.585Z"
     },
     {
       "path": "/ml/learn/gpu/amd-radeon-rx-590",
-      "title": "AMD Radeon RX 590 Specifications for Machine Learning"
+      "title": "AMD Radeon RX 590 Specifications for Machine Learning",
+      "lastModified": "2023-12-21T03:00:57.705Z"
     },
     {
       "path": "/ml/learn/gpu/amd-radeon-rx-7900-xt",
-      "title": "AMD Radeon RX 7900 XT Specifications for Machine Learning"
+      "title": "AMD Radeon RX 7900 XT Specifications for Machine Learning",
+      "lastModified": "2023-12-21T03:00:58.087Z"
     },
     {
       "path": "/ml/learn/gpu/amd-radeon-rx-7900-xtx",
-      "title": "AMD Radeon RX 7900 XTX Specifications for Machine Learning"
+      "title": "AMD Radeon RX 7900 XTX Specifications for Machine Learning",
+      "lastModified": "2023-12-21T03:00:56.188Z"
     },
     {
       "path": "/ml/learn/gpu/nvidia-a10",
-      "title": "NVIDIA A10 Specifications for Machine Learning"
+      "title": "NVIDIA A10 Specifications for Machine Learning",
+      "lastModified": "2023-12-21T03:00:56.666Z"
     },
     {
       "path": "/ml/learn/gpu/nvidia-a100-pcie",
-      "title": "NVIDIA A100 PCIe Specifications for Machine Learning"
+      "title": "NVIDIA A100 PCIe Specifications for Machine Learning",
+      "lastModified": "2023-12-21T03:01:07.708Z"
     },
     {
       "path": "/ml/learn/gpu/nvidia-a100-sxm",
-      "title": "NVIDIA A100 SXM Specifications for Machine Learning"
+      "title": "NVIDIA A100 SXM Specifications for Machine Learning",
+      "lastModified": "2023-12-21T03:00:56.439Z"
     },
     {
       "path": "/ml/learn/gpu/nvidia-a30",
-      "title": "NVIDIA A30 Specifications for Machine Learning"
+      "title": "NVIDIA A30 Specifications for Machine Learning",
+      "lastModified": "2023-12-21T03:00:56.013Z"
     },
     {
       "path": "/ml/learn/gpu/nvidia-a40",
-      "title": "NVIDIA A40 Specifications for Machine Learning"
+      "title": "NVIDIA A40 Specifications for Machine Learning",
+      "lastModified": "2023-12-21T03:00:55.916Z"
     },
     {
       "path": "/ml/learn/gpu/nvidia-geforce-rtx-4090",
-      "title": "NVIDIA GeForce RTX 4090 Specifications for Machine Learning"
+      "title": "NVIDIA GeForce RTX 4090 Specifications for Machine Learning",
+      "lastModified": "2023-12-21T03:01:01.393Z"
     },
     {
       "path": "/ml/learn/gpu/nvidia-h100-pcie",
-      "title": "NVIDIA H100 PCIe Specifications for Machine Learning"
+      "title": "NVIDIA H100 PCIe Specifications for Machine Learning",
+      "lastModified": "2023-12-21T03:00:56.099Z"
     },
     {
       "path": "/ml/learn/gpu/nvidia-h100-sxm",
-      "title": "NVIDIA H100 SXM Specifications for Machine Learning"
+      "title": "NVIDIA H100 SXM Specifications for Machine Learning",
+      "lastModified": "2023-12-21T03:00:56.142Z"
     },
     {
       "path": "/ml/learn/gpu/nvidia-l4",
-      "title": "NVIDIA L4 Specifications for Machine Learning"
+      "title": "NVIDIA L4 Specifications for Machine Learning",
+      "lastModified": "2023-12-21T03:00:55.565Z"
     },
     {
       "path": "/ml/learn/gpu/nvidia-l40",
-      "title": "NVIDIA L40 Specifications for Machine Learning"
+      "title": "NVIDIA L40 Specifications for Machine Learning",
+      "lastModified": "2023-12-21T03:00:55.890Z"
     },
     {
       "path": "/ml/learn/gpu/nvidia-l40s",
-      "title": "NVIDIA L40S Specifications for Machine Learning"
+      "title": "NVIDIA L40S Specifications for Machine Learning",
+      "lastModified": "2023-12-21T03:00:55.592Z"
     },
     {
       "path": "/ml/learn/gpu/nvidia-rtx-a5000",
-      "title": "NVIDIA RTX A5000 Specifications for Machine Learning"
+      "title": "NVIDIA RTX A5000 Specifications for Machine Learning",
+      "lastModified": "2023-12-21T03:00:57.086Z"
     },
     {
       "path": "/ml/learn/gpu/nvidia-t4",
-      "title": "NVIDIA T4 Specifications for Machine Learning"
+      "title": "NVIDIA T4 Specifications for Machine Learning",
+      "lastModified": "2023-12-21T03:00:59.524Z"
     },
     {
       "path": "/policy/terms",

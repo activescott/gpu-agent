@@ -3,8 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "prep": "mkdir public/js; mkdir public/images; npm run prep-bootstrap && npm run prep-bootstrap-icons",
-    "prep-bootstrap": "cp -f node_modules/bootstrap/dist/js/bootstrap.bundle.min.js public/js/",
+    "prep": "mkdir public/images; npm run prep-bootstrap-icons",
     "prep-bootstrap-icons": "cp -f node_modules/bootstrap-icons/bootstrap-icons.svg public/images/",
     "predev": "npm run prep",
     "dev": "DEBUG=shopping-agent:*,ebay-client:* next dev",

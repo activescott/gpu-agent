@@ -25,7 +25,7 @@ export default function Page() {
           {entries
             .filter((item) => item.path.startsWith(pathPrefixFilter))
             .map((item) => (
-              <li className="dropdown-item" key={item.path}>
+              <li key={item.path}>
                 <Link href={item.path}>{item.title}</Link>
               </li>
             ))}

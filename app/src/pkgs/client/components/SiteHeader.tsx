@@ -1,6 +1,7 @@
 import Link from "next/link"
 import { SvgIcon } from "./SvgIcon"
 import dynamic from "next/dynamic"
+import { SiteHeaderNavToggler } from "./SiteHeaderNavToggler"
 
 /*
 NOTE: Deliberately forcing a lazily-loaded client component by forcing some
@@ -20,17 +21,7 @@ export const SiteHeader = () => {
         <Link className="navbar-brand" href="/">
           <SvgIcon icon="coinpoet-card" svgViewBox="0 0 16 16" /> Coin Poet
         </Link>
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
+        <SiteHeaderNavToggler />
         <div className="collapse navbar-collapse" id="navbarNav">
           <SiteHeaderNavItems />
         </div>

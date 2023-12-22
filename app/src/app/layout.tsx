@@ -1,6 +1,5 @@
 import type { Metadata } from "next"
 import "./style/style.scss"
-import Script from "next/script"
 import { SiteFooter } from "@/pkgs/client/components/SiteFooter"
 import {
   AnalyticsPageView,
@@ -40,7 +39,6 @@ export default function RootLayout({
           <SiteFooter />
         </AnalyticsProvider>
         <AnalyticsPageView />
-        <Script src="/js/bootstrap.bundle.min.js" />
         <GoogleAdsTag />
       </body>
     </html>

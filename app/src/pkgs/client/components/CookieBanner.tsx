@@ -27,29 +27,27 @@ function CookieBanner() {
   return (
     <Suspense>
       {showBanner && (
-        <div className="d-flex m-2 border border-primary-subtle rounded p-2">
-          <div>
-            <div>
-              We use cookies for sign in and to understand how you use the
-              product and help us improve it. Please accept cookies to help us
-              improve.
-            </div>
-            <Button
-              variant="outline-secondary"
-              sizeVariant="sm"
-              onClick={acceptCookies}
-              className="m-2"
-            >
-              Accept Cookies
-            </Button>
-            <Button
-              variant="outline-secondary"
-              sizeVariant="sm"
-              onClick={declineCookies}
-            >
-              Decline Cookies
-            </Button>
-          </div>
+        <div className="m-2 border border-primary-subtle rounded p-2">
+          <p>
+            We use cookies for sign in and to understand how you use the product
+            and help us improve it. Please accept cookies to help us improve.
+          </p>
+          <Button
+            variant="outline-secondary"
+            sizeVariant="sm"
+            onClick={acceptCookies}
+            className="mx-2"
+          >
+            Accept Cookies
+          </Button>
+          <Button
+            variant="outline-secondary"
+            sizeVariant="sm"
+            onClick={declineCookies}
+            className="mx-2"
+          >
+            Decline Cookies
+          </Button>
         </div>
       )}
     </Suspense>

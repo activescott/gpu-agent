@@ -11,8 +11,6 @@ export interface Gpu extends GpuSpecs {
    * For example, the Turing and Volta Nvidia architectures support FP16, but not BF16.
    */
   supportedHardwareOperations: string[]
-  // lastCachedListings is stored in the database to help us track cache of listings. | null because prisma :/
-  lastCachedListings?: Date | null
   summary: string
   references: string[]
 }

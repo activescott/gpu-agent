@@ -130,6 +130,8 @@ WHERE "gpuName" IN ('nvidia-l4', 'nvidia-l40', 'nvidia-l40s')
 
   - [x] feat: ensure affiliate links are used: See [Header for affiliate information](https://developers.ebay.com/api-docs/buy/static/api-browse.html#affiliate-header)
 
+- [ ] fix: some listings are improperly filtered out: https://github.com/PingPoet/shopping-agent/issues/1
+
 - [ ] feat: add AMD Radeon PRO W7900: https://www.amd.com/en/products/professional-graphics/amd-radeon-pro-w7900
 - [ ] feat: add AMD Radeon PRO W7800 https://www.amd.com/en/products/professional-graphics/amd-radeon-pro-w7800
 - [ ] feat: add AMD Radeon PRO W7700 https://www.amd.com/en/products/professional-graphics/amd-radeon-pro-w7700

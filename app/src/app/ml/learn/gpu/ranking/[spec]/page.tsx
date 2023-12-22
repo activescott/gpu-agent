@@ -11,6 +11,7 @@ import { listGpus } from "@/pkgs/server/db/GpuRepository"
 import { getPriceStats } from "@/pkgs/server/db/ListingRepository"
 import { GpuSpecsTable, PricedGpu } from "./GpuSpecsTable"
 import Link from "next/link"
+import { omit } from "lodash"
 
 // revalidate the data at most every hour: https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#revalidate
 export const revalidate = 3600
@@ -48,8 +49,18 @@ export default async function Page({ params }: GpuSpecSlugParams) {
   const unsortedPricedGpus = await Promise.all(
     gpus.map(async (gpu) => {
       const stats = await getPriceStats(gpu.name)
+      /* 
+        NOTE: React/Next.js server components dump all the props into the client-delivered JS making the page huge: https://github.com/vercel/next.js/discussions/42170
+        Lighthouse complained about the JS size and this removed about ~16KB of JS from the page. 
+      */
+      const gpuMinimal = omit(gpu, [
+        "summary",
+        "references",
+        "supportedHardwareOperations",
+        "gpuArchitecture",
+      ])
       return {
-        gpu,
+        gpu: gpuMinimal,
         price: stats,
       } as PricedGpu
     }),

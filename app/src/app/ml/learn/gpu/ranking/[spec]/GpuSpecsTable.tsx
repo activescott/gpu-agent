@@ -12,13 +12,21 @@ import { BootstrapIcon } from "@/pkgs/client/components/BootstrapIcon"
 import { composeComparers } from "@/pkgs/isomorphic/collection"
 import { divideSafe } from "@/pkgs/isomorphic/math"
 
+type GpuMinimal = Omit<
+  Gpu,
+  "summary" | "references" | "supportedHardwareOperations" | "gpuArchitecture"
+>
+
 export type PricedGpu = {
-  gpu: Gpu
+  gpu: GpuMinimal
   price: { avgPrice: number; minPrice: number; activeListingCount: number }
 }
 
-const dollarsPerSpec = (gpu: Gpu, dollars: number, spec: GpuSpecKey): number =>
-  divideSafe(dollars, gpu[spec])
+const dollarsPerSpec = (
+  gpu: GpuMinimal,
+  dollars: number,
+  spec: GpuSpecKey,
+): number => divideSafe(dollars, gpu[spec])
 
 function sortGpus(
   gpus: PricedGpu[],

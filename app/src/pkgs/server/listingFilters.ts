@@ -73,16 +73,16 @@ function createRequireKeywordsPredicate(
         )
 
     if (!includeListing && !isExpectedToBeFilteredOut(item)) {
-        log.info(
-          "required keywords not in item title: %o. Item title: %s . Item Url: %s",
-          keywords.filter(
-            (requiredKeyword) =>
-              !item.title.toLowerCase().includes(requiredKeyword),
-          ),
-          item.title,
-          item.itemAffiliateWebUrl,
-        )
-      }
+      log.info(
+        "required keywords not in item title: %o. Item title: %s . Item Url: %s",
+        keywords.filter(
+          (requiredKeyword) =>
+            !item.title.toLowerCase().includes(requiredKeyword),
+        ),
+        item.title,
+        item.itemAffiliateWebUrl,
+      )
+    }
     return includeListing
   }
 }

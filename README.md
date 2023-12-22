@@ -97,6 +97,12 @@ WHERE "gpuName" IN ('nvidia-l4', 'nvidia-l40', 'nvidia-l40s')
 - [ ] feat: add faq page for FP32, etc.: https://www.reddit.com/r/gpu/comments/18bvu6t/comment/kda57ex/?utm_source=share&utm_medium=web2x&context=3
 - [ ] feat: add an ML FAQ about "Which Specifications matter for LLMs?" It should cite https://www.baseten.co/blog/llm-transformer-inference-guide/ for formulas and cite Tim Dettmers' article showing that memory bandwidth is usually teh constraint at https://timdettmers.com/2023/01/30/which-gpu-for-deep-learning/#
 
+- [ ] feat: google structured data / rich results by adding metadata to listings
+
+  - See https://developers.google.com/search/docs/appearance/structured-data/search-gallery and https://developers.google.com/search/docs/appearance/structured-data/product
+  - NOTE: we cannot use "Merchant listing experiences" per google _Only pages from which a shopper can purchase a product are eligible for merchant listing experiences, not pages with links to other sites that sell the product_ [ref](https://developers.google.com/search/docs/appearance/structured-data/product#merchant-listing-experiences)
+  - [ ] feat: make the ml/learn/gpu/{slug} pages a "Product snippet"- make the page a review and add pros & cons to each GPU.
+
 - [ ] feat: Add FAQ: "Do AMD GPUs work for Machine Learning":
 
   - See [2023/12 Added ROCm support to vLLM](https://github.com/vllm-project/vllm) and https://embeddedllm.com/blog/vllm_rocm/ and https://embeddedllm.com/blog/vllm_rocm/
@@ -128,6 +134,11 @@ WHERE "gpuName" IN ('nvidia-l4', 'nvidia-l40', 'nvidia-l40s')
 - [ ] feat: add AMD Radeon PRO W7800 https://www.amd.com/en/products/professional-graphics/amd-radeon-pro-w7800
 - [ ] feat: add AMD Radeon PRO W7700 https://www.amd.com/en/products/professional-graphics/amd-radeon-pro-w7700
 
+- [ ] feat: Consider integrate the [Checkout with eBay flow](https://developer.ebay.com/api-docs/buy/static/api-order.html#psb-checkout)
+  - Do you earn a commission this way? - It appears so as [eBay docs say _For attribution, you must pass the EPN campaign and reference ID in the EBAY-C-ENDUSERCTX header in the initiateCheckoutSession method._](https://developer.ebay.com/api-docs/buy/static/api-order.html#Integrat)
+  - Note: The benefit here is just a better experience for users and not getting "lost" at eBay. There is a minor benefit that we can also start publishing google's merchant listings since the user can buy the item on our site.
+  - Note: eBay still handles _everything_ including all post-order things such as returns.
+  - Note: it does require special application with ebay of some kind. It's not a free-for-all API
 - [ ] feat: can filter by attributes and attribute pills
 
 - [ ] fix: add lot size attribute and metrics support items that have multiple items (update $/perf specs) e.g. "**_ LOT OF 10 GPU's_** NVIDIA RTX A5000 24GB GDDR6"

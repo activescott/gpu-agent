@@ -25,7 +25,7 @@ export default async function Page() {
 
   return (
     <div>
-      <h1>Compare Price & Benchmarked of GPUs</h1>
+      <h1>Compare GPU Price to Performance</h1>
       <div>
         <p>
           Use this site to find machine learning GPUs available for immediate

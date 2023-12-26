@@ -51,6 +51,27 @@ const nextConfig = {
         destination: "/ml/learn/gpu/nvidia-h100-sxm",
         permanent: true,
       },
+      // removed SXM cards:
+      {
+        source: "/ml/shop/gpu/nvidia-a100-sxm",
+        destination: "/ml/shop/gpu/nvidia-a100-pcie",
+        permanent: true,
+      },
+      {
+        source: "/ml/learn/gpu/nvidia-a100-sxm",
+        destination: "/ml/learn/gpu/nvidia-a100-pcie",
+        permanent: true,
+      },
+      {
+        source: "/ml/shop/gpu/nvidia-h100-sxm",
+        destination: "/ml/shop/gpu/nvidia-h100-pcie",
+        permanent: true,
+      },
+      {
+        source: "/ml/learn/gpu/nvidia-h100-sxm",
+        destination: "/ml/learn/gpu/nvidia-h100-pcie",
+        permanent: true,
+      },
     ]
   },
 

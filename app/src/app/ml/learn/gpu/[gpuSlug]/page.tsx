@@ -1,6 +1,8 @@
 import { GpuInfo } from "@/pkgs/client/components/GpuInfo"
+import { GpuSpecKey, GpuSpecKeys } from "@/pkgs/isomorphic/model/specs"
 import {
   getGpu as getGpuWithoutCache,
+  gpuSpecAsPercent,
   listGpus,
 } from "@/pkgs/server/db/GpuRepository"
 import { getPriceStats } from "@/pkgs/server/db/ListingRepository"
@@ -30,7 +32,7 @@ export async function generateMetadata({ params }: GpuParams) {
   log.debug("generateStaticMetadata for gpu ", gpuSlug)
   const gpu = await getGpu(gpuSlug)
   return {
-    title: `${gpu.label} GPU Performance Specifications`,
+    title: `${gpu.label} AI Performance Overview`,
     description: `Learn about the ${gpu.label} Machine Learning GPU.`,
     alternates: { canonical: `https://coinpoet.com/ml/learn/gpu/${gpuSlug}` },
   }
@@ -39,12 +41,23 @@ export async function generateMetadata({ params }: GpuParams) {
 export default async function Page({ params }: GpuParams) {
   const { gpuSlug } = params
   const gpu = await getGpu(gpuSlug)
+  const mapPercentages = new Map<GpuSpecKey, number>()
+
+  for (const key of GpuSpecKeys) {
+    mapPercentages.set(key, await gpuSpecAsPercent(gpu.name, key))
+  }
+  const gpuSpecPercentages = Object.fromEntries(mapPercentages) as Record<
+    GpuSpecKey,
+    number
+  >
+
   const listings = await getPriceStats(gpu.name)
   return (
     <GpuInfo
       gpu={gpu}
-      averagePrice={listings.avgPrice}
+      minimumPrice={listings.minPrice}
       activeListingCount={listings.activeListingCount}
+      gpuSpecPercentages={gpuSpecPercentages}
     />
   )
 }

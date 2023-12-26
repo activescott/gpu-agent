@@ -96,14 +96,14 @@ async function main() {
   const learnGpuPages = gpuList
     .map(({ name, label, updatedAt }: gpu) => ({
       path: `/ml/learn/gpu/${name}`,
-      title: `${label} Specifications for Machine Learning`,
+      title: `${label} AI Performance Overview`,
       lastModified: updatedAt,
     }))
     .sort(comparePagesByPath)
   // this page is a static page in that directory that we need to override to get the right title
   const learnGpuSpecsPage = {
     path: "/ml/learn/gpu/specifications",
-    title: "GPU Performance Specifications for Machine Learning",
+    title: "GPU Performance for Machine Learning",
   }
   const performanceSlugs = listPerformanceSlugs()
   const shopGpuPerformancePages = performanceSlugs

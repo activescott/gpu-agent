@@ -160,6 +160,9 @@ async function main() {
         "https://www.nvidia.com/en-us/data-center/tensor-cores/",
       ],
     },
+    /*
+    NOTE: dropping the SXM cards as they're not usable by most people and they artificially drive down percentile all rankings of other cards. 
+    Only including PCIe cards.
     {
       name: "nvidia-a100-sxm",
       label: "NVIDIA A100 SXM",
@@ -192,6 +195,7 @@ async function main() {
         "https://www.nvidia.com/en-us/data-center/tensor-cores/",
       ],
     },
+    */
     {
       name: "nvidia-a10",
       label: "NVIDIA A10",
@@ -253,6 +257,9 @@ async function main() {
         "https://www.nvidia.com/en-us/data-center/tensor-cores/",
       ],
     },
+    /*
+    NOTE: dropping the SXM cards as they're not usable by most people and they artificially drive down percentile all rankings of other cards. 
+    Only including PCIe cards.
     {
       name: "nvidia-h100-sxm",
       label: "NVIDIA H100 SXM",
@@ -289,6 +296,7 @@ async function main() {
         "https://www.nvidia.com/en-us/data-center/tensor-cores/",
       ],
     },
+    */
     {
       name: "nvidia-l4",
       label: "NVIDIA L4",
@@ -384,7 +392,7 @@ async function main() {
     },
     {
       name: "nvidia-geforce-rtx-4090",
-      label: "NVIDIA GeForce RTX 4090",
+      label: "NVIDIA RTX 4090",
       tensorCoreCount: 512,
       fp32TFLOPS: 82.6,
       // NOTE: "Peak FP16 Tensor TFLOPS with FP16 Accumulate" as that's what NVIDIA publishes

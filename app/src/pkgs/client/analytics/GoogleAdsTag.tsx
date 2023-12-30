@@ -60,7 +60,7 @@ export function setGoogleCookieConsent(
  *
  */
 const GoogleAdWordsTagInner = (): JSX.Element => {
-  const GOOGLE_ADS_TRACKING_ID = "G-GTD9K91WDH"
+  const GOOGLE_ADS_TRACKING_ID = "AW-11437826489"
   // NOTE: mostly we want pathname and searchParams to cause the effect to re-run when location changes
   const pathname = usePathname()
   const searchParams = useSearchParams()

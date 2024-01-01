@@ -1,0 +1,90 @@
+# Beginners' Guide to AI for Trading and Sports Predictions
+
+I have noticed a few questions recently about people eager to start using AI for trading or sports predictions. Getting started is a lot easier than you think and I put together a quick guide to steer you in the right direction.
+
+## Which GPU Do you need?
+
+A lot of people are asking what GPU they need for using AI in trading and sports predictions. While GPUs enhance machine learning, they're not essential. You can begin with a CPU and consider upgrading to a GPU later. I've prepared a guide on starting without a GPU (and if you have a powerful GPU all the better).
+
+## What is the best way to learn?
+
+I believe the best way to learn is to start with a project. Large Language Models (LLMs) have generated a lot of excitment for AI, and their chat interface makes them accessible. However, they may not be the best choice for predictions in trading, investing, or sports. Purpose-built deep learning or machine learning models are often much smaller and more suitable than LLMs. LLMs are very large because they're trying to predict _language_ and that requires a huge amount of data to train and a huge amount of parameters to learn. To get a sense of the number of parameters in these LLM models see [How much memory does my GPU need to run an LLM?](https://coinpoet.com/ml/learn/faq/how-much-gpu-memory-for-llm). To an intuitive understanding about what LLMs are doing (it's simpler than you think!) I highly recommend [Stephen Wolfram's article What Is ChatGPT Doing … and Why Does It Work? [^1].
+
+If you're trying to predict something like the outcome of a sports game, or even the stock market, it's a much simpler problem than lanugage. As Stephen Wolfram said in the article I quoted above:
+
+> In a crawl of the web there might be a few hundred billion words; in books that have been digitized there might be another hundred billion words. But with 40,000 common words, even the number of possible 2-grams is already 1.6 billion—and the number of possible 3-grams is 60 trillion. So there’s no way we can estimate the probabilities even for all of these from text that’s out there. And by the time we get to “essay fragments” of 20 words, the number of possibilities is larger than the number of particles in the universe, so in a sense they could never all be written down.
+
+So you don't need a model sophisticated enough to to analyze and learn language, you just need one to learn the patterns in a much smaller amount of data. You'll also probably get better results!
+
+## Start Predicting with Learning Models in 5 minutes
+
+The steps below are entirely free and don't require account creation or sign-ups. You can begin in just five minutes:
+
+1. Visit the [Linear Regression Example using scikit-learn](https://scikit-learn.org/stable/auto_examples/linear_model/plot_ols.html#linear-regression-example) and copy the code:
+
+<div className="d-flex">
+  <video
+    className="mx-auto mw-100"
+    style={{ maxWidth: "521px" }}
+    autoPlay
+    loop={true}
+    muted={true}
+    alt="screenshot of how to copy the code for the linear regression example"
+  >
+    <source
+      src="/video/ml-learn-articles/ai-finance-sports/copy-code-521px.webm"
+      type="video/webm"
+    />
+  </video>
+</div>
+
+2. Navigate to https://jupyter.org/try and select "Jupyter Notebook".
+
+3. On the "Introduction to the JupyterLab and Jupyter Notebooks" page, go to File > New > Notebook. Create a new blank notebook and select the Python kernel (likely the default):
+
+<div className="d-flex">
+  <video
+    className="mx-auto mw-100"
+    style={{ maxWidth: "521px" }}
+    autoPlay
+    loop={true}
+    muted={true}
+    alt="screenshot of how to create a new jupyter notebook"
+  >
+    <source
+      src="/video/ml-learn-articles/ai-finance-sports/try-jupyter-create-new-notebook-521px.webm"
+      type="video/webm"
+    />
+  </video>
+</div>
+
+4. Paste the copied code into the first cell of your notebook.
+
+5. Click the "Run" (▶️) button to execute the code. A graph should appear below the code:
+
+<div className="d-flex">
+  <video
+    className="mx-auto mw-100"
+    style={{ maxWidth: "521px" }}
+    autoPlay
+    loop={true}
+    muted={true}
+    alt="screenshot of pasting code into a jupyter notebook"
+  >
+    <source
+      src="/video/ml-learn-articles/ai-finance-sports/paste-code-and-run-521px.webm"
+      type="video/webm"
+    />
+  </video>
+</div>
+
+To understand the code's inner workings you'll have to experiment with it and read more of the scikit-learn documentation. This shows you that you can quickly get started with an AI learning model in just a few minutes.
+
+For a deeper understanding of AI & Machine Learning, I recommend the courses at https://www.deeplearning.ai courses. Andrew Ng and his colleages are super friendly and he goes out of his way to make sure that the beginner courses are accessible to those of us without a PhD in calculus or statistics yet the courses arm you with real skills in a matter of weeks.
+
+## But, What about Sports & Trading?
+
+While the model above doesn't use sports data, you can easily obtain it. Numerous articles explain how. For instance, Matt Gifford and Tuncay Bayrak's research on sports analytics outlines a simple model for forecasting National Football League game outcomes using logistic regression [^2]. There's an abundance of literature on using AI and machine learning for trading as well. A [a quick search](https://duckduckgo.com/?q=machine+learning+trading+prediction+python&t=ffab&ia=web) will provide many resources. However, starting with a simple model and building upon it is key and you just started!
+
+[^1]: [What Is ChatGPT Doing … and Why Does It Work? by Stephen Wolfram](https://writings.stephenwolfram.com/2023/02/what-is-chatgpt-doing-and-why-does-it-work/)
+[^2]: Matt Gifford, Tuncay Bayrak. A predictive analytics model for forecasting outcomes in the National Football League games using decision tree and logistic regression (2023) Retrieved December 31, 2023, from https://www.sciencedirect.com/science/article/pii/S2772662223001364

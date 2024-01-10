@@ -97,6 +97,10 @@ const nonGpuKeywords = [
   "fan kit",
   "fan for",
   "kit for",
+  // Filtering out SXM sockets because people usually are going to want PCIe
+  "SXM",
+  // surprisingly, many people misspell SXM as SMX in listing titles:
+  "SMX",
 ].map((word) => word.toLowerCase())
 
 function gpuAccessoryFilter(item: Listing): boolean {

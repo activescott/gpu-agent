@@ -89,6 +89,10 @@
       "title": "Price Compare NVIDIA T4 GPUs"
     },
     {
+      "path": "/ml/shop/gpu/nvidia-tesla-p100",
+      "title": "Price Compare NVIDIA Tesla P100 GPUs"
+    },
+    {
       "path": "/ml/learn/gpu/ranking/fp16-flops",
       "title": "GPUs Ranked by $ / FP16 TFLOPs"
     },
@@ -119,87 +123,92 @@
     {
       "path": "/ml/learn/gpu/amd-radeon-rx-580x",
       "title": "AMD Radeon RX 580X AI Performance Overview",
-      "lastModified": "2023-12-26T04:21:06.688Z"
+      "lastModified": "2024-01-10T23:14:58.947Z"
     },
     {
       "path": "/ml/learn/gpu/amd-radeon-rx-590",
       "title": "AMD Radeon RX 590 AI Performance Overview",
-      "lastModified": "2023-12-26T04:21:07.065Z"
+      "lastModified": "2024-01-10T23:14:59.305Z"
     },
     {
       "path": "/ml/learn/gpu/amd-radeon-rx-7900-xt",
       "title": "AMD Radeon RX 7900 XT AI Performance Overview",
-      "lastModified": "2023-12-26T04:21:07.821Z"
+      "lastModified": "2024-01-10T23:15:00.008Z"
     },
     {
       "path": "/ml/learn/gpu/amd-radeon-rx-7900-xtx",
       "title": "AMD Radeon RX 7900 XTX AI Performance Overview",
-      "lastModified": "2023-12-26T04:21:07.444Z"
+      "lastModified": "2024-01-10T23:14:59.654Z"
     },
     {
       "path": "/ml/learn/gpu/nvidia-a10",
       "title": "NVIDIA A10 AI Performance Overview",
-      "lastModified": "2023-12-26T04:21:02.534Z"
+      "lastModified": "2024-01-10T23:14:56.451Z"
     },
     {
       "path": "/ml/learn/gpu/nvidia-a100-pcie",
       "title": "NVIDIA A100 PCIe AI Performance Overview",
-      "lastModified": "2023-12-26T04:21:02.156Z"
+      "lastModified": "2024-01-10T23:14:56.084Z"
     },
     {
       "path": "/ml/learn/gpu/nvidia-a30",
       "title": "NVIDIA A30 AI Performance Overview",
-      "lastModified": "2023-12-26T04:21:01.393Z"
+      "lastModified": "2024-01-10T23:14:55.384Z"
     },
     {
       "path": "/ml/learn/gpu/nvidia-a40",
       "title": "NVIDIA A40 AI Performance Overview",
-      "lastModified": "2023-12-26T04:21:01.775Z"
+      "lastModified": "2024-01-10T23:14:55.735Z"
     },
     {
       "path": "/ml/learn/gpu/nvidia-geforce-rtx-4090",
       "title": "NVIDIA RTX 4090 AI Performance Overview",
-      "lastModified": "2023-12-26T04:21:06.310Z"
+      "lastModified": "2024-01-10T23:14:58.244Z"
     },
     {
       "path": "/ml/learn/gpu/nvidia-h100-pcie",
       "title": "NVIDIA H100 PCIe AI Performance Overview",
-      "lastModified": "2023-12-26T04:21:02.916Z"
+      "lastModified": "2024-01-10T23:14:56.811Z"
     },
     {
       "path": "/ml/learn/gpu/nvidia-l4",
       "title": "NVIDIA L4 AI Performance Overview",
-      "lastModified": "2023-12-26T04:21:03.297Z"
+      "lastModified": "2024-01-10T23:14:57.184Z"
     },
     {
       "path": "/ml/learn/gpu/nvidia-l40",
       "title": "NVIDIA L40 AI Performance Overview",
-      "lastModified": "2023-12-26T04:21:03.677Z"
+      "lastModified": "2024-01-10T23:14:57.540Z"
     },
     {
       "path": "/ml/learn/gpu/nvidia-l40s",
       "title": "NVIDIA L40S AI Performance Overview",
-      "lastModified": "2023-12-26T04:21:04.061Z"
+      "lastModified": "2024-01-10T23:14:57.892Z"
     },
     {
       "path": "/ml/learn/gpu/nvidia-rtx-a5000",
       "title": "NVIDIA RTX A5000 AI Performance Overview",
-      "lastModified": "2023-12-26T04:21:01.010Z"
+      "lastModified": "2024-01-10T23:14:55.032Z"
     },
     {
       "path": "/ml/learn/gpu/nvidia-t4",
       "title": "NVIDIA T4 AI Performance Overview",
-      "lastModified": "2023-12-26T04:21:00.632Z"
+      "lastModified": "2024-01-10T23:14:54.677Z"
+    },
+    {
+      "path": "/ml/learn/gpu/nvidia-tesla-p100",
+      "title": "NVIDIA Tesla P100 AI Performance Overview",
+      "lastModified": "2024-01-10T23:14:58.597Z"
     },
     {
       "path": "/policy/terms",
       "title": "Terms of Service",
-      "lastModified": "2023-11-17T07:32:49.000Z"
+      "lastModified": "2024-01-10T22:20:21.000Z"
     },
     {
       "path": "/policy/privacy",
       "title": "Privacy & Cookies Policy",
-      "lastModified": "2023-12-21T14:39:31.000Z"
+      "lastModified": "2024-01-10T22:20:21.000Z"
     },
     {
       "path": "/ml/learn",

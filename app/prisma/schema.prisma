@@ -28,6 +28,13 @@ model gpu {
   gpuArchitecture             String
   // This is a list of the supported precisions for hardware-accelerated generalized matrix multiplication operations (GEMM).
   supportedHardwareOperations String[]
+  
+  // The compute capability of a device is represented by a version number, also sometimes called its “SM version”. This version number identifies the features supported by the GPU hardware and is used by applications at runtime to determine which hardware features and/or instructions are available on the present GPU. 
+  // CUDA Compute Capability references: 
+  // - https://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html#compute-capability
+  // - https://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html#compute-capabilities
+  // - https://developer.nvidia.com/cuda-gpus <<< GPU list
+  supportedCUDAComputeCapability Float?
 
   // references for the specs:
   references        String[]

@@ -33,6 +33,7 @@ export function GpuInfo({
       <ul>
         <li>GPU Architecture: {gpu.gpuArchitecture}</li>
         <li>
+          {/* TODO: Review https://docs.nvidia.com/deeplearning/performance/dl-performance-gpu-background/index.html#gpu-arch__fig2 */}
           Hardware-Accelerated{" "}
           <abbr title="Generalized Matrix Multiplication">GEMM</abbr>{" "}
           Operations:
@@ -66,6 +67,15 @@ export function GpuInfo({
               )
             })}
           </div>
+        </li>
+        <li>
+          CUDA Compute Capability{" "}
+          <span className={`mx-2 my-1 text-nowrap fs-6`}>
+            <abbr title="CUDA Compute Capability refers to the version of the CUDA libraries that the card supports. For the purposes of Machine Learning some notable versions are 5.3 where 16-bit floating point (FP16) operations were introduced and 8.0 where the so-called 'brain floating point' (BF16) was introduced which is a floating point type optimized for machine learning. CUDA is only available for NVIDIA GPUs.">
+              <BootstrapIcon icon="info-circle" size="xs" />
+            </abbr>
+          </span>
+          : {gpu.supportedCUDAComputeCapability}{" "}
         </li>
       </ul>
 

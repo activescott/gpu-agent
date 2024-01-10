@@ -11,6 +11,8 @@ export interface Gpu extends GpuSpecs {
    * For example, the Turing and Volta Nvidia architectures support FP16, but not BF16.
    */
   supportedHardwareOperations: string[]
+  // .. | null because prisma :/
+  supportedCUDAComputeCapability?: number | null
   summary: string
   references: string[]
 }

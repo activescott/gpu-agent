@@ -96,6 +96,7 @@ const nonGpuKeywords = [
   "NO GPU",
   "fan kit",
   "fan for",
+  "kit for",
 ].map((word) => word.toLowerCase())
 
 function gpuAccessoryFilter(item: Listing): boolean {
@@ -105,7 +106,7 @@ function gpuAccessoryFilter(item: Listing): boolean {
     )
   ) {
     log.info(
-      "item filtered out as an accessory: %s, %s",
+      "item filtered out as a %s accessory: %s, %s",
       item.title,
       item.itemAffiliateWebUrl,
     )

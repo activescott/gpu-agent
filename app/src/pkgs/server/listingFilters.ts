@@ -94,6 +94,8 @@ const nonGpuKeywords = [
   "shroud",
   "blower fan",
   "NO GPU",
+  "fan kit",
+  "fan for",
 ].map((word) => word.toLowerCase())
 
 function gpuAccessoryFilter(item: Listing): boolean {

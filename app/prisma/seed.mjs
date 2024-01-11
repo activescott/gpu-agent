@@ -430,6 +430,60 @@ async function main() {
       ],
     },
     {
+      name: "nvidia-tesla-v100-32gb",
+      label: "NVIDIA Tesla V100",
+      tensorCoreCount: 640,
+      fp32TFLOPS: 14,
+      fp16TFLOPS: 28,
+      int8TOPS: 56, // from https://www.microway.com/knowledge-center-articles/in-depth-comparison-of-nvidia-tesla-volta-gpu-accelerators/
+      memoryCapacityGB: 32,
+      memoryBandwidthGBs: 900,
+      maxTDPWatts: 300,
+      gpuArchitecture: "volta",
+      // see "Supported Tensor Core precisions" in table at end of https://www.nvidia.com/en-us/data-center/tensor-cores/
+      supportedHardwareOperations: ["FP16", "FP64", "FP32", "FP16", "INT8"],
+      // lookup GPU Compute Capability at https://developer.nvidia.com/cuda-gpus
+      supportedCUDAComputeCapability: 7.0,
+      summary:
+        "The NVIDIA Tesla V100, introduced with NVIDIA's Volta architecture, is a high-end data center GPU. The 32GB version has part numbers 900-2G500-0202-000,  699-2G500-0202-400, 699-2G500-0202-XXX and ASIN B07JVNHFFX. It's renowned for its AI and high-performance computing capabilities, significantly advancing the field with its impressive tensor core count and large memory capacity. The PNY part number for this card is VCQGV100-PB.",
+      references: [
+        "https://developer.nvidia.com/blog/inside-volta/",
+        "https://www.nvidia.com/en-us/data-center/v100/",
+        "https://images.nvidia.com/content/tesla/pdf/Tesla-V100-PCIe-Product-Brief.pdf",
+        "https://resources.nvidia.com/en-us-virtualization-and-gpus/v100-datasheet",
+        "https://www.tomshardware.com/news/nvidia-tesla-v100-volta-gpu,34379.html",
+        "https://www.microway.com/knowledge-center-articles/in-depth-comparison-of-nvidia-tesla-volta-gpu-accelerators/",
+        "https://www.nvidia.com/en-us/data-center/tensor-cores/",
+      ],
+    },
+    {
+      name: "nvidia-tesla-v100-16gb",
+      label: "NVIDIA Tesla V100",
+      tensorCoreCount: 640,
+      fp32TFLOPS: 14,
+      fp16TFLOPS: 28,
+      int8TOPS: 56, // from https://www.microway.com/knowledge-center-articles/in-depth-comparison-of-nvidia-tesla-volta-gpu-accelerators/
+      memoryCapacityGB: 16,
+      memoryBandwidthGBs: 900,
+      maxTDPWatts: 300,
+      gpuArchitecture: "volta",
+      // see "Supported Tensor Core precisions" in table at end of https://www.nvidia.com/en-us/data-center/tensor-cores/
+      supportedHardwareOperations: ["FP16", "FP64", "FP32", "FP16", "INT8"],
+      // lookup GPU Compute Capability at https://developer.nvidia.com/cuda-gpus
+      supportedCUDAComputeCapability: 7.0,
+      summary:
+        "The NVIDIA Tesla V100 16GB version, introduced with NVIDIA's Volta architecture, is a high-end data center GPU. It was the first GPU to feature NVIDIA's Tensor Cores for deep learning and machine learning applications. It's renowned for its AI and high-performance computing capabilities, significantly advancing the field with its impressive tensor core count and large memory capacity. The 16GB version has part number 900-2G500-0000-000 or 699-2G500-0200-XXX. The PNY part number for this card was TCSV100MPCIE-PB and ASIN B076P84525.",
+      references: [
+        "https://developer.nvidia.com/blog/inside-volta/",
+        "https://www.nvidia.com/en-us/data-center/v100/",
+        "https://images.nvidia.com/content/tesla/pdf/Tesla-V100-PCIe-Product-Brief.pdf",
+        "https://resources.nvidia.com/en-us-virtualization-and-gpus/v100-datasheet",
+        "https://www.tomshardware.com/news/nvidia-tesla-v100-volta-gpu,34379.html",
+        "https://www.microway.com/knowledge-center-articles/in-depth-comparison-of-nvidia-tesla-volta-gpu-accelerators/",
+        "https://www.nvidia.com/en-us/data-center/tensor-cores/",
+      ],
+    },
+    {
       name: "nvidia-tesla-p100",
       label: "NVIDIA Tesla P100",
       // Tesla P100 only has CUDA cores

@@ -94,9 +94,9 @@ async function main() {
     collator.compare(a.path, b.path)
   // /ml/learn/gpu/ gpu pages are generated dynamically in app/src/app/ml/shop/gpu/[gpuSlug]/page.tsx
   const learnGpuPages = gpuList
-    .map(({ name, label, updatedAt }: gpu) => ({
+    .map(({ name, label, updatedAt, memoryCapacityGB }: gpu) => ({
       path: `/ml/learn/gpu/${name}`,
-      title: `${label} AI Performance Overview`,
+      title: `${label} (${memoryCapacityGB}GB) AI Performance Overview`,
       lastModified: updatedAt,
     }))
     .sort(comparePagesByPath)

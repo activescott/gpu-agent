@@ -28,7 +28,9 @@ export function GpuInfo({
 }: GpuInfoParams): JSX.Element {
   return (
     <>
-      <h1>{gpu.label} AI Performance Overview</h1>
+      <h1>
+        {gpu.label} {gpu.memoryCapacityGB}GB AI Performance Overview
+      </h1>
       <p>{gpu.summary}</p>
       <ul>
         <li>GPU Architecture: {gpu.gpuArchitecture}</li>

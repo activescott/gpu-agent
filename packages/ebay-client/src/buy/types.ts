@@ -69,6 +69,8 @@ export interface ItemSummary {
   // The date and time when the item listing was created.
   itemCreationDate?: Date
   itemLocation?: ItemLocation
+  // https://developer.ebay.com/api-docs/buy/browse/resources/item_summary/methods/search#response.itemSummaries.itemGroupType
+  itemGroupType: string | "SELLER_DEFINED_VARIATIONS"
 }
 
 export interface Price {

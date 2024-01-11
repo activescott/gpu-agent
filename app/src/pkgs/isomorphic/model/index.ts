@@ -43,6 +43,8 @@ export interface Listing {
   // string | null because prisma :/
   itemLocationCountry?: string | null
   gpu: Gpu
+  // string | null because prisma :/
+  itemGroupType?: string | "SELLER_DEFINED_VARIATIONS" | null
 }
 
 export function convertEbayItemToListing(
@@ -75,6 +77,7 @@ export function convertEbayItemToListing(
     itemCreationDate: listing.itemCreationDate,
     gpu,
     itemLocationCountry: listing.itemLocation?.country,
+    itemGroupType: listing.itemGroupType,
   }
 }
 

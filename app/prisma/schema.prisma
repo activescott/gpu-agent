@@ -84,6 +84,7 @@ model Listing {
   epid                     String
   itemCreationDate         DateTime?
   itemLocationCountry      String?
+  itemGroupType            String?
 
   // relation per https://www.prisma.io/docs/concepts/components/prisma-schema/relations/one-to-many-relations
   // when gpu is deleted, so are its listings

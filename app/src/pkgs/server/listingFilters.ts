@@ -15,6 +15,11 @@ function allListingFilters(item: Listing): boolean {
     log.info("item is not fixed price", item.itemId)
     return false
   }
+  if (item.itemGroupType === "SELLER_DEFINED_VARIATIONS") {
+    // some of them shove a bunch of different types of GPUs into one listing, but the listing returns the lowest price so it makes the item appear artificially cheap
+    log.info("item has SELLER_DEFINED_VARIATIONS", item.itemId)
+    return false
+  }
   return true
 }
 

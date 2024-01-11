@@ -101,6 +101,8 @@ const nonGpuKeywords = [
   "SXM",
   // surprisingly, many people misspell SXM as SMX in listing titles:
   "SMX",
+  // I've seen some cards in china that read "neutered 4GB" apparently indicating that the card has been modified to have less memory than it originally had:
+  "neutered",
 ].map((word) => word.toLowerCase())
 
 function gpuAccessoryFilter(item: Listing): boolean {

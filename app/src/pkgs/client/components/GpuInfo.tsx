@@ -39,8 +39,9 @@ export function GpuInfo({
           Operations:
           <div className="d-flex flex-row flex-wrap">
             {[
-              "BF16",
               "FP16",
+              "FP32",
+              "BF16",
               "FP8",
               "INT8",
               "INT4",

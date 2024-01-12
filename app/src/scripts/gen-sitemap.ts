@@ -65,6 +65,7 @@ async function main() {
       }
 
       const lastModified = gitLastUpdated(file)
+      console.log(`last modified '${lastModified}' from git for ${file}`)
 
       return {
         path: relativePath,
@@ -100,16 +101,31 @@ async function main() {
       lastModified: updatedAt,
     }))
     .sort(comparePagesByPath)
+
+  for (const page of learnGpuPages) {
+    console.log(
+      `last modified '${page.lastModified}' for learnGpuPage ${page.path}`,
+    )
+  }
+
   // this page is a static page in that directory that we need to override to get the right title
   const learnGpuSpecsPage = {
     path: "/ml/learn/gpu/specifications",
     title: "GPU Performance for Machine Learning",
   }
+  const mostRecentlyUpdatedGpuDate = gpuList
+    .map(({ updatedAt }: gpu) => updatedAt)
+    .sort()
+    .reverse()[0]
+
+  console.log(`mostRecentlyUpdatedGpuDate: ${mostRecentlyUpdatedGpuDate}`)
+
   const performanceSlugs = listPerformanceSlugs()
   const shopGpuPerformancePages = performanceSlugs
     .map((slug) => ({
       path: `/ml/shop/gpu/performance/${slug}`,
       title: mapSlugToPageTitle(slug),
+      lastModified: mostRecentlyUpdatedGpuDate,
     }))
     .sort(comparePagesByPath)
 
@@ -117,13 +133,15 @@ async function main() {
     .map((slug) => ({
       path: "/" + gpuRankingCanonicalPath(slug),
       title: gpuRankingTitle(slug),
+      lastModified: mostRecentlyUpdatedGpuDate,
     }))
     .sort(comparePagesByPath)
 
   const shopGpuPages = gpuList
-    .map(({ name, label }: gpu) => ({
+    .map(({ name, label, updatedAt }: gpu) => ({
       path: `/ml/shop/gpu/${name}`,
       title: `Price Compare ${label} GPUs`,
+      lastModified: updatedAt,
     }))
     .sort(comparePagesByPath)
   const priorityShopPages = [

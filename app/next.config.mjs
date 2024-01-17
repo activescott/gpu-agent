@@ -72,6 +72,12 @@ const nextConfig = {
         destination: "/ml/learn/gpu/nvidia-h100-pcie",
         permanent: true,
       },
+      {
+        // this one is an old path style (note missing /ml/learn/...) that Google Search Console found and saw as a 404.
+        source: "/ml/gpu/nvidia-h100-sxm-80gb",
+        destination: "/ml/learn/gpu/nvidia-h100-pcie",
+        permanent: true,
+      },
     ]
   },
 

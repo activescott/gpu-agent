@@ -29,7 +29,7 @@ export function GpuInfo({
   return (
     <>
       <h1>
-        {gpu.label} {gpu.memoryCapacityGB}GB AI Performance Overview
+        {gpu.label} {gpu.memoryCapacityGB}GB Specifications for AI Enthusiasts
       </h1>
       <p>{gpu.summary}</p>
       <ul>

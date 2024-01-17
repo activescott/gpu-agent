@@ -32,7 +32,7 @@ export async function generateMetadata({ params }: GpuParams) {
   log.debug("generateStaticMetadata for gpu ", gpuSlug)
   const gpu = await getGpu(gpuSlug)
   return {
-    title: `${gpu.label} ${gpu.memoryCapacityGB}GB AI Performance Overview`,
+    title: `${gpu.label} ${gpu.memoryCapacityGB}GB Specifications for AI Enthusiasts`,
     description: `Learn about the ${gpu.label} Machine Learning GPU.`,
     alternates: { canonical: `https://coinpoet.com/ml/learn/gpu/${gpuSlug}` },
   }

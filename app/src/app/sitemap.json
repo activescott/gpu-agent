@@ -7,152 +7,152 @@
     {
       "path": "/ml/shop/gpu/performance/cost-per-fp16-flops",
       "title": "Compare GPU Prices by FP16 TFLOPs",
-      "lastModified": "2024-01-11T20:42:57.069Z"
+      "lastModified": "2024-01-17T04:17:09.253Z"
     },
     {
       "path": "/ml/shop/gpu/performance/cost-per-fp32-flops",
       "title": "Compare GPU Prices by FP32 TFLOPs",
-      "lastModified": "2024-01-11T20:42:57.069Z"
+      "lastModified": "2024-01-17T04:17:09.253Z"
     },
     {
       "path": "/ml/shop/gpu/performance/cost-per-int8-tops",
       "title": "Compare GPU Prices by Int8 TOPs",
-      "lastModified": "2024-01-11T20:42:57.069Z"
+      "lastModified": "2024-01-17T04:17:09.253Z"
     },
     {
       "path": "/ml/shop/gpu/performance/cost-per-memory-bandwidth-gbs",
       "title": "Compare GPU Prices by Memory Bandwidth (GB/s)",
-      "lastModified": "2024-01-11T20:42:57.069Z"
+      "lastModified": "2024-01-17T04:17:09.253Z"
     },
     {
       "path": "/ml/shop/gpu/performance/cost-per-memory-gb",
       "title": "Compare GPU Prices by Memory Capacity (GB)",
-      "lastModified": "2024-01-11T20:42:57.069Z"
+      "lastModified": "2024-01-17T04:17:09.253Z"
     },
     {
       "path": "/ml/shop/gpu/performance/cost-per-tensor-core",
       "title": "Compare GPU Prices by Tensor Core Count",
-      "lastModified": "2024-01-11T20:42:57.069Z"
+      "lastModified": "2024-01-17T04:17:09.253Z"
     },
     {
       "path": "/ml/shop/gpu/amd-radeon-rx-580x",
       "title": "Price Compare AMD Radeon RX 580X GPUs",
-      "lastModified": "2024-01-11T20:42:56.356Z"
+      "lastModified": "2024-01-17T04:17:08.538Z"
     },
     {
       "path": "/ml/shop/gpu/amd-radeon-rx-590",
       "title": "Price Compare AMD Radeon RX 590 GPUs",
-      "lastModified": "2024-01-11T20:42:56.712Z"
+      "lastModified": "2024-01-17T04:17:08.896Z"
     },
     {
       "path": "/ml/shop/gpu/amd-radeon-rx-7900-xt",
       "title": "Price Compare AMD Radeon RX 7900 XT GPUs",
-      "lastModified": "2024-01-11T20:42:57.426Z"
+      "lastModified": "2024-01-17T04:17:09.611Z"
     },
     {
       "path": "/ml/shop/gpu/amd-radeon-rx-7900-xtx",
       "title": "Price Compare AMD Radeon RX 7900 XTX GPUs",
-      "lastModified": "2024-01-11T20:42:57.069Z"
+      "lastModified": "2024-01-17T04:17:09.253Z"
     },
     {
       "path": "/ml/shop/gpu/nvidia-a10",
       "title": "Price Compare NVIDIA A10 GPUs",
-      "lastModified": "2024-01-11T20:42:53.131Z"
+      "lastModified": "2024-01-17T04:17:05.302Z"
     },
     {
       "path": "/ml/shop/gpu/nvidia-a100-pcie",
       "title": "Price Compare NVIDIA A100 PCIe GPUs",
-      "lastModified": "2024-01-11T20:42:52.767Z"
+      "lastModified": "2024-01-17T04:17:04.946Z"
     },
     {
       "path": "/ml/shop/gpu/nvidia-a30",
       "title": "Price Compare NVIDIA A30 GPUs",
-      "lastModified": "2024-01-11T20:42:52.051Z"
+      "lastModified": "2024-01-17T04:17:04.229Z"
     },
     {
       "path": "/ml/shop/gpu/nvidia-a40",
       "title": "Price Compare NVIDIA A40 GPUs",
-      "lastModified": "2024-01-11T20:42:52.400Z"
+      "lastModified": "2024-01-17T04:17:04.590Z"
     },
     {
       "path": "/ml/shop/gpu/nvidia-geforce-rtx-4090",
       "title": "Price Compare NVIDIA RTX 4090 GPUs",
-      "lastModified": "2024-01-11T20:42:54.911Z"
+      "lastModified": "2024-01-17T04:17:07.097Z"
     },
     {
       "path": "/ml/shop/gpu/nvidia-h100-pcie",
       "title": "Price Compare NVIDIA H100 PCIe GPUs",
-      "lastModified": "2024-01-11T20:42:53.484Z"
+      "lastModified": "2024-01-17T04:17:05.660Z"
     },
     {
       "path": "/ml/shop/gpu/nvidia-l4",
       "title": "Price Compare NVIDIA L4 GPUs",
-      "lastModified": "2024-01-11T20:42:53.842Z"
+      "lastModified": "2024-01-17T04:17:06.022Z"
     },
     {
       "path": "/ml/shop/gpu/nvidia-l40",
       "title": "Price Compare NVIDIA L40 GPUs",
-      "lastModified": "2024-01-11T20:42:54.207Z"
+      "lastModified": "2024-01-17T04:17:06.384Z"
     },
     {
       "path": "/ml/shop/gpu/nvidia-l40s",
       "title": "Price Compare NVIDIA L40S GPUs",
-      "lastModified": "2024-01-11T20:42:54.560Z"
+      "lastModified": "2024-01-17T04:17:06.740Z"
     },
     {
       "path": "/ml/shop/gpu/nvidia-rtx-a5000",
       "title": "Price Compare NVIDIA RTX A5000 GPUs",
-      "lastModified": "2024-01-11T20:42:51.689Z"
+      "lastModified": "2024-01-17T04:17:03.865Z"
     },
     {
       "path": "/ml/shop/gpu/nvidia-t4",
       "title": "Price Compare NVIDIA T4 GPUs",
-      "lastModified": "2024-01-11T20:42:51.337Z"
+      "lastModified": "2024-01-17T04:17:03.508Z"
     },
     {
       "path": "/ml/shop/gpu/nvidia-tesla-p100",
       "title": "Price Compare NVIDIA Tesla P100 GPUs",
-      "lastModified": "2024-01-11T20:42:56.004Z"
+      "lastModified": "2024-01-17T04:17:08.175Z"
     },
     {
       "path": "/ml/shop/gpu/nvidia-tesla-v100-16gb",
       "title": "Price Compare NVIDIA Tesla V100 GPUs",
-      "lastModified": "2024-01-11T20:42:55.651Z"
+      "lastModified": "2024-01-17T04:17:07.816Z"
     },
     {
       "path": "/ml/shop/gpu/nvidia-tesla-v100-32gb",
       "title": "Price Compare NVIDIA Tesla V100 GPUs",
-      "lastModified": "2024-01-11T20:42:55.261Z"
+      "lastModified": "2024-01-17T04:17:07.458Z"
     },
     {
       "path": "/ml/learn/gpu/ranking/fp16-flops",
       "title": "GPUs Ranked by $ / FP16 TFLOPs",
-      "lastModified": "2024-01-11T20:42:57.069Z"
+      "lastModified": "2024-01-17T04:17:09.253Z"
     },
     {
       "path": "/ml/learn/gpu/ranking/fp32-flops",
       "title": "GPUs Ranked by $ / FP32 TFLOPs",
-      "lastModified": "2024-01-11T20:42:57.069Z"
+      "lastModified": "2024-01-17T04:17:09.253Z"
     },
     {
       "path": "/ml/learn/gpu/ranking/int8-tops",
       "title": "GPUs Ranked by $ / Int8 TOPs",
-      "lastModified": "2024-01-11T20:42:57.069Z"
+      "lastModified": "2024-01-17T04:17:09.253Z"
     },
     {
       "path": "/ml/learn/gpu/ranking/memory-bandwidth-gbs",
       "title": "GPUs Ranked by $ / Memory Bandwidth (GB/s)",
-      "lastModified": "2024-01-11T20:42:57.069Z"
+      "lastModified": "2024-01-17T04:17:09.253Z"
     },
     {
       "path": "/ml/learn/gpu/ranking/memory-gb",
       "title": "GPUs Ranked by $ / Memory Capacity (GB)",
-      "lastModified": "2024-01-11T20:42:57.069Z"
+      "lastModified": "2024-01-17T04:17:09.253Z"
     },
     {
       "path": "/ml/learn/gpu/ranking/tensor-cores",
       "title": "GPUs Ranked by $ / Tensor Core Count",
-      "lastModified": "2024-01-11T20:42:57.069Z"
+      "lastModified": "2024-01-17T04:17:09.253Z"
     },
     {
       "path": "/ml/learn/gpu/specifications",
@@ -160,93 +160,93 @@
     },
     {
       "path": "/ml/learn/gpu/amd-radeon-rx-580x",
-      "title": "AMD Radeon RX 580X (8GB) AI Performance Overview",
-      "lastModified": "2024-01-11T20:42:56.356Z"
+      "title": "AMD Radeon RX 580X (8GB) Specifications for AI Enthusiasts",
+      "lastModified": "2024-01-17T04:17:08.538Z"
     },
     {
       "path": "/ml/learn/gpu/amd-radeon-rx-590",
-      "title": "AMD Radeon RX 590 (8GB) AI Performance Overview",
-      "lastModified": "2024-01-11T20:42:56.712Z"
+      "title": "AMD Radeon RX 590 (8GB) Specifications for AI Enthusiasts",
+      "lastModified": "2024-01-17T04:17:08.896Z"
     },
     {
       "path": "/ml/learn/gpu/amd-radeon-rx-7900-xt",
-      "title": "AMD Radeon RX 7900 XT (20GB) AI Performance Overview",
-      "lastModified": "2024-01-11T20:42:57.426Z"
+      "title": "AMD Radeon RX 7900 XT (20GB) Specifications for AI Enthusiasts",
+      "lastModified": "2024-01-17T04:17:09.611Z"
     },
     {
       "path": "/ml/learn/gpu/amd-radeon-rx-7900-xtx",
-      "title": "AMD Radeon RX 7900 XTX (24GB) AI Performance Overview",
-      "lastModified": "2024-01-11T20:42:57.069Z"
+      "title": "AMD Radeon RX 7900 XTX (24GB) Specifications for AI Enthusiasts",
+      "lastModified": "2024-01-17T04:17:09.253Z"
     },
     {
       "path": "/ml/learn/gpu/nvidia-a10",
-      "title": "NVIDIA A10 (24GB) AI Performance Overview",
-      "lastModified": "2024-01-11T20:42:53.131Z"
+      "title": "NVIDIA A10 (24GB) Specifications for AI Enthusiasts",
+      "lastModified": "2024-01-17T04:17:05.302Z"
     },
     {
       "path": "/ml/learn/gpu/nvidia-a100-pcie",
-      "title": "NVIDIA A100 PCIe (80GB) AI Performance Overview",
-      "lastModified": "2024-01-11T20:42:52.767Z"
+      "title": "NVIDIA A100 PCIe (80GB) Specifications for AI Enthusiasts",
+      "lastModified": "2024-01-17T04:17:04.946Z"
     },
     {
       "path": "/ml/learn/gpu/nvidia-a30",
-      "title": "NVIDIA A30 (24GB) AI Performance Overview",
-      "lastModified": "2024-01-11T20:42:52.051Z"
+      "title": "NVIDIA A30 (24GB) Specifications for AI Enthusiasts",
+      "lastModified": "2024-01-17T04:17:04.229Z"
     },
     {
       "path": "/ml/learn/gpu/nvidia-a40",
-      "title": "NVIDIA A40 (48GB) AI Performance Overview",
-      "lastModified": "2024-01-11T20:42:52.400Z"
+      "title": "NVIDIA A40 (48GB) Specifications for AI Enthusiasts",
+      "lastModified": "2024-01-17T04:17:04.590Z"
     },
     {
       "path": "/ml/learn/gpu/nvidia-geforce-rtx-4090",
-      "title": "NVIDIA RTX 4090 (24GB) AI Performance Overview",
-      "lastModified": "2024-01-11T20:42:54.911Z"
+      "title": "NVIDIA RTX 4090 (24GB) Specifications for AI Enthusiasts",
+      "lastModified": "2024-01-17T04:17:07.097Z"
     },
     {
       "path": "/ml/learn/gpu/nvidia-h100-pcie",
-      "title": "NVIDIA H100 PCIe (80GB) AI Performance Overview",
-      "lastModified": "2024-01-11T20:42:53.484Z"
+      "title": "NVIDIA H100 PCIe (80GB) Specifications for AI Enthusiasts",
+      "lastModified": "2024-01-17T04:17:05.660Z"
     },
     {
       "path": "/ml/learn/gpu/nvidia-l4",
-      "title": "NVIDIA L4 (24GB) AI Performance Overview",
-      "lastModified": "2024-01-11T20:42:53.842Z"
+      "title": "NVIDIA L4 (24GB) Specifications for AI Enthusiasts",
+      "lastModified": "2024-01-17T04:17:06.022Z"
     },
     {
       "path": "/ml/learn/gpu/nvidia-l40",
-      "title": "NVIDIA L40 (48GB) AI Performance Overview",
-      "lastModified": "2024-01-11T20:42:54.207Z"
+      "title": "NVIDIA L40 (48GB) Specifications for AI Enthusiasts",
+      "lastModified": "2024-01-17T04:17:06.384Z"
     },
     {
       "path": "/ml/learn/gpu/nvidia-l40s",
-      "title": "NVIDIA L40S (48GB) AI Performance Overview",
-      "lastModified": "2024-01-11T20:42:54.560Z"
+      "title": "NVIDIA L40S (48GB) Specifications for AI Enthusiasts",
+      "lastModified": "2024-01-17T04:17:06.740Z"
     },
     {
       "path": "/ml/learn/gpu/nvidia-rtx-a5000",
-      "title": "NVIDIA RTX A5000 (24GB) AI Performance Overview",
-      "lastModified": "2024-01-11T20:42:51.689Z"
+      "title": "NVIDIA RTX A5000 (24GB) Specifications for AI Enthusiasts",
+      "lastModified": "2024-01-17T04:17:03.865Z"
     },
     {
       "path": "/ml/learn/gpu/nvidia-t4",
-      "title": "NVIDIA T4 (16GB) AI Performance Overview",
-      "lastModified": "2024-01-11T20:42:51.337Z"
+      "title": "NVIDIA T4 (16GB) Specifications for AI Enthusiasts",
+      "lastModified": "2024-01-17T04:17:03.508Z"
     },
     {
       "path": "/ml/learn/gpu/nvidia-tesla-p100",
-      "title": "NVIDIA Tesla P100 (16GB) AI Performance Overview",
-      "lastModified": "2024-01-11T20:42:56.004Z"
+      "title": "NVIDIA Tesla P100 (16GB) Specifications for AI Enthusiasts",
+      "lastModified": "2024-01-17T04:17:08.175Z"
     },
     {
       "path": "/ml/learn/gpu/nvidia-tesla-v100-16gb",
-      "title": "NVIDIA Tesla V100 (16GB) AI Performance Overview",
-      "lastModified": "2024-01-11T20:42:55.651Z"
+      "title": "NVIDIA Tesla V100 (16GB) Specifications for AI Enthusiasts",
+      "lastModified": "2024-01-17T04:17:07.816Z"
     },
     {
       "path": "/ml/learn/gpu/nvidia-tesla-v100-32gb",
-      "title": "NVIDIA Tesla V100 (32GB) AI Performance Overview",
-      "lastModified": "2024-01-11T20:42:55.261Z"
+      "title": "NVIDIA Tesla V100 (32GB) Specifications for AI Enthusiasts",
+      "lastModified": "2024-01-17T04:17:07.458Z"
     },
     {
       "path": "/policy/terms",

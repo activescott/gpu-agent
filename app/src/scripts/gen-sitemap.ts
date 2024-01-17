@@ -97,7 +97,7 @@ async function main() {
   const learnGpuPages = gpuList
     .map(({ name, label, updatedAt, memoryCapacityGB }: gpu) => ({
       path: `/ml/learn/gpu/${name}`,
-      title: `${label} (${memoryCapacityGB}GB) AI Performance Overview`,
+      title: `${label} (${memoryCapacityGB}GB) Specifications for AI Enthusiasts`,
       lastModified: updatedAt,
     }))
     .sort(comparePagesByPath)

@@ -16,3 +16,7 @@ These sites are not primarily focused focused on GPU benchmarks, but they have a
 
 - https://lambdalabs.com/gpu-benchmarks
 - https://epochai.org/blog/trends-in-gpu-price-performance
+
+## Price Comparisons:
+
+- https://pcpartpicker.com

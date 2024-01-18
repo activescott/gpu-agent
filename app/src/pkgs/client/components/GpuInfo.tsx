@@ -78,7 +78,7 @@ export function GpuInfo({
               <BootstrapIcon icon="info-circle" size="xs" />
             </abbr>
           </span>
-          : {gpu.supportedCUDAComputeCapability}{" "}
+          : {gpu.supportedCUDAComputeCapability ?? "n/a"}{" "}
         </li>
       </ul>
 

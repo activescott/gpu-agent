@@ -1,5 +1,7 @@
 import { PrismaClient } from "@prisma/client"
 import { stripIndent } from "common-tags"
+import _ from "lodash"
+const { isNil } = _
 
 const prisma = new PrismaClient()
 
@@ -536,6 +538,7 @@ async function main() {
     {
       name: "amd-radeon-rx-590",
       label: "AMD Radeon RX 590",
+      // TODO: RDNA3 and CDNA3 (the MI-series) have "AI Accelerator"s which are comparable. Not sure we should be ranking based on cores though. GEMM OPS is all that matters.
       tensorCoreCount: undefined, // N/A
       fp32TFLOPS: 7.1,
       fp16TFLOPS: 7.1,
@@ -560,7 +563,8 @@ async function main() {
     {
       name: "amd-radeon-rx-7900-xtx",
       label: "AMD Radeon RX 7900 XTX",
-      tensorCoreCount: undefined,
+      // tracking the AI Accelerators as "tensor cores"
+      tensorCoreCount: 192,
       fp32TFLOPS: 61,
       fp16TFLOPS: 123,
       int8TOPS: 123,
@@ -570,8 +574,11 @@ async function main() {
       gpuArchitecture: "RDNA 3",
       supportedHardwareOperations: ["FP16", "BF16", "INT8", "INT4"],
       supportedCUDAComputeCapability: undefined, // N/A
-      summary:
-        "The AMD Radeon RX 7900 XTX, launched on December 13, 2022, is AMD's flagship graphics card featuring a significant performance boost over its predecessors.",
+      summary: stripIndent`The AMD Radeon RX 7900 XTX, launched on December 13, 2022, is AMD's flagship graphics card on the new RDNA 3 architecture. 
+        The RDNA 3 architecture features AI Accelerators and a significant performance boost over its predecessors. The 7900 XTX has 96 compute units (CUs) and 192 AI accelerators. The AI Accelerators accelerate the GEMM operation which are critical to machine learning/AI performance. 
+        The 7900 XTX is a compelling GPU for machine learning/AI.
+        Some common part numbers are the PowerColor RX7900XTX 24G-E/OC, RX7900XTX 24G-L/OC, Sapphire 11322-02-20G, XFX RX-79XMERCB9, ASRock 90-GA43ZZ-00UANF, and the Asus TUF-RX7900XTX-O24G-GAMING.
+        The lowest price is tracked and continuously updated across multiple sellers for all of these models below.`,
       references: [
         "https://www.amd.com/en/products/specifications/graphics",
         "https://www.tomshardware.com/reviews/amd-radeon-rx-7900-xtx-and-xt-review-shooting-for-the-top",
@@ -583,7 +590,8 @@ async function main() {
     {
       name: "amd-radeon-rx-7900-xt",
       label: "AMD Radeon RX 7900 XT",
-      tensorCoreCount: undefined,
+      // tracking the AI Accelerators as "tensor cores"
+      tensorCoreCount: 168,
       fp32TFLOPS: 52,
       fp16TFLOPS: 103,
       int8TOPS: 103,
@@ -593,8 +601,11 @@ async function main() {
       gpuArchitecture: "RDNA 3",
       supportedHardwareOperations: ["FP16", "BF16", "INT8", "INT4"],
       supportedCUDAComputeCapability: undefined, // N/A
-      summary:
-        "The AMD Radeon RX 7900 XT, released alongside the RX 7900 XTX on December 13, 2022, offers slightly lower specifications but remains a strong contender in the high-performance GPU market.",
+      summary: stripIndent`The AMD Radeon RX 7900 XT was released alongside the RX 7900 XTX on December 13, 2022 as one of the GPUs using the new RDNA 3 architecture. 
+        It includes RDNA 3 architecture's new AI Accelerators which accelerate the GEMM operations that are critical to machine learning/AI performance. 
+        With 84 compute units (CUs) and 168 AI Accelerators, it has 12 fewer (CUs), and 6 fewer AI Accelerators than the 7900 XTX but remains a strong contender in the high-performance GPU market.
+        Some common part numbers are the PowerColor RX7900XT 20G-L/OC, Sapphire 11323-02-20G, XFX RX-79TMERCU9.
+        The lowest price is tracked and continuously updated across multiple sellers for all of these models below.`,
       references: [
         "https://www.amd.com/en/products/specifications/graphics",
         "https://www.tomshardware.com/reviews/amd-radeon-rx-7900-xtx-and-xt-review-shooting-for-the-top",
@@ -603,15 +614,130 @@ async function main() {
         "https://gpuopen.com/learn/amd-lab-notes/amd-lab-notes-matrix-cores-readme/",
       ],
     },
+    {
+      name: "amd-radeon-rx-7800-xt",
+      label: "AMD Radeon RX 7800 XT",
+      // tracking the AI Accelerators as "tensor cores"
+      tensorCoreCount: 120,
+      fp32TFLOPS: 37,
+      fp16TFLOPS: 74,
+      // NEED REFERENCE
+      int8TOPS: undefined,
+      memoryCapacityGB: 16,
+      memoryBandwidthGBs: 624,
+      maxTDPWatts: 263,
+      gpuArchitecture: "RDNA 3",
+      supportedHardwareOperations: ["FP16", "BF16", "INT8", "INT4"],
+      supportedCUDAComputeCapability: undefined, // N/A
+      summary: stripIndent`The AMD Radeon RX 7800 XT was unveiled in August, 2023 as one of the GPUs using the new RDNA 3 architecture. It includes RDNA 3 architecture's new AI Accelerators which accelerate the GEMM operations that are critical to machine learning/AI performance. 
+      With 60 compute units (CUs) and 120 AI Accelerators, it has lower compute capacity compared to the 7900 XTX's 96 CUs and 192 AI Accelerators, but the RDNA 3 architecture's AI Accelerators make it a contender among AMD GPUs for AI/machine learning.
+      Some common models of this card are the PowerColor RX7800XT 16G-E/OC (B0CFPSX77R), the ASRock RX7800XT CL 16GO (B0CHK3929K), Gigabyte GV-R78XTGAMING OC-16GD (B0CGHQ32S2), and Sapphire 11330-03-20G (B0CFWRLDB5). 
+      The lowest price for all of these is tracked and continuously updated below.`,
+      references: [
+        "https://www.amd.com/en/products/specifications/graphics",
+        "https://www.amd.com/en/products/graphics/amd-radeon-rx-7800-xt",
+        "https://www.amd.com/en/newsroom/press-releases/2024-1-8-amd-unveils-amd-radeon-rx-7600-xt-graphics-card--.html",
+        "https://en.wikipedia.org/wiki/RDNA_3",
+        "https://gpuopen.com/learn/wmma_on_rdna3/",
+        "https://gpuopen.com/learn/amd-lab-notes/amd-lab-notes-matrix-cores-readme/",
+        "https://wccftech.com/amd-radeon-rx-7600-xt-16-gb-rnda-3-gpu-2048-cores-16-gb-vram-tackles-rtx-4060-329-us/",
+      ],
+    },
+    {
+      name: "amd-radeon-rx-7700-xt",
+      label: "AMD Radeon RX 7700 XT",
+      // tracking the AI Accelerators as "tensor cores"
+      tensorCoreCount: 108,
+      fp32TFLOPS: 35,
+      fp16TFLOPS: 70,
+      // NEED REFERENCE
+      int8TOPS: undefined,
+      memoryCapacityGB: 12,
+      memoryBandwidthGBs: 432,
+      maxTDPWatts: 263,
+      gpuArchitecture: "RDNA 3",
+      supportedHardwareOperations: ["FP16", "BF16", "INT8", "INT4"],
+      supportedCUDAComputeCapability: undefined, // N/A
+      summary: stripIndent`The AMD Radeon RX 7700 XT was unveiled in August, 2023 as one of the GPUs using the new RDNA 3 architecture. It includes RDNA 3 architecture's new AI Accelerators which accelerate the GEMM operations that are critical to machine learning/AI performance. 
+      With 54 compute units (CUs) and 108 AI Accelerators, it has lower compute capacity compared to the 7900 XTX's 96 CUs and 192 AI Accelerators, but the RDNA 3 architecture's AI Accelerators make it a contender among AMD GPUs for AI/machine learning.
+      Some common models of this card are the Gigabyte GV-R77XTGAMING OC-12GD, ASRock RX7700XT CL 12GO / 90-GA4QZZ-00UANF, RX7700XT PG 12GO / 90-GA4LZZ-00UANF, RX7700XT SL 12GO / 90-GA4PZZ-00UANF, Asus TUF-RX7700XT-O12G-GAMING/90YV0JK0-M0NA00, PowerColor RX 7700 XT 12G-L/OC / RX7700XT 12GB-L/OC, Sapphire 11335-04-20G and 11335-03-20G, and XFX RX-77TQICKB9.   
+      The lowest price is tracked and continuously updated across multiple sellers for all of these models below.`,
+      references: [
+        "https://www.amd.com/en/products/specifications/graphics",
+        "https://www.amd.com/en/products/graphics/amd-radeon-rx-7700-xt",
+        "https://en.wikipedia.org/wiki/RDNA_3",
+        "https://gpuopen.com/learn/wmma_on_rdna3/",
+        "https://gpuopen.com/learn/amd-lab-notes/amd-lab-notes-matrix-cores-readme/",
+        "https://wccftech.com/amd-radeon-rx-7600-xt-16-gb-rnda-3-gpu-2048-cores-16-gb-vram-tackles-rtx-4060-329-us/",
+      ],
+    },
+    {
+      name: "amd-radeon-rx-7600-xt",
+      label: "AMD Radeon RX 7600 XT",
+      // tracking the AI Accelerators as "tensor cores"
+      tensorCoreCount: 64,
+      fp32TFLOPS: 22.57,
+      fp16TFLOPS: 45.14,
+      // NEED REFERENCE
+      int8TOPS: undefined,
+      memoryCapacityGB: 16,
+      memoryBandwidthGBs: 288,
+      maxTDPWatts: 190,
+      gpuArchitecture: "RDNA 3",
+      supportedHardwareOperations: ["FP16", "BF16", "INT8", "INT4"],
+      supportedCUDAComputeCapability: undefined, // N/A
+      summary: stripIndent`The AMD Radeon RX 7600 XT was unveiled in January, 2024 as one of the GPUs using the new RDNA 3 architecture. It includes RDNA 3 architecture's new AI Accelerators which accelerate the GEMM operations that are critical to machine learning/AI performance. 
+      With 32 compute units (CUs) and 64 AI Accelerators, it has significantly lower compute capacity compared to the 7900 XTX's 96 CUs and 192 AI Accelerators, but the RDNA 3 architecture's AI Accelerators and it's lower price make it a consideration among AMD GPUs for AI/machine learning.
+      `,
+      references: [
+        "https://www.amd.com/en/products/specifications/graphics",
+        "https://www.amd.com/en/products/graphics/amd-radeon-rx-7600-xt",
+        "https://www.amd.com/en/newsroom/press-releases/2024-1-8-amd-unveils-amd-radeon-rx-7600-xt-graphics-card--.html",
+        "https://en.wikipedia.org/wiki/RDNA_3",
+        "https://gpuopen.com/learn/wmma_on_rdna3/",
+        "https://gpuopen.com/learn/amd-lab-notes/amd-lab-notes-matrix-cores-readme/",
+        "https://wccftech.com/amd-radeon-rx-7600-xt-16-gb-rnda-3-gpu-2048-cores-16-gb-vram-tackles-rtx-4060-329-us/",
+      ],
+    },
   ]
 
   for (const gpu of gpus) {
+    // we don't want to update anything if the values haven't changed because it updates the "updatedAt" timestamp used in the sitemap.
+    const where = {
+      name: gpu.name,
+      label: gpu.label,
+      tensorCoreCount: gpu.tensorCoreCount,
+      fp32TFLOPS: gpu.fp32TFLOPS,
+      fp16TFLOPS: gpu.fp16TFLOPS,
+      int8TOPS: gpu.int8TOPS,
+      memoryCapacityGB: gpu.memoryCapacityGB,
+      memoryBandwidthGBs: gpu.memoryBandwidthGBs,
+      maxTDPWatts: gpu.maxTDPWatts,
+      gpuArchitecture: gpu.gpuArchitecture,
+      // prisma doesn't like it when these nullable list args are undefined, so we have to catch that here:
+      references: !isNil(gpu.references)
+        ? { equals: gpu.references }
+        : { equals: null },
+      supportedHardwareOperations: !isNil(gpu.supportedHardwareOperations)
+        ? { equals: gpu.supportedHardwareOperations }
+        : { equals: null },
+      supportedCUDAComputeCapability: gpu.supportedCUDAComputeCapability,
+      summary: gpu.summary,
+    }
+    const gpuCount = await prisma.gpu.count({
+      where,
+    })
+    if (gpuCount > 0) {
+      console.log("skipping gpu", gpu.name, "with same values.")
+      continue
+    }
+    console.log("upserting gpu", gpu.name, " with different values...")
     await prisma.gpu.upsert({
       where: { name: gpu.name },
       update: gpu,
       create: gpu,
     })
-    console.log("seeded gpu", gpu)
+    console.log("upserting gpu", gpu.name, " complete.")
   }
 }
 

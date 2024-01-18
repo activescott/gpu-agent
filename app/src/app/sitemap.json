@@ -359,6 +359,10 @@
       "lastModified": "2024-01-01T04:02:22.000Z"
     },
     {
+      "path": "/ml/learn/faq/amd-gpus-for-ai-machine-learning",
+      "title": "The Current State of AMD GPUs with AI & Machine Learning"
+    },
+    {
       "path": "/contact",
       "title": "page.tsx",
       "lastModified": "2023-12-03T19:52:27.000Z"

@@ -1,0 +1,61 @@
+# Can I Use AMD GPUs with AI & Machine Learning?
+
+While AMD cards do not support CUDA or Tensor Cores, recent AMD GPUs have been integrating comparable technology. The AI/Machine Learning software ecosystem is also integrating better support for AMD GPUs. While not quite as simple as it is for NVIDIA GPUs, it's possible and getting better all the time. This article walks through some of the things you need to know.
+
+## AMD GPU Architectures
+
+There are two AMD GPU architectures that are relevant to machine learning: RDNA3 and CDNA. The RDNA3 architecture is used in AMD's Radeon consumer graphics cards, and the CDNA architecture is used in AMD's Instinct series of accelerators. We are focused on these two architectures primarily because they have optimizations for generalized matrix multiplication (GEMM) operations that are critical to machine learning.
+
+### AMD RDNA3 GPU Architecture GEMM AI Performance
+
+The AMD RDNA 3 GPU microarchitecture was released in November, 2022 [^RDNA-PR] with [Radeon RX 7900 XTX](/ml/learn/gpu/amd-radeon-rx-7900-xtx), and the [Radeon RX 7900 XT](/ml/learn/gpu/amd-radeon-rx-7900-xt). RDNA3 includes the **Wave MMA** (matrix multiply-accumulate) instructions. Wave MMA accelerates the Generalized Matrix Multiplication (GEMM) operations that are critical to machine learning's neural network models (also known as "deep learning" models). Wave MMA was purpose built as an accelerator for machine learning/AI use cases. Wave MMA instructions operate similarly to Nvidia's Tensor Core operations. Wave MMA accelerators matrix operations at precisions FP16, BF16, INT8, and INT4.
+
+### AMD CDNA GPU Architecture GEMM AI Performance
+
+AMD's CDNA is the dedicated compute architecture underlying AMD Instinct Series accelerators such as the MI100, MI200, and MI300 series. Compared to the Radeon brand of consumer products, the Instinct product line is targeting deep learning and high perforamnce compute use cases.
+
+The AMD Instinct series processors also includes Matrix Fused-Multiply Add (MFMA) and Sparse Matrix Fused Multiply Accumulate (SMFMAC) instructions for similar GEMM operations to accelerate machine learning. The CDNA Matrix Cores support accelerating GEMM operations at precisions FP64, FP32, FP16, BF16, and INT8. AMD Matrix Cores can be used with libraries such as rocBLAS or rocWMMA to do matrix operations on the GPU.
+
+## AMD GPU Acceleration Framework Support
+
+In addition to the hardware support for GEMM operations, you must consider the compatibility of the software libraries you are using. The most common high-level frameworks for machine learning development are TensorFlow and PyTorch. For just running machine learning models from others or part of applications, you'll have to see what they support but commonly they will require CUDA, which is NVIDIA's proprietary GPU acceleration framework. To make sure that the application supports AMD GPUs, look for support for ROCm, which is AMD's open-source GPU acceleration framework or OpenCL which will also generally work with ROCm.
+
+### AMD GPU Support in PyTorch and TensorFlow
+
+With the PyTorch 1.8 release in March 2021, PyTorch provided an installation option for the ROCm platform (more on ROCm in the section below).[^PyTorch-ROCm]
+
+AMD's ROCm documentation provides [instructions for getting started with AMD GPUs for TensorFlow](https://rocm.docs.amd.com/projects/install-on-linux/en/latest/how-to/3rd-party/tensorflow-install.html), and for [using AMD GPUs with PyTorch](https://rocm.docs.amd.com/projects/install-on-linux/en/latest/how-to/3rd-party/pytorch-install.html).
+
+### ROCm
+
+ROCm is an open-source software platform developed by AMD that allows programmers to tap into the power of AMD GPUs for high-performance computing tasks like machine learning. It's akin to NVIDIA's CUDA.
+
+Some of the differences between ROCm and CUDA are below:
+
+| Feature            | ROCm                                           | CUDA                          |
+| ------------------ | ---------------------------------------------- | ----------------------------- |
+| Source code        | Open-source                                    | Proprietary                   |
+| Supported hardware | AMD GPUs, some ARM CPUs                        | NVIDIA GPUs                   |
+| Programming models | HIP, OpenMP, OpenCL                            | CUDA                          |
+| Development tools  | ROCm developer tools, HIP, and HIPify compiler | CUDA Toolkit, cuDNN libraries |
+
+In addition to programming to ROCm directly, ROCm provides an implementation of the OpenCL library, which abstracts operations across special purpose processors including GPUs. [^ROCm-OpenCL-Impl] Some proejcts such as [llama.cpp](https://github.com/ggerganov/llama.cpp) support ROCm and AMD GPUs via OpenCL and have found performance comparable to direct CUDA and ROCm code.[^llama-cpp-opencl]
+
+The LLVM Project contains the AMDGPU backend provides ISA code generation for AMD GPUs, starting with the R600 family up through the RDNA3 and CDNA3 famlies.
+The GCC project contains support for CDNA2 series devices [^GCC-AMD], and RDNA3 support was initially merged as of early 2024. [^GCC-AMD-RDNA3]
+
+## References
+
+- https://gpuopen.com/learn/wmma_on_rdna3/
+- https://gpuopen.com/learn/amd-lab-notes/amd-lab-notes-matrix-cores-README/
+- https://gpuopen.com/learn/amd-lab-notes/amd-lab-notes-pytorch-tensorflow-env-readme/
+- https://llvm.org/docs/AMDGPUUsage.html
+- https://en.wikipedia.org/wiki/ROCm
+- https://github.com/ROCmSoftwarePlatform/tensorflow-upstream
+
+[^RDNA-PR]: https://www.amd.com/en/press-releases/2022-11-03-amd-unveils-world-s-most-advanced-gaming-graphics-cards-built
+[^PyTorch-ROCm]: https://pytorch.org/blog/pytorch-for-amd-rocm-platform-now-available-as-python-package/
+[^ROCm-OpenCL-Impl]: https://cgmb-rocm-docs.readthedocs.io/en/latest/Programming_Guides/Opencl-programming-guide.html#amd-rocm-implementation
+[^llama-cpp-opencl]: https://github.com/ggerganov/llama.cpp/pull/1459
+[^GCC-AMD]: https://gcc.gnu.org/onlinedocs/gcc/AMD-GCN-Options.html
+[^GCC-AMD-RDNA3]: https://www.phoronix.com/news/AMD-GFX11-RDNA3-GCC-14

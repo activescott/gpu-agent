@@ -162,6 +162,7 @@ export async function fetchListingsForAllGPUsWithCache(): Promise<
 > {
   const gpus = await listGpus()
   // NOTE: we're deliberately making these queries sequential to avoid deadlocks when they need to update the database's cached listings. We're just taking a hit every hour on the response time
+  // PERF: performance sucks here, but it is only called once an hour due to page caching so it is ok
   const listings: Iterable<Listing>[] = []
   for (const gpu of gpus) {
     const fetched = await fetchListingsForGpuWithCache(gpu.name)

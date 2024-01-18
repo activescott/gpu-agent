@@ -123,8 +123,11 @@ class BuyApiImpl implements BuyApi {
   ): AsyncGenerator<ItemSummary, void, unknown> {
     try {
       while (page) {
-        for (const item of page.itemSummaries) {
-          yield item
+        // NOTE: page.itemSummaries can be undefined
+        if (page.itemSummaries) {
+          for (const item of page.itemSummaries) {
+            yield item
+          }
         }
         // after yielding the page items, get the next page. Conveniently ebay provides the HATEOS url to get it
         if (!page.next) {

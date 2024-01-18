@@ -10,7 +10,8 @@ import { Gpu } from "@/pkgs/isomorphic/model"
 import { useEffect, useState } from "react"
 import { BootstrapIcon } from "@/pkgs/client/components/BootstrapIcon"
 import { composeComparers } from "@/pkgs/isomorphic/collection"
-import { divideSafe } from "@/pkgs/isomorphic/math"
+import { curry } from "lodash"
+import { dollarsPerSpec } from "@/pkgs/isomorphic/gpuTools"
 
 type GpuMinimal = Omit<
   Gpu,
@@ -22,31 +23,35 @@ export type PricedGpu = {
   price: { avgPrice: number; minPrice: number; activeListingCount: number }
 }
 
-const dollarsPerSpec = (
-  gpu: GpuMinimal,
-  dollars: number,
-  spec: GpuSpecKey,
-): number => divideSafe(dollars, gpu[spec])
+const lowestPriceGpuSpecComparer = (
+  compareSpec: GpuSpecKey,
+  ascending: boolean,
+  a: PricedGpu,
+  b: PricedGpu,
+): number => {
+  const result =
+    dollarsPerSpec(a.gpu, a.price.minPrice, compareSpec) -
+    dollarsPerSpec(b.gpu, b.price.minPrice, compareSpec)
+  return ascending ? result : -1 * result
+}
 
 function sortGpus(
   gpus: PricedGpu[],
   primarySpec: GpuSpecKey,
   ascending: boolean,
 ): PricedGpu[] {
-  const lowestPriceComparer = (a: PricedGpu, b: PricedGpu): number => {
-    const result =
-      dollarsPerSpec(a.gpu, a.price.minPrice, primarySpec) -
-      dollarsPerSpec(b.gpu, b.price.minPrice, primarySpec)
-    return ascending ? result : -1 * result
-  }
-
   const listingCountNotZeroComparer = (a: PricedGpu, b: PricedGpu): number => {
     if (a.price.activeListingCount === 0) return 1
     return b.price.activeListingCount === 0 ? -1 : 0
   }
 
+  const lowPriceComparer = curry(lowestPriceGpuSpecComparer)(
+    primarySpec,
+    ascending,
+  )
+
   return [...gpus].sort(
-    composeComparers(listingCountNotZeroComparer, lowestPriceComparer),
+    composeComparers(listingCountNotZeroComparer, lowPriceComparer),
   )
 }
 

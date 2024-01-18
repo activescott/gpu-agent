@@ -44,26 +44,29 @@ export default async function Page({ params }: GpuSpecSlugParams) {
   const desc = GpuSpecsDescription[primarySpec]
 
   const gpus = await listGpus()
-  // for each GPU, get the average price
 
+  const MIN_GPU_MEM_FOR_ML_GB = 10
   const unsortedPricedGpus = await Promise.all(
-    gpus.map(async (gpu) => {
-      const stats = await getPriceStats(gpu.name)
-      /* 
+    gpus
+      // Lets filter out the 8GB 580X and similarly low memory GPUs.
+      .filter((gpu) => gpu.memoryCapacityGB >= MIN_GPU_MEM_FOR_ML_GB)
+      .map(async (gpu) => {
+        const stats = await getPriceStats(gpu.name)
+        /* 
         NOTE: React/Next.js server components dump all the props into the client-delivered JS making the page huge: https://github.com/vercel/next.js/discussions/42170
         Lighthouse complained about the JS size and this removed about ~16KB of JS from the page. 
       */
-      const gpuMinimal = omit(gpu, [
-        "summary",
-        "references",
-        "supportedHardwareOperations",
-        "gpuArchitecture",
-      ])
-      return {
-        gpu: gpuMinimal,
-        price: stats,
-      } as PricedGpu
-    }),
+        const gpuMinimal = omit(gpu, [
+          "summary",
+          "references",
+          "supportedHardwareOperations",
+          "gpuArchitecture",
+        ])
+        return {
+          gpu: gpuMinimal,
+          price: stats,
+        } as PricedGpu
+      }),
   )
 
   return (

@@ -22,7 +22,7 @@ In addition to the hardware support for GEMM operations, you must consider the c
 
 ### AMD GPU Support in PyTorch and TensorFlow
 
-With the PyTorch 1.8 release in March 2021, PyTorch provided an installation option for the ROCm platform (more on ROCm in the section below).[^PyTorch-ROCm]
+With the PyTorch 1.8 release in March 2021, PyTorch provided an installation option for the ROCm platform (more on ROCm in the section below).[^PyTorch-ROCm] As AMD updates ROCm, PyTorch will support more GPUs. For example, in late 2023, AMD updated ROCm and PyTorch to support the [AMD Radeon RX 7900 XT](/ml/learn/gpu/amd-radeon-rx-7900-xt).[^7900XT-PyTorch]
 
 AMD's ROCm documentation provides [instructions for getting started with AMD GPUs for TensorFlow](https://rocm.docs.amd.com/projects/install-on-linux/en/latest/how-to/3rd-party/tensorflow-install.html), and for [using AMD GPUs with PyTorch](https://rocm.docs.amd.com/projects/install-on-linux/en/latest/how-to/3rd-party/pytorch-install.html).
 
@@ -42,7 +42,11 @@ Some of the differences between ROCm and CUDA are below:
 In addition to programming to ROCm directly, ROCm provides an implementation of the OpenCL library, which abstracts operations across special purpose processors including GPUs. [^ROCm-OpenCL-Impl] Some proejcts such as [llama.cpp](https://github.com/ggerganov/llama.cpp) support ROCm and AMD GPUs via OpenCL and have found performance comparable to direct CUDA and ROCm code.[^llama-cpp-opencl]
 
 The LLVM Project contains the AMDGPU backend provides ISA code generation for AMD GPUs, starting with the R600 family up through the RDNA3 and CDNA3 famlies.
-The GCC project contains support for CDNA2 series devices [^GCC-AMD], and RDNA3 support was initially merged as of early 2024. [^GCC-AMD-RDNA3]
+The GCC project contains support for CDNA2 series devices [^GCC-AMD], and RDNA3 support was initially merged as of early 2024. [^GCC-AMD-RDNA3].
+
+### Other notes
+
+AMD has a tutorial on [how to run Meta's Llama2 with Microsoft DirectML on AMD Radeon Graphics](https://community.amd.com/t5/ai/how-to-running-optimized-llama2-with-microsoft-directml-on-amd/ba-p/645190).
 
 ## References
 
@@ -59,3 +63,4 @@ The GCC project contains support for CDNA2 series devices [^GCC-AMD], and RDNA3 
 [^llama-cpp-opencl]: https://github.com/ggerganov/llama.cpp/pull/1459
 [^GCC-AMD]: https://gcc.gnu.org/onlinedocs/gcc/AMD-GCN-Options.html
 [^GCC-AMD-RDNA3]: https://www.phoronix.com/news/AMD-GFX11-RDNA3-GCC-14
+[^7900XT-PyTorch]: https://community.amd.com/t5/ai/amd-delivers-more-options-for-ai-developers-by-extending-pytorch/ba-p/645371

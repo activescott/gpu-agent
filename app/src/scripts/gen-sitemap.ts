@@ -12,7 +12,7 @@ import {
   gpuRankingTitle,
   listGpuRankingSlugs,
 } from "../app/ml/learn/gpu/ranking/slugs"
-import dotenv from "dotenv"
+import * as dotenv from "dotenv"
 
 dotenv.config({ path: path.join(__dirname, "../../.env.local") })
 //////////////////////////////////////////////////

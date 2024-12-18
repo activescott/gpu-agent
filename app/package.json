@@ -32,7 +32,7 @@
     "seed": "node prisma/seed.mjs"
   },
   "dependencies": {
-    "@activescott/diag": "^2.0.0",
+    "@activescott/diag": "^2.0.2",
     "@mdx-js/loader": "^3.0.0",
     "@mdx-js/react": "^3.0.0",
     "@next/mdx": "^14.0.2",
@@ -47,7 +47,7 @@
     "glob": "^10.3.10",
     "irritable-iterable": "^1.4.0",
     "lodash": "^4.17.21",
-    "next": "14.0.2",
+    "next": "^14.2.20",
     "posthog-js": "^1.93.2",
     "prisma": "^5.6.0",
     "react": "^18",

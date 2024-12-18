@@ -12,7 +12,9 @@ import {
   gpuRankingTitle,
   listGpuRankingSlugs,
 } from "../app/ml/learn/gpu/ranking/slugs"
+import dotenv from "dotenv"
 
+dotenv.config({ path: path.join(__dirname, "../../.env.local") })
 //////////////////////////////////////////////////
 // NOTE: ABOVE the easiest thing to do here is avoid the @/ import aliases since next seems to resolve those as a bundler and we're not running any bundler in this script
 //////////////////////////////////////////////////

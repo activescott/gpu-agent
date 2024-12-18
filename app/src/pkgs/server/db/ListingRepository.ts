@@ -80,6 +80,22 @@ export async function markListingsFreshForGpu(
   })
 }
 
+export async function deleteStaleListingsForGpu(
+  gpuName: string,
+  prisma: PrismaClientWithinTransaction = prismaSingleton,
+): Promise<void> {
+  log.info(`Deleting stale listings for ${gpuName}`)
+  const resp = await prisma.listing.deleteMany({
+    where: {
+      gpuName,
+      stale: true,
+    },
+  })
+  log.info(
+    `Deleting stale listings for ${gpuName} complete. ${resp.count} deleted.`,
+  )
+}
+
 export async function getPriceStats(
   gpuName: string,
   prisma: PrismaClientWithinTransaction = prismaSingleton,

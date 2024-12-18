@@ -18,7 +18,7 @@ import {
 import path from "path"
 import { createDiag } from "@activescott/diag"
 import { Gpu, Listing, convertEbayItemToListing } from "../isomorphic/model"
-import { chainAsync, headAsync } from "irritable-iterable"
+import { chainAsync } from "irritable-iterable"
 import { appRoot } from "./path"
 import {
   getGpu,
@@ -28,6 +28,7 @@ import {
 } from "./db/GpuRepository"
 import {
   addListingsForGpu,
+  deleteStaleListingsForGpu,
   listListingsForGpu,
   markListingsFreshForGpu,
   markListingsStaleForGpu,
@@ -121,12 +122,7 @@ export async function fetchListingsForGpuWithCache(
   // fetch from ebay and update the GPU repository
   const gpu = await getGpu(gpuName)
   const fetched = await fetchListingsForGpuDirectFromEbay(gpu)
-  //  note ebay-client will fetch them ALL and there could be a LOT so we limit it here:
-  const limited = headAsync(
-    fetched,
-    SERVER_CONFIG.MAX_LISTINGS_TO_CACHE_PER_GPU() as Integer<number>,
-  )
-  const collected = await limited.collect()
+  const collected = await chainAsync(fetched).collect()
   log.info(
     "fetched '%s' listings from ebay for '%s'. Caching listings...",
     collected.length,
@@ -147,6 +143,9 @@ export async function fetchListingsForGpuWithCache(
         await updateGpuLastCachedListings(gpuName, prisma),
       ]
       await Promise.all(promised)
+
+      // now delete any listings for this gpu that are still stale
+      await deleteStaleListingsForGpu(gpuName, prisma)
     },
     { timeout: INSERT_TRANSACTION_TIMEOUT, maxWait: WAIT_TRANSACTION_TIMEOUT },
   )

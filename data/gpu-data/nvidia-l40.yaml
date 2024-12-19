@@ -1,0 +1,36 @@
+name: nvidia-l40
+label: NVIDIA L40
+tensorCoreCount: 568
+fp32TFLOPS: 90.5
+fp16TFLOPS: 181.05
+int8TOPS: 362
+memoryCapacityGB: 48
+memoryBandwidthGBs: 864
+maxTDPWatts: 300
+gpuArchitecture: ada
+supportedHardwareOperations:
+  - FP16
+  - INT8
+  - TF32
+  - INT4
+  - BF16
+  - FP8
+supportedCUDAComputeCapability: 8.9
+summary: The NVIDIA L40 GPU was introduced in September 2022 with part number
+  900-2G133-0010-000. It is based on the AD102 chip from the Ada Lovelace
+  architecture. It is optimized for graphics and AI-enabled 2D, video and 3D
+  image generation. It uses the PCIe Gen4 x16 interconnect and Unlike the NVIDIA
+  L4, it allows connecting monitors with 4x DisplayPort connectors.
+references:
+  - https://images.nvidia.com/content/Solutions/data-center/vgpu-L40-datasheet.pdf
+  - https://images.nvidia.com/aem-dam/Solutions/geforce/ada/nvidia-ada-gpu-architecture.pdf
+  - https://images.nvidia.com/aem-dam/Solutions/Data-Center/l4/nvidia-ada-gpu-architecture-whitepaper-v2.1.pdf
+  - https://nvidianews.nvidia.com/news/nvidia-announces-ovx-computing-systems-the-graphics-and-simulation-foundation-for-the-metaverse-powered-by-ada-lovelace-gpu
+notes:
+  - "fp32TFLOPS: the L40 @ 90.5 per
+    https://images.nvidia.com/content/Solutions/data-center/vgpu-L40-datasheet.\
+    pdf"
+  - "fp16TFLOPS: L40 is 181.05"
+  - "int8TOPS: L40 was 362 according to
+    https://images.nvidia.com/aem-dam/Solutions/Data-Center/l4/nvidia-ada-gpu-a\
+    rchitecture-whitepaper-v2.1.pdf"

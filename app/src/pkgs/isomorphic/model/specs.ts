@@ -1,13 +1,17 @@
-export interface GpuSpecs {
+import { z } from "zod"
+
+export const GpuSpecsSchema = z.object({
+  // .. | nullable because prisma seems to want that for optionals :/
+  tensorCoreCount: z.number().optional().nullable(),
+  fp32TFLOPS: z.number(),
+  fp16TFLOPS: z.number(),
   // .. | null because prisma :/
-  tensorCoreCount?: number | null
-  fp32TFLOPS: number
-  fp16TFLOPS: number
-  // .. | null because prisma :/
-  int8TOPS?: number | null
-  memoryCapacityGB: number
-  memoryBandwidthGBs: number
-}
+  int8TOPS: z.number().optional().nullable(),
+  memoryCapacityGB: z.number(),
+  memoryBandwidthGBs: z.number(),
+})
+
+export type GpuSpecs = z.infer<typeof GpuSpecsSchema>
 
 export type GpuSpecKey = keyof GpuSpecs
 

@@ -1,0 +1,26 @@
+name: amd-radeon-rx-590
+label: AMD Radeon RX 590
+fp32TFLOPS: 7.1
+fp16TFLOPS: 7.1
+memoryCapacityGB: 8
+memoryBandwidthGBs: 256
+maxTDPWatts: 175
+gpuArchitecture: Graphics Core Next 4
+supportedHardwareOperations: []
+summary: The AMD Radeon RX 590, launched on November 15th, 2018, uses the 12 nm
+  process with the Polaris 30 graphics processor. It's a performance-segment
+  card with a dual-slot form factor and a TDP of 175 W.
+references:
+  - https://www.amd.com/en/products/specifications/graphics
+  - https://www.tomshardware.com/reviews/amd-radeon-rx-590,5907.html
+  - https://www.techpowerup.com/gpu-specs/radeon-rx-590.c3322
+  - https://en.wikipedia.org/wiki/Graphics_Core_Next
+notes:
+  - 'int8TOPS: "More Information Needed"'
+  - "supportedHardwareOperations: \"Since the introduction of AMD's CDNA
+    Architecture, Generalized Matrix Multiplication (GEMM) computations are now
+    hardware-accelerated through Matrix Core Processing Units.\" (presumably
+    GEMM wasn't supported in previous architectures and I can find no reference
+    to them in GCN)
+    – https://gpuopen.com/learn/amd-lab-notes/amd-lab-notes-matrix-cores-README\
+    /"

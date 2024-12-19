@@ -1,0 +1,29 @@
+name: nvidia-a40
+label: NVIDIA A40
+tensorCoreCount: 336
+fp32TFLOPS: 37.4
+fp16TFLOPS: 37.4
+int8TOPS: 299.3
+memoryCapacityGB: 48
+memoryBandwidthGBs: 696
+gpuArchitecture: ampere
+supportedHardwareOperations:
+  - FP16
+  - INT8
+  - INT4
+  - INT1
+  - FP64
+  - TF32
+  - BF16
+supportedCUDAComputeCapability: 8.6
+summary: The NVIDIA A40, launched in October 2020 with part number
+  900-2G133-0000-100, is a professional-grade GPU built on the GA102 processor.
+  It is tailored for high-end machine learning applications, offering
+  exceptional performance in both AI training and inference tasks. The A40's
+  introduction marks a significant milestone in GPU technology, showcasing
+  advancements in memory capacity, bandwidth, and processing power, suitable for
+  the most demanding AI workloads.
+references:
+  - https://www.nvidia.com/en-us/data-center/a40/
+  - https://www.techpowerup.com/gpu-specs/a40-pcie.c3700
+  - https://www.nvidia.com/en-us/data-center/tensor-cores/

@@ -1,0 +1,44 @@
+name: nvidia-l40s
+label: NVIDIA L40S
+tensorCoreCount: 568
+fp32TFLOPS: 183
+fp16TFLOPS: 362
+int8TOPS: 1466
+memoryCapacityGB: 48
+memoryBandwidthGBs: 864
+maxTDPWatts: 350
+gpuArchitecture: ada
+supportedHardwareOperations:
+  - FP16
+  - INT8
+  - TF32
+  - INT4
+  - BF16
+  - FP8
+supportedCUDAComputeCapability: 8.9
+summary: The NVIDIA L40S GPU was introduced in August 2023 (part number
+  900-2g133-0080-000). It is the successor to the NVIDIA L40 (part number
+  900-2G133-0010-000) and like the L40 is based on the AD102 chip from the Ada
+  Lovelace architecture. Compared with the L40 it has nearly double the TF32
+  Tensor Core TFLOPS and FP16 Tensor Core performance, and increases the maximum
+  power draw from 300W to 350W. It is targeted for generative AI and graphics
+  and video applications. It lacks FP64 precision, but has great FP32, FP16 and
+  mixed-precision performance. It uses the PCIe Gen4 x16 interconnect and Unlike
+  the NVIDIA L4, it allows connecting monitors with 4x DisplayPort connectors.
+references:
+  - https://www.nvidia.com/en-us/data-center/l40s/
+  - https://www.exxactcorp.com/blog/components/NVIDIA-L40S-GPU-Compared-to-A100-and-H100-Tensor-Core-GPU
+  - https://resources.nvidia.com/en-us-l40s/nvidia-l40s-product
+  - https://nvidianews.nvidia.com/news/nvidia-global-data-center-system-manufacturers-to-supercharge-generative-ai-and-industrial-digitalization
+  - https://flyytech.com/2023/08/08/nvidia-completes-proviz-ada-lovelace-lineup-with-three-new-graphics-cards/
+  - https://www.nvidia.com/en-us/technologies/ada-architecture/
+notes:
+  - "fp32TFLOPS: MUCH higher compared to the L40 @ 90.5 per
+    https://images.nvidia.com/content/Solutions/data-center/vgpu-L40-datasheet.\
+    pdf"
+  - "fp16TFLOPS: L40 is 181.05"
+  - "int8TOPS: From
+    https://www.exxactcorp.com/blog/components/NVIDIA-L40S-GPU-Compared-to-A100\
+    -and-H100-Tensor-Core-GPU. L40 was 362 according to
+    https://images.nvidia.com/aem-dam/Solutions/Data-Center/l4/nvidia-ada-gpu-a\
+    rchitecture-whitepaper-v2.1.pdf"

@@ -8,25 +8,12 @@ GPU Agent is a project I created to scratch an itch I've had since I used to buy
 
 The tech stack used is TypeScript, NextJS, Prisma, and PostgresSQL.
 
-## Operations
+## License
 
-- Main URL: https://coinpoet.com/
-- Hosted via https://vercel.com/pingpoet/shopping-agent
-- Sitemap/SEO at:
-  - https://www.bing.com/webmasters (use Live (Microsoft Personal))
-  - https://search.google.com/u/1/search-console?resource_id=sc-domain%3Acoinpoet.com
-- Analytics at https://app.posthog.com/home (use scott@coinpoet.com)
-- Database at Neon.tech
+### Code
 
-### Runbooks
+The code in this project is licensed under the MIT License. See the `LICENSE_CODE` file for more information.
 
-#### Force the ebay listing cache to refresh
+### Data
 
-- Go to db at https://console.neon.tech/app/projects/
-- Run the following query (replacing GPU name in where as needed):
-
-```sql
-DELETE FROM "GpuLastCachedListings"
-WHERE "gpuName" IN ('nvidia-l4', 'nvidia-l40', 'nvidia-l40s')
-;
-```
+The data in this project is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0). See the `LICENSE_DATA` file for more information.

@@ -1,0 +1,19 @@
+name: amd-radeon-rx-580x
+label: AMD Radeon RX 580X
+fp32TFLOPS: 6.2
+fp16TFLOPS: 6.2
+memoryCapacityGB: 8
+memoryBandwidthGBs: 256
+maxTDPWatts: 185
+gpuArchitecture: Graphics Core Next 4
+supportedHardwareOperations: []
+summary: The AMD Radeon RX 580X, launched on April 11th, 2018, is built on a 14
+  nm process and features the Polaris 20 graphics processor. It's a dual-slot
+  card with a maximum power draw of 185 W and supports DirectX 12.
+references:
+  - https://www.amd.com/en/products/specifications/graphics
+  - https://www.tomshardware.com/reviews/amd-radeon-rx-580-review,5020.html
+  - https://www.techpowerup.com/gpu-specs/radeon-rx-580x.c3190
+  - https://en.wikipedia.org/wiki/Graphics_Core_Next
+notes:
+  - 'int8TOPS: "More Information Needed"'

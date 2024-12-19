@@ -1,0 +1,32 @@
+name: amd-radeon-rx-7700-xt
+label: AMD Radeon RX 7700 XT
+tensorCoreCount: 108
+fp32TFLOPS: 35
+fp16TFLOPS: 70
+memoryCapacityGB: 12
+memoryBandwidthGBs: 432
+maxTDPWatts: 263
+gpuArchitecture: RDNA 3
+supportedHardwareOperations:
+  - FP16
+  - BF16
+  - INT8
+  - INT4
+summary: >-
+  The AMD Radeon RX 7700 XT was unveiled in August, 2023 as one of the GPUs
+  using the new RDNA 3 architecture. It includes RDNA 3 architecture's new AI
+  Accelerators which accelerate the GEMM operations that are critical to machine
+  learning/AI performance. 
+      With 54 compute units (CUs) and 108 AI Accelerators, it has lower compute capacity compared to the 7900 XTX's 96 CUs and 192 AI Accelerators, but the RDNA 3 architecture's AI Accelerators make it a contender among AMD GPUs for AI/machine learning.
+      Some common models of this card are the Gigabyte GV-R77XTGAMING OC-12GD, ASRock RX7700XT CL 12GO / 90-GA4QZZ-00UANF, RX7700XT PG 12GO / 90-GA4LZZ-00UANF, RX7700XT SL 12GO / 90-GA4PZZ-00UANF, Asus TUF-RX7700XT-O12G-GAMING/90YV0JK0-M0NA00, PowerColor RX 7700 XT 12G-L/OC / RX7700XT 12GB-L/OC, Sapphire 11335-04-20G and 11335-03-20G, and XFX RX-77TQICKB9.   
+      The lowest price is tracked and continuously updated across multiple sellers for all of these models below.
+references:
+  - https://www.amd.com/en/products/specifications/graphics
+  - https://www.amd.com/en/products/graphics/amd-radeon-rx-7700-xt
+  - https://en.wikipedia.org/wiki/RDNA_3
+  - https://gpuopen.com/learn/wmma_on_rdna3/
+  - https://gpuopen.com/learn/amd-lab-notes/amd-lab-notes-matrix-cores-readme/
+  - https://wccftech.com/amd-radeon-rx-7600-xt-16-gb-rnda-3-gpu-2048-cores-16-gb-vram-tackles-rtx-4060-329-us/
+notes:
+  - 'tensorCoreCount: tracking the AI Accelerators as "tensor cores"'
+  - "int8TOPS: More Information Needed"

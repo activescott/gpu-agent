@@ -7,6 +7,9 @@ import { chain } from "irritable-iterable"
 import { curry } from "lodash"
 import { Metadata } from "next"
 
+// default is 10s and without slug and fetching many GPUs 10s isn't enough: https://vercel.com/docs/functions/configuring-functions/duration
+export const maxDuration = 20
+
 // revalidate the data at most every hour:
 export const revalidate = 3600
 

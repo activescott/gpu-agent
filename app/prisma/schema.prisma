@@ -93,6 +93,8 @@ model Listing {
 
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
+  // note cachedAt is essentially createdAt but allows us to use it explicitly and potentially update it separately from createdAt or updatedAt
+  cachedAt DateTime   @default(now())
 
   @@index([gpuName, stale])
 }

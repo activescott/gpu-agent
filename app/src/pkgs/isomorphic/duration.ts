@@ -1,4 +1,4 @@
-// eslint-disable-next-line import/no-unused-modules
+/* eslint-disable import/no-unused-modules, no-magic-numbers */
 export function delay(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms))
 }
@@ -7,3 +7,9 @@ const MILLISECONDS_PER_SECOND = 1000
 
 export const secondsToMilliseconds = (seconds: number) =>
   seconds * MILLISECONDS_PER_SECOND
+
+export const millisecondsToSeconds = (milliseconds: number) =>
+  milliseconds / MILLISECONDS_PER_SECOND
+
+export const hoursToMilliseconds = (hours: number) =>
+  hours * 60 * 60 * MILLISECONDS_PER_SECOND

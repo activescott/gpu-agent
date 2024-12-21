@@ -6,7 +6,7 @@
     "prep": "mkdir public/images; npm run prep-bootstrap-icons",
     "prep-bootstrap-icons": "cp -f node_modules/bootstrap-icons/bootstrap-icons.svg public/images/",
     "predev": "npm run prep",
-    "dev": "DEBUG=shopping-agent:*,ebay-client:* next dev",
+    "dev": "DEBUG=shopping-agent:shop:listings:*,shopping-agent:ListingRepository:* next dev",
     "preinstall": "cd ../packages/ebay-client && npm i && npm run build",
     "gen-sitemap": "cd ./src/scripts && npx ts-node gen-sitemap.ts",
     "prebuild": "npm run prep && npm run gen-sitemap",

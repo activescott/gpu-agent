@@ -1,4 +1,5 @@
 import { ListingGallery } from "@/pkgs/client/components/ListingGallery"
+import { secondsToMilliseconds } from "@/pkgs/isomorphic/duration"
 import { dollarsPerSpec } from "@/pkgs/isomorphic/gpuTools"
 import { Listing } from "@/pkgs/isomorphic/model"
 import { GpuSpecKey } from "@/pkgs/isomorphic/model/specs"
@@ -34,7 +35,10 @@ const lowestSpecPriceListingComparer = (
 }
 
 export default async function Page() {
-  const rawListings = await fetchListingsForAllGPUsWithCache()
+  // TODO: do this async outside of rendering to update cached listings. Does vercel support cron or something?
+  const rawListings = await fetchListingsForAllGPUsWithCache(
+    secondsToMilliseconds(maxDuration),
+  )
   const MINIMUM_AI_GPU_MEMORY_GB = 10
   const MAX_LISTINGS_TO_SHOW = 50
   const listings = chain(rawListings)

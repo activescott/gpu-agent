@@ -94,6 +94,14 @@ WHERE "gpuName" IN ('nvidia-l4', 'nvidia-l40', 'nvidia-l40s')
   - [x] Use gtag('consent',...) to tell google which cookies are allowed or not: https://developers.google.com/tag-platform/gtagjs/reference#consent
   - [x] Get google tag insertion code at https://ads.google.com/aw/tagsettings?ocid=1548733621&euid=1052306284&__u=3432655116&uscid=1548733621&__c=7631249229&authuser=0&hl=en_US&utm_campaign=US-en-xs-ip-gmb_aw_serp_ia2_ca-sf-dw-uao-unqsi-CPyasKOxhIMDFfotfQkdUPwFbA-unqsi-uao-agembe-acce&utm_medium=et&utm_source=gmb&sourceid=emp&workflowSessionId=a61953D53-E319-4FCA-A500-10AD3D4B2B6A--1#
 
+- [x] remove the whole stale thing and just put a cachedAt on listing
+
+  - [x] fix: stale listings are not properly deleted.
+  - [x] fix: ensure that we don't add any duplicate listings form ebay - how: DB upsert
+
+- [ ] feat: add gaming stats
+- [ ] chore: remove stale field from Listing in DB. No longer used
+
 - [ ] feat: add faq page for FP32, etc.: https://www.reddit.com/r/gpu/comments/18bvu6t/comment/kda57ex/?utm_source=share&utm_medium=web2x&context=3
 - [ ] feat: add an ML FAQ about "Which Specifications matter for LLMs?" It should cite https://www.baseten.co/blog/llm-transformer-inference-guide/ for formulas and cite Tim Dettmers' article showing that memory bandwidth is usually teh constraint at https://timdettmers.com/2023/01/30/which-gpu-for-deep-learning/#
 

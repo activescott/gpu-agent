@@ -59,7 +59,7 @@ function createRequireMemoryKeywordFilter(gpu: Gpu) {
 function createRequiredLabelFilter(gpu: Gpu) {
   const nameKeywords = gpu.label.split(" ")
   const requiredKeywords = [...nameKeywords].map((word) => word.toLowerCase())
-  log.info("Filtering GPUs with keywords: %s", requiredKeywords)
+  log.debug("Filtering GPUs with keywords: %s", requiredKeywords)
   return createRequireKeywordsPredicate(requiredKeywords)
 }
 

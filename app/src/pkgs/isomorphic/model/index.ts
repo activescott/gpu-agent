@@ -30,7 +30,6 @@ export type Gpu = z.infer<typeof GpuSchema>
 
 export interface Listing {
   itemId: string
-  stale: boolean
   title: string
   priceValue: string
   priceCurrency: string
@@ -64,7 +63,6 @@ export function convertEbayItemToListing(
 ): Listing {
   return {
     itemId: listing.itemId,
-    stale: false,
     title: listing.title,
     priceValue: listing.price.value,
     priceCurrency: listing.price.currency,

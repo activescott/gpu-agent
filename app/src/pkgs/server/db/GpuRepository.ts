@@ -50,6 +50,21 @@ export async function getGpuLastCachedListings(
   return null
 }
 
+/**
+ * Returns a list of gpuNames whose listings were last cached longer ago than the given date.
+ */
+export async function getLastCachedGpusOlderThan(
+  date: Date,
+  prisma: PrismaClientWithinTransaction = prismaSingleton,
+): Promise<string[]> {
+  const result = await prisma.gpuLastCachedListings.findMany({
+    where: {
+      lastCachedListings: { lt: date },
+    },
+  })
+  return result.map((row) => row.gpuName)
+}
+
 export async function gpuSpecAsPercent(
   gpuName: string,
   spec: GpuSpecKey,

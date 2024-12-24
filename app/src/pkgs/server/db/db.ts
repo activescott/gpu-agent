@@ -8,9 +8,9 @@ export type PrismaClientWithinTransaction = Omit<
   ITXClientDenyList
 >
 
-export async function withTransaction(
-  fn: (prisma: PrismaClientWithinTransaction) => Promise<void>,
+export async function withTransaction<TReturn>(
+  fn: (prisma: PrismaClientWithinTransaction) => Promise<TReturn>,
   options: Parameters<typeof prismaSingleton.$transaction>[1] = {},
-): Promise<void> {
-  await prismaSingleton.$transaction(fn, options)
+): Promise<TReturn> {
+  return await prismaSingleton.$transaction<TReturn>(fn, options)
 }

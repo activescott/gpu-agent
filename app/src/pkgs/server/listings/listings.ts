@@ -1,122 +1,127 @@
 import { createDiag } from "@activescott/diag"
-import { Listing } from "../../isomorphic/model"
 import {
   CachedListing,
-  listListingsAll,
-  listListingsForAllGpus,
-  listListingsForGpus,
+  listCachedListingsGroupedByGpu,
 } from "../db/ListingRepository"
 import { secondsToMilliseconds } from "../../isomorphic/duration"
 import { cacheEbayListingsForGpu } from "./ebay"
 import { CACHED_LISTINGS_DURATION_MS } from "../cacheConfig"
+import { withTransaction } from "../db/db"
+import { chain } from "irritable-iterable"
 
 const log = createDiag("shopping-agent:shop:listings")
 
-export async function fetchListingsForGpuWithCache(
-  gpuName: string,
-): Promise<Iterable<Listing>> {
-  log.info(`getting cached listings for gpu ${gpuName} from db`)
-  const cached = await listListingsForGpus([gpuName])
-  if (!areListingsStale(cached)) {
-    log.info(`listings for gpu ${gpuName} are fresh, returning cached listings`)
-    return cached
-  }
+const ISOLATION_LEVEL = "RepeatableRead"
 
-  log.info(`listings for gpu ${gpuName} are stale, fetching from ebay`)
-  // fetch from ebay and update the GPU repository
-  const collected = await cacheEbayListingsForGpu(gpuName)
-  log.info(
-    "caching listings for gpu %s complete. Returning cached listings.",
-    gpuName,
-  )
-  return collected
+interface ListingStats {
+  staleGpus: { gpuName: string; oldestCachedAt: Date }[]
+  updateCount: number
+  oldestCachedAt: Date
+  totalDuration: number
+  timeoutMs: number
 }
-
 /**
- * Fetches listings for all GPUs.
+ * Checks which cached listings need updated and updates them .
  * @param timeoutMs A timeout that the function will attempt to honor when fetching listings for all GPUs. This is a best-effort timeout, and the function may take longer to complete if the timeout is exceeded.
  * @returns
  */
-export async function fetchListingsForAllGPUsWithCache(
+export async function revalidateCachedListings(
   timeoutMs: number,
-): Promise<Iterable<Listing>> {
-  log.info("fetching listings for all GPUs with cache...")
+): Promise<ListingStats> {
   const start = new Date()
+  log.info("retrieving cached listings for all GPUs...")
 
-  const gpus = await listListingsForAllGpus()
+  const stats: ListingStats = {
+    timeoutMs,
+    totalDuration: 0,
+    updateCount: 0,
+    staleGpus: [],
+    oldestCachedAt: new Date(),
+  }
 
-  // If any gpu has listings older than CACHED_LISTINGS_DURATION_MS, OR has zero listings, then flag for re-caching.
-  const gpusWithOldestCacheDate = gpus.map((gpuAndListings) => {
-    const oldestCachedAt = getOldestCachedDate(gpuAndListings.listings)
-    return {
-      ...gpuAndListings,
-      oldestCachedAt,
-    }
-  })
+  // max wait: The maximum amount of time Prisma Client will wait to acquire a transaction from the database. The default value is 2 seconds.
+  // eslint-disable-next-line no-magic-numbers
+  const MAX_WAIT_TRANSACTION_TIMEOUT = secondsToMilliseconds(timeoutMs)
+  const MAX_RUNTIME_TRANSACTION_TIMEOUT = secondsToMilliseconds(timeoutMs)
 
-  const staleGpus = gpusWithOldestCacheDate.filter((gpu) => {
-    return (
-      gpu.listings.length === 0 ||
-      Date.now() - gpu.oldestCachedAt.valueOf() > CACHED_LISTINGS_DURATION_MS
-    )
-  })
+  await withTransaction(
+    async (prisma) => {
+      const gpus = await listCachedListingsGroupedByGpu(false, prisma)
 
-  log.info(`found ${staleGpus.length} GPUs that need re-cached`)
+      // If any gpu has listings older than CACHED_LISTINGS_DURATION_MS, OR has zero listings, then flag for re-caching.
+      const gpusWithOldestCacheDate = gpus.map((gpuAndListings) => {
+        const oldestCachedAt = getOldestCachedDate(gpuAndListings.listings)
+        return {
+          ...gpuAndListings,
+          oldestCachedAt,
+        }
+      })
 
-  if (staleGpus.length > 0) {
-    // first sort the listings with the oldest ones first so that we re-cache those first (in case we exceed time budget)
-    gpusWithOldestCacheDate.sort((a, b) => {
-      return a.oldestCachedAt.valueOf() - b.oldestCachedAt.valueOf()
-    })
+      const staleGpus = gpusWithOldestCacheDate.filter((gpu) => {
+        return (
+          gpu.listings.length === 0 ||
+          Date.now() - gpu.oldestCachedAt.valueOf() >
+            CACHED_LISTINGS_DURATION_MS
+        )
+      })
 
-    let timeBudgetRemaining = timeoutMs - (Date.now() - start.valueOf())
+      log.info(`found ${staleGpus.length} GPUs that need re-cached`)
 
-    // remove some buffer time to allow listListingsAll to still return results from DB
-    // eslint-disable-next-line no-magic-numbers
-    timeBudgetRemaining -= secondsToMilliseconds(4)
+      stats.staleGpus = staleGpus.map((gpu) => ({
+        gpuName: gpu.gpuName,
+        oldestCachedAt: gpu.oldestCachedAt,
+      }))
 
-    // it's really 1-3 seconds in practice just from some anecdotal monitoring
-    // eslint-disable-next-line no-magic-numbers
-    const TIME_TO_CACHE_ONE_GPU = secondsToMilliseconds(2)
-    for (const gpu of staleGpus) {
-      if (timeBudgetRemaining < TIME_TO_CACHE_ONE_GPU) {
-        log.warn(`time budget exceeded, stopping caching of GPUs early`, {
-          timeBudgetRemaining,
-          totalDuration: Date.now() - start.valueOf(),
+      stats.oldestCachedAt = staleGpus
+        .map((gpu) => gpu.oldestCachedAt)
+        .reduce((oldest, current) => {
+          return current < oldest ? current : oldest
+        }, new Date())
+
+      if (staleGpus.length > 0) {
+        // first sort the listings with the oldest ones first so that we re-cache those first (in case we exceed time budget)
+        gpusWithOldestCacheDate.sort((a, b) => {
+          return a.oldestCachedAt.valueOf() - b.oldestCachedAt.valueOf()
         })
-        break
+
+        let timeBudgetRemaining = timeoutMs - (Date.now() - start.valueOf())
+
+        // remove some buffer time to allow listListingsAll to still return results from DB
+        // eslint-disable-next-line no-magic-numbers
+        timeBudgetRemaining -= secondsToMilliseconds(4)
+
+        // it's really 1-3 seconds in practice just from some anecdotal monitoring
+        // eslint-disable-next-line no-magic-numbers
+        const TIME_TO_CACHE_ONE_GPU = secondsToMilliseconds(2)
+        for (const gpu of staleGpus) {
+          if (timeBudgetRemaining < TIME_TO_CACHE_ONE_GPU) {
+            log.warn(`time budget exceeded, stopping caching of GPUs early`, {
+              timeBudgetRemaining,
+              totalDuration: Date.now() - start.valueOf(),
+            })
+            break
+          }
+
+          const cachingStart = Date.now()
+          const cached = await cacheEbayListingsForGpu(gpu.gpuName, prisma)
+          timeBudgetRemaining -= Date.now() - cachingStart
+          stats.updateCount += chain(cached).size()
+        }
       }
+    },
+    {
+      timeout: MAX_RUNTIME_TRANSACTION_TIMEOUT,
+      maxWait: MAX_WAIT_TRANSACTION_TIMEOUT,
+      isolationLevel: ISOLATION_LEVEL,
+    },
+  )
 
-      const cachingStart = Date.now()
-      await cacheEbayListingsForGpu(gpu.gpuName)
-      timeBudgetRemaining -= Date.now() - cachingStart
-    }
-  }
-
-  const listings = await listListingsAll()
-
-  const totalDuration = Date.now() - start.valueOf()
+  stats.totalDuration = Date.now() - start.valueOf()
   log.info(
-    `fetching cached listings for all GPUs complete. Took ${totalDuration}ms`,
+    `fetching cached listings for all GPUs complete. Took ${stats.totalDuration}ms`,
   )
 
-  return listings
-}
-
-/**
- * Returns true if the listings for the given GPU are stale.
- * The oldest cached listing is used to determine staleness.
- */
-function areListingsStale(listings: CachedListing[]) {
-  if (listings.length === 0) {
-    return true
-  }
-
-  const oldestCachedAt = getOldestCachedDate(listings)
-  return (
-    listings.length === 0 ||
-    Date.now() - oldestCachedAt.valueOf() > CACHED_LISTINGS_DURATION_MS
-  )
+  return stats
 }
 
 function getOldestCachedDate(listings: CachedListing[]): Date {

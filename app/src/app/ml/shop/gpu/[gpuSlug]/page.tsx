@@ -1,13 +1,13 @@
 import { createDiag } from "@activescott/diag"
-import { fetchListingsForGpuWithCache } from "@/pkgs/server/listings"
 import { ListingGallery } from "@/pkgs/client/components/ListingGallery"
 import { getGpu, listGpus } from "@/pkgs/server/db/GpuRepository"
 import { Gpu } from "@/pkgs/isomorphic/model"
 import { chain } from "irritable-iterable"
 import { ISOMORPHIC_CONFIG } from "@/pkgs/isomorphic/config"
 import { Integer } from "type-fest"
+import { listCachedListingsForGpus } from "@/pkgs/server/db/ListingRepository"
 
-const log = createDiag("shopping-agent:shop:gpuSlug")
+const log = createDiag("shopping-agent:shop:gpu:gpuSlug")
 
 // revalidate the data at most every hour: https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#revalidate
 export const revalidate = 3600
@@ -36,8 +36,10 @@ export async function generateMetadata({ params }: GpuParams) {
 
 export default async function Page({ params }: GpuParams) {
   const { gpuSlug } = params
+  log.info(`Fetching cached listings for gpu ${gpuSlug} ...`)
   const gpu: Gpu = await getGpu(gpuSlug)
-  const allListings = await fetchListingsForGpuWithCache(gpu.name)
+  const allListings = await listCachedListingsForGpus([gpuSlug])
+  log.info(`Fetching cached listings for gpu ${gpuSlug} complete.`)
   const listings = chain(allListings)
     .head(ISOMORPHIC_CONFIG.MAX_LISTINGS_PER_PAGE() as Integer<number>)
     .collect()

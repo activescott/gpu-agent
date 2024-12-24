@@ -1,7 +1,6 @@
 import { convertEbayItemToListing, Gpu, Listing } from "@/pkgs/isomorphic/model"
 import { getGpu } from "../db/GpuRepository"
-import { secondsToMilliseconds } from "@/pkgs/isomorphic/duration"
-import { withTransaction } from "../db/db"
+import { PrismaClientWithinTransaction } from "../db/db"
 import {
   addOrRefreshListingsForGpu,
   deleteStaleListingsForGpu,
@@ -35,34 +34,31 @@ const log = createDiag("shopping-agent:shop:listings:ebay")
  */
 export async function cacheEbayListingsForGpu(
   gpuName: string,
+  prisma: PrismaClientWithinTransaction,
 ): Promise<Iterable<Listing>> {
   const start = new Date()
   const gpu = await getGpu(gpuName)
   const fetched = await fetchListingsForGpuDirectFromEbay(gpu)
-  const collected = await chainAsync(fetched).collect()
+  let collected: Listing[] = await chainAsync(fetched).collect()
   log.info(
     `Caching listings for ${gpuName}... fetched ${collected.length} listings from eBay`,
   )
 
-  // eslint-disable-next-line no-magic-numbers
-  const MAX_RUNTIME_TRANSACTION_TIMEOUT = secondsToMilliseconds(15)
-  // max wait: The maximum amount of time Prisma Client will wait to acquire a transaction from the database. The default value is 2 seconds.
-  // eslint-disable-next-line no-magic-numbers
-  const MAX_WAIT_TRANSACTION_TIMEOUT = secondsToMilliseconds(5)
-  await withTransaction(
-    async (prisma) => {
-      await addOrRefreshListingsForGpu(collected, gpuName, prisma)
-    },
-    {
-      timeout: MAX_RUNTIME_TRANSACTION_TIMEOUT,
-      maxWait: MAX_WAIT_TRANSACTION_TIMEOUT,
-    },
+  // remove any duplicate itemId's from the listings (it seems eBay returns these?)
+  const originalListingCount = collected.length
+  collected = collected.filter(
+    (listing, index, self) =>
+      self.findIndex((l) => l.itemId === listing.itemId) === index,
   )
-  // after successfully adding listings, delete any listings for this gpu that are still stale
-  // NOTE: we use a transaction for perf, but we don't need it in the same transaction as the add/upsert above
-  await withTransaction(async (prisma) => {
-    await deleteStaleListingsForGpu(gpuName, prisma)
-  })
+  log.info(
+    `Found ${
+      originalListingCount - collected.length
+    } duplicate listings from eBay for ${gpuName}`,
+  )
+
+  await addOrRefreshListingsForGpu(collected, gpuName, prisma)
+  await deleteStaleListingsForGpu(gpuName, prisma)
+
   const duration = Date.now() - start.valueOf()
   log.info(`Caching listings for ${gpuName} completed in ${duration}ms`)
   return collected

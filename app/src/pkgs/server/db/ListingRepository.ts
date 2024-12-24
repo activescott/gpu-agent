@@ -96,11 +96,11 @@ export async function addOrRefreshListingsForGpu(
   )
 
   // NOTE: prisma doesn't like the hydrated gpu object in the listings, so we omit them here and only add gpuName
+  const cachedAt = new Date()
   const mapped = uniqueListings.map((listing) => ({
     ...omit(listing, "gpu"),
     gpuName,
-    // NOTE: prisma will set cachedAt by default on create, but not on update so we give it a value here:
-    cachedAt: new Date(),
+    cachedAt,
   }))
 
   // NOTE: We delete before inserting in case the listing itself changed in someway in eBay:

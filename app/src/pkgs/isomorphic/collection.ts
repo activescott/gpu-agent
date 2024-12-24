@@ -4,6 +4,7 @@ export async function* arrayToAsyncIterable<T>(array: T[]): AsyncIterable<T> {
   }
 }
 
+// eslint-disable-next-line import/no-unused-modules
 export function* flattenIterables<TItem>(
   iterables: Iterable<TItem>[],
 ): Iterable<TItem> {

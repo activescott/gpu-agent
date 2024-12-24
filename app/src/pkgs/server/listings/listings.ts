@@ -38,20 +38,37 @@ export async function fetchListingsForGpuWithCache(
  * @returns
  */
 export async function fetchListingsForAllGPUsWithCache(
-  timeoutMs: number = secondsToMilliseconds(15),
+  timeoutMs: number,
 ): Promise<Iterable<Listing>> {
   log.info("fetching listings for all GPUs with cache...")
   const start = new Date()
 
-  const gpusAndListings = await listListingsForAllGpus()
+  const gpus = await listListingsForAllGpus()
 
-  // TODO: if any gpu has listings older than CACHED_LISTINGS_DURATION_MS, OR has zero listings, then flag for re-caching.
-  const needsCacheUpdate = gpusAndListings.filter((gpuAndListings) => {
-    return areListingsStale(gpuAndListings.listings)
+  // If any gpu has listings older than CACHED_LISTINGS_DURATION_MS, OR has zero listings, then flag for re-caching.
+  const gpusWithOldestCacheDate = gpus.map((gpuAndListings) => {
+    const oldestCachedAt = getOldestCachedDate(gpuAndListings.listings)
+    return {
+      ...gpuAndListings,
+      oldestCachedAt,
+    }
   })
 
-  log.info(`found ${needsCacheUpdate.length} GPUs that need re-cached`)
-  if (needsCacheUpdate.length > 0) {
+  const staleGpus = gpusWithOldestCacheDate.filter((gpu) => {
+    return (
+      gpu.listings.length === 0 ||
+      Date.now() - gpu.oldestCachedAt.valueOf() > CACHED_LISTINGS_DURATION_MS
+    )
+  })
+
+  log.info(`found ${staleGpus.length} GPUs that need re-cached`)
+
+  if (staleGpus.length > 0) {
+    // first sort the listings with the oldest ones first so that we re-cache those first (in case we exceed time budget)
+    gpusWithOldestCacheDate.sort((a, b) => {
+      return a.oldestCachedAt.valueOf() - b.oldestCachedAt.valueOf()
+    })
+
     let timeBudgetRemaining = timeoutMs - (Date.now() - start.valueOf())
 
     // remove some buffer time to allow listListingsAll to still return results from DB
@@ -59,8 +76,9 @@ export async function fetchListingsForAllGPUsWithCache(
     timeBudgetRemaining -= secondsToMilliseconds(4)
 
     // it's really 1-3 seconds in practice just from some anecdotal monitoring
+    // eslint-disable-next-line no-magic-numbers
     const TIME_TO_CACHE_ONE_GPU = secondsToMilliseconds(2)
-    for (const gpu of needsCacheUpdate) {
+    for (const gpu of staleGpus) {
       if (timeBudgetRemaining < TIME_TO_CACHE_ONE_GPU) {
         log.warn(`time budget exceeded, stopping caching of GPUs early`, {
           timeBudgetRemaining,
@@ -94,13 +112,17 @@ function areListingsStale(listings: CachedListing[]) {
     return true
   }
 
-  const oldestCachedAt = listings
-    .map((listing) => listing.cachedAt)
-    .reduce((oldest, current) => {
-      return current < oldest ? current : oldest
-    }, new Date())
+  const oldestCachedAt = getOldestCachedDate(listings)
   return (
     listings.length === 0 ||
     Date.now() - oldestCachedAt.valueOf() > CACHED_LISTINGS_DURATION_MS
   )
+}
+
+function getOldestCachedDate(listings: CachedListing[]): Date {
+  return listings
+    .map((listing) => listing.cachedAt)
+    .reduce((oldest, current) => {
+      return current < oldest ? current : oldest
+    }, new Date())
 }

@@ -67,7 +67,9 @@ describe("fetchListingsForAllGPUsWithCache", () => {
         })
 
       // call
-      const listingsIterable = await fetchListingsForAllGPUsWithCache()
+      const listingsIterable = await fetchListingsForAllGPUsWithCache(
+        secondsToMilliseconds(15),
+      )
       const listings = [...listingsIterable]
 
       // validate that the two fresh listings were returned
@@ -123,7 +125,9 @@ describe("fetchListingsForAllGPUsWithCache", () => {
         })
 
       // call
-      const result = await fetchListingsForAllGPUsWithCache()
+      const result = await fetchListingsForAllGPUsWithCache(
+        secondsToMilliseconds(15),
+      )
 
       // validate that it attempted to cache some listings:
       expect(cacheEbayListingsForGpu).toHaveBeenCalledTimes(1)

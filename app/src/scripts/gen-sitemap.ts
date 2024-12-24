@@ -77,6 +77,8 @@ async function main() {
     })
     // remove any dirs that begin with _
     .filter((item) => !item.path.startsWith("/_"))
+    // remove any dirs that begin with /ops
+    .filter((item) => !item.path.startsWith("/ops"))
     // remove /bye which is just an affiliate tracking redirect
     .filter((item) => !item.path.startsWith("/bye"))
     // remove slugs:

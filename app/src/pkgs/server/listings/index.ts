@@ -1,4 +1,1 @@
-export {
-  fetchListingsForGpuWithCache,
-  fetchListingsForAllGPUsWithCache,
-} from "./listings"
+export { revalidateCachedListings } from "./listings"

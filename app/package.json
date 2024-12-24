@@ -10,7 +10,7 @@
     "preinstall": "cd ../packages/ebay-client && npm i && npm run build",
     "gen-sitemap": "cd ./src/scripts && npx ts-node gen-sitemap.ts",
     "prebuild": "npm run prep && npm run gen-sitemap",
-    "build": "next build",
+    "build": "DEBUG=shopping-agent:*,-shopping-agent:shop:listingFilters:* next build",
     "start": "DEBUG=shopping-agent:*,ebay-client:* next start",
     "lint-next": "next lint",
     "eslint": "eslint . --ext ts,tsx,js,jsx",

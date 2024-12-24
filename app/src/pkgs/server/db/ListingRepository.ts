@@ -11,7 +11,7 @@ const log = createDiag("shopping-agent:ListingRepository")
 /* We keep cachedAt in the DB and it is used in the ListingRepository and in Listings */
 export type CachedListing = Listing & { cachedAt: Date }
 
-export async function listListingsForGpus(
+export async function listCachedListingsForGpus(
   gpuNames: string[],
   prisma: PrismaClientWithinTransaction = prismaSingleton,
 ): Promise<CachedListing[]> {
@@ -31,8 +31,9 @@ export async function listListingsForGpus(
  * NOTE: This is a useful operation since it allows pulling both a complete list of all GPUs, AND their associated listings (which may be empty).
  * If the listings are empty, the caller can then decide to fetch new listings to cache for the GPU.
  */
-export async function listListingsForAllGpus(
+export async function listCachedListingsGroupedByGpu(
   includeTestGpus: boolean = false,
+  prisma: PrismaClientWithinTransaction,
 ): Promise<
   {
     listings: CachedListing[]
@@ -44,7 +45,7 @@ export async function listListingsForAllGpus(
     where.name = { not: "test-gpu" }
   }
 
-  const gpus = await prismaSingleton.gpu.findMany({
+  const gpus = await prisma.gpu.findMany({
     where,
     include: {
       Listing: true,
@@ -59,7 +60,7 @@ export async function listListingsForAllGpus(
   return result
 }
 
-export async function listListingsAll(
+export async function listCachedListings(
   includeTestGpus: boolean = false,
   prisma: PrismaClientWithinTransaction = prismaSingleton,
 ): Promise<CachedListing[]> {
@@ -82,29 +83,20 @@ export async function listListingsAll(
 export async function addOrRefreshListingsForGpu(
   listings: Listing[],
   gpuName: string,
-  prisma: PrismaClientWithinTransaction = prismaSingleton,
+  prisma: PrismaClientWithinTransaction,
 ): Promise<void> {
-  log.info(`Adding ${listings.length} listings for ${gpuName}...`)
-
-  // remove any duplicate itemId's from the listings:
-  const uniqueListings = listings.filter(
-    (listing, index, self) =>
-      self.findIndex((l) => l.itemId === listing.itemId) === index,
-  )
-  log.info(
-    `Found ${listings.length - uniqueListings.length} duplicate listings`,
-  )
+  log.info(`Creating listings for ${gpuName}...`)
 
   // NOTE: prisma doesn't like the hydrated gpu object in the listings, so we omit them here and only add gpuName
   const cachedAt = new Date()
-  const mapped = uniqueListings.map((listing) => ({
+  const mapped = listings.map((listing) => ({
     ...omit(listing, "gpu"),
     gpuName,
     cachedAt,
   }))
 
   // NOTE: We delete before inserting in case the listing itself changed in someway in eBay:
-  log.info(`Deleting duplicate listings for gpu name ${gpuName}...`)
+  log.info(`Deleting existing listings for gpu name ${gpuName}...`)
   const deleteResult = await prisma.listing.deleteMany({
     where: {
       itemId: {
@@ -113,15 +105,29 @@ export async function addOrRefreshListingsForGpu(
     },
   })
   log.info(
-    `Deleting duplicate listings for gpu name ${gpuName} complete. Deleted ${deleteResult.count} listings.`,
+    `Deleting existing listings for gpu name ${gpuName} complete. Deleted ${deleteResult.count} listings.`,
   )
   // create
   log.info(`Creating ${mapped.length} listings for gpu ${gpuName}...`)
+
+  const findResult = await prisma.listing.findMany({
+    where: {
+      itemId: {
+        in: mapped.map((listing) => listing.itemId),
+      },
+    },
+  })
+  if (findResult.length > 0) {
+    throw new Error(
+      `Why are there existing listings? Found ${findResult.length} listings for gpu ${gpuName} immediately after deleting them`,
+    )
+  }
+
   const createResult = await prisma.listing.createMany({
     data: mapped,
   })
   log.info(
-    `Creating ${mapped.length} listings for gpu ${gpuName} complete. Created ${createResult.count} listings.`,
+    `Creating listings for gpu ${gpuName} complete. Created ${createResult.count} listings.`,
   )
 }
 

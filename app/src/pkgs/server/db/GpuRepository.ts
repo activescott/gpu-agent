@@ -19,52 +19,6 @@ export async function getGpu(
   return result
 }
 
-export async function updateGpuLastCachedListings(
-  gpuName: string,
-  prisma: PrismaClientWithinTransaction = prismaSingleton,
-): Promise<void> {
-  await prisma.gpuLastCachedListings.upsert({
-    create: {
-      gpuName,
-      lastCachedListings: new Date(),
-    },
-    update: {
-      lastCachedListings: new Date(),
-    },
-    where: {
-      gpuName,
-    },
-  })
-}
-
-export async function getGpuLastCachedListings(
-  gpuName: string,
-  prisma: PrismaClientWithinTransaction = prismaSingleton,
-): Promise<Date | null> {
-  const result = await prisma.gpuLastCachedListings.findUnique({
-    where: { gpuName },
-  })
-  if (result) {
-    return result.lastCachedListings
-  }
-  return null
-}
-
-/**
- * Returns a list of gpuNames whose listings were last cached longer ago than the given date.
- */
-export async function getLastCachedGpusOlderThan(
-  date: Date,
-  prisma: PrismaClientWithinTransaction = prismaSingleton,
-): Promise<string[]> {
-  const result = await prisma.gpuLastCachedListings.findMany({
-    where: {
-      lastCachedListings: { lt: date },
-    },
-  })
-  return result.map((row) => row.gpuName)
-}
-
 export async function gpuSpecAsPercent(
   gpuName: string,
   spec: GpuSpecKey,

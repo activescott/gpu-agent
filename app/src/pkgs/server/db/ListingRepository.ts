@@ -86,10 +86,16 @@ export async function addOrRefreshListingsForGpu(
   prisma: PrismaClientWithinTransaction,
 ): Promise<void> {
   log.info(`Creating listings for ${gpuName}...`)
+  if (listings.length === 0) {
+    log.warn(
+      `No listings specified for gpu ${gpuName}. Aborting attempt to cache new listings.`,
+    )
+    return
+  }
 
-  // NOTE: prisma doesn't like the hydrated gpu object in the listings, so we omit them here and only add gpuName
   const cachedAt = new Date()
   const mapped = listings.map((listing) => ({
+    // NOTE: prisma doesn't like the hydrated gpu field in the listing, so we omit them here and only add gpuName
     ...omit(listing, "gpu"),
     gpuName,
     cachedAt,
@@ -107,22 +113,9 @@ export async function addOrRefreshListingsForGpu(
   log.info(
     `Deleting existing listings for gpu name ${gpuName} complete. Deleted ${deleteResult.count} listings.`,
   )
+
   // create
   log.info(`Creating ${mapped.length} listings for gpu ${gpuName}...`)
-
-  const findResult = await prisma.listing.findMany({
-    where: {
-      itemId: {
-        in: mapped.map((listing) => listing.itemId),
-      },
-    },
-  })
-  if (findResult.length > 0) {
-    throw new Error(
-      `Why are there existing listings? Found ${findResult.length} listings for gpu ${gpuName} immediately after deleting them`,
-    )
-  }
-
   const createResult = await prisma.listing.createMany({
     data: mapped,
   })

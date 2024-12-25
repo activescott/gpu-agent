@@ -39,10 +39,15 @@ export async function revalidateCachedListings(
     oldestCachedAt: new Date(),
   }
 
-  // max wait: The maximum amount of time Prisma Client will wait to acquire a transaction from the database. The default value is 2 seconds.
+  // add some buffer to the transaction to make absolutely sure it doesn't deadlock before we finish our work here:
+  const TRANSACTION_TIMEOUT_BUFFER_MS = 1000
   // eslint-disable-next-line no-magic-numbers
-  const MAX_WAIT_TRANSACTION_TIMEOUT = secondsToMilliseconds(timeoutMs)
-  const MAX_RUNTIME_TRANSACTION_TIMEOUT = secondsToMilliseconds(timeoutMs)
+  const MAX_WAIT_TRANSACTION_TIMEOUT = secondsToMilliseconds(
+    timeoutMs + TRANSACTION_TIMEOUT_BUFFER_MS,
+  )
+  const MAX_RUNTIME_TRANSACTION_TIMEOUT = secondsToMilliseconds(
+    timeoutMs + TRANSACTION_TIMEOUT_BUFFER_MS,
+  )
 
   await withTransaction(
     async (prisma) => {

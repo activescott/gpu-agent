@@ -24,10 +24,11 @@ export default async function Page() {
     <main>
       <h1>Operational Cache Trigger & Monitor</h1>
       <ul>
-        <li>Cached listings updated: {result.updateCount}</li>
+        <li>Cached listings updated: {result.listingCachedCount}</li>
         <li>Oldest cached listing: {result.oldestCachedAt.toString()}</li>
         <li>Total Duration: {result.totalDuration}</li>
         <li>Timeout: {result.timeoutMs}</li>
+        <li>Remaining GPUs: {result.remainingGpusToCache}</li>
       </ul>
       <h2>Stale GPUs</h2>
       <ul>

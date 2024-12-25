@@ -8,17 +8,18 @@ import { cacheEbayListingsForGpu } from "./ebay"
 import { CACHED_LISTINGS_DURATION_MS } from "../cacheConfig"
 import { withTransaction } from "../db/db"
 import { chain } from "irritable-iterable"
+import { PrismaClientKnownRequestError } from "@prisma/client/runtime/library"
+import { withRetry } from "@/pkgs/isomorphic/retry"
 
 const log = createDiag("shopping-agent:shop:listings")
 
-const ISOLATION_LEVEL = "RepeatableRead"
-
 interface ListingStats {
   staleGpus: { gpuName: string; oldestCachedAt: Date }[]
-  updateCount: number
+  listingCachedCount: number
   oldestCachedAt: Date
   totalDuration: number
   timeoutMs: number
+  remainingGpusToCache: number
 }
 /**
  * Checks which cached listings need updated and updates them .
@@ -34,91 +35,90 @@ export async function revalidateCachedListings(
   const stats: ListingStats = {
     timeoutMs,
     totalDuration: 0,
-    updateCount: 0,
+    listingCachedCount: 0,
     staleGpus: [],
     oldestCachedAt: new Date(),
+    remainingGpusToCache: 0,
   }
 
-  // add some buffer to the transaction to make absolutely sure it doesn't deadlock before we finish our work here:
-  const TRANSACTION_TIMEOUT_BUFFER_MS = 1000
-  // eslint-disable-next-line no-magic-numbers
-  const MAX_WAIT_TRANSACTION_TIMEOUT = secondsToMilliseconds(
-    timeoutMs + TRANSACTION_TIMEOUT_BUFFER_MS,
-  )
-  const MAX_RUNTIME_TRANSACTION_TIMEOUT = secondsToMilliseconds(
-    timeoutMs + TRANSACTION_TIMEOUT_BUFFER_MS,
-  )
+  await withRetry(
+    () =>
+      withTransaction(
+        async (prisma): Promise<void> => {
+          const gpus = await listCachedListingsGroupedByGpu(false, prisma)
 
-  await withTransaction(
-    async (prisma) => {
-      const gpus = await listCachedListingsGroupedByGpu(false, prisma)
+          // If any gpu has listings older than CACHED_LISTINGS_DURATION_MS, OR has zero listings, then flag for re-caching.
+          const gpusWithOldestCacheDate = gpus.map((gpuAndListings) => ({
+            ...gpuAndListings,
+            oldestCachedAt: getOldestCachedDate(gpuAndListings.listings),
+          }))
 
-      // If any gpu has listings older than CACHED_LISTINGS_DURATION_MS, OR has zero listings, then flag for re-caching.
-      const gpusWithOldestCacheDate = gpus.map((gpuAndListings) => {
-        const oldestCachedAt = getOldestCachedDate(gpuAndListings.listings)
-        return {
-          ...gpuAndListings,
-          oldestCachedAt,
-        }
-      })
+          const staleGpus = gpusWithOldestCacheDate.filter((gpu) => {
+            return (
+              gpu.listings.length === 0 ||
+              Date.now() - gpu.oldestCachedAt.valueOf() >
+                CACHED_LISTINGS_DURATION_MS
+            )
+          })
 
-      const staleGpus = gpusWithOldestCacheDate.filter((gpu) => {
-        return (
-          gpu.listings.length === 0 ||
-          Date.now() - gpu.oldestCachedAt.valueOf() >
-            CACHED_LISTINGS_DURATION_MS
-        )
-      })
+          log.info(`found ${staleGpus.length} GPUs that need re-cached`)
 
-      log.info(`found ${staleGpus.length} GPUs that need re-cached`)
+          stats.staleGpus = staleGpus.map((gpu) => ({
+            gpuName: gpu.gpuName,
+            oldestCachedAt: gpu.oldestCachedAt,
+          }))
 
-      stats.staleGpus = staleGpus.map((gpu) => ({
-        gpuName: gpu.gpuName,
-        oldestCachedAt: gpu.oldestCachedAt,
-      }))
+          stats.oldestCachedAt = staleGpus
+            .map((gpu) => gpu.oldestCachedAt)
+            .reduce((oldest, current) => {
+              return current < oldest ? current : oldest
+            }, new Date())
 
-      stats.oldestCachedAt = staleGpus
-        .map((gpu) => gpu.oldestCachedAt)
-        .reduce((oldest, current) => {
-          return current < oldest ? current : oldest
-        }, new Date())
-
-      if (staleGpus.length > 0) {
-        // first sort the listings with the oldest ones first so that we re-cache those first (in case we exceed time budget)
-        gpusWithOldestCacheDate.sort((a, b) => {
-          return a.oldestCachedAt.valueOf() - b.oldestCachedAt.valueOf()
-        })
-
-        let timeBudgetRemaining = timeoutMs - (Date.now() - start.valueOf())
-
-        // remove some buffer time to allow listListingsAll to still return results from DB
-        // eslint-disable-next-line no-magic-numbers
-        timeBudgetRemaining -= secondsToMilliseconds(4)
-
-        // it's really 1-3 seconds in practice just from some anecdotal monitoring
-        // eslint-disable-next-line no-magic-numbers
-        const TIME_TO_CACHE_ONE_GPU = secondsToMilliseconds(2)
-        for (const gpu of staleGpus) {
-          if (timeBudgetRemaining < TIME_TO_CACHE_ONE_GPU) {
-            log.warn(`time budget exceeded, stopping caching of GPUs early`, {
-              timeBudgetRemaining,
-              totalDuration: Date.now() - start.valueOf(),
+          if (staleGpus.length > 0) {
+            // first sort the listings with the oldest ones first so that we re-cache those first (in case we exceed time budget)
+            gpusWithOldestCacheDate.sort((a, b) => {
+              return a.oldestCachedAt.valueOf() - b.oldestCachedAt.valueOf()
             })
-            break
-          }
 
-          const cachingStart = Date.now()
-          const cached = await cacheEbayListingsForGpu(gpu.gpuName, prisma)
-          timeBudgetRemaining -= Date.now() - cachingStart
-          stats.updateCount += chain(cached).size()
-        }
-      }
-    },
-    {
-      timeout: MAX_RUNTIME_TRANSACTION_TIMEOUT,
-      maxWait: MAX_WAIT_TRANSACTION_TIMEOUT,
-      isolationLevel: ISOLATION_LEVEL,
-    },
+            let timeBudgetRemaining = timeoutMs - (Date.now() - start.valueOf())
+
+            // remove some buffer time to allow listListingsAll to still return results from DB
+            // eslint-disable-next-line no-magic-numbers
+            timeBudgetRemaining -= secondsToMilliseconds(4)
+
+            // it's really 1-3 seconds in practice just from some anecdotal monitoring
+            // eslint-disable-next-line no-magic-numbers
+            const TIME_TO_CACHE_ONE_GPU = secondsToMilliseconds(2)
+
+            for (
+              let gpu = staleGpus.pop();
+              gpu !== undefined;
+              gpu = staleGpus.pop()
+            ) {
+              if (timeBudgetRemaining < TIME_TO_CACHE_ONE_GPU) {
+                log.warn(
+                  `time budget exceeded, stopping caching of GPUs early. Remaining time: ${timeBudgetRemaining}ms, total duration: ${
+                    Date.now() - start.valueOf()
+                  }ms. Remaining GPUs: ${staleGpus.length}.`,
+                )
+                stats.remainingGpusToCache = staleGpus.length
+                break
+              }
+              const cachingStart = Date.now()
+              const cached = await cacheEbayListingsForGpu(gpu.gpuName, prisma)
+              timeBudgetRemaining -= Date.now() - cachingStart
+              stats.listingCachedCount += chain(cached).size()
+            }
+          }
+        },
+        {
+          timeout: secondsToMilliseconds(timeoutMs),
+          // eslint-disable-next-line no-magic-numbers
+          maxWait: secondsToMilliseconds(10),
+          isolationLevel: "RepeatableRead",
+        },
+      ),
+    shouldRetryTransaction,
   )
 
   stats.totalDuration = Date.now() - start.valueOf()
@@ -127,6 +127,30 @@ export async function revalidateCachedListings(
   )
 
   return stats
+}
+
+function shouldRetryTransaction(error: unknown, retryCount: number): boolean {
+  const prismaError =
+    error instanceof PrismaClientKnownRequestError
+      ? (error as PrismaClientKnownRequestError)
+      : null
+
+  log.warn(`transaction failed. checking if retryable...`, {
+    prismaErrorCode: prismaError?.code,
+    retryCount,
+    err: error,
+  })
+  // https://www.prisma.io/docs/orm/reference/error-reference#error-codes
+  const TRANSACTION_DEADLOCK_OR_WRITE_CONFLICT = "P2034"
+  const MAX_RETRIES = 3
+  if (
+    retryCount < MAX_RETRIES &&
+    prismaError?.code === TRANSACTION_DEADLOCK_OR_WRITE_CONFLICT
+  ) {
+    return true
+  }
+  log.error(`transaction failed permanently after ${retryCount} retries`, error)
+  return false
 }
 
 function getOldestCachedDate(listings: CachedListing[]): Date {

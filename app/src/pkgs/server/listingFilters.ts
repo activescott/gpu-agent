@@ -12,12 +12,12 @@ function allListingFilters(item: Listing): boolean {
     return false
   }
   if (!item.buyingOptions.includes("FIXED_PRICE")) {
-    log.info("item is not fixed price", item.itemId)
+    log.debug("item is not fixed price", item.itemId)
     return false
   }
   if (item.itemGroupType === "SELLER_DEFINED_VARIATIONS") {
     // some of them shove a bunch of different types of GPUs into one listing, but the listing returns the lowest price so it makes the item appear artificially cheap
-    log.info("item has SELLER_DEFINED_VARIATIONS", item.itemId)
+    log.debug("item has SELLER_DEFINED_VARIATIONS", item.itemId)
     return false
   }
   return true
@@ -78,7 +78,7 @@ function createRequireKeywordsPredicate(
         )
 
     if (!includeListing && !isExpectedToBeFilteredOut(item)) {
-      log.info(
+      log.debug(
         "required keywords not in item title: %o. Item title: %s . Item Url: %s",
         keywords.filter(
           (requiredKeyword) =>
@@ -116,7 +116,7 @@ function gpuAccessoryFilter(item: Listing): boolean {
       item.title.toLowerCase().includes(accessory),
     )
   ) {
-    log.info(
+    log.debug(
       "item filtered out as a %s accessory: %s, %s",
       item.title,
       item.itemAffiliateWebUrl,

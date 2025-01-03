@@ -10,7 +10,7 @@ import {
   createBuyApi,
   EbayEnvironment,
   ItemSummary,
-} from "ebay-client"
+} from "@activescott/ebay-client"
 import {
   isNextBuild,
   isProduction,
@@ -20,7 +20,7 @@ import { arrayToAsyncIterable } from "@/pkgs/isomorphic/collection"
 import { createDiag } from "@activescott/diag"
 import { chainAsync } from "irritable-iterable"
 import fs from "fs"
-import EBAY_US from "ebay-client/categories/US_EBAY"
+import EBAY_US from "@activescott/ebay-client/categories/US_EBAY"
 import { createFilterForGpu } from "../listingFilters"
 import { Integer } from "type-fest"
 import path from "path"

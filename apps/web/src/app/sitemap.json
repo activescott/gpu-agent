@@ -280,128 +280,103 @@
     },
     {
       "path": "/policy/terms",
-      "title": "Terms of Service",
-      "lastModified": "2024-12-18T22:11:48.000Z"
+      "title": "Terms of Service"
     },
     {
       "path": "/policy/privacy",
-      "title": "Privacy & Cookies Policy",
-      "lastModified": "2024-12-18T22:11:48.000Z"
+      "title": "Privacy & Cookies Policy"
     },
     {
       "path": "/ml/learn",
-      "title": "What to Look for in a GPU for Machine Learning",
-      "lastModified": "2023-12-13T23:05:15.000Z"
+      "title": "What to Look for in a GPU for Machine Learning"
     },
     {
       "path": "/ml/learn/use-case/speech-to-text",
-      "title": "Speech-to-Text: A Machine Learning Approach",
-      "lastModified": "2023-11-26T05:00:45.000Z"
+      "title": "Speech-to-Text: A Machine Learning Approach"
     },
     {
       "path": "/ml/learn/use-case/recommendation-systems",
-      "title": "Deep Learning Recommendation Models (DLRMs) in Machine Learning",
-      "lastModified": "2023-11-26T05:00:45.000Z"
+      "title": "Deep Learning Recommendation Models (DLRMs) in Machine Learning"
     },
     {
       "path": "/ml/learn/use-case/object-detection",
-      "title": "Object Detection: A Machine Learning Technique for Recognizing Objects in Images and Videos",
-      "lastModified": "2023-11-26T05:00:45.000Z"
+      "title": "Object Detection: A Machine Learning Technique for Recognizing Objects in Images and Videos"
     },
     {
       "path": "/ml/learn/use-case/medical-image-segmentation",
-      "title": "Medical Image Segmentation: A Machine Learning Perspective",
-      "lastModified": "2023-11-26T05:00:45.000Z"
+      "title": "Medical Image Segmentation: A Machine Learning Perspective"
     },
     {
       "path": "/ml/learn/use-case/large-language-model-llm",
-      "title": "Large Language Models (LLMs) in Machine Learning",
-      "lastModified": "2023-11-26T05:00:45.000Z"
+      "title": "Large Language Models (LLMs) in Machine Learning"
     },
     {
       "path": "/ml/learn/use-case/language-processing",
-      "title": "Language Processing in Machine Learning",
-      "lastModified": "2023-11-26T05:00:45.000Z"
+      "title": "Language Processing in Machine Learning"
     },
     {
       "path": "/ml/learn/use-case/image-classification",
-      "title": "Image Classification: A Machine Learning Technique",
-      "lastModified": "2023-11-26T05:00:45.000Z"
+      "title": "Image Classification: A Machine Learning Technique"
     },
     {
       "path": "/ml/learn/quantization",
-      "title": "Quantization in Machine Learning and Deep Learning",
-      "lastModified": "2023-12-10T19:56:27.000Z"
+      "title": "Quantization in Machine Learning and Deep Learning"
     },
     {
       "path": "/ml/learn/models/rnn-t",
-      "title": "About Machine Learning Model RNN-T",
-      "lastModified": "2023-11-26T05:00:45.000Z"
+      "title": "About Machine Learning Model RNN-T"
     },
     {
       "path": "/ml/learn/models/retinanet",
-      "title": "About Machine Learning Model RetinaNet",
-      "lastModified": "2023-11-26T05:00:45.000Z"
+      "title": "About Machine Learning Model RetinaNet"
     },
     {
       "path": "/ml/learn/models/resnet",
-      "title": "About Machine Learning Model ResNet",
-      "lastModified": "2023-11-26T05:00:45.000Z"
+      "title": "About Machine Learning Model ResNet"
     },
     {
       "path": "/ml/learn/models/mistral-7b",
-      "title": "About Machine Learning Model Mistral-7B",
-      "lastModified": "2023-12-11T07:53:52.000Z"
+      "title": "About Machine Learning Model Mistral-7B"
     },
     {
       "path": "/ml/learn/models/llama-2",
-      "title": "About Machine Learning Model Llama-2",
-      "lastModified": "2023-11-26T05:00:45.000Z"
+      "title": "About Machine Learning Model Llama-2"
     },
     {
       "path": "/ml/learn/models/gpt-j",
-      "title": "About Machine Learning Model GPT-J",
-      "lastModified": "2023-11-26T05:00:45.000Z"
+      "title": "About Machine Learning Model GPT-J"
     },
     {
       "path": "/ml/learn/models/dlrm-v2",
-      "title": "About Machine Learning Model DLRM",
-      "lastModified": "2023-11-26T05:00:45.000Z"
+      "title": "About Machine Learning Model DLRM"
     },
     {
       "path": "/ml/learn/models/bert",
-      "title": "About Machine Learning Model BERT",
-      "lastModified": "2023-11-26T05:00:45.000Z"
+      "title": "About Machine Learning Model BERT"
     },
     {
       "path": "/ml/learn/models/3d-unet",
-      "title": "About Machine Learning Model 3D-UNet",
-      "lastModified": "2023-11-26T05:00:45.000Z"
+      "title": "About Machine Learning Model 3D-UNet"
     },
     {
       "path": "/ml/learn/faq/how-much-gpu-memory-for-llm",
-      "title": "How much memory does my GPU need to run an LLM?",
-      "lastModified": "2023-12-14T06:06:19.000Z"
+      "title": "How much memory does my GPU need to run an LLM?"
     },
     {
       "path": "/ml/learn/faq/begginers-ai-for-finance-or-sports",
-      "title": "Beginners' Guide to AI for Trading and Sports Predictions",
-      "lastModified": "2024-01-01T04:02:22.000Z"
+      "title": "Beginners' Guide to AI for Trading and Sports Predictions"
     },
     {
       "path": "/ml/learn/faq/amd-gpus-for-ai-machine-learning",
-      "title": "Can I Use AMD GPUs with AI & Machine Learning?",
-      "lastModified": "2024-01-18T06:28:02.000Z"
+      "title": "Can I Use AMD GPUs with AI & Machine Learning?"
     },
     {
       "path": "/contact",
-      "title": "page.tsx",
-      "lastModified": "2023-12-03T19:52:27.000Z"
+      "title": "page.tsx"
     },
     {
       "path": "/about",
-      "title": "About Coin Poet for GPU Price Comparisons",
-      "lastModified": "2024-12-18T22:11:48.000Z"
+      "title": "About Coin Poet for GPU Price Comparisons"
     }
   ]
 }

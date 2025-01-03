@@ -121,7 +121,7 @@ async function fetchListingsForGpuDirectFromEbay(
 function getTestListingsPath(gpuName: string): string {
   return path.resolve(
     appRoot(),
-    "../../data/test-data/api-responses",
+    "../../../data/test-data/api-responses",
     `search-listings-${gpuName}.json`,
   )
 }

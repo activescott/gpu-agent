@@ -16,8 +16,6 @@ jest.mock("./ebay", () => {
 })
 
 describe("fetchListingsForAllGPUsWithCache", () => {
-  beforeEach(() => {})
-
   describe("cached listings are fresh", () => {
     it("should return cached listings if they are fresh", async () => {
       // mock ListingRepository with some fresh listings:

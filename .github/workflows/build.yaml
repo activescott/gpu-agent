@@ -7,6 +7,9 @@ on:
   pull_request:
     branches: [main, beta, alpha]
 
+env:
+  POSTGRES_PRISMA_URL: ${{ secrets.POSTGRES_PRISMA_URL }}
+
 jobs:
   test:
     uses: activescott/github-actions-workflows/.github/workflows/npm-tester.yml@main

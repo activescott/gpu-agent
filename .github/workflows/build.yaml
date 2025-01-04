@@ -14,6 +14,7 @@ jobs:
       EBAY_CLIENT_ID: ${{ secrets.EBAY_CLIENT_ID }}
       EBAY_CLIENT_SECRET: ${{ secrets.EBAY_CLIENT_SECRET }}
       EBAY_AFFILIATE_CAMPAIGN_ID: ${{ secrets.EBAY_AFFILIATE_CAMPAIGN_ID }}
+      NEXT_PUBLIC_DOMAIN: ${{ secrets.NEXT_PUBLIC_DOMAIN }}
 
     steps:
       # https://github.com/actions/checkout

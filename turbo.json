@@ -3,7 +3,7 @@
   "tasks": {
     "build": {
       "dependsOn": ["^build"],
-      "outputs": ["dist/**", ".next/**", "!.next/cache/**"]
+      "outputs": ["dist/**"]
     },
     "shopping-agent#build": {
       "env": [
@@ -19,7 +19,9 @@
         "NEXT_PUBLIC_POSTHOG_HOST"
       ],
       // Consider all default inputs (git) including .env.local
-      "inputs": ["$TURBO_DEFAULT$", ".env.local"]
+      "inputs": ["$TURBO_DEFAULT$", ".env.local"],
+      // it appears that onc we override a task (build with shopping-agent#build in this case), we need to specify outputs again or they'll revert to their default? This causes cached builds on vercel to fail with 'The file "/vercel/path1/apps/web/.next/routes-manifest.json" couldn't be found.'
+      "outputs": [".next/**", "!.next/cache/**"]
     },
     "dev": {
       "outputs": ["dist/**", ".next/**", "!.next/cache/**"]

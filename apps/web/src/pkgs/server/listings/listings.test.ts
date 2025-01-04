@@ -52,7 +52,7 @@ describe("fetchListingsForAllGPUsWithCache", () => {
 
       // validate that the two fresh listings were not re-cached
       expect(cacheEbayListingsForGpu).toHaveBeenCalledTimes(0)
-      expect(result).toHaveProperty("updateCount", 0)
+      expect(result).toHaveProperty("listingCachedCount", 0)
     })
   })
 
@@ -79,7 +79,7 @@ describe("fetchListingsForAllGPUsWithCache", () => {
                     name: "test-gpu-2",
                   },
                 },
-                // HACK casting since not all properties mocked above:
+                // HACK casting since not all properties of CachedListing mocked above:
               ] as unknown as ListingRepository.CachedListing[],
             },
           ]
@@ -100,7 +100,7 @@ describe("fetchListingsForAllGPUsWithCache", () => {
               name: "test-gpu-2",
             },
           },
-          // HACK casting since not all properties mocked above:
+          // HACK casting since not all properties of CachedListing mocked above:
         ] as unknown as ListingRepository.CachedListing[]
       })
 
@@ -109,7 +109,12 @@ describe("fetchListingsForAllGPUsWithCache", () => {
 
       // validate that it attempted to cache some listings:
       expect(cacheEbayListingsForGpu).toHaveBeenCalledTimes(1)
-      expect(result).toHaveProperty("updateCount", 2)
+
+      // make sure it returned the listings:
+      expect(result).toHaveProperty("listingCachedCount", 2)
+      expect(result).toHaveProperty("staleGpus")
+      // only one GPU type was stale (with 2 listings for it):
+      expect(result.staleGpus).toHaveLength(1)
     })
   })
 })

@@ -16,7 +16,7 @@ const { isNil } = _
 const prisma = new PrismaClient()
 
 async function main() {
-  const gpuDataDir = path.join(__dirname, "../../data/gpu-data")
+  const gpuDataDir = path.join(__dirname, "../../../data/gpu-data")
   const gpuFiles = await fs.readdir(gpuDataDir)
   const gpus = []
 

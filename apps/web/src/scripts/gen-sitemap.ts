@@ -12,12 +12,17 @@ import {
   gpuRankingTitle,
   listGpuRankingSlugs,
 } from "../app/ml/learn/gpu/ranking/slugs"
-import * as dotenv from "dotenv"
+import { config } from "dotenv"
 
-dotenv.config({ path: path.join(__dirname, "../../.env.local") })
 //////////////////////////////////////////////////
 // NOTE: ABOVE the easiest thing to do here is avoid the @/ import aliases since next seems to resolve those as a bundler and we're not running any bundler in this script
 //////////////////////////////////////////////////
+
+config({ path: path.join(__dirname, "../../.env.local") })
+
+if (process.env.POSTGRES_PRISMA_URL === undefined) {
+  throw new Error("POSTGRES_PRISMA_URL is not defined in .env.local")
+}
 
 type SiteMapItem = {
   // relative path

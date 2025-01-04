@@ -6,6 +6,7 @@ const createJestConfig = nextJest({ dir: "./" })
 // Any custom config you want to pass to Jest
 const customJestConfig = {
   //globalSetup: "<rootDir>/testing/jest.setup.js",
+  globalSetup: "<rootDir>/src/testing/jest.setup.ts",
   //setupFilesAfterEnv: ["<rootDir>/jest.setup.js"],
   // pass in --coverage to collect coverage
   collectCoverage: false,

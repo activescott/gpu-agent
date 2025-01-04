@@ -12,12 +12,19 @@ import {
   gpuRankingTitle,
   listGpuRankingSlugs,
 } from "../app/ml/learn/gpu/ranking/slugs"
-import * as dotenv from "dotenv"
+import { config } from "dotenv"
 
-dotenv.config({ path: path.join(__dirname, "../../.env.local") })
 //////////////////////////////////////////////////
 // NOTE: ABOVE the easiest thing to do here is avoid the @/ import aliases since next seems to resolve those as a bundler and we're not running any bundler in this script
 //////////////////////////////////////////////////
+
+config({ path: path.join(__dirname, "../../.env.local") })
+
+if (process.env.POSTGRES_PRISMA_URL === undefined) {
+  throw new Error(
+    "POSTGRES_PRISMA_URL is not defined. Add to .env.local or the host's environment.",
+  )
+}
 
 type SiteMapItem = {
   // relative path
@@ -37,8 +44,8 @@ type SiteMapItem = {
   priority?: number
 }
 
-//const __dirname = path.dirname(new URL(import.meta.url).pathname)
-const appDir = path.join(__dirname, "../app")
+const appDir = path.resolve(path.join(__dirname, "../.."))
+console.info("using appDir", appDir)
 const sitemapFile = path.join(appDir, "sitemap.json")
 
 async function main() {
@@ -87,6 +94,10 @@ async function main() {
     .filter((item) => !item.path.startsWith("/ml/learn/gpu"))
     // /ml/shop/gpu/page.tsx has dynamic generated metadata. So we add it manually below
     .filter((item) => item.path !== "/ml/shop/gpu")
+
+  if (discoveredPages.length === 0) {
+    throw new Error("No pages found?!")
+  }
 
   const prisma = new PrismaClient()
   const gpuList = await prisma.gpu.findMany({

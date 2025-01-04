@@ -1,5 +1,5 @@
 import { GpuSpecsSchema } from "./specs"
-import { ItemSummary } from "ebay-client"
+import { ItemSummary } from "@activescott/ebay-client"
 import { z } from "zod"
 import { stripIndents } from "common-tags"
 

@@ -14,6 +14,6 @@ The tech stack used is TypeScript, NextJS, Prisma, and PostgresSQL.
 
 The code in this project is licensed under the MIT License. See the `LICENSE_CODE` file for more information.
 
-### Data
+### Data & Content
 
-The data in this project is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0). See the `LICENSE_DATA` file for more information.
+The data (such as but not limited to those files in data/gpu-data) and content (such as but not limited to the pages under a "learn" path in the site) in this project is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0). See the `LICENSE_DATA_AND_CONTENT` file for more information.

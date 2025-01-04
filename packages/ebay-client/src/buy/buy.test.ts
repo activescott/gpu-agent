@@ -30,6 +30,17 @@ describe("createBuyApi", () => {
       /missing credentials/,
     )
   })
+
+  it("should throw if invalid environment", () => {
+    const options: BuyApiOptions = {
+      credentials: {
+        environment: "foo" as EbayEnvironment,
+        clientID: "foo",
+        clientSecret: "bar",
+      },
+    }
+    expect(() => createBuyApi(options)).toThrow(/invalid environment/)
+  })
 })
 
 describe("search", () => {
@@ -91,7 +102,7 @@ describe("search", () => {
     expect(mockFetch).toHaveBeenCalledTimes(2)
     const call2 = mockFetch.mock.calls[1]
     const options = call2[1]
-    const headers = options.headers as Record<string, string>
+    const headers = options?.headers as Record<string, string>
 
     expect(headers).toHaveProperty("X-EBAY-C-ENDUSERCTX")
     const value = headers["X-EBAY-C-ENDUSERCTX"]

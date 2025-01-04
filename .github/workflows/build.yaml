@@ -6,7 +6,7 @@ on:
     branches: [main, beta, alpha]
 
 jobs:
-  test:
+  build:
     runs-on: ubuntu-24.04
     env:
       POSTGRES_PRISMA_URL: ${{ secrets.POSTGRES_PRISMA_URL }}

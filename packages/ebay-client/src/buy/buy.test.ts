@@ -30,6 +30,17 @@ describe("createBuyApi", () => {
       /missing credentials/,
     )
   })
+
+  it("should throw if invalid environment", () => {
+    const options: BuyApiOptions = {
+      credentials: {
+        environment: "foo" as EbayEnvironment,
+        clientID: "foo",
+        clientSecret: "bar",
+      },
+    }
+    expect(() => createBuyApi(options)).toThrow(/invalid environment/)
+  })
 })
 
 describe("search", () => {

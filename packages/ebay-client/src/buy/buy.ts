@@ -90,6 +90,11 @@ class BuyApiImpl implements BuyApi {
     if (!options.credentials) {
       throw new Error("missing credentials")
     }
+    if (!(options.credentials.environment in MapEbayEnvironmentToUrl)) {
+      throw new Error(
+        `invalid environment of ${options.credentials.environment}. Expected one of ${Object.keys(MapEbayEnvironmentToUrl)}`,
+      )
+    }
   }
 
   public async search({

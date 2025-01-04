@@ -88,7 +88,7 @@ export async function addOrRefreshListingsForGpu(
   log.info(`Creating listings for ${gpuName}...`)
   if (listings.length === 0) {
     log.warn(
-      `No listings specified for gpu ${gpuName}. Aborting attempt to cache new listings.`,
+      `No listings specified to add or refresh for gpu ${gpuName}. Aborting attempt to cache new listings.`,
     )
     return
   }

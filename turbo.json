@@ -4,6 +4,22 @@
       "dependsOn": ["^build"],
       "outputs": ["dist/**", ".next/**", "!.next/cache/**"]
     },
+    "shopping-agent#build": {
+      "env": [
+        // invalidates cache of the shopping-agent site/app upon env changing https://turbo.build/repo/docs/reference/configuration#env,
+        "POSTGRES_PRISMA_URL",
+        "POSTGRES_URL_NON_POOLING",
+        "NEXT_PUBLIC_DOMAIN",
+        "EBAY_CLIENT_ID",
+        "EBAY_CLIENT_SECRET",
+        "EBAY_ENVIRONMENT",
+        "EBAY_AFFILIATE_CAMPAIGN_ID",
+        "NEXT_PUBLIC_POSTHOG_KEY",
+        "NEXT_PUBLIC_POSTHOG_HOST"
+      ],
+      // Consider all default inputs (git) including .env.local
+      "inputs": ["$TURBO_DEFAULT$", ".env.local"]
+    },
     "dev": {
       "outputs": ["dist/**", ".next/**", "!.next/cache/**"]
     },
@@ -18,7 +34,7 @@
     }
   },
   "globalPassThroughEnv": [
-    "// the prisma vars are required for build & test step to use gen-sitemap && prisma when running in CI or in vercel build",
+    // the prisma vars are required for build & test step to use gen-sitemap && prisma when running in CI or in vercel build
     "POSTGRES_PRISMA_URL",
     "POSTGRES_URL_NON_POOLING",
     "NEXT_PUBLIC_DOMAIN",

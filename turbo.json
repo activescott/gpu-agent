@@ -16,5 +16,17 @@
     "test": {
       "dependsOn": ["^test"]
     }
-  }
+  },
+  "globalPassThroughEnv": [
+    "// the prisma vars are required for build & test step to use gen-sitemap && prisma when running in CI or in vercel build",
+    "POSTGRES_PRISMA_URL",
+    "POSTGRES_URL_NON_POOLING",
+    "NEXT_PUBLIC_DOMAIN",
+    "EBAY_CLIENT_ID",
+    "EBAY_CLIENT_SECRET",
+    "EBAY_ENVIRONMENT",
+    "EBAY_AFFILIATE_CAMPAIGN_ID",
+    "NEXT_PUBLIC_POSTHOG_KEY",
+    "NEXT_PUBLIC_POSTHOG_HOST"
+  ]
 }

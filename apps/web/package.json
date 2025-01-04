@@ -11,6 +11,7 @@
     "gen-sitemap": "npx ts-node src/scripts/gen-sitemap.ts",
     "prebuild": "npm run prep && npm run gen-sitemap",
     "build": "DEBUG=shopping-agent:*,-shopping-agent:shop:listingFilters:* next build",
+    "clean": "rm -rf node_modules; rm -rf .next; rm -rf .turbo",
     "start": "DEBUG=shopping-agent:*,ebay-client:* next start",
     "lint-next": "next lint",
     "eslint": "eslint . --ext ts,tsx,js,jsx",
@@ -33,6 +34,7 @@
   },
   "dependencies": {
     "@activescott/diag": "^2.0.2",
+    "@activescott/ebay-client": "*",
     "@mdx-js/loader": "^3.0.0",
     "@mdx-js/react": "^3.0.0",
     "@next/mdx": "^14.0.2",
@@ -43,7 +45,6 @@
     "bootstrap": "^5.3.2",
     "bootstrap-icons": "^1.11.1",
     "common-tags": "^1.8.2",
-    "@activescott/ebay-client": "*",
     "glob": "^10.3.10",
     "irritable-iterable": "^1.4.0",
     "lodash": "^4.17.21",

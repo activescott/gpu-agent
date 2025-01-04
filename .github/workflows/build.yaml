@@ -10,6 +10,9 @@ jobs:
     runs-on: ubuntu-24.04
     env:
       POSTGRES_PRISMA_URL: ${{ secrets.POSTGRES_PRISMA_URL }}
+      EBAY_ENVIRONMENT: ${{ secrets.EBAY_ENVIRONMENT }}
+      EBAY_CLIENT_ID: ${{ secrets.EBAY_CLIENT_ID }}
+      EBAY_CLIENT_SECRET: ${{ secrets.EBAY_CLIENT_SECRET }}
 
     steps:
       # https://github.com/actions/checkout

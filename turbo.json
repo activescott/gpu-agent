@@ -1,4 +1,5 @@
 {
+  "$schema": "https://turbo.build/schema.json",
   "tasks": {
     "build": {
       "dependsOn": ["^build"],
@@ -31,6 +32,9 @@
     },
     "test": {
       "dependsOn": ["^test"]
+    },
+    "clean": {
+      "dependsOn": ["^clean"]
     }
   },
   "globalPassThroughEnv": [

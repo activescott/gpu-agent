@@ -31,7 +31,7 @@
     "dev": "rm -rfd ./dist/es; npx tsc --project tsconfig.es.json --watch",
     "build": "rm -rfd ./dist && npm run build:es",
     "test-watch": "npx jest --watch",
-    "clean": "rm -rf node_modules; rm -rf dist",
+    "clean": "rm -rf node_modules; rm -rf dist ; rm -rf .turbo",
     "test": "npx jest"
   },
   "keywords": [

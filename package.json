@@ -6,7 +6,8 @@
     "dev": "turbo run dev",
     "lint": "turbo run lint",
     "lint-fix": "turbo run lint-fix",
-    "test": "turbo run test"
+    "test": "turbo run test",
+    "clean": "turbo run clean"
   },
   "workspaces": [
     "apps/*",

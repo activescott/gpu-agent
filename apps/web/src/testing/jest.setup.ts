@@ -11,6 +11,12 @@ export default function loadEnv() {
     path: envPath,
   })
   if (result.error) {
+    if (process.env.CI) {
+      console.error(
+        `Failed to load environment variables from ${envPath} in CI environment`,
+      )
+      return
+    }
     throw result.error
   }
 }

@@ -1,5 +1,3 @@
-# We want pushes to main, beta, and alpha to trigger a publish to npm for the corresponding npm dist-tag.
-# Any pull request targeting deploy branches should run all tests.
 on:
   push:
     branches: [main, beta, alpha]
@@ -7,13 +5,23 @@ on:
   pull_request:
     branches: [main, beta, alpha]
 
-env:
-  POSTGRES_PRISMA_URL: ${{ secrets.POSTGRES_PRISMA_URL }}
-
 jobs:
   test:
-    uses: activescott/github-actions-workflows/.github/workflows/npm-tester.yml@main
-    with:
-      package_dir: ./
-      node_versions: "[20]"
-      do_coveralls: false
+    runs-on: ubuntu-24.04
+    env:
+      POSTGRES_PRISMA_URL: ${{ secrets.POSTGRES_PRISMA_URL }}
+
+    steps:
+      # https://github.com/actions/checkout
+      - uses: actions/checkout@v4
+
+      # https://github.com/actions/setup-node#usage
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run build
+      - run: npm run test

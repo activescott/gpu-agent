@@ -39,7 +39,9 @@ export default async function Page({ params }: GpuParams) {
   log.info(`Fetching cached listings for gpu ${gpuSlug} ...`)
   const gpu: Gpu = await getGpu(gpuSlug)
   const allListings = await listCachedListingsForGpus([gpuSlug])
-  log.info(`Fetching cached listings for gpu ${gpuSlug} complete.`)
+  log.info(
+    `Fetching cached listings for gpu ${gpuSlug} complete. Found ${allListings.length} listings.`,
+  )
   const listings = chain(allListings)
     .head(ISOMORPHIC_CONFIG.MAX_LISTINGS_PER_PAGE() as Integer<number>)
     .collect()

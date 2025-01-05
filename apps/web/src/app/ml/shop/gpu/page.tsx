@@ -25,10 +25,11 @@ export const metadata: Metadata = {
 }
 
 export default async function Page() {
-  // TODO: do this async outside of rendering to update cached listings. Does vercel support cron or something?
   log.info(`Fetching cached listings for gpu ALL ...`)
   const rawListings = await listCachedListings()
-  log.info(`Fetching cached listings for gpu ALL complete.`)
+  log.info(
+    `Fetching cached listings for gpu ALL complete. Found ${rawListings.length} listings.`,
+  )
   const MINIMUM_AI_GPU_MEMORY_GB = 10
 
   const listings = chain(rawListings)

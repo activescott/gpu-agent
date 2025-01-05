@@ -122,9 +122,7 @@ export async function revalidateCachedListings(
   )
 
   stats.totalDuration = Date.now() - start.valueOf()
-  log.info(
-    `fetching cached listings for all GPUs complete. Took ${stats.totalDuration}ms`,
-  )
+  log.info(`fetching cached listings for all GPUs complete. Stats: %o`, stats)
 
   return stats
 }

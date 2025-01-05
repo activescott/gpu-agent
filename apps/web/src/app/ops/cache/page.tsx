@@ -1,7 +1,10 @@
 import { secondsToMilliseconds } from "@/pkgs/isomorphic/duration"
 import { revalidateCachedListings } from "@/pkgs/server/listings"
+import { createDiag } from "@activescott/diag"
 import { Metadata } from "next"
 import { unstable_cache } from "next/cache"
+
+const log = createDiag("shopping-agent:ops:cache")
 
 // default is 10s and without slug and fetching many GPUs 10s isn't enough: https://vercel.com/docs/functions/configuring-functions/duration
 // We also have a site monitor ping this that has a max timeout of 25s
@@ -20,18 +23,22 @@ export const metadata: Metadata = {
 /**
  * A version of @see revalidateCachedListings that uses the cache to avoid revalidating too often.
  * This is kind of a poor-man's rate limiter by allowing requests to revalidateCachedListings no more often than every 10s.
- * NOTE: we do not use vercel's default route caching because it has a
+ * NOTE: we do not use vercel's default route caching because it returns cached pages even when they're stale and only call this code in the background.
  */
-const revalidateCachedListingsWithCache = unstable_cache(
+const revalidateCachedListingsWithVercelCache = unstable_cache(
   async (maxDuration: number) => {
+    log.info(
+      "cache MISS for revalidateCachedListingsWithVercelCache. Fetching from DB...",
+    )
     return await revalidateCachedListings(secondsToMilliseconds(maxDuration))
   },
-  ["ops/cache", "revalidateCachedListings"],
-  { revalidate: 10 },
+  [],
+  // revalidate: The number of seconds after which the cache should be revalidated.
+  { revalidate: 30 },
 )
 
 export default async function Page() {
-  const result = await revalidateCachedListingsWithCache(
+  const result = await revalidateCachedListingsWithVercelCache(
     secondsToMilliseconds(maxDuration),
   )
 

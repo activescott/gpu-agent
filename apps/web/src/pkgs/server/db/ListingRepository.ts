@@ -152,7 +152,6 @@ export async function getPriceStats(
     COUNT(*)::float as count from "Listing"
   WHERE 
     "gpuName" = ${gpuName}
-    AND "cachedAt" > ${new Date(Date.now() - CACHED_LISTINGS_DURATION_MS)}
   ;`) as RowShape[]
 
   if (result.length === 0) {
@@ -179,9 +178,6 @@ export async function topNListingsByCostPerformance(
       *
     FROM "Listing"
     INNER JOIN "gpu" ON "Listing"."gpuName" = "gpu"."name"
-    WHERE "Listing"."cachedAt" > ${new Date(
-      Date.now() - CACHED_LISTINGS_DURATION_MS,
-    )}
     ORDER BY ("Listing"."priceValue"::float / ${specFieldName}::float)
     LIMIT ${n}
   `)

@@ -14,16 +14,11 @@ Compare GPU & AI Accelerator Card Performance Metrics to their Cost
 
 ### Runbooks
 
-#### Force the ebay listing cache to refresh
+#### Trigger ebay listing cache to refresh
 
-- Go to db at https://console.neon.tech/app/projects/withered-morning-85129862/query?query=update+lastCachedListings
-- Run the following query (replacing GPU name in where as needed):
+hit /ops/cache and it will trigger the code to check for stale listings and refresh.
 
-```sql
-DELETE FROM "GpuLastCachedListings"
-WHERE "gpuName" IN ('nvidia-l4', 'nvidia-l40', 'nvidia-l40s')
-;
-```
+Alternatively, go to the DB and delete all cached listings in the Listing table.
 
 ## Development
 

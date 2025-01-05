@@ -4,6 +4,7 @@ export function delay(ms: number): Promise<void> {
 }
 
 const MILLISECONDS_PER_SECOND = 1000
+const SECONDS_PER_MINUTE = 60
 
 export const secondsToMilliseconds = (seconds: number) =>
   seconds * MILLISECONDS_PER_SECOND
@@ -13,3 +14,6 @@ export const millisecondsToSeconds = (milliseconds: number) =>
 
 export const hoursToMilliseconds = (hours: number) =>
   hours * 60 * 60 * MILLISECONDS_PER_SECOND
+
+export const minutesToSeconds = (minutes: number) =>
+  minutes * SECONDS_PER_MINUTE

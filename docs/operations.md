@@ -10,13 +10,14 @@
 
 ## Runbooks
 
-### Force the ebay listing cache to refresh
+### Trigger ebay listing cache to refresh
 
-- Go to db at https://console.neon.tech/app/projects/
-- Run the following query (replacing GPU name in where as needed):
+hit /ops/cache and it will trigger the code to check for stale listings and refresh.
 
-```sql
-DELETE FROM "GpuLastCachedListings"
-WHERE "gpuName" IN ('nvidia-l4', 'nvidia-l40', 'nvidia-l40s')
-;
-```
+Alternatively, go to the DB and delete all cached listings in the Listing table.
+
+## Database / Prisma
+
+- `npx prisma migrate dev --name init`: Create the first migration and push it to the DB. Nukes the old stuff. Can re-run this but should nuke the migrations folder too to flatten all migrations. This nukes the DB.
+- `npx prisma migrate dev`: It is safe to kinda run all the time in dev environments. It will do any migrations _if necessary_ and update the TS types.
+- `npx prisma migrate reset`: Nukes the DB and re-applies all schemas.

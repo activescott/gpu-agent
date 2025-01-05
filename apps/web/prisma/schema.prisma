@@ -50,13 +50,6 @@ model gpu {
   @@index([name])
 }
 
-model GpuLastCachedListings {
-  gpuName            String @unique
-  lastCachedListings DateTime
-  
-  @@index([gpuName])
-}
-
 model Listing {
   itemId String  @id @unique
   // we use this as a soft-delete

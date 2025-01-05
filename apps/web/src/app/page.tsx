@@ -5,11 +5,10 @@ import { mapSpecToSlug } from "./ml/shop/gpu/performance/slugs"
 import Link from "next/link"
 import { topNListingsByCostPerformance } from "@/pkgs/server/db/ListingRepository"
 import { ListingCardSmall } from "@/pkgs/client/components/ListingCardSmall"
+import { minutesToSeconds } from "@/pkgs/isomorphic/duration"
 
 // revalidate the data at most every N seconds: https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#revalidate
-const MINUTES = 20
-const SECONDS_PER_MINUTE = 60
-export const revalidate = MINUTES * SECONDS_PER_MINUTE
+export const revalidate = minutesToSeconds(20)
 
 export const metadata: Metadata = {
   alternates: { canonical: "https://coinpoet.com/" },

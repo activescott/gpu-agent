@@ -17,6 +17,7 @@ interface ListingStats {
   staleGpus: { gpuName: string; oldestCachedAt: Date }[]
   listingCachedCount: number
   oldestCachedAt: Date
+  // duration in ms
   totalDuration: number
   timeoutMs: number
   remainingGpusToCache: number

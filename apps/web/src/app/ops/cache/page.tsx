@@ -30,7 +30,7 @@ const revalidateCachedListingsWithVercelCache = unstable_cache(
     log.info(
       "cache MISS for revalidateCachedListingsWithVercelCache. Fetching from DB...",
     )
-    return await revalidateCachedListings(secondsToMilliseconds(maxDuration))
+    return await revalidateCachedListings(maxDuration)
   },
   [],
   // revalidate: The number of seconds after which the cache should be revalidated.

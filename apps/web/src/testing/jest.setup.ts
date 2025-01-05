@@ -12,6 +12,7 @@ export default function loadEnv() {
   })
   if (result.error) {
     if (process.env.CI) {
+      // eslint-disable-next-line no-console
       console.error(
         `Failed to load environment variables from ${envPath} in CI environment`,
       )

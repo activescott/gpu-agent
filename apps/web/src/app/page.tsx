@@ -8,8 +8,8 @@ import { ListingCardSmall } from "@/pkgs/client/components/ListingCardSmall"
 import { minutesToSeconds } from "@/pkgs/isomorphic/duration"
 
 // revalidate the data at most every N seconds: https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#revalidate
-const REVALIDATE_SECONDS = 20
-export const revalidate = minutesToSeconds(REVALIDATE_SECONDS)
+const REVALIDATE_MINUTES = 30
+export const revalidate = minutesToSeconds(REVALIDATE_MINUTES)
 
 export const metadata: Metadata = {
   alternates: { canonical: "https://coinpoet.com/" },

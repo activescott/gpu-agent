@@ -13,10 +13,11 @@ import { withRetry } from "@/pkgs/isomorphic/retry"
 
 const log = createDiag("shopping-agent:shop:listings")
 
-interface ListingStats {
+export interface ListingStats {
   staleGpusAtStart: { gpuName: string; oldestCachedAt: Date }[]
   listingCachedCount: number
-  oldestCachedAt: Date
+  oldestCachedAtStart: Date
+  oldestCachedAtRemaining: Date | null
   // duration in ms
   totalDuration: number
   timeoutMs: number
@@ -34,20 +35,15 @@ export async function revalidateCachedListings(
   const start = new Date()
   log.info("retrieving cached listings for all GPUs...")
 
-  const stats: ListingStats = {
-    timeoutMs,
-    totalDuration: 0,
-    listingCachedCount: 0,
-    oldestCachedAt: new Date(),
-    staleGpusAtStart: [],
-    staleGpusRemaining: 0,
-    maxTimeToCacheOneGpu: 0,
-  }
-
-  await withRetry(
+  const statsFinal = await withRetry(
     () =>
       withTransaction(
-        async (prisma): Promise<void> => {
+        async (prisma): Promise<ListingStats> => {
+          let staleGpusRemaining = 0
+          let oldestCachedAtRemaining: Date | null = null
+          let listingCachedCount = 0
+          let maxTimeToCacheOneGpu = 0
+
           const gpus = await listCachedListingsGroupedByGpu(false, prisma)
 
           // If any gpu has listings older than CACHED_LISTINGS_DURATION_MS, OR has zero listings, then flag for re-caching.
@@ -57,11 +53,14 @@ export async function revalidateCachedListings(
           }))
 
           // track the oldest cachedAt value
-          stats.oldestCachedAt = gpusWithOldestCachedAt
+          const MIN_DATE = new Date(0)
+          const oldestCachedAtStart = gpusWithOldestCachedAt
             .map((gpu) => gpu.oldestCachedAt)
             .reduce((oldest, current) => {
-              return current < oldest ? current : oldest
-            }, new Date())
+              return current.getTime() == MIN_DATE.getTime() || current < oldest
+                ? current
+                : oldest
+            }, MIN_DATE)
 
           const staleGpus = gpusWithOldestCachedAt.filter((gpu) => {
             return (
@@ -73,7 +72,7 @@ export async function revalidateCachedListings(
 
           log.info(`found ${staleGpus.length} GPUs that need re-cached`)
 
-          stats.staleGpusAtStart = staleGpus.map((gpu) => ({
+          const staleGpusAtStart = staleGpus.map((gpu) => ({
             gpuName: gpu.gpuName,
             oldestCachedAt: gpu.oldestCachedAt,
           }))
@@ -88,11 +87,11 @@ export async function revalidateCachedListings(
 
             // remove some buffer time to allow listListingsAll to still return results from DB
             // eslint-disable-next-line no-magic-numbers
-            timeBudgetRemaining -= secondsToMilliseconds(5)
+            timeBudgetRemaining -= secondsToMilliseconds(4)
 
-            // it's really 1-3 seconds in practice just from some anecdotal monitoring
+            // it's really 1-4 seconds normally, but the max can be ~6s from some anecdotal monitoring
             // eslint-disable-next-line no-magic-numbers
-            const TIME_TO_CACHE_ONE_GPU = secondsToMilliseconds(3)
+            const TIME_TO_CACHE_ONE_GPU = secondsToMilliseconds(4)
 
             for (
               let gpu = staleGpus.pop();
@@ -105,18 +104,31 @@ export async function revalidateCachedListings(
                     Date.now() - start.getTime()
                   }ms. Remaining GPUs: ${staleGpus.length}.`,
                 )
-                stats.staleGpusRemaining = staleGpus.length
+                staleGpusRemaining = staleGpus.length
+                oldestCachedAtRemaining = getOldestCachedAt(
+                  staleGpus.flatMap((gpu) => gpu.listings),
+                )
                 break
               }
               const cachingStart = Date.now()
               const cached = await cacheEbayListingsForGpu(gpu.gpuName, prisma)
-              stats.listingCachedCount += chain(cached).size()
+              listingCachedCount += chain(cached).size()
               const cachingEnd = Date.now() - cachingStart
-              if (cachingEnd > stats.maxTimeToCacheOneGpu) {
-                stats.maxTimeToCacheOneGpu = cachingEnd
+              if (cachingEnd > maxTimeToCacheOneGpu) {
+                maxTimeToCacheOneGpu = cachingEnd
               }
               timeBudgetRemaining -= cachingEnd
             }
+          }
+          return {
+            staleGpusAtStart,
+            listingCachedCount,
+            oldestCachedAtStart,
+            oldestCachedAtRemaining,
+            totalDuration: Date.now() - start.getTime(),
+            timeoutMs,
+            staleGpusRemaining,
+            maxTimeToCacheOneGpu,
           }
         },
         {
@@ -129,10 +141,13 @@ export async function revalidateCachedListings(
     shouldRetryTransaction,
   )
 
-  stats.totalDuration = Date.now() - start.getTime()
-  log.info(`fetching cached listings for all GPUs complete. Stats: %o`, stats)
+  statsFinal.totalDuration = Date.now() - start.getTime()
+  log.debug(
+    `fetching cached listings for all GPUs complete. Stats: %o`,
+    statsFinal,
+  )
 
-  return stats
+  return statsFinal
 }
 
 function shouldRetryTransaction(error: unknown, retryCount: number): boolean {

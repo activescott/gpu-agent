@@ -6,6 +6,7 @@ Compare GPU & AI Accelerator Card Performance Metrics to their Cost
 
 - `npx prisma migrate dev --name init`: Create the first migration and push it to the DB. Nukes the old stuff. Can re-run this but should nuke the migrations folder too to flatten all migrations. This nukes the DB.
 - `npx prisma migrate dev`: It is safe to kinda run all the time in dev environments. It will do any migrations _if necessary_ and update the TS types.
+- `npm run prisma-seed` (i.e. `npx prisma db seed`): This seeds the DB with the set of seed GPUs
 - `npx prisma migrate reset`: Nukes the DB and re-applies all schemas.
 
 ## Todo

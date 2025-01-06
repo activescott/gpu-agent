@@ -89,7 +89,7 @@ export async function GET() {
     registers: [registry],
     async collect() {
       const result = await promisedResult
-      this.set(result.staleGpus.length)
+      this.set(result.staleGpusAtStart.length)
     },
   })
 
@@ -99,7 +99,17 @@ export async function GET() {
     registers: [registry],
     async collect() {
       const result = await promisedResult
-      this.set(result.remainingGpusToCache)
+      this.set(result.staleGpusRemaining)
+    },
+  })
+
+  new Gauge({
+    name: "coinpoet_gpu_max_cache_duration_seconds",
+    help: "the maximum time to cache one GPU in seconds",
+    registers: [registry],
+    async collect() {
+      const result = await promisedResult
+      this.set(millisecondsToSeconds(result.maxTimeToCacheOneGpu))
     },
   })
 

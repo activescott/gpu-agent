@@ -14,13 +14,14 @@ import { withRetry } from "@/pkgs/isomorphic/retry"
 const log = createDiag("shopping-agent:shop:listings")
 
 interface ListingStats {
-  staleGpus: { gpuName: string; oldestCachedAt: Date }[]
+  staleGpusAtStart: { gpuName: string; oldestCachedAt: Date }[]
   listingCachedCount: number
   oldestCachedAt: Date
   // duration in ms
   totalDuration: number
   timeoutMs: number
-  remainingGpusToCache: number
+  staleGpusRemaining: number
+  maxTimeToCacheOneGpu: number
 }
 /**
  * Checks which cached listings need updated and updates them .
@@ -37,9 +38,10 @@ export async function revalidateCachedListings(
     timeoutMs,
     totalDuration: 0,
     listingCachedCount: 0,
-    staleGpus: [],
     oldestCachedAt: new Date(),
-    remainingGpusToCache: 0,
+    staleGpusAtStart: [],
+    staleGpusRemaining: 0,
+    maxTimeToCacheOneGpu: 0,
   }
 
   await withRetry(
@@ -71,7 +73,7 @@ export async function revalidateCachedListings(
 
           log.info(`found ${staleGpus.length} GPUs that need re-cached`)
 
-          stats.staleGpus = staleGpus.map((gpu) => ({
+          stats.staleGpusAtStart = staleGpus.map((gpu) => ({
             gpuName: gpu.gpuName,
             oldestCachedAt: gpu.oldestCachedAt,
           }))
@@ -86,11 +88,11 @@ export async function revalidateCachedListings(
 
             // remove some buffer time to allow listListingsAll to still return results from DB
             // eslint-disable-next-line no-magic-numbers
-            timeBudgetRemaining -= secondsToMilliseconds(4)
+            timeBudgetRemaining -= secondsToMilliseconds(5)
 
             // it's really 1-3 seconds in practice just from some anecdotal monitoring
             // eslint-disable-next-line no-magic-numbers
-            const TIME_TO_CACHE_ONE_GPU = secondsToMilliseconds(2)
+            const TIME_TO_CACHE_ONE_GPU = secondsToMilliseconds(3)
 
             for (
               let gpu = staleGpus.pop();
@@ -103,13 +105,17 @@ export async function revalidateCachedListings(
                     Date.now() - start.getTime()
                   }ms. Remaining GPUs: ${staleGpus.length}.`,
                 )
-                stats.remainingGpusToCache = staleGpus.length
+                stats.staleGpusRemaining = staleGpus.length
                 break
               }
               const cachingStart = Date.now()
               const cached = await cacheEbayListingsForGpu(gpu.gpuName, prisma)
-              timeBudgetRemaining -= Date.now() - cachingStart
               stats.listingCachedCount += chain(cached).size()
+              const cachingEnd = Date.now() - cachingStart
+              if (cachingEnd > stats.maxTimeToCacheOneGpu) {
+                stats.maxTimeToCacheOneGpu = cachingEnd
+              }
+              timeBudgetRemaining -= cachingEnd
             }
           }
         },

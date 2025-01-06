@@ -110,9 +110,9 @@ describe("fetchListingsForAllGPUsWithCache", () => {
 
       // make sure it returned the listings:
       expect(result).toHaveProperty("listingCachedCount", 2)
-      expect(result).toHaveProperty("staleGpus")
+      expect(result).toHaveProperty("staleGpusAtStart")
       // only one GPU type was stale (with 2 listings for it):
-      expect(result.staleGpus).toHaveLength(1)
+      expect(result.staleGpusAtStart).toHaveLength(1)
     })
   })
 })

@@ -23,7 +23,7 @@ const revalidateCachedListingsWithVercelCache = unstable_cache(
     log.info(
       "cache MISS for revalidateCachedListingsWithVercelCache. Fetching from DB...",
     )
-    return await revalidateCachedListings(maxDuration)
+    return revalidateCachedListings(maxDuration)
   },
   [],
   // revalidate: The number of seconds after which the cache should be revalidated.
@@ -39,27 +39,15 @@ export async function GET() {
   const registry = new Registry<client.OpenMetricsContentType>()
 
   new Gauge({
-    name: "coinpoet_listings_stale_total",
-    help: "The number of GPUs with stale cached listings",
-    registers: [registry],
-    async collect() {
-      // Invoked when the registry collects its metrics' values.
-      const result = await promisedResult
-      this.set(result.staleGpus.length)
-    },
-  })
-
-  new Gauge({
     name: "coinpoet_listings_oldest_age_seconds",
     help: "the age of the oldest cached listing in seconds",
     registers: [registry],
     async collect() {
       // Invoked when the registry collects its metrics' values.
       const result = await promisedResult
-      const age = millisecondsToSeconds(
-        Date.now() - result.oldestCachedAt.valueOf(),
-      )
-      this.set(age)
+      // NOTE: unstable_cache will return the dates as strings on cache hit! So we explicitly convert it here
+      const oldestCachedAt = new Date(result.oldestCachedAt).getTime()
+      this.set(millisecondsToSeconds(Date.now() - oldestCachedAt))
     },
   })
 
@@ -69,7 +57,9 @@ export async function GET() {
     registers: [registry],
     async collect() {
       const result = await promisedResult
-      this.set(millisecondsToSeconds(result.oldestCachedAt.valueOf()))
+      // unstable_cache returns the dates as strings on cache hit!
+      const oldestCachedAt = new Date(result.oldestCachedAt).getTime()
+      this.set(millisecondsToSeconds(oldestCachedAt))
     },
   })
 
@@ -84,8 +74,8 @@ export async function GET() {
   })
 
   new Gauge({
-    name: "coinpoet_listings_cached_duration",
-    help: "the time it took to cache all listings in seconds",
+    name: "coinpoet_revalidation_duration_seconds",
+    help: "the time it took to revalidate the cached listings in seconds",
     registers: [registry],
     async collect() {
       const result = await promisedResult
@@ -94,7 +84,17 @@ export async function GET() {
   })
 
   new Gauge({
-    name: "coinpoet_remaining_gpus_to_cache",
+    name: "coinpoet_gpus_stale_start_total",
+    help: "The number of GPUs with stale cached listings",
+    registers: [registry],
+    async collect() {
+      const result = await promisedResult
+      this.set(result.staleGpus.length)
+    },
+  })
+
+  new Gauge({
+    name: "coinpoet_gpus_stale_remaining_total",
     help: "the number of GPUs that still need to be cached",
     registers: [registry],
     async collect() {
@@ -103,8 +103,13 @@ export async function GET() {
     },
   })
 
+  const start = Date.now()
+  const textResponse = await registry.metrics()
+  const duration = Date.now() - start
+  log.info(`metrics collection took ${duration}ms`)
+
   const MAX_CACHE_AGE_SECONDS = 60
-  return new Response(await registry.metrics(), {
+  return new Response(textResponse, {
     status: 200,
     headers: {
       "Cache-Control": `max-age=${MAX_CACHE_AGE_SECONDS}`,

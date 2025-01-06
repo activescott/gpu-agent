@@ -59,7 +59,7 @@ export async function cacheEbayListingsForGpu(
   await addOrRefreshListingsForGpu(collected, gpuName, prisma)
   await deleteStaleListingsForGpu(gpuName, prisma)
 
-  const duration = Date.now() - start.valueOf()
+  const duration = Date.now() - start.getTime()
   log.info(`Caching listings for ${gpuName} completed in ${duration}ms`)
   return collected
 }

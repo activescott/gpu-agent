@@ -58,19 +58,19 @@ function buildMetricsRegistry(result: ListingStats) {
   })
 
   new Gauge({
-    name: "coinpoet_listings_oldest_timestamp_start_seconds",
-    help: "the timestamp of the oldest cached listing in seconds",
+    name: "coinpoet_listings_oldest_age_start_seconds",
+    help: "the age of the oldest cached listing in seconds at the start of the operation",
     registers: [registry],
     async collect() {
       // unstable_cache returns the dates as strings on cache hit!
       const oldestCachedAt = new Date(result.oldestCachedAtStart).getTime()
-      this.set(millisecondsToSeconds(oldestCachedAt))
+      this.set(millisecondsToSeconds(Date.now() - oldestCachedAt))
     },
   })
 
   new Gauge({
-    name: "coinpoet_listings_oldest_timestamp_remaining_seconds",
-    help: "the timestamp of the oldest cached listing in seconds",
+    name: "coinpoet_listings_oldest_age_remaining_seconds",
+    help: "the age of the oldest cached listing in seconds at the end of the operation",
     registers: [registry],
     async collect() {
       if (!result.oldestCachedAtRemaining) {
@@ -80,7 +80,7 @@ function buildMetricsRegistry(result: ListingStats) {
       }
       // unstable_cache returns the dates as strings on cache hit!
       const oldestCachedAt = new Date(result.oldestCachedAtRemaining).getTime()
-      this.set(millisecondsToSeconds(oldestCachedAt))
+      this.set(millisecondsToSeconds(Date.now() - oldestCachedAt))
     },
   })
 

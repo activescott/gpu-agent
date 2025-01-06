@@ -28,7 +28,7 @@ export function ListingAffiliateLink({
   return (
     <Link
       href={`/bye?to=${encodeURIComponent(to)}`}
-      prefetch={false}
+      prefetch={true}
       onClick={() => {
         analytics.trackAction(AnalyticsActions.BuyNow, {
           "listing-id": listing.itemId,

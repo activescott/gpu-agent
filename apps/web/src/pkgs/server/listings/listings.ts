@@ -49,15 +49,22 @@ export async function revalidateCachedListings(
           const gpus = await listCachedListingsGroupedByGpu(false, prisma)
 
           // If any gpu has listings older than CACHED_LISTINGS_DURATION_MS, OR has zero listings, then flag for re-caching.
-          const gpusWithOldestCacheDate = gpus.map((gpuAndListings) => ({
+          const gpusWithOldestCachedAt = gpus.map((gpuAndListings) => ({
             ...gpuAndListings,
-            oldestCachedAt: getOldestCachedDate(gpuAndListings.listings),
+            oldestCachedAt: getOldestCachedAt(gpuAndListings.listings),
           }))
 
-          const staleGpus = gpusWithOldestCacheDate.filter((gpu) => {
+          // track the oldest cachedAt value
+          stats.oldestCachedAt = gpusWithOldestCachedAt
+            .map((gpu) => gpu.oldestCachedAt)
+            .reduce((oldest, current) => {
+              return current < oldest ? current : oldest
+            }, new Date())
+
+          const staleGpus = gpusWithOldestCachedAt.filter((gpu) => {
             return (
               gpu.listings.length === 0 ||
-              Date.now() - gpu.oldestCachedAt.valueOf() >
+              Date.now() - gpu.oldestCachedAt.getTime() >
                 CACHED_LISTINGS_DURATION_MS
             )
           })
@@ -69,19 +76,13 @@ export async function revalidateCachedListings(
             oldestCachedAt: gpu.oldestCachedAt,
           }))
 
-          stats.oldestCachedAt = staleGpus
-            .map((gpu) => gpu.oldestCachedAt)
-            .reduce((oldest, current) => {
-              return current < oldest ? current : oldest
-            }, new Date())
-
           if (staleGpus.length > 0) {
             // first sort the listings with the oldest ones first so that we re-cache those first (in case we exceed time budget)
-            gpusWithOldestCacheDate.sort((a, b) => {
-              return a.oldestCachedAt.valueOf() - b.oldestCachedAt.valueOf()
+            gpusWithOldestCachedAt.sort((a, b) => {
+              return a.oldestCachedAt.getTime() - b.oldestCachedAt.getTime()
             })
 
-            let timeBudgetRemaining = timeoutMs - (Date.now() - start.valueOf())
+            let timeBudgetRemaining = timeoutMs - (Date.now() - start.getTime())
 
             // remove some buffer time to allow listListingsAll to still return results from DB
             // eslint-disable-next-line no-magic-numbers
@@ -99,7 +100,7 @@ export async function revalidateCachedListings(
               if (timeBudgetRemaining < TIME_TO_CACHE_ONE_GPU) {
                 log.warn(
                   `time budget exceeded, stopping caching of GPUs early. Remaining time: ${timeBudgetRemaining}ms, total duration: ${
-                    Date.now() - start.valueOf()
+                    Date.now() - start.getTime()
                   }ms. Remaining GPUs: ${staleGpus.length}.`,
                 )
                 stats.remainingGpusToCache = staleGpus.length
@@ -122,7 +123,7 @@ export async function revalidateCachedListings(
     shouldRetryTransaction,
   )
 
-  stats.totalDuration = Date.now() - start.valueOf()
+  stats.totalDuration = Date.now() - start.getTime()
   log.info(`fetching cached listings for all GPUs complete. Stats: %o`, stats)
 
   return stats
@@ -152,7 +153,7 @@ function shouldRetryTransaction(error: unknown, retryCount: number): boolean {
   return false
 }
 
-function getOldestCachedDate(listings: CachedListing[]): Date {
+function getOldestCachedAt(listings: CachedListing[]): Date {
   return listings
     .map((listing) => listing.cachedAt)
     .reduce((oldest, current) => {

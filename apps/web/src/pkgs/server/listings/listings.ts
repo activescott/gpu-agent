@@ -94,7 +94,7 @@ export async function revalidateCachedListings(
 
             // it's really 1-4 seconds normally, but the max can be ~6s from some anecdotal monitoring
             // eslint-disable-next-line no-magic-numbers
-            const TIME_TO_CACHE_ONE_GPU = secondsToMilliseconds(6)
+            const TIME_TO_CACHE_ONE_GPU = secondsToMilliseconds(4)
 
             for (
               let gpu = staleGpus.pop();

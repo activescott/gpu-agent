@@ -4,6 +4,7 @@
 
 // misc:
 .underline-on-hover {
+  text-decoration: none;
   &:hover {
     text-decoration: underline !important;
   }
@@ -11,4 +12,24 @@
 
 .fs-small {
   font-size: $font-size-sm;
+}
+
+@each $breakpoint, $container-max-width in $container-max-widths {
+  .max-width-container-#{$breakpoint} {
+    max-width: $container-max-width;
+  }
+}
+
+// used in some pills to adjust to dark mode:
+@include color-mode(dark) {
+  .text-bg-inverse {
+    background-color: $light;
+    color: $dark;
+  }
+}
+@include color-mode(light) {
+  .text-bg-inverse {
+    background-color: $dark;
+    color: $light;
+  }
 }

@@ -36,16 +36,16 @@ export function ListingCardSmall({
 
   return (
     <div
-      className="card mb-3 d-inline-block mx-2"
+      className="card mb-3 d-inline-block mx-2 border-0 shadow"
       style={{ maxWidth: "540px" }}
     >
       <div className="row g-0">
-        <div className="col-md-4">
+        <div className="col-md-4 d-flex align-items-center p-2">
           {/* NOTE: unoptimized because this is eating through optimizations of vercel. see https://vercel.com/docs/image-optimization/managing-image-optimization-costs */}
           <Image
             unoptimized
             src={imageUrl}
-            className="card-img-top mx-auto mt-1"
+            className="card-img mx-auto mt-1"
             alt={title}
             width={128}
             height={128}
@@ -63,7 +63,10 @@ export function ListingCardSmall({
             >
               {title}
             </h5>
-            <div className="card-text text-align-start">
+            <div
+              className="card-text text-align-start"
+              style={{ minHeight: "2lh" }}
+            >
               <ListingAffiliateLink to={itemAffiliateWebUrl} listing={item}>
                 <AttributePill className="underline-on-hover">
                   {formatPrice(cost)} <span className="fw-lighter">@</span>{" "}

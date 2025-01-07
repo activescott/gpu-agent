@@ -9,13 +9,18 @@ import { SiteHeader } from "@/pkgs/client/components/SiteHeader"
 import { Alert } from "@/pkgs/client/components/Alert"
 import Link from "next/link"
 import { GoogleAdsTag } from "@/pkgs/client/analytics/GoogleAdsTag"
+import { maxLength } from "@/pkgs/isomorphic/string"
 
+const METADATA_MAX_TITLE_LENGTH = 70
+const METADATA_MAX_DESCRIPTION_LENGTH = 160
 export const metadata: Metadata = {
-  // must be <70 characters:
-  title: "GPUs Ranked by Price/Performance - CoinPoet.com",
-  // NOTE:  must be <160 characters:
-  description:
-    "Find the best GPUs for the money with price/performance comparisons on specifications such as Tensor Cores, memory bandwidth, FP32/FP16 FLOPs, and more.",
+  title: maxLength(
+    METADATA_MAX_TITLE_LENGTH,
+  )`Find the best GPU for your money. - CoinPoet.com`,
+
+  description: maxLength(
+    METADATA_MAX_DESCRIPTION_LENGTH,
+  )`Find the best GPU for your money with GPU Price/Performance Rankings on specifications such as Tensor Cores, memory bandwidth, FP32/FP16 FLOPs, and more.`,
 }
 
 export default function RootLayout({

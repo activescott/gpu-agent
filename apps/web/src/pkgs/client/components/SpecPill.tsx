@@ -45,7 +45,7 @@ export const SpecPill = ({
         className={`badge rounded-pill text-bg-${color} mx-1`}
         ref={setReferenceElement}
       >
-        {children}
+        <span className="align-middle">{children}</span>
         &nbsp;
         <BootstrapIcon
           icon="info-circle"

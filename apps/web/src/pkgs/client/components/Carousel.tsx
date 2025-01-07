@@ -12,7 +12,15 @@ export function Carousel({
   return (
     <div className="my-container m-2 mt-5">
       <div className="my-container-card-header">
-        <h4>{href ? <Link href={href}>{header} →</Link> : `${header} →`}</h4>
+        <h4>
+          {href ? (
+            <Link className="underline-on-hover text-accent" href={href}>
+              {header} →
+            </Link>
+          ) : (
+            `${header} →`
+          )}
+        </h4>
       </div>
       <div className="overflow-x-scroll">
         <div

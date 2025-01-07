@@ -20,6 +20,26 @@
   }
 }
 
+// use to make the max width 30% of the container on medium and up screens:
+@include media-breakpoint-up(md) {
+  .max-width-30-md {
+    max-width: 30%;
+  }
+}
+
+// use to make the max width 75% of the viewport on x-small and up screens:
+@include media-breakpoint-up(xs) {
+  .max-width-vw-75-xs {
+    max-width: 75vw;
+  }
+}
+// use to make the max width 25% of the viewport on medium and up screens:
+@include media-breakpoint-up(md) {
+  .max-width-vw-25-m {
+    max-width: 25vw;
+  }
+}
+
 // used in some pills to adjust to dark mode:
 @include color-mode(dark) {
   .text-bg-inverse {

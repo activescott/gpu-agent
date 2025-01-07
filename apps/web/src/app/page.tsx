@@ -51,7 +51,7 @@ export default async function Page() {
         for your money.
       </h3>
 
-      <div className="my-how-to-cards mt-4 d-flex flex-row justify-content-evenly">
+      <div className="my-how-to-cards mt-4 d-flex flex-column flex-md-row justify-content-evenly">
         <TipCard icon="trophy-fill">
           Check <Link href="ml/learn/gpu/ranking">GPU Rankings</Link> to see the
           best GPUs for the money.
@@ -117,10 +117,7 @@ interface TipCardSvgIcon {
 
 function TipCard({ children, icon, svgIcon }: TipCardProps) {
   return (
-    <div
-      className="d-inline-block m-2 rounded-3 shadow p-3 bg-body-tertiary"
-      style={{ maxWidth: "30%" }}
-    >
+    <div className="d-inline-block m-2 rounded-3 shadow p-3 bg-body-tertiary max-width-30-md">
       <div className="d-flex flex-row p-2">
         <div className="d-inline-block me-2">
           {icon && <BootstrapIcon icon={icon} size="medium" />}

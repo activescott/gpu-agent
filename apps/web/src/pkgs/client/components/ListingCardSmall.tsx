@@ -35,10 +35,7 @@ export function ListingCardSmall({
   const cost = Number(priceValue)
 
   return (
-    <div
-      className="card mb-3 d-inline-block mx-2 border-0 shadow"
-      style={{ maxWidth: "540px" }}
-    >
+    <div className="card mb-3 d-inline-block mx-2 border-0 shadow max-width-vw-75-xs max-width-vw-25-m">
       <div className="row g-0">
         <div className="col-md-4 d-flex align-items-center p-2">
           {/* NOTE: unoptimized because this is eating through optimizations of vercel. see https://vercel.com/docs/image-optimization/managing-image-optimization-costs */}

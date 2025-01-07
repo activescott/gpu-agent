@@ -46,22 +46,14 @@ function buildMetricsRegistry(result: ListingStats) {
   const registry = new Registry<client.OpenMetricsContentType>()
 
   new Gauge({
-    name: "coinpoet_listings_oldest_age_seconds",
-    help: "the age of the oldest cached listing in seconds",
-    registers: [registry],
-    async collect() {
-      // Invoked when the registry collects its metrics' values.
-      // NOTE: unstable_cache will return the dates as strings on cache hit! So we explicitly convert it here
-      const oldestCachedAt = new Date(result.oldestCachedAtStart).getTime()
-      this.set(millisecondsToSeconds(Date.now() - oldestCachedAt))
-    },
-  })
-
-  new Gauge({
     name: "coinpoet_listings_oldest_age_start_seconds",
     help: "the age of the oldest cached listing in seconds at the start of the operation",
     registers: [registry],
     async collect() {
+      if (!result.oldestCachedAtStart) {
+        this.set(Number.NaN)
+        return
+      }
       // unstable_cache returns the dates as strings on cache hit!
       const oldestCachedAt = new Date(result.oldestCachedAtStart).getTime()
       this.set(millisecondsToSeconds(Date.now() - oldestCachedAt))

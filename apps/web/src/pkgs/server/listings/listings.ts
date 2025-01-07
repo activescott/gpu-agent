@@ -3,7 +3,7 @@ import {
   CachedListing,
   listCachedListingsGroupedByGpu,
 } from "../db/ListingRepository"
-import { secondsToMilliseconds } from "../../isomorphic/duration"
+import { EPOCH, secondsToMilliseconds } from "../../isomorphic/duration"
 import { cacheEbayListingsForGpu } from "./ebay"
 import { CACHED_LISTINGS_DURATION_MS } from "../cacheConfig"
 import { withTransaction } from "../db/db"
@@ -16,7 +16,7 @@ const log = createDiag("shopping-agent:shop:listings")
 export interface ListingStats {
   staleGpusAtStart: { gpuName: string; oldestCachedAt: Date }[]
   listingCachedCount: number
-  oldestCachedAtStart: Date
+  oldestCachedAtStart: Date | null
   oldestCachedAtRemaining: Date | null
   // duration in ms
   totalDuration: number
@@ -42,7 +42,7 @@ export async function revalidateCachedListings(
           let staleGpusRemaining = 0
           let oldestCachedAtRemaining: Date | null = null
           let listingCachedCount = 0
-          let maxTimeToCacheOneGpu = 0
+          let maxTimeToCacheOneGpu: number | null = null
 
           const gpus = await listCachedListingsGroupedByGpu(false, prisma)
 
@@ -53,14 +53,17 @@ export async function revalidateCachedListings(
           }))
 
           // track the oldest cachedAt value
-          const MIN_DATE = new Date(0)
-          const oldestCachedAtStart = gpusWithOldestCachedAt
-            .map((gpu) => gpu.oldestCachedAt)
-            .reduce((oldest, current) => {
-              return current.getTime() == MIN_DATE.getTime() || current < oldest
-                ? current
-                : oldest
-            }, MIN_DATE)
+          const oldestCachedAtStart =
+            gpusWithOldestCachedAt.length === 0
+              ? null
+              : gpusWithOldestCachedAt
+                  .map((gpu) => gpu.oldestCachedAt)
+                  .reduce((oldest, current) => {
+                    return oldest.getTime() === EPOCH.getTime() ||
+                      current < oldest
+                      ? current
+                      : oldest
+                  }, EPOCH)
 
           const staleGpus = gpusWithOldestCachedAt.filter((gpu) => {
             return (
@@ -114,7 +117,7 @@ export async function revalidateCachedListings(
               const cached = await cacheEbayListingsForGpu(gpu.gpuName, prisma)
               listingCachedCount += chain(cached).size()
               const cachingEnd = Date.now() - cachingStart
-              if (cachingEnd > maxTimeToCacheOneGpu) {
+              if (!maxTimeToCacheOneGpu || cachingEnd > maxTimeToCacheOneGpu) {
                 maxTimeToCacheOneGpu = cachingEnd
               }
               timeBudgetRemaining -= cachingEnd
@@ -128,7 +131,7 @@ export async function revalidateCachedListings(
             totalDuration: Date.now() - start.getTime(),
             timeoutMs,
             staleGpusRemaining,
-            maxTimeToCacheOneGpu,
+            maxTimeToCacheOneGpu: maxTimeToCacheOneGpu || Number.NaN,
           }
         },
         {

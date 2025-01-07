@@ -108,9 +108,6 @@ export async function revalidateCachedListings(
                   }ms. Remaining GPUs: ${staleGpus.length}.`,
                 )
                 staleGpusRemaining = staleGpus.length
-                oldestCachedAtRemaining = getOldestCachedAt(
-                  staleGpus.flatMap((gpu) => gpu.listings),
-                )
                 break
               }
               const cachingStart = Date.now()
@@ -120,6 +117,10 @@ export async function revalidateCachedListings(
               if (!maxTimeToCacheOneGpu || cachingEnd > maxTimeToCacheOneGpu) {
                 maxTimeToCacheOneGpu = cachingEnd
               }
+              oldestCachedAtRemaining =
+                staleGpus.length > 0
+                  ? getOldestCachedAt(staleGpus.flatMap((gpu) => gpu.listings))
+                  : null
               timeBudgetRemaining -= cachingEnd
             }
           }

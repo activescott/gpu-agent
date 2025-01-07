@@ -3,7 +3,7 @@ import { CSSProperties } from "react"
 interface Props {
   icon: string
   svgViewBox?: string
-  size?: "xs" | "small"
+  size?: "xs" | "small" | "medium"
   className?: string
 }
 
@@ -15,13 +15,14 @@ export const SvgIcon = (props: Props): JSX.Element => {
   }
   const svgStyle: CSSProperties = { fill: "currentColor" }
 
-  if (props.size === "small") {
-    svgStyle.width = "24px"
-    svgStyle.height = "24px"
-  } else if (props.size === "xs") {
-    svgStyle.width = "16px"
-    svgStyle.height = "16px"
+  const sizes = {
+    small: "24px",
+    xs: "16px",
+    medium: "48px",
   }
+
+  svgStyle.width = sizes[props.size!]
+  svgStyle.height = sizes[props.size!]
 
   return (
     <svg

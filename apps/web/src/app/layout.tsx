@@ -33,8 +33,8 @@ export default function RootLayout({
       <body>
         <AnalyticsProvider>
           <SiteHeader />
-          <Alert kind="info">
-            This site is in beta. Please{" "}
+          <Alert kind="secondary">
+            What do you think? Please{" "}
             <Link href="/contact" className="alert-link">
               drop us a line
             </Link>{" "}

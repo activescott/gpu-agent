@@ -16,6 +16,7 @@ import {
 } from "@/pkgs/client/components/BootstrapIcon"
 import Link from "next/link"
 import { ReactNode } from "react"
+import { SvgIcon } from "@/pkgs/client/components/SvgIcon"
 
 // revalidate the data at most every N seconds: https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#revalidate
 const REVALIDATE_MINUTES = 30
@@ -50,14 +51,18 @@ export default async function Page() {
         for your money.
       </h3>
 
-      <div className="my-how-to-cards mt-2 d-flex flex-row justify-content-evenly">
+      <div className="my-how-to-cards mt-4 d-flex flex-row justify-content-evenly">
         <TipCard icon="trophy-fill">
           Check <Link href="ml/learn/gpu/ranking">GPU Rankings</Link> to see the
           best GPUs for the money.
         </TipCard>
         <TipCard icon="shop-window">
-          <Link href="ml/shop/gpu">Browse for-sale listings</Link> to see GPUs
-          available now and their price vs. performance.
+          <Link href="ml/shop/gpu">Browse GPUs for sale</Link> to see price vs.
+          performance.
+        </TipCard>
+        <TipCard svgIcon="ebay">
+          Prices for new and used GPUs from eBay. Want listings from another
+          site? <Link href="/contact">Let us know</Link>.
         </TipCard>
       </div>
 
@@ -97,17 +102,29 @@ function TopListingsCarousel(spec: GpuSpecKey, listings: Listing[]): ReactNode {
   )
 }
 
-interface TipCardProps {
+type TipCardProps = TipCardPropsIcon | TipCardSvgIcon
+interface TipCardPropsIcon {
   icon: BootstrapIconName
+  svgIcon?: undefined
   children: ReactNode
 }
 
-function TipCard({ children, icon }: TipCardProps) {
+interface TipCardSvgIcon {
+  icon?: undefined
+  svgIcon: string
+  children: ReactNode
+}
+
+function TipCard({ children, icon, svgIcon }: TipCardProps) {
   return (
-    <div className="d-inline-block max-width-container-sm m-2 rounded-3 shadow p-3 bg-body-tertiary">
+    <div
+      className="d-inline-block m-2 rounded-3 shadow p-3 bg-body-tertiary"
+      style={{ maxWidth: "30%" }}
+    >
       <div className="d-flex flex-row p-2">
         <div className="d-inline-block me-2">
-          <BootstrapIcon icon={icon} size="medium" />
+          {icon && <BootstrapIcon icon={icon} size="medium" />}
+          {svgIcon && <SvgIcon icon={svgIcon} size="medium" />}
         </div>
         <div style={{ minHeight: "2lh" }}>{children}</div>
       </div>

@@ -90,11 +90,11 @@ export async function revalidateCachedListings(
 
             // remove some buffer time to allow listListingsAll to still return results from DB
             // eslint-disable-next-line no-magic-numbers
-            timeBudgetRemaining -= secondsToMilliseconds(4)
+            timeBudgetRemaining -= secondsToMilliseconds(5)
 
             // it's really 1-4 seconds normally, but the max can be ~6s from some anecdotal monitoring
             // eslint-disable-next-line no-magic-numbers
-            const TIME_TO_CACHE_ONE_GPU = secondsToMilliseconds(4)
+            const TIME_TO_CACHE_ONE_GPU = secondsToMilliseconds(6)
 
             for (
               let gpu = staleGpus.pop();

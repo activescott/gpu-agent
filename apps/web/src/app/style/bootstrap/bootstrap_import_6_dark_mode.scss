@@ -1,0 +1,16 @@
+// use media queries and only make color modes automatic: https://getbootstrap.com/docs/5.3/customize/color-modes/#building-with-sass
+// NOTE: set $color-mode-type: media-query;  before importing Bootstrap
+
+// add this after importing bootstrap
+@include color-mode(dark) {
+  .text-bg-inverse {
+    background-color: $light;
+    color: $dark;
+  }
+}
+@include color-mode(light) {
+  .text-bg-inverse {
+    background-color: $dark;
+    color: $light;
+  }
+}

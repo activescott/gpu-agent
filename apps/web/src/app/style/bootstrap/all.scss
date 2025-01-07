@@ -1,0 +1,14 @@
+// Import Bootstrap (see https://getbootstrap.com/docs/5.0/customize/sass/)
+// 1. Include functions first (so you can manipulate colors, SVGs, calc, etc)
+@import "bootstrap_import_1_functions";
+
+// 2. Include any default variable overrides here
+@import "bootstrap_import_2_variable_overrides";
+
+// 3. Include remainder of required Bootstrap stylesheets (including any separate color mode stylesheets)
+@import "bootstrap_import_3_variables";
+
+// 4. Include any default map overrides here
+@import "bootstrap_import_4_default_map_overrides";
+@import "bootstrap_import_5_remainder";
+@import "bootstrap_import_6_dark_mode";

@@ -108,6 +108,8 @@ const nonGpuKeywords = [
   "SMX",
   // I've seen some cards in china that read "neutered 4GB" apparently indicating that the card has been modified to have less memory than it originally had:
   "neutered",
+  // e.g. "PowerColor Fighter AMD Radeon RX 7800 XT 16GB GDDR6 Box Only" which only includes the box but has all other specs
+  "Box Only",
 ].map((word) => word.toLowerCase())
 
 function gpuAccessoryFilter(item: Listing): boolean {
@@ -117,7 +119,7 @@ function gpuAccessoryFilter(item: Listing): boolean {
     )
   ) {
     log.debug(
-      "item filtered out as a %s accessory: %s, %s",
+      "item filtered out as a accessory: %s %s",
       item.title,
       item.itemAffiliateWebUrl,
     )

@@ -1,21 +1,26 @@
 // see https://nextjs.org/docs/app/building-your-application/styling/sass
 
-// Ping Poet Tetradic Color Scheme
-$color_dogwood_rose: #d11363;
-$color_fulvous_orange: #d28314;
-$color_emerald_green: #14d283;
-$color_flicker_blue: #1463d2;
+@import "bootstrap/all";
 
-// customize bootstrap theme colors: https://getbootstrap.com/docs/5.3/customize/sass/#variable-defaults
-$primary: $color_dogwood_rose;
-//$secondary: $color_fulvous_orange;
+// misc:
+.underline-on-hover {
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline !important;
+  }
+}
 
-// use media queries and only make color modes automatic: https://getbootstrap.com/docs/5.3/customize/color-modes/#building-with-sass
-$color-mode-type: media-query;
+.fs-small {
+  font-size: $font-size-sm;
+}
 
-// Import Bootstrap (see https://getbootstrap.com/docs/5.0/customize/sass/)
-@import "../../../../../node_modules/bootstrap/scss/bootstrap";
+@each $breakpoint, $container-max-width in $container-max-widths {
+  .max-width-container-#{$breakpoint} {
+    max-width: $container-max-width;
+  }
+}
 
+// used in some pills to adjust to dark mode:
 @include color-mode(dark) {
   .text-bg-inverse {
     background-color: $light;
@@ -27,14 +32,4 @@ $color-mode-type: media-query;
     background-color: $dark;
     color: $light;
   }
-}
-
-.underline-on-hover {
-  &:hover {
-    text-decoration: underline !important;
-  }
-}
-
-.fs-small {
-  font-size: $font-size-sm;
 }

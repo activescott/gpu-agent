@@ -16,12 +16,12 @@ export type GpuSpecs = z.infer<typeof GpuSpecsSchema>
 export type GpuSpecKey = keyof GpuSpecs
 
 export const GpuSpecKeys: GpuSpecKey[] = [
-  "tensorCoreCount",
   "fp32TFLOPS",
   "fp16TFLOPS",
-  "int8TOPS",
+  "tensorCoreCount",
   "memoryCapacityGB",
   "memoryBandwidthGBs",
+  "int8TOPS",
 ]
 
 interface GpuSpecItem {

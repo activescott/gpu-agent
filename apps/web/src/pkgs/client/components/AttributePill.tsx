@@ -12,9 +12,10 @@ export const AttributePill = ({
   return (
     <span
       className={`badge rounded-pill text-bg-inverse mx-1 ${className}`}
+      style={{ minHeight: "1.5rem", minWidth: "2rem" }}
       title={tooltip}
     >
-      {children}
+      <span className="align-middle">{children}</span>
     </span>
   )
 }

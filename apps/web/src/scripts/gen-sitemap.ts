@@ -52,35 +52,26 @@ async function main() {
   // Find all page.tsx files under the app directory
   const pageFiles = glob.sync(`${appDir}/**/page.{mdx,tsx}`, { cwd: __dirname })
 
-  const SLUG_IN_PATH_REGEX = /\[.*]/
+  const SLUG_IN_PATH_REGEX = /\[.*\]/
+
+  const RELATIVE_TO = `${appDir}/src/app`
 
   // Generate li elements for each page file
   const discoveredPages = pageFiles
-    .filter((file) => file != `${appDir}/page.tsx`)
+    // skip the home page (we add it later)
+    .filter((file) => file != `${RELATIVE_TO}/page.tsx`)
     .map((file) => {
       // get the relative path:
       const relativePath = file
-        .replace(`${appDir}`, "")
+        .replace(RELATIVE_TO, "")
         .replace(/\/page\.(mdx|tsx)$/, "")
 
-      // if the file ends with an mdx extension, assume it is a markdown file and extract the first line with a heading and use it as a title (remove the markdown heading prefix):
-      let title = ""
-      if (file.endsWith(".mdx")) {
-        title = parseTitleFromMdx(file)
-      } else if (file.endsWith(".tsx")) {
-        title = parseTitleFromTsx(file)
-      } else {
-        path.basename(file)
-      }
-
-      const lastModified = gitLastUpdated(file)
-      console.log(`last modified '${lastModified}' from git for ${file}`)
+      console.debug(`Relative path: ${relativePath}`)
 
       return {
+        file: file,
         path: relativePath,
-        title,
-        lastModified,
-      } satisfies SiteMapItem
+      } satisfies Pick<SiteMapItem, "path"> & { file: string }
     })
     // remove any dirs that begin with _
     .filter((item) => !item.path.startsWith("/_"))
@@ -94,6 +85,27 @@ async function main() {
     .filter((item) => !item.path.startsWith("/ml/learn/gpu"))
     // /ml/shop/gpu/page.tsx has dynamic generated metadata. So we add it manually below
     .filter((item) => item.path !== "/ml/shop/gpu")
+    .map((item) => {
+      // if the file ends with an mdx extension, assume it is a markdown file and extract the first line with a heading and use it as a title (remove the markdown heading prefix):
+      let title = ""
+      if (item.file.endsWith(".mdx")) {
+        title = parseTitleFromMdx(item.file)
+      } else if (item.file.endsWith(".tsx")) {
+        title = parseTitleFromTsx(item.file)
+      } else {
+        throw new Error(
+          `Could not set title: Unknown file type for ${item.file}`,
+        )
+      }
+
+      const lastModified = gitLastUpdated(item.file)
+      console.log(`last modified '${lastModified}' from git for ${item.file}`)
+      return {
+        path: item.path,
+        title,
+        lastModified,
+      } satisfies SiteMapItem
+    })
 
   if (discoveredPages.length === 0) {
     throw new Error("No pages found?!")
@@ -198,8 +210,9 @@ function parseTitleFromTsx(file: string): string {
 
   if (match) {
     return match[1]
+  } else {
+    throw new Error(`Could not find metadata in ${file}`)
   }
-  return path.basename(file)
 }
 
 main()

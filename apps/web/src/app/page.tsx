@@ -23,6 +23,7 @@ const REVALIDATE_MINUTES = 30
 export const revalidate = minutesToSeconds(REVALIDATE_MINUTES)
 
 export const metadata: Metadata = {
+  title: "Find the Best GPU for Your Money - CoinPoet.com",
   alternates: { canonical: "https://coinpoet.com/" },
 }
 

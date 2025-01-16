@@ -22,7 +22,7 @@ async function main() {
     await seedGpus(prisma)
   } catch (error) {
     console.error(error)
-    process.exit(1)
+    throw new Error("Error seeding data", { cause: error })
   } finally {
     await prisma.$disconnect()
   }
@@ -98,7 +98,8 @@ async function seedNews(prisma: PrismaClient): Promise<void> {
 
 async function seedGpus(prisma: PrismaClient): Promise<void> {
   const gpuDataDir = path.resolve(__dirname, "../../../data/gpu-data")
-  const gpuFiles = (await fs.readdir(gpuDataDir))
+  const gpuFilesUnfiltered = await fs.readdir(gpuDataDir)
+  const gpuFiles = gpuFilesUnfiltered
     .filter((file) => {
       const isYaml = file.endsWith(".yaml")
       if (!isYaml) {

@@ -1,7 +1,7 @@
 import { z } from "zod"
 
-export const NewsStatus = z.enum(["DRAFT", "PUBLISHED"])
-export type NewsStatus = z.infer<typeof NewsStatus>
+const NewsStatus = z.enum(["DRAFT", "PUBLISHED"])
+type NewsStatus = z.infer<typeof NewsStatus>
 
 export const NewsArticleSchema = z.object({
   id: z.string().cuid2(),

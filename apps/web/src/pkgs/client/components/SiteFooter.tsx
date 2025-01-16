@@ -34,6 +34,11 @@ export const SiteFooter = () => {
             </a>
           </li>
           <li className="nav-item">
+            <a className="nav-link text-muted" href={"/news"}>
+              News
+            </a>
+          </li>
+          <li className="nav-item">
             <a className="nav-link text-muted" href={"/contact"}>
               Contact Us
             </a>

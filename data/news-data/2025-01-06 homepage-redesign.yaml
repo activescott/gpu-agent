@@ -1,0 +1,21 @@
+id: clr123abc456def789
+slug: homepage-redesign
+title: "A Fresh, Informative New Look for GPU Enthusiasts"
+content: |
+  We're excited to announce a fresh redesign of the home page! The new design brings new content explaining what you can do at Coin Poet, better mobile responsiveness, and enhanced GPU comparison features.
+
+  ## Key improvements include:
+
+  - Streamlined Top GPU Rankings
+  - Added explanation of how Coin Poet works to save you money on GPUs
+  - Improved responsive mobile experience
+
+  We'd love to hear your feedback on the new design. Please share your thoughts on the contact page.
+status: PUBLISHED
+tags:
+  - announcement
+  - update
+authorFullName: "Scott"
+createdAt: "2025-01-06T08:00:00Z"
+updatedAt: "2025-01-06T08:00:00Z"
+publishedAt: "2025-01-06T09:00:00Z"

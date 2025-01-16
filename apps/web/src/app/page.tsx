@@ -9,7 +9,7 @@ import { topNListingsByCostPerformance } from "@/pkgs/server/db/ListingRepositor
 import { ListingCardSmall } from "@/pkgs/client/components/ListingCardSmall"
 import { minutesToSeconds } from "@/pkgs/isomorphic/duration"
 import { mapSpecToSlug } from "./ml/shop/gpu/performance/slugs"
-import { Listing } from "@/pkgs/isomorphic/model/index"
+import { Listing } from "@/pkgs/isomorphic/model"
 import {
   BootstrapIcon,
   BootstrapIconName,

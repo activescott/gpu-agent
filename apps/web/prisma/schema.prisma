@@ -91,3 +91,25 @@ model Listing {
 
   @@index([gpuName, stale])
 }
+
+enum NewsStatus {
+  DRAFT
+  PUBLISHED
+}
+
+model NewsArticle {
+  id              String     @id @default(cuid(2))
+  slug            String
+  title           String
+  content         String     @db.Text
+  status          NewsStatus @default(DRAFT)
+  tags            String[]
+  authorFullName  String     // This would link to your user system
+
+  createdAt       DateTime   @default(now())
+  updatedAt       DateTime   @updatedAt
+  publishedAt     DateTime?
+
+  @@index([id, status, publishedAt])
+  
+}

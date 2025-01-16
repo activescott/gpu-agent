@@ -52,7 +52,7 @@ async function main() {
   // Find all page.tsx files under the app directory
   const pageFiles = glob.sync(`${appDir}/**/page.{mdx,tsx}`, { cwd: __dirname })
 
-  const SLUG_IN_PATH_REGEX = /\[.*\]/
+  const SLUG_IN_PATH_REGEX = /\[.*]/
 
   const RELATIVE_TO = `${appDir}/src/app`
 

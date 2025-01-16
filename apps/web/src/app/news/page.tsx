@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   title: "News about finding the best GPU for your Money - CoinPoet.com",
   description: maxLength(
     METADATA_MAX_DESCRIPTION_LENGTH,
-  )`News and updates from CoinPoet.com: Find the best GPU for your money. GPU Price/Performance Rankings on specifications such as Tensor Cores, memory bandwidth, FP32/FP16 FLOPs, and more.`,
+  )`News and updates from CoinPoet.com. Where you find the best GPU for your money. GPU Price/Performance Rankings on specifications and more.`,
 }
 
 if (

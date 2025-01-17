@@ -22,3 +22,6 @@ export const minutesToSeconds = (minutes: number) =>
 
 export const hoursToSeconds = (hours: number) =>
   hours * MINUTES_PER_HOUR * SECONDS_PER_MINUTE
+
+export const minutesToMilliseconds = (minutes: number) =>
+  minutes * SECONDS_PER_MINUTE * MILLISECONDS_PER_SECOND

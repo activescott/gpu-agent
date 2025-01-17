@@ -1,10 +1,11 @@
 import { Listing } from "@/pkgs/isomorphic/model"
 import { createDiag } from "@activescott/diag"
 import { PrismaClientWithinTransaction, prismaSingleton } from "./db"
-import { omit, pick } from "lodash"
+import { omit, pick, throttle } from "lodash"
 import { GpuSpecKey, GpuSpecKeys } from "@/pkgs/isomorphic/model/specs"
 import { Prisma } from "@prisma/client"
 import { CACHED_LISTINGS_DURATION_MS } from "../cacheConfig"
+import { EPOCH, minutesToMilliseconds } from "@/pkgs/isomorphic/duration"
 
 const log = createDiag("shopping-agent:ListingRepository")
 
@@ -26,6 +27,11 @@ export async function listCachedListingsForGpus(
   return res
 }
 
+export type GpuWithListings = {
+  listings: CachedListing[]
+  gpuName: string
+}
+
 /**
  * Returns the set of cached listings for all GPUs. Some listings may be empty.
  * NOTE: This is a useful operation since it allows pulling both a complete list of all GPUs, AND their associated listings (which may be empty).
@@ -34,12 +40,7 @@ export async function listCachedListingsForGpus(
 export async function listCachedListingsGroupedByGpu(
   includeTestGpus: boolean = false,
   prisma: PrismaClientWithinTransaction,
-): Promise<
-  {
-    listings: CachedListing[]
-    gpuName: string
-  }[]
-> {
+): Promise<GpuWithListings[]> {
   const where = {} as Prisma.gpuWhereInput
   if (!includeTestGpus) {
     where.name = { not: "test-gpu" }
@@ -75,6 +76,33 @@ export async function listCachedListings(
   })
   return res
 }
+
+/**
+ * Returns the latest creation date across all listings.
+ */
+export async function getLatestListingDate(
+  prisma: PrismaClientWithinTransaction = prismaSingleton,
+): Promise<Date> {
+  const result = await prisma.listing.findFirst({
+    orderBy: { itemCreationDate: "desc" },
+    select: { itemCreationDate: true },
+  })
+  if (result?.itemCreationDate === undefined) {
+    log.error(
+      "No itemCreationDate for listings found in the database. Returning EPOCH.",
+    )
+  }
+  return result?.itemCreationDate ?? EPOCH
+}
+
+const THROTTLE_MINUTES = 10
+/**
+ * Returns the latest creation date across all listings, with a throttle to prevent excessive queries.
+ */
+export const getLatestListingDateWithThrottle = throttle(
+  getLatestListingDate,
+  minutesToMilliseconds(THROTTLE_MINUTES),
+)
 
 /**
  * Adds or updates the specified listings in the database.
@@ -140,28 +168,38 @@ export async function deleteStaleListingsForGpu(
   )
 }
 
+export type GpuPriceStats = {
+  avgPrice: number
+  minPrice: number
+  activeListingCount: number
+  latestListingDate: Date
+}
+
 export async function getPriceStats(
   gpuName: string,
   prisma: PrismaClientWithinTransaction = prismaSingleton,
-): Promise<{ avgPrice: number; minPrice: number; activeListingCount: number }> {
-  type RowShape = { avgPrice: number; minPrice: number; count: number }
-
-  const result = (await prisma.$queryRaw`select 
-    AVG("priceValue"::float) as "avgPrice", 
-    MIN("priceValue"::float) as "minPrice", 
-    COUNT(*)::float as count from "Listing"
+): Promise<GpuPriceStats> {
+  const result = (await prisma.$queryRaw`
+    SELECT 
+      AVG("priceValue"::float) as "avgPrice", 
+      MIN("priceValue"::float) as "minPrice", 
+      COUNT(*)::float as "activeListingCount",
+      MAX("itemCreationDate") as "latestListingDate"
+    FROM "Listing"
   WHERE 
     "gpuName" = ${gpuName}
-  ;`) as RowShape[]
+  ;`) as GpuPriceStats[]
 
   if (result.length === 0) {
-    return { avgPrice: 0, minPrice: 0, activeListingCount: 0 }
+    log.error(`No price stats found for gpu ${gpuName}`)
+    return {
+      avgPrice: 0,
+      minPrice: 0,
+      activeListingCount: 0,
+      latestListingDate: EPOCH,
+    }
   }
-  return {
-    avgPrice: result[0].avgPrice,
-    minPrice: result[0].minPrice,
-    activeListingCount: result[0].count,
-  }
+  return result[0]
 }
 
 export async function topNListingsByCostPerformance(

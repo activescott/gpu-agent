@@ -36,5 +36,5 @@ export function gpuRankingDescription(slug: GpuSpecSlug): string {
 }
 
 export function gpuRankingCanonicalPath(slug: GpuSpecSlug): string {
-  return `ml/learn/gpu/ranking/${slug}`
+  return `/ml/learn/gpu/ranking/${slug}`
 }

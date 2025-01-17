@@ -8,11 +8,17 @@ import {
 
 import { createDiag } from "@activescott/diag"
 import { ReactNode } from "react"
+import { ArticleTag } from "../components/ArticleTag"
+import { hoursToSeconds } from "@/pkgs/isomorphic/duration"
 
 const log = createDiag("shopping-agent:news")
 
-// revalidate the data at most every hour: https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#revalidate
-export const revalidate = 3600
+// revalidate the data at most every N seconds: https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#revalidate
+const REVALIDATE_HOURS = 6
+export const revalidate = hoursToSeconds(REVALIDATE_HOURS)
+
+// (default=true) Dynamic segments not included in generateStaticParams are generated on demand: https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#dynamicparams
+//export const dynamicParams = true // true | false,
 
 type NewsParams = {
   params: { slug: string }
@@ -77,9 +83,7 @@ export default async function Page({ params }: NewsParams) {
           {article.tags && article.tags.length > 0 && (
             <div className="mb-3">
               {article.tags.map((tag) => (
-                <span key={tag} className="badge bg-secondary me-2">
-                  {tag}
-                </span>
+                <ArticleTag tag={tag} key={tag} />
               ))}
             </div>
           )}

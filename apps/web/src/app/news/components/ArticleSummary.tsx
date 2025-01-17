@@ -1,5 +1,6 @@
 import { NewsArticle } from "@/pkgs/isomorphic/model/news"
 import { ReactNode } from "react"
+import { ArticleTag } from "./ArticleTag"
 
 interface ArticleSummaryProps {
   article: NewsArticle
@@ -7,16 +8,11 @@ interface ArticleSummaryProps {
 
 export function ArticleSummary({ article }: ArticleSummaryProps): ReactNode {
   return (
-    <article className="border-b pb-6">
-      <h2 className="text-2xl font-semibold">
-        <a
-          href={`/news/${article.slug}`}
-          className="text-blue-600 hover:underline"
-        >
-          {article.title}
-        </a>
+    <article className="p-6 mt-5">
+      <h2>
+        <a href={`/news/${article.slug}`}>{article.title}</a>
       </h2>
-      <div className="mt-2 text-sm text-gray-600">
+      <div className="mt-2 text-muted">
         <span>By {article.authorFullName}</span>
         {article.publishedAt && (
           <span> • {formatDate(article.publishedAt)}</span>
@@ -25,9 +21,7 @@ export function ArticleSummary({ article }: ArticleSummaryProps): ReactNode {
       {article.tags.length > 0 && (
         <div className="mt-2 flex gap-2">
           {article.tags.map((tag) => (
-            <span key={tag} className="text-xs bg-gray-100 px-2 py-1 rounded">
-              {tag}
-            </span>
+            <ArticleTag tag={tag} key={tag} />
           ))}
         </div>
       )}

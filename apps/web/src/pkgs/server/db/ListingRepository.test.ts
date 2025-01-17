@@ -1,4 +1,5 @@
 import {
+  getLatestListingDate,
   getPriceStats,
   topNListingsByCostPerformance,
 } from "./ListingRepository"
@@ -14,6 +15,7 @@ describe("getPriceStats", () => {
     expect(result.avgPrice).toBeGreaterThan(0)
     expect(result.minPrice).toBeGreaterThan(0)
     expect(result.activeListingCount).toBeGreaterThan(0)
+    expect(result.latestListingDate).toBeInstanceOf(Date)
   })
 })
 
@@ -22,5 +24,13 @@ describe("topNListingsByCostPerformance", () => {
     const listings = await topNListingsByCostPerformance("fp32TFLOPS", 3)
     console.log("top n listings:", listings)
     expect(listings).toHaveLength(3)
+  })
+})
+
+describe("getLatestListingDate", () => {
+  it.skip("should return latest listing date", async () => {
+    const result = await getLatestListingDate()
+    console.log("latest listing date:", result)
+    expect(result).toBeInstanceOf(Date)
   })
 })

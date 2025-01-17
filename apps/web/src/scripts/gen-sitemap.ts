@@ -2,23 +2,15 @@ import * as glob from "glob"
 import fs from "fs"
 import path from "path"
 import gitLastUpdated from "./DateGitLastUpdated"
-import { PrismaClient, gpu } from "@prisma/client"
-import {
-  listPerformanceSlugs,
-  mapSlugToPageTitle,
-} from "../app/ml/shop/gpu/performance/slugs"
-import {
-  gpuRankingCanonicalPath,
-  gpuRankingTitle,
-  listGpuRankingSlugs,
-} from "../app/ml/learn/gpu/ranking/slugs"
 import { config } from "dotenv"
 
 //////////////////////////////////////////////////
 // NOTE: ABOVE the easiest thing to do here is avoid the @/ import aliases since next seems to resolve those as a bundler and we're not running any bundler in this script
 //////////////////////////////////////////////////
 
-config({ path: path.join(__dirname, "../../.env.local") })
+const appDir = path.resolve(path.join(__dirname, "../.."))
+
+config({ path: path.join(appDir, ".env.local") })
 
 if (process.env.POSTGRES_PRISMA_URL === undefined) {
   throw new Error(
@@ -44,15 +36,42 @@ type SiteMapItem = {
   priority?: number
 }
 
-const appDir = path.resolve(path.join(__dirname, "../.."))
-console.info("using appDir", appDir)
-const sitemapFile = path.join(appDir, "sitemap.json")
+type FilterOutPagePredicate = {
+  // the type of page this predicate identifies
+  reason: string
+  // true if the page should be filtered out
+  shouldExclude: (item: { path: string }) => boolean
+}
+
+const filterOutPagePredicates: FilterOutPagePredicate[] = [
+  {
+    reason: "redirect only page",
+    shouldExclude: (item) => item.path.startsWith("/bye"),
+  },
+  {
+    reason: "slug path",
+    shouldExclude: (item) => /\[.*]/.test(item.path),
+  },
+  {
+    reason: "junk/internal page",
+    shouldExclude: (item) => item.path.startsWith("/_"),
+  },
+  {
+    reason: "not a known static page",
+    shouldExclude: (item) =>
+      !item.path.startsWith("/ml/learn") &&
+      !item.path.startsWith("/policy") &&
+      !item.path.startsWith("/about"),
+  },
+]
+
+const sitemapFile = path.join(appDir, "src/app", "sitemap.static-pages.json")
 
 async function main() {
-  // Find all page.tsx files under the app directory
-  const pageFiles = glob.sync(`${appDir}/**/page.{mdx,tsx}`, { cwd: __dirname })
+  // TODO: do we need tsx stuff here anymore??
 
-  const SLUG_IN_PATH_REGEX = /\[.*]/
+  // Find all static files under the app directory
+  const pageFiles = glob.sync(`${appDir}/**/page.{mdx,tsx}`, { cwd: __dirname })
 
   const RELATIVE_TO = `${appDir}/src/app`
 
@@ -60,46 +79,43 @@ async function main() {
   const discoveredPages = pageFiles
     // skip the home page (we add it later)
     .filter((file) => file != `${RELATIVE_TO}/page.tsx`)
-    .map((file) => {
+    .map((localFilePath) => {
       // get the relative path:
-      const relativePath = file
+      const relativePath = localFilePath
         .replace(RELATIVE_TO, "")
         .replace(/\/page\.(mdx|tsx)$/, "")
 
-      console.debug(`Relative path: ${relativePath}`)
-
       return {
-        file: file,
+        localFilePath: localFilePath,
         path: relativePath,
-      } satisfies Pick<SiteMapItem, "path"> & { file: string }
+      } satisfies Pick<SiteMapItem, "path"> & { localFilePath: string }
     })
-    // remove any dirs that begin with _
-    .filter((item) => !item.path.startsWith("/_"))
-    // remove any dirs that begin with /ops
-    .filter((item) => !item.path.startsWith("/ops"))
-    // remove /bye which is just an affiliate tracking redirect
-    .filter((item) => !item.path.startsWith("/bye"))
-    // remove slugs:
-    .filter((item) => !SLUG_IN_PATH_REGEX.test(item.path))
-    // skip the /ml/learn/gpu/**/* pages because we'll generate them from the gpus in the DB below:
-    .filter((item) => !item.path.startsWith("/ml/learn/gpu"))
-    // /ml/shop/gpu/page.tsx has dynamic generated metadata. So we add it manually below
-    .filter((item) => item.path !== "/ml/shop/gpu")
+    .filter((item) => {
+      for (const { reason, shouldExclude } of filterOutPagePredicates) {
+        if (shouldExclude(item)) {
+          console.log(`Excluding page '${item.path}' because it is ${reason}`)
+          return false
+        }
+      }
+      return true
+    })
     .map((item) => {
       // if the file ends with an mdx extension, assume it is a markdown file and extract the first line with a heading and use it as a title (remove the markdown heading prefix):
       let title = ""
-      if (item.file.endsWith(".mdx")) {
-        title = parseTitleFromMdx(item.file)
-      } else if (item.file.endsWith(".tsx")) {
-        title = parseTitleFromTsx(item.file)
+      if (item.localFilePath.endsWith(".mdx")) {
+        title = parseTitleFromMdx(item.localFilePath)
+      } else if (item.localFilePath.endsWith(".tsx")) {
+        title = parseTitleFromTsx(item.localFilePath)
       } else {
         throw new Error(
-          `Could not set title: Unknown file type for ${item.file}`,
+          `Could not set title: Unknown file type for ${item.localFilePath} (${item.path})`,
         )
       }
 
-      const lastModified = gitLastUpdated(item.file)
-      console.log(`last modified '${lastModified}' from git for ${item.file}`)
+      const lastModified = gitLastUpdated(item.localFilePath)
+      console.log(
+        `last modified '${lastModified}' from git for ${item.localFilePath}`,
+      )
       return {
         path: item.path,
         title,
@@ -111,84 +127,11 @@ async function main() {
     throw new Error("No pages found?!")
   }
 
-  const prisma = new PrismaClient()
-  const gpuList = await prisma.gpu.findMany({
-    where: {
-      NOT: { name: "test-gpu" },
-    },
-  })
-  const collator = new Intl.Collator("en")
-  const comparePagesByPath = (a: SiteMapItem, b: SiteMapItem) =>
-    collator.compare(a.path, b.path)
-  // /ml/learn/gpu/ gpu pages are generated dynamically in app/src/app/ml/shop/gpu/[gpuSlug]/page.tsx
-  const learnGpuPages = gpuList
-    .map(({ name, label, updatedAt, memoryCapacityGB }: gpu) => ({
-      path: `/ml/learn/gpu/${name}`,
-      title: `${label} (${memoryCapacityGB}GB) Specifications for AI Enthusiasts`,
-      lastModified: updatedAt,
-    }))
-    .sort(comparePagesByPath)
-
-  for (const page of learnGpuPages) {
-    console.log(
-      `last modified '${page.lastModified}' for learnGpuPage ${page.path}`,
-    )
-  }
-
-  // this page is a static page in that directory that we need to override to get the right title
-  const learnGpuSpecsPage = {
-    path: "/ml/learn/gpu/specifications",
-    title: "GPU Performance for Machine Learning",
-  }
-  const mostRecentlyUpdatedGpuDate = gpuList
-    .map(({ updatedAt }: gpu) => updatedAt)
-    .sort()
-    .reverse()[0]
-
-  console.log(`mostRecentlyUpdatedGpuDate: ${mostRecentlyUpdatedGpuDate}`)
-
-  const performanceSlugs = listPerformanceSlugs()
-  const shopGpuPerformancePages = performanceSlugs
-    .map((slug) => ({
-      path: `/ml/shop/gpu/performance/${slug}`,
-      title: mapSlugToPageTitle(slug),
-      lastModified: mostRecentlyUpdatedGpuDate,
-    }))
-    .sort(comparePagesByPath)
-
-  const gpuRankingPages = listGpuRankingSlugs()
-    .map((slug) => ({
-      path: "/" + gpuRankingCanonicalPath(slug),
-      title: gpuRankingTitle(slug),
-      lastModified: mostRecentlyUpdatedGpuDate,
-    }))
-    .sort(comparePagesByPath)
-
-  const shopGpuPages = gpuList
-    .map(({ name, label, updatedAt }: gpu) => ({
-      path: `/ml/shop/gpu/${name}`,
-      title: `Price Compare ${label} GPUs`,
-      lastModified: updatedAt,
-    }))
-    .sort(comparePagesByPath)
-  const priorityShopPages = [
-    {
-      path: `/ml/shop/gpu`,
-      title: `Price Compare GPUs for Machine Learning`,
-    },
-  ]
-
-  const items = [
-    ...priorityShopPages,
-    ...shopGpuPerformancePages,
-    ...shopGpuPages,
-    ...gpuRankingPages,
-    learnGpuSpecsPage,
-    ...learnGpuPages,
-    ...discoveredPages,
-  ]
   const INDENT = 2
-  fs.writeFileSync(sitemapFile, JSON.stringify({ data: items }, null, INDENT))
+  fs.writeFileSync(
+    sitemapFile,
+    JSON.stringify({ data: discoveredPages }, null, INDENT),
+  )
 }
 
 function parseTitleFromMdx(file: string): string {

@@ -1,10 +1,22 @@
 import Link from "next/link"
+import {
+  gpuRankingCanonicalPath,
+  gpuRankingTitle,
+  listGpuRankingSlugs,
+} from "./slugs"
+import { Metadata } from "next"
 
-import { SitemapJsonItem } from "@/app/sitemap.types"
-import sitemapJson from "../../../../sitemap.json"
+const entries = listGpuRankingSlugs().map((slug) => ({
+  path: gpuRankingCanonicalPath(slug),
+  title: gpuRankingTitle(slug),
+}))
 
-const entries: SitemapJsonItem[] = [...sitemapJson.data]
-const pathPrefixFilter = "/ml/learn/gpu/ranking"
+export const metadata: Metadata = {
+  title: "Best GPUs for the Money Rankings",
+  description:
+    "A list of rankings to find the best GPUs for the money with performance specifications ranked by the $ per performance cost-performance ratio.",
+}
+
 export default function Page() {
   return (
     <>
@@ -22,13 +34,11 @@ export default function Page() {
       </p>
       <div>
         <ul>
-          {entries
-            .filter((item) => item.path.startsWith(pathPrefixFilter))
-            .map((item) => (
-              <li key={item.path}>
-                <Link href={item.path}>{item.title}</Link>
-              </li>
-            ))}
+          {entries.map((item) => (
+            <li key={item.path}>
+              <Link href={item.path}>{item.title}</Link>
+            </li>
+          ))}
         </ul>
       </div>
     </>

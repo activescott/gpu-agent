@@ -1,37 +1,65 @@
 import { MetadataRoute } from "next"
-import sitemapJson from "./sitemap.json"
+import staticPagesSitemap from "./sitemap.static-pages.json"
 import { ISOMORPHIC_CONFIG } from "@/pkgs/isomorphic/config"
 import { IterableElement } from "type-fest"
+import { listPublishedArticles } from "@/pkgs/server/db/NewsRepository"
+import {
+  getLatestListingDateWithThrottle,
+  GpuWithListings,
+  listCachedListingsGroupedByGpu,
+} from "@/pkgs/server/db/ListingRepository"
+import { prismaSingleton } from "@/pkgs/server/db/db"
+import { EPOCH, hoursToSeconds } from "@/pkgs/isomorphic/duration"
+import { listGpuRankingSlugs } from "./ml/learn/gpu/ranking/slugs"
+import { createDiag } from "@activescott/diag"
 
 /* eslint-disable import/no-unused-modules */
 
+// revalidate the data at most every N seconds: https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#revalidate
+const REVALIDATE_HOURS = 24
+export const revalidate = hoursToSeconds(REVALIDATE_HOURS)
+
+const log = createDiag("shopping-agent:sitemap")
+
 type SitemapItem = IterableElement<MetadataRoute.Sitemap>
 
-const sitemapEntries = [...sitemapJson.data]
+type GpuWithLatestListingDate = {
+  gpuName: string
+  latestListingDate: Date
+}
+
+const domain_url = `https://${ISOMORPHIC_CONFIG.NEXT_PUBLIC_DOMAIN()}`
+
+// https://nextjs.org/docs/app/api-reference/file-conventions/metadata/sitemap#generating-a-sitemap-using-code-js-ts
 
 // https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap
 // https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap#addsitemap
-export default function sitemap(): MetadataRoute.Sitemap {
-  const now = new Date()
-  const today = new Date(now.getFullYear(), now.getMonth(), now.getDate())
-  const domain_url = `https://${ISOMORPHIC_CONFIG.NEXT_PUBLIC_DOMAIN()}`
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  log.debug("Awaiting queries for sitemap generation...")
+  const awaitedQueries = await Promise.all([
+    homePageSitemapItem(),
+    newsSitemap(),
+    gpuRankingSitemap(),
+    listCachedListingsGroupedByGpu(false, prismaSingleton),
+  ])
+  log.debug("Awaiting queries for sitemap generation complete.")
+  const [homePageItem, newsItems, gpuRankingEntries, gpusAndListings] =
+    awaitedQueries
 
-  const items = [
-    ...sitemapEntries.map((item) => {
-      return {
-        url: `${domain_url}${item.path}`,
-        changeFrequency: chooseChangeFrequency(item),
-        priority: 0.8,
-        lastModified: item.lastModified,
-      } satisfies SitemapItem
-    }),
-    // then add the root/home page:
-    {
-      url: `${domain_url}/`,
-      changeFrequency: "daily",
-      lastModified: today,
-      priority: 0.9,
-    } satisfies SitemapItem,
+  // map the gpu+listings > gpu+latestDate
+  const gpusWithLatestDate: GpuWithLatestListingDate[] =
+    computeLatestListingDateForGpus(gpusAndListings)
+
+  // these have the same shape, but need flattened:
+  const dynamicEntryGroups: SitemapItem[][] = [newsItems, gpuRankingEntries]
+  const dynamicEntries: SitemapItem[] = dynamicEntryGroups.flat()
+
+  const items: SitemapItem[] = [
+    homePageItem,
+    ...gpuSlugPathSitemap(gpusWithLatestDate, "/ml/shop/gpu"),
+    ...gpuSlugPathSitemap(gpusWithLatestDate, "/ml/shop/gpu/performance"),
+    ...dynamicEntries,
+    ...staticSitemap(),
   ]
 
   return items
@@ -40,18 +68,117 @@ export default function sitemap(): MetadataRoute.Sitemap {
 interface SitemapJsonItem {
   path: string
   title: string
-  lastModified?: string
+  lastModified: string
+}
+
+async function homePageSitemapItem(): Promise<SitemapItem> {
+  const latestListingDate = await getLatestListingDateWithThrottle()
+  return {
+    url: `${domain_url}/`,
+    changeFrequency: "daily",
+    // the home page could be updated anytime the latest listing date changes
+    lastModified: latestListingDate,
+    priority: 0.9,
+  } satisfies SitemapItem
+}
+
+async function gpuRankingSitemap(): Promise<SitemapItem[]> {
+  const slugs = listGpuRankingSlugs()
+
+  // lastModified is effectively the most recent listing data across all GPUs
+  const lastModified: Date = await getLatestListingDateWithThrottle()
+
+  const entries = slugs.map((slug) => {
+    return {
+      url: `${domain_url}/ml/learn/gpu/ranking/${slug}`,
+      changeFrequency: "daily",
+      priority: 0.8,
+      lastModified: lastModified,
+    } satisfies SitemapItem
+  })
+  return entries
+}
+
+/**
+ * Generates a sitemap for the specified path with a GPU slug.
+ * @param gpus A list of gpus with their latest listing date
+ * @param pathPrefixBeforeSlug the prefixed path before the GPU slug
+ */
+function gpuSlugPathSitemap(
+  gpus: GpuWithLatestListingDate[],
+  pathPrefixBeforeSlug: string,
+) {
+  const gpuEntries: SitemapItem[] = gpus.map((gpu) => {
+    return {
+      url: `${domain_url}${pathPrefixBeforeSlug}/${gpu.gpuName}`,
+      changeFrequency: "daily",
+      priority: 0.8,
+      lastModified: gpu.latestListingDate,
+    } satisfies SitemapItem
+  })
+  return gpuEntries
+}
+
+async function newsSitemap(): Promise<SitemapItem[]> {
+  const newsArticles = await listPublishedArticles()
+
+  const newsEntries: SitemapItem[] = newsArticles.map((article) => {
+    return {
+      url: `${domain_url}/news/${article.slug}`,
+      changeFrequency: "yearly",
+      priority: 0.6,
+      lastModified: article.updatedAt,
+    } satisfies SitemapItem
+  })
+
+  const newsRoot: SitemapItem = {
+    url: `${domain_url}/news`,
+    changeFrequency: "monthly",
+    priority: 0.5,
+    lastModified: newsArticles[0].updatedAt,
+  }
+
+  return [newsRoot, ...newsEntries]
+}
+
+function staticSitemap(): SitemapItem[] {
+  const jsonEntries = [...staticPagesSitemap.data] as SitemapJsonItem[]
+  return jsonEntries.map((item) => {
+    return {
+      url: `${domain_url}${item.path}`,
+      changeFrequency: chooseChangeFrequency(item),
+      priority: 0.8,
+      lastModified: item.lastModified,
+    } satisfies SitemapItem
+  })
 }
 
 function chooseChangeFrequency(
   item: SitemapJsonItem,
 ): SitemapItem["changeFrequency"] {
   const path = item.path
-  if (path.startsWith("/ml/shop")) {
-    return "daily"
-  }
   if (path.startsWith("/policy")) {
     return "yearly"
   }
   return "monthly"
+}
+
+function computeLatestListingDateForGpus(
+  gpusAndListings: GpuWithListings[],
+): GpuWithLatestListingDate[] {
+  return gpusAndListings.map((gpuWithListings) => {
+    const latestListingDate = gpuWithListings.listings.reduce(
+      (prev, current) => {
+        const itemCreationDate = current.itemCreationDate
+        return itemCreationDate && itemCreationDate > prev
+          ? itemCreationDate
+          : prev
+      },
+      EPOCH,
+    )
+    return {
+      gpuName: gpuWithListings.gpuName,
+      latestListingDate,
+    }
+  })
 }

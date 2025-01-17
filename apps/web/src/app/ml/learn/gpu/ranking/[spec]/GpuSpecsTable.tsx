@@ -6,22 +6,12 @@ import {
 } from "@/pkgs/isomorphic/model/specs"
 import { FormatCurrency } from "@/pkgs/client/components/FormatCurrency"
 import Link from "next/link"
-import { Gpu } from "@/pkgs/isomorphic/model"
 import { useEffect, useState } from "react"
 import { BootstrapIcon } from "@/pkgs/client/components/BootstrapIcon"
 import { composeComparers } from "@/pkgs/isomorphic/collection"
 import { curry } from "lodash"
 import { dollarsPerSpec } from "@/pkgs/isomorphic/gpuTools"
-
-type GpuMinimal = Omit<
-  Gpu,
-  "summary" | "references" | "supportedHardwareOperations" | "gpuArchitecture"
->
-
-export type PricedGpu = {
-  gpu: GpuMinimal
-  price: { avgPrice: number; minPrice: number; activeListingCount: number }
-}
+import { PricedGpu } from "../ranking"
 
 const lowestPriceGpuSpecComparer = (
   compareSpec: GpuSpecKey,

@@ -36,6 +36,8 @@ jobs:
           cache: npm
 
       - run: npm ci
+      # NOTE: sitemap json is required for lint to succeed as it is imported
+      - run: cd apps/web ; npm run gen-sitemap
       - run: npm run lint
       - run: npm run build
       - run: npm run test

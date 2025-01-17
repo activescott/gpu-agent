@@ -1,0 +1,23 @@
+id: clr123abc456def789
+slug: homepage-redesign-announcement
+title: "GPU Agent Gets a Fresh New Look"
+content: |
+  We're excited to announce a complete redesign of the GPU Agent website! The new design brings improved navigation, better mobile responsiveness, and enhanced GPU comparison features.
+
+  Key improvements include:
+  - Streamlined GPU search interface
+  - Enhanced price trend visualization
+  - Dark mode support
+  - Improved mobile experience
+
+  We'd love to hear your feedback on the new design. Please share your thoughts in our community forum.
+status: PUBLISHED
+tags:
+  - announcement
+  - website
+  - design
+  - update
+authorFullName: "Scott Willeke"
+createdAt: "2025-01-06T08:00:00Z"
+updatedAt: "2025-01-06T08:00:00Z"
+publishedAt: "2025-01-06T09:00:00Z"

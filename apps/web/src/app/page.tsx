@@ -9,7 +9,7 @@ import { topNListingsByCostPerformance } from "@/pkgs/server/db/ListingRepositor
 import { ListingCardSmall } from "@/pkgs/client/components/ListingCardSmall"
 import { minutesToSeconds } from "@/pkgs/isomorphic/duration"
 import { mapSpecToSlug } from "./ml/shop/gpu/performance/slugs"
-import { Listing } from "@/pkgs/isomorphic/model/index"
+import { Listing } from "@/pkgs/isomorphic/model"
 import {
   BootstrapIcon,
   BootstrapIconName,
@@ -23,6 +23,7 @@ const REVALIDATE_MINUTES = 30
 export const revalidate = minutesToSeconds(REVALIDATE_MINUTES)
 
 export const metadata: Metadata = {
+  title: "Find the Best GPU for Your Money - CoinPoet.com",
   alternates: { canonical: "https://coinpoet.com/" },
 }
 

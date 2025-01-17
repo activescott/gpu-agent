@@ -8,6 +8,7 @@ Compare GPU & AI Accelerator Card Performance Metrics to their Cost
 - `npx prisma migrate dev`: It is safe to kinda run all the time in dev environments. It will do any migrations _if necessary_ and update the TS types.
 - `npm run prisma-seed` (i.e. `npx prisma db seed`): This seeds the DB with the set of seed GPUs
 - `npx prisma migrate reset`: Nukes the DB and re-applies all schemas.
+- `npx prisma validate` - just validate the schema file is good.
 
 ## Todo
 

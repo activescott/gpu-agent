@@ -7,11 +7,10 @@ import {
   listGpuRankingSlugs,
   mapSlugToSpec,
 } from "../slugs"
-import { listGpus } from "@/pkgs/server/db/GpuRepository"
-import { getPriceStats } from "@/pkgs/server/db/ListingRepository"
-import { GpuSpecsTable, PricedGpu } from "./GpuSpecsTable"
+import { GpuSpecsTable } from "./GpuSpecsTable"
 import Link from "next/link"
-import { omit } from "lodash"
+import { calculateGpuPriceStats } from "../ranking"
+import { ISOMORPHIC_CONFIG } from "@/pkgs/isomorphic/config"
 
 // revalidate the data at most every hour: https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#revalidate
 export const revalidate = 3600
@@ -28,11 +27,12 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: GpuSpecSlugParams) {
+  const domain_url = `https://${ISOMORPHIC_CONFIG.NEXT_PUBLIC_DOMAIN()}`
   return {
     title: gpuRankingTitle(params.spec as GpuSpecSlug),
     description: gpuRankingDescription(params.spec as GpuSpecSlug),
     alternates: {
-      canonical: `https://coinpoet.com/${gpuRankingCanonicalPath(
+      canonical: `${domain_url}${gpuRankingCanonicalPath(
         params.spec as GpuSpecSlug,
       )}`,
     },
@@ -43,31 +43,7 @@ export default async function Page({ params }: GpuSpecSlugParams) {
   const primarySpec = mapSlugToSpec(params.spec as GpuSpecSlug)
   const desc = GpuSpecsDescription[primarySpec]
 
-  const gpus = await listGpus()
-
-  const MIN_GPU_MEM_FOR_ML_GB = 10
-  const unsortedPricedGpus = await Promise.all(
-    gpus
-      // Lets filter out the 8GB 580X and similarly low memory GPUs.
-      .filter((gpu) => gpu.memoryCapacityGB >= MIN_GPU_MEM_FOR_ML_GB)
-      .map(async (gpu) => {
-        const stats = await getPriceStats(gpu.name)
-        /* 
-        NOTE: React/Next.js server components dump all the props into the client-delivered JS making the page huge: https://github.com/vercel/next.js/discussions/42170
-        Lighthouse complained about the JS size and this removed about ~16KB of JS from the page. 
-      */
-        const gpuMinimal = omit(gpu, [
-          "summary",
-          "references",
-          "supportedHardwareOperations",
-          "gpuArchitecture",
-        ])
-        return {
-          gpu: gpuMinimal,
-          price: stats,
-        } as PricedGpu
-      }),
-  )
+  const unsortedPricedGpus = await calculateGpuPriceStats()
 
   return (
     <>

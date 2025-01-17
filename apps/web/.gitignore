@@ -40,4 +40,4 @@ public/js/bootstrap.bundle.min.js
 public/images/bootstrap-icons.svg
 
 # we generate this at build time
-/sitemap.json
+sitemap.*.json

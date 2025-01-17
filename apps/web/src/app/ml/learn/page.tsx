@@ -1,6 +1,6 @@
 import { Metadata } from "next"
 import { Feature } from "../../../pkgs/client/components/Feature"
-import sitemapJson from "../../sitemap.json"
+import sitemapJson from "../../sitemap.static-pages.json"
 
 export const metadata: Metadata = {
   title: "What to Look for in a GPU for Machine Learning",

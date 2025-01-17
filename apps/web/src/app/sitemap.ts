@@ -12,6 +12,10 @@ import { prismaSingleton } from "@/pkgs/server/db/db"
 import { EPOCH, hoursToSeconds } from "@/pkgs/isomorphic/duration"
 import { listGpuRankingSlugs } from "./ml/learn/gpu/ranking/slugs"
 import { createDiag } from "@activescott/diag"
+import {
+  canonicalPathForSlug,
+  listPerformanceSlugs,
+} from "./ml/shop/gpu/performance/slugs"
 
 /* eslint-disable import/no-unused-modules */
 
@@ -57,7 +61,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const items: SitemapItem[] = [
     homePageItem,
     ...gpuSlugPathSitemap(gpusWithLatestDate, "/ml/shop/gpu"),
-    ...gpuSlugPathSitemap(gpusWithLatestDate, "/ml/shop/gpu/performance"),
+    ...mlPerformanceSpecSlugsSitemap(),
     ...dynamicEntries,
     ...staticSitemap(),
   ]
@@ -181,4 +185,16 @@ function computeLatestListingDateForGpus(
       latestListingDate,
     }
   })
+}
+function mlPerformanceSpecSlugsSitemap(): SitemapItem[] {
+  const specSlugs = listPerformanceSlugs()
+  const entries = specSlugs.map((slug) => {
+    return {
+      url: `${domain_url}${canonicalPathForSlug(slug)}`,
+      changeFrequency: "daily",
+      priority: 0.8,
+      lastModified: new Date(),
+    } satisfies SitemapItem
+  })
+  return entries
 }

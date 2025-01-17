@@ -42,3 +42,7 @@ export function mapSlugToPageDescription(slug: PerformanceSlug): string {
 export function listPerformanceSlugs(): PerformanceSlug[] {
   return Object.keys(SlugMap) as PerformanceSlug[]
 }
+
+export function canonicalPathForSlug(slug: PerformanceSlug): string {
+  return `/ml/shop/gpu/performance/${slug}`
+}

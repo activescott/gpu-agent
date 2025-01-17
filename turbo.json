@@ -27,7 +27,7 @@
         ".next/**",
         "!.next/cache/**",
         "public/images",
-        "sitemap.static-pages.json"
+        "src/app/sitemap.static-pages.json"
       ]
     },
     "dev": {

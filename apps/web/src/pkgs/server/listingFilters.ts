@@ -38,6 +38,7 @@ export function createFilterForGpu(gpu: Gpu): Predicate {
   const requiredKeywordsFilter = createRequiredLabelFilter(gpu)
 
   return composePredicates(
+    sellerFeedbackFilter,
     allListingFilters,
     conditionFilter,
     requiredKeywordsFilter,
@@ -59,7 +60,6 @@ function createRequireMemoryKeywordFilter(gpu: Gpu) {
 function createRequiredLabelFilter(gpu: Gpu) {
   const nameKeywords = gpu.label.split(" ")
   const requiredKeywords = [...nameKeywords].map((word) => word.toLowerCase())
-  log.debug("Filtering GPUs with keywords: %s", requiredKeywords)
   return createRequireKeywordsPredicate(requiredKeywords)
 }
 
@@ -126,6 +126,26 @@ function gpuAccessoryFilter(item: Listing): boolean {
     return false
   }
   return true
+}
+
+export function sellerFeedbackFilter(
+  item: Pick<Listing, "sellerFeedbackPercentage" | "itemAffiliateWebUrl">,
+): boolean {
+  // filter out sellers with <90% feedback
+  const MINIMUM_FEEDBACK_PERCENTAGE = 90
+  if (
+    item.sellerFeedbackPercentage &&
+    Number.parseInt(item.sellerFeedbackPercentage) >=
+      MINIMUM_FEEDBACK_PERCENTAGE
+  ) {
+    return true
+  }
+  log.debug(
+    "item filtered out as a low feedback seller: %s %s",
+    item.sellerFeedbackPercentage,
+    item.itemAffiliateWebUrl,
+  )
+  return false
 }
 
 function isExpectedToBeFilteredOut(item: Listing): boolean {

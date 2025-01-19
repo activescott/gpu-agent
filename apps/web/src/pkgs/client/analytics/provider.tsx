@@ -8,7 +8,8 @@ import { createDiag } from "@activescott/diag"
 
 const log = createDiag("shopping-agent:analytics:provider")
 
-// POSTHOG INFO: https://posthog.com/docs/libraries/next-js
+// Posthog+NextJS: https://posthog.com/docs/libraries/next-js?tab=App+router
+
 if (typeof window !== "undefined") {
   posthog.init(ISOMORPHIC_CONFIG.NEXT_PUBLIC_POSTHOG_KEY(), {
     api_host: ISOMORPHIC_CONFIG.NEXT_PUBLIC_POSTHOG_HOST(),
@@ -38,9 +39,18 @@ function AnalyticsPageViewInner(): JSX.Element {
       if (searchParams && searchParams.toString()) {
         url = url + `?${searchParams.toString()}`
       }
+
       posthog.capture("$pageview", {
         $current_url: url,
       })
+
+      return () => {
+        // Capture page leave event when component unmounts or route changes
+        // NOTE: This isn't in the Posthog docs, but it seems needed, and without it I am receiving warnings in the posthog console about missing page leave events.
+        posthog.capture("$pageleave", {
+          $current_url: url,
+        })
+      }
     } else {
       log.error("AnalyticsPageView: no pathname")
     }

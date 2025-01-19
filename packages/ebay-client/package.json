@@ -27,7 +27,6 @@
     "lint": "prettier -l \"{,!(node_modules)/**/}*.{ts,tsx,md,yml,json,html}\" && npm run eslint",
     "lint-fix": "prettier --write \"{,!(node_modules)/**/}*.{ts,tsx,md,yml,json,html}\" && npm run eslint --fix",
     "build:es": "rm -rfd ./dist/es; npx tsc --project tsconfig.es.json",
-    "build:cjs": "rm -rfd ./dist/cjs; npx tsc --project tsconfig.cjs.json",
     "dev": "rm -rfd ./dist/es; npx tsc --project tsconfig.es.json --watch",
     "build": "rm -rfd ./dist && npm run build:es",
     "test-watch": "npx jest --watch",

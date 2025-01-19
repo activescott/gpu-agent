@@ -55,6 +55,14 @@
     "test": {
       "dependsOn": ["^test"]
     },
+    
+    "shopping-agent#test": {
+      // requires ebay-client to be built before tests run in shopping-agent: https://turbo.build/repo/docs/reference/configuration#arbitrary-task-relationships
+      "dependsOn": ["@activescott/ebay-client#build"]
+    },
+    "watch": {
+      "dependsOn": ["^watch"]
+    },
     "clean": {
       "dependsOn": ["^clean"],
       "cache": false

@@ -7,6 +7,7 @@
     "lint": "turbo run lint",
     "lint-fix": "turbo run lint-fix",
     "test": "turbo run test",
+    "watch": "turbo run watch",
     "clean": "turbo run clean"
   },
   "workspaces": [

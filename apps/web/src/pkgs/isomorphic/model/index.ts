@@ -1,5 +1,6 @@
 export { GpuSchema } from "./gpu"
 export type { Gpu } from "./gpu"
-
+export { type GpuSpecKey, GpuSpecKeys, GpuSpecsDescription } from "./specs"
 export { convertEbayItemToListing } from "./listing"
 export type { Listing } from "./listing"
+export type { NewsArticle } from "./news"

@@ -1,22 +1,20 @@
 import type { Metadata } from "next"
 import {
-  GpuSpecKey,
+  type GpuSpecKey,
   GpuSpecKeys,
   GpuSpecsDescription,
-} from "@/pkgs/isomorphic/model/specs"
+  type Listing,
+} from "@/pkgs/isomorphic/model"
 import { Carousel } from "@/pkgs/client/components/Carousel"
 import { topNListingsByCostPerformance } from "@/pkgs/server/db/ListingRepository"
 import { ListingCardSmall } from "@/pkgs/client/components/ListingCardSmall"
 import { minutesToSeconds } from "@/pkgs/isomorphic/duration"
 import { mapSpecToSlug } from "./ml/shop/gpu/performance/slugs"
-import { Listing } from "@/pkgs/isomorphic/model"
-import {
-  BootstrapIcon,
-  BootstrapIconName,
-} from "@/pkgs/client/components/BootstrapIcon"
 import Link from "next/link"
 import { ReactNode } from "react"
-import { SvgIcon } from "@/pkgs/client/components/SvgIcon"
+import { listPublishedArticles } from "@/pkgs/server/db/NewsRepository"
+import { TipCard } from "../pkgs/client/components/TipCard"
+import { NewsArticlePair } from "@/pkgs/client/components/NewsArticlePair"
 
 // revalidate the data at most every N seconds: https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#revalidate
 const REVALIDATE_MINUTES = 30
@@ -34,14 +32,21 @@ export default async function Page() {
     return { spec, listings }
   })
 
-  const NEWS_SPLIT_AT = 2
-  const topListingsFirstHalf = await Promise.all(
-    topListingsPromises.slice(0, NEWS_SPLIT_AT),
+  // Sort news articles by date, newest first
+  let newsArticles = await listPublishedArticles()
+  // filter out any articles published more than one year ago:
+  const oneYearAgo = new Date()
+  oneYearAgo.setFullYear(oneYearAgo.getFullYear() - 1)
+  newsArticles = newsArticles.filter(
+    (article) => article.publishedAt > oneYearAgo,
   )
-  const topListingsSecondHalf = await Promise.all(
-    topListingsPromises.slice(NEWS_SPLIT_AT),
+  newsArticles = newsArticles.sort(
+    (a, b) => b.publishedAt.getTime() - a.publishedAt.getTime(),
   )
 
+  const topListingsGroup = await Promise.all(topListingsPromises)
+
+  const TOP_N_GROUP_SIZE = 2
   return (
     <div>
       <h1 className="display-1">
@@ -69,22 +74,38 @@ export default async function Page() {
 
       <div>
         <div className="d-flex flex-column">
-          {topListingsFirstHalf.map(({ spec, listings }) => {
-            return TopListingsCarousel(spec, listings)
-          })}
-
-          <div className="d-none">news</div>
-
-          {topListingsSecondHalf.map(({ spec, listings }) => {
-            return TopListingsCarousel(spec, listings)
-          })}
+          {topListingsGroup.map(({ spec, listings }, groupIndex) => (
+            <div key={spec}>
+              <TopListingsCarousel spec={spec} listings={listings} />
+              {/* Insert news articles after every second carousel */}
+              {groupIndex % TOP_N_GROUP_SIZE === 1 &&
+                groupIndex < topListingsGroup.length - 1 && (
+                  <NewsArticlePair
+                    startIndex={groupIndex - 1}
+                    articles={newsArticles.slice(
+                      Math.floor(groupIndex / TOP_N_GROUP_SIZE) *
+                        TOP_N_GROUP_SIZE,
+                      Math.floor(groupIndex / TOP_N_GROUP_SIZE) *
+                        TOP_N_GROUP_SIZE +
+                        TOP_N_GROUP_SIZE,
+                    )}
+                  />
+                )}
+            </div>
+          ))}
         </div>
       </div>
     </div>
   )
 }
 
-function TopListingsCarousel(spec: GpuSpecKey, listings: Listing[]): ReactNode {
+function TopListingsCarousel({
+  spec,
+  listings,
+}: {
+  spec: GpuSpecKey
+  listings: Listing[]
+}): ReactNode {
   return (
     <Carousel
       key={spec}
@@ -100,32 +121,5 @@ function TopListingsCarousel(spec: GpuSpecKey, listings: Listing[]): ReactNode {
         />
       ))}
     </Carousel>
-  )
-}
-
-type TipCardProps = TipCardPropsIcon | TipCardSvgIcon
-interface TipCardPropsIcon {
-  icon: BootstrapIconName
-  svgIcon?: undefined
-  children: ReactNode
-}
-
-interface TipCardSvgIcon {
-  icon?: undefined
-  svgIcon: string
-  children: ReactNode
-}
-
-function TipCard({ children, icon, svgIcon }: TipCardProps) {
-  return (
-    <div className="d-inline-block m-2 rounded-3 shadow p-3 bg-body-tertiary max-width-30-md">
-      <div className="d-flex flex-row p-2">
-        <div className="d-inline-block me-2">
-          {icon && <BootstrapIcon icon={icon} size="medium" />}
-          {svgIcon && <SvgIcon icon={svgIcon} size="medium" />}
-        </div>
-        <div style={{ minHeight: "2lh" }}>{children}</div>
-      </div>
-    </div>
   )
 }

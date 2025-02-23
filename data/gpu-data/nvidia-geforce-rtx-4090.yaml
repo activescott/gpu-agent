@@ -2,8 +2,8 @@ name: nvidia-geforce-rtx-4090
 label: NVIDIA RTX 4090
 tensorCoreCount: 512
 fp32TFLOPS: 82.6
-fp16TFLOPS: 330.3
-int8TOPS: 660.6
+fp16TFLOPS: 660.6
+int8TOPS: 1321.2
 memoryCapacityGB: 24
 memoryBandwidthGBs: 1008
 maxTDPWatts: 450
@@ -27,5 +27,5 @@ references:
   - https://images.nvidia.com/aem-dam/Solutions/geforce/ada/nvidia-ada-gpu-architecture.pdf
   - https://lambdalabs.com/blog/nvidia-rtx-4090-vs-rtx-3090-deep-learning-benchmark
 notes:
-  - "fp16TFLOPS: NOTE: \"Peak FP16 Tensor TFLOPS with FP16 Accumulate\" as
-    that's what NVIDIA publishes"
+  - fp16TFLOPS is "Peak FP16 Tensor TFLOPS with FP16 Accumulate" as that's what NVIDIA publishes. Using the "with sparsity" metric.
+  - int8TOPS of 1321.2 is "peak INT 8 TOPS" using "Effective TOPS / TFLOPS using the new Sparsity Feature". They also reveal it as 660.6 "based on GPU Boost Clock". This comes from the ada-gpu-architecture-whitepaper-v2.1.

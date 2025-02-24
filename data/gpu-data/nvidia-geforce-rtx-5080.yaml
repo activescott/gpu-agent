@@ -1,14 +1,14 @@
-name: nvidia-geforce-rtx-5090
-label: NVIDIA GeForce RTX 5090
+name: nvidia-geforce-rtx-5080
+label: NVIDIA GeForce RTX 5080
 
-cudaCoreCount: 21760
-memoryCapacityGB: 32
-int8TOPS: 1676
-maxTDPWatts: 575
-memoryBandwidthGBs: 1792
-tensorCoreCount: 680
-fp32TFLOPS: 209.5
-fp16TFLOPS: 838
+cudaCoreCount: 10752
+memoryCapacityGB: 16
+int8TOPS: 900.4
+maxTDPWatts: 360
+memoryBandwidthGBs: 960
+tensorCoreCount: 336
+fp32TFLOPS: 112.6
+fp16TFLOPS: 450.2
 
 gpuArchitecture: blackwell
 supportedHardwareOperations:
@@ -22,7 +22,7 @@ supportedHardwareOperations:
 supportedCUDAComputeCapability: 12.8
 
 summary: |
-  The NVIDIA GeForce RTX 5090 was the first GeForce RTX 50 series product that was launched using the GB202 GPU.
+  The NVIDIA GeForce RTX 5080 was the first GeForce RTX 50 series product that was launched using the GB203 GPU.
   NVIDIA unveiled the GeForce RTX 50 Series GPUs on January 6, 2025, powered by the Blackwell architecture, featuring advanced AI and ray tracing capabilities. RTX 50 Series GPUs support 5th Gen Tensor Cores.
 
   Other key features include DLSS 4 which uses AI to generate up to three additional frames per traditionally rendered frame boosting frame rates, and the RTX Neural Shaders integrate small AI networks into the shading process, enabling higher quality rendering. RTX Neural Faces uses generative AI to create highly realistic digital human faces. NVIDIA ACE empowers game characters with AI-driven perception, planning, and action.
@@ -37,7 +37,7 @@ references:
   - https://nvidianews.nvidia.com/news/nvidia-blackwell-geforce-rtx-50-series-opens-new-world-of-ai-computer-graphics
   - https://arxiv.org/abs/2310.16836
   - https://www.tomshardware.com/pc-components/gpus/nvidia-blackwell-architecture-deep-dive-a-closer-look-at-the-upgrades-coming-with-rtx-50-series-gpus
-  - https://www.techpowerup.com/gpu-specs/geforce-rtx-5090.c4216
+  - https://www.techpowerup.com/gpu-specs/geforce-rtx-5080.c4217
 
 notes:
   - We use the peak TOPS/FLOPS specs using the sparsity feature.

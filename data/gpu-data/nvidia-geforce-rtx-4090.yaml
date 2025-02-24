@@ -1,5 +1,5 @@
 name: nvidia-geforce-rtx-4090
-label: NVIDIA RTX 4090
+label: NVIDIA Geforce RTX 4090
 tensorCoreCount: 512
 fp32TFLOPS: 82.6
 fp16TFLOPS: 660.6
@@ -16,16 +16,23 @@ supportedHardwareOperations:
   - BF16
   - FP8
 supportedCUDAComputeCapability: 8.9
-summary: The NVIDIA GeForce RTX 4090 is a graphics card released in 2023,
-  featuring the latest Ada Lovelace architecture. While primarily aimed at
-  gamers, the RTX 4090 also offers impressive capabilities for machine learning
-  tasks, particularly inference and training workloads that benefit from its
-  large memory and high core count. It uses a PCI-Express 4.0 x16 host interface
+summary: |
+  The NVIDIA GeForce RTX 4090 is a graphics card released in 2022,
+  featuring the latest Ada Lovelace architecture based on the AD102 GPU, the
+  most powerful GPU based on the NVIDIA Ada architecture. While primarily aimed
+  at gamers, the RTX 4090 also offers impressive capabilities for machine
+  learning tasks, particularly inference and training workloads that benefit
+  from its large memory and high core count. It uses a PCI-Express 4.0 x16 host
+  interface.
 references:
+  - https://images.nvidia.com/aem-dam/Solutions/geforce/ada/nvidia-ada-gpu-architecture.pdf
   - https://images.nvidia.com/aem-dam/Solutions/Data-Center/l4/nvidia-ada-gpu-architecture-whitepaper-v2.1.pdf
   - https://www.nvidia.com/en-us/geforce/graphics-cards/40-series/rtx-4090/
   - https://images.nvidia.com/aem-dam/Solutions/geforce/ada/nvidia-ada-gpu-architecture.pdf
   - https://lambdalabs.com/blog/nvidia-rtx-4090-vs-rtx-3090-deep-learning-benchmark
+  - https://www.nvidia.com/en-us/geforce/news/geforce-rtx-4090-out-now/
+
 notes:
   - fp16TFLOPS is "Peak FP16 Tensor TFLOPS with FP16 Accumulate" as that's what NVIDIA publishes. Using the "with sparsity" metric.
   - int8TOPS of 1321.2 is "peak INT 8 TOPS" using "Effective TOPS / TFLOPS using the new Sparsity Feature". They also reveal it as 660.6 "based on GPU Boost Clock". This comes from the ada-gpu-architecture-whitepaper-v2.1.
+  - Power based on what NVIDIA refers to as "TGP (Total Graphics Power)"

@@ -17,7 +17,7 @@ supportedHardwareOperations:
   - FP8
 supportedCUDAComputeCapability: 8.9
 summary: |
-  The NVIDIA GeForce RTX 4070 is a graphics card released in 2022,
+  The NVIDIA GeForce RTX 4070 Ti is a graphics card released in 2022,
   featuring the Ada Lovelace architecture based on the AD104 GPU. The other
   notable related GPUs in the RTX 40-series GPUs are the RTX 4090, RTX 4080, RTX
   4070 Ti, RTX 4060, and RTX 4060 Ti. The NVIDIA L40 GPU and L4 GPUs are also

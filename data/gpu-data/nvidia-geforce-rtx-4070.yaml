@@ -18,13 +18,14 @@ supportedHardwareOperations:
 supportedCUDAComputeCapability: 8.9
 summary: |
   The NVIDIA GeForce RTX 4070 is a graphics card released in 2022,
-  featuring the Ada Lovelace architecture based on the AD104 GPU. The other
-  notable related GPUs in the RTX 40-series GPUs are the RTX 4090, RTX 4080, RTX
-  4070 Ti, RTX 4060, and RTX 4060 Ti. The NVIDIA L40 GPU and L4 GPUs are also
-  based on the same Ada Architecture aimed at the data center. While primarily
-  aimed at gamers, the RTX 40-series offers strong capabilities for machine
-  learning tasks, particularly inference and training workloads that benefit
-  from its large memory and high core count. It uses a PCI-Express 4.0 x16 host
+  featuring the Ada Lovelace architecture based on the AD104 GPU. The set of
+  retail cards in the NVIDIA RTX 40-series cards is RTX 4090, RTX 4080 SUPER,
+  RTX 4080, RTX 4070 Ti SUPER, RTX 4070 Ti, RTX 4070 SUPER, RTX 4070, RTX 4060
+  Ti, and the RTX 4060. The NVIDIA L40 GPU and L4 GPUs are also based on the
+  same Ada Architecture aimed at the data center. While primarily aimed at
+  gamers, the RTX 40-series offers strong capabilities for machine learning
+  tasks, particularly inference and training workloads that benefit from its
+  large memory and high core count. It uses a PCI-Express 4.0 x16 host
   interface.
 references:
   - https://images.nvidia.com/aem-dam/Solutions/geforce/ada/nvidia-ada-gpu-architecture.pdf

@@ -48,7 +48,7 @@
     "glob": "^10.3.10",
     "irritable-iterable": "^1.4.0",
     "lodash": "^4.17.21",
-    "next": "^14.2.20",
+    "next": "^14.2.25",
     "next-mdx-remote": "^5.0.0",
     "posthog-js": "^1.93.2",
     "prisma": "^6.2.0",

@@ -43,7 +43,7 @@ export function createFilterForGpu(gpu: Gpu): Predicate {
     conditionFilter,
     requiredKeywordsFilter,
     createRequireMemoryKeywordFilter(gpu),
-    gpuAccessoryFilter
+    gpuAccessoryFilter,
   )
 }
 
@@ -65,16 +65,16 @@ function createRequiredLabelFilter(gpu: Gpu) {
 
 function createRequireKeywordsPredicate(
   keywords: string[],
-  requireAllKeywords = true
+  requireAllKeywords = true,
 ) {
   return (item: Listing): boolean => {
     // if it doesn't include some required keywords, it's probably not a card, so don't show it:
     const includeListing = requireAllKeywords
       ? keywords.every((requiredKeyword) =>
-          item.title.toLowerCase().includes(requiredKeyword)
+          item.title.toLowerCase().includes(requiredKeyword),
         )
       : keywords.some((requiredKeyword) =>
-          item.title.toLowerCase().includes(requiredKeyword)
+          item.title.toLowerCase().includes(requiredKeyword),
         )
 
     if (!includeListing && !isExpectedToBeFilteredOut(item)) {
@@ -82,10 +82,10 @@ function createRequireKeywordsPredicate(
         "required keywords not in item title: %o. Item title: %s . Item Url: %s",
         keywords.filter(
           (requiredKeyword) =>
-            !item.title.toLowerCase().includes(requiredKeyword)
+            !item.title.toLowerCase().includes(requiredKeyword),
         ),
         item.title,
-        item.itemAffiliateWebUrl
+        item.itemAffiliateWebUrl,
       )
     }
     return includeListing
@@ -119,13 +119,13 @@ const nonGpuKeywords = [
 function gpuAccessoryFilter(item: Listing): boolean {
   if (
     nonGpuKeywords.some((accessory) =>
-      item.title.toLowerCase().includes(accessory)
+      item.title.toLowerCase().includes(accessory),
     )
   ) {
     log.debug(
       "item filtered out as a accessory: %s %s",
       item.title,
-      item.itemAffiliateWebUrl
+      item.itemAffiliateWebUrl,
     )
     return false
   }
@@ -133,7 +133,7 @@ function gpuAccessoryFilter(item: Listing): boolean {
 }
 
 export function sellerFeedbackFilter(
-  item: Pick<Listing, "sellerFeedbackPercentage" | "itemAffiliateWebUrl">
+  item: Pick<Listing, "sellerFeedbackPercentage" | "itemAffiliateWebUrl">,
 ): boolean {
   // filter out sellers with <90% feedback
   const MINIMUM_FEEDBACK_PERCENTAGE = 90
@@ -147,7 +147,7 @@ export function sellerFeedbackFilter(
   log.debug(
     "item filtered out as a low feedback seller: %s %s",
     item.sellerFeedbackPercentage,
-    item.itemAffiliateWebUrl
+    item.itemAffiliateWebUrl,
   )
   return false
 }
@@ -174,14 +174,14 @@ function isExpectedToBeFilteredOut(item: Listing): boolean {
 
   if (
     nonGpuKeywords.some((accessory) =>
-      item.title.toLowerCase().includes(accessory)
+      item.title.toLowerCase().includes(accessory),
     )
   ) {
     return true
   }
   if (
     wrongGpuKeywords.some((accessory) =>
-      item.title.toLowerCase().includes(accessory)
+      item.title.toLowerCase().includes(accessory),
     )
   ) {
     return true

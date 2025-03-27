@@ -26,6 +26,7 @@ export interface SearchResponse {
   items: AsyncGenerator<ItemSummary, void, unknown>
 }
 
+const DEFAULT_MAX_SEARCH_ITEMS = 50
 export interface SearchOptions {
   query?: string
   filterCategory?: Pick<Category, "categoryId"> &
@@ -33,6 +34,7 @@ export interface SearchOptions {
   filterAspect?: AspectFilter
   /** Determines some of the fields present in the response. See https://developer.ebay.com/api-docs/buy/browse/resources/item_summary/methods/search#uri.fieldgroups */
   fieldgroups?: SearchFieldGroup[]
+  limit?: number
 }
 
 type SearchFieldGroup =
@@ -101,6 +103,7 @@ class BuyApiImpl implements BuyApi {
     query,
     filterCategory,
     fieldgroups,
+    limit = DEFAULT_MAX_SEARCH_ITEMS,
   }: SearchOptions): Promise<SearchResponse> {
     // use options to get the first page of results:
     const url = new URL("/buy/browse/v1/item_summary/search", this.baseUrl())
@@ -112,6 +115,9 @@ class BuyApiImpl implements BuyApi {
     }
     if (fieldgroups) {
       url.searchParams.append("fieldgroups", fieldgroups.join(","))
+    }
+    if (limit) {
+      url.searchParams.append("limit", limit.toString())
     }
     const resp = await this.httpGet(url)
     const firstPage = (await resp.json()) as SearchPageResponse

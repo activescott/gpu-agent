@@ -78,7 +78,7 @@ async function fetchListingsForGpuDirectFromEbay(
     log.warn("loading test listings from json (non-production)")
     rawListings = arrayToAsyncIterable(await loadTestListingsFromJson(gpu.name))
   } else {
-    log.info("fetching listings from ebay")
+    log.info(`fetching listings from ebay for gpu ${gpu.name}...`)
     const options: BuyApiOptions = {
       credentials: {
         environment: SERVER_CONFIG.EBAY_ENVIRONMENT() as EbayEnvironment,
@@ -102,8 +102,10 @@ async function fetchListingsForGpuDirectFromEbay(
       //   title+aspects, it is just a concise summary of the actual
       //   seller-provided description which varies in value.
       // fieldgroups: ["MATCHING_ITEMS", "EXTENDED"],
+      limit: 40,
     })
     rawListings = response.items
+    log.debug("Got listings response")
 
     if (!isProduction() && !fs.existsSync(getTestListingsPath(gpu.name))) {
       log.info("writing listings to json (non-production, json not found)")

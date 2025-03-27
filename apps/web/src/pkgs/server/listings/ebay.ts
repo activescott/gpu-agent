@@ -39,6 +39,7 @@ export async function cacheEbayListingsForGpu(
   const start = new Date()
   const gpu = await getGpu(gpuName)
   const fetched = await fetchListingsForGpuDirectFromEbay(gpu)
+  log.debug("Fetched listings from eBay. Collecting...")
   let collected: Listing[] = await chainAsync(fetched).collect()
   log.info(
     `Caching listings for ${gpuName}... fetched ${collected.length} listings from eBay`,

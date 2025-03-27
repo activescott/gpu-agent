@@ -103,7 +103,7 @@ async function fetchListingsForGpuDirectFromEbay(
       //   title+aspects, it is just a concise summary of the actual
       //   seller-provided description which varies in value.
       // fieldgroups: ["MATCHING_ITEMS", "EXTENDED"],
-      limit: 40,
+      limit: SERVER_CONFIG.MAX_LISTINGS_TO_CACHE_PER_GPU(),
     })
     rawListings = response.items
     log.debug("Got listings response")

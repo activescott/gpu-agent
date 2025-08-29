@@ -26,9 +26,9 @@
     "eslint": "eslint . --ext ts,tsx,js,jsx",
     "lint": "prettier -l \"{,!(node_modules)/**/}*.{ts,tsx,md,yml,json,html}\" && npm run eslint",
     "lint-fix": "prettier --write \"{,!(node_modules)/**/}*.{ts,tsx,md,yml,json,html}\" && npm run eslint --fix",
-    "build:es": "rm -rfd ./dist/es; npx tsc --project tsconfig.es.json",
-    "dev": "rm -rfd ./dist/es; npx tsc --project tsconfig.es.json --watch",
-    "build": "rm -rfd ./dist && npm run build:es",
+    "build:es": "rm -rf ./dist/es; npx tsc --project tsconfig.es.json",
+    "dev": "rm -rf ./dist/es; npx tsc --project tsconfig.es.json --watch",
+    "build": "rm -rf ./dist && npm run build:es",
     "test-watch": "npx jest --watch",
     "clean": "rm -rf node_modules; rm -rf dist ; rm -rf .turbo",
     "test": "npx jest"

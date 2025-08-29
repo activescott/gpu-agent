@@ -1,0 +1,29 @@
+services:
+  postgres:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_USER: gpu_agent
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: gpu_agent
+    ports:
+      - "5432:5432"
+    volumes:
+      - gpu_agent_postgres_data:/var/lib/postgresql/data
+
+  app:
+    build: .
+    ports:
+      - "3000:3000"
+    env_file:
+      - ./apps/web/.env
+    environment:
+      # Override database URLs for Docker environment
+      - POSTGRES_PRISMA_URL=postgresql://gpu_agent:password@postgres:5432/gpu_agent?schema=public&pgbouncer=true&connect_timeout=15
+      - POSTGRES_URL_NON_POOLING=postgresql://gpu_agent:password@postgres:5432/gpu_agent?schema=public&connect_timeout=15
+      - NEXT_PUBLIC_DOMAIN=localhost:3000
+      - NEXT_PUBLIC_POSTHOG_HOST=http://localhost:3000/a
+    depends_on:
+      - postgres
+
+volumes:
+  postgres_data:

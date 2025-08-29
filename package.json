@@ -8,7 +8,11 @@
     "lint-fix": "turbo run lint-fix",
     "test": "turbo run test",
     "watch": "turbo run watch",
-    "clean": "turbo run clean"
+    "clean": "turbo run clean",
+    "docker:build": "docker build -t gpu-agent .",
+    "docker:run": "docker run -p 3000:3000 gpu-agent",
+    "docker:dev": "docker compose up --build",
+    "docker:down": "docker compose down"
   },
   "workspaces": [
     "apps/*",

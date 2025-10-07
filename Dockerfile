@@ -40,6 +40,9 @@ COPY --from=builder /app/apps/web/.next ./apps/web/.next
 COPY --from=builder /app/apps/web/public ./apps/web/public
 COPY --from=builder /app/apps/web/package.json ./apps/web/package.json
 
+# Set ownership of .next directory to nextjs user for write permissions
+RUN chown -R nextjs:nodejs /app/apps/web/.next
+
 # Copy pre-generated sitemap (generated with Git info)
 COPY --from=builder /app/apps/web/src/app/sitemap.static-pages.json ./apps/web/src/app/sitemap.static-pages.json
 
@@ -49,6 +52,10 @@ COPY --from=builder /app/package.json ./package.json
 
 # Copy prisma schema and migrations
 COPY --from=builder /app/apps/web/prisma ./apps/web/prisma
+
+# Copy source files needed for seeding (TypeScript imports)
+COPY --from=builder /app/apps/web/src ./apps/web/src
+COPY --from=builder /app/apps/web/tsconfig.json ./apps/web/tsconfig.json
 
 # Copy data files needed for seeding
 COPY --from=builder /app/data ./data

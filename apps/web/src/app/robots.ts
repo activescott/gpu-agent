@@ -5,7 +5,7 @@ import { MetadataRoute } from "next"
 
 // Force dynamic rendering to avoid build-time dependency on NEXT_PUBLIC_DOMAIN environment variable
 // The robots.txt needs the domain name for the sitemap URL, but we don't want to bake the domain into the Docker image
-export const dynamic = 'force-dynamic'
+export const dynamic = "force-dynamic"
 
 // https://nextjs.org/docs/app/api-reference/file-conventions/metadata/robots
 // https://developers.google.com/search/docs/crawling-indexing/robots/intro

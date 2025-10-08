@@ -17,8 +17,7 @@ export const revalidate = 3600
 
 // Force dynamic rendering to avoid build-time dependency on NEXT_PUBLIC_DOMAIN environment variable
 // This page generates canonical URLs in metadata, but we don't want to bake the domain into the Docker image
-export const dynamic = 'force-dynamic'
-
+export const dynamic = "force-dynamic"
 
 type GpuSpecSlugParams = {
   params: { spec: string }

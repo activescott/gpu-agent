@@ -12,6 +12,9 @@ const log = createDiag("shopping-agent:shop:gpu:gpuSlug")
 // revalidate the data at most every hour: https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#revalidate
 export const revalidate = 3600
 
+// Force dynamic rendering to avoid database dependency during Docker build
+export const dynamic = "force-dynamic"
+
 export async function generateStaticParams() {
   const gpuList = await listGpus()
   return gpuList.map((post) => ({

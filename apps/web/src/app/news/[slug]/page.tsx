@@ -17,6 +17,9 @@ const log = createDiag("shopping-agent:news")
 const REVALIDATE_HOURS = 6
 export const revalidate = hoursToSeconds(REVALIDATE_HOURS)
 
+// Force dynamic rendering to avoid database dependency during Docker build
+export const dynamic = "force-dynamic"
+
 // (default=true) Dynamic segments not included in generateStaticParams are generated on demand: https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#dynamicparams
 //export const dynamicParams = true // true | false,
 

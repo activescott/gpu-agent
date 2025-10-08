@@ -16,6 +16,9 @@ const getGpu = memoize(getGpuWithoutCache)
 // revalidate the data at most every hour:
 export const revalidate = 3600
 
+// Force dynamic rendering to avoid database dependency during Docker build
+export const dynamic = "force-dynamic"
+
 export async function generateStaticParams() {
   const gpuList = await listGpus()
   return gpuList.map((post) => ({

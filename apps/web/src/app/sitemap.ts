@@ -23,6 +23,10 @@ import {
 const REVALIDATE_HOURS = 24
 export const revalidate = hoursToSeconds(REVALIDATE_HOURS)
 
+// Force dynamic rendering to avoid build-time dependency on NEXT_PUBLIC_DOMAIN environment variable
+// The sitemap needs the domain name for absolute URLs, but we don't want to bake the domain into the Docker image
+export const dynamic = 'force-dynamic'
+
 const log = createDiag("shopping-agent:sitemap")
 
 type SitemapItem = IterableElement<MetadataRoute.Sitemap>

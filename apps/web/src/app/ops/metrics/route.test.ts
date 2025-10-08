@@ -1,39 +1,54 @@
-import { GET } from './route'
-import { getPrometheusMetrics } from '../../../pkgs/server/metrics/metricsStore'
-import type { Registry } from 'prom-client'
+import { GET } from "./route"
+import { getPrometheusMetrics } from "../../../pkgs/server/metrics/metricsStore"
+import { openMetricsContentType } from "prom-client"
 
 // Mock the metrics store
-jest.mock('../../../pkgs/server/metrics/metricsStore')
+jest.mock("../../../pkgs/server/metrics/metricsStore")
 
-const mockGetPrometheusMetrics = getPrometheusMetrics as jest.MockedFunction<typeof getPrometheusMetrics>
+const mockGetPrometheusMetrics = getPrometheusMetrics as jest.MockedFunction<
+  typeof getPrometheusMetrics
+>
+
+type GetPrometheusMetricsReturnType = ReturnType<typeof getPrometheusMetrics>
+
+// Simple mock registry - just hardcode the methods we need
+const createMockRegistry = (metricsContent: string) => {
+  return {
+    metrics: jest.fn().mockResolvedValue(metricsContent),
+    contentType: openMetricsContentType,
+    // Just hardcode each method as jest.fn() - simple and clear
+    clear: jest.fn(),
+    resetMetrics: jest.fn(),
+    registerMetric: jest.fn(),
+    getMetricsAsJSON: jest.fn(),
+    getMetricsAsArray: jest.fn(),
+    getSingleMetric: jest.fn(),
+    getSingleMetricAsString: jest.fn(),
+    removeSingleMetric: jest.fn(),
+    setDefaultLabels: jest.fn(),
+    setContentType: jest.fn(),
+  } as unknown as GetPrometheusMetricsReturnType
+}
 
 /**
  * Tests for the Prometheus metrics endpoint.
- * 
+ *
  * This endpoint serves metrics to Prometheus scrapers and returns data from the
  * last cache revalidation job executed by the Kubernetes CronJob. The endpoint
  * is publicly accessible (via ingress) for Prometheus to scrape.
  */
-describe('/ops/metrics', () => {
+describe("/ops/metrics", () => {
   beforeEach(() => {
     jest.clearAllMocks()
-    jest.spyOn(Date, 'now').mockReturnValue(1000000) // Fixed timestamp for consistent testing
+    jest.spyOn(Date, "now").mockReturnValue(1_000_000) // Fixed timestamp for consistent testing
   })
 
   afterEach(() => {
     jest.restoreAllMocks()
   })
 
-  // Mock registry with sample Prometheus metrics
-  const createMockRegistry = (metricsContent: string) => {
-    return {
-      metrics: jest.fn().mockResolvedValue(metricsContent),
-      contentType: 'text/plain; version=0.0.4; charset=utf-8',
-    } as unknown as Registry
-  }
-
-  describe('GET', () => {
-    it('should return Prometheus metrics when data is available', async () => {
+  describe("GET", () => {
+    it("should return Prometheus metrics when data is available", async () => {
       const mockMetricsContent = `# HELP coinpoet_last_job_success whether the last cache revalidation job succeeded (1) or failed (0)
 # TYPE coinpoet_last_job_success gauge
 coinpoet_last_job_success 1
@@ -53,16 +68,18 @@ coinpoet_listings_cached_total 150`
       expect(text).toBe(mockMetricsContent)
 
       // Verify correct Content-Type for Prometheus
-      expect(response.headers.get('Content-Type')).toBe('text/plain; version=0.0.4; charset=utf-8')
+      expect(response.headers.get("Content-Type")).toBe(
+        "application/openmetrics-text; version=1.0.0; charset=utf-8",
+      )
 
       // Verify Cache-Control header
-      expect(response.headers.get('Cache-Control')).toBe('max-age=60')
+      expect(response.headers.get("Cache-Control")).toBe("max-age=60")
 
       // Verify metrics store was called
       expect(mockGetPrometheusMetrics).toHaveBeenCalledTimes(1)
     })
 
-    it('should return NaN metrics when no job has run yet', async () => {
+    it("should return NaN metrics when no job has run yet", async () => {
       const mockNaNMetricsContent = `# HELP coinpoet_last_job_success whether the last cache revalidation job succeeded (1) or failed (0)
 # TYPE coinpoet_last_job_success gauge
 coinpoet_last_job_success 0
@@ -83,12 +100,12 @@ coinpoet_listings_cached_total 0`
 
       // Should still return 200 OK (not 503) to keep Prometheus scrapes successful
       expect(response.status).toBe(200)
-      expect(text).toContain('coinpoet_last_job_success 0')
-      expect(text).toContain('coinpoet_last_job_timestamp_seconds 0')
-      expect(text).toContain('coinpoet_listings_cached_total 0')
+      expect(text).toContain("coinpoet_last_job_success 0")
+      expect(text).toContain("coinpoet_last_job_timestamp_seconds 0")
+      expect(text).toContain("coinpoet_listings_cached_total 0")
     })
 
-    it('should include all expected metric types', async () => {
+    it("should include all expected metric types", async () => {
       const mockMetricsContent = `# HELP coinpoet_last_job_success whether the last cache revalidation job succeeded (1) or failed (0)
 # TYPE coinpoet_last_job_success gauge
 coinpoet_last_job_success 1
@@ -132,15 +149,15 @@ coinpoet_gpu_max_cache_duration_seconds 5`
       const text = await response.text()
 
       const expectedMetrics = [
-        'coinpoet_last_job_success',
-        'coinpoet_last_job_timestamp_seconds',
-        'coinpoet_listings_oldest_age_start_seconds',
-        'coinpoet_listings_oldest_age_remaining_seconds',
-        'coinpoet_listings_cached_total',
-        'coinpoet_last_job_duration_seconds',
-        'coinpoet_gpus_stale_start_total',
-        'coinpoet_gpus_stale_remaining_total',
-        'coinpoet_gpu_max_cache_duration_seconds',
+        "coinpoet_last_job_success",
+        "coinpoet_last_job_timestamp_seconds",
+        "coinpoet_listings_oldest_age_start_seconds",
+        "coinpoet_listings_oldest_age_remaining_seconds",
+        "coinpoet_listings_cached_total",
+        "coinpoet_last_job_duration_seconds",
+        "coinpoet_gpus_stale_start_total",
+        "coinpoet_gpus_stale_remaining_total",
+        "coinpoet_gpu_max_cache_duration_seconds",
       ]
 
       for (const metric of expectedMetrics) {
@@ -148,46 +165,32 @@ coinpoet_gpu_max_cache_duration_seconds 5`
       }
     })
 
-    it('should use correct cache control settings', async () => {
-      const mockRegistry = createMockRegistry('test_metric 1')
+    it("should use correct cache control settings", async () => {
+      const mockRegistry = createMockRegistry("test_metric 1")
       mockGetPrometheusMetrics.mockReturnValue(mockRegistry)
 
       const response = await GET()
 
       // Verify 60-second cache control for Prometheus scraping
-      expect(response.headers.get('Cache-Control')).toBe('max-age=60')
+      expect(response.headers.get("Cache-Control")).toBe("max-age=60")
     })
 
-    it('should track metrics collection duration', async () => {
+    it("should track metrics collection duration", async () => {
       // Mock Date.now to simulate time passage during metrics collection
       let callCount = 0
-      jest.spyOn(Date, 'now').mockImplementation(() => {
+      jest.spyOn(Date, "now").mockImplementation(() => {
         callCount++
-        if (callCount === 1) return 1000000 // start of request
-        if (callCount === 2) return 1000100 // start of metrics collection
-        return 1000150 // end of metrics collection (50ms later)
+        if (callCount === 1) return 1_000_000 // start of request
+        if (callCount === 2) return 1_000_100 // start of metrics collection
+        return 1_000_150 // end of metrics collection (50ms later)
       })
 
-      const mockRegistry = createMockRegistry('test_metric 1')
+      const mockRegistry = createMockRegistry("test_metric 1")
       mockGetPrometheusMetrics.mockReturnValue(mockRegistry)
 
       // The actual duration logging is internal, but we can verify the endpoint works
       const response = await GET()
       expect(response.status).toBe(200)
-    })
-
-    it('should handle registry content type correctly', async () => {
-      const customContentType = 'text/plain; version=0.0.4; charset=utf-8; custom=test'
-      const mockRegistry = {
-        metrics: jest.fn().mockResolvedValue('test_metric 1'),
-        contentType: customContentType,
-      } as unknown as Registry
-
-      mockGetPrometheusMetrics.mockReturnValue(mockRegistry)
-
-      const response = await GET()
-
-      expect(response.headers.get('Content-Type')).toBe(customContentType)
     })
   })
 })

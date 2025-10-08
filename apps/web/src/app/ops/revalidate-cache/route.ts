@@ -1,4 +1,5 @@
 import {
+  minutesToSeconds,
   secondsToMilliseconds,
 } from "@/pkgs/isomorphic/duration"
 import { revalidateCachedListings } from "@/pkgs/server/listings"
@@ -7,13 +8,14 @@ import { createDiag } from "@activescott/diag"
 
 const log = createDiag("shopping-agent:ops:revalidate-cache")
 
-const DEFAULT_TIMEOUT_SECONDS = 25 * 60 // 25 minutes - leave buffer for cron job
+// eslint-disable-next-line no-magic-numbers
+const DEFAULT_TIMEOUT_SECONDS = minutesToSeconds(25) // 25 minutes - leave buffer for cron job
 
 /**
  * Cache revalidation endpoint called by Kubernetes CronJob every 30 minutes.
  * This endpoint triggers the revalidation of stale GPU listing caches and updates
  * metrics for Prometheus monitoring.
- * 
+ *
  * Note: This endpoint is blocked from external access via ingress configuration.
  * Only internal Kubernetes services can call this endpoint.
  */
@@ -44,7 +46,7 @@ export async function POST() {
   } catch (error) {
     const duration = Date.now() - start
     const errorMessage = error instanceof Error ? error.message : String(error)
-    
+
     updateMetrics(
       {
         staleGpusAtStart: [],
@@ -57,7 +59,7 @@ export async function POST() {
         maxTimeToCacheOneGpu: 0,
       },
       false,
-      errorMessage
+      errorMessage,
     )
 
     log.error(`cache revalidation failed after ${duration}ms:`, error)
@@ -68,7 +70,7 @@ export async function POST() {
         error: errorMessage,
         duration,
       },
-      { status: 500 }
+      { status: 500 },
     )
   }
 }

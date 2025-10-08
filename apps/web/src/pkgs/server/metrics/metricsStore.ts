@@ -14,14 +14,20 @@ interface StoredMetrics {
 
 let currentMetrics: StoredMetrics | null = null
 
-export function updateMetrics(stats: ListingStats, success: boolean, error?: string): void {
+export function updateMetrics(
+  stats: ListingStats,
+  success: boolean,
+  error?: string,
+): void {
   currentMetrics = {
     stats,
     timestamp: new Date(),
     success,
     error,
   }
-  log.info(`metrics updated: success=${success}, timestamp=${currentMetrics.timestamp.toISOString()}`)
+  log.info(
+    `metrics updated: success=${success}, timestamp=${currentMetrics.timestamp.toISOString()}`,
+  )
 }
 
 export function getMetrics(): StoredMetrics | null {
@@ -36,7 +42,11 @@ export function resetMetrics(): void {
   currentMetrics = null
 }
 
-function buildMetricsRegistry(result: ListingStats, timestamp: Date, success: boolean) {
+function buildMetricsRegistry(
+  result: ListingStats,
+  timestamp: Date,
+  success: boolean,
+) {
   const registry = new Registry<client.OpenMetricsContentType>()
 
   new Gauge({
@@ -138,7 +148,9 @@ function buildMetricsRegistry(result: ListingStats, timestamp: Date, success: bo
 
 export function getPrometheusMetrics(): Registry<client.OpenMetricsContentType> {
   if (!hasMetrics()) {
-    log.warn("no metrics available - cache revalidation job may not have run yet, returning NaN values")
+    log.warn(
+      "no metrics available - cache revalidation job may not have run yet, returning NaN values",
+    )
     // Return empty/NaN metrics instead of null to keep Prometheus scrapes successful
     const emptyStats: ListingStats = {
       staleGpusAtStart: [],
@@ -154,5 +166,9 @@ export function getPrometheusMetrics(): Registry<client.OpenMetricsContentType> 
   }
 
   const storedMetrics = currentMetrics!
-  return buildMetricsRegistry(storedMetrics.stats, storedMetrics.timestamp, storedMetrics.success)
+  return buildMetricsRegistry(
+    storedMetrics.stats,
+    storedMetrics.timestamp,
+    storedMetrics.success,
+  )
 }

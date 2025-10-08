@@ -1,6 +1,6 @@
 import { createDiag } from "@activescott/diag"
 import { ListingGallery } from "@/pkgs/client/components/ListingGallery"
-import { getGpu, listGpus } from "@/pkgs/server/db/GpuRepository"
+import { getGpu } from "@/pkgs/server/db/GpuRepository"
 import { Gpu } from "@/pkgs/isomorphic/model"
 import { chain } from "irritable-iterable"
 import { ISOMORPHIC_CONFIG } from "@/pkgs/isomorphic/config"
@@ -15,12 +15,6 @@ export const revalidate = 3600
 // Force dynamic rendering to avoid database dependency during Docker build
 export const dynamic = "force-dynamic"
 
-export async function generateStaticParams() {
-  const gpuList = await listGpus()
-  return gpuList.map((post) => ({
-    slug: post.name,
-  }))
-}
 
 type GpuParams = {
   params: { gpuSlug: string }

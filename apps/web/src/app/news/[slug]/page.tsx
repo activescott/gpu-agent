@@ -3,7 +3,6 @@ import { notFound } from "next/navigation"
 import MarkdownContent from "@/pkgs/client/components/MarkdownContent"
 import {
   getPublishedArticleBySlug,
-  listPublishedArticles,
 } from "@/pkgs/server/db/NewsRepository"
 
 import { createDiag } from "@activescott/diag"
@@ -27,12 +26,6 @@ type NewsParams = {
   params: { slug: string }
 }
 
-export async function generateStaticParams() {
-  const articles = await listPublishedArticles()
-  return articles.map((article) => ({
-    slug: article.slug,
-  }))
-}
 
 export async function generateMetadata({ params }: NewsParams) {
   const slug = params.slug

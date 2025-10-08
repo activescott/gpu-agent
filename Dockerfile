@@ -21,7 +21,7 @@ COPY . .
 # Generate Prisma client
 RUN cd apps/web && npx prisma generate
 
-# Build the application
+# Build the application using turbo (it will build dependencies first)
 RUN npm run build
 
 # Production image, copy all the files and run next

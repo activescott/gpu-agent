@@ -5,8 +5,8 @@ services:
       POSTGRES_USER: gpu_agent
       POSTGRES_PASSWORD: password
       POSTGRES_DB: gpu_agent
-    ports:
-      - "5432:5432"
+    # ports:
+    #   - "5432:5432"  # postgres still accessible on port 5432 to app service via docker network, but not exposed to host
     volumes:
       - postgres_data:/var/lib/postgresql/data
 

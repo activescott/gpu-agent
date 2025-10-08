@@ -79,5 +79,11 @@
     "tsx": "^4.19.2",
     "typescript": "^5",
     "yaml": "^2.6.1"
+  },
+  "optionalDependencies": {
+    "@next/swc-darwin-x64": "^14.2.26",
+    "@next/swc-darwin-arm64": "^14.2.26",
+    "@next/swc-linux-x64-gnu": "^14.2.26",
+    "@next/swc-linux-arm64-gnu": "^14.2.26"
   }
 }

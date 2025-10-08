@@ -1,9 +1,7 @@
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import MarkdownContent from "@/pkgs/client/components/MarkdownContent"
-import {
-  getPublishedArticleBySlug,
-} from "@/pkgs/server/db/NewsRepository"
+import { getPublishedArticleBySlug } from "@/pkgs/server/db/NewsRepository"
 
 import { createDiag } from "@activescott/diag"
 import { ReactNode } from "react"
@@ -25,7 +23,6 @@ export const dynamic = "force-dynamic"
 type NewsParams = {
   params: { slug: string }
 }
-
 
 export async function generateMetadata({ params }: NewsParams) {
   const slug = params.slug

@@ -9,7 +9,7 @@
     "dev": "DEBUG=shopping-agent:*,-shopping-agent:shop:listingFilters:debug next dev",
     "//preinstall": "cd ../../packages/ebay-client && npm i && npm run build",
     "gen-sitemap": "npx ts-node src/scripts/gen-sitemap.ts",
-    "prebuild": "npm run prep && npm run gen-sitemap",
+    "prebuild": "npm run prep",
     "build": "DEBUG=shopping-agent:*,-shopping-agent:shop:listingFilters:* next build",
     "clean": "rm -rf node_modules; rm -rf .next; rm -rf .turbo",
     "start": "DEBUG=shopping-agent:*,ebay-client:* next start",
@@ -79,5 +79,11 @@
     "tsx": "^4.19.2",
     "typescript": "^5",
     "yaml": "^2.6.1"
+  },
+  "optionalDependencies": {
+    "@next/swc-darwin-x64": "^14.2.26",
+    "@next/swc-darwin-arm64": "^14.2.26",
+    "@next/swc-linux-x64-gnu": "^14.2.26",
+    "@next/swc-linux-arm64-gnu": "^14.2.26"
   }
 }

@@ -3,7 +3,6 @@ import { GpuSpecKey, GpuSpecKeys } from "@/pkgs/isomorphic/model/specs"
 import {
   getGpu as getGpuWithoutCache,
   gpuSpecAsPercent,
-  listGpus,
 } from "@/pkgs/server/db/GpuRepository"
 import { getPriceStats } from "@/pkgs/server/db/ListingRepository"
 import { createDiag } from "@activescott/diag"
@@ -16,12 +15,8 @@ const getGpu = memoize(getGpuWithoutCache)
 // revalidate the data at most every hour:
 export const revalidate = 3600
 
-export async function generateStaticParams() {
-  const gpuList = await listGpus()
-  return gpuList.map((post) => ({
-    slug: post.name,
-  }))
-}
+// Force dynamic rendering to avoid database dependency during Docker build
+export const dynamic = "force-dynamic"
 
 type GpuParams = {
   params: { gpuSlug: string }

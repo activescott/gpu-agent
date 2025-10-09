@@ -20,6 +20,9 @@ import { NewsArticlePair } from "@/pkgs/client/components/NewsArticlePair"
 const REVALIDATE_MINUTES = 30
 export const revalidate = minutesToSeconds(REVALIDATE_MINUTES)
 
+// Force dynamic rendering to avoid database dependency during Docker build
+export const dynamic = "force-dynamic"
+
 export const metadata: Metadata = {
   title: "Find the Best GPU for Your Money - CoinPoet.com",
   alternates: { canonical: "https://coinpoet.com/" },

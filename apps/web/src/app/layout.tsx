@@ -11,6 +11,9 @@ import Link from "next/link"
 import { GoogleAdsTag } from "@/pkgs/client/analytics/GoogleAdsTag"
 import { maxLength } from "@/pkgs/isomorphic/string"
 
+// Force dynamic rendering for all pages to avoid database dependency during Docker build
+export const dynamic = "force-dynamic"
+
 const METADATA_MAX_TITLE_LENGTH = 70
 const METADATA_MAX_DESCRIPTION_LENGTH = 160
 export const metadata: Metadata = {

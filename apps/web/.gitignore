@@ -39,5 +39,5 @@ next-env.d.ts
 public/js/bootstrap.bundle.min.js
 public/images/bootstrap-icons.svg
 
-# we generate this at build time
-sitemap.*.json
+# we generate dynamic sitemaps at build time, but commit the static one
+sitemap.dynamic-*.json

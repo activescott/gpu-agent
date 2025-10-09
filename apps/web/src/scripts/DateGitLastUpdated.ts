@@ -19,7 +19,7 @@ function getGitLastUpdatedTimeStamp(filePath: string) {
 }
 
 // return a Date
-export default function (inputPath: string) {
+export default function getGitLastUpdated(inputPath: string) {
   const timestamp = getGitLastUpdatedTimeStamp(inputPath)
   if (timestamp) {
     return new Date(timestamp)

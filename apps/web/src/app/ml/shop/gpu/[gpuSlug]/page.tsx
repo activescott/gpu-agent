@@ -1,6 +1,6 @@
 import { createDiag } from "@activescott/diag"
 import { ListingGallery } from "@/pkgs/client/components/ListingGallery"
-import { getGpu, listGpus } from "@/pkgs/server/db/GpuRepository"
+import { getGpu } from "@/pkgs/server/db/GpuRepository"
 import { Gpu } from "@/pkgs/isomorphic/model"
 import { chain } from "irritable-iterable"
 import { ISOMORPHIC_CONFIG } from "@/pkgs/isomorphic/config"
@@ -12,12 +12,8 @@ const log = createDiag("shopping-agent:shop:gpu:gpuSlug")
 // revalidate the data at most every hour: https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#revalidate
 export const revalidate = 3600
 
-export async function generateStaticParams() {
-  const gpuList = await listGpus()
-  return gpuList.map((post) => ({
-    slug: post.name,
-  }))
-}
+// Force dynamic rendering to avoid database dependency during Docker build
+export const dynamic = "force-dynamic"
 
 type GpuParams = {
   params: { gpuSlug: string }

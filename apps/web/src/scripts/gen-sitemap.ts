@@ -12,12 +12,6 @@ const appDir = path.resolve(path.join(__dirname, "../.."))
 
 config({ path: path.join(appDir, ".env.local") })
 
-if (process.env.POSTGRES_PRISMA_URL === undefined) {
-  throw new Error(
-    "POSTGRES_PRISMA_URL is not defined. Add to .env.local or the host's environment.",
-  )
-}
-
 type SiteMapItem = {
   // relative path
   path: string

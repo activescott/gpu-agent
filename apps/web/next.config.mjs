@@ -5,6 +5,7 @@ import addClasses from "rehype-add-classes"
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   poweredByHeader: false,
+  
   // MDX configuration: https://nextjs.org/docs/app/building-your-application/configuring/mdx
   pageExtensions: ["mdx", "ts", "tsx"],
 

@@ -18,6 +18,9 @@ export const maxDuration = 10
 // revalidate the data at most every hour:
 export const revalidate = 3600
 
+// Force dynamic rendering to avoid database dependency during Docker build
+export const dynamic = "force-dynamic"
+
 export const metadata: Metadata = {
   title: "Price Compare GPUs for Machine Learning based on specs",
   description: "Dollar/performance price comparisons for Machine Learning GPUs",

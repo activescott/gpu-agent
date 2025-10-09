@@ -7,6 +7,9 @@ import { Metadata } from "next"
 
 export const revalidate = hoursToSeconds(1)
 
+// Force dynamic rendering to avoid database dependency during Docker build
+export const dynamic = "force-dynamic"
+
 const METADATA_MAX_TITLE_LENGTH = 70
 const METADATA_MAX_DESCRIPTION_LENGTH = 160
 

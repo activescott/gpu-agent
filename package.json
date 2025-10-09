@@ -12,7 +12,8 @@
     "docker:build": "docker build -t gpu-agent .",
     "docker:run": "docker run -p 3000:3000 gpu-agent",
     "docker:dev": "docker compose up --build",
-    "docker:down": "docker compose down"
+    "docker:down": "docker compose down",
+    "prepare": "husky install"
   },
   "workspaces": [
     "apps/*",

@@ -23,6 +23,9 @@ import {
 const REVALIDATE_HOURS = 24
 export const revalidate = hoursToSeconds(REVALIDATE_HOURS)
 
+// Force dynamic rendering to avoid database dependency during Docker build
+export const dynamic = 'force-dynamic'
+
 const log = createDiag("shopping-agent:sitemap")
 
 type SitemapItem = IterableElement<MetadataRoute.Sitemap>

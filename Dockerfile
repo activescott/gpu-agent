@@ -18,9 +18,7 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
-# Set environment variables for build-time static generation
-ENV NEXT_PUBLIC_DOMAIN=coinpoet.com
-# Use a dummy/placeholder database URL for build - the real one will be provided at runtime
+# Use dummy/placeholder database URL for build - the real one will be provided at runtime
 ENV POSTGRES_PRISMA_URL=postgresql://dummy:dummy@localhost:5432/dummy
 ENV POSTGRES_URL_NON_POOLING=postgresql://dummy:dummy@localhost:5432/dummy
 

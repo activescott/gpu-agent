@@ -1,7 +1,13 @@
 import { ISOMORPHIC_CONFIG } from "@/pkgs/isomorphic/config"
+import { hoursToSeconds } from "@/pkgs/isomorphic/duration"
 import { MetadataRoute } from "next"
 
 /* eslint-disable import/no-unused-modules */
+
+// Force dynamic rendering to get runtime environment variables
+export const dynamic = "force-dynamic"
+// Cache for 24 hours
+export const revalidate = hoursToSeconds(24)
 
 // https://nextjs.org/docs/app/api-reference/file-conventions/metadata/robots
 // https://developers.google.com/search/docs/crawling-indexing/robots/intro
@@ -12,6 +18,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: ["/api/", "/bye", "/ei/", "/_next/", "/a/", "/ops/"],
     },
-    sitemap: `https://${ISOMORPHIC_CONFIG.NEXT_PUBLIC_DOMAIN()}/sitemap.xml`,
+    sitemap: `https://${ISOMORPHIC_CONFIG.PUBLIC_DOMAIN()}/sitemap.xml`,
   }
 }

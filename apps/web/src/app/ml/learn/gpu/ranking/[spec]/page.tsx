@@ -27,7 +27,7 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: GpuSpecSlugParams) {
-  const domain_url = `https://${ISOMORPHIC_CONFIG.NEXT_PUBLIC_DOMAIN()}`
+  const domain_url = `https://${ISOMORPHIC_CONFIG.PUBLIC_DOMAIN()}`
   return {
     title: gpuRankingTitle(params.spec as GpuSpecSlug),
     description: gpuRankingDescription(params.spec as GpuSpecSlug),

@@ -39,7 +39,7 @@ rules:
   # -1 is the default "not found" result in JS array methods:
   no-magic-numbers:
     - "warn"
-    - ignore: [-1, 1, 0]
+    - ignore: [-1, 1, 0, 24]
   # wtf is this a warn?
   "@typescript-eslint/no-explicit-any": "error"
   # handy because this causes re-renders and is so easy to miss: https://github.com/jsx-eslint/eslint-plugin-react/blob/HEAD/docs/rules/jsx-no-bind.md

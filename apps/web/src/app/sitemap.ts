@@ -35,18 +35,17 @@ type GpuWithLatestListingDate = {
   latestListingDate: Date
 }
 
-const domain_url = `https://${ISOMORPHIC_CONFIG.NEXT_PUBLIC_DOMAIN()}`
-
 // https://nextjs.org/docs/app/api-reference/file-conventions/metadata/sitemap#generating-a-sitemap-using-code-js-ts
 
 // https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap
 // https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap#addsitemap
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const domain_url = `https://${ISOMORPHIC_CONFIG.PUBLIC_DOMAIN()}`
   log.debug("Awaiting queries for sitemap generation...")
   const awaitedQueries = await Promise.all([
-    homePageSitemapItem(),
-    newsSitemap(),
-    gpuRankingSitemap(),
+    homePageSitemapItem(domain_url),
+    newsSitemap(domain_url),
+    gpuRankingSitemap(domain_url),
     listCachedListingsGroupedByGpu(false, prismaSingleton),
   ])
   log.debug("Awaiting queries for sitemap generation complete.")
@@ -63,10 +62,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const items: SitemapItem[] = [
     homePageItem,
-    ...gpuSlugPathSitemap(gpusWithLatestDate, "/ml/shop/gpu"),
-    ...mlPerformanceSpecSlugsSitemap(),
+    ...gpuSlugPathSitemap(gpusWithLatestDate, "/ml/shop/gpu", domain_url),
+    ...mlPerformanceSpecSlugsSitemap(domain_url),
     ...dynamicEntries,
-    ...staticSitemap(),
+    ...staticSitemap(domain_url),
   ]
 
   return items
@@ -78,7 +77,7 @@ interface SitemapJsonItem {
   lastModified: string
 }
 
-async function homePageSitemapItem(): Promise<SitemapItem> {
+async function homePageSitemapItem(domain_url: string): Promise<SitemapItem> {
   const latestListingDate = await getLatestListingDateWithThrottle()
   return {
     url: `${domain_url}/`,
@@ -89,7 +88,7 @@ async function homePageSitemapItem(): Promise<SitemapItem> {
   } satisfies SitemapItem
 }
 
-async function gpuRankingSitemap(): Promise<SitemapItem[]> {
+async function gpuRankingSitemap(domain_url: string): Promise<SitemapItem[]> {
   const slugs = listGpuRankingSlugs()
 
   // lastModified is effectively the most recent listing data across all GPUs
@@ -114,6 +113,7 @@ async function gpuRankingSitemap(): Promise<SitemapItem[]> {
 function gpuSlugPathSitemap(
   gpus: GpuWithLatestListingDate[],
   pathPrefixBeforeSlug: string,
+  domain_url: string,
 ) {
   const gpuEntries: SitemapItem[] = gpus.map((gpu) => {
     return {
@@ -126,7 +126,7 @@ function gpuSlugPathSitemap(
   return gpuEntries
 }
 
-async function newsSitemap(): Promise<SitemapItem[]> {
+async function newsSitemap(domain_url: string): Promise<SitemapItem[]> {
   const newsArticles = await listPublishedArticles()
 
   const newsEntries: SitemapItem[] = newsArticles.map((article) => {
@@ -148,7 +148,7 @@ async function newsSitemap(): Promise<SitemapItem[]> {
   return [newsRoot, ...newsEntries]
 }
 
-function staticSitemap(): SitemapItem[] {
+function staticSitemap(domain_url: string): SitemapItem[] {
   const jsonEntries = [...staticPagesSitemap.data] as SitemapJsonItem[]
   return jsonEntries.map((item) => {
     return {
@@ -189,7 +189,7 @@ function computeLatestListingDateForGpus(
     }
   })
 }
-function mlPerformanceSpecSlugsSitemap(): SitemapItem[] {
+function mlPerformanceSpecSlugsSitemap(domain_url: string): SitemapItem[] {
   const specSlugs = listPerformanceSlugs()
   const entries = specSlugs.map((slug) => {
     return {

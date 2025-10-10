@@ -2,20 +2,13 @@
 import { posthog } from "posthog-js"
 import { PostHogProvider } from "posthog-js/react"
 import { usePathname, useSearchParams } from "next/navigation"
-import { Suspense, useEffect } from "react"
-import { ISOMORPHIC_CONFIG } from "@/pkgs/isomorphic/config"
+import { Suspense, useEffect, useState } from "react"
+import { useConfigApi } from "@/pkgs/client/hooks/useConfigApi"
 import { createDiag } from "@activescott/diag"
 
 const log = createDiag("shopping-agent:analytics:provider")
 
 // Posthog+NextJS: https://posthog.com/docs/libraries/next-js?tab=App+router
-
-if (typeof window !== "undefined") {
-  posthog.init(ISOMORPHIC_CONFIG.NEXT_PUBLIC_POSTHOG_KEY(), {
-    api_host: ISOMORPHIC_CONFIG.NEXT_PUBLIC_POSTHOG_HOST(),
-    capture_pageview: false, // Disable automatic pageview capture, as we capture manually
-  })
-}
 
 export function AnalyticsPageView(): JSX.Element {
   /* 
@@ -60,5 +53,34 @@ function AnalyticsPageViewInner(): JSX.Element {
 }
 
 export function AnalyticsProvider({ children }: { children: React.ReactNode }) {
+  const { config, loading, error } = useConfigApi()
+  const [posthogInitialized, setPosthogInitialized] = useState(false)
+
+  useEffect(() => {
+    if (config && !posthogInitialized && typeof window !== "undefined") {
+      try {
+        posthog.init(config.posthogKey, {
+          api_host: config.posthogHost,
+          capture_pageview: false, // Disable automatic pageview capture, as we capture manually
+        })
+        setPosthogInitialized(true)
+        log.debug("PostHog initialized with config from API")
+      } catch (error_) {
+        log.error("Failed to initialize PostHog:", error_)
+      }
+    }
+  }, [config, posthogInitialized])
+
+  useEffect(() => {
+    if (error) {
+      log.error("Failed to load config for analytics:", error)
+    }
+  }, [error])
+
+  // Don't render PostHogProvider until we have config and PostHog is initialized
+  if (loading || !config || !posthogInitialized) {
+    return <>{children}</>
+  }
+
   return <PostHogProvider client={posthog}>{children}</PostHogProvider>
 }

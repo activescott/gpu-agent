@@ -16,18 +16,12 @@ export function isNextBuild(): boolean {
 }
 
 export const ISOMORPHIC_CONFIG = {
-  NEXT_PUBLIC_DOMAIN: (): string =>
-    returnOrThrow("NEXT_PUBLIC_DOMAIN", process.env.NEXT_PUBLIC_DOMAIN),
-  NEXT_PUBLIC_POSTHOG_KEY: (): string =>
-    returnOrThrow(
-      "NEXT_PUBLIC_POSTHOG_KEY",
-      process.env.NEXT_PUBLIC_POSTHOG_KEY,
-    ),
-  NEXT_PUBLIC_POSTHOG_HOST: (): string =>
-    returnOrThrow(
-      "NEXT_PUBLIC_POSTHOG_HOST",
-      process.env.NEXT_PUBLIC_POSTHOG_HOST,
-    ),
+  PUBLIC_DOMAIN: (): string =>
+    returnOrThrow("PUBLIC_DOMAIN", process.env.PUBLIC_DOMAIN),
+  PUBLIC_POSTHOG_KEY: (): string =>
+    returnOrThrow("PUBLIC_POSTHOG_KEY", process.env.PUBLIC_POSTHOG_KEY),
+  PUBLIC_POSTHOG_HOST: (): string =>
+    returnOrThrow("PUBLIC_POSTHOG_HOST", process.env.PUBLIC_POSTHOG_HOST),
   MAX_LISTINGS_PER_PAGE: (): number => 50,
 }
 

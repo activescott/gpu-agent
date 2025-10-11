@@ -3,6 +3,9 @@ import { ISOMORPHIC_CONFIG } from "@/pkgs/isomorphic/config"
 
 /* eslint-disable import/no-unused-modules */
 
+// Force dynamic to avoid using build-time environment variables.
+export const dynamic = "force-dynamic"
+
 interface PublicConfig {
   domain: string
   posthogKey: string

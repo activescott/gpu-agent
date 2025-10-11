@@ -8,7 +8,6 @@ import {
 import { SiteHeader } from "@/pkgs/client/components/SiteHeader"
 import { Alert } from "@/pkgs/client/components/Alert"
 import Link from "next/link"
-import { GoogleAdsTag } from "@/pkgs/client/analytics/GoogleAdsTag"
 import { maxLength } from "@/pkgs/isomorphic/string"
 
 // Force dynamic rendering for all pages to avoid database dependency during Docker build
@@ -47,7 +46,13 @@ export default function RootLayout({
           <SiteFooter />
         </AnalyticsProvider>
         <AnalyticsPageView />
-        <GoogleAdsTag />
+        {/*
+        A lighthouse review was to remove unused JavaScript and Google Tag
+        Manager had an estimated 83.0 KiB unused. We're not using it at all and
+        it's 40% of all client JS (161.8 KiB of 403.9 KiB), so removing it for
+        now. 
+        <GoogleAdsTag /> 
+        */}
       </body>
     </html>
   )

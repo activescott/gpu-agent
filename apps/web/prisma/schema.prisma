@@ -51,11 +51,16 @@ model gpu {
 }
 
 model Listing {
-  itemId String  @id @unique
-  // we use this as a soft-delete
+  id         String  @id @default(cuid())
+  itemId     String  // eBay's item ID (no longer unique due to versioning)
+  version    Int     @default(1)
+  // we use this as a soft-delete for archiving historical versions
   // ebay doesn't provide the sold status of an item - the items just don't come back from the search endpoints.
   // so we use this to mark items as stale and not return them.
-  stale  Boolean @default(false)
+  stale      Boolean @default(false)
+  // new archiving fields for historical data tracking
+  archived   Boolean   @default(false)
+  archivedAt DateTime?
 
   title                    String
   priceValue               String
@@ -89,6 +94,8 @@ model Listing {
   // note cachedAt is essentially createdAt but allows us to use it explicitly and potentially update it separately from createdAt or updatedAt
   cachedAt DateTime   @default(now())
 
+  @@index([itemId, version])
+  @@index([gpuName, archived, cachedAt])
   @@index([gpuName, stale])
 }
 

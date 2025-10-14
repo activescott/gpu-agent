@@ -97,7 +97,6 @@ model Listing {
   @@index([itemId, version])
   @@index([gpuName, archived, cachedAt])
   @@index([gpuName, stale])
-  @@unique([itemId, archived], name: "one_active_per_item")
 }
 
 enum NewsStatus {

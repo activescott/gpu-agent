@@ -84,9 +84,7 @@ async function shouldCreateNewVersion(
 
   return {
     shouldCreate: currentHash !== incomingHash,
-    currentListing: current
-      ? { id: current.id, version: current.version }
-      : undefined,
+    currentListing: { id: current.id, version: current.version },
   }
 }
 

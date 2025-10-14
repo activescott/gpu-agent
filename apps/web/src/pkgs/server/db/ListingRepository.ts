@@ -260,7 +260,7 @@ export async function addOrRefreshListingsForGpu(
         },
       })
       createdCount++
-    } else if (versionCheck.currentListing === undefined) {
+    } else if (!versionCheck.currentListing) {
       // No existing listing, create new one
       await prisma.listing.create({
         data: {

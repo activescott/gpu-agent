@@ -280,6 +280,7 @@ export async function addOrRefreshListingsForGpu(
       noChangeCount++
     } else {
       // No existing listing, create new one
+      log.debug(`Creating new listing for ${freshListing.itemId}`)
       await prisma.listing.create({
         data: {
           ...listingData,
@@ -291,8 +292,7 @@ export async function addOrRefreshListingsForGpu(
   }
 
   log.info(
-    `Processing listings for ${gpuName} complete. ` +
-      `Created: ${createdCount}, Archived: ${archivedCount}, Unchanged: ${noChangeCount}`,
+    `Processing listings for ${gpuName} complete. Created: ${createdCount}, Archived: ${archivedCount}, Unchanged: ${noChangeCount}`,
   )
 }
 

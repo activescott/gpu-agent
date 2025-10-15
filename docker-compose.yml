@@ -11,7 +11,29 @@ services:
       - postgres_data:/var/lib/postgresql/data
 
   app:
-    build: .
+    # ===========================================
+    # DEVELOPMENT MODE (default - enables HMR):
+    # ===========================================
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+      # Mount source directories for hot module reloading (HMR)
+      - ./apps:/app/apps
+      - ./packages:/app/packages
+      - ./data:/app/data
+      # DO NOT mount node_modules, .next, .turbo - let container manage these for performance
+      # Excluded volumes: ./node_modules, ./apps/web/.next, ./apps/web/.turbo
+    
+    # ===========================================
+    # PRODUCTION MODE (for production-like testing):
+    # ===========================================
+    # Uncomment the lines below and comment out the development section above
+    # to test with the production container (optimized build, no HMR):
+    #
+    # build: .  # Uses main Dockerfile (production build)
+    # volumes: []  # No volume mounts needed for production testing
+    
     ports:
       - "3000:3000"
     env_file:

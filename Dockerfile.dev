@@ -1,0 +1,47 @@
+FROM node:18-alpine
+
+# Install dependencies and tools needed for development
+RUN apk add --no-cache libc6-compat wget
+
+WORKDIR /app
+
+# Set development environment
+ENV NODE_ENV=development
+
+# Copy package files and install dependencies (including devDependencies)
+COPY package*.json ./
+COPY apps/web/package*.json ./apps/web/
+COPY packages/ebay-client/package*.json ./packages/ebay-client/
+
+# Copy all source files for dependency resolution
+COPY . .
+
+# Install all dependencies (dev dependencies included for development)
+RUN npm ci
+
+# Generate Prisma client (needed for development)
+RUN cd apps/web && npx prisma generate
+
+# Create directories that may be volume mounted
+RUN mkdir -p /app/apps/web/.next /app/apps/web/.turbo
+
+# Set proper permissions for development (allow writing to mounted volumes)
+RUN chown -R node:node /app
+
+# Copy and set up development entrypoint script
+COPY scripts/docker-entrypoint-dev.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/docker-entrypoint-dev.sh
+
+# Switch to node user for development
+USER node
+
+EXPOSE 3000
+
+ENV PORT=3000
+ENV HOSTNAME="0.0.0.0"
+
+# Health check (same as production)
+HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
+  CMD wget --no-verbose --tries=1 --spider http://localhost:3000/api/health || exit 1
+
+ENTRYPOINT ["/usr/local/bin/docker-entrypoint-dev.sh"]

@@ -1,7 +1,6 @@
 "use client"
 
 import { useState, useEffect, useCallback } from "react"
-import { Line, Bar } from "react-chartjs-2"
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -13,6 +12,12 @@ import {
   Tooltip,
   Legend,
 } from "chart.js"
+
+import ControlPanel from "./components/ControlPanel"
+import StatsCards from "./components/StatsCards"
+import PriceChart from "./components/PriceChart"
+import AvailabilityChart from "./components/AvailabilityChart"
+import DataTables from "./components/DataTables"
 
 // Register Chart.js components
 ChartJS.register(
@@ -56,30 +61,41 @@ interface HistoricalData {
   volatilityStats: VolatilityStats
 }
 
-const VOLATILITY_SCORE_PRECISION_DIGITS = 3
-const TOP_10 = 10
-
-// eslint-disable-next-line complexity
 export default function HistoricalDataPage() {
-  const [selectedGpu, setSelectedGpu] = useState("RTX 4090")
+  const [selectedGpu, setSelectedGpu] = useState("")
   const [months, setMonths] = useState(6) // eslint-disable-line no-magic-numbers
   const [loading, setLoading] = useState(false)
   const [data, setData] = useState<HistoricalData | null>(null)
   const [error, setError] = useState<string | null>(null)
+  const [gpuOptions, setGpuOptions] = useState<
+    Array<{ name: string; label: string }>
+  >([])
+  const [gpuLoading, setGpuLoading] = useState(true)
 
-  // Common GPU names for testing
-  const commonGpus = [
-    "RTX 4090",
-    "RTX 4080",
-    "RTX 4070",
-    "RTX 3090",
-    "RTX 3080",
-    "RTX 3070",
-    "RX 7900 XTX",
-    "RX 6800 XT",
-  ]
+  const fetchGpuOptions = useCallback(async () => {
+    try {
+      const response = await fetch("/internal/api/gpus")
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`)
+      }
+      const gpus = await response.json()
+      setGpuOptions(gpus)
+      if (gpus.length > 0 && !selectedGpu) {
+        setSelectedGpu(gpus[0].name)
+      }
+    } catch (error_) {
+      setError(
+        error_ instanceof Error
+          ? error_.message
+          : "Failed to fetch GPU options",
+      )
+    } finally {
+      setGpuLoading(false)
+    }
+  }, [selectedGpu])
 
   const fetchHistoricalData = useCallback(async () => {
+    if (!selectedGpu) return
     setLoading(true)
     setError(null)
 
@@ -102,78 +118,24 @@ export default function HistoricalDataPage() {
   }, [selectedGpu, months])
 
   useEffect(() => {
-    fetchHistoricalData()
+    fetchGpuOptions()
+  }, [fetchGpuOptions])
+
+  useEffect(() => {
+    if (selectedGpu) {
+      fetchHistoricalData()
+    }
   }, [selectedGpu, months, fetchHistoricalData])
 
-  const priceChartData = data
-    ? {
-        labels: data.priceHistory.map((point) =>
-          new Date(point.date).toLocaleDateString(),
-        ),
-        datasets: [
-          {
-            label: "Average Price",
-            data: data.priceHistory.map((point) => point.avgPrice),
-            borderColor: "rgb(75, 192, 192)",
-            backgroundColor: "rgba(75, 192, 192, 0.2)",
-            tension: 0.1,
-          },
-          {
-            label: "Min Price",
-            data: data.priceHistory.map((point) => point.minPrice),
-            borderColor: "rgb(54, 162, 235)",
-            backgroundColor: "rgba(54, 162, 235, 0.2)",
-            tension: 0.1,
-          },
-          {
-            label: "Max Price",
-            data: data.priceHistory.map((point) => point.maxPrice),
-            borderColor: "rgb(255, 99, 132)",
-            backgroundColor: "rgba(255, 99, 132, 0.2)",
-            tension: 0.1,
-          },
-        ],
-      }
-    : null
-
-  const availabilityChartData = data
-    ? {
-        labels: data.availabilityTrends.map((point) =>
-          new Date(point.date).toLocaleDateString(),
-        ),
-        datasets: [
-          {
-            label: "Available Listings",
-            data: data.availabilityTrends.map(
-              (point) => point.availableListings,
-            ),
-            backgroundColor: "rgba(153, 102, 255, 0.2)",
-            borderColor: "rgba(153, 102, 255, 1)",
-            borderWidth: 1,
-          },
-          {
-            label: "Unique Sellers",
-            data: data.availabilityTrends.map((point) => point.uniqueSellers),
-            backgroundColor: "rgba(255, 159, 64, 0.2)",
-            borderColor: "rgba(255, 159, 64, 1)",
-            borderWidth: 1,
-          },
-        ],
-      }
-    : null
-
-  const chartOptions = {
-    responsive: true,
-    plugins: {
-      legend: {
-        position: "top" as const,
-      },
-    },
-    scales: {
-      y: {
-        beginAtZero: true,
-      },
-    },
+  if (gpuLoading) {
+    return (
+      <div className="container mx-auto p-6">
+        <div className="text-center py-8">
+          <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500"></div>
+          <p className="mt-2 text-gray-600">Loading GPU options...</p>
+        </div>
+      </div>
+    )
   }
 
   return (
@@ -184,51 +146,15 @@ export default function HistoricalDataPage() {
         not linked anywhere and not in the sitemap.
       </p>
 
-      {/* Controls */}
-      <div className="bg-gray-100 p-4 rounded-lg mb-6">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              GPU Name
-            </label>
-            <select
-              value={selectedGpu}
-              onChange={(e) => setSelectedGpu(e.target.value)}
-              className="w-full p-2 border border-gray-300 rounded-md"
-            >
-              {commonGpus.map((gpu) => (
-                <option key={gpu} value={gpu}>
-                  {gpu}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              Months of History
-            </label>
-            <select
-              value={months}
-              onChange={(e) => setMonths(Number.parseInt(e.target.value, 10))}
-              className="w-full p-2 border border-gray-300 rounded-md"
-            >
-              <option value={1}>1 Month</option>
-              <option value={3}>3 Months</option>
-              <option value={6}>6 Months</option>
-              <option value={12}>12 Months</option>
-            </select>
-          </div>
-          <div className="flex items-end">
-            <button
-              onClick={fetchHistoricalData}
-              disabled={loading}
-              className="w-full bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600 disabled:opacity-50"
-            >
-              {loading ? "Loading..." : "Refresh Data"}
-            </button>
-          </div>
-        </div>
-      </div>
+      <ControlPanel
+        selectedGpu={selectedGpu}
+        setSelectedGpu={setSelectedGpu}
+        months={months}
+        setMonths={setMonths}
+        loading={loading}
+        onRefresh={fetchHistoricalData}
+        gpuOptions={gpuOptions}
+      />
 
       {/* Error Display */}
       {error && (
@@ -248,133 +174,19 @@ export default function HistoricalDataPage() {
       {/* Data Display */}
       {data && !loading && (
         <div className="space-y-8">
-          {/* Stats Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-            <div className="bg-white p-4 rounded-lg shadow border">
-              <h3 className="text-lg font-semibold mb-2">Volatility Score</h3>
-              <p className="text-2xl font-bold text-blue-600">
-                {data.volatilityStats.volatilityScore?.toFixed(
-                  VOLATILITY_SCORE_PRECISION_DIGITS,
-                ) || "0.000"}
-              </p>
-            </div>
-            <div className="bg-white p-4 rounded-lg shadow border">
-              <h3 className="text-lg font-semibold mb-2">Price Range</h3>
-              <p className="text-2xl font-bold text-green-600">
-                ${data.volatilityStats.priceRange?.toFixed(0) || "N/A"}
-              </p>
-            </div>
-            <div className="bg-white p-4 rounded-lg shadow border">
-              <h3 className="text-lg font-semibold mb-2">Version Count</h3>
-              <p className="text-2xl font-bold text-purple-600">
-                {data.volatilityStats.versionCount || 0}
-              </p>
-            </div>
-            <div className="bg-white p-4 rounded-lg shadow border">
-              <h3 className="text-lg font-semibold mb-2">Data Points</h3>
-              <p className="text-2xl font-bold text-orange-600">
-                {data.priceHistory.length}
-              </p>
-            </div>
-          </div>
+          <StatsCards
+            volatilityStats={data.volatilityStats}
+            dataPointsCount={data.priceHistory.length}
+          />
 
-          {/* Price History Chart */}
-          {priceChartData && (
-            <div className="bg-white p-6 rounded-lg shadow border">
-              <h2 className="text-xl font-semibold mb-4">Price History</h2>
-              <Line data={priceChartData} options={chartOptions} />
-            </div>
-          )}
+          <PriceChart priceHistory={data.priceHistory} />
 
-          {/* Availability Trends Chart */}
-          {availabilityChartData && (
-            <div className="bg-white p-6 rounded-lg shadow border">
-              <h2 className="text-xl font-semibold mb-4">
-                Availability Trends
-              </h2>
-              <Bar data={availabilityChartData} options={chartOptions} />
-            </div>
-          )}
+          <AvailabilityChart availabilityTrends={data.availabilityTrends} />
 
-          {/* Raw Data Tables */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            {/* Price History Table */}
-            <div className="bg-white p-6 rounded-lg shadow border">
-              <h3 className="text-lg font-semibold mb-4">Price History Data</h3>
-              <div className="overflow-x-auto">
-                <table className="min-w-full text-sm">
-                  <thead>
-                    <tr className="border-b">
-                      <th className="text-left p-2">Date</th>
-                      <th className="text-left p-2">Avg Price</th>
-                      <th className="text-left p-2">Min Price</th>
-                      <th className="text-left p-2">Max Price</th>
-                      <th className="text-left p-2">Listings</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {data.priceHistory.slice(0, TOP_10).map((point, index) => (
-                      <tr key={index} className="border-b">
-                        <td className="p-2">
-                          {new Date(point.date).toLocaleDateString()}
-                        </td>
-                        <td className="p-2">${point.avgPrice.toFixed(0)}</td>
-                        <td className="p-2">${point.minPrice.toFixed(0)}</td>
-                        <td className="p-2">${point.maxPrice.toFixed(0)}</td>
-                        <td className="p-2">{point.listingCount}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-                {data.priceHistory.length > TOP_10 && (
-                  <p className="text-gray-500 text-sm mt-2">
-                    Showing first {TOP_10} of {data.priceHistory.length} entries
-                  </p>
-                )}
-              </div>
-            </div>
-
-            {/* Availability Trends Table */}
-            <div className="bg-white p-6 rounded-lg shadow border">
-              <h3 className="text-lg font-semibold mb-4">
-                Availability Trends Data
-              </h3>
-              <div className="overflow-x-auto">
-                <table className="min-w-full text-sm">
-                  <thead>
-                    <tr className="border-b">
-                      <th className="text-left p-2">Date</th>
-                      <th className="text-left p-2">Listings</th>
-                      <th className="text-left p-2">Sellers</th>
-                      <th className="text-left p-2">Avg Days</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {data.availabilityTrends
-                      .slice(0, TOP_10)
-                      .map((point, index) => (
-                        <tr key={index} className="border-b">
-                          <td className="p-2">
-                            {new Date(point.date).toLocaleDateString()}
-                          </td>
-                          <td className="p-2">{point.availableListings}</td>
-                          <td className="p-2">{point.uniqueSellers}</td>
-                          <td className="p-2">
-                            {point.avgDaysListed?.toFixed(1) || "N/A"}
-                          </td>
-                        </tr>
-                      ))}
-                  </tbody>
-                </table>
-                {data.availabilityTrends.length > TOP_10 && (
-                  <p className="text-gray-500 text-sm mt-2">
-                    Showing first {TOP_10} of {data.availabilityTrends.length}{" "}
-                    entries
-                  </p>
-                )}
-              </div>
-            </div>
-          </div>
+          <DataTables
+            priceHistory={data.priceHistory}
+            availabilityTrends={data.availabilityTrends}
+          />
         </div>
       )}
     </div>

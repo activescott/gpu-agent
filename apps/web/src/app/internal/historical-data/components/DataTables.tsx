@@ -27,7 +27,7 @@ export default function DataTables({
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
       {/* Price History Table */}
-      <div className="bg-white p-6 rounded-lg shadow border">
+      <div className="p-6 rounded-lg shadow border">
         <h3 className="text-lg font-semibold mb-4">Price History Data</h3>
         <div className="overflow-x-auto">
           <table className="min-w-full text-sm">
@@ -63,7 +63,7 @@ export default function DataTables({
       </div>
 
       {/* Availability Trends Table */}
-      <div className="bg-white p-6 rounded-lg shadow border">
+      <div className="p-6 rounded-lg shadow border">
         <h3 className="text-lg font-semibold mb-4">Availability Trends Data</h3>
         <div className="overflow-x-auto">
           <table className="min-w-full text-sm">

@@ -51,7 +51,7 @@ export default function AvailabilityChart({
   }
 
   return (
-    <div className="bg-white p-6 rounded-lg shadow border">
+    <div className="p-6 rounded-lg shadow border">
       <h2 className="text-xl font-semibold mb-4">Availability Trends</h2>
       <Bar data={chartData} options={chartOptions} />
     </div>

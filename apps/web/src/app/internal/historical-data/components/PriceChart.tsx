@@ -57,7 +57,7 @@ export default function PriceChart({ priceHistory }: PriceChartProps) {
   }
 
   return (
-    <div className="bg-white p-6 rounded-lg shadow border">
+    <div className="p-6 rounded-lg shadow border">
       <h2 className="text-xl font-semibold mb-4">Price History</h2>
       <Line data={chartData} options={chartOptions} />
     </div>

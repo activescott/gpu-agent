@@ -5,7 +5,7 @@ import { Gpu } from "@/pkgs/isomorphic/model"
 import { chain } from "irritable-iterable"
 import { ISOMORPHIC_CONFIG } from "@/pkgs/isomorphic/config"
 import { Integer } from "type-fest"
-import { listCachedListingsForGpus } from "@/pkgs/server/db/ListingRepository"
+import { listActiveListingsForGpus } from "@/pkgs/server/db/ListingRepository"
 
 const log = createDiag("shopping-agent:shop:gpu:gpuSlug")
 
@@ -34,7 +34,7 @@ export default async function Page({ params }: GpuParams) {
   const { gpuSlug } = params
   log.info(`Fetching cached listings for gpu ${gpuSlug} ...`)
   const gpu: Gpu = await getGpu(gpuSlug)
-  const allListings = await listCachedListingsForGpus([gpuSlug])
+  const allListings = await listActiveListingsForGpus([gpuSlug])
   log.info(
     `Fetching cached listings for gpu ${gpuSlug} complete. Found ${allListings.length} listings.`,
   )

@@ -59,10 +59,22 @@ async function findActiveByItemId(
   })
 }
 
+interface DataChangeCheckResult {
+  /**
+   * True if the listing data has changed and a new version should be created.
+   * False if the listing (1) does not exist OR (2) exists but has not changed.
+   */
+  didChange: boolean
+  /**
+   * The current active listing, if it exists.
+   */
+  existingListing?: { id: string; version: number }
+}
+
 /**
  * Checks if an incoming listing should create a new version
  */
-async function shouldCreateNewVersion(
+async function didListingDataChange(
   itemId: string,
   incomingListing: {
     priceValue: string
@@ -70,21 +82,18 @@ async function shouldCreateNewVersion(
     condition?: string | null
   },
   prisma: PrismaClientWithinTransaction,
-): Promise<{
-  shouldCreate: boolean
-  currentListing?: { id: string; version: number }
-}> {
+): Promise<DataChangeCheckResult> {
   const current = await findActiveByItemId(itemId, prisma)
   if (!current) {
-    return { shouldCreate: false }
+    return { didChange: false }
   }
 
   const currentHash = hashKeyFields(current)
   const incomingHash = hashKeyFields({ itemId, ...incomingListing })
 
   return {
-    shouldCreate: currentHash !== incomingHash,
-    currentListing: { id: current.id, version: current.version },
+    didChange: currentHash !== incomingHash,
+    existingListing: { id: current.id, version: current.version },
   }
 }
 
@@ -103,9 +112,6 @@ export async function listActiveListingsForGpus(
   })
   return res
 }
-
-// Legacy alias for backward compatibility
-export const listCachedListingsForGpus = listActiveListingsForGpus
 
 export type GpuWithListings = {
   listings: CachedListing[]
@@ -204,12 +210,12 @@ export const getLatestListingDateWithThrottle = throttle(
  * You must supply a prisma client that is already wrapped in a transaction, as this involves many queries.
  */
 export async function addOrRefreshListingsForGpu(
-  listings: Listing[],
+  freshListingsFromEbay: Listing[],
   gpuName: string,
   prisma: PrismaClientWithinTransaction,
 ): Promise<void> {
   log.info(`Processing listings for ${gpuName}...`)
-  if (listings.length === 0) {
+  if (freshListingsFromEbay.length === 0) {
     log.warn(
       `No listings specified to add or refresh for gpu ${gpuName}. Aborting attempt to cache new listings.`,
     )
@@ -220,31 +226,34 @@ export async function addOrRefreshListingsForGpu(
   const archivedAt = cachedAt
   let createdCount = 0
   let archivedCount = 0
-  let skippedCount = 0
+  let noChangeCount = 0
 
-  for (const listing of listings) {
+  for (const freshListing of freshListingsFromEbay) {
     const listingData = {
       // NOTE: prisma doesn't like the hydrated gpu field in the listing, so we omit it
-      ...omit(listing, "gpu"),
+      ...omit(freshListing, "gpu"),
       gpuName,
       cachedAt,
     }
 
     // Check if we need to create a new version
-    const versionCheck = await shouldCreateNewVersion(
-      listing.itemId,
+    const changeCheck = await didListingDataChange(
+      freshListing.itemId,
       {
-        priceValue: listing.priceValue,
-        title: listing.title,
-        condition: listing.condition,
+        priceValue: freshListing.priceValue,
+        title: freshListing.title,
+        condition: freshListing.condition,
       },
       prisma,
     )
 
-    if (versionCheck.shouldCreate && versionCheck.currentListing) {
-      // Archive the current version
+    if (changeCheck.didChange && changeCheck.existingListing) {
+      // Archive the current version so we can report on historical data
+      log.info(
+        `Listing ${freshListing.itemId} has changed. Archiving current version and creating a new version.`,
+      )
       await prisma.listing.update({
-        where: { id: versionCheck.currentListing.id },
+        where: { id: changeCheck.existingListing.id },
         data: {
           archived: true,
           archivedAt,
@@ -256,13 +265,19 @@ export async function addOrRefreshListingsForGpu(
       await prisma.listing.create({
         data: {
           ...listingData,
-          version: versionCheck.currentListing.version + 1,
+          version: changeCheck.existingListing.version + 1,
         },
       })
       createdCount++
-    } else if (versionCheck.currentListing) {
-      // Listing exists and hasn't changed, skip
-      skippedCount++
+    } else if (changeCheck.existingListing) {
+      // Listing exists and hasn't changed. Update the cachedAt timestamp so it doesn't become stale:
+      await prisma.listing.update({
+        where: { id: changeCheck.existingListing.id },
+        data: {
+          cachedAt,
+        },
+      })
+      noChangeCount++
     } else {
       // No existing listing, create new one
       await prisma.listing.create({
@@ -277,7 +292,7 @@ export async function addOrRefreshListingsForGpu(
 
   log.info(
     `Processing listings for ${gpuName} complete. ` +
-      `Created: ${createdCount}, Archived: ${archivedCount}, Skipped: ${skippedCount}`,
+      `Created: ${createdCount}, Archived: ${archivedCount}, Unchanged: ${noChangeCount}`,
   )
 }
 
@@ -302,9 +317,6 @@ export async function archiveStaleListingsForGpu(
     `Archiving stale listings for ${gpuName} complete. ${resp.count} archived.`,
   )
 }
-
-// Legacy alias for backward compatibility
-export const deleteStaleListingsForGpu = archiveStaleListingsForGpu
 
 export type GpuPriceStats = {
   avgPrice: number

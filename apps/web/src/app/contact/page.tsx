@@ -1,5 +1,7 @@
 import { Metadata } from "next"
 
+import type { JSX } from "react"
+
 export const metadata: Metadata = {
   title: "Contact CoinPoet.com",
   description: `Contact Coin Poet. Have a question, suggestion, or want to report a bug? Let us know!`,

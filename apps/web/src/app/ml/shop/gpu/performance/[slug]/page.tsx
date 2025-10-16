@@ -17,10 +17,11 @@ export const revalidate = 3600
 export const dynamic = "force-dynamic"
 
 type PerformanceParams = {
-  params: { slug: string }
+  params: Promise<{ slug: string }>
 }
 
-export async function generateMetadata({ params }: PerformanceParams) {
+export async function generateMetadata(props: PerformanceParams) {
+  const params = await props.params
   const slug = params.slug as PerformanceSlug
   const gpuSpec = mapSlugToSpec(slug)
   log.debug("generateMetadata for spec", gpuSpec)
@@ -34,7 +35,8 @@ export async function generateMetadata({ params }: PerformanceParams) {
   }
 }
 
-export default async function Page({ params }: PerformanceParams) {
+export default async function Page(props: PerformanceParams) {
+  const params = await props.params
   const slug = params.slug as PerformanceSlug
   const spec = mapSlugToSpec(slug)
   const TOP_N = 10

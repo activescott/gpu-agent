@@ -6,7 +6,7 @@ import {
 } from "@/pkgs/isomorphic/model/specs"
 import { FormatCurrency } from "@/pkgs/client/components/FormatCurrency"
 import Link from "next/link"
-import { useEffect, useState } from "react"
+import { useEffect, useState, type JSX } from "react"
 import { BootstrapIcon } from "@/pkgs/client/components/BootstrapIcon"
 import { composeComparers } from "@/pkgs/isomorphic/collection"
 import { curry } from "lodash"

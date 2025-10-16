@@ -1,5 +1,4 @@
 import { ISOMORPHIC_CONFIG } from "@/pkgs/isomorphic/config"
-import { hoursToSeconds } from "@/pkgs/isomorphic/duration"
 import { MetadataRoute } from "next"
 
 /* eslint-disable import/no-unused-modules */
@@ -7,7 +6,7 @@ import { MetadataRoute } from "next"
 // Force dynamic rendering to get runtime environment variables
 export const dynamic = "force-dynamic"
 // Cache for 24 hours
-export const revalidate = hoursToSeconds(24)
+export const revalidate = 86_400
 
 // https://nextjs.org/docs/app/api-reference/file-conventions/metadata/robots
 // https://developers.google.com/search/docs/crawling-indexing/robots/intro

@@ -4,8 +4,9 @@ import { prismaSingleton } from "@/pkgs/server/db/db"
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { itemId: string } },
+  props: { params: Promise<{ itemId: string }> },
 ) {
+  const params = await props.params
   try {
     const itemId = decodeURIComponent(params.itemId)
 

@@ -2,7 +2,7 @@
 import { posthog } from "posthog-js"
 import { PostHogProvider } from "posthog-js/react"
 import { usePathname, useSearchParams } from "next/navigation"
-import { Suspense, useEffect, useState } from "react"
+import { Suspense, useEffect, useState, type JSX } from "react"
 import { useConfigApi } from "@/pkgs/client/hooks/useConfigApi"
 import { createDiag } from "@activescott/diag"
 

@@ -6,13 +6,11 @@ import { getPublishedArticleBySlug } from "@/pkgs/server/db/NewsRepository"
 import { createDiag } from "@activescott/diag"
 import { ReactNode } from "react"
 import { ArticleTag } from "../components/ArticleTag"
-import { hoursToSeconds } from "@/pkgs/isomorphic/duration"
 
 const log = createDiag("shopping-agent:news")
 
 // revalidate the data at most every N seconds: https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#revalidate
-const REVALIDATE_HOURS = 6
-export const revalidate = hoursToSeconds(REVALIDATE_HOURS)
+export const revalidate = 21_600
 
 // Force dynamic rendering to avoid database dependency during Docker build
 export const dynamic = "force-dynamic"
@@ -21,10 +19,11 @@ export const dynamic = "force-dynamic"
 //export const dynamicParams = true // true | false,
 
 type NewsParams = {
-  params: { slug: string }
+  params: Promise<{ slug: string }>
 }
 
-export async function generateMetadata({ params }: NewsParams) {
+export async function generateMetadata(props: NewsParams) {
+  const params = await props.params
   const slug = params.slug
 
   log.debug(`generateMetadata for news slug ${slug}`)
@@ -55,7 +54,8 @@ export async function generateMetadata({ params }: NewsParams) {
   } satisfies Metadata
 }
 
-export default async function Page({ params }: NewsParams) {
+export default async function Page(props: NewsParams) {
+  const params = await props.params
   const article = await getPublishedArticleBySlug(params.slug)
   if (!article) {
     return notFound()

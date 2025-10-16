@@ -1,6 +1,6 @@
 //bootstrap-icons.svg
 
-import { ReactElement } from "react"
+import { ReactNode } from "react"
 
 interface Props {
   /**
@@ -20,7 +20,7 @@ export const BootstrapIcon = ({
   alt,
   size = "small",
   onClick,
-}: Props): ReactElement => {
+}: Props): ReactNode => {
   const styleMap = {
     xs: { width: "16px", height: "16px" },
     small: { width: "24px", height: "24px" },

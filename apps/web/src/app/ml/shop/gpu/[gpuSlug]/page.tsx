@@ -16,10 +16,11 @@ export const revalidate = 3600
 export const dynamic = "force-dynamic"
 
 type GpuParams = {
-  params: { gpuSlug: string }
+  params: Promise<{ gpuSlug: string }>
 }
 
-export async function generateMetadata({ params }: GpuParams) {
+export async function generateMetadata(props: GpuParams) {
+  const params = await props.params
   const { gpuSlug } = params
   log.debug("generateStaticMetadata for gpu ", gpuSlug)
   const gpu = await getGpu(gpuSlug)
@@ -30,7 +31,8 @@ export async function generateMetadata({ params }: GpuParams) {
   }
 }
 
-export default async function Page({ params }: GpuParams) {
+export default async function Page(props: GpuParams) {
+  const params = await props.params
   const { gpuSlug } = params
   log.info(`Fetching cached listings for gpu ${gpuSlug} ...`)
   const gpu: Gpu = await getGpu(gpuSlug)

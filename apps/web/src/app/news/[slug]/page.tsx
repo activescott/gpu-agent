@@ -21,10 +21,11 @@ export const dynamic = "force-dynamic"
 //export const dynamicParams = true // true | false,
 
 type NewsParams = {
-  params: { slug: string }
+  params: Promise<{ slug: string }>
 }
 
-export async function generateMetadata({ params }: NewsParams) {
+export async function generateMetadata(props: NewsParams) {
+  const params = await props.params
   const slug = params.slug
 
   log.debug(`generateMetadata for news slug ${slug}`)
@@ -55,7 +56,8 @@ export async function generateMetadata({ params }: NewsParams) {
   } satisfies Metadata
 }
 
-export default async function Page({ params }: NewsParams) {
+export default async function Page(props: NewsParams) {
+  const params = await props.params
   const article = await getPublishedArticleBySlug(params.slug)
   if (!article) {
     return notFound()

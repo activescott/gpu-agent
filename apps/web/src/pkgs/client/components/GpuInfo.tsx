@@ -9,6 +9,8 @@ import { Feature } from "./Feature"
 import { FormatCurrency } from "./FormatCurrency"
 import { BootstrapIcon } from "./BootstrapIcon"
 
+import type { JSX } from "react"
+
 interface GpuInfoParams {
   gpu: Gpu
   minimumPrice: number

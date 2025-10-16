@@ -2,6 +2,8 @@
 // NOTE: DELIBERATELY a client component, to reduce SSR-rendered HTML size for SEO.
 import Link from "next/link"
 
+import type { JSX } from "react"
+
 export default function SiteHeaderNavItems(): JSX.Element {
   return (
     <ul className="navbar-nav">

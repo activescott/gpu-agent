@@ -2,7 +2,7 @@
 import { useSorting } from "@/pkgs/client/components/SortPanel"
 import { GpuSpecKey, GpuSpecs } from "../../isomorphic/model/specs"
 import { ListingCard } from "./ListingCard"
-import { useState } from "react"
+import { useState, type JSX } from "react"
 import { createDiag } from "@activescott/diag"
 import { Listing } from "@/pkgs/isomorphic/model"
 import { divideSafe } from "@/pkgs/isomorphic/math"

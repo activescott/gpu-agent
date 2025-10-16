@@ -19,5 +19,6 @@ npm run prep
 
 # Start the Next.js development server with hot reloading
 echo "🎬 Starting Next.js development server with HMR..."
+npx --no -- next --version
 cd /app
 exec npm run dev --workspace=apps/web

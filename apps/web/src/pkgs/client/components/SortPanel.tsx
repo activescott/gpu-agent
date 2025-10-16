@@ -6,7 +6,7 @@ import {
 } from "@/pkgs/isomorphic/model/specs"
 import { createDiag } from "@activescott/diag"
 import { BootstrapIcon } from "./BootstrapIcon"
-import { useState } from "react"
+import { useState, type JSX } from "react"
 
 const log = createDiag("shopping-agent:SortPanel")
 

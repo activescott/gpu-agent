@@ -8,8 +8,9 @@ import { prismaSingleton } from "@/pkgs/server/db/db"
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { gpuName: string } },
+  props: { params: Promise<{ gpuName: string }> },
 ) {
+  const params = await props.params
   try {
     const { searchParams } = new URL(request.url)
     const months = Number.parseInt(searchParams.get("months") || "6", 10)

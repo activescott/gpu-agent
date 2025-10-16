@@ -13,6 +13,8 @@ import { ListingAffiliateLink } from "./ListingAffiliateLink"
 import { divideSafe } from "@/pkgs/isomorphic/math"
 import { SvgIcon } from "./SvgIcon"
 
+import type { JSX } from "react"
+
 interface ListingCardProps {
   item: Listing
   specs: GpuSpecs

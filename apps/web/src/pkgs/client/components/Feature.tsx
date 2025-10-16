@@ -1,5 +1,7 @@
 import { BootstrapIcon, BootstrapIconName } from "./BootstrapIcon"
 
+import type { JSX } from "react"
+
 export function Feature({
   title,
   children,

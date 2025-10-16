@@ -1,3 +1,5 @@
+"use client"
+
 import Link from "next/link"
 import { SvgIcon } from "./SvgIcon"
 import dynamic from "next/dynamic"

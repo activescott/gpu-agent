@@ -2,7 +2,7 @@
 import Script from "next/script"
 import { createDiag } from "@activescott/diag"
 import { usePathname, useSearchParams } from "next/navigation"
-import { Suspense, useEffect } from "react"
+import { Suspense, useEffect, type JSX } from "react"
 import { usePostHog } from "posthog-js/react"
 
 const log = createDiag("shopping-agent:analytics:GoogleAdWordsTag")

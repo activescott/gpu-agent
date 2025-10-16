@@ -1,4 +1,4 @@
-import React from "react"
+import React, { type JSX } from "react"
 import { BootstrapIcon, BootstrapIconName } from "./BootstrapIcon"
 
 //type AlertKind = "success" | "danger" | "warning" | "info"

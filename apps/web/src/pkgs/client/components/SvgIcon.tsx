@@ -1,4 +1,4 @@
-import { CSSProperties } from "react"
+import { CSSProperties, type JSX } from "react"
 
 interface Props {
   icon: string

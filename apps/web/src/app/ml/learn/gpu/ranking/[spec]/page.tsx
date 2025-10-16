@@ -16,7 +16,7 @@ import { ISOMORPHIC_CONFIG } from "@/pkgs/isomorphic/config"
 export const revalidate = 3600
 
 type GpuSpecSlugParams = {
-  params: { spec: string }
+  params: Promise<{ spec: string }>
 }
 
 export async function generateStaticParams() {
@@ -26,7 +26,8 @@ export async function generateStaticParams() {
   }))
 }
 
-export async function generateMetadata({ params }: GpuSpecSlugParams) {
+export async function generateMetadata(props: GpuSpecSlugParams) {
+  const params = await props.params
   const domain_url = `https://${ISOMORPHIC_CONFIG.PUBLIC_DOMAIN()}`
   return {
     title: gpuRankingTitle(params.spec as GpuSpecSlug),
@@ -39,7 +40,8 @@ export async function generateMetadata({ params }: GpuSpecSlugParams) {
   }
 }
 
-export default async function Page({ params }: GpuSpecSlugParams) {
+export default async function Page(props: GpuSpecSlugParams) {
+  const params = await props.params
   const primarySpec = mapSlugToSpec(params.spec as GpuSpecSlug)
   const desc = GpuSpecsDescription[primarySpec]
 

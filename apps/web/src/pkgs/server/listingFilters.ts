@@ -114,6 +114,9 @@ const nonGpuKeywords = [
   "empty box",
   // e.g. "For Nvidia Tesla P4 8GB M4 4GB T4 16GB L4 24GB A2 GPU Card graphics Cooling fan"
   "Cooling fan",
+  // e.g. "MSI NVIDIA GeForce RTX 4090 SUPRIM 24GB GDDR6X Liquid Cooler Block Only"
+  "Block Only",
+  "card only",
 ].map((word) => word.toLowerCase())
 
 function gpuAccessoryFilter(item: Listing): boolean {

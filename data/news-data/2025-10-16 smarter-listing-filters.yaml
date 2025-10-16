@@ -1,0 +1,39 @@
+id: cmt456def789ghi012
+slug: smarter-listing-filters
+title: "Smarter Listing Filters Based on Your Feedback"
+content: |
+  We've rolled out significant improvements to our listing filters, making it even easier to find genuine GPU deals while filtering out irrelevant accessories and incomplete items.
+
+  ## What's New
+
+  Our enhanced filtering system now removes listings for:
+  - Liquid cooler blocks and cooling components sold separately
+  - Empty boxes and packaging-only listings
+  - Various GPU accessories that aren't actual graphics cards
+
+  ## Community-Driven Improvements
+
+  These updates came directly from customer feedback submitted through our suggestion form. One user pointed out how accessories like liquid cooler blocks were appearing in search results with misleading prices, and we've now addressed this systematically.
+
+  We're incredibly grateful for the community members who take time to share their insights. Your feedback helps us build a better platform for everyone searching for GPU deals.
+
+  ## Recent Performance Enhancements
+
+  Along with filtering improvements, we've added several performance optimizations to make your visits more responsive and the listings even fresher. We have additional performance improvements in the pipeline that will roll out in the coming weeks.
+
+  ## Share Your Ideas
+
+  Have suggestions for making GPU Agent even better? See something off? Please submit feedback through our form on the site. Whether it's filtering improvements, new features, or user experience enhancements, we're always listening to our community.
+
+  Together, we're building the most accurate and useful GPU price tracking platform possible!
+status: PUBLISHED
+tags:
+  - update
+  - feature
+  - filtering
+  - user-feedback
+  - performance
+authorFullName: "Scott"
+createdAt: "2025-10-16T14:00:00Z"
+updatedAt: "2025-10-16T14:00:00Z"
+publishedAt: "2025-10-16T14:30:00Z"

@@ -7,7 +7,6 @@ import { arrayToAsyncIterable } from "../isomorphic/collection"
 it("should filter out box-only items", async () => {
   const gpu = await loadGpuFromYaml("amd-radeon-rx-7800-xt.yaml")
 
-  // "PowerColor Fighter AMD Radeon RX 7800 XT 16GB GDDR6 Box Only"
   const listings: AsyncIterable<Listing> = arrayToAsyncIterable([
     {
       title: "PowerColor Fighter AMD Radeon RX 7800 XT 16GB GDDR6 Box Only",
@@ -23,31 +22,38 @@ it("should filter out box-only items", async () => {
       sellerFeedbackPercentage: "100",
     },
     {
-      title: "Box Only, Gigabyte Radeon Rx 7800 XT Gaming OC",
+      title: "Box Only, Gigabyte Radeon 16GB Rx 7800 XT Gaming OC",
       itemAffiliateWebUrl: "https://example.com",
       buyingOptions: ["FIXED_PRICE"],
       sellerFeedbackPercentage: "100",
     },
     {
-      title: "PowerColor Red Devil Radeon RX 580 8gb GDDR5 *BOX ONLY*",
+      title: "PowerColor AMD Radeon RX 7800 XT 16GB *BOX ONLY*",
       itemAffiliateWebUrl: "https://example.com",
       buyingOptions: ["FIXED_PRICE"],
       sellerFeedbackPercentage: "100",
     },
     {
-      title: "AMD Radeon RX6600 BOX ONLY Various brands",
+      title: "AMD Radeon RX 7800 XT 16GB BOX ONLY Various brands",
       itemAffiliateWebUrl: "https://example.com",
       buyingOptions: ["FIXED_PRICE"],
       sellerFeedbackPercentage: "100",
     },
     {
-      title: "AMD RX 7800 ** BOX ONLY",
+      title: "AMD Radeon RX 7800 XT 16GB ** BOX ONLY",
       itemAffiliateWebUrl: "https://example.com",
       buyingOptions: ["FIXED_PRICE"],
       sellerFeedbackPercentage: "100",
     },
     {
-      title: "GIGABYTE AORUS RADEON RX 580 8GB GDDR5 *BOX ONLY NO GPU*",
+      title: "GIGABYTE AMD Radeon RX 7800 XT 16GB GDDR5 *BOX ONLY NO GPU*",
+      itemAffiliateWebUrl: "https://example.com",
+      buyingOptions: ["FIXED_PRICE"],
+      sellerFeedbackPercentage: "100",
+    },
+    {
+      // Originally: "MSI NVIDIA GeForce RTX 4090 SUPRIM 24GB GDDR6X Liquid Cooler Block Only"
+      title: "GIGABYTE AMD Radeon RX 7800 XT 16GB Liquid Cooler Block Only",
       itemAffiliateWebUrl: "https://example.com",
       buyingOptions: ["FIXED_PRICE"],
       sellerFeedbackPercentage: "100",

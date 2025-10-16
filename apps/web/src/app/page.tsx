@@ -8,7 +8,6 @@ import {
 import { Carousel } from "@/pkgs/client/components/Carousel"
 import { topNListingsByCostPerformance } from "@/pkgs/server/db/ListingRepository"
 import { ListingCardSmall } from "@/pkgs/client/components/ListingCardSmall"
-import { minutesToSeconds } from "@/pkgs/isomorphic/duration"
 import { mapSpecToSlug } from "./ml/shop/gpu/performance/slugs"
 import Link from "next/link"
 import { ReactNode } from "react"
@@ -17,8 +16,7 @@ import { TipCard } from "../pkgs/client/components/TipCard"
 import { NewsArticlePair } from "@/pkgs/client/components/NewsArticlePair"
 
 // revalidate the data at most every N seconds: https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#revalidate
-const REVALIDATE_MINUTES = 30
-export const revalidate = minutesToSeconds(REVALIDATE_MINUTES)
+export const revalidate = 1800
 
 // Force dynamic rendering to avoid database dependency during Docker build
 export const dynamic = "force-dynamic"

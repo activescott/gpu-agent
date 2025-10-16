@@ -1,11 +1,10 @@
 import { listPublishedArticles } from "@/pkgs/server/db/NewsRepository"
 import { ReactNode } from "react"
 import { ArticleSummary } from "./components/ArticleSummary"
-import { hoursToSeconds } from "@/pkgs/isomorphic/duration"
 import { maxLength } from "@/pkgs/isomorphic/string"
 import { Metadata } from "next"
 
-export const revalidate = hoursToSeconds(1)
+export const revalidate = 3600
 
 // Force dynamic rendering to avoid database dependency during Docker build
 export const dynamic = "force-dynamic"

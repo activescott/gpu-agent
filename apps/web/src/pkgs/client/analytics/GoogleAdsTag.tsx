@@ -10,6 +10,7 @@ const log = createDiag("shopping-agent:analytics:GoogleAdWordsTag")
  *
  * NOTE: More about google tag at https://support.google.com/google-ads/answer/7548399?hl=en
  */
+// eslint-disable-next-line import/no-unused-modules
 export const GoogleAdsTag = (): JSX.Element => {
   /* 
   Suspense is used to give next.js a boundary for rendering client-side-components. Outside of the boundary the components can still be rendered server side:

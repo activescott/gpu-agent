@@ -6,13 +6,11 @@ import { getPublishedArticleBySlug } from "@/pkgs/server/db/NewsRepository"
 import { createDiag } from "@activescott/diag"
 import { ReactNode } from "react"
 import { ArticleTag } from "../components/ArticleTag"
-import { hoursToSeconds } from "@/pkgs/isomorphic/duration"
 
 const log = createDiag("shopping-agent:news")
 
 // revalidate the data at most every N seconds: https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#revalidate
-const REVALIDATE_HOURS = 6
-export const revalidate = hoursToSeconds(REVALIDATE_HOURS)
+export const revalidate = 21_600
 
 // Force dynamic rendering to avoid database dependency during Docker build
 export const dynamic = "force-dynamic"

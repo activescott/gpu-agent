@@ -22,7 +22,7 @@ type GpuSpecSlugParams = {
 export async function generateStaticParams() {
   const slugs = listGpuRankingSlugs()
   return slugs.map((slug) => ({
-    slug,
+    spec: slug,
   }))
 }
 

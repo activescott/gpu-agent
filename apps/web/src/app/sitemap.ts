@@ -9,7 +9,7 @@ import {
   listCachedListingsGroupedByGpu,
 } from "@/pkgs/server/db/ListingRepository"
 import { prismaSingleton } from "@/pkgs/server/db/db"
-import { EPOCH, hoursToSeconds } from "@/pkgs/isomorphic/duration"
+import { EPOCH } from "@/pkgs/isomorphic/duration"
 import { listGpuRankingSlugs } from "./ml/learn/gpu/ranking/slugs"
 import { createDiag } from "@activescott/diag"
 import {
@@ -20,8 +20,7 @@ import {
 /* eslint-disable import/no-unused-modules */
 
 // revalidate the data at most every N seconds: https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#revalidate
-const REVALIDATE_HOURS = 24
-export const revalidate = hoursToSeconds(REVALIDATE_HOURS)
+export const revalidate = 86_400
 
 // Force dynamic rendering to avoid database dependency during Docker build
 export const dynamic = "force-dynamic"

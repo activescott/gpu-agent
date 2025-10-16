@@ -12,9 +12,6 @@ import { Integer } from "type-fest"
 
 const log = createDiag("shopping-agent:shop:gpu")
 
-// default is 10s, setting it explicit just to remember this is here: https://vercel.com/docs/functions/configuring-functions/duration
-export const maxDuration = 10
-
 // revalidate the data at most every hour:
 export const revalidate = 3600
 

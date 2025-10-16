@@ -1,11 +1,4 @@
 import { getPrometheusMetrics } from "@/pkgs/server/metrics/metricsStore"
-import { createDiag } from "@activescott/diag"
-
-const log = createDiag("shopping-agent:ops:metrics")
-
-// metrics endpoint no longer needs long duration since it doesn't run the job
-// eslint-disable-next-line import/no-unused-modules
-export const maxDuration = 10
 
 // keep revalidate=0 to ensure fresh metrics on each request
 // eslint-disable-next-line import/no-unused-modules
@@ -24,11 +17,7 @@ export const revalidate = 0
 // eslint-disable-next-line import/no-unused-modules
 export async function GET() {
   const registry = getPrometheusMetrics()
-
-  const start = Date.now()
   const textResponse = await registry.metrics()
-  const duration = Date.now() - start
-  log.info(`metrics collection took ${duration}ms`)
 
   const MAX_CACHE_AGE_SECONDS = 60
   return new Response(textResponse, {

@@ -1,0 +1,45 @@
+# yaml-language-server: $schema=./gpu-spec.schema.json
+name: nvidia-geforce-rtx-3080
+label: NVIDIA GeForce RTX 3080
+tensorCoreCount: 272
+fp32TFLOPS: 29.77
+fp16TFLOPS: 119.07
+int8TOPS: 476.28
+memoryCapacityGB: 10
+memoryBandwidthGBs: 760
+maxTDPWatts: 320
+gpuArchitecture: ampere
+supportedHardwareOperations:
+  - FP16
+  - INT8
+  - TF32
+  - BF16
+supportedCUDAComputeCapability: 8.6
+
+summary: |
+  The NVIDIA GeForce RTX 3080 is a high-end graphics card released in September 2020,
+  featuring the Ampere architecture based on the GA102 GPU. It offers 8,704 CUDA cores,
+  272 3rd-generation tensor cores, and 10GB of GDDR6X memory running at 19 Gbps, delivering
+  476 AI TOPS for INT8 workloads with sparsity. The card represented a massive generational
+  leap in performance over the RTX 2080, offering nearly twice the performance in many
+  workloads. With a TDP of 320W, it provides exceptional performance for 4K gaming and
+  machine learning inference and training tasks. The RTX 3080 uses a PCI-Express 4.0 x16
+  interface and features 760 GB/s memory bandwidth on a 320-bit bus.
+
+references:
+  - https://www.nvidia.com/content/PDF/nvidia-ampere-ga-102-gpu-architecture-whitepaper-v2.1.pdf
+  - https://www.nvidia.com/en-us/geforce/graphics-cards/30-series/rtx-3080-3080ti/
+  - https://www.waredb.com/processor/nvidia-geforce-rtx-3080
+  - https://www.techpowerup.com/gpu-specs/geforce-rtx-3080.c3621
+  - https://www.nvidia.com/en-us/geforce/news/geforce-rtx-30-series-out-now/
+
+notes:
+  - fp16TFLOPS of 119.07 represents "Peak FP16 Tensor TFLOPS" using the "with sparsity" metric. Dense performance is 59.54 TFLOPS, sparse is 119.07 TFLOPS. Following Ampere architecture standards, NVIDIA publishes sparse tensor performance.
+  - int8TOPS of 476.28 is "peak INT8 TOPS" using "Effective TOPS using the Sparsity Feature". Dense performance is 238.14 TOPS, sparse is 476.28 TOPS.
+  - fp32TFLOPS calculated as 8,704 CUDA cores × 1.71 GHz boost clock × 2 ops/cycle = 29.77 TFLOPS. Ampere architecture features 2 FP32 ops per cycle through dedicated FP32 datapath and shared INT32/FP32 datapath.
+  - Power based on what NVIDIA refers to as "TGP (Total Graphics Power)".
+  - The RTX 3080 uses the GA102-200 variant of the GA102 chip with 68 of 84 streaming multiprocessors enabled.
+  - Memory bandwidth calculated as 320-bit interface × 19 Gbps = 760 GB/s.
+  - Process node is Samsung 8nm with approximately 28.3 billion transistors.
+  - At launch, the RTX 3080 was praised for offering nearly 2x the performance of the RTX 2080 at the same price point, representing exceptional generational improvement.
+  - Note that a 12GB variant of the RTX 3080 was released later with slightly different specifications (8,960 CUDA cores and 384-bit memory bus).

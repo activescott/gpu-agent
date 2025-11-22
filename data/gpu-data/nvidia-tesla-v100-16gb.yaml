@@ -1,3 +1,4 @@
+# yaml-language-server: $schema=./gpu-spec.schema.json
 name: nvidia-tesla-v100-16gb
 label: NVIDIA Tesla V100
 tensorCoreCount: 640

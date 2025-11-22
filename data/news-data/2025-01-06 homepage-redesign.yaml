@@ -1,3 +1,4 @@
+# yaml-language-server: $schema=./news-article.schema.json
 id: clr123abc456def789
 slug: homepage-redesign
 title: "A Fresh, Informative New Look for GPU Enthusiasts"

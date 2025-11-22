@@ -1,3 +1,29 @@
+/**
+ * ═══════════════════════════════════════════════════════════════════════════
+ * ⚠️  CRITICAL DATA RETENTION POLICY ⚠️
+ * ═══════════════════════════════════════════════════════════════════════════
+ *
+ * This repository manages GPU listing data with soft-delete archival.
+ *
+ * KEY PRINCIPLES:
+ * 1. Listings are NEVER hard-deleted from the database
+ * 2. Old listings are marked as archived (archived=true) but preserved forever
+ * 3. Active queries filter by archived=false to show current listings
+ * 4. Historical queries include ALL listings (active + archived) for price trends
+ *
+ * WHY THIS MATTERS:
+ * - Historical price data is invaluable for tracking market trends
+ * - Users rely on historical charts to make purchasing decisions
+ * - Deleting archived data would break all historical analysis features
+ * - Storage cost is minimal compared to the value of historical data
+ *
+ * NEVER DELETE ARCHIVED LISTINGS!
+ * If you need to clean up data, create a new migration with extreme caution
+ * and document the business justification thoroughly.
+ *
+ * ═══════════════════════════════════════════════════════════════════════════
+ */
+
 import { Listing } from "@/pkgs/isomorphic/model"
 import { createDiag } from "@activescott/diag"
 import { PrismaClientWithinTransaction, prismaSingleton } from "./db"
@@ -296,6 +322,21 @@ export async function addOrRefreshListingsForGpu(
   )
 }
 
+/**
+ * CRITICAL: Archives stale listings but NEVER deletes them from the database.
+ *
+ * This function marks listings older than CACHED_LISTINGS_DURATION_MS as archived
+ * by setting archived=true and archivedAt timestamp. Archived listings are preserved
+ * for historical price tracking and analysis.
+ *
+ * ⚠️ WARNING: NEVER delete archived listings! Historical queries (getHistoricalPriceData,
+ * getAvailabilityTrends, etc.) rely on archived data to show price trends over time.
+ * Deleting archived listings would destroy valuable historical data.
+ *
+ * The archive operation only affects active listing queries (which filter archived=false).
+ * Historical queries intentionally include both active AND archived listings to provide
+ * complete price history.
+ */
 export async function archiveStaleListingsForGpu(
   gpuName: string,
   prisma: PrismaClientWithinTransaction = prismaSingleton,
@@ -401,6 +442,7 @@ export interface PriceHistoryPoint {
   avgPrice: number
   minPrice: number
   maxPrice: number
+  medianPrice: number
   listingCount: number
 }
 
@@ -429,7 +471,11 @@ export interface VolatilityStats {
 }
 
 /**
- * Gets historical price data for a GPU over the specified number of months
+ * Gets historical price data for a GPU over the specified number of months.
+ *
+ * IMPORTANT: This query intentionally includes BOTH active and archived listings
+ * to provide complete historical price data. Do NOT add an archived=false filter
+ * to this query - archived listings are essential for historical analysis.
  */
 export async function getHistoricalPriceData(
   gpuName: string,
@@ -440,14 +486,15 @@ export async function getHistoricalPriceData(
   startDate.setMonth(startDate.getMonth() - months)
 
   const result = await prisma.$queryRaw<PriceHistoryPoint[]>`
-    SELECT 
+    SELECT
       DATE_TRUNC('day', "cachedAt") as "date",
       AVG("priceValue"::float) as "avgPrice",
-      MIN("priceValue"::float) as "minPrice", 
+      MIN("priceValue"::float) as "minPrice",
       MAX("priceValue"::float) as "maxPrice",
+      PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY "priceValue"::float) as "medianPrice",
       COUNT(*)::float as "listingCount"
     FROM "Listing"
-    WHERE 
+    WHERE
       "gpuName" = ${gpuName}
       AND "cachedAt" >= ${startDate}
     GROUP BY DATE_TRUNC('day', "cachedAt")

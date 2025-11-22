@@ -1,3 +1,4 @@
+# yaml-language-server: $schema=./gpu-spec.schema.json
 name: test-gpu
 label: Test GPU
 tensorCoreCount: 1

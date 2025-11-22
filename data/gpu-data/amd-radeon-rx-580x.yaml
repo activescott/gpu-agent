@@ -1,3 +1,4 @@
+# yaml-language-server: $schema=./gpu-spec.schema.json
 name: amd-radeon-rx-580x
 label: AMD Radeon RX 580X
 fp32TFLOPS: 6.2

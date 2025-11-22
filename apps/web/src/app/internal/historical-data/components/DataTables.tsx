@@ -3,6 +3,7 @@ interface PriceHistoryPoint {
   avgPrice: number
   minPrice: number
   maxPrice: number
+  medianPrice: number
   listingCount: number
 }
 
@@ -35,6 +36,7 @@ export default function DataTables({
               <tr className="border-b">
                 <th className="text-left p-2">Date</th>
                 <th className="text-left p-2">Avg Price</th>
+                <th className="text-left p-2">Median Price</th>
                 <th className="text-left p-2">Min Price</th>
                 <th className="text-left p-2">Max Price</th>
                 <th className="text-left p-2">Listings</th>
@@ -47,6 +49,7 @@ export default function DataTables({
                     {new Date(point.date).toLocaleDateString()}
                   </td>
                   <td className="p-2">${point.avgPrice.toFixed(0)}</td>
+                  <td className="p-2">${point.medianPrice.toFixed(0)}</td>
                   <td className="p-2">${point.minPrice.toFixed(0)}</td>
                   <td className="p-2">${point.maxPrice.toFixed(0)}</td>
                   <td className="p-2">{point.listingCount}</td>

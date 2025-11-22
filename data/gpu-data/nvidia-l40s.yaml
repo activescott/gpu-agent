@@ -1,3 +1,4 @@
+# yaml-language-server: $schema=./gpu-spec.schema.json
 name: nvidia-l40s
 label: NVIDIA L40S
 tensorCoreCount: 568

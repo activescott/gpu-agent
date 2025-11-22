@@ -36,6 +36,7 @@ interface PriceHistoryPoint {
   avgPrice: number
   minPrice: number
   maxPrice: number
+  medianPrice: number
   listingCount: number
 }
 

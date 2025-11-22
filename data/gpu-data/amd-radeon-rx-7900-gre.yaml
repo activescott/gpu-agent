@@ -1,0 +1,39 @@
+# yaml-language-server: $schema=./gpu-spec.schema.json
+name: amd-radeon-rx-7900-gre
+label: AMD Radeon RX 7900 GRE
+gpuArchitecture: RDNA 3
+supportedHardwareOperations:
+  - FP32
+  - FP16
+  - INT8
+tensorCoreCount: 160
+fp32TFLOPS: 45.98
+fp16TFLOPS: 91.96
+int8TOPS: 183.92
+memoryCapacityGB: 16
+memoryBandwidthGBs: 576
+tdp: 260
+summary: |
+  The AMD Radeon RX 7900 GRE (Golden Rabbit Edition) is a mid-to-high-end gaming graphics card based on AMD's RDNA 3 architecture, featuring the Navi 31 GPU. Released globally on February 27, 2024 at $549 MSRP, it was initially exclusive to the Chinese market before expanding worldwide. The RX 7900 GRE is strategically positioned between the RX 7800 XT and RX 7900 XT, offering 80 compute units with 5,120 stream processors and 160 AI Accelerators. It delivers 45.98 TFLOPS of FP32 performance at 2245 MHz boost clock and 91.96 TFLOPS of FP16 performance. The card features 16GB of GDDR6 memory on a 256-bit bus running at 18 Gbps, providing 576 GB/s of memory bandwidth, along with 64MB of AMD Infinity Cache. With a 260W TDP, the RX 7900 GRE offers better power efficiency than the higher-tier RX 7900 XT (315W) while delivering approximately 90-95% of its performance, making it an excellent choice for 1440p and 4K gaming as well as AI workloads.
+
+references:
+  - https://www.amd.com/en/products/specifications/graphics/amd-radeon-rx-7900-gre.html
+  - https://www.tomshardware.com/news/amd-radeon-rx-7900-gre-finally-launches-worldwide
+  - https://www.techpowerup.com/gpu-specs/radeon-rx-7900-gre.c4059
+  - https://www.notebookcheck.net/AMD-Radeon-RX-7900-GRE-GPU-Benchmarks-and-Specs.779217.0.html
+
+notes:
+  # AI Accelerators (Tensor Core equivalent)
+  - tensorCoreCount of 160 calculated as: RDNA 3 has 2 AI Accelerators per CU, 80 CUs × 2 = 160 AI Accelerators
+  # Performance calculations
+  - fp32TFLOPS of 45.98 verified from TechPowerUp and AMD specifications (AMD uses dual-issue capability or counts both FMA units)
+  - fp16TFLOPS of 91.96 calculated as: RDNA 3 performs 2× FP16 operations compared to FP32, 45.98 × 2 = 91.96 TFLOPS
+  - int8TOPS of 183.92 calculated as: RDNA 3 performs 2× INT8 operations compared to FP16, 91.96 × 2 = 183.92 TOPS
+  # Memory
+  - Memory bandwidth calculated as: 256-bit bus × 18 Gbps = 32 bytes × 18 GB/s = 576 GB/s
+  - Features 64MB AMD Infinity Cache
+  # Positioning
+  - Sits between RX 7800 XT (60 CUs, $499) and RX 7900 XT (84 CUs, $799) at $549
+  - Uses same Navi 31 GPU as flagship RX 7900 XTX but with reduced CU count (80 vs 96)
+  - More power efficient than RX 7900 XT: 260W vs 315W while delivering 90-95% of its performance
+  - Originally "Golden Rabbit Edition" for Chinese market, later expanded globally

@@ -1,3 +1,4 @@
+# yaml-language-server: $schema=./gpu-spec.schema.json
 name: nvidia-a30
 label: NVIDIA A30
 tensorCoreCount: 224

@@ -7,9 +7,20 @@ import type { JSX } from "react"
 export default function SiteHeaderNavItems(): JSX.Element {
   return (
     <ul className="navbar-nav">
-      <NavItemLink href="/ml/shop/gpu" label="Browse" />
-      <NavItemLink href="/ml/learn/gpu/ranking" label="GPU Rankings" />
-      <NavItemLink href="/ml/learn" label="Learn" />
+      <NavItemLink
+        href="/gpu/buy/ai/cost-per-tensor-core"
+        label="AI GPU Prices"
+      />
+      <NavItemLink
+        href="/gpu/buy/gaming/cost-per-counter-strike-2-fps-3840x2160"
+        label="Gaming GPU Prices"
+      />
+      <NavItemLink href="/gpu/ranking/ai/fp32-flops" label="AI Rankings" />
+      <NavItemLink
+        href="/gpu/ranking/gaming/counter-strike-2-fps-3840x2160"
+        label="Gaming Rankings"
+      />
+      <NavItemLink href="/gpu/learn" label="Learn" />
     </ul>
   )
 }

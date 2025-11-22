@@ -1,0 +1,75 @@
+# GPU name mapping from OpenBenchmarking.org to coinpoet GPU slugs
+# Format:
+#   "OpenBenchmarking GPU Name": "coinpoet-gpu-slug"
+
+# NVIDIA RTX 50 Series
+"ASUS NVIDIA GeForce RTX 5090": "nvidia-geforce-rtx-5090"
+"NVIDIA GeForce RTX 5090": "nvidia-geforce-rtx-5090"
+"ASUS NVIDIA GeForce RTX 5080": "nvidia-geforce-rtx-5080"
+"NVIDIA GeForce RTX 5080": "nvidia-geforce-rtx-5080"
+"NVIDIA GeForce RTX 5070 Ti": "nvidia-geforce-rtx-5070-ti"
+# 5060 Ti
+"NVIDIA GeForce RTX 5060 Ti": "nvidia-geforce-rtx-5060-ti"
+
+"NVIDIA GeForce RTX 5070": "nvidia-geforce-rtx-5070"
+
+# NVIDIA RTX 40 Series
+"NVIDIA GeForce RTX 4090": "nvidia-geforce-rtx-4090"
+"ASUS NVIDIA GeForce RTX 4090": "nvidia-geforce-rtx-4090"
+# 4080
+"NVIDIA GeForce RTX 4080": "nvidia-geforce-rtx-4080"
+"ASUS NVIDIA GeForce RTX 4080": "nvidia-geforce-rtx-4080"
+# 4080 SUPER
+"ASUS NVIDIA GeForce RTX 4080 SUPER": "nvidia-geforce-rtx-4080-super"
+# 4070
+"NVIDIA GeForce RTX 4070": "nvidia-geforce-rtx-4070"
+"ASUS NVIDIA GeForce RTX 4070": "nvidia-geforce-rtx-4070"
+# 4070 Ti
+"NVIDIA GeForce RTX 4070 Ti": "nvidia-geforce-rtx-4070-ti"
+# 4070 SUPER
+"ASUS NVIDIA GeForce RTX 4070 SUPER": "nvidia-geforce-rtx-4070-super"
+
+# 4060
+"ASUS NVIDIA GeForce RTX 4060": "nvidia-geforce-rtx-4060"
+# 4060 Ti
+"NVIDIA GeForce RTX 4060 Ti": "nvidia-geforce-rtx-4060-ti"
+
+
+# NVIDIA RTX 30 Series
+"NVIDIA GeForce RTX 3090": "nvidia-geforce-rtx-3090"
+# 3080
+"NVIDIA GeForce RTX 3080": "nvidia-geforce-rtx-3080"
+# 3080 Ti
+"NVIDIA GeForce RTX 3080 Ti": "nvidia-geforce-rtx-3080-ti"
+# 3070
+"NVIDIA GeForce RTX 3070": "nvidia-geforce-rtx-3070"
+"NVIDIA GeForce RTX 3060": "nvidia-geforce-rtx-3060"
+# 3070 Ti
+"NVIDIA GeForce RTX 3070 Ti": "nvidia-geforce-rtx-3070-ti"
+
+# AMD Radeon RX 9000 Series
+"Gigabyte AMD Radeon RX 9070": "amd-radeon-rx-9070"
+"AMD Radeon RX 9070 XT": "amd-radeon-rx-9070-xt"
+
+
+# AMD Radeon RX 7000 Series
+"XFX AMD Radeon RX 7900 XTX": "amd-radeon-rx-7900-xtx"
+"AMD Radeon RX 7900 XTX": "amd-radeon-rx-7900-xtx"
+"ASUS AMD Radeon RX 7900 XTX": "amd-radeon-rx-7900-xtx"
+# 7900
+"AMD Radeon RX 7900 XT": "amd-radeon-rx-7900-xt"
+"ASUS AMD Radeon RX 7900 XT": "amd-radeon-rx-7900-xt"
+"ASUS AMD Radeon RX 7900 GRE": "amd-radeon-rx-7900-gre"
+
+# 7800
+"AMD Radeon RX 7800 XT": "amd-radeon-rx-7800-xt"
+"ASUS AMD Radeon RX 7800 XT": "amd-radeon-rx-7800-xt"
+# 7700
+"AMD Radeon RX 7700 XT": "amd-radeon-rx-7700-xt"
+"ASUS AMD Radeon RX 7700 XT": "amd-radeon-rx-7700-xt"
+# 7600
+"ASUS AMD Radeon RX 7600": "amd-radeon-rx-7600"
+"AMD Radeon RX 7600 XT": "amd-radeon-rx-7600-xt"
+"ASUS AMD Radeon RX 7600 XT": "amd-radeon-rx-7600-xt"
+
+"AMD Radeon RX 7600": "amd-radeon-rx-7600"

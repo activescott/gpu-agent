@@ -5,10 +5,8 @@ configurationId: 5468ba6acbd15367b21c9de85bbd13236d338671
 metricName: Frames Per Second (Average)
 results:
   - gpuNameRaw: XFX AMD Radeon RX 7900 XTX
-    gpuNameMapped: amd-radeon-rx-7900-xtx
     value: 413
   - gpuNameRaw: NVIDIA GeForce RTX 4090
-    gpuNameMapped: nvidia-geforce-rtx-4090
     value: 383
   - gpuNameRaw: ASUS AMD Radeon RX 7900 XTX
     value: 358
@@ -17,10 +15,8 @@ results:
   - gpuNameRaw: Gigabyte AMD Radeon RX 9070
     value: 335
   - gpuNameRaw: NVIDIA GeForce RTX 4080
-    gpuNameMapped: nvidia-geforce-rtx-4080
     value: 310
   - gpuNameRaw: AMD Radeon RX 7900 XT
-    gpuNameMapped: amd-radeon-rx-7900-xt
     value: 306
   - gpuNameRaw: ASUS NVIDIA GeForce RTX 4070 SUPER
     value: 294
@@ -33,22 +29,18 @@ results:
   - gpuNameRaw: ASUS NVIDIA GeForce RTX 4070
     value: 264
   - gpuNameRaw: NVIDIA GeForce RTX 3090
-    gpuNameMapped: nvidia-geforce-rtx-3090
     value: 255
   - gpuNameRaw: ASUS AMD Radeon RX 7700 XT
     value: 246
   - gpuNameRaw: NVIDIA GeForce RTX 3080 Ti
     value: 245
   - gpuNameRaw: AMD Radeon RX 6800 XT
-    gpuNameMapped: amd-radeon-rx-6800-xt
     value: 235
   - gpuNameRaw: Median
     value: 223
   - gpuNameRaw: NVIDIA GeForce RTX 3080
-    gpuNameMapped: nvidia-geforce-rtx-3080
     value: 222
   - gpuNameRaw: AMD Radeon RX 6800
-    gpuNameMapped: amd-radeon-rx-6800
     value: 198
   - gpuNameRaw: NVIDIA GeForce RTX 3070 Ti
     value: 192
@@ -76,4 +68,4 @@ results:
     value: 72
   - gpuNameRaw: ASUS Intel Arc A580 DG2
     value: 67
-scrapedAt: 2025-11-21T21:51:35.889Z
+scrapedAt: 2025-11-22T03:42:56.863Z

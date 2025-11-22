@@ -42,6 +42,11 @@ rules:
     - ignore: [-1, 1, 0, 24]
   # wtf is this a warn?
   "@typescript-eslint/no-explicit-any": "error"
+  # Allow variables named _ to be unused (common pattern for intentionally unused variables)
+  "@typescript-eslint/no-unused-vars":
+    - "error"
+    - varsIgnorePattern: "^_"
+      argsIgnorePattern: "^_"
   # handy because this causes re-renders and is so easy to miss: https://github.com/jsx-eslint/eslint-plugin-react/blob/HEAD/docs/rules/jsx-no-bind.md
   #react/jsx-no-bind: "warn"
   # default hyphenated camel case looks weird to me.
@@ -71,6 +76,7 @@ overrides:
       # because inline snapshots have weird indentation sometime
       unicorn/template-indent: off
       import/no-unused-modules: off
+      "@typescript-eslint/no-explicit-any": off
   - files:
       - "src/scripts/**/*.ts"
     rules:

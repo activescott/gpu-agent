@@ -1,0 +1,46 @@
+name: nvidia-geforce-rtx-5060-ti
+label: NVIDIA GeForce RTX 5060 Ti
+tensorCoreCount: 144
+fp32TFLOPS: 23.70
+fp16TFLOPS: 94.81
+int8TOPS: 379.26
+memoryCapacityGB: 16
+memoryBandwidthGBs: 448
+maxTDPWatts: 180
+gpuArchitecture: blackwell
+supportedHardwareOperations:
+  - FP16
+  - INT8
+  - TF32
+  - INT4
+  - BF16
+  - FP8
+  - FP4
+supportedCUDAComputeCapability: 12.8
+
+summary: |
+  The NVIDIA GeForce RTX 5060 Ti is a mid-range graphics card released in 2025,
+  featuring the Blackwell architecture based on the GB206 GPU. It offers 4,608 CUDA cores,
+  144 5th-generation tensor cores, and 16GB of GDDR7 memory running at 28 Gbps, delivering
+  379 AI TOPS for INT8 workloads. The card provides excellent performance for both gaming
+  and AI/ML applications at 1440p and 4K resolutions. With a TDP of 180W, it's significantly
+  more power-efficient than previous generations while offering enhanced AI capabilities
+  through Blackwell's 5th Gen Tensor Cores. The RTX 5060 Ti supports DLSS 4, RTX Neural
+  Shaders, and other advanced features. It uses a PCI-Express 5.0 x16 interface and features
+  448 GB/s memory bandwidth on a 128-bit bus.
+
+references:
+  - https://images.nvidia.com/aem-dam/Solutions/geforce/blackwell/nvidia-rtx-blackwell-gpu-architecture.pdf
+  - https://www.nvidia.com/en-us/geforce/graphics-cards/50-series/rtx-5060-family/
+  - https://www.waredb.com/processor/nvidia-geforce-rtx-5060-ti
+  - https://www.techpowerup.com/gpu-specs/geforce-rtx-5060-ti.c4408
+  - https://www.nvidia.com/en-us/geforce/news/ultimate-guide-to-5060/
+
+notes:
+  - fp16TFLOPS of 94.81 represents "Peak FP16 Tensor TFLOPS with FP16 Accumulate" using the "with sparsity" metric. Dense performance is 47.41 TFLOPS, sparse is 94.81 TFLOPS. Following the same pattern as other Blackwell GPUs, NVIDIA publishes the sparse performance.
+  - int8TOPS of 379.26 is "peak INT8 TOPS" using "Effective TOPS using the new Sparsity Feature". Dense performance is 189.63 TOPS, sparse is 379.26 TOPS.
+  - fp32TFLOPS of 23.70 represents the peak TF32 tensor TFLOPS performance as published for Blackwell architecture GPUs.
+  - Power based on what NVIDIA refers to as "TGP (Total Graphics Power)".
+  - The RTX 5060 Ti uses the GB206 chip with 4,608 CUDA cores across 36 streaming multiprocessors.
+  - Memory bandwidth calculated as 128-bit interface × 28 Gbps = 448 GB/s.
+  - Process node is 4nm with 21.9 billion transistors.

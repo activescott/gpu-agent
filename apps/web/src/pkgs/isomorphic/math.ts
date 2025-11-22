@@ -1,6 +1,9 @@
 export function divideSafe(
-  numerator: number,
+  numerator: number | null | undefined,
   denominator: number | null | undefined,
 ): number {
-  return denominator ? numerator / denominator : Number.POSITIVE_INFINITY
+  if (!numerator || !denominator) {
+    return Number.POSITIVE_INFINITY
+  }
+  return numerator / denominator
 }

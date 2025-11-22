@@ -7,13 +7,10 @@ results:
   - gpuNameRaw: AMD Radeon RX 9070 XT
     value: 416
   - gpuNameRaw: NVIDIA GeForce RTX 4090
-    gpuNameMapped: nvidia-geforce-rtx-4090
     value: 409
   - gpuNameRaw: NVIDIA GeForce RTX 4080
-    gpuNameMapped: nvidia-geforce-rtx-4080
     value: 403
   - gpuNameRaw: AMD Radeon RX 7900 XT
-    gpuNameMapped: amd-radeon-rx-7900-xt
     value: 397
   - gpuNameRaw: ASUS AMD Radeon RX 7900 XTX
     value: 385
@@ -22,15 +19,12 @@ results:
   - gpuNameRaw: AMD Radeon RX 7900 GRE
     value: 346
   - gpuNameRaw: NVIDIA GeForce RTX 3090
-    gpuNameMapped: nvidia-geforce-rtx-3090
     value: 346
   - gpuNameRaw: NVIDIA GeForce RTX 3080 Ti
     value: 335
   - gpuNameRaw: AMD Radeon RX 6800 XT
-    gpuNameMapped: amd-radeon-rx-6800-xt
     value: 332
   - gpuNameRaw: AMD Radeon RX 7900 XTX
-    gpuNameMapped: amd-radeon-rx-7900-xtx
     value: 318
   - gpuNameRaw: Median
     value: 293
@@ -42,4 +36,4 @@ results:
     value: 177
   - gpuNameRaw: Intel BMG G21
     value: 176
-scrapedAt: 2025-11-21T21:51:44.052Z
+scrapedAt: 2025-11-22T03:43:05.040Z

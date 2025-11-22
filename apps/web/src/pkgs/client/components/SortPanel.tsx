@@ -1,9 +1,9 @@
 "use client"
 import {
-  GpuSpecKeys,
-  GpuSpecKey,
-  GpuSpecsDescription,
-} from "@/pkgs/isomorphic/model/specs"
+  GpuMetricKey,
+  GpuMetricKeys,
+  GpuMetricsDescription,
+} from "@/pkgs/isomorphic/model"
 import { createDiag } from "@activescott/diag"
 import { BootstrapIcon } from "./BootstrapIcon"
 import { useState, type JSX } from "react"
@@ -11,7 +11,7 @@ import { useState, type JSX } from "react"
 const log = createDiag("shopping-agent:SortPanel")
 
 interface SortValue {
-  specKey: GpuSpecKey
+  metricKey: GpuMetricKey
   ascending: boolean
 }
 
@@ -41,6 +41,14 @@ export function useSorting(
 }
 
 const SortPanel = ({ value, onChange }: SortPanelProps) => {
+  // Group metrics by category
+  const aiMetrics = GpuMetricKeys.filter(
+    (key) => GpuMetricsDescription[key].category === "ai",
+  )
+  const gamingMetrics = GpuMetricKeys.filter(
+    (key) => GpuMetricsDescription[key].category === "gaming",
+  )
+
   return (
     <div className="w-100">
       <div className=" border rounded py-2 px-3 d-flex">
@@ -53,21 +61,30 @@ const SortPanel = ({ value, onChange }: SortPanelProps) => {
         <select
           id="select-spec"
           className="form-select form-select-sm"
-          defaultValue={value?.specKey}
+          defaultValue={value?.metricKey}
           onChange={(e) => {
             log.debug(`${e.target.id} changed: %o`, selectedOptions(e.target))
             const option = e.target.selectedOptions[0]
             onChange({
               ...value,
-              specKey: option.value as GpuSpecKey,
+              metricKey: option.value as GpuMetricKey,
             })
           }}
         >
-          {GpuSpecKeys.map((specKey) => (
-            <option key={specKey} value={specKey}>
-              {GpuSpecsDescription[specKey].label}
-            </option>
-          ))}
+          <optgroup label="AI / ML Performance">
+            {aiMetrics.map((metricKey) => (
+              <option key={metricKey} value={metricKey}>
+                {GpuMetricsDescription[metricKey].label}
+              </option>
+            ))}
+          </optgroup>
+          <optgroup label="Gaming Performance">
+            {gamingMetrics.map((metricKey) => (
+              <option key={metricKey} value={metricKey}>
+                {GpuMetricsDescription[metricKey].label}
+              </option>
+            ))}
+          </optgroup>
         </select>
         <div className="form-check form-check-inline">
           <input

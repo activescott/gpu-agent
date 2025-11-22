@@ -2,7 +2,7 @@ import { Listing } from "@/pkgs/isomorphic/model"
 import { createDiag } from "@activescott/diag"
 import { PrismaClientWithinTransaction, prismaSingleton } from "./db"
 import { omit, pick, throttle } from "lodash"
-import { GpuSpecKey, GpuSpecKeys } from "@/pkgs/isomorphic/model/specs"
+import { GpuMetricKey, GpuMetricKeys } from "@/pkgs/isomorphic/model/metrics"
 import { Prisma } from "@prisma/client"
 import { CACHED_LISTINGS_DURATION_MS } from "../cacheConfig"
 import { EPOCH, minutesToMilliseconds } from "@/pkgs/isomorphic/duration"
@@ -354,7 +354,7 @@ export async function getPriceStats(
 }
 
 export async function topNListingsByCostPerformance(
-  spec: GpuSpecKey,
+  spec: GpuMetricKey,
   n: number,
   prisma: PrismaClientWithinTransaction = prismaSingleton,
 ): Promise<Listing[]> {
@@ -375,13 +375,18 @@ export async function topNListingsByCostPerformance(
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   return result.map((row: ListingWithGpu) => {
     const listing = omit(row, "gpu")
-    const gpuSpecs = pick(row, GpuSpecKeys)
+    const gpuMetrics = pick(row, GpuMetricKeys)
+    // TODO: I think we have these keys somewhere else, we should centralize them and load them from a single location
     const gpuKeys = [
       "name",
       "label",
       "lastCachedListings",
       "summary",
       "references",
+      "gpuArchitecture",
+      "supportedHardwareOperations",
+      "supportedCUDAComputeCapability",
+      "maxTDPWatts",
     ] as (keyof ListingWithGpu)[]
     const gpu = pick(row, gpuKeys)
 
@@ -389,7 +394,7 @@ export async function topNListingsByCostPerformance(
       ...listing,
       gpu: {
         ...gpu,
-        ...gpuSpecs,
+        ...gpuMetrics,
       },
     }
   })

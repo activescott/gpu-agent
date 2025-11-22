@@ -35,6 +35,8 @@ references:
   - https://www.nvidia.com/en-us/geforce/news/geforce-rtx-4090-out-now/
 
 notes:
+  - fp32TFLOPS calculated as 9,728 CUDA cores × 2.505 GHz boost clock × 4 ops/cycle = 97.48 TFLOPS. The "4 ops/cycle" comes from Ada Lovelace's dual-issue FP32 capability where each SM can execute 2 FP32 operations on the dedicated FP32 pipeline plus 2 more FP32 operations on the INT32/FP32 shared pipeline, totaling 4 FP32 ops per cycle under optimal conditions.
   - fp16TFLOPS is "Peak FP16 Tensor TFLOPS with FP16 Accumulate" as that's what NVIDIA publishes. Using the "with sparsity" metric.
-  - int8TOPS of 1321.2 is "peak INT 8 TOPS" using "Effective TOPS / TFLOPS using the new Sparsity Feature". They also reveal it as 660.6 "based on GPU Boost Clock". This comes from the ada-gpu-architecture-whitepaper-v2.1.
+  - int8TOPS of 779.82 is "peak INT8 TOPS" using "Effective TOPS using the new Sparsity Feature". This comes from the ada-gpu-architecture-whitepaper-v2.1.
   - Power based on what NVIDIA refers to as "TGP (Total Graphics Power)"
+  - The RTX 4080 uses 76 of 80 streaming multiprocessors on the AD103 chip, whereas the RTX 4080 SUPER uses all 80 SMs

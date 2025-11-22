@@ -3,12 +3,11 @@ import { SvgIcon } from "@/pkgs/client/components/SvgIcon"
 import { SpecPill } from "@/pkgs/client/components/SpecPill"
 import { AttributePill, CountryPill } from "./AttributePill"
 import {
-  GpuSpecKey,
-  GpuSpecKeys,
-  GpuSpecs,
-  GpuSpecsDescription,
-} from "@/pkgs/isomorphic/model/specs"
-import { Listing } from "@/pkgs/isomorphic/model"
+  GpuMetricKey,
+  GpuMetricsDescription,
+  getMetricCategory,
+} from "@/pkgs/isomorphic/model/metrics"
+import { Listing, Gpu } from "@/pkgs/isomorphic/model"
 import Image from "next/image"
 import { ListingAffiliateLink } from "./ListingAffiliateLink"
 import { divideSafe } from "@/pkgs/isomorphic/math"
@@ -31,8 +30,8 @@ export const formatPrice = (price: number) => {
 
 interface ListingCardProps {
   item: Listing
-  specs: GpuSpecs
-  highlightSpec: GpuSpecKey
+  specs: Gpu
+  highlightSpec: GpuMetricKey
 }
 
 export const ListingCard = ({
@@ -40,6 +39,7 @@ export const ListingCard = ({
   specs,
   highlightSpec,
 }: ListingCardProps) => {
+  const category = getMetricCategory(highlightSpec)
   const {
     itemAffiliateWebUrl,
     priceValue,
@@ -50,6 +50,12 @@ export const ListingCard = ({
 
   const imageUrl = chooseBestImageUrl(item)
   const cost = Number(priceValue)
+
+  // Show only the primary metric for this page
+  const metricValue = specs[highlightSpec]
+  const costPerMetric = divideSafe(cost, metricValue)
+  const metricDesc = GpuMetricsDescription[highlightSpec]
+
   return (
     <div className="card m-1" style={{ width: "18rem" }}>
       <div
@@ -79,16 +85,17 @@ export const ListingCard = ({
             <CountryPill isoCountryCode={itemLocationCountry}></CountryPill>
           )}
           <br />
-          {GpuSpecKeys.map((specKey) => (
-            <SpecPill
-              key={specKey}
-              infoTipText={GpuSpecsDescription[specKey].descriptionDollarsPer}
-              color={specKey === highlightSpec ? "primary" : "secondary"}
-            >
-              {formatPrice(divideSafe(cost, specs[specKey]))} /{" "}
-              {GpuSpecsDescription[specKey].unit}
-            </SpecPill>
-          ))}
+          <SpecPill
+            infoTipText={metricDesc.descriptionDollarsPer}
+            color="primary"
+          >
+            {formatPrice(costPerMetric)} / {metricDesc.unit}
+            {category === "gaming" && metricValue && (
+              <span className="ms-1 fw-lighter fst-italic">
+                @{Math.round(metricValue)} {metricDesc.unitShortest}
+              </span>
+            )}
+          </SpecPill>
         </div>
       </div>
       <div className="card-footer d-flex">
@@ -98,7 +105,7 @@ export const ListingCard = ({
           className="btn btn-primary my-1 me-auto"
         >
           Buy &nbsp;
-          <span className="fs-small text-muted">
+          <span className="fs-small fw-lighter">
             @ <SvgIcon icon="ebay" />
           </span>
         </ListingAffiliateLink>

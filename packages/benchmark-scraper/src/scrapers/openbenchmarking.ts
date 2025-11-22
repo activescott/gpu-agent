@@ -13,15 +13,6 @@ const TEN_SECONDS = 10000
 const THIRTY_SECONDS = 30000
 
 /**
- * Load GPU name mappings from YAML file
- */
-async function loadGpuNameMappings(): Promise<Record<string, string>> {
-  const mappingPath = path.join(__dirname, "../gpu-name-mapping.yaml")
-  const content = await fs.readFile(mappingPath, "utf-8")
-  return yaml.parse(content) as Record<string, string>
-}
-
-/**
  * Extract numeric value from text like "554 +/- 4" -> 554
  */
 function extractNumericValue(text: string): number | null {
@@ -37,7 +28,6 @@ async function scrapeBenchmarkConfiguration(
   config: BenchmarkScraperConfig,
   configurationId: string,
   configurationName: string,
-  gpuMappings: Record<string, string>,
 ): Promise<BenchmarkData> {
   // Navigate to the performance test page for this configuration
   const url = `https://openbenchmarking.org/performance/test/pts/${config.benchmarkId}/${configurationId}`
@@ -95,7 +85,6 @@ async function scrapeBenchmarkConfiguration(
 
   // Process results
   const results: BenchmarkResult[] = []
-  const unmappedGpus: string[] = []
 
   for (const row of rows) {
     const value = extractNumericValue(row.valueText)
@@ -104,25 +93,13 @@ async function scrapeBenchmarkConfiguration(
       continue
     }
 
-    const mappedName = gpuMappings[row.gpuName]
-    if (!mappedName) {
-      unmappedGpus.push(row.gpuName)
-    }
-
     results.push({
       gpuNameRaw: row.gpuName,
-      gpuNameMapped: mappedName,
       value,
     })
   }
 
-  if (unmappedGpus.length > 0) {
-    console.warn(
-      `Unmapped GPUs found (add these to gpu-name-mapping.yaml):\n${unmappedGpus.map((name) => `  - "${name}"`).join("\n")}`,
-    )
-  }
-
-  console.log(`Found ${results.length} results (${unmappedGpus.length} unmapped)`)
+  console.log(`Found ${results.length} results`)
 
   return {
     benchmarkId: config.benchmarkId,
@@ -188,10 +165,6 @@ export async function scrapeBenchmark(
   const page = await context.newPage()
 
   try {
-    // Load GPU name mappings
-    const gpuMappings = await loadGpuNameMappings()
-    console.log(`Loaded ${Object.keys(gpuMappings).length} GPU name mappings`)
-
     // Get configurations if not provided
     let configurations = config.configurations || []
     if (configurations.length === 0) {
@@ -206,7 +179,6 @@ export async function scrapeBenchmark(
         config,
         "",
         "Default",
-        gpuMappings,
       )
 
       // Save to file
@@ -223,7 +195,6 @@ export async function scrapeBenchmark(
             config,
             cfg.id,
             cfg.name,
-            gpuMappings,
           )
 
           // Create a filename from benchmark ID and configuration

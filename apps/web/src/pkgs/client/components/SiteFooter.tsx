@@ -7,8 +7,15 @@ export const SiteFooter = () => {
     <footer className="pt-5 mx-2 my-5 text-muted border-top fw-lighter">
       <CookieBanner />
       <div className="w-100 d-flex justify-content-around flex-wrap">
-        <FooterLink href="/ml/shop/gpu" label="Browse GPUs for Sale" />
-        <FooterLink href="/ml/learn/gpu/ranking" label="GPU Rankings" />
+        <FooterLink
+          href="/gpu/buy/ai/cost-per-fp32-flops"
+          label="Browse GPUs for Sale"
+        />
+        <FooterLink href="/gpu/ranking/ai/fp32-flops" label="AI Rankings" />
+        <FooterLink
+          href="/gpu/ranking/gaming/counter-strike-2-fps-3840x2160"
+          label="Gaming Rankings"
+        />
         <FooterLink
           href="/ml/learn"
           label="Learn about GPUs for Machine Learning"

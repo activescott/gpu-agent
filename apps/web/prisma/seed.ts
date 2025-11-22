@@ -20,6 +20,7 @@ async function main() {
   try {
     await seedNews(prisma)
     await seedGpus(prisma)
+    await seedBenchmarks(prisma)
   } catch (error) {
     console.error(error)
     throw new Error("Error seeding data", { cause: error })
@@ -166,6 +167,164 @@ async function seedGpus(prisma: PrismaClient): Promise<void> {
     })
     console.log("upserting gpu", gpu.name, "complete.")
   }
+}
+
+async function seedBenchmarks(prisma: PrismaClient): Promise<void> {
+  const benchmarkDataDir = path.resolve(
+    __dirname,
+    "../../../data/benchmark-data",
+  )
+  console.info(`seeding benchmarks from ${benchmarkDataDir}...`)
+
+  // Load GPU name mappings
+  const mappingFilePath = path.join(benchmarkDataDir, "gpu-name-mapping.yaml")
+  let gpuNameMappings: Record<string, string> = {}
+  try {
+    const mappingContent = await fs.readFile(mappingFilePath, "utf8")
+    gpuNameMappings = yaml.parse(mappingContent) as Record<string, string>
+    console.log(
+      `Loaded ${Object.keys(gpuNameMappings).length} GPU name mappings from ${mappingFilePath}`,
+    )
+  } catch (error) {
+    if ((error as NodeJS.ErrnoException).code === "ENOENT") {
+      console.warn(`GPU name mapping file not found: ${mappingFilePath}`)
+      console.warn(
+        "Continuing without mappings. GPUs will only be matched by exact name.",
+      )
+    } else {
+      throw error
+    }
+  }
+
+  let benchmarkFiles: string[]
+  try {
+    const filesUnfiltered = await fs.readdir(benchmarkDataDir)
+    benchmarkFiles = filesUnfiltered
+      .filter((file) => {
+        const isYaml =
+          file.endsWith(".yaml") &&
+          file !== ".gitkeep" &&
+          file !== "gpu-name-mapping.yaml"
+        if (!isYaml && !file.startsWith(".")) {
+          console.warn(`Skipping file ${file} because it is not a YAML file`)
+        }
+        return isYaml
+      })
+      .map((file) => path.join(benchmarkDataDir, file))
+  } catch (error) {
+    if ((error as NodeJS.ErrnoException).code === "ENOENT") {
+      console.warn(
+        `Benchmark data directory does not exist: ${benchmarkDataDir}`,
+      )
+      console.warn(
+        "Skipping benchmark seeding. Run the benchmark scraper first.",
+      )
+      return
+    }
+    throw error
+  }
+
+  if (benchmarkFiles.length === 0) {
+    console.warn("No benchmark YAML files found")
+    console.warn("Run the benchmark scraper to generate benchmark data")
+    return
+  }
+
+  console.log(`Found ${benchmarkFiles.length} benchmark files`)
+
+  // Map benchmark file names to database field names
+  const benchmarkFieldMap: Record<string, string> = {
+    "counter-strike-2-fps-3840x2160": "counterStrike2Fps3840x2160",
+    "counter-strike-2-fps-2560x1440": "counterStrike2Fps2560x1440",
+    "counter-strike-2-fps-1920x1080": "counterStrike2Fps1920x1080",
+    "3dmark-wildlife-extreme-fps": "threemarkWildLifeExtremeFps",
+    // Scraped file name mappings:
+    "cs2-pts-cs2-1-0-x-resolution-3840-x-2160": "counterStrike2Fps3840x2160",
+    "cs2-pts-cs2-1-0-x-resolution-2560-x-1440": "counterStrike2Fps2560x1440",
+    "cs2-pts-cs2-1-0-x-resolution-1920-x-1080": "counterStrike2Fps1920x1080",
+    "3dmark-pts-3dmark-1-0-x-resolution-3840-x-2160":
+      "threemarkWildLifeExtremeFps",
+  }
+
+  for (const filePath of benchmarkFiles) {
+    const fileName = path.basename(filePath, ".yaml")
+    console.log(`Processing benchmark file: ${fileName}`)
+
+    const contents = await fs.readFile(filePath, "utf8")
+    const benchmarkData = yaml.parse(contents) as {
+      benchmarkId: string
+      benchmarkName: string
+      results: Array<{
+        gpuNameRaw: string
+        gpuNameMapped?: string
+        value: number
+      }>
+    }
+
+    // Determine which field to update
+    const fieldName = benchmarkFieldMap[fileName]
+    if (!fieldName) {
+      console.warn(
+        `No field mapping found for ${fileName}, skipping. Add mapping to benchmarkFieldMap in seed.ts`,
+      )
+      continue
+    }
+
+    console.log(
+      `Updating ${benchmarkData.results.length} results for ${benchmarkData.benchmarkName}`,
+    )
+
+    // Update each GPU with the benchmark value
+    let updatedCount = 0
+    let skippedCount = 0
+    let unmappedCount = 0
+    const unmappedGpus: string[] = []
+
+    for (const result of benchmarkData.results) {
+      // Try to get mapped name from mapping file first, fallback to gpuNameMapped field (for backwards compatibility)
+      const mappedName =
+        gpuNameMappings[result.gpuNameRaw] || result.gpuNameMapped
+
+      if (!mappedName) {
+        skippedCount++
+        unmappedCount++
+        if (!unmappedGpus.includes(result.gpuNameRaw)) {
+          unmappedGpus.push(result.gpuNameRaw)
+        }
+        continue
+      }
+
+      try {
+        await prisma.gpu.update({
+          where: { name: mappedName },
+          data: { [fieldName]: result.value },
+        })
+        updatedCount++
+      } catch (error) {
+        if ((error as { code?: string }).code === "P2025") {
+          // Record not found
+          console.warn(
+            `GPU not found in database: ${mappedName} (from ${result.gpuNameRaw})`,
+          )
+          skippedCount++
+        } else {
+          throw error
+        }
+      }
+    }
+
+    if (unmappedGpus.length > 0) {
+      console.warn(
+        `Unmapped GPUs found (add these to data/benchmark-data/gpu-name-mapping.yaml):\n${unmappedGpus.map((name) => `  "${name}": "gpu-slug-here"`).join("\n")}`,
+      )
+    }
+
+    console.log(
+      `Updated ${updatedCount} GPUs, skipped ${skippedCount} (${unmappedCount} unmapped, ${skippedCount - unmappedCount} not found in DB)`,
+    )
+  }
+
+  console.info("Benchmark seeding complete")
 }
 
 /* eslint-disable unicorn/prefer-top-level-await -- because this file's tsconfig is unexpected (maybe this could be fixed with another tsconfig in the same dir?) */

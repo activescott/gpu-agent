@@ -1,3 +1,4 @@
+# yaml-language-server: $schema=./news-article.schema.json
 id: clr890def567ghi123
 slug: enhanced-listing-quality
 title: "GPU Price Verification with High-Quality Seller Requirement"

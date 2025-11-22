@@ -1,3 +1,4 @@
+# yaml-language-server: $schema=./news-article.schema.json
 id: cls9x2def401ghi456
 slug: refined-listing-accuracy
 title: "Enhanced Listing Filters to Remove Irrelevant Accessories"

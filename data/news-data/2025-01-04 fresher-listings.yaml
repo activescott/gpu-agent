@@ -1,3 +1,4 @@
+# yaml-language-server: $schema=./news-article.schema.json
 id: clr789xyz456abc123
 slug: frequent-listing-updates
 title: "The Latest GPU Deals Every 3 Hours"

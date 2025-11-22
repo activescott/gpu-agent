@@ -1,0 +1,44 @@
+# yaml-language-server: $schema=./gpu-spec.schema.json
+name: nvidia-geforce-rtx-3070-ti
+label: NVIDIA GeForce RTX 3070 Ti
+tensorCoreCount: 192
+fp32TFLOPS: 21.75
+fp16TFLOPS: 87.00
+int8TOPS: 348.00
+memoryCapacityGB: 8
+memoryBandwidthGBs: 608
+maxTDPWatts: 290
+gpuArchitecture: ampere
+supportedHardwareOperations:
+  - FP16
+  - INT8
+  - TF32
+  - BF16
+supportedCUDAComputeCapability: 8.6
+
+summary: |
+  The NVIDIA GeForce RTX 3070 Ti is a high-performance graphics card released in June 2021,
+  featuring the Ampere architecture based on the GA104 GPU. It offers 6,144 CUDA cores,
+  192 3rd-generation tensor cores, and 8GB of GDDR6X memory running at 19 Gbps, delivering
+  348 AI TOPS for INT8 workloads with sparsity. The card represents a mid-generation refresh
+  between the RTX 3070 and RTX 3080, offering improved performance through faster GDDR6X memory
+  (versus the RTX 3070's GDDR6) and slightly higher core counts. With a TDP of 290W, it provides
+  excellent performance for both gaming at 1440p/4K and machine learning workloads. The RTX 3070 Ti
+  uses a PCI-Express 4.0 x16 interface and features 608 GB/s memory bandwidth on a 256-bit bus.
+
+references:
+  - https://www.nvidia.com/content/PDF/nvidia-ampere-ga-102-gpu-architecture-whitepaper-v2.1.pdf
+  - https://www.nvidia.com/en-us/geforce/graphics-cards/30-series/rtx-3070-3070ti/
+  - https://www.waredb.com/processor/nvidia-geforce-rtx-3070-ti
+  - https://www.techpowerup.com/gpu-specs/geforce-rtx-3070-ti.c3675
+  - https://www.nvidia.com/en-us/geforce/news/nvidia-geforce-rtx-3070-ti-out-now/
+
+notes:
+  - fp16TFLOPS of 87.00 represents "Peak FP16 Tensor TFLOPS" using the "with sparsity" metric. Dense performance is 43.50 TFLOPS, sparse is 87.00 TFLOPS. Following Ampere architecture standards, NVIDIA publishes sparse tensor performance.
+  - int8TOPS of 348.00 is "peak INT8 TOPS" using "Effective TOPS using the Sparsity Feature". Dense performance is 174.00 TOPS, sparse is 348.00 TOPS.
+  - fp32TFLOPS calculated as 6,144 CUDA cores × 1.77 GHz boost clock × 2 ops/cycle = 21.75 TFLOPS. Ampere architecture features 2 FP32 ops per cycle through dedicated FP32 datapath and shared INT32/FP32 datapath.
+  - Power based on what NVIDIA refers to as "TGP (Total Graphics Power)".
+  - The RTX 3070 Ti uses the GA104-400 variant of the GA104 chip with all 48 streaming multiprocessors enabled.
+  - Memory bandwidth calculated as 256-bit interface × 19 Gbps = 608 GB/s.
+  - Process node is Samsung 8nm with approximately 17.4 billion transistors.
+  - The key difference from RTX 3070 is the use of GDDR6X memory (vs GDDR6) and 256 more CUDA cores (6,144 vs 5,888).

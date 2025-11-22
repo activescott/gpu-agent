@@ -1,0 +1,45 @@
+# yaml-language-server: $schema=./gpu-spec.schema.json
+name: amd-radeon-rx-7600
+label: AMD Radeon RX 7600
+tensorCoreCount: 64
+fp32TFLOPS: 21.75
+fp16TFLOPS: 43.5
+memoryCapacityGB: 8
+memoryBandwidthGBs: 288
+maxTDPWatts: 165
+gpuArchitecture: RDNA 3
+supportedHardwareOperations:
+  - FP16
+  - BF16
+  - INT8
+  - INT4
+
+summary: |
+  The AMD Radeon RX 7600 is a mainstream graphics card released in May 2023,
+  featuring the RDNA 3 architecture based on the Navi 33 GPU. It offers 32 compute units
+  with 2,048 stream processors, 64 AI Accelerators, and 8GB of GDDR6 memory running at
+  18 Gbps. The card is designed for 1080p gaming and provides solid AI/ML inference
+  capabilities through RDNA 3's dedicated AI Accelerators, which excel at GEMM operations
+  critical to machine learning workloads. With a TDP of 165W, it offers good performance
+  per watt for its class. The RX 7600 features 32MB of 2nd-generation Infinity Cache and
+  288 GB/s memory bandwidth on a 128-bit bus. The key difference between the RX 7600 and
+  RX 7600 XT is memory capacity (8GB vs 16GB) and TDP (165W vs 190W), with both sharing
+  the same 32 CU configuration and nearly identical performance in most gaming scenarios.
+
+references:
+  - https://www.amd.com/en/products/graphics/desktops/radeon/7000-series/amd-radeon-rx-7600.html
+  - https://www.amd.com/en/products/specifications/graphics
+  - https://en.wikipedia.org/wiki/RDNA_3
+  - https://gpuopen.com/learn/wmma_on_rdna3/
+  - https://gpuopen.com/learn/amd-lab-notes/amd-lab-notes-matrix-cores-readme/
+  - https://www.tomshardware.com/pc-components/gpus/amd-rx-7600-xt-vs-rx-7600-gpu-faceoff-is-16gb-of-video-memory-worth-it-in-a-budget-gpu
+
+notes:
+  - tensorCoreCount tracks the AI Accelerators as "tensor cores". The RX 7600 has 64 AI Accelerators (2 per CU × 32 CUs).
+  - fp32TFLOPS calculated as 2,048 stream processors × 2.625 GHz boost clock = 21.75 TFLOPS (using doubled rate for RDNA 3).
+  - fp16TFLOPS is 2x FP32 performance due to packed FP16 operations support in RDNA 3.
+  - Memory bandwidth calculated as 128-bit interface × 18 Gbps = 288 GB/s, with effective bandwidth reaching 476.9 GB/s due to 32MB Infinity Cache.
+  - TDP (TBP - Typical Board Power) is 165W, requiring a minimum 550W power supply.
+  - The RX 7600 and RX 7600 XT have identical core specifications (32 CUs, 2,048 shaders, 64 AI Accelerators) but differ in VRAM (8GB vs 16GB) and TDP (165W vs 190W), resulting in only 4-6% performance difference in most scenarios.
+  - Process node is TSMC N6 (6nm).
+  - int8TOPS information is not readily available from AMD's official specifications for RDNA 3 consumer GPUs.

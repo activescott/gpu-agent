@@ -1,0 +1,300 @@
+<!DOCTYPE html><html lang="en"><head>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script><script type="text/javascript" async="" src="https://www.googletagmanager.com/gtag/js?id=G-PRKMGTF4GN&amp;cx=c&amp;gtm=4e5bi1"></script><script async="" type="text/javascript" src="https://quantcast.mgr.consensu.org/choice/UEFjU_w924fg3/phoronix.com/choice.js"></script><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-36850938-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-36850938-1');
+</script>
+
+
+
+    <title>Counter-Strike 2 Performance Benchmarks - OpenBenchmarking.org</title>
+    <meta name="Description" content="Counter-Strike 2: This is a benchmark of Valve's Counter-Strike 2 game.">
+    <meta name="keywords" content="OpenBenchmarking.org, Phoronix Test Suite, Linux benchmarking, automated benchmarking, benchmarking results, benchmarking repository, open source benchmarking, benchmarking test profiles">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="/js/openbenchmarking.js?2022"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo&amp;display=swap" rel="stylesheet"> 
+     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@700&amp;display=swap" rel="stylesheet">
+    <link href="/css/bootstrap.css" rel="stylesheet">
+    <link href="/css/main_2020.css?32" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="alternate" type="application/rss+xml" title="OpenBenchmarking.org - Latest Test Results" href="/rss-results.php">
+    <link rel="alternate" type="application/rss+xml" title="OpenBenchmarking.org - Latest Test Profiles" href="/rss-tests.php">
+    <link rel="alternate" type="application/rss+xml" title="OpenBenchmarking.org - Latest Test Suites" href="/rss-suites.php">
+
+<!-- Quantcast Choice. Consent Manager Tag v2.0 (for TCF 2.0) -->
+<script type="text/javascript" async="true">
+(function() {
+  var host = 'phoronix.com';
+  var element = document.createElement('script');
+  var firstScript = document.getElementsByTagName('script')[0];
+  var url = 'https://quantcast.mgr.consensu.org'
+    .concat('/choice/', 'UEFjU_w924fg3', '/', host, '/choice.js')
+  var uspTries = 0;
+  var uspTriesLimit = 3;
+  element.async = true;
+  element.type = 'text/javascript';
+  element.src = url;
+
+  firstScript.parentNode.insertBefore(element, firstScript);
+
+  function makeStub() {
+    var TCF_LOCATOR_NAME = '__tcfapiLocator';
+    var queue = [];
+    var win = window;
+    var cmpFrame;
+
+    function addFrame() {
+      var doc = win.document;
+      var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+
+      if (!otherCMP) {
+        if (doc.body) {
+          var iframe = doc.createElement('iframe');
+
+          iframe.style.cssText = 'display:none';
+          iframe.name = TCF_LOCATOR_NAME;
+          doc.body.appendChild(iframe);
+        } else {
+          setTimeout(addFrame, 5);
+        }
+      }
+      return !otherCMP;
+    }
+
+    function tcfAPIHandler() {
+      var gdprApplies;
+      var args = arguments;
+
+      if (!args.length) {
+        return queue;
+      } else if (args[0] === 'setGdprApplies') {
+        if (
+          args.length > 3 &&
+          args[2] === 2 &&
+          typeof args[3] === 'boolean'
+        ) {
+          gdprApplies = args[3];
+          if (typeof args[2] === 'function') {
+            args[2]('set', true);
+          }
+        }
+      } else if (args[0] === 'ping') {
+        var retr = {
+          gdprApplies: gdprApplies,
+          cmpLoaded: false,
+          cmpStatus: 'stub'
+        };
+
+        if (typeof args[2] === 'function') {
+          args[2](retr);
+        }
+      } else {
+        queue.push(args);
+      }
+    }
+
+    function postMessageEventHandler(event) {
+      var msgIsString = typeof event.data === 'string';
+      var json = {};
+
+      try {
+        if (msgIsString) {
+          json = JSON.parse(event.data);
+        } else {
+          json = event.data;
+        }
+      } catch (ignore) {}
+
+      var payload = json.__tcfapiCall;
+
+      if (payload) {
+        window.__tcfapi(
+          payload.command,
+          payload.version,
+          function(retValue, success) {
+            var returnMsg = {
+              __tcfapiReturn: {
+                returnValue: retValue,
+                success: success,
+                callId: payload.callId
+              }
+            };
+            if (msgIsString) {
+              returnMsg = JSON.stringify(returnMsg);
+            }
+            event.source.postMessage(returnMsg, '*');
+          },
+          payload.parameter
+        );
+      }
+    }
+
+    while (win) {
+      try {
+        if (win.frames[TCF_LOCATOR_NAME]) {
+          cmpFrame = win;
+          break;
+        }
+      } catch (ignore) {}
+
+      if (win === window.top) {
+        break;
+      }
+      win = win.parent;
+    }
+    if (!cmpFrame) {
+      addFrame();
+      win.__tcfapi = tcfAPIHandler;
+      win.addEventListener('message', postMessageEventHandler, false);
+    }
+  };
+
+  makeStub();
+
+  var uspStubFunction = function() {
+    var arg = arguments;
+    if (typeof window.__uspapi !== uspStubFunction) {
+      setTimeout(function() {
+        if (typeof window.__uspapi !== 'undefined') {
+          window.__uspapi.apply(window.__uspapi, arg);
+        }
+      }, 500);
+    }
+  };
+
+  var checkIfUspIsReady = function() {
+    uspTries++;
+    if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) {
+      console.warn('USP is not accessible');
+    } else {
+      clearInterval(uspInterval);
+    }
+  };
+
+  if (typeof window.__uspapi === 'undefined') {
+    window.__uspapi = uspStubFunction;
+    var uspInterval = setInterval(checkIfUspIsReady, 6000);
+  }
+})();
+</script>
+<!-- End Quantcast Choice. Consent Manager Tag v2.0 (for TCF 2.0) -->
+  </head>
+  <body><a href="https://openbenchmarking.org/cdn-cgi/content?id=Wz3DHgt3FFsm74NDfI8MX7SWdwZM1l0rc7z1NVtKF6A-1763758585.2794168-1.0.1.1-xXNbqx35dXbdJn2zr2EhCr29ehCFIcY7YyrhMk4jw.c" aria-hidden="true" rel="nofollow noopener" style="display: none !important; visibility: hidden !important"></a>
+        <nav class="navbar navbar-inverse navbar-static">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <a class="navbar-brand" href="/">
+                <img src="/css/openbenchmarking.svg" width="241" height="20" alt="OpenBenchmarking.org">
+              </a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+              <ul class="nav navbar-nav navbar-left">
+                <li><a href="/"><img src="/css/openbenchmarking.svg" width="241" height="20" alt="OpenBenchmarking.org"></a></li>
+                <li><a href="/tests">Tests</a></li>
+                <li><a href="/suites">Suites</a></li>
+                <li><a href="/results/latest">Latest Results</a></li>
+              </ul>
+              <ul class="nav navbar-nav navbar-sub pull-right">
+                 <li><a href="/s">Search</a></li>
+		                 <li><a href="/register">Register</a></li>
+                 <li><a href="/login">Login</a></li>
+		              </ul>
+              
+            </div> <!-- /navbar-collapse -->
+          </div> <!-- /container-fluid -->
+        </nav>
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-sm-3 col-md-2 sidebar">
+                <ul class="nav nav-sidebar">
+                  <li class="active">Popular Tests</li>
+                  <li><a href="/test/pts/build-linux-kernel-1.17.1">Timed Linux Kernel Compilation</a></li><li><a href="/test/pts/llama-cpp-2.3.0">Llama.cpp</a></li><li><a href="/test/pts/blender-5.0.0">Blender</a></li><li><a href="/test/pts/hashcat-1.2.0">Hashcat</a></li><li><a href="/test/pts/svt-av1-2.16.0">SVT-AV1</a></li><li><a href="/test/pts/stockfish-1.7.0">Stockfish</a></li>                </ul>
+		              <ul class="nav nav-sidebar">
+                <li class="active">Newest Tests</li>
+                  <li><a href="/test/pts/3dmark-solar-bay">3DMark Solar Bay Extreme</a></li><li><a href="/test/pts/pogocache">Pogocache</a></li><li><a href="/test/pts/rocm-vllm">vLLM</a></li><li><a href="/test/system/hashcat">Hashcat</a></li>
+              </ul>              <ul class="nav nav-sidebar">
+                <li class="active">Recently Updated Tests</li>
+                  <li><a href="/test/pts/blender">Blender</a></li><li><a href="/test/pts/llama-cpp">Llama.cpp</a></li><li><a href="/test/pts/nwchem">NWChem</a></li><li><a href="/test/pts/supertuxkart">SuperTuxKart</a></li><li><a href="/test/pts/petsc">PETSc</a></li><li><a href="/test/pts/build-php">Timed PHP Compilation</a></li>		  <li><a href="/changes"><span style="color: #a63357;">New &amp; Recently Updated Tests</span></a></li>
+              </ul>
+              <ul class="nav nav-sidebar">
+                <li class="active">Recently Updated Suites</li>
+                  <li><a href="/suite/pts/machine-learning">Machine Learning</a></li><li><a href="/suite/pts/video-encoding">Video Encoding</a></li><li><a href="/suite/pts/server">Server Motherboard</a></li>		  <li><a href="/new-suites"><span style="color: #a63357;">New &amp; Recently Updated Suites</span></a></li>
+              </ul>
+              <ul class="nav nav-sidebar">
+                <li class="active">Component Benchmarks</li>
+		<li><a href="/s/Processor">CPUs / Processors</a></li>
+		<li><a href="/s/Graphics">GPUs / Graphics</a></li>
+		<li><a href="/s/OpenGL">OpenGL</a></li>
+		<li><a href="/s/Disk">Disks / Storage</a></li>
+		<li><a href="/s/Motherboard">Motherboards</a></li>
+		<li><a href="/s/File-System">File-Systems</a></li>
+		<li><a href="/s/OS">Operating Systems</a></li>
+              </ul>
+              <ul class="nav nav-sidebar">
+                <li class="active">OpenBenchmarking.org</li>
+                <li><a href="/corporate">Corporate / Organization Info</a></li>
+                <li><a target="_blank" href="https://github.com/phoronix-test-suite/openbenchmarking/issues">Bug Reports / Feature Requests</a></li>
+	
+              </ul>
+
+            </div> <!-- /col-sm-3 col-md-2 sidebar -->
+            <div class="col-sm-9 col-md-10 main ">
+ 	<h1>Counter-Strike 2</h1><div style="text-align: center;"><img class="tp_logo" src="/logos/pts_cs2.png" title="Counter-Strike 2"></div><p style="clear: both;">This is a benchmark of Valve's Counter-Strike 2 game. The test profile assumes you have a Steam account, have Steam installed for the system, and that Counter-Strike 2 is already installed. This automates the process of executing the game and using a standardized time demo.</p><hr><h2 id="results" style="margin-top: 20px; color: #1a8a52 !important;">Counter-Strike 2 </h2><h5 style="color: #1a8a52 !important;">Resolution: 3840 x 2160</h5><p>OpenBenchmarking.org metrics for this test profile configuration based on <em>312</em> public results since <em>17 February 2024</em> with the latest data as of <em>14 July 2025</em>.</p><p>Below is an overview of the generalized performance for components where there is sufficient statistically significant data based upon user-uploaded results. It is important to keep in mind particularly in the Linux/open-source space there can be vastly different OS configurations, with this overview intended to offer just general guidance as to the performance expectations.</p><div class="div_table" style="width: 100%; margin-bottom: 30px;"><div class="div_table_first_row">
+						<div class="div_table_cell">Component</div>
+						<div class="div_table_cell">Details</div>
+						<div class="div_table_cell">Percentile Rank</div>
+						<div class="div_table_cell"># Compatible Public Results</div>
+						<div class="div_table_cell">Frames Per Second (Average)</div>
+						</div><div class="div_table_row" style=" color: #77b900;  background: linear-gradient(to right, #dfdfdf 100.2%, transparent 0);"><div class="div_table_cell" style="font-weight: bold;"><a href="/s/ASUS+NVIDIA+GeForce+RTX+5090" style="color: #77b900;">ASUS NVIDIA GeForce RTX 5090</a></div><div class="div_table_cell"></div><div class="div_table_cell">100th</div><div class="div_table_cell"><em>7</em></div><div class="div_table_cell">341 <sup>+/- 1</sup></div></div><div class="div_table_row" style=" color: #77b900;  background: linear-gradient(to right, #dfdfdf 89%, transparent 0);"><div class="div_table_cell" style="font-weight: bold;"><a href="/s/ASUS+NVIDIA+GeForce+RTX+4090" style="color: #77b900;">ASUS NVIDIA GeForce RTX 4090</a></div><div class="div_table_cell"></div><div class="div_table_cell">97th</div><div class="div_table_cell"><em>4</em></div><div class="div_table_cell">303 <sup>+/- 8</sup></div></div><div class="div_table_row" style=" color: #f1052d;  background: linear-gradient(to right, #dfdfdf 78.8%, transparent 0);"><div class="div_table_cell" style="font-weight: bold;"><a href="/s/XFX+AMD+Radeon+RX+7900+XTX" style="color: #f1052d;">XFX AMD Radeon RX 7900 XTX</a></div><div class="div_table_cell"></div><div class="div_table_cell">94th</div><div class="div_table_cell"><em>10</em></div><div class="div_table_cell">268 <sup>+/- 11</sup></div></div><div class="div_table_row" style=" color: #f1052d;  background: linear-gradient(to right, #dfdfdf 76.4%, transparent 0);"><div class="div_table_cell" style="font-weight: bold;"><a href="/s/ASUS+AMD+Radeon+RX+7900+XTX" style="color: #f1052d;">ASUS AMD Radeon RX 7900 XTX</a></div><div class="div_table_cell"></div><div class="div_table_cell">92nd</div><div class="div_table_cell"><em>10</em></div><div class="div_table_cell">260 <sup>+/- 12</sup></div></div><div class="div_table_row" style=" color: #77b900;  background: linear-gradient(to right, #dfdfdf 74.1%, transparent 0);"><div class="div_table_cell" style="font-weight: bold;"><a href="/s/ASUS+NVIDIA+GeForce+RTX+5080" style="color: #77b900;">ASUS NVIDIA GeForce RTX 5080</a></div><div class="div_table_cell"></div><div class="div_table_cell">91st</div><div class="div_table_cell"><em>7</em></div><div class="div_table_cell">252 <sup>+/- 1</sup></div></div><div class="div_table_row" style=" color: #77b900;  background: linear-gradient(to right, #dfdfdf 67%, transparent 0);"><div class="div_table_cell" style="font-weight: bold;"><a href="/s/ASUS+NVIDIA+GeForce+RTX+4080+SUPER" style="color: #77b900;">ASUS NVIDIA GeForce RTX 4080 SUPER</a></div><div class="div_table_cell"></div><div class="div_table_cell">84th</div><div class="div_table_cell"><em>5</em></div><div class="div_table_cell">228</div></div><div class="div_table_row" style=" color: #f1052d;  background: linear-gradient(to right, #dfdfdf 66.4%, transparent 0);"><div class="div_table_cell" style="font-weight: bold;"><a href="/s/ASUS+AMD+Radeon+RX+7900+XT" style="color: #f1052d;">ASUS AMD Radeon RX 7900 XT</a></div><div class="div_table_cell"></div><div class="div_table_cell">81st</div><div class="div_table_cell"><em>4</em></div><div class="div_table_cell">226 <sup>+/- 1</sup></div></div><div class="div_table_row" style=" color: #77b900;  background: linear-gradient(to right, #dfdfdf 65.8%, transparent 0);"><div class="div_table_cell" style="font-weight: bold;"><a href="/s/ASUS+NVIDIA+GeForce+RTX+4080" style="color: #77b900;">ASUS NVIDIA GeForce RTX 4080</a></div><div class="div_table_cell"></div><div class="div_table_cell">79th</div><div class="div_table_cell"><em>4</em></div><div class="div_table_cell">224 <sup>+/- 1</sup></div></div><div class="div_table_row" style="font-weight: 900;">
+									<div class="div_table_cell">Mid-Tier</div>
+									<div class="div_table_cell"> </div>
+									<div class="div_table_cell">75th</div>
+									<div class="div_table_cell"></div>
+									<div class="div_table_cell">&lt; 199</div>
+									</div><div class="div_table_row" style=" color: #f1052d;  background: linear-gradient(to right, #dfdfdf 53.2%, transparent 0);"><div class="div_table_cell" style="font-weight: bold;"><a href="/s/AMD+Radeon+RX+9070+XT" style="color: #f1052d;">AMD Radeon RX 9070 XT</a></div><div class="div_table_cell"></div><div class="div_table_cell">72nd</div><div class="div_table_cell"><em>3</em></div><div class="div_table_cell">181 <sup>+/- 4</sup></div></div><div class="div_table_row" style=" color: #77b900;  background: linear-gradient(to right, #dfdfdf 52.3%, transparent 0);"><div class="div_table_cell" style="font-weight: bold;"><a href="/s/NVIDIA+GeForce+RTX+5070" style="color: #77b900;">NVIDIA GeForce RTX 5070</a></div><div class="div_table_cell"></div><div class="div_table_cell">70th</div><div class="div_table_cell"><em>6</em></div><div class="div_table_cell">178 <sup>+/- 1</sup></div></div><div class="div_table_row" style=" color: #f1052d;  background: linear-gradient(to right, #dfdfdf 51.7%, transparent 0);"><div class="div_table_cell" style="font-weight: bold;"><a href="/s/ASUS+AMD+Radeon+RX+7900+GRE" style="color: #f1052d;">ASUS AMD Radeon RX 7900 GRE</a></div><div class="div_table_cell"></div><div class="div_table_cell">67th</div><div class="div_table_cell"><em>4</em></div><div class="div_table_cell">176</div></div><div class="div_table_row" style=" color: #f1052d;  background: linear-gradient(to right, #dfdfdf 50.8%, transparent 0);"><div class="div_table_cell" style="font-weight: bold;"><a href="/s/Gigabyte+AMD+Radeon+RX+9070" style="color: #f1052d;">Gigabyte AMD Radeon RX 9070</a></div><div class="div_table_cell"></div><div class="div_table_cell">66th</div><div class="div_table_cell"><em>5</em></div><div class="div_table_cell">173 <sup>+/- 4</sup></div></div><div class="div_table_row" style=" color: #f1052d;  background: linear-gradient(to right, #dfdfdf 50%, transparent 0);"><div class="div_table_cell" style="font-weight: bold;"><a href="/s/Gigabyte+AMD+Navi+48" style="color: #f1052d;">Gigabyte AMD Navi 48</a></div><div class="div_table_cell"></div><div class="div_table_cell">63rd</div><div class="div_table_cell"><em>3</em></div><div class="div_table_cell">170 <sup>+/- 1</sup></div></div><div class="div_table_row" style=" color: #77b900;  background: linear-gradient(to right, #dfdfdf 48.8%, transparent 0);"><div class="div_table_cell" style="font-weight: bold;"><a href="/s/ASUS+NVIDIA+GeForce+RTX+4070+SUPER" style="color: #77b900;">ASUS NVIDIA GeForce RTX 4070 SUPER</a></div><div class="div_table_cell"></div><div class="div_table_cell">58th</div><div class="div_table_cell"><em>8</em></div><div class="div_table_cell">166 <sup>+/- 1</sup></div></div><div class="div_table_row" style=" color: #f1052d;  background: linear-gradient(to right, #dfdfdf 47.3%, transparent 0);"><div class="div_table_cell" style="font-weight: bold;"><a href="/s/ASUS+AMD+Radeon+RX+7800+XT" style="color: #f1052d;">ASUS AMD Radeon RX 7800 XT</a></div><div class="div_table_cell"></div><div class="div_table_cell">51st</div><div class="div_table_cell"><em>6</em></div><div class="div_table_cell">161 <sup>+/- 1</sup></div></div><div class="div_table_row" style="font-weight: bold;">
+									<div class="div_table_cell">Median</div>
+									<div class="div_table_cell"> </div>
+									<div class="div_table_cell">50th</div>
+									<div class="div_table_cell"></div>
+									<div class="div_table_cell">160</div>
+									</div><div class="div_table_row" style=" color: #77b900;  background: linear-gradient(to right, #dfdfdf 42.6%, transparent 0);"><div class="div_table_cell" style="font-weight: bold;"><a href="/s/ASUS+NVIDIA+GeForce+RTX+4070" style="color: #77b900;">ASUS NVIDIA GeForce RTX 4070</a></div><div class="div_table_cell"></div><div class="div_table_cell">46th</div><div class="div_table_cell"><em>7</em></div><div class="div_table_cell">145 <sup>+/- 1</sup></div></div><div class="div_table_row" style=" color: #77b900;  background: linear-gradient(to right, #dfdfdf 41.7%, transparent 0);"><div class="div_table_cell" style="font-weight: bold;"><a href="/s/NVIDIA+GeForce+RTX+3090" style="color: #77b900;">NVIDIA GeForce RTX 3090</a></div><div class="div_table_cell"></div><div class="div_table_cell">44th</div><div class="div_table_cell"><em>6</em></div><div class="div_table_cell">142</div></div><div class="div_table_row" style=" color: #77b900;  background: linear-gradient(to right, #dfdfdf 40%, transparent 0);"><div class="div_table_cell" style="font-weight: bold;"><a href="/s/NVIDIA+GeForce+RTX+3080+Ti" style="color: #77b900;">NVIDIA GeForce RTX 3080 Ti</a></div><div class="div_table_cell"></div><div class="div_table_cell">39th</div><div class="div_table_cell"><em>6</em></div><div class="div_table_cell">136</div></div><div class="div_table_row" style=" color: #77b900;  background: linear-gradient(to right, #dfdfdf 39.7%, transparent 0);"><div class="div_table_cell" style="font-weight: bold;"><a href="/s/NVIDIA+GeForce+RTX+5060+Ti" style="color: #77b900;">NVIDIA GeForce RTX 5060 Ti</a></div><div class="div_table_cell"></div><div class="div_table_cell">38th</div><div class="div_table_cell"><em>6</em></div><div class="div_table_cell">135</div></div><div class="div_table_row" style=" color: #f1052d;  background: linear-gradient(to right, #dfdfdf 38.2%, transparent 0);"><div class="div_table_cell" style="font-weight: bold;"><a href="/s/ASUS+AMD+Radeon+RX+7700+XT" style="color: #f1052d;">ASUS AMD Radeon RX 7700 XT</a></div><div class="div_table_cell"></div><div class="div_table_cell">34th</div><div class="div_table_cell"><em>3</em></div><div class="div_table_cell">130 <sup>+/- 1</sup></div></div><div class="div_table_row" style=" color: #77b900;  background: linear-gradient(to right, #dfdfdf 35.9%, transparent 0);"><div class="div_table_cell" style="font-weight: bold;"><a href="/s/NVIDIA+GeForce+RTX+3080" style="color: #77b900;">NVIDIA GeForce RTX 3080</a></div><div class="div_table_cell"></div><div class="div_table_cell">31st</div><div class="div_table_cell"><em>5</em></div><div class="div_table_cell">122 <sup>+/- 1</sup></div></div><div class="div_table_row" style=" color: #77b900;  background: linear-gradient(to right, #dfdfdf 30.3%, transparent 0);"><div class="div_table_cell" style="font-weight: bold;"><a href="/s/NVIDIA+GeForce+RTX+3070+Ti" style="color: #77b900;">NVIDIA GeForce RTX 3070 Ti</a></div><div class="div_table_cell"></div><div class="div_table_cell">26th</div><div class="div_table_cell"><em>5</em></div><div class="div_table_cell">103</div></div><div class="div_table_row" style="font-weight: bold;">
+									<div class="div_table_cell">Low-Tier</div>
+									<div class="div_table_cell"> </div>
+									<div class="div_table_cell">25th</div>
+									<div class="div_table_cell"></div>
+									<div class="div_table_cell">&lt; 103</div>
+									</div><div class="div_table_row" style=" color: #f1052d;  background: linear-gradient(to right, #dfdfdf 27.9%, transparent 0);"><div class="div_table_cell" style="font-weight: bold;"><a href="/s/AMD+Radeon+RX+7900+XTX" style="color: #f1052d;">AMD Radeon RX 7900 XTX</a></div><div class="div_table_cell"></div><div class="div_table_cell">18th</div><div class="div_table_cell"><em>4</em></div><div class="div_table_cell">95 <sup>+/- 11</sup></div></div><div class="div_table_row" style=" color: #77b900;  background: linear-gradient(to right, #dfdfdf 26.7%, transparent 0);"><div class="div_table_cell" style="font-weight: bold;"><a href="/s/ASUS+NVIDIA+GeForce+RTX+4060" style="color: #77b900;">ASUS NVIDIA GeForce RTX 4060</a></div><div class="div_table_cell"></div><div class="div_table_cell">16th</div><div class="div_table_cell"><em>5</em></div><div class="div_table_cell">91 <sup>+/- 1</sup></div></div><div class="div_table_row" style=" color: #f1052d;  background: linear-gradient(to right, #dfdfdf 26.2%, transparent 0);"><div class="div_table_cell" style="font-weight: bold;"><a href="/s/ASUS+AMD+Radeon+RX+7600+XT" style="color: #f1052d;">ASUS AMD Radeon RX 7600 XT</a></div><div class="div_table_cell"></div><div class="div_table_cell">14th</div><div class="div_table_cell"><em>4</em></div><div class="div_table_cell">89</div></div><div class="div_table_row" style=" color: #f1052d;  background: linear-gradient(to right, #dfdfdf 25.9%, transparent 0);"><div class="div_table_cell" style="font-weight: bold;"><a href="/s/ASUS+AMD+Radeon+RX+7600" style="color: #f1052d;">ASUS AMD Radeon RX 7600</a></div><div class="div_table_cell"></div><div class="div_table_cell">13th</div><div class="div_table_cell"><em>3</em></div><div class="div_table_cell">88</div></div><div class="div_table_row" style=" color: #0b5997;  background: linear-gradient(to right, #dfdfdf 22%, transparent 0);"><div class="div_table_cell" style="font-weight: bold;"><a href="/s/Intel+BMG+G21" style="color: #0b5997;">Intel BMG G21</a></div><div class="div_table_cell"></div><div class="div_table_cell">9th</div><div class="div_table_cell"><em>3</em></div><div class="div_table_cell">75 <sup>+/- 8</sup></div></div></div>          </div> <!-- /col-sm-9 col-md-10 main -->
+        </div> <!-- /row -->
+      </div><!-- /container-fluid -->
+        <!-- Footer -->
+              <div class="navbar navbar-inverse navbar-static-bottom footer" role="navigation">
+                <div class="container-fluid">
+                  <div class="navbar-text pull-left">
+                  <p> <a href="/legal">Legal Disclaimer</a><br>
+                    Copyright © 2010 - 2025 by <a href="https://www.phoronix-media.com/">Phoronix Media</a>.<br>
+                    Powered by OpenBenchmarking.org Server using Phoronix Test Suite 10.8.5.<br>
+                   All trademarks used are properties of their respective owners. All rights reserved.</p>
+                  </div>
+                </div> <!-- /container-->
+              </div> <!-- /navbar-->
+    <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+    <!-- If CDN fails to load, serve up the local version -->
+    <script>window.jQuery || document.write('<script src="js/jquery-2.1.4.js"><\/script>');</script>
+    <script src="/js/bootstrap.js"></script>
+    <script src="/js/wow.min.js"></script>
+    <script>
+             new WOW().init();
+     </script>
+	<script> ob_checkbox_toggle_result_comparison(''); </script>
+  <script defer="" src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon="{&quot;version&quot;:&quot;2024.11.0&quot;,&quot;token&quot;:&quot;5f7e1d60b7e2441ca0407511033f1deb&quot;,&quot;r&quot;:1,&quot;server_timing&quot;:{&quot;name&quot;:{&quot;cfCacheStatus&quot;:true,&quot;cfEdge&quot;:true,&quot;cfExtPri&quot;:true,&quot;cfL4&quot;:true,&quot;cfOrigin&quot;:true,&quot;cfSpeedBrain&quot;:true},&quot;location_startswith&quot;:null}}" crossorigin="anonymous"></script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a2317f5f839ed00',t:'MTc2Mzc1ODU4NQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><iframe height="1" width="1" style="position: absolute; top: 0px; left: 0px; border: none; visibility: hidden;"></iframe>
+
+<iframe name="__tcfapiLocator" style="display: none;"></iframe></body></html>

@@ -18,8 +18,10 @@ GPU Agent is a project I created to scratch an itch I've had since I used to buy
 
 **Repository Structure:**
 - `packages/ebay-client/` - eBay API client library
+- `packages/benchmark-scraper/` - GPU benchmark scraper for OpenBenchmarking.org
 - `apps/web/` - Main Next.js web application
-- `tests/e2e/` - Playwright end-to-end tests
+- `e2e-tests/` - Playwright end-to-end tests for route structure and redirects
+- `tests/e2e/` - Additional Playwright tests
 
 ## Development Setup
 
@@ -98,7 +100,16 @@ docker-compose exec app sh -c "cd /app/apps/web && npx prisma db pull"
 ### Testing
 
 ```bash
-# Run e2e tests (from tests/e2e directory)
+# Run e2e tests for new route structure
+cd e2e-tests
+npm install
+npx playwright install
+npm test
+
+# Run e2e tests in headed mode (see browser)
+npm run test:headed
+
+# Run existing e2e tests (from tests/e2e directory)
 cd tests/e2e
 npx playwright test
 
@@ -110,6 +121,40 @@ npx playwright test tests/historical-data.spec.ts
 
 - Application: http://localhost:3000/api/health
 - Metrics: http://localhost:3000/ops/metrics
+
+### GPU Benchmark Scraping
+
+**New Feature:** GPU Agent now includes gaming benchmarks in addition to AI/ML specifications.
+
+#### Scraping Benchmarks from OpenBenchmarking.org
+
+```bash
+# Navigate to benchmark scraper package
+cd packages/benchmark-scraper
+
+# Install dependencies
+npm install
+npx playwright install chromium
+
+# Scrape all benchmarks
+npm run scrape
+
+# Scrape specific benchmarks
+npm run scrape:cs2      # Counter-Strike 2
+npm run scrape:3dmark   # 3DMark Wild Life Extreme
+```
+
+**Output:** Benchmark data is saved to `data/benchmark-data/` as YAML files.
+
+**GPU Name Mapping:** The scraper uses `packages/benchmark-scraper/src/gpu-name-mapping.yaml` to map GPU names from OpenBenchmarking to coinpoet GPU slugs. When unmapped GPUs are found, the scraper logs warnings with GPU names to add to the mapping file.
+
+**Seeding Benchmarks:** After scraping, restart Docker to seed the database:
+
+```bash
+# Benchmark data is automatically seeded on container startup
+npm run docker:down
+npm run docker:dev
+```
 
 ### Cache Revalidation
 
@@ -147,6 +192,37 @@ This endpoint:
 - Data access layer in `/src/pkgs/server/db/` 
 - Example: `ListingRepository.ts` with methods like `getHistoricalPriceData()`
 - Always use transaction-aware `PrismaClientWithinTransaction` parameter
+
+## Route Structure
+
+### Current Routes (New Structure)
+
+GPU Agent uses a category-based route structure supporting both AI/ML and Gaming use cases:
+
+**Buy/Shopping Pages:**
+- `/gpu/buy/[gpuSlug]` - Individual GPU listings
+- `/gpu/buy/[category]/cost-per-[metric]` - Cost-performance pages
+  - Example: `/gpu/buy/ai/cost-per-fp32-flops`
+  - Example: `/gpu/buy/gaming/cost-per-counter-strike-2-fps-3840x2160`
+
+**Ranking Pages:**
+- `/gpu/ranking/[category]/[metric]` - GPU rankings by cost-performance
+  - Example: `/gpu/ranking/ai/fp32-flops`
+  - Example: `/gpu/ranking/gaming/counter-strike-2-fps-3840x2160`
+
+**Learn Pages:**
+- `/gpu/learn/ai/use-case/[useCase]` - AI/ML use case guides
+- `/gpu/learn/ai/models/[model]` - Model-specific guides
+- `/gpu/benchmark/gaming/[benchmark]` - Gaming benchmark descriptions
+
+### Legacy Route Redirects
+
+All previous `/ml/*` routes permanently redirect to the new structure:
+- `/ml/shop/gpu/*` → `/gpu/buy/*`
+- `/ml/learn/gpu/ranking/*` → `/gpu/ranking/ai/*`
+- `/ml/learn/*` → `/gpu/learn/ai/*`
+
+See `apps/web/next.config.mjs` for complete redirect mapping.
 
 ## Code Conventions
 

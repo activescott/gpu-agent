@@ -6,3 +6,7 @@ data/**/*.numbers
 
 .turbo
 .vercel
+e2e-tests/test-results/.last-run.json
+.gitignore
+packages/benchmark-scraper/test-results/.last-run.json
+e2e-tests/playwright-report/index.html

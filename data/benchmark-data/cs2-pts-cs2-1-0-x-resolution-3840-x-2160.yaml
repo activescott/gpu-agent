@@ -1,0 +1,70 @@
+benchmarkId: cs2
+benchmarkName: Counter-Strike 2
+configuration: "pts/cs2-1.0.x - Resolution: 3840 x 2160"
+configurationId: 7f22820f1e1d586f13d970f6604140c3d5037d4d
+metricName: Frames Per Second (Average)
+results:
+  - gpuNameRaw: ASUS NVIDIA GeForce RTX 5090
+    gpuNameMapped: nvidia-geforce-rtx-5090
+    value: 341
+  - gpuNameRaw: ASUS NVIDIA GeForce RTX 4090
+    value: 303
+  - gpuNameRaw: XFX AMD Radeon RX 7900 XTX
+    gpuNameMapped: amd-radeon-rx-7900-xtx
+    value: 268
+  - gpuNameRaw: ASUS AMD Radeon RX 7900 XTX
+    value: 260
+  - gpuNameRaw: ASUS NVIDIA GeForce RTX 5080
+    gpuNameMapped: nvidia-geforce-rtx-5080
+    value: 252
+  - gpuNameRaw: ASUS NVIDIA GeForce RTX 4080 SUPER
+    value: 228
+  - gpuNameRaw: ASUS AMD Radeon RX 7900 XT
+    value: 226
+  - gpuNameRaw: ASUS NVIDIA GeForce RTX 4080
+    value: 224
+  - gpuNameRaw: AMD Radeon RX 9070 XT
+    value: 181
+  - gpuNameRaw: NVIDIA GeForce RTX 5070
+    gpuNameMapped: nvidia-geforce-rtx-5070
+    value: 178
+  - gpuNameRaw: ASUS AMD Radeon RX 7900 GRE
+    value: 176
+  - gpuNameRaw: Gigabyte AMD Radeon RX 9070
+    value: 173
+  - gpuNameRaw: Gigabyte AMD Navi 48
+    value: 170
+  - gpuNameRaw: ASUS NVIDIA GeForce RTX 4070 SUPER
+    value: 166
+  - gpuNameRaw: ASUS AMD Radeon RX 7800 XT
+    value: 161
+  - gpuNameRaw: Median
+    value: 160
+  - gpuNameRaw: ASUS NVIDIA GeForce RTX 4070
+    value: 145
+  - gpuNameRaw: NVIDIA GeForce RTX 3090
+    gpuNameMapped: nvidia-geforce-rtx-3090
+    value: 142
+  - gpuNameRaw: NVIDIA GeForce RTX 3080 Ti
+    value: 136
+  - gpuNameRaw: NVIDIA GeForce RTX 5060 Ti
+    value: 135
+  - gpuNameRaw: ASUS AMD Radeon RX 7700 XT
+    value: 130
+  - gpuNameRaw: NVIDIA GeForce RTX 3080
+    gpuNameMapped: nvidia-geforce-rtx-3080
+    value: 122
+  - gpuNameRaw: NVIDIA GeForce RTX 3070 Ti
+    value: 103
+  - gpuNameRaw: AMD Radeon RX 7900 XTX
+    gpuNameMapped: amd-radeon-rx-7900-xtx
+    value: 95
+  - gpuNameRaw: ASUS NVIDIA GeForce RTX 4060
+    value: 91
+  - gpuNameRaw: ASUS AMD Radeon RX 7600 XT
+    value: 89
+  - gpuNameRaw: ASUS AMD Radeon RX 7600
+    value: 88
+  - gpuNameRaw: Intel BMG G21
+    value: 75
+scrapedAt: 2025-11-21T21:51:27.705Z

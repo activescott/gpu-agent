@@ -1,0 +1,26 @@
+{
+  "name": "@gpu-agent/benchmark-scraper",
+  "version": "1.0.0",
+  "description": "Scraper for GPU benchmark data from OpenBenchmarking.org",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "scrape": "tsx src/cli.ts",
+    "scrape:cs2": "tsx src/cli.ts --benchmark cs2",
+    "scrape:3dmark": "tsx src/cli.ts --benchmark 3dmark"
+  },
+  "keywords": ["gpu", "benchmark", "scraper", "openbenchmarking"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@playwright/test": "^1.48.0",
+    "yaml": "^2.6.1",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  }
+}

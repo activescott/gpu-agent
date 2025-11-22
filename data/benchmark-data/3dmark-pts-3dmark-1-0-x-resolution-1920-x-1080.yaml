@@ -1,0 +1,108 @@
+benchmarkId: 3dmark
+benchmarkName: 3DMark Wild Life Extreme
+configuration: "pts/3dmark-1.0.x - Resolution: 1920 x 1080"
+configurationId: 251684d1fa3c186574f1dd35f0bee61979b0c293
+metricName: Frames Per Second (Average)
+results:
+  - gpuNameRaw: NVIDIA GeForce RTX 4090
+    gpuNameMapped: nvidia-geforce-rtx-4090
+    value: 966
+  - gpuNameRaw: NVIDIA GeForce RTX 4080
+    gpuNameMapped: nvidia-geforce-rtx-4080
+    value: 846
+  - gpuNameRaw: XFX AMD Radeon RX 7900 XTX
+    gpuNameMapped: amd-radeon-rx-7900-xtx
+    value: 723
+  - gpuNameRaw: AMD Radeon RX 6800 XT
+    gpuNameMapped: amd-radeon-rx-6800-xt
+    value: 624
+  - gpuNameRaw: NVIDIA GeForce RTX 3090
+    gpuNameMapped: nvidia-geforce-rtx-3090
+    value: 612
+  - gpuNameRaw: NVIDIA GeForce RTX 3080 Ti
+    value: 598
+  - gpuNameRaw: AMD Radeon Pro W7900
+    value: 595
+  - gpuNameRaw: AMD Radeon RX 7800 XT
+    gpuNameMapped: amd-radeon-rx-7800-xt
+    value: 583
+  - gpuNameRaw: AMD Radeon RX 7900 GRE
+    value: 581
+  - gpuNameRaw: NVIDIA GeForce RTX 3080
+    gpuNameMapped: nvidia-geforce-rtx-3080
+    value: 549
+  - gpuNameRaw: AMD Radeon RX 6800
+    gpuNameMapped: amd-radeon-rx-6800
+    value: 544
+  - gpuNameRaw: NVIDIA GeForce RTX 3070 Ti
+    value: 490
+  - gpuNameRaw: AMD Radeon Pro W7700
+    value: 481
+  - gpuNameRaw: NVIDIA GeForce RTX 3070
+    gpuNameMapped: nvidia-geforce-rtx-3070
+    value: 439
+  - gpuNameRaw: AMD Radeon PRO W7700
+    value: 437
+  - gpuNameRaw: AMD Radeon RX 6700 XT
+    gpuNameMapped: amd-radeon-rx-6700-xt
+    value: 436
+  - gpuNameRaw: AMD Radeon RX 6750 XT
+    value: 435
+  - gpuNameRaw: NVIDIA RTX 4000 Ada Generation
+    value: 406
+  - gpuNameRaw: NVIDIA GeForce RTX 3060 Ti
+    value: 405
+  - gpuNameRaw: XFX AMD Radeon RX 7700S
+    value: 385
+  - gpuNameRaw: MSI NVIDIA GeForce RTX 4060
+    value: 376
+  - gpuNameRaw: AMD Radeon RX 7700S
+    value: 343
+  - gpuNameRaw: AMD Radeon RX 7600
+    gpuNameMapped: amd-radeon-rx-7600
+    value: 335
+  - gpuNameRaw: AMD Radeon RX 6600 XT
+    value: 334
+  - gpuNameRaw: Intel Arc A770 DG2
+    value: 330
+  - gpuNameRaw: AMD Radeon RX 5700 XT
+    value: 329
+  - gpuNameRaw: Intel Arc A750 DG2
+    value: 327
+  - gpuNameRaw: NVIDIA GeForce RTX 2060 SUPER
+    value: 303
+  - gpuNameRaw: eVGA NVIDIA GeForce RTX 3060
+    value: 300
+  - gpuNameRaw: Gigabyte AMD Radeon RX 6600
+    value: 290
+  - gpuNameRaw: Median
+    value: 290
+  - gpuNameRaw: Intel Arc A580 DG2
+    value: 282
+  - gpuNameRaw: AMD Radeon PRO W7600
+    value: 278
+  - gpuNameRaw: AMD Radeon RX 5700
+    value: 271
+  - gpuNameRaw: AMD Radeon RX 56
+    value: 252
+  - gpuNameRaw: NVIDIA RTX 2000 Ada Generation
+    value: 244
+  - gpuNameRaw: Sapphire AMD Radeon RX 590
+    value: 170
+  - gpuNameRaw: AMD Radeon PRO W7500
+    value: 162
+  - gpuNameRaw: NVIDIA RTX A1000
+    value: 143
+  - gpuNameRaw: Intel Arc A380 DG2
+    value: 105
+  - gpuNameRaw: AMD Phoenix1
+    value: 88
+  - gpuNameRaw: AMD Radeon 780M
+    value: 76
+  - gpuNameRaw: MSI Intel ADL GT2
+    value: 65
+  - gpuNameRaw: AMD Phoenix2
+    value: 45
+  - gpuNameRaw: Intel Iris Plus ICL GT2
+    value: 28
+scrapedAt: 2025-11-21T21:52:35.660Z

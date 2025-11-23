@@ -99,7 +99,21 @@ async function seedNews(prisma: PrismaClient): Promise<void> {
 
 async function seedGpus(prisma: PrismaClient): Promise<void> {
   const gpuDataDir = path.resolve(__dirname, "../../../data/gpu-data")
-  const gpuFilesUnfiltered = await fs.readdir(gpuDataDir)
+
+  let gpuFilesUnfiltered: string[]
+  try {
+    gpuFilesUnfiltered = await fs.readdir(gpuDataDir)
+  } catch (error) {
+    if ((error as NodeJS.ErrnoException).code === "ENOENT") {
+      console.error(`ERROR: GPU data directory does not exist: ${gpuDataDir}`)
+      console.error(
+        "Make sure the data submodule is checked out: git submodule update --init --recursive",
+      )
+      throw new Error("GPU data directory not found", { cause: error })
+    }
+    throw error
+  }
+
   const gpuFiles = gpuFilesUnfiltered
     .filter((file) => {
       const isYaml = file.endsWith(".yaml")
@@ -109,6 +123,14 @@ async function seedGpus(prisma: PrismaClient): Promise<void> {
       return isYaml
     })
     .map((file) => path.join(gpuDataDir, file))
+
+  if (gpuFiles.length === 0) {
+    console.error("ERROR: No GPU YAML files found in", gpuDataDir)
+    console.error(
+      "Make sure the data submodule is checked out: git submodule update --init --recursive",
+    )
+    throw new Error("No GPU data files found")
+  }
 
   const gpus = []
 
@@ -213,21 +235,23 @@ async function seedBenchmarks(prisma: PrismaClient): Promise<void> {
       .map((file) => path.join(benchmarkDataDir, file))
   } catch (error) {
     if ((error as NodeJS.ErrnoException).code === "ENOENT") {
-      console.warn(
-        `Benchmark data directory does not exist: ${benchmarkDataDir}`,
+      console.error(
+        `ERROR: Benchmark data directory does not exist: ${benchmarkDataDir}`,
       )
-      console.warn(
-        "Skipping benchmark seeding. Run the benchmark scraper first.",
+      console.error(
+        "Make sure the data submodule is checked out: git submodule update --init --recursive",
       )
-      return
+      throw new Error("Benchmark data directory not found", { cause: error })
     }
     throw error
   }
 
   if (benchmarkFiles.length === 0) {
-    console.warn("No benchmark YAML files found")
-    console.warn("Run the benchmark scraper to generate benchmark data")
-    return
+    console.error("ERROR: No benchmark YAML files found in", benchmarkDataDir)
+    console.error(
+      "Make sure the data submodule is checked out: git submodule update --init --recursive",
+    )
+    throw new Error("No benchmark data files found")
   }
 
   console.log(`Found ${benchmarkFiles.length} benchmark files`)

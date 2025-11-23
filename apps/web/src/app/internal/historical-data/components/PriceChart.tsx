@@ -5,6 +5,7 @@ interface PriceHistoryPoint {
   avgPrice: number
   minPrice: number
   maxPrice: number
+  medianPrice: number
   listingCount: number
 }
 
@@ -24,6 +25,14 @@ export default function PriceChart({ priceHistory }: PriceChartProps) {
         borderColor: "rgb(75, 192, 192)",
         backgroundColor: "rgba(75, 192, 192, 0.2)",
         tension: 0.1,
+      },
+      {
+        label: "Median Price",
+        data: priceHistory.map((point) => point.medianPrice),
+        borderColor: "rgb(153, 102, 255)",
+        backgroundColor: "rgba(153, 102, 255, 0.2)",
+        tension: 0.1,
+        borderDash: [5, 5],
       },
       {
         label: "Min Price",

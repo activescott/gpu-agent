@@ -1,3 +1,4 @@
+# yaml-language-server: $schema=./gpu-spec.schema.json
 name: amd-radeon-rx-7900-xt
 label: AMD Radeon RX 7900 XT
 tensorCoreCount: 168

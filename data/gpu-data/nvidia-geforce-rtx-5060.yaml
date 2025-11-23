@@ -1,3 +1,4 @@
+# yaml-language-server: $schema=./gpu-spec.schema.json
 name: nvidia-geforce-rtx-5060
 label: NVIDIA GeForce RTX 5060
 tensorCoreCount: 120

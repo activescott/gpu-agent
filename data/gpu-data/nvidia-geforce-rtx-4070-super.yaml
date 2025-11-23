@@ -1,3 +1,4 @@
+# yaml-language-server: $schema=./gpu-spec.schema.json
 name: nvidia-geforce-rtx-4070-super
 label: NVIDIA GeForce RTX 4070 SUPER
 tensorCoreCount: 224

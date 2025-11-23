@@ -1,3 +1,4 @@
+# yaml-language-server: $schema=./gpu-spec.schema.json
 name: nvidia-a100-pcie
 label: NVIDIA A100 PCIe
 tensorCoreCount: 432

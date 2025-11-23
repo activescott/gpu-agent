@@ -1,3 +1,4 @@
+# yaml-language-server: $schema=./gpu-spec.schema.json
 name: amd-radeon-rx-9070
 label: AMD Radeon RX 9070
 tensorCoreCount: 112

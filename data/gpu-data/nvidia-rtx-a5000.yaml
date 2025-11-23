@@ -1,3 +1,4 @@
+# yaml-language-server: $schema=./gpu-spec.schema.json
 name: nvidia-rtx-a5000
 label: NVIDIA RTX A5000
 tensorCoreCount: 256

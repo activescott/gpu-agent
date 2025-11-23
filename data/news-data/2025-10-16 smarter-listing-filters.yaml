@@ -1,3 +1,4 @@
+# yaml-language-server: $schema=./news-article.schema.json
 id: cmt456def789ghi012
 slug: smarter-listing-filters
 title: "Smarter Listing Filters Based on Your Feedback"

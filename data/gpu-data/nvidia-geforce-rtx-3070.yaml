@@ -1,3 +1,4 @@
+# yaml-language-server: $schema=./gpu-spec.schema.json
 name: nvidia-geforce-rtx-3070
 label: NVIDIA GeForce RTX 3070
 tensorCoreCount: 184

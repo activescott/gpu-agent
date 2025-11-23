@@ -1,3 +1,4 @@
+# yaml-language-server: $schema=./gpu-spec.schema.json
 name: nvidia-t4
 label: NVIDIA T4
 tensorCoreCount: 320

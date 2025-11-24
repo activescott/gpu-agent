@@ -1,0 +1,31 @@
+# yaml-language-server: $schema=./gpu-spec.schema.json
+name: amd-radeon-rx-7900-xt
+label: AMD Radeon RX 7900 XT
+tensorCoreCount: 168
+fp32TFLOPS: 52
+fp16TFLOPS: 103
+int8TOPS: 103
+memoryCapacityGB: 20
+memoryBandwidthGBs: 800
+maxTDPWatts: 315
+gpuArchitecture: RDNA 3
+supportedHardwareOperations:
+  - FP16
+  - BF16
+  - INT8
+  - INT4
+summary: >-
+  The AMD Radeon RX 7900 XT was released alongside the RX 7900 XTX on December
+  13, 2022 as one of the GPUs using the new RDNA 3 architecture. 
+        It includes RDNA 3 architecture's new AI Accelerators which accelerate the GEMM operations that are critical to machine learning/AI performance. 
+        With 84 compute units (CUs) and 168 AI Accelerators, it has 12 fewer (CUs), and 6 fewer AI Accelerators than the 7900 XTX but remains a strong contender in the high-performance GPU market.
+        Some common part numbers are the PowerColor RX7900XT 20G-L/OC, Sapphire 11323-02-20G, XFX RX-79TMERCU9.
+        The lowest price is tracked and continuously updated across multiple sellers for all of these models below.
+references:
+  - https://www.amd.com/en/products/specifications/graphics
+  - https://www.tomshardware.com/reviews/amd-radeon-rx-7900-xtx-and-xt-review-shooting-for-the-top
+  - https://en.wikipedia.org/wiki/RDNA_3
+  - https://gpuopen.com/learn/wmma_on_rdna3/
+  - https://gpuopen.com/learn/amd-lab-notes/amd-lab-notes-matrix-cores-readme/
+notes:
+  - 'tensorCoreCount: tracking the AI Accelerators as "tensor cores"'

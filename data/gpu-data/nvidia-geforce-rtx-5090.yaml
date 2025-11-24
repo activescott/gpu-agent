@@ -1,0 +1,67 @@
+# yaml-language-server: $schema=./gpu-spec.schema.json
+name: nvidia-geforce-rtx-5090
+label: NVIDIA GeForce RTX 5090
+
+cudaCoreCount: 21760
+memoryCapacityGB: 32
+int8TOPS: 1676
+maxTDPWatts: 575
+memoryBandwidthGBs: 1792
+tensorCoreCount: 680
+fp32TFLOPS: 209.5
+fp16TFLOPS: 838
+
+gpuArchitecture: blackwell
+supportedHardwareOperations:
+  - FP16
+  - INT8
+  - TF32
+  - INT4
+  - BF16
+  - FP8
+  - FP4
+supportedCUDAComputeCapability: 12.8
+
+summary: |
+  The NVIDIA GeForce RTX 5090 was the first GeForce RTX 50 series product that was launched using the GB202 GPU.
+  NVIDIA unveiled the GeForce RTX 50 Series GPUs on January 6, 2025, powered by the Blackwell architecture, featuring advanced AI and ray tracing capabilities. RTX 50 Series GPUs support 5th Gen Tensor Cores.
+
+  Other key features include DLSS 4 which uses AI to generate up to three additional frames per traditionally rendered frame boosting frame rates, and the RTX Neural Shaders integrate small AI networks into the shading process, enabling higher quality rendering. RTX Neural Faces uses generative AI to create highly realistic digital human faces. NVIDIA ACE empowers game characters with AI-driven perception, planning, and action.
+  These GPUs are designed for gamers, creators, and developers, offering significant performance gains over the RTX 40 series for AI, lifelike in-game characters and AI-powered creative tools. The GeForce RTX 5090 is the flagship model of the RTX 50 series and will be available on January 30th 2025, with other models following in the coming months.
+
+  Cheaper options in the RTX 50 series, including the RTX 5070 and RTX 5080.
+
+  The list price of the Nvidia Founders Edition is "starting at $1,999." The founders edition offers the baseline for those who want to experience the RTX 5090 without paying a premium for additional features.
+
+  Other manufacturers making custom designs of the RTX 5090 including ASUS ROG Astral RTX 5090 with air-cooled and liquid-cooled versions. ASUS also offers the ASUS TUF Gaming RTX 5090 as a more budget-focused variant.
+
+  [Gigabyte's Nvidia GeForce RTX 5090 GPU lineup](https://www.gigabyte.com/Graphics-Card/All-Series?fid=3119) includes water-cooled and air-cooled variants such as the AORUS GeForce RTX™ 5090 XTREME WATERFORCE 32G, AORUS GeForce RTX™ 5090 XTREME WATERFORCE WB 32G, AORUS GeForce RTX™ 5090 MASTER ICE 32G, AORUS GeForce RTX™ 5090 MASTER 32G, GeForce RTX™ 5090 GAMING OC 32G, GeForce RTX™ 5090 WINDFORCE OC 32G, and the GeForce RTX™ 5090 WINDFORCE 32G.
+
+  The [MSI Nvidia GeForce RTX 5090 GPU lineup](https://www.msi.com/Graphics-Cards/Products#?tag=GeForce-RTX%E2%84%A2-5090) includes MSI GeForce RTX™ 5090 32G SUPRIM SOC, MSI GeForce RTX™ 5090 32G GAMING TRIO OC, MSI GeForce RTX™ 5090 32G VENTUS 3X OC, MSI GeForce RTX™ 5090 32G SUPRIM LIQUID SOC, MSI GeForce RTX™ 5090 32G VANGUARD SOC LAUNCH EDITION, MSI GeForce RTX™ 5090 32G VANGUARD SOC,
+
+  ZOTAC's Nvidia GeForce RTX 5090 GPU lineup](https://www.zotac.com/us/product/graphics_card/GeForce-RTX-5090/all) has the ZOTAC GAMING GeForce RTX 5090 SOLID OC, ZOTAC GAMING GeForce RTX 5090 SOLID, and the ZOTAC GAMING GeForce RTX 5090 AMP Extreme INFINITY.
+
+  There are 4 PNY GeForce RTX 5090 models. The [PNY GeForce RTX™ 5090 ARGB EPIC-X RGB™ Overclocked Triple Fan GPU](https://www.pny.com/en-eu/geforce-rtx-5090-models?sku=VCG509032TFXXPB1-O), [PNY GeForce RTX™ 5090 ARGB EPIC-X RGB™ Triple Fan GPU](https://www.pny.com/en-eu/geforce-rtx-5090-models?sku=VCG509032TFXXPB1), [PNY GeForce RTX™ 5090 Overclocked Triple Fan GPU](https://www.pny.com/en-eu/geforce-rtx-5090-models?sku=VCG509032TFXPB1-O), [PNY GeForce RTX™ 5090 Triple Fan GPU](https://www.pny.com/en-eu/geforce-rtx-5090-models?sku=VCG509032TFXPB1)
+
+  GALAX has the [GALAX GeForce RTX™ 5090 1-Click OC](https://www.galax.com/en/graphics-card/50-series/5090-series/geforce-rtx-5090-1coc.html) and the [GALAX GeForce RTX™ 5090 D 1-Click OC](https://www.galax.com/en/graphics-card/50-series/5090-series/geforce-rtx-5090-d-1coc.html).
+
+  Palit offers the [GeForce RTX™ 5090 GameRock](https://www.palit.com/palit/vgapro.php?id=5345&lang=en) and the [GeForce RTX™ 5090 GameRock OC](https://www.palit.com/palit/vgapro.php?id=5335&lang=en).
+
+  Palit-owned Gainward's Nvidia RTX™ 5090 series includes the [Gainward GeForce RTX™ 5090 Phantom](https://www.gainward.com/main/vgapro.php?id=1225&lang=en) and [Gainward GeForce RTX™ 5090 Phantom GS](https://www.gainward.com/main/vgapro.php?id=1226&lang=en).
+
+
+references:
+  - https://images.nvidia.com/aem-dam/Solutions/geforce/blackwell/nvidia-rtx-blackwell-gpu-architecture.pdf
+  - https://www.nvidia.com/en-us/geforce/graphics-cards/50-series/rtx-5090/
+  - https://www.nvidia.com/en-us/geforce/graphics-cards/compare/
+  - https://nvidianews.nvidia.com/news/nvidia-blackwell-geforce-rtx-50-series-opens-new-world-of-ai-computer-graphics
+  - https://arxiv.org/abs/2310.16836
+  - https://www.tomshardware.com/pc-components/gpus/nvidia-blackwell-architecture-deep-dive-a-closer-look-at-the-upgrades-coming-with-rtx-50-series-gpus
+  - https://www.techpowerup.com/gpu-specs/geforce-rtx-5090.c4216
+
+notes:
+  - We use the peak TOPS/FLOPS specs using the sparsity feature.
+  - Blackwell GB203 is the chip
+  - fp16TFLOPS is "Peak FP16 Tensor TFLOPS with FP16 Accumulate" as that's what NVIDIA publishes.
+  - int8TOPS is "peak INT 8 TOPS" using "Effective TOPS / TFLOPS using the new Sparsity Feature". They also reveal it as 660.6 "based on GPU Boost Clock". This comes from the blackwell gpu architecture pdf.
+  - fp32TFLOPS is "Peak TF32 Tensor TFLOPS1" as published in the blackwell gpu architecture pdf.

@@ -1,0 +1,71 @@
+benchmarkId: cs2
+benchmarkName: Counter-Strike 2
+configuration: "pts/cs2-1.0.x - Resolution: 2560 x 1440"
+configurationId: 5468ba6acbd15367b21c9de85bbd13236d338671
+metricName: Frames Per Second (Average)
+results:
+  - gpuNameRaw: XFX AMD Radeon RX 7900 XTX
+    value: 413
+  - gpuNameRaw: NVIDIA GeForce RTX 4090
+    value: 383
+  - gpuNameRaw: ASUS AMD Radeon RX 7900 XTX
+    value: 358
+  - gpuNameRaw: AMD Radeon RX 9070 XT
+    value: 344
+  - gpuNameRaw: Gigabyte AMD Radeon RX 9070
+    value: 335
+  - gpuNameRaw: NVIDIA GeForce RTX 4080
+    value: 310
+  - gpuNameRaw: AMD Radeon RX 7900 XT
+    value: 306
+  - gpuNameRaw: ASUS NVIDIA GeForce RTX 4070 SUPER
+    value: 294
+  - gpuNameRaw: ASUS AMD Radeon RX 7800 XT
+    value: 289
+  - gpuNameRaw: ASUS NVIDIA GeForce RTX 4070 Ti SUPER
+    value: 282
+  - gpuNameRaw: AMD Navi 48
+    value: 265
+  - gpuNameRaw: ASUS NVIDIA GeForce RTX 4070
+    value: 264
+  - gpuNameRaw: NVIDIA GeForce RTX 3090
+    value: 255
+  - gpuNameRaw: ASUS AMD Radeon RX 7700 XT
+    value: 246
+  - gpuNameRaw: NVIDIA GeForce RTX 3080 Ti
+    value: 245
+  - gpuNameRaw: AMD Radeon RX 6800 XT
+    value: 235
+  - gpuNameRaw: Median
+    value: 223
+  - gpuNameRaw: NVIDIA GeForce RTX 3080
+    value: 222
+  - gpuNameRaw: AMD Radeon RX 6800
+    value: 198
+  - gpuNameRaw: NVIDIA GeForce RTX 3070 Ti
+    value: 192
+  - gpuNameRaw: NVIDIA GeForce RTX 3060 Ti
+    value: 177
+  - gpuNameRaw: ASUS NVIDIA GeForce RTX 4060
+    value: 174
+  - gpuNameRaw: ASUS AMD Radeon RX 7600 XT
+    value: 169
+  - gpuNameRaw: ASUS AMD Radeon RX 7600
+    value: 160
+  - gpuNameRaw: AMD Radeon 8060S
+    value: 144
+  - gpuNameRaw: MSI NVIDIA GeForce RTX 4060
+    value: 139
+  - gpuNameRaw: Intel BMG G21
+    value: 130
+  - gpuNameRaw: ASUS Intel BMG G21
+    value: 129
+  - gpuNameRaw: Intel Arc A770 DG2
+    value: 78
+  - gpuNameRaw: ASUS Intel Arc A770 DG2
+    value: 74
+  - gpuNameRaw: ASUS Intel Arc A750 DG2
+    value: 72
+  - gpuNameRaw: ASUS Intel Arc A580 DG2
+    value: 67
+scrapedAt: 2025-11-22T03:42:56.863Z

@@ -2,8 +2,6 @@
 
 node_modules/
 
-# Note: /data/ is a git submodule pointing to the private gpu-agent-data repo
-# The submodule itself is tracked by git, but its contents are managed in the submodule
 data/**/*.numbers
 
 .turbo
@@ -13,8 +11,3 @@ data/**/*.numbers
 test-results/
 playwright-report/
 dist/
-
-/data/benchmark-data/*.yaml
-/data/benchmark-data/*.json
-/data/gpu-data/*.yaml
-/data/gpu-data/*.json

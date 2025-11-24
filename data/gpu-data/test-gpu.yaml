@@ -1,0 +1,14 @@
+# yaml-language-server: $schema=./gpu-spec.schema.json
+name: test-gpu
+label: Test GPU
+tensorCoreCount: 1
+fp32TFLOPS: 1.1
+fp16TFLOPS: 1
+int8TOPS: 1
+memoryCapacityGB: 1
+memoryBandwidthGBs: 1
+gpuArchitecture: test
+supportedHardwareOperations:
+  - INT1
+summary: test summary
+references: []

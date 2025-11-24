@@ -6,33 +6,15 @@ Check it out at https://coinpoet.com
 
 GPU Agent is a project I created to scratch an itch I've had since I used to buy and sell GPUs for mining cryptocurrency. With the rise of interest in GPUs that the excitement around LLMs brought I decided to pursue it.
 
-## Open Core Model
+## Licensing
 
-GPU Agent uses an **open core** model:
-- **Open Source**: The application code in this repository is licensed under the MIT License
-- **Private Data**: GPU specifications, gaming benchmark data, and scraping tools are maintained in a separate private repository. Any data in the **/data/** directory is licensed under CC BY-SA 4.0.
+GPU Agent is open source:
+- **Application code**: Licensed under the MIT License
+- **Data files** (`/data` directory): Licensed under CC BY-SA 4.0 (Creative Commons Attribution-ShareAlike 4.0 International)
 
-The private data repository is integrated as a git submodule at `/data`. This allows the application code to remain open while protecting proprietary data collection efforts.
+This means you're free to use, modify, and distribute both the code and data, with attribution required for the data.
 
 ## Development Setup
-
-### Prerequisites
-
-**Access to Private Data Repository:** This project uses a private git submodule for GPU and benchmark data. You need access to the [`gpu-agent-data`](https://github.com/activescott/gpu-agent-data) repository IF you don't have your own data.
-
-### Clone the Repository
-
-Clone the repository with submodules to include the private data:
-
-```bash
-# Clone with submodules (recommended)
-git clone --recurse-submodules https://github.com/activescott/gpu-agent.git
-
-# Or if you already cloned without submodules:
-git submodule update --init --recursive
-```
-
-**Important:** The application requires the data submodule to be checked out. The Docker build and database seeding will fail if the data is missing.
 
 ### Quick Start (Recommended)
 
@@ -131,52 +113,6 @@ npx playwright test tests/historical-data.spec.ts
 - Application: http://localhost:3000/api/health
 - Metrics: http://localhost:3000/ops/metrics
 
-### GPU Benchmark Scraping
-
-**New Feature:** GPU Agent now includes gaming benchmarks in addition to AI/ML specifications.
-
-**Note:** The benchmark scraping tools are located in the private data repository (`data/packages/benchmark-scraper/`).
-
-#### Scraping Benchmarks from OpenBenchmarking.org
-
-```bash
-# Navigate to benchmark scraper package (in the data submodule)
-cd data/packages/benchmark-scraper
-
-# Install dependencies
-npm install
-npx playwright install chromium
-
-# Scrape all benchmarks
-npm run scrape
-
-# Scrape specific benchmarks
-npm run scrape:cs2      # Counter-Strike 2
-npm run scrape:3dmark   # 3DMark Wild Life Extreme
-```
-
-**Output:** Benchmark data is saved to `data/data/benchmark-data/` as YAML files.
-
-**GPU Name Mapping:** The scraper uses `data/data/benchmark-data/gpu-name-mapping.yaml` to map GPU names from OpenBenchmarking to coinpoet GPU slugs. When unmapped GPUs are found, the scraper logs warnings with GPU names to add to the mapping file.
-
-**Seeding Benchmarks:** After scraping, commit changes in the data submodule, then update the submodule reference in the main repo and restart Docker to seed the database:
-
-```bash
-# Commit changes in the data submodule
-cd data
-git add .
-git commit -m "chore: update benchmark data"
-git push
-
-# Update submodule reference in main repo
-cd ..
-git add data
-git commit -m "chore: update data submodule"
-
-# Restart Docker to seed the database
-npm run docker:down
-npm run docker:dev
-```
 
 ### Cache Revalidation
 
@@ -237,10 +173,9 @@ This endpoint:
 - `/apps/web/src/app/internal/api/` - Internal API endpoints
 - `/apps/web/prisma/migrations/` - Database migration files
 
-### Data Locations (Private Submodule)
-- `/data/data/gpu-data/` - GPU specification YAML files
-- `/data/data/benchmark-data/` - Gaming benchmark YAML files
-- `/data/packages/benchmark-scraper/` - Web scraping tools for OpenBenchmarking.org
+### Data Locations
+- `/data/gpu-data/` - GPU specification YAML files (CC BY-SA 4.0)
+- `/data/benchmark-data/` - Gaming benchmark YAML files (CC BY-SA 4.0)
 
 ## Deployment
 

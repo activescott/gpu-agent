@@ -1,0 +1,44 @@
+# yaml-language-server: $schema=./gpu-spec.schema.json
+name: nvidia-h100-pcie
+label: NVIDIA H100 PCIe
+tensorCoreCount: 456
+fp32TFLOPS: 756
+fp16TFLOPS: 1513
+int8TOPS: 3026
+memoryCapacityGB: 80
+memoryBandwidthGBs: 2039
+gpuArchitecture: hopper
+supportedHardwareOperations:
+  - FP16
+  - INT8
+  - FP64
+  - TF32
+  - BF16
+  - FP8
+supportedCUDAComputeCapability: 9
+summary: The NVIDIA H100 PCIe 80GB is a professional graphics card designed
+  primarily for machine learning and high-performance computing applications.
+  Launched in March 2023, it is built on the innovative Hopper GH100
+  architecture and utilizes the 4 nm process by TSMC. The H100 PCIe 80GB stands
+  out for its substantial memory capacity and high-speed memory bandwidth,
+  making it exceptionally suitable for handling large datasets and complex
+  machine learning models. Its tensor cores significantly accelerate machine
+  learning operations. The Hopper architecture, as seen in the H100 and H200
+  GPUs, introduces several technological innovations aimed at enhancing
+  performance in AI training and inference. These GPUs are distinguished by
+  their massive transistor count and advanced memory technologies, like HBM3 and
+  HBM2e, supporting up to 80 GB of memory. The H100 supports HBM2e memory, while
+  the H200 supports the faster HBM3 memory system, which can deliver up to 3
+  TB/s, a significant increase over the previous generation's capabilities. A
+  common nvidia part number for this card is 900-21010-000-000.
+references:
+  - https://resources.nvidia.com/en-us-tensor-core/nvidia-tensor-core-gpu-datasheet
+  - https://www.nvidia.com/en-us/data-center/h100/
+  - https://www.techpowerup.com/gpu-specs/h100-pcie-80-gb.c3899
+  - https://en.wikipedia.org/wiki/Hopper_(microarchitecture)
+  - https://www.nvidia.com/en-us/data-center/technologies/hopper-architecture/
+  - https://www.nvidia.com/en-us/data-center/tensor-cores/
+notes:
+  - "fp32TFLOPS: NOTE: FP32 Tensor Core"
+  - "fp16TFLOPS: NOTE: FP16 Tensor Core"
+  - "int8TOPS: NOTE: INT8 Tensor Core"

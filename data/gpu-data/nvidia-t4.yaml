@@ -1,0 +1,32 @@
+# yaml-language-server: $schema=./gpu-spec.schema.json
+name: nvidia-t4
+label: NVIDIA T4
+tensorCoreCount: 320
+fp32TFLOPS: 8.1
+fp16TFLOPS: 65
+int8TOPS: 130
+memoryCapacityGB: 16
+memoryBandwidthGBs: 320
+gpuArchitecture: turing
+supportedHardwareOperations:
+  - FP16
+  - INT8
+  - INT4
+  - INT1
+supportedCUDAComputeCapability: 7.5
+summary: The NVIDIA T4 is a powerful and versatile GPU designed for a variety of
+  applications, including machine learning, data analytics, and virtual desktop
+  infrastructure. Launched in 2018 with part number 0hckjm from Dell and
+  900-2G183-0000-000 from NVIDIA, it features NVIDIA's Turing architecture,
+  offering a blend of performance and efficiency. With its 16GB GDDR6 memory and
+  advanced Tensor Cores, the T4 is well-suited for both deep learning inference
+  and training tasks. The T4's low power consumption and compact form factor
+  make it an ideal choice for energy-efficient, high-density server
+  environments. A common part number of HCKJM references the Dell version of the
+  card while TCSCT4-KIT references the PNY version of the card.
+references:
+  - https://www.nvidia.com/en-us/data-center/tesla-t4/
+  - https://www.nvidia.com/en-us/data-center/tensor-cores/
+notes:
+  - 'supportedHardwareOperations: see "Supported Tensor Core precisions" in
+    table at end of https://www.nvidia.com/en-us/data-center/tensor-cores/'

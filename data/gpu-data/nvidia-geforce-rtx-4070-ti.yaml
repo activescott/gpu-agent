@@ -1,0 +1,42 @@
+# yaml-language-server: $schema=./gpu-spec.schema.json
+name: nvidia-geforce-rtx-4070-ti
+label: NVIDIA Geforce RTX 4070 Ti
+tensorCoreCount: 240
+fp32TFLOPS: 80.2
+fp16TFLOPS: 320.8
+int8TOPS: 641.4
+memoryCapacityGB: 12
+memoryBandwidthGBs: 504
+maxTDPWatts: 285
+gpuArchitecture: ada
+supportedHardwareOperations:
+  - FP16
+  - INT8
+  - TF32
+  - INT4
+  - BF16
+  - FP8
+supportedCUDAComputeCapability: 8.9
+summary: |
+  The NVIDIA GeForce RTX 4070 Ti is a graphics card released in 2022,
+  featuring the Ada Lovelace architecture based on the AD104 GPU. The set of
+  retail cards in the NVIDIA RTX 40-series cards is RTX 4090, RTX 4080 SUPER,
+  RTX 4080, RTX 4070 Ti SUPER, RTX 4070 Ti, RTX 4070 SUPER, RTX 4070, RTX 4060
+  Ti, and the RTX 4060. The NVIDIA L40 GPU and L4 GPUs are also based on the
+  same Ada Architecture aimed at the data center. While primarily aimed at
+  gamers, the RTX 40-series offers strong capabilities for machine learning
+  tasks, particularly inference and training workloads that benefit from its
+  large memory and high core count. It uses a PCI-Express 4.0 x16 host
+  interface.
+references:
+  - https://images.nvidia.com/aem-dam/Solutions/geforce/ada/nvidia-ada-gpu-architecture.pdf
+  - https://images.nvidia.com/aem-dam/Solutions/Data-Center/l4/nvidia-ada-gpu-architecture-whitepaper-v2.1.pdf
+  - https://www.nvidia.com/en-us/geforce/graphics-cards/40-series/rtx-4080/
+  - https://lambdalabs.com/blog/nvidia-rtx-4090-vs-rtx-3090-deep-learning-benchmark
+  - https://www.nvidia.com/en-us/geforce/news/geforce-rtx-4090-out-now/
+  - https://images.nvidia.com/aem-dam/Solutions/geforce/blackwell/nvidia-rtx-blackwell-gpu-architecture.pdf
+
+notes:
+  - fp16TFLOPS is "Peak FP16 Tensor TFLOPS with FP16 Accumulate" as that's what NVIDIA publishes. Using the "with sparsity" metric.
+  - int8TOPS is "peak INT 8 TOPS" using "Effective TOPS / TFLOPS using the new Sparsity Feature". They also reveal it as 660.6 "based on GPU Boost Clock". This comes from the ada-gpu-architecture-whitepaper-v2.1.
+  - Power based on what NVIDIA refers to as "TGP (Total Graphics Power)"

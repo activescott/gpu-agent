@@ -105,7 +105,9 @@ export function GpuMetricsTable({
           {gpus.map((pricedGpu) => (
             <tr key={pricedGpu.gpu.name}>
               <td className="text-start">
-                <Link href={`/gpu/learn/card/${pricedGpu.gpu.name}`}>
+                <Link
+                  href={`/gpu/shop/${pricedGpu.gpu.name}?sortBy=${primaryMetric}`}
+                >
                   {pricedGpu.gpu.label}
                 </Link>
               </td>

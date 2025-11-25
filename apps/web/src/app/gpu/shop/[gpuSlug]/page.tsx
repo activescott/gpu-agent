@@ -1,7 +1,7 @@
 import { createDiag } from "@activescott/diag"
 import { ListingGallery } from "@/pkgs/client/components/ListingGallery"
 import { getGpu } from "@/pkgs/server/db/GpuRepository"
-import { Gpu } from "@/pkgs/isomorphic/model"
+import { Gpu, GpuMetricKey, GpuMetricKeys } from "@/pkgs/isomorphic/model"
 import { chain } from "irritable-iterable"
 import { ISOMORPHIC_CONFIG } from "@/pkgs/isomorphic/config"
 import { Integer } from "type-fest"
@@ -17,6 +17,7 @@ export const dynamic = "force-dynamic"
 
 type GpuParams = {
   params: Promise<{ gpuSlug: string }>
+  searchParams: Promise<{ sortBy?: string }>
 }
 
 export async function generateMetadata(props: GpuParams) {
@@ -31,9 +32,15 @@ export async function generateMetadata(props: GpuParams) {
   }
 }
 
+function isValidMetricKey(key: string): key is GpuMetricKey {
+  return GpuMetricKeys.includes(key as GpuMetricKey)
+}
+
 export default async function Page(props: GpuParams) {
   const params = await props.params
+  const searchParams = await props.searchParams
   const { gpuSlug } = params
+  const { sortBy } = searchParams
   log.info(`Fetching cached listings for gpu ${gpuSlug} ...`)
   const gpu: Gpu = await getGpu(gpuSlug)
   const allListings = await listActiveListingsForGpus([gpuSlug])
@@ -44,6 +51,10 @@ export default async function Page(props: GpuParams) {
     .head(ISOMORPHIC_CONFIG.MAX_LISTINGS_PER_PAGE() as Integer<number>)
     .collect()
 
+  // Use sortBy query parameter if valid, otherwise default to fp32TFLOPS
+  const initialSortKey: GpuMetricKey =
+    sortBy && isValidMetricKey(sortBy) ? sortBy : "fp32TFLOPS"
+
   return (
     <main>
       <h1>{gpu.label} Listings</h1>
@@ -52,7 +63,7 @@ export default async function Page(props: GpuParams) {
           item,
           specs: gpu,
         }))}
-        initialSortKey="fp32TFLOPS"
+        initialSortKey={initialSortKey}
       />
     </main>
   )

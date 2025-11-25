@@ -27,11 +27,11 @@
 import { Listing, Gpu } from "@/pkgs/isomorphic/model"
 import { createDiag } from "@activescott/diag"
 import { PrismaClientWithinTransaction, prismaSingleton } from "./db"
-import { omit, throttle } from "lodash"
+import { omit } from "lodash"
 import { GpuMetricKey } from "@/pkgs/isomorphic/model/metrics"
 import { Prisma } from "@prisma/client"
 import { CACHED_LISTINGS_DURATION_MS } from "../cacheConfig"
-import { EPOCH, minutesToMilliseconds } from "@/pkgs/isomorphic/duration"
+import { EPOCH } from "@/pkgs/isomorphic/duration"
 import { createHash } from "crypto"
 
 const log = createDiag("shopping-agent:ListingRepository")
@@ -220,15 +220,6 @@ export async function getLatestListingDate(
   }
   return result?.itemCreationDate ?? EPOCH
 }
-
-const THROTTLE_MINUTES = 10
-/**
- * Returns the latest creation date across all listings, with a throttle to prevent excessive queries.
- */
-export const getLatestListingDateWithThrottle = throttle(
-  getLatestListingDate,
-  minutesToMilliseconds(THROTTLE_MINUTES),
-)
 
 /**
  * Adds or updates the specified listings in the database with versioning support.

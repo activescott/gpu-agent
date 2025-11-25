@@ -394,27 +394,49 @@ export async function getPriceStats(
   return result[0]
 }
 
+/**
+ * Maps Prisma TypeScript field names to actual database column names.
+ * Some fields use @map in the schema (e.g., threemarkWildLifeExtremeFps -> 3dmarkWildLifeExtremeFps)
+ */
+function prismaFieldToDbColumn(fieldName: GpuMetricKey): string {
+  // Handle fields that use @map in the Prisma schema
+  if (fieldName === "threemarkWildLifeExtremeFps") {
+    return "3dmarkWildLifeExtremeFps"
+  }
+  return fieldName
+}
+
 export async function topNListingsByCostPerformance(
   spec: GpuMetricKey,
   n: number,
   prisma: PrismaClientWithinTransaction = prismaSingleton,
 ): Promise<Listing[]> {
-  const specFieldName = Prisma.raw(`"gpu"."${spec}"`)
+  const dbColumnName = prismaFieldToDbColumn(spec)
+  const specFieldName = Prisma.raw(`"gpu"."${dbColumnName}"`)
 
   type ListingWithGpu = Prisma.$ListingPayload["scalars"] &
     Prisma.$gpuPayload["scalars"]
   const result = await prisma.$queryRaw<ListingWithGpu[]>(Prisma.sql`
-    SELECT 
+    SELECT
       *
     FROM "Listing"
     INNER JOIN "gpu" ON "Listing"."gpuName" = "gpu"."name"
     WHERE "Listing"."archived" = false
+      AND ${specFieldName} IS NOT NULL
+      AND ${specFieldName} > 0
     ORDER BY ("Listing"."priceValue"::float / ${specFieldName}::float)
     LIMIT ${n}
   `)
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  return result.map((row: ListingWithGpu) => {
+  return result.map((row: any) => {
+    // Map database column names back to Prisma field names
+    // This is needed because raw SQL returns DB column names, but we use Prisma field names
+    if (dbColumnName !== spec) {
+      // If the DB column name differs from the Prisma field name (e.g., 3dmarkWildLifeExtremeFps vs threemarkWildLifeExtremeFps)
+      row[spec] = row[dbColumnName]
+    }
+
     const listing = omit(row, "gpu")
     const gpuMetrics = pick(row, GpuMetricKeys)
     // TODO: I think we have these keys somewhere else, we should centralize them and load them from a single location

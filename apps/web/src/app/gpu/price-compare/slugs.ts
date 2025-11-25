@@ -5,7 +5,7 @@ import {
 } from "@/pkgs/isomorphic/model"
 
 /**
- * Maps URL slugs to metric keys for the buy pages
+ * Maps URL slugs to metric keys for the price-compare pages
  * Format: cost-per-{metric-name}
  */
 const AI_SLUG_MAP = {
@@ -81,5 +81,5 @@ export function canonicalPathForSlug(
   slug: BuySlug,
   category: "ai" | "gaming",
 ): string {
-  return `/gpu/buy/${category}/${slug}`
+  return `/gpu/price-compare/${category}/${slug}`
 }

@@ -22,10 +22,20 @@ const fmtDecimal = new Intl.NumberFormat("en-US", {
   currency: "USD",
   maximumFractionDigits: 2,
 })
+const fmtCostPerMetric = new Intl.NumberFormat("en-US", {
+  style: "currency",
+  currency: "USD",
+  minimumFractionDigits: 2,
+  maximumFractionDigits: 2,
+})
 
 export const formatPrice = (price: number) => {
   if (price < 1) return fmtDecimal.format(price)
   return fmtInteger.format(price)
+}
+
+export const formatCostPerMetric = (price: number) => {
+  return fmtCostPerMetric.format(price)
 }
 
 interface ListingCardProps {
@@ -89,7 +99,7 @@ export const ListingCard = ({
             infoTipText={metricDesc.descriptionDollarsPer}
             color="primary"
           >
-            {formatPrice(costPerMetric)} / {metricDesc.unit}
+            {formatCostPerMetric(costPerMetric)} / {metricDesc.unit}
             {category === "gaming" && metricValue && (
               <span className="ms-1 fw-lighter fst-italic">
                 @{Math.round(metricValue)} {metricDesc.unitShortest}

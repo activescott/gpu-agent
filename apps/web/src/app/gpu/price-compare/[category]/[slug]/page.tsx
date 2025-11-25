@@ -10,7 +10,7 @@ import {
 } from "../../slugs"
 import { createDiag } from "@activescott/diag"
 
-const log = createDiag("shopping-agent:gpu:buy:category:slug")
+const log = createDiag("shopping-agent:gpu:price-compare:category:slug")
 
 // revalidate the data at most every hour: https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#revalidate
 export const revalidate = 3600

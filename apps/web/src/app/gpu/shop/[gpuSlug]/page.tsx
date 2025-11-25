@@ -7,7 +7,7 @@ import { ISOMORPHIC_CONFIG } from "@/pkgs/isomorphic/config"
 import { Integer } from "type-fest"
 import { listActiveListingsForGpus } from "@/pkgs/server/db/ListingRepository"
 
-const log = createDiag("shopping-agent:gpu:buy:gpuSlug")
+const log = createDiag("shopping-agent:gpu:shop:gpuSlug")
 
 // revalidate the data at most every hour: https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#revalidate
 export const revalidate = 3600
@@ -27,7 +27,7 @@ export async function generateMetadata(props: GpuParams) {
   return {
     title: `Best Prices for ${gpu.label}`,
     description: `Compare prices across the Internet for ${gpu.label}`,
-    alternates: { canonical: `https://coinpoet.com/gpu/buy/${gpuSlug}` },
+    alternates: { canonical: `https://coinpoet.com/gpu/shop/${gpuSlug}` },
   }
 }
 

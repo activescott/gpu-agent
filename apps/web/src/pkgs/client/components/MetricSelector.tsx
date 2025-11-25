@@ -6,7 +6,7 @@ import {
   isBenchmark,
   getMetricCategory,
 } from "@/pkgs/isomorphic/model"
-import { mapMetricToSlug } from "@/app/gpu/buy/slugs"
+import { mapMetricToSlug } from "@/app/gpu/price-compare/slugs"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { useState, type JSX } from "react"
@@ -94,7 +94,7 @@ export function MetricSelector({
         const firstMetric = metrics[0]
         const slug = mapMetricToSlug(firstMetric)
         const metricCategory = getMetricCategory(firstMetric)
-        router.push(`/gpu/buy/${metricCategory}/${slug}`)
+        router.push(`/gpu/price-compare/${metricCategory}/${slug}`)
       }
     }
 
@@ -115,7 +115,7 @@ export function MetricSelector({
     const isActive = metricKey === currentMetric
     const slug = mapMetricToSlug(metricKey)
     const metricCategory = getMetricCategory(metricKey)
-    const href = `/gpu/buy/${metricCategory}/${slug}`
+    const href = `/gpu/price-compare/${metricCategory}/${slug}`
 
     return (
       <li className="nav-item">

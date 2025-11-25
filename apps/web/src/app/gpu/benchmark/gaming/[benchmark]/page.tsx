@@ -88,7 +88,7 @@ export default async function Page(props: BenchmarkParams) {
             </Link>
           </li>
           <li>
-            <Link href={`/gpu/buy/gaming/cost-per-${benchmark}`}>
+            <Link href={`/gpu/price-compare/gaming/cost-per-${benchmark}`}>
               Shop GPUs by cost per {desc.unit}
             </Link>
           </li>

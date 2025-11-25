@@ -176,6 +176,25 @@ This endpoint:
 ### Data Locations
 - `/data/gpu-data/` - GPU specification YAML files (CC BY-SA 4.0)
 - `/data/benchmark-data/` - Gaming benchmark YAML files (CC BY-SA 4.0)
+- `/data/news-data/` - News article YAML files (CC BY-SA 4.0)
+
+### Working with Data Files
+
+#### News Articles
+**IMPORTANT:** When updating news articles in `/data/news-data/`:
+- **ALWAYS update the `updatedAt` field** to the current timestamp
+- The database seed script uses `updatedAt` to determine which articles need updating
+- If `updatedAt` is not changed, the seed script will NOT update the database with your changes
+- Format: ISO 8601 timestamp (e.g., `2025-11-24T10:30:00Z`)
+
+Example:
+```yaml
+# Before editing
+updatedAt: "2025-11-22T10:02:00Z"
+
+# After editing (update to current time)
+updatedAt: "2025-11-24T15:45:00Z"
+```
 
 ## Deployment
 

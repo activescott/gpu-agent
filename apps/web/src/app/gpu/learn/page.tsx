@@ -52,7 +52,7 @@ export default async function Page() {
               </Link>
             </li>
             <li>
-              <Link href="/gpu/buy/ai/cost-per-fp32-flops">
+              <Link href="/gpu/price-compare/ai/cost-per-fp32-flops">
                 Shop GPUs by AI Performance
               </Link>
             </li>
@@ -81,7 +81,7 @@ export default async function Page() {
               </Link>
             </li>
             <li>
-              <Link href="/gpu/buy/gaming/cost-per-counter-strike-2-fps-3840x2160">
+              <Link href="/gpu/price-compare/gaming/cost-per-counter-strike-2-fps-3840x2160">
                 Shop GPUs by Gaming Performance
               </Link>
             </li>

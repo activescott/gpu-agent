@@ -8,7 +8,7 @@ export const SiteFooter = () => {
       <CookieBanner />
       <div className="w-100 d-flex justify-content-around flex-wrap">
         <FooterLink
-          href="/gpu/buy/ai/cost-per-fp32-flops"
+          href="/gpu/price-compare/ai/cost-per-fp32-flops"
           label="Browse GPUs for Sale"
         />
         <FooterLink href="/gpu/ranking/ai/fp32-flops" label="AI Rankings" />

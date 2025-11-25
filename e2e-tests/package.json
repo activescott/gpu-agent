@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "End-to-end tests for gpu-agent",
   "scripts": {
-    "test": "playwright test",
-    "test:headed": "playwright test --headed",
+    "test": "playwright test --reporter=list",
+    "test:headed": "playwright test --headed --reporter=list",
     "test:debug": "playwright test --debug",
     "test:ui": "playwright test --ui",
     "report": "playwright show-report"

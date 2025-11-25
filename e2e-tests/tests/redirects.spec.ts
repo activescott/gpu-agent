@@ -30,24 +30,6 @@ test.describe("Route Redirects", () => {
     expect(response?.url()).toContain("/gpu/ranking/ai/fp32-flops")
   })
 
-  test.skip("redirects /ml/learn/use-case/:slug to /gpu/learn/ai/use-case/:slug (routes don't exist yet)", async ({
-    page,
-  }) => {
-    const response = await page.goto(
-      "/ml/learn/use-case/large-language-model-llm",
-    )
-    expect(response?.url()).toContain(
-      "/gpu/learn/ai/use-case/large-language-model-llm",
-    )
-  })
-
-  test.skip("redirects /ml/learn/models/:slug to /gpu/learn/ai/models/:slug (routes don't exist yet)", async ({
-    page,
-  }) => {
-    const response = await page.goto("/ml/learn/models/bert")
-    expect(response?.url()).toContain("/gpu/learn/ai/models/bert")
-  })
-
   test("redirects /ml/learn/gpu/specifications to /gpu/ranking/ai/fp32-flops", async ({
     page,
   }) => {

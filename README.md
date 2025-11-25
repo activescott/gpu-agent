@@ -91,7 +91,7 @@ docker-compose exec app sh -c "cd /app/apps/web && npx prisma db pull"
 ### Testing
 
 ```bash
-# Run e2e tests for new route structure
+# Run e2e tests
 cd e2e-tests
 npm install
 npx playwright install
@@ -99,10 +99,6 @@ npm test
 
 # Run e2e tests in headed mode (see browser)
 npm run test:headed
-
-# Run existing e2e tests (from tests/e2e directory)
-cd tests/e2e
-npx playwright test
 
 # Run specific test
 npx playwright test tests/historical-data.spec.ts
@@ -165,7 +161,7 @@ This endpoint:
 - `/apps/web/prisma/schema.prisma` - Database schema
 - `/apps/web/.env` - Environment variables (Docker overrides these)
 - `/docker-compose.yml` - Container configuration
-- `/tests/e2e/playwright.config.ts` - E2E test configuration
+- `/e2e-tests/playwright.config.ts` - E2E test configuration
 
 ### Important Code Locations
 - `/apps/web/src/pkgs/server/db/` - Database repositories

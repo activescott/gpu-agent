@@ -7,8 +7,10 @@ test.describe("Basic Health Checks", () => {
   })
 
   test("homepage loads successfully", async ({ page }) => {
-    await page.goto("/")
-    expect(page.url()).toContain("localhost:3000")
+    const response = await page.goto("/")
+    // Verify homepage loads without error (not checking specific URL since it could be localhost or production)
+    expect(response?.status()).toBe(200)
+    expect(page.url()).toBeTruthy()
   })
 
   test("contact page loads without 404", async ({ page }) => {

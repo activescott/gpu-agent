@@ -5,6 +5,7 @@
   "scripts": {
     "test": "playwright test --reporter=list",
     "test:headed": "playwright test --headed --reporter=list",
+    "test:prod": "BASE_URL=https://coinpoet.com playwright test --reporter=list",
     "test:debug": "playwright test --debug",
     "test:ui": "playwright test --ui",
     "report": "playwright show-report"

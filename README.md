@@ -91,17 +91,23 @@ docker-compose exec app sh -c "cd /app/apps/web && npx prisma db pull"
 ### Testing
 
 ```bash
-# Run e2e tests
+# Run e2e tests against localhost (default)
 cd e2e-tests
 npm install
 npx playwright install
 npm test
+
+# Run e2e tests against production (coinpoet.com)
+npm run test:prod
 
 # Run e2e tests in headed mode (see browser)
 npm run test:headed
 
 # Run specific test
 npx playwright test tests/historical-data.spec.ts
+
+# Run tests against custom environment
+BASE_URL=https://staging.example.com npm test
 ```
 
 ### Health Checks

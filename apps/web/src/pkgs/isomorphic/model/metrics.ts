@@ -88,7 +88,7 @@ export const GpuMetricsSchema = z.object({
   counterStrike2Fps3840x2160: z.number().optional().nullable(),
   counterStrike2Fps2560x1440: z.number().optional().nullable(),
   counterStrike2Fps1920x1080: z.number().optional().nullable(),
-  "3dmarkWildLifeExtremeFps": z.number().optional().nullable(),
+  threemarkWildLifeExtremeFps: z.number().optional().nullable(),
 })
 
 export type GpuMetrics = z.infer<typeof GpuMetricsSchema>

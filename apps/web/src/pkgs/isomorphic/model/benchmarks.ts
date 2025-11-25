@@ -5,8 +5,8 @@ export const GpuBenchmarksSchema = z.object({
   counterStrike2Fps3840x2160: z.number().optional().nullable(),
   counterStrike2Fps2560x1440: z.number().optional().nullable(),
   counterStrike2Fps1920x1080: z.number().optional().nullable(),
-  // 3DMark Wild Life Extreme benchmark
-  "3dmarkWildLifeExtremeFps": z.number().optional().nullable(),
+  // 3DMark Wild Life Extreme benchmark (uses "three" prefix as Prisma doesn't support fields starting with numbers)
+  threemarkWildLifeExtremeFps: z.number().optional().nullable(),
 })
 
 export type GpuBenchmarks = z.infer<typeof GpuBenchmarksSchema>
@@ -17,7 +17,7 @@ export const GpuBenchmarkKeys: GpuBenchmarkKey[] = [
   "counterStrike2Fps3840x2160",
   "counterStrike2Fps2560x1440",
   "counterStrike2Fps1920x1080",
-  "3dmarkWildLifeExtremeFps",
+  "threemarkWildLifeExtremeFps",
 ]
 
 interface GpuBenchmarkItem {
@@ -27,6 +27,8 @@ interface GpuBenchmarkItem {
   description: string
   descriptionDollarsPer: string
   category: "ai" | "gaming"
+  benchmarkId: string
+  benchmarkName: string
 }
 
 export const GpuBenchmarksDescription: Record<
@@ -42,6 +44,8 @@ export const GpuBenchmarksDescription: Record<
     descriptionDollarsPer:
       "Dollars per FPS indicates how much you pay for each frame per second. Lower is better.",
     category: "gaming",
+    benchmarkId: "cs2",
+    benchmarkName: "Counter-Strike 2",
   },
   counterStrike2Fps2560x1440: {
     label: "Counter-Strike 2 FPS (1440p)",
@@ -52,6 +56,8 @@ export const GpuBenchmarksDescription: Record<
     descriptionDollarsPer:
       "Dollars per FPS indicates how much you pay for each frame per second. Lower is better.",
     category: "gaming",
+    benchmarkId: "cs2",
+    benchmarkName: "Counter-Strike 2",
   },
   counterStrike2Fps1920x1080: {
     label: "Counter-Strike 2 FPS (1080p)",
@@ -62,8 +68,10 @@ export const GpuBenchmarksDescription: Record<
     descriptionDollarsPer:
       "Dollars per FPS indicates how much you pay for each frame per second. Lower is better.",
     category: "gaming",
+    benchmarkId: "cs2",
+    benchmarkName: "Counter-Strike 2",
   },
-  "3dmarkWildLifeExtremeFps": {
+  threemarkWildLifeExtremeFps: {
     label: "3DMark Wild Life Extreme",
     unit: "FPS",
     unitShortest: "FPS",
@@ -72,5 +80,30 @@ export const GpuBenchmarksDescription: Record<
     descriptionDollarsPer:
       "Dollars per FPS indicates how much you pay for each frame per second. Lower is better.",
     category: "gaming",
+    benchmarkId: "3dmark",
+    benchmarkName: "3DMark Wild Life Extreme",
   },
+}
+
+/**
+ * Get the benchmark ID for a given benchmark metric
+ */
+export function getBenchmarkId(metricKey: GpuBenchmarkKey): string {
+  return GpuBenchmarksDescription[metricKey].benchmarkId
+}
+
+/**
+ * Get the benchmark name for a given benchmark metric
+ */
+export function getBenchmarkName(metricKey: GpuBenchmarkKey): string {
+  return GpuBenchmarksDescription[metricKey].benchmarkName
+}
+
+/**
+ * Get all benchmark metrics for a specific benchmark ID
+ */
+export function getBenchmarkMetrics(benchmarkId: string): GpuBenchmarkKey[] {
+  return GpuBenchmarkKeys.filter(
+    (key) => GpuBenchmarksDescription[key].benchmarkId === benchmarkId,
+  )
 }

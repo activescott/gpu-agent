@@ -74,7 +74,7 @@ export function GpuMetricsTable({
       <table className="table table-hover">
         <thead>
           <tr>
-            <th style={{ textAlign: "right" }}>GPU</th>
+            <th style={{ textAlign: "left", minWidth: "250px" }}>GPU</th>
 
             {metricsToShow.map((metricKey) => (
               <th
@@ -104,7 +104,7 @@ export function GpuMetricsTable({
         <tbody>
           {gpus.map((pricedGpu) => (
             <tr key={pricedGpu.gpu.name}>
-              <td style={{ textAlign: "right" }}>
+              <td className="text-start">
                 <Link href={`/gpu/listing/${pricedGpu.gpu.name}`}>
                   {pricedGpu.gpu.label}
                 </Link>

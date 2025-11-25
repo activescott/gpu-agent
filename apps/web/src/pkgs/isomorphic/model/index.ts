@@ -2,6 +2,14 @@ export { GpuSchema } from "./gpu"
 export type { Gpu } from "./gpu"
 export { type GpuSpecKey, GpuSpecKeys, GpuSpecsDescription } from "./specs"
 export {
+  type GpuBenchmarkKey,
+  GpuBenchmarkKeys,
+  GpuBenchmarksDescription,
+  getBenchmarkId,
+  getBenchmarkName,
+  getBenchmarkMetrics,
+} from "./benchmarks"
+export {
   type GpuMetricKey,
   GpuMetricKeys,
   GpuMetricsDescription,

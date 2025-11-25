@@ -19,7 +19,7 @@ const GAMING_SLUG_MAP = {
     "counterStrike2Fps2560x1440" as GpuMetricKey,
   "counter-strike-2-fps-1920x1080":
     "counterStrike2Fps1920x1080" as GpuMetricKey,
-  "3dmark-wildlife-extreme-fps": "3dmarkWildLifeExtremeFps" as GpuMetricKey,
+  "3dmark-wildlife-extreme-fps": "threemarkWildLifeExtremeFps" as GpuMetricKey,
 }
 
 export type RankingSlug =

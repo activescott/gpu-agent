@@ -2,6 +2,8 @@ import {
   GpuMetricsDescription,
   getMetricsByCategory,
   isBenchmark,
+  getBenchmarkId,
+  getBenchmarkMetrics,
 } from "@/pkgs/isomorphic/model"
 import {
   RankingSlug,
@@ -14,6 +16,7 @@ import Link from "next/link"
 import { calculateGpuPriceStats } from "@/pkgs/server/db/GpuRepository"
 import { ISOMORPHIC_CONFIG } from "@/pkgs/isomorphic/config"
 import { GpuMetricsTable } from "./GpuMetricsTable"
+import { RankingMetricSelector } from "@/pkgs/client/components/RankingMetricSelector"
 
 // revalidate the data at most every hour: https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#revalidate
 export const revalidate = 3600
@@ -48,8 +51,12 @@ export default async function Page(props: RankingParams) {
 
   const unsortedPricedGpus = await calculateGpuPriceStats()
 
-  // Get all metrics for this category
-  const categoryMetrics = getMetricsByCategory(categoryTyped)
+  // Get metrics to show - if this is a benchmark, only show metrics for this benchmark
+  let metricsToShow = getMetricsByCategory(categoryTyped)
+  if (isBenchmark(primaryMetric)) {
+    const benchmarkId = getBenchmarkId(primaryMetric)
+    metricsToShow = getBenchmarkMetrics(benchmarkId)
+  }
 
   return (
     <>
@@ -66,10 +73,11 @@ export default async function Page(props: RankingParams) {
         Something missing? <Link href="/contact">Let us know</Link> and
         we&apos;ll add it if we can.
       </p>
+      <RankingMetricSelector currentMetric={primaryMetric} />
       <GpuMetricsTable
         primaryMetricInitial={primaryMetric}
         gpusInitial={unsortedPricedGpus}
-        metricsToShow={categoryMetrics}
+        metricsToShow={metricsToShow}
       />
     </>
   )

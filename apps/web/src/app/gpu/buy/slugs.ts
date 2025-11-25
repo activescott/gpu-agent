@@ -25,7 +25,7 @@ const GAMING_SLUG_MAP = {
   "cost-per-counter-strike-2-fps-1920x1080":
     "counterStrike2Fps1920x1080" as GpuMetricKey,
   "cost-per-3dmark-wildlife-extreme-fps":
-    "3dmarkWildLifeExtremeFps" as GpuMetricKey,
+    "threemarkWildLifeExtremeFps" as GpuMetricKey,
 }
 
 export type BuySlug = keyof typeof AI_SLUG_MAP | keyof typeof GAMING_SLUG_MAP

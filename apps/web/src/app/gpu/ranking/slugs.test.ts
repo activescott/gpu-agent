@@ -51,7 +51,7 @@ describe("slug mapping functions", () => {
       ).toBe("counterStrike2Fps1920x1080")
       expect(
         mapSlugToMetric("3dmark-wildlife-extreme-fps" as RankingSlug, "gaming"),
-      ).toBe("3dmarkWildLifeExtremeFps")
+      ).toBe("threemarkWildLifeExtremeFps")
     })
 
     it("should throw error for unknown slug", () => {
@@ -89,7 +89,7 @@ describe("slug mapping functions", () => {
       expect(metricToSlug("counterStrike2Fps1920x1080", "gaming")).toBe(
         "counter-strike-2-fps-1920x1080",
       )
-      expect(metricToSlug("3dmarkWildLifeExtremeFps", "gaming")).toBe(
+      expect(metricToSlug("threemarkWildLifeExtremeFps", "gaming")).toBe(
         "3dmark-wildlife-extreme-fps",
       )
     })

@@ -1,0 +1,66 @@
+# yaml-language-server: $schema=./news-article.schema.json
+id: gpu1125nov2025xyz
+slug: gaming-benchmarks-launch
+title: "Real-World Gaming Benchmarks Meet Live GPU Pricing"
+content: |
+  The site now combines real-world gaming benchmark data with live eBay pricing, giving you performance-per-dollar metrics for actual games at the resolutions you play.
+
+  ## What's Different
+
+  Most GPU comparison sites show you either benchmark scores or current prices, rarely both, and almost never together in a way that helps you make purchasing decisions. I've paired GPU benchmark data with up-to-date marketplace listings to solve this.
+
+  You can see which GPUs deliver the best frames-per-second for your budget based on current market prices, not launch MSRPs that disappeared months ago.
+
+  ## Available Benchmarks
+
+  ### Counter-Strike 2
+  CS2 performance is tracked across three resolutions:
+  - [1080p (1920×1080)](/gpu/ranking/gaming/counter-strike-2-fps-1920x1080) - 60 GPUs benchmarked
+  - [1440p (2560×1440)](/gpu/ranking/gaming/counter-strike-2-fps-2560x1440) - 52 GPUs benchmarked
+  - [4K (3840×2160)](/gpu/ranking/gaming/counter-strike-2-fps-3840x2160) - 56 GPUs benchmarked
+
+  ### 3DMark Wildlife Extreme
+  The site also includes [3DMark Wildlife Extreme scores](/gpu/ranking/gaming/3dmark-wildlife-extreme-fps) for 70+ GPUs, providing a broader performance comparison across both NVIDIA and AMD cards.
+
+  ## Rankings with Context
+
+  The ranking pages show raw performance, but more importantly, they show performance relative to price. Sort by pure FPS for highest performance, cost per frame for best value, memory capacity for future-proofing, or power efficiency for thermal and power constraints.
+
+  Each ranking links directly to live marketplace listings, so you can move from research to purchase without opening a dozen tabs.
+
+  ## Shop Pages with Benchmark Selection
+
+  Individual GPU shop pages now let you select which gaming benchmark to optimize for. Visit a card like the [RTX 4090](/gpu/shop/nvidia-geforce-rtx-4090) or [RX 7900 XTX](/gpu/shop/amd-radeon-rx-7900-xtx), choose your target game and resolution, and see current listings sorted by price-to-performance.
+
+  This is particularly useful for comparing cards within a price bracket. For example, a $500 [RX 7900 GRE](/gpu/learn/card/amd-radeon-rx-7900-gre) might outperform a $550 [RTX 4070](/gpu/learn/card/nvidia-geforce-rtx-4070) in CS2 at 1440p, but the story changes at 4K.
+
+  ## Real-World Data
+
+  This benchmark data comes from [OpenBenchmarking](https://openbenchmarking.org/)'s Phoronix Test Suite, which uses actual game builds and real hardware, not synthetic tests. The results reflect what you'd see if you built the system yourself and ran the benchmark.
+
+  I'll update this data periodically as significant new benchmark data is published, typically when new GPU models launch or major game updates change performance characteristics.
+
+  If you'd like to see a benchmark added, let me know on the [contact page](/contact).
+
+  ## What This Enables
+
+  With gaming benchmarks integrated into the pricing data, you can now compare 4K gaming value between a used [RTX 3090](/gpu/learn/card/nvidia-geforce-rtx-3090) and a new [RTX 4070 Super](/gpu/learn/card/nvidia-geforce-rtx-4070-super) at current prices, find the cheapest GPU that hits 144 FPS in CS2 at 1440p, see if the premium for a [7900 XTX](/gpu/learn/card/amd-radeon-rx-7900-xtx) over a [7900 XT](/gpu/learn/card/amd-radeon-rx-7900-xt) is justified by actual frame rate gains, and make resolution-specific decisions when a card that's good value at 1080p might be poor value at 4K.
+
+  ## Coming Updates
+
+  I'm working on adding more games to the benchmark suite. Games with extensive multi-GPU testing across different configurations will be prioritized.
+
+  The goal isn't to become another benchmark database. Plenty of those exist. The goal is to connect real performance data with real-time pricing so you can make informed GPU purchases based on actual value, not marketing claims.
+status: PUBLISHED
+tags:
+  - feature
+  - benchmarks
+  - gaming
+  - counter-strike-2
+  - 3dmark
+  - performance
+  - value
+authorFullName: "Scott Willeke"
+createdAt: "2025-11-25T16:50:00Z"
+updatedAt: "2025-11-25T19:42:46Z"
+publishedAt: "2025-11-25T17:00:00Z"

@@ -1,23 +1,22 @@
 "use client"
 import { useSorting } from "@/pkgs/client/components/SortPanel"
-import { GpuSpecKey, GpuSpecs } from "../../isomorphic/model/specs"
+import { GpuMetricKey, Gpu, Listing } from "../../isomorphic/model"
 import { ListingCard } from "./ListingCard"
 import { useState, type JSX } from "react"
 import { createDiag } from "@activescott/diag"
-import { Listing } from "@/pkgs/isomorphic/model"
 import { divideSafe } from "@/pkgs/isomorphic/math"
 
 const log = createDiag("shopping-agent:ListingGallery")
 
 interface ListingItem {
-  specs: GpuSpecs
+  specs: Gpu
   item: Listing
 }
 
 interface ListingGalleryProps {
   listings: ListingItem[]
   hideSort?: boolean
-  initialSortKey: GpuSpecKey
+  initialSortKey: GpuMetricKey
 }
 
 export function ListingGallery({
@@ -26,7 +25,7 @@ export function ListingGallery({
   initialSortKey,
 }: ListingGalleryProps): JSX.Element {
   const initialSort = {
-    specKey: initialSortKey,
+    metricKey: initialSortKey,
     ascending: true,
   }
 
@@ -37,7 +36,7 @@ export function ListingGallery({
   const { sortPanel, sortValue } = useSorting(initialSort, (sortValue) => {
     log.debug(
       "sorting change: sorting by %s %s",
-      sortValue.specKey,
+      sortValue.metricKey,
       sortValue.ascending,
     )
     setSortedListings(sortListings(listings, sortValue))
@@ -51,7 +50,7 @@ export function ListingGallery({
           key={`${item.itemId}-${index.toString()}`}
           item={item}
           specs={specs}
-          highlightSpec={sortValue.specKey}
+          highlightSpec={sortValue.metricKey}
         />
       ))}
     </div>
@@ -59,20 +58,20 @@ export function ListingGallery({
 }
 
 interface SortValue {
-  specKey: GpuSpecKey
+  metricKey: GpuMetricKey
   ascending: boolean
 }
 
 function sortListings(listings: ListingItem[], sortValue: SortValue) {
   const sorted = listings.sort((a, b) => {
-    const { specKey, ascending } = sortValue
+    const { metricKey, ascending } = sortValue
     const aValue = divideSafe(
       Number.parseFloat(a.item.priceValue),
-      a.specs[specKey],
+      a.specs[metricKey],
     )
     const bValue = divideSafe(
       Number.parseFloat(b.item.priceValue),
-      b.specs[specKey],
+      b.specs[metricKey],
     )
     return ascending ? aValue - bValue : bValue - aValue
   })

@@ -26,6 +26,10 @@ jobs:
         with:
           # Fetch full history for accurate git timestamps
           fetch-depth: 0
+          # For pull requests, check out the head ref so we can push
+          ref: ${{ github.head_ref || github.ref }}
+          # Use token with write permissions
+          token: ${{ secrets.GITHUB_TOKEN }}
           
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -51,7 +55,8 @@ jobs:
           fi
           
       - name: Commit and push changes
-        if: steps.verify-changed-files.outputs.changed == 'true'
+        # Only commit on main branch pushes, not on PRs
+        if: steps.verify-changed-files.outputs.changed == 'true' && github.event_name == 'push' && github.ref == 'refs/heads/main'
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"

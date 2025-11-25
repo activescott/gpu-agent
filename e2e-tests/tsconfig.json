@@ -7,9 +7,9 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "moduleResolution": "node",
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "moduleResolution": "node"
   },
-  "include": ["tests/**/*", "playwright.config.ts"],
+  "include": ["tests/**/*"],
   "exclude": ["node_modules"]
 }

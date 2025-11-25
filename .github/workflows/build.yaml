@@ -9,7 +9,8 @@ jobs:
   build:
     runs-on: ubuntu-24.04
     env:
-      POSTGRES_PRISMA_URL: ${{ secrets.POSTGRES_PRISMA_URL }}
+      POSTGRES_PRISMA_URL: postgresql://dummy:dummy@localhost:5432/dummy
+      POSTGRES_URL_NON_POOLING: postgresql://dummy:dummy@localhost:5432/dummy
       EBAY_ENVIRONMENT: ${{ secrets.EBAY_ENVIRONMENT }}
       EBAY_CLIENT_ID: ${{ secrets.EBAY_CLIENT_ID }}
       EBAY_CLIENT_SECRET: ${{ secrets.EBAY_CLIENT_SECRET }}

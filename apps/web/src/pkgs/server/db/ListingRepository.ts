@@ -24,14 +24,14 @@
  * ═══════════════════════════════════════════════════════════════════════════
  */
 
-import { Listing } from "@/pkgs/isomorphic/model"
+import { Listing, Gpu } from "@/pkgs/isomorphic/model"
 import { createDiag } from "@activescott/diag"
 import { PrismaClientWithinTransaction, prismaSingleton } from "./db"
-import { omit, pick, throttle } from "lodash"
-import { GpuSpecKey, GpuSpecKeys } from "@/pkgs/isomorphic/model/specs"
+import { omit } from "lodash"
+import { GpuMetricKey } from "@/pkgs/isomorphic/model/metrics"
 import { Prisma } from "@prisma/client"
 import { CACHED_LISTINGS_DURATION_MS } from "../cacheConfig"
-import { EPOCH, minutesToMilliseconds } from "@/pkgs/isomorphic/duration"
+import { EPOCH } from "@/pkgs/isomorphic/duration"
 import { createHash } from "crypto"
 
 const log = createDiag("shopping-agent:ListingRepository")
@@ -221,15 +221,6 @@ export async function getLatestListingDate(
   return result?.itemCreationDate ?? EPOCH
 }
 
-const THROTTLE_MINUTES = 10
-/**
- * Returns the latest creation date across all listings, with a throttle to prevent excessive queries.
- */
-export const getLatestListingDateWithThrottle = throttle(
-  getLatestListingDate,
-  minutesToMilliseconds(THROTTLE_MINUTES),
-)
-
 /**
  * Adds or updates the specified listings in the database with versioning support.
  * Archives existing listings that have changed and creates new versions.
@@ -394,45 +385,106 @@ export async function getPriceStats(
   return result[0]
 }
 
+/**
+ * Maps Prisma TypeScript field names to actual database column names.
+ * Some fields use @map in the schema (e.g., threemarkWildLifeExtremeFps -> 3dmarkWildLifeExtremeFps)
+ */
+function prismaFieldToDbColumn(fieldName: GpuMetricKey): string {
+  // Handle fields that use @map in the Prisma schema
+  if (fieldName === "threemarkWildLifeExtremeFps") {
+    return "3dmarkWildLifeExtremeFps"
+  }
+  return fieldName
+}
+
 export async function topNListingsByCostPerformance(
-  spec: GpuSpecKey,
+  spec: GpuMetricKey,
   n: number,
   prisma: PrismaClientWithinTransaction = prismaSingleton,
 ): Promise<Listing[]> {
-  const specFieldName = Prisma.raw(`"gpu"."${spec}"`)
+  const dbColumnName = prismaFieldToDbColumn(spec)
+  const specFieldName = Prisma.raw(`"gpu"."${dbColumnName}"`)
 
   type ListingWithGpu = Prisma.$ListingPayload["scalars"] &
     Prisma.$gpuPayload["scalars"]
   const result = await prisma.$queryRaw<ListingWithGpu[]>(Prisma.sql`
-    SELECT 
+    SELECT
       *
     FROM "Listing"
     INNER JOIN "gpu" ON "Listing"."gpuName" = "gpu"."name"
     WHERE "Listing"."archived" = false
+      AND ${specFieldName} IS NOT NULL
+      AND ${specFieldName} > 0
     ORDER BY ("Listing"."priceValue"::float / ${specFieldName}::float)
     LIMIT ${n}
   `)
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  return result.map((row: ListingWithGpu) => {
-    const listing = omit(row, "gpu")
-    const gpuSpecs = pick(row, GpuSpecKeys)
-    const gpuKeys = [
-      "name",
-      "label",
-      "lastCachedListings",
-      "summary",
-      "references",
-    ] as (keyof ListingWithGpu)[]
-    const gpu = pick(row, gpuKeys)
-
-    return {
-      ...listing,
-      gpu: {
-        ...gpu,
-        ...gpuSpecs,
-      },
+  return result.map((row: ListingWithGpu): Listing => {
+    // Map database column names back to Prisma field names
+    // This is needed because raw SQL returns DB column names, but we use Prisma field names
+    if (dbColumnName !== spec) {
+      // If the DB column name differs from the Prisma field name (e.g., 3dmarkWildLifeExtremeFps vs threemarkWildLifeExtremeFps)
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      ;(row as any)[spec] = (row as any)[dbColumnName]
     }
+
+    // Construct the Listing object with all fields explicitly mapped
+    // We explicitly construct the gpu object from the flattened row data
+    const listing: Listing = {
+      // Listing fields
+      itemId: row.itemId,
+      title: row.title,
+      priceValue: row.priceValue,
+      priceCurrency: row.priceCurrency,
+      buyingOptions: row.buyingOptions,
+      imageUrl: row.imageUrl,
+      adultOnly: row.adultOnly,
+      itemHref: row.itemHref,
+      leafCategoryIds: row.leafCategoryIds,
+      listingMarketplaceId: row.listingMarketplaceId,
+      sellerUsername: row.sellerUsername,
+      sellerFeedbackPercentage: row.sellerFeedbackPercentage,
+      sellerFeedbackScore: row.sellerFeedbackScore,
+      condition: row.condition,
+      conditionId: row.conditionId,
+      itemAffiliateWebUrl: row.itemAffiliateWebUrl,
+      thumbnailImageUrl: row.thumbnailImageUrl,
+      epid: row.epid,
+      itemCreationDate: row.itemCreationDate,
+      itemLocationCountry: row.itemLocationCountry,
+      itemGroupType: row.itemGroupType,
+      // GPU object with all specs and benchmarks
+      gpu: {
+        // Required fields
+        name: row.name,
+        label: row.label,
+        gpuArchitecture: row.gpuArchitecture,
+        supportedHardwareOperations: row.supportedHardwareOperations,
+        summary: row.summary,
+        references: row.references,
+        // Optional fields - accessing via index signature since raw SQL flattens the result
+        series: (row as Record<string, unknown>).series as
+          | string
+          | null
+          | undefined,
+        supportedCUDAComputeCapability:
+          row.supportedCUDAComputeCapability ?? undefined,
+        maxTDPWatts: row.maxTDPWatts ?? undefined,
+        // All GPU metrics
+        fp32TFLOPS: row.fp32TFLOPS,
+        tensorCoreCount: row.tensorCoreCount,
+        fp16TFLOPS: row.fp16TFLOPS,
+        int8TOPS: row.int8TOPS,
+        memoryCapacityGB: row.memoryCapacityGB,
+        memoryBandwidthGBs: row.memoryBandwidthGBs,
+        counterStrike2Fps3840x2160: row.counterStrike2Fps3840x2160,
+        counterStrike2Fps2560x1440: row.counterStrike2Fps2560x1440,
+        counterStrike2Fps1920x1080: row.counterStrike2Fps1920x1080,
+        threemarkWildLifeExtremeFps: row.threemarkWildLifeExtremeFps,
+      } satisfies Gpu,
+    }
+
+    return listing
   })
 }
 

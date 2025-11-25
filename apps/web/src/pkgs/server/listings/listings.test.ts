@@ -14,6 +14,10 @@ jest.mock("./ebay", () => {
     cacheEbayListingsForGpu: jest.fn(async () => []),
   }
 })
+jest.mock("../db/db", () => ({
+  ...jest.requireActual("../db/db"),
+  withTransaction: jest.fn((fn) => fn({})),
+}))
 
 describe("fetchListingsForAllGPUsWithCache", () => {
   describe("cached listings are fresh", () => {

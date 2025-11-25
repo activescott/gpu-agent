@@ -64,6 +64,22 @@ COPY --from=builder /app/apps/web/tsconfig.json ./apps/web/tsconfig.json
 # Copy data files needed for seeding
 COPY --from=builder /app/data ./data
 
+# Validate that required data files exist and are not empty
+# This ensures the build fails if the data submodule wasn't checked out properly
+RUN if [ ! -d "./data/gpu-data" ] || [ -z "$(find ./data/gpu-data -name '*.yaml' -type f)" ]; then \
+      echo "ERROR: No GPU data files found in ./data/gpu-data/"; \
+      echo "Make sure the data submodule is checked out:"; \
+      echo "  git submodule update --init --recursive"; \
+      exit 1; \
+    fi && \
+    if [ ! -d "./data/benchmark-data" ] || [ -z "$(find ./data/benchmark-data -name '*.yaml' -type f ! -name 'gpu-name-mapping.yaml')" ]; then \
+      echo "ERROR: No benchmark data files found in ./data/benchmark-data/"; \
+      echo "Make sure the data submodule is checked out:"; \
+      echo "  git submodule update --init --recursive"; \
+      exit 1; \
+    fi && \
+    echo "✓ Data validation passed: GPU and benchmark data files found"
+
 # Copy and set up entrypoint script
 COPY --from=builder /app/scripts/docker-entrypoint.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh

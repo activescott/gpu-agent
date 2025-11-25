@@ -1,0 +1,5 @@
+-- Add gaming benchmark columns to gpu table
+ALTER TABLE "gpu" ADD COLUMN "counterStrike2Fps3840x2160" DOUBLE PRECISION;
+ALTER TABLE "gpu" ADD COLUMN "counterStrike2Fps2560x1440" DOUBLE PRECISION;
+ALTER TABLE "gpu" ADD COLUMN "counterStrike2Fps1920x1080" DOUBLE PRECISION;
+ALTER TABLE "gpu" ADD COLUMN "3dmarkWildLifeExtremeFps" DOUBLE PRECISION;

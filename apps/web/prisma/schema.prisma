@@ -13,8 +13,9 @@ datasource db {
 
 model gpu {
   // unique name for the card; also primary key
-  name  String @id @unique
-  label String
+  name   String  @id @unique
+  label  String
+  series String?
 
   // Specs:
   tensorCoreCount             Float?
@@ -28,13 +29,20 @@ model gpu {
   gpuArchitecture             String
   // This is a list of the supported precisions for hardware-accelerated generalized matrix multiplication operations (GEMM).
   supportedHardwareOperations String[]
-  
-  // The compute capability of a device is represented by a version number, also sometimes called its “SM version”. This version number identifies the features supported by the GPU hardware and is used by applications at runtime to determine which hardware features and/or instructions are available on the present GPU. 
-  // CUDA Compute Capability references: 
+
+  // The compute capability of a device is represented by a version number, also sometimes called its "SM version". This version number identifies the features supported by the GPU hardware and is used by applications at runtime to determine which hardware features and/or instructions are available on the present GPU.
+  // CUDA Compute Capability references:
   // - https://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html#compute-capability
   // - https://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html#compute-capabilities
   // - https://developer.nvidia.com/cuda-gpus <<< GPU list
   supportedCUDAComputeCapability Float?
+
+  // Benchmarks (Gaming):
+  counterStrike2Fps3840x2160 Float?
+  counterStrike2Fps2560x1440 Float?
+  counterStrike2Fps1920x1080 Float?
+  // Note: Field name uses "3" prefix as Prisma doesn't support fields starting with numbers
+  threemarkWildLifeExtremeFps Float? @map("3dmarkWildLifeExtremeFps")
 
   // references for the specs:
   references        String[]

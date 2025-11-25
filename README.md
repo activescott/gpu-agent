@@ -6,20 +6,13 @@ Check it out at https://coinpoet.com
 
 GPU Agent is a project I created to scratch an itch I've had since I used to buy and sell GPUs for mining cryptocurrency. With the rise of interest in GPUs that the excitement around LLMs brought I decided to pursue it.
 
-## Tech Stack & Architecture
+## Licensing
 
-**Core Technologies:**
-- **Framework**: Next.js with App Router and TypeScript
-- **Database**: PostgreSQL with Prisma ORM
-- **Containerization**: Docker with docker-compose
-- **Testing**: Playwright for e2e testing
-- **Visualization**: Chart.js for data charts
-- **Build System**: Turbo monorepo
+GPU Agent is open source:
+- **Application code**: Licensed under the MIT License
+- **Data files** (`/data` directory): Licensed under CC BY-SA 4.0 (Creative Commons Attribution-ShareAlike 4.0 International)
 
-**Repository Structure:**
-- `packages/ebay-client/` - eBay API client library
-- `apps/web/` - Main Next.js web application
-- `tests/e2e/` - Playwright end-to-end tests
+This means you're free to use, modify, and distribute both the code and data, with attribution required for the data.
 
 ## Development Setup
 
@@ -98,9 +91,14 @@ docker-compose exec app sh -c "cd /app/apps/web && npx prisma db pull"
 ### Testing
 
 ```bash
-# Run e2e tests (from tests/e2e directory)
-cd tests/e2e
-npx playwright test
+# Run e2e tests
+cd e2e-tests
+npm install
+npx playwright install
+npm test
+
+# Run e2e tests in headed mode (see browser)
+npm run test:headed
 
 # Run specific test
 npx playwright test tests/historical-data.spec.ts
@@ -110,6 +108,7 @@ npx playwright test tests/historical-data.spec.ts
 
 - Application: http://localhost:3000/api/health
 - Metrics: http://localhost:3000/ops/metrics
+
 
 ### Cache Revalidation
 
@@ -156,29 +155,42 @@ This endpoint:
 - `unicorn/prefer-number-properties` - Use `Number.parseInt()` instead of `parseInt()`
 - `import/no-unused-modules` - Remove unused exports (warnings on API routes are normal)
 
-### Error Prevention
-- Always use optional chaining for nullable properties: `data?.field?.toFixed(0) || 'N/A'`
-- Add null safety for all Chart.js data processing
-- Defensive programming for API responses
-
-### Routing Conventions
-- Internal testing pages: `/internal/` (excluded from sitemap)
-- API routes: `/internal/api/` for development endpoints
-- Layout files: `layout.tsx` for page-level metadata
-
 ## File Locations Reference
 
 ### Key Configuration Files
 - `/apps/web/prisma/schema.prisma` - Database schema
 - `/apps/web/.env` - Environment variables (Docker overrides these)
 - `/docker-compose.yml` - Container configuration
-- `/tests/e2e/playwright.config.ts` - E2E test configuration
+- `/e2e-tests/playwright.config.ts` - E2E test configuration
 
 ### Important Code Locations
 - `/apps/web/src/pkgs/server/db/` - Database repositories
 - `/apps/web/src/app/internal/` - Internal testing pages
 - `/apps/web/src/app/internal/api/` - Internal API endpoints
 - `/apps/web/prisma/migrations/` - Database migration files
+
+### Data Locations
+- `/data/gpu-data/` - GPU specification YAML files (CC BY-SA 4.0)
+- `/data/benchmark-data/` - Gaming benchmark YAML files (CC BY-SA 4.0)
+- `/data/news-data/` - News article YAML files (CC BY-SA 4.0)
+
+### Working with Data Files
+
+#### News Articles
+**IMPORTANT:** When updating news articles in `/data/news-data/`:
+- **ALWAYS update the `updatedAt` field** to the current timestamp
+- The database seed script uses `updatedAt` to determine which articles need updating
+- If `updatedAt` is not changed, the seed script will NOT update the database with your changes
+- Format: ISO 8601 timestamp (e.g., `2025-11-24T10:30:00Z`)
+
+Example:
+```yaml
+# Before editing
+updatedAt: "2025-11-22T10:02:00Z"
+
+# After editing (update to current time)
+updatedAt: "2025-11-24T15:45:00Z"
+```
 
 ## Deployment
 
@@ -207,4 +219,4 @@ The code in this project is licensed under the MIT License. See the `LICENSE_COD
 
 ### Data & Content
 
-The data (such as but not limited to those files in data/gpu-data) and content (such as but not limited to the pages under a "learn" path in the site) in this project is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0). See the `LICENSE_DATA_AND_CONTENT` file for more information.
+The data (such as but not limited to those files in data/gpu-data) and content (such as but not limited to the pages under a "learn" path in the site) in this project is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License (CC BY-SA 4.0). See the `LICENSE_DATA_AND_CONTENT` file for more information.

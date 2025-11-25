@@ -6,3 +6,8 @@ data/**/*.numbers
 
 .turbo
 .vercel
+
+.gitignore
+test-results/
+playwright-report/
+dist/

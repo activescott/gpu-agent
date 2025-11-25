@@ -1,11 +1,13 @@
 import { stripIndents } from "common-tags"
 import { z } from "zod"
 import { GpuSpecsSchema } from "./specs"
+import { GpuBenchmarksSchema } from "./benchmarks"
 
 export const GpuSchema = z
   .object({
     name: z.string(),
     label: z.string(),
+    series: z.string().optional().nullable(),
     gpuArchitecture: z.string(),
     supportedHardwareOperations: z.array(z.string()).describe(stripIndents`
       A list of the supported precisions for hardware-accelerated generalized
@@ -24,5 +26,6 @@ export const GpuSchema = z
     maxTDPWatts: z.number().optional().nullable(),
   })
   .extend(GpuSpecsSchema.shape)
+  .extend(GpuBenchmarksSchema.shape)
 
 export type Gpu = z.infer<typeof GpuSchema>

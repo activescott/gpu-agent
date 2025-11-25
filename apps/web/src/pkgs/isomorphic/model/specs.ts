@@ -30,6 +30,7 @@ interface GpuSpecItem {
   unitShortest: string
   description: string
   descriptionDollarsPer: string
+  category: "ai" | "gaming"
 }
 
 export const GpuSpecsDescription: Record<GpuSpecKey, GpuSpecItem> = {
@@ -40,6 +41,7 @@ export const GpuSpecsDescription: Record<GpuSpecKey, GpuSpecItem> = {
     description:
       "Tensor Cores are processors that perform efficient matrix multiplication, and are very useful for deep neural networks.",
     descriptionDollarsPer: "How much you pay per tensor core. Lower is better.",
+    category: "ai",
   },
   fp32TFLOPS: {
     label: "FP32 TFLOPs",
@@ -49,6 +51,7 @@ export const GpuSpecsDescription: Record<GpuSpecKey, GpuSpecItem> = {
       "The number of 32-bit floating-point operations per second the card can perform in trillions.",
     descriptionDollarsPer:
       "Dollars per 32-bit floating-point operations per second indicates how much you pay for each trillion operations per second. Lower is better.",
+    category: "ai",
   },
   fp16TFLOPS: {
     label: "FP16 TFLOPs",
@@ -58,6 +61,7 @@ export const GpuSpecsDescription: Record<GpuSpecKey, GpuSpecItem> = {
       "The number of 16-bit operations per second the card can perform in trillions.",
     descriptionDollarsPer:
       "Dollars per 16-bit floating-point operations per second indicates how much you pay for each trillion operations per second. Lower is better",
+    category: "ai",
   },
   int8TOPS: {
     label: "Int8 TOPs",
@@ -67,6 +71,7 @@ export const GpuSpecsDescription: Record<GpuSpecKey, GpuSpecItem> = {
       "The number of 8-bit operations per second the card can perform in trillions.",
     descriptionDollarsPer:
       "Dollars per 8-bit integer operations per second indicates how much you pay for each trillion operations per second. Lower is better.",
+    category: "ai",
   },
   memoryCapacityGB: {
     label: "Memory Capacity (GB)",
@@ -75,6 +80,7 @@ export const GpuSpecsDescription: Record<GpuSpecKey, GpuSpecItem> = {
     description: "The amount of memory the card has in gigabytes.",
     descriptionDollarsPer:
       "Dollars-per-gigabyte is how much you pay for each GB of memory capacity. Lower is better.",
+    category: "ai",
   },
   memoryBandwidthGBs: {
     label: "Memory Bandwidth (GB/s)",
@@ -84,5 +90,6 @@ export const GpuSpecsDescription: Record<GpuSpecKey, GpuSpecItem> = {
       "The rate that data can be transferred between memory and the processor in gigabytes per second.",
     descriptionDollarsPer:
       "Dollars-per-gigabyte per-second is how much you're pay for each GBs of memory bandwidth. Lower is better.",
+    category: "ai",
   },
 }

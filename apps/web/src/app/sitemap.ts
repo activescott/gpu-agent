@@ -4,7 +4,7 @@ import { ISOMORPHIC_CONFIG } from "@/pkgs/isomorphic/config"
 import { IterableElement } from "type-fest"
 import { listPublishedArticles } from "@/pkgs/server/db/NewsRepository"
 import {
-  getLatestListingDateWithThrottle,
+  getLatestListingDate,
   GpuWithListings,
   listCachedListingsGroupedByGpu,
 } from "@/pkgs/server/db/ListingRepository"
@@ -77,7 +77,7 @@ interface SitemapJsonItem {
 }
 
 async function homePageSitemapItem(domain_url: string): Promise<SitemapItem> {
-  const latestListingDate = await getLatestListingDateWithThrottle()
+  const latestListingDate = await getLatestListingDate()
   return {
     url: `${domain_url}/`,
     changeFrequency: "daily",
@@ -91,7 +91,7 @@ async function gpuRankingSitemap(domain_url: string): Promise<SitemapItem[]> {
   const slugs = listGpuRankingSlugs()
 
   // lastModified is effectively the most recent listing data across all GPUs
-  const lastModified: Date = await getLatestListingDateWithThrottle()
+  const lastModified: Date = await getLatestListingDate()
 
   const entries = slugs.map((slug) => {
     return {

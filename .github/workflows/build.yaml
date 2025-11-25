@@ -20,6 +20,10 @@ jobs:
     steps:
       # https://github.com/actions/checkout
       - uses: actions/checkout@v4
+        with:
+          # Fetch full git history so sitemap generation can use accurate
+          # git timestamps for lastModified dates in sitemap.xml
+          fetch-depth: 0
 
       # https://turbo.build/repo/docs/guides/ci-vendors/github-actions#caching-with-github-actionscache
       - name: cache turbo build
@@ -37,7 +41,12 @@ jobs:
           cache: npm
 
       - run: npm ci
-      # NOTE: sitemap json is required for lint to succeed as it is imported
+      # Generate sitemap with git timestamps before lint/build/docker steps.
+      # The generated sitemap.static-pages.json will be:
+      # 1. Used by lint (it's imported by the codebase)
+      # 2. Copied into the Docker image (see Dockerfile COPY command for sitemap.static-pages.json)
+      # This ensures deployed containers always have an up-to-date sitemap with
+      # accurate lastModified dates from git history (requires fetch-depth: 0 above)
       - run: cd apps/web ; npm run gen-sitemap
       - run: npm run lint
       - run: npm run test

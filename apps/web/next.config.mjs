@@ -1,6 +1,4 @@
-import remarkGfm from "remark-gfm"
 import createMDX from "@next/mdx"
-import addClasses from "rehype-add-classes"
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -184,10 +182,11 @@ const nextConfig = {
 }
 
 const withMDX = createMDX({
-  // Add markdown plugins here, as desired
   options: {
-    remarkPlugins: [remarkGfm],
-    rehypePlugins: [[addClasses, { table: "table" }]],
+    remarkPlugins: ['remark-gfm'],
+    rehypePlugins: [
+      ['rehype-add-classes', { table: 'table' }]
+    ],
   },
 })
 

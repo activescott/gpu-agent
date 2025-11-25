@@ -53,13 +53,12 @@ jobs:
           else
             echo "changed=false" >> $GITHUB_OUTPUT
           fi
-          
+
       - name: Commit and push changes
-        # Only commit on main branch pushes, not on PRs
         if: steps.verify-changed-files.outputs.changed == 'true' && github.event_name == 'push' && github.ref == 'refs/heads/main'
         run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
           git add apps/web/src/app/sitemap.static-pages.json
           git commit -m "chore: update sitemap with latest git timestamps [skip ci]"
           git push

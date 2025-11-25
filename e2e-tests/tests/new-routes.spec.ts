@@ -1,21 +1,21 @@
 import { test, expect } from "@playwright/test"
 
-test.describe("New GPU Buy Routes", () => {
-  test("loads individual GPU listing page", async ({ page }) => {
-    await page.goto("/gpu/listing/nvidia-geforce-rtx-4090")
+test.describe("New GPU Shop Routes", () => {
+  test("loads individual GPU shop page", async ({ page }) => {
+    await page.goto("/gpu/shop/nvidia-geforce-rtx-4090")
     await expect(page).toHaveTitle(/Best Prices for/)
     await expect(page.locator("h1")).toContainText("Listings")
   })
 
   test("loads AI cost-per-performance page", async ({ page }) => {
-    await page.goto("/gpu/buy/ai/cost-per-fp32-flops")
+    await page.goto("/gpu/price-compare/ai/cost-per-fp32-flops")
     await expect(page).toHaveTitle(/Compare GPU Prices/)
     // Check that listing cards are present
     await expect(page.locator("#listingContainer")).toBeVisible()
   })
 
-  test("GPU listing page has sort dropdown", async ({ page }) => {
-    await page.goto("/gpu/listing/nvidia-geforce-rtx-4090")
+  test("GPU shop page has sort dropdown", async ({ page }) => {
+    await page.goto("/gpu/shop/nvidia-geforce-rtx-4090")
     // Just check that the page loaded and has a sort control
     await expect(page.locator("#select-spec")).toBeVisible()
   })

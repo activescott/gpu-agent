@@ -3,7 +3,7 @@ import { test, expect } from '@playwright/test';
 test.describe('Gaming Buy Pages', () => {
   test('should show gaming metrics (not AI specs) on gaming buy pages', async ({ page }) => {
     // Navigate to a gaming buy page
-    await page.goto('/gpu/buy/gaming/cost-per-counter-strike-2-fps-3840x2160');
+    await page.goto('/gpu/price-compare/gaming/cost-per-counter-strike-2-fps-3840x2160');
 
     // Wait for page to load
     await expect(page).toHaveTitle(/Counter.*Strike.*2|Buy GPUs/i);
@@ -31,13 +31,13 @@ test.describe('Gaming Buy Pages', () => {
     expect(metricText).not.toContain('$NaN');
     expect(metricText).toMatch(/\$\s*[\d,]+(\.\d+)?\s*\/\s*FPS/i);
 
-    // Should show raw FPS value in parentheses
-    expect(metricText).toMatch(/\(\s*\d+\s*fps\s*\)/i);
+    // Should show raw FPS value with @ symbol
+    expect(metricText).toMatch(/@\s*\d+\s*FPS/i);
   });
 
   test('should not show AI metrics on gaming buy pages', async ({ page }) => {
     // Navigate to a gaming buy page
-    await page.goto('/gpu/buy/gaming/cost-per-3dmark-wildlife-extreme-fps');
+    await page.goto('/gpu/price-compare/gaming/cost-per-3dmark-wildlife-extreme-fps');
 
     // Wait for page to load
     await expect(page).toHaveTitle(/3DMark|Buy GPUs/i);
@@ -73,10 +73,10 @@ test.describe('Gaming Buy Pages', () => {
 
   test('should show valid numeric values on all gaming buy pages', async ({ page }) => {
     const gamingBuyPages = [
-      '/gpu/buy/gaming/cost-per-counter-strike-2-fps-3840x2160',
-      '/gpu/buy/gaming/cost-per-counter-strike-2-fps-2560x1440',
-      '/gpu/buy/gaming/cost-per-counter-strike-2-fps-1920x1080',
-      '/gpu/buy/gaming/cost-per-3dmark-wildlife-extreme-fps',
+      '/gpu/price-compare/gaming/cost-per-counter-strike-2-fps-3840x2160',
+      '/gpu/price-compare/gaming/cost-per-counter-strike-2-fps-2560x1440',
+      '/gpu/price-compare/gaming/cost-per-counter-strike-2-fps-1920x1080',
+      '/gpu/price-compare/gaming/cost-per-3dmark-wildlife-extreme-fps',
     ];
 
     for (const pagePath of gamingBuyPages) {
@@ -109,12 +109,12 @@ test.describe('Gaming Buy Pages', () => {
   test('should show correct metric for each gaming buy page', async ({ page }) => {
     const testCases = [
       {
-        path: '/gpu/buy/gaming/cost-per-counter-strike-2-fps-3840x2160',
+        path: '/gpu/price-compare/gaming/cost-per-counter-strike-2-fps-3840x2160',
         expectedMetric: 'FPS',
         title: /Counter.*Strike.*2.*4K|3840x2160/i,
       },
       {
-        path: '/gpu/buy/gaming/cost-per-3dmark-wildlife-extreme-fps',
+        path: '/gpu/price-compare/gaming/cost-per-3dmark-wildlife-extreme-fps',
         expectedMetric: 'FPS',
         title: /3DMark.*Wild.*Life/i,
       },

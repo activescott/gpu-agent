@@ -24,11 +24,11 @@
  * ═══════════════════════════════════════════════════════════════════════════
  */
 
-import { Listing } from "@/pkgs/isomorphic/model"
+import { Listing, Gpu } from "@/pkgs/isomorphic/model"
 import { createDiag } from "@activescott/diag"
 import { PrismaClientWithinTransaction, prismaSingleton } from "./db"
-import { omit, pick, throttle } from "lodash"
-import { GpuMetricKey, GpuMetricKeys } from "@/pkgs/isomorphic/model/metrics"
+import { omit, throttle } from "lodash"
+import { GpuMetricKey } from "@/pkgs/isomorphic/model/metrics"
 import { Prisma } from "@prisma/client"
 import { CACHED_LISTINGS_DURATION_MS } from "../cacheConfig"
 import { EPOCH, minutesToMilliseconds } from "@/pkgs/isomorphic/duration"
@@ -428,38 +428,72 @@ export async function topNListingsByCostPerformance(
     LIMIT ${n}
   `)
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  return result.map((row: any) => {
+  return result.map((row: ListingWithGpu): Listing => {
     // Map database column names back to Prisma field names
     // This is needed because raw SQL returns DB column names, but we use Prisma field names
     if (dbColumnName !== spec) {
       // If the DB column name differs from the Prisma field name (e.g., 3dmarkWildLifeExtremeFps vs threemarkWildLifeExtremeFps)
-      row[spec] = row[dbColumnName]
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      ;(row as any)[spec] = (row as any)[dbColumnName]
     }
 
-    const listing = omit(row, "gpu")
-    const gpuMetrics = pick(row, GpuMetricKeys)
-    // TODO: I think we have these keys somewhere else, we should centralize them and load them from a single location
-    const gpuKeys = [
-      "name",
-      "label",
-      "lastCachedListings",
-      "summary",
-      "references",
-      "gpuArchitecture",
-      "supportedHardwareOperations",
-      "supportedCUDAComputeCapability",
-      "maxTDPWatts",
-    ] as (keyof ListingWithGpu)[]
-    const gpu = pick(row, gpuKeys)
-
-    return {
-      ...listing,
+    // Construct the Listing object with all fields explicitly mapped
+    // We explicitly construct the gpu object from the flattened row data
+    const listing: Listing = {
+      // Listing fields
+      itemId: row.itemId,
+      title: row.title,
+      priceValue: row.priceValue,
+      priceCurrency: row.priceCurrency,
+      buyingOptions: row.buyingOptions,
+      imageUrl: row.imageUrl,
+      adultOnly: row.adultOnly,
+      itemHref: row.itemHref,
+      leafCategoryIds: row.leafCategoryIds,
+      listingMarketplaceId: row.listingMarketplaceId,
+      sellerUsername: row.sellerUsername,
+      sellerFeedbackPercentage: row.sellerFeedbackPercentage,
+      sellerFeedbackScore: row.sellerFeedbackScore,
+      condition: row.condition,
+      conditionId: row.conditionId,
+      itemAffiliateWebUrl: row.itemAffiliateWebUrl,
+      thumbnailImageUrl: row.thumbnailImageUrl,
+      epid: row.epid,
+      itemCreationDate: row.itemCreationDate,
+      itemLocationCountry: row.itemLocationCountry,
+      itemGroupType: row.itemGroupType,
+      // GPU object with all specs and benchmarks
       gpu: {
-        ...gpu,
-        ...gpuMetrics,
-      },
+        // Required fields
+        name: row.name,
+        label: row.label,
+        gpuArchitecture: row.gpuArchitecture,
+        supportedHardwareOperations: row.supportedHardwareOperations,
+        summary: row.summary,
+        references: row.references,
+        // Optional fields - accessing via index signature since raw SQL flattens the result
+        series: (row as Record<string, unknown>).series as
+          | string
+          | null
+          | undefined,
+        supportedCUDAComputeCapability:
+          row.supportedCUDAComputeCapability ?? undefined,
+        maxTDPWatts: row.maxTDPWatts ?? undefined,
+        // All GPU metrics
+        fp32TFLOPS: row.fp32TFLOPS,
+        tensorCoreCount: row.tensorCoreCount,
+        fp16TFLOPS: row.fp16TFLOPS,
+        int8TOPS: row.int8TOPS,
+        memoryCapacityGB: row.memoryCapacityGB,
+        memoryBandwidthGBs: row.memoryBandwidthGBs,
+        counterStrike2Fps3840x2160: row.counterStrike2Fps3840x2160,
+        counterStrike2Fps2560x1440: row.counterStrike2Fps2560x1440,
+        counterStrike2Fps1920x1080: row.counterStrike2Fps1920x1080,
+        threemarkWildLifeExtremeFps: row.threemarkWildLifeExtremeFps,
+      } satisfies Gpu,
     }
+
+    return listing
   })
 }
 

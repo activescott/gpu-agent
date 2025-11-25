@@ -9,8 +9,8 @@ content: |
 
   The new RTX 50-series brings NVIDIA's Blackwell architecture:
 
-  - [NVIDIA GeForce RTX 5060](/ml/shop/gpu/nvidia-geforce-rtx-5060) - Entry-level Blackwell with 8GB GDDR7, delivering 307 AI TOPS at 150W
-  - [NVIDIA GeForce RTX 5060 Ti](/ml/shop/gpu/nvidia-geforce-rtx-5060-ti) - 16GB GDDR7 variant for 1440p gaming and AI workloads
+  - [NVIDIA GeForce RTX 5060](/gpu/learn/card/nvidia-geforce-rtx-5060) - Entry-level Blackwell with 8GB GDDR7, delivering 307 AI TOPS at 150W
+  - [NVIDIA GeForce RTX 5060 Ti](/gpu/learn/card/nvidia-geforce-rtx-5060-ti) - 16GB GDDR7 variant for 1440p gaming and AI workloads
 
   These cards include DLSS 4, RTX Neural Shaders, and improved power efficiency on the 4nm process.
 
@@ -18,34 +18,34 @@ content: |
 
   Popular RTX 40-series cards now available for price tracking:
 
-  - [NVIDIA GeForce RTX 4060](/ml/shop/gpu/nvidia-geforce-rtx-4060) - The sweet spot for 1080p gaming
-  - [NVIDIA GeForce RTX 4070 Super](/ml/shop/gpu/nvidia-geforce-rtx-4070-super) - Enhanced 1440p powerhouse
-  - [NVIDIA GeForce RTX 4080 Super](/ml/shop/gpu/nvidia-geforce-rtx-4080-super) - 4K gaming excellence
-  - [NVIDIA GeForce RTX 4080](/ml/shop/gpu/nvidia-geforce-rtx-4080) - Updated specs for this high-end card
+  - [NVIDIA GeForce RTX 4060](/gpu/learn/card/nvidia-geforce-rtx-4060) - The sweet spot for 1080p gaming
+  - [NVIDIA GeForce RTX 4070 Super](/gpu/learn/card/nvidia-geforce-rtx-4070-super) - Enhanced 1440p powerhouse
+  - [NVIDIA GeForce RTX 4080 Super](/gpu/learn/card/nvidia-geforce-rtx-4080-super) - 4K gaming excellence
+  - [NVIDIA GeForce RTX 4080](/gpu/learn/card/nvidia-geforce-rtx-4080) - Updated specs for this high-end card
 
   ## NVIDIA RTX 30-Series - Value Champions
 
   RTX 30-series Ampere cards are now tracked:
 
-  - [NVIDIA GeForce RTX 3070](/ml/shop/gpu/nvidia-geforce-rtx-3070) - Still excellent for 1440p
-  - [NVIDIA GeForce RTX 3070 Ti](/ml/shop/gpu/nvidia-geforce-rtx-3070-ti) - Boosted variant with faster memory
-  - [NVIDIA GeForce RTX 3080](/ml/shop/gpu/nvidia-geforce-rtx-3080) - 4K capable at attractive used prices
-  - [NVIDIA GeForce RTX 3080 Ti](/ml/shop/gpu/nvidia-geforce-rtx-3080-ti) - Near-3090 performance for less
+  - [NVIDIA GeForce RTX 3070](/gpu/learn/card/nvidia-geforce-rtx-3070) - Still excellent for 1440p
+  - [NVIDIA GeForce RTX 3070 Ti](/gpu/learn/card/nvidia-geforce-rtx-3070-ti) - Boosted variant with faster memory
+  - [NVIDIA GeForce RTX 3080](/gpu/learn/card/nvidia-geforce-rtx-3080) - 4K capable at attractive used prices
+  - [NVIDIA GeForce RTX 3080 Ti](/gpu/learn/card/nvidia-geforce-rtx-3080-ti) - Near-3090 performance for less
 
   ## AMD Radeon RX 9000-Series - RDNA 4 Arrives
 
   AMD's latest RDNA 4 architecture brings FSR 4 and improved efficiency:
 
-  - [AMD Radeon RX 9070 XT](/ml/shop/gpu/amd-radeon-rx-9070-xt) - Flagship RDNA 4 with 16GB for $599, competing with RTX 4070 Ti
-  - [AMD Radeon RX 9070](/ml/shop/gpu/amd-radeon-rx-9070) - Balanced option for high-refresh 1440p gaming
-  - [AMD Radeon RX 9060 XT](/ml/shop/gpu/amd-radeon-rx-9060-xt) - Mainstream RDNA 4 value
+  - [AMD Radeon RX 9070 XT](/gpu/learn/card/amd-radeon-rx-9070-xt) - Flagship RDNA 4 with 16GB for $599, competing with RTX 4070 Ti
+  - [AMD Radeon RX 9070](/gpu/learn/card/amd-radeon-rx-9070) - Balanced option for high-refresh 1440p gaming
+  - [AMD Radeon RX 9060 XT](/gpu/learn/card/amd-radeon-rx-9060-xt) - Mainstream RDNA 4 value
 
   ## AMD Radeon RX 7000-Series - RDNA 3 Value
 
   Popular RDNA 3 cards now in our database:
 
-  - [AMD Radeon RX 7900 GRE](/ml/shop/gpu/amd-radeon-rx-7900-gre) - "Golden Rabbit Edition" with 16GB for enthusiasts
-  - [AMD Radeon RX 7600](/ml/shop/gpu/amd-radeon-rx-7600) - Budget-friendly 1080p champion
+  - [AMD Radeon RX 7900 GRE](/gpu/learn/card/amd-radeon-rx-7900-gre) - "Golden Rabbit Edition" with 16GB for enthusiasts
+  - [AMD Radeon RX 7600](/gpu/learn/card/amd-radeon-rx-7600) - Budget-friendly 1080p champion
 
   ## What This Means For You
 
@@ -73,5 +73,5 @@ tags:
   - rdna-3
 authorFullName: "Scott"
 createdAt: "2025-11-22T10:00:00Z"
-updatedAt: "2025-11-22T10:02:00Z"
+updatedAt: "2025-11-24T10:03:00Z"
 publishedAt: "2025-11-22T10:30:00Z"

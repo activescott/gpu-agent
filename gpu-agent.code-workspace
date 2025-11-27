@@ -5,6 +5,9 @@
 		},
 		{
 			"path": "../gpu-agent-data"
+		},
+		{
+			"path": "../home-infra-k8s-flux"
 		}
 	],
 	"settings": {}

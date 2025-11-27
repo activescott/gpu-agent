@@ -185,7 +185,7 @@ const withMDX = createMDX({
   options: {
     remarkPlugins: ['remark-gfm'],
     rehypePlugins: [
-      ['rehype-add-classes', { table: 'table' }]
+      ['rehype-class-names', { table: 'table' }]
     ],
   },
 })

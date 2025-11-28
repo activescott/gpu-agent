@@ -21,7 +21,7 @@ export const SiteHeader = () => {
     <nav className="navbar navbar-expand-md bg-body-tertiary">
       <div className="container-fluid">
         <Link className="navbar-brand" href="/">
-          <SvgIcon icon="coinpoet-card" svgViewBox="0 0 16 16" /> Coin Poet
+          <SvgIcon icon="coinpoet-card" svgViewBox="0 0 16 16" /> GPU Poet
         </Link>
         <SiteHeaderNavToggler />
         <div className="collapse navbar-collapse" id="navbarNav">

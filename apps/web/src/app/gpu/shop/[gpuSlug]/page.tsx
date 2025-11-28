@@ -28,7 +28,7 @@ export async function generateMetadata(props: GpuParams) {
   return {
     title: `Best Prices for ${gpu.label}`,
     description: `Compare prices across the Internet for ${gpu.label}`,
-    alternates: { canonical: `https://coinpoet.com/gpu/shop/${gpuSlug}` },
+    alternates: { canonical: `https://gpupoet.com/gpu/shop/${gpuSlug}` },
   }
 }
 

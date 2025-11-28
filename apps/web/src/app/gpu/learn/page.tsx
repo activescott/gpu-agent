@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   title: "Learn About GPUs for AI and Gaming",
   description:
     "Comprehensive guides and resources for choosing the right GPU for machine learning, AI workloads, and gaming performance.",
-  alternates: { canonical: "https://coinpoet.com/gpu/learn" },
+  alternates: { canonical: "https://gpupoet.com/gpu/learn" },
 }
 
 export default async function Page() {

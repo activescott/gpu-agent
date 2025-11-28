@@ -34,14 +34,14 @@ export async function generateMetadata(props: NewsParams) {
 
   return {
     title: article.title,
-    description: `${article.title} by ${article.authorFullName} on Coin Poet`,
+    description: `${article.title} by ${article.authorFullName} on GPU Poet`,
     authors: { name: article.authorFullName },
     keywords: article.tags,
-    publisher: "Coin Poet",
+    publisher: "GPU Poet",
     openGraph: {
       title: article.title,
       description: article.title,
-      url: `https://coinpoet.com/news/${slug}`,
+      url: `https://gpupoet.com/news/${slug}`,
       type: "article",
       publishedTime: article.publishedAt?.toISOString(),
       modifiedTime: article.updatedAt?.toISOString(),
@@ -49,7 +49,7 @@ export async function generateMetadata(props: NewsParams) {
       tags: article.tags,
     },
     alternates: {
-      canonical: `https://coinpoet.com/news/${slug}`,
+      canonical: `https://gpupoet.com/news/${slug}`,
     },
   } satisfies Metadata
 }

@@ -6,7 +6,7 @@ import { test, expect } from "@playwright/test"
  * 1. Load successfully (200 OK), or
  * 2. Have a permanent redirect (308) to a new route
  *
- * Downloaded from: https://coinpoet.com/sitemap.xml
+ * Downloaded from: https://gpupoet.com/sitemap.xml
  * Last updated: 2025-11-24
  */
 const PRODUCTION_URLS = [

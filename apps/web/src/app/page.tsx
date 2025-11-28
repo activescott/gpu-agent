@@ -22,8 +22,8 @@ export const revalidate = 1800
 export const dynamic = "force-dynamic"
 
 export const metadata: Metadata = {
-  title: "Find the Best GPU for Your Money - CoinPoet.com",
-  alternates: { canonical: "https://coinpoet.com/" },
+  title: "Find the Best GPU for Your Money - GPUPoet.com",
+  alternates: { canonical: "https://gpupoet.com/" },
 }
 
 export default async function Page() {
@@ -54,7 +54,7 @@ export default async function Page() {
         <span className="text-accent">Save money</span> on your next GPU.
       </h1>
       <h3 className="lead">
-        Coin Poet is a free price comparison tool helping you find the best GPU
+        GPU Poet is a free price comparison tool helping you find the best GPU
         for your money.
       </h3>
 

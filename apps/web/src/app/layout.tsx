@@ -7,6 +7,7 @@ import {
 } from "@/pkgs/client/analytics/provider"
 import { SiteHeader } from "@/pkgs/client/components/SiteHeader"
 import { Alert } from "@/pkgs/client/components/Alert"
+import { DomainMigrationBanner } from "@/pkgs/client/components/DomainMigrationBanner"
 import Link from "next/link"
 import { maxLength } from "@/pkgs/isomorphic/string"
 
@@ -18,7 +19,7 @@ const METADATA_MAX_DESCRIPTION_LENGTH = 160
 export const metadata: Metadata = {
   title: maxLength(
     METADATA_MAX_TITLE_LENGTH,
-  )`Find the best GPU for your money. - CoinPoet.com`,
+  )`Find the best GPU for your money. - GPUPoet.com`,
 
   description: maxLength(
     METADATA_MAX_DESCRIPTION_LENGTH,
@@ -35,6 +36,7 @@ export default function RootLayout({
       <body>
         <AnalyticsProvider>
           <SiteHeader />
+          <DomainMigrationBanner />
           <Alert kind="secondary">
             What do you think? Please{" "}
             <Link href="/contact" className="alert-link">

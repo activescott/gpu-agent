@@ -6,7 +6,7 @@ test.describe('Home Page', () => {
     await page.goto('/');
     
     // Wait for page to load
-    await expect(page).toHaveTitle(/Find the Best GPU for Your Money|CoinPoet|GPU/);
+    await expect(page).toHaveTitle(/Find the Best GPU for Your Money|GPUPoet|GPU/);
     
     // Find all card headers with class 'my-container-card-header'
     const cardHeaders = page.locator('.my-container-card-header');

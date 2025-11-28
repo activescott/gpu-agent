@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 
 test.describe('Sitemap', () => {
-  test('should load sitemap.xml with expected URLs and coinpoet.com domain', async ({ page }) => {
+  test('should load sitemap.xml with expected URLs and gpupoet.com domain', async ({ page }) => {
     // Navigate to sitemap
     const response = await page.goto('/sitemap.xml');
     
@@ -22,7 +22,7 @@ test.describe('Sitemap', () => {
     // Verify we have at least 71 URLs (current baseline)
     expect(urlCount).toBeGreaterThanOrEqual(71);
     
-    // Verify all URLs use coinpoet.com domain
+    // Verify all URLs use gpupoet.com domain
     const locMatches = content.match(/<loc>([^<]+)<\/loc>/g);
     if (!locMatches) {
       throw new Error('No <loc> entries found in sitemap.xml');
@@ -32,7 +32,7 @@ test.describe('Sitemap', () => {
     // Check each URL uses the correct domain
     for (const locMatch of locMatches!) {
       const url = locMatch.replace(/<\/?loc>/g, '');
-      expect(url).toMatch(/^https:\/\/coinpoet\.com\//);
+      expect(url).toMatch(/^https:\/\/gpupoet\.com\//);
     }   
   });
 });

@@ -40,7 +40,7 @@ export async function generateMetadata(props: BenchmarkParams) {
     title: `${desc.label} - Gaming GPU Benchmark`,
     description: desc.description,
     alternates: {
-      canonical: `https://coinpoet.com/gpu/benchmark/gaming/${benchmark}`,
+      canonical: `https://gpupoet.com/gpu/benchmark/gaming/${benchmark}`,
     },
   }
 }

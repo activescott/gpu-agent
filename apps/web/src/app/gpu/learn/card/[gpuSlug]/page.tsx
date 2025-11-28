@@ -30,7 +30,7 @@ export async function generateMetadata(props: GpuParams) {
   return {
     title: `${gpu.label} ${gpu.memoryCapacityGB}GB Specifications for AI Enthusiasts`,
     description: `Learn about the ${gpu.label} Machine Learning GPU.`,
-    alternates: { canonical: `https://coinpoet.com/gpu/learn/card/${gpuSlug}` },
+    alternates: { canonical: `https://gpupoet.com/gpu/learn/card/${gpuSlug}` },
   }
 }
 

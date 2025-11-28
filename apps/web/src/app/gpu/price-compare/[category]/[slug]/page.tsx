@@ -34,7 +34,7 @@ export async function generateMetadata(props: CostPerMetricParams) {
     title: mapSlugToPageTitle(slugTyped, categoryTyped),
     description: mapSlugToPageDescription(slugTyped, categoryTyped),
     alternates: {
-      canonical: `https://coinpoet.com${canonicalPathForSlug(slugTyped, categoryTyped)}`,
+      canonical: `https://gpupoet.com${canonicalPathForSlug(slugTyped, categoryTyped)}`,
     },
   }
 }

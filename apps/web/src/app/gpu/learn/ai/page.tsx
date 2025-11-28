@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: "What to Look for in a GPU for Machine Learning",
   description:
     "Learn about GPUs for machine learning including use cases, models, and frequently asked questions.",
-  alternates: { canonical: "https://coinpoet.com/gpu/learn/ai" },
+  alternates: { canonical: "https://gpupoet.com/gpu/learn/ai" },
 }
 
 export default function Page() {

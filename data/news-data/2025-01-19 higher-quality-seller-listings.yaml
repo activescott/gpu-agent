@@ -3,16 +3,16 @@ id: clr890def567ghi123
 slug: enhanced-listing-quality
 title: "GPU Price Verification with High-Quality Seller Requirement"
 content: |
-  We've implemented an update to enhance the quality of GPU listings on Coin Poet. This change comes after a customer reported a suspiciously underpriced listing that could potentially mislead our users.
+  We've implemented an update to enhance the quality of GPU listings on GPU Poet. This change comes after a customer reported a suspiciously underpriced listing that could potentially mislead our users.
 
-  For example, we recently spotted a listing for an [NVIDIA Tesla H100 80GB PCIe GPU](https://coinpoet.com/ml/shop/gpu/nvidia-h100-pcie) priced at $879 (a GPU that typically sells for around $20,000). Upon investigating, this came from a new seller with no transaction history.
+  For example, we recently spotted a listing for an [NVIDIA Tesla H100 80GB PCIe GPU](https://gpupoet.com/ml/shop/gpu/nvidia-h100-pcie) priced at $879 (a GPU that typically sells for around $20,000). Upon investigating, this came from a new seller with no transaction history.
 
   To ensure more reliable pricing data, we've implemented new seller quality filters:
   - Only including listings from sellers with >90% positive feedback
   - Removing listings from sellers with no transaction history
   - Maintaining higher quality price tracking data
 
-  This update filters approximately 8% of total listings but significantly improves the reliability of our price tracking. You can now [view prices for the best GPUs for the money](https://coinpoet.com/ml/shop/gpu) with greater confidence knowing that listings come from established sellers with proven track records.
+  This update filters approximately 8% of total listings but significantly improves the reliability of our price tracking. You can now [view prices for the best GPUs for the money](https://gpupoet.com/ml/shop/gpu) with greater confidence knowing that listings come from established sellers with proven track records.
 status: PUBLISHED
 tags:
   - update
@@ -20,5 +20,5 @@ tags:
   - feature
 authorFullName: "Scott"
 createdAt: "2025-01-19T15:00:00Z"
-updatedAt: "2025-01-19T15:00:00Z"
+updatedAt: "2025-11-27T12:00:00Z"
 publishedAt: "2025-01-19T16:00:00Z"

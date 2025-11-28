@@ -30,7 +30,7 @@ export async function generateMetadata(props: PerformanceParams) {
     title: mapSlugToPageTitle(slug),
     description: mapSlugToPageDescription(slug),
     alternates: {
-      canonical: `https://coinpoet.com/ml/shop/gpu/performance/${slug}`,
+      canonical: `https://gpupoet.com/ml/shop/gpu/performance/${slug}`,
     },
   }
 }

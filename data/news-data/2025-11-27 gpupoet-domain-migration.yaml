@@ -1,0 +1,30 @@
+# yaml-language-server: $schema=./news-article.schema.json
+id: gpu1127nov2025dom
+slug: gpupoet-domain-migration
+title: "We've Moved: Welcome to GPUPoet.com"
+content: |
+  coinpoet.com has a new home at gpupoet.com!
+
+  ## Why the Change?
+
+  This project started as a small experiment, so I reused a domain from a former project that never really materialized. Now that more and more users are finding value in the site, a more descriptive domain seemed appropriate.
+
+  ## What This Means for You
+
+  - All your bookmarks will automatically redirect to the new domain
+  - All existing links will continue to work
+  - Nothing else changes - same features, same data, same experience
+
+  ## Share the Love
+
+  If you find GPUPoet.com useful, I'd be grateful if you'd share it with others who might benefit. Send a link to a friend, share it on Reddit, or post it wherever is convenient for you!
+
+  Have questions or concerns? Drop a note on the [contact page](/contact).
+status: PUBLISHED
+tags:
+  - announcement
+  - update
+authorFullName: "Scott Willeke"
+createdAt: "2025-11-27T12:00:00Z"
+updatedAt: "2025-11-27T12:00:00Z"
+publishedAt: "2025-11-27T12:00:00Z"

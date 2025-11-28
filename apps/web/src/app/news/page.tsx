@@ -13,10 +13,10 @@ const METADATA_MAX_TITLE_LENGTH = 70
 const METADATA_MAX_DESCRIPTION_LENGTH = 160
 
 export const metadata: Metadata = {
-  title: "News about finding the best GPU for your Money - CoinPoet.com",
+  title: "News about finding the best GPU for your Money - GPUPoet.com",
   description: maxLength(
     METADATA_MAX_DESCRIPTION_LENGTH,
-  )`News and updates from CoinPoet.com. Where you find the best GPU for your money. GPU Price/Performance Rankings on specifications and more.`,
+  )`News and updates from GPUPoet.com. Where you find the best GPU for your money. GPU Price/Performance Rankings on specifications and more.`,
 }
 
 if (

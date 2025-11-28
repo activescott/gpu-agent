@@ -1,10 +1,16 @@
 # GPU Agent: Smart GPU Price Comparisons
 
-GPU Agent provides machine learning performance metrics for all the most popular GPUs for Machine Learning. It also includes near real-time listings for GPUs aimed at Machine Learning across multiple sites (currently eBay is supported). You can compare one GPU to another as well as see the cost/performance metrics of GPUs based on real-time prices.
+GPU Agent helps you find the best GPU for your money by combining real-time marketplace prices with performance benchmarks. Whether you're building a gaming rig or a machine learning workstation, you can compare GPUs by cost-per-performance metrics that actually matter.
+
+**Features:**
+- **Gaming benchmarks** - Real-world FPS data from Counter-Strike 2, 3DMark, and other popular games
+- **AI/ML performance** - FP32/FP16 FLOPS, Tensor Cores, INT8 TOPS, and memory bandwidth metrics
+- **Live pricing** - Near real-time GPU listings from eBay with price tracking
+- **Cost-per-performance rankings** - See which GPUs deliver the best value for gaming or AI workloads
 
 Check it out at https://gpupoet.com
 
-GPU Agent is a project I created to scratch an itch I've had since I used to buy and sell GPUs for mining cryptocurrency. With the rise of interest in GPUs that the excitement around LLMs brought I decided to pursue it.
+This project started when I was buying and selling GPUs for cryptocurrency mining and got frustrated with how hard it was to compare actual value across different cards. With the rise of interest in GPUs for both gaming and AI, I built this to solve that problem.
 
 ## Licensing
 

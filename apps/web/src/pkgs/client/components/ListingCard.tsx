@@ -76,7 +76,7 @@ export const ListingCard = ({
           alignItems: "center",
         }}
       >
-        {/* NOTE: unoptimized because this is eating through optimizations of vercel. see https://vercel.com/docs/image-optimization/managing-image-optimization-costs */}
+        {/* NOTE: unoptimized because these are external eBay thumbnails that are already optimized by eBay's CDN */}
         <Image
           unoptimized
           src={imageUrl}
@@ -84,6 +84,7 @@ export const ListingCard = ({
           alt={title}
           width={215}
           height={215}
+          style={{ objectFit: "contain" }}
         />
       </div>
       <div className="card-body">

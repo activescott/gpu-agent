@@ -1,0 +1,53 @@
+# yaml-language-server: $schema=./gpu-spec.schema.json
+name: nvidia-rtx-4000-ada-generation
+label: NVIDIA RTX 4000 Ada Generation
+tensorCoreCount: 192
+fp32TFLOPS: 26.7
+fp16TFLOPS: 213.8
+int8TOPS: 427.6
+memoryCapacityGB: 20
+memoryBandwidthGBs: 360
+maxTDPWatts: 130
+gpuArchitecture: ada
+supportedHardwareOperations:
+  - FP32
+  - FP16
+  - TF32
+  - BF16
+  - FP8
+  - INT8
+  - INT4
+supportedCUDAComputeCapability: 8.9
+
+summary: |
+  The NVIDIA RTX 4000 Ada Generation is a professional single-slot workstation GPU released in August 2023,
+  built on the Ada Lovelace architecture using the AD104 chip with TSMC's 5nm process. It features 6,144 CUDA cores,
+  192 fourth-generation Tensor Cores, and 48 third-generation RT Cores, paired with 20GB of GDDR6 ECC memory.
+  The fourth-generation Tensor Cores introduce FP8 precision support and deliver up to 3X AI performance improvement
+  over the previous Ampere generation, with 427.6 TFLOPS of tensor performance using sparsity. The card's tensor
+  cores support multiple precision formats including FP8 (in both E4M3 and E5M2 formats), TF32, BF16, FP16, INT8,
+  and INT4, making it highly versatile for AI inference and machine learning workloads. With a TDP of only 130W
+  in a single-slot form factor, the RTX 4000 Ada offers exceptional power efficiency for professional visualization,
+  3D rendering, and AI applications. The GPU includes two eighth-generation NVENC encoders with AV1 support (40% more
+  efficient than H.264) and two fifth-generation NVDEC decoders. Memory bandwidth of 360 GB/s is provided through
+  a 160-bit memory interface running at 18 Gbps effective speed. With PCI Express 4.0 x16 interface and four
+  DisplayPort 1.4a outputs, it delivers up to 1.7X higher performance than the previous generation RTX A4000.
+
+references:
+  - https://www.nvidia.com/en-us/products/workstations/rtx-4000/
+  - https://www.techpowerup.com/gpu-specs/rtx-4000-ada-generation.c4171
+  - https://lenovopress.lenovo.com/lp2144-thinksystem-nvidia-rtx-4000-ada-20gb-pcie-active-gpu
+  - https://www.leadtek.com/eng/products/workstation_graphics(2)/NVIDIA_RTX_4000_Ada_Generation(40988)/detail
+  - https://images.nvidia.com/aem-dam/en-zz/Solutions/technologies/NVIDIA-ADA-GPU-PROVIZ-Architecture-Whitepaper_1.1.pdf
+
+notes:
+  - FP32 TFLOPS of 26.7 calculated as 6,144 CUDA cores × 2.175 GHz boost clock × 2 ops/cycle ÷ 1000 = 26.73 TFLOPS (rounded to 26.7 as published by NVIDIA).
+  - Tensor performance of 427.6 TFLOPS represents peak FP8 tensor performance with sparsity, as published by NVIDIA and confirmed across multiple official sources including Leadtek and NVIDIA product pages.
+  - FP16 TFLOPS of 213.8 is calculated based on the Ada Lovelace tensor core architecture where FP16 with sparsity delivers approximately half the performance of FP8 with sparsity (427.6 TFLOPS ÷ 2 = 213.8 TFLOPS).
+  - INT8 TOPS of 427.6 is based on Ada Lovelace tensor core specifications where INT8 performance with sparsity equals FP8 performance with sparsity, following the pattern observed in other Ada generation GPUs.
+  - Memory bandwidth calculated as 160-bit interface × 18 Gbps ÷ 8 bits/byte = 360 GB/s.
+  - Fourth-generation Tensor Cores support FP8 in both E4M3 and E5M2 formats, along with TF32, BF16, FP16, INT8, and INT4 precision modes.
+  - CUDA Compute Capability 8.9 confirmed from TechPowerUp specifications for Ada Lovelace AD104 chip.
+  - The GPU uses the AD104-400 variant with 48 of 60 streaming multiprocessors enabled, fabricated on TSMC 5nm process with 35.8 billion transistors on a 294mm² die.
+  - Power consumption (TDP) is 130W, representing the maximum thermal design power for the single-slot form factor.
+  - Some sources (Lenovo) list tensor performance as 327.6 TFLOPS, but NVIDIA official sources and Leadtek consistently show 427.6 TFLOPS, which appears to be the correct peak FP8 tensor performance with sparsity.

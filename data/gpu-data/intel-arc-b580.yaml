@@ -1,0 +1,54 @@
+# yaml-language-server: $schema=./gpu-spec.schema.json
+name: intel-arc-b580
+label: Intel Arc B580
+tensorCoreCount: 160
+fp32TFLOPS: 13.67
+fp16TFLOPS: 27.34
+int8TOPS: 233
+memoryCapacityGB: 12
+memoryBandwidthGBs: 456
+maxTDPWatts: 190
+gpuArchitecture: Xe2-HPG (Battlemage)
+supportedHardwareOperations:
+  - FP16
+  - FP32
+  - FP64
+  - BF16
+  - INT8
+  - INT4
+
+summary: |
+  The Intel Arc B580 is a discrete graphics card launched in December 2024, featuring Intel's second-generation
+  Xe2-HPG (Battlemage) architecture on the BMG-G21 silicon. Built on TSMC's 5nm process with 19.6 billion transistors
+  on a 272mm² die, the card features 20 Xe-cores (2,560 shading units), 160 XMX (Xe Matrix Extension) engines for
+  AI acceleration, and 20 ray tracing units. It includes 12GB of GDDR6 memory on a 192-bit bus running at 19 Gbps,
+  delivering 456 GB/s of memory bandwidth. The B580 offers 13.67 TFLOPS of FP32 performance and 233 TOPS of INT8
+  performance through its XMX engines, which support FP16, BF16, INT8, and INT4 precision formats for AI/ML
+  workloads. With a TDP of 190W and positioned at a $249 launch price, the Arc B580 represents Intel's competitive
+  entry into the mainstream discrete GPU market, offering strong AI acceleration capabilities through XMX engines
+  and improved architectural efficiency over the previous Alchemist generation. The architecture features enhanced
+  vector engines with SIMD16/SIMD32 support, 256KB L1 cache per Xe-core, and 18MB shared L2 cache. Notable features
+  include support for DirectX 12 Ultimate, Vulkan 1.4, PCIe 4.0 x8, and Intel's XeSS upscaling technology powered
+  by the XMX AI accelerators.
+
+references:
+  - https://www.intel.com/content/www/us/en/products/sku/241598/intel-arc-b580-graphics/specifications.html
+  - https://www.techpowerup.com/gpu-specs/arc-b580.c4244
+  - https://www.intel.com/content/www/us/en/developer/articles/technical/introduction-to-the-xe-hpg-architecture.html
+  - https://chipsandcheese.com/p/intels-battlemage-architecture
+  - https://www.intel.com/content/www/us/en/docs/oneapi/optimization-guide-gpu/2024-1/xmx.html
+
+notes:
+  - "FP32 TFLOPS calculated as 2,560 shading units × 2.670 GHz boost clock × 2 ops/cycle ÷ 1000 = 13.67 TFLOPS"
+  - "FP16 TFLOPS is 27.34 TFLOPS with 2:1 ratio to FP32, per TechPowerUp specifications"
+  - "INT8 TOPS of 233 is the official specification from Intel product page, representing peak XMX engine performance"
+  - "tensorCoreCount refers to the 160 XMX (Xe Matrix Extension) engines, which are Intel's equivalent to NVIDIA tensor cores and AMD AI accelerators"
+  - "XMX engines support FP16, BF16, INT8, INT4, and INT2 data types for matrix operations via DPAS (Dot Product Accumulate Systolic) instruction"
+  - "FP32 and FP64 operations are handled by the Xe Vector Engines (XVEs), not the XMX units"
+  - "FP64 performance is 1.709 TFLOPS (1:8 ratio to FP32) per TechPowerUp, representing strong double-precision support for a consumer GPU"
+  - "Memory bandwidth calculated as 192-bit interface × 19 Gbps = 456 GB/s"
+  - "Built on TSMC N5 (5nm) process node with 19.6 billion transistors on 272mm² die"
+  - "Architecture features 20 Xe-cores across 5 render slices, with 8 XMX engines per Xe-core (20 × 8 = 160 total XMX engines)"
+  - "GPU clock specification from Intel is 2670 MHz for both base and boost on reference design; partner cards may have higher boost clocks"
+  - "TDP specified as 190W by Intel, using single 8-pin power connector with 600W PSU recommended"
+  - "Launch date: December 13, 2024, with MSRP of $249 USD"

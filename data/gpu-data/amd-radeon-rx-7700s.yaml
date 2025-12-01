@@ -1,0 +1,43 @@
+# yaml-language-server: $schema=./gpu-spec.schema.json
+name: amd-radeon-rx-7700s
+label: AMD Radeon RX 7700S
+tensorCoreCount: 64
+fp32TFLOPS: 20.48
+fp16TFLOPS: 40.96
+int8TOPS: null
+memoryCapacityGB: 8
+memoryBandwidthGBs: 288
+maxTDPWatts: 100
+gpuArchitecture: RDNA 3
+supportedHardwareOperations:
+  - FP16
+  - FP32
+  - BF16
+  - INT8
+  - INT4
+summary: >-
+  The AMD Radeon RX 7700S is a mobile graphics card launched in January 2023, featuring
+  AMD's RDNA 3 architecture based on the Navi 33 XT GPU variant. Built on TSMC's 6nm process,
+  it features 32 compute units with 2,048 stream processors and 64 AI Accelerators for
+  machine learning acceleration. The card includes 32 second-generation ray tracing accelerators
+  and 8GB of GDDR6 memory on a 128-bit bus running at 18 Gbps, delivering 288 GB/s of bandwidth.
+  With a boost clock of 2,500 MHz, it delivers 20.48 TFLOPS of FP32 performance. Designed for
+  gaming laptops, the RX 7700S has a TDP of 100W, making it power-efficient for mobile platforms
+  while still offering strong gaming performance. It features 32MB of Infinity Cache (L3) to
+  enhance effective memory bandwidth and supports DirectX 12 Ultimate with hardware-accelerated
+  ray tracing and variable rate shading. The card is designed for high-quality 1080p and 1440p
+  gaming in mobile form factors.
+references:
+  - https://www.techpowerup.com/gpu-specs/radeon-rx-7700s.c4015
+  - https://www.notebookcheck.net/AMD-Radeon-RX-7700S-GPU-Benchmarks-and-Specs.679277.0.html
+notes:
+  - FP32 TFLOPS of 20.48 per TechPowerUp GPU Database and multiple authoritative sources
+  - FP16 performance is 40.96 TFLOPS at 2:1 ratio to FP32, standard for RDNA 3 architecture
+  - Note on calculation: Simple formula (2048 SPs × 2.5 GHz × 2) yields 10.24 TFLOPS, but authoritative sources consistently report 20.48 TFLOPS, suggesting RDNA 3 achieves higher effective throughput
+  - tensorCoreCount of 64 represents the AI Accelerators (2 per compute unit × 32 compute units)
+  - Memory bandwidth calculated as 128-bit bus × 18 Gbps effective = 288 GB/s
+  - RDNA 3 architecture includes dedicated AI Accelerators for machine learning workloads
+  - Built on TSMC 6nm process with Navi 33 XT GPU variant
+  - Features 32MB of Infinity Cache (L3) in addition to 2MB L2 cache
+  - Base clock of 1,500 MHz with boost to 2,500 MHz
+  - Mobile GPU designed for laptop/notebook systems

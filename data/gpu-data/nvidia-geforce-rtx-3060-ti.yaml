@@ -1,0 +1,49 @@
+# yaml-language-server: $schema=./gpu-spec.schema.json
+name: nvidia-geforce-rtx-3060-ti
+label: NVIDIA GeForce RTX 3060 Ti
+tensorCoreCount: 152
+fp32TFLOPS: 16.2
+fp16TFLOPS: 129.6
+int8TOPS: 259.2
+memoryCapacityGB: 8
+memoryBandwidthGBs: 448
+maxTDPWatts: 200
+gpuArchitecture: Ampere
+supportedHardwareOperations:
+  - FP16
+  - FP32
+  - TF32
+  - BF16
+  - INT8
+supportedCUDAComputeCapability: 8.6
+
+summary: |
+  The NVIDIA GeForce RTX 3060 Ti is a mainstream gaming graphics card launched on December 2, 2020,
+  featuring NVIDIA's Ampere architecture based on the GA104-200 GPU. It offers 4,864 CUDA cores,
+  152 3rd-generation tensor cores, and 38 2nd-generation RT cores with 8GB of GDDR6 memory running
+  at 14 Gbps. The card delivers 259.2 INT8 TOPS with sparsity acceleration for AI workloads,
+  making it suitable for INT8-quantized inference tasks. Designed to outperform the previous
+  generation's RTX 2080 SUPER at a $399 launch price, the RTX 3060 Ti provides excellent
+  price-to-performance for both gaming at 1440p and machine learning inference workloads.
+  With a TDP of 200W, it uses a PCI-Express 4.0 x16 interface and features 448 GB/s memory
+  bandwidth on a 256-bit bus. The GA104 chip is manufactured on Samsung's 8nm process with
+  approximately 17.4 billion transistors.
+
+references:
+  - https://www.nvidia.com/content/PDF/nvidia-ampere-ga-102-gpu-architecture-whitepaper-v2.1.pdf
+  - https://www.nvidia.com/en-us/geforce/graphics-cards/30-series/rtx-3060-ti/
+  - https://www.nvidia.com/en-us/geforce/news/geforce-rtx-3060-ti-out-december-2/
+  - https://www.techpowerup.com/gpu-specs/geforce-rtx-3060-ti.c3681
+  - https://www.bestgpusforai.com/gpu-comparison/3060-ti-vs-4060
+
+notes:
+  - FP16 TFLOPS of 129.6 represents peak FP16 Tensor TFLOPS using the sparsity feature. Dense FP16 performance is approximately 64.8 TFLOPS. Following Ampere architecture standards, NVIDIA publishes sparse tensor performance which achieves 2x throughput.
+  - INT8 TOPS of 259.2 represents peak INT8 TOPS with sparsity acceleration enabled on the 3rd-generation Tensor Cores. This makes the card suitable for INT8-quantized AI inference workloads.
+  - FP32 TFLOPS calculated as 4,864 CUDA cores × 1.665 GHz boost clock × 2 ops/cycle = 16.2 TFLOPS. Ampere architecture features dual FP32 datapaths enabling 2 FP32 operations per cycle per CUDA core.
+  - Memory bandwidth calculated as 256-bit interface × 14 Gbps = 448 GB/s.
+  - The RTX 3060 Ti uses the GA104-200-A1 variant of the GA104 chip with 38 of 48 streaming multiprocessors enabled.
+  - Process node is Samsung 8nm with approximately 17.4 billion transistors and a die size of 392 mm².
+  - Power specification is based on NVIDIA's official TDP (Thermal Design Power) rating of 200W.
+  - The card does not support FP8 precision natively, which was introduced in the later Ada Lovelace architecture (RTX 40 series).
+  - Tensor Core count: 152 3rd-generation Tensor Cores (4 tensor cores per SM × 38 SMs).
+  - Launched at an MSRP of $399 USD, positioned to compete with and exceed the performance of the RTX 2080 SUPER while being more affordable.

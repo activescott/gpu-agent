@@ -1,0 +1,43 @@
+# yaml-language-server: $schema=./gpu-spec.schema.json
+name: amd-radeon-pro-w7700
+label: AMD Radeon Pro W7700
+tensorCoreCount: 96
+fp32TFLOPS: 31.95
+fp16TFLOPS: 63.9
+int8TOPS: null
+memoryCapacityGB: 16
+memoryBandwidthGBs: 576
+maxTDPWatts: 190
+gpuArchitecture: RDNA 3
+supportedHardwareOperations:
+  - FP16
+  - FP32
+  - BF16
+  - INT8
+  - INT4
+summary: >-
+  The AMD Radeon Pro W7700 is a professional workstation graphics card launched in November 2023,
+  featuring AMD's RDNA 3 architecture on the Navi 32 GPU. Built on TSMC's 5nm process with a
+  chiplet design containing 28.1 billion transistors, the card features 48 compute units with
+  3,072 stream processors and 96 AI Accelerators for enhanced machine learning performance.
+  It includes 48 second-generation ray tracing accelerators and 16GB of GDDR6 memory with ECC
+  support on a 256-bit bus, delivering 576 GB/s of bandwidth. The W7700 offers 31.95 TFLOPS
+  of FP32 performance at a boost clock of 2,600 MHz. With a TDP of 190W and positioned at $999,
+  this dual-slot card targets professional content creation, CAD, and AI workloads. It features
+  four DisplayPort 2.1 outputs with UHBR 20 support providing up to 80 Gb/s of display link
+  bandwidth, making it suitable for multi-display professional workflows.
+references:
+  - https://www.amd.com/en/products/graphics/workstations/radeon-pro/w7700.html
+  - https://www.techpowerup.com/315699/amd-announces-new-radeon-pro-w7700-workstation-graphics-card
+  - https://www.anandtech.com/show/21137/amd-intros-radeon-pro-w7700-rounding-out-rdna-3-for-workstations
+  - https://ir.amd.com/news-events/press-releases/detail/1165/new-amd-radeon-pro-workstation-graphics-card-to-power-next-generation-professional-content-creation-cad-and-ai-applications
+notes:
+  - FP32 TFLOPS of 31.95 calculated as 3,072 stream processors × 2,600 MHz boost clock × 2 ops/cycle = 31.95 TFLOPS
+  - FP16 performance is 63.9 TFLOPS calculated at 2:1 ratio to FP32, which is standard for RDNA 3 architecture
+  - tensorCoreCount of 96 represents the AI Accelerators (2 per compute unit × 48 compute units)
+  - Memory bandwidth calculated as 256-bit bus × 18 Gbps effective = 576 GB/s
+  - RDNA 3 architecture includes dedicated AI Accelerators for machine learning workloads
+  - Built on TSMC 5nm process with chiplet design featuring Graphics Compute Die (GCD)
+  - Includes ECC memory support for professional applications requiring data integrity
+  - Released November 13, 2023 at $999 USD MSRP
+  - Some sources report 28.27 TFLOPS FP32; 31.95 TFLOPS is peak at boost clock (2,600 MHz), while 28.27 TFLOPS may represent sustained performance at lower clocks

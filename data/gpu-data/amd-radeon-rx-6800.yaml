@@ -1,0 +1,34 @@
+# yaml-language-server: $schema=./gpu-spec.schema.json
+name: amd-radeon-rx-6800
+label: AMD Radeon RX 6800
+tensorCoreCount: null
+fp32TFLOPS: 16.17
+fp16TFLOPS: 32.33
+int8TOPS: null
+memoryCapacityGB: 16
+memoryBandwidthGBs: 512
+maxTDPWatts: 250
+gpuArchitecture: RDNA 2
+supportedHardwareOperations:
+  - FP32
+  - FP16
+summary: >-
+  The AMD Radeon RX 6800 was released in November 2020 alongside the RX 6800 XT as part
+  of AMD's RDNA 2 architecture lineup (Navi 21). It features 60 compute units with 3,840
+  stream processors and 16GB of GDDR6 memory with 512 GB/s bandwidth. The card includes
+  60 ray tracing acceleration cores and 128MB of Infinity Cache. Built on TSMC's 7nm
+  process with 26.8 billion transistors, it delivers 16.17 TFLOPS of FP32 performance
+  at a boost clock of 2,105 MHz. With a lower TDP of 250W compared to the XT variant,
+  the RX 6800 was positioned to compete with NVIDIA's RTX 3070, offering excellent
+  1440p and 4K gaming performance with DirectX 12 Ultimate support including
+  hardware-accelerated ray tracing.
+references:
+  - https://www.techpowerup.com/gpu-specs/radeon-rx-6800.c3713
+  - https://www.amd.com/en/products/graphics/desktops/radeon/6000-series/amd-radeon-rx-6800.html
+notes:
+  - FP16 performance is 32.33 TFLOPS calculated at 2:1 ratio to FP32, which is standard for RDNA 2 architecture
+  - FP32 TFLOPS calculated as 3,840 stream processors × 2,105 MHz boost clock × 2 ops/cycle = 16.17 TFLOPS
+  - Memory bandwidth calculated as 256-bit bus × 16 Gbps effective = 512 GB/s
+  - RDNA 2 architecture does not include dedicated AI/ML accelerators or tensor cores
+  - The 128MB Infinity Cache significantly improves effective memory bandwidth beyond the raw 512 GB/s specification
+  - Built on TSMC 7nm process with the same 520 mm² die size as RX 6800 XT, with some compute units disabled

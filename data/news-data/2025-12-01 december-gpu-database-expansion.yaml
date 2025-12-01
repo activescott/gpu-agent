@@ -1,0 +1,77 @@
+# yaml-language-server: $schema=./news-article.schema.json
+id: gpu9dec012025abc
+slug: december-gpu-database-expansion
+title: "GPU Database Update: 9 New Graphics Cards Added"
+content: |
+  GPU Poet's database has been expanded with nine new graphics cards, building on [last month's database expansion](/news/expanded-gpu-database-update). This update adds AMD's RDNA 2 and RDNA 3 gaming cards, Intel's Battlemage architecture, and NVIDIA's Ampere and Ada Lovelace professional cards. All of these GPUs are ready for comparison with [gaming benchmarks](/gpu/ranking/gaming/counter-strike-2-fps-3840x2160) in Counter-Strike 2 and 3DMark.
+
+  ## AMD Radeon RX 6800 Series - RDNA 2 Gaming
+
+  AMD's RDNA 2 architecture cards from 2020 are now tracked:
+
+  - [AMD Radeon RX 6800](/gpu/learn/card/amd-radeon-rx-6800) - 60 compute units with 3,840 stream processors, 16GB GDDR6, 250W TDP
+  - [AMD Radeon RX 6800 XT](/gpu/learn/card/amd-radeon-rx-6800-xt) - Full 72 compute units with 4,608 stream processors, 16GB GDDR6, 300W TDP
+
+  Both cards feature 128MB Infinity Cache and hardware-accelerated ray tracing, designed for 1440p and 4K gaming.
+
+  ## AMD Radeon RX 7700 Series - RDNA 3 Gaming
+
+  RDNA 3 architecture cards now available for price tracking:
+
+  - [AMD Radeon RX 7700](/gpu/learn/card/amd-radeon-rx-7700) - Desktop GPU with 40 compute units, 16GB GDDR6, 200W TDP
+  - [AMD Radeon RX 7700S](/gpu/learn/card/amd-radeon-rx-7700s) - Mobile variant with 32 compute units, 8GB GDDR6, 100W TDP
+
+  RDNA 3 introduces AI Accelerators for machine learning workloads and improved power efficiency.
+
+  ## AMD Radeon Pro W7700 - Professional Workstation
+
+  - [AMD Radeon Pro W7700](/gpu/learn/card/amd-radeon-pro-w7700) - RDNA 3 workstation card with 48 compute units, 16GB GDDR6 with ECC, 190W TDP
+
+  This professional-grade card targets content creation, CAD, and AI applications with four DisplayPort 2.1 outputs.
+
+  ## Intel Arc B580 - Battlemage Architecture
+
+  - [Intel Arc B580](/gpu/learn/card/intel-arc-b580) - Second-generation Xe2-HPG architecture with 20 Xe-cores, 12GB GDDR6, 190W TDP
+
+  Intel's Battlemage brings 160 XMX engines for AI acceleration and 233 INT8 TOPS, with strong value positioning at $249 MSRP.
+
+  ## NVIDIA GeForce RTX 3060 Series - Ampere Gaming
+
+  Popular Ampere architecture cards now tracked:
+
+  - [NVIDIA GeForce RTX 3060](/gpu/learn/card/nvidia-geforce-rtx-3060) - GA106 GPU with 3,584 CUDA cores, 12GB GDDR6, 170W TDP
+  - [NVIDIA GeForce RTX 3060 Ti](/gpu/learn/card/nvidia-geforce-rtx-3060-ti) - GA104 GPU with 4,864 CUDA cores, 8GB GDDR6, 200W TDP
+
+  Both offer 3rd-generation tensor cores for DLSS and capable performance for 1080p/1440p gaming.
+
+  ## NVIDIA RTX 4000 Ada Generation - Professional Workstation
+
+  - [NVIDIA RTX 4000 Ada Generation](/gpu/learn/card/nvidia-rtx-4000-ada-generation) - Single-slot workstation GPU with 6,144 CUDA cores, 20GB GDDR6 ECC, 130W TDP
+
+  This Ada Lovelace professional card delivers 427.6 tensor TFLOPS with FP8 support and includes AV1 encoding, designed for visualization and AI workloads.
+
+  ## What This Means For You
+
+  With these additions, you can now:
+  - Compare cost-per-performance for popular RDNA 2 gaming cards on the used market
+  - Track pricing for RDNA 3 cards with AI acceleration capabilities
+  - Monitor Intel Arc B580 pricing as Battlemage gains availability
+  - Find deals on Ampere RTX 3060 series cards for budget gaming builds
+  - Compare professional workstation GPUs for content creation and AI work
+  - Use the [gaming benchmark rankings](/gpu/ranking/gaming/counter-strike-2-fps-1920x1080) to compare these cards by FPS-per-dollar
+status: PUBLISHED
+tags:
+  - update
+  - nvidia
+  - amd
+  - intel
+  - database
+  - rtx-30-series
+  - rdna-2
+  - rdna-3
+  - battlemage
+  - ada
+authorFullName: "Scott Willeke"
+createdAt: "2025-12-01T10:00:00Z"
+updatedAt: "2025-12-01T10:25:00Z"
+publishedAt: "2025-12-01T10:00:00Z"

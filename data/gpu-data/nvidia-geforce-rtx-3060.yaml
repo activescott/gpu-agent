@@ -1,0 +1,51 @@
+# yaml-language-server: $schema=./gpu-spec.schema.json
+name: nvidia-geforce-rtx-3060
+label: NVIDIA GeForce RTX 3060
+tensorCoreCount: 112
+fp32TFLOPS: 12.74
+fp16TFLOPS: 50.95
+int8TOPS: 203.80
+memoryCapacityGB: 12
+memoryBandwidthGBs: 360
+maxTDPWatts: 170
+gpuArchitecture: Ampere
+supportedHardwareOperations:
+  - FP16
+  - FP32
+  - FP64
+  - INT8
+  - INT4
+  - TF32
+  - BF16
+supportedCUDAComputeCapability: 8.6
+
+summary: |
+  The NVIDIA GeForce RTX 3060 is a mainstream gaming graphics card released in February 2021,
+  featuring the Ampere architecture based on the GA106 GPU. It offers 3,584 CUDA cores,
+  112 3rd-generation tensor cores, and 12GB of GDDR6 memory running at 15 Gbps, delivering
+  203.80 INT8 TOPS with sparsity for AI workloads. NVIDIA officially specified the card at
+  13 shader-TFLOPS, 25 RT-TFLOPS for ray tracing, and 101 tensor-TFLOPS for DLSS acceleration.
+  With a TDP of 170W, it provides excellent performance-per-watt for gaming at 1080p/1440p
+  and machine learning inference workloads. The RTX 3060 uses a PCI-Express 4.0 x16 interface
+  and features 360 GB/s memory bandwidth on a 192-bit bus. At launch, it was positioned as
+  the successor to the popular GTX 1060, offering twice the raster performance and 10x the
+  ray-tracing performance at a $329 price point.
+
+references:
+  - https://nvidianews.nvidia.com/news/nvidia-introduces-geforce-rtx-3060-next-generation-of-the-worlds-most-popular-gpu
+  - https://www.nvidia.com/en-us/geforce/news/geforce-rtx-3060/
+  - https://www.nvidia.com/en-us/geforce/graphics-cards/30-series/rtx-3060-3060ti/
+  - https://www.techpowerup.com/gpu-specs/geforce-rtx-3060-12-gb.c3682
+  - https://www.waredb.com/processor/nvidia-geforce-rtx-3060
+
+notes:
+  - fp16TFLOPS of 50.95 represents FP16 Tensor TFLOPS using the "with sparsity" metric per Ampere architecture standards. Dense FP16 tensor performance is 25.48 TFLOPS, sparse is 50.95 TFLOPS. NVIDIA publishes sparse tensor performance as the headline figure for Ampere GPUs.
+  - int8TOPS of 203.80 is peak INT8 TOPS using the Sparsity Feature per WareDB specifications. Dense INT8 performance is 101.90 TOPS, sparse is 203.80 TOPS.
+  - fp32TFLOPS calculated as 3,584 CUDA cores × 1.777 GHz boost clock × 2 ops/cycle = 12.74 TFLOPS. Ampere architecture features 2 FP32 ops per cycle through dedicated FP32 datapath and shared INT32/FP32 datapath.
+  - NVIDIA officially specified the RTX 3060 at 13 shader-TFLOPS (FP32), 25 RT-TFLOPS (ray tracing), and 101 tensor-TFLOPS (general tensor performance for DLSS).
+  - Memory bandwidth calculated as 192-bit interface × 15 Gbps = 360 GB/s.
+  - The RTX 3060 uses the GA106-300-A1 variant of the GA106 chip with 28 of 30 streaming multiprocessors enabled (28 SMs × 4 tensor cores/SM = 112 tensor cores).
+  - Process node is Samsung 8nm with approximately 12 billion transistors and die area of 276 mm².
+  - TDP of 170W is the official NVIDIA specification, with recommended PSU of 550W.
+  - Supports CUDA Compute Capability 8.6, same as other Ampere GeForce 30-series GPUs.
+  - At launch in February 2021, the RTX 3060 was positioned to succeed the GTX 1060 with 2x raster and 10x ray-tracing performance at $329 MSRP.

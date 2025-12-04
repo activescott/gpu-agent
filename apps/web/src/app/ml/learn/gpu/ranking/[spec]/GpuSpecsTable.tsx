@@ -127,7 +127,7 @@ export function GpuSpecsTable({
                       />
                     </>
                   ) : (
-                    "n/a"
+                    <span className="text-muted">no listings</span>
                   )}
                   <div className="m-0 p-0 fs-6 fw-lighter text-muted">
                     <Link
@@ -136,7 +136,7 @@ export function GpuSpecsTable({
                     >
                       {gpu.gpu[specKey]
                         ? `${gpu.gpu[specKey]} ${GpuSpecsDescription[specKey].unitShortest}`
-                        : "n/a"}
+                        : "no spec"}
                     </Link>
                   </div>
                 </td>
@@ -150,7 +150,7 @@ export function GpuSpecsTable({
                     />
                   </Link>
                 ) : (
-                  "n/a"
+                  <span className="text-muted">no listings</span>
                 )}
               </td>
               <td style={{ textAlign: "right" }}>

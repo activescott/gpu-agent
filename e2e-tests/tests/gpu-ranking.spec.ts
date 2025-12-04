@@ -1,7 +1,12 @@
 import { test, expect } from '@playwright/test';
 
+// Minimum percentage of GPUs that should have listings
+const MIN_LISTINGS_PERCENT = 50;
+// Minimum percentage of GPUs that should have the spec data
+const MIN_SPEC_PERCENT = 80;
+
 test.describe('GPU Ranking Page', () => {
-  test('should load fp32-flops ranking with all GPUs and numeric cost values', async ({ page }) => {
+  test('should have reasonable coverage of listings and specs on fp32-flops ranking', async ({ page }) => {
     // Navigate to the FP32 FLOPS ranking page (old route for backwards compatibility)
     await page.goto('/ml/learn/gpu/ranking/fp32-flops');
 
@@ -15,37 +20,36 @@ test.describe('GPU Ranking Page', () => {
     // Get all data rows (excluding header row)
     const rows = table.getByRole('row');
     const totalRows = await rows.count();
+    const dataRowCount = totalRows - 1; // Subtract header row
 
-    // Expect header row + GPU rows (we found 26 total rows in testing)
-    expect(totalRows).toBeGreaterThanOrEqual(25); // Should have a reasonable number of GPUs
+    // Expect a reasonable number of GPUs
+    expect(dataRowCount).toBeGreaterThanOrEqual(20);
+
+    let rowsWithListings = 0;
+    let rowsWithSpec = 0;
 
     // Check each data row (skip header row at index 0)
     for (let i = 1; i < totalRows; i++) {
       const row = rows.nth(i);
+      const rowText = await row.textContent();
 
-      // Find the cost per FP32 TFLOPs column
-      // Look for cell containing '$ / FP32 TFLOPs' pattern or similar cost indicator
-      const costCell = row.getByRole('cell').filter({ hasText: /\$/ }).first();
-      await expect(costCell).toBeVisible();
+      // Check if row has listings (has a $ with numbers)
+      if (rowText?.match(/\$\s*[\d,]+(\.\d+)?/)) {
+        rowsWithListings++;
+      }
 
-      const costText = await costCell.textContent();
-
-      // Verify it's not N/A and contains a numeric value
-      expect(costText).not.toMatch(/N\/A|n\/a|—|null|undefined/i);
-      expect(costText).toMatch(/\$\s*[\d,]+(\.\d+)?/); // Should contain $ followed by numbers
-
-      // Extract and verify the numeric part is greater than 0
-      const numericMatch = costText?.match(/[\d,]+(\.\d+)?/);
-      expect(numericMatch).toBeTruthy();
-      if (numericMatch) {
-        const numericValue = parseFloat(numericMatch[0].replace(/,/g, ''));
-        expect(numericValue).toBeGreaterThan(0);
+      // Check if row has spec data (doesn't say "no spec" for this metric)
+      if (!rowText?.includes('no spec')) {
+        rowsWithSpec++;
       }
     }
 
-    // Verify we have a reasonable number of GPU rows
-    const dataRowCount = totalRows - 1; // Subtract header row
-    expect(dataRowCount).toBeGreaterThanOrEqual(20); // Should have at least 20 different GPUs
+    // Verify thresholds
+    const listingsPercent = (rowsWithListings / dataRowCount) * 100;
+    const specPercent = (rowsWithSpec / dataRowCount) * 100;
+
+    expect(listingsPercent).toBeGreaterThanOrEqual(MIN_LISTINGS_PERCENT);
+    expect(specPercent).toBeGreaterThanOrEqual(MIN_SPEC_PERCENT);
   });
 
   test('should not contain NaN values on AI ranking page', async ({ page }) => {

@@ -114,11 +114,26 @@ export function GpuMetricsTable({
 
               {metricsToShow.map((metricKey) => {
                 const metricValue = pricedGpu.gpu[metricKey]
+                const hasListings = pricedGpu.price.activeListingCount > 0
+                const hasMetricValue =
+                  metricValue !== null && metricValue !== undefined
                 const dollarsPer = dollarsPerMetric(
                   pricedGpu.gpu,
                   pricedGpu.price.minPrice,
                   metricKey,
                 )
+
+                const renderCellContent = () => {
+                  if (hasListings && hasMetricValue) {
+                    return <FormatCurrency value={dollarsPer} />
+                  }
+                  if (hasListings) {
+                    return "no spec"
+                  }
+                  return "no listings"
+                }
+
+                const isMuted = isNil(metricValue) || !hasListings
 
                 return (
                   <td
@@ -127,15 +142,11 @@ export function GpuMetricsTable({
                       "text-end",
                       {
                         "table-active": metricKey === primaryMetric,
-                        "text-muted": isNil(metricValue),
+                        "text-muted": isMuted,
                       },
                     ])}
                   >
-                    {metricValue !== null && metricValue !== undefined ? (
-                      <FormatCurrency value={dollarsPer} />
-                    ) : (
-                      "n/a"
-                    )}
+                    {renderCellContent()}
                   </td>
                 )
               })}

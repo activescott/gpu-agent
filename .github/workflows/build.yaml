@@ -47,7 +47,7 @@ jobs:
       # 2. Copied into the Docker image (see Dockerfile COPY command for sitemap.static-pages.json)
       # This ensures deployed containers always have an up-to-date sitemap with
       # accurate lastModified dates from git history (requires fetch-depth: 0 above)
-      - run: cd apps/web ; npm run gen-sitemap
+      - run: cd packages/web-app ; npm run gen-sitemap
       - run: npm run lint
       - run: npm run test
 

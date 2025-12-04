@@ -31,12 +31,12 @@ npm run docker:dev
 
 ### Environment Setup
 
-1. Copy your environment variables to `apps/web/.env`:
+1. Copy your environment variables to `packages/web-app/.env`:
 ```bash
-cp apps/web/.env.local.template apps/web/.env
+cp packages/web-app/.env.local.template packages/web-app/.env
 ```
 
-2. Configure required environment variables in `apps/web/.env`:
+2. Configure required environment variables in `packages/web-app/.env`:
    - `EBAY_CLIENT_ID` - Get from https://developer.ebay.com/my/keys
    - `EBAY_CLIENT_SECRET` - Get from https://developer.ebay.com/my/keys
    - `EBAY_AFFILIATE_CAMPAIGN_ID` - Get from eBay Partner Network
@@ -72,22 +72,22 @@ npm run docker:down
 
 ```bash
 # Create and apply migration (run inside Docker container)
-docker-compose exec app sh -c "cd /app/apps/web && npx prisma migrate dev --name migration_description"
+docker-compose exec app sh -c "cd /app/packages/web-app && npx prisma migrate dev --name migration_description"
 
 # Generate Prisma client after schema changes (run inside Docker container)
-docker-compose exec app sh -c "cd /app/apps/web && npx prisma generate"
+docker-compose exec app sh -c "cd /app/packages/web-app && npx prisma generate"
 
 # Access database directly
 docker-compose exec postgres psql -U gpu_agent -d gpu_agent
 
 # Run migrations manually (migrations run automatically on container startup via docker-entrypoint.sh)
-docker-compose exec app sh -c "cd /app/apps/web && npx prisma migrate deploy"
+docker-compose exec app sh -c "cd /app/packages/web-app && npx prisma migrate deploy"
 
 # Seed database manually (seeding also runs automatically on container startup)
-docker-compose exec app sh -c "cd /app/apps/web && npx prisma db seed"
+docker-compose exec app sh -c "cd /app/packages/web-app && npx prisma db seed"
 
 # View database schema
-docker-compose exec app sh -c "cd /app/apps/web && npx prisma db pull"
+docker-compose exec app sh -c "cd /app/packages/web-app && npx prisma db pull"
 ```
 
 **Note:** All Prisma commands must be run inside the Docker container since the database connection strings are only available in the container environment.
@@ -170,16 +170,16 @@ This endpoint:
 ## File Locations Reference
 
 ### Key Configuration Files
-- `/apps/web/prisma/schema.prisma` - Database schema
-- `/apps/web/.env` - Environment variables (Docker overrides these)
+- `/packages/web-app/prisma/schema.prisma` - Database schema
+- `/packages/web-app/.env` - Environment variables (Docker overrides these)
 - `/docker-compose.yml` - Container configuration
 - `/e2e-tests/playwright.config.ts` - E2E test configuration
 
 ### Important Code Locations
-- `/apps/web/src/pkgs/server/db/` - Database repositories
-- `/apps/web/src/app/internal/` - Internal testing pages
-- `/apps/web/src/app/internal/api/` - Internal API endpoints
-- `/apps/web/prisma/migrations/` - Database migration files
+- `/packages/web-app/src/pkgs/server/db/` - Database repositories
+- `/packages/web-app/src/app/internal/` - Internal testing pages
+- `/packages/web-app/src/app/internal/api/` - Internal API endpoints
+- `/packages/web-app/prisma/migrations/` - Database migration files
 
 ### Data Locations
 - `/data/gpu-data/` - GPU specification YAML files (CC BY-SA 4.0)
@@ -215,7 +215,7 @@ updatedAt: "2025-11-24T15:45:00Z"
 If you need to manually update the sitemap with current Git timestamps:
 
 ```bash
-cd apps/web
+cd packages/web-app
 npm run gen-sitemap
 git add src/app/sitemap.static-pages.json
 git commit -m "chore: update sitemap"

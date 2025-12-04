@@ -19,11 +19,10 @@ services:
       dockerfile: Dockerfile.dev
     volumes:
       # Mount source directories for hot module reloading (HMR)
-      - ./apps:/app/apps
       - ./packages:/app/packages
       - ./data:/app/data
       # DO NOT mount node_modules, .next, .turbo - let container manage these for performance
-      # Excluded volumes: ./node_modules, ./apps/web/.next, ./apps/web/.turbo
+      # Excluded volumes: ./node_modules, ./packages/web-app/.next, ./packages/web-app/.turbo
     
     # ===========================================
     # PRODUCTION MODE (for production-like testing):
@@ -37,7 +36,7 @@ services:
     ports:
       - "3000:3000"
     env_file:
-      - ./apps/web/.env
+      - ./packages/web-app/.env
     environment:
       # Override database URLs for Docker environment
       - POSTGRES_PRISMA_URL=postgresql://gpu_agent:password@postgres:5432/gpu_agent?schema=public&pgbouncer=true&connect_timeout=15

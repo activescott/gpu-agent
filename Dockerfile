@@ -23,7 +23,7 @@ ENV POSTGRES_PRISMA_URL=postgresql://dummy:dummy@localhost:5432/dummy
 ENV POSTGRES_URL_NON_POOLING=postgresql://dummy:dummy@localhost:5432/dummy
 
 # Generate Prisma client
-RUN cd apps/web && npx prisma generate
+RUN cd packages/web-app && npx prisma generate
 
 # Build the application using turbo (it will build dependencies first)
 RUN npm run build
@@ -40,26 +40,26 @@ RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
 
 # Copy built application
-COPY --from=builder /app/apps/web/.next ./apps/web/.next
-COPY --from=builder /app/apps/web/public ./apps/web/public
-COPY --from=builder /app/apps/web/package.json ./apps/web/package.json
+COPY --from=builder /app/packages/web-app/.next ./packages/web-app/.next
+COPY --from=builder /app/packages/web-app/public ./packages/web-app/public
+COPY --from=builder /app/packages/web-app/package.json ./packages/web-app/package.json
 
 # Set ownership of .next directory to nextjs user for write permissions
-RUN chown -R nextjs:nodejs /app/apps/web/.next
+RUN chown -R nextjs:nodejs /app/packages/web-app/.next
 
 # Copy pre-generated sitemap (generated with Git info)
-COPY --from=builder /app/apps/web/src/app/sitemap.static-pages.json ./apps/web/src/app/sitemap.static-pages.json
+COPY --from=builder /app/packages/web-app/src/app/sitemap.static-pages.json ./packages/web-app/src/app/sitemap.static-pages.json
 
 # Copy workspace dependencies
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/package.json ./package.json
 
 # Copy prisma schema and migrations
-COPY --from=builder /app/apps/web/prisma ./apps/web/prisma
+COPY --from=builder /app/packages/web-app/prisma ./packages/web-app/prisma
 
 # Copy source files needed for seeding (TypeScript imports)
-COPY --from=builder /app/apps/web/src ./apps/web/src
-COPY --from=builder /app/apps/web/tsconfig.json ./apps/web/tsconfig.json
+COPY --from=builder /app/packages/web-app/src ./packages/web-app/src
+COPY --from=builder /app/packages/web-app/tsconfig.json ./packages/web-app/tsconfig.json
 
 # Copy data files needed for seeding
 COPY --from=builder /app/data ./data

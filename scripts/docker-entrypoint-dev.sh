@@ -4,7 +4,7 @@ set -e
 echo "🚀 Starting GPU Agent Development Container..."
 
 # Change to web app directory
-cd /app/apps/web
+cd /app/packages/web-app
 
 # Run Prisma migrations (will fail fast if PostgreSQL isn't ready)
 echo "🔄 Running Prisma migrations..."
@@ -21,4 +21,4 @@ npm run prep
 echo "🎬 Starting Next.js development server with HMR..."
 npx --no -- next --version
 cd /app
-exec npm run dev --workspace=apps/web
+exec npm run dev --workspace=packages/web-app

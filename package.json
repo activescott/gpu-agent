@@ -11,12 +11,11 @@
     "docker:build": "docker build -t gpu-agent .",
     "docker:dev": "docker compose up --build",
     "docker:down": "docker compose down",
-    "docker:reseed": "docker compose exec app sh -c \"cd /app/apps/web && npx prisma db seed\"",
+    "docker:reseed": "docker compose exec app sh -c \"cd /app/packages/web-app && npx prisma db seed\"",
     "dev": "npm run docker:dev",
     "prepare": "husky install"
   },
   "workspaces": [
-    "apps/*",
     "packages/*"
   ],
   "packageManager": "npm@10.2.4",

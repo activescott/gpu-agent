@@ -4,7 +4,7 @@ set -e
 echo "🚀 Starting GPU Agent Docker container..."
 
 # Change to web app directory
-cd /app/apps/web
+cd /app/packages/web-app
 
 # Run Prisma migrations (will fail fast if PostgreSQL isn't ready)
 echo "🔄 Running Prisma migrations..."
@@ -16,4 +16,4 @@ npm run prisma-seed
 # Start the application
 echo "🎬 Starting Next.js application..."
 cd /app
-exec npm run start --workspace=apps/web
+exec npm run start --workspace=packages/web-app

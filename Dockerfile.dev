@@ -10,7 +10,7 @@ ENV NODE_ENV=development
 
 # Copy package files and install dependencies (including devDependencies)
 COPY package*.json ./
-COPY apps/web/package*.json ./apps/web/
+COPY packages/web-app/package*.json ./packages/web-app/
 COPY packages/ebay-client/package*.json ./packages/ebay-client/
 
 # Copy all source files for dependency resolution
@@ -20,10 +20,10 @@ COPY . .
 RUN npm ci
 
 # Generate Prisma client (needed for development)
-RUN cd apps/web && npx prisma generate
+RUN cd packages/web-app && npx prisma generate
 
 # Create directories that may be volume mounted
-RUN mkdir -p /app/apps/web/.next /app/apps/web/.turbo
+RUN mkdir -p /app/packages/web-app/.next /app/packages/web-app/.turbo
 
 # Set proper permissions for development (allow writing to mounted volumes)
 RUN chown -R node:node /app

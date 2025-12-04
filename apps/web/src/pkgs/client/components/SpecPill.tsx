@@ -1,6 +1,6 @@
 "use client"
-import { usePopper } from "react-popper"
-import { ReactNode, useState } from "react"
+import { useFloating, arrow, offset, FloatingArrow } from "@floating-ui/react"
+import { ReactNode, useRef, useState } from "react"
 import { BootstrapIcon } from "./BootstrapIcon"
 
 interface SpecPillProps {
@@ -29,21 +29,17 @@ export const SpecPill = ({
   color = "secondary",
 }: SpecPillProps) => {
   const [showTip, setShowTip] = useState(false)
-  // see https://popper.js.org/react-popper/v2/
-  const [referenceElement, setReferenceElement] =
-    useState<HTMLSpanElement | null>(null)
-  const [popperElement, setPopperElement] = useState<HTMLDivElement | null>(
-    null,
-  )
-  const [arrowElement, setArrowElement] = useState<HTMLDivElement | null>(null)
-  const { styles, attributes } = usePopper(referenceElement, popperElement, {
-    modifiers: [{ name: "arrow", options: { element: arrowElement } }],
+  const arrowRef = useRef(null)
+  // see https://floating-ui.com/docs/react
+  const { refs, floatingStyles, context } = useFloating({
+    middleware: [offset(8), arrow({ element: arrowRef })],
   })
+
   return (
     <>
       <span
         className={`badge rounded-pill text-bg-${color} mx-1`}
-        ref={setReferenceElement}
+        ref={refs.setReference}
       >
         <span className="align-middle">{children}</span>
         &nbsp;
@@ -62,17 +58,16 @@ export const SpecPill = ({
           onClick={() => setShowTip(false)}
         >
           <div
-            ref={setPopperElement}
-            style={styles.popper}
-            {...attributes.popper}
+            ref={refs.setFloating}
+            style={floatingStyles}
             role="tooltip"
             className="tooltip show"
           >
-            <div
+            <FloatingArrow
+              ref={arrowRef}
+              context={context}
               className="tooltip-arrow"
-              ref={setArrowElement}
-              style={styles.arrow}
-            ></div>
+            />
             <div className="tooltip-inner">{infoTipText}</div>
           </div>
         </div>

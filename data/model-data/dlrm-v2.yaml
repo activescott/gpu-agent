@@ -1,0 +1,33 @@
+# yaml-language-server: $schema=./model-spec.schema.json
+name: dlrm-v2
+label: DLRM
+modelType: ml
+summary: |
+  Deep Learning Recommendation Model (DLRM) is a neural network-based model designed for personalization and recommendation systems. It uniquely processes categorical data through embeddings and dense features using a multilayer perceptron (MLP), addressing the challenges of handling categorical features in recommendation tasks. DLRM includes a specialized parallelization scheme for optimizing memory usage and computational efficiency in large-scale deployments.
+useCase: Personalization and recommendation systems, ad click-through rate prediction, content ranking
+creator:
+  organization: Meta (Facebook)
+modelCardLink: null
+modelArchitecture: Neural network using embeddings for categorical data and MLP for dense features with bottom and top MLPs
+parameterCount: null
+gpuMemoryRequirementGB: null
+quantizationVersions: null
+releaseDate: "2019"
+license: MIT
+paperUrl: https://arxiv.org/abs/1906.00091
+trainingData: Proprietary click-through rate data; public implementations use Criteo or synthetic datasets
+evaluationBenchmarks:
+  - Click-through rate prediction accuracy
+  - AUC (Area Under ROC Curve)
+  - Log loss
+contextLength: null
+huggingfaceModelId: null
+updatedAt: "2025-12-04T19:00:00Z"
+references:
+  - https://arxiv.org/abs/1906.00091
+  - https://ai.meta.com/blog/dlrm-an-advanced-open-source-deep-learning-recommendation-model/
+notes:
+  - Parameter count and memory requirements vary significantly based on embedding table sizes
+  - Open-source implementations available in PyTorch and Caffe2
+  - Focuses on memory efficiency and computational scalability
+  - Embedding tables can dominate memory requirements in production deployments

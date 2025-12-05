@@ -1,5 +1,7 @@
 export { GpuSchema } from "./gpu"
 export type { Gpu } from "./gpu"
+export { MlModelSchema, getModelTypeLabel } from "./mlModel"
+export type { MlModel, MlModelType } from "./mlModel"
 export { type GpuSpecKey, GpuSpecKeys, GpuSpecsDescription } from "./specs"
 export {
   type GpuBenchmarkKey,

@@ -1,0 +1,45 @@
+# yaml-language-server: $schema=./model-spec.schema.json
+name: bert
+label: BERT
+modelType: llm
+summary: |
+  BERT (Bidirectional Encoder Representations from Transformers) is a deep learning model that focuses on pre-training deep bidirectional representations from unlabeled text. This approach enables the model to understand the context of a word based on all of its surroundings (left and right of the word). BERT has achieved state-of-the-art results in a wide range of natural language processing tasks, showcasing its versatility and effectiveness.
+useCase: Natural language understanding tasks including question answering, language inference, sentiment analysis, and named entity recognition
+creator:
+  organization: Google AI Language
+  people:
+    - Jacob Devlin
+    - Ming-Wei Chang
+    - Kenton Lee
+    - Kristina Toutanova
+modelCardLink: https://huggingface.co/bert-base-uncased
+modelArchitecture: Transformer-based encoder with bidirectional self-attention using Masked Language Model (MLM) and Next Sentence Prediction (NSP) pre-training objectives
+parameterCount: "110M"
+gpuMemoryRequirementGB: 0.5
+quantizationVersions:
+  - name: FP32
+    memoryRequirementGB: 0.5
+  - name: FP16
+    memoryRequirementGB: 0.25
+  - name: INT8
+    memoryRequirementGB: 0.12
+releaseDate: "2018"
+license: Apache 2.0
+paperUrl: https://arxiv.org/abs/1810.04805
+trainingData: BooksCorpus (800M words) and English Wikipedia (2,500M words)
+evaluationBenchmarks:
+  - GLUE
+  - SQuAD 1.1
+  - SQuAD 2.0
+  - SWAG
+contextLength: 512
+huggingfaceModelId: bert-base-uncased
+updatedAt: "2025-12-04T19:00:00Z"
+references:
+  - https://arxiv.org/abs/1810.04805
+  - https://huggingface.co/bert-base-uncased
+  - https://github.com/google-research/bert
+notes:
+  - Parameter count is for BERT-base model; BERT-large has 340M parameters
+  - GPU memory requirements are approximate for inference with batch size 1
+  - Care should be taken in applications that could amplify biases present in training data

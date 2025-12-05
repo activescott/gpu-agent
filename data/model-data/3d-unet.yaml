@@ -1,0 +1,45 @@
+# yaml-language-server: $schema=./model-spec.schema.json
+name: 3d-unet
+label: 3D-UNet
+modelType: ml
+summary: |
+  3D-UNet is an extension of the U-Net architecture adapted for three-dimensional volumetric data segmentation. Its primary innovation lies in learning from sparsely annotated volumetric images, reducing the extensive manual effort typically required in medical image analysis. The model uses 3D convolutions and skip connections to capture both local and contextual information in volumetric data, enabling accurate segmentation of complex structures.
+useCase: Volumetric segmentation of medical images, biomedical image analysis, CT/MRI scan segmentation
+creator:
+  organization: University of Freiburg
+  people:
+    - Özgün Çiçek
+    - Ahmed Abdulkadir
+    - Soeren S. Lienkamp
+    - Thomas Brox
+    - Olaf Ronneberger
+modelCardLink: null
+modelArchitecture: 3D Convolutional encoder-decoder network with skip connections for volumetric segmentation
+parameterCount: "19M"
+gpuMemoryRequirementGB: 4
+quantizationVersions:
+  - name: FP32
+    memoryRequirementGB: 4
+  - name: FP16
+    memoryRequirementGB: 2
+  - name: INT8
+    memoryRequirementGB: 1
+    notes: GPU memory varies significantly with input volume size
+releaseDate: "2016"
+license: MIT
+paperUrl: https://arxiv.org/abs/1606.06650
+trainingData: Xenopus kidney dataset with sparse 2D slice annotations in 3D volumes
+evaluationBenchmarks:
+  - Intersection over Union (IoU)
+  - Dice coefficient
+  - BraTS (Brain Tumor Segmentation)
+contextLength: null
+huggingfaceModelId: null
+updatedAt: "2025-12-04T19:00:00Z"
+references:
+  - https://arxiv.org/abs/1606.06650
+notes:
+  - GPU memory requirements vary significantly with input volume dimensions
+  - Best suited for research and non-critical clinical applications
+  - Care required in application to clinical diagnostic processes
+  - Can learn from sparsely annotated data (not all slices need labels)

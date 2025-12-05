@@ -1,0 +1,36 @@
+# yaml-language-server: $schema=./model-spec.schema.json
+name: rnn-t
+label: RNN-T
+modelType: ml
+summary: |
+  Recurrent Neural Network Transducer (RNN-T) is a framework for automatic speech recognition that provides naturally streaming recognition capabilities. Unlike attention-based models that require full context, RNN-T can predict tokens incrementally, making it ideal for real-time ASR systems. The framework uses a transducer loss function and typically employs a Conformer encoder with a stateless decoder for improved performance.
+useCase: Automatic speech recognition (ASR), real-time speech transcription, voice assistants
+creator:
+  organization: Google Research
+  people:
+    - Alex Graves
+modelCardLink: null
+modelArchitecture: Encoder-decoder transducer architecture with Conformer encoder and stateless prediction network
+parameterCount: null
+gpuMemoryRequirementGB: null
+quantizationVersions: null
+releaseDate: "2012"
+license: Apache 2.0
+paperUrl: https://arxiv.org/abs/2206.13236
+trainingData: LibriSpeech and other large-scale speech corpora
+evaluationBenchmarks:
+  - Word Error Rate (WER)
+  - LibriSpeech test-clean
+  - LibriSpeech test-other
+contextLength: null
+huggingfaceModelId: null
+updatedAt: "2025-12-04T19:00:00Z"
+references:
+  - https://arxiv.org/abs/2206.13236
+  - https://arxiv.org/abs/1211.3711
+notes:
+  - Original RNN-T paper from 2012; modern implementations use Conformer encoders
+  - Parameter count varies by encoder size and vocabulary
+  - Transducer loss computation can be memory-intensive for large vocabularies
+  - Naturally supports streaming inference without full context
+  - Pruned RNN-T variants available for faster, memory-efficient training

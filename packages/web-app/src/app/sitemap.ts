@@ -16,6 +16,7 @@ import {
   canonicalPathForSlug,
   listPerformanceSlugs,
 } from "./ml/shop/gpu/performance/slugs"
+import { listModels } from "@/pkgs/server/data/ModelRepository"
 
 /* eslint-disable import/no-unused-modules */
 
@@ -45,18 +46,28 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     homePageSitemapItem(domain_url),
     newsSitemap(domain_url),
     gpuRankingSitemap(domain_url),
+    modelsSitemap(domain_url),
     listCachedListingsGroupedByGpu(false, prismaSingleton),
   ])
   log.debug("Awaiting queries for sitemap generation complete.")
-  const [homePageItem, newsItems, gpuRankingEntries, gpusAndListings] =
-    awaitedQueries
+  const [
+    homePageItem,
+    newsItems,
+    gpuRankingEntries,
+    modelsEntries,
+    gpusAndListings,
+  ] = awaitedQueries
 
   // map the gpu+listings > gpu+latestDate
   const gpusWithLatestDate: GpuWithLatestListingDate[] =
     computeLatestListingDateForGpus(gpusAndListings)
 
   // these have the same shape, but need flattened:
-  const dynamicEntryGroups: SitemapItem[][] = [newsItems, gpuRankingEntries]
+  const dynamicEntryGroups: SitemapItem[][] = [
+    newsItems,
+    gpuRankingEntries,
+    modelsEntries,
+  ]
   const dynamicEntries: SitemapItem[] = dynamicEntryGroups.flat()
 
   const items: SitemapItem[] = [
@@ -145,6 +156,21 @@ async function newsSitemap(domain_url: string): Promise<SitemapItem[]> {
   }
 
   return [newsRoot, ...newsEntries]
+}
+
+async function modelsSitemap(domain_url: string): Promise<SitemapItem[]> {
+  const models = await listModels()
+
+  const modelEntries: SitemapItem[] = models.map((model) => {
+    return {
+      url: `${domain_url}/ml/learn/models/${model.name}`,
+      changeFrequency: "monthly",
+      priority: 0.7,
+      lastModified: new Date(model.updatedAt),
+    } satisfies SitemapItem
+  })
+
+  return modelEntries
 }
 
 function staticSitemap(domain_url: string): SitemapItem[] {

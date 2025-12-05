@@ -1,0 +1,45 @@
+# yaml-language-server: $schema=./model-spec.schema.json
+name: retinanet
+label: RetinaNet
+modelType: ml
+summary: |
+  RetinaNet is a state-of-the-art one-stage object detector that achieves performance comparable to two-stage approaches like Faster R-CNN while being computationally more efficient. Its key innovation is the Focal Loss function, designed to address the class imbalance problem by concentrating training on hard examples and mitigating the overwhelming effect of easy negatives. This breakthrough enabled one-stage detectors to match two-stage accuracy.
+useCase: Object detection in images, real-time object detection applications
+creator:
+  organization: Facebook AI Research (FAIR)
+  people:
+    - Tsung-Yi Lin
+    - Priya Goyal
+    - Ross Girshick
+    - Kaiming He
+    - Piotr Dollar
+modelCardLink: null
+modelArchitecture: One-stage object detector using Feature Pyramid Network (FPN) backbone with Focal Loss for class imbalance handling
+parameterCount: "34M"
+gpuMemoryRequirementGB: 1.5
+quantizationVersions:
+  - name: FP32
+    memoryRequirementGB: 1.5
+  - name: FP16
+    memoryRequirementGB: 0.75
+  - name: INT8
+    memoryRequirementGB: 0.4
+releaseDate: "2017"
+license: Apache 2.0
+paperUrl: https://arxiv.org/abs/1708.02002
+trainingData: COCO dataset (Common Objects in Context) - 118K training images with 80 object categories
+evaluationBenchmarks:
+  - COCO mAP
+  - PASCAL VOC
+contextLength: null
+huggingfaceModelId: null
+updatedAt: "2025-12-04T19:00:00Z"
+references:
+  - https://arxiv.org/abs/1708.02002
+  - https://arxiv.org/abs/1905.10011
+  - https://arxiv.org/abs/1906.02283
+notes:
+  - Parameter count depends on backbone network (ResNet-50 or ResNet-101)
+  - GPU memory varies significantly with input image resolution
+  - Focal Loss gamma parameter typically set to 2.0
+  - Light-weight variants available for edge deployment

@@ -1,0 +1,43 @@
+# yaml-language-server: $schema=./model-spec.schema.json
+name: gpt-j
+label: GPT-J
+modelType: llm
+summary: |
+  GPT-J is an open-source 6 billion parameter generative pre-trained transformer model developed by EleutherAI. As a GPT-3-inspired architecture, it includes distinctive features like Rotary Position Embeddings and dense attention, contributing to its efficiency in natural language processing tasks. It was trained on the Pile dataset using the Mesh Transformer JAX library and shows commendable performance in code generation and text continuation tasks.
+useCase: Text generation, code generation, natural language processing tasks
+creator:
+  organization: EleutherAI
+modelCardLink: https://huggingface.co/EleutherAI/gpt-j-6b
+modelArchitecture: Generative Pre-trained Transformer with Rotary Position Embeddings and dense attention
+parameterCount: "6B"
+gpuMemoryRequirementGB: 12
+quantizationVersions:
+  - name: FP16
+    memoryRequirementGB: 12
+  - name: INT8
+    memoryRequirementGB: 6
+  - name: INT4
+    memoryRequirementGB: 3
+releaseDate: "2021-06-09"
+license: Apache 2.0
+paperUrl: https://arxiv.org/abs/2204.06745
+trainingData: The Pile dataset - a diverse 825GB language modeling dataset
+evaluationBenchmarks:
+  - LAMBADA
+  - HellaSwag
+  - WinoGrande
+  - ARC
+  - PIQA
+contextLength: 2048
+huggingfaceModelId: EleutherAI/gpt-j-6b
+updatedAt: "2025-12-04T19:00:00Z"
+references:
+  - https://arxiv.org/abs/2204.06745
+  - https://arxiv.org/abs/2107.03374
+  - https://huggingface.co/EleutherAI/gpt-j-6b
+  - https://en.wikipedia.org/wiki/GPT-J
+notes:
+  - Model is not designed for factual accuracy, only probabilistic text generation
+  - Fine-tuning recommended for specific tasks
+  - Potential biases present from training data
+  - Performance comparable to GPT-3 in various tasks

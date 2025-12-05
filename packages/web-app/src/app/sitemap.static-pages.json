@@ -56,51 +56,6 @@
       "lastModified": "2025-01-04T22:57:12.000Z"
     },
     {
-      "path": "/ml/learn/models/rnn-t",
-      "title": "About Machine Learning Model RNN-T",
-      "lastModified": "2025-01-04T22:57:12.000Z"
-    },
-    {
-      "path": "/ml/learn/models/retinanet",
-      "title": "About Machine Learning Model RetinaNet",
-      "lastModified": "2025-01-04T22:57:12.000Z"
-    },
-    {
-      "path": "/ml/learn/models/resnet",
-      "title": "About Machine Learning Model ResNet",
-      "lastModified": "2025-01-04T22:57:12.000Z"
-    },
-    {
-      "path": "/ml/learn/models/mistral-7b",
-      "title": "About Machine Learning Model Mistral-7B",
-      "lastModified": "2025-01-04T22:57:12.000Z"
-    },
-    {
-      "path": "/ml/learn/models/llama-2",
-      "title": "About Machine Learning Model Llama-2",
-      "lastModified": "2025-01-04T22:57:12.000Z"
-    },
-    {
-      "path": "/ml/learn/models/gpt-j",
-      "title": "About Machine Learning Model GPT-J",
-      "lastModified": "2025-01-04T22:57:12.000Z"
-    },
-    {
-      "path": "/ml/learn/models/dlrm-v2",
-      "title": "About Machine Learning Model DLRM",
-      "lastModified": "2025-01-04T22:57:12.000Z"
-    },
-    {
-      "path": "/ml/learn/models/bert",
-      "title": "About Machine Learning Model BERT",
-      "lastModified": "2025-01-04T22:57:12.000Z"
-    },
-    {
-      "path": "/ml/learn/models/3d-unet",
-      "title": "About Machine Learning Model 3D-UNet",
-      "lastModified": "2025-01-04T22:57:12.000Z"
-    },
-    {
       "path": "/ml/learn/gpu/specifications",
       "title": "Demystifying GPU Specifications for Machine Learning & AI Use Cases",
       "lastModified": "2025-01-04T22:57:12.000Z"

@@ -1,0 +1,45 @@
+# yaml-language-server: $schema=./model-spec.schema.json
+name: resnet
+label: ResNet
+modelType: ml
+summary: |
+  ResNet (Residual Network) introduced a novel deep residual learning framework that addresses the degradation problem in very deep networks. By using residual blocks with skip connections, it enables training networks with unprecedented depth (up to 152 layers), resulting in major improvements in accuracy on challenging datasets. ResNet marked a significant breakthrough in deep learning for image recognition and established itself as a foundational model for visual recognition tasks.
+useCase: Image classification, object detection, feature extraction for transfer learning
+creator:
+  organization: Microsoft Research
+  people:
+    - Kaiming He
+    - Xiangyu Zhang
+    - Shaoqing Ren
+    - Jian Sun
+modelCardLink: https://huggingface.co/microsoft/resnet-50
+modelArchitecture: Deep Convolutional Neural Network with residual learning using skip connections
+parameterCount: "25M"
+gpuMemoryRequirementGB: 0.2
+quantizationVersions:
+  - name: FP32
+    memoryRequirementGB: 0.2
+  - name: FP16
+    memoryRequirementGB: 0.1
+  - name: INT8
+    memoryRequirementGB: 0.05
+releaseDate: "2015"
+license: MIT
+paperUrl: https://arxiv.org/abs/1512.03385
+trainingData: ImageNet (ILSVRC 2012) - 1.2 million training images across 1000 classes
+evaluationBenchmarks:
+  - ImageNet (Top-1 and Top-5 error rates)
+  - CIFAR-10
+  - COCO (for object detection)
+contextLength: null
+huggingfaceModelId: microsoft/resnet-50
+updatedAt: "2025-12-04T19:00:00Z"
+references:
+  - https://arxiv.org/abs/1512.03385
+  - https://huggingface.co/microsoft/resnet-50
+  - https://pytorch.org/vision/stable/models.html
+notes:
+  - Parameter count is for ResNet-50; variants include ResNet-18, ResNet-34, ResNet-101, and ResNet-152
+  - GPU memory requirements are approximate for inference with batch size 1
+  - Importance of addressing biases in training data for generalization
+  - Standard image preprocessing techniques apply

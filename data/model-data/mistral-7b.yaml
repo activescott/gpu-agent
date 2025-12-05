@@ -1,0 +1,56 @@
+# yaml-language-server: $schema=./model-spec.schema.json
+name: mistral-7b
+label: Mistral-7B
+modelType: llm
+summary: |
+  Mistral-7B-v0.1 is a 7-billion-parameter language model known for its high performance and efficiency in Natural Language Processing. It integrates innovative attention mechanisms including grouped-query attention (GQA) for accelerated inference and sliding window attention (SWA) to handle long sequences effectively at a lower computational cost. The model outperforms Llama 2 13B and Llama 1 34B in various benchmarks including reasoning, mathematics, and code generation.
+useCase: Text generation, reasoning, mathematics, code generation
+creator:
+  organization: Mistral AI
+modelCardLink: https://huggingface.co/mistralai/Mistral-7B-v0.1
+modelArchitecture: Transformer with grouped-query attention (GQA) and sliding window attention (SWA)
+parameterCount: "7B"
+gpuMemoryRequirementGB: 14
+quantizationVersions:
+  - name: FP16
+    memoryRequirementGB: 14
+  - name: INT8
+    memoryRequirementGB: 7
+  - name: INT4
+    memoryRequirementGB: 4
+    notes: Using GPTQ or AWQ quantization
+releaseDate: "2023"
+license: Apache 2.0
+paperUrl: https://arxiv.org/abs/2310.06825
+trainingData: Not publicly disclosed by Mistral AI
+evaluationBenchmarks:
+  - Hellaswag
+  - Winogrande
+  - PIQA
+  - SIQA
+  - OpenbookQA
+  - ARC-Easy
+  - ARC-Challenge
+  - CommonsenseQA
+  - NaturalQuestions
+  - TriviaQA
+  - BoolQ
+  - QuAC
+  - GSM8K
+  - MATH
+  - HumanEval
+  - MBPP
+  - MMLU
+  - BBH
+  - AGI Eval
+contextLength: 8192
+huggingfaceModelId: mistralai/Mistral-7B-v0.1
+updatedAt: "2025-12-04T19:00:00Z"
+references:
+  - https://arxiv.org/abs/2310.06825
+  - https://mistral.ai
+  - https://huggingface.co/mistralai/Mistral-7B-v0.1
+notes:
+  - Training data details not publicly disclosed by Mistral AI
+  - Fine-tuned variant Mistral 7B Instruct available for instruction-following tasks
+  - System prompts available for enforcing ethical guardrails and content moderation

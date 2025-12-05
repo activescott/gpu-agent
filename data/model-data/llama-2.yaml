@@ -1,0 +1,44 @@
+# yaml-language-server: $schema=./model-spec.schema.json
+name: llama-2
+label: Llama 2
+modelType: llm
+summary: |
+  Llama 2 is a collection of pretrained and fine-tuned large language models developed by Meta AI, with parameter sizes ranging from 7 billion to 70 billion. It represents a significant advancement over its predecessor Llama 1, featuring an expanded pretraining corpus (40% larger), doubled context length, and grouped-query attention. The fine-tuned Llama 2-Chat variants are optimized for dialogue use cases and match some closed-source models in helpfulness and safety benchmarks.
+useCase: Commercial and research applications including assistant-like chat for tuned models and various natural language generation tasks for pretrained models
+creator:
+  organization: Meta AI
+modelCardLink: https://huggingface.co/meta-llama/Llama-2-7b
+modelArchitecture: Auto-regressive transformer with grouped-query attention, trained using supervised fine-tuning (SFT) and reinforcement learning with human feedback (RLHF) for chat variants
+parameterCount: "7B"
+gpuMemoryRequirementGB: 14
+quantizationVersions:
+  - name: FP16
+    memoryRequirementGB: 14
+  - name: INT8
+    memoryRequirementGB: 7
+  - name: INT4
+    memoryRequirementGB: 4
+    notes: Using GPTQ or bitsandbytes quantization
+releaseDate: "2023-07"
+license: Custom commercial license (Meta Llama 2 Community License)
+paperUrl: https://arxiv.org/abs/2307.09288
+trainingData: 2 trillion tokens from publicly available sources (pretraining data cutoff September 2022). Fine-tuning includes publicly available instruction datasets and over 1 million new human-annotated examples.
+evaluationBenchmarks:
+  - MMLU
+  - TriviaQA
+  - Natural Questions
+  - GSM8K
+  - HumanEval
+  - BIG-Bench Hard
+contextLength: 4096
+huggingfaceModelId: meta-llama/Llama-2-7b
+updatedAt: "2025-12-04T19:00:00Z"
+references:
+  - https://arxiv.org/abs/2307.09288
+  - https://ai.meta.com/resources/models-and-libraries/llama-downloads/
+  - https://github.com/facebookresearch/llama
+notes:
+  - Parameter count listed is for 7B variant; 13B and 70B variants also available
+  - GPU memory requirements are for 7B model at FP16
+  - Pretraining involved 3.3M GPU hours on A100-80GB with estimated 539 tCO2 emissions
+  - Does not include Meta user data in training

@@ -24,6 +24,9 @@
 "NVIDIA GeForce RTX 4060 Ti": "nvidia-geforce-rtx-4060-ti"
 # 4070 Ti
 "NVIDIA GeForce RTX 4070 Ti": "nvidia-geforce-rtx-4070-ti"
+# 4070 Ti SUPER
+"ASUS NVIDIA GeForce RTX 4070 Ti SUPER": "nvidia-geforce-rtx-4070-ti-super"
+"NVIDIA GeForce RTX 4070 Ti SUPER": "nvidia-geforce-rtx-4070-ti-super"
 # 4070 SUPER
 "ASUS NVIDIA GeForce RTX 4070 SUPER": "nvidia-geforce-rtx-4070-super"
 # 4080
@@ -55,9 +58,12 @@
 # 3090
 "NVIDIA GeForce RTX 3090": "nvidia-geforce-rtx-3090"
 
-# AMD Radeon RX 9000 Series
+# AMD Radeon RX 9000 Series (Navi 48 chipset)
 "Gigabyte AMD Radeon RX 9070": "amd-radeon-rx-9070"
 "AMD Radeon RX 9070 XT": "amd-radeon-rx-9070-xt"
+# Chipset name variants (Navi 48 = RX 9070 series)
+"AMD Navi 48": "amd-radeon-rx-9070-xt"
+"Gigabyte AMD Navi 48": "amd-radeon-rx-9070-xt"
 
 # AMD Radeon RX 7000 Series
 # 7600
@@ -82,6 +88,18 @@
 "XFX AMD Radeon RX 7900 XTX": "amd-radeon-rx-7900-xtx"
 "AMD Radeon RX 7900 XTX": "amd-radeon-rx-7900-xtx"
 "ASUS AMD Radeon RX 7900 XTX": "amd-radeon-rx-7900-xtx"
+
+# AMD Radeon RX 7700S (mobile)
+"AMD Radeon RX 7700S": "amd-radeon-rx-7700s"
+
+# AMD Radeon Pro Series
+"AMD Radeon Pro W7700": "amd-radeon-pro-w7700"
+
+# Intel Arc Series (BMG-G21 chipset = Battlemage)
+"Intel BMG G21": "intel-arc-b580"
+"ASUS Intel BMG G21": "intel-arc-b580"
+"Intel Arc B580": "intel-arc-b580"
+"ASUS Intel Arc B580": "intel-arc-b580"
 
 # AMD Radeon RX 6800 Series
 "AMD Radeon RX 6800": "amd-radeon-rx-6800"

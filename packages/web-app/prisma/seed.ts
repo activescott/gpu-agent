@@ -339,7 +339,14 @@ async function seedBenchmarks(prisma: PrismaClient): Promise<void> {
 
     if (unmappedGpus.length > 0) {
       console.warn(
-        `Unmapped GPUs found (add these to data/benchmark-data/gpu-name-mapping.yaml):\n${unmappedGpus.map((name) => `  "${name}": "gpu-slug-here"`).join("\n")}`,
+        `Unmapped GPUs found in benchmark data. To map these:\n` +
+          `  1. Check if a GPU spec file exists in data/gpu-data/ (e.g., nvidia-geforce-rtx-4070.yaml)\n` +
+          `  2. If a spec file exists, add a mapping to data/benchmark-data/gpu-name-mapping.yaml\n` +
+          `     using the spec file's name (without .yaml) as the slug value\n` +
+          `  3. If no spec file exists, consider creating one in data/gpu-data/ first\n` +
+          `  4. Chipset names (e.g., "Navi 48", "BMG G21") should map to their product GPU\n` +
+          `  5. Entries like "Median" are statistical values and can be ignored\n\n` +
+          `Unmapped GPUs:\n${unmappedGpus.map((name) => `  "${name}": "<gpu-spec-filename-without-yaml>"`).join("\n")}`,
       )
     }
 

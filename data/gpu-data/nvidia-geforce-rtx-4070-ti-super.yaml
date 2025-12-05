@@ -1,0 +1,50 @@
+# yaml-language-server: $schema=./gpu-spec.schema.json
+name: nvidia-geforce-rtx-4070-ti-super
+label: NVIDIA GeForce RTX 4070 Ti SUPER
+tensorCoreCount: 264
+fp32TFLOPS: 44.10
+fp16TFLOPS: 353
+int8TOPS: 706
+memoryCapacityGB: 16
+memoryBandwidthGBs: 672.3
+maxTDPWatts: 285
+gpuArchitecture: ada
+supportedHardwareOperations:
+  - FP16
+  - INT8
+  - TF32
+  - INT4
+  - BF16
+  - FP8
+supportedCUDAComputeCapability: 8.9
+
+summary: |
+  The NVIDIA GeForce RTX 4070 Ti SUPER is a high-performance graphics card released in January 2024,
+  featuring the Ada Lovelace architecture based on the AD103 GPU. It offers 8,448 CUDA cores,
+  264 4th-generation tensor cores, and 16GB of GDDR6X memory running at 21 Gbps, delivering
+  706 AI TOPS for INT8 workloads with sparsity. The card represents a significant upgrade over
+  the RTX 4070 Ti, offering 10% more CUDA cores (8,448 vs 7,680), 33% more VRAM (16GB vs 12GB),
+  and a wider 256-bit memory bus (vs 192-bit) while maintaining the same 285W TDP. The RTX 4070 Ti
+  SUPER is positioned between the RTX 4070 Ti and RTX 4080, providing excellent performance for
+  both high-refresh 1440p and 4K gaming as well as machine learning inference workloads. It uses
+  a PCI-Express 4.0 x16 interface and features 672.3 GB/s memory bandwidth. The card launched at
+  $799 USD, offering strong value in the enthusiast segment.
+
+references:
+  - https://www.nvidia.com/en-us/geforce/graphics-cards/40-series/rtx-4070-family/
+  - https://www.nvidia.com/en-us/geforce/news/geforce-rtx-4080-4070-ti-4070-super-gpu/
+  - https://www.techpowerup.com/gpu-specs/geforce-rtx-4070-ti-super.c4187
+  - https://images.nvidia.com/aem-dam/Solutions/geforce/ada/nvidia-ada-gpu-architecture.pdf
+  - https://images.nvidia.com/aem-dam/Solutions/Data-Center/l4/nvidia-ada-gpu-architecture-whitepaper-v2.1.pdf
+
+notes:
+  - fp32TFLOPS of 44.10 per TechPowerUp GPU Database, which represents shader FP32 performance calculated as 8,448 CUDA cores × 2.610 GHz boost clock × 2 ops/cycle / 1000 = 44.10 TFLOPS.
+  - fp16TFLOPS of 353 represents Peak FP16 Tensor TFLOPS with sparsity, derived from the architectural behavior of 4th-gen tensor cores where each core performs 256 FP16 operations per clock (512 with sparsity). Calculated as 264 tensor cores × 512 ops × 2.610 GHz / 1000 ≈ 353 TFLOPS. Note that NVIDIA does not explicitly publish FP16 tensor performance for GeForce GPUs.
+  - int8TOPS of 706 is "peak INT8 TOPS" using "Effective TOPS using the new Sparsity Feature" as reported in reviews. Dense performance without sparsity would be approximately 353 TOPS.
+  - FP8 is supported at the hardware level by 4th-gen tensor cores. However, NVIDIA's Transformer Engine library requires compute capability 9.x (Hopper/H100) and does not support Ada GPUs (8.9) for FP8 operations. Lower-level libraries like cuBLASLt, TensorRT-LLM, and llama.cpp can utilize FP8 on Ada GPUs. See https://forums.developer.nvidia.com/t/4090-doesnt-have-fp8-compute/232256
+  - Power based on what NVIDIA refers to as "TGP (Total Graphics Power)".
+  - The RTX 4070 Ti SUPER uses the AD103-275-A1 variant of the AD103 chip.
+  - Memory bandwidth calculated as 256-bit interface × 21 Gbps effective / 8 = 672 GB/s.
+  - Process node is TSMC 4N (5nm-class) with 45.9 billion transistors and a die size of 379 mm².
+  - The RTX 4070 Ti SUPER was announced on January 8, 2024, and launched on January 24, 2024, at an MSRP of $799 USD.
+  - Compared to the standard RTX 4070 Ti, the SUPER variant offers approximately 10% more CUDA cores, 33% more VRAM, 33% more memory bandwidth, and improved 4K gaming performance.

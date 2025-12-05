@@ -24,7 +24,7 @@ quantizationVersions:
   - name: INT8
     memoryRequirementGB: 0.05
 releaseDate: "2015"
-license: MIT
+license: Apache 2.0
 paperUrl: https://arxiv.org/abs/1512.03385
 trainingData: ImageNet (ILSVRC 2012) - 1.2 million training images across 1000 classes
 evaluationBenchmarks:
@@ -43,3 +43,4 @@ notes:
   - GPU memory requirements are approximate for inference with batch size 1
   - Importance of addressing biases in training data for generalization
   - Standard image preprocessing techniques apply
+  - License is Apache 2.0 for microsoft/resnet-50 implementation on HuggingFace

@@ -32,14 +32,16 @@ trainingData: Xenopus kidney dataset with sparse 2D slice annotations in 3D volu
 evaluationBenchmarks:
   - Intersection over Union (IoU)
   - Dice coefficient
-  - BraTS (Brain Tumor Segmentation)
 contextLength: null
 huggingfaceModelId: null
 updatedAt: "2025-12-04T19:00:00Z"
 references:
   - https://arxiv.org/abs/1606.06650
+  - https://link.springer.com/chapter/10.1007/978-3-319-46723-8_49
 notes:
   - GPU memory requirements vary significantly with input volume dimensions
   - Best suited for research and non-critical clinical applications
   - Care required in application to clinical diagnostic processes
   - Can learn from sparsely annotated data (not all slices need labels)
+  - While the original 3D-UNet paper (2016) evaluated on Xenopus kidney segmentation, the architecture has been widely adopted for BraTS brain tumor segmentation in subsequent research
+  - Parameter count of 19M is based on typical implementation; actual count varies depending on network depth and feature map sizes

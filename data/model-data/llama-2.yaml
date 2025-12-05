@@ -8,7 +8,7 @@ useCase: Commercial and research applications including assistant-like chat for 
 creator:
   organization: Meta AI
 modelCardLink: https://huggingface.co/meta-llama/Llama-2-7b
-modelArchitecture: Auto-regressive transformer with grouped-query attention, trained using supervised fine-tuning (SFT) and reinforcement learning with human feedback (RLHF) for chat variants
+modelArchitecture: Auto-regressive transformer trained using supervised fine-tuning (SFT) and reinforcement learning with human feedback (RLHF) for chat variants
 parameterCount: "7B"
 gpuMemoryRequirementGB: 14
 quantizationVersions:
@@ -40,5 +40,6 @@ references:
 notes:
   - Parameter count listed is for 7B variant; 13B and 70B variants also available
   - GPU memory requirements are for 7B model at FP16
-  - Pretraining involved 3.3M GPU hours on A100-80GB with estimated 539 tCO2 emissions
+  - The 7B model training used 184,320 GPU hours on A100-80GB; total training across all Llama 2 models was approximately 3.3M GPU hours with estimated 539 tCO2 total emissions
   - Does not include Meta user data in training
+  - Grouped-query attention (GQA) is only used in the 70B variant; the 7B and 13B models use standard multi-head attention (MHA)

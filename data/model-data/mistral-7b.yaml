@@ -9,7 +9,7 @@ creator:
   organization: Mistral AI
 modelCardLink: https://huggingface.co/mistralai/Mistral-7B-v0.1
 modelArchitecture: Transformer with grouped-query attention (GQA) and sliding window attention (SWA)
-parameterCount: "7B"
+parameterCount: "7.3B"
 gpuMemoryRequirementGB: 14
 quantizationVersions:
   - name: FP16
@@ -19,7 +19,7 @@ quantizationVersions:
   - name: INT4
     memoryRequirementGB: 4
     notes: Using GPTQ or AWQ quantization
-releaseDate: "2023"
+releaseDate: "2023-09-27"
 license: Apache 2.0
 paperUrl: https://arxiv.org/abs/2310.06825
 trainingData: Not publicly disclosed by Mistral AI
@@ -54,3 +54,4 @@ notes:
   - Training data details not publicly disclosed by Mistral AI
   - Fine-tuned variant Mistral 7B Instruct available for instruction-following tasks
   - System prompts available for enforcing ethical guardrails and content moderation
+  - Parameter count is 7.3B (approximately 7.24B precise); the 'Mistral-7B' name uses a rounded approximation

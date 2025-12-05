@@ -12,7 +12,7 @@ creator:
     - Priya Goyal
     - Ross Girshick
     - Kaiming He
-    - Piotr Dollar
+    - Piotr Dollár
 modelCardLink: null
 modelArchitecture: One-stage object detector using Feature Pyramid Network (FPN) backbone with Focal Loss for class imbalance handling
 parameterCount: "34M"

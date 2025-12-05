@@ -175,6 +175,12 @@ const nextConfig = {
         destination: "/gpu/learn/card/nvidia-h100-pcie",
         permanent: true,
       },
+      // Model slug renames
+      {
+        source: "/ml/learn/models/dlrm-v2",
+        destination: "/ml/learn/models/dlrm",
+        permanent: true,
+      },
     ]
   },
 

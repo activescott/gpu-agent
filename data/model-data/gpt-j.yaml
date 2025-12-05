@@ -18,9 +18,9 @@ quantizationVersions:
     memoryRequirementGB: 6
   - name: INT4
     memoryRequirementGB: 3
-releaseDate: "2021-06-09"
+releaseDate: "2021-06-04"
 license: Apache 2.0
-paperUrl: https://arxiv.org/abs/2204.06745
+paperUrl: null
 trainingData: The Pile dataset - a diverse 825GB language modeling dataset
 evaluationBenchmarks:
   - LAMBADA
@@ -32,12 +32,16 @@ contextLength: 2048
 huggingfaceModelId: EleutherAI/gpt-j-6b
 updatedAt: "2025-12-04T19:00:00Z"
 references:
-  - https://arxiv.org/abs/2204.06745
-  - https://arxiv.org/abs/2107.03374
+  - https://arankomatsuzaki.wordpress.com/2021/06/04/gpt-j/
+  - https://github.com/kingoflolz/mesh-transformer-jax
   - https://huggingface.co/EleutherAI/gpt-j-6b
+  - https://arxiv.org/abs/2101.00027
   - https://en.wikipedia.org/wiki/GPT-J
 notes:
   - Model is not designed for factual accuracy, only probabilistic text generation
   - Fine-tuning recommended for specific tasks
   - Potential biases present from training data
-  - Performance comparable to GPT-3 in various tasks
+  - Performance comparable to GPT-3 of similar size in various tasks
+  - GPT-J does not have a dedicated research paper; primary documentation is creator Aran Komatsuzaki's blog post and the mesh-transformer-jax GitHub repository
+  - Training dataset documented in The Pile paper (arXiv:2101.00027)
+  - Developed by Ben Wang and Aran Komatsuzaki at EleutherAI

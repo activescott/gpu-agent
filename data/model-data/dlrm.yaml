@@ -1,5 +1,5 @@
 # yaml-language-server: $schema=./model-spec.schema.json
-name: dlrm-v2
+name: dlrm
 label: DLRM
 modelType: ml
 summary: |
@@ -25,9 +25,10 @@ huggingfaceModelId: null
 updatedAt: "2025-12-04T19:00:00Z"
 references:
   - https://arxiv.org/abs/1906.00091
-  - https://ai.meta.com/blog/dlrm-an-advanced-open-source-deep-learning-recommendation-model/
+  - https://github.com/facebookresearch/dlrm
 notes:
   - Parameter count and memory requirements vary significantly based on embedding table sizes
   - Open-source implementations available in PyTorch and Caffe2
   - Focuses on memory efficiency and computational scalability
   - Embedding tables can dominate memory requirements in production deployments
+  - Source code licensed under MIT; pre-trained models under CC-BY-NC license

@@ -15,7 +15,7 @@ creator:
 modelCardLink: https://huggingface.co/bert-base-uncased
 modelArchitecture: Transformer-based encoder with bidirectional self-attention using Masked Language Model (MLM) and Next Sentence Prediction (NSP) pre-training objectives
 parameterCount: "110M"
-gpuMemoryRequirementGB: 0.5
+gpuMemoryRequirementGB: 0.25
 quantizationVersions:
   - name: FP32
     memoryRequirementGB: 0.5
@@ -41,5 +41,6 @@ references:
   - https://github.com/google-research/bert
 notes:
   - Parameter count is for BERT-base model; BERT-large has 340M parameters
-  - GPU memory requirements are approximate for inference with batch size 1
+  - GPU memory requirements are approximate for inference with batch size 1; gpuMemoryRequirementGB represents FP16 precision
   - Care should be taken in applications that could amplify biases present in training data
+  - BERT is an encoder-only transformer model designed for natural language understanding tasks, not text generation

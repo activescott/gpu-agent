@@ -22,8 +22,8 @@ done
 
 echo "Database is ready and migrations applied!"
 
-# Generate Prisma client (in case it's not generated yet)
-npx prisma generate --no-hints
+# NOTE: Prisma client is pre-generated during Docker build (see Dockerfile)
+# No need to regenerate at runtime - it would fail due to non-root user permissions
 
 # Seed database
 echo "Seeding database..."

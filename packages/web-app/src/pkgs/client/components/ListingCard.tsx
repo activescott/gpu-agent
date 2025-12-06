@@ -80,11 +80,10 @@ export const ListingCard = ({
         <Image
           unoptimized
           src={imageUrl}
-          className="card-img-top mx-auto mt-1"
+          className="card-img-top mx-auto mt-1 object-fit-contain"
           alt={title}
           width={215}
           height={215}
-          style={{ objectFit: "contain" }}
         />
       </div>
       <div className="card-body">

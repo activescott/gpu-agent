@@ -44,7 +44,7 @@ export function ListingCardSmall({
           <Image
             unoptimized
             src={imageUrl}
-            className="card-img mx-auto mt-1"
+            className="card-img mx-auto mt-1 object-fit-contain"
             alt={title}
             width={128}
             height={128}

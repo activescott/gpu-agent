@@ -13,6 +13,9 @@ int8TOPS: 183.92
 memoryCapacityGB: 16
 memoryBandwidthGBs: 576
 tdp: 260
+releaseDate: "2024-02-27"
+lastModified: "2025-12-05T00:00:00Z"
+
 summary: |
   The AMD Radeon RX 7900 GRE (Golden Rabbit Edition) is a mid-to-high-end gaming graphics card based on AMD's RDNA 3 architecture, featuring the Navi 31 GPU. Released globally on February 27, 2024 at $549 MSRP, it was initially exclusive to the Chinese market before expanding worldwide. The RX 7900 GRE is strategically positioned between the RX 7800 XT and RX 7900 XT, offering 80 compute units with 5,120 stream processors and 160 AI Accelerators. It delivers 45.98 TFLOPS of FP32 performance at 2245 MHz boost clock and 91.96 TFLOPS of FP16 performance. The card features 16GB of GDDR6 memory on a 256-bit bus running at 18 Gbps, providing 576 GB/s of memory bandwidth, along with 64MB of AMD Infinity Cache. With a 260W TDP, the RX 7900 GRE offers better power efficiency than the higher-tier RX 7900 XT (315W) while delivering approximately 90-95% of its performance, making it an excellent choice for 1440p and 4K gaming as well as AI workloads.
 

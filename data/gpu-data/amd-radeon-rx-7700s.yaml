@@ -15,6 +15,9 @@ supportedHardwareOperations:
   - BF16
   - INT8
   - INT4
+releaseDate: "2023-01-04"
+lastModified: "2025-12-05T00:00:00Z"
+
 summary: >-
   The AMD Radeon RX 7700S is a mobile graphics card launched in January 2023, featuring
   AMD's RDNA 3 architecture based on the Navi 33 XT GPU variant. Built on TSMC's 6nm process,

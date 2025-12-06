@@ -16,6 +16,9 @@ supportedHardwareOperations:
   - BF16
   - FP8
 supportedCUDAComputeCapability: 8.9
+releaseDate: "2023-03-21"
+lastModified: "2025-12-05T00:00:00Z"
+
 summary: The NVIDIA L4 GPU was introduced in March 2023 with part number
   900-2G193-0000-000. It, along with the L40 are the NVIDIA Ada Lovelace
   architecture built using the Built on the 5 nm process. The L4 uses the AD104

@@ -48,6 +48,10 @@ model gpu {
   references        String[]
   // custom-written summary for the GPU. Used on info pages
   summary           String @default("")
+  // Release date of the GPU (e.g., "2022-10-12")
+  releaseDate       String?
+  // Last modified timestamp for the GPU spec data (from YAML file)
+  lastModified      DateTime @default(now())
 
   // for the prisma relation for Listing.gpu/gpuName
   Listing   Listing[]

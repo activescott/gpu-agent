@@ -13,6 +13,9 @@ supportedHardwareOperations:
   - BF16
   - INT8
   - INT4
+releaseDate: "2024-01-24"
+lastModified: "2025-12-05T00:00:00Z"
+
 summary: >-
   The AMD Radeon RX 7600 XT was unveiled in January, 2024 as one of the GPUs
   using the new RDNA 3 architecture. It includes RDNA 3 architecture's new AI

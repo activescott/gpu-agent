@@ -12,6 +12,9 @@ gpuArchitecture: RDNA 2
 supportedHardwareOperations:
   - FP32
   - FP16
+releaseDate: "2020-11-18"
+lastModified: "2025-12-05T00:00:00Z"
+
 summary: >-
   The AMD Radeon RX 6800 was released in November 2020 alongside the RX 6800 XT as part
   of AMD's RDNA 2 architecture lineup (Navi 21). It features 60 compute units with 3,840

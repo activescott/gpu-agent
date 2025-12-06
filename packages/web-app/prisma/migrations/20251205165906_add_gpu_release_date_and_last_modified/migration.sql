@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE "gpu" ADD COLUMN     "lastModified" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+ADD COLUMN     "releaseDate" TEXT;

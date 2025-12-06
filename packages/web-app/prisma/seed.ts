@@ -173,6 +173,9 @@ async function seedGpus(prisma: PrismaClient): Promise<void> {
         : { equals: gpu.supportedHardwareOperations },
       supportedCUDAComputeCapability: gpu.supportedCUDAComputeCapability,
       summary: gpu.summary,
+      releaseDate: gpu.releaseDate,
+      // gpu.lastModified is already a Date after Zod coercion
+      lastModified: gpu.lastModified,
     }
     const gpuCount = await prisma.gpu.count({
       where,

@@ -462,6 +462,7 @@ export async function topNListingsByCostPerformance(
         supportedHardwareOperations: row.supportedHardwareOperations,
         summary: row.summary,
         references: row.references,
+        lastModified: row.lastModified,
         // Optional fields - accessing via index signature since raw SQL flattens the result
         series: (row as Record<string, unknown>).series as
           | string
@@ -470,6 +471,7 @@ export async function topNListingsByCostPerformance(
         supportedCUDAComputeCapability:
           row.supportedCUDAComputeCapability ?? undefined,
         maxTDPWatts: row.maxTDPWatts ?? undefined,
+        releaseDate: row.releaseDate ?? undefined,
         // All GPU metrics
         fp32TFLOPS: row.fp32TFLOPS,
         tensorCoreCount: row.tensorCoreCount,

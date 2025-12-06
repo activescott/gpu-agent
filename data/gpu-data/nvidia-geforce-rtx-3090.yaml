@@ -1,0 +1,55 @@
+# yaml-language-server: $schema=./gpu-spec.schema.json
+name: nvidia-geforce-rtx-3090
+label: NVIDIA GeForce RTX 3090
+tensorCoreCount: 328
+fp32TFLOPS: 35.58
+fp16TFLOPS: 142.74
+int8TOPS: 285
+memoryCapacityGB: 24
+memoryBandwidthGBs: 936.2
+maxTDPWatts: 350
+gpuArchitecture: Ampere
+supportedHardwareOperations:
+  - FP16
+  - FP32
+  - FP64
+  - INT8
+  - INT4
+  - TF32
+  - BF16
+supportedCUDAComputeCapability: 8.6
+releaseDate: "2020-09-24"
+lastModified: "2025-12-05T00:00:00Z"
+
+summary: |
+  The NVIDIA GeForce RTX 3090 is NVIDIA's flagship consumer graphics card launched in September 2020,
+  featuring the Ampere architecture based on the GA102 GPU (GA102-300-A1 variant). Built on Samsung's
+  8nm process with 28.3 billion transistors and a die size of 628 mm², it offers 10,496 CUDA cores
+  across 82 streaming multiprocessors, 328 3rd-generation tensor cores, and 82 2nd-generation RT cores.
+  The card features an unprecedented 24GB of GDDR6X memory running at 19.5 Gbps on a 384-bit bus,
+  delivering 936.2 GB/s of memory bandwidth. With a TDP of 350W, the RTX 3090 was designed for 8K HDR
+  gaming and professional creative workflows. The 3rd-generation Tensor Cores support fine-grained
+  structured sparsity (2:4 pattern), enabling up to 571 INT8 TOPS with sparsity and 143 FP16 TFLOPS
+  for dense tensor operations. The RTX 3090 uses a PCI-Express 4.0 x16 interface and is one of the
+  few consumer GPUs to support 2-way NVLink. At launch, it was positioned as the spiritual successor
+  to NVIDIA's Titan series, offering professional-grade memory capacity in a GeForce product.
+
+references:
+  - https://www.nvidia.com/content/PDF/nvidia-ampere-ga-102-gpu-architecture-whitepaper-v2.1.pdf
+  - https://www.nvidia.com/en-us/geforce/graphics-cards/30-series/rtx-3090-3090ti/
+  - https://www.techpowerup.com/gpu-specs/geforce-rtx-3090.c3622
+  - https://www.tomshardware.com/features/nvidia-ampere-architecture-deep-dive
+  - https://forums.developer.nvidia.com/t/rtx-3090-peak-performance/198049
+
+notes:
+  - fp32TFLOPS of 35.58 calculated as 10,496 CUDA cores × 1.695 GHz boost clock × 2 ops/cycle = 35.58 TFLOPS, per TechPowerUp GPU Database. Ampere architecture features 2 FP32 ops per cycle through dedicated FP32 datapath and shared INT32/FP32 datapath.
+  - fp16TFLOPS of 142.74 represents dense FP16 Tensor Core performance. This is calculated as 82 SMs × 4 tensor cores per SM × 256 FP16 FLOPS per cycle (128 FMA operations, counted as 2 FLOPS each) × 1.695 GHz boost clock = 142.3 TFLOPS. With 2:4 structured sparsity enabled, performance doubles to approximately 285 TFLOPS.
+  - int8TOPS of 285 represents dense INT8 Tensor Core performance. INT8 operations run at 2× the rate of FP16, yielding approximately 285 TOPS (2 × 142.74 TFLOPS). With Ampere's 2:4 structured sparsity feature enabled, performance doubles to approximately 570 TOPS.
+  - All primary performance metrics (fp16TFLOPS, int8TOPS) represent dense (non-sparse) tensor operations for consistency. Ampere's 2:4 structured sparsity feature can double these rates when models are appropriately pruned and use compatible libraries (TensorRT 8+, cuBLASLt).
+  - Power figure of 350W is based on NVIDIA's TGP (Total Graphics Power) specification.
+  - The RTX 3090 uses 82 of the 84 possible streaming multiprocessors on the GA102 die, with each SM containing 128 CUDA cores, 4 tensor cores, and 1 RT core.
+  - Memory bandwidth calculated as 384-bit interface × 19.5 Gbps GDDR6X = 936.2 GB/s.
+  - The 3rd-generation Tensor Cores support TF32 (TensorFloat-32), BF16 (BFloat16), FP16, INT8, and INT4 precisions. INT8 operates at 2x the rate of FP16, and INT4 at 4x the FP16 rate.
+  - FP64 (double precision) performance is 1:64 ratio of FP32, yielding approximately 556 GFLOPS.
+  - The RTX 3090 and RTX 3090 Ti are the only GeForce 30-series cards that support 2-way NVLink for multi-GPU configurations.
+  - Released September 24, 2020 at $1,499 USD MSRP, positioned as a "BFGPU" (Big Ferocious GPU) targeting both gamers and content creators.

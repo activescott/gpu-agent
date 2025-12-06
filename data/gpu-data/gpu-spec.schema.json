@@ -14,6 +14,8 @@
     "maxTDPWatts",
     "gpuArchitecture",
     "supportedHardwareOperations",
+    "releaseDate",
+    "lastModified",
     "summary",
     "references",
     "notes"
@@ -82,6 +84,16 @@
       "type": "number",
       "description": "CUDA compute capability version for NVIDIA GPUs",
       "minimum": 0
+    },
+    "releaseDate": {
+      "type": "string",
+      "description": "Release date in ISO 8601 format (YYYY-MM-DD)",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+    },
+    "lastModified": {
+      "type": "string",
+      "description": "Last modified timestamp in ISO 8601 format",
+      "format": "date-time"
     },
     "summary": {
       "type": "string",

@@ -22,6 +22,18 @@ const formatPercentage = new Intl.NumberFormat("en-US", {
   style: "percent",
 })
 
+/**
+ * Formats a release date string (e.g., "2022-10-12") to a human-readable format.
+ */
+function formatReleaseDate(dateString: string): string {
+  const date = new Date(dateString)
+  return date.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  })
+}
+
 export function GpuInfo({
   gpu,
   gpuSpecPercentages,
@@ -36,6 +48,9 @@ export function GpuInfo({
       <p>{gpu.summary}</p>
       <ul>
         <li>GPU Architecture: {gpu.gpuArchitecture}</li>
+        {gpu.releaseDate && (
+          <li>Release Date: {formatReleaseDate(gpu.releaseDate)}</li>
+        )}
         <li>
           {/* TODO: Review https://docs.nvidia.com/deeplearning/performance/dl-performance-gpu-background/index.html#gpu-arch__fig2 */}
           Hardware-Accelerated{" "}

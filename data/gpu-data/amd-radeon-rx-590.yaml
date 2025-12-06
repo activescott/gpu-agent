@@ -8,6 +8,9 @@ memoryBandwidthGBs: 256
 maxTDPWatts: 175
 gpuArchitecture: Graphics Core Next 4
 supportedHardwareOperations: []
+releaseDate: "2018-11-15"
+lastModified: "2025-12-05T00:00:00Z"
+
 summary: The AMD Radeon RX 590, launched on November 15th, 2018, uses the 12 nm
   process with the Polaris 30 graphics processor. It's a performance-segment
   card with a dual-slot form factor and a TDP of 175 W.

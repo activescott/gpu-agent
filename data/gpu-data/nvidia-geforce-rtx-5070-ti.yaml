@@ -21,6 +21,8 @@ supportedHardwareOperations:
   - FP8
   - FP4
 supportedCUDAComputeCapability: 12.8
+releaseDate: "2025-02-20"
+lastModified: "2025-12-05T00:00:00Z"
 
 summary: |
   The NVIDIA GeForce RTX 5070 Ti was the second GeForce RTX 50 series product launched using the GB203 GPU after the RTX 5080.

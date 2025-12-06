@@ -24,6 +24,10 @@ export const GpuSchema = z
     references: z.array(z.string()),
     // .. | nullable because prisma seems to require it for optional fields :/
     maxTDPWatts: z.number().optional().nullable(),
+    releaseDate: z.string().optional().nullable(),
+    // lastModified comes as a string from YAML but as Date from Prisma
+    // Using coerce to handle both cases
+    lastModified: z.coerce.date(),
   })
   .extend(GpuSpecsSchema.shape)
   .extend(GpuBenchmarksSchema.shape)

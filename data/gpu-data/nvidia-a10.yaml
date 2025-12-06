@@ -17,6 +17,9 @@ supportedHardwareOperations:
   - TF32
   - BF16
 supportedCUDAComputeCapability: 8.6
+releaseDate: "2021-04-12"
+lastModified: "2025-12-05T00:00:00Z"
+
 summary: The NVIDIA A10 (part number 900-2G133-0020-000) is a high-performance
   GPU designed for professional applications, including machine learning and AI.
   Launched in April 2021, it features the GA102 graphics processor, offering

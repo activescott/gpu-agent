@@ -15,6 +15,9 @@ supportedHardwareOperations:
   - BF16
   - INT8
   - INT4
+releaseDate: "2024-09-18"
+lastModified: "2025-12-05T00:00:00Z"
+
 summary: >-
   The AMD Radeon RX 7700 is a desktop gaming graphics card based on the RDNA 3 architecture
   using the Navi 32 GPU. Built on TSMC's 5nm process, it features 40 compute units with 2,560

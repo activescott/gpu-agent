@@ -8,6 +8,7 @@ import {
   GpuWithListings,
   listCachedListingsGroupedByGpu,
 } from "@/pkgs/server/db/ListingRepository"
+import { listGpus } from "@/pkgs/server/db/GpuRepository"
 import { prismaSingleton } from "@/pkgs/server/db/db"
 import { EPOCH } from "@/pkgs/isomorphic/duration"
 import { listGpuRankingSlugs } from "./ml/learn/gpu/ranking/slugs"
@@ -47,6 +48,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     newsSitemap(domain_url),
     gpuRankingSitemap(domain_url),
     modelsSitemap(domain_url),
+    gpuLearnSitemap(domain_url),
     listCachedListingsGroupedByGpu(false, prismaSingleton),
   ])
   log.debug("Awaiting queries for sitemap generation complete.")
@@ -55,6 +57,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     newsItems,
     gpuRankingEntries,
     modelsEntries,
+    gpuLearnEntries,
     gpusAndListings,
   ] = awaitedQueries
 
@@ -67,6 +70,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     newsItems,
     gpuRankingEntries,
     modelsEntries,
+    gpuLearnEntries,
   ]
   const dynamicEntries: SitemapItem[] = dynamicEntryGroups.flat()
 
@@ -171,6 +175,21 @@ async function modelsSitemap(domain_url: string): Promise<SitemapItem[]> {
   })
 
   return modelEntries
+}
+
+async function gpuLearnSitemap(domain_url: string): Promise<SitemapItem[]> {
+  const gpus = await listGpus()
+
+  const gpuEntries: SitemapItem[] = gpus.map((gpu) => {
+    return {
+      url: `${domain_url}/ml/learn/gpu/${gpu.name}`,
+      changeFrequency: "monthly",
+      priority: 0.7,
+      lastModified: gpu.lastModified,
+    } satisfies SitemapItem
+  })
+
+  return gpuEntries
 }
 
 function staticSitemap(domain_url: string): SitemapItem[] {

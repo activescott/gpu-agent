@@ -17,6 +17,9 @@ supportedHardwareOperations:
   - TF32
   - BF16
 supportedCUDAComputeCapability: 8
+releaseDate: "2021-04-12"
+lastModified: "2025-12-05T00:00:00Z"
+
 summary: The NVIDIA A30, launched on April 12th, 2021 with part number
   900-21001-0040-100, is a professional-grade accelerator geared towards machine
   learning and AI computation. Built on the GA100 graphics processor and

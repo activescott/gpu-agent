@@ -47,10 +47,10 @@ export function GpuInfo({
       </h1>
       <p>{gpu.summary}</p>
       <ul>
-        <li>GPU Architecture: {gpu.gpuArchitecture}</li>
         {gpu.releaseDate && (
           <li>Release Date: {formatReleaseDate(gpu.releaseDate)}</li>
         )}
+        <li>GPU Architecture: {gpu.gpuArchitecture}</li>
         <li>
           {/* TODO: Review https://docs.nvidia.com/deeplearning/performance/dl-performance-gpu-background/index.html#gpu-arch__fig2 */}
           Hardware-Accelerated{" "}

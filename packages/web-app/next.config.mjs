@@ -3,9 +3,15 @@ import createMDX from "@next/mdx"
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   poweredByHeader: false,
-  
+
   // MDX configuration: https://nextjs.org/docs/app/building-your-application/configuring/mdx
   pageExtensions: ["mdx", "ts", "tsx"],
+
+  // Silence Bootstrap Sass deprecation warnings from dependencies
+  // https://sass-lang.com/documentation/js-api/interfaces/options/#quietDeps
+  sassOptions: {
+    quietDeps: true,
+  },
 
   async rewrites() {
     return [

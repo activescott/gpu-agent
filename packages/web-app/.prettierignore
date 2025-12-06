@@ -1,1 +1,3 @@
+.next/
+node_modules/
 /src/app/sitemap.static-pages.json

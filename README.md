@@ -22,77 +22,80 @@ This means you're free to use, modify, and distribute both the code and data, wi
 
 ## Development Setup
 
-### Quick Start (Recommended)
+### Prerequisites
+
+Install required tools:
+```bash
+brew install minikube skaffold
+```
+
+### Quick Start
 
 ```bash
-# Start development environment (app + postgres)
-npm run docker:dev
+# Start development environment (minikube + skaffold)
+npm run dev
 ```
+
+The app will be available at http://localhost:3000
 
 ### Environment Setup
 
-1. Copy your environment variables to `packages/web-app/.env`:
+1. Copy environment file template:
 ```bash
-cp packages/web-app/.env.local.template packages/web-app/.env
+cp k8s/overlays/dev/.env.dev.app.example k8s/overlays/dev/.env.dev.app
 ```
 
-2. Configure required environment variables in `packages/web-app/.env`:
+2. Configure required environment variables in `k8s/overlays/dev/.env.dev.app`:
    - `EBAY_CLIENT_ID` - Get from https://developer.ebay.com/my/keys
    - `EBAY_CLIENT_SECRET` - Get from https://developer.ebay.com/my/keys
    - `EBAY_AFFILIATE_CAMPAIGN_ID` - Get from eBay Partner Network
    - `PUBLIC_POSTHOG_KEY` - Get from PostHog settings
 
 **Database Configuration:**
-- `POSTGRES_PRISMA_URL` and `POSTGRES_URL_NON_POOLING` are NOT set in .env files
-- These are provided by container orchestration:
-  - **Local Development**: docker-compose.yml environment section
-  - **Production**: Kubernetes secrets
-- .env files contain comments documenting this pattern
+- Database URLs are configured in `k8s/overlays/dev/.env.dev.app`
+- Database credentials are in `k8s/overlays/dev/.env.dev.db`
+- These are automatically injected as Kubernetes secrets
 
-### Docker Development Commands
+### Development Commands
 
 ```bash
 # Start development environment
-npm run docker:dev
+npm run dev
 
-# Complete rebuild (when schema/migrations change)
-npm run docker:down
-npm run docker:dev
+# View application logs
+npm run dev:logs
 
-# Check application logs
-docker compose logs app --tail=20
+# Restart app (triggers migrations)
+npm run dev:restart
 
-# Stop all services
-npm run docker:down
+# Complete reset (deletes cluster and data)
+npm run dev:reset
 ```
 
 ### Database Operations
 
-**Prerequisites:** Ensure Docker containers are running with `npm run docker:dev`
+**Prerequisites:** Ensure minikube is running with `npm run dev`
 
 ```bash
-# Create and apply migration (run inside Docker container)
-docker-compose exec app sh -c "cd /app/packages/web-app && npx prisma migrate dev --name migration_description"
-
-# Generate Prisma client after schema changes (run inside Docker container)
-docker-compose exec app sh -c "cd /app/packages/web-app && npx prisma generate"
-
 # Access database directly
-docker-compose exec postgres psql -U gpu_agent -d gpu_agent
+minikube kubectl -- exec -it -n gpupoet-dev db-0 -- psql -U gpu_agent -d gpu_agent
 
-# Run migrations manually (migrations run automatically on container startup via docker-entrypoint.sh)
-docker-compose exec app sh -c "cd /app/packages/web-app && npx prisma migrate deploy"
+# Create and apply migration
+minikube kubectl -- exec -n gpupoet-dev deploy/app -- sh -c "cd /app/packages/web-app && npx prisma migrate dev --name migration_description"
+
+# Generate Prisma client after schema changes
+minikube kubectl -- exec -n gpupoet-dev deploy/app -- sh -c "cd /app/packages/web-app && npx prisma generate"
+
+# Run migrations manually (migrations run automatically on container startup)
+minikube kubectl -- exec -n gpupoet-dev deploy/app -- sh -c "cd /app/packages/web-app && npx prisma migrate deploy"
 
 # Seed database manually (seeding also runs automatically on container startup)
-docker-compose exec app sh -c "cd /app/packages/web-app && npx prisma db seed"
-
-# View database schema
-docker-compose exec app sh -c "cd /app/packages/web-app && npx prisma db pull"
+minikube kubectl -- exec -n gpupoet-dev deploy/app -- sh -c "cd /app/packages/web-app && npm run prisma-seed"
 ```
 
-**Note:** All Prisma commands must be run inside the Docker container since the database connection strings are only available in the container environment.
+**Note:** All Prisma commands must be run inside the Kubernetes pod since the database connection strings are only available in the container environment.
 
-**Automatic Migration Behavior:** Migrations and seeding run automatically when containers start (via `docker/docker-entrypoint.sh`). This applies to both Docker development and Kubernetes production environments.
+**Automatic Migration Behavior:** Migrations and seeding run automatically when containers start (via `docker/docker-entrypoint.sh`). This applies to both local development and Kubernetes production environments.
 
 ### Testing
 
@@ -116,8 +119,8 @@ npx playwright test tests/historical-data.spec.ts
 BASE_URL=https://staging.example.com npm test
 ```
 
-**Verifying Docker Changes:** When modifying Docker-related files (Dockerfiles, entrypoint scripts, docker-compose.yml), always verify by:
-1. Running `npm run docker:dev` and confirming the container starts
+**Verifying Infrastructure Changes:** When modifying Docker or Kubernetes files (Dockerfiles, entrypoint scripts, k8s manifests, skaffold.yaml), always verify by:
+1. Running `npm run dev` and confirming the container starts
 2. Running `cd e2e-tests && npm test` to ensure the application functions correctly
 
 ### Health Checks
@@ -175,8 +178,9 @@ This endpoint:
 
 ### Key Configuration Files
 - `/packages/web-app/prisma/schema.prisma` - Database schema
-- `/packages/web-app/.env` - Environment variables (Docker overrides these)
-- `/docker-compose.yml` - Container configuration
+- `/k8s/overlays/dev/.env.dev.app` - Development environment variables
+- `/skaffold.yaml` - Skaffold development configuration
+- `/k8s/` - Kubernetes manifests (base + overlays)
 - `/e2e-tests/playwright.config.ts` - E2E test configuration
 
 ### Important Code Locations
@@ -211,8 +215,8 @@ updatedAt: "2025-11-24T15:45:00Z"
 ## Deployment
 
 ### Production Notes
-- Production deployments use Kubernetes with external database pod
-- Database data persists in Docker volumes between container restarts
+- Production deployments use Kubernetes with persistent volumes for database
+- Database data persists in Kubernetes PersistentVolumeClaims
 
 ### Manual Sitemap Generation
 

@@ -1,0 +1,130 @@
+#!/usr/bin/env bash
+this_dir=$(cd $(dirname "$0"); pwd) # this script's directory
+this_script=$(basename $0)
+workspace_root=$(cd "$this_dir/.."; pwd)
+
+#-e: Exits immediately if any command returns a non-zero status (i.e., fails)
+#-u: Treats unset variables as errors and exits immediately
+#-o pipefail: If any command in a pipeline fails, the entire pipeline fails
+set -euo pipefail
+
+help () {
+  echo
+  cat << END_DOC
+USAGE: $this_script [OPTIONS]
+
+Starts development environment using minikube and skaffold.
+
+Options:
+  -h, --help    Show this help message
+
+END_DOC
+}
+
+die () {
+    echo "*** ERROR ***"
+    echo >&2 "ERROR: $@"
+    help
+    exit 1
+}
+
+check_minikube() {
+    if ! command -v minikube &> /dev/null; then
+        die "minikube is not installed. Install it with: brew install minikube"
+    fi
+}
+
+check_skaffold() {
+    if ! command -v skaffold &> /dev/null; then
+        die "skaffold is not installed. Install it with: brew install skaffold"
+    fi
+}
+
+check_dev_server_not_running() {
+    # Check if skaffold is already running
+    if pgrep -f "skaffold dev" > /dev/null; then
+        die "Dev server is already running (skaffold process found). Stop it first with Ctrl+C or 'pkill -f \"skaffold dev\"'"
+    fi
+
+    # Check if port 3000 is already in use (the app port)
+    if lsof -i :3000 > /dev/null 2>&1; then
+        die "Port 3000 is already in use. A dev server may already be running. Stop it first."
+    fi
+}
+
+setup_minikube() {
+    echo "Checking minikube status..."
+
+    # Check if minikube cluster exists and is running
+    if ! minikube status &> /dev/null; then
+        echo "Starting minikube..."
+        minikube start
+    else
+        echo "Minikube is already running"
+    fi
+
+    # Check and enable ingress addon
+    if ! minikube addons list | grep -q "ingress.*enabled"; then
+        echo "Enabling minikube ingress addon..."
+        minikube addons enable ingress
+    else
+        echo "Ingress addon already enabled"
+    fi
+
+    # Check and enable ingress-dns addon
+    if ! minikube addons list | grep -q "ingress-dns.*enabled"; then
+        echo "Enabling minikube ingress-dns addon..."
+        minikube addons enable ingress-dns
+    else
+        echo "Ingress-dns addon already enabled"
+    fi
+
+    # Wait for ingress controller to be ready
+    echo "Waiting for minikube ingress controller to be ready..."
+    if ! minikube kubectl -- wait --namespace ingress-nginx \
+        --for=condition=ready pod \
+        --selector=app.kubernetes.io/component=controller \
+        --timeout=120s 2>/dev/null; then
+        echo "Warning: Ingress controller not ready yet, but continuing..."
+    else
+        echo "Ingress controller is ready"
+    fi
+}
+
+# Parse arguments
+while [[ $# -gt 0 ]]; do
+    case $1 in
+        -h|--help)
+            help
+            exit 0
+            ;;
+        *)
+            die "Unknown option: $1"
+            ;;
+    esac
+done
+
+cd "$workspace_root"
+
+echo "=== Setting up Development Environment ==="
+
+check_dev_server_not_running
+check_minikube
+check_skaffold
+setup_minikube
+
+echo ""
+echo "Starting skaffold development with HMR..."
+echo "The app will be available at http://localhost:3000"
+echo "Press Ctrl+C to stop"
+echo ""
+
+# Configure Docker to use minikube's Docker daemon
+# This ensures skaffold builds images inside minikube
+echo "Configuring Docker to use minikube's Docker daemon..."
+eval $(minikube docker-env)
+
+# Run skaffold dev with proper context
+# --cleanup=false: Preserve resources (including database PVC and data) when stopping with Ctrl+C
+#   This ensures database data persists between dev runs
+skaffold dev --port-forward --cleanup=false

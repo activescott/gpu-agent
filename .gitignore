@@ -11,3 +11,6 @@ data/**/*.numbers
 test-results/
 playwright-report/
 dist/
+
+# Skaffold/K8s dev secrets (contains API keys)
+k8s/overlays/dev/.env.dev.app

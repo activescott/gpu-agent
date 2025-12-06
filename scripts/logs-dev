@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+this_dir=$(cd $(dirname "$0"); pwd) # this script's directory
+this_script=$(basename $0)
+workspace_root=$(cd "$this_dir/.."; pwd)
+
+#-e: Exits immediately if any command returns a non-zero status (i.e., fails)
+#-u: Treats unset variables as errors and exits immediately
+#-o pipefail: If any command in a pipeline fails, the entire pipeline fails
+set -euo pipefail
+
+help () {
+  echo
+  cat << END_DOC
+USAGE: $this_script [OPTIONS]
+
+Shows logs in GPUPoet development environment.
+
+Options:
+  -h, --help    Show this help message
+
+END_DOC
+}
+
+die () {
+    echo "*** ERROR ***"
+    echo >&2 "ERROR: $@"
+    help
+    exit 1
+}
+
+minikube kubectl -- --namespace gpupoet-dev logs -f -l app=app

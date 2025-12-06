@@ -28,9 +28,9 @@ RUN mkdir -p /app/packages/web-app/.next /app/packages/web-app/.turbo
 # Set proper permissions for development (allow writing to mounted volumes)
 RUN chown -R node:node /app
 
-# Copy and set up development entrypoint script
-COPY docker/docker-entrypoint-dev.sh /usr/local/bin/
-RUN chmod +x /usr/local/bin/docker-entrypoint-dev.sh
+# Copy and set up entrypoint script (unified for dev and prod)
+COPY docker/docker-entrypoint.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 
 # Switch to node user for development
 USER node
@@ -44,4 +44,5 @@ ENV HOSTNAME="0.0.0.0"
 HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
   CMD wget --no-verbose --tries=1 --spider http://localhost:3000/api/health || exit 1
 
-ENTRYPOINT ["/usr/local/bin/docker-entrypoint-dev.sh"]
+ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
+CMD ["npm", "run", "dev", "--workspace=packages/web-app"]

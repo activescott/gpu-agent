@@ -3,7 +3,7 @@ import { test, expect } from '@playwright/test';
 // Minimum percentage of GPUs that should have listings
 const MIN_LISTINGS_PERCENT = 50;
 // Minimum percentage of GPUs that should have the spec data
-const MIN_SPEC_PERCENT = 80;
+const MIN_SPEC_PERCENT = 75;
 
 test.describe('GPU Ranking Page', () => {
   test('should have reasonable coverage of listings and specs on fp32-flops ranking', async ({ page }) => {

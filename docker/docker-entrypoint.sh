@@ -1,19 +1,43 @@
 #!/bin/sh
 set -e
 
-echo "🚀 Starting GPU Agent Docker container..."
+echo "Starting GPUPoet container..."
 
 # Change to web app directory
 cd /app/packages/web-app
 
-# Run Prisma migrations (will fail fast if PostgreSQL isn't ready)
-echo "🔄 Running Prisma migrations..."
-npx prisma migrate deploy
+# Run migrations (this also serves as our database readiness check)
+# migrate deploy will:
+# 1. Wait for database connection
+# 2. Create migrations table if needed
+# 3. Apply pending migrations
+# 4. Preserve existing data (safe, no --accept-data-loss!)
+echo "Waiting for database and applying migrations..."
 
-echo "🌱 Seeding database..."
+# Keep trying migrate deploy until it succeeds
+until npx prisma migrate deploy 2>&1; do
+    echo "Database not ready yet or migration failed, waiting 2 seconds..."
+    sleep 2
+done
+
+echo "Database is ready and migrations applied!"
+
+# Generate Prisma client (in case it's not generated yet)
+npx prisma generate --no-hints
+
+# Seed database
+echo "Seeding database..."
 npm run prisma-seed
 
-# Start the application
-echo "🎬 Starting Next.js application..."
+# Prepare assets for development (only if in dev mode)
+if [ "$NODE_ENV" = "development" ]; then
+    echo "Preparing development assets..."
+    npm run prep
+fi
+
+echo "Setup completed successfully!"
+
+# Execute the original command
+echo "Starting application with command: $@"
 cd /app
-exec npm run start --workspace=packages/web-app
+exec "$@"

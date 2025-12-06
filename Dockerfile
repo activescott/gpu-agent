@@ -65,20 +65,17 @@ COPY --from=builder /app/packages/web-app/tsconfig.json ./packages/web-app/tscon
 COPY --from=builder /app/data ./data
 
 # Validate that required data files exist and are not empty
-# This ensures the build fails if the data submodule wasn't checked out properly
 RUN if [ ! -d "./data/gpu-data" ] || [ -z "$(find ./data/gpu-data -name '*.yaml' -type f)" ]; then \
       echo "ERROR: No GPU data files found in ./data/gpu-data/"; \
-      echo "Make sure the data submodule is checked out:"; \
-      echo "  git submodule update --init --recursive"; \
+      echo "Make sure the data directory is populated"; \
       exit 1; \
     fi && \
     if [ ! -d "./data/benchmark-data" ] || [ -z "$(find ./data/benchmark-data -name '*.yaml' -type f ! -name 'gpu-name-mapping.yaml')" ]; then \
       echo "ERROR: No benchmark data files found in ./data/benchmark-data/"; \
-      echo "Make sure the data submodule is checked out:"; \
-      echo "  git submodule update --init --recursive"; \
+      echo "Make sure the data directory is populated"; \
       exit 1; \
     fi && \
-    echo "✓ Data validation passed: GPU and benchmark data files found"
+    echo "Data validation passed: GPU and benchmark data files found"
 
 # Copy and set up entrypoint script
 COPY --from=builder /app/docker/docker-entrypoint.sh /usr/local/bin/
@@ -96,3 +93,4 @@ HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
   CMD wget --no-verbose --tries=1 --spider http://localhost:3000/api/health || exit 1
 
 ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
+CMD ["npm", "run", "start", "--workspace=packages/web-app"]

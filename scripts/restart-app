@@ -1,0 +1,79 @@
+#!/usr/bin/env bash
+this_dir=$(cd $(dirname "$0"); pwd) # this script's directory
+this_script=$(basename $0)
+workspace_root=$(cd "$this_dir/.."; pwd)
+
+#-e: Exits immediately if any command returns a non-zero status (i.e., fails)
+#-u: Treats unset variables as errors and exits immediately
+#-o pipefail: If any command in a pipeline fails, the entire pipeline fails
+set -euo pipefail
+
+help () {
+  echo
+  cat << END_DOC
+USAGE: $this_script [OPTIONS]
+
+Restarts the GPUPoet app deployment in minikube (will trigger DB migrations).
+
+Options:
+  -h, --help    Show this help message
+
+END_DOC
+}
+
+die () {
+    echo "*** ERROR ***"
+    echo >&2 "ERROR: $@"
+    help
+    exit 1
+}
+
+check_minikube() {
+    if ! command -v minikube &> /dev/null; then
+        die "minikube is not installed. Install it with: brew install minikube"
+    fi
+
+    if ! minikube status &> /dev/null; then
+        die "minikube is not running. Start it with: ./scripts/dev"
+    fi
+}
+
+restart_app() {
+    echo "Restarting app deployment (will trigger DB migrations)..."
+
+    # Scale down to 0 replicas
+    minikube kubectl -- scale deployment app --replicas=0 -n gpupoet-dev
+
+    echo "Waiting for pods to terminate..."
+    minikube kubectl -- wait --for=delete pod -l app=app -n gpupoet-dev --timeout=60s
+
+    # Scale back up to 1 replica
+    minikube kubectl -- scale deployment app --replicas=1 -n gpupoet-dev
+
+    echo "Waiting for new pod to be ready..."
+    minikube kubectl -- wait --for=condition=ready pod -l app=app -n gpupoet-dev --timeout=120s
+
+    echo "App deployment restarted successfully!"
+}
+
+# Parse arguments
+while [[ $# -gt 0 ]]; do
+    case $1 in
+        -h|--help)
+            help
+            exit 0
+            ;;
+        *)
+            die "Unknown option: $1"
+            ;;
+    esac
+done
+
+cd "$workspace_root"
+
+echo "=== Restarting GPUPoet App ==="
+
+check_minikube
+restart_app
+
+echo "Restart completed!"

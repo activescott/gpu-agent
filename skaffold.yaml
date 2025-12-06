@@ -1,0 +1,67 @@
+apiVersion: skaffold/v4beta11
+kind: Config
+metadata:
+  name: gpupoet-dev
+
+build:
+  # https://skaffold.dev/docs/references/yaml/#build
+  local:
+    # Build images directly in minikube's Docker daemon (no push to registry needed)
+    push: false
+    # Use minikube's docker daemon
+    useBuildkit: true
+  artifacts:
+    - image: gpupoet-dev
+      # Build from repository root (monorepo with workspace dependencies)
+      context: .
+      docker:
+        dockerfile: Dockerfile.dev
+      sync:
+        # sync guide: https://skaffold.dev/docs/filesync/
+        # sync ref: https://skaffold.dev/docs/references/yaml/#build-artifacts-sync
+        manual:
+          # Web app sources
+          - src: "packages/web-app/src/**/*"
+            dest: /app/
+          - src: "packages/web-app/public/**/*"
+            dest: /app/
+          # Prisma schema and migrations
+          - src: "packages/web-app/prisma/schema.prisma"
+            dest: /app/
+          - src: "packages/web-app/prisma/migrations/**/*"
+            dest: /app/
+          # ebay-client package sources
+          - src: "packages/ebay-client/src/**/*"
+            dest: /app/
+          # Data directory (GPU specs, benchmarks, news)
+          - src: "data/**/*"
+            dest: /app/
+
+manifests:
+  kustomize:
+    paths:
+      - k8s/overlays/dev
+
+deploy:
+  # Force skaffold to use minikube context for dev environment
+  kubeContext: minikube
+  kubectl:
+    defaultNamespace: gpupoet-dev
+    # Server-side apply flags for more reliable resource management
+    # --force-conflicts: Resolves field manager conflicts when re-applying resources
+    #   (allows Skaffold to take ownership even if another tool like kubectl previously applied)
+    # --server-side: Uses server-side apply instead of client-side
+    #   (more reliable for managing resource ownership and prevents conflicts)
+    flags:
+      apply:
+        - --force-conflicts
+        - --server-side
+
+portForward:
+  - resourceType: service
+    resourceName: app
+    namespace: gpupoet-dev
+    port: 3000
+    localPort: 3000
+    # make the port forward available from other hosts and not from the local host only:
+    address: 0.0.0.0

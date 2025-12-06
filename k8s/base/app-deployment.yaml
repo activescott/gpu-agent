@@ -1,0 +1,100 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: app
+  template:
+    metadata:
+      labels:
+        app: app
+        app.activescott.com/component: app
+    spec:
+      containers:
+        - name: app
+          # NOTE: this image is replaced with an images transformer in the overlay
+          image: gpupoet-image-app
+
+          # https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
+          resources:
+            limits:
+              cpu: "1"
+              memory: "1Gi"
+            requests:
+              cpu: "600m"
+              memory: "600Mi"
+
+          ports:
+            - containerPort: 3000
+
+          env:
+            - name: POSTGRES_PRISMA_URL
+              valueFrom:
+                secretKeyRef:
+                  name: app-creds
+                  key: POSTGRES_PRISMA_URL
+
+            - name: POSTGRES_URL_NON_POOLING
+              valueFrom:
+                secretKeyRef:
+                  name: app-creds
+                  key: POSTGRES_URL_NON_POOLING
+
+            - name: PUBLIC_DOMAIN
+              valueFrom:
+                secretKeyRef:
+                  name: app-creds
+                  key: PUBLIC_DOMAIN
+
+            - name: PUBLIC_POSTHOG_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: app-creds
+                  key: PUBLIC_POSTHOG_HOST
+
+            - name: PUBLIC_POSTHOG_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: app-creds
+                  key: PUBLIC_POSTHOG_KEY
+
+            - name: EBAY_ENVIRONMENT
+              valueFrom:
+                secretKeyRef:
+                  name: app-creds
+                  key: EBAY_ENVIRONMENT
+
+            - name: EBAY_AFFILIATE_CAMPAIGN_ID
+              valueFrom:
+                secretKeyRef:
+                  name: app-creds
+                  key: EBAY_AFFILIATE_CAMPAIGN_ID
+
+            - name: EBAY_CLIENT_ID
+              valueFrom:
+                secretKeyRef:
+                  name: app-creds
+                  key: EBAY_CLIENT_ID
+
+            - name: EBAY_CLIENT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: app-creds
+                  key: EBAY_CLIENT_SECRET
+
+          readinessProbe:
+            httpGet:
+              path: /api/health
+              port: 3000
+            initialDelaySeconds: 5
+            periodSeconds: 5
+
+          livenessProbe:
+            httpGet:
+              path: /api/health
+              port: 3000
+            initialDelaySeconds: 10
+            periodSeconds: 10

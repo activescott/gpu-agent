@@ -8,11 +8,10 @@
     "test": "turbo run test",
     "watch": "turbo run watch",
     "clean": "turbo run clean",
-    "docker:build": "docker build -t gpu-agent .",
-    "docker:dev": "docker compose up --build",
-    "docker:down": "docker compose down",
-    "docker:reseed": "docker compose exec app sh -c \"cd /app/packages/web-app && npx prisma db seed\"",
-    "dev": "npm run docker:dev",
+    "dev": "./scripts/dev",
+    "dev:reset": "./scripts/reset-dev",
+    "dev:logs": "./scripts/logs-dev",
+    "dev:restart": "./scripts/restart-app",
     "prepare": "husky install"
   },
   "workspaces": [

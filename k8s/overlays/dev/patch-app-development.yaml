@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app
+spec:
+  selector:
+    matchLabels:
+      app: app
+  template:
+    spec:
+      containers:
+        - name: app
+          image: gpupoet-dev
+          # Use local image built by skaffold in minikube's Docker daemon
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: CHOKIDAR_USEPOLLING
+              value: "true"
+            - name: NODE_ENV
+              value: "development"
+          # More tolerant probes for development (Next.js compiles on-demand)
+          resources:
+            limits:
+              cpu: "2"
+              memory: "2Gi"
+            requests:
+              cpu: "500m"
+              memory: "512Mi"
+          readinessProbe:
+            httpGet:
+              path: /api/health
+              port: 3000
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 6
+          livenessProbe:
+            httpGet:
+              path: /api/health
+              port: 3000
+            initialDelaySeconds: 30
+            periodSeconds: 30
+            timeoutSeconds: 10
+            failureThreshold: 6

@@ -1,0 +1,38 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: cache-revalidation
+spec:
+  schedule: "*/30 * * * *" # Run every 30 minutes
+  concurrencyPolicy: Forbid
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          restartPolicy: OnFailure
+          containers:
+            - name: cache-revalidation
+              # Use lightweight curl image for simple HTTP requests
+              image: curlimages/curl:latest
+              command:
+                - /bin/sh
+                - -c
+                - |
+                  echo "Starting cache revalidation job..."
+
+                  # Call the internal revalidate-cache endpoint
+                  if curl -f -X POST -w "Status: %{http_code}\n" http://app:3000/ops/revalidate-cache; then
+                    echo "Cache revalidation completed successfully"
+                  else
+                    echo "Cache revalidation failed"
+                    exit 1
+                  fi
+
+              # https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
+              resources:
+                limits:
+                  cpu: "0.1"
+                  memory: "100Mi"
+                requests:
+                  cpu: "0.05"
+                  memory: "50Mi"

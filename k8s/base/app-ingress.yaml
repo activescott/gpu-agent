@@ -8,14 +8,24 @@ metadata:
 spec:
   # patched in kustomize for TLS in production
   rules:
-    - host: gpupoet.local
+    - host: gpupoet.com
       http:
         paths:
-          # Allow all traffic to the app
+          # Block external access to the cache revalidation endpoint
+          - path: /ops/revalidate-cache
+            pathType: Exact
+            backend:
+              service:
+                name: nonexistent-service
+                port:
+                  number: 80
+
+          # Allow all other traffic to the app
           - path: /
             pathType: Prefix
             backend:
               service:
                 name: app
+                # port of the referenced service. A port name or port number is required for a IngressServiceBackend.
                 port:
                   name: web-ui

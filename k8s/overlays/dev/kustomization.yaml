@@ -12,6 +12,25 @@ patches:
     target:
       kind: Deployment
       name: app
+  # Override ingress host for local development
+  - patch: |-
+      - op: replace
+        path: /spec/rules/0/host
+        value: gpupoet.local
+      # Remove the /ops/revalidate-cache blocking rule for dev (allows manual testing)
+      - op: remove
+        path: /spec/rules/0/http/paths/0
+    target:
+      kind: Ingress
+      name: gpupoet-app-ingress
+  # Override storageClassName for minikube
+  - patch: |-
+      - op: replace
+        path: /spec/volumeClaimTemplates/0/spec/storageClassName
+        value: standard
+    target:
+      kind: StatefulSet
+      name: db
 
 secretGenerator:
   - name: app-creds

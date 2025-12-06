@@ -58,7 +58,9 @@ spec:
         name: db-data
       spec:
         accessModes: ["ReadWriteOnce"]
-        storageClassName: standard
+        storageClassName: local-path
         resources:
           requests:
             storage: 10Gi
+        # volumeName will be patched in overlay for production environments
+        # volumeName: gpupoet-prod-db-pv-data

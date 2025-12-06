@@ -92,7 +92,7 @@ docker-compose exec app sh -c "cd /app/packages/web-app && npx prisma db pull"
 
 **Note:** All Prisma commands must be run inside the Docker container since the database connection strings are only available in the container environment.
 
-**Automatic Migration Behavior:** Migrations and seeding run automatically when containers start (via `scripts/docker-entrypoint.sh`). This applies to both Docker development and Kubernetes production environments.
+**Automatic Migration Behavior:** Migrations and seeding run automatically when containers start (via `docker/docker-entrypoint.sh`). This applies to both Docker development and Kubernetes production environments.
 
 ### Testing
 
@@ -115,6 +115,10 @@ npx playwright test tests/historical-data.spec.ts
 # Run tests against custom environment
 BASE_URL=https://staging.example.com npm test
 ```
+
+**Verifying Docker Changes:** When modifying Docker-related files (Dockerfiles, entrypoint scripts, docker-compose.yml), always verify by:
+1. Running `npm run docker:dev` and confirming the container starts
+2. Running `cd e2e-tests && npm test` to ensure the application functions correctly
 
 ### Health Checks
 

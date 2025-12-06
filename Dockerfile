@@ -81,7 +81,7 @@ RUN if [ ! -d "./data/gpu-data" ] || [ -z "$(find ./data/gpu-data -name '*.yaml'
     echo "✓ Data validation passed: GPU and benchmark data files found"
 
 # Copy and set up entrypoint script
-COPY --from=builder /app/scripts/docker-entrypoint.sh /usr/local/bin/
+COPY --from=builder /app/docker/docker-entrypoint.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 
 USER nextjs

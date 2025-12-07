@@ -1,9 +1,21 @@
 import { Gpu } from "@/pkgs/isomorphic/model"
 import { PrismaClientWithinTransaction, prismaSingleton } from "./db"
 import { GpuSpecKey } from "@/pkgs/isomorphic/model/specs"
+import { GpuMetricKey } from "@/pkgs/isomorphic/model/metrics"
 import { Prisma } from "@prisma/client"
 import { getPriceStats, GpuPriceStats } from "./ListingRepository"
 import { omit } from "lodash"
+
+/**
+ * Maps Prisma TypeScript field names to actual database column names.
+ * Some fields use @map in the schema (e.g., threemarkWildLifeExtremeFps -> 3dmarkWildLifeExtremeFps)
+ */
+function metricFieldToDbColumn(fieldName: GpuMetricKey): string {
+  if (fieldName === "threemarkWildLifeExtremeFps") {
+    return "3dmarkWildLifeExtremeFps"
+  }
+  return fieldName
+}
 
 type PricedGpuInfo = Omit<
   Gpu,
@@ -13,6 +25,8 @@ type PricedGpuInfo = Omit<
 export type PricedGpu = {
   gpu: PricedGpuInfo
   price: GpuPriceStats
+  /** Percentile ranking (0-1) for a specific metric. Populated when needed. */
+  percentile?: number
 }
 
 export async function listGpus(includeTestGpus = false): Promise<Gpu[]> {
@@ -85,4 +99,68 @@ export async function calculateGpuPriceStats(): Promise<PricedGpu[]> {
       }),
   )
   return unsortedPricedGpus
+}
+
+/**
+ * Calculates the percentile ranking for a single GPU based on a specific metric.
+ * Works with both specs and benchmarks.
+ * @param gpuName - The GPU name to get percentile for
+ * @param metric - The metric to calculate percentile against (spec or benchmark)
+ * @returns Percentile as a decimal (0-1), or NaN if GPU not found or metric is null
+ */
+export async function gpuMetricAsPercent(
+  gpuName: string,
+  metric: GpuMetricKey,
+  prisma: PrismaClientWithinTransaction = prismaSingleton,
+): Promise<number> {
+  const dbColumnName = metricFieldToDbColumn(metric)
+  const sqlMetricName = Prisma.raw(`"${dbColumnName}"`)
+  const sql = Prisma.sql`
+  SELECT PCT FROM (
+    SELECT
+      name,
+      CUME_DIST() OVER (ORDER BY ${sqlMetricName}) AS PCT
+    FROM "gpu"
+    WHERE ${sqlMetricName} IS NOT NULL
+  ) AS RANKS
+  WHERE "name" = ${gpuName}
+  ;`
+
+  type RowShape = { pct: number }
+  const result = await prisma.$queryRaw<RowShape[]>(sql)
+  if (result.length === 0) {
+    return Number.NaN
+  }
+  const row = result[0]
+  return row.pct
+}
+
+/**
+ * Calculates percentile rankings for all GPUs based on a specific metric.
+ * More efficient than calling gpuMetricAsPercent for each GPU individually.
+ * @param metric - The metric to calculate percentiles against
+ * @returns Map of GPU name to percentile (0-1)
+ */
+export async function calculateAllGpuPercentilesForMetric(
+  metric: GpuMetricKey,
+  prisma: PrismaClientWithinTransaction = prismaSingleton,
+): Promise<Map<string, number>> {
+  const dbColumnName = metricFieldToDbColumn(metric)
+  const sqlMetricName = Prisma.raw(`"${dbColumnName}"`)
+  const sql = Prisma.sql`
+    SELECT
+      name,
+      CUME_DIST() OVER (ORDER BY ${sqlMetricName}) AS pct
+    FROM "gpu"
+    WHERE ${sqlMetricName} IS NOT NULL
+  ;`
+
+  type RowShape = { name: string; pct: number }
+  const results = await prisma.$queryRaw<RowShape[]>(sql)
+
+  const percentileMap = new Map<string, number>()
+  for (const row of results) {
+    percentileMap.set(row.name, row.pct)
+  }
+  return percentileMap
 }

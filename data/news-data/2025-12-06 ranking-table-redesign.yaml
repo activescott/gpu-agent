@@ -1,0 +1,59 @@
+# yaml-language-server: $schema=./news-article.schema.json
+id: gpu1206dec2025ranking
+slug: ranking-table-redesign
+title: "GPU Rankings Redesigned: Clearer Performance Tiers and Value Indicators"
+content: |
+  The GPU ranking pages have been completely redesigned to make performance comparisons faster and more intuitive. 
+
+  ## New GPU Ranking Table Design
+
+  Finding the best GPU value requires comparing both performance and price simultaneously. The old ranking table showed the data but required mental effort to synthesize it. Our new design surfaces the insights directly: which tier is this GPU in, how does it compare to others, and is the price good relative to performance?
+
+
+  **Performance Tier Dividers**: GPUs are now sorted by raw performance percentile with clear tier dividers separating the rankings:
+  - **Top Tier** - 75th percentile and above
+  - **Middle Tier** - 50th to 75th percentile
+  - **Entry Tier** - Below 50th percentile
+
+  This makes it easy to see at a glance which GPUs are in the same performance class and where the natural breakpoints fall.
+
+
+  **Visual Performance Bars:** Each GPU now shows a progress bar indicating its performance percentile along with the exact metric value. For example, "95th @ 226 FPS" tells you that GPU is in the 95th percentile with 226 frames per second in that benchmark.
+
+  **Color-Coded Value Indicators:** The "$ per Performance" column now uses color coding to highlight value:
+  - **Green** - Best 25% value (75th percentile or better)
+  - **Yellow** - Above average value (50th to 75th percentile)
+  - **Red** - Below average value
+
+  A green price means you're getting more performance per dollar compared to most other GPUs on the list.
+
+  ### Improved GPU "Lowest Average Price" Calculation
+  You'll also notice the table features a "Lowest Average Price" column now shows the average of the three lowest-priced listings instead of just the single cheapest. This provides a more realistic price expectation since the absolute lowest listing is often an outlier or sells quickly.
+
+  We're now using this "Lowest Average Price" calculation throughout the site as the lowest price to give a more realistic price.
+
+  ### Direct Links
+  - GPU names link to detailed specification pages
+  - Prices link directly to current marketplace listings
+
+  ## Example GPU Ranking Pages
+
+  Try the new rankings on these pages:
+  - [Counter-Strike 2 at 4K](/gpu/ranking/gaming/counter-strike-2-fps-3840x2160)
+  - [Counter-Strike 2 at 1440p](/gpu/ranking/gaming/counter-strike-2-fps-2560x1440)
+  - [FP32 FLOPS for AI/ML](/gpu/ranking/ai/fp32-flops)
+  - [3DMark Wildlife Extreme](/gpu/ranking/gaming/3dmark-wildlife-extreme-fps)
+
+
+
+status: PUBLISHED
+tags:
+  - feature
+  - rankings
+  - performance
+  - value
+  - ux
+authorFullName: "Scott Willeke"
+createdAt: "2025-12-06T12:01:00Z"
+updatedAt: "2025-12-06T12:01:00Z"
+publishedAt: "2025-12-06T12:01:00Z"

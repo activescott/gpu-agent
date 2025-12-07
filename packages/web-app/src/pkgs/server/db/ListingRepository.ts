@@ -361,14 +361,22 @@ export async function getPriceStats(
   gpuName: string,
   prisma: PrismaClientWithinTransaction = prismaSingleton,
 ): Promise<GpuPriceStats> {
+  // minPrice is calculated as the average of the 3 lowest priced listings
+  // (or fewer if less than 3 listings exist) to provide a more stable price indicator
   const result = (await prisma.$queryRaw`
-    SELECT 
-      AVG("priceValue"::float) as "avgPrice", 
-      MIN("priceValue"::float) as "minPrice", 
+    SELECT
+      AVG("priceValue"::float) as "avgPrice",
+      (SELECT AVG(price) FROM (
+        SELECT "priceValue"::float as price
+        FROM "Listing"
+        WHERE "gpuName" = ${gpuName} AND "archived" = false
+        ORDER BY "priceValue"::float ASC
+        LIMIT 3
+      ) lowest_three) as "minPrice",
       COUNT(*)::float as "activeListingCount",
       MAX("itemCreationDate") as "latestListingDate"
     FROM "Listing"
-  WHERE 
+  WHERE
     "gpuName" = ${gpuName}
     AND "archived" = false
   ;`) as GpuPriceStats[]

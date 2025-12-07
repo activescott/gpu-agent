@@ -1,10 +1,4 @@
-import {
-  GpuMetricsDescription,
-  getMetricsByCategory,
-  isBenchmark,
-  getBenchmarkId,
-  getBenchmarkMetrics,
-} from "@/pkgs/isomorphic/model"
+import { GpuMetricsDescription, isBenchmark } from "@/pkgs/isomorphic/model"
 import {
   RankingSlug,
   rankingCanonicalPath,
@@ -13,7 +7,10 @@ import {
   mapSlugToMetric,
 } from "../../slugs"
 import Link from "next/link"
-import { calculateGpuPriceStats } from "@/pkgs/server/db/GpuRepository"
+import {
+  calculateGpuPriceStats,
+  calculateAllGpuPercentilesForMetric,
+} from "@/pkgs/server/db/GpuRepository"
 import { ISOMORPHIC_CONFIG } from "@/pkgs/isomorphic/config"
 import { GpuMetricsTable } from "./GpuMetricsTable"
 import { RankingMetricSelector } from "@/pkgs/client/components/RankingMetricSelector"
@@ -49,14 +46,17 @@ export default async function Page(props: RankingParams) {
   const primaryMetric = mapSlugToMetric(metricTyped, categoryTyped)
   const desc = GpuMetricsDescription[primaryMetric]
 
-  const unsortedPricedGpus = await calculateGpuPriceStats()
+  // Fetch GPU price stats and percentiles in parallel
+  const [unsortedPricedGpus, percentileMap] = await Promise.all([
+    calculateGpuPriceStats(),
+    calculateAllGpuPercentilesForMetric(primaryMetric),
+  ])
 
-  // Get metrics to show - if this is a benchmark, only show metrics for this benchmark
-  let metricsToShow = getMetricsByCategory(categoryTyped)
-  if (isBenchmark(primaryMetric)) {
-    const benchmarkId = getBenchmarkId(primaryMetric)
-    metricsToShow = getBenchmarkMetrics(benchmarkId)
-  }
+  // Merge percentile data into PricedGpu objects
+  const gpusWithPercentiles = unsortedPricedGpus.map((pricedGpu) => ({
+    ...pricedGpu,
+    percentile: percentileMap.get(pricedGpu.gpu.name),
+  }))
 
   return (
     <>
@@ -75,9 +75,9 @@ export default async function Page(props: RankingParams) {
       </p>
       <RankingMetricSelector currentMetric={primaryMetric} />
       <GpuMetricsTable
-        primaryMetricInitial={primaryMetric}
-        gpusInitial={unsortedPricedGpus}
-        metricsToShow={metricsToShow}
+        primaryMetric={primaryMetric}
+        metricUnit={desc.unitShortest}
+        gpusInitial={gpusWithPercentiles}
       />
     </>
   )

@@ -33,6 +33,15 @@ Dockerfile
 .dockerignore
 docker-compose.yml
 
+# Documentation
+docs
+
+# Test files (not needed in container)
+e2e-tests
+
+# Kubernetes manifests (not needed in container)
+k8s
+
 # Misc
 *.log
 *.pid

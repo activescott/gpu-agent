@@ -33,8 +33,14 @@ build:
           # ebay-client package sources
           - src: "packages/ebay-client/src/**/*"
             dest: /app/
-          # Data directory (GPU specs, benchmarks, news)
-          - src: "data/**/*"
+          # Data directory
+          - src: "data/benchmark-data/**/*"
+            dest: /app/
+          - src: "data/gpu-data/**/*"
+            dest: /app/
+          - src: "data/model-data/**/*"
+            dest: /app/
+          - src: "data/news-data/**/*"
             dest: /app/
 
 manifests:

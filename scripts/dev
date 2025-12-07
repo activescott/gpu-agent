@@ -41,9 +41,17 @@ check_skaffold() {
 }
 
 check_dev_server_not_running() {
-    # Check if skaffold is already running
-    if pgrep -f "skaffold dev" > /dev/null; then
-        die "Dev server is already running (skaffold process found). Stop it first with Ctrl+C or 'pkill -f \"skaffold dev\"'"
+    # Check if skaffold is already running for THIS project specifically
+    # We check for skaffold processes whose working directory is this workspace
+    local skaffold_pids=$(pgrep -f "skaffold dev" 2>/dev/null || true)
+    if [[ -n "$skaffold_pids" ]]; then
+        for pid in $skaffold_pids; do
+            # Get the working directory of the process
+            local proc_cwd=$(lsof -p "$pid" 2>/dev/null | grep cwd | awk '{print $NF}')
+            if [[ "$proc_cwd" == "$workspace_root" ]]; then
+                die "Dev server is already running for this project (skaffold pid $pid). Stop it first with Ctrl+C or 'kill $pid'"
+            fi
+        done
     fi
 
     # Check if port 3000 is already in use (the app port)

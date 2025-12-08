@@ -61,6 +61,7 @@ export function setGoogleCookieConsent(
  *
  */
 const GoogleAdWordsTagInner = (): JSX.Element => {
+  // This Adwords Tag is is for the "Begin Checkout" conversion action in the pingpoetsproducts@gmail.com Google Ads account: https://ads.google.com/aw/conversions/detail?ocid=1548733621&ctId=6707344300&showWebpagesTab=false&showDiagnosticsTab=false&showStoreDiagnosticsTab=false&euid=1052306284&__u=3432655116&uscid=1548733621&__c=7631249229&authuser=4&subid=us-en-awhp-g-aw-c-home-signin-bgc%21o2-s500g500%7Cib%3A6653296821%7C-ahpm-0000000179-0000000001
   const GOOGLE_ADS_TRACKING_ID = "AW-11437826489"
   // NOTE: mostly we want pathname and searchParams to cause the effect to re-run when location changes
   const pathname = usePathname()

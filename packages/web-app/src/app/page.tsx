@@ -4,6 +4,7 @@ import {
   GpuSpecKeys,
   GpuSpecsDescription,
   type Listing,
+  GpuMetricsDescription,
 } from "@/pkgs/isomorphic/model"
 import { Carousel } from "@/pkgs/client/components/Carousel"
 import { topNListingsByCostPerformance } from "@/pkgs/server/db/ListingRepository"
@@ -14,6 +15,10 @@ import { ReactNode } from "react"
 import { listPublishedArticles } from "@/pkgs/server/db/NewsRepository"
 import { TipCard } from "../pkgs/client/components/TipCard"
 import { NewsArticlePair } from "@/pkgs/client/components/NewsArticlePair"
+import { AbTestWrapper } from "@/pkgs/client/components/AbTestWrapper"
+import { GpuMetricsTable } from "./gpu/ranking/[category]/[metric]/GpuMetricsTable"
+import { getAllMetricRankings } from "@/pkgs/server/db/GpuRepository"
+import { metricToSlug } from "./gpu/ranking/slugs"
 
 // revalidate the data at most every N seconds: https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#revalidate
 export const revalidate = 1800
@@ -26,28 +31,114 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://gpupoet.com/" },
 }
 
+const TOP_N_LISTINGS = 10
+const TOP_N_RANKINGS = 4
+const TOP_N_GROUP_SIZE = 2
+
 export default async function Page() {
-  const TOP_N = 10
+  // Fetch listings data (for control variant)
   const topListingsPromises = GpuSpecKeys.map(async (spec) => {
-    const listings = await topNListingsByCostPerformance(spec, TOP_N)
+    const listings = await topNListingsByCostPerformance(spec, TOP_N_LISTINGS)
     return { spec, listings }
   })
 
-  // Sort news articles by date, newest first
-  let newsArticles = await listPublishedArticles()
-  // filter out any articles published more than one year ago:
+  // Fetch ranking data (for test variant)
+  const rankingDataPromise = getAllMetricRankings(TOP_N_RANKINGS)
+
+  // Fetch news articles
+  const newsPromise = listPublishedArticles()
+
+  // Await all data in parallel
+  const [topListingsGroup, rankingData, rawNewsArticles] = await Promise.all([
+    Promise.all(topListingsPromises),
+    rankingDataPromise,
+    newsPromise,
+  ])
+
+  // Filter and sort news articles
   const oneYearAgo = new Date()
   oneYearAgo.setFullYear(oneYearAgo.getFullYear() - 1)
-  newsArticles = newsArticles.filter(
-    (article) => article.publishedAt > oneYearAgo,
-  )
-  newsArticles = newsArticles.sort(
-    (a, b) => b.publishedAt.getTime() - a.publishedAt.getTime(),
+  const newsArticles = rawNewsArticles
+    .filter((article) => article.publishedAt > oneYearAgo)
+    .sort((a, b) => b.publishedAt.getTime() - a.publishedAt.getTime())
+
+  // Separate ranking data by category
+  const aiRankings = rankingData.filter((r) => r.category === "ai")
+  const gamingRankings = rankingData.filter((r) => r.category === "gaming")
+
+  // Build control content (existing carousels)
+  const controlContent = (
+    <div className="d-flex flex-column">
+      {topListingsGroup.map(({ spec, listings }, groupIndex) => (
+        <div key={spec}>
+          <TopListingsCarousel spec={spec} listings={listings} />
+          {/* Insert news articles after every second carousel */}
+          {groupIndex % TOP_N_GROUP_SIZE === 1 &&
+            groupIndex < topListingsGroup.length - 1 && (
+              <NewsArticlePair
+                startIndex={groupIndex - 1}
+                articles={newsArticles.slice(
+                  Math.floor(groupIndex / TOP_N_GROUP_SIZE) * TOP_N_GROUP_SIZE,
+                  Math.floor(groupIndex / TOP_N_GROUP_SIZE) * TOP_N_GROUP_SIZE +
+                    TOP_N_GROUP_SIZE,
+                )}
+              />
+            )}
+        </div>
+      ))}
+    </div>
   )
 
-  const topListingsGroup = await Promise.all(topListingsPromises)
+  // Build test content (ranking tables)
+  const testContent = (
+    <div className="d-flex flex-column">
+      <h3 className="mt-4">Gaming Performance Rankings</h3>
+      {gamingRankings.map(({ metric, topGpus }) => {
+        const desc = GpuMetricsDescription[metric]
+        const slug = metricToSlug(metric, "gaming")
+        return (
+          <div key={metric} className="my-container m-2 mt-5">
+            <GpuMetricsTable
+              primaryMetric={metric}
+              metricUnit={desc.unitShortest}
+              gpusInitial={topGpus}
+              maxRows={TOP_N_RANKINGS}
+              showTierDividers={false}
+              header={{
+                title: `Top GPUs by ${desc.label}`,
+                href: `/gpu/ranking/gaming/${slug}`,
+              }}
+            />
+          </div>
+        )
+      })}
 
-  const TOP_N_GROUP_SIZE = 2
+      {/* News articles between Gaming and AI */}
+      <NewsArticlePair startIndex={0} articles={newsArticles.slice(0, 2)} />
+
+      <h3 className="mt-4">AI Performance Rankings</h3>
+      {aiRankings.map(({ metric, topGpus }) => {
+        const desc = GpuMetricsDescription[metric]
+        const slug = metricToSlug(metric, "ai")
+        return (
+          <div key={metric} className="my-container m-2 mt-5">
+            <GpuMetricsTable
+              primaryMetric={metric}
+              metricUnit={desc.unitShortest}
+              gpusInitial={topGpus}
+              maxRows={TOP_N_RANKINGS}
+              showTierDividers={false}
+              header={{
+                title: `Top GPUs by ${desc.label}`,
+                href: `/gpu/ranking/ai/${slug}`,
+              }}
+            />
+          </div>
+        )
+      })}
+    </div>
+  )
+
   return (
     <div>
       <h1 className="display-1">
@@ -73,29 +164,11 @@ export default async function Page() {
         </TipCard>
       </div>
 
-      <div>
-        <div className="d-flex flex-column">
-          {topListingsGroup.map(({ spec, listings }, groupIndex) => (
-            <div key={spec}>
-              <TopListingsCarousel spec={spec} listings={listings} />
-              {/* Insert news articles after every second carousel */}
-              {groupIndex % TOP_N_GROUP_SIZE === 1 &&
-                groupIndex < topListingsGroup.length - 1 && (
-                  <NewsArticlePair
-                    startIndex={groupIndex - 1}
-                    articles={newsArticles.slice(
-                      Math.floor(groupIndex / TOP_N_GROUP_SIZE) *
-                        TOP_N_GROUP_SIZE,
-                      Math.floor(groupIndex / TOP_N_GROUP_SIZE) *
-                        TOP_N_GROUP_SIZE +
-                        TOP_N_GROUP_SIZE,
-                    )}
-                  />
-                )}
-            </div>
-          ))}
-        </div>
-      </div>
+      <AbTestWrapper
+        featureFlag="home-page-ranking-tables-vs-carousels"
+        controlContent={controlContent}
+        testContent={testContent}
+      />
     </div>
   )
 }

@@ -135,12 +135,21 @@ interface GpuMetricsTableProps {
   primaryMetric: GpuMetricKey
   metricUnit: string
   gpusInitial: PricedGpu[]
+  /** When set, limits the number of displayed rows */
+  maxRows?: number
+  /** When false, hides tier dividers. Default: true */
+  showTierDividers?: boolean
+  /** When provided, renders a header with link above the table */
+  header?: { title: string; href: string }
 }
 
 export function GpuMetricsTable({
   primaryMetric,
   metricUnit,
   gpusInitial,
+  maxRows,
+  showTierDividers = true,
+  header,
 }: GpuMetricsTableProps): JSX.Element {
   const [gpus, setGpus] = useState<PricedGpu[]>(gpusInitial)
 
@@ -158,8 +167,20 @@ export function GpuMetricsTable({
   // Track which tier dividers we've already rendered
   const renderedTiers = new Set<number>()
 
+  // Apply maxRows limit if set
+  const displayGpus = maxRows ? gpus.slice(0, maxRows) : gpus
+
   return (
     <div className="table-responsive-lg">
+      {header && (
+        <div className="my-container-card-header">
+          <h4>
+            <Link className="underline-on-hover text-accent" href={header.href}>
+              {header.title} →
+            </Link>
+          </h4>
+        </div>
+      )}
       <table className="table table-hover">
         <thead>
           <tr>
@@ -173,7 +194,13 @@ export function GpuMetricsTable({
             >
               Lowest Average Price
             </th>
-            <th style={{ textAlign: "left" }}>
+            <th
+              style={{
+                textAlign: "left",
+                whiteSpace: "nowrap",
+                minWidth: "200px",
+              }}
+            >
               Raw Performance Ranking (Percentile)
             </th>
             <th
@@ -184,7 +211,7 @@ export function GpuMetricsTable({
           </tr>
         </thead>
         <tbody>
-          {gpus.map((pricedGpu) => {
+          {displayGpus.map((pricedGpu) => {
             const metricValue = pricedGpu.gpu[primaryMetric]
             const hasListings = pricedGpu.price.activeListingCount > 0
             const hasMetricValue = !isNil(metricValue)
@@ -197,7 +224,7 @@ export function GpuMetricsTable({
 
             // Check if we need to render a tier divider before this GPU
             const tierDividers: TierThreshold[] = []
-            if (percentile !== undefined) {
+            if (showTierDividers && percentile !== undefined) {
               for (const tier of TIER_THRESHOLDS) {
                 if (
                   !renderedTiers.has(tier.percentile) &&

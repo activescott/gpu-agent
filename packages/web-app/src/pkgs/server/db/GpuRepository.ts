@@ -1,4 +1,5 @@
-import { Gpu } from "@/pkgs/isomorphic/model"
+import { Gpu, GpuMetricKeys, getMetricCategory } from "@/pkgs/isomorphic/model"
+import { isNil } from "lodash-es"
 import { PrismaClientWithinTransaction, prismaSingleton } from "./db"
 import { GpuSpecKey } from "@/pkgs/isomorphic/model/specs"
 import { GpuMetricKey } from "@/pkgs/isomorphic/model/metrics"
@@ -163,4 +164,64 @@ export async function calculateAllGpuPercentilesForMetric(
     percentileMap.set(row.name, row.pct)
   }
   return percentileMap
+}
+
+export type MetricRankingData = {
+  metric: GpuMetricKey
+  category: "ai" | "gaming"
+  topGpus: PricedGpu[]
+}
+
+/**
+ * Fetches ranking data for all metrics and returns top N GPUs per metric.
+ * Efficient - fetches base data once and calculates percentiles in parallel.
+ */
+export async function getAllMetricRankings(
+  topN: number = 3,
+): Promise<MetricRankingData[]> {
+  // Fetch base GPU price stats once
+  const allPricedGpus = await calculateGpuPriceStats()
+
+  // Fetch percentiles for all metrics in parallel
+  const percentilePromises = GpuMetricKeys.map(async (metric) => {
+    const percentileMap = await calculateAllGpuPercentilesForMetric(metric)
+    return { metric, percentileMap }
+  })
+
+  const percentileResults = await Promise.all(percentilePromises)
+
+  // Build ranking data for each metric
+  const rankings: MetricRankingData[] = percentileResults.map(
+    ({ metric, percentileMap }) => {
+      // Merge percentiles and filter/sort for this metric
+      const gpusWithPercentiles = allPricedGpus
+        .map((gpu) => ({
+          ...gpu,
+          percentile: percentileMap.get(gpu.gpu.name),
+        }))
+        .filter((gpu) => {
+          const metricValue = gpu.gpu[metric]
+          return (
+            gpu.price.activeListingCount > 0 &&
+            !isNil(metricValue) &&
+            metricValue > 0
+          )
+        })
+
+      // Sort by raw metric value (descending - highest performance first)
+      gpusWithPercentiles.sort((a, b) => {
+        const metricA = a.gpu[metric] ?? 0
+        const metricB = b.gpu[metric] ?? 0
+        return metricB - metricA
+      })
+
+      return {
+        metric,
+        category: getMetricCategory(metric),
+        topGpus: gpusWithPercentiles.slice(0, topN),
+      }
+    },
+  )
+
+  return rankings
 }

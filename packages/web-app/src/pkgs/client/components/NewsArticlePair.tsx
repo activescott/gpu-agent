@@ -1,8 +1,6 @@
-"use client"
 import { NewsArticle } from "@/pkgs/isomorphic/model"
 import { ReactNode } from "react"
 import { BootstrapIcon, BootstrapIconName } from "./BootstrapIcon"
-import { useFeatureFlagVariantKey } from "posthog-js/react"
 import { TipCard } from "./TipCard"
 import Link from "next/link"
 
@@ -27,23 +25,6 @@ export function NewsArticlePair({
         ? iconIndex
         : iconIndex % (newsIcons.length - 1)
     return newsIcons[iconIndex]
-  }
-
-  // You can also test your code by overriding the feature flag:
-  /*
-  const posthog = usePostHog()
-  posthog.featureFlags.override({
-    "news-on-home-page-affects-affiliate-redirects": "test",
-  })
-  */
-
-  // NOTE: This hook can only be used in a client component or it fails with a weird error about createContext.
-  const variant = useFeatureFlagVariantKey(
-    "news-on-home-page-affects-affiliate-redirects",
-  )
-
-  if (variant !== "test") {
-    return <></>
   }
 
   return (

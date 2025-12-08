@@ -18,4 +18,13 @@ const customJestConfig = {
 }
 
 // createJestConfig is exported in this way to ensure that next/jest can load the Next.js configuration, which is async
-module.exports = createJestConfig(customJestConfig)
+// We need to override transformIgnorePatterns after next/jest creates its config to handle lodash-es
+module.exports = async () => {
+  const jestConfig = await createJestConfig(customJestConfig)()
+  // Transform lodash-es (ES modules) so Jest can parse them
+  jestConfig.transformIgnorePatterns = [
+    "/node_modules/(?!(lodash-es)/)",
+    "^.+\\.module\\.(css|sass|scss)$",
+  ]
+  return jestConfig
+}

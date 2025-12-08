@@ -55,7 +55,8 @@ check_dev_server_not_running() {
     fi
 
     # Check if port 3000 is already in use (the app port)
-    if lsof -i :3000 > /dev/null 2>&1; then
+    # Use -sTCP:LISTEN to only check for listeners, not client connections
+    if lsof -nP -iTCP:3000 -sTCP:LISTEN > /dev/null 2>&1; then
         die "Port 3000 is already in use. A dev server may already be running. Stop it first."
     fi
 }

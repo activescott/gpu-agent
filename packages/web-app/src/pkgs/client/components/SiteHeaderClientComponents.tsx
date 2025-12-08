@@ -1,8 +1,9 @@
 "use client"
 // NOTE: DELIBERATELY a client component, to reduce SSR-rendered HTML size for SEO.
 import Link from "next/link"
+import { useRouter } from "next/navigation"
 
-import type { JSX } from "react"
+import type { JSX, MouseEvent } from "react"
 
 export default function SiteHeaderNavItems(): JSX.Element {
   return (
@@ -25,10 +26,28 @@ export default function SiteHeaderNavItems(): JSX.Element {
   )
 }
 
-const NavItemLink = ({ href, label }: { href: string; label: string }) => (
-  <li className="nav-item">
-    <Link href={href} className="nav-link">
-      {label}
-    </Link>
-  </li>
-)
+function collapseNav() {
+  const navbar = document.querySelector(".navbar")
+  const collapseSection = navbar?.querySelector(".navbar-collapse")
+  const togglerButton = navbar?.querySelector(".navbar-toggler")
+  collapseSection?.classList.remove("show")
+  togglerButton?.classList.add("collapsed")
+}
+
+function NavItemLink({ href, label }: { href: string; label: string }) {
+  const router = useRouter()
+
+  function handleClick(e: MouseEvent) {
+    e.preventDefault()
+    collapseNav()
+    router.push(href)
+  }
+
+  return (
+    <li className="nav-item">
+      <Link href={href} className="nav-link" onClick={handleClick}>
+        {label}
+      </Link>
+    </li>
+  )
+}

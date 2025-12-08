@@ -10,6 +10,7 @@ import { Alert } from "@/pkgs/client/components/Alert"
 import { DomainMigrationBanner } from "@/pkgs/client/components/DomainMigrationBanner"
 import Link from "next/link"
 import { maxLength } from "@/pkgs/isomorphic/string"
+import { GoogleAdsTag } from "@/pkgs/client/analytics/GoogleAdsTag"
 
 // Force dynamic rendering for all pages to avoid database dependency during Docker build
 export const dynamic = "force-dynamic"
@@ -49,12 +50,14 @@ export default function RootLayout({
         </AnalyticsProvider>
         <AnalyticsPageView />
         {/*
-        A lighthouse review was to remove unused JavaScript and Google Tag
+        10/11/25: A lighthouse review was to remove unused JavaScript and Google Tag
         Manager had an estimated 83.0 KiB unused. We're not using it at all and
-        it's 40% of all client JS (161.8 KiB of 403.9 KiB), so removing it for
-        now. 
-        <GoogleAdsTag /> 
+        it's 40% of all client JS (161.8 KiB of 403.9 KiB), so removing <GoogleAdsTag /> for
+        now.
+
+        12/7/25: Adding Google Analytics tag back because it appears that organic search results were significantly negatively impacted by removing the tag.
         */}
+        <GoogleAdsTag />
       </body>
     </html>
   )

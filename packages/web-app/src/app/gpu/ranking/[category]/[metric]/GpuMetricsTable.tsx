@@ -56,29 +56,42 @@ function sortGpusByPercentile(gpus: PricedGpu[]): PricedGpu[] {
   )
 }
 
+const PERCENT_MULTIPLIER = 100
+const DIVISOR_LAST_DIGIT = 10
+const DIVISOR_LAST_TWO_DIGITS = 100
+// English ordinal suffix rules: 11th, 12th, 13th are exceptions to 1st, 2nd, 3rd
+const ORDINAL_EXCEPTION_MIN = 11
+const ORDINAL_EXCEPTION_MAX = 13
+const ORDINAL_FIRST = 1
+const ORDINAL_SECOND = 2
+const ORDINAL_THIRD = 3
+
 /**
  * Formats a percentile (0-1) as an ordinal string (e.g., "95th")
  */
 function formatPercentileOrdinal(percentile: number): string {
-  const percentValue = Math.round(percentile * 100)
+  const percentValue = Math.round(percentile * PERCENT_MULTIPLIER)
   const suffix = getOrdinalSuffix(percentValue)
   return `${percentValue}${suffix}`
 }
 
 function getOrdinalSuffix(n: number): string {
-  const lastDigit = n % 10
-  const lastTwoDigits = n % 100
-  if (lastTwoDigits >= 11 && lastTwoDigits <= 13) {
+  const lastDigit = n % DIVISOR_LAST_DIGIT
+  const lastTwoDigits = n % DIVISOR_LAST_TWO_DIGITS
+  if (
+    lastTwoDigits >= ORDINAL_EXCEPTION_MIN &&
+    lastTwoDigits <= ORDINAL_EXCEPTION_MAX
+  ) {
     return "th"
   }
   switch (lastDigit) {
-    case 1: {
+    case ORDINAL_FIRST: {
       return "st"
     }
-    case 2: {
+    case ORDINAL_SECOND: {
       return "nd"
     }
-    case 3: {
+    case ORDINAL_THIRD: {
       return "rd"
     }
     default: {
@@ -283,13 +296,17 @@ export function GpuMetricsTable({
                       <div
                         className="progress"
                         role="progressbar"
-                        aria-valuenow={Math.round(percentile * 100)}
+                        aria-valuenow={Math.round(
+                          percentile * PERCENT_MULTIPLIER,
+                        )}
                         aria-valuemin={0}
-                        aria-valuemax={100}
+                        aria-valuemax={PERCENT_MULTIPLIER}
                       >
                         <div
                           className="progress-bar"
-                          style={{ width: `${percentile * 100}%` }}
+                          style={{
+                            width: `${percentile * PERCENT_MULTIPLIER}%`,
+                          }}
                         >
                           {formatPercentileOrdinal(percentile)} @ {metricValue}{" "}
                           {metricUnit}

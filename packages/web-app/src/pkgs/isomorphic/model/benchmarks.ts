@@ -9,7 +9,7 @@ export const GpuBenchmarksSchema = z.object({
   threemarkWildLifeExtremeFps: z.number().optional().nullable(),
 })
 
-export type GpuBenchmarks = z.infer<typeof GpuBenchmarksSchema>
+type GpuBenchmarks = z.infer<typeof GpuBenchmarksSchema>
 
 export type GpuBenchmarkKey = keyof GpuBenchmarks
 
@@ -83,27 +83,4 @@ export const GpuBenchmarksDescription: Record<
     benchmarkId: "3dmark",
     benchmarkName: "3DMark Wild Life Extreme",
   },
-}
-
-/**
- * Get the benchmark ID for a given benchmark metric
- */
-export function getBenchmarkId(metricKey: GpuBenchmarkKey): string {
-  return GpuBenchmarksDescription[metricKey].benchmarkId
-}
-
-/**
- * Get the benchmark name for a given benchmark metric
- */
-export function getBenchmarkName(metricKey: GpuBenchmarkKey): string {
-  return GpuBenchmarksDescription[metricKey].benchmarkName
-}
-
-/**
- * Get all benchmark metrics for a specific benchmark ID
- */
-export function getBenchmarkMetrics(benchmarkId: string): GpuBenchmarkKey[] {
-  return GpuBenchmarkKeys.filter(
-    (key) => GpuBenchmarksDescription[key].benchmarkId === benchmarkId,
-  )
 }

@@ -40,7 +40,7 @@ export const MlModelSchema = z.object({
 
 export type MlModel = z.infer<typeof MlModelSchema>
 
-export type MlModelType = MlModel["modelType"]
+type MlModelType = MlModel["modelType"]
 
 /**
  * Returns the display label for a model type

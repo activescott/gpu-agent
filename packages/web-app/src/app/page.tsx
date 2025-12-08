@@ -114,7 +114,10 @@ export default async function Page() {
       })}
 
       {/* News articles between Gaming and AI */}
-      <NewsArticlePair startIndex={0} articles={newsArticles.slice(0, 2)} />
+      <NewsArticlePair
+        startIndex={0}
+        articles={newsArticles.slice(0, TOP_N_GROUP_SIZE)}
+      />
 
       <h3 className="mt-4">AI Performance Rankings</h3>
       {aiRankings.map(({ metric, topGpus }) => {

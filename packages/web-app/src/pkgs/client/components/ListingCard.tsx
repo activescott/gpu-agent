@@ -34,7 +34,7 @@ export const formatPrice = (price: number) => {
   return fmtInteger.format(price)
 }
 
-export const formatCostPerMetric = (price: number) => {
+const formatCostPerMetric = (price: number) => {
   return fmtCostPerMetric.format(price)
 }
 

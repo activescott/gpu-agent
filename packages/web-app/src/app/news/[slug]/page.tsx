@@ -6,6 +6,7 @@ import { getPublishedArticleBySlug } from "@/pkgs/server/db/NewsRepository"
 import { createDiag } from "@activescott/diag"
 import { ReactNode } from "react"
 import { ArticleTag } from "../components/ArticleTag"
+import Link from "next/link"
 
 const log = createDiag("shopping-agent:news")
 
@@ -92,10 +93,10 @@ function Breadcrumbs({ title }: { title: string }): ReactNode {
     <nav aria-label="breadcrumb">
       <ol className="breadcrumb">
         <li className="breadcrumb-item">
-          <a href="/">Home</a>
+          <Link href="/">Home</Link>
         </li>
         <li className="breadcrumb-item">
-          <a href="/news">News</a>
+          <Link href="/news">News</Link>
         </li>
         <li className="breadcrumb-item active" aria-current="page">
           {title}

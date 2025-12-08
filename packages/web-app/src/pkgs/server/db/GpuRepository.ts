@@ -103,40 +103,6 @@ export async function calculateGpuPriceStats(): Promise<PricedGpu[]> {
 }
 
 /**
- * Calculates the percentile ranking for a single GPU based on a specific metric.
- * Works with both specs and benchmarks.
- * @param gpuName - The GPU name to get percentile for
- * @param metric - The metric to calculate percentile against (spec or benchmark)
- * @returns Percentile as a decimal (0-1), or NaN if GPU not found or metric is null
- */
-export async function gpuMetricAsPercent(
-  gpuName: string,
-  metric: GpuMetricKey,
-  prisma: PrismaClientWithinTransaction = prismaSingleton,
-): Promise<number> {
-  const dbColumnName = metricFieldToDbColumn(metric)
-  const sqlMetricName = Prisma.raw(`"${dbColumnName}"`)
-  const sql = Prisma.sql`
-  SELECT PCT FROM (
-    SELECT
-      name,
-      CUME_DIST() OVER (ORDER BY ${sqlMetricName}) AS PCT
-    FROM "gpu"
-    WHERE ${sqlMetricName} IS NOT NULL
-  ) AS RANKS
-  WHERE "name" = ${gpuName}
-  ;`
-
-  type RowShape = { pct: number }
-  const result = await prisma.$queryRaw<RowShape[]>(sql)
-  if (result.length === 0) {
-    return Number.NaN
-  }
-  const row = result[0]
-  return row.pct
-}
-
-/**
  * Calculates percentile rankings for all GPUs based on a specific metric.
  * More efficient than calling gpuMetricAsPercent for each GPU individually.
  * @param metric - The metric to calculate percentiles against
@@ -166,7 +132,7 @@ export async function calculateAllGpuPercentilesForMetric(
   return percentileMap
 }
 
-export type MetricRankingData = {
+type MetricRankingData = {
   metric: GpuMetricKey
   category: "ai" | "gaming"
   topGpus: PricedGpu[]
@@ -176,8 +142,10 @@ export type MetricRankingData = {
  * Fetches ranking data for all metrics and returns top N GPUs per metric.
  * Efficient - fetches base data once and calculates percentiles in parallel.
  */
+const DEFAULT_TOP_N_RANKINGS = 3
+
 export async function getAllMetricRankings(
-  topN: number = 3,
+  topN: number = DEFAULT_TOP_N_RANKINGS,
 ): Promise<MetricRankingData[]> {
   // Fetch base GPU price stats once
   const allPricedGpus = await calculateGpuPriceStats()

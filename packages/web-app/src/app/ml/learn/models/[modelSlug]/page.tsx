@@ -24,9 +24,10 @@ export async function generateMetadata(props: ModelParams) {
   try {
     const model = await getModel(modelSlug)
     const typeLabel = getModelTypeLabel(model.modelType)
+    const META_DESCRIPTION_MAX_LENGTH = 160
     return {
       title: `About the ${model.label} Model (${typeLabel})`,
-      description: model.summary.slice(0, 160),
+      description: model.summary.slice(0, META_DESCRIPTION_MAX_LENGTH),
       alternates: {
         canonical: `https://gpupoet.com/ml/learn/models/${modelSlug}`,
       },

@@ -1,5 +1,8 @@
 import { Line } from "react-chartjs-2"
 
+const DASH_LENGTH = 5
+const DASH_GAP = 5
+
 interface PriceHistoryPoint {
   date: string
   avgPrice: number
@@ -32,7 +35,7 @@ export default function PriceChart({ priceHistory }: PriceChartProps) {
         borderColor: "rgb(153, 102, 255)",
         backgroundColor: "rgba(153, 102, 255, 0.2)",
         tension: 0.1,
-        borderDash: [5, 5],
+        borderDash: [DASH_LENGTH, DASH_GAP],
       },
       {
         label: "Min Price",

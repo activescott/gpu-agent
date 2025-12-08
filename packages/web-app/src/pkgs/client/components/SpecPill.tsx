@@ -3,6 +3,8 @@ import { useFloating, arrow, offset, FloatingArrow } from "@floating-ui/react"
 import { ReactNode, useRef, useState } from "react"
 import { BootstrapIcon } from "./BootstrapIcon"
 
+const TOOLTIP_OFFSET_PX = 8
+
 interface SpecPillProps {
   children: ReactNode
   infoTipText: string
@@ -32,7 +34,7 @@ export const SpecPill = ({
   const arrowRef = useRef(null)
   // see https://floating-ui.com/docs/react
   const { refs, floatingStyles, context } = useFloating({
-    middleware: [offset(8), arrow({ element: arrowRef })],
+    middleware: [offset(TOOLTIP_OFFSET_PX), arrow({ element: arrowRef })],
   })
 
   return (

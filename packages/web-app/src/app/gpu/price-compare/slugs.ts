@@ -72,11 +72,6 @@ export function mapSlugToPageDescription(
   return `Compare GPU Prices by ${mapSlugToMetricLabel(slug, category)}`
 }
 
-export function listBuySlugs(category: "ai" | "gaming"): BuySlug[] {
-  const slugMap = category === "ai" ? AI_SLUG_MAP : GAMING_SLUG_MAP
-  return Object.keys(slugMap) as BuySlug[]
-}
-
 export function canonicalPathForSlug(
   slug: BuySlug,
   category: "ai" | "gaming",

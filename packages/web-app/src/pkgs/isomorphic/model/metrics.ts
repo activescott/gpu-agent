@@ -22,7 +22,7 @@ export const GpuMetricKeys: GpuMetricKey[] = [
 /**
  * Metadata for a GPU metric (spec or benchmark)
  */
-export interface GpuMetricItem {
+interface GpuMetricItem {
   label: string
   unit: string
   unitShortest: string
@@ -60,17 +60,6 @@ export function isBenchmark(
  */
 export function getMetricCategory(metricKey: GpuMetricKey): "ai" | "gaming" {
   return GpuMetricsDescription[metricKey].category
-}
-
-/**
- * Get all metrics for a specific category
- */
-export function getMetricsByCategory(
-  category: "ai" | "gaming",
-): GpuMetricKey[] {
-  return GpuMetricKeys.filter(
-    (key) => GpuMetricsDescription[key].category === category,
-  )
 }
 
 /**

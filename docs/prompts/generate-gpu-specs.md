@@ -1,1 +1,0 @@
-First, determine a list of technical specifications about a card that are applicable for machine learning such as memory, memory bandwidth, tensorcores, GPU clock rate, Thermal Rating TDP, FP16 Perf, etc. The list of technical specifications will be used later.

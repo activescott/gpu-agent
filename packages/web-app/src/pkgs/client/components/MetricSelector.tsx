@@ -1,18 +1,26 @@
 "use client"
 import {
   GpuMetricKey,
+  GpuMetricKeys,
   GpuMetricsDescription,
   isSpec,
   isBenchmark,
   getMetricCategory,
 } from "@/pkgs/isomorphic/model"
-import { mapMetricToSlug } from "@/app/gpu/price-compare/slugs"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { useState, type JSX } from "react"
 
 interface MetricSelectorProps {
   currentMetric: GpuMetricKey
+  /**
+   * Function to generate the href for a given metric.
+   * Returns undefined if the metric should not be shown.
+   *
+   * NOTE: This component must be wrapped in <ClientOnly> when used in a Server Component
+   * page, since functions cannot be passed from Server to Client Components directly.
+   */
+  metricToHref: (metric: GpuMetricKey) => string | undefined
 }
 
 type CategoryGroup =
@@ -23,11 +31,12 @@ type CategoryGroup =
 
 export function MetricSelector({
   currentMetric,
+  metricToHref,
 }: MetricSelectorProps): JSX.Element {
   const router = useRouter()
 
-  // Get all metrics and separate by category and type
-  const allMetrics = Object.keys(GpuMetricsDescription) as GpuMetricKey[]
+  // Get all metrics and separate by category and type (using GpuMetricKeys to maintain consistent order)
+  const allMetrics = GpuMetricKeys
 
   const aiSpecs = allMetrics.filter(
     (key) => isSpec(key) && getMetricCategory(key) === "ai",
@@ -92,9 +101,10 @@ export function MetricSelector({
       const metrics = getMetricsForCategory(categoryGroup)
       if (metrics.length > 0) {
         const firstMetric = metrics[0]
-        const slug = mapMetricToSlug(firstMetric)
-        const metricCategory = getMetricCategory(firstMetric)
-        router.push(`/gpu/price-compare/${metricCategory}/${slug}`)
+        const href = metricToHref(firstMetric)
+        if (href) {
+          router.push(href)
+        }
       }
     }
 
@@ -113,9 +123,9 @@ export function MetricSelector({
 
   const MetricLink = ({ metricKey }: { metricKey: GpuMetricKey }) => {
     const isActive = metricKey === currentMetric
-    const slug = mapMetricToSlug(metricKey)
-    const metricCategory = getMetricCategory(metricKey)
-    const href = `/gpu/price-compare/${metricCategory}/${slug}`
+    const href = metricToHref(metricKey)
+
+    if (!href) return null
 
     return (
       <li className="nav-item">
@@ -135,7 +145,7 @@ export function MetricSelector({
       <div className="mb-2 small fw-semibold">Compare GPUs by metric:</div>
 
       {/* Category Group Navigation */}
-      <ul className="nav nav-underline mb-3">
+      <ul className="nav nav-underline mb-3 flex-nowrap">
         {aiSpecs.length > 0 && (
           <CategoryLink categoryGroup="ai-specs" label="AI Specs" />
         )}
@@ -153,12 +163,17 @@ export function MetricSelector({
         )}
       </ul>
 
-      {/* Metric Navigation for Selected Category */}
-      <ul className="nav nav-underline mb-2">
-        {activeMetrics.map((metricKey) => (
-          <MetricLink key={metricKey} metricKey={metricKey} />
-        ))}
-      </ul>
+      {/* 
+        Metric Navigation for Selected Category
+        overflow-x-scroll to handle when the metrics are very wide on phones
+      */}
+      <div className="overflow-x-scroll">
+        <ul className="nav nav-underline mb-2 flex-nowrap">
+          {activeMetrics.map((metricKey) => (
+            <MetricLink key={metricKey} metricKey={metricKey} />
+          ))}
+        </ul>
+      </div>
 
       {/* Description of current metric */}
       <div className="mt-2 small text-muted">

@@ -1,5 +1,4 @@
 import { ListingGallery } from "@/pkgs/client/components/ListingGallery"
-import { MetricSelector } from "@/pkgs/client/components/MetricSelector"
 import { topNListingsByCostPerformance } from "@/pkgs/server/db/ListingRepository"
 import {
   BuySlug,
@@ -8,6 +7,7 @@ import {
   mapSlugToMetric,
   canonicalPathForSlug,
 } from "../../slugs"
+import { PriceCompareMetricSelector } from "./PriceCompareMetricSelector"
 import { createDiag } from "@activescott/diag"
 
 const log = createDiag("shopping-agent:gpu:price-compare:category:slug")
@@ -55,7 +55,7 @@ export default async function Page(props: CostPerMetricParams) {
 
   return (
     <>
-      <MetricSelector currentMetric={metric} />
+      <PriceCompareMetricSelector currentMetric={metric} />
       <ListingGallery
         listings={mapped}
         initialSortKey={metric}

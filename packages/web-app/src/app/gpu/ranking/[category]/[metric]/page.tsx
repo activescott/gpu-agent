@@ -13,7 +13,7 @@ import {
 } from "@/pkgs/server/db/GpuRepository"
 import { ISOMORPHIC_CONFIG } from "@/pkgs/isomorphic/config"
 import { GpuMetricsTable } from "./GpuMetricsTable"
-import { RankingMetricSelector } from "@/pkgs/client/components/RankingMetricSelector"
+import { RankingMetricSelector } from "./RankingMetricSelector"
 
 // revalidate the data at most every hour: https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#revalidate
 export const revalidate = 3600

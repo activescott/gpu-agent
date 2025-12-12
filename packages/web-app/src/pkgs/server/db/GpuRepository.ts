@@ -105,9 +105,9 @@ export async function getMetricDefinitionBySlug(
 }
 
 /**
- * Export type for client consumption
+ * Type alias for client consumption
  */
-export type MetricDefinition = MetricDefinitionRecord
+type MetricDefinition = MetricDefinitionRecord
 
 /**
  * Gets all metric definitions from database.
@@ -254,7 +254,7 @@ export async function calculateAllGpuPercentilesForMetric(
   return percentileMap
 }
 
-export type MetricRankingData = {
+type MetricRankingData = {
   metricSlug: string
   metricName: string
   metricUnit: string

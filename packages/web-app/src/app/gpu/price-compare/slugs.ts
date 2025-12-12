@@ -1,5 +1,4 @@
 import { GpuMetricKey } from "@/pkgs/isomorphic/model"
-import { getAllMetricDefinitions } from "@/pkgs/server/db/GpuRepository"
 
 /**
  * This module provides URL slug utilities for the price-compare pages.
@@ -7,40 +6,6 @@ import { getAllMetricDefinitions } from "@/pkgs/server/db/GpuRepository"
  * No hardcoded slug maps! Adding new benchmarks or specs only
  * requires updating the data files (YAML) and database - no code changes needed.
  */
-
-// Cache the metric definitions to avoid repeated database queries
-let cachedDefinitions: { slug: string; gpuField: string | null }[] | null = null
-
-async function getDefinitions(): Promise<
-  { slug: string; gpuField: string | null }[]
-> {
-  if (cachedDefinitions) {
-    return cachedDefinitions
-  }
-  const defs = await getAllMetricDefinitions()
-  cachedDefinitions = defs.map((d) => ({ slug: d.slug, gpuField: d.gpuField }))
-  return cachedDefinitions
-}
-
-/**
- * Maps a GpuMetricKey (TypeScript field name) to a URL slug.
- * This is an async function since it queries the database.
- *
- * @param metric - The TypeScript field name (e.g., "fp32TFLOPS")
- * @returns The URL slug (e.g., "fp32-flops")
- */
-export async function mapMetricToSlugAsync(
-  metric: GpuMetricKey,
-): Promise<string> {
-  const definitions = await getDefinitions()
-  const def = definitions.find((d) => d.gpuField === metric)
-  if (!def) {
-    throw new Error(
-      `Unknown metric: ${metric} - no matching metric definition found in database`,
-    )
-  }
-  return def.slug
-}
 
 /**
  * Synchronous version of mapMetricToSlug for use in non-async contexts.

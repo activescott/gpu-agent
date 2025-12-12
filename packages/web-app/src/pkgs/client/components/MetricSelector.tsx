@@ -7,7 +7,7 @@ import { useState, type JSX } from "react"
  * Metric definition type for the selector.
  * This is a plain object that can be serialized from server to client.
  */
-export interface MetricDefinitionForSelector {
+interface MetricDefinitionForSelector {
   slug: string
   name: string
   category: string // "ai" | "gaming"

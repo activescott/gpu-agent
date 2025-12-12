@@ -46,7 +46,7 @@ export function getMetricCategory(metricKey: GpuMetricKey): "ai" | "gaming" {
  * NOTE: Benchmark values are now stored in the GpuMetricValue table,
  * not directly on the gpu table.
  */
-export const GpuMetricsSchema = z.object({
+const _GpuMetricsSchema = z.object({
   // Specs
   tensorCoreCount: z.number().optional().nullable(),
   fp32TFLOPS: z.number(),
@@ -56,4 +56,4 @@ export const GpuMetricsSchema = z.object({
   memoryBandwidthGBs: z.number(),
 })
 
-export type GpuMetrics = z.infer<typeof GpuMetricsSchema>
+type _GpuMetrics = z.infer<typeof _GpuMetricsSchema>

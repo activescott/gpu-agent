@@ -11,13 +11,9 @@ import {
 import { listGpus } from "@/pkgs/server/db/GpuRepository"
 import { prismaSingleton } from "@/pkgs/server/db/db"
 import { EPOCH } from "@/pkgs/isomorphic/duration"
-import { listGpuRankingSlugs } from "./ml/learn/gpu/ranking/slugs"
 import { createDiag } from "@activescott/diag"
-import {
-  canonicalPathForSlug,
-  listPerformanceSlugs,
-} from "./ml/shop/gpu/performance/slugs"
 import { listModels } from "@/pkgs/server/data/ModelRepository"
+import { listMetricDefinitions } from "@/pkgs/server/data/MetricRepository"
 
 /* eslint-disable import/no-unused-modules */
 
@@ -46,18 +42,20 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const awaitedQueries = await Promise.all([
     homePageSitemapItem(domain_url),
     newsSitemap(domain_url),
-    gpuRankingSitemap(domain_url),
     modelsSitemap(domain_url),
     gpuLearnSitemap(domain_url),
+    rankingSitemap(domain_url),
+    priceCompareSitemap(domain_url),
     listCachedListingsGroupedByGpu(false, prismaSingleton),
   ])
   log.debug("Awaiting queries for sitemap generation complete.")
   const [
     homePageItem,
     newsItems,
-    gpuRankingEntries,
     modelsEntries,
     gpuLearnEntries,
+    rankingEntries,
+    priceCompareEntries,
     gpusAndListings,
   ] = awaitedQueries
 
@@ -68,16 +66,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // these have the same shape, but need flattened:
   const dynamicEntryGroups: SitemapItem[][] = [
     newsItems,
-    gpuRankingEntries,
     modelsEntries,
     gpuLearnEntries,
+    rankingEntries,
+    priceCompareEntries,
   ]
   const dynamicEntries: SitemapItem[] = dynamicEntryGroups.flat()
 
   const items: SitemapItem[] = [
     homePageItem,
-    ...gpuSlugPathSitemap(gpusWithLatestDate, "/ml/shop/gpu", domain_url),
-    ...mlPerformanceSpecSlugsSitemap(domain_url),
+    ...gpuSlugPathSitemap(gpusWithLatestDate, "/gpu/shop", domain_url),
     ...dynamicEntries,
     ...staticSitemap(domain_url),
   ]
@@ -100,23 +98,6 @@ async function homePageSitemapItem(domain_url: string): Promise<SitemapItem> {
     lastModified: latestListingDate,
     priority: 0.9,
   } satisfies SitemapItem
-}
-
-async function gpuRankingSitemap(domain_url: string): Promise<SitemapItem[]> {
-  const slugs = listGpuRankingSlugs()
-
-  // lastModified is effectively the most recent listing data across all GPUs
-  const lastModified: Date = await getLatestListingDate()
-
-  const entries = slugs.map((slug) => {
-    return {
-      url: `${domain_url}/ml/learn/gpu/ranking/${slug}`,
-      changeFrequency: "daily",
-      priority: 0.8,
-      lastModified: lastModified,
-    } satisfies SitemapItem
-  })
-  return entries
 }
 
 /**
@@ -192,6 +173,36 @@ async function gpuLearnSitemap(domain_url: string): Promise<SitemapItem[]> {
   return gpuEntries
 }
 
+async function rankingSitemap(domain_url: string): Promise<SitemapItem[]> {
+  const metricDefinitions = await listMetricDefinitions()
+
+  const rankingEntries: SitemapItem[] = metricDefinitions.map((metric) => {
+    return {
+      url: `${domain_url}/gpu/ranking/${metric.category}/${metric.slug}`,
+      changeFrequency: "daily",
+      priority: 0.8,
+      lastModified: new Date(),
+    } satisfies SitemapItem
+  })
+
+  return rankingEntries
+}
+
+async function priceCompareSitemap(domain_url: string): Promise<SitemapItem[]> {
+  const metricDefinitions = await listMetricDefinitions()
+
+  const priceCompareEntries: SitemapItem[] = metricDefinitions.map((metric) => {
+    return {
+      url: `${domain_url}/gpu/price-compare/${metric.category}/${metric.slug}`,
+      changeFrequency: "daily",
+      priority: 0.8,
+      lastModified: new Date(),
+    } satisfies SitemapItem
+  })
+
+  return priceCompareEntries
+}
+
 function staticSitemap(domain_url: string): SitemapItem[] {
   const jsonEntries = [...staticPagesSitemap.data] as SitemapJsonItem[]
   return jsonEntries.map((item) => {
@@ -232,16 +243,4 @@ function computeLatestListingDateForGpus(
       latestListingDate,
     }
   })
-}
-function mlPerformanceSpecSlugsSitemap(domain_url: string): SitemapItem[] {
-  const specSlugs = listPerformanceSlugs()
-  const entries = specSlugs.map((slug) => {
-    return {
-      url: `${domain_url}${canonicalPathForSlug(slug)}`,
-      changeFrequency: "daily",
-      priority: 0.8,
-      lastModified: new Date(),
-    } satisfies SitemapItem
-  })
-  return entries
 }

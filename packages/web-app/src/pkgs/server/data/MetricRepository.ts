@@ -47,10 +47,10 @@ const BenchmarkDataSchema = z.object({
   ),
 })
 
-export type BenchmarkData = z.infer<typeof BenchmarkDataSchema>
+type BenchmarkData = z.infer<typeof BenchmarkDataSchema>
 
 // Unified metric definition type
-export interface MetricDefinition {
+interface MetricDefinition {
   slug: string
   name: string
   category: "ai" | "gaming"
@@ -69,7 +69,7 @@ export interface MetricDefinition {
 }
 
 // GPU metric value
-export interface GpuMetricValue {
+interface _GpuMetricValue {
   gpuName: string
   metricSlug: string
   value: number
@@ -139,7 +139,7 @@ function generateBenchmarkSlug(
 /**
  * Load spec metric definitions from YAML
  */
-export async function loadSpecDefinitions(): Promise<MetricDefinition[]> {
+async function loadSpecDefinitions(): Promise<MetricDefinition[]> {
   const filePath = path.join(getMetricDefinitionsDir(), "specs.yaml")
   log.debug("Loading spec definitions from:", filePath)
 
@@ -167,7 +167,7 @@ export async function loadSpecDefinitions(): Promise<MetricDefinition[]> {
 /**
  * Load a single benchmark data file
  */
-export async function loadBenchmarkData(
+async function loadBenchmarkData(
   fileName: string,
 ): Promise<BenchmarkData | null> {
   const filePath = path.join(getBenchmarkDataDir(), fileName)
@@ -184,7 +184,7 @@ export async function loadBenchmarkData(
 /**
  * Load all benchmark data files
  */
-export async function loadAllBenchmarkData(): Promise<BenchmarkData[]> {
+async function loadAllBenchmarkData(): Promise<BenchmarkData[]> {
   const dataDir = getBenchmarkDataDir()
 
   try {
@@ -207,7 +207,7 @@ export async function loadAllBenchmarkData(): Promise<BenchmarkData[]> {
 /**
  * Load benchmark metric definitions from YAML files
  */
-export async function loadBenchmarkDefinitions(): Promise<MetricDefinition[]> {
+async function loadBenchmarkDefinitions(): Promise<MetricDefinition[]> {
   const benchmarks = await loadAllBenchmarkData()
 
   // Track unique slugs to avoid duplicates (e.g., 3dmark at different resolutions)
@@ -265,7 +265,7 @@ export async function listMetricDefinitions(): Promise<MetricDefinition[]> {
 /**
  * Get a specific metric definition by slug
  */
-export async function getMetricDefinition(
+async function _getMetricDefinition(
   slug: string,
 ): Promise<MetricDefinition | null> {
   const definitions = await listMetricDefinitions()
@@ -275,7 +275,7 @@ export async function getMetricDefinition(
 /**
  * List metrics by category
  */
-export async function listMetricsByCategory(
+async function _listMetricsByCategory(
   category: "ai" | "gaming",
 ): Promise<MetricDefinition[]> {
   const definitions = await listMetricDefinitions()
@@ -285,23 +285,21 @@ export async function listMetricsByCategory(
 /**
  * List only benchmark definitions
  */
-export async function listBenchmarkMetricDefinitions(): Promise<
-  MetricDefinition[]
-> {
+async function _listBenchmarkMetricDefinitions(): Promise<MetricDefinition[]> {
   return loadBenchmarkDefinitions()
 }
 
 /**
  * List only spec definitions
  */
-export async function listSpecMetricDefinitions(): Promise<MetricDefinition[]> {
+async function _listSpecMetricDefinitions(): Promise<MetricDefinition[]> {
   return loadSpecDefinitions()
 }
 
 /**
  * List all metric slugs
  */
-export async function listMetricSlugs(): Promise<string[]> {
+async function _listMetricSlugs(): Promise<string[]> {
   const definitions = await listMetricDefinitions()
   return definitions.map((d) => d.slug)
 }
@@ -309,7 +307,7 @@ export async function listMetricSlugs(): Promise<string[]> {
 /**
  * List benchmark slugs only
  */
-export async function listBenchmarkSlugs(): Promise<string[]> {
+async function _listBenchmarkSlugs(): Promise<string[]> {
   const definitions = await loadBenchmarkDefinitions()
   return definitions.map((d) => d.slug)
 }
@@ -317,54 +315,7 @@ export async function listBenchmarkSlugs(): Promise<string[]> {
 /**
  * List spec slugs only
  */
-export async function listSpecSlugs(): Promise<string[]> {
+async function _listSpecSlugs(): Promise<string[]> {
   const definitions = await loadSpecDefinitions()
   return definitions.map((d) => d.slug)
-}
-
-/**
- * Load GPU name mapping from YAML
- */
-export async function loadGpuNameMapping(): Promise<Record<string, string>> {
-  const filePath = path.join(getBenchmarkDataDir(), "gpu-name-mapping.yaml")
-
-  try {
-    const content = await readFile(filePath, "utf8")
-    const data = yaml.parse(content)
-    return data.mappings || {}
-  } catch (error) {
-    log.warn("Could not load GPU name mapping:", error)
-    return {}
-  }
-}
-
-/**
- * Extract benchmark values for all GPUs for a specific benchmark
- */
-export async function getBenchmarkValuesForSlug(
-  slug: string,
-): Promise<GpuMetricValue[]> {
-  const definition = await getMetricDefinition(slug)
-  if (!definition || definition.metricType !== "benchmark") {
-    return []
-  }
-
-  const benchmarks = await loadAllBenchmarkData()
-  const mapping = await loadGpuNameMapping()
-
-  // Find the benchmark data that matches this definition
-  const benchmark = benchmarks.find((b) => {
-    const benchmarkSlug = generateBenchmarkSlug(b.benchmarkId, b.configuration)
-    return benchmarkSlug === slug
-  })
-
-  if (!benchmark) {
-    return []
-  }
-
-  return benchmark.results.map((r) => ({
-    gpuName: r.gpuNameMapped || mapping[r.gpuNameRaw] || r.gpuNameRaw,
-    metricSlug: slug,
-    value: r.value,
-  }))
 }

@@ -76,33 +76,8 @@ const nextConfig = {
       },
       // Ranking pages (learn/gpu/ranking -> gpu/ranking/ai)
       {
-        source: "/ml/learn/gpu/ranking/fp32-flops",
-        destination: "/gpu/ranking/ai/fp32-flops",
-        permanent: true,
-      },
-      {
-        source: "/ml/learn/gpu/ranking/tensor-cores",
-        destination: "/gpu/ranking/ai/tensor-cores",
-        permanent: true,
-      },
-      {
-        source: "/ml/learn/gpu/ranking/fp16-flops",
-        destination: "/gpu/ranking/ai/fp16-flops",
-        permanent: true,
-      },
-      {
-        source: "/ml/learn/gpu/ranking/int8-tops",
-        destination: "/gpu/ranking/ai/int8-tops",
-        permanent: true,
-      },
-      {
-        source: "/ml/learn/gpu/ranking/memory-gb",
-        destination: "/gpu/ranking/ai/memory-gb",
-        permanent: true,
-      },
-      {
-        source: "/ml/learn/gpu/ranking/memory-bandwidth-gbs",
-        destination: "/gpu/ranking/ai/memory-bandwidth-gbs",
+        source: "/ml/learn/gpu/ranking/:slug",
+        destination: "/gpu/ranking/ai/:slug",
         permanent: true,
       },
       {
@@ -241,7 +216,7 @@ const nextConfig = {
         destination: "/gpu/price-compare/ai/memory-bandwidth-gbs",
         permanent: true,
       },
-      // Gaming benchmarks
+      // Gaming benchmark slug changes:
       {
         source: "/gpu/price-compare/gaming/cost-per-counter-strike-2-fps-3840x2160",
         destination: "/gpu/price-compare/gaming/counter-strike-2-fps-3840x2160",
@@ -255,6 +230,11 @@ const nextConfig = {
       {
         source: "/gpu/price-compare/gaming/cost-per-counter-strike-2-fps-1920x1080",
         destination: "/gpu/price-compare/gaming/counter-strike-2-fps-1920x1080",
+        permanent: true,
+      },
+      {
+        source: "/gpu/benchmark/gaming/3dmark-wildlife-extreme-fps",
+        destination: "/gpu/price-compare/gaming/3dmark-wildlife-extreme-fps-3840x2160",
         permanent: true,
       },
       {

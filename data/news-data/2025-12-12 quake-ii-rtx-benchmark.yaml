@@ -1,0 +1,76 @@
+# yaml-language-server: $schema=./news-article.schema.json
+id: gpu1212dec2025rtx
+slug: quake-ii-rtx-benchmark-launch
+title: "Compare Ray Tracing GPU Performance: Quake II RTX Benchmarks Added"
+content: |
+  GPU Poet now includes Quake II RTX benchmark data across three resolution configurations, adding real-time path tracing performance to the existing [Counter-Strike 2](/gpu/ranking/gaming/counter-strike-2-fps-3840x2160) and [3DMark Wildlife Extreme](/gpu/ranking/gaming/3dmark-wildlife-extreme-fps) benchmarks.
+
+  ## Why Quake II RTX Matters
+
+  Quake II RTX is NVIDIA's path-traced remaster of id Software's 1997 classic. Unlike games that use hybrid rendering with selective ray tracing, Quake II RTX uses real-time path tracing for all lighting, reflections, and shadows. Every photon is traced through the scene, making it one of the most demanding ray tracing workloads available.
+
+  The benchmark runs on cross-vendor Vulkan ray tracing via the VK_KHR_ray_query API, which means it works on NVIDIA, AMD, and Intel GPUs. This is not an NVIDIA-exclusive benchmark despite the RTX branding.
+
+  ## Available Configurations
+
+  ### 1080p - High Global Illumination
+  The [1920×1080 benchmark](/gpu/ranking/gaming/quake-ii-rtx-fps-1920x1080) tests 15 GPUs with 158 total samples at high GI settings. The RTX 3080 Ti leads at 154 FPS, with AMD's RX 7900 XT delivering 88 FPS and Intel's Arc A770 hitting 64 FPS. This configuration shows how mid-range cards handle aggressive ray tracing at the most common gaming resolution.
+
+  ### 1440p - Medium Global Illumination
+  At [2560×1440](/gpu/ranking/gaming/quake-ii-rtx-fps-2560x1440), the benchmark covers 15 GPUs with 147 samples using medium GI settings. The RTX 3080 Ti tops the chart at 105 FPS. The reduced GI quality at higher resolution reflects a realistic compromise for playable frame rates on hardware without dedicated ray tracing acceleration at the top tier.
+
+  ### 4K - Global Illumination Off
+  The [3840×2160 benchmark](/gpu/ranking/gaming/quake-ii-rtx-fps-3840x2160) includes 42+ GPUs with 333 samples. NVIDIA's new RTX 5090 leads at 165 FPS, followed by the RTX 4090 at 117 FPS. This dataset includes the RTX 5080, RTX 5070, AMD's RX 7900 XTX and RX 7800 XT, Intel's Arc A770, and many other cards. Even with GI disabled, the path-traced rendering pipeline stresses GPU ray tracing capabilities significantly.
+
+  ## Cross-Vendor Ray Tracing Performance
+
+  The benchmark data reveals how NVIDIA's RT cores compare to AMD's ray accelerators and Intel's ray tracing units. Because the Vulkan implementation doesn't favor any vendor's hardware, you can see true architectural differences in ray tracing efficiency.
+
+  For example, at 4K with GI off, AMD's RX 7900 XTX delivers competitive performance against NVIDIA's RTX 4070 Ti Super, showing RDNA 3's ray tracing improvements over RDNA 2. Intel's Arc A770 demonstrates capable ray tracing performance in the mid-range segment.
+
+  ## Used GPU Value for Ray Tracing
+
+  These benchmarks are particularly useful for evaluating used GPUs. A $400 RTX 3070 might seem like good value for rasterized gaming, but Quake II RTX shows whether it will handle path-traced games coming in the next few years. The data helps answer whether paying more for newer ray tracing architecture delivers proportional performance gains.
+
+  Sort the ranking tables by cost per frame to find the best ray tracing value at current market prices. The rankings link to live eBay listings, so you can move from benchmark comparison to actual purchase prices.
+
+  ## Data Source and Methodology
+
+  All benchmark data comes from [OpenBenchmarking](https://openbenchmarking.org/)'s Phoronix Test Suite. The tests use Quake II RTX's built-in benchmark on actual hardware configurations, not extrapolated scores or vendor-supplied numbers.
+
+  Different GI settings at different resolutions reflect how the benchmark suite evolved in the real world. The 4K tests accumulated more samples with GI off because that configuration is more common for playability testing at ultra-high resolution, while 1080p tests with high GI stress ray tracing capability rather than raw resolution scaling.
+
+  ## What This Enables
+
+  With Quake II RTX benchmarks integrated into the pricing data, you can now:
+  - Compare ray tracing performance across NVIDIA, AMD, and Intel GPUs at current market prices
+  - Evaluate whether used RTX 20-series or RTX 30-series cards deliver enough ray tracing capability for upcoming games
+  - See which GPUs hit playable frame rates in fully path-traced rendering at your target resolution
+  - Make informed decisions about ray tracing value when comparing new and used hardware
+
+  ## Next Steps
+
+  Visit the ranking pages to see full performance data and sort by your preferred metric. Each GPU card links to its detailed specifications and current marketplace listings:
+
+  - [Quake II RTX 1080p Rankings](/gpu/ranking/gaming/quake-ii-rtx-fps-1920x1080)
+  - [Quake II RTX 1440p Rankings](/gpu/ranking/gaming/quake-ii-rtx-fps-2560x1440)
+  - [Quake II RTX 4K Rankings](/gpu/ranking/gaming/quake-ii-rtx-fps-3840x2160)
+
+  If you'd like to see additional ray tracing benchmarks or specific game titles added, reach out on the [contact page](/contact).
+status: PUBLISHED
+tags:
+  - feature
+  - benchmarks
+  - gaming
+  - ray-tracing
+  - path-tracing
+  - quake-ii-rtx
+  - performance
+  - value
+  - nvidia
+  - amd
+  - intel
+authorFullName: "Scott Willeke"
+createdAt: "2025-12-12T10:00:00Z"
+updatedAt: "2025-12-12T10:00:00Z"
+publishedAt: "2025-12-12T10:00:00Z"

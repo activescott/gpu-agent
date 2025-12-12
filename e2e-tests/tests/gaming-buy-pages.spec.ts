@@ -2,33 +2,36 @@ import { test, expect } from '@playwright/test';
 
 test.describe('Gaming Buy Pages', () => {
   test('clicking Gaming Benchmarks category from AI page should not 404', async ({ page }) => {
-    // Start on an AI price-compare page
-    await page.goto('/gpu/price-compare/ai/fp32-flops');
+    // Start on an AI price-compare page - wait for full page load including JS hydration
+    await page.goto('/gpu/price-compare/ai/fp32-flops', { waitUntil: 'networkidle' });
+
+    // Wait for page to be fully loaded - cards visible means JS hydration is complete
+    const initialCards = page.locator('.card');
+    await expect(initialCards.first()).toBeVisible({ timeout: 15000 });
 
     // Wait for MetricSelector to load
     const metricSelectorLabel = page.getByText('Compare GPUs by metric:');
     await expect(metricSelectorLabel).toBeVisible();
 
     // Click the "Gaming Benchmarks" category button
-    const gamingBenchmarksButton = page.locator('button.nav-link', { hasText: 'Gaming Benchmarks' });
-    await expect(gamingBenchmarksButton).toBeVisible();
+    // Use getByRole for better hydration detection - Playwright waits for the element
+    // to be actionable (attached, visible, stable, enabled, receives events)
+    const gamingBenchmarksButton = page.getByRole('button', { name: 'Gaming Benchmarks' });
     await gamingBenchmarksButton.click();
 
-    // Wait for navigation
-    await page.waitForURL(/\/gpu\/price-compare\/gaming\//);
+    // Wait for URL to change and network to settle
+    // networkidle waits for no network connections for 500ms, which handles
+    // Next.js client-side navigation and any subsequent data fetching
+    await page.waitForURL(/\/gpu\/price-compare\/gaming\//, { waitUntil: 'networkidle', timeout: 30000 });
+
+    // Wait for the new page content to render (cards visible proves page loaded correctly)
+    const gamingCards = page.locator('.card');
+    await expect(gamingCards.first()).toBeVisible({ timeout: 15000 });
 
     // Page should NOT show error (check visible text, not raw HTML which may contain 404 in script paths)
     await expect(page.getByText('Application error')).not.toBeVisible();
     await expect(page.getByText('Unknown slug')).not.toBeVisible();
     await expect(page.getByText('This page could not be found')).not.toBeVisible();
-
-    // Should have navigated to a valid gaming benchmark page
-    const currentUrl = page.url();
-    expect(currentUrl).toContain('/gpu/price-compare/gaming/');
-
-    // Should have listing cards visible - this proves the page loaded correctly
-    const cards = page.locator('.card');
-    await expect(cards.first()).toBeVisible({ timeout: 10000 });
   });
 
   test('should show gaming metrics (not AI specs) on gaming buy pages', async ({ page }) => {

@@ -1,8 +1,20 @@
+metricSlug: counter-strike-2-fps-1920x1080
 benchmarkId: cs2
 benchmarkName: Counter-Strike 2
 configuration: "pts/cs2-1.0.x - Resolution: 1920 x 1080"
 configurationId: 35eaf038fc4947f18fb827b78d23abdb0b4d0242
 metricName: Frames Per Second (Average)
+unit: FPS
+unitShortest: FPS
+description: Average FPS in Counter-Strike 2, Valve's 2023 competitive shooter
+  built on the Source 2 engine. Features dynamic lighting, improved particle
+  effects, and realistic smoke physics. Uses DirectX 11 on Windows and Vulkan on
+  Linux. Supports NVIDIA Reflex and AMD FSR 2.
+descriptionDollarsPer: Dollars per FPS in Counter-Strike 2. Lower values
+  indicate better cost efficiency for competitive gaming performance.
+category: gaming
+collectedSamples: 209
+updatedAt: 2025-12-12T06:04:52.833Z
 results:
   - gpuNameRaw: AMD Radeon RX 9070 XT
     value: 416
@@ -26,8 +38,6 @@ results:
     value: 332
   - gpuNameRaw: AMD Radeon RX 7900 XTX
     value: 318
-  - gpuNameRaw: Median
-    value: 293
   - gpuNameRaw: NVIDIA GeForce RTX 3070 Ti
     value: 261
   - gpuNameRaw: MSI NVIDIA GeForce RTX 4060
@@ -36,4 +46,3 @@ results:
     value: 177
   - gpuNameRaw: Intel BMG G21
     value: 176
-scrapedAt: 2025-11-22T03:43:05.040Z

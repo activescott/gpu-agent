@@ -1,10 +1,8 @@
 "use client"
-import { GpuMetricKey } from "@/pkgs/isomorphic/model"
 import { FormatCurrency } from "@/pkgs/client/components/FormatCurrency"
 import Link from "next/link"
 import { useEffect, useState, useMemo, type JSX, Fragment } from "react"
 import { composeComparers } from "@/pkgs/isomorphic/collection"
-import { dollarsPerMetric } from "@/pkgs/isomorphic/gpuTools"
 import { PricedGpu } from "@/pkgs/server/db/GpuRepository"
 import { isNil } from "lodash-es"
 
@@ -105,20 +103,18 @@ function getOrdinalSuffix(n: number): string {
  * Lower cost is better, so we invert the ranking (lowest cost = highest percentile).
  * Returns a Map of GPU name to percentile (0-1).
  */
-function calculateCostPercentiles(
-  gpus: PricedGpu[],
-  metric: GpuMetricKey,
-): Map<string, number> {
+function calculateCostPercentiles(gpus: PricedGpu[]): Map<string, number> {
   // Get valid cost values (GPUs with both listings and metric data)
   const validCosts: { name: string; cost: number }[] = []
   for (const gpu of gpus) {
-    const metricValue = gpu.gpu[metric]
+    const metricValue = gpu.metricValue
     if (
       gpu.price.activeListingCount > 0 &&
       !isNil(metricValue) &&
       metricValue > 0
     ) {
-      const cost = dollarsPerMetric(gpu.gpu, gpu.price.minPrice, metric)
+      // Calculate dollars per metric unit
+      const cost = gpu.price.minPrice / metricValue
       if (Number.isFinite(cost)) {
         validCosts.push({ name: gpu.gpu.name, cost })
       }
@@ -145,7 +141,6 @@ function calculateCostPercentiles(
 }
 
 interface GpuMetricsTableProps {
-  primaryMetric: GpuMetricKey
   metricUnit: string
   gpusInitial: PricedGpu[]
   /** When set, limits the number of displayed rows */
@@ -157,7 +152,6 @@ interface GpuMetricsTableProps {
 }
 
 export function GpuMetricsTable({
-  primaryMetric,
   metricUnit,
   gpusInitial,
   maxRows,
@@ -173,8 +167,8 @@ export function GpuMetricsTable({
 
   // Calculate cost percentiles for the $ per Metric column
   const costPercentiles = useMemo(
-    () => calculateCostPercentiles(gpusInitial, primaryMetric),
-    [gpusInitial, primaryMetric],
+    () => calculateCostPercentiles(gpusInitial),
+    [gpusInitial],
   )
 
   // Track which tier dividers we've already rendered
@@ -225,15 +219,15 @@ export function GpuMetricsTable({
         </thead>
         <tbody>
           {displayGpus.map((pricedGpu) => {
-            const metricValue = pricedGpu.gpu[primaryMetric]
+            const metricValue = pricedGpu.metricValue
             const hasListings = pricedGpu.price.activeListingCount > 0
-            const hasMetricValue = !isNil(metricValue)
+            const hasMetricValue = !isNil(metricValue) && metricValue > 0
             const percentile = pricedGpu.percentile
-            const dollarsPer = dollarsPerMetric(
-              pricedGpu.gpu,
-              pricedGpu.price.minPrice,
-              primaryMetric,
-            )
+            // Calculate dollars per metric unit
+            const dollarsPer =
+              hasMetricValue && hasListings
+                ? pricedGpu.price.minPrice / metricValue
+                : 0
 
             // Check if we need to render a tier divider before this GPU
             const tierDividers: TierThreshold[] = []

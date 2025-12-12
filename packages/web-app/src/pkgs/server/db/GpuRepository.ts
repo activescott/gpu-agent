@@ -1,21 +1,142 @@
-import { Gpu, GpuMetricKeys, getMetricCategory } from "@/pkgs/isomorphic/model"
+import { Gpu } from "@/pkgs/isomorphic/model"
 import { isNil } from "lodash-es"
 import { PrismaClientWithinTransaction, prismaSingleton } from "./db"
 import { GpuSpecKey } from "@/pkgs/isomorphic/model/specs"
-import { GpuMetricKey } from "@/pkgs/isomorphic/model/metrics"
 import { Prisma } from "@prisma/client"
 import { getPriceStats, GpuPriceStats } from "./ListingRepository"
 import { omit } from "lodash"
 
 /**
- * Maps Prisma TypeScript field names to actual database column names.
- * Some fields use @map in the schema (e.g., threemarkWildLifeExtremeFps -> 3dmarkWildLifeExtremeFps)
+ * Cached metric definitions loaded from database
  */
-function metricFieldToDbColumn(fieldName: GpuMetricKey): string {
-  if (fieldName === "threemarkWildLifeExtremeFps") {
-    return "3dmarkWildLifeExtremeFps"
+let cachedMetricDefinitions: MetricDefinitionRecord[] | null = null
+
+interface MetricDefinitionRecord {
+  slug: string
+  name: string
+  category: string
+  metricType: string
+  unit: string
+  unitShortest: string
+  description: string
+  descriptionDollarsPer: string
+  gpuField: string | null
+}
+
+/**
+ * Loads all metric definitions from the database (cached)
+ */
+/**
+ * Helper to sort metric definitions consistently by name then slug
+ */
+function sortMetricDefinitions(
+  definitions: MetricDefinitionRecord[],
+): MetricDefinitionRecord[] {
+  return [...definitions].sort((a, b) => {
+    const nameCompare = a.name.localeCompare(b.name)
+    if (nameCompare !== 0) return nameCompare
+    return a.slug.localeCompare(b.slug)
+  })
+}
+
+async function getMetricDefinitions(
+  prisma: PrismaClientWithinTransaction = prismaSingleton,
+): Promise<MetricDefinitionRecord[]> {
+  if (cachedMetricDefinitions) {
+    // Always return sorted results, even if cache was populated before sorting was added
+    return sortMetricDefinitions(cachedMetricDefinitions)
   }
-  return fieldName
+  const results = await prisma.metricDefinition.findMany({
+    select: {
+      slug: true,
+      name: true,
+      category: true,
+      metricType: true,
+      unit: true,
+      unitShortest: true,
+      description: true,
+      descriptionDollarsPer: true,
+      gpuField: true,
+    },
+    // Sort by name to group related benchmarks together (e.g., Counter-Strike 2 configs grouped)
+    // and by slug as secondary sort to order resolutions logically (1920x1080 < 2560x1440 < 3840x2160)
+    orderBy: [{ name: "asc" }, { slug: "asc" }],
+  })
+  cachedMetricDefinitions = results
+  return sortMetricDefinitions(cachedMetricDefinitions)
+}
+
+/**
+ * Gets all metric slugs from database
+ * @internal Reserved for future use
+ */
+async function _getAllMetricSlugs(
+  prisma: PrismaClientWithinTransaction = prismaSingleton,
+): Promise<string[]> {
+  const definitions = await getMetricDefinitions(prisma)
+  return definitions.map((d) => d.slug)
+}
+
+/**
+ * Gets the category for a metric slug from database
+ * @internal Reserved for future use
+ */
+async function _getMetricCategoryFromDb(
+  metricSlug: string,
+  prisma: PrismaClientWithinTransaction = prismaSingleton,
+): Promise<"ai" | "gaming"> {
+  const definitions = await getMetricDefinitions(prisma)
+  const def = definitions.find((d) => d.slug === metricSlug)
+  if (!def) {
+    throw new Error(`Unknown metric slug: ${metricSlug}`)
+  }
+  return def.category as "ai" | "gaming"
+}
+
+/**
+ * Gets a metric definition by slug from database
+ */
+export async function getMetricDefinitionBySlug(
+  metricSlug: string,
+  prisma: PrismaClientWithinTransaction = prismaSingleton,
+): Promise<MetricDefinitionRecord | null> {
+  const definitions = await getMetricDefinitions(prisma)
+  return definitions.find((d) => d.slug === metricSlug) || null
+}
+
+/**
+ * Export type for client consumption
+ */
+export type MetricDefinition = MetricDefinitionRecord
+
+/**
+ * Gets all metric definitions from database.
+ * Useful for MetricSelector component that needs the full list.
+ */
+export async function getAllMetricDefinitions(
+  prisma: PrismaClientWithinTransaction = prismaSingleton,
+): Promise<MetricDefinition[]> {
+  return getMetricDefinitions(prisma)
+}
+
+/**
+ * Gets all metric values for a slug from GpuMetricValue table
+ * @returns Map of GPU name to metric value
+ */
+export async function getMetricValuesBySlug(
+  metricSlug: string,
+  prisma: PrismaClientWithinTransaction = prismaSingleton,
+): Promise<Map<string, number>> {
+  const results = await prisma.gpuMetricValue.findMany({
+    where: { metricSlug },
+    select: { gpuName: true, value: true },
+  })
+
+  const valueMap = new Map<string, number>()
+  for (const row of results) {
+    valueMap.set(row.gpuName, row.value)
+  }
+  return valueMap
 }
 
 type PricedGpuInfo = Omit<
@@ -28,6 +149,8 @@ export type PricedGpu = {
   price: GpuPriceStats
   /** Percentile ranking (0-1) for a specific metric. Populated when needed. */
   percentile?: number
+  /** The metric value for this GPU. Populated when needed for ranking. */
+  metricValue?: number
 }
 
 export async function listGpus(includeTestGpus = false): Promise<Gpu[]> {
@@ -103,23 +226,22 @@ export async function calculateGpuPriceStats(): Promise<PricedGpu[]> {
 }
 
 /**
- * Calculates percentile rankings for all GPUs based on a specific metric.
+ * Calculates percentile rankings for all GPUs based on a specific metric slug.
  * More efficient than calling gpuMetricAsPercent for each GPU individually.
- * @param metric - The metric to calculate percentiles against
+ * @param metricSlug - The metric slug to calculate percentiles against
  * @returns Map of GPU name to percentile (0-1)
  */
 export async function calculateAllGpuPercentilesForMetric(
-  metric: GpuMetricKey,
+  metricSlug: string,
   prisma: PrismaClientWithinTransaction = prismaSingleton,
 ): Promise<Map<string, number>> {
-  const dbColumnName = metricFieldToDbColumn(metric)
-  const sqlMetricName = Prisma.raw(`"${dbColumnName}"`)
   const sql = Prisma.sql`
     SELECT
-      name,
-      CUME_DIST() OVER (ORDER BY ${sqlMetricName}) AS pct
-    FROM "gpu"
-    WHERE ${sqlMetricName} IS NOT NULL
+      "gpuName" AS name,
+      CUME_DIST() OVER (ORDER BY "value") AS pct
+    FROM "GpuMetricValue"
+    WHERE "metricSlug" = ${metricSlug}
+      AND "value" IS NOT NULL
   ;`
 
   type RowShape = { name: string; pct: number }
@@ -132,15 +254,37 @@ export async function calculateAllGpuPercentilesForMetric(
   return percentileMap
 }
 
-type MetricRankingData = {
-  metric: GpuMetricKey
+export type MetricRankingData = {
+  metricSlug: string
+  metricName: string
+  metricUnit: string
   category: "ai" | "gaming"
   topGpus: PricedGpu[]
 }
 
 /**
+ * Fetches all metric values for a given metric slug from GpuMetricValue table
+ * @returns Map of GPU name to metric value
+ */
+async function getMetricValuesForMetricSlug(
+  metricSlug: string,
+  prisma: PrismaClientWithinTransaction = prismaSingleton,
+): Promise<Map<string, number>> {
+  const results = await prisma.gpuMetricValue.findMany({
+    where: { metricSlug },
+    select: { gpuName: true, value: true },
+  })
+
+  const valueMap = new Map<string, number>()
+  for (const row of results) {
+    valueMap.set(row.gpuName, row.value)
+  }
+  return valueMap
+}
+
+/**
  * Fetches ranking data for all metrics and returns top N GPUs per metric.
- * Efficient - fetches base data once and calculates percentiles in parallel.
+ * Fully data-driven - loads metric definitions from database.
  */
 const DEFAULT_TOP_N_RANKINGS = 3
 
@@ -150,42 +294,59 @@ export async function getAllMetricRankings(
   // Fetch base GPU price stats once
   const allPricedGpus = await calculateGpuPriceStats()
 
-  // Fetch percentiles for all metrics in parallel
-  const percentilePromises = GpuMetricKeys.map(async (metric) => {
-    const percentileMap = await calculateAllGpuPercentilesForMetric(metric)
-    return { metric, percentileMap }
+  // Get all metric definitions from database
+  const metricDefinitions = await getMetricDefinitions()
+  const metricSlugs = metricDefinitions.map((d) => d.slug)
+
+  // Fetch percentiles and metric values for all metrics in parallel
+  const metricDataPromises = metricSlugs.map(async (metricSlug) => {
+    const [percentileMap, valueMap] = await Promise.all([
+      calculateAllGpuPercentilesForMetric(metricSlug),
+      getMetricValuesForMetricSlug(metricSlug),
+    ])
+    return { metricSlug, percentileMap, valueMap }
   })
 
-  const percentileResults = await Promise.all(percentilePromises)
+  const metricDataResults = await Promise.all(metricDataPromises)
+
+  // Build a lookup map for metric definitions
+  const metricDefMap = new Map(metricDefinitions.map((d) => [d.slug, d]))
 
   // Build ranking data for each metric
-  const rankings: MetricRankingData[] = percentileResults.map(
-    ({ metric, percentileMap }) => {
+  const rankings: MetricRankingData[] = metricDataResults.map(
+    ({ metricSlug, percentileMap, valueMap }) => {
       // Merge percentiles and filter/sort for this metric
       const gpusWithPercentiles = allPricedGpus
         .map((gpu) => ({
           ...gpu,
           percentile: percentileMap.get(gpu.gpu.name),
+          metricValue: valueMap.get(gpu.gpu.name),
         }))
         .filter((gpu) => {
-          const metricValue = gpu.gpu[metric]
           return (
             gpu.price.activeListingCount > 0 &&
-            !isNil(metricValue) &&
-            metricValue > 0
+            !isNil(gpu.metricValue) &&
+            gpu.metricValue > 0
           )
         })
 
       // Sort by raw metric value (descending - highest performance first)
       gpusWithPercentiles.sort((a, b) => {
-        const metricA = a.gpu[metric] ?? 0
-        const metricB = b.gpu[metric] ?? 0
+        const metricA = a.metricValue ?? 0
+        const metricB = b.metricValue ?? 0
         return metricB - metricA
       })
 
+      const metricDef = metricDefMap.get(metricSlug)
+      if (!metricDef) {
+        throw new Error(`Unknown metric slug: ${metricSlug}`)
+      }
+
       return {
-        metric,
-        category: getMetricCategory(metric),
+        metricSlug,
+        metricName: metricDef.name,
+        metricUnit: metricDef.unitShortest,
+        category: metricDef.category as "ai" | "gaming",
         topGpus: gpusWithPercentiles.slice(0, topN),
       }
     },

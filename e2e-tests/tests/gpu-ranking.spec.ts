@@ -6,6 +6,42 @@ const MIN_LISTINGS_PERCENT = 50;
 const MIN_SPEC_PERCENT = 75;
 
 test.describe('GPU Ranking Page', () => {
+  test('should display metric selector on gaming benchmark page', async ({ page }) => {
+    // Navigate to a gaming benchmark ranking page
+    await page.goto('/gpu/ranking/gaming/counter-strike-2-fps-3840x2160');
+
+    // Wait for page to load
+    await expect(page).toHaveTitle(/Counter.*Strike|GPUs Ranked by/i);
+
+    // The MetricSelector should be visible with the "Compare GPUs by metric:" label
+    const metricSelectorLabel = page.getByText('Compare GPUs by metric:');
+    await expect(metricSelectorLabel).toBeVisible();
+
+    // Category tabs should be present (at least Gaming Benchmarks)
+    const gamingBenchmarksTab = page.getByRole('button', { name: /Gaming Benchmarks/i });
+    await expect(gamingBenchmarksTab).toBeVisible();
+
+    // At least one metric link should be present
+    const metricLinks = page.locator('.nav-underline .nav-link');
+    const linkCount = await metricLinks.count();
+    expect(linkCount).toBeGreaterThan(1); // Should have category tabs + metric links
+  });
+
+  test('should display metric selector on AI spec page', async ({ page }) => {
+    // Navigate to an AI spec ranking page
+    await page.goto('/gpu/ranking/ai/fp32-flops');
+
+    // Wait for page to load
+    await expect(page).toHaveTitle(/FP32.*TFLOPs|GPUs Ranked by/i);
+
+    // The MetricSelector should be visible with the "Compare GPUs by metric:" label
+    const metricSelectorLabel = page.getByText('Compare GPUs by metric:');
+    await expect(metricSelectorLabel).toBeVisible();
+
+    // AI Specs tab should be present
+    const aiSpecsTab = page.getByRole('button', { name: /AI Specs/i });
+    await expect(aiSpecsTab).toBeVisible();
+  });
   test('should have reasonable coverage of listings and specs on fp32-flops ranking', async ({ page }) => {
     // Navigate to the FP32 FLOPS ranking page (old route for backwards compatibility)
     await page.goto('/ml/learn/gpu/ranking/fp32-flops');

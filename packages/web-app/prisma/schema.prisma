@@ -17,7 +17,7 @@ model gpu {
   label  String
   series String?
 
-  // Specs:
+  // Specs (LEGACY - being migrated to GpuMetricValue):
   tensorCoreCount             Float?
   fp32TFLOPS                  Float
   fp16TFLOPS                  Float
@@ -37,13 +37,6 @@ model gpu {
   // - https://developer.nvidia.com/cuda-gpus <<< GPU list
   supportedCUDAComputeCapability Float?
 
-  // Benchmarks (Gaming):
-  counterStrike2Fps3840x2160 Float?
-  counterStrike2Fps2560x1440 Float?
-  counterStrike2Fps1920x1080 Float?
-  // Note: Field name uses "3" prefix as Prisma doesn't support fields starting with numbers
-  threemarkWildLifeExtremeFps Float? @map("3dmarkWildLifeExtremeFps")
-
   // references for the specs:
   references        String[]
   // custom-written summary for the GPU. Used on info pages
@@ -53,13 +46,57 @@ model gpu {
   // Last modified timestamp for the GPU spec data (from YAML file)
   lastModified      DateTime @default(now())
 
-  // for the prisma relation for Listing.gpu/gpuName
-  Listing   Listing[]
+  // Relations
+  metricValues  GpuMetricValue[]
+  Listing       Listing[]
 
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
 
   @@index([name])
+}
+
+// Stores metadata about each metric (both specs and benchmarks)
+model MetricDefinition {
+  slug              String   @id  // e.g., "fp32-tflops", "counter-strike-2-fps-3840x2160"
+  name              String       // e.g., "FP32 TFLOPS", "Counter-Strike 2 (4K)"
+  category          String       // "ai" or "gaming"
+  metricType        String       // "spec" or "benchmark"
+  unit              String       // e.g., "TFLOPS", "FPS"
+  unitShortest      String       // e.g., "TFLOPS", "FPS"
+  description       String       // Full description for learn pages
+  descriptionDollarsPer String   // Description for $/metric pages
+
+  // For benchmarks: source info (optional, only used for benchmarks)
+  benchmarkId       String?      // e.g., "cs2", "3dmark"
+  benchmarkName     String?      // e.g., "Counter-Strike 2"
+  configuration     String?      // e.g., "Resolution: 3840 x 2160"
+  configurationId   String?      // e.g., "pts-cs2-1-0-x-resolution-3840-x-2160"
+
+  // For specs: maps to field name in gpu-specs YAML
+  gpuField          String?      // e.g., "fp32TFLOPS"
+
+  values            GpuMetricValue[]
+
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+}
+
+// Stores actual metric values for each GPU
+model GpuMetricValue {
+  id          String   @id @default(cuid())
+  gpuName     String
+  gpu         gpu      @relation(fields: [gpuName], references: [name], onDelete: Cascade)
+  metricSlug  String
+  metric      MetricDefinition @relation(fields: [metricSlug], references: [slug], onDelete: Cascade)
+  value       Float
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@unique([gpuName, metricSlug])
+  @@index([metricSlug])
+  @@index([gpuName])
 }
 
 model Listing {

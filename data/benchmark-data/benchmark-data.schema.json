@@ -1,0 +1,111 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "benchmark-data.schema.json",
+  "title": "Benchmark Data",
+  "description": "Schema for GPU benchmark data files. Each file represents benchmark results for a specific configuration (e.g., Counter-Strike 2 at 4K resolution).",
+  "type": "object",
+  "required": [
+    "metricSlug",
+    "benchmarkId",
+    "benchmarkName",
+    "configuration",
+    "configurationId",
+    "metricName",
+    "unit",
+    "unitShortest",
+    "description",
+    "descriptionDollarsPer",
+    "category",
+    "collectedSamples",
+    "updatedAt",
+    "results"
+  ],
+  "properties": {
+    "metricSlug": {
+      "type": "string",
+      "description": "PRIMARY IDENTIFIER. URL-friendly slug used as the unique key for this metric throughout the web app. Used in URLs (e.g., /gpu/ranking/gaming/counter-strike-2-fps-3840x2160), database MetricDefinition.slug, and GpuMetricValue.metricSlug. Format: {game-name}-fps-{resolution} for gaming benchmarks.",
+      "pattern": "^[a-z0-9-]+$",
+      "examples": ["counter-strike-2-fps-3840x2160", "3dmark-wildlife-extreme-fps-1920x1080", "quake-ii-rtx-fps-2560x1440"]
+    },
+    "benchmarkId": {
+      "type": "string",
+      "description": "GROUPING IDENTIFIER. Short identifier for the benchmark program/game. Multiple configurations share the same benchmarkId. Used to group related benchmarks in the UI (e.g., all Counter-Strike 2 resolutions together).",
+      "examples": ["cs2", "3dmark", "quake2rtx"]
+    },
+    "benchmarkName": {
+      "type": "string",
+      "description": "Human-readable name of the benchmark program/game. Displayed in UI headings and metric selector.",
+      "examples": ["Counter-Strike 2", "3DMark Wild Life Extreme", "Quake II RTX"]
+    },
+    "configuration": {
+      "type": "string",
+      "description": "Human-readable description of the specific configuration (resolution, settings, etc.). Displayed in UI to distinguish between configurations of the same benchmark.",
+      "examples": ["Resolution: 3840 x 2160", "pts/3dmark-1.0.x - Resolution: 1920 x 1080"]
+    },
+    "configurationId": {
+      "type": "string",
+      "description": "SOURCE PROVENANCE. The original identifier from the benchmark source (e.g., OpenBenchmarking's internal configuration ID). Used for tracking data lineage and debugging. Not used by the web app directly.",
+      "examples": ["pts-cs2-1-0-x-resolution-3840-x-2160", "251684d1fa3c186574f1dd35f0bee61979b0c293"]
+    },
+    "metricName": {
+      "type": "string",
+      "description": "Name of the metric being measured.",
+      "examples": ["Frames Per Second (Average)"]
+    },
+    "unit": {
+      "type": "string",
+      "description": "Full unit name for the metric value.",
+      "examples": ["FPS", "TFLOPS", "GB/s"]
+    },
+    "unitShortest": {
+      "type": "string",
+      "description": "Abbreviated unit for compact display.",
+      "examples": ["FPS", "TFLOPS", "GB/s"]
+    },
+    "description": {
+      "type": "string",
+      "description": "Detailed description of the benchmark for learn/info pages."
+    },
+    "descriptionDollarsPer": {
+      "type": "string",
+      "description": "Description for cost-per-performance pages explaining what $/unit means."
+    },
+    "category": {
+      "type": "string",
+      "enum": ["ai", "gaming"],
+      "description": "Category for organizing metrics. 'gaming' for game benchmarks, 'ai' for compute/ML specs."
+    },
+    "collectedSamples": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Number of benchmark samples collected from the source. Higher counts indicate more reliable data."
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp of when this data was last scraped/updated."
+    },
+    "results": {
+      "type": "array",
+      "description": "Benchmark results for each GPU.",
+      "items": {
+        "type": "object",
+        "required": ["gpuNameRaw", "value"],
+        "properties": {
+          "gpuNameRaw": {
+            "type": "string",
+            "description": "GPU name as reported by the benchmark source. May not match our canonical GPU names."
+          },
+          "gpuNameMapped": {
+            "type": "string",
+            "description": "Our canonical GPU name (from gpu-name-mapping.yaml). Only present if mapping exists."
+          },
+          "value": {
+            "type": "number",
+            "description": "The benchmark result value (e.g., FPS)."
+          }
+        }
+      }
+    }
+  }
+}

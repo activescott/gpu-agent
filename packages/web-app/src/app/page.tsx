@@ -4,12 +4,14 @@ import {
   GpuSpecKeys,
   GpuSpecsDescription,
   type Listing,
-  GpuMetricsDescription,
 } from "@/pkgs/isomorphic/model"
 import { Carousel } from "@/pkgs/client/components/Carousel"
 import { topNListingsByCostPerformance } from "@/pkgs/server/db/ListingRepository"
 import { ListingCardSmall } from "@/pkgs/client/components/ListingCardSmall"
-import { mapSpecToSlug } from "./ml/shop/gpu/performance/slugs"
+import {
+  mapMetricToSlug,
+  canonicalPathForSlug,
+} from "./gpu/price-compare/slugs"
 import Link from "next/link"
 import { ReactNode } from "react"
 import { listPublishedArticles } from "@/pkgs/server/db/NewsRepository"
@@ -18,7 +20,6 @@ import { NewsArticlePair } from "@/pkgs/client/components/NewsArticlePair"
 import { AbTestWrapper } from "@/pkgs/client/components/AbTestWrapper"
 import { GpuMetricsTable } from "./gpu/ranking/[category]/[metric]/GpuMetricsTable"
 import { getAllMetricRankings } from "@/pkgs/server/db/GpuRepository"
-import { metricToSlug } from "./gpu/ranking/slugs"
 
 // revalidate the data at most every N seconds: https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#revalidate
 export const revalidate = 1800
@@ -93,20 +94,17 @@ export default async function Page() {
   const testContent = (
     <div className="d-flex flex-column">
       <h3 className="mt-4">Gaming Performance Rankings</h3>
-      {gamingRankings.map(({ metric, topGpus }) => {
-        const desc = GpuMetricsDescription[metric]
-        const slug = metricToSlug(metric, "gaming")
+      {gamingRankings.map(({ metricSlug, metricName, metricUnit, topGpus }) => {
         return (
-          <div key={metric} className="my-container m-2 mt-5">
+          <div key={metricSlug} className="my-container m-2 mt-5">
             <GpuMetricsTable
-              primaryMetric={metric}
-              metricUnit={desc.unitShortest}
+              metricUnit={metricUnit}
               gpusInitial={topGpus}
               maxRows={TOP_N_RANKINGS}
               showTierDividers={false}
               header={{
-                title: `Top GPUs by ${desc.label}`,
-                href: `/gpu/ranking/gaming/${slug}`,
+                title: `Top GPUs by ${metricName}`,
+                href: `/gpu/ranking/gaming/${metricSlug}`,
               }}
             />
           </div>
@@ -120,20 +118,17 @@ export default async function Page() {
       />
 
       <h3 className="mt-4">AI Performance Rankings</h3>
-      {aiRankings.map(({ metric, topGpus }) => {
-        const desc = GpuMetricsDescription[metric]
-        const slug = metricToSlug(metric, "ai")
+      {aiRankings.map(({ metricSlug, metricName, metricUnit, topGpus }) => {
         return (
-          <div key={metric} className="my-container m-2 mt-5">
+          <div key={metricSlug} className="my-container m-2 mt-5">
             <GpuMetricsTable
-              primaryMetric={metric}
-              metricUnit={desc.unitShortest}
+              metricUnit={metricUnit}
               gpusInitial={topGpus}
               maxRows={TOP_N_RANKINGS}
               showTierDividers={false}
               header={{
-                title: `Top GPUs by ${desc.label}`,
-                href: `/gpu/ranking/ai/${slug}`,
+                title: `Top GPUs by ${metricName}`,
+                href: `/gpu/ranking/ai/${metricSlug}`,
               }}
             />
           </div>
@@ -154,12 +149,14 @@ export default async function Page() {
 
       <div className="my-how-to-cards mt-4 d-flex flex-column flex-md-row justify-content-evenly">
         <TipCard icon="trophy-fill">
-          Check <Link href="ml/learn/gpu/ranking">GPU Rankings</Link> to see the
-          best GPUs for the money.
+          Check <Link href="/gpu/ranking/ai/fp32-flops">GPU Rankings</Link> to
+          see the best GPUs for the money.
         </TipCard>
         <TipCard icon="shop-window">
-          <Link href="ml/shop/gpu">Browse GPUs for sale</Link> to see price vs.
-          performance.
+          <Link href="/gpu/price-compare/ai/fp32-flops">
+            Browse GPUs for sale
+          </Link>{" "}
+          to see price vs. performance.
         </TipCard>
         <TipCard svgIcon="ebay">
           Prices for new and used GPUs from eBay. Want listings from another
@@ -187,7 +184,7 @@ function TopListingsCarousel({
     <Carousel
       key={spec}
       header={`Top GPUs for ${GpuSpecsDescription[spec].label}`}
-      href={`/ml/shop/gpu/performance/${mapSpecToSlug(spec)}`}
+      href={canonicalPathForSlug(mapMetricToSlug(spec), "ai")}
     >
       {listings.map((listing) => (
         <ListingCardSmall

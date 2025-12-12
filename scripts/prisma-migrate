@@ -1,0 +1,143 @@
+#!/usr/bin/env bash
+this_dir=$(cd $(dirname "$0"); pwd) # this script's directory
+this_script=$(basename $0)
+workspace_root=$(cd "$this_dir/.."; pwd)
+
+#-e: Exits immediately if any command returns a non-zero status (i.e., fails)
+#-u: Treats unset variables as errors and exits immediately
+#-o pipefail: If any command in a pipeline fails, the entire pipeline fails
+set -euo pipefail
+
+help () {
+  echo
+  cat << END_DOC
+USAGE: $this_script [COMMAND] [OPTIONS]
+
+Runs Prisma commands inside the app container in Kubernetes.
+
+Commands:
+  migrate dev [--name NAME]   Create and apply a new migration (development only)
+  migrate deploy              Apply pending migrations (production safe)
+  migrate reset               Reset database and re-run all migrations + seed
+  migrate status              Show status of migrations
+  seed                        Run the seed script
+  studio                      Open Prisma Studio (database GUI)
+  generate                    Generate Prisma client
+
+Options:
+  -h, --help    Show this help message
+
+Examples:
+  $this_script migrate dev --name add-user-table
+  $this_script migrate deploy
+  $this_script migrate reset
+  $this_script seed
+  $this_script studio
+
+END_DOC
+}
+
+die () {
+    echo "*** ERROR ***"
+    echo >&2 "ERROR: $@"
+    help
+    exit 1
+}
+
+check_minikube() {
+    if ! command -v minikube &> /dev/null; then
+        die "minikube is not installed. Install it with: brew install minikube"
+    fi
+
+    if ! minikube status &> /dev/null; then
+        die "minikube is not running. Start it with: ./scripts/dev"
+    fi
+}
+
+get_app_pod() {
+    local pod=$(minikube kubectl -- get pods -n gpupoet-dev -l app=app -o jsonpath='{.items[0].metadata.name}' 2>/dev/null)
+    if [[ -z "$pod" ]]; then
+        die "No app pod found. Is the dev server running? Start it with: ./scripts/dev"
+    fi
+    echo "$pod"
+}
+
+run_in_container() {
+    local pod=$(get_app_pod)
+    local cmd="$@"
+
+    echo "Running in pod $pod: $cmd"
+    echo "---"
+    minikube kubectl -- exec "$pod" -n gpupoet-dev -- sh -c "cd /app/packages/web-app && $cmd"
+}
+
+# Parse arguments
+if [[ $# -eq 0 ]]; then
+    help
+    exit 0
+fi
+
+cd "$workspace_root"
+
+check_minikube
+
+case $1 in
+    -h|--help)
+        help
+        exit 0
+        ;;
+    migrate)
+        shift
+        if [[ $# -eq 0 ]]; then
+            die "migrate requires a subcommand (dev, deploy, reset, status)"
+        fi
+        subcommand="$1"
+        shift
+        case $subcommand in
+            dev)
+                # Collect remaining args
+                args=""
+                while [[ $# -gt 0 ]]; do
+                    args="$args $1"
+                    shift
+                done
+                run_in_container "npx prisma migrate dev $args"
+                ;;
+            deploy)
+                run_in_container "npx prisma migrate deploy"
+                ;;
+            reset)
+                echo "WARNING: This will reset the database and delete all data!"
+                read -p "Are you sure? (yes/no): " confirm
+                if [[ "$confirm" != "yes" ]]; then
+                    echo "Aborted."
+                    exit 0
+                fi
+                run_in_container "npx prisma migrate reset --force"
+                ;;
+            status)
+                run_in_container "npx prisma migrate status"
+                ;;
+            *)
+                die "Unknown migrate subcommand: $subcommand"
+                ;;
+        esac
+        ;;
+    seed)
+        run_in_container "npx prisma db seed"
+        ;;
+    studio)
+        echo "Note: Prisma Studio will be available on port 5555"
+        echo "You may need to set up port forwarding separately."
+        run_in_container "npx prisma studio"
+        ;;
+    generate)
+        run_in_container "npx prisma generate"
+        ;;
+    *)
+        die "Unknown command: $1"
+        ;;
+esac
+
+echo ""
+echo "Done!"

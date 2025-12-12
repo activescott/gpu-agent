@@ -1,0 +1,50 @@
+metricSlug: quake-ii-rtx-fps-2560x1440
+benchmarkId: quake2rtx
+benchmarkName: Quake II RTX
+configuration: "pts/quake2rtx-1.6.x - Resolution: 2560 x 1440 - Global
+  Illumination: Medium - Denoiser: On - Ray Tracing API: VK_KHR_ray_query"
+configurationId: 23c9abc361d0fc045526d1e4e04e9013e391bfca
+metricName: Frames Per Second (Average)
+unit: FPS
+unitShortest: FPS
+description: Average FPS in Quake II RTX, NVIDIA's path-traced remaster of id
+  Software's 1997 classic. Uses real-time path tracing for all lighting,
+  reflections, and shadows. Open source (GPL v2) and supports cross-vendor
+  Vulkan ray tracing (VK_KHR_ray_query), enabling it to run on both NVIDIA and
+  AMD GPUs.
+descriptionDollarsPer: Dollars per FPS in Quake II RTX. Lower values indicate
+  better cost efficiency for ray tracing performance.
+category: gaming
+collectedSamples: 147
+updatedAt: 2025-12-12T06:10:45.086Z
+results:
+  - gpuNameRaw: NVIDIA GeForce RTX 3080 Ti
+    value: 105
+  - gpuNameRaw: NVIDIA GeForce RTX 3080
+    value: 94
+  - gpuNameRaw: NVIDIA GeForce RTX 3070 Ti
+    value: 75
+  - gpuNameRaw: NVIDIA GeForce RTX 3070
+    value: 68
+  - gpuNameRaw: NVIDIA GeForce RTX 2080 Ti
+    value: 63
+  - gpuNameRaw: NVIDIA GeForce RTX 3080 Laptop GPU + Intel UHD
+    value: 61
+  - gpuNameRaw: NVIDIA GeForce RTX 3060 Ti
+    value: 61
+  - gpuNameRaw: eVGA NVIDIA GeForce RTX 3060
+    value: 46
+  - gpuNameRaw: NVIDIA GeForce RTX 2070 SUPER
+    value: 43
+  - gpuNameRaw: Intel Arc A770
+    value: 41
+  - gpuNameRaw: AMD Radeon RX 7900 XT
+    value: 37
+  - gpuNameRaw: NVIDIA GeForce RTX 2060 SUPER
+    value: 37
+  - gpuNameRaw: NVIDIA GeForce RTX 2060
+    value: 31
+  - gpuNameRaw: AMD Radeon RX 6800 XT
+    value: 24
+  - gpuNameRaw: AMD Radeon RX 6800
+    value: 20

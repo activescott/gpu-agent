@@ -1,7 +1,6 @@
 import { stripIndents } from "common-tags"
 import { z } from "zod"
 import { GpuSpecsSchema } from "./specs"
-import { GpuBenchmarksSchema } from "./benchmarks"
 
 export const GpuSchema = z
   .object({
@@ -30,6 +29,5 @@ export const GpuSchema = z
     lastModified: z.coerce.date(),
   })
   .extend(GpuSpecsSchema.shape)
-  .extend(GpuBenchmarksSchema.shape)
 
 export type Gpu = z.infer<typeof GpuSchema>

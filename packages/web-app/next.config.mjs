@@ -40,38 +40,38 @@ const nextConfig = {
       },
       {
         source: "/ml/shop/gpu",
-        destination: "/gpu/price-compare/ai/cost-per-fp32-flops",
+        destination: "/gpu/price-compare/ai/fp32-flops",
         permanent: true,
       },
-      // Cost-per-performance pages (shop/performance -> price-compare/ai/cost-per)
+      // Cost-per-performance pages (shop/performance -> price-compare/ai)
       {
         source: "/ml/shop/gpu/performance/cost-per-fp32-flops",
-        destination: "/gpu/price-compare/ai/cost-per-fp32-flops",
+        destination: "/gpu/price-compare/ai/fp32-flops",
         permanent: true,
       },
       {
         source: "/ml/shop/gpu/performance/cost-per-tensor-core",
-        destination: "/gpu/price-compare/ai/cost-per-tensor-core",
+        destination: "/gpu/price-compare/ai/tensor-cores",
         permanent: true,
       },
       {
         source: "/ml/shop/gpu/performance/cost-per-fp16-flops",
-        destination: "/gpu/price-compare/ai/cost-per-fp16-flops",
+        destination: "/gpu/price-compare/ai/fp16-flops",
         permanent: true,
       },
       {
         source: "/ml/shop/gpu/performance/cost-per-int8-tops",
-        destination: "/gpu/price-compare/ai/cost-per-int8-tops",
+        destination: "/gpu/price-compare/ai/int8-tops",
         permanent: true,
       },
       {
         source: "/ml/shop/gpu/performance/cost-per-memory-gb",
-        destination: "/gpu/price-compare/ai/cost-per-memory-gb",
+        destination: "/gpu/price-compare/ai/memory-gb",
         permanent: true,
       },
       {
         source: "/ml/shop/gpu/performance/cost-per-memory-bandwidth-gbs",
-        destination: "/gpu/price-compare/ai/cost-per-memory-bandwidth-gbs",
+        destination: "/gpu/price-compare/ai/memory-bandwidth-gbs",
         permanent: true,
       },
       // Ranking pages (learn/gpu/ranking -> gpu/ranking/ai)
@@ -185,6 +185,88 @@ const nextConfig = {
       {
         source: "/ml/learn/models/dlrm-v2",
         destination: "/ml/learn/models/dlrm",
+        permanent: true,
+      },
+
+      // Price-compare slug migration: cost-per-* -> new DB slugs
+      // AI specs
+      {
+        source: "/gpu/price-compare/ai/cost-per-fp32-flops",
+        destination: "/gpu/price-compare/ai/fp32-flops",
+        permanent: true,
+      },
+      {
+        source: "/gpu/price-compare/ai/cost-per-fp16-flops",
+        destination: "/gpu/price-compare/ai/fp16-flops",
+        permanent: true,
+      },
+      // Alternative slug variants (tflops -> flops)
+      {
+        source: "/gpu/price-compare/ai/fp32-tflops",
+        destination: "/gpu/price-compare/ai/fp32-flops",
+        permanent: true,
+      },
+      {
+        source: "/gpu/price-compare/ai/fp16-tflops",
+        destination: "/gpu/price-compare/ai/fp16-flops",
+        permanent: true,
+      },
+      {
+        source: "/gpu/price-compare/ai/cost-per-fp32-tflops",
+        destination: "/gpu/price-compare/ai/fp32-flops",
+        permanent: true,
+      },
+      {
+        source: "/gpu/price-compare/ai/cost-per-fp16-tflops",
+        destination: "/gpu/price-compare/ai/fp16-flops",
+        permanent: true,
+      },
+      {
+        source: "/gpu/price-compare/ai/cost-per-tensor-core",
+        destination: "/gpu/price-compare/ai/tensor-cores",
+        permanent: true,
+      },
+      {
+        source: "/gpu/price-compare/ai/cost-per-int8-tops",
+        destination: "/gpu/price-compare/ai/int8-tops",
+        permanent: true,
+      },
+      {
+        source: "/gpu/price-compare/ai/cost-per-memory-gb",
+        destination: "/gpu/price-compare/ai/memory-gb",
+        permanent: true,
+      },
+      {
+        source: "/gpu/price-compare/ai/cost-per-memory-bandwidth-gbs",
+        destination: "/gpu/price-compare/ai/memory-bandwidth-gbs",
+        permanent: true,
+      },
+      // Gaming benchmarks
+      {
+        source: "/gpu/price-compare/gaming/cost-per-counter-strike-2-fps-3840x2160",
+        destination: "/gpu/price-compare/gaming/counter-strike-2-fps-3840x2160",
+        permanent: true,
+      },
+      {
+        source: "/gpu/price-compare/gaming/cost-per-counter-strike-2-fps-2560x1440",
+        destination: "/gpu/price-compare/gaming/counter-strike-2-fps-2560x1440",
+        permanent: true,
+      },
+      {
+        source: "/gpu/price-compare/gaming/cost-per-counter-strike-2-fps-1920x1080",
+        destination: "/gpu/price-compare/gaming/counter-strike-2-fps-1920x1080",
+        permanent: true,
+      },
+      {
+        // Old cost-per- URL redirects to resolution-specific URL
+        source: "/gpu/price-compare/gaming/cost-per-3dmark-wildlife-extreme-fps",
+        destination: "/gpu/price-compare/gaming/3dmark-wildlife-extreme-fps-3840x2160",
+        permanent: true,
+      },
+      {
+        // URL without resolution redirects to 4K version
+        source: "/gpu/price-compare/gaming/3dmark-wildlife-extreme-fps",
+        destination: "/gpu/price-compare/gaming/3dmark-wildlife-extreme-fps-3840x2160",
         permanent: true,
       },
     ]

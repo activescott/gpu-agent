@@ -30,6 +30,15 @@ export interface Listing {
   itemGroupType?: string | "SELLER_DEFINED_VARIATIONS" | null
 }
 
+/**
+ * Extended listing type that includes the metric value from GpuMetricValue.
+ * Used by queries that join with GpuMetricValue to get dynamic metric data.
+ */
+export interface ListingWithMetric extends Listing {
+  /** The metric value from GpuMetricValue table for the queried metric slug */
+  metricValue: number
+}
+
 export function convertEbayItemToListing(
   listing: ItemSummary,
   gpu: Gpu,

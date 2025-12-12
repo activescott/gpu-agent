@@ -30,40 +30,19 @@ describe("slug mapping functions", () => {
       )
     })
 
-    it("should map gaming slugs to metric keys", () => {
-      expect(
+    it("should throw error for gaming slugs (deprecated - use database)", () => {
+      expect(() =>
         mapSlugToMetric(
           "counter-strike-2-fps-3840x2160" as RankingSlug,
           "gaming",
         ),
-      ).toBe("counterStrike2Fps3840x2160")
-      expect(
-        mapSlugToMetric(
-          "counter-strike-2-fps-2560x1440" as RankingSlug,
-          "gaming",
-        ),
-      ).toBe("counterStrike2Fps2560x1440")
-      expect(
-        mapSlugToMetric(
-          "counter-strike-2-fps-1920x1080" as RankingSlug,
-          "gaming",
-        ),
-      ).toBe("counterStrike2Fps1920x1080")
-      expect(
-        mapSlugToMetric("3dmark-wildlife-extreme-fps" as RankingSlug, "gaming"),
-      ).toBe("threemarkWildLifeExtremeFps")
+      ).toThrow("Gaming slugs should use database-driven resolution")
     })
 
     it("should throw error for unknown slug", () => {
       expect(() =>
         mapSlugToMetric("invalid-slug" as RankingSlug, "ai"),
       ).toThrow("Unknown slug: invalid-slug for category ai")
-    })
-
-    it("should throw error for wrong category", () => {
-      expect(() =>
-        mapSlugToMetric("fp32-flops" as RankingSlug, "gaming"),
-      ).toThrow("Unknown slug: fp32-flops for category gaming")
     })
   })
 
@@ -79,28 +58,12 @@ describe("slug mapping functions", () => {
       )
     })
 
-    it("should reverse map gaming metric keys to slugs", () => {
-      expect(metricToSlug("counterStrike2Fps3840x2160", "gaming")).toBe(
-        "counter-strike-2-fps-3840x2160",
-      )
-      expect(metricToSlug("counterStrike2Fps2560x1440", "gaming")).toBe(
-        "counter-strike-2-fps-2560x1440",
-      )
-      expect(metricToSlug("counterStrike2Fps1920x1080", "gaming")).toBe(
-        "counter-strike-2-fps-1920x1080",
-      )
-      expect(metricToSlug("threemarkWildLifeExtremeFps", "gaming")).toBe(
-        "3dmark-wildlife-extreme-fps",
-      )
+    it("should return undefined for gaming metrics (deprecated - use database)", () => {
+      expect(metricToSlug("fp32TFLOPS", "gaming")).toBeUndefined()
     })
 
     it("should return undefined for unknown metric", () => {
       expect(metricToSlug("unknownMetric" as any, "ai")).toBeUndefined()
-    })
-
-    it("should return undefined for wrong category", () => {
-      expect(metricToSlug("fp32TFLOPS", "gaming")).toBeUndefined()
-      expect(metricToSlug("counterStrike2Fps3840x2160", "ai")).toBeUndefined()
     })
   })
 
@@ -110,15 +73,6 @@ describe("slug mapping functions", () => {
       for (const slug of aiSlugs) {
         const metric = mapSlugToMetric(slug, "ai")
         const backToSlug = metricToSlug(metric, "ai")
-        expect(backToSlug).toBe(slug)
-      }
-    })
-
-    it("should maintain slug identity through round-trip for gaming metrics", () => {
-      const gamingSlugs = listRankingSlugs("gaming")
-      for (const slug of gamingSlugs) {
-        const metric = mapSlugToMetric(slug, "gaming")
-        const backToSlug = metricToSlug(metric, "gaming")
         expect(backToSlug).toBe(slug)
       }
     })
@@ -136,21 +90,16 @@ describe("slug mapping functions", () => {
       expect(slugs).toHaveLength(6)
     })
 
-    it("should return all gaming slugs", () => {
+    it("should return empty for gaming (use database)", () => {
       const slugs = listRankingSlugs("gaming")
-      expect(slugs).toContain("counter-strike-2-fps-3840x2160")
-      expect(slugs).toContain("counter-strike-2-fps-2560x1440")
-      expect(slugs).toContain("counter-strike-2-fps-1920x1080")
-      expect(slugs).toContain("3dmark-wildlife-extreme-fps")
-      expect(slugs).toHaveLength(4)
+      expect(slugs).toHaveLength(0)
     })
   })
 
   describe("listBenchmarkSlugs", () => {
-    it("should return gaming slugs", () => {
+    it("should return empty (deprecated - use database)", () => {
       const benchmarkSlugs = listBenchmarkSlugs()
-      const gamingSlugs = listRankingSlugs("gaming")
-      expect(benchmarkSlugs).toEqual(gamingSlugs)
+      expect(benchmarkSlugs).toHaveLength(0)
     })
   })
 
@@ -161,12 +110,12 @@ describe("slug mapping functions", () => {
       expect(title).toContain("$")
     })
 
-    it("should generate correct title for gaming metrics", () => {
+    it("should generate generic title for gaming metrics", () => {
       const title = rankingTitle(
         "counter-strike-2-fps-3840x2160" as RankingSlug,
         "gaming",
       )
-      expect(title).toContain("FPS")
+      expect(title).toContain("Performance")
       expect(title).toContain("$")
     })
   })
@@ -179,7 +128,7 @@ describe("slug mapping functions", () => {
       expect(desc).toContain("FP32 TFLOPs")
     })
 
-    it("should generate correct description for gaming metrics", () => {
+    it("should generate generic description for gaming metrics", () => {
       const desc = rankingDescription(
         "counter-strike-2-fps-3840x2160" as RankingSlug,
         "gaming",

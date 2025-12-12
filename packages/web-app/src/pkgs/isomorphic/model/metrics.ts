@@ -1,10 +1,6 @@
 import { z } from "zod"
 import { GpuSpecKey, GpuSpecKeys, GpuSpecsDescription } from "./specs"
-import {
-  GpuBenchmarkKey,
-  GpuBenchmarkKeys,
-  GpuBenchmarksDescription,
-} from "./benchmarks"
+import { GpuBenchmarkKey, GpuBenchmarkKeys } from "./benchmarks"
 
 /**
  * Unified type for all GPU metrics (specs + benchmarks)
@@ -36,23 +32,6 @@ interface GpuMetricItem {
  */
 export const GpuMetricsDescription: Record<GpuMetricKey, GpuMetricItem> = {
   ...GpuSpecsDescription,
-  ...GpuBenchmarksDescription,
-}
-
-/**
- * Type guard to check if a metric key is a spec
- */
-export function isSpec(metricKey: GpuMetricKey): metricKey is GpuSpecKey {
-  return GpuSpecKeys.includes(metricKey as GpuSpecKey)
-}
-
-/**
- * Type guard to check if a metric key is a benchmark
- */
-export function isBenchmark(
-  metricKey: GpuMetricKey,
-): metricKey is GpuBenchmarkKey {
-  return GpuBenchmarkKeys.includes(metricKey as GpuBenchmarkKey)
 }
 
 /**
@@ -63,7 +42,9 @@ export function getMetricCategory(metricKey: GpuMetricKey): "ai" | "gaming" {
 }
 
 /**
- * Combined schema for all GPU metrics
+ * Combined schema for all GPU metrics (specs only).
+ * NOTE: Benchmark values are now stored in the GpuMetricValue table,
+ * not directly on the gpu table.
  */
 export const GpuMetricsSchema = z.object({
   // Specs
@@ -73,11 +54,6 @@ export const GpuMetricsSchema = z.object({
   int8TOPS: z.number().optional().nullable(),
   memoryCapacityGB: z.number(),
   memoryBandwidthGBs: z.number(),
-  // Benchmarks
-  counterStrike2Fps3840x2160: z.number().optional().nullable(),
-  counterStrike2Fps2560x1440: z.number().optional().nullable(),
-  counterStrike2Fps1920x1080: z.number().optional().nullable(),
-  threemarkWildLifeExtremeFps: z.number().optional().nullable(),
 })
 
 export type GpuMetrics = z.infer<typeof GpuMetricsSchema>

@@ -24,7 +24,8 @@ test.describe('Home Page', () => {
       
       // Look for listing items within this container
       // Listings are typically in cards, rows, or list items
-      const listings = container.locator('a[href*="/ml/shop/gpu/"], .listing-item, tr:has(a[href*="/ml/shop/gpu/"]), li:has(a[href*="/ml/shop/gpu/"])');
+      // Check both old (/ml/shop/gpu/) and new (/gpu/shop/, /gpu/price-compare/) URL patterns
+      const listings = container.locator('a[href*="/gpu/shop/"], a[href*="/gpu/price-compare/"], a[href*="/ml/shop/gpu/"], .listing-item, tr:has(a[href*="/gpu/shop/"]), li:has(a[href*="/gpu/shop/"])');
       const listingCount = await listings.count();
       
       // Get header text for better error messages

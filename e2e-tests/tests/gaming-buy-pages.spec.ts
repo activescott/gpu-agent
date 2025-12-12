@@ -1,9 +1,39 @@
 import { test, expect } from '@playwright/test';
 
 test.describe('Gaming Buy Pages', () => {
+  test('clicking Gaming Benchmarks category from AI page should not 404', async ({ page }) => {
+    // Start on an AI price-compare page
+    await page.goto('/gpu/price-compare/ai/fp32-flops');
+
+    // Wait for MetricSelector to load
+    const metricSelectorLabel = page.getByText('Compare GPUs by metric:');
+    await expect(metricSelectorLabel).toBeVisible();
+
+    // Click the "Gaming Benchmarks" category button
+    const gamingBenchmarksButton = page.locator('button.nav-link', { hasText: 'Gaming Benchmarks' });
+    await expect(gamingBenchmarksButton).toBeVisible();
+    await gamingBenchmarksButton.click();
+
+    // Wait for navigation
+    await page.waitForURL(/\/gpu\/price-compare\/gaming\//);
+
+    // Page should NOT show error (check visible text, not raw HTML which may contain 404 in script paths)
+    await expect(page.getByText('Application error')).not.toBeVisible();
+    await expect(page.getByText('Unknown slug')).not.toBeVisible();
+    await expect(page.getByText('This page could not be found')).not.toBeVisible();
+
+    // Should have navigated to a valid gaming benchmark page
+    const currentUrl = page.url();
+    expect(currentUrl).toContain('/gpu/price-compare/gaming/');
+
+    // Should have listing cards visible - this proves the page loaded correctly
+    const cards = page.locator('.card');
+    await expect(cards.first()).toBeVisible({ timeout: 10000 });
+  });
+
   test('should show gaming metrics (not AI specs) on gaming buy pages', async ({ page }) => {
-    // Navigate to a gaming buy page
-    await page.goto('/gpu/price-compare/gaming/cost-per-counter-strike-2-fps-3840x2160');
+    // Navigate to a gaming buy page (new canonical URL without cost-per- prefix)
+    await page.goto('/gpu/price-compare/gaming/counter-strike-2-fps-3840x2160');
 
     // Wait for page to load
     await expect(page).toHaveTitle(/Counter.*Strike.*2|Buy GPUs/i);
@@ -36,8 +66,8 @@ test.describe('Gaming Buy Pages', () => {
   });
 
   test('should not show AI metrics on gaming buy pages', async ({ page }) => {
-    // Navigate to a gaming buy page
-    await page.goto('/gpu/price-compare/gaming/cost-per-3dmark-wildlife-extreme-fps');
+    // Navigate to a gaming buy page (use resolution-specific URL)
+    await page.goto('/gpu/price-compare/gaming/3dmark-wildlife-extreme-fps-3840x2160');
 
     // Wait for page to load
     await expect(page).toHaveTitle(/3DMark|Buy GPUs/i);
@@ -72,11 +102,12 @@ test.describe('Gaming Buy Pages', () => {
   });
 
   test('should show valid numeric values on all gaming buy pages', async ({ page }) => {
+    // New canonical URLs (without cost-per- prefix, with resolution)
     const gamingBuyPages = [
-      '/gpu/price-compare/gaming/cost-per-counter-strike-2-fps-3840x2160',
-      '/gpu/price-compare/gaming/cost-per-counter-strike-2-fps-2560x1440',
-      '/gpu/price-compare/gaming/cost-per-counter-strike-2-fps-1920x1080',
-      '/gpu/price-compare/gaming/cost-per-3dmark-wildlife-extreme-fps',
+      '/gpu/price-compare/gaming/counter-strike-2-fps-3840x2160',
+      '/gpu/price-compare/gaming/counter-strike-2-fps-2560x1440',
+      '/gpu/price-compare/gaming/counter-strike-2-fps-1920x1080',
+      '/gpu/price-compare/gaming/3dmark-wildlife-extreme-fps-3840x2160',
     ];
 
     for (const pagePath of gamingBuyPages) {
@@ -109,12 +140,12 @@ test.describe('Gaming Buy Pages', () => {
   test('should show correct metric for each gaming buy page', async ({ page }) => {
     const testCases = [
       {
-        path: '/gpu/price-compare/gaming/cost-per-counter-strike-2-fps-3840x2160',
+        path: '/gpu/price-compare/gaming/counter-strike-2-fps-3840x2160',
         expectedMetric: 'FPS',
         title: /Counter.*Strike.*2.*4K|3840x2160/i,
       },
       {
-        path: '/gpu/price-compare/gaming/cost-per-3dmark-wildlife-extreme-fps',
+        path: '/gpu/price-compare/gaming/3dmark-wildlife-extreme-fps-3840x2160',
         expectedMetric: 'FPS',
         title: /3DMark.*Wild.*Life/i,
       },
@@ -139,6 +170,34 @@ test.describe('Gaming Buy Pages', () => {
         // Verify it shows the expected metric unit
         expect(metricText).toContain(testCase.expectedMetric);
       }
+    }
+  });
+
+  test('should redirect old cost-per-* gaming URLs to new slugs', async ({ page }) => {
+    // Test that old URLs redirect to new canonical URLs
+    const redirectTests = [
+      {
+        oldPath: '/gpu/price-compare/gaming/cost-per-counter-strike-2-fps-3840x2160',
+        expectedPath: '/gpu/price-compare/gaming/counter-strike-2-fps-3840x2160',
+      },
+      {
+        // Note: old URL without resolution redirects to URL with resolution
+        oldPath: '/gpu/price-compare/gaming/cost-per-3dmark-wildlife-extreme-fps',
+        expectedPath: '/gpu/price-compare/gaming/3dmark-wildlife-extreme-fps-3840x2160',
+      },
+    ];
+
+    for (const testCase of redirectTests) {
+      await page.goto(testCase.oldPath);
+
+      // Should have been redirected to new URL
+      const currentUrl = page.url();
+      expect(currentUrl).toContain(testCase.expectedPath);
+
+      // Page should load without error
+      const pageContent = await page.content();
+      expect(pageContent).not.toContain('Unknown slug');
+      expect(pageContent).not.toContain('Application error');
     }
   });
 });

@@ -52,7 +52,7 @@ export default async function Page() {
               </Link>
             </li>
             <li>
-              <Link href="/gpu/price-compare/ai/cost-per-fp32-flops">
+              <Link href="/gpu/price-compare/ai/fp32-flops">
                 Shop GPUs by AI Performance
               </Link>
             </li>

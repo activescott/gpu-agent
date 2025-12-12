@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+this_dir=$(cd $(dirname "$0"); pwd) # this script's directory
+this_script=$(basename $0)
+this_script_base=$(basename "$0" .sh)
+workspace_root=`cd $this_dir/..; pwd` # <- CHANGE THIS
+
+#-e: Exits immediately if any command returns a non-zero status (i.e., fails)
+#-u: Treats unset variables as errors and exits immediately
+#-o pipefail: If any command in a pipeline fails, the entire pipeline fails
+#-x enable debugging mode, which will cause it to echo all commands in a shell script.
+set -euox pipefail
+
+
+#TODO: MOVE to cd "$workspace_root/tests/e2e"
+#cd "$workspace_root/tests/e2e"
+cd "$workspace_root/e2e-tests"
+
+echo "NOTE: These tests take about 1.2 minutes to run. Feel free to sleep for 30-60 seconds at a time to check on them."
+
+npm run test -- "$@"

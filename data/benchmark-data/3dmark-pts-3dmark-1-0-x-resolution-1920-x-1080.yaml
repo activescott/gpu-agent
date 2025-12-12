@@ -1,8 +1,20 @@
+metricSlug: 3dmark-wildlife-extreme-fps-1920x1080
 benchmarkId: 3dmark
 benchmarkName: 3DMark Wild Life Extreme
 configuration: "pts/3dmark-1.0.x - Resolution: 1920 x 1080"
 configurationId: 251684d1fa3c186574f1dd35f0bee61979b0c293
 metricName: Frames Per Second (Average)
+unit: FPS
+unitShortest: FPS
+description: Average FPS in 3DMark Wild Life Extreme, a cross-platform GPU
+  benchmark by UL Benchmarks. Renders at 4K (3840x2160) using Vulkan on
+  Windows/Android, Metal on iOS/Mac, and DirectX 12 on Windows ARM. Enables
+  direct performance comparisons across desktop, laptop, and mobile devices.
+descriptionDollarsPer: Dollars per FPS in 3DMark Wild Life Extreme. Lower values
+  indicate better cost efficiency for GPU rendering performance.
+category: gaming
+collectedSamples: 543
+updatedAt: 2025-12-12T06:06:10.483Z
 results:
   - gpuNameRaw: NVIDIA GeForce RTX 4090
     value: 966
@@ -64,8 +76,6 @@ results:
     value: 300
   - gpuNameRaw: Gigabyte AMD Radeon RX 6600
     value: 290
-  - gpuNameRaw: Median
-    value: 290
   - gpuNameRaw: Intel Arc A580 DG2
     value: 282
   - gpuNameRaw: AMD Radeon PRO W7600
@@ -94,4 +104,3 @@ results:
     value: 45
   - gpuNameRaw: Intel Iris Plus ICL GT2
     value: 28
-scrapedAt: 2025-11-22T03:43:56.089Z

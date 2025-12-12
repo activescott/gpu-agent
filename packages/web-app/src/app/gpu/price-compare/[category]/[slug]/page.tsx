@@ -1,14 +1,12 @@
-import { ListingGallery } from "@/pkgs/client/components/ListingGallery"
-import { topNListingsByCostPerformance } from "@/pkgs/server/db/ListingRepository"
+import { ListingGalleryWithMetric } from "@/pkgs/client/components/ListingGalleryWithMetric"
+import { topNListingsByCostPerformanceBySlug } from "@/pkgs/server/db/ListingRepository"
 import {
-  BuySlug,
-  mapSlugToPageDescription,
-  mapSlugToPageTitle,
-  mapSlugToMetric,
-  canonicalPathForSlug,
-} from "../../slugs"
-import { PriceCompareMetricSelector } from "./PriceCompareMetricSelector"
+  getAllMetricDefinitions,
+  getMetricDefinitionBySlug,
+} from "@/pkgs/server/db/GpuRepository"
+import { MetricSelector } from "@/pkgs/client/components/MetricSelector"
 import { createDiag } from "@activescott/diag"
+import { notFound } from "next/navigation"
 
 const log = createDiag("shopping-agent:gpu:price-compare:category:slug")
 
@@ -25,16 +23,27 @@ type CostPerMetricParams = {
 export async function generateMetadata(props: CostPerMetricParams) {
   const params = await props.params
   const { category, slug } = params
-  const categoryTyped = category as "ai" | "gaming"
-  const slugTyped = slug as BuySlug
 
   log.debug("generateMetadata for category", category, "slug", slug)
 
+  // Look up metric definition from database - uses slug directly with GpuMetricValue
+  const metricDef = await getMetricDefinitionBySlug(slug)
+  if (!metricDef) {
+    return {
+      title: "Not Found",
+      description: "Metric not found",
+    }
+  }
+
+  const title = `Compare GPU Prices by ${metricDef.name}`
+  const description =
+    metricDef.descriptionDollarsPer || `Compare GPU Prices by ${metricDef.name}`
+
   return {
-    title: mapSlugToPageTitle(slugTyped, categoryTyped),
-    description: mapSlugToPageDescription(slugTyped, categoryTyped),
+    title,
+    description,
     alternates: {
-      canonical: `https://gpupoet.com${canonicalPathForSlug(slugTyped, categoryTyped)}`,
+      canonical: `https://gpupoet.com/gpu/price-compare/${category}/${slug}`,
     },
   }
 }
@@ -42,25 +51,64 @@ export async function generateMetadata(props: CostPerMetricParams) {
 export default async function Page(props: CostPerMetricParams) {
   const params = await props.params
   const { category, slug } = params
-  const categoryTyped = category as "ai" | "gaming"
-  const slugTyped = slug as BuySlug
-  const metric = mapSlugToMetric(slugTyped, categoryTyped)
 
+  // Look up metric definition from database - uses slug directly with GpuMetricValue
+  const metricDef = await getMetricDefinitionBySlug(slug)
+  if (!metricDef) {
+    log.warn(`Unknown metric slug: ${slug} for category: ${category}`)
+    notFound()
+  }
+
+  // Verify category matches (optional validation)
+  if (metricDef.category !== category) {
+    log.warn(
+      `Metric ${slug} belongs to category ${metricDef.category}, not ${category}`,
+    )
+    // We allow it but could redirect if needed
+  }
+
+  // Fetch listings using slug directly (queries GpuMetricValue table)
   const TOP_N = 100
-  const topListings = await topNListingsByCostPerformance(metric, TOP_N)
+  const [topListings, allMetricDefinitions] = await Promise.all([
+    topNListingsByCostPerformanceBySlug(slug, TOP_N),
+    getAllMetricDefinitions(),
+  ])
+
   const mapped = topListings.map((listing) => ({
-    specs: listing.gpu,
     item: listing,
   }))
 
+  // Prepare metric definitions for the selector
+  // All metrics with values in GpuMetricValue are now supported
+  const metricDefinitionsForSelector = allMetricDefinitions.map((m) => ({
+    slug: m.slug,
+    name: m.name,
+    category: m.category,
+    metricType: m.metricType,
+    descriptionDollarsPer: m.descriptionDollarsPer,
+  }))
+
+  const categoryTyped = category as "ai" | "gaming"
+
+  // Build metric info for the gallery component
+  const metricInfo = {
+    slug: metricDef.slug,
+    name: metricDef.name,
+    category: metricDef.category as "ai" | "gaming",
+    unit: metricDef.unit,
+    unitShortest: metricDef.unitShortest,
+    descriptionDollarsPer: metricDef.descriptionDollarsPer,
+  }
+
   return (
     <>
-      <PriceCompareMetricSelector currentMetric={metric} />
-      <ListingGallery
-        listings={mapped}
-        initialSortKey={metric}
-        hideSort={true}
+      <MetricSelector
+        currentMetricSlug={slug}
+        metricDefinitions={metricDefinitionsForSelector}
+        currentCategory={categoryTyped}
+        basePath="/gpu/price-compare"
       />
+      <ListingGalleryWithMetric listings={mapped} metricInfo={metricInfo} />
     </>
   )
 }

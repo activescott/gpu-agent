@@ -24,7 +24,7 @@
  * ═══════════════════════════════════════════════════════════════════════════
  */
 
-import { Listing, Gpu } from "@/pkgs/isomorphic/model"
+import { Listing, ListingWithMetric, Gpu } from "@/pkgs/isomorphic/model"
 import { createDiag } from "@activescott/diag"
 import { PrismaClientWithinTransaction, prismaSingleton } from "./db"
 import { omit } from "lodash"
@@ -395,16 +395,21 @@ export async function getPriceStats(
 
 /**
  * Maps Prisma TypeScript field names to actual database column names.
- * Some fields use @map in the schema (e.g., threemarkWildLifeExtremeFps -> 3dmarkWildLifeExtremeFps)
+ * Currently no spec fields use @map, so this just returns the field name.
+ * Kept for future flexibility if needed.
  */
 function prismaFieldToDbColumn(fieldName: GpuMetricKey): string {
-  // Handle fields that use @map in the Prisma schema
-  if (fieldName === "threemarkWildLifeExtremeFps") {
-    return "3dmarkWildLifeExtremeFps"
-  }
   return fieldName
 }
 
+/**
+ * DEPRECATED: Use topNListingsByCostPerformanceBySlug instead.
+ *
+ * This function queries GPU table fields directly, which requires hardcoded
+ * field mappings. The new function uses GpuMetricValue table instead.
+ *
+ * @deprecated Will be removed when GPU table benchmark fields are removed
+ */
 export async function topNListingsByCostPerformance(
   spec: GpuMetricKey,
   n: number,
@@ -487,10 +492,104 @@ export async function topNListingsByCostPerformance(
         int8TOPS: row.int8TOPS,
         memoryCapacityGB: row.memoryCapacityGB,
         memoryBandwidthGBs: row.memoryBandwidthGBs,
-        counterStrike2Fps3840x2160: row.counterStrike2Fps3840x2160,
-        counterStrike2Fps2560x1440: row.counterStrike2Fps2560x1440,
-        counterStrike2Fps1920x1080: row.counterStrike2Fps1920x1080,
-        threemarkWildLifeExtremeFps: row.threemarkWildLifeExtremeFps,
+      } satisfies Gpu,
+    }
+
+    return listing
+  })
+}
+
+/**
+ * Returns top N listings ordered by cost per performance using GpuMetricValue.
+ *
+ * This is the new implementation that uses the dynamic GpuMetricValue table
+ * instead of hardcoded GPU table fields. It allows querying any metric
+ * (spec or benchmark) by its slug without requiring schema changes.
+ *
+ * @param metricSlug - The metric slug (e.g., "fp32-flops", "counter-strike-2-fps-3840x2160")
+ * @param n - Number of listings to return
+ * @param prisma - Prisma client
+ * @returns Listings ordered by cost/performance (lowest $/metric first)
+ */
+export async function topNListingsByCostPerformanceBySlug(
+  metricSlug: string,
+  n: number,
+  prisma: PrismaClientWithinTransaction = prismaSingleton,
+): Promise<ListingWithMetric[]> {
+  // Query listings joined with GpuMetricValue to get cost/performance ordering
+  // We join through gpu to get all GPU fields needed for the Listing.gpu object
+  const result = await prisma.$queryRaw<
+    (Prisma.$ListingPayload["scalars"] &
+      Prisma.$gpuPayload["scalars"] & { metricValue: number })[]
+  >(Prisma.sql`
+    SELECT
+      l.*,
+      g.*,
+      mv."value" as "metricValue"
+    FROM "Listing" l
+    INNER JOIN "gpu" g ON l."gpuName" = g."name"
+    INNER JOIN "GpuMetricValue" mv ON g."name" = mv."gpuName"
+    WHERE l."archived" = false
+      AND mv."metricSlug" = ${metricSlug}
+      AND mv."value" > 0
+    ORDER BY (l."priceValue"::float / mv."value"::float)
+    LIMIT ${n}
+  `)
+
+  return result.map((row): ListingWithMetric => {
+    // Construct the ListingWithMetric object with all fields explicitly mapped
+    const listing: ListingWithMetric = {
+      // Listing fields
+      itemId: row.itemId,
+      title: row.title,
+      priceValue: row.priceValue,
+      priceCurrency: row.priceCurrency,
+      buyingOptions: row.buyingOptions,
+      imageUrl: row.imageUrl,
+      adultOnly: row.adultOnly,
+      itemHref: row.itemHref,
+      leafCategoryIds: row.leafCategoryIds,
+      listingMarketplaceId: row.listingMarketplaceId,
+      sellerUsername: row.sellerUsername,
+      sellerFeedbackPercentage: row.sellerFeedbackPercentage,
+      sellerFeedbackScore: row.sellerFeedbackScore,
+      condition: row.condition,
+      conditionId: row.conditionId,
+      itemAffiliateWebUrl: row.itemAffiliateWebUrl,
+      thumbnailImageUrl: row.thumbnailImageUrl,
+      epid: row.epid,
+      itemCreationDate: row.itemCreationDate,
+      itemLocationCountry: row.itemLocationCountry,
+      itemGroupType: row.itemGroupType,
+      // The metric value from GpuMetricValue for the queried metric slug
+      metricValue: row.metricValue,
+      // GPU object - note: we include legacy fields for backwards compatibility
+      // but the metric value is retrieved from GpuMetricValue, not GPU table
+      gpu: {
+        // Required fields
+        name: row.name,
+        label: row.label,
+        gpuArchitecture: row.gpuArchitecture,
+        supportedHardwareOperations: row.supportedHardwareOperations,
+        summary: row.summary,
+        references: row.references,
+        lastModified: row.lastModified,
+        // Optional fields
+        series: (row as Record<string, unknown>).series as
+          | string
+          | null
+          | undefined,
+        supportedCUDAComputeCapability:
+          row.supportedCUDAComputeCapability ?? undefined,
+        maxTDPWatts: row.maxTDPWatts ?? undefined,
+        releaseDate: row.releaseDate ?? undefined,
+        // GPU spec metrics from the GPU table
+        fp32TFLOPS: row.fp32TFLOPS,
+        tensorCoreCount: row.tensorCoreCount,
+        fp16TFLOPS: row.fp16TFLOPS,
+        int8TOPS: row.int8TOPS,
+        memoryCapacityGB: row.memoryCapacityGB,
+        memoryBandwidthGBs: row.memoryBandwidthGBs,
       } satisfies Gpu,
     }
 

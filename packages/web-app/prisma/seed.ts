@@ -4,6 +4,7 @@ import yaml from "yaml"
 import _ from "lodash"
 import path from "path"
 import fs from "fs/promises"
+import { z } from "zod"
 import { GpuSchema } from "@/pkgs/isomorphic/model"
 import * as dotenv from "dotenv"
 import { NewsArticle, NewsArticleSchema } from "@/pkgs/isomorphic/model/news"
@@ -14,13 +15,63 @@ dotenv.config({ path: path.join(__dirname, "../.env.local") })
 
 const { isNil } = _
 
+// Schema for spec metric definitions from specs.yaml
+const SpecMetricDefinitionSchema = z.object({
+  slug: z.string(),
+  name: z.string(),
+  category: z.enum(["ai", "gaming"]),
+  metricType: z.literal("spec"),
+  unit: z.string(),
+  unitShortest: z.string(),
+  description: z.string(),
+  descriptionDollarsPer: z.string(),
+  gpuField: z.string(),
+})
+
+const SpecsYamlSchema = z.object({
+  metrics: z.array(SpecMetricDefinitionSchema),
+})
+
+// Schema for benchmark data from YAML files
+const BenchmarkDataSchema = z.object({
+  // PRIMARY IDENTIFIER - URL-friendly slug used throughout the web app
+  // Format: {game-name}-fps-{resolution} (e.g., "counter-strike-2-fps-3840x2160")
+  metricSlug: z.string(),
+  // GROUPING IDENTIFIER - Short ID for the benchmark program/game
+  benchmarkId: z.string(),
+  benchmarkName: z.string(),
+  configuration: z.string(),
+  // SOURCE PROVENANCE - OpenBenchmarking's internal configuration ID
+  configurationId: z.string(),
+  metricName: z.string(),
+  unit: z.string(),
+  unitShortest: z.string(),
+  description: z.string(),
+  descriptionDollarsPer: z.string(),
+  category: z.enum(["ai", "gaming"]),
+  collectedSamples: z.number(),
+  updatedAt: z.string(),
+  results: z.array(
+    z.object({
+      gpuNameRaw: z.string(),
+      gpuNameMapped: z.string().optional(),
+      value: z.number(),
+    }),
+  ),
+})
+
+type BenchmarkData = z.infer<typeof BenchmarkDataSchema>
+
 async function main() {
   const prisma = new PrismaClient()
 
   try {
     await seedNews(prisma)
     await seedGpus(prisma)
-    await seedBenchmarks(prisma)
+    // Note: seedBenchmarks() has been removed - benchmark values are now
+    // stored in the GpuMetricValue table and seeded via seedGpuMetricValues()
+    await seedMetricDefinitions(prisma)
+    await seedGpuMetricValues(prisma)
   } catch (error) {
     console.error(error)
     throw new Error("Error seeding data", { cause: error })
@@ -194,171 +245,317 @@ async function seedGpus(prisma: PrismaClient): Promise<void> {
   }
 }
 
-async function seedBenchmarks(prisma: PrismaClient): Promise<void> {
-  const benchmarkDataDir = path.resolve(
-    __dirname,
-    "../../../data/benchmark-data",
+/**
+ * Extract resolution label from benchmark configuration string
+ * e.g., "pts/cs2-1.0.x - Resolution: 3840 x 2160" -> "(4K)"
+ */
+function extractResolutionLabel(configuration: string): string {
+  const resolutionMatch = configuration.match(
+    /resolution:\s*(\d+)\s*x\s*(\d+)/i,
   )
-  console.info(`seeding benchmarks from ${benchmarkDataDir}...`)
+  if (!resolutionMatch) return ""
 
-  // Load GPU name mappings
-  const mappingFilePath = path.join(benchmarkDataDir, "gpu-name-mapping.yaml")
-  let gpuNameMappings: Record<string, string> = {}
+  const width = Number.parseInt(resolutionMatch[1], 10)
+  const height = Number.parseInt(resolutionMatch[2], 10)
+
+  if (width === 3840 && height === 2160) return "(4K)"
+  if (width === 2560 && height === 1440) return "(1440p)"
+  if (width === 1920 && height === 1080) return "(1080p)"
+  return `(${width}x${height})`
+}
+
+// NOTE: generateBenchmarkSlug() and getBenchmarkGpuField() have been removed.
+// Benchmark slugs are now read directly from the metricSlug field in YAML files.
+// Benchmark values are stored in GpuMetricValue, not in GPU table fields.
+// See data/benchmark-data/benchmark-data.schema.json for field documentation.
+
+/**
+ * Seed MetricDefinition records from both specs.yaml and benchmark data files
+ */
+async function seedMetricDefinitions(prisma: PrismaClient): Promise<void> {
+  console.info("Seeding metric definitions...")
+
+  // Load spec definitions
+  const specsFilePath = path.resolve(
+    __dirname,
+    "../../../data/metric-definitions/specs.yaml",
+  )
+  let specDefinitions: z.infer<typeof SpecMetricDefinitionSchema>[] = []
+
   try {
-    const mappingContent = await fs.readFile(mappingFilePath, "utf8")
-    gpuNameMappings = yaml.parse(mappingContent) as Record<string, string>
+    const specsContent = await fs.readFile(specsFilePath, "utf8")
+    const specsData = SpecsYamlSchema.parse(yaml.parse(specsContent))
+    specDefinitions = specsData.metrics
     console.log(
-      `Loaded ${Object.keys(gpuNameMappings).length} GPU name mappings from ${mappingFilePath}`,
+      `Loaded ${specDefinitions.length} spec definitions from ${specsFilePath}`,
     )
   } catch (error) {
     if ((error as NodeJS.ErrnoException).code === "ENOENT") {
-      console.warn(`GPU name mapping file not found: ${mappingFilePath}`)
-      console.warn(
-        "Continuing without mappings. GPUs will only be matched by exact name.",
-      )
+      console.warn(`Spec definitions file not found: ${specsFilePath}`)
     } else {
       throw error
     }
   }
 
+  // Upsert spec definitions
+  for (const spec of specDefinitions) {
+    await prisma.metricDefinition.upsert({
+      where: { slug: spec.slug },
+      update: {
+        name: spec.name,
+        category: spec.category,
+        metricType: spec.metricType,
+        unit: spec.unit,
+        unitShortest: spec.unitShortest,
+        description: spec.description,
+        descriptionDollarsPer: spec.descriptionDollarsPer,
+        gpuField: spec.gpuField,
+      },
+      create: {
+        slug: spec.slug,
+        name: spec.name,
+        category: spec.category,
+        metricType: spec.metricType,
+        unit: spec.unit,
+        unitShortest: spec.unitShortest,
+        description: spec.description,
+        descriptionDollarsPer: spec.descriptionDollarsPer,
+        gpuField: spec.gpuField,
+      },
+    })
+    console.log(`Upserted spec metric definition: ${spec.slug}`)
+  }
+
+  // Load benchmark definitions from benchmark data files
+  const benchmarkDataDir = path.resolve(
+    __dirname,
+    "../../../data/benchmark-data",
+  )
   let benchmarkFiles: string[]
+
   try {
     const filesUnfiltered = await fs.readdir(benchmarkDataDir)
     benchmarkFiles = filesUnfiltered
-      .filter((file) => {
-        const isYaml =
+      .filter(
+        (file) =>
           file.endsWith(".yaml") &&
           file !== ".gitkeep" &&
-          file !== "gpu-name-mapping.yaml"
-        if (!isYaml && !file.startsWith(".")) {
-          console.warn(`Skipping file ${file} because it is not a YAML file`)
-        }
-        return isYaml
-      })
+          file !== "gpu-name-mapping.yaml",
+      )
       .map((file) => path.join(benchmarkDataDir, file))
   } catch (error) {
     if ((error as NodeJS.ErrnoException).code === "ENOENT") {
-      console.error(
-        `ERROR: Benchmark data directory does not exist: ${benchmarkDataDir}`,
-      )
-      console.error(
-        "Make sure the data submodule is checked out: git submodule update --init --recursive",
-      )
-      throw new Error("Benchmark data directory not found", { cause: error })
+      console.warn(`Benchmark data directory not found: ${benchmarkDataDir}`)
+      return
     }
     throw error
   }
 
-  if (benchmarkFiles.length === 0) {
-    console.error("ERROR: No benchmark YAML files found in", benchmarkDataDir)
-    console.error(
-      "Make sure the data submodule is checked out: git submodule update --init --recursive",
-    )
-    throw new Error("No benchmark data files found")
-  }
-
-  console.log(`Found ${benchmarkFiles.length} benchmark files`)
-
-  // Map benchmark file names to database field names
-  const benchmarkFieldMap: Record<string, string> = {
-    "counter-strike-2-fps-3840x2160": "counterStrike2Fps3840x2160",
-    "counter-strike-2-fps-2560x1440": "counterStrike2Fps2560x1440",
-    "counter-strike-2-fps-1920x1080": "counterStrike2Fps1920x1080",
-    "3dmark-wildlife-extreme-fps": "threemarkWildLifeExtremeFps",
-    // Scraped file name mappings:
-    "cs2-pts-cs2-1-0-x-resolution-3840-x-2160": "counterStrike2Fps3840x2160",
-    "cs2-pts-cs2-1-0-x-resolution-2560-x-1440": "counterStrike2Fps2560x1440",
-    "cs2-pts-cs2-1-0-x-resolution-1920-x-1080": "counterStrike2Fps1920x1080",
-    "3dmark-pts-3dmark-1-0-x-resolution-3840-x-2160":
-      "threemarkWildLifeExtremeFps",
-  }
+  // Track unique slugs to avoid duplicates
+  const seenSlugs = new Set<string>()
 
   for (const filePath of benchmarkFiles) {
-    const fileName = path.basename(filePath, ".yaml")
-    console.log(`Processing benchmark file: ${fileName}`)
-
     const contents = await fs.readFile(filePath, "utf8")
-    const benchmarkData = yaml.parse(contents) as {
-      benchmarkId: string
-      benchmarkName: string
-      results: Array<{
-        gpuNameRaw: string
-        gpuNameMapped?: string
-        value: number
-      }>
-    }
+    let benchmarkData: BenchmarkData
 
-    // Determine which field to update
-    const fieldName = benchmarkFieldMap[fileName]
-    if (!fieldName) {
-      console.warn(
-        `No field mapping found for ${fileName}, skipping. Add mapping to benchmarkFieldMap in seed.ts`,
-      )
+    try {
+      benchmarkData = BenchmarkDataSchema.parse(yaml.parse(contents))
+    } catch (error) {
+      console.warn(`Skipping invalid benchmark file ${filePath}:`, error)
       continue
     }
 
-    console.log(
-      `Updating ${benchmarkData.results.length} results for ${benchmarkData.benchmarkName}`,
-    )
+    // Use metricSlug from YAML file directly (no more algorithmic generation)
+    const slug = benchmarkData.metricSlug
 
-    // Update each GPU with the benchmark value
-    let updatedCount = 0
-    let skippedCount = 0
-    let unmappedCount = 0
-    const unmappedGpus: string[] = []
+    // Skip duplicates
+    if (seenSlugs.has(slug)) {
+      continue
+    }
+    seenSlugs.add(slug)
+
+    const resolutionLabel = extractResolutionLabel(benchmarkData.configuration)
+    const name = resolutionLabel
+      ? `${benchmarkData.benchmarkName} ${resolutionLabel}`
+      : benchmarkData.benchmarkName
+
+    // Benchmarks don't map to GPU table fields - values are stored in GpuMetricValue
+    await prisma.metricDefinition.upsert({
+      where: { slug },
+      update: {
+        name,
+        category: benchmarkData.category,
+        metricType: "benchmark",
+        unit: benchmarkData.unit,
+        unitShortest: benchmarkData.unitShortest,
+        description: benchmarkData.description,
+        descriptionDollarsPer: benchmarkData.descriptionDollarsPer,
+        benchmarkId: benchmarkData.benchmarkId,
+        benchmarkName: benchmarkData.benchmarkName,
+        configuration: benchmarkData.configuration,
+        configurationId: benchmarkData.configurationId,
+        gpuField: null,
+      },
+      create: {
+        slug,
+        name,
+        category: benchmarkData.category,
+        metricType: "benchmark",
+        unit: benchmarkData.unit,
+        unitShortest: benchmarkData.unitShortest,
+        description: benchmarkData.description,
+        descriptionDollarsPer: benchmarkData.descriptionDollarsPer,
+        benchmarkId: benchmarkData.benchmarkId,
+        benchmarkName: benchmarkData.benchmarkName,
+        configuration: benchmarkData.configuration,
+        configurationId: benchmarkData.configurationId,
+        gpuField: null,
+      },
+    })
+    console.log(`Upserted benchmark metric definition: ${slug}`)
+  }
+
+  console.info("Metric definitions seeding complete")
+}
+
+/**
+ * Seed GpuMetricValue records for both specs and benchmarks
+ */
+async function seedGpuMetricValues(prisma: PrismaClient): Promise<void> {
+  console.info("Seeding GPU metric values...")
+
+  // Get all metric definitions
+  const metricDefinitions = await prisma.metricDefinition.findMany()
+  const specDefinitions = metricDefinitions.filter(
+    (m) => m.metricType === "spec",
+  )
+  const benchmarkDefinitions = metricDefinitions.filter(
+    (m) => m.metricType === "benchmark",
+  )
+
+  // Get all GPUs
+  const gpus = await prisma.gpu.findMany()
+  console.log(
+    `Found ${gpus.length} GPUs and ${metricDefinitions.length} metric definitions`,
+  )
+
+  // Seed spec values from GPU records
+  let specValuesCount = 0
+  for (const gpu of gpus) {
+    for (const spec of specDefinitions) {
+      if (!spec.gpuField) continue
+
+      // Get the value from the GPU record using the gpuField mapping
+      const value = (gpu as Record<string, unknown>)[spec.gpuField]
+      if (value === null || value === undefined) continue
+
+      await prisma.gpuMetricValue.upsert({
+        where: {
+          gpuName_metricSlug: {
+            gpuName: gpu.name,
+            metricSlug: spec.slug,
+          },
+        },
+        update: { value: value as number },
+        create: {
+          gpuName: gpu.name,
+          metricSlug: spec.slug,
+          value: value as number,
+        },
+      })
+      specValuesCount++
+    }
+  }
+  console.log(`Upserted ${specValuesCount} spec metric values`)
+
+  // Load GPU name mappings for benchmarks
+  const benchmarkDataDir = path.resolve(
+    __dirname,
+    "../../../data/benchmark-data",
+  )
+  const mappingFilePath = path.join(benchmarkDataDir, "gpu-name-mapping.yaml")
+  let gpuNameMappings: Record<string, string> = {}
+
+  try {
+    const mappingContent = await fs.readFile(mappingFilePath, "utf8")
+    gpuNameMappings = yaml.parse(mappingContent) as Record<string, string>
+  } catch (error) {
+    if ((error as NodeJS.ErrnoException).code !== "ENOENT") {
+      throw error
+    }
+  }
+
+  // Get GPU names for quick lookup
+  const gpuNames = new Set(gpus.map((g) => g.name))
+
+  // Seed benchmark values from benchmark data files
+  let benchmarkValuesCount = 0
+  let benchmarkFiles: string[]
+
+  try {
+    const filesUnfiltered = await fs.readdir(benchmarkDataDir)
+    benchmarkFiles = filesUnfiltered
+      .filter(
+        (file) =>
+          file.endsWith(".yaml") &&
+          file !== ".gitkeep" &&
+          file !== "gpu-name-mapping.yaml",
+      )
+      .map((file) => path.join(benchmarkDataDir, file))
+  } catch {
+    console.warn("Could not read benchmark data directory")
+    return
+  }
+
+  for (const filePath of benchmarkFiles) {
+    const contents = await fs.readFile(filePath, "utf8")
+    let benchmarkData: BenchmarkData
+
+    try {
+      benchmarkData = BenchmarkDataSchema.parse(yaml.parse(contents))
+    } catch {
+      continue
+    }
+
+    // Use metricSlug from YAML file directly (no more algorithmic generation)
+    const slug = benchmarkData.metricSlug
+
+    // Check if this metric definition exists
+    const metricDef = benchmarkDefinitions.find((m) => m.slug === slug)
+    if (!metricDef) {
+      console.warn(`No metric definition found for slug: ${slug}`)
+      continue
+    }
 
     for (const result of benchmarkData.results) {
-      // Try to get mapped name from mapping file first, fallback to gpuNameMapped field (for backwards compatibility)
+      // Map GPU name
       const mappedName =
         gpuNameMappings[result.gpuNameRaw] || result.gpuNameMapped
 
-      if (!mappedName) {
-        skippedCount++
-        unmappedCount++
-        if (!unmappedGpus.includes(result.gpuNameRaw)) {
-          unmappedGpus.push(result.gpuNameRaw)
-        }
+      if (!mappedName || !gpuNames.has(mappedName)) {
         continue
       }
 
-      try {
-        await prisma.gpu.update({
-          where: { name: mappedName },
-          data: { [fieldName]: result.value },
-        })
-        updatedCount++
-      } catch (error) {
-        if ((error as { code?: string }).code === "P2025") {
-          // Record not found
-          console.warn(
-            `GPU not found in database: ${mappedName} (from ${result.gpuNameRaw})`,
-          )
-          skippedCount++
-        } else {
-          throw error
-        }
-      }
+      await prisma.gpuMetricValue.upsert({
+        where: {
+          gpuName_metricSlug: {
+            gpuName: mappedName,
+            metricSlug: slug,
+          },
+        },
+        update: { value: result.value },
+        create: {
+          gpuName: mappedName,
+          metricSlug: slug,
+          value: result.value,
+        },
+      })
+      benchmarkValuesCount++
     }
-
-    if (unmappedGpus.length > 0) {
-      console.warn(
-        `Unmapped GPUs found in benchmark data. To map these:\n` +
-          `  1. Check if a GPU spec file exists in data/gpu-data/ (e.g., nvidia-geforce-rtx-4070.yaml)\n` +
-          `  2. If a spec file exists, add a mapping to data/benchmark-data/gpu-name-mapping.yaml\n` +
-          `     using the spec file's name (without .yaml) as the slug value\n` +
-          `  3. If no spec file exists, consider creating one in data/gpu-data/ first\n` +
-          `  4. Chipset names (e.g., "Navi 48", "BMG G21") should map to their product GPU\n` +
-          `  5. Entries like "Median" are statistical values and can be ignored\n\n` +
-          `Unmapped GPUs:\n${unmappedGpus.map((name) => `  "${name}": "<gpu-spec-filename-without-yaml>"`).join("\n")}`,
-      )
-    }
-
-    console.log(
-      `Updated ${updatedCount} GPUs, skipped ${skippedCount} (${unmappedCount} unmapped, ${skippedCount - unmappedCount} not found in DB)`,
-    )
   }
+  console.log(`Upserted ${benchmarkValuesCount} benchmark metric values`)
 
-  console.info("Benchmark seeding complete")
+  console.info("GPU metric values seeding complete")
 }
 
 /* eslint-disable unicorn/prefer-top-level-await -- because this file's tsconfig is unexpected (maybe this could be fixed with another tsconfig in the same dir?) */

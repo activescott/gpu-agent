@@ -76,52 +76,54 @@ npm run dev:reset
 
 **Prerequisites:** Ensure minikube is running with `npm run dev`
 
-```bash
-# Access database directly
-minikube kubectl -- exec -it -n gpupoet-dev db-0 -- psql -U gpu_agent -d gpu_agent
+Use `scripts/prisma-migrate` to run Prisma commands. All Prisma commands must run inside the Kubernetes app container since database connections are only available there. This script takes care of that.
 
+```bash
 # Create and apply migration
-minikube kubectl -- exec -n gpupoet-dev deploy/app -- sh -c "cd /app/packages/web-app && npx prisma migrate dev --name migration_description"
+./scripts/prisma-migrate migrate dev --name migration_description
+
+# Run migrations (also runs automatically on container startup)
+./scripts/prisma-migrate migrate deploy
+
+# Reset database and re-run all migrations + seed
+./scripts/prisma-migrate migrate reset
+
+# Check migration status
+./scripts/prisma-migrate migrate status
+
+# Seed database (also runs automatically on container startup)
+./scripts/prisma-migrate seed
 
 # Generate Prisma client after schema changes
-minikube kubectl -- exec -n gpupoet-dev deploy/app -- sh -c "cd /app/packages/web-app && npx prisma generate"
+./scripts/prisma-migrate generate
 
-# Run migrations manually (migrations run automatically on container startup)
-minikube kubectl -- exec -n gpupoet-dev deploy/app -- sh -c "cd /app/packages/web-app && npx prisma migrate deploy"
-
-# Seed database manually (seeding also runs automatically on container startup)
-minikube kubectl -- exec -n gpupoet-dev deploy/app -- sh -c "cd /app/packages/web-app && npm run prisma-seed"
+# Access database directly
+minikube kubectl -- exec -it -n gpupoet-dev db-0 -- psql -U gpu_agent -d gpu_agent
 ```
-
-**Note:** All Prisma commands must be run inside the Kubernetes pod since the database connection strings are only available in the container environment.
 
 **Automatic Migration Behavior:** Migrations and seeding run automatically when containers start (via `docker/docker-entrypoint.sh`). This applies to both local development and Kubernetes production environments.
 
 ### Testing
 
+Use `scripts/test-e2e` to run e2e tests. This script handles setup and runs tests against the local dev environment.
+
 ```bash
-# Run e2e tests against localhost (default)
-cd e2e-tests
-npm install
-npx playwright install
-npm test
+# Run all e2e tests against localhost
+./scripts/test-e2e
+
+# Run specific test file
+./scripts/test-e2e tests/gpu-ranking.spec.ts
+
+# Run tests in headed mode (see browser)
+./scripts/test-e2e --headed
 
 # Run e2e tests against production (gpupoet.com)
-npm run test:prod
-
-# Run e2e tests in headed mode (see browser)
-npm run test:headed
-
-# Run specific test
-npx playwright test tests/historical-data.spec.ts
-
-# Run tests against custom environment
-BASE_URL=https://staging.example.com npm test
+cd e2e-tests && npm run test:prod
 ```
 
 **Verifying Infrastructure Changes:** When modifying Docker or Kubernetes files (Dockerfiles, entrypoint scripts, k8s manifests, skaffold.yaml), always verify by:
 1. Running `npm run dev` and confirming the container starts
-2. Running `cd e2e-tests && npm test` to ensure the application functions correctly
+2. Running `./scripts/test-e2e` to ensure the application functions correctly
 
 ### Health Checks
 
@@ -190,9 +192,27 @@ This endpoint:
 - `/packages/web-app/prisma/migrations/` - Database migration files
 
 ### Data Locations
-- `/data/gpu-data/` - GPU specification YAML files (CC BY-SA 4.0)
+- `/data/gpu-specs/` - GPU specification YAML files (CC BY-SA 4.0)
 - `/data/benchmark-data/` - Gaming benchmark YAML files (CC BY-SA 4.0)
+- `/data/metric-definitions/` - Metric metadata YAML files (units, descriptions)
 - `/data/news-data/` - News article YAML files (CC BY-SA 4.0)
+
+### Adding New Metrics (Specs or Benchmarks)
+
+**Important:** Do NOT hardcode benchmark names, spec names, or slug mappings in TypeScript code. All metric definitions are data-driven from YAML files and loaded into the database at seed time.
+
+**To add a new GPU spec metric:**
+1. Add the field to GPU spec YAML files in `/data/gpu-specs/`
+2. Add metadata to `/data/metric-definitions/specs.yaml` (slug, name, unit, description)
+3. Run `npx prisma db seed` (or restart the dev environment)
+
+**To add a new gaming benchmark:**
+1. Add benchmark YAML file to `/data/benchmark-data/`
+2. Map GPU names in `/data/benchmark-data/gpu-name-mapping.yaml`
+3. Add the field mapping in `prisma/seed.ts` (`benchmarkFieldMap` for GPU model field, `getBenchmarkGpuField` for slug-to-field mapping)
+4. Run `npx prisma db seed`
+
+The `MetricDefinition` table stores all metric metadata and the `gpuField` column maps URL slugs to TypeScript GPU model field names. This allows adding new metrics without code changes to routes or components.
 
 ### Working with Data Files
 

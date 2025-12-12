@@ -8,7 +8,8 @@ test.describe("New GPU Shop Routes", () => {
   })
 
   test("loads AI cost-per-performance page", async ({ page }) => {
-    await page.goto("/gpu/price-compare/ai/cost-per-fp32-flops")
+    // Use canonical URL format
+    await page.goto("/gpu/price-compare/ai/fp32-flops")
     await expect(page).toHaveTitle(/Compare GPU Prices/)
     // Check that listing cards are present
     await expect(page.locator("#listingContainer")).toBeVisible()
@@ -36,6 +37,41 @@ test.describe("New GPU Ranking Routes", () => {
     await expect(table).toBeVisible()
     // Check that there's at least one GPU name visible
     await expect(page.locator("body")).toContainText("NVIDIA")
+  })
+})
+
+test.describe("Gaming Benchmark Sorting", () => {
+  test("gaming benchmarks should be sorted consistently with configs grouped", async ({ page }) => {
+    // Navigate to a gaming ranking page
+    await page.goto("/gpu/ranking/gaming/counter-strike-2-fps-3840x2160")
+
+    // Wait for MetricSelector to load
+    const metricSelectorLabel = page.getByText("Compare GPUs by metric:")
+    await expect(metricSelectorLabel).toBeVisible()
+
+    // Click on Gaming Benchmarks category to make sure it's active
+    const gamingBenchmarksButton = page.locator("button.nav-link", { hasText: "Gaming Benchmarks" })
+    await expect(gamingBenchmarksButton).toBeVisible()
+    await gamingBenchmarksButton.click()
+
+    // Find all gaming benchmark links
+    const benchmarkLinks = page.locator(".nav-underline .nav-link[href*='/gpu/ranking/gaming/']")
+    const linkCount = await benchmarkLinks.count()
+
+    // Should have gaming benchmarks
+    expect(linkCount).toBeGreaterThan(0)
+
+    // Collect link names in display order
+    const displayedNames: string[] = []
+    for (let i = 0; i < linkCount; i++) {
+      const text = await benchmarkLinks.nth(i).textContent()
+      if (text) displayedNames.push(text.trim())
+    }
+
+    // Same benchmarks should be grouped together (e.g., all Counter-Strike configs together)
+    // Check that sorting by name puts configs together
+    const sortedNames = [...displayedNames].sort()
+    expect(displayedNames).toEqual(sortedNames)
   })
 })
 

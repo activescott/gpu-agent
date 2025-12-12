@@ -12,11 +12,11 @@ test.describe("Route Redirects", () => {
     expect(response?.status()).toBe(200)
   })
 
-  test("redirects /ml/shop/gpu to /gpu/price-compare/ai/cost-per-fp32-flops", async ({
+  test("redirects /ml/shop/gpu to /gpu/price-compare/ai/fp32-flops", async ({
     page,
   }) => {
     const response = await page.goto("/ml/shop/gpu", gotoOptions)
-    expect(response?.url()).toContain("/gpu/price-compare/ai/cost-per-fp32-flops")
+    expect(response?.url()).toContain("/gpu/price-compare/ai/fp32-flops")
   })
 
   test("redirects /ml/shop/gpu/performance/* to /gpu/price-compare/ai/*", async ({
@@ -26,7 +26,7 @@ test.describe("Route Redirects", () => {
       "/ml/shop/gpu/performance/cost-per-fp32-flops",
       gotoOptions,
     )
-    expect(response?.url()).toContain("/gpu/price-compare/ai/cost-per-fp32-flops")
+    expect(response?.url()).toContain("/gpu/price-compare/ai/fp32-flops")
   })
 
   test("redirects /ml/learn/gpu/ranking/* to /gpu/ranking/ai/*", async ({

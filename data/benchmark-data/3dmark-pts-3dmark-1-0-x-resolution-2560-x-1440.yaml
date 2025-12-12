@@ -1,8 +1,20 @@
+metricSlug: 3dmark-wildlife-extreme-fps-2560x1440
 benchmarkId: 3dmark
 benchmarkName: 3DMark Wild Life Extreme
 configuration: "pts/3dmark-1.0.x - Resolution: 2560 x 1440"
 configurationId: b24fc85be10edde0957d4ec227215a964f480db0
 metricName: Frames Per Second (Average)
+unit: FPS
+unitShortest: FPS
+description: Average FPS in 3DMark Wild Life Extreme, a cross-platform GPU
+  benchmark by UL Benchmarks. Renders at 4K (3840x2160) using Vulkan on
+  Windows/Android, Metal on iOS/Mac, and DirectX 12 on Windows ARM. Enables
+  direct performance comparisons across desktop, laptop, and mobile devices.
+descriptionDollarsPer: Dollars per FPS in 3DMark Wild Life Extreme. Lower values
+  indicate better cost efficiency for GPU rendering performance.
+category: gaming
+collectedSamples: 241
+updatedAt: 2025-12-12T06:07:39.108Z
 results:
   - gpuNameRaw: ASUS NVIDIA GeForce RTX 5090
     value: 867
@@ -40,8 +52,6 @@ results:
     value: 311
   - gpuNameRaw: NVIDIA GeForce RTX 3070 Ti
     value: 310
-  - gpuNameRaw: Median
-    value: 303
   - gpuNameRaw: NVIDIA RTX 4000 Ada Generation
     value: 285
   - gpuNameRaw: NVIDIA GeForce RTX 3070
@@ -78,4 +88,3 @@ results:
     value: 105
   - gpuNameRaw: NVIDIA RTX A1000
     value: 92
-scrapedAt: 2025-11-22T03:44:12.474Z

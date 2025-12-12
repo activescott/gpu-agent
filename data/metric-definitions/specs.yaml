@@ -1,0 +1,62 @@
+# GPU Spec Metric Definitions
+# These metrics represent hardware specifications that are extracted from GPU spec YAML files
+metrics:
+  - slug: tensor-cores
+    name: Tensor Core Count
+    category: ai
+    metricType: spec
+    unit: Tensor Cores
+    unitShortest: Cores
+    description: Tensor Cores are processors that perform efficient matrix multiplication, and are very useful for deep neural networks.
+    descriptionDollarsPer: How much you pay per tensor core. Lower is better.
+    gpuField: tensorCoreCount
+
+  - slug: fp32-flops
+    name: FP32 TFLOPs
+    category: ai
+    metricType: spec
+    unit: FP32 TFLOPs
+    unitShortest: TFLOPs
+    description: The number of 32-bit floating-point operations per second the card can perform in trillions.
+    descriptionDollarsPer: Dollars per 32-bit floating-point operations per second indicates how much you pay for each trillion operations per second. Lower is better.
+    gpuField: fp32TFLOPS
+
+  - slug: fp16-flops
+    name: FP16 TFLOPs
+    category: ai
+    metricType: spec
+    unit: FP16 TFLOPs
+    unitShortest: TFLOPs
+    description: The number of 16-bit operations per second the card can perform in trillions.
+    descriptionDollarsPer: Dollars per 16-bit floating-point operations per second indicates how much you pay for each trillion operations per second. Lower is better
+    gpuField: fp16TFLOPS
+
+  - slug: int8-tops
+    name: Int8 TOPs
+    category: ai
+    metricType: spec
+    unit: Int8 TOPs
+    unitShortest: TOPs
+    description: The number of 8-bit operations per second the card can perform in trillions.
+    descriptionDollarsPer: Dollars per 8-bit integer operations per second indicates how much you pay for each trillion operations per second. Lower is better.
+    gpuField: int8TOPS
+
+  - slug: memory-gb
+    name: Memory Capacity (GB)
+    category: ai
+    metricType: spec
+    unit: GB
+    unitShortest: GB
+    description: The amount of memory the card has in gigabytes.
+    descriptionDollarsPer: Dollars-per-gigabyte is how much you pay for each GB of memory capacity. Lower is better.
+    gpuField: memoryCapacityGB
+
+  - slug: memory-bandwidth-gbs
+    name: Memory Bandwidth (GB/s)
+    category: ai
+    metricType: spec
+    unit: GB/s
+    unitShortest: GB/s
+    description: The rate that data can be transferred between memory and the processor in gigabytes per second.
+    descriptionDollarsPer: Dollars-per-gigabyte per-second is how much you're pay for each GBs of memory bandwidth. Lower is better.
+    gpuField: memoryBandwidthGBs

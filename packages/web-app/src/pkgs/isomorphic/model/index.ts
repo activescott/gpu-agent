@@ -7,10 +7,13 @@ export {
   type GpuMetricKey,
   GpuMetricKeys,
   GpuMetricsDescription,
-  isSpec,
-  isBenchmark,
   getMetricCategory,
 } from "./metrics"
+export {
+  type GpuBenchmarkKey,
+  GpuBenchmarkKeys,
+  type GpuBenchmarkItem,
+} from "./benchmarks"
 export { convertEbayItemToListing } from "./listing"
-export type { Listing } from "./listing"
+export type { Listing, ListingWithMetric } from "./listing"
 export type { NewsArticle } from "./news"

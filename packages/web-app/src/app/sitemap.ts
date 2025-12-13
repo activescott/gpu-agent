@@ -46,6 +46,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     gpuLearnSitemap(domain_url),
     rankingSitemap(domain_url),
     priceCompareSitemap(domain_url),
+    benchmarkLearnSitemap(domain_url),
     listCachedListingsGroupedByGpu(false, prismaSingleton),
   ])
   log.debug("Awaiting queries for sitemap generation complete.")
@@ -56,6 +57,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     gpuLearnEntries,
     rankingEntries,
     priceCompareEntries,
+    benchmarkLearnEntries,
     gpusAndListings,
   ] = awaitedQueries
 
@@ -70,6 +72,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     gpuLearnEntries,
     rankingEntries,
     priceCompareEntries,
+    benchmarkLearnEntries,
   ]
   const dynamicEntries: SitemapItem[] = dynamicEntryGroups.flat()
 
@@ -201,6 +204,28 @@ async function priceCompareSitemap(domain_url: string): Promise<SitemapItem[]> {
   })
 
   return priceCompareEntries
+}
+
+async function benchmarkLearnSitemap(
+  domain_url: string,
+): Promise<SitemapItem[]> {
+  const metricDefinitions = await listMetricDefinitions()
+
+  // Only gaming benchmarks have learn pages
+  const gamingMetrics = metricDefinitions.filter(
+    (metric) => metric.category === "gaming",
+  )
+
+  const benchmarkLearnEntries: SitemapItem[] = gamingMetrics.map((metric) => {
+    return {
+      url: `${domain_url}/gpu/learn/benchmark/gaming/${metric.slug}`,
+      changeFrequency: "monthly",
+      priority: 0.7,
+      lastModified: new Date(),
+    } satisfies SitemapItem
+  })
+
+  return benchmarkLearnEntries
 }
 
 function staticSitemap(domain_url: string): SitemapItem[] {

@@ -30,7 +30,7 @@ export async function generateMetadata(props: BenchmarkParams) {
     title: `${metric.name} - Gaming GPU Benchmark`,
     description: metric.description,
     alternates: {
-      canonical: `https://gpupoet.com/gpu/benchmark/gaming/${benchmark}`,
+      canonical: `https://gpupoet.com/gpu/learn/benchmark/gaming/${benchmark}`,
     },
   }
 }

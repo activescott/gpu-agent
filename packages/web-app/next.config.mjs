@@ -249,6 +249,12 @@ const nextConfig = {
         destination: "/gpu/price-compare/gaming/3dmark-wildlife-extreme-fps-3840x2160",
         permanent: true,
       },
+      // Gaming benchmark learn pages moved under /gpu/learn/
+      {
+        source: "/gpu/benchmark/gaming/:benchmark",
+        destination: "/gpu/learn/benchmark/gaming/:benchmark",
+        permanent: true,
+      },
     ]
   },
 

@@ -9,6 +9,9 @@ import { NextResponse } from "next/server"
  */
 // eslint-disable-next-line import/no-unused-modules
 export async function GET() {
+  console.warn(
+    "/api/health is deprecated. Use /api/health/liveness or /api/health/readiness instead.",
+  )
   return NextResponse.json(
     {
       status: "ok",

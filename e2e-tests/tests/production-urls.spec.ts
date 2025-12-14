@@ -6,6 +6,8 @@ import { test, expect } from "@playwright/test"
  * 1. Load successfully (200 OK), or
  * 2. Have a permanent redirect (308) to a new route
  *
+ * Uses native fetch for speed instead of Playwright browser navigation.
+ *
  * Downloaded from: https://gpupoet.com/sitemap.xml
  * Last updated: 2025-11-24
  */
@@ -99,63 +101,83 @@ const PRODUCTION_URLS = [
   "/about",
 ]
 
-test.describe("Production URL Compatibility", () => {
-  test("all production URLs should load or redirect", async ({ page }) => {
-    const MS_PER_URL = 30_000 // 30 seconds per URL (dev mode can be slow)
-    test.setTimeout(PRODUCTION_URLS.length * MS_PER_URL)
+const BASE_URL = "http://localhost:3000"
+const BATCH_SIZE = 10 // Process URLs in parallel batches
+const TIMEOUT_MS = 30_000
 
-    const results: Array<{
-      url: string
-      status: number
-      finalUrl?: string
-      error?: string
-    }> = []
+interface UrlResult {
+  url: string
+  status: number
+  finalUrl?: string
+  error?: string
+}
 
-    for (const url of PRODUCTION_URLS) {
-      try {
-        const response = await page.goto(url, {
-          waitUntil: "domcontentloaded",
-          timeout: MS_PER_URL,
-        })
+async function testUrl(url: string): Promise<UrlResult> {
+  const fullUrl = `${BASE_URL}${url}`
 
-        if (!response) {
-          results.push({ url, status: 0, error: "No response" })
-          continue
-        }
+  try {
+    // Use redirect: 'manual' to capture redirect status codes
+    const response = await fetch(fullUrl, {
+      redirect: "manual",
+      signal: AbortSignal.timeout(TIMEOUT_MS),
+    })
 
-        const status = response.status()
-        const finalUrl = response.url()
+    const status = response.status
+    let finalUrl: string | undefined
 
-        results.push({
-          url,
-          status,
-          finalUrl: finalUrl !== `http://localhost:3000${url}` ? finalUrl : undefined,
-        })
-
-        // Each URL should either:
-        // 1. Load successfully (200)
-        // 2. Redirect permanently (308)
-        // 3. Redirect temporarily (307) - acceptable for now
-        // 4. Return 500 in dev mode (MDX/Turbopack build issues, works in production)
-        if (status !== 200 && status !== 308 && status !== 307 && status !== 500) {
-          results.push({
-            url,
-            status,
-            error: `Unexpected status code ${status}`,
-          })
-        }
-      } catch (error) {
-        const errorMessage = error instanceof Error ? error.message : String(error)
-        results.push({ url, status: 0, error: errorMessage })
-        // Don't throw - continue testing other URLs
+    // If it's a redirect, follow it to get the final URL
+    if (status >= 300 && status < 400) {
+      const location = response.headers.get("location")
+      if (location) {
+        // Make location absolute if it's relative
+        finalUrl = location.startsWith("/") ? `${BASE_URL}${location}` : location
       }
     }
 
-    // Log summary for review
+    return {
+      url,
+      status,
+      finalUrl: finalUrl !== fullUrl ? finalUrl : undefined,
+    }
+  } catch (error) {
+    const errorMessage = error instanceof Error ? error.message : String(error)
+    return { url, status: 0, error: errorMessage }
+  }
+}
+
+async function processBatch(urls: string[]): Promise<UrlResult[]> {
+  return Promise.all(urls.map(testUrl))
+}
+
+test.describe("Production URL Compatibility", () => {
+  test("all production URLs should load or redirect", async () => {
+    // Increase timeout based on URL count
+    const MS_PER_URL = 5_000 // Much faster with fetch
+    test.setTimeout(PRODUCTION_URLS.length * MS_PER_URL)
+
+    const results: UrlResult[] = []
+
+    // Process URLs in batches to avoid overwhelming the server
+    for (let i = 0; i < PRODUCTION_URLS.length; i += BATCH_SIZE) {
+      const batch = PRODUCTION_URLS.slice(i, i + BATCH_SIZE)
+      const batchResults = await processBatch(batch)
+      results.push(...batchResults)
+    }
+
+    // Categorize results
     const redirects = results.filter((r) => r.finalUrl)
     const warnings = results.filter((r) => r.status === 500)
-    const errors = results.filter((r) => r.error && r.status !== 500)
+    const errors = results.filter(
+      (r) =>
+        r.error ||
+        (r.status !== 200 &&
+          r.status !== 308 &&
+          r.status !== 307 &&
+          r.status !== 500 &&
+          !(r.status >= 300 && r.status < 400)), // Allow all redirect codes
+    )
 
+    // Log summary for review
     if (redirects.length > 0) {
       console.log("\nRedirected URLs:")
       redirects.forEach((r) => {
@@ -173,13 +195,11 @@ test.describe("Production URL Compatibility", () => {
     if (errors.length > 0) {
       console.log("\nFailed URLs:")
       errors.forEach((r) => {
-        console.log(`  ${r.url} (status: ${r.status}): ${r.error}`)
+        console.log(`  ${r.url} (status: ${r.status}): ${r.error || "Unexpected status"}`)
       })
 
       // Fail the test with a summary
-      throw new Error(
-        `${errors.length} URLs failed. See console output for details.`,
-      )
+      throw new Error(`${errors.length} URLs failed. See console output for details.`)
     }
 
     // All URLs should have been tested

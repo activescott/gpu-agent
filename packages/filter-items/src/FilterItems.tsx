@@ -1,5 +1,3 @@
-"use client"
-
 import { useCallback, type JSX } from "react"
 import type { FilterConfig, FilterState, FilterValue } from "./types"
 import { isCategoricalFilter, isNumericFilter } from "./types"

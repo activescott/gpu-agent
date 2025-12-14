@@ -1,5 +1,3 @@
-"use client"
-
 import type { JSX } from "react"
 import type { FilterConfig, FilterState } from "./types"
 import { getFilterSummary } from "./filterLogic"

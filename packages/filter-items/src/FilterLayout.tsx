@@ -1,6 +1,4 @@
-"use client"
-
-import { useState, useCallback, type JSX } from "react"
+import { useState, useCallback, type JSX, type ReactNode } from "react"
 import type { FilterConfig, FilterState } from "./types"
 import { ActiveFilterChips } from "./FilterSummary"
 import {
@@ -14,7 +12,7 @@ interface FilterLayoutProps {
   /** Filter panel content */
   filterPanel: JSX.Element
   /** Main content */
-  children: React.ReactNode
+  children: ReactNode
   /** Current filter state (for mobile summary) */
   filters: FilterState
   /** Filter configs (for mobile summary) */

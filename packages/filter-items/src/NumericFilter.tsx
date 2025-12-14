@@ -1,5 +1,3 @@
-"use client"
-
 import type { JSX, ChangeEvent } from "react"
 import type { FilterValue, NumericFilterConfig } from "./types"
 

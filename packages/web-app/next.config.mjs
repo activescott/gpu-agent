@@ -4,6 +4,9 @@ import createMDX from "@next/mdx"
 const nextConfig = {
   poweredByHeader: false,
 
+  // Transpile workspace packages that export TypeScript source files
+  transpilePackages: ["@activescott/filter-items"],
+
   // MDX configuration: https://nextjs.org/docs/app/building-your-application/configuring/mdx
   pageExtensions: ["mdx", "ts", "tsx"],
 

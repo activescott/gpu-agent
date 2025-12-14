@@ -1,4 +1,4 @@
-import debounce from "lodash/debounce"
+import debounce from "lodash-es/debounce"
 import type { FilterOperator, FilterState, FilterValue } from "./types"
 
 /**
@@ -144,7 +144,7 @@ function performURLUpdate(filters: FilterState): void {
   // Build new URL
   const newUrl = `${currentUrl.pathname}${newParams.toString() ? `?${newParams.toString()}` : ""}`
 
-  // Use history.replaceState to update URL without triggering Next.js RSC requests
+  // Use history.replaceState to update URL without triggering navigation
   window.history.replaceState(window.history.state, "", newUrl)
 }
 
@@ -158,23 +158,12 @@ const debouncedURLUpdate = debounce(performURLUpdate, URL_UPDATE_DEBOUNCE_MS)
  * Update the browser URL with new filter state.
  * Preserves existing non-filter parameters.
  *
- * IMPORTANT: We intentionally use window.history.replaceState() instead of
- * Next.js router.replace() here. When using router.replace(), Next.js treats
- * any URL change as a navigation event and triggers React Server Component (RSC)
- * requests to the server - even though our filtering is entirely client-side.
- * This causes unnecessary server load and network traffic.
+ * NOTE: This function only works in browser environments. It uses
+ * window.history.replaceState() to update the URL without triggering
+ * navigation or page reloads.
  *
- * By using the browser's History API directly:
- * - URL updates immediately for bookmarking/sharing
- * - No RSC requests are triggered
- * - Filter state remains in React state (not dependent on URL sync)
- * - Page refresh still works (URL params parsed on mount via useSearchParams)
- *
- * Trade-off: Browser back/forward won't auto-sync filter state, but this is
- * acceptable behavior that matches other filter UIs (Amazon, etc.).
- *
- * NOTE: URL updates are debounced (150ms) to prevent "Too many calls to
- * Location or History APIs" errors when filters change rapidly (e.g., sliders).
+ * URL updates are debounced (150ms) to prevent "Too many calls to
+ * Location or History APIs" errors when filters change rapidly.
  */
 export function updateURLWithFilters(filters: FilterState): void {
   debouncedURLUpdate(filters)

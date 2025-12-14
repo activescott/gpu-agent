@@ -1,8 +1,3 @@
-"use client"
-
-// Re-export everything from the @activescott/filter-items package
-// The "use client" directive is needed for Next.js to treat these as client components
-
 // Types
 export type {
   FilterOperator,
@@ -12,9 +7,9 @@ export type {
   FilterConfig,
   FilterState,
   FilterOption,
-} from "@activescott/filter-items"
+} from "./types"
 
-export { isCategoricalFilter, isNumericFilter } from "@activescott/filter-items"
+export { isCategoricalFilter, isNumericFilter } from "./types"
 
 // URL utilities
 export {
@@ -25,7 +20,7 @@ export {
   clearAllFilters,
   hasActiveFilters,
   countActiveFilters,
-} from "@activescott/filter-items"
+} from "./urlUtils"
 
 // Filter logic
 export {
@@ -33,15 +28,15 @@ export {
   getFilterSummary,
   getAllFiltersSummary,
   getOperatorLabel,
-} from "@activescott/filter-items"
+} from "./filterLogic"
 
 // Components
+export { FilterItems } from "./FilterItems"
+export { FilterLayout } from "./FilterLayout"
+export { CategoricalFilter } from "./CategoricalFilter"
+export { NumericFilter } from "./NumericFilter"
 export {
-  FilterItems,
-  FilterLayout,
-  CategoricalFilter,
-  NumericFilter,
   FilterSummary,
   FilterMobileButton,
   ActiveFilterChips,
-} from "@activescott/filter-items"
+} from "./FilterSummary"

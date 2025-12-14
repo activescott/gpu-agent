@@ -34,6 +34,7 @@
   },
   "dependencies": {
     "@activescott/diag": "^2.0.2",
+    "@activescott/filter-items": "*",
     "@activescott/ebay-client": "*",
     "@floating-ui/react": "^0.27.16",
     "@mdx-js/loader": "^3.0.0",

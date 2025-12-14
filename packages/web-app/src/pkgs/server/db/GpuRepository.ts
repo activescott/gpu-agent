@@ -27,15 +27,34 @@ interface MetricDefinitionRecord {
  * Loads all metric definitions from the database (cached)
  */
 /**
- * Helper to sort metric definitions consistently by name then slug
+ * Get priority for resolution sorting (4K first, then 1440p, then 1080p)
+ */
+function getResolutionPriority(name: string): number {
+  if (name.includes("(4K)")) return 1
+  if (name.includes("(1440p)")) return 2
+  if (name.includes("(1080p)")) return 3
+  return 4
+}
+
+/**
+ * Helper to sort metric definitions consistently.
+ * For gaming benchmarks, sorts by base name then by resolution (4K > 1440p > 1080p).
+ * For other metrics, sorts alphabetically by name then slug.
  */
 function sortMetricDefinitions(
   definitions: MetricDefinitionRecord[],
 ): MetricDefinitionRecord[] {
   return [...definitions].sort((a, b) => {
-    const nameCompare = a.name.localeCompare(b.name)
-    if (nameCompare !== 0) return nameCompare
-    return a.slug.localeCompare(b.slug)
+    // Extract base name without resolution suffix (e.g., "Counter-Strike 2" from "Counter-Strike 2 (4K)")
+    const aBaseName = a.name.replace(/\s*\([^)]*\)\s*$/, "").trim()
+    const bBaseName = b.name.replace(/\s*\([^)]*\)\s*$/, "").trim()
+
+    // Sort by base name alphabetically
+    const baseNameCompare = aBaseName.localeCompare(bBaseName)
+    if (baseNameCompare !== 0) return baseNameCompare
+
+    // Within same benchmark, sort by resolution (4K first)
+    return getResolutionPriority(a.name) - getResolutionPriority(b.name)
   })
 }
 

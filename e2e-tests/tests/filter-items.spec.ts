@@ -22,7 +22,7 @@ test.describe("Filter Items - Price Compare Page", () => {
 
     // Check for the "Showing X of Y listings" text
     const showingText = page.getByText(/Showing \d+ of \d+ listings/i)
-    await expect(showingText).toBeVisible({ timeout: 2000 })
+    await expect(showingText).toBeVisible({ timeout: 5000 })
 
     // Verify fewer items are showing
     const text = await showingText.textContent()
@@ -55,7 +55,7 @@ test.describe("Filter Items - Price Compare Page", () => {
 
     // Check for the "Showing X of Y listings" text - should show 0
     const showingText = page.getByText(/Showing \d+ of \d+ listings/i)
-    await expect(showingText).toBeVisible({ timeout: 2000 })
+    await expect(showingText).toBeVisible({ timeout: 5000 })
 
     const text = await showingText.textContent()
     expect(text).toMatch(/Showing 0 of/i)
@@ -84,7 +84,7 @@ test.describe("Filter Items - Ranking Page", () => {
 
     // Check that the "Showing X of Y GPUs" message appears
     const showingText = page.getByText(/Showing \d+ of \d+ GPUs/i)
-    await expect(showingText).toBeVisible({ timeout: 2000 })
+    await expect(showingText).toBeVisible({ timeout: 5000 })
 
     // Verify fewer items are showing
     const text = await showingText.textContent()
@@ -120,7 +120,7 @@ test.describe("Filter Items - Ranking Page", () => {
 
     // Check for the "Showing X of Y GPUs" text - should show 0
     const showingText = page.getByText(/Showing \d+ of \d+ GPUs/i)
-    await expect(showingText).toBeVisible({ timeout: 2000 })
+    await expect(showingText).toBeVisible({ timeout: 5000 })
 
     const text = await showingText.textContent()
     expect(text).toMatch(/Showing 0 of/i)

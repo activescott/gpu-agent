@@ -41,7 +41,7 @@ test.describe("New GPU Ranking Routes", () => {
 })
 
 test.describe("Gaming Benchmark Sorting", () => {
-  test("gaming benchmarks should be sorted consistently with configs grouped", async ({ page }) => {
+  test("gaming benchmarks should be sorted with resolutions: 4K first, then 1440p, then 1080p", async ({ page }) => {
     // Navigate to a gaming ranking page
     await page.goto("/gpu/ranking/gaming/counter-strike-2-fps-3840x2160")
 
@@ -68,10 +68,34 @@ test.describe("Gaming Benchmark Sorting", () => {
       if (text) displayedNames.push(text.trim())
     }
 
-    // Same benchmarks should be grouped together (e.g., all Counter-Strike configs together)
-    // Check that sorting by name puts configs together
-    const sortedNames = [...displayedNames].sort()
-    expect(displayedNames).toEqual(sortedNames)
+    // Group benchmarks by game (base name without resolution)
+    const gameGroups = new Map<string, string[]>()
+    for (const name of displayedNames) {
+      const baseName = name.replace(/\s*\([^)]*\)\s*$/, "").trim()
+      if (!gameGroups.has(baseName)) {
+        gameGroups.set(baseName, [])
+      }
+      gameGroups.get(baseName)!.push(name)
+    }
+
+    // For each game with multiple resolutions, verify order is: 4K, 1440p, 1080p
+    for (const [gameName, variants] of gameGroups) {
+      if (variants.length <= 1) continue
+
+      const index4k = variants.findIndex((v) => v.includes("(4K)"))
+      const index1440p = variants.findIndex((v) => v.includes("(1440p)"))
+      const index1080p = variants.findIndex((v) => v.includes("(1080p)"))
+
+      if (index4k !== -1 && index1440p !== -1) {
+        expect(index4k, `${gameName}: 4K should come before 1440p`).toBeLessThan(index1440p)
+      }
+      if (index1440p !== -1 && index1080p !== -1) {
+        expect(index1440p, `${gameName}: 1440p should come before 1080p`).toBeLessThan(index1080p)
+      }
+      if (index4k !== -1 && index1080p !== -1) {
+        expect(index4k, `${gameName}: 4K should come before 1080p`).toBeLessThan(index1080p)
+      }
+    }
   })
 })
 

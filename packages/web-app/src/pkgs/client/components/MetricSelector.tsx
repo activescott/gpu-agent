@@ -98,9 +98,21 @@ export function MetricSelector({
     }
   }
 
-  // Generate href for a metric
-  const metricToHref = (metric: MetricDefinitionForSelector): string => {
+  // Generate base href for a metric (without query params - used for Link href)
+  const metricToBaseHref = (metric: MetricDefinitionForSelector): string => {
     return `${basePath}/${metric.category}/${metric.slug}`
+  }
+
+  // Generate full href preserving current query params from window.location
+  // Uses window.location.search to get latest params (including those set via history.replaceState)
+  const getHrefWithCurrentParams = (
+    metric: MetricDefinitionForSelector,
+  ): string => {
+    const baseUrl = metricToBaseHref(metric)
+    // Read directly from window.location to get params set via history.replaceState
+    const queryString =
+      typeof window === "undefined" ? "" : window.location.search
+    return queryString ? `${baseUrl}${queryString}` : baseUrl
   }
 
   const activeMetrics = getMetricsForCategory(activeCategoryGroup)
@@ -116,11 +128,11 @@ export function MetricSelector({
 
     const handleCategoryClick = () => {
       setActiveCategoryGroup(categoryGroup)
-      // Navigate to the first metric in this category
+      // Navigate to the first metric in this category, preserving current filters
       const metrics = getMetricsForCategory(categoryGroup)
       if (metrics.length > 0) {
         const firstMetric = metrics[0]
-        const href = metricToHref(firstMetric)
+        const href = getHrefWithCurrentParams(firstMetric)
         router.push(href)
       }
     }
@@ -141,12 +153,21 @@ export function MetricSelector({
   // eslint-disable-next-line react/prop-types -- TypeScript handles prop validation
   const MetricLink = ({ metric }: { metric: MetricDefinitionForSelector }) => {
     const isActive = metric.slug === currentMetricSlug
-    const href = metricToHref(metric)
+    // Use base href for SEO/accessibility, but navigate with current params on click
+    const baseHref = metricToBaseHref(metric)
+
+    const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+      e.preventDefault()
+      // Read current params at click time to preserve filters set via history.replaceState
+      const href = getHrefWithCurrentParams(metric)
+      router.push(href)
+    }
 
     return (
       <li className="nav-item">
         <Link
-          href={href}
+          href={baseHref}
+          onClick={handleClick}
           className={`nav-link ${isActive ? "active" : ""}`}
           aria-current={isActive ? "page" : undefined}
         >

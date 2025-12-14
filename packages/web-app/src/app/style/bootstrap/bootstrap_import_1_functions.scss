@@ -1,3 +1,4 @@
 // importing bootstrap per https://getbootstrap.com/docs/5.0/customize/sass/
 // 1. Include functions first (so you can manipulate colors, SVGs, calc, etc)
-@import "../../../../../../node_modules/bootstrap/scss/functions";
+// NOTE: Using package path (not relative) so quietDeps works in next.config.mjs
+@import "bootstrap/scss/functions";

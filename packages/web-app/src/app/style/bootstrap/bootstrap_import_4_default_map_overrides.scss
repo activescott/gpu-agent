@@ -1,6 +1,8 @@
+@use "sass:map";
+
 // Create custom map colors: https://getbootstrap.com/docs/5.3/customize/sass/#add-to-map
 $my-custom-colors: (
   "accent": $color_emerald_green,
 );
-$theme-colors: map-merge($theme-colors, $my-custom-colors);
+$theme-colors: map.merge($theme-colors, $my-custom-colors);
 // now accent can be used like: <span className="text-accent">...

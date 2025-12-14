@@ -7,10 +7,17 @@ const nextConfig = {
   // MDX configuration: https://nextjs.org/docs/app/building-your-application/configuring/mdx
   pageExtensions: ["mdx", "ts", "tsx"],
 
-  // Silence Bootstrap Sass deprecation warnings from dependencies
-  // https://sass-lang.com/documentation/js-api/interfaces/options/#quietDeps
+  // Silence Sass deprecation warnings from dependencies (Bootstrap)
+  // - quietDeps: silences warnings from dependencies loaded via includePaths
+  // - includePaths: allows package-style imports (e.g., "bootstrap/scss/functions")
+  //   IMPORTANT: quietDeps only works for files loaded via includePaths, NOT relative imports
+  // - silenceDeprecations: silences specific deprecation warnings:
+  // - "legacy-js-api": old Sass JS API used by next.js
+  // https://sass-lang.com/documentation/js-api/interfaces/options/
   sassOptions: {
+    includePaths: ["node_modules"],
     quietDeps: true,
+    silenceDeprecations: ["legacy-js-api"],
   },
 
   async rewrites() {

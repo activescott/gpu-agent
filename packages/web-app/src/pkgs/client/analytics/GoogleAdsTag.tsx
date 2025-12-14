@@ -63,6 +63,8 @@ export function setGoogleCookieConsent(
 const GoogleAdWordsTagInner = (): JSX.Element => {
   // This Adwords Tag is is for the "Begin Checkout" conversion action in the pingpoetsproducts@gmail.com Google Ads account: https://ads.google.com/aw/conversions/detail?ocid=1548733621&ctId=6707344300&showWebpagesTab=false&showDiagnosticsTab=false&showStoreDiagnosticsTab=false&euid=1052306284&__u=3432655116&uscid=1548733621&__c=7631249229&authuser=4&subid=us-en-awhp-g-aw-c-home-signin-bgc%21o2-s500g500%7Cib%3A6653296821%7C-ahpm-0000000179-0000000001
   const GOOGLE_ADS_TRACKING_ID = "AW-11437826489"
+  // AdWords told me to add this tag too for conversion too 🤷‍♂️ at https://ads.google.com/aw/express/campaign/analytics/linking?campaignId=20844915795&ocid=1548733621&workspaceId=0&postSignUp=false&euid=1052306284&__u=3432655116&uscid=1548733621&__c=7631249229&authuser=1&subid=us-en-awhp-g-aw-c-home-signin-bgc%21o2-s500g500%7Cib%3A6653296821%7C-ahpm-0000000179-0000000001
+  const GOOGLE_ADS_TRACKING_ID_2 = "G-GTD9K91WDH"
   // NOTE: mostly we want pathname and searchParams to cause the effect to re-run when location changes
   const pathname = usePathname()
   const searchParams = useSearchParams()
@@ -76,6 +78,7 @@ const GoogleAdWordsTagInner = (): JSX.Element => {
 
       gtag("js", new Date())
       gtag("config", GOOGLE_ADS_TRACKING_ID)
+      gtag("config", GOOGLE_ADS_TRACKING_ID_2)
 
       // handle tracking per https://developers.google.com/tag-platform/gtagjs/reference#consent and https://support.google.com/analytics/answer/9976101
       const consentValue = has_opted_out ? "denied" : "granted"

@@ -9,18 +9,19 @@ export default function SiteHeaderNavItems(): JSX.Element {
   return (
     <ul className="navbar-nav">
       <NavItemLink
-        href="/gpu/price-compare/ai/tensor-cores"
-        label="AI GPU Prices"
+        href="/gpu/ranking/gaming/counter-strike-2-fps-3840x2160"
+        label="Gaming GPU Rankings"
       />
       <NavItemLink
         href="/gpu/price-compare/gaming/counter-strike-2-fps-3840x2160"
         label="Gaming GPU Prices"
       />
-      <NavItemLink href="/gpu/ranking/ai/fp32-flops" label="AI Rankings" />
+      <NavItemLink href="/gpu/ranking/ai/fp32-flops" label="AI GPU Rankings" />
       <NavItemLink
-        href="/gpu/ranking/gaming/counter-strike-2-fps-3840x2160"
-        label="Gaming Rankings"
+        href="/gpu/price-compare/ai/tensor-cores"
+        label="AI GPU Prices"
       />
+      <NavItemLink href="/gpu/price-compare" label="Compare All GPU Prices" />
       <NavItemLink href="/gpu/learn" label="Learn" />
     </ul>
   )

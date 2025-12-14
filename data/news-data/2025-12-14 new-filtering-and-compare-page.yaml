@@ -1,0 +1,91 @@
+# yaml-language-server: $schema=./news-article.schema.json
+id: gpu1214dec2025filter
+slug: new-filtering-and-compare-page
+title: "New GPU Filtering and Compare Page: Find Your Perfect GPU Faster"
+content: |
+  GPU Poet now features enhanced filtering across all ranking and price pages, plus a brand new [Compare GPU Prices](/gpu/price-compare) page that lets you browse every available GPU listing with powerful filters.
+
+  ## Enhanced Filtering Everywhere
+
+  All ranking and price-compare pages now support rich filtering options:
+
+  ### Budget Filters
+  Set a maximum price to only see GPUs within your budget. The filter updates results instantly, showing you exactly how many cards match your criteria.
+
+  ### Memory Filters
+  Filter by minimum VRAM capacity in gigabytes. Essential for AI workloads where model size is limited by GPU memory, or for gaming at high resolutions with texture packs.
+
+  ### Memory Bandwidth
+  Filter by minimum memory bandwidth (GB/s). High bandwidth matters for both AI inference throughput and high-refresh-rate gaming.
+
+  ### TDP Filters
+  Set a maximum power draw. Useful if you have PSU constraints or care about running costs and heat output.
+
+  ### Gaming Benchmark Filters
+  Even on AI ranking pages, you can now filter by gaming performance. Set a minimum FPS requirement for Counter-Strike 2, 3DMark Wildlife Extreme, or Quake II RTX, and the results will only show GPUs that meet both your AI specs and gaming requirements.
+
+  ### Condition Filters (Price Pages)
+  On price listing pages, filter by New, Used, or Refurbished condition to match your preferences.
+
+  ### Series Filters
+  Filter by GPU series (RTX 40, RTX 30, RX 7000, etc.) to narrow down to specific generations.
+
+  ## URL-Based Filters
+
+  All filter selections are saved in the URL. This means you can:
+  - Bookmark filtered views for quick access later
+  - Share specific filtered results with others
+  - Use browser back/forward to navigate filter history
+
+  ## How to Use It
+
+  1. Visit any [ranking page](/gpu/ranking/gaming/counter-strike-2-fps-3840x2160) or the new [Compare GPU Prices](/gpu/price-compare) page
+  2. Click "Filters" on mobile or use the sidebar on desktop
+  3. Set your criteria using the sliders and dropdowns
+  4. Results update automatically as you adjust filters
+  5. The count shows how many GPUs match your current filters
+
+  ## Example Use Cases
+
+  **Budget Gaming Build**: Go to [Compare GPU Prices](/gpu/price-compare), set Budget to $300, Memory to at least 8GB, and filter by Counter-Strike 2 4K performance of at least 60 FPS.
+
+  **AI Workstation with Gaming Capability**: Visit the [AI GPU Rankings](/gpu/ranking/ai/fp32-flops), filter for at least 24GB memory and at least 80 FPS in Counter-Strike 2 to find cards that handle both workloads.
+
+  **Power-Efficient Options**: Set Max TDP to 200W to find GPUs that won't require a PSU upgrade or generate excessive heat.
+
+  ## Navigation Updates
+
+  The site navigation has also been reorganized to make these features easier to find:
+  - Gaming GPU Rankings
+  - Gaming GPU Prices
+  - AI GPU Rankings
+  - AI GPU Prices
+  - Compare GPU Prices (new)
+  - Learn
+
+  The new layout groups gaming and AI options together and puts the new compare page front and center.
+
+  ## The New Compare Page
+
+  The [Compare GPU Prices](/gpu/price-compare) page shows all GPU listings from the marketplace in one place. Unlike the category-specific ranking pages, this page doesn't pre-filter by AI or gaming use case. Instead, you set the filters that matter to you and browse everything that matches.
+
+  This is perfect when you're shopping with a budget in mind and want to see all options, or when you're flexible about whether you need a gaming card or an AI workstation GPU.
+
+  ## What's Next
+
+  These filtering capabilities lay the groundwork for more advanced comparison features. Future updates will include saved filter presets, comparison tables for side-by-side GPU analysis, and alerts when GPUs matching your criteria hit target prices.
+
+  Try out the new [Compare GPU Prices](/gpu/price-compare) page and let us know what additional filters would help your GPU search.
+  
+status: PUBLISHED
+tags:
+  - feature
+  - filtering
+  - navigation
+  - usability
+  - compare
+  - shopping
+authorFullName: "Scott Willeke"
+createdAt: "2025-12-14T10:00:00Z"
+updatedAt: "2025-12-14T10:00:00Z"
+publishedAt: "2025-12-14T10:00:00Z"

@@ -153,10 +153,8 @@ export default async function Page() {
           see the best GPUs for the money.
         </TipCard>
         <TipCard icon="shop-window">
-          <Link href="/gpu/price-compare/ai/fp32-flops">
-            Browse GPUs for sale
-          </Link>{" "}
-          to see price vs. performance.
+          <Link href="/gpu/price-compare">Browse GPUs for sale</Link> to see
+          price vs. performance.
         </TipCard>
         <TipCard svgIcon="ebay">
           Prices for new and used GPUs from eBay. Want listings from another

@@ -7,10 +7,7 @@ export const SiteFooter = () => {
     <footer className="pt-5 mx-2 my-5 text-muted border-top fw-lighter">
       <CookieBanner />
       <div className="w-100 d-flex justify-content-around flex-wrap">
-        <FooterLink
-          href="/gpu/price-compare/ai/fp32-flops"
-          label="Browse GPUs for Sale"
-        />
+        <FooterLink href="/gpu/price-compare" label="Browse GPUs for Sale" />
         <FooterLink href="/gpu/ranking/ai/fp32-flops" label="AI Rankings" />
         <FooterLink
           href="/gpu/ranking/gaming/counter-strike-2-fps-3840x2160"
@@ -22,11 +19,11 @@ export const SiteFooter = () => {
         />
       </div>
       <div>
-        <div className="muted fst-italic">
+        <div className="muted fst-italic mx-5 my-3">
           The site is 100% free to use and does not require any registration.
-          You do not pay us any money. When you click a link to a product and
-          purchase an item, it may generate a small referral fee for us at no
-          cost to you. Thank you for your support! 🙏
+          You do not pay any money. When you click a link to a product and
+          purchase an item, it may generate a small referral fee for the site at
+          no cost to you. Thank you for your support! 🙏
         </div>
         <ul className="nav justify-content-evenly">
           <li className="navbar-text">

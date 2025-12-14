@@ -89,8 +89,8 @@ test.describe('AI Buy Pages', () => {
     // Wait for page to load
     await expect(page).toHaveTitle(/FP32|TFLOPs|Compare GPU/i);
 
-    // Find listing cards
-    const cards = page.locator('.card');
+    // Find listing cards (specifically within the listing container, not filter sidebar cards)
+    const cards = page.locator('#listingContainer .card');
     const cardCount = await cards.count();
 
     // Should have at least one listing card
@@ -129,8 +129,8 @@ test.describe('AI Buy Pages', () => {
       const content = await page.content();
       expect(content).not.toContain('Unknown slug');
 
-      // Find listing cards
-      const cards = page.locator('.card');
+      // Find listing cards (specifically within the listing container, not filter sidebar cards)
+      const cards = page.locator('#listingContainer .card');
       const cardCount = await cards.count();
 
       if (cardCount > 0) {

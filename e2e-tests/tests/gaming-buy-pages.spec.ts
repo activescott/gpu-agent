@@ -6,7 +6,7 @@ test.describe('Gaming Buy Pages', () => {
     await page.goto('/gpu/price-compare/ai/fp32-flops', { waitUntil: 'networkidle' });
 
     // Wait for page to be fully loaded - cards visible means JS hydration is complete
-    const initialCards = page.locator('.card');
+    const initialCards = page.locator('#listingContainer .card');
     await expect(initialCards.first()).toBeVisible({ timeout: 15000 });
 
     // Wait for MetricSelector to load
@@ -25,7 +25,7 @@ test.describe('Gaming Buy Pages', () => {
     await page.waitForURL(/\/gpu\/price-compare\/gaming\//, { waitUntil: 'networkidle', timeout: 30000 });
 
     // Wait for the new page content to render (cards visible proves page loaded correctly)
-    const gamingCards = page.locator('.card');
+    const gamingCards = page.locator('#listingContainer .card');
     await expect(gamingCards.first()).toBeVisible({ timeout: 15000 });
 
     // Page should NOT show error (check visible text, not raw HTML which may contain 404 in script paths)
@@ -41,8 +41,8 @@ test.describe('Gaming Buy Pages', () => {
     // Wait for page to load
     await expect(page).toHaveTitle(/Counter.*Strike.*2|Buy GPUs/i);
 
-    // Find listing cards
-    const cards = page.locator('.card');
+    // Find listing cards (specifically within the listing container, not filter sidebar cards)
+    const cards = page.locator('#listingContainer .card');
     const cardCount = await cards.count();
 
     // Should have at least one listing card
@@ -75,12 +75,12 @@ test.describe('Gaming Buy Pages', () => {
     // Wait for page to load
     await expect(page).toHaveTitle(/3DMark|Buy GPUs/i);
 
-    // Wait for listing cards to be visible
-    const cards = page.locator('.card');
+    // Wait for listing cards to be visible (specifically within the listing container)
+    const cards = page.locator('#listingContainer .card');
     await expect(cards.first()).toBeVisible();
 
-    // Find all metric badges
-    const specPills = page.locator('.badge').filter({ hasText: /\$.*\// });
+    // Find all metric badges within listing cards
+    const specPills = page.locator('#listingContainer .badge').filter({ hasText: /\$.*\// });
     await expect(specPills.first()).toBeVisible();
 
     // Get all badge text
@@ -116,8 +116,8 @@ test.describe('Gaming Buy Pages', () => {
     for (const pagePath of gamingBuyPages) {
       await page.goto(pagePath);
 
-      // Find listing cards
-      const cards = page.locator('.card');
+      // Find listing cards (specifically within the listing container, not filter sidebar cards)
+      const cards = page.locator('#listingContainer .card');
       const cardCount = await cards.count();
 
       if (cardCount > 0) {
@@ -160,8 +160,8 @@ test.describe('Gaming Buy Pages', () => {
       // Verify title
       await expect(page).toHaveTitle(testCase.title);
 
-      // Find listing cards
-      const cards = page.locator('.card');
+      // Find listing cards (specifically within the listing container, not filter sidebar cards)
+      const cards = page.locator('#listingContainer .card');
       const cardCount = await cards.count();
 
       if (cardCount > 0) {

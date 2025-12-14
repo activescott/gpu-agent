@@ -13,11 +13,12 @@ const nextConfig = {
   //   IMPORTANT: quietDeps only works for files loaded via includePaths, NOT relative imports
   // - silenceDeprecations: silences specific deprecation warnings:
   // - "legacy-js-api": old Sass JS API used by next.js
+  // - "import" because that's the only way to properly import Bootstrap's Sass files without warnings right now in src/app/style/bootstrap/all.scss
   // https://sass-lang.com/documentation/js-api/interfaces/options/
   sassOptions: {
     includePaths: ["node_modules"],
     quietDeps: true,
-    silenceDeprecations: ["legacy-js-api"],
+    silenceDeprecations: ["legacy-js-api", "import"],
   },
 
   async rewrites() {

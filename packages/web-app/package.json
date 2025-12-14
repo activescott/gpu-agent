@@ -16,6 +16,7 @@
     "eslint": "eslint . --ext ts,tsx,js,jsx",
     "lint": "prettier -l \"{,!(node_modules)/**/}*.{ts,tsx,md,yml,json,html}\" && npm run eslint",
     "lint-fix": "prettier --write \"{,!(node_modules)/**/}*.{ts,tsx,md,yml,json,html}\" && npm run eslint -- --fix",
+    "typecheck": "tsc --noEmit",
     "prepare": "npm run prisma-generate",
     "watch": "DEBUG=shopping-agent:* jest --watch",
     "test": "DEBUG=shopping-agent:* jest",

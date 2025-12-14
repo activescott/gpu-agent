@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+#
+# Run TypeScript type checking across all packages
+#
+
+set -euo pipefail
+
+script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+root_dir="$(dirname "$script_dir")"
+
+cd "$root_dir"
+
+echo "Running TypeScript type check..."
+npm run typecheck
+
+echo "Type check complete!"

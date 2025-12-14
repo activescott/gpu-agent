@@ -5,6 +5,7 @@
     "build": "turbo run build",
     "lint": "turbo run lint",
     "lint-fix": "turbo run lint-fix",
+    "typecheck": "turbo run typecheck",
     "test": "turbo run test",
     "watch": "turbo run watch",
     "clean": "turbo run clean",

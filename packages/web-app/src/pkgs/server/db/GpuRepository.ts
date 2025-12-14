@@ -139,6 +139,39 @@ export async function getMetricValuesBySlug(
   return valueMap
 }
 
+/**
+ * Gets all metric values for a category (e.g., "gaming" benchmarks)
+ * @returns Map of GPU name to Map of metric slug to value
+ */
+export async function getAllMetricValuesForCategory(
+  category: "gaming" | "ai",
+  prisma: PrismaClientWithinTransaction = prismaSingleton,
+): Promise<Map<string, Map<string, number>>> {
+  // Get all metric definitions for this category
+  const definitions = await getMetricDefinitions(prisma)
+  const categorySlugs = definitions
+    .filter((d) => d.category === category)
+    .map((d) => d.slug)
+
+  // Fetch all values for these metrics
+  const results = await prisma.gpuMetricValue.findMany({
+    where: { metricSlug: { in: categorySlugs } },
+    select: { gpuName: true, metricSlug: true, value: true },
+  })
+
+  // Build nested map: GPU name -> metric slug -> value
+  const gpuMetrics = new Map<string, Map<string, number>>()
+  for (const row of results) {
+    let gpuMap = gpuMetrics.get(row.gpuName)
+    if (!gpuMap) {
+      gpuMap = new Map()
+      gpuMetrics.set(row.gpuName, gpuMap)
+    }
+    gpuMap.set(row.metricSlug, row.value)
+  }
+  return gpuMetrics
+}
+
 type PricedGpuInfo = Omit<
   Gpu,
   "summary" | "references" | "supportedHardwareOperations" | "gpuArchitecture"

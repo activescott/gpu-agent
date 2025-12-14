@@ -1,10 +1,12 @@
-import { ListingGalleryWithMetric } from "@/pkgs/client/components/ListingGalleryWithMetric"
+import { Suspense } from "react"
 import { topNListingsByCostPerformanceBySlug } from "@/pkgs/server/db/ListingRepository"
 import {
   getAllMetricDefinitions,
   getMetricDefinitionBySlug,
+  getAllMetricValuesForCategory,
 } from "@/pkgs/server/db/GpuRepository"
 import { MetricSelector } from "@/pkgs/client/components/MetricSelector"
+import { PriceCompareWithFilters } from "./PriceCompareWithFilters"
 import { createDiag } from "@activescott/diag"
 import { notFound } from "next/navigation"
 
@@ -67,16 +69,28 @@ export default async function Page(props: CostPerMetricParams) {
     // We allow it but could redirect if needed
   }
 
-  // Fetch listings using slug directly (queries GpuMetricValue table)
+  // Fetch listings and gaming benchmark values in parallel
   const TOP_N = 100
-  const [topListings, allMetricDefinitions] = await Promise.all([
-    topNListingsByCostPerformanceBySlug(slug, TOP_N),
-    getAllMetricDefinitions(),
-  ])
+  const [topListings, allMetricDefinitions, gamingBenchmarkValues] =
+    await Promise.all([
+      topNListingsByCostPerformanceBySlug(slug, TOP_N),
+      getAllMetricDefinitions(),
+      getAllMetricValuesForCategory("gaming"),
+    ])
 
+  // Map listings and attach benchmark values for filtering
   const mapped = topListings.map((listing) => ({
     item: listing,
+    // Look up benchmark values by GPU name
+    benchmarkValues: Object.fromEntries(
+      gamingBenchmarkValues.get(listing.gpu.name) ?? new Map(),
+    ),
   }))
+
+  // Build gaming benchmark definitions for the filter
+  const gamingBenchmarkDefs = allMetricDefinitions
+    .filter((m) => m.category === "gaming")
+    .map((m) => ({ slug: m.slug, name: m.name, unit: m.unitShortest }))
 
   // Prepare metric definitions for the selector
   // All metrics with values in GpuMetricValue are now supported
@@ -108,7 +122,13 @@ export default async function Page(props: CostPerMetricParams) {
         currentCategory={categoryTyped}
         basePath="/gpu/price-compare"
       />
-      <ListingGalleryWithMetric listings={mapped} metricInfo={metricInfo} />
+      <Suspense fallback={<div>Loading filters...</div>}>
+        <PriceCompareWithFilters
+          listings={mapped}
+          metricInfo={metricInfo}
+          gamingBenchmarks={gamingBenchmarkDefs}
+        />
+      </Suspense>
     </>
   )
 }

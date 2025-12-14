@@ -142,7 +142,7 @@ function calculateCostPercentiles(gpus: PricedGpu[]): Map<string, number> {
 
 interface GpuMetricsTableProps {
   metricUnit: string
-  gpusInitial: PricedGpu[]
+  gpuList: PricedGpu[]
   /** When set, limits the number of displayed rows */
   maxRows?: number
   /** When false, hides tier dividers. Default: true */
@@ -153,22 +153,22 @@ interface GpuMetricsTableProps {
 
 export function GpuMetricsTable({
   metricUnit,
-  gpusInitial,
+  gpuList,
   maxRows,
   showTierDividers = true,
   header,
 }: GpuMetricsTableProps): JSX.Element {
-  const [gpus, setGpus] = useState<PricedGpu[]>(gpusInitial)
+  const [gpus, setGpus] = useState<PricedGpu[]>(gpuList)
 
   useEffect(() => {
-    const sorted = sortGpusByPercentile(gpusInitial)
+    const sorted = sortGpusByPercentile(gpuList)
     setGpus(sorted)
-  }, [gpusInitial])
+  }, [gpuList])
 
   // Calculate cost percentiles for the $ per Metric column
   const costPercentiles = useMemo(
-    () => calculateCostPercentiles(gpusInitial),
-    [gpusInitial],
+    () => calculateCostPercentiles(gpuList),
+    [gpuList],
   )
 
   // Track which tier dividers we've already rendered

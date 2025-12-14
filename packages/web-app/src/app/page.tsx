@@ -99,7 +99,7 @@ export default async function Page() {
           <div key={metricSlug} className="my-container m-2 mt-5">
             <GpuMetricsTable
               metricUnit={metricUnit}
-              gpusInitial={topGpus}
+              gpuList={topGpus}
               maxRows={TOP_N_RANKINGS}
               showTierDividers={false}
               header={{
@@ -123,7 +123,7 @@ export default async function Page() {
           <div key={metricSlug} className="my-container m-2 mt-5">
             <GpuMetricsTable
               metricUnit={metricUnit}
-              gpusInitial={topGpus}
+              gpuList={topGpus}
               maxRows={TOP_N_RANKINGS}
               showTierDividers={false}
               header={{

@@ -1,13 +1,15 @@
 import Link from "next/link"
+import { Suspense } from "react"
 import {
   calculateGpuPriceStats,
   calculateAllGpuPercentilesForMetric,
   getMetricDefinitionBySlug,
   getMetricValuesBySlug,
   getAllMetricDefinitions,
+  getAllMetricValuesForCategory,
 } from "@/pkgs/server/db/GpuRepository"
 import { ISOMORPHIC_CONFIG } from "@/pkgs/isomorphic/config"
-import { GpuMetricsTable } from "./GpuMetricsTable"
+import { RankingPageWithFilters } from "./RankingPageWithFilters"
 import { MetricSelector } from "@/pkgs/client/components/MetricSelector"
 import { notFound } from "next/navigation"
 
@@ -56,18 +58,24 @@ export default async function Page(props: RankingParams) {
     notFound()
   }
 
-  // Fetch GPU price stats, percentiles, and metric values in parallel
-  const [unsortedPricedGpus, percentileMap, valueMap] = await Promise.all([
-    calculateGpuPriceStats(),
-    calculateAllGpuPercentilesForMetric(metricSlug),
-    getMetricValuesBySlug(metricSlug),
-  ])
+  // Fetch GPU price stats, percentiles, metric values, and all gaming benchmarks in parallel
+  const [unsortedPricedGpus, percentileMap, valueMap, gamingBenchmarkValues] =
+    await Promise.all([
+      calculateGpuPriceStats(),
+      calculateAllGpuPercentilesForMetric(metricSlug),
+      getMetricValuesBySlug(metricSlug),
+      getAllMetricValuesForCategory("gaming"),
+    ])
 
-  // Merge percentile and metric value data into PricedGpu objects
+  // Merge percentile, metric value, and benchmark data into PricedGpu objects
   const gpusWithPercentiles = unsortedPricedGpus.map((pricedGpu) => ({
     ...pricedGpu,
     percentile: percentileMap.get(pricedGpu.gpu.name),
     metricValue: valueMap.get(pricedGpu.gpu.name),
+    // Convert Map to plain object for serialization to client
+    benchmarkValues: Object.fromEntries(
+      gamingBenchmarkValues.get(pricedGpu.gpu.name) ?? new Map(),
+    ),
   }))
 
   const isBenchmarkMetric = metricDef.metricType === "benchmark"
@@ -80,6 +88,15 @@ export default async function Page(props: RankingParams) {
     metricType: m.metricType,
     descriptionDollarsPer: m.descriptionDollarsPer,
   }))
+
+  // Gaming benchmark definitions for filters (available on all pages)
+  const gamingBenchmarkDefs = allMetricDefinitions
+    .filter((m) => m.category === "gaming")
+    .map((m) => ({
+      slug: m.slug,
+      name: m.name,
+      unit: m.unitShortest,
+    }))
 
   return (
     <>
@@ -102,10 +119,18 @@ export default async function Page(props: RankingParams) {
         currentCategory={categoryTyped}
         basePath="/gpu/ranking"
       />
-      <GpuMetricsTable
-        metricUnit={metricDef.unitShortest}
-        gpusInitial={gpusWithPercentiles}
-      />
+      <Suspense fallback={<div>Loading filters...</div>}>
+        <RankingPageWithFilters
+          metricUnit={metricDef.unitShortest}
+          gpusInitial={gpusWithPercentiles}
+          metricInfo={{
+            name: metricDef.name,
+            unit: metricDef.unitShortest,
+            slug: metricDef.slug,
+          }}
+          gamingBenchmarks={gamingBenchmarkDefs}
+        />
+      </Suspense>
     </>
   )
 }

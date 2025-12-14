@@ -1,5 +1,5 @@
 "use client"
-import { ListingWithMetric } from "../../isomorphic/model"
+import { Listing, ListingWithMetric } from "../../isomorphic/model"
 import { ListingCardWithMetric } from "./ListingCardWithMetric"
 import { type JSX } from "react"
 
@@ -12,19 +12,20 @@ export interface MetricInfo {
   descriptionDollarsPer: string | null
 }
 
-interface ListingItemWithMetric {
-  item: ListingWithMetric
+interface ListingItem {
+  item: Listing | ListingWithMetric
 }
 
 interface ListingGalleryWithMetricProps {
-  listings: ListingItemWithMetric[]
-  metricInfo: MetricInfo
+  listings: ListingItem[]
+  /** When provided, shows cost-per-metric. When omitted, shows GPU info. */
+  metricInfo?: MetricInfo
 }
 
 /**
- * A listing gallery component that displays listings with dynamic metric values.
- * Unlike ListingGallery which uses hardcoded GpuMetricKey, this component accepts
- * metric information from the database and uses the metricValue from ListingWithMetric.
+ * A listing gallery component that displays listings with optional metric values.
+ * When metricInfo is provided, shows cost-per-metric on cards.
+ * When omitted, shows GPU name and memory instead.
  */
 export function ListingGalleryWithMetric({
   listings,

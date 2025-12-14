@@ -38,12 +38,14 @@ export function applyFilters<T>(
 }
 
 /**
- * Check if an item value matches a filter condition
+ * Check if an item value matches a filter condition.
+ * Items with null/undefined values are EXCLUDED (return false).
+ * This means GPUs without data for a filtered metric won't appear in results.
  */
 function matchesFilter(itemValue: unknown, filter: FilterValue): boolean {
   const { operator, value, maxValue } = filter
 
-  // Handle null/undefined item values
+  // Items with null/undefined values are excluded from filtered results
   if (itemValue === null || itemValue === undefined) {
     return false
   }

@@ -15,11 +15,8 @@ import {
   buildListingFilterConfigs,
   getListingFieldValue,
 } from "@/components/gpu/gpuFilterConfig"
-import {
-  ListingGalleryWithMetric,
-  type MetricInfo,
-} from "@/pkgs/client/components/ListingGalleryWithMetric"
-import type { ListingWithMetric } from "@/pkgs/isomorphic/model"
+import { ListingGalleryWithMetric } from "@/pkgs/client/components/ListingGalleryWithMetric"
+import type { Listing } from "@/pkgs/isomorphic/model"
 
 /** Gaming benchmark definition for filter config */
 interface GamingBenchmarkDef {
@@ -28,27 +25,25 @@ interface GamingBenchmarkDef {
   unit: string
 }
 
-interface ListingItemWithMetric {
-  item: ListingWithMetric
+interface ListingItemWithBenchmarks {
+  item: Listing
   /** Benchmark values for filtering (keyed by benchmark slug) */
   benchmarkValues?: Record<string, number>
 }
 
-interface PriceCompareWithFiltersProps {
-  listings: ListingItemWithMetric[]
-  metricInfo: MetricInfo
+interface AllGpusWithFiltersProps {
+  listings: ListingItemWithBenchmarks[]
   /** Gaming benchmark definitions for filter options */
   gamingBenchmarks?: GamingBenchmarkDef[]
 }
 
 /**
- * Client component wrapper that adds filtering to the price-compare page
+ * Client component wrapper that adds filtering to the all GPUs price-compare page
  */
-export function PriceCompareWithFilters({
+export function AllGpusWithFilters({
   listings,
-  metricInfo,
   gamingBenchmarks,
-}: PriceCompareWithFiltersProps): JSX.Element {
+}: AllGpusWithFiltersProps): JSX.Element {
   const searchParams = useSearchParams()
 
   // Parse initial filter state from URL
@@ -59,17 +54,17 @@ export function PriceCompareWithFilters({
 
   const [filters, setFilters] = useState<FilterState>(initialFilters)
 
-  // Build filter configs for listings
+  // Build filter configs for listings (no current metric since we're showing all)
   const filterConfigs = useMemo<FilterConfig[]>(
     () =>
       buildListingFilterConfigs({
         gamingBenchmarks,
-        currentMetricSlug: metricInfo.slug,
       }),
-    [gamingBenchmarks, metricInfo.slug],
+    [gamingBenchmarks],
   )
 
   // Apply filters to listings
+  // Items with null/undefined values for a filtered field are excluded
   const filteredListings = useMemo(
     () =>
       applyFilters(listings, filters, (listing, fieldName) =>
@@ -94,13 +89,16 @@ export function PriceCompareWithFilters({
     updateURLWithFilters(newFilters)
   }, [])
 
+  // Wrap listings for gallery format
+  const listingsForGallery = filteredListings.map((l) => ({ item: l.item }))
+
   // Render filter panel
   const filterPanel = (
     <FilterItems
       configs={filterConfigs}
       filters={filters}
       onFilterChange={handleFilterChange}
-      title="Filter Listings"
+      title="Filter GPUs"
     />
   )
 
@@ -117,10 +115,7 @@ export function PriceCompareWithFilters({
           Showing {filteredListings.length} of {listings.length} listings
         </div>
       )}
-      <ListingGalleryWithMetric
-        listings={filteredListings}
-        metricInfo={metricInfo}
-      />
+      <ListingGalleryWithMetric listings={listingsForGallery} />
     </FilterLayout>
   )
 }

@@ -77,14 +77,16 @@ export const ListingCard = ({
         }}
       >
         {/* NOTE: unoptimized because these are external eBay thumbnails that are already optimized by eBay's CDN */}
-        <Image
-          unoptimized
-          src={imageUrl}
-          className="card-img-top mx-auto mt-1 object-fit-contain"
-          alt={title}
-          width={215}
-          height={215}
-        />
+        {imageUrl && (
+          <Image
+            unoptimized
+            src={imageUrl}
+            className="card-img-top mx-auto mt-1 object-fit-contain"
+            alt={title}
+            width={215}
+            height={215}
+          />
+        )}
       </div>
       <div className="card-body">
         <h5 className="card-title">{title}</h5>

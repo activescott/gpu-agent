@@ -7,6 +7,7 @@ import {
   getMetricValuesBySlug,
   getAllMetricDefinitions,
   getAllMetricValuesForCategory,
+  MetricDefinitionRecord,
 } from "@/pkgs/server/db/GpuRepository"
 import { ISOMORPHIC_CONFIG } from "@/pkgs/isomorphic/config"
 import { RankingPageWithFilters } from "./RankingPageWithFilters"
@@ -15,6 +16,16 @@ import { notFound } from "next/navigation"
 
 // revalidate the data at most every hour: https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#revalidate
 export const revalidate = 3600
+
+function generatePageTitle(metricDef: MetricDefinitionRecord) {
+  const isBenchmarkMetric = metricDef.metricType === "benchmark"
+  return `GPUs Ranked by $ per ${metricDef.unit} ${isBenchmarkMetric ? `in ${metricDef.name}` : ""}`
+}
+
+function generatePageSummary(metricDef: MetricDefinitionRecord) {
+  const isBenchmarkMetric = metricDef.metricType === "benchmark"
+  return `cost ratios of price to performance using a combination of real-time pricing data collected throughout the day and ${isBenchmarkMetric ? "recent real-world crowd-sourced benchmarks for GPUs" : "researched performance specifications for the GPU"}.`
+}
 
 type RankingParams = {
   params: Promise<{ category: string; metric: string }>
@@ -31,8 +42,8 @@ export async function generateMetadata(props: RankingParams) {
     return { title: "Not Found" }
   }
 
-  const title = `GPUs Ranked by $ / ${metricDef.name}`
-  const description = `Best GPUs for the money with performance specifications ranked by the $ per ${metricDef.name} cost-performance ratio.`
+  const title = generatePageTitle(metricDef)
+  const description = `Best GPUs for the money with ${generatePageSummary(metricDef)}`
 
   return {
     title,
@@ -78,8 +89,6 @@ export default async function Page(props: RankingParams) {
     ),
   }))
 
-  const isBenchmarkMetric = metricDef.metricType === "benchmark"
-
   // Prepare metric definitions for the selector (only the fields needed)
   const metricDefinitionsForSelector = allMetricDefinitions.map((m) => ({
     slug: m.slug,
@@ -100,15 +109,8 @@ export default async function Page(props: RankingParams) {
 
   return (
     <>
-      <h1>GPUs Ranked by Cost per {metricDef.name}</h1>
-      <p>
-        This page shows cost ratios of price to performance using a combination
-        of real-time pricing data collected throughout the day and{" "}
-        {isBenchmarkMetric
-          ? "recent real-world crowd-sourced benchmarks for GPUs"
-          : "researched performance specifications for the GPU"}
-        .
-      </p>
+      <h1>{generatePageTitle(metricDef)}</h1>
+      <p>This page shows {generatePageSummary(metricDef)}</p>
       <p>
         Something missing? <Link href="/contact">Let us know</Link> and
         we&apos;ll add it if we can.

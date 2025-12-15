@@ -11,7 +11,7 @@ import { omit } from "lodash"
  */
 let cachedMetricDefinitions: MetricDefinitionRecord[] | null = null
 
-interface MetricDefinitionRecord {
+export interface MetricDefinitionRecord {
   slug: string
   name: string
   category: string

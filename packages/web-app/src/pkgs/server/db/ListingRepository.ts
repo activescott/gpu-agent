@@ -234,7 +234,7 @@ export async function addOrRefreshListingsForGpu(
   log.info(`Processing listings for ${gpuName}...`)
   if (freshListingsFromEbay.length === 0) {
     log.warn(
-      `No listings specified to add or refresh for gpu ${gpuName}. Aborting attempt to cache new listings.`,
+      `No listings from ebay to add or refresh for gpu ${gpuName}. Aborting attempt to cache new listings.`,
     )
     return
   }

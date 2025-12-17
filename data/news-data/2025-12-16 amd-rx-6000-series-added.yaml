@@ -1,0 +1,54 @@
+# yaml-language-server: $schema=./news-article.schema.json
+id: gpu1216dec2025rxk
+slug: amd-rx-6000-series-gpu-database-update
+title: "AMD Radeon RX 6000 Series GPUs Now Available for Price Comparison"
+content: |
+  GPU Poet now tracks nine AMD Radeon RX 6000 series graphics cards, bringing RDNA 2 architecture GPUs to the price comparison database. These cards represent some of the best used GPU values currently available, particularly for AMD enthusiasts and budget-conscious gamers.
+
+  ## The Complete RX 6000 Lineup
+
+  All nine RX 6000 series cards are now available for price tracking and performance comparison:
+
+  - [AMD Radeon RX 6500 XT](/gpu/learn/card/amd-radeon-rx-6500-xt) - Entry-level RDNA 2 for 1080p gaming
+  - [AMD Radeon RX 6600](/gpu/learn/card/amd-radeon-rx-6600) - Efficient mainstream 1080p card
+  - [AMD Radeon RX 6600 XT](/gpu/learn/card/amd-radeon-rx-6600-xt) - High-refresh 1080p performance
+  - [AMD Radeon RX 6650 XT](/gpu/learn/card/amd-radeon-rx-6650-xt) - Refreshed 6600 XT with higher clocks
+  - [AMD Radeon RX 6700 XT](/gpu/learn/card/amd-radeon-rx-6700-xt) - 1440p gaming at 230W
+  - [AMD Radeon RX 6750 GRE](/gpu/learn/card/amd-radeon-rx-6750-gre) - Regional variant with 12GB VRAM
+  - [AMD Radeon RX 6750 XT](/gpu/learn/card/amd-radeon-rx-6750-xt) - Enhanced 6700 XT
+  - [AMD Radeon RX 6900 XT](/gpu/learn/card/amd-radeon-rx-6900-xt) - Enthusiast-class 4K card
+  - [AMD Radeon RX 6950 XT](/gpu/learn/card/amd-radeon-rx-6950-xt) - Top-end RDNA 2 flagship
+
+  ## Benchmark Data Available
+
+  All nine cards now have gaming benchmark data available for comparison:
+
+  - [Counter-Strike 2](/gpu/ranking/gaming/counter-strike-2-fps-3840x2160) performance at 1080p, 1440p, and 4K
+  - [3DMark Wildlife Extreme](/gpu/ranking/gaming/3dmark-wildlife-extreme-fps) scores
+  - [Quake II RTX](/gpu/ranking/gaming/quake-ii-rtx-fps-3840x2160) ray tracing performance
+
+  You can sort these rankings by cost-per-frame to see which RX 6000 series cards deliver the best value at current market prices. Each GPU page links to live eBay listings updated every 3 hours.
+
+  ## Site Improvements
+
+  In addition to the GPU database expansion, I've updated the individual GPU card pages with better organized specifications and benchmark information. The [AMD Radeon RX 6950 XT](/gpu/learn/card/amd-radeon-rx-6950-xt) and [NVIDIA GeForce RTX 3090](/gpu/learn/card/nvidia-geforce-rtx-3090) pages now serve as examples of the improved layout.
+
+  A new [FAQ page](/faq) is also available to answer common questions about GPU selection, pricing data, and the site's methodology.
+
+  ## Compare and Shop
+
+  The RX 6000 series gives AMD enthusiasts more options to evaluate and expands the used market comparison pool. Visit the [gaming benchmark rankings](/gpu/ranking/gaming/counter-strike-2-fps-1920x1080) to see how these cards compare against NVIDIA and Intel GPUs, or check individual GPU pages to view current market prices and detailed specifications.
+status: PUBLISHED
+tags:
+  - update
+  - amd
+  - database
+  - rdna-2
+  - rx-6000-series
+  - gaming
+  - value
+  - benchmarks
+authorFullName: "Scott Willeke"
+createdAt: "2025-12-16T10:00:00Z"
+updatedAt: "2025-12-16T10:00:00Z"
+publishedAt: "2025-12-16T10:00:00Z"

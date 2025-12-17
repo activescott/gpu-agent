@@ -1,0 +1,58 @@
+# GPU Price Comparison FAQ
+
+Frequently asked questions about GPU price comparisons, pricing methodology, and benchmark data on GPUPoet.
+
+<h2 id="lowest-average-price" className="mt-5">What is "lowest average price"?</h2>
+
+The "lowest average price" shown for each GPU is calculated as the average of the 3 lowest-priced active listings. This provides a more stable price indicator than showing just the absolute lowest price, which can be skewed by outliers, pricing errors, or unusually low-quality listings.
+
+For example, if the 3 cheapest listings for a GPU are $450, $460, and $475, the lowest average price would be $462 (the average of those three).
+
+## How often are prices updated?
+
+GPU prices are refreshed from active eBay listings approximately every 30 minutes. This ensures you see current market prices rather than stale data.
+
+## Where does the benchmark data come from?
+
+Gaming benchmark data is sourced from [OpenBenchmarking.org](https://openbenchmarking.org), an open-source benchmark database that aggregates real-world performance data from hardware enthusiasts around the world. The benchmarks include real-world gaming performance from titles like Counter-Strike 2 and synthetic benchmarks like 3DMark.
+
+## What do the percentile rankings mean?
+
+Percentile rankings show how a GPU compares to all other GPUs in our database for a specific metric. A GPU in the 95th percentile performs better than 95% of all GPUs on that metric. We display rankings with tier labels:
+
+- **Top Tier** - 75th percentile and above
+- **Mid Tier** - 50th to 75th percentile
+- **Entry Tier** - 25th to 50th percentile
+
+GPUs below the 25th percentile are still shown but without a tier label.
+
+## Why do some GPUs show "no listings"?
+
+If a GPU shows "no listings," it means there are currently no active eBay listings for that model. This can happen with very new GPUs that haven't hit the secondary market yet, or with older models that are no longer commonly sold.
+
+## What GPU specifications are tracked for AI/ML?
+
+We track six key specifications relevant to machine learning workloads:
+
+- **FP32 TFLOPS** - Single-precision floating-point performance
+- **FP16 TFLOPS** - Half-precision floating-point performance
+- **INT8 TOPS** - Integer inference performance
+- **Tensor Core Count** - Hardware accelerators for matrix operations
+- **Memory Capacity (GB)** - VRAM available for models and data
+- **Memory Bandwidth (GB/s)** - How fast data moves between memory and processor
+
+## How are cost-per-performance rankings calculated?
+
+Cost-per-performance rankings divide the lowest average price by the performance metric. For example, "$/TFLOP" divides the GPU price by its FP32 TFLOPS rating. Lower values indicate better value - you're paying less for each unit of performance.
+
+## Can I suggest a GPU or benchmark to add?
+
+Yes! Please visit our [contact page](/contact) with your suggestions. We're always looking to expand our GPU and benchmark coverage.
+
+## Is GPUPoet affiliated with eBay?
+
+GPUPoet uses eBay's API to display real-time GPU listings. When you click a link to purchase a GPU, it may generate a small affiliate commission at no additional cost to you. This helps cover hosting and maintenance costs while keeping the site free to use.
+
+## Do I need to create an account?
+
+No. GPUPoet is completely free to use and requires no registration. You can compare GPU prices, view benchmarks, and shop for GPUs without creating an account.

@@ -10,5 +10,14 @@
 			"path": "../home-infra-k8s-flux"
 		}
 	],
-	"settings": {}
+	"settings": {
+		"cSpell.words": [
+			"GDDR",
+			"Navi",
+			"radeon",
+			"RDNA",
+			"TFLOPS",
+			"TSMC's"
+		]
+	}
 }

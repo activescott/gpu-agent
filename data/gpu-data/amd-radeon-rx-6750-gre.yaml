@@ -1,0 +1,46 @@
+# yaml-language-server: $schema=./gpu-spec.schema.json
+name: amd-radeon-rx-6750-gre
+label: AMD Radeon RX 6750 GRE 12GB
+tensorCoreCount: null
+fp32TFLOPS: 13.21
+fp16TFLOPS: 26.43
+int8TOPS: null
+memoryCapacityGB: 12
+memoryBandwidthGBs: 432
+maxTDPWatts: 230
+gpuArchitecture: RDNA 2
+supportedHardwareOperations:
+  - FP32
+  - FP16
+releaseDate: "2023-10-17"
+lastModified: "2025-12-14T00:00:00Z"
+
+summary: >-
+  The AMD Radeon RX 6750 GRE (Golden Rabbit Edition) 12GB was released in October 2023
+  as a value-oriented mid-range GPU based on the RDNA 2 architecture (Navi 22 KXT die).
+  Originally launched in China for the Lunar New Year, it later became available
+  globally. It features 40 compute units with 2,560 stream processors and 12GB of GDDR6
+  memory with 18 Gbps memory speed, delivering 432 GB/s bandwidth on a 192-bit bus.
+  The card includes 40 ray tracing acceleration cores and 96MB of Infinity Cache. Built
+  on TSMC's 7nm process with a 335 mm² die containing 17.2 billion transistors, it
+  delivers 13.21 TFLOPS of FP32 performance at a boost clock of 2,581 MHz. With a TDP
+  of 230W and competitive pricing, the RX 6750 GRE was designed to fill the gap between
+  the RX 7600 and higher-end cards, offering excellent 1080p and capable 1440p gaming
+  with DirectX 12 Ultimate support. A 10GB variant with reduced compute units also exists.
+references:
+  - https://www.techpowerup.com/gpu-specs/radeon-rx-6750-gre-12-gb.c4183
+  - https://www.amd.com/en/products/graphics/amd-radeon-rx-6750-gre-12gb
+  - https://www.notebookcheck.net/AMD-Radeon-RX-6750-GRE-arrives-from-US-269-with-promise-of-1440p-gaming-at-high-quality-settings.760106.0.html
+  - https://en.wikipedia.org/wiki/RDNA_2
+notes:
+  - FP32 TFLOPS calculated as 2,560 stream processors × 2,581 MHz boost clock × 2 ops/cycle / 1,000,000 = 13.21 TFLOPS
+  - FP16 performance is 26.43 TFLOPS per TechPowerUp GPU Database (2:1 ratio to FP32, standard for RDNA 2 architecture)
+  - TDP of 230W is AMD's official TBP specification; some third-party sources list 250W
+  - Memory bandwidth of 432 GB/s calculated as 192-bit bus × 18 Gbps effective / 8
+  - RDNA 2 architecture does not include dedicated AI accelerators or tensor cores (added in RDNA 3), so tensorCoreCount is null
+  - RDNA 2 CUs support INT8 and INT4 data types and have INT8 matrix core support per ROCm documentation, but lack the WMMA (Wave Matrix Multiply Accumulate) instructions added in RDNA 3. AMD does not publish INT8 TOPS for consumer RDNA 2 GPUs, so int8TOPS is null. Sources: https://en.wikipedia.org/wiki/RDNA_2, https://rocm.docs.amd.com/en/latest/reference/precision-support.html
+  - The 96MB Infinity Cache significantly improves effective memory bandwidth beyond the raw 432 GB/s specification
+  - Built on TSMC 7nm process with 335 mm² die size containing 17.2 billion transistors
+  - GRE stands for Golden Rabbit Edition, named for the Year of the Rabbit (Lunar New Year began February 2023; GPU launched October 2023)
+  - A 10GB variant exists with 2,304 stream processors and 80MB Infinity Cache on a 160-bit bus
+  - This spec file represents the 12GB variant which is more commonly available globally

@@ -1,0 +1,47 @@
+# yaml-language-server: $schema=./gpu-spec.schema.json
+name: amd-radeon-rx-6950-xt
+label: AMD Radeon RX 6950 XT
+tensorCoreCount: null
+fp32TFLOPS: 23.65
+fp16TFLOPS: 47.31
+int8TOPS: null
+memoryCapacityGB: 16
+memoryBandwidthGBs: 576
+maxTDPWatts: 335
+gpuArchitecture: RDNA 2
+supportedHardwareOperations:
+  - FP32
+  - FP16
+releaseDate: "2022-05-10"
+lastModified: "2025-12-14T00:00:00Z"
+
+summary: >-
+  The AMD Radeon RX 6950 XT was released in May 2022 as a refreshed flagship
+  GPU based on the RDNA 2 architecture (Navi 21 KXTX die). It features 80
+  compute units with 5,120 stream processors and 16GB of GDDR6 memory with
+  faster 18 Gbps memory speed (compared to 16 Gbps on the RX 6900 XT), delivering
+  576 GB/s bandwidth. The card includes 80 first-generation ray tracing acceleration
+  cores and 128MB of Infinity Cache to significantly boost effective memory bandwidth.
+  Built on TSMC's 7nm process with a 520 mm² die containing 26.8 billion transistors,
+  it delivers 23.65 TFLOPS of FP32 performance at a boost clock of 2,310 MHz.
+  With a TDP of 335W (increased from 300W on the RX 6900 XT), the RX 6950 XT
+  was designed as AMD's ultimate RDNA 2 gaming GPU, offering higher clocks and
+  faster memory than the RX 6900 XT to compete with NVIDIA's RTX 3090 Ti in
+  4K gaming. The refresh included improved clock speeds across base (1,860 MHz),
+  game (2,100 MHz), and boost (2,310 MHz) frequencies, making it the fastest
+  RDNA 2 GPU for gaming workloads with DirectX 12 Ultimate support including
+  hardware-accelerated ray tracing and variable rate shading.
+references:
+  - https://www.techpowerup.com/gpu-specs/radeon-rx-6950-xt.c3875
+  - https://www.amd.com/en/products/graphics/desktops/radeon/6000-series/amd-radeon-rx-6950-xt.html
+  - https://www.tomshardware.com/reviews/amd-radeon-rx-6950-xt-review
+  - https://en.wikipedia.org/wiki/RDNA_2
+notes:
+  - FP32 TFLOPS of 23.65 per TechPowerUp GPU Database, calculated as 5,120 stream processors × 2,310 MHz boost clock × 2 ops/cycle / 1,000,000
+  - FP16 performance is 47.31 TFLOPS calculated at 2:1 ratio to FP32, which is standard for RDNA 2 architecture
+  - Memory bandwidth of 576 GB/s calculated as 256-bit bus × 18 Gbps effective memory speed / 8
+  - RDNA 2 architecture does not include dedicated AI accelerators or tensor cores (added in RDNA 3), so tensorCoreCount is null
+  - RDNA 2 CUs support INT8 and INT4 data types and have INT8 matrix core support per ROCm documentation, but lack the WMMA (Wave Matrix Multiply Accumulate) instructions added in RDNA 3. AMD does not publish INT8 TOPS for consumer RDNA 2 GPUs, so int8TOPS is null. Sources: https://en.wikipedia.org/wiki/RDNA_2, https://rocm.docs.amd.com/en/latest/reference/precision-support.html
+  - The 128MB Infinity Cache significantly improves effective memory bandwidth beyond the raw 576 GB/s specification
+  - Built on TSMC 7nm process with 520 mm² die size containing 26.8 billion transistors
+  - Released as a refresh of the RX 6900 XT with higher clocks (2,310 MHz vs 2,250 MHz boost), faster memory (18 Gbps vs 16 Gbps), and higher TDP (335W vs 300W)

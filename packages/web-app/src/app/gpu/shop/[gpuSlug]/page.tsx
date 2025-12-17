@@ -6,6 +6,7 @@ import { chain } from "irritable-iterable"
 import { ISOMORPHIC_CONFIG } from "@/pkgs/isomorphic/config"
 import { Integer } from "type-fest"
 import { listActiveListingsForGpus } from "@/pkgs/server/db/ListingRepository"
+import Link from "next/link"
 
 const log = createDiag("shopping-agent:gpu:shop:gpuSlug")
 
@@ -58,6 +59,15 @@ export default async function Page(props: GpuParams) {
   return (
     <main>
       <h1>{gpu.label} Listings</h1>
+      <p className="lead mb-4">
+        Below are active listings for the {gpu.label} GPU. These listings are
+        available and in-stock and you can buy them now. To learn more about the{" "}
+        {gpu.label} GPU visit the{" "}
+        <Link href={`/gpu/learn/card/${gpu.name}`}>
+          {gpu.label} specifications page
+        </Link>
+        .
+      </p>
       <ListingGallery
         listings={listings.map((item) => ({
           item,

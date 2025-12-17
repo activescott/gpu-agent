@@ -37,15 +37,17 @@ export default function RootLayout({
       <body>
         <AnalyticsProvider>
           <SiteHeader />
-          <DomainMigrationBanner />
-          <Alert kind="secondary">
-            What do you think? Please{" "}
-            <Link href="/contact" className="alert-link">
-              drop us a line
-            </Link>{" "}
-            and let us know what you like and what can be better. 🙏
-          </Alert>
-          <main className="p-3">{children}</main>
+          <main className="p-3 container">
+            <DomainMigrationBanner />
+            <Alert kind="secondary">
+              What do you think? Please{" "}
+              <Link href="/contact" className="alert-link">
+                drop us a line
+              </Link>{" "}
+              and let us know what you like and what can be better. 🙏
+            </Alert>
+            {children}
+          </main>
           <SiteFooter />
         </AnalyticsProvider>
         <AnalyticsPageView />

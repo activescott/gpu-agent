@@ -12,7 +12,7 @@
     "dev": "./scripts/dev",
     "dev:reset": "./scripts/reset-dev",
     "dev:logs": "./scripts/logs-dev",
-    "dev:restart": "./scripts/restart-app",
+    "dev:reseed": "./scripts/reseed",
     "prepare": "husky install"
   },
   "workspaces": [

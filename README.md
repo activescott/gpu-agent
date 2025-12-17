@@ -65,8 +65,8 @@ npm run dev
 # View application logs
 npm run dev:logs
 
-# Restart app (triggers migrations)
-npm run dev:restart
+# Reseed database (after modifying data files)
+npm run dev:reseed
 
 # Complete reset (deletes cluster and data)
 npm run dev:reset

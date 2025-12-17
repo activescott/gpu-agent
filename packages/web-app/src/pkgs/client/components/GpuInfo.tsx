@@ -8,19 +8,25 @@ import Link from "next/link"
 import { Feature } from "./Feature"
 import { FormatCurrency } from "./FormatCurrency"
 import { BootstrapIcon } from "./BootstrapIcon"
+import { PercentileProgressBar, NoDataBar } from "./PercentileProgressBar"
 
 import type { JSX } from "react"
+
+export interface BenchmarkPercentile {
+  slug: string
+  name: string
+  unit: string
+  value: number | undefined
+  percentile: number | undefined
+}
 
 interface GpuInfoParams {
   gpu: Gpu
   minimumPrice: number
   activeListingCount: number
   gpuSpecPercentages: Record<GpuSpecKey, number>
+  gpuBenchmarkPercentiles?: BenchmarkPercentile[]
 }
-
-const formatPercentage = new Intl.NumberFormat("en-US", {
-  style: "percent",
-})
 
 /**
  * Formats a release date string (e.g., "2022-10-12") to a human-readable format.
@@ -39,6 +45,7 @@ export function GpuInfo({
   gpuSpecPercentages,
   minimumPrice,
   activeListingCount,
+  gpuBenchmarkPercentiles,
 }: GpuInfoParams): JSX.Element {
   return (
     <>
@@ -100,36 +107,80 @@ export function GpuInfo({
       </ul>
 
       <h2>Specifications for {gpu.label}</h2>
-      <table className="table">
-        <thead>
-          <tr>
-            <th>&nbsp;</th>
-            <th>Raw Performance</th>
-          </tr>
-        </thead>
-        <tbody>
-          {GpuSpecKeys.map((key) => (
-            <tr key={key}>
-              <td>
-                {GpuSpecsDescription[key].label}: {gpu[key]}
-              </td>
-              <td>
-                <PercentBar percent={gpuSpecPercentages[key]}>
-                  <abbr
-                    title={`This GPU is in the ${formatPercentage.format(
-                      gpuSpecPercentages[key],
-                    )} percentile on this criteria.`}
-                  >
-                    {gpuSpecPercentages[key]
-                      ? formatPercentage.format(gpuSpecPercentages[key])
-                      : "N/A"}
-                  </abbr>
-                </PercentBar>
-              </td>
+      <div className="table-responsive">
+        <table className="table table-hover">
+          <thead>
+            <tr>
+              <th style={{ whiteSpace: "nowrap" }}>Specification</th>
+              <th style={{ minWidth: "250px" }}>Performance Ranking</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {GpuSpecKeys.map((key) => {
+              const specValue = gpu[key]
+              const percentile = gpuSpecPercentages[key]
+              const specDesc = GpuSpecsDescription[key]
+              const hasData =
+                specValue !== null &&
+                specValue !== undefined &&
+                percentile !== null &&
+                percentile !== undefined
+
+              return (
+                <tr key={key}>
+                  <td style={{ whiteSpace: "nowrap" }}>{specDesc.label}</td>
+                  <td>
+                    {hasData ? (
+                      <PercentileProgressBar
+                        percentile={percentile}
+                        value={specValue}
+                        unit={specDesc.unitShortest}
+                      />
+                    ) : (
+                      <NoDataBar />
+                    )}
+                  </td>
+                </tr>
+              )
+            })}
+          </tbody>
+        </table>
+      </div>
+
+      {gpuBenchmarkPercentiles && gpuBenchmarkPercentiles.length > 0 && (
+        <>
+          <h2 className="mt-4">Gaming Benchmarks for {gpu.label}</h2>
+          <div className="table-responsive">
+            <table className="table table-hover">
+              <thead>
+                <tr>
+                  <th style={{ whiteSpace: "nowrap" }}>Benchmark</th>
+                  <th style={{ minWidth: "250px" }}>Performance Ranking</th>
+                </tr>
+              </thead>
+              <tbody>
+                {gpuBenchmarkPercentiles.map((benchmark) => (
+                  <tr key={benchmark.slug}>
+                    <td style={{ whiteSpace: "nowrap" }}>{benchmark.name}</td>
+                    <td>
+                      {benchmark.value !== undefined &&
+                      benchmark.percentile !== undefined ? (
+                        <PercentileProgressBar
+                          percentile={benchmark.percentile}
+                          value={benchmark.value}
+                          unit={benchmark.unit}
+                        />
+                      ) : (
+                        <NoDataBar />
+                      )}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </>
+      )}
 
       <div className="row g-4 py-5 row-cols-1 row-cols-lg-3">
         <Feature
@@ -142,13 +193,19 @@ export function GpuInfo({
           GPUs currently available for sale.{" "}
           {activeListingCount > 0 && (
             <span>
-              The lowest price is{" "}
+              The lowest average price is{" "}
               <b>
                 <FormatCurrency
                   currencyValue={minimumPrice}
                   forceInteger={true}
                 />
-              </b>
+              </b>{" "}
+              <Link
+                href="/gpu/learn/faq#lowest-average-price"
+                className="text-muted small"
+              >
+                (what&apos;s this?)
+              </Link>
             </span>
           )}
         </Feature>
@@ -172,43 +229,5 @@ export function GpuInfo({
         ))}
       </ul>
     </>
-  )
-}
-
-function PercentBar({
-  percent,
-  children,
-}: {
-  percent: number
-  children?: React.ReactNode
-}): JSX.Element {
-  const PERCENT_INT = 100
-  const width = `${percent * PERCENT_INT}%`
-  const QUARTILE_1 = 0.25,
-    QUARTILE_2 = 0.5,
-    QUARTILE_3 = 0.75
-  let colorClass = "text-bg-success progress-bar-striped progress-bar-animated"
-  if (Number.isNaN(percent) || percent < QUARTILE_1)
-    colorClass = "text-bg-warning"
-  else if (percent < QUARTILE_2) colorClass = "text-bg-info"
-  else if (percent < QUARTILE_3) colorClass = "text-bg-success"
-
-  return (
-    <div
-      className="progress mx-2"
-      style={{ minWidth: "10rem" }}
-      role="progressbar"
-      aria-label="Warning example"
-      aria-valuenow={percent}
-      aria-valuemin={0}
-      aria-valuemax={100}
-    >
-      <div
-        className={`progress-bar overflow-visible ${colorClass}`}
-        style={{ width: width }}
-      >
-        {children}
-      </div>
-    </div>
   )
 }

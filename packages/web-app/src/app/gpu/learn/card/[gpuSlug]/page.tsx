@@ -1,8 +1,11 @@
-import { GpuInfo } from "@/pkgs/client/components/GpuInfo"
+import { GpuInfo, BenchmarkPercentile } from "@/pkgs/client/components/GpuInfo"
 import { GpuSpecKey, GpuSpecKeys } from "@/pkgs/isomorphic/model/specs"
 import {
   getGpu as getGpuWithoutCache,
   gpuSpecAsPercent,
+  getAllMetricDefinitions,
+  calculateAllGpuPercentilesForMetric,
+  getMetricValuesBySlug,
 } from "@/pkgs/server/db/GpuRepository"
 import { getPriceStats } from "@/pkgs/server/db/ListingRepository"
 import { createDiag } from "@activescott/diag"
@@ -48,6 +51,31 @@ export default async function Page(props: GpuParams) {
     number
   >
 
+  // Fetch gaming benchmark data
+  const allMetrics = await getAllMetricDefinitions()
+  const gamingMetrics = allMetrics.filter((m) => m.category === "gaming")
+
+  const benchmarkData: BenchmarkPercentile[] = await Promise.all(
+    gamingMetrics.map(async (metric) => {
+      const [percentileMap, valueMap] = await Promise.all([
+        calculateAllGpuPercentilesForMetric(metric.slug),
+        getMetricValuesBySlug(metric.slug),
+      ])
+      return {
+        slug: metric.slug,
+        name: metric.name,
+        unit: metric.unitShortest,
+        value: valueMap.get(gpu.name),
+        percentile: percentileMap.get(gpu.name),
+      }
+    }),
+  )
+
+  // Filter to only benchmarks that have data for this GPU
+  const gpuBenchmarkPercentiles = benchmarkData.filter(
+    (b) => b.value !== undefined && b.percentile !== undefined,
+  )
+
   const listings = await getPriceStats(gpu.name)
   return (
     <GpuInfo
@@ -55,6 +83,7 @@ export default async function Page(props: GpuParams) {
       minimumPrice={listings.minPrice}
       activeListingCount={listings.activeListingCount}
       gpuSpecPercentages={gpuSpecPercentages}
+      gpuBenchmarkPercentiles={gpuBenchmarkPercentiles}
     />
   )
 }

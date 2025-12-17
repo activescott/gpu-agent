@@ -13,7 +13,8 @@ help () {
   cat << END_DOC
 USAGE: $this_script [OPTIONS]
 
-Restarts the GPUPoet app deployment in minikube (will trigger DB migrations).
+Runs the database seed script inside the running app container.
+Use this after modifying data files (gpu-data, news-data, etc.) to update the database.
 
 Options:
   -h, --help    Show this help message
@@ -38,22 +39,10 @@ check_minikube() {
     fi
 }
 
-restart_app() {
-    echo "Restarting app deployment (will trigger DB migrations)..."
-
-    # Scale down to 0 replicas
-    minikube kubectl -- scale deployment app --replicas=0 -n gpupoet-dev
-
-    echo "Waiting for pods to terminate..."
-    minikube kubectl -- wait --for=delete pod -l app=app -n gpupoet-dev --timeout=60s
-
-    # Scale back up to 1 replica
-    minikube kubectl -- scale deployment app --replicas=1 -n gpupoet-dev
-
-    echo "Waiting for new pod to be ready..."
-    minikube kubectl -- wait --for=condition=ready pod -l app=app -n gpupoet-dev --timeout=120s
-
-    echo "App deployment restarted successfully!"
+reseed() {
+    echo "Running database seed in app container..."
+    minikube kubectl -- exec -it -n gpupoet-dev deploy/app -- npm run prisma-seed --workspace=packages/web-app
+    echo "Database seed completed!"
 }
 
 # Parse arguments
@@ -71,9 +60,9 @@ done
 
 cd "$workspace_root"
 
-echo "=== Restarting GPUPoet App ==="
+echo "=== Reseeding GPUPoet Database ==="
 
 check_minikube
-restart_app
+reseed
 
-echo "Restart completed!"
+echo "Reseed completed!"

@@ -1,0 +1,48 @@
+# yaml-language-server: $schema=./gpu-spec.schema.json
+name: amd-radeon-rx-6500-xt
+label: AMD Radeon RX 6500 XT
+tensorCoreCount: null
+fp32TFLOPS: 5.77
+fp16TFLOPS: 11.54
+int8TOPS: null
+memoryCapacityGB: 4
+memoryBandwidthGBs: 144
+maxTDPWatts: 107
+gpuArchitecture: RDNA 2
+supportedHardwareOperations:
+  - FP32
+  - FP16
+releaseDate: "2022-01-19"
+lastModified: "2025-12-14T00:00:00Z"
+
+summary: >-
+  The AMD Radeon RX 6500 XT was released in January 2022 as an entry-level gaming
+  GPU based on the RDNA 2 architecture (Navi 24 XT die). It features 16 compute
+  units with 1,024 stream processors and only 4GB of GDDR6 memory with 144 GB/s
+  bandwidth on a narrow 64-bit bus. The card includes 16 ray tracing acceleration
+  cores and 16MB of Infinity Cache. Built on TSMC's 6nm process (the only RX 6000
+  series card on 6nm) with a compact 107 mm² die containing 5.4 billion transistors,
+  it delivers 5.77 TFLOPS of FP32 performance at a boost clock of 2,815 MHz. With
+  a TDP of 107W and single 6-pin power connector, the RX 6500 XT was designed as
+  an affordable entry point to modern gaming. However, it has notable limitations:
+  only 4GB VRAM limits modern game compatibility, PCIe 4.0 x4 interface causes
+  significant performance loss on older PCIe 3.0 systems, and it lacks hardware
+  video encoding and AV1 decoding. Originally designed for laptops, the desktop
+  version received criticism for these limitations.
+references:
+  - https://www.techpowerup.com/gpu-specs/radeon-rx-6500-xt.c3850
+  - https://www.amd.com/en/products/graphics/desktops/radeon/6000-series/amd-radeon-rx-6500-xt.html
+  - https://www.tomshardware.com/reviews/amd-radeon-rx-6500-xt-review-xfx
+  - https://en.wikipedia.org/wiki/RDNA_2
+notes:
+  - FP32 TFLOPS calculated as 1,024 stream processors × 2,815 MHz boost clock × 2 ops/cycle / 1,000,000 = 5.77 TFLOPS
+  - FP16 performance is 11.54 TFLOPS calculated at 2:1 ratio to FP32, which is standard for RDNA 2 architecture
+  - Memory bandwidth of 144 GB/s calculated as 64-bit bus × 18 Gbps effective / 8
+  - RDNA 2 architecture does not include dedicated AI accelerators or tensor cores (added in RDNA 3), so tensorCoreCount is null
+  - RDNA 2 CUs support INT8 and INT4 data types and have INT8 matrix core support per ROCm documentation, but lack the WMMA (Wave Matrix Multiply Accumulate) instructions added in RDNA 3. AMD does not publish INT8 TOPS for consumer RDNA 2 GPUs, so int8TOPS is null. Sources: https://en.wikipedia.org/wiki/RDNA_2, https://rocm.docs.amd.com/en/latest/reference/precision-support.html
+  - The 16MB Infinity Cache helps compensate for the limited memory bandwidth
+  - Built on TSMC 6nm process (not 7nm like other RX 6000 cards) with 107 mm² die size containing 5.4 billion transistors
+  - Uses PCIe 4.0 x4 interface which significantly limits performance on PCIe 3.0 systems
+  - Only 4GB VRAM is a notable limitation for modern games at higher texture settings
+  - Lacks hardware video encoder (VCN encoder) and AV1 decode support
+  - Originally designed as a laptop GPU (Navi 24) and adapted for desktop use

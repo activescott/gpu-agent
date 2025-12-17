@@ -15,7 +15,15 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: "*",
       allow: "/",
-      disallow: ["/api/", "/bye", "/ei/", "/_next/", "/a/", "/ops/"],
+      disallow: [
+        "/api/",
+        "/bye",
+        "/ei/",
+        "/_next/",
+        "/a/",
+        "/ops/",
+        "/internal",
+      ],
     },
     sitemap: `https://${ISOMORPHIC_CONFIG.PUBLIC_DOMAIN()}/sitemap.xml`,
   }

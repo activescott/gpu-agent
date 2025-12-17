@@ -1,0 +1,43 @@
+# yaml-language-server: $schema=./gpu-spec.schema.json
+name: amd-radeon-rx-6600-xt
+label: AMD Radeon RX 6600 XT
+tensorCoreCount: null
+fp32TFLOPS: 10.60
+fp16TFLOPS: 21.20
+int8TOPS: null
+memoryCapacityGB: 8
+memoryBandwidthGBs: 256
+maxTDPWatts: 160
+gpuArchitecture: RDNA 2
+supportedHardwareOperations:
+  - FP32
+  - FP16
+releaseDate: "2021-08-11"
+lastModified: "2025-12-14T00:00:00Z"
+
+summary: >-
+  The AMD Radeon RX 6600 XT was released in August 2021 as a mainstream gaming GPU
+  based on the RDNA 2 architecture (Navi 23 XT die). It features 32 compute units
+  with 2,048 stream processors and 8GB of GDDR6 memory with 256 GB/s bandwidth on
+  a 128-bit bus. The card includes 32 ray tracing acceleration cores and 32MB of
+  Infinity Cache. Built on TSMC's 7nm process with a 237 mm² die containing 11.06
+  billion transistors, it delivers 10.60 TFLOPS of FP32 performance at a boost clock
+  of 2,589 MHz. With a TDP of only 160W and requiring just a single 8-pin power
+  connector, the RX 6600 XT was designed as AMD's efficient 1080p gaming champion,
+  competing with NVIDIA's RTX 3060. It offers excellent performance per watt and
+  solid 1080p gaming with DirectX 12 Ultimate support. Note that it uses a PCIe 4.0
+  x8 interface rather than the full x16.
+references:
+  - https://www.techpowerup.com/gpu-specs/radeon-rx-6600-xt.c3774
+  - https://www.amd.com/en/products/graphics/desktops/radeon/6000-series/amd-radeon-rx-6600-xt.html
+  - https://www.tomshardware.com/reviews/amd-radeon-rx-6600-xt-review
+  - https://en.wikipedia.org/wiki/RDNA_2
+notes:
+  - FP32 TFLOPS calculated as 2,048 stream processors × 2,589 MHz boost clock × 2 ops/cycle / 1,000,000 = 10.60 TFLOPS
+  - FP16 performance is 21.20 TFLOPS calculated at 2:1 ratio to FP32, which is standard for RDNA 2 architecture
+  - Memory bandwidth of 256 GB/s calculated as 128-bit bus × 16 Gbps effective / 8
+  - RDNA 2 architecture does not include dedicated AI accelerators or tensor cores (added in RDNA 3), so tensorCoreCount is null
+  - RDNA 2 CUs support INT8 and INT4 data types and have INT8 matrix core support per ROCm documentation, but lack the WMMA (Wave Matrix Multiply Accumulate) instructions added in RDNA 3. AMD does not publish INT8 TOPS for consumer RDNA 2 GPUs, so int8TOPS is null. Sources: https://en.wikipedia.org/wiki/RDNA_2, https://rocm.docs.amd.com/en/latest/reference/precision-support.html
+  - The 32MB Infinity Cache significantly improves effective memory bandwidth beyond the raw 256 GB/s specification
+  - Built on TSMC 7nm process with 237 mm² die size containing 11.06 billion transistors
+  - Uses PCIe 4.0 x8 interface instead of x16, which may limit performance on older PCIe 3.0 systems

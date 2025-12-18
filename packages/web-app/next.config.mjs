@@ -266,6 +266,53 @@ const nextConfig = {
         destination: "/gpu/learn/benchmark/gaming/:benchmark",
         permanent: true,
       },
+
+      // Quake II RTX slug rename (quake2rtx -> quake-ii-rtx)
+      {
+        source: "/gpu/ranking/gaming/quake2rtx-fps-1920x1080",
+        destination: "/gpu/ranking/gaming/quake-ii-rtx-fps-1920x1080",
+        permanent: true,
+      },
+      {
+        source: "/gpu/ranking/gaming/quake2rtx-fps-2560x1440",
+        destination: "/gpu/ranking/gaming/quake-ii-rtx-fps-2560x1440",
+        permanent: true,
+      },
+      {
+        source: "/gpu/ranking/gaming/quake2rtx-fps-3840x2160",
+        destination: "/gpu/ranking/gaming/quake-ii-rtx-fps-3840x2160",
+        permanent: true,
+      },
+      {
+        source: "/gpu/price-compare/gaming/quake2rtx-fps-1920x1080",
+        destination: "/gpu/price-compare/gaming/quake-ii-rtx-fps-1920x1080",
+        permanent: true,
+      },
+      {
+        source: "/gpu/price-compare/gaming/quake2rtx-fps-2560x1440",
+        destination: "/gpu/price-compare/gaming/quake-ii-rtx-fps-2560x1440",
+        permanent: true,
+      },
+      {
+        source: "/gpu/price-compare/gaming/quake2rtx-fps-3840x2160",
+        destination: "/gpu/price-compare/gaming/quake-ii-rtx-fps-3840x2160",
+        permanent: true,
+      },
+      {
+        source: "/gpu/learn/benchmark/gaming/quake2rtx-fps-1920x1080",
+        destination: "/gpu/learn/benchmark/gaming/quake-ii-rtx-fps-1920x1080",
+        permanent: true,
+      },
+      {
+        source: "/gpu/learn/benchmark/gaming/quake2rtx-fps-2560x1440",
+        destination: "/gpu/learn/benchmark/gaming/quake-ii-rtx-fps-2560x1440",
+        permanent: true,
+      },
+      {
+        source: "/gpu/learn/benchmark/gaming/quake2rtx-fps-3840x2160",
+        destination: "/gpu/learn/benchmark/gaming/quake-ii-rtx-fps-3840x2160",
+        permanent: true,
+      },
     ]
   },
 

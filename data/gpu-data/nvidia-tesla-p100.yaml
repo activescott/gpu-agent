@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=./gpu-spec.schema.json
 name: nvidia-tesla-p100
 label: NVIDIA Tesla P100
+msrpUSD: 5699
 fp32TFLOPS: 10.6
 fp16TFLOPS: 21.2
 memoryCapacityGB: 16
@@ -12,7 +13,7 @@ supportedHardwareOperations:
   - FP32
 supportedCUDAComputeCapability: 6
 releaseDate: "2016-06-20"
-lastModified: "2025-12-05T00:00:00Z"
+lastModified: "2025-12-18T18:00:00Z"
 
 summary: The NVIDIA Tesla P100 was announced in 2016 as the first of their
   Pascal architecture powered Tesla cards. The Tesla P100 came in PCIe and SXM
@@ -23,6 +24,8 @@ references:
   - https://www.anandtech.com/show/10433/nvidia-announces-pci-express-tesla-p100
   - https://developer.nvidia.com/blog/mixed-precision-programming-cuda-8/
   - https://www.anandtech.com/show/10222/nvidia-announces-tesla-p100-accelerator-pascal-power-for-hpc
+  - https://technical.city/en/video/Tesla-P100-PCIe-16-GB
+  - https://www.techpowerup.com/gpu-specs/tesla-p100-pcie-16-gb.c2888
 notes:
   - "tensorCoreCount: Tesla P100 only has CUDA cores"
   - 'supportedHardwareOperations: It appears that hardware-accelerated GEMM
@@ -31,3 +34,4 @@ notes:
     https://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html#compute-capabilities'
   - "supportedHardwareOperations: The 8-bit and 16-bit DP4A and DP2A dot product
     instructions are supported on GP102-GP106, but not on GP100."
+  - MSRP of $5,699 USD for the 16GB PCIe model sourced from technical.city and TechPowerUp GPU Database, which both cite the official NVIDIA launch price on June 20, 2016.

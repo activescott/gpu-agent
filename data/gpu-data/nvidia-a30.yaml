@@ -1,24 +1,25 @@
 # yaml-language-server: $schema=./gpu-spec.schema.json
 name: nvidia-a30
 label: NVIDIA A30
+msrpUSD: 4599
 tensorCoreCount: 224
 fp32TFLOPS: 165
 fp16TFLOPS: 165
 int8TOPS: 330
 memoryCapacityGB: 24
 memoryBandwidthGBs: 933.3
+maxTDPWatts: 165
 gpuArchitecture: ampere
 supportedHardwareOperations:
   - FP16
   - INT8
   - INT4
-  - INT1
   - FP64
   - TF32
   - BF16
 supportedCUDAComputeCapability: 8
 releaseDate: "2021-04-12"
-lastModified: "2025-12-05T00:00:00Z"
+lastModified: "2025-12-18T18:00:00Z"
 
 summary: The NVIDIA A30, launched on April 12th, 2021 with part number
   900-21001-0040-100, is a professional-grade accelerator geared towards machine
@@ -31,6 +32,8 @@ summary: The NVIDIA A30, launched on April 12th, 2021 with part number
 references:
   - https://www.nvidia.com/en-us/data-center/products/a30-gpu/
   - https://www.techpowerup.com/gpu-specs/a30-pcie.c3792
+  - https://cyfuture.cloud/kb/gpu/what-is-the-price-of-nvidia-a30-gpu
+  - https://www.router-switch.com/nvidia-a30.html
   - https://www.nvidia.com/en-us/data-center/tensor-cores/
 notes:
   - 'fp32TFLOPS: NOTE: This is the Tensor Core FP32 performance, not the CUDA
@@ -38,3 +41,4 @@ notes:
     teraFLOPS (TFLOPS) of TF32 deep learning performance."'
   - "fp16TFLOPS: NOTE: This is the Tensor Core FP16 performance, not the CUDA
     FP16 performance."
+  - MSRP of $4,599 USD verified from 3 sources - Cyfuture Cloud cites Thinkmate offering the NVIDIA A30 GPU at $4,599.00, Amazon lists the PNY NVIDIA A30 Module 24GB at $5,199.00, and router-switch.com notes the retail price hovers between $3,500-$5,000 depending on supplier and availability.

@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=./gpu-spec.schema.json
 name: amd-radeon-rx-6700-xt
 label: AMD Radeon RX 6700 XT
+msrpUSD: 479
 tensorCoreCount: null
 fp32TFLOPS: 13.21
 fp16TFLOPS: 26.43
@@ -13,7 +14,7 @@ supportedHardwareOperations:
   - FP32
   - FP16
 releaseDate: "2021-03-18"
-lastModified: "2025-12-14T00:00:00Z"
+lastModified: "2025-12-18T22:30:00Z"
 
 summary: >-
   The AMD Radeon RX 6700 XT was released in March 2021 as a mid-range gaming GPU
@@ -31,11 +32,13 @@ references:
   - https://www.amd.com/en/products/graphics/desktops/radeon/6000-series/amd-radeon-rx-6700-xt.html
   - https://www.tomshardware.com/reviews/amd-radeon-rx-6700-xt-review
   - https://en.wikipedia.org/wiki/RDNA_2
+  - https://videocardz.com/newz/amd-announces-radeon-rx-6700-xt-at-479-usd-launches-on-march-18th
 notes:
   - FP32 TFLOPS calculated as 2,560 stream processors × 2,581 MHz boost clock × 2 ops/cycle / 1,000,000 = 13.21 TFLOPS
   - FP16 performance is 26.43 TFLOPS per TechPowerUp GPU Database (2:1 ratio to FP32, standard for RDNA 2 architecture)
   - Memory bandwidth calculated as 192-bit bus × 16 Gbps effective / 8 = 384 GB/s
   - RDNA 2 architecture does not include dedicated AI accelerators or tensor cores (added in RDNA 3), so tensorCoreCount is null
-  - RDNA 2 CUs support INT8 and INT4 data types and have INT8 matrix core support per ROCm documentation, but lack the WMMA (Wave Matrix Multiply Accumulate) instructions added in RDNA 3. AMD does not publish INT8 TOPS for consumer RDNA 2 GPUs, so int8TOPS is null. Sources: https://en.wikipedia.org/wiki/RDNA_2, https://rocm.docs.amd.com/en/latest/reference/precision-support.html
+  - "RDNA 2 CUs support INT8 and INT4 data types and have INT8 matrix core support per ROCm documentation, but lack the WMMA (Wave Matrix Multiply Accumulate) instructions added in RDNA 3. AMD does not publish INT8 TOPS for consumer RDNA 2 GPUs, so int8TOPS is null. Sources: https://en.wikipedia.org/wiki/RDNA_2, https://rocm.docs.amd.com/en/latest/reference/precision-support.html"
   - The 96MB Infinity Cache significantly improves effective memory bandwidth beyond the raw 384 GB/s specification
   - Built on TSMC 7nm process with 335 mm² die size containing 17.2 billion transistors
+  - MSRP of $479 USD verified from multiple sources including VideoCardz, PC Gamer, and Tom's Hardware at launch on March 18, 2021

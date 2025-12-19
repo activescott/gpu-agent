@@ -1,12 +1,14 @@
 # yaml-language-server: $schema=./gpu-spec.schema.json
 name: nvidia-h100-pcie
 label: NVIDIA H100 PCIe
+msrpUSD: 98000
 tensorCoreCount: 456
 fp32TFLOPS: 756
 fp16TFLOPS: 1513
 int8TOPS: 3026
 memoryCapacityGB: 80
 memoryBandwidthGBs: 2039
+maxTDPWatts: 350
 gpuArchitecture: hopper
 supportedHardwareOperations:
   - FP16
@@ -17,7 +19,7 @@ supportedHardwareOperations:
   - FP8
 supportedCUDAComputeCapability: 9
 releaseDate: "2023-03-21"
-lastModified: "2025-12-05T00:00:00Z"
+lastModified: "2025-12-18T18:00:00Z"
 
 summary: The NVIDIA H100 PCIe 80GB is a professional graphics card designed
   primarily for machine learning and high-performance computing applications.
@@ -41,7 +43,11 @@ references:
   - https://en.wikipedia.org/wiki/Hopper_(microarchitecture)
   - https://www.nvidia.com/en-us/data-center/technologies/hopper-architecture/
   - https://www.nvidia.com/en-us/data-center/tensor-cores/
+  - https://www.shopblt.com/item/lenovo-thinksystem-nvidia-h100-80gb-pcie/lenovo_4x67a82257.html
+  - https://www.tech-america.com/item/cisco-nvidia-h100-graphic-card/ucsc-gpu-h100-80
+  - https://www.cdw.com/product/nvidia-h100-gpu-computing-processor-nvidia-h100-tensor-core-80-gb/8268491
 notes:
   - "fp32TFLOPS: NOTE: FP32 Tensor Core"
   - "fp16TFLOPS: NOTE: FP16 Tensor Core"
   - "int8TOPS: NOTE: INT8 Tensor Core"
+  - "Estimated MSRP of $98,000 USD for H100 80GB PCIe based on OEM list prices. NVIDIA does not publish official MSRP for data center GPUs. OEM list prices corroborated by 3 independent sources: CDW lists Cisco UCSC-GPU-H100-80= at $103,085.66, Tech-America lists Cisco UCSC-GPU-H100-80 MSRP at $99,696, and ShopBLT lists Lenovo 4X67A82257 at $90,935. The $98,000 estimate represents the average of these OEM list prices. H100 pricing varies by form factor (PCIe vs SXM) and memory size (80GB vs 96GB)."

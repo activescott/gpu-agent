@@ -492,6 +492,9 @@ export async function topNListingsByCostPerformance(
         int8TOPS: row.int8TOPS,
         memoryCapacityGB: row.memoryCapacityGB,
         memoryBandwidthGBs: row.memoryBandwidthGBs,
+        // MSRP and notes
+        msrpUSD: row.msrpUSD ?? undefined,
+        notes: row.notes ?? [],
       } satisfies Gpu,
     }
 
@@ -590,6 +593,9 @@ export async function topNListingsByCostPerformanceBySlug(
         int8TOPS: row.int8TOPS,
         memoryCapacityGB: row.memoryCapacityGB,
         memoryBandwidthGBs: row.memoryBandwidthGBs,
+        // MSRP and notes
+        msrpUSD: row.msrpUSD ?? undefined,
+        notes: row.notes ?? [],
       } satisfies Gpu,
     }
 

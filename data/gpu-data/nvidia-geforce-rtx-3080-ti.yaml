@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=./gpu-spec.schema.json
 name: nvidia-geforce-rtx-3080-ti
 label: NVIDIA GeForce RTX 3080 Ti
+msrpUSD: 1199
 tensorCoreCount: 320
 fp32TFLOPS: 34.10
 fp16TFLOPS: 136.40
@@ -16,7 +17,7 @@ supportedHardwareOperations:
   - BF16
 supportedCUDAComputeCapability: 8.6
 releaseDate: "2021-06-03"
-lastModified: "2025-12-05T00:00:00Z"
+lastModified: "2025-12-18T00:00:00Z"
 
 summary: |
   The NVIDIA GeForce RTX 3080 Ti is a flagship-class graphics card released in June 2021,
@@ -32,9 +33,9 @@ summary: |
 references:
   - https://www.nvidia.com/content/PDF/nvidia-ampere-ga-102-gpu-architecture-whitepaper-v2.1.pdf
   - https://www.nvidia.com/en-us/geforce/graphics-cards/30-series/rtx-3080-3080ti/
+  - https://www.nvidia.com/en-us/geforce/news/rtx-3080-ti-3070-ti-graphics-cards/
   - https://www.waredb.com/processor/nvidia-geforce-rtx-3080-ti
   - https://www.techpowerup.com/gpu-specs/geforce-rtx-3080-ti.c3505
-  - https://www.nvidia.com/en-us/geforce/news/nvidia-geforce-rtx-3080-ti/
 
 notes:
   - fp16TFLOPS of 136.40 represents "Peak FP16 Tensor TFLOPS" using the "with sparsity" metric. Dense performance is 68.20 TFLOPS, sparse is 136.40 TFLOPS. Following Ampere architecture standards, NVIDIA publishes sparse tensor performance.
@@ -45,3 +46,4 @@ notes:
   - Memory bandwidth calculated as 384-bit interface × 19 Gbps = 912 GB/s.
   - Process node is Samsung 8nm with approximately 28.3 billion transistors.
   - The RTX 3080 Ti shares the same GPU die and memory configuration as the RTX 3090, differing primarily in VRAM capacity (12GB vs 24GB).
+  - MSRP of $1199 USD sourced from NVIDIA official product announcement at https://www.nvidia.com/en-us/geforce/news/rtx-3080-ti-3070-ti-graphics-cards/

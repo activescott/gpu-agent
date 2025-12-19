@@ -7,6 +7,7 @@
   "required": [
     "name",
     "label",
+    "msrpUSD",
     "fp32TFLOPS",
     "fp16TFLOPS",
     "memoryCapacityGB",
@@ -30,6 +31,11 @@
       "type": "string",
       "description": "Human-readable name of the GPU",
       "minLength": 1
+    },
+    "msrpUSD": {
+      "type": ["number", "null"],
+      "description": "Manufacturer's Suggested Retail Price in USD at launch. SOURCING REQUIREMENTS: Must be sourced from (1) the manufacturer's official website domain (nvidia.com, amd.com, intel.com), OR (2) verified by 3 independent credible sources, OR (3) for enterprise GPUs without official MSRP, an 'estimated MSRP' based on market pricing within 90 days of launch from 3+ sources (Wikipedia, tech news, reseller pricing at launch). All MSRP sources MUST be included in the references array. A note explaining the MSRP source MUST be added to the notes array. For estimated MSRPs, prefix note with 'Estimated MSRP of $XXX USD...' and explain the basis. For enterprise GPUs, note that pricing may vary by form factor (PCIe vs SXM) and memory size. Use null ONLY when no pricing data is available even from launch-time sources. For NVIDIA consumer cards, use Founder's Edition pricing.",
+      "minimum": 0
     },
     "tensorCoreCount": {
       "type": ["number", "null"],

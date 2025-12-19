@@ -36,6 +36,8 @@ brew install minikube skaffold
 npm run dev
 ```
 
+**Note:** `scripts/dev` is a long-running process that never completes by design. It runs skaffold in dev mode which watches for file changes and syncs them to the container. Run it in a separate terminal or background it.
+
 The app will be available at http://localhost:3000
 
 ### Environment Setup
@@ -79,7 +81,7 @@ npm run dev:reset
 Use `scripts/prisma-migrate` to run Prisma commands. All Prisma commands must run inside the Kubernetes app container since database connections are only available there. This script takes care of that.
 
 ```bash
-# Create and apply migration
+# Create and apply migration (automatically syncs migration file back to local)
 ./scripts/prisma-migrate migrate dev --name migration_description
 
 # Run migrations (also runs automatically on container startup)
@@ -100,6 +102,13 @@ Use `scripts/prisma-migrate` to run Prisma commands. All Prisma commands must ru
 # Access database directly
 minikube kubectl -- exec -it -n gpupoet-dev db-0 -- psql -U gpu_agent -d gpu_agent
 ```
+
+**Creating Migrations:** When you run `./scripts/prisma-migrate migrate dev --name your_migration`, the script:
+1. Runs `prisma migrate dev` inside the Kubernetes container
+2. Automatically copies any new migration files back to your local `packages/web-app/prisma/migrations/` directory
+3. Reminds you to commit the new migration files
+
+This ensures migrations created in the container are properly synced to your local filesystem for version control.
 
 **Automatic Migration Behavior:** Migrations and seeding run automatically when containers start (via `docker/docker-entrypoint.sh`). This applies to both local development and Kubernetes production environments.
 

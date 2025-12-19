@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=./gpu-spec.schema.json
 name: amd-radeon-rx-7900-xtx
 label: AMD Radeon RX 7900 XTX
+msrpUSD: 999
 tensorCoreCount: 192
 fp32TFLOPS: 61
 fp16TFLOPS: 123
@@ -15,20 +16,22 @@ supportedHardwareOperations:
   - INT8
   - INT4
 releaseDate: "2022-12-13"
-lastModified: "2025-12-05T00:00:00Z"
+lastModified: "2025-12-18T00:00:00Z"
 
 summary: >-
   The AMD Radeon RX 7900 XTX, launched on December 13, 2022, is AMD's flagship
-  graphics card on the new RDNA 3 architecture. 
-        The RDNA 3 architecture features AI Accelerators and a significant performance boost over its predecessors. The 7900 XTX has 96 compute units (CUs) and 192 AI accelerators. The AI Accelerators accelerate the GEMM operation which are critical to machine learning/AI performance. 
+  graphics card on the new RDNA 3 architecture.
+        The RDNA 3 architecture features AI Accelerators and a significant performance boost over its predecessors. The 7900 XTX has 96 compute units (CUs) and 192 AI accelerators. The AI Accelerators accelerate the GEMM operation which are critical to machine learning/AI performance.
         The 7900 XTX is a compelling GPU for machine learning/AI.
         Some common part numbers are the PowerColor RX7900XTX 24G-E/OC, RX7900XTX 24G-L/OC, Sapphire 11322-02-20G, XFX RX-79XMERCB9, ASRock 90-GA43ZZ-00UANF, and the Asus TUF-RX7900XTX-O24G-GAMING.
         The lowest price is tracked and continuously updated across multiple sellers for all of these models below.
 references:
   - https://www.amd.com/en/products/specifications/graphics
   - https://www.tomshardware.com/reviews/amd-radeon-rx-7900-xtx-and-xt-review-shooting-for-the-top
+  - https://www.techpowerup.com/300632/amd-announces-the-usd-999-radeon-rx-7900-xtx-and-usd-899-rx-7900-xt-5nm-rdna3-displayport-2-1-fsr-3-0-fluidmotion
   - https://en.wikipedia.org/wiki/RDNA_3
   - https://gpuopen.com/learn/wmma_on_rdna3/
   - https://gpuopen.com/learn/amd-lab-notes/amd-lab-notes-matrix-cores-readme/
 notes:
   - 'tensorCoreCount: tracking the AI Accelerators as "tensor cores"'
+  - MSRP of $999 USD sourced from AMD announcement on November 3, 2022, verified from TechPowerUp and PC Gamer. AMD later reduced the price to $899 in 2024.

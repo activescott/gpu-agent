@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=./gpu-spec.schema.json
 name: nvidia-geforce-rtx-5060-ti
 label: NVIDIA GeForce RTX 5060 Ti
+msrpUSD: 429
 tensorCoreCount: 144
 fp32TFLOPS: 23.70
 fp16TFLOPS: 94.81
@@ -19,7 +20,7 @@ supportedHardwareOperations:
   - FP4
 supportedCUDAComputeCapability: 12.8
 releaseDate: "2025-04-16"
-lastModified: "2025-12-05T00:00:00Z"
+lastModified: "2025-12-18T00:00:00Z"
 
 summary: |
   The NVIDIA GeForce RTX 5060 Ti is a mid-range graphics card released in 2025,
@@ -47,3 +48,4 @@ notes:
   - The RTX 5060 Ti uses the GB206 chip with 4,608 CUDA cores across 36 streaming multiprocessors.
   - Memory bandwidth calculated as 128-bit interface × 28 Gbps = 448 GB/s.
   - Process node is 4nm with 21.9 billion transistors.
+  - MSRP of $429 USD for the 16GB model sourced from nvidia.com official product page (https://www.nvidia.com/en-us/geforce/news/ultimate-guide-to-5060/). An 8GB variant is also available at $379 USD. No Founders Edition available; pricing is for partner cards.

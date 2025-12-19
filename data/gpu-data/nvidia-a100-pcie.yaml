@@ -1,24 +1,25 @@
 # yaml-language-server: $schema=./gpu-spec.schema.json
 name: nvidia-a100-pcie
-label: NVIDIA A100 PCIe
+label: NVIDIA A100 PCIe 80GB
+msrpUSD: 15000
 tensorCoreCount: 432
 fp32TFLOPS: 156
 fp16TFLOPS: 312
 int8TOPS: 624
 memoryCapacityGB: 80
 memoryBandwidthGBs: 1935
+maxTDPWatts: 300
 gpuArchitecture: ampere
 supportedHardwareOperations:
   - FP16
   - INT8
   - INT4
-  - INT1
   - FP64
   - TF32
   - BF16
 supportedCUDAComputeCapability: 8
 releaseDate: "2021-06-28"
-lastModified: "2025-12-05T00:00:00Z"
+lastModified: "2025-12-18T00:00:00Z"
 
 summary: The NVIDIA A100 PCIe 80GB was announced in May 2020, is a formidable
   accelerator in the field of machine learning and artificial intelligence.
@@ -37,7 +38,11 @@ references:
   - https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/a100/pdf/nvidia-a100-datasheet-nvidia-us-2188504-web.pdf
   - https://developer.nvidia.com/blog/nvidia-ampere-architecture-in-depth/
   - https://www.techpowerup.com/gpu-specs/a100-pcie-80-gb.c3821
+  - https://www.cnbc.com/2023/02/23/nvidias-a100-is-the-10000-chip-powering-the-race-for-ai-.html
+  - https://modal.com/blog/nvidia-a100-price-article
+  - https://www.lovechip.com/blog/the-nvidia-a100-gpu-the-ai-workhorse-that-changed-everything
   - https://www.nvidia.com/en-us/data-center/tensor-cores/
 notes:
   - "fp32TFLOPS: NOTE: This is the Tensor Core FP32 performance, not the CUDA
     FP32 performance. The A40 for example doesn't have such a spec (only CUDA)."
+  - "Estimated MSRP of $15,000 USD for the A100 PCIe 80GB based on launch-time market pricing. NVIDIA does not publish official MSRP for data center GPUs. Sources from around the 2020-2021 launch period cite A100 40GB PCIe at ~$10,000-$12,000 and 80GB PCIe at ~$15,000-$20,000. Note: A100 pricing varies significantly by form factor (PCIe vs SXM) and memory size (40GB vs 80GB). SXM variants are typically more expensive than PCIe. Sources: CNBC, Modal.com, LoveChip, Wikipedia."

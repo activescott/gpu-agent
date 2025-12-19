@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=./gpu-spec.schema.json
 name: amd-radeon-pro-w7700
 label: AMD Radeon Pro W7700
+msrpUSD: 999
 tensorCoreCount: 96
 fp32TFLOPS: 31.95
 fp16TFLOPS: 63.9
@@ -16,7 +17,7 @@ supportedHardwareOperations:
   - INT8
   - INT4
 releaseDate: "2023-11-13"
-lastModified: "2025-12-05T00:00:00Z"
+lastModified: "2025-12-18T00:00:00Z"
 
 summary: >-
   The AMD Radeon Pro W7700 is a professional workstation graphics card launched in November 2023,
@@ -31,6 +32,7 @@ summary: >-
   bandwidth, making it suitable for multi-display professional workflows.
 references:
   - https://www.amd.com/en/products/graphics/workstations/radeon-pro/w7700.html
+  - https://www.amd.com/en/newsroom/press-releases/2023-11-13-new-amd-radeon-pro-workstation-graphics-card-to-po.html
   - https://www.techpowerup.com/315699/amd-announces-new-radeon-pro-w7700-workstation-graphics-card
   - https://www.anandtech.com/show/21137/amd-intros-radeon-pro-w7700-rounding-out-rdna-3-for-workstations
   - https://ir.amd.com/news-events/press-releases/detail/1165/new-amd-radeon-pro-workstation-graphics-card-to-power-next-generation-professional-content-creation-cad-and-ai-applications
@@ -44,3 +46,4 @@ notes:
   - Includes ECC memory support for professional applications requiring data integrity
   - Released November 13, 2023 at $999 USD MSRP
   - Some sources report 28.27 TFLOPS FP32; 31.95 TFLOPS is peak at boost clock (2,600 MHz), while 28.27 TFLOPS may represent sustained performance at lower clocks
+  - MSRP of $999 USD sourced from AMD official press release dated November 13, 2023.

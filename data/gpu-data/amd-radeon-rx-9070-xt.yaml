@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=./gpu-spec.schema.json
 name: amd-radeon-rx-9070-xt
 label: AMD Radeon RX 9070 XT
+msrpUSD: 599
 tensorCoreCount: 128
 fp32TFLOPS: 48.7
 fp16TFLOPS: 97.4
@@ -14,7 +15,7 @@ supportedHardwareOperations:
   - INT8
   - INT4
 releaseDate: "2025-03-06"
-lastModified: "2025-12-05T00:00:00Z"
+lastModified: "2025-12-18T00:00:00Z"
 
 summary: |
   The AMD Radeon RX 9070 XT is a high-performance graphics card released in March 2025,
@@ -37,6 +38,7 @@ references:
   - https://en.wikipedia.org/wiki/Radeon_RX_9000_series
   - https://www.tomshardware.com/pc-components/gpus/amd-rdna4-rx-9000-series-gpus-specifications-pricing-release-date
   - https://www.tomshardware.com/pc-components/gpus/amd-radeon-rx-9070-xt-review
+  - https://www.gsmarena.com/amd_announces_pricing_and_availability_for_rx_9070_and_9070_xt-news-66772.php
 
 notes:
   - tensorCoreCount tracks the 2nd-generation AI Accelerators as "tensor cores". The RX 9070 XT has 128 AI Accelerators (2 per CU × 64 CUs).
@@ -49,3 +51,4 @@ notes:
   - RDNA 4 introduces optimized Compute Units, 3rd-generation Ray Tracing accelerators, and 2nd-generation AI Accelerators.
   - FSR 4 is exclusive to RDNA 4 GPUs and leverages the AI accelerators for ML-based upscaling.
   - The RX 9070 XT competes directly with NVIDIA's RTX 4070 Ti and RTX 5070, offering competitive performance at a more attractive price point.
+  - MSRP of $599 USD sourced from AMD official announcement per GSMArena and Tom's Hardware coverage.

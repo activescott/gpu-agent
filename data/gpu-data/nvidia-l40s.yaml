@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=./gpu-spec.schema.json
 name: nvidia-l40s
 label: NVIDIA L40S
+msrpUSD: 45000
 tensorCoreCount: 568
 fp32TFLOPS: 183
 fp16TFLOPS: 362
@@ -18,7 +19,7 @@ supportedHardwareOperations:
   - FP8
 supportedCUDAComputeCapability: 8.9
 releaseDate: "2023-08-08"
-lastModified: "2025-12-05T00:00:00Z"
+lastModified: "2025-12-18T18:00:00Z"
 
 summary: The NVIDIA L40S GPU was introduced in August 2023 (part number
   900-2g133-0080-000). It is the successor to the NVIDIA L40 (part number
@@ -36,6 +37,8 @@ references:
   - https://nvidianews.nvidia.com/news/nvidia-global-data-center-system-manufacturers-to-supercharge-generative-ai-and-industrial-digitalization
   - https://flyytech.com/2023/08/08/nvidia-completes-proviz-ada-lovelace-lineup-with-three-new-graphics-cards/
   - https://www.nvidia.com/en-us/technologies/ada-architecture/
+  - https://www.multioculus.com/Products/overview/M024971874
+  - https://buy.bluum.com/cisco-ucsx-gpu-l40s-nvidia-l40s-graphic-card-48-gb-full-height/
 notes:
   - "fp32TFLOPS: MUCH higher compared to the L40 @ 90.5 per
     https://images.nvidia.com/content/Solutions/data-center/vgpu-L40-datasheet.\
@@ -46,3 +49,4 @@ notes:
     -and-H100-Tensor-Core-GPU. L40 was 362 according to
     https://images.nvidia.com/aem-dam/Solutions/Data-Center/l4/nvidia-ada-gpu-a\
     rchitecture-whitepaper-v2.1.pdf"
+  - "Estimated MSRP of $45,000 USD for the NVIDIA L40S based on OEM list prices. NVIDIA does not publish official MSRP for data center GPUs. OEM list prices corroborated by 2 independent sources: Lenovo ThinkSystem NVIDIA L40S (4X67A90669) has MSRP of $51,579 per multioculus.com, and Cisco UCSX-GPU-L40S has MSRP of $39,094.50 per Bluum. The $45,000 estimate represents the midpoint of these OEM list prices. Note: Current market/resale prices (~$7,500) are significantly lower due to depreciation but do not reflect original launch list pricing."

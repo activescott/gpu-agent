@@ -1,8 +1,8 @@
 # yaml-language-server: $schema=./gpu-spec.schema.json
 name: nvidia-geforce-rtx-5070-ti
 label: NVIDIA GeForce RTX 5070 Ti
+msrpUSD: 749
 
-cudaCoreCount: 10752
 memoryCapacityGB: 16
 int8TOPS: 900.4
 maxTDPWatts: 360
@@ -22,7 +22,7 @@ supportedHardwareOperations:
   - FP4
 supportedCUDAComputeCapability: 12.8
 releaseDate: "2025-02-20"
-lastModified: "2025-12-05T00:00:00Z"
+lastModified: "2025-12-18T22:30:00Z"
 
 summary: |
   The NVIDIA GeForce RTX 5070 Ti was the second GeForce RTX 50 series product launched using the GB203 GPU after the RTX 5080.
@@ -41,6 +41,7 @@ references:
   - https://arxiv.org/abs/2310.16836
   - https://www.tomshardware.com/pc-components/gpus/nvidia-blackwell-architecture-deep-dive-a-closer-look-at-the-upgrades-coming-with-rtx-50-series-gpus
   - https://www.techpowerup.com/gpu-specs/geforce-rtx-5080.c4217
+  - https://www.nvidia.com/en-us/geforce/graphics-cards/50-series/rtx-5070-family/
 
 notes:
   - We use the peak TOPS/FLOPS specs using the sparsity feature.
@@ -48,3 +49,4 @@ notes:
   - fp16TFLOPS is "Peak FP16 Tensor TFLOPS with FP16 Accumulate" as that's what NVIDIA publishes.
   - int8TOPS is "peak INT 8 TOPS" using "Effective TOPS / TFLOPS using the new Sparsity Feature". They also reveal it as 660.6 "based on GPU Boost Clock". This comes from the blackwell gpu architecture pdf.
   - fp32TFLOPS is "Peak TF32 Tensor TFLOPS1" as published in the blackwell gpu architecture pdf.
+  - MSRP of $749 USD sourced from nvidia.com official product page (https://www.nvidia.com/en-us/geforce/graphics-cards/50-series/rtx-5070-family/). A Founders Edition is available for this model.

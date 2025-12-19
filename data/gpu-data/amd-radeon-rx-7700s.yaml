@@ -2,6 +2,7 @@
 name: amd-radeon-rx-7700s
 label: AMD Radeon RX 7700S
 tensorCoreCount: 64
+msrpUSD: 300
 fp32TFLOPS: 20.48
 fp16TFLOPS: 40.96
 int8TOPS: null
@@ -16,7 +17,7 @@ supportedHardwareOperations:
   - INT8
   - INT4
 releaseDate: "2023-01-04"
-lastModified: "2025-12-05T00:00:00Z"
+lastModified: "2025-12-18T08:00:00Z"
 
 summary: >-
   The AMD Radeon RX 7700S is a mobile graphics card launched in January 2023, featuring
@@ -33,10 +34,12 @@ summary: >-
 references:
   - https://www.techpowerup.com/gpu-specs/radeon-rx-7700s.c4015
   - https://www.notebookcheck.net/AMD-Radeon-RX-7700S-GPU-Benchmarks-and-Specs.679277.0.html
+  - https://videocardz.com/newz/amd-radeon-rx-7600-to-launch-with-269-e299-msrp
+  - https://computercity.com/laptops/amd-radeon-rx-7700s
 notes:
   - FP32 TFLOPS of 20.48 per TechPowerUp GPU Database and multiple authoritative sources
   - FP16 performance is 40.96 TFLOPS at 2:1 ratio to FP32, standard for RDNA 3 architecture
-  - Note on calculation: Simple formula (2048 SPs × 2.5 GHz × 2) yields 10.24 TFLOPS, but authoritative sources consistently report 20.48 TFLOPS, suggesting RDNA 3 achieves higher effective throughput
+  - Note on calculation - Simple formula (2048 SPs × 2.5 GHz × 2) yields 10.24 TFLOPS, but authoritative sources consistently report 20.48 TFLOPS, suggesting RDNA 3 achieves higher effective throughput
   - tensorCoreCount of 64 represents the AI Accelerators (2 per compute unit × 32 compute units)
   - Memory bandwidth calculated as 128-bit bus × 18 Gbps effective = 288 GB/s
   - RDNA 3 architecture includes dedicated AI Accelerators for machine learning workloads
@@ -44,3 +47,4 @@ notes:
   - Features 32MB of Infinity Cache (L3) in addition to 2MB L2 cache
   - Base clock of 1,500 MHz with boost to 2,500 MHz
   - Mobile GPU designed for laptop/notebook systems
+  - MSRP of $300 is an estimated component value. The RX 7700S is a mobile-only GPU sold exclusively integrated into laptops, not as a standalone retail product. AMD does not publish official MSRP for mobile GPU components. This estimate is based on market positioning between NVIDIA RTX 4050 and RTX 4060 mobile GPUs, and relative to the desktop RX 7600's $269 MSRP. The RX 7700S offers performance comparable to or exceeding RTX 3060 desktop and trades blows with mobile RTX 3070.

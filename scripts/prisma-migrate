@@ -95,13 +95,49 @@ case $1 in
         shift
         case $subcommand in
             dev)
-                # Collect remaining args
+                # Collect remaining args and extract migration name
                 args=""
+                migration_name=""
                 while [[ $# -gt 0 ]]; do
-                    args="$args $1"
-                    shift
+                    if [[ "$1" == "--name" && $# -gt 1 ]]; then
+                        args="$args $1 $2"
+                        migration_name="$2"
+                        shift 2
+                    else
+                        args="$args $1"
+                        shift
+                    fi
                 done
+
+                # Get list of migrations before
+                local_migrations_dir="packages/web-app/prisma/migrations"
+                container_migrations_dir="/app/packages/web-app/prisma/migrations"
+                pod=$(get_app_pod)
+                before_migrations=$(minikube kubectl -- exec "$pod" -n gpupoet-dev -- ls "$container_migrations_dir" 2>/dev/null | sort)
+
+                # Run the migration
                 run_in_container "npx prisma migrate dev $args"
+
+                # Get list of migrations after
+                after_migrations=$(minikube kubectl -- exec "$pod" -n gpupoet-dev -- ls "$container_migrations_dir" 2>/dev/null | sort)
+
+                # Find new migrations and copy them back
+                new_migrations=$(comm -13 <(echo "$before_migrations") <(echo "$after_migrations"))
+                if [[ -n "$new_migrations" ]]; then
+                    echo ""
+                    echo "=== Syncing new migrations to local filesystem ==="
+                    for migration in $new_migrations; do
+                        if [[ "$migration" == "migration_lock.toml" ]]; then
+                            continue
+                        fi
+                        echo "Copying migration: $migration"
+                        mkdir -p "$local_migrations_dir/$migration"
+                        minikube kubectl -- cp "gpupoet-dev/${pod}:${container_migrations_dir}/${migration}/migration.sql" "$local_migrations_dir/$migration/migration.sql"
+                        echo "  -> $local_migrations_dir/$migration/migration.sql"
+                    done
+                    echo ""
+                    echo "New migrations synced to local filesystem. Don't forget to commit them!"
+                fi
                 ;;
             deploy)
                 run_in_container "npx prisma migrate deploy"

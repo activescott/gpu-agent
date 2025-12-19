@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=./gpu-spec.schema.json
 name: amd-radeon-rx-580x
 label: AMD Radeon RX 580X
+msrpUSD: 229
 fp32TFLOPS: 6.2
 fp16TFLOPS: 6.2
 memoryCapacityGB: 8
@@ -9,7 +10,7 @@ maxTDPWatts: 185
 gpuArchitecture: Graphics Core Next 4
 supportedHardwareOperations: []
 releaseDate: "2018-04-11"
-lastModified: "2025-12-05T00:00:00Z"
+lastModified: "2025-12-18T08:00:00Z"
 
 summary: The AMD Radeon RX 580X, launched on April 11th, 2018, is built on a 14
   nm process and features the Polaris 20 graphics processor. It's a dual-slot
@@ -18,6 +19,10 @@ references:
   - https://www.amd.com/en/products/specifications/graphics
   - https://www.tomshardware.com/reviews/amd-radeon-rx-580-review,5020.html
   - https://www.techpowerup.com/gpu-specs/radeon-rx-580x.c3190
+  - https://www.techpowerup.com/gpu-specs/radeon-rx-580.c2938
+  - https://videocardz.com/amd/radeon-500/radeon-rx-580
   - https://en.wikipedia.org/wiki/Graphics_Core_Next
 notes:
   - 'int8TOPS: "More Information Needed"'
+  - The RX 580X was an OEM-only variant of the RX 580 with slightly higher guaranteed clock speeds, sold exclusively to system builders like Dell and HP. No public MSRP was established as it was not sold at retail.
+  - MSRP of $229 is based on the AMD Radeon RX 580 8GB launch price (April 18, 2017), which is the appropriate reference since the RX 580X is an OEM-equivalent variant with nearly identical specifications. The RX 580 8GB MSRP of $229 was confirmed by TechPowerUp GPU Database and VideoCardz.

@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=./gpu-spec.schema.json
 name: nvidia-geforce-rtx-3090
 label: NVIDIA GeForce RTX 3090
+msrpUSD: 1499
 tensorCoreCount: 328
 fp32TFLOPS: 35.58
 fp16TFLOPS: 142.74
@@ -19,7 +20,7 @@ supportedHardwareOperations:
   - BF16
 supportedCUDAComputeCapability: 8.6
 releaseDate: "2020-09-24"
-lastModified: "2025-12-05T00:00:00Z"
+lastModified: "2025-12-18T00:00:00Z"
 
 summary: |
   The NVIDIA GeForce RTX 3090 is NVIDIA's flagship consumer graphics card launched in September 2020,
@@ -37,6 +38,7 @@ summary: |
 references:
   - https://www.nvidia.com/content/PDF/nvidia-ampere-ga-102-gpu-architecture-whitepaper-v2.1.pdf
   - https://www.nvidia.com/en-us/geforce/graphics-cards/30-series/rtx-3090-3090ti/
+  - https://www.nvidia.com/en-us/geforce/news/introducing-rtx-30-series-graphics-cards/
   - https://www.techpowerup.com/gpu-specs/geforce-rtx-3090.c3622
   - https://www.tomshardware.com/features/nvidia-ampere-architecture-deep-dive
   - https://forums.developer.nvidia.com/t/rtx-3090-peak-performance/198049
@@ -53,3 +55,4 @@ notes:
   - FP64 (double precision) performance is 1:64 ratio of FP32, yielding approximately 556 GFLOPS.
   - The RTX 3090 and RTX 3090 Ti are the only GeForce 30-series cards that support 2-way NVLink for multi-GPU configurations.
   - Released September 24, 2020 at $1,499 USD MSRP, positioned as a "BFGPU" (Big Ferocious GPU) targeting both gamers and content creators.
+  - MSRP of $1499 USD sourced from NVIDIA official product announcement at https://www.nvidia.com/en-us/geforce/news/introducing-rtx-30-series-graphics-cards/

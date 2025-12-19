@@ -40,6 +40,13 @@ function formatReleaseDate(dateString: string): string {
   })
 }
 
+/**
+ * Formats MSRP as a currency string with USD suffix.
+ */
+function formatMsrp(msrpUSD: number): string {
+  return `$${msrpUSD.toLocaleString()} USD`
+}
+
 export function GpuInfo({
   gpu,
   gpuSpecPercentages,
@@ -57,6 +64,7 @@ export function GpuInfo({
         {gpu.releaseDate && (
           <li>Release Date: {formatReleaseDate(gpu.releaseDate)}</li>
         )}
+        {gpu.msrpUSD && <li>MSRP: {formatMsrp(gpu.msrpUSD)}</li>}
         <li>GPU Architecture: {gpu.gpuArchitecture}</li>
         <li>
           {/* TODO: Review https://docs.nvidia.com/deeplearning/performance/dl-performance-gpu-background/index.html#gpu-arch__fig2 */}
@@ -228,6 +236,19 @@ export function GpuInfo({
           </li>
         ))}
       </ul>
+
+      {gpu.notes && gpu.notes.length > 0 && (
+        <>
+          <h2 className="h6 text-muted mt-4">Notes</h2>
+          <ol className="small text-muted" style={{ fontSize: "0.75rem" }}>
+            {gpu.notes.map((note, index) => (
+              <li key={index} className="mb-1">
+                {note}
+              </li>
+            ))}
+          </ol>
+        </>
+      )}
     </>
   )
 }

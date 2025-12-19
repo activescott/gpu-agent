@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=./gpu-spec.schema.json
 name: amd-radeon-rx-6750-xt
 label: AMD Radeon RX 6750 XT
+msrpUSD: 549
 tensorCoreCount: null
 fp32TFLOPS: 13.31
 fp16TFLOPS: 26.62
@@ -13,7 +14,7 @@ supportedHardwareOperations:
   - FP32
   - FP16
 releaseDate: "2022-05-10"
-lastModified: "2025-12-14T00:00:00Z"
+lastModified: "2025-12-18T22:30:00Z"
 
 summary: >-
   The AMD Radeon RX 6750 XT was released in May 2022 as a refreshed mid-range gaming
@@ -32,13 +33,15 @@ references:
   - https://www.amd.com/en/products/graphics/desktops/radeon/6000-series/amd-radeon-rx-6750-xt.html
   - https://www.tomshardware.com/reviews/amd-radeon-rx-6750-xt-review
   - https://en.wikipedia.org/wiki/RDNA_2
+  - https://wccftech.com/amd-radeon-rx-6950-xt-rx-6750-xt-rx-6650-xt-official-launch-specs-prices-performance/
 notes:
   - FP32 TFLOPS calculated as 2,560 stream processors × 2,600 MHz boost clock × 2 ops/cycle / 1,000,000 = 13.31 TFLOPS
   - FP16 performance is 26.62 TFLOPS calculated at 2:1 ratio to FP32, which is standard for RDNA 2 architecture
   - Memory bandwidth of 432 GB/s calculated as 192-bit bus × 18 Gbps effective / 8
   - RDNA 2 architecture does not include dedicated AI accelerators or tensor cores (added in RDNA 3), so tensorCoreCount is null
-  - RDNA 2 CUs support INT8 and INT4 data types and have INT8 matrix core support per ROCm documentation, but lack the WMMA (Wave Matrix Multiply Accumulate) instructions added in RDNA 3. AMD does not publish INT8 TOPS for consumer RDNA 2 GPUs, so int8TOPS is null. Sources: https://en.wikipedia.org/wiki/RDNA_2, https://rocm.docs.amd.com/en/latest/reference/precision-support.html
+  - "RDNA 2 CUs support INT8 and INT4 data types and have INT8 matrix core support per ROCm documentation, but lack the WMMA (Wave Matrix Multiply Accumulate) instructions added in RDNA 3. AMD does not publish INT8 TOPS for consumer RDNA 2 GPUs, so int8TOPS is null. Sources: https://en.wikipedia.org/wiki/RDNA_2, https://rocm.docs.amd.com/en/latest/reference/precision-support.html"
   - The 96MB Infinity Cache significantly improves effective memory bandwidth beyond the raw 432 GB/s specification
   - Built on TSMC 7nm process with 335 mm² die size containing 17.2 billion transistors
   - Released as a refresh of the RX 6700 XT with higher clocks (2,600 MHz vs 2,581 MHz boost), faster memory (18 Gbps vs 16 Gbps), and higher TDP (250W vs 230W)
   - Release date of May 10, 2022 per AMD official press release; some third-party sources list March 3, 2022
+  - MSRP of $549 USD verified from multiple sources including TechPowerUp, WCCFtech, and VideoCardz at launch on May 10, 2022

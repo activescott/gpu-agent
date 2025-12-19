@@ -1,17 +1,22 @@
 # yaml-language-server: $schema=./gpu-spec.schema.json
 name: test-gpu
 label: Test GPU
+msrpUSD: 100
 tensorCoreCount: 1
 fp32TFLOPS: 1.1
 fp16TFLOPS: 1
 int8TOPS: 1
 memoryCapacityGB: 1
 memoryBandwidthGBs: 1
+maxTDPWatts: 50
 gpuArchitecture: test
 supportedHardwareOperations:
-  - INT1
+  - FP32
 releaseDate: "2020-01-01"
-lastModified: "2025-12-05T00:00:00Z"
+lastModified: "2025-12-18T22:30:00Z"
 
 summary: test summary
-references: []
+references:
+  - https://example.com/test-gpu
+notes:
+  - This is a test GPU spec file for validation purposes

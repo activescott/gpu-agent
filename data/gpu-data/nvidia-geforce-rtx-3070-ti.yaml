@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=./gpu-spec.schema.json
 name: nvidia-geforce-rtx-3070-ti
 label: NVIDIA GeForce RTX 3070 Ti
+msrpUSD: 599
 tensorCoreCount: 192
 fp32TFLOPS: 21.75
 fp16TFLOPS: 87.00
@@ -16,7 +17,7 @@ supportedHardwareOperations:
   - BF16
 supportedCUDAComputeCapability: 8.6
 releaseDate: "2021-06-10"
-lastModified: "2025-12-05T00:00:00Z"
+lastModified: "2025-12-18T00:00:00Z"
 
 summary: |
   The NVIDIA GeForce RTX 3070 Ti is a high-performance graphics card released in June 2021,
@@ -31,9 +32,9 @@ summary: |
 references:
   - https://www.nvidia.com/content/PDF/nvidia-ampere-ga-102-gpu-architecture-whitepaper-v2.1.pdf
   - https://www.nvidia.com/en-us/geforce/graphics-cards/30-series/rtx-3070-3070ti/
+  - https://www.nvidia.com/en-us/geforce/news/rtx-3080-ti-3070-ti-graphics-cards/
   - https://www.waredb.com/processor/nvidia-geforce-rtx-3070-ti
   - https://www.techpowerup.com/gpu-specs/geforce-rtx-3070-ti.c3675
-  - https://www.nvidia.com/en-us/geforce/news/nvidia-geforce-rtx-3070-ti-out-now/
 
 notes:
   - fp16TFLOPS of 87.00 represents "Peak FP16 Tensor TFLOPS" using the "with sparsity" metric. Dense performance is 43.50 TFLOPS, sparse is 87.00 TFLOPS. Following Ampere architecture standards, NVIDIA publishes sparse tensor performance.
@@ -44,3 +45,4 @@ notes:
   - Memory bandwidth calculated as 256-bit interface × 19 Gbps = 608 GB/s.
   - Process node is Samsung 8nm with approximately 17.4 billion transistors.
   - The key difference from RTX 3070 is the use of GDDR6X memory (vs GDDR6) and 256 more CUDA cores (6,144 vs 5,888).
+  - MSRP of $599 USD sourced from NVIDIA official product announcement at https://www.nvidia.com/en-us/geforce/news/rtx-3080-ti-3070-ti-graphics-cards/

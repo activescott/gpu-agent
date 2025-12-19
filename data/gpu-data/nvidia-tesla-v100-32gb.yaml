@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=./gpu-spec.schema.json
 name: nvidia-tesla-v100-32gb
-label: NVIDIA Tesla V100
+label: NVIDIA Tesla V100 32GB
+msrpUSD: 11500
 tensorCoreCount: 640
 fp32TFLOPS: 14
 fp16TFLOPS: 28
@@ -13,11 +14,10 @@ supportedHardwareOperations:
   - FP16
   - FP64
   - FP32
-  - FP16
   - INT8
 supportedCUDAComputeCapability: 7
 releaseDate: "2018-03-27"
-lastModified: "2025-12-05T00:00:00Z"
+lastModified: "2025-12-18T00:00:00Z"
 
 summary: The NVIDIA Tesla V100, introduced with NVIDIA's Volta architecture, is
   a high-end data center GPU. The 32GB version has part numbers
@@ -34,8 +34,10 @@ references:
   - https://www.tomshardware.com/news/nvidia-tesla-v100-volta-gpu,34379.html
   - https://www.microway.com/knowledge-center-articles/in-depth-comparison-of-nvidia-tesla-volta-gpu-accelerators/
   - https://www.nvidia.com/en-us/data-center/tensor-cores/
+  - https://www.microway.com/hpc-tech-tips/nvidia-tesla-v100-price-analysis/
 notes:
   - 'supportedHardwareOperations: see "Supported Tensor Core precisions" in
     table at end of https://www.nvidia.com/en-us/data-center/tensor-cores/'
-  - "supportedCUDAComputeCapability: lookup lookup GPU Compute Capability at
+  - "supportedCUDAComputeCapability: lookup GPU Compute Capability at
     https://developer.nvidia.com/cuda-gpus"
+  - "Estimated MSRP of $11,500 USD for Tesla V100 32GB PCIe based on launch-time market pricing. NVIDIA does not publish official MSRP for data center GPUs. Microway's price analysis from 2018 lists single-unit list price at $11,458 for the 32GB PCIe variant. The 32GB model launched in March 2018, approximately 9 months after the 16GB variant, with a premium of approximately $800-$1,500 over the 16GB version. Note: Pricing varies by form factor (PCIe vs SXM2) and purchase volume. The SXM2 variant commanded a significant premium (approximately $15,900 for 16GB SXM2 vs $9,900-$10,664 for 16GB PCIe)."

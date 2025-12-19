@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=./gpu-spec.schema.json
 name: amd-radeon-rx-6900-xt
 label: AMD Radeon RX 6900 XT
+msrpUSD: 999
 tensorCoreCount: null
 fp32TFLOPS: 23.04
 fp16TFLOPS: 46.08
@@ -13,7 +14,7 @@ supportedHardwareOperations:
   - FP32
   - FP16
 releaseDate: "2020-12-08"
-lastModified: "2025-12-14T00:00:00Z"
+lastModified: "2025-12-18T00:00:00Z"
 
 summary: >-
   The AMD Radeon RX 6900 XT was released in December 2020 as AMD's flagship gaming GPU
@@ -32,6 +33,7 @@ references:
   - https://www.amd.com/en/products/graphics/desktops/radeon/6000-series/amd-radeon-rx-6900-xt.html
   - https://www.tomshardware.com/reviews/amd-radeon-rx-6900-xt-review
   - https://en.wikipedia.org/wiki/RDNA_2
+  - https://www.anandtech.com/show/16303/lauching-today-amds-radeon-rx-6900-xt
 notes:
   - FP32 TFLOPS calculated as 5,120 stream processors × 2,250 MHz boost clock × 2 ops/cycle / 1,000,000 = 23.04 TFLOPS
   - FP16 performance is 46.08 TFLOPS calculated at 2:1 ratio to FP32, which is standard for RDNA 2 architecture
@@ -41,3 +43,4 @@ notes:
   - The 128MB Infinity Cache significantly improves effective memory bandwidth beyond the raw 512 GB/s specification
   - Built on TSMC 7nm process with 520 mm² die size containing 26.8 billion transistors
   - Uses the full Navi 21 XTX die with all 80 compute units enabled
+  - MSRP of $999 USD verified from multiple sources including AnandTech, TechPowerUp, and Tom's Hardware at launch on December 8, 2020

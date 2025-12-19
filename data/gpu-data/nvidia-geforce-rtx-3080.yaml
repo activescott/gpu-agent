@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=./gpu-spec.schema.json
 name: nvidia-geforce-rtx-3080
 label: NVIDIA GeForce RTX 3080
+msrpUSD: 699
 tensorCoreCount: 272
 fp32TFLOPS: 29.77
 fp16TFLOPS: 119.07
@@ -16,7 +17,7 @@ supportedHardwareOperations:
   - BF16
 supportedCUDAComputeCapability: 8.6
 releaseDate: "2020-09-17"
-lastModified: "2025-12-05T00:00:00Z"
+lastModified: "2025-12-18T00:00:00Z"
 
 summary: |
   The NVIDIA GeForce RTX 3080 is a high-end graphics card released in September 2020,
@@ -31,6 +32,7 @@ summary: |
 references:
   - https://www.nvidia.com/content/PDF/nvidia-ampere-ga-102-gpu-architecture-whitepaper-v2.1.pdf
   - https://www.nvidia.com/en-us/geforce/graphics-cards/30-series/rtx-3080-3080ti/
+  - https://www.nvidia.com/en-us/geforce/news/introducing-rtx-30-series-graphics-cards/
   - https://www.waredb.com/processor/nvidia-geforce-rtx-3080
   - https://www.techpowerup.com/gpu-specs/geforce-rtx-3080.c3621
   - https://www.nvidia.com/en-us/geforce/news/geforce-rtx-30-series-out-now/
@@ -45,3 +47,4 @@ notes:
   - Process node is Samsung 8nm with approximately 28.3 billion transistors.
   - At launch, the RTX 3080 was praised for offering nearly 2x the performance of the RTX 2080 at the same price point, representing exceptional generational improvement.
   - Note that a 12GB variant of the RTX 3080 was released later with slightly different specifications (8,960 CUDA cores and 384-bit memory bus).
+  - MSRP of $699 USD sourced from NVIDIA official product announcement at https://www.nvidia.com/en-us/geforce/news/introducing-rtx-30-series-graphics-cards/

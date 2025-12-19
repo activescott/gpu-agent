@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=./gpu-spec.schema.json
 name: nvidia-geforce-rtx-4090
 label: NVIDIA Geforce RTX 4090
+msrpUSD: 1599
 tensorCoreCount: 512
 fp32TFLOPS: 82.6
 fp16TFLOPS: 660.6
@@ -18,7 +19,7 @@ supportedHardwareOperations:
   - FP8
 supportedCUDAComputeCapability: 8.9
 releaseDate: "2022-10-12"
-lastModified: "2025-12-05T00:00:00Z"
+lastModified: "2025-12-18T00:00:00Z"
 
 summary: |
   The NVIDIA GeForce RTX 4090 is a graphics card released in 2022,
@@ -38,6 +39,7 @@ references:
   - https://www.nvidia.com/en-us/geforce/news/geforce-rtx-4090-out-now/
 
 notes:
+  - MSRP of $1599 USD sourced from NVIDIA's official announcement. A Founders Edition was available at this price. Due to high demand and limited availability, most RTX 4090 cards are priced between $1,700 and $2,000 or higher.
   - fp16TFLOPS is "Peak FP16 Tensor TFLOPS with FP16 Accumulate" as that's what NVIDIA publishes. Using the "with sparsity" metric.
   - int8TOPS is "peak INT 8 TOPS" using "Effective TOPS / TFLOPS using the new Sparsity Feature". They also reveal it as 660.6 "based on GPU Boost Clock". This comes from the ada-gpu-architecture-whitepaper-v2.1.
   - Power based on what NVIDIA refers to as "TGP (Total Graphics Power)"

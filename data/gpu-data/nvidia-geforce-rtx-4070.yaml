@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=./gpu-spec.schema.json
 name: nvidia-geforce-rtx-4070
 label: NVIDIA Geforce RTX 4070
+msrpUSD: 599
 tensorCoreCount: 184
 fp32TFLOPS: 58.2
 fp16TFLOPS: 233.2
@@ -18,7 +19,7 @@ supportedHardwareOperations:
   - FP8
 supportedCUDAComputeCapability: 8.9
 releaseDate: "2023-04-13"
-lastModified: "2025-12-05T00:00:00Z"
+lastModified: "2025-12-18T00:00:00Z"
 
 summary: |
   The NVIDIA GeForce RTX 4070 is a graphics card released in 2022,
@@ -35,11 +36,13 @@ references:
   - https://images.nvidia.com/aem-dam/Solutions/geforce/ada/nvidia-ada-gpu-architecture.pdf
   - https://images.nvidia.com/aem-dam/Solutions/Data-Center/l4/nvidia-ada-gpu-architecture-whitepaper-v2.1.pdf
   - https://www.nvidia.com/en-us/geforce/graphics-cards/40-series/rtx-4080/
+  - https://www.nvidia.com/en-us/geforce/news/geforce-rtx-4070/
   - https://lambdalabs.com/blog/nvidia-rtx-4090-vs-rtx-3090-deep-learning-benchmark
   - https://www.nvidia.com/en-us/geforce/news/geforce-rtx-4090-out-now/
   - https://images.nvidia.com/aem-dam/Solutions/geforce/blackwell/nvidia-rtx-blackwell-gpu-architecture.pdf
 
 notes:
+  - MSRP of $599 USD sourced from NVIDIA's official announcement. A Founders Edition was available at this price. The official MSRP was later lowered to $549 following the launch of the RTX 4070 SUPER in January 2024.
   - fp16TFLOPS is "Peak FP16 Tensor TFLOPS with FP16 Accumulate" as that's what NVIDIA publishes. Using the "with sparsity" metric.
   - int8TOPS is "peak INT 8 TOPS" using "Effective TOPS / TFLOPS using the new Sparsity Feature". They also reveal it as 660.6 "based on GPU Boost Clock". This comes from the ada-gpu-architecture-whitepaper-v2.1.
   - Power based on what NVIDIA refers to as "TGP (Total Graphics Power)"

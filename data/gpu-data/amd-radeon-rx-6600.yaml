@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=./gpu-spec.schema.json
 name: amd-radeon-rx-6600
 label: AMD Radeon RX 6600
+msrpUSD: 329
 tensorCoreCount: null
 fp32TFLOPS: 8.93
 fp16TFLOPS: 17.86
@@ -13,7 +14,7 @@ supportedHardwareOperations:
   - FP32
   - FP16
 releaseDate: "2021-10-13"
-lastModified: "2025-12-14T00:00:00Z"
+lastModified: "2025-12-18T22:30:00Z"
 
 summary: >-
   The AMD Radeon RX 6600 was released in October 2021 as an affordable mainstream
@@ -32,13 +33,15 @@ references:
   - https://www.amd.com/en/products/graphics/desktops/radeon/6000-series/amd-radeon-rx-6600.html
   - https://www.tomshardware.com/reviews/amd-radeon-rx-6600-review-xfx
   - https://en.wikipedia.org/wiki/RDNA_2
+  - https://www.anandtech.com/show/17007/amd-launches-radeon-rx-6600-more-mainstream-gaming-for-329
 notes:
   - FP32 TFLOPS calculated as 1,792 stream processors × 2,491 MHz boost clock × 2 ops/cycle / 1,000,000 = 8.93 TFLOPS
   - FP16 performance is 17.86 TFLOPS calculated at 2:1 ratio to FP32, which is standard for RDNA 2 architecture
   - Memory bandwidth of 224 GB/s calculated as 128-bit bus × 14 Gbps effective / 8
   - RDNA 2 architecture does not include dedicated AI accelerators or tensor cores (added in RDNA 3), so tensorCoreCount is null
-  - RDNA 2 CUs support INT8 and INT4 data types and have INT8 matrix core support per ROCm documentation, but lack the WMMA (Wave Matrix Multiply Accumulate) instructions added in RDNA 3. AMD does not publish INT8 TOPS for consumer RDNA 2 GPUs, so int8TOPS is null. Sources: https://en.wikipedia.org/wiki/RDNA_2, https://rocm.docs.amd.com/en/latest/reference/precision-support.html
+  - "RDNA 2 CUs support INT8 and INT4 data types and have INT8 matrix core support per ROCm documentation, but lack the WMMA (Wave Matrix Multiply Accumulate) instructions added in RDNA 3. AMD does not publish INT8 TOPS for consumer RDNA 2 GPUs, so int8TOPS is null. Sources: https://en.wikipedia.org/wiki/RDNA_2, https://rocm.docs.amd.com/en/latest/reference/precision-support.html"
   - The 32MB Infinity Cache significantly improves effective memory bandwidth beyond the raw 224 GB/s specification
   - Built on TSMC 7nm process with 237 mm² die size containing 11.06 billion transistors
   - Uses the Navi 23 XL die with 4 compute units disabled compared to the RX 6600 XT
   - Uses PCIe 4.0 x8 interface instead of x16
+  - MSRP of $329 USD verified from multiple sources including Tom's Hardware, AnandTech, and GSMArena at launch on October 13, 2021

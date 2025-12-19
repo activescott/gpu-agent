@@ -227,6 +227,9 @@ async function seedGpus(prisma: PrismaClient): Promise<void> {
       releaseDate: gpu.releaseDate,
       // gpu.lastModified is already a Date after Zod coercion
       lastModified: gpu.lastModified,
+      msrpUSD: gpu.msrpUSD,
+      // prisma doesn't like it when these nullable list args are undefined, so we have to catch that here:
+      notes: isNil(gpu.notes) ? { equals: null } : { equals: gpu.notes },
     }
     const gpuCount = await prisma.gpu.count({
       where,

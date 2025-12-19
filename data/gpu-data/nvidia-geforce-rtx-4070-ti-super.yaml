@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=./gpu-spec.schema.json
 name: nvidia-geforce-rtx-4070-ti-super
 label: NVIDIA GeForce RTX 4070 Ti SUPER
+msrpUSD: 799
 tensorCoreCount: 264
 fp32TFLOPS: 44.10
 fp16TFLOPS: 353
@@ -18,7 +19,7 @@ supportedHardwareOperations:
   - FP8
 supportedCUDAComputeCapability: 8.9
 releaseDate: "2024-01-24"
-lastModified: "2025-12-05T00:00:00Z"
+lastModified: "2025-12-18T00:00:00Z"
 
 summary: |
   The NVIDIA GeForce RTX 4070 Ti SUPER is a high-performance graphics card released in January 2024,
@@ -36,10 +37,12 @@ references:
   - https://www.nvidia.com/en-us/geforce/graphics-cards/40-series/rtx-4070-family/
   - https://www.nvidia.com/en-us/geforce/news/geforce-rtx-4080-4070-ti-4070-super-gpu/
   - https://www.techpowerup.com/gpu-specs/geforce-rtx-4070-ti-super.c4187
+  - https://wccftech.com/nvidia-geforce-rtx-4070-ti-super-gpu-launch-available-starting-799-usd/
   - https://images.nvidia.com/aem-dam/Solutions/geforce/ada/nvidia-ada-gpu-architecture.pdf
   - https://images.nvidia.com/aem-dam/Solutions/Data-Center/l4/nvidia-ada-gpu-architecture-whitepaper-v2.1.pdf
 
 notes:
+  - MSRP of $799 USD sourced from NVIDIA's official announcement. Note that no Founders Edition was released for the RTX 4070 Ti SUPER (partner cards only). The $799 price matches the original RTX 4070 Ti while offering significantly better specifications.
   - fp32TFLOPS of 44.10 per TechPowerUp GPU Database, which represents shader FP32 performance calculated as 8,448 CUDA cores × 2.610 GHz boost clock × 2 ops/cycle / 1000 = 44.10 TFLOPS.
   - fp16TFLOPS of 353 represents Peak FP16 Tensor TFLOPS with sparsity, derived from the architectural behavior of 4th-gen tensor cores where each core performs 256 FP16 operations per clock (512 with sparsity). Calculated as 264 tensor cores × 512 ops × 2.610 GHz / 1000 ≈ 353 TFLOPS. Note that NVIDIA does not explicitly publish FP16 tensor performance for GeForce GPUs.
   - int8TOPS of 706 is "peak INT8 TOPS" using "Effective TOPS using the new Sparsity Feature" as reported in reviews. Dense performance without sparsity would be approximately 353 TOPS.
@@ -48,5 +51,4 @@ notes:
   - The RTX 4070 Ti SUPER uses the AD103-275-A1 variant of the AD103 chip.
   - Memory bandwidth calculated as 256-bit interface × 21 Gbps effective / 8 = 672 GB/s.
   - Process node is TSMC 4N (5nm-class) with 45.9 billion transistors and a die size of 379 mm².
-  - The RTX 4070 Ti SUPER was announced on January 8, 2024, and launched on January 24, 2024, at an MSRP of $799 USD.
   - Compared to the standard RTX 4070 Ti, the SUPER variant offers approximately 10% more CUDA cores, 33% more VRAM, 33% more memory bandwidth, and improved 4K gaming performance.

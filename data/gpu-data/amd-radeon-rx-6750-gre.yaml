@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=./gpu-spec.schema.json
 name: amd-radeon-rx-6750-gre
 label: AMD Radeon RX 6750 GRE 12GB
+msrpUSD: 289
 tensorCoreCount: null
 fp32TFLOPS: 13.21
 fp16TFLOPS: 26.43
@@ -13,7 +14,7 @@ supportedHardwareOperations:
   - FP32
   - FP16
 releaseDate: "2023-10-17"
-lastModified: "2025-12-14T00:00:00Z"
+lastModified: "2025-12-18T22:30:00Z"
 
 summary: >-
   The AMD Radeon RX 6750 GRE (Golden Rabbit Edition) 12GB was released in October 2023
@@ -32,15 +33,17 @@ references:
   - https://www.amd.com/en/products/graphics/amd-radeon-rx-6750-gre-12gb
   - https://www.notebookcheck.net/AMD-Radeon-RX-6750-GRE-arrives-from-US-269-with-promise-of-1440p-gaming-at-high-quality-settings.760106.0.html
   - https://en.wikipedia.org/wiki/RDNA_2
+  - https://videocardz.com/newz/amd-announces-two-radeon-rx-6750-gre-models-at-269-10gb-and-289-12gb
 notes:
   - FP32 TFLOPS calculated as 2,560 stream processors × 2,581 MHz boost clock × 2 ops/cycle / 1,000,000 = 13.21 TFLOPS
   - FP16 performance is 26.43 TFLOPS per TechPowerUp GPU Database (2:1 ratio to FP32, standard for RDNA 2 architecture)
   - TDP of 230W is AMD's official TBP specification; some third-party sources list 250W
   - Memory bandwidth of 432 GB/s calculated as 192-bit bus × 18 Gbps effective / 8
   - RDNA 2 architecture does not include dedicated AI accelerators or tensor cores (added in RDNA 3), so tensorCoreCount is null
-  - RDNA 2 CUs support INT8 and INT4 data types and have INT8 matrix core support per ROCm documentation, but lack the WMMA (Wave Matrix Multiply Accumulate) instructions added in RDNA 3. AMD does not publish INT8 TOPS for consumer RDNA 2 GPUs, so int8TOPS is null. Sources: https://en.wikipedia.org/wiki/RDNA_2, https://rocm.docs.amd.com/en/latest/reference/precision-support.html
+  - "RDNA 2 CUs support INT8 and INT4 data types and have INT8 matrix core support per ROCm documentation, but lack the WMMA (Wave Matrix Multiply Accumulate) instructions added in RDNA 3. AMD does not publish INT8 TOPS for consumer RDNA 2 GPUs, so int8TOPS is null. Sources: https://en.wikipedia.org/wiki/RDNA_2, https://rocm.docs.amd.com/en/latest/reference/precision-support.html"
   - The 96MB Infinity Cache significantly improves effective memory bandwidth beyond the raw 432 GB/s specification
   - Built on TSMC 7nm process with 335 mm² die size containing 17.2 billion transistors
   - GRE stands for Golden Rabbit Edition, named for the Year of the Rabbit (Lunar New Year began February 2023; GPU launched October 2023)
   - A 10GB variant exists with 2,304 stream processors and 80MB Infinity Cache on a 160-bit bus
   - This spec file represents the 12GB variant which is more commonly available globally
+  - MSRP of $289 USD for 12GB variant verified from multiple sources including VideoCardz, WCCFtech, and TechPowerUp at launch on October 18, 2023

@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=./gpu-spec.schema.json
 name: nvidia-tesla-v100-16gb
-label: NVIDIA Tesla V100
+label: NVIDIA Tesla V100 16GB
+msrpUSD: 10000
 tensorCoreCount: 640
 fp32TFLOPS: 14
 fp16TFLOPS: 28
@@ -13,11 +14,10 @@ supportedHardwareOperations:
   - FP16
   - FP64
   - FP32
-  - FP16
   - INT8
 supportedCUDAComputeCapability: 7
 releaseDate: "2017-06-21"
-lastModified: "2025-12-05T00:00:00Z"
+lastModified: "2025-12-18T00:00:00Z"
 
 summary: The NVIDIA Tesla V100 16GB version, introduced with NVIDIA's Volta
   architecture, is a high-end data center GPU. It was the first GPU to feature
@@ -35,6 +35,9 @@ references:
   - https://www.tomshardware.com/news/nvidia-tesla-v100-volta-gpu,34379.html
   - https://www.microway.com/knowledge-center-articles/in-depth-comparison-of-nvidia-tesla-volta-gpu-accelerators/
   - https://www.nvidia.com/en-us/data-center/tensor-cores/
+  - https://www.microway.com/hpc-tech-tips/nvidia-tesla-v100-price-analysis/
+  - https://www.nextplatform.com/2018/03/05/tesla-gpu-accelerator-bang-buck-kepler-volta/
+  - https://govindhtech.com/nvidia-tesla-v100-price-and-specifications/
 notes:
   - "int8TOPS: from
     https://www.microway.com/knowledge-center-articles/in-depth-comparison-of-n\
@@ -43,3 +46,4 @@ notes:
     table at end of https://www.nvidia.com/en-us/data-center/tensor-cores/'
   - "supportedCUDAComputeCapability: lookup GPU Compute Capability at
     https://developer.nvidia.com/cuda-gpus"
+  - "Estimated MSRP of $10,000 USD for Tesla V100 16GB PCIe based on launch-time market pricing. NVIDIA does not publish official MSRP for data center GPUs. Multiple sources from 2017-2018 cite pricing in the $8,000-$10,664 range: Microway's price analysis lists single-unit list price at $10,664, CDW retailer pricing from March 2018 at $9,900 (per Next Platform), and general tech sources cite launch range of $8,000-$10,000. Note: Pricing varies by form factor (PCIe vs SXM2) and purchase volume."

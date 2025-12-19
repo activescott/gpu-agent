@@ -1,24 +1,25 @@
 # yaml-language-server: $schema=./gpu-spec.schema.json
 name: nvidia-a10
 label: NVIDIA A10
+msrpUSD: 2800
 tensorCoreCount: 288
 fp32TFLOPS: 31.2
 fp16TFLOPS: 125
 int8TOPS: 250
 memoryCapacityGB: 24
 memoryBandwidthGBs: 600
+maxTDPWatts: 150
 gpuArchitecture: ampere
 supportedHardwareOperations:
   - FP16
   - INT8
   - INT4
-  - INT1
   - FP64
   - TF32
   - BF16
 supportedCUDAComputeCapability: 8.6
 releaseDate: "2021-04-12"
-lastModified: "2025-12-05T00:00:00Z"
+lastModified: "2025-12-18T00:00:00Z"
 
 summary: The NVIDIA A10 (part number 900-2G133-0020-000) is a high-performance
   GPU designed for professional applications, including machine learning and AI.
@@ -32,6 +33,9 @@ references:
   - https://www.nvidia.com/en-us/data-center/products/a10-gpu/
   - https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/a10/pdf/a10-datasheet.pdf
   - https://www.nvidia.com/en-us/data-center/tensor-cores/
+  - https://www.nextplatform.com/2021/04/15/nvidia-rounds-out-ampere-lineup-with-two-new-accelerators/
+  - https://www.newegg.com/p/N82E16814133882
 notes:
   - "fp16TFLOPS: NOTE: FP16 Tensor Core"
   - "int8TOPS: NOTE: INT8 Tensor Core"
+  - "Estimated MSRP of $2,800 USD for the NVIDIA A10 based on launch-time market pricing. NVIDIA does not publish official MSRP for data center GPUs. Estimate from NextPlatform article (April 2021) discussing the A10 launch. Corroborated by Newegg listing showing current market pricing around $3,299."

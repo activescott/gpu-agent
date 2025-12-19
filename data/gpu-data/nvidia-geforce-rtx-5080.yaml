@@ -1,8 +1,8 @@
 # yaml-language-server: $schema=./gpu-spec.schema.json
 name: nvidia-geforce-rtx-5080
 label: NVIDIA GeForce RTX 5080
+msrpUSD: 999
 
-cudaCoreCount: 10752
 memoryCapacityGB: 16
 int8TOPS: 900.4
 maxTDPWatts: 360
@@ -22,7 +22,7 @@ supportedHardwareOperations:
   - FP4
 supportedCUDAComputeCapability: 12.8
 releaseDate: "2025-01-30"
-lastModified: "2025-12-05T00:00:00Z"
+lastModified: "2025-12-18T22:30:00Z"
 
 summary: |
   The NVIDIA GeForce RTX 5080 was the first GeForce RTX 50 series product that was launched using the GB203 GPU.
@@ -48,3 +48,4 @@ notes:
   - fp16TFLOPS is "Peak FP16 Tensor TFLOPS with FP16 Accumulate" as that's what NVIDIA publishes.
   - int8TOPS is "peak INT 8 TOPS" using "Effective TOPS / TFLOPS using the new Sparsity Feature". They also reveal it as 660.6 "based on GPU Boost Clock". This comes from the blackwell gpu architecture pdf.
   - fp32TFLOPS is "Peak TF32 Tensor TFLOPS1" as published in the blackwell gpu architecture pdf.
+  - MSRP of $999 USD for the Founders Edition sourced from nvidia.com official press release (https://nvidianews.nvidia.com/news/nvidia-blackwell-geforce-rtx-50-series-opens-new-world-of-ai-computer-graphics).

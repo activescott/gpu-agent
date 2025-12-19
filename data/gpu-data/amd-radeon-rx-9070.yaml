@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=./gpu-spec.schema.json
 name: amd-radeon-rx-9070
 label: AMD Radeon RX 9070
+msrpUSD: 549
 tensorCoreCount: 112
 fp32TFLOPS: 36.1
 fp16TFLOPS: 72.2
@@ -14,7 +15,7 @@ supportedHardwareOperations:
   - INT8
   - INT4
 releaseDate: "2025-03-06"
-lastModified: "2025-12-05T00:00:00Z"
+lastModified: "2025-12-18T22:30:00Z"
 
 summary: |
   The AMD Radeon RX 9070 is a high-performance graphics card released in March 2025,
@@ -37,6 +38,7 @@ references:
   - https://en.wikipedia.org/wiki/Radeon_RX_9000_series
   - https://www.tomshardware.com/pc-components/gpus/amd-rdna4-rx-9000-series-gpus-specifications-pricing-release-date
   - https://gamersnexus.net/gpus/incredibly-efficient-amd-rx-9070-gpu-review-benchmarks-vs-9070-xt-rtx-5070
+  - https://www.gsmarena.com/amd_announces_pricing_and_availability_for_rx_9070_and_9070_xt-news-66772.php
 
 notes:
   - tensorCoreCount tracks the 2nd-generation AI Accelerators as "tensor cores". The RX 9070 has 112 AI Accelerators (2 per CU × 56 CUs).
@@ -45,8 +47,9 @@ notes:
   - Memory bandwidth calculated as 256-bit interface × 20 Gbps = 640 GB/s, enhanced by 64MB 3rd-generation Infinity Cache.
   - TDP is 220W, making it significantly more power-efficient than the RX 9070 XT (304W) while maintaining the same memory configuration.
   - Process node is TSMC 4nm with Navi 48 GPU die (same die as RX 9070 XT, but with 56 of 64 CUs enabled).
-  - Clock speeds: 2,070 MHz game clock and 2,520 MHz boost clock.
+  - "Clock speeds: 2,070 MHz game clock and 2,520 MHz boost clock."
   - RDNA 4 introduces optimized Compute Units, 3rd-generation Ray Tracing accelerators, and 2nd-generation AI Accelerators.
   - FSR 4 is exclusive to RDNA 4 GPUs and leverages the AI accelerators for ML-based upscaling.
   - The RX 9070 offers exceptional efficiency, providing strong performance at lower power consumption compared to the XT variant, making it an attractive option for users prioritizing power efficiency.
   - The RX 9070 shares the same 16GB GDDR6 memory and 256-bit bus as the RX 9070 XT, differentiating primarily through reduced CU count and lower clocks.
+  - MSRP of $549 USD sourced from AMD official announcement per GSMArena and Tom's Hardware coverage.

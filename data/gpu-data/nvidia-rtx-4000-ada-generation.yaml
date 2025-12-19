@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=./gpu-spec.schema.json
 name: nvidia-rtx-4000-ada-generation
 label: NVIDIA RTX 4000 Ada Generation
+msrpUSD: 1250
 tensorCoreCount: 192
 fp32TFLOPS: 26.7
 fp16TFLOPS: 213.8
@@ -19,7 +20,7 @@ supportedHardwareOperations:
   - INT4
 supportedCUDAComputeCapability: 8.9
 releaseDate: "2023-08-09"
-lastModified: "2025-12-05T00:00:00Z"
+lastModified: "2025-12-18T18:00:00Z"
 
 summary: |
   The NVIDIA RTX 4000 Ada Generation is a professional single-slot workstation GPU released in August 2023,
@@ -41,6 +42,9 @@ references:
   - https://lenovopress.lenovo.com/lp2144-thinksystem-nvidia-rtx-4000-ada-20gb-pcie-active-gpu
   - https://www.leadtek.com/eng/products/workstation_graphics(2)/NVIDIA_RTX_4000_Ada_Generation(40988)/detail
   - https://images.nvidia.com/aem-dam/en-zz/Solutions/technologies/NVIDIA-ADA-GPU-PROVIZ-Architecture-Whitepaper_1.1.pdf
+  - https://videocardz.net/nvidia-rtx-4000-ada
+  - https://www.cgchannel.com/2023/08/nvidia-unveils-rtx-4000-4500-and-5000-workstation-gpus/
+  - https://develop3d.com/workstations/nvidia-rtx-4000-4500-5000-ada-generation-gpus-launch/
 
 notes:
   - FP32 TFLOPS of 26.7 calculated as 6,144 CUDA cores × 2.175 GHz boost clock × 2 ops/cycle ÷ 1000 = 26.73 TFLOPS (rounded to 26.7 as published by NVIDIA).
@@ -53,3 +57,4 @@ notes:
   - The GPU uses the AD104-400 variant with 48 of 60 streaming multiprocessors enabled, fabricated on TSMC 5nm process with 35.8 billion transistors on a 294mm² die.
   - Power consumption (TDP) is 130W, representing the maximum thermal design power for the single-slot form factor.
   - Some sources (Lenovo) list tensor performance as 327.6 TFLOPS, but NVIDIA official sources and Leadtek consistently show 427.6 TFLOPS, which appears to be the correct peak FP8 tensor performance with sparsity.
+  - MSRP of $1,250 USD confirmed by two independent sources at launch (August 2023, available September 2023). CG Channel reported "The RTX 4000 has a MSRP of $1,250" at https://www.cgchannel.com/2023/08/nvidia-unveils-rtx-4000-4500-and-5000-workstation-gpus/. Develop3D reported "Nvidia RTX 4000 Ada is available in September with an ESP of $1,250" at https://develop3d.com/workstations/nvidia-rtx-4000-4500-5000-ada-generation-gpus-launch/.

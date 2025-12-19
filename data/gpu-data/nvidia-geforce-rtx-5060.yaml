@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=./gpu-spec.schema.json
 name: nvidia-geforce-rtx-5060
 label: NVIDIA GeForce RTX 5060
+msrpUSD: 299
 tensorCoreCount: 120
 fp32TFLOPS: 19.18
 fp16TFLOPS: 76.71
@@ -19,7 +20,7 @@ supportedHardwareOperations:
   - FP4
 supportedCUDAComputeCapability: 12.8
 releaseDate: "2025-05-01"
-lastModified: "2025-12-05T00:00:00Z"
+lastModified: "2025-12-18T00:00:00Z"
 
 summary: |
   The NVIDIA GeForce RTX 5060 is an entry-level graphics card released in 2025,
@@ -38,6 +39,7 @@ references:
   - https://www.waredb.com/processor/nvidia-geforce-rtx-5060
   - https://www.techpowerup.com/gpu-specs/geforce-rtx-5060.c4409
   - https://www.nvidia.com/en-us/geforce/news/ultimate-guide-to-5060/
+  - https://www.nvidia.com/en-us/geforce/news/rtx-5060-out-now/
 
 notes:
   - fp16TFLOPS of 76.71 represents "Peak FP16 Tensor TFLOPS with FP16 Accumulate" using the "with sparsity" metric. Dense performance is 38.35 TFLOPS, sparse is 76.71 TFLOPS. Following the same pattern as other Blackwell GPUs, NVIDIA publishes the sparse performance.
@@ -48,3 +50,4 @@ notes:
   - Memory bandwidth calculated as 128-bit interface × 28 Gbps = 448 GB/s.
   - Process node is 4nm with 21.9 billion transistors.
   - The RTX 5060 and RTX 5060 Ti share the same memory bandwidth (448 GB/s) but differ in VRAM capacity (8GB vs 16GB).
+  - MSRP of $299 USD sourced from nvidia.com official product page (https://www.nvidia.com/en-us/geforce/news/rtx-5060-out-now/). No Founders Edition available; pricing is for partner cards.

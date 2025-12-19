@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=./gpu-spec.schema.json
 name: amd-radeon-rx-7900-xt
 label: AMD Radeon RX 7900 XT
+msrpUSD: 899
 tensorCoreCount: 168
 fp32TFLOPS: 52
 fp16TFLOPS: 103
@@ -15,20 +16,22 @@ supportedHardwareOperations:
   - INT8
   - INT4
 releaseDate: "2022-12-13"
-lastModified: "2025-12-05T00:00:00Z"
+lastModified: "2025-12-18T00:00:00Z"
 
 summary: >-
   The AMD Radeon RX 7900 XT was released alongside the RX 7900 XTX on December
-  13, 2022 as one of the GPUs using the new RDNA 3 architecture. 
-        It includes RDNA 3 architecture's new AI Accelerators which accelerate the GEMM operations that are critical to machine learning/AI performance. 
+  13, 2022 as one of the GPUs using the new RDNA 3 architecture.
+        It includes RDNA 3 architecture's new AI Accelerators which accelerate the GEMM operations that are critical to machine learning/AI performance.
         With 84 compute units (CUs) and 168 AI Accelerators, it has 12 fewer (CUs), and 6 fewer AI Accelerators than the 7900 XTX but remains a strong contender in the high-performance GPU market.
         Some common part numbers are the PowerColor RX7900XT 20G-L/OC, Sapphire 11323-02-20G, XFX RX-79TMERCU9.
         The lowest price is tracked and continuously updated across multiple sellers for all of these models below.
 references:
   - https://www.amd.com/en/products/specifications/graphics
   - https://www.tomshardware.com/reviews/amd-radeon-rx-7900-xtx-and-xt-review-shooting-for-the-top
+  - https://www.techpowerup.com/300632/amd-announces-the-usd-999-radeon-rx-7900-xtx-and-usd-899-rx-7900-xt-5nm-rdna3-displayport-2-1-fsr-3-0-fluidmotion
   - https://en.wikipedia.org/wiki/RDNA_3
   - https://gpuopen.com/learn/wmma_on_rdna3/
   - https://gpuopen.com/learn/amd-lab-notes/amd-lab-notes-matrix-cores-readme/
 notes:
   - 'tensorCoreCount: tracking the AI Accelerators as "tensor cores"'
+  - MSRP of $899 USD sourced from AMD announcement on November 3, 2022, verified from TechPowerUp and Tom's Hardware. AMD later reduced the price to $749 in early 2024.

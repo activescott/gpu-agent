@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE "gpu" ADD COLUMN     "msrpUSD" DOUBLE PRECISION,
+ADD COLUMN     "notes" TEXT[] DEFAULT ARRAY[]::TEXT[];

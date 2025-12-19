@@ -45,6 +45,10 @@ model gpu {
   releaseDate       String?
   // Last modified timestamp for the GPU spec data (from YAML file)
   lastModified      DateTime @default(now())
+  // Manufacturer's Suggested Retail Price in USD
+  msrpUSD           Float?
+  // Notes about the GPU specs (e.g., MSRP sources, calculation explanations)
+  notes             String[]
 
   // Relations
   metricValues  GpuMetricValue[]

@@ -1,21 +1,22 @@
 # yaml-language-server: $schema=./gpu-spec.schema.json
 name: nvidia-t4
 label: NVIDIA T4
+msrpUSD: 2299
 tensorCoreCount: 320
 fp32TFLOPS: 8.1
 fp16TFLOPS: 65
 int8TOPS: 130
 memoryCapacityGB: 16
 memoryBandwidthGBs: 320
+maxTDPWatts: 70
 gpuArchitecture: turing
 supportedHardwareOperations:
   - FP16
   - INT8
   - INT4
-  - INT1
 supportedCUDAComputeCapability: 7.5
 releaseDate: "2018-09-13"
-lastModified: "2025-12-05T00:00:00Z"
+lastModified: "2025-12-18T22:30:00Z"
 
 summary: The NVIDIA T4 is a powerful and versatile GPU designed for a variety of
   applications, including machine learning, data analytics, and virtual desktop
@@ -29,7 +30,10 @@ summary: The NVIDIA T4 is a powerful and versatile GPU designed for a variety of
   card while TCSCT4-KIT references the PNY version of the card.
 references:
   - https://www.nvidia.com/en-us/data-center/tesla-t4/
+  - https://techcrunch.com/2018/09/12/nvidia-launches-the-tesla-t4-its-fastest-data-center-inferencing-platform-yet/
+  - https://www.techpowerup.com/gpu-specs/tesla-t4.c3316
   - https://www.nvidia.com/en-us/data-center/tensor-cores/
 notes:
   - 'supportedHardwareOperations: see "Supported Tensor Core precisions" in
     table at end of https://www.nvidia.com/en-us/data-center/tensor-cores/'
+  - MSRP of $2,299 USD sourced from TechPowerUp GPU Database which lists the launch price, and verified by TechCrunch article announcing the Tesla T4 launch in September 2018.

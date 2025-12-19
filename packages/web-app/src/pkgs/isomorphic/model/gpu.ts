@@ -27,6 +27,10 @@ export const GpuSchema = z
     // lastModified comes as a string from YAML but as Date from Prisma
     // Using coerce to handle both cases
     lastModified: z.coerce.date(),
+    // Manufacturer's Suggested Retail Price in USD
+    msrpUSD: z.number().optional().nullable(),
+    // Notes about the GPU specs (e.g., MSRP sources, calculation explanations)
+    notes: z.array(z.string()).optional().default([]),
   })
   .extend(GpuSpecsSchema.shape)
 

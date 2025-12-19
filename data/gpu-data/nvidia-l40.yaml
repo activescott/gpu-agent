@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=./gpu-spec.schema.json
 name: nvidia-l40
 label: NVIDIA L40
+msrpUSD: 31000
 tensorCoreCount: 568
 fp32TFLOPS: 90.5
 fp16TFLOPS: 181.05
@@ -18,7 +19,7 @@ supportedHardwareOperations:
   - FP8
 supportedCUDAComputeCapability: 8.9
 releaseDate: "2022-10-13"
-lastModified: "2025-12-05T00:00:00Z"
+lastModified: "2025-12-18T00:00:00Z"
 
 summary: The NVIDIA L40 GPU was introduced in September 2022 with part number
   900-2G133-0010-000. It is based on the AD102 chip from the Ada Lovelace
@@ -30,6 +31,8 @@ references:
   - https://images.nvidia.com/aem-dam/Solutions/geforce/ada/nvidia-ada-gpu-architecture.pdf
   - https://images.nvidia.com/aem-dam/Solutions/Data-Center/l4/nvidia-ada-gpu-architecture-whitepaper-v2.1.pdf
   - https://nvidianews.nvidia.com/news/nvidia-announces-ovx-computing-systems-the-graphics-and-simulation-foundation-for-the-metaverse-powered-by-ada-lovelace-gpu
+  - https://www.lenovo.com/us/en/p/servers-storage-options/adapters/gpu-adapters/4x67a84823
+  - https://itprice.com/cisco-gpl/ucsx-gpu-l40
 notes:
   - "fp32TFLOPS: the L40 @ 90.5 per
     https://images.nvidia.com/content/Solutions/data-center/vgpu-L40-datasheet.\
@@ -38,3 +41,4 @@ notes:
   - "int8TOPS: L40 was 362 according to
     https://images.nvidia.com/aem-dam/Solutions/Data-Center/l4/nvidia-ada-gpu-a\
     rchitecture-whitepaper-v2.1.pdf"
+  - "Estimated MSRP of $31,000 USD for the NVIDIA L40 based on OEM list prices. NVIDIA does not publish official MSRP for data center GPUs. OEM list prices corroborated by 2 independent sources: Lenovo ThinkSystem NVIDIA L40 (4X67A84823) has MSRP of $33,109 per lenovo.com, and Cisco UCSX-GPU-L40 has GPL list price of approximately $30,000 per itprice.com. The $31,000 estimate represents the midpoint of these OEM list prices. Note: Current market/resale prices (~$7,500) are significantly lower due to depreciation but do not reflect original launch list pricing."

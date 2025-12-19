@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=./gpu-spec.schema.json
 name: amd-radeon-rx-7600
 label: AMD Radeon RX 7600
+msrpUSD: 269
 tensorCoreCount: 64
 fp32TFLOPS: 21.75
 fp16TFLOPS: 43.5
@@ -14,7 +15,7 @@ supportedHardwareOperations:
   - INT8
   - INT4
 releaseDate: "2023-05-25"
-lastModified: "2025-12-05T00:00:00Z"
+lastModified: "2025-12-18T00:00:00Z"
 
 summary: |
   The AMD Radeon RX 7600 is a mainstream graphics card released in May 2023,
@@ -30,6 +31,7 @@ summary: |
 
 references:
   - https://www.amd.com/en/products/graphics/desktops/radeon/7000-series/amd-radeon-rx-7600.html
+  - https://www.amd.com/en/newsroom/press-releases/2023-5-24-amd-introduces-amd-radeon-rx-7600-graphics-card-f.html
   - https://www.amd.com/en/products/specifications/graphics
   - https://en.wikipedia.org/wiki/RDNA_3
   - https://gpuopen.com/learn/wmma_on_rdna3/
@@ -45,3 +47,4 @@ notes:
   - The RX 7600 and RX 7600 XT have identical core specifications (32 CUs, 2,048 shaders, 64 AI Accelerators) but differ in VRAM (8GB vs 16GB) and TDP (165W vs 190W), resulting in only 4-6% performance difference in most scenarios.
   - Process node is TSMC N6 (6nm).
   - int8TOPS information is not readily available from AMD's official specifications for RDNA 3 consumer GPUs.
+  - MSRP of $269 USD sourced from AMD official press release dated May 24, 2023.

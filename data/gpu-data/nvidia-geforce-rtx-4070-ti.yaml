@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=./gpu-spec.schema.json
 name: nvidia-geforce-rtx-4070-ti
 label: NVIDIA Geforce RTX 4070 Ti
+msrpUSD: 799
 tensorCoreCount: 240
 fp32TFLOPS: 80.2
 fp16TFLOPS: 320.8
@@ -18,7 +19,7 @@ supportedHardwareOperations:
   - FP8
 supportedCUDAComputeCapability: 8.9
 releaseDate: "2023-01-05"
-lastModified: "2025-12-05T00:00:00Z"
+lastModified: "2025-12-18T00:00:00Z"
 
 summary: |
   The NVIDIA GeForce RTX 4070 Ti is a graphics card released in 2022,
@@ -37,9 +38,12 @@ references:
   - https://www.nvidia.com/en-us/geforce/graphics-cards/40-series/rtx-4080/
   - https://lambdalabs.com/blog/nvidia-rtx-4090-vs-rtx-3090-deep-learning-benchmark
   - https://www.nvidia.com/en-us/geforce/news/geforce-rtx-4090-out-now/
+  - https://videocardz.com/newz/nvidia-geforce-rtx-4070-ti-officially-costs-799-launches-january-5th
+  - https://www.techpowerup.com/302975/nvidia-geforce-rtx-4070-ti-launched-at-usd-799-with-performance-matching-rtx-3090-ti
   - https://images.nvidia.com/aem-dam/Solutions/geforce/blackwell/nvidia-rtx-blackwell-gpu-architecture.pdf
 
 notes:
+  - MSRP of $799 USD verified from multiple credible sources. Note that no Founders Edition was released for the RTX 4070 Ti (partner cards only). This GPU was originally planned as the RTX 4080 12GB at $899 but was "unlaunched" after controversy and re-released as the RTX 4070 Ti at $799.
   - fp16TFLOPS is "Peak FP16 Tensor TFLOPS with FP16 Accumulate" as that's what NVIDIA publishes. Using the "with sparsity" metric.
   - int8TOPS is "peak INT 8 TOPS" using "Effective TOPS / TFLOPS using the new Sparsity Feature". They also reveal it as 660.6 "based on GPU Boost Clock". This comes from the ada-gpu-architecture-whitepaper-v2.1.
   - Power based on what NVIDIA refers to as "TGP (Total Graphics Power)"

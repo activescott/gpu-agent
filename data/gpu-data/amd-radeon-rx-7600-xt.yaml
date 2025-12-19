@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=./gpu-spec.schema.json
 name: amd-radeon-rx-7600-xt
 label: AMD Radeon RX 7600 XT
+msrpUSD: 329
 tensorCoreCount: 64
 fp32TFLOPS: 22.57
 fp16TFLOPS: 45.14
@@ -14,13 +15,13 @@ supportedHardwareOperations:
   - INT8
   - INT4
 releaseDate: "2024-01-24"
-lastModified: "2025-12-05T00:00:00Z"
+lastModified: "2025-12-18T00:00:00Z"
 
 summary: >-
   The AMD Radeon RX 7600 XT was unveiled in January, 2024 as one of the GPUs
   using the new RDNA 3 architecture. It includes RDNA 3 architecture's new AI
   Accelerators which accelerate the GEMM operations that are critical to machine
-  learning/AI performance. 
+  learning/AI performance.
       With 32 compute units (CUs) and 64 AI Accelerators, it has significantly lower compute capacity compared to the 7900 XTX's 96 CUs and 192 AI Accelerators, but the RDNA 3 architecture's AI Accelerators and it's lower price make it a consideration among AMD GPUs for AI/machine learning.
 references:
   - https://www.amd.com/en/products/specifications/graphics
@@ -33,3 +34,4 @@ references:
 notes:
   - 'tensorCoreCount: tracking the AI Accelerators as "tensor cores"'
   - "int8TOPS: More Information Needed"
+  - MSRP of $329 USD sourced from AMD official press release dated January 8, 2024.

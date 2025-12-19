@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=./gpu-spec.schema.json
 name: amd-radeon-rx-6800-xt
 label: AMD Radeon RX 6800 XT
+msrpUSD: 649
 tensorCoreCount: null
 fp32TFLOPS: 20.74
 fp16TFLOPS: 41.47
@@ -13,7 +14,7 @@ supportedHardwareOperations:
   - FP32
   - FP16
 releaseDate: "2020-11-18"
-lastModified: "2025-12-05T00:00:00Z"
+lastModified: "2025-12-18T00:00:00Z"
 
 summary: >-
   The AMD Radeon RX 6800 XT was released in November 2020 as AMD's high-end gaming GPU
@@ -28,6 +29,8 @@ summary: >-
 references:
   - https://www.techpowerup.com/gpu-specs/radeon-rx-6800-xt.c3694
   - https://www.amd.com/en/products/graphics/desktops/radeon/6000-series/amd-radeon-rx-6800-xt.html
+  - https://www.tomsguide.com/news/amd-radeon-rx-6800-xt-price-release-date-specs-and-more
+  - https://en.wikipedia.org/wiki/Radeon_RX_6000_series
 notes:
   - FP16 performance is 41.47 TFLOPS calculated at 2:1 ratio to FP32, which is standard for RDNA 2 architecture
   - FP32 TFLOPS calculated as 4,608 stream processors × 2,250 MHz boost clock × 2 ops/cycle = 20.74 TFLOPS
@@ -35,3 +38,4 @@ notes:
   - RDNA 2 architecture does not include dedicated AI/ML accelerators or tensor cores
   - The 128MB Infinity Cache significantly improves effective memory bandwidth beyond the raw 512 GB/s specification
   - Built on TSMC 7nm process with 520 mm² die size containing 26.8 billion transistors
+  - MSRP of $649 USD verified from multiple sources including Tom's Guide, Wikipedia, and VideoCardz at launch on November 18, 2020

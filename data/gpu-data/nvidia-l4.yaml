@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=./gpu-spec.schema.json
 name: nvidia-l4
 label: NVIDIA L4
+msrpUSD: 7000
 tensorCoreCount: 240
 fp32TFLOPS: 120
 fp16TFLOPS: 242
@@ -17,7 +18,7 @@ supportedHardwareOperations:
   - FP8
 supportedCUDAComputeCapability: 8.9
 releaseDate: "2023-03-21"
-lastModified: "2025-12-05T00:00:00Z"
+lastModified: "2025-12-18T18:00:00Z"
 
 summary: The NVIDIA L4 GPU was introduced in March 2023 with part number
   900-2G193-0000-000. It, along with the L40 are the NVIDIA Ada Lovelace
@@ -36,3 +37,7 @@ references:
   - https://www.techpowerup.com/gpu-specs/l4.c4091
   - https://www.nvidia.com/en-us/technologies/ada-architecture/
   - https://developer.nvidia.com/blog/supercharging-ai-video-and-ai-inference-performance-with-nvidia-l4-gpus/
+  - https://buy.bluum.com/lenovo-thinksystem-nvidia-l4-pcie-gen4-passive-graphic-card-24-gb/
+  - https://www.compsource.com/buy/UCSCGPUL4/Cisco-91
+notes:
+  - "Estimated MSRP of $7,000 USD for the NVIDIA L4 based on OEM list prices. NVIDIA does not publish official MSRP for data center GPUs. OEM list prices corroborated by 2 independent sources: Lenovo ThinkSystem NVIDIA L4 (4X67A84824) has MSRP of $7,049 per Bluum, and Cisco UCSC-GPU-L4 is listed at $6,788 per CompSource. Note: Current market/resale prices (~$2,500-$3,000) are significantly lower due to depreciation but do not reflect original launch list pricing."

@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=./gpu-spec.schema.json
 name: intel-arc-b580
 label: Intel Arc B580
+msrpUSD: 249
 tensorCoreCount: 160
 fp32TFLOPS: 13.67
 fp16TFLOPS: 27.34
@@ -17,7 +18,7 @@ supportedHardwareOperations:
   - INT8
   - INT4
 releaseDate: "2024-12-13"
-lastModified: "2025-12-05T00:00:00Z"
+lastModified: "2025-12-18T00:00:00Z"
 
 summary: |
   The Intel Arc B580 is a discrete graphics card launched in December 2024, featuring Intel's second-generation
@@ -39,6 +40,7 @@ references:
   - https://www.intel.com/content/www/us/en/developer/articles/technical/introduction-to-the-xe-hpg-architecture.html
   - https://chipsandcheese.com/p/intels-battlemage-architecture
   - https://www.intel.com/content/www/us/en/docs/oneapi/optimization-guide-gpu/2024-1/xmx.html
+  - https://www.tomshardware.com/pc-components/gpus/intel-arc-b580-review-the-new-usd249-gpu-champion-has-arrived
 
 notes:
   - "FP32 TFLOPS calculated as 2,560 shading units × 2.670 GHz boost clock × 2 ops/cycle ÷ 1000 = 13.67 TFLOPS"
@@ -54,3 +56,4 @@ notes:
   - "GPU clock specification from Intel is 2670 MHz for both base and boost on reference design; partner cards may have higher boost clocks"
   - "TDP specified as 190W by Intel, using single 8-pin power connector with 600W PSU recommended"
   - "Launch date: December 13, 2024, with MSRP of $249 USD"
+  - "MSRP of $249 USD sourced from Intel.com official product specifications page and verified by Tom's Hardware review."

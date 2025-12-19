@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=./gpu-spec.schema.json
 name: amd-radeon-rx-9060-xt
 label: AMD Radeon RX 9060 XT
+msrpUSD: 350
 tensorCoreCount: 64
 fp32TFLOPS: 25.6
 fp16TFLOPS: 51.3
@@ -14,7 +15,7 @@ supportedHardwareOperations:
   - INT8
   - INT4
 releaseDate: "2025-06-05"
-lastModified: "2025-12-05T00:00:00Z"
+lastModified: "2025-12-18T00:00:00Z"
 
 summary: |
   The AMD Radeon RX 9060 XT is a mainstream graphics card released in May 2025,
@@ -34,6 +35,7 @@ references:
   - https://en.wikipedia.org/wiki/RDNA_4
   - https://en.wikipedia.org/wiki/Radeon_RX_9000_series
   - https://www.tomshardware.com/pc-components/gpus/amd-rdna4-rx-9000-series-gpus-specifications-pricing-release-date
+  - https://gamersnexus.net/gpus/amd-needs-just-shut-amd-radeon-rx-9060-xt-16gb-gpu-review
 
 notes:
   - tensorCoreCount tracks the 2nd-generation AI Accelerators as "tensor cores". The RX 9060 XT has 64 AI Accelerators (2 per CU × 32 CUs).
@@ -46,3 +48,4 @@ notes:
   - The RX 9060 XT is available in both 16GB ($350) and 8GB ($300) configurations, with the 16GB variant offering better value for VRAM-intensive workloads.
   - RDNA 4 introduces 3rd-generation Ray Tracing accelerators and 2nd-generation AI Accelerators with optimized Compute Unit design.
   - FSR 4 is exclusive to RDNA 4 GPUs and leverages the new AI accelerators for ML-based upscaling.
+  - MSRP of $350 USD for the 16GB variant sourced from AMD official announcement and verified by GamersNexus review and Tom's Hardware coverage.

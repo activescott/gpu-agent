@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=./gpu-spec.schema.json
 name: nvidia-geforce-rtx-4070-super
 label: NVIDIA GeForce RTX 4070 SUPER
+msrpUSD: 599
 tensorCoreCount: 224
 fp32TFLOPS: 35.48
 fp16TFLOPS: 141.93
@@ -18,7 +19,7 @@ supportedHardwareOperations:
   - FP8
 supportedCUDAComputeCapability: 8.9
 releaseDate: "2024-01-17"
-lastModified: "2025-12-05T00:00:00Z"
+lastModified: "2025-12-18T00:00:00Z"
 
 summary: |
   The NVIDIA GeForce RTX 4070 SUPER is a high-performance graphics card released in January 2024,
@@ -34,10 +35,12 @@ references:
   - https://images.nvidia.com/aem-dam/Solutions/geforce/ada/nvidia-ada-gpu-architecture.pdf
   - https://images.nvidia.com/aem-dam/Solutions/Data-Center/l4/nvidia-ada-gpu-architecture-whitepaper-v2.1.pdf
   - https://www.nvidia.com/en-us/geforce/graphics-cards/40-series/rtx-4070-family/
+  - https://www.nvidia.com/en-us/geforce/news/geforce-rtx-4080-4070-ti-4070-super-gpu/
   - https://www.waredb.com/processor/nvidia-geforce-rtx-4070-super
   - https://www.techpowerup.com/gpu-specs/geforce-rtx-4070-super.c4214
 
 notes:
+  - MSRP of $599 USD sourced from NVIDIA's official announcement. A Founders Edition was available at this price, matching the original RTX 4070's launch price while offering significantly better performance.
   - fp16TFLOPS of 141.93 represents "Peak FP16 Tensor TFLOPS with FP16 Accumulate" using the "with sparsity" metric. Dense performance is 70.96 TFLOPS, sparse is 141.93 TFLOPS. Following the same pattern as other Ada GPUs, NVIDIA publishes the sparse performance.
   - int8TOPS of 567.71 is "peak INT8 TOPS" using "Effective TOPS using the new Sparsity Feature". Dense performance is 283.85 TOPS, sparse is 567.71 TOPS.
   - fp32TFLOPS calculated as 7,168 CUDA cores × 2.475 GHz boost clock × 4 ops/cycle = 70.96 TFLOPS standard or 35.48 TFLOPS for non-tensor operations. The "4 ops/cycle" comes from Ada Lovelace's dual-issue FP32 capability where each SM can execute 2 FP32 operations on the dedicated FP32 pipeline plus 2 more FP32 operations on the INT32/FP32 shared pipeline, totaling 4 FP32 ops per cycle under optimal conditions.

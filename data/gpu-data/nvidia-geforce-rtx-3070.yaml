@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=./gpu-spec.schema.json
 name: nvidia-geforce-rtx-3070
 label: NVIDIA GeForce RTX 3070
+msrpUSD: 499
 tensorCoreCount: 184
 fp32TFLOPS: 20.31
 fp16TFLOPS: 81.25
@@ -16,7 +17,7 @@ supportedHardwareOperations:
   - BF16
 supportedCUDAComputeCapability: 8.6
 releaseDate: "2020-10-29"
-lastModified: "2025-12-05T00:00:00Z"
+lastModified: "2025-12-18T00:00:00Z"
 
 summary: |
   The NVIDIA GeForce RTX 3070 is a high-performance graphics card released in October 2020,
@@ -31,9 +32,10 @@ summary: |
 references:
   - https://www.nvidia.com/content/PDF/nvidia-ampere-ga-102-gpu-architecture-whitepaper-v2.1.pdf
   - https://www.nvidia.com/en-us/geforce/graphics-cards/30-series/rtx-3070-3070ti/
+  - https://www.nvidia.com/en-us/geforce/news/geforce-rtx-3070-out-now/
+  - https://www.nvidia.com/en-us/geforce/news/introducing-rtx-30-series-graphics-cards/
   - https://www.waredb.com/processor/nvidia-geforce-rtx-3070
   - https://www.techpowerup.com/gpu-specs/geforce-rtx-3070.c3674
-  - https://www.nvidia.com/en-us/geforce/news/geforce-rtx-3070-out-now/
 
 notes:
   - fp16TFLOPS of 81.25 represents "Peak FP16 Tensor TFLOPS" using the "with sparsity" metric. Dense performance is 40.63 TFLOPS, sparse is 81.25 TFLOPS. Following Ampere architecture standards, NVIDIA publishes sparse tensor performance.
@@ -44,3 +46,4 @@ notes:
   - Memory bandwidth calculated as 256-bit interface × 14 Gbps = 448 GB/s.
   - Process node is Samsung 8nm with approximately 17.4 billion transistors.
   - At launch, the RTX 3070 was positioned to match the RTX 2080 Ti's performance at a significantly lower price point.
+  - MSRP of $499 USD sourced from NVIDIA official product announcements at https://www.nvidia.com/en-us/geforce/news/geforce-rtx-3070-out-now/ and https://www.nvidia.com/en-us/geforce/news/introducing-rtx-30-series-graphics-cards/

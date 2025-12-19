@@ -1,24 +1,25 @@
 # yaml-language-server: $schema=./gpu-spec.schema.json
 name: nvidia-rtx-a5000
 label: NVIDIA RTX A5000
+msrpUSD: 2250
 tensorCoreCount: 256
 fp32TFLOPS: 27.77
 fp16TFLOPS: 27.77
 int8TOPS: 444.4
 memoryCapacityGB: 24
 memoryBandwidthGBs: 768
+maxTDPWatts: 230
 gpuArchitecture: ampere
 supportedHardwareOperations:
   - FP16
   - INT8
   - INT4
-  - INT1
   - FP64
   - TF32
   - BF16
 supportedCUDAComputeCapability: 8.6
 releaseDate: "2021-04-12"
-lastModified: "2025-12-05T00:00:00Z"
+lastModified: "2025-12-18T22:30:00Z"
 
 summary: The NVIDIA RTX A5000 GPU is a high-end graphics card designed for
   demanding applications, including machine learning and advanced rendering. It
@@ -29,6 +30,8 @@ summary: The NVIDIA RTX A5000 GPU is a high-end graphics card designed for
 references:
   - https://www.techpowerup.com/gpu-specs/rtx-a5000.c3748
   - https://www.nvidia.com/en-us/design-visualization/rtx-a5000/
+  - https://develop3d.com/hardware/nvidia-rtx-a4000-and-rtx-a5000-gpus-launch/
+  - https://www.cgchannel.com/2021/04/nvidia-announces-eight-new-professional-ampere-gpus/
   - https://forums.developer.nvidia.com/t/looking-for-full-specs-on-nvidia-a5000/217948
   - https://www.aspsys.com/nvidia-gpus/
   - https://www.nvidia.com/content/PDF/nvidia-ampere-ga-102-gpu-architecture-whitepaper-v2.pdf
@@ -41,3 +44,4 @@ notes:
     Operations Per Second). It's suggested that for INT8 calculations with
     sparsity, the performance should be double this number, meaning the INT8
     TOPS performance would be approximately 444.4 TOPS."
+  - MSRP of $2,250 USD verified from 3 sources - DEVELOP3D notes expected street price of $2,250, CG Channel confirms pricing of $1,000 for RTX A4000 and $2,250 for RTX A5000, and TechPowerUp GPU Database lists launch price.

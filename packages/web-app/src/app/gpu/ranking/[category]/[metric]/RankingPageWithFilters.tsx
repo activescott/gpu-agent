@@ -33,6 +33,8 @@ export interface PricedGpuWithBenchmarks extends PricedGpu {
 interface RankingPageWithFiltersProps {
   gpusInitial: PricedGpuWithBenchmarks[]
   metricUnit: string
+  /** The category of rankings (ai or gaming) - affects default filter values */
+  category: "ai" | "gaming"
   metricInfo?: {
     name: string
     unit: string
@@ -45,19 +47,36 @@ interface RankingPageWithFiltersProps {
 /**
  * Client component wrapper that adds filtering to the ranking page
  */
+// Default memory filter threshold for AI pages (in GB)
+const AI_DEFAULT_MEMORY_GB = 10
+
 export function RankingPageWithFilters({
   gpusInitial,
   metricUnit,
+  category,
   metricInfo,
   gamingBenchmarks,
 }: RankingPageWithFiltersProps): JSX.Element {
   const searchParams = useSearchParams()
 
-  // Parse initial filter state from URL
-  const initialFilters = useMemo(
-    () => parseFiltersFromURL(searchParams),
-    [searchParams],
-  )
+  // Parse initial filter state from URL, applying category-based defaults
+  const initialFilters = useMemo(() => {
+    const urlFilters = parseFiltersFromURL(searchParams)
+
+    // For AI pages, default to 10GB minimum memory if no memory filter in URL
+    // This filters out lower-memory GPUs that are less suitable for ML workloads
+    if (category === "ai" && !("memoryCapacityGB" in urlFilters)) {
+      return {
+        ...urlFilters,
+        memoryCapacityGB: {
+          operator: "gte" as const,
+          value: AI_DEFAULT_MEMORY_GB,
+        },
+      }
+    }
+
+    return urlFilters
+  }, [searchParams, category])
 
   const [filters, setFilters] = useState<FilterState>(initialFilters)
 

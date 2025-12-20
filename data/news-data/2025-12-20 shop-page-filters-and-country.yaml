@@ -13,7 +13,11 @@ content: |
 
   All listing pages now support filtering by seller location. If you prefer to buy from sellers in your country to avoid international shipping costs or delays, use the new Country filter to narrow results.
 
-  Both filters work with URL persistence, so you can bookmark or share filtered views.
+  ## More GPUs on Gaming Rankings
+
+  GPUs with 8GB of memory (like the RTX 3070) now appear on gaming ranking pages. Previously, a 10GB memory threshold filtered them out. AI ranking pages still default to 10GB minimum, but you can adjust the Memory filter to see all cards.
+
+  All filters work with URL persistence, so you can bookmark or share filtered views.
 
 status: PUBLISHED
 tags:
@@ -23,5 +27,5 @@ tags:
   - shopping
 authorFullName: "Scott Willeke"
 createdAt: "2025-12-20T10:00:00Z"
-updatedAt: "2025-12-20T10:00:00Z"
+updatedAt: "2025-12-20T18:30:00Z"
 publishedAt: "2025-12-20T10:00:00Z"

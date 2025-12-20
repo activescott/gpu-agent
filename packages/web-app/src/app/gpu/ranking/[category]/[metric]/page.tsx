@@ -125,6 +125,7 @@ export default async function Page(props: RankingParams) {
         <RankingPageWithFilters
           metricUnit={metricDef.unitShortest}
           gpusInitial={gpusWithPercentiles}
+          category={categoryTyped}
           metricInfo={{
             name: metricDef.name,
             unit: metricDef.unitShortest,

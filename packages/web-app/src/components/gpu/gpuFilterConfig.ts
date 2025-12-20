@@ -277,14 +277,32 @@ interface ListingFilterConfigOptions {
   gamingBenchmarks?: GamingBenchmarkDef[]
   /** Current page's metric slug (to skip adding it as a separate filter) */
   currentMetricSlug?: string
+  /** Whether to include GPU spec filters (Memory, etc.). Default: true */
+  includeSpecFilters?: boolean
+  /** Maximum price for budget filter (derived from listings). Default: PRICE_MAX */
+  maxPrice?: number
+  /** Unique country codes from listings for country filter */
+  countries?: string[]
 }
 
 /**
- * Filter configs specifically for listings (price-compare page)
+ * Filter configs specifically for listings (price-compare page and shop page)
+ * Use includeSpecFilters: false for shop page (single GPU, no need for spec filters)
  */
 export function buildListingFilterConfigs(
   options: ListingFilterConfigOptions = {},
 ): FilterConfig[] {
+  const {
+    includeSpecFilters = true,
+    gamingBenchmarks,
+    currentMetricSlug,
+    maxPrice = PRICE_MAX,
+    countries = [],
+  } = options
+
+  // Round max price up to nearest step for cleaner slider values
+  const roundedMaxPrice = Math.ceil(maxPrice / PRICE_STEP) * PRICE_STEP
+
   const configs: FilterConfig[] = [
     // Budget/Price filter (numeric) - default to "At most"
     {
@@ -292,22 +310,10 @@ export function buildListingFilterConfigs(
       name: "price",
       displayName: "Budget",
       min: PRICE_MIN,
-      max: PRICE_MAX,
+      max: roundedMaxPrice,
       step: PRICE_STEP,
       unit: "$",
       defaultOperator: "lte",
-    } satisfies NumericFilterConfig,
-
-    // Memory filter (numeric) - default to "At least"
-    {
-      type: "numeric",
-      name: "memoryCapacityGB",
-      displayName: "Memory",
-      min: MEMORY_MIN,
-      max: MEMORY_MAX,
-      step: MEMORY_STEP,
-      unit: "GB",
-      defaultOperator: "gte",
     } satisfies NumericFilterConfig,
 
     // Condition filter (categorical)
@@ -323,24 +329,54 @@ export function buildListingFilterConfigs(
     } satisfies CategoricalFilterConfig,
   ]
 
-  // Add gaming benchmark filters (for cross-category filtering)
-  if (options.gamingBenchmarks && options.gamingBenchmarks.length > 0) {
-    for (const benchmark of options.gamingBenchmarks) {
-      // Skip if this is the current metric being displayed
-      if (options.currentMetricSlug === benchmark.slug) {
-        continue
-      }
+  // Add country filter if countries are available
+  if (countries.length > 0) {
+    configs.push({
+      type: "categorical",
+      name: "itemLocationCountry",
+      displayName: "Country",
+      options: countries.map((code) => ({
+        value: code,
+        label: code,
+      })),
+    } satisfies CategoricalFilterConfig)
+  }
 
-      configs.push({
-        type: "numeric",
-        name: `benchmark:${benchmark.slug}`,
-        displayName: `Min ${benchmark.name}`,
-        min: FPS_MIN,
-        max: FPS_MAX,
-        step: FPS_STEP,
-        unit: benchmark.unit,
-        defaultOperator: "gte",
-      } satisfies NumericFilterConfig)
+  // Add spec filters only when includeSpecFilters is true (default)
+  // These are irrelevant for shop pages since all listings are for the same GPU
+  if (includeSpecFilters) {
+    // Memory filter (numeric) - default to "At least"
+    // Insert after Budget, before Condition
+    configs.splice(1, 0, {
+      type: "numeric",
+      name: "memoryCapacityGB",
+      displayName: "Memory",
+      min: MEMORY_MIN,
+      max: MEMORY_MAX,
+      step: MEMORY_STEP,
+      unit: "GB",
+      defaultOperator: "gte",
+    } satisfies NumericFilterConfig)
+
+    // Add gaming benchmark filters (for cross-category filtering)
+    if (gamingBenchmarks && gamingBenchmarks.length > 0) {
+      for (const benchmark of gamingBenchmarks) {
+        // Skip if this is the current metric being displayed
+        if (currentMetricSlug === benchmark.slug) {
+          continue
+        }
+
+        configs.push({
+          type: "numeric",
+          name: `benchmark:${benchmark.slug}`,
+          displayName: `Min ${benchmark.name}`,
+          min: FPS_MIN,
+          max: FPS_MAX,
+          step: FPS_STEP,
+          unit: benchmark.unit,
+          defaultOperator: "gte",
+        } satisfies NumericFilterConfig)
+      }
     }
   }
 
@@ -351,7 +387,8 @@ export function buildListingFilterConfigs(
 interface ListingWithBenchmarks {
   item: {
     priceValue: string
-    condition: string
+    condition: string | null
+    itemLocationCountry?: string | null
     gpu: Record<string, unknown>
   }
   benchmarkValues?: Record<string, number>
@@ -378,6 +415,9 @@ export function getListingFieldValue(
     case "condition": {
       return listing.item.condition
     }
+    case "itemLocationCountry": {
+      return listing.item.itemLocationCountry
+    }
     case "memoryCapacityGB": {
       return listing.item.gpu.memoryCapacityGB
     }
@@ -394,6 +434,41 @@ export function getListingFieldValue(
         return itemRecord[fieldName]
       }
       return listing.item.gpu[fieldName]
+    }
+  }
+}
+
+/** Shop listing item structure (from /gpu/shop/[gpuSlug] page) */
+interface ShopListingItem {
+  item: {
+    priceValue: string
+    condition: string | null
+    itemLocationCountry?: string | null
+  }
+  specs: Record<string, unknown>
+}
+
+/**
+ * Get field value from a shop listing for filtering
+ * Works with { item: Listing, specs: Gpu } structure used on shop pages
+ */
+export function getShopListingFieldValue(
+  listing: ShopListingItem,
+  fieldName: string,
+): unknown {
+  switch (fieldName) {
+    case "price": {
+      return Number.parseFloat(listing.item.priceValue)
+    }
+    case "condition": {
+      return listing.item.condition
+    }
+    case "itemLocationCountry": {
+      return listing.item.itemLocationCountry
+    }
+    default: {
+      // Fallback to specs if needed in future
+      return listing.specs[fieldName]
     }
   }
 }

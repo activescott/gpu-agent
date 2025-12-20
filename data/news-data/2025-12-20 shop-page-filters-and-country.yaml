@@ -1,0 +1,27 @@
+# yaml-language-server: $schema=./news-article.schema.json
+id: gpu1220dec2025shpflt
+slug: shop-page-filters-and-country
+title: "GPU Shop Pages Now Have Filters + Country Filtering"
+content: |
+  Two filtering improvements are now live across GPU Poet.
+
+  ## Filters on Individual GPU Shop Pages
+
+  The individual GPU shop pages (like [NVIDIA RTX 3070](/gpu/shop/nvidia-geforce-rtx-3070)) now include Budget and Condition filters. Previously, filtering was only available on the comparison pages. Now you can filter listings directly when shopping for a specific card.
+
+  ## Country Filtering
+
+  All listing pages now support filtering by seller location. If you prefer to buy from sellers in your country to avoid international shipping costs or delays, use the new Country filter to narrow results.
+
+  Both filters work with URL persistence, so you can bookmark or share filtered views.
+
+status: PUBLISHED
+tags:
+  - feature
+  - filtering
+  - usability
+  - shopping
+authorFullName: "Scott Willeke"
+createdAt: "2025-12-20T10:00:00Z"
+updatedAt: "2025-12-20T10:00:00Z"
+publishedAt: "2025-12-20T10:00:00Z"

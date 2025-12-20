@@ -2,7 +2,8 @@ import { test, expect } from "@playwright/test"
 
 test.describe("Basic Health Checks", () => {
   test("health endpoint returns 200", async ({ request }) => {
-    const response = await request.get("/api/health")
+    // The /api/health endpoint was deprecated - use /api/health/liveness instead
+    const response = await request.get("/api/health/liveness")
     expect(response.status()).toBe(200)
   })
 

@@ -1,5 +1,6 @@
 import { createDiag } from "@activescott/diag"
-import { ListingGallery } from "@/pkgs/client/components/ListingGallery"
+import { Suspense, type JSX } from "react"
+import { ShopListingsWithFilters } from "./ShopListingsWithFilters"
 import { getGpu } from "@/pkgs/server/db/GpuRepository"
 import { Gpu, GpuMetricKey, GpuMetricKeys } from "@/pkgs/isomorphic/model"
 import { chain } from "irritable-iterable"
@@ -68,13 +69,25 @@ export default async function Page(props: GpuParams) {
         </Link>
         .
       </p>
-      <ListingGallery
-        listings={listings.map((item) => ({
-          item,
-          specs: gpu,
-        }))}
-        initialSortKey={initialSortKey}
-      />
+      <Suspense fallback={<ListingsFallback />}>
+        <ShopListingsWithFilters
+          listings={listings.map((item) => ({
+            item,
+            specs: gpu,
+          }))}
+          initialSortKey={initialSortKey}
+        />
+      </Suspense>
     </main>
+  )
+}
+
+function ListingsFallback(): JSX.Element {
+  return (
+    <div className="d-flex justify-content-center py-4">
+      <div className="spinner-border text-secondary" role="status">
+        <span className="visually-hidden">Loading...</span>
+      </div>
+    </div>
   )
 }

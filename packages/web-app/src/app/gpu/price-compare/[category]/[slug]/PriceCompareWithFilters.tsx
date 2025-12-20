@@ -1,20 +1,8 @@
 "use client"
 
-import { useState, useCallback, useMemo, type JSX } from "react"
-import { useSearchParams } from "next/navigation"
-import {
-  FilterItems,
-  FilterLayout,
-  parseFiltersFromURL,
-  updateURLWithFilters,
-  applyFilters,
-  type FilterConfig,
-  type FilterState,
-} from "@/components/filter-items"
-import {
-  buildListingFilterConfigs,
-  getListingFieldValue,
-} from "@/components/gpu/gpuFilterConfig"
+import type { JSX } from "react"
+import { getListingFieldValue } from "@/components/gpu/gpuFilterConfig"
+import { ListingsWithFilters } from "@/components/gpu/ListingsWithFilters"
 import {
   ListingGalleryWithMetric,
   type MetricInfo,
@@ -30,14 +18,12 @@ interface GamingBenchmarkDef {
 
 interface ListingItemWithMetric {
   item: ListingWithMetric
-  /** Benchmark values for filtering (keyed by benchmark slug) */
   benchmarkValues?: Record<string, number>
 }
 
 interface PriceCompareWithFiltersProps {
   listings: ListingItemWithMetric[]
   metricInfo: MetricInfo
-  /** Gaming benchmark definitions for filter options */
   gamingBenchmarks?: GamingBenchmarkDef[]
 }
 
@@ -49,78 +35,23 @@ export function PriceCompareWithFilters({
   metricInfo,
   gamingBenchmarks,
 }: PriceCompareWithFiltersProps): JSX.Element {
-  const searchParams = useSearchParams()
-
-  // Parse initial filter state from URL
-  const initialFilters = useMemo(
-    () => parseFiltersFromURL(searchParams),
-    [searchParams],
-  )
-
-  const [filters, setFilters] = useState<FilterState>(initialFilters)
-
-  // Build filter configs for listings
-  const filterConfigs = useMemo<FilterConfig[]>(
-    () =>
-      buildListingFilterConfigs({
-        gamingBenchmarks,
-        currentMetricSlug: metricInfo.slug,
-      }),
-    [gamingBenchmarks, metricInfo.slug],
-  )
-
-  // Apply filters to listings
-  const filteredListings = useMemo(
-    () =>
-      applyFilters(listings, filters, (listing, fieldName) =>
-        getListingFieldValue(
-          listing as {
-            item: {
-              priceValue: string
-              condition: string
-              gpu: Record<string, unknown>
-            }
-            benchmarkValues?: Record<string, number>
-          },
-          fieldName,
-        ),
-      ),
-    [listings, filters],
-  )
-
-  // Handle filter changes - update state and URL
-  const handleFilterChange = useCallback((newFilters: FilterState) => {
-    setFilters(newFilters)
-    updateURLWithFilters(newFilters)
-  }, [])
-
-  // Render filter panel
-  const filterPanel = (
-    <FilterItems
-      configs={filterConfigs}
-      filters={filters}
-      onFilterChange={handleFilterChange}
-      title="Filter Listings"
-    />
-  )
-
+  // This component serves as the client/server boundary.
+  // The parent page.tsx is a server component that fetches data from the database.
+  // This wrapper is a client component that enables interactive filtering.
   return (
-    <FilterLayout
-      filterPanel={filterPanel}
-      filters={filters}
-      configs={filterConfigs}
-      onFilterChange={handleFilterChange}
+    <ListingsWithFilters
+      listings={listings}
+      getFieldValue={getListingFieldValue}
+      filterTitle="Filter Listings"
+      gamingBenchmarks={gamingBenchmarks}
+      currentMetricSlug={metricInfo.slug}
     >
-      {/* Show filtered count if different from total */}
-      {filteredListings.length !== listings.length && (
-        <div className="text-muted mb-2">
-          Showing {filteredListings.length} of {listings.length} listings
-        </div>
+      {(filteredListings) => (
+        <ListingGalleryWithMetric
+          listings={filteredListings}
+          metricInfo={metricInfo}
+        />
       )}
-      <ListingGalleryWithMetric
-        listings={filteredListings}
-        metricInfo={metricInfo}
-      />
-    </FilterLayout>
+    </ListingsWithFilters>
   )
 }

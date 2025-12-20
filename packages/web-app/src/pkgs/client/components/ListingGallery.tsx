@@ -2,7 +2,7 @@
 import { useSorting } from "@/pkgs/client/components/SortPanel"
 import { GpuMetricKey, Gpu, Listing } from "../../isomorphic/model"
 import { ListingCard } from "./ListingCard"
-import { useState, type JSX } from "react"
+import { useMemo, type JSX } from "react"
 import { createDiag } from "@activescott/diag"
 import { divideSafe } from "@/pkgs/isomorphic/math"
 
@@ -29,18 +29,19 @@ export function ListingGallery({
     ascending: true,
   }
 
-  const [sortedListings, setSortedListings] = useState<ListingItem[]>(() => {
-    return sortListings(listings, initialSort)
-  })
-
-  const { sortPanel, sortValue } = useSorting(initialSort, (sortValue) => {
+  const { sortPanel, sortValue } = useSorting(initialSort, (newSortValue) => {
     log.debug(
       "sorting change: sorting by %s %s",
-      sortValue.metricKey,
-      sortValue.ascending,
+      newSortValue.metricKey,
+      newSortValue.ascending,
     )
-    setSortedListings(sortListings(listings, sortValue))
   })
+
+  // Derive sorted listings from props - recalculates when listings or sort changes
+  const sortedListings = useMemo(
+    () => sortListings([...listings], sortValue),
+    [listings, sortValue],
+  )
 
   return (
     <div id="listingContainer" className="d-flex flex-wrap">

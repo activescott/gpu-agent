@@ -246,10 +246,20 @@ async function seedGpus(prisma: PrismaClient): Promise<void> {
       continue
     }
     console.log("upserting gpu", gpu.name, "with different values...")
+    // Transform nullable JSON fields for Prisma (null -> Prisma.DbNull)
+    const gpuData = {
+      ...gpu,
+      manufacturerIdentifiers: isNil(gpu.manufacturerIdentifiers)
+        ? Prisma.DbNull
+        : gpu.manufacturerIdentifiers,
+      thirdPartyProducts: isNil(gpu.thirdPartyProducts)
+        ? Prisma.DbNull
+        : gpu.thirdPartyProducts,
+    }
     await prisma.gpu.upsert({
       where: { name: gpu.name },
-      update: gpu,
-      create: gpu,
+      update: gpuData,
+      create: gpuData,
     })
     console.log("upserting gpu", gpu.name, "complete.")
   }

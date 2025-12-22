@@ -19,7 +19,7 @@ supportedHardwareOperations:
   - FP8
 supportedCUDAComputeCapability: 8.9
 releaseDate: "2023-04-13"
-lastModified: "2025-12-18T00:00:00Z"
+lastModified: "2025-12-20T00:00:00Z"
 
 summary: |
   The NVIDIA GeForce RTX 4070 is a graphics card released in 2022,
@@ -32,6 +32,49 @@ summary: |
   tasks, particularly inference and training workloads that benefit from its
   large memory and high core count. It uses a PCI-Express 4.0 x16 host
   interface.
+
+manufacturerIdentifiers:
+  - type: nvpn
+    value: 900-1G141-2544-000
+  - type: product_sku
+    value: PG141 SKU 344
+  - type: board_id
+    value: PG141
+
+thirdPartyProducts:
+  - company: ASUS
+    productName: TUF Gaming GeForce RTX 4070 12GB GDDR6X OC Edition
+    identifier: TUF-RTX4070-O12G-GAMING
+    identifierType: model_number
+  - company: ASUS
+    productName: ROG Strix GeForce RTX 4070 12GB GDDR6X OC Edition
+    identifier: ROG-STRIX-RTX4070-O12G-GAMING
+    identifierType: model_number
+  - company: Gigabyte
+    productName: GeForce RTX 4070 EAGLE OC 12G
+    identifier: GV-N4070EAGLE-OC-12GD
+    identifierType: model_number
+  - company: Gigabyte
+    productName: GeForce RTX 4070 GAMING OC 12G
+    identifier: GV-N4070GAMING OC-12GD
+    identifierType: model_number
+  - company: PNY
+    productName: GeForce RTX 4070 12GB XLR8 Gaming VERTO EPIC-X RGB OC Triple Fan
+    identifier: VCG407012TFXXPB1-O
+    identifierType: sku
+  - company: Zotac
+    productName: ZOTAC GAMING GeForce RTX 4070 Twin Edge
+    identifier: ZT-D40700E-10M
+    identifierType: model_number
+  - company: Zotac
+    productName: ZOTAC GAMING GeForce RTX 4070 Twin Edge OC
+    identifier: ZT-D40700H-10M
+    identifierType: model_number
+  - company: Palit
+    productName: GeForce RTX 4070 GamingPro OC
+    identifier: NED4070H19K9-1043A
+    identifierType: part_number
+
 references:
   - https://images.nvidia.com/aem-dam/Solutions/geforce/ada/nvidia-ada-gpu-architecture.pdf
   - https://images.nvidia.com/aem-dam/Solutions/Data-Center/l4/nvidia-ada-gpu-architecture-whitepaper-v2.1.pdf
@@ -40,9 +83,34 @@ references:
   - https://lambdalabs.com/blog/nvidia-rtx-4090-vs-rtx-3090-deep-learning-benchmark
   - https://www.nvidia.com/en-us/geforce/news/geforce-rtx-4090-out-now/
   - https://images.nvidia.com/aem-dam/Solutions/geforce/blackwell/nvidia-rtx-blackwell-gpu-architecture.pdf
+  - https://www.amazon.com/NVIDIA-GeForce-4070-Founders-Graphics/dp/B0C3SPXZJ8
+  - https://pcpartpicker.com/product/K688TW/nvidia-founders-edition-geforce-rtx-4070-12-gb-video-card-900-1g141-2544-000
+  - https://www.notebookcheck.net/GeForce-RTX-4070-hardware-specification-confusion-continues-as-Nvidia-is-reportedly-considering-two-different-boards.643734.0.html
+  - https://videocardz.net/nvidia-geforce-rtx-4070
+  - https://www.asus.com/motherboards-components/graphics-cards/tuf-gaming/tuf-rtx4070-o12g-gaming/
+  - https://rog.asus.com/graphics-cards/graphics-cards/rog-strix/rog-strix-rtx4070-o12g-gaming/
+  - https://www.msi.com/Graphics-Card/GeForce-RTX-4070-GAMING-X-TRIO-12G/Specification
+  - https://www.msi.com/Graphics-Card/GeForce-RTX-4070-VENTUS-3X-12G-OC/Specification
+  - https://www.gigabyte.com/Graphics-Card/GV-N4070EAGLE-OC-12GD
+  - https://www.gigabyte.com/Graphics-Card/GV-N4070GAMING-OC-12GD
+  - https://www.pny.com/pny-geforce-rtx-4070-12gb-xlr8-gaming-verto-epic-x-rgb-oc
+  - https://www.zotac.com/us/product/graphics_card/zotac-gaming-geforce-rtx-4070-twin-edge
+  - https://www.zotac.com/us/product/graphics_card/zotac-gaming-geforce-rtx-4070-twin-edge-oc
+  - https://www.palit.com/palit/vgapro.php?id=4758
 
 notes:
   - MSRP of $599 USD sourced from NVIDIA's official announcement. A Founders Edition was available at this price. The official MSRP was later lowered to $549 following the launch of the RTX 4070 SUPER in January 2024.
   - fp16TFLOPS is "Peak FP16 Tensor TFLOPS with FP16 Accumulate" as that's what NVIDIA publishes. Using the "with sparsity" metric.
   - int8TOPS is "peak INT 8 TOPS" using "Effective TOPS / TFLOPS using the new Sparsity Feature". They also reveal it as 660.6 "based on GPU Boost Clock". This comes from the ada-gpu-architecture-whitepaper-v2.1.
   - Power based on what NVIDIA refers to as "TGP (Total Graphics Power)"
+  - NVIDIA part number 900-1G141-2544-000 sourced from Amazon and PCPartPicker listings for the Founders Edition
+  - Product SKU PG141 SKU 344 sourced from VideoCardz and NotebookCheck technical articles
+  - Board ID PG141 is the reference board design for RTX 4070. AIB partner cards use PG141 SKU 343 variant
+  - ASUS TUF-RTX4070-O12G-GAMING model number sourced from official ASUS product page
+  - ASUS ROG-STRIX-RTX4070-O12G-GAMING model number sourced from official ASUS ROG product page
+  - MSI model numbers sourced from official MSI product specification pages
+  - Gigabyte GV-N4070EAGLE-OC-12GD and GV-N4070GAMING OC-12GD model numbers sourced from official Gigabyte product pages
+  - PNY VCG407012TFXXPB1-O SKU sourced from official PNY product page
+  - Zotac ZT-D40700E-10M and ZT-D40700H-10M model numbers sourced from official Zotac product pages and Amazon listings
+  - Palit NED4070H19K9-1043A part number sourced from TechPowerUp GPU Database and official Palit product page
+  - EVGA did not produce any RTX 4070 models as they exited the GPU market in September 2022, before the RTX 40 series launched

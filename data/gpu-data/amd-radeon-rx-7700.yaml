@@ -17,7 +17,7 @@ supportedHardwareOperations:
   - INT8
   - INT4
 releaseDate: "2024-09-18"
-lastModified: "2025-12-18T08:00:00Z"
+lastModified: "2025-12-21T08:00:00Z"
 
 summary: >-
   The AMD Radeon RX 7700 is a desktop gaming graphics card based on the RDNA 3 architecture
@@ -36,6 +36,7 @@ references:
   - https://www.tomshardware.com/pc-components/gpus/amd-silently-launches-rx-7700-non-xt-with-16-gb-vram-new-rdna-3-gpu-uses-nerfed-navi-32-die-offers-reduced-performance-and-increased-power-draw
   - https://www.amd.com/en/products/graphics/desktops/radeon/7000-series/amd-radeon-rx-7700.html
   - https://www.techpowerup.com/341166/asrock-launches-radeon-rx-7700-challenger-graphics-cards-with-16-gb-memory
+  - https://asrock.com/Graphics-Card/AMD/Radeon%20RX%207700%20Challenger%2016GB/index.asp
 notes:
   - FP32 TFLOPS of 26.62 calculated as 2,560 stream processors × 2,600 MHz boost clock × 2 ops/cycle = 26.62 TFLOPS
   - FP16 performance is 53.25 TFLOPS calculated at 2:1 ratio to FP32, standard for RDNA 3 architecture
@@ -46,3 +47,7 @@ notes:
   - Features 64MB of Infinity Cache (L3) in addition to 2MB L2 cache
   - Base clock of 1,900 MHz with boost to 2,600 MHz
   - MSRP of $350 is an estimated value. AMD did not announce an official MSRP when the RX 7700 was quietly added to AMD's product page on September 18, 2024. Tom's Hardware analysis suggested the card would need to be priced at ~$350 or less to avoid cannibalizing the lineup. As of December 2025, only ASRock has announced a Challenger model with no retail pricing disclosed. The card appears primarily in pre-built systems (e.g., CyberPowerPC) rather than standalone retail availability.
+  - No official AMD OPN (Ordering Part Number) or other manufacturer identifiers were found in public documentation for the RX 7700. AMD does not typically publish OPNs for desktop consumer GPUs.
+  - Only ASRock has announced an AIB partner product for the RX 7700 (non-XT) as of December 2025. Other major AIB partners (Sapphire, PowerColor, XFX, Gigabyte, ASUS, MSI) have not announced RX 7700 products, likely due to the card's limited retail availability and OEM/pre-built focus.
+manufacturerIdentifiers: []
+thirdPartyProducts: []

@@ -1,4 +1,9 @@
-import { Gpu } from "@/pkgs/isomorphic/model"
+import {
+  Gpu,
+  ManufacturerIdentifier,
+  ThirdPartyProduct,
+} from "@/pkgs/isomorphic/model"
+import { Fragment } from "react"
 import {
   GpuSpecKey,
   GpuSpecKeys,
@@ -45,6 +50,46 @@ function formatReleaseDate(dateString: string): string {
  */
 function formatMsrp(msrpUSD: number): string {
   return `$${msrpUSD.toLocaleString()} USD`
+}
+
+/**
+ * Formats manufacturer identifier type to human-readable label.
+ */
+function formatIdentifierType(type: string): string {
+  const labels: Record<string, string> = {
+    nvpn: "NVIDIA Part Number",
+    board_id: "Board ID",
+    product_sku: "Product SKU",
+    opn: "AMD OPN",
+    model_number: "Model Number",
+    mm_number: "Material Master",
+    spec_code: "Spec Code",
+    product_code: "Product Code",
+  }
+  return labels[type.toLowerCase()] || type.replaceAll("_", " ").toUpperCase()
+}
+
+/**
+ * Groups third-party products by company name.
+ */
+function groupByCompany(
+  products: ThirdPartyProduct[],
+): Record<string, ThirdPartyProduct[]> {
+  return products.reduce(
+    (acc, product) => {
+      if (!acc[product.company]) acc[product.company] = []
+      acc[product.company].push(product)
+      return acc
+    },
+    {} as Record<string, ThirdPartyProduct[]>,
+  )
+}
+
+/**
+ * Counts unique companies in the third-party products list.
+ */
+function countUniqueCompanies(products: ThirdPartyProduct[]): number {
+  return new Set(products.map((p) => p.company)).size
 }
 
 export function GpuInfo({
@@ -227,6 +272,83 @@ export function GpuInfo({
           the price/performance of the {gpu.label} GPU to other GPUs.
         </Feature>
       </div>
+
+      {/* Product Identifiers Section - SEO-optimized, collapsible for minimal UX impact */}
+      {((gpu.manufacturerIdentifiers &&
+        gpu.manufacturerIdentifiers.length > 0) ||
+        (gpu.thirdPartyProducts && gpu.thirdPartyProducts.length > 0)) && (
+        <section className="mt-4" aria-labelledby="product-identifiers-heading">
+          <h2 id="product-identifiers-heading" className="h6 text-muted">
+            Product Identifiers
+          </h2>
+
+          {gpu.manufacturerIdentifiers &&
+            gpu.manufacturerIdentifiers.length > 0 && (
+              <details className="mb-3">
+                <summary
+                  className="text-muted small"
+                  style={{ cursor: "pointer" }}
+                >
+                  Manufacturer Part Numbers (
+                  {gpu.manufacturerIdentifiers.length})
+                </summary>
+                <dl className="row small mt-2 ms-2 mb-0">
+                  {gpu.manufacturerIdentifiers.map(
+                    (id: ManufacturerIdentifier, idx: number) => (
+                      <Fragment key={idx}>
+                        <dt className="col-sm-4 text-muted">
+                          {formatIdentifierType(id.type)}
+                        </dt>
+                        <dd className="col-sm-8 font-monospace text-break">
+                          {id.value}
+                        </dd>
+                      </Fragment>
+                    ),
+                  )}
+                </dl>
+              </details>
+            )}
+
+          {gpu.thirdPartyProducts && gpu.thirdPartyProducts.length > 0 && (
+            <details className="mb-3">
+              <summary
+                className="text-muted small"
+                style={{ cursor: "pointer" }}
+              >
+                Available from {countUniqueCompanies(gpu.thirdPartyProducts)}{" "}
+                Partners ({gpu.thirdPartyProducts.length} products)
+              </summary>
+              <div className="mt-2 ms-2">
+                {Object.entries(groupByCompany(gpu.thirdPartyProducts)).map(
+                  ([company, products]) => (
+                    <div key={company} className="mb-2">
+                      <strong className="small">{company}</strong>
+                      <dl className="row small mb-0 ms-2">
+                        {products.map(
+                          (product: ThirdPartyProduct, idx: number) => (
+                            <Fragment key={idx}>
+                              <dt className="col-12 text-muted">
+                                {product.productName}
+                              </dt>
+                              <dd className="col-12 font-monospace ps-3 text-break">
+                                {product.identifier}
+                                <span className="text-muted ms-1">
+                                  ({product.identifierType.replaceAll("_", " ")}
+                                  )
+                                </span>
+                              </dd>
+                            </Fragment>
+                          ),
+                        )}
+                      </dl>
+                    </div>
+                  ),
+                )}
+              </div>
+            </details>
+          )}
+        </section>
+      )}
 
       <h2>References</h2>
       <ul>

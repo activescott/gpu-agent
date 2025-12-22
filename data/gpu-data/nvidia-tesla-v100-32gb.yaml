@@ -17,15 +17,80 @@ supportedHardwareOperations:
   - INT8
 supportedCUDAComputeCapability: 7
 releaseDate: "2018-03-27"
-lastModified: "2025-12-18T00:00:00Z"
+lastModified: "2025-12-19T00:00:00Z"
 
 summary: The NVIDIA Tesla V100, introduced with NVIDIA's Volta architecture, is
   a high-end data center GPU. The 32GB version has part numbers
-  900-2G500-0202-000,  699-2G500-0202-400, 699-2G500-0202-XXX and ASIN
+  900-2G500-0010-000, 699-2G500-0202-400, 699-2G500-0202-XXX and ASIN
   B07JVNHFFX. It's renowned for its AI and high-performance computing
   capabilities, significantly advancing the field with its impressive tensor
   core count and large memory capacity. The PNY part number for this card is
-  VCQGV100-PB.
+  TCSV100M-32GB-PB. The Tesla V100 PCIe 32GB uses board design PG500 SKU 202.
+
+manufacturerIdentifiers:
+  - type: nvpn
+    value: 900-2G500-0010-000
+  - type: nvpn
+    value: 699-2G500-0202-400
+  - type: nvpn
+    value: 699-2G500-0202-460
+  - type: nvpn
+    value: 900-2G500-0110-030
+  - type: nvpn
+    value: 900-2G500-0310-030
+  - type: board_id
+    value: PG500 SKU 202
+
+thirdPartyProducts:
+  - company: Dell
+    productName: NVIDIA Tesla V100 32GB HBM2 CUDA PCIe GPU Accelerator Card
+    identifier: T39XP
+    identifierType: part_number
+  - company: Dell
+    productName: Dell 32GB Nvidia Tesla V100 Passive GPU Video Graphics Card
+    identifier: 490-BENZ
+    identifierType: part_number
+  - company: Dell
+    productName: NVIDIA Tesla V100 32GB HBM2 CUDA PCIe GPU Accelerator (OEM)
+    identifier: 699-2G500-0202-460
+    identifierType: part_number
+  - company: HPE
+    productName: HPE NVIDIA Tesla V100 PCIe 32GB Computational Accelerator
+    identifier: Q9U36A
+    identifierType: part_number
+  - company: HPE
+    productName: HPE NVIDIA Tesla V100 PCIe 32GB
+    identifier: P05913-001
+    identifierType: part_number
+  - company: HPE
+    productName: HPE NVIDIA Tesla V100 PCIe 32GB (alternative)
+    identifier: P05470-001
+    identifierType: part_number
+  - company: Lenovo
+    productName: ThinkSystem NVIDIA Tesla V100 32GB PCIe Passive GPU
+    identifier: 4X67A12088
+    identifierType: part_number
+  - company: PNY
+    productName: PNY NVIDIA Tesla V100 32GB HBM2 PCIe GPU
+    identifier: TCSV100M-32GB-PB
+    identifierType: sku
+  - company: Supermicro
+    productName: NVIDIA Tesla V100 32GB CoWoS HBM2 PCIe 3.0 Passive
+    identifier: GPU-NVTV100-32-PCIE
+    identifierType: part_number
+  - company: Supermicro
+    productName: NVIDIA Tesla V100 32GB CoWoS HBM2 PCIe 3.0
+    identifier: GPU-NVTV100-32
+    identifierType: part_number
+  - company: Cisco
+    productName: Cisco NVIDIA Tesla V100 PCIe Graphics Card 32GB 250W
+    identifier: UCSC-GPU-V100-32=
+    identifierType: part_number
+  - company: Cisco
+    productName: Cisco NVIDIA Tesla V100 SXM2 32GB
+    identifier: UCSC-GPUV100SXM32
+    identifierType: part_number
+
 references:
   - https://developer.nvidia.com/blog/inside-volta/
   - https://www.nvidia.com/en-us/data-center/v100/
@@ -35,9 +100,47 @@ references:
   - https://www.microway.com/knowledge-center-articles/in-depth-comparison-of-nvidia-tesla-volta-gpu-accelerators/
   - https://www.nvidia.com/en-us/data-center/tensor-cores/
   - https://www.microway.com/hpc-tech-tips/nvidia-tesla-v100-price-analysis/
+  - https://www.techpowerup.com/gpu-specs/tesla-v100-pcie-32-gb.c3184
+  - https://www.exxactcorp.com/NVIDIA-900-2G500-0010-000-E1684755
+  - https://www.serversupply.com/GPU/HBM2/32GB/NVIDIA/900-2G500-0010-000_397710.htm
+  - https://www.serversupply.com/GPU/HBM2/32GB/NVIDIA/699-2G500-0202-460_401950.htm
+  - https://www.itcreations.com/product/110525
+  - https://www.serversupply.com/GPU/HBM2/32GB/DELL/T39XP_397711.htm
+  - https://priceblaze.com/490BENZ-Dell-Video-Card
+  - https://www.expresscomputersystems.com/products/q9u36a
+  - https://www.compeve.com/gpu-c-214/hp-q9u36a-nvidia-tesla-v100-32gb-pcie-x16-p05470001-p05913001-p-8763.html
+  - https://alinc.com/hpe-nvidia-tesla-v100-pcie-32gb-p05913-001
+  - https://www.amazon.com/Lenovo-4X67A12088-Tesla-V100-Graphic/dp/B07GXCPDVY
+  - https://www.provantage.com/lenovo-4x67a12088~7LEN9QLY.htm
+  - https://www.pny.com/en-eu/tesla-v100s-32gb
+  - https://e-catalog.com/PNY-TESLA-V100-TCSV100M-32GB-PB.htm
+  - https://smicro.eu/nvidia-tesla-v100-32gb-cowos-hbm2-pcie-3-0-gpu-nvtv100-32-pcie-1
+  - https://www.exxactcorp.com/Supermicro-GPU-NVTV100-32-E1684751
+  - https://www.connection.com/product/cisco-nvidia-tesla-v100-pcie-graphics-card-32gb/ucsc-gpu-v100-32/36210069
+  - https://www.provantage.com/cisco-systems-ucsc-gpu-v100-32~7CSC8WRL.htm
+  - https://www.itcreations.com/product/121318
+
 notes:
   - 'supportedHardwareOperations: see "Supported Tensor Core precisions" in
     table at end of https://www.nvidia.com/en-us/data-center/tensor-cores/'
   - "supportedCUDAComputeCapability: lookup GPU Compute Capability at
     https://developer.nvidia.com/cuda-gpus"
   - "Estimated MSRP of $11,500 USD for Tesla V100 32GB PCIe based on launch-time market pricing. NVIDIA does not publish official MSRP for data center GPUs. Microway's price analysis from 2018 lists single-unit list price at $11,458 for the 32GB PCIe variant. The 32GB model launched in March 2018, approximately 9 months after the 16GB variant, with a premium of approximately $800-$1,500 over the 16GB version. Note: Pricing varies by form factor (PCIe vs SXM2) and purchase volume. The SXM2 variant commanded a significant premium (approximately $15,900 for 16GB SXM2 vs $9,900-$10,664 for 16GB PCIe)."
+  - "NVIDIA part number 900-2G500-0010-000 is the standard Tesla V100 32GB PCIe part number, sourced from multiple vendor listings including Exxact, ServerSupply, and B&H Photo"
+  - "NVIDIA part number 699-2G500-0202-400 found at itcreations.com and VGAStore.com for Tesla V100 32GB variant"
+  - "NVIDIA part number 699-2G500-0202-460 sourced from serversupply.com and intelligentservers.co.uk as Dell OEM version"
+  - "NVIDIA part number 900-2G500-0110-030 found at serversupply.com as Dell OEM variant"
+  - "NVIDIA part number 900-2G500-0310-030 sourced from serversupply.com and expresscomputersystems.com as HPE OEM version"
+  - "Board ID PG500 SKU 202 sourced from TechPowerUp GPU Database"
+  - "Dell part number T39XP sourced from itcreations.com and serversupply.com"
+  - "Dell part number 490-BENZ sourced from priceblaze.com"
+  - "Dell OEM part number 699-2G500-0202-460 sourced from serversupply.com"
+  - "HPE part number Q9U36A sourced from expresscomputersystems.com and multiple HPE resellers"
+  - "HPE part number P05913-001 sourced from alinc.com and tergumit.com as spare part number"
+  - "HPE part number P05470-001 sourced from compeve.com as alternative HPE part number"
+  - "Lenovo part number 4X67A12088 sourced from amazon.com, provantage.com, and newegg.com"
+  - "PNY SKU TCSV100M-32GB-PB sourced from pny.com/en-eu and e-catalog.com"
+  - "Supermicro part number GPU-NVTV100-32-PCIE sourced from smicro.eu official website"
+  - "Supermicro part number GPU-NVTV100-32 sourced from exxactcorp.com"
+  - "Cisco part number UCSC-GPU-V100-32= (PCIe version) sourced from connection.com and provantage.com"
+  - "Cisco part number UCSC-GPUV100SXM32 (SXM2 version) sourced from itcreations.com"

@@ -17,7 +17,7 @@ supportedHardwareOperations:
   - INT8
   - INT4
 releaseDate: "2023-01-04"
-lastModified: "2025-12-18T08:00:00Z"
+lastModified: "2025-12-21T08:00:00Z"
 
 summary: >-
   The AMD Radeon RX 7700S is a mobile graphics card launched in January 2023, featuring
@@ -36,6 +36,11 @@ references:
   - https://www.notebookcheck.net/AMD-Radeon-RX-7700S-GPU-Benchmarks-and-Specs.679277.0.html
   - https://videocardz.com/newz/amd-radeon-rx-7600-to-launch-with-269-e299-msrp
   - https://computercity.com/laptops/amd-radeon-rx-7700s
+  - https://www.amd.com/en/products/graphics/amd-radeon-rx-7700s
+  - https://www.asus.com/us/laptops/for-gaming/tuf-gaming/asus-tuf-gaming-a16-advantage-edition-2023/
+  - https://frame.work/products/16-graphics-module-amd-radeon-rx-7700s
+  - https://www.bestbuy.com/product/asus-tuf-gaming-a16-16-165hz-gaming-laptop-fhd-amd-ryzen-7-7735hs-with-16gb-ddr5-memory-radeon-rx7700s-512gb-pcie-ssd-off-black/JJGGLRTC4R
+  - https://laptopmedia.com/video-card/amd-radeon-rx-7700s/
 notes:
   - FP32 TFLOPS of 20.48 per TechPowerUp GPU Database and multiple authoritative sources
   - FP16 performance is 40.96 TFLOPS at 2:1 ratio to FP32, standard for RDNA 3 architecture
@@ -48,3 +53,16 @@ notes:
   - Base clock of 1,500 MHz with boost to 2,500 MHz
   - Mobile GPU designed for laptop/notebook systems
   - MSRP of $300 is an estimated component value. The RX 7700S is a mobile-only GPU sold exclusively integrated into laptops, not as a standalone retail product. AMD does not publish official MSRP for mobile GPU components. This estimate is based on market positioning between NVIDIA RTX 4050 and RTX 4060 mobile GPUs, and relative to the desktop RX 7600's $269 MSRP. The RX 7700S offers performance comparable to or exceeding RTX 3060 desktop and trades blows with mobile RTX 3070.
+  - No official AMD OPN (Ordering Part Number) or other manufacturer identifiers were found in public documentation for the RX 7700S. AMD does not typically publish OPNs for mobile consumer GPUs, which are integrated into laptop designs rather than sold as discrete retail products.
+  - The RX 7700S is a mobile GPU sold only through OEM laptop manufacturers. As of December 2025, primary OEM partners include ASUS (TUF Gaming A16 Advantage Edition) and Framework (Laptop 16 Graphics Module). ASUS ROG Strix filter pages show the RX 7700S GPU option but no specific ROG Strix models were found with this GPU.
+  - A 120W variant of the RX 7700S exists in some laptop configurations, offering higher performance at increased power consumption.
+manufacturerIdentifiers: []
+thirdPartyProducts:
+  - company: ASUS
+    productName: TUF Gaming A16 Advantage Edition (2023) with AMD Radeon RX 7700S
+    identifier: FA617NT-A16.R77700
+    identifierType: model_number
+  - company: Framework
+    productName: Framework Laptop 16 Graphics Module (AMD Radeon RX 7700S)
+    identifier: Framework Laptop 16 Graphics Module RX 7700S
+    identifierType: model_number

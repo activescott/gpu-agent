@@ -19,7 +19,7 @@ supportedHardwareOperations:
   - FP8
 supportedCUDAComputeCapability: 8.9
 releaseDate: "2023-08-08"
-lastModified: "2025-12-18T18:00:00Z"
+lastModified: "2025-12-18T21:30:00Z"
 
 summary: The NVIDIA L40S GPU was introduced in August 2023 (part number
   900-2g133-0080-000). It is the successor to the NVIDIA L40 (part number
@@ -30,6 +30,55 @@ summary: The NVIDIA L40S GPU was introduced in August 2023 (part number
   and video applications. It lacks FP64 precision, but has great FP32, FP16 and
   mixed-precision performance. It uses the PCIe Gen4 x16 interconnect and Unlike
   the NVIDIA L4, it allows connecting monitors with 4x DisplayPort connectors.
+
+manufacturerIdentifiers:
+  - type: nvpn
+    value: 900-2G133-0080-000
+  - type: nvpn
+    value: 900-2G133-0180-030
+  - type: nvpn
+    value: 900-2G133-2780-030
+  - type: board_id
+    value: PG133G
+
+thirdPartyProducts:
+  - company: Dell
+    productName: NVIDIA L40S Ada 48GB GDDR6 Passive AI GPU Graphics Card
+    identifier: 7WK28
+    identifierType: part_number
+  - company: Dell
+    productName: NVIDIA L40S GPU Accelerator 48GB
+    identifier: 699-2G133-0242-L00
+    identifierType: part_number
+  - company: HPE
+    productName: NVIDIA L40S 48GB PCIe Accelerator
+    identifier: S2L70C
+    identifierType: part_number
+  - company: Lenovo
+    productName: ThinkSystem NVIDIA L40S 48GB PCIe Gen4 Passive GPU
+    identifier: 4X67A90669
+    identifierType: part_number
+  - company: PNY
+    productName: NVIDIA L40S 48GB GDDR6 PCIe 4.0 GPU
+    identifier: TCSL40SPCIE-PB
+    identifierType: sku
+  - company: PNY
+    productName: NVIDIA L40S 48GB GDDR6 PCIe Gen4 Passive GPU
+    identifier: NVL40STCGPU-KIT
+    identifierType: sku
+  - company: Supermicro
+    productName: NVIDIA Ada L40S 48GB GDDR6 PCIe 4.0 Graphics Card
+    identifier: GPU-NVL40S
+    identifierType: part_number
+  - company: Cisco
+    productName: NVIDIA L40S 350W 48GB 2-slot FHFL GPU for UCS X-Series
+    identifier: UCSX-GPU-L40S
+    identifierType: part_number
+  - company: Cisco
+    productName: NVIDIA L40S 350W 48GB 2-slot FHFL GPU for UCS C-Series
+    identifier: UCSC-GPU-L40S
+    identifierType: part_number
+
 references:
   - https://www.nvidia.com/en-us/data-center/l40s/
   - https://www.exxactcorp.com/blog/components/NVIDIA-L40S-GPU-Compared-to-A100-and-H100-Tensor-Core-GPU
@@ -39,6 +88,18 @@ references:
   - https://www.nvidia.com/en-us/technologies/ada-architecture/
   - https://www.multioculus.com/Products/overview/M024971874
   - https://buy.bluum.com/cisco-ucsx-gpu-l40s-nvidia-l40s-graphic-card-48-gb-full-height/
+  - https://www.serversupply.com/GPU/GDDR6/48GB/NVIDIA/900-2G133-0080-000_388519.htm
+  - https://www.itcreations.com/product/147485
+  - https://shop.bytestock.com/dell-nvidia-l40s-ada-48gb-gddr6-passive-ai-gpu-graphics-card-7wk28
+  - https://www.hpe.com/us/en/product-catalog/options/pip.specifications.nvidia-accelerators.1014786967.html
+  - https://lenovopress.lenovo.com/lp1812.pdf
+  - https://www.pny.com/en-eu/nvidia-l40s
+  - https://www.exxactcorp.com/PNY-NVL40STCGPU-KIT-E116958884
+  - https://store.supermicro.com/supermicro-nvidia-ada-l40s-48gb-gddr6-pcie-4-0-graphics-card-gpu-nvl40s.html
+  - https://www.cisco.com/c/dam/en/us/products/collateral/servers-unified-computing/ucs-c-series-rack-servers/nvidia-l40s-ucsc-gpu-l40s.pdf
+  - https://www.amazon.com/Graphics-Accelerator-900-2G133-0080-000-PG133G-TCSL40SPCIE-PB/dp/B0CLTDCZ82
+  - https://www.serversupply.com/GPU/GDDR6/48GB/NVIDIA/900-2G133-0180-030_414977.htm
+
 notes:
   - "fp32TFLOPS: MUCH higher compared to the L40 @ 90.5 per
     https://images.nvidia.com/content/Solutions/data-center/vgpu-L40-datasheet.\
@@ -50,3 +111,15 @@ notes:
     https://images.nvidia.com/aem-dam/Solutions/Data-Center/l4/nvidia-ada-gpu-a\
     rchitecture-whitepaper-v2.1.pdf"
   - "Estimated MSRP of $45,000 USD for the NVIDIA L40S based on OEM list prices. NVIDIA does not publish official MSRP for data center GPUs. OEM list prices corroborated by 2 independent sources: Lenovo ThinkSystem NVIDIA L40S (4X67A90669) has MSRP of $51,579 per multioculus.com, and Cisco UCSX-GPU-L40S has MSRP of $39,094.50 per Bluum. The $45,000 estimate represents the midpoint of these OEM list prices. Note: Current market/resale prices (~$7,500) are significantly lower due to depreciation but do not reflect original launch list pricing."
+  - "NVIDIA part number 900-2G133-0080-000 sourced from multiple vendor listings and official NVIDIA product documentation"
+  - "NVIDIA part number 900-2G133-0180-030 found at serverorbit.com and serversupply.com for L40S variant"
+  - "NVIDIA part number 900-2G133-2780-030 sourced from Lenovo ThinkSystem Product Guide (lenovopress.lenovo.com/lp1812.pdf) as the NVIDIA part number corresponding to Lenovo feature code BYFH"
+  - "Board ID PG133G sourced from Amazon and multiple vendor listings (amazon.com/dp/B0CLTDCZ82, newelltech.tech)"
+  - "Dell part number 7WK28 sourced from shop.bytestock.com and eBay listings"
+  - "Dell OEM part number 699-2G133-0242-L00 sourced from itcreations.com"
+  - "HPE part number S2L70C sourced from hpe.com official product catalog"
+  - "Lenovo part number 4X67A90669 sourced from Lenovo Press Product Guide (lenovopress.lenovo.com/lp1812.pdf)"
+  - "PNY SKU TCSL40SPCIE-PB sourced from pny.com/en-eu and esus-it.com"
+  - "PNY SKU NVL40STCGPU-KIT sourced from exxactcorp.com and serversupply.com"
+  - "Supermicro part number GPU-NVL40S sourced from store.supermicro.com official store"
+  - "Cisco part numbers UCSX-GPU-L40S and UCSC-GPU-L40S sourced from Cisco official datasheet (cisco.com) and provantage.com. UCSX is for UCS X-Series, UCSC is for UCS C-Series rack servers"

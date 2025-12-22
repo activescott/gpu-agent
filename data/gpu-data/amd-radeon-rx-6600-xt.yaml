@@ -14,7 +14,7 @@ supportedHardwareOperations:
   - FP32
   - FP16
 releaseDate: "2021-08-11"
-lastModified: "2025-12-18T22:30:00Z"
+lastModified: "2025-12-21T00:00:00Z"
 
 summary: >-
   The AMD Radeon RX 6600 XT was released in August 2021 as a mainstream gaming GPU
@@ -28,12 +28,82 @@ summary: >-
   competing with NVIDIA's RTX 3060. It offers excellent performance per watt and
   solid 1080p gaming with DirectX 12 Ultimate support. Note that it uses a PCIe 4.0
   x8 interface rather than the full x16.
+
+manufacturerIdentifiers:
+  - type: opn
+    value: "215-130000006"
+
+thirdPartyProducts:
+  - company: Sapphire
+    productName: PULSE AMD Radeon RX 6600 XT 8G GDDR6
+    identifier: 11309-03-20G
+    identifierType: model_number
+  - company: Sapphire
+    productName: NITRO+ AMD Radeon RX 6600 XT 8G GDDR6
+    identifier: 11309-01-20G
+    identifierType: model_number
+  - company: PowerColor
+    productName: Red Devil AMD Radeon RX 6600 XT 8GB GDDR6
+    identifier: AXRX 6600XT 8GBD6-3DHE-OC
+    identifierType: model_number
+  - company: PowerColor
+    productName: Fighter AMD Radeon RX 6600 XT 8GB GDDR6
+    identifier: AXRX 6600XT 8GBD6-3DH
+    identifierType: model_number
+  - company: XFX
+    productName: Speedster SWFT 210 AMD Radeon RX 6600 XT Black Gaming
+    identifier: RX-66XT8DFDQ
+    identifierType: model_number
+  - company: XFX
+    productName: Speedster QICK 308 AMD Radeon RX 6600 XT Black Gaming
+    identifier: RX-66XT8LBDQ
+    identifierType: model_number
+  - company: XFX
+    productName: Speedster MERC 308 AMD Radeon RX 6600 XT Black Gaming
+    identifier: RX-66XT8TBDQ
+    identifierType: model_number
+  - company: Gigabyte
+    productName: Radeon RX 6600 XT GAMING OC 8G
+    identifier: GV-R66XTGAMING OC-8GD
+    identifierType: model_number
+  - company: Gigabyte
+    productName: Radeon RX 6600 XT EAGLE 8G
+    identifier: GV-R66XTEAGLE-8GD
+    identifierType: model_number
+  - company: ASUS
+    productName: ROG STRIX Radeon RX 6600 XT OC Edition 8GB GDDR6
+    identifier: ROG-STRIX-RX6600XT-O8G-GAMING
+    identifierType: model_number
+  - company: ASUS
+    productName: Dual Radeon RX 6600 XT OC Edition 8GB GDDR6
+    identifier: DUAL-RX6600XT-O8G
+    identifierType: model_number
+  - company: ASRock
+    productName: Radeon RX 6600 XT Challenger D 8GB OC
+    identifier: RX6600XT CLD 8GO
+    identifierType: model_number
+
 references:
   - https://www.techpowerup.com/gpu-specs/radeon-rx-6600-xt.c3774
   - https://www.amd.com/en/products/graphics/desktops/radeon/6000-series/amd-radeon-rx-6600-xt.html
   - https://www.tomshardware.com/reviews/amd-radeon-rx-6600-xt-review
   - https://en.wikipedia.org/wiki/RDNA_2
   - https://www.tomshardware.com/news/amd-reveals-radeon-rx-6600-xt-specs-pricing-performance
+  - https://www.sapphiretech.com/en/consumer/pulse-radeon-rx-6600-xt-8g-gddr6
+  - https://www.sapphiretech.com/en/consumer/nitro-radeon-rx-6600-xt-8g-gddr6
+  - https://www.powercolor.com/product-detail196.htm
+  - https://www.powercolor.com/product-detail198.htm
+  - https://www.xfxforce.com/shop/xfx-speedster-qick-308-amd-radeon-tm-rx-6600-xt-black
+  - https://www.xfxforce.com/shop/xfx-speedster-merc-308-amd-radeon-tm-rx-6600-xt-black
+  - https://www.xfxforce.com/shop/xfx-speedster-swft210-amd-radeon-tm-rx-6600-xt-core-gaming
+  - https://www.msi.com/Graphics-Card/Radeon-RX-6600-XT-GAMING-X-8G
+  - https://www.msi.com/Graphics-Card/Radeon-RX-6600-XT-MECH-2X-8G-OC
+  - https://www.gigabyte.com/Graphics-Card/GV-R66XTGAMING-OC-8GD
+  - https://www.gigabyte.com/Graphics-Card/GV-R66XTEAGLE-8GD
+  - https://rog.asus.com/graphics-cards/graphics-cards/rog-strix/rog-strix-rx6600xt-o8g-gaming-model/
+  - https://www.asrock.com/Graphics-Card/AMD/Radeon%20RX%206600%20XT%20Challenger%20D%208GB%20OC/
+  - https://pcpartpicker.com/product/DgFbt6/asrock-radeon-rx-6600-xt-8-gb-challenger-d-oc-video-card-rx6600xt-cld-8go
+
 notes:
   - FP32 TFLOPS calculated as 2,048 stream processors × 2,589 MHz boost clock × 2 ops/cycle / 1,000,000 = 10.60 TFLOPS
   - FP16 performance is 21.20 TFLOPS calculated at 2:1 ratio to FP32, which is standard for RDNA 2 architecture
@@ -44,3 +114,13 @@ notes:
   - Built on TSMC 7nm process with 237 mm² die size containing 11.06 billion transistors
   - Uses PCIe 4.0 x8 interface instead of x16, which may limit performance on older PCIe 3.0 systems
   - MSRP of $379 USD verified from multiple sources including Tom's Hardware, PC Gamer, and AnandTech at launch on August 11, 2021
+  - AMD OPN 215-130000006 identifies the Navi 23 XT GPU variant used in RX 6600 XT, sourced from TechPowerUp GPU Database
+  - Sapphire PULSE model number 11309-03-20G sourced from sapphiretech.com official product page and PCPartPicker
+  - Sapphire NITRO+ model number 11309-01-20G sourced from sapphiretech.com official product page and Amazon
+  - PowerColor Red Devil model number AXRX 6600XT 8GBD6-3DHE-OC sourced from TechPowerUp GPU Database and powercolor.com
+  - PowerColor Fighter model number AXRX 6600XT 8GBD6-3DH sourced from powercolor.com official product page and Amazon UK
+  - XFX model numbers (RX-66XT8DFDQ for SWFT 210, RX-66XT8LBDQ for QICK 308, RX-66XT8TBDQ for MERC 308) sourced from xfxforce.com official product pages
+  - MSI model numbers sourced from msi.com official product pages
+  - Gigabyte model numbers GV-R66XTGAMING OC-8GD and GV-R66XTEAGLE-8GD sourced from gigabyte.com official product pages
+  - ASUS ROG STRIX model number ROG-STRIX-RX6600XT-O8G-GAMING and Dual model number DUAL-RX6600XT-O8G sourced from ASUS official product pages
+  - ASRock Challenger D model number RX6600XT CLD 8GO sourced from asrock.com official product page and PCPartPicker

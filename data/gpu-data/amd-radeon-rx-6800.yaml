@@ -14,7 +14,7 @@ supportedHardwareOperations:
   - FP32
   - FP16
 releaseDate: "2020-11-18"
-lastModified: "2025-12-18T00:00:00Z"
+lastModified: "2025-12-21T00:00:00Z"
 
 summary: >-
   The AMD Radeon RX 6800 was released in November 2020 alongside the RX 6800 XT as part
@@ -26,10 +26,73 @@ summary: >-
   the RX 6800 was positioned to compete with NVIDIA's RTX 3070, offering excellent
   1440p and 4K gaming performance with DirectX 12 Ultimate support including
   hardware-accelerated ray tracing.
+
+manufacturerIdentifiers:
+  - type: gpu_variant
+    value: Navi 21 XL
+  - type: engineering_id
+    value: 215-121000187
+  - type: part_number
+    value: 102-D41209
+  - type: board_number
+    value: 109-D412A7-00_03
+
+thirdPartyProducts:
+  - company: Sapphire
+    productName: PULSE AMD Radeon RX 6800 16GB GDDR6
+    identifier: 11305-02-20G
+    identifierType: model_number
+  - company: Sapphire
+    productName: NITRO+ AMD Radeon RX 6800 16GB GDDR6
+    identifier: 11305-01-20G
+    identifierType: model_number
+  - company: Sapphire
+    productName: AMD Radeon RX 6800 16GB GDDR6
+    identifier: 21305-01-20G
+    identifierType: model_number
+  - company: XFX
+    productName: XFX AMD Radeon RX 6800 Gaming 16GB GDDR6
+    identifier: RX-68LMATFD8
+    identifierType: model_number
+  - company: XFX
+    productName: XFX Speedster MERC 319 AMD Radeon RX 6800 BLACK
+    identifier: RX-68XLATBD9
+    identifierType: model_number
+  - company: PowerColor
+    productName: Red Devil AMD Radeon RX 6800 16GB GDDR6
+    identifier: AXRX 6800 16GBD6-3DHE/OC
+    identifierType: model_number
+  - company: ASUS
+    productName: TUF Gaming Radeon RX 6800 OC Edition
+    identifier: TUF-RX6800-O16G-GAMING
+    identifierType: model_number
+  - company: ASUS
+    productName: ROG Strix Radeon RX 6800 OC Edition
+    identifier: ROG-STRIX-RX6800-O16G-GAMING
+    identifierType: model_number
+  - company: MSI
+    productName: Radeon RX 6800 GAMING X TRIO 16G
+    identifier: RX6800GAMINGXTRIO16G
+    identifierType: model_number
+  - company: Gigabyte
+    productName: Radeon RX 6800 GAMING OC 16G
+    identifier: GV-R68GAMING OC-16GD
+    identifierType: model_number
+
 references:
   - https://www.techpowerup.com/gpu-specs/radeon-rx-6800.c3713
   - https://www.amd.com/en/products/graphics/desktops/radeon/6000-series/amd-radeon-rx-6800.html
   - https://en.wikipedia.org/wiki/Radeon_RX_6000_series
+  - https://www.sapphiretech.com/en/consumer/pulse-radeon-rx-6800-16g-gddr6
+  - https://www.sapphiretech.com/en/consumer/nitro-radeon-rx-6800-16g-gddr6
+  - https://www.xfxforce.com/shop/xfx-amd-radeon-tm-rx-6800-16gb-gddr6
+  - https://www.xfxforce.com/shop/xfx-speedster-merc319-amd-radeon-tm-rx-6800-black
+  - https://www.powercolor.com/product-detail180.htm
+  - https://www.asus.com/us/motherboards-components/graphics-cards/tuf-gaming/tuf-rx6800-o16g-gaming/
+  - https://rog.asus.com/graphics-cards/graphics-cards/rog-strix/rog-strix-rx6800-o16g-gaming-model/
+  - https://www.msi.com/Graphics-Card/Radeon-RX-6800-GAMING-X-TRIO-16G
+  - https://www.gigabyte.com/Graphics-Card/GV-R68GAMING-OC-16GD
+
 notes:
   - FP16 performance is 32.33 TFLOPS calculated at 2:1 ratio to FP32, which is standard for RDNA 2 architecture
   - FP32 TFLOPS calculated as 3,840 stream processors × 2,105 MHz boost clock × 2 ops/cycle = 16.17 TFLOPS
@@ -38,3 +101,5 @@ notes:
   - The 128MB Infinity Cache significantly improves effective memory bandwidth beyond the raw 512 GB/s specification
   - Built on TSMC 7nm process with the same 520 mm² die size as RX 6800 XT, with some compute units disabled
   - MSRP of $579 USD verified from multiple sources including Wikipedia, Tom's Guide, and TechArena24 at launch on November 18, 2020
+  - Manufacturer identifiers sourced from TechPowerUp GPU Database showing AMD reference design specifications
+  - Third-party AIB partner products include cards from Sapphire, XFX, PowerColor, ASUS, MSI, and Gigabyte with verified model numbers from official manufacturer websites and retail listings

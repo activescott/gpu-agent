@@ -17,7 +17,7 @@ supportedHardwareOperations:
   - BF16
 supportedCUDAComputeCapability: 8.6
 releaseDate: "2020-09-17"
-lastModified: "2025-12-18T00:00:00Z"
+lastModified: "2025-12-20T00:00:00Z"
 
 summary: |
   The NVIDIA GeForce RTX 3080 is a high-end graphics card released in September 2020,
@@ -29,6 +29,58 @@ summary: |
   machine learning inference and training tasks. The RTX 3080 uses a PCI-Express 4.0 x16
   interface and features 760 GB/s memory bandwidth on a 320-bit bus.
 
+manufacturerIdentifiers:
+  - type: board_id
+    value: PG133 SKU 30
+  - type: product_sku
+    value: "9001G1332530000"
+
+thirdPartyProducts:
+  - company: ASUS
+    productName: ROG STRIX GeForce RTX 3080 OC Edition
+    identifier: ROG-STRIX-RTX3080-O10G-GAMING
+    identifierType: model_number
+  - company: ASUS
+    productName: ROG STRIX GeForce RTX 3080 OC Edition
+    identifier: 90YV0FA1-M0NA00
+    identifierType: part_number
+  - company: Gigabyte
+    productName: GeForce RTX 3080 EAGLE OC 10G
+    identifier: GV-N3080EAGLE OC-10GD
+    identifierType: model_number
+  - company: Gigabyte
+    productName: AORUS GeForce RTX 3080 MASTER 10G
+    identifier: GV-N3080AORUS M-10GD
+    identifierType: model_number
+  - company: EVGA
+    productName: GeForce RTX 3080 FTW3 ULTRA GAMING
+    identifier: 10G-P5-3897-KR
+    identifierType: part_number
+  - company: EVGA
+    productName: GeForce RTX 3080 XC3 ULTRA GAMING
+    identifier: 10G-P5-3885-KR
+    identifierType: part_number
+  - company: EVGA
+    productName: GeForce RTX 3080 XC3 BLACK GAMING
+    identifier: 10G-P5-3881-KR
+    identifierType: part_number
+  - company: PNY
+    productName: XLR8 GeForce RTX 3080 UPRISING EPIC-X Triple Fan
+    identifier: VCG308010TFXMPB
+    identifierType: part_number
+  - company: Zotac
+    productName: ZOTAC GAMING GeForce RTX 3080 Trinity
+    identifier: ZT-A30800D-10P
+    identifierType: part_number
+  - company: Zotac
+    productName: ZOTAC GAMING GeForce RTX 3080 Trinity OC LHR
+    identifier: ZT-A30800J-10PLHR
+    identifierType: part_number
+  - company: Palit
+    productName: GeForce RTX 3080 GamingPro
+    identifier: NED3080019IA-132AA
+    identifierType: part_number
+
 references:
   - https://www.nvidia.com/content/PDF/nvidia-ampere-ga-102-gpu-architecture-whitepaper-v2.1.pdf
   - https://www.nvidia.com/en-us/geforce/graphics-cards/30-series/rtx-3080-3080ti/
@@ -36,6 +88,20 @@ references:
   - https://www.waredb.com/processor/nvidia-geforce-rtx-3080
   - https://www.techpowerup.com/gpu-specs/geforce-rtx-3080.c3621
   - https://www.nvidia.com/en-us/geforce/news/geforce-rtx-30-series-out-now/
+  - https://www.techpowerup.com/gpu-specs/nvidia-geforce-rtx-3080-founders-edition.b8045
+  - https://pcpartpicker.com/product/RnDkcf/nvidia-geforce-rtx-3080-10-gb-founders-edition-video-card-9001g1332530000
+  - https://rog.asus.com/graphics-cards/graphics-cards/rog-strix/rog-strix-rtx3080-o10g-gaming-model/spec/
+  - https://www.amazon.com/MSI-GeForce-Tri-Frozr-Architecture-Graphics/dp/B08HR7SV3M
+  - https://www.gigabyte.com/Graphics-Card/GV-N3080EAGLE-OC-10GD-rev-10
+  - https://www.gigabyte.com/Graphics-Card/GV-N3080AORUS-M-10GD-rev-10
+  - https://www.evga.com/products/specs/gpu.aspx?pn=5e84b2fd-1b4b-4221-aab8-82f0d6fdd81c
+  - https://www.evga.com/products/specs/gpu.aspx?pn=e5875021-b582-4c3a-831a-e12bdaafe98f
+  - https://www.evga.com/products/Specs/GPU.aspx?pn=4dfa53cc-d38f-4604-8c59-592054f337d7
+  - https://www.pny.com/geforce-rtx-3080-uprising-lhr
+  - https://www.zotac.com/us/product/graphics_card/zotac-gaming-geforce-rtx-3080-trinity
+  - https://www.zotac.com/us/product/graphics_card/zotac-gaming-geforce-rtx-3080-trinity-oc-lhr
+  - https://www.palit.com/palit/vgapro.php?id=3739&lang=jp&pn=NED3080019IA-132AA&tab=sp
+  - https://videocardz.com/newz/nvidia-geforce-rtx-3090-3080-pg133a-board-gets-rra-certification
 
 notes:
   - fp16TFLOPS of 119.07 represents "Peak FP16 Tensor TFLOPS" using the "with sparsity" metric. Dense performance is 59.54 TFLOPS, sparse is 119.07 TFLOPS. Following Ampere architecture standards, NVIDIA publishes sparse tensor performance.
@@ -48,3 +114,12 @@ notes:
   - At launch, the RTX 3080 was praised for offering nearly 2x the performance of the RTX 2080 at the same price point, representing exceptional generational improvement.
   - Note that a 12GB variant of the RTX 3080 was released later with slightly different specifications (8,960 CUDA cores and 384-bit memory bus).
   - MSRP of $699 USD sourced from NVIDIA official product announcement at https://www.nvidia.com/en-us/geforce/news/introducing-rtx-30-series-graphics-cards/
+  - Board ID "PG133 SKU 30" for Founders Edition sourced from TechPowerUp GPU Database. PG133 is the Founders Edition board design, while PG132 is the reference design for AIB partners.
+  - Product SKU "9001G1332530000" is the NVIDIA part number for the RTX 3080 Founders Edition, sourced from PCPartPicker and multiple retail listings.
+  - ASUS ROG STRIX RTX 3080 O10G Gaming model number and part number sourced from official ASUS ROG product page.
+  - MSI RTX 3080 GAMING X TRIO 10G model number sourced from Amazon and multiple retail listings.
+  - Gigabyte GV-N3080EAGLE OC-10GD and GV-N3080AORUS M-10GD model numbers sourced from official Gigabyte product pages.
+  - EVGA part numbers (10G-P5-3897-KR, 10G-P5-3885-KR, 10G-P5-3881-KR) sourced from official EVGA product specification pages.
+  - PNY XLR8 part number VCG308010TFXMPB sourced from official PNY product page.
+  - Zotac part numbers (ZT-A30800D-10P, ZT-A30800J-10PLHR) sourced from official Zotac product pages.
+  - Palit part number NED3080019IA-132AA sourced from official Palit product page and EKWB compatibility list.

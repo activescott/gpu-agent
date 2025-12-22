@@ -1,5 +1,6 @@
 import { GpuInfo, BenchmarkPercentile } from "@/pkgs/client/components/GpuInfo"
 import { GpuSpecKey, GpuSpecKeys } from "@/pkgs/isomorphic/model/specs"
+import { Gpu } from "@/pkgs/isomorphic/model"
 import {
   getGpu as getGpuWithoutCache,
   gpuSpecAsPercent,
@@ -14,6 +15,83 @@ import { memoize } from "lodash"
 const log = createDiag("shopping-agent:learn:gpuSlug")
 
 const getGpu = memoize(getGpuWithoutCache)
+
+/**
+ * Extracts the brand name from the GPU label (e.g., "NVIDIA RTX 4090" -> "NVIDIA")
+ */
+function extractBrandName(label: string): string {
+  const brand = label.split(" ")[0]
+  // Handle common brand name normalizations
+  if (brand.toUpperCase() === "AMD") return "AMD"
+  if (brand.toUpperCase() === "NVIDIA") return "NVIDIA"
+  if (brand.toUpperCase() === "INTEL") return "Intel"
+  return brand
+}
+
+/**
+ * Formats manufacturer identifier type to human-readable label for JSON-LD.
+ */
+function formatIdentifierTypeForSchema(type: string): string {
+  const labels: Record<string, string> = {
+    nvpn: "NVIDIA Part Number",
+    board_id: "Board ID",
+    product_sku: "Product SKU",
+    opn: "AMD Ordering Part Number",
+    model_number: "Model Number",
+    mm_number: "Material Master Number",
+    spec_code: "Spec Code",
+    product_code: "Product Code",
+  }
+  return labels[type.toLowerCase()] || type.replaceAll("_", " ")
+}
+
+/**
+ * Builds JSON-LD structured data for the GPU product page.
+ * Uses Schema.org Product schema to help search engines understand the page content.
+ */
+function buildStructuredData(gpu: Gpu): object {
+  const structuredData: Record<string, unknown> = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: `${gpu.label} ${gpu.memoryCapacityGB}GB`,
+    description: gpu.summary,
+    brand: {
+      "@type": "Brand",
+      name: extractBrandName(gpu.label),
+    },
+    category: "Graphics Card",
+  }
+
+  // Add manufacturer identifiers as SKU, MPN, and additionalProperty
+  if (gpu.manufacturerIdentifiers && gpu.manufacturerIdentifiers.length > 0) {
+    const firstId = gpu.manufacturerIdentifiers[0]
+    structuredData.sku = firstId.value
+    structuredData.mpn = firstId.value
+
+    structuredData.additionalProperty = gpu.manufacturerIdentifiers.map(
+      (id) => ({
+        "@type": "PropertyValue",
+        name: formatIdentifierTypeForSchema(id.type),
+        value: id.value,
+      }),
+    )
+  }
+
+  // Add third-party products as related products
+  if (gpu.thirdPartyProducts && gpu.thirdPartyProducts.length > 0) {
+    structuredData.isRelatedTo = gpu.thirdPartyProducts.map((product) => ({
+      "@type": "Product",
+      name: product.productName,
+      sku: product.identifier,
+      manufacturer: {
+        "@type": "Organization",
+        name: product.company,
+      },
+    }))
+  }
+
+  return structuredData
+}
 
 // revalidate the data at most every hour:
 export const revalidate = 3600
@@ -77,13 +155,21 @@ export default async function Page(props: GpuParams) {
   )
 
   const listings = await getPriceStats(gpu.name)
+  const structuredData = buildStructuredData(gpu)
+
   return (
-    <GpuInfo
-      gpu={gpu}
-      minimumPrice={listings.minPrice}
-      activeListingCount={listings.activeListingCount}
-      gpuSpecPercentages={gpuSpecPercentages}
-      gpuBenchmarkPercentiles={gpuBenchmarkPercentiles}
-    />
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
+      <GpuInfo
+        gpu={gpu}
+        minimumPrice={listings.minPrice}
+        activeListingCount={listings.activeListingCount}
+        gpuSpecPercentages={gpuSpecPercentages}
+        gpuBenchmarkPercentiles={gpuBenchmarkPercentiles}
+      />
+    </>
   )
 }

@@ -19,7 +19,7 @@ supportedHardwareOperations:
   - BF16
 supportedCUDAComputeCapability: 8.6
 releaseDate: "2021-04-12"
-lastModified: "2025-12-18T00:00:00Z"
+lastModified: "2025-12-19T00:00:00Z"
 
 summary: The NVIDIA A10 (part number 900-2G133-0020-000) is a high-performance
   GPU designed for professional applications, including machine learning and AI.
@@ -29,13 +29,94 @@ summary: The NVIDIA A10 (part number 900-2G133-0020-000) is a high-performance
   capability, making it a suitable choice for a range of AI-driven tasks. Its
   architecture allows for efficient handling of AI workloads, and the large
   memory size caters to demanding applications.
+
+manufacturerIdentifiers:
+  - type: nvpn
+    value: 900-2G133-0020-000
+  - type: nvpn
+    value: 900-2G133-0020-100
+  - type: nvpn
+    value: 900-2G133-2720-100
+  - type: board_id
+    value: PG133
+  - type: product_sku
+    value: PG133 SKU 215
+
+thirdPartyProducts:
+  - company: Dell
+    productName: NVIDIA Ampere A10, PCIe, 150W, 24GB Passive, Single Wide, Full Height GPU
+    identifier: 490-BGKH
+    identifierType: part_number
+  - company: Dell
+    productName: NVIDIA A10 Tensor Core GPU Accelerator 24GB GDDR6
+    identifier: 490-BGLB
+    identifierType: part_number
+  - company: Dell
+    productName: NVIDIA A10 24GB Passive GPU
+    identifier: 490-BGKF
+    identifierType: part_number
+  - company: HPE
+    productName: NVIDIA A10 24GB PCIe Non-CEC Accelerator for HPE
+    identifier: R9W59C
+    identifierType: part_number
+  - company: Lenovo
+    productName: ThinkSystem NVIDIA A10 24GB PCIe Gen4 Passive GPU
+    identifier: 4X67A71311
+    identifierType: part_number
+  - company: PNY
+    productName: PNY NVIDIA A10 CEC 24GB Passive Ampere Graphics Card
+    identifier: TCSA10M-PB
+    identifierType: sku
+  - company: PNY
+    productName: PNY NVIDIA A10 24GB GDDR6 Graphic Card
+    identifier: NVA10TCGPU-KIT
+    identifierType: sku
+  - company: Supermicro
+    productName: NVIDIA A10 24GB GDDR6 PCIe 4.0 Passive Cooling
+    identifier: GPU-NVTA10
+    identifierType: part_number
+  - company: Cisco
+    productName: NVIDIA Tesla A10, Passive, 150W, 24GB
+    identifier: UCSC-GPU-A10
+    identifierType: part_number
+  - company: Advantech
+    productName: NVIDIA A10 24GB PCIe DSFH w/ATX BKT
+    identifier: SKY-TESL-A10-24P
+    identifierType: part_number
+
 references:
   - https://www.nvidia.com/en-us/data-center/products/a10-gpu/
   - https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/a10/pdf/a10-datasheet.pdf
   - https://www.nvidia.com/en-us/data-center/tensor-cores/
   - https://www.nextplatform.com/2021/04/15/nvidia-rounds-out-ampere-lineup-with-two-new-accelerators/
   - https://www.newegg.com/p/N82E16814133882
+  - https://www.techpowerup.com/gpu-specs/a10-pcie.c3793
+  - https://lenovopress.lenovo.com/lp1816.pdf
+  - https://www.dell.com/en-us/shop/nvidia-ampere-a10-pcie-150w-24gb-passive-single-wide-full-height-gpu/apd/490-bgkh/graphic-video-cards
+  - https://www.serversupply.com/GPU/GDDR6/24GB/DELL/490-BGKF_396993.htm
+  - https://www.itcreations.com/product/150448
+  - https://www.hpe.com/us/en/product-catalog/options/pip.specifications.nvidia-accelerators.1014670677.html
+  - https://www.scan.co.uk/products/pny-nvidia-a10-cec-24gb-gddr6-passive-graphics-card-8192-cuda-312-tflops-sp-125-tflops-hp
+  - https://www.pny.com/nvidia-a10
+  - https://www.exxactcorp.com/Supermicro-GPU-NVTA10-E3770657
+  - https://smicro.eu/nvidia-a10-24gb-gddr6-pcie-4-0-passive-cooling-gpu-nvta10-900-2g133-0020-100-1
+  - https://www.serversupply.com/GPU/GDDR6/APPLICATION%20ACCELERATOR/NVIDIA/900-2G133-0020-000_395888.htm
+  - https://www.cisco.com/c/dam/en/us/products/collateral/servers-unified-computing/ucs-c-series-rack-servers/nvidia-a10-gpu.pdf
+  - https://www.advantech.com/en-us/products/8d6a8886-b57e-493f-87c8-6f1e02d0608a/sky-tesl-a10-24p/mod_d9268799-585b-46b7-91d5-d49d126718b9
+
 notes:
   - "fp16TFLOPS: NOTE: FP16 Tensor Core"
   - "int8TOPS: NOTE: INT8 Tensor Core"
   - "Estimated MSRP of $2,800 USD for the NVIDIA A10 based on launch-time market pricing. NVIDIA does not publish official MSRP for data center GPUs. Estimate from NextPlatform article (April 2021) discussing the A10 launch. Corroborated by Newegg listing showing current market pricing around $3,299."
+  - "NVIDIA part number 900-2G133-0020-000 sourced from NVIDIA official documentation and multiple vendor listings including serversupply.com"
+  - "NVIDIA part number 900-2G133-0020-100 sourced from smicro.eu and multiple vendor listings for standard A10 variant"
+  - "NVIDIA part number 900-2G133-2720-100 sourced from Lenovo ThinkSystem Product Guide (lenovopress.lenovo.com/lp1816.pdf) as the NVIDIA part number corresponding to Lenovo feature code BQZS"
+  - "Board ID PG133 and SKU 215 sourced from TechPowerUp GPU Database (techpowerup.com/gpu-specs/a10-pcie.c3793)"
+  - "Dell part numbers 490-BGKH, 490-BGLB, and 490-BGKF sourced from Dell official store and vendor listings (dell.com, serversupply.com, itcreations.com)"
+  - "HPE part number R9W59C sourced from HPE official product catalog (hpe.com/us/en/product-catalog)"
+  - "Lenovo part number 4X67A71311 (feature code BQZS) sourced from Lenovo Press Product Guide (lenovopress.lenovo.com/lp1816.pdf)"
+  - "PNY SKU TCSA10M-PB sourced from SCAN UK and PNY official website (scan.co.uk, pny.com)"
+  - "PNY SKU NVA10TCGPU-KIT sourced from vendor listings at deploydepot.ca and sabrepc.com"
+  - "Supermicro part number GPU-NVTA10 sourced from Exxact and Supermicro retailers (exxactcorp.com, smicro.eu)"
+  - "Cisco part number UCSC-GPU-A10 sourced from Cisco official datasheet (cisco.com) and vendor listings. Compatible with UCS C220/C225/C240/C245 M6 servers"
+  - "Advantech part number SKY-TESL-A10-24P sourced from Advantech official website (advantech.com) and datasheet listings"

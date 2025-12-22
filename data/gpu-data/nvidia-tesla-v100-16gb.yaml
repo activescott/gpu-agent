@@ -17,7 +17,7 @@ supportedHardwareOperations:
   - INT8
 supportedCUDAComputeCapability: 7
 releaseDate: "2017-06-21"
-lastModified: "2025-12-18T00:00:00Z"
+lastModified: "2025-12-19T00:00:00Z"
 
 summary: The NVIDIA Tesla V100 16GB version, introduced with NVIDIA's Volta
   architecture, is a high-end data center GPU. It was the first GPU to feature
@@ -27,6 +27,75 @@ summary: The NVIDIA Tesla V100 16GB version, introduced with NVIDIA's Volta
   large memory capacity. The 16GB version has part number 900-2G500-0000-000 or
   699-2G500-0200-XXX. The PNY part number for this card was TCSV100MPCIE-PB and
   ASIN B076P84525.
+
+manufacturerIdentifiers:
+  - type: product_sku
+    value: PG500 SKU 200
+  - type: board_id
+    value: PG500
+  - type: nvpn
+    value: 900-2G500-0000-000
+  - type: nvpn
+    value: 699-2G500-0200-xxx
+
+thirdPartyProducts:
+  - company: Dell
+    productName: NVIDIA Tesla V100 16GB HBM2 PCIe GPU Accelerator
+    identifier: VFJ45
+    identifierType: part_number
+  - company: Dell
+    productName: NVIDIA Tesla V100 16GB GPU Customer Install
+    identifier: 490-BENS
+    identifierType: sku
+  - company: Dell
+    productName: Dell NVIDIA Tesla V100 Volta 16GB HBM2 Graphics Card
+    identifier: 900-2G500-0100-030
+    identifierType: part_number
+  - company: Dell
+    productName: Dell NVIDIA Tesla V100 Volta 16GB HBM2 Video Graphics Card
+    identifier: 699-2G500-0200-300
+    identifierType: part_number
+  - company: HPE
+    productName: HPE Nvidia Tesla V100 PCI-e 16GB Computational Accelerator 300W DW
+    identifier: Q2N68A
+    identifierType: part_number
+  - company: HPE
+    productName: HP NVIDIA Tesla V100 16GB PCIe
+    identifier: 876340-001
+    identifierType: part_number
+  - company: HPE
+    productName: HP NVIDIA Tesla V100 16GB PCIe
+    identifier: 876908-001
+    identifierType: part_number
+  - company: HPE
+    productName: HP NVIDIA Tesla V100 16GB PCIe
+    identifier: 900-2G500-0300-030
+    identifierType: part_number
+  - company: Lenovo
+    productName: ThinkSystem NVIDIA Tesla V100 16GB PCIe Passive GPU
+    identifier: 4C57A09498
+    identifierType: part_number
+  - company: Lenovo
+    productName: Lenovo Tesla V100 FHFL 16GB PCIe Passive
+    identifier: 4X67A11524
+    identifierType: part_number
+  - company: PNY
+    productName: PNY Tesla Volta V100 Graphic Card - 16 GB HBM2
+    identifier: TCSV100MPCIE-PB
+    identifierType: sku
+  - company: Supermicro
+    productName: Supermicro NVIDIA Tesla V100 16GB CoWoS HBM2 PCIe 3.0 Passive Cooling
+    identifier: GPU-NVTV100-16
+    identifierType: part_number
+  - company: Supermicro
+    productName: Supermicro Tesla V100 SXM2 16GB CoWoS HBM2 NVLink
+    identifier: GPU-NVTV100-SXM2
+    identifierType: part_number
+  - company: Cisco
+    productName: Cisco NVIDIA Tesla V100 PCIe GPU 16GB
+    identifier: UCSC-GPU-V100=
+    identifierType: part_number
+
 references:
   - https://developer.nvidia.com/blog/inside-volta/
   - https://www.nvidia.com/en-us/data-center/v100/
@@ -38,6 +107,22 @@ references:
   - https://www.microway.com/hpc-tech-tips/nvidia-tesla-v100-price-analysis/
   - https://www.nextplatform.com/2018/03/05/tesla-gpu-accelerator-bang-buck-kepler-volta/
   - https://govindhtech.com/nvidia-tesla-v100-price-and-specifications/
+  - https://www.8anet.com/Product/16529/NVIDIA-900-2G500-0000-000-Tesla-V100-GPU-for-PCIe-16GB-HBM2-640-Tensor-Cores-Passive-Cooling
+  - https://pcserverandparts.com/dell-nvidia-tesla-v100-16gb-hmb2-graphics-accelerator-card-used-vfj45/
+  - http://accessories.dell.com/sna/productdetail.aspx?c=us&l=en&s=gov&sku=490-BENS
+  - https://www.itcreations.com/product/106306
+  - https://www.amazon.com/HP-nVidia-876340-001-876908-001-Q2N68A/dp/B07DJYQ5W7
+  - https://itprice.com/hp/q2n68a.html
+  - https://www.provantage.com/lenovo-4c57a09498~7LEN9QJC.htm
+  - https://serverproven.lenovo.com/option/4C57A09498/
+  - https://www.provantage.com/lenovo-4x67a11524~4LEN9QMR.htm
+  - https://www.exxactcorp.com/PNY-TCSV100MPCIE-PB-E1584138
+  - https://www.amazon.com/PNY-TCSV100MPCIE-PB-Nvidia-Tesla-v100/dp/B076P84525
+  - https://www.newegg.com/p/17Z-000E-001W6
+  - https://www.wiredzone.com/shop/product/10027795-supermicro-gpu-nvtv100-16-nvidia-tesla-v100-16gb-cowos-hbm2-pcie-3-0-passive-cooling-1891
+  - https://www.connection.com/product/cisco-nvidia-tesla-v100-pcie-gpu-16gb/ucsc-gpu-v100/35528075
+  - https://www.techpowerup.com/gpu-specs/tesla-v100-pcie-32-gb.c3184
+
 notes:
   - "int8TOPS: from
     https://www.microway.com/knowledge-center-articles/in-depth-comparison-of-n\
@@ -47,3 +132,21 @@ notes:
   - "supportedCUDAComputeCapability: lookup GPU Compute Capability at
     https://developer.nvidia.com/cuda-gpus"
   - "Estimated MSRP of $10,000 USD for Tesla V100 16GB PCIe based on launch-time market pricing. NVIDIA does not publish official MSRP for data center GPUs. Multiple sources from 2017-2018 cite pricing in the $8,000-$10,664 range: Microway's price analysis lists single-unit list price at $10,664, CDW retailer pricing from March 2018 at $9,900 (per Next Platform), and general tech sources cite launch range of $8,000-$10,000. Note: Pricing varies by form factor (PCIe vs SXM2) and purchase volume."
+  - "Product SKU 'PG500 SKU 200' sourced from TechPowerUp GPU Database and multiple reseller listings showing Board Number PG500 SKU 200"
+  - "Board ID PG500 sourced from eBay listings and reseller product descriptions"
+  - "NVIDIA part number (NVPN) 900-2G500-0000-000 sourced from 8anet.com, Exxact, Amazon, and multiple authorized resellers. This is the primary NVPN for the passive-cooled PCIe reference design"
+  - "NVIDIA reference design part number 699-2G500-0200-xxx sourced from multiple OEM listings. The 'xxx' suffix varies by OEM (e.g., -300, -310, -320)"
+  - "Dell part number VFJ45 (0VFJ45) sourced from pcserverandparts.com, shop.bytestock.com, and itcreations.com"
+  - "Dell SKU 490-BENS sourced from Dell official accessories portal (accessories.dell.com)"
+  - "Dell OEM part number 900-2G500-0100-030 sourced from piospartslap.de and itcreations.com"
+  - "Dell OEM part number 699-2G500-0200-300 sourced from harddiskdirect.com, itcreations.com, and multiple resellers"
+  - "HPE part number Q2N68A sourced from Amazon, itprice.com, and expresscomputersystems.com. This is the primary HPE SKU"
+  - "HP part number 876340-001 (PCI-e PN) sourced from Amazon and compeve.com"
+  - "HP part number 876908-001 (Spare PN) sourced from Amazon, Newegg, and newtownspares.com"
+  - "HP OEM part number 900-2G500-0300-030 sourced from Newegg and compeve.com"
+  - "Lenovo part number 4C57A09498 sourced from provantage.com and Lenovo ServerProven (serverproven.lenovo.com)"
+  - "Lenovo part number 4X67A11524 sourced from provantage.com and itosolutions.net"
+  - "PNY SKU TCSV100MPCIE-PB sourced from Exxact, Amazon (ASIN B076P84525), and ebuyer.com"
+  - "Supermicro part number GPU-NVTV100-16 for PCIe version sourced from Newegg, Wiredzone, and smicro.eu"
+  - "Supermicro part number GPU-NVTV100-SXM2 for SXM2 version with NVLink sourced from Exxact and SabrePC"
+  - "Cisco part number UCSC-GPU-V100= sourced from connection.com, macconnection.com, and consutronix.com"

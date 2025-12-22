@@ -18,7 +18,7 @@ supportedHardwareOperations:
   - INT8
 supportedCUDAComputeCapability: 8.6
 releaseDate: "2020-12-02"
-lastModified: "2025-12-18T22:30:00Z"
+lastModified: "2025-12-20T00:00:00Z"
 
 summary: |
   The NVIDIA GeForce RTX 3060 Ti is a mainstream gaming graphics card launched on December 2, 2020,
@@ -32,12 +32,149 @@ summary: |
   bandwidth on a 256-bit bus. The GA104 chip is manufactured on Samsung's 8nm process with
   approximately 17.4 billion transistors.
 
+manufacturerIdentifiers:
+  - type: board_id
+    value: PG142
+  - type: product_sku
+    value: PG142 SKU 20
+  - type: nvpn
+    value: 900-1G142-2520-000
+
+thirdPartyProducts:
+  - company: ASUS
+    productName: ROG STRIX GeForce RTX 3060 Ti OC Edition 8GB GDDR6
+    identifier: ROG-STRIX-RTX3060TI-O8G-GAMING
+    identifierType: model_number
+  - company: ASUS
+    productName: ROG STRIX GeForce RTX 3060 Ti 8GB GDDR6
+    identifier: ROG-STRIX-RTX3060TI-8G-GAMING
+    identifierType: model_number
+  - company: ASUS
+    productName: ROG STRIX GeForce RTX 3060 Ti V2 8GB GDDR6 (LHR)
+    identifier: ROG-STRIX-RTX3060TI-8G-V2-GAMING
+    identifierType: model_number
+  - company: ASUS
+    productName: TUF Gaming GeForce RTX 3060 Ti OC Edition 8GB GDDR6
+    identifier: TUF-RTX3060TI-O8G-GAMING
+    identifierType: model_number
+  - company: ASUS
+    productName: TUF Gaming GeForce RTX 3060 Ti 8GB GDDR6
+    identifier: TUF-RTX3060TI-8G-GAMING
+    identifierType: model_number
+  - company: ASUS
+    productName: TUF Gaming GeForce RTX 3060 Ti OC Edition 8GB GDDR6X
+    identifier: TUF-RTX3060TI-O8GD6X-GAMING
+    identifierType: model_number
+  - company: ASUS
+    productName: DUAL GeForce RTX 3060 Ti 8GB GDDR6X
+    identifier: DUAL-RTX3060TI-8GD6X
+    identifierType: model_number
+  - company: ASUS
+    productName: DUAL GeForce RTX 3060 Ti V2 OC Edition 8GB GDDR6 (LHR)
+    identifier: DUAL-RTX3060TI-O8G-V2
+    identifierType: model_number
+  - company: ASUS
+    productName: DUAL GeForce RTX 3060 Ti OC Edition 8GB GDDR6X
+    identifier: DUAL-RTX3060TI-O8GD6X
+    identifierType: model_number
+  - company: ASUS
+    productName: KO GeForce RTX 3060 Ti OC Edition 8GB GDDR6
+    identifier: KO-RTX3060TI-O8G-GAMING
+    identifierType: model_number
+  - company: Gigabyte
+    productName: GeForce RTX 3060 Ti VISION OC 8G
+    identifier: GV-N306TVISION-OC-8GD
+    identifierType: model_number
+  - company: Gigabyte
+    productName: GeForce RTX 3060 Ti GAMING OC PRO 8G
+    identifier: GV-N306TGAMINGOC-PRO-8GD
+    identifierType: model_number
+  - company: Gigabyte
+    productName: GeForce RTX 3060 Ti GAMING OC 8G
+    identifier: GV-N306TGAMING-OC-8GD
+    identifierType: model_number
+  - company: Gigabyte
+    productName: GeForce RTX 3060 Ti EAGLE OC 8G
+    identifier: GV-N306TEAGLE OC-8GD
+    identifierType: model_number
+  - company: Gigabyte
+    productName: GeForce RTX 3060 Ti EAGLE 8G
+    identifier: GV-N306TEAGLE-8GD
+    identifierType: model_number
+  - company: Gigabyte
+    productName: GeForce RTX 3060 Ti AORUS EAGLE 8G Rev2.0
+    identifier: GV-N306TAORUS E-8GD
+    identifierType: model_number
+  - company: EVGA
+    productName: GeForce RTX 3060 Ti FTW3 ULTRA GAMING
+    identifier: 08G-P5-3667-KR
+    identifierType: part_number
+  - company: EVGA
+    productName: GeForce RTX 3060 Ti FTW3 ULTRA GAMING (LHR)
+    identifier: 08G-P5-3667-KL
+    identifierType: part_number
+  - company: EVGA
+    productName: GeForce RTX 3060 Ti FTW3
+    identifier: 08G-P5-3665-KR
+    identifierType: part_number
+  - company: EVGA
+    productName: GeForce RTX 3060 Ti XC GAMING
+    identifier: 08G-P5-3663-KR
+    identifierType: part_number
+  - company: EVGA
+    productName: GeForce RTX 3060 Ti XC GAMING (LHR)
+    identifier: 08G-P5-3663-KL
+    identifierType: part_number
+  - company: Zotac
+    productName: ZOTAC GAMING GeForce RTX 3060 Ti Twin Edge
+    identifier: ZT-A30610E-10M
+    identifierType: model_number
+  - company: PNY
+    productName: GeForce RTX 3060 Ti 8GB XLR8 Gaming REVEL EPIC-X RGB Dual Fan Edition (LHR)
+    identifier: VCG3060T8LDFXPPB
+    identifierType: sku
+  - company: Dell
+    productName: NVIDIA GeForce RTX 3060 Ti 8GB GDDR6 (Non-LHR)
+    identifier: 86RMK
+    identifierType: part_number
+  - company: Dell
+    productName: NVIDIA GeForce RTX 3060 Ti 8GB GDDR6 (Non-LHR)
+    identifier: 490-BGIL
+    identifierType: sku
+  - company: Dell
+    productName: NVIDIA GeForce RTX 3060 Ti 8GB GDDR6 (LHR)
+    identifier: 490-BHIW
+    identifierType: sku
+  - company: HP
+    productName: NVIDIA GeForce RTX 3060 Ti 8GB GDDR6 (Non-LHR)
+    identifier: M31640-001
+    identifierType: part_number
+
 references:
   - https://www.nvidia.com/content/PDF/nvidia-ampere-ga-102-gpu-architecture-whitepaper-v2.1.pdf
   - https://www.nvidia.com/en-us/geforce/graphics-cards/30-series/rtx-3060-ti/
   - https://www.nvidia.com/en-us/geforce/news/geforce-rtx-3060-ti-out-december-2/
   - https://www.techpowerup.com/gpu-specs/geforce-rtx-3060-ti.c3681
   - https://www.bestgpusforai.com/gpu-comparison/3060-ti-vs-4060
+  - https://pcpartpicker.com/product/wvgQzy/nvidia-geforce-rtx-3060-ti-8-gb-founders-edition-video-card-900-1g142-2520-000
+  - https://www.bestbuy.com/site/nvidia-geforce-rtx-3060-ti-8gb-gddr6-pci-express-4-0-graphics-card-titanium-black/6439402.p?skuId=6439402
+  - https://videocardz.com/newz/nvidia-geforce-rtx-3060-ti-gets-4864-cuda-cores-and-8gb-gddr6-memory
+  - https://www.dell.com/community/en/conversations/alienware-desktops/oem-rtx-video-card-specifications/647f94b0f4ccf8a8de70c60b
+  - https://www.compeve.com/index.php?main_page=product_info&products_id=15073
+  - https://www.newegg.com/hp-nvidia-rtx-3060-ti/p/27N-000R-00192
+  - https://rog.asus.com/graphics-cards/graphics-cards/rog-strix/rog-strix-rtx3060ti-o8g-gaming-model/
+  - https://www.asus.com/us/motherboards-components/graphics-cards/tuf-gaming/tuf-rtx3060ti-o8g-gaming/
+  - https://www.asus.com/us/motherboards-components/graphics-cards/dual/dual-rtx3060ti-8gd6x/techspec/
+  - https://www.msi.com/Graphics-Card/GeForce-RTX-3060-Ti-GAMING-X-TRIO/Specification
+  - https://www.msi.com/Graphics-Card/GeForce-RTX-3060-Ti-VENTUS-3X-OC/Specification
+  - https://www.gigabyte.com/Graphics-Card/GV-N306TVISION-OC-8GD-rev-10
+  - https://www.gigabyte.com/Graphics-Card/GV-N306TGAMINGOC-PRO-8GD-rev-30
+  - https://www.bestbuy.com/site/gigabyte-nvidia-geforce-rtx-3060-ti-eagle-oc-8g-gddr6-pci-express-4-0-graphics-card-black/6442485.p?skuId=6442485
+  - https://www.evga.com/products/Specs/GPU.aspx?pn=73b694de-6074-4ca5-9b7e-299c098465ed
+  - https://www.evga.com/products/specs/gpu.aspx?pn=a90a6301-d51f-4e0a-98f0-e618b7888fc1
+  - https://www.evga.com/products/specs/gpu.aspx?pn=3c2dec68-1dda-4d11-ac81-aebfc59c1d41
+  - https://www.zotac.com/us/product/graphics_card/zotac-gaming-geforce-rtx-3060-ti-twin-edge
+  - https://www.pny.com/geforce-rtx-3060-ti-8gb-xlr8-gaming-revel-epic-x-rgb-df
 
 notes:
   - FP16 TFLOPS of 129.6 represents peak FP16 Tensor TFLOPS using the sparsity feature. Dense FP16 performance is approximately 64.8 TFLOPS. Following Ampere architecture standards, NVIDIA publishes sparse tensor performance which achieves 2x throughput.
@@ -51,3 +188,5 @@ notes:
   - "Tensor Core count: 152 3rd-generation Tensor Cores (4 tensor cores per SM × 38 SMs)."
   - Launched at an MSRP of $399 USD, positioned to compete with and exceed the performance of the RTX 2080 SUPER while being more affordable.
   - MSRP of $399 USD sourced from NVIDIA official product announcement at https://www.nvidia.com/en-us/geforce/news/geforce-rtx-3060-ti-out-december-2/
+  - "Manufacturer identifiers: Board ID PG142 with Product SKU 'PG142 SKU 20' confirmed from TechPowerUp and multiple sources. The NVIDIA Founders Edition uses NVPN 900-1G142-2520-000 per Best Buy and PCPartPicker listings."
+  - "Third-party products: Model numbers and part numbers sourced from official vendor websites. ASUS uses ROG-STRIX, TUF, DUAL, and KO product lines with model numbers following the pattern [SERIES]-RTX3060TI-[VRAM][SUFFIX]-[VARIANT]. MSI uses GAMING X and VENTUS series. Gigabyte uses GV-N306T prefix for all RTX 3060 Ti models including VISION, GAMING, EAGLE, and AORUS variants. EVGA uses 08G-P5-36XX part number format where suffix KR indicates standard retail, KL indicates LHR (Lite Hash Rate), and different XX values indicate FTW3 (67) vs XC (63) models. Zotac uses ZT-A306XXX format. PNY uses VCG3060T8LDFXPPB for their XLR8 Gaming REVEL EPIC-X RGB model. Dell uses component part number 86RMK with multiple sales SKUs (490-BGIL for non-LHR, 490-BHIW for LHR). HP uses part number M31640-001 for non-LHR variant."

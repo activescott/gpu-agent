@@ -15,7 +15,7 @@ supportedHardwareOperations:
   - INT8
   - INT4
 releaseDate: "2025-06-05"
-lastModified: "2025-12-18T00:00:00Z"
+lastModified: "2025-12-21T00:00:00Z"
 
 summary: |
   The AMD Radeon RX 9060 XT is a mainstream graphics card released in May 2025,
@@ -29,6 +29,82 @@ summary: |
   exclusive to RDNA 4. The card is positioned to compete with NVIDIA's RTX 4060 series
   and uses a PCIe 5.0 x16 interface. It's also available in an 8GB variant at a lower price point.
 
+manufacturerIdentifiers: []
+
+thirdPartyProducts:
+  - company: ASUS
+    productName: TUF Gaming Radeon RX 9060 XT OC Edition 16GB
+    identifier: TUF-RX9060XT-O16G-GAMING
+    identifierType: model_number
+  - company: ASUS
+    productName: Prime Radeon RX 9060 XT OC Edition 16GB
+    identifier: PRIME-RX9060XT-O16G
+    identifierType: model_number
+  - company: Gigabyte
+    productName: Radeon RX 9060 XT GAMING OC 16G
+    identifier: GV-R9060XTGAMING-OC-16GD
+    identifierType: model_number
+  - company: Gigabyte
+    productName: Radeon RX 9060 XT GAMING OC 8G
+    identifier: GV-R9060XTGAMING-OC-8GD
+    identifierType: model_number
+  - company: Sapphire
+    productName: NITRO+ AMD Radeon RX 9060 XT Gaming OC 16GB
+    identifier: 11350-01-20G
+    identifierType: model_number
+  - company: Sapphire
+    productName: PULSE AMD Radeon RX 9060 XT Gaming OC 16GB
+    identifier: 11350-03-20G
+    identifierType: model_number
+  - company: Sapphire
+    productName: PULSE AMD Radeon RX 9060 XT 8GB
+    identifier: 11350-04-20G
+    identifierType: model_number
+  - company: XFX
+    productName: Swift AMD Radeon RX 9060 XT OC Gaming Edition 16GB
+    identifier: RX-96TSW16BQ
+    identifierType: model_number
+  - company: XFX
+    productName: Swift AMD Radeon RX 9060 XT OC Triple Fan Gaming Edition 16GB
+    identifier: RX-96TS316BA
+    identifierType: model_number
+  - company: XFX
+    productName: Swift AMD Radeon RX 9060 XT OC Triple Fan Gaming Edition 16GB
+    identifier: RX-96TS316B7
+    identifierType: model_number
+  - company: XFX
+    productName: Mercury AMD Radeon RX 9060 XT OC Gaming Edition 16GB
+    identifier: RX-96TMERCBA
+    identifierType: model_number
+  - company: XFX
+    productName: Mercury AMD Radeon RX 9060 XT OC White Gaming Edition 16GB
+    identifier: RX-96TMERCW9
+    identifierType: model_number
+  - company: XFX
+    productName: Swift AMD Radeon RX 9060 XT OC Gaming Edition 8GB
+    identifier: RX-96TSW8GBA
+    identifierType: model_number
+  - company: ASRock
+    productName: Radeon RX 9060 XT Steel Legend 16GB OC
+    identifier: RX9060XT SL 16GO
+    identifierType: model_number
+  - company: ASRock
+    productName: Radeon RX 9060 XT Challenger 16GB OC
+    identifier: RX9060XT CL 16GO
+    identifierType: model_number
+  - company: PowerColor
+    productName: Hellhound AMD Radeon RX 9060 XT 16GB
+    identifier: RX9060XT 16G-L/OC
+    identifierType: model_number
+  - company: PowerColor
+    productName: Hellhound AMD Radeon RX 9060 XT 8GB OC
+    identifier: RX9060XT 8G-L/OC
+    identifierType: model_number
+  - company: PowerColor
+    productName: Reaper AMD Radeon RX 9060 XT 16GB
+    identifier: AXRX 9060XT 16GBD6-M3DH/OC
+    identifierType: model_number
+
 references:
   - https://www.amd.com/en/products/graphics/desktops/radeon/9000-series/amd-radeon-rx-9060xt.html
   - https://www.amd.com/en/products/specifications/graphics
@@ -36,6 +112,16 @@ references:
   - https://en.wikipedia.org/wiki/Radeon_RX_9000_series
   - https://www.tomshardware.com/pc-components/gpus/amd-rdna4-rx-9000-series-gpus-specifications-pricing-release-date
   - https://gamersnexus.net/gpus/amd-needs-just-shut-amd-radeon-rx-9060-xt-16gb-gpu-review
+  - https://www.tomshardware.com/pc-components/gpus/amd-radeon-rx-9060-xt-graphics-card-roundup-every-announced-card-from-every-aib-partner
+  - https://www.kitguru.net/components/graphic-cards/dominic-moass/rx-9060-xt-roundup-asrock-powercolor-and-sapphire-tested/
+  - https://press.asus.com/news/press-releases/asus-radeon-rx-9060-xt-graphics-cards/
+  - https://www.asus.com/motherboards-components/graphics-cards/tuf-gaming/tuf-rx9060xt-o16g-gaming/
+  - https://www.gigabyte.com/Graphics-Card/GV-R9060XTGAMING-OC-16GD
+  - https://www.sapphiretech.com/en/consumer/nitro-radeon-rx-9060-xt-16g-gddr6
+  - https://www.sapphiretech.com/en/consumer/pulse-radeon-rx-9060-xt-16g-gddr6
+  - https://www.xfxforce.com/gpu/amd-radeon-rx-9060
+  - https://www.asrock.com/Graphics-Card/AMD/Radeon%20RX%209060%20XT%20Steel%20Legend%2016GB%20OC/
+  - https://www.powercolor.com/product-detail249.htm
 
 notes:
   - tensorCoreCount tracks the 2nd-generation AI Accelerators as "tensor cores". The RX 9060 XT has 64 AI Accelerators (2 per CU × 32 CUs).
@@ -49,3 +135,13 @@ notes:
   - RDNA 4 introduces 3rd-generation Ray Tracing accelerators and 2nd-generation AI Accelerators with optimized Compute Unit design.
   - FSR 4 is exclusive to RDNA 4 GPUs and leverages the new AI accelerators for ML-based upscaling.
   - MSRP of $350 USD for the 16GB variant sourced from AMD official announcement and verified by GamersNexus review and Tom's Hardware coverage.
+  - manufacturerIdentifiers is empty as AMD OPN (Ordering Part Number) or official manufacturer identifier codes were not found in AMD's official documentation, product pages, or datasheets for the RX 9060 XT. AMD typically does not publish OPNs for consumer GPUs.
+  - ASUS TUF-RX9060XT-O16G-GAMING model number sourced from ASUS official product page and press release.
+  - ASUS PRIME-RX9060XT-O16G model number sourced from ASUS official product listings.
+  - Gigabyte GV-R9060XTGAMING-OC-16GD and GV-R9060XTGAMING-OC-8GD model numbers sourced from Gigabyte official product pages and Best Buy listings.
+  - Sapphire 11350-01-20G (NITRO+), 11350-03-20G (PULSE 16GB), and 11350-04-20G (PULSE 8GB) model numbers sourced from Sapphire official product pages and Amazon listings.
+  - XFX model numbers (RX-96TSW16BQ, RX-96TS316BA, RX-96TS316B7, RX-96TMERCBA, RX-96TMERCW9, RX-96TSW8GBA) sourced from XFX official product pages and Amazon listings. XFX offers 12 total variants with Mercury and Swift branding.
+  - ASRock RX9060XT SL 16GO (Steel Legend) model number sourced from ASRock official product page and Newegg listings. Challenger model number inferred from ASRock naming convention.
+  - PowerColor RX9060XT 16G-L/OC (Hellhound) and RX9060XT 8G-L/OC model numbers sourced from PowerColor official website and TechPowerUp GPU database. Reaper model number inferred from PowerColor naming convention and Tom's Hardware review.
+  - MSI has not announced RX 9060 XT models as of June 2025 launch date. MSI appears focused on NVIDIA RTX 5060 Ti series instead.
+  - This spec file represents the 16GB variant which is the flagship model at $350 MSRP. An 8GB variant also exists at $300 MSRP.

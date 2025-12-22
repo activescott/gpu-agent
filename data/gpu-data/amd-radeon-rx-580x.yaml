@@ -10,11 +10,22 @@ maxTDPWatts: 185
 gpuArchitecture: Graphics Core Next 4
 supportedHardwareOperations: []
 releaseDate: "2018-04-11"
-lastModified: "2025-12-18T08:00:00Z"
+lastModified: "2025-12-21T00:00:00Z"
 
 summary: The AMD Radeon RX 580X, launched on April 11th, 2018, is built on a 14
   nm process and features the Polaris 20 graphics processor. It's a dual-slot
   card with a maximum power draw of 185 W and supports DirectX 12.
+
+thirdPartyProducts:
+  - company: Dell
+    productName: AMD Radeon RX 580X 8GB Graphics Card
+    identifier: 8XPPN
+    identifierType: part_number
+  - company: Dell
+    productName: AMD Radeon RX 580X 8GB Graphics Card
+    identifier: 065VH5
+    identifierType: part_number
+
 references:
   - https://www.amd.com/en/products/specifications/graphics
   - https://www.tomshardware.com/reviews/amd-radeon-rx-580-review,5020.html
@@ -22,7 +33,17 @@ references:
   - https://www.techpowerup.com/gpu-specs/radeon-rx-580.c2938
   - https://videocardz.com/amd/radeon-500/radeon-rx-580
   - https://en.wikipedia.org/wiki/Graphics_Core_Next
+  - https://www.ebay.com/itm/256556359244
+  - https://www.ebay.com/itm/135878393264
+  - https://www.techforless.com/products/Dell/Video_Cards/8XPPN.html
+  - https://www.bargainhardware.co.uk/dell-8xppn-amd-radeon-rx-580x-8gb-gddr5-pcie-x16-fh-gpu-08xppn
+
 notes:
   - 'int8TOPS: "More Information Needed"'
   - The RX 580X was an OEM-only variant of the RX 580 with slightly higher guaranteed clock speeds, sold exclusively to system builders like Dell and HP. No public MSRP was established as it was not sold at retail.
   - MSRP of $229 is based on the AMD Radeon RX 580 8GB launch price (April 18, 2017), which is the appropriate reference since the RX 580X is an OEM-equivalent variant with nearly identical specifications. The RX 580 8GB MSRP of $229 was confirmed by TechPowerUp GPU Database and VideoCardz.
+  - "AMD does not publish OPN (Ordering Part Numbers) for OEM-exclusive GPUs like the RX 580X. This card was sold exclusively through system builders like Dell and HP with their own part numbers."
+  - "Dell part number 8XPPN (also listed as 08XPPN) sourced from eBay listings, TechForLess, and BargainHardware. This is the primary Dell part number for the RX 580X 8GB variant."
+  - "Dell part number 065VH5 sourced from eBay listings and European retailers. Listed as 'Dell Grafikkarte AMD Radeon RX 580X 8GB GPU Schwarz Full Profile 065VH5'. This appears to be an alternate Dell part number for the RX 580X."
+  - "The RX 580X was manufactured exclusively as an OEM product. Dell was the primary OEM partner. HP also used RX 580 OEM variants but specific RX 580X part numbers for HP were not found in research."
+  - "Dell RX 580X specifications: 8GB GDDR5, 256-bit bus, PCIe 3.0 x16, 2304 cores, 3x DisplayPort + 1x HDMI outputs, full height form factor."

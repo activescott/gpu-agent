@@ -50,6 +50,11 @@ model gpu {
   // Notes about the GPU specs (e.g., MSRP sources, calculation explanations)
   notes             String[]
 
+  // Manufacturer identifiers (NVPN, OPN, board_id, etc.) stored as JSON array
+  manufacturerIdentifiers Json?  @db.JsonB
+  // Third-party product information (Dell, ASUS, etc.) stored as JSON array
+  thirdPartyProducts      Json?  @db.JsonB
+
   // Relations
   metricValues  GpuMetricValue[]
   Listing       Listing[]

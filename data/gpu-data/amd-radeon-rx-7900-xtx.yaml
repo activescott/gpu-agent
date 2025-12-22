@@ -16,7 +16,7 @@ supportedHardwareOperations:
   - INT8
   - INT4
 releaseDate: "2022-12-13"
-lastModified: "2025-12-18T00:00:00Z"
+lastModified: "2025-12-21T00:00:00Z"
 
 summary: >-
   The AMD Radeon RX 7900 XTX, launched on December 13, 2022, is AMD's flagship
@@ -25,13 +25,81 @@ summary: >-
         The 7900 XTX is a compelling GPU for machine learning/AI.
         Some common part numbers are the PowerColor RX7900XTX 24G-E/OC, RX7900XTX 24G-L/OC, Sapphire 11322-02-20G, XFX RX-79XMERCB9, ASRock 90-GA43ZZ-00UANF, and the Asus TUF-RX7900XTX-O24G-GAMING.
         The lowest price is tracked and continuously updated across multiple sellers for all of these models below.
+
+manufacturerIdentifiers:
+  - type: opn
+    value: "102D7020100"
+  - type: model_number
+    value: "AMD D702 SKU 001"
+
+thirdPartyProducts:
+  - company: Sapphire
+    productName: "NITRO+ AMD Radeon RX 7900 XTX Vapor-X 24G GDDR6"
+    identifier: "11322-01-40G"
+    identifierType: model_number
+  - company: Sapphire
+    productName: "PULSE AMD Radeon RX 7900 XTX 24G GDDR6"
+    identifier: "11322-02-20G"
+    identifierType: model_number
+  - company: PowerColor
+    productName: "Red Devil AMD Radeon RX 7900 XTX 24GB GDDR6"
+    identifier: "RX 7900 XTX 24G-E/OC"
+    identifierType: model_number
+  - company: PowerColor
+    productName: "Hellhound AMD Radeon RX 7900 XTX 24GB GDDR6"
+    identifier: "RX7900XTX 24G-L/OC"
+    identifierType: model_number
+  - company: XFX
+    productName: "SPEEDSTER MERC 310 AMD Radeon RX 7900 XTX Black Edition"
+    identifier: "RX-79XMERCB9"
+    identifierType: model_number
+  - company: XFX
+    productName: "AMD Radeon RX 7900 XTX Gaming Graphics Card"
+    identifier: "RX-79XMBABF9"
+    identifierType: model_number
+  - company: ASUS
+    productName: "TUF Gaming Radeon RX 7900 XTX OC Edition 24GB GDDR6"
+    identifier: "TUF-RX7900XTX-O24G-GAMING"
+    identifierType: model_number
+  - company: ASUS
+    productName: "TUF Gaming Radeon RX 7900 XTX OC Edition 24GB GDDR6"
+    identifier: "90YV0IG0-M0NA00"
+    identifierType: part_number
+  - company: Gigabyte
+    productName: "Radeon RX 7900 XTX GAMING OC 24G"
+    identifier: "GV-R79XTXGAMING OC-24GD"
+    identifierType: model_number
+  - company: ASRock
+    productName: "Radeon RX 7900 XTX Phantom Gaming 24GB OC"
+    identifier: "RX7900XTX PG 24GO"
+    identifierType: model_number
+  - company: ASRock
+    productName: "Radeon RX 7900 XTX Taichi 24GB OC"
+    identifier: "RX7900XTX TC 24GO"
+    identifierType: model_number
+
 references:
   - https://www.amd.com/en/products/specifications/graphics
+  - https://www.amd.com/en/products/graphics/desktops/radeon/7000-series/amd-radeon-rx-7900xtx.html
   - https://www.tomshardware.com/reviews/amd-radeon-rx-7900-xtx-and-xt-review-shooting-for-the-top
   - https://www.techpowerup.com/300632/amd-announces-the-usd-999-radeon-rx-7900-xtx-and-usd-899-rx-7900-xt-5nm-rdna3-displayport-2-1-fsr-3-0-fluidmotion
   - https://en.wikipedia.org/wiki/RDNA_3
   - https://gpuopen.com/learn/wmma_on_rdna3/
   - https://gpuopen.com/learn/amd-lab-notes/amd-lab-notes-matrix-cores-readme/
+  - https://www.sapphiretech.com/en/consumer/nitro-radeon-rx-7900-xtx-vaporx-24g-gddr6
+  - https://www.sapphiretech.com/en/consumer/pulse-radeon-rx-7900-xtx-24g-gddr6
+  - https://www.powercolor.com/product-detail71.htm
+  - https://www.powercolor.com/product-detail72.htm
+  - https://www.xfxforce.com/shop/xfx-speedster-merc-310-7900xtx-black-edition
+  - https://www.xfxforce.com/shop/amd-radeon-rx-7900xtx
+  - https://www.asus.com/motherboards-components/graphics-cards/tuf-gaming/tuf-rx7900xtx-o24g-gaming/
+  - https://www.msi.com/Graphics-Card/Radeon-RX-7900-XTX-GAMING-TRIO-CLASSIC-24G
+  - https://www.gigabyte.com/Graphics-Card/GV-R79XTXGAMING-OC-24GD
+  - https://www.asrock.com/Graphics-Card/AMD/Radeon%20RX%207900%20XTX%20Phantom%20Gaming%2024GB%20OC/
+  - https://www.asrock.com/Graphics-Card/AMD/Radeon%20RX%207900%20XTX%20Taichi%2024GB%20OC/
+
 notes:
   - 'tensorCoreCount: tracking the AI Accelerators as "tensor cores"'
   - MSRP of $999 USD sourced from AMD announcement on November 3, 2022, verified from TechPowerUp and PC Gamer. AMD later reduced the price to $899 in 2024.
+  - 'Manufacturer identifiers: AMD OPN 102D7020100 and model designation AMD D702 SKU 001 sourced from VideoCardz.net technical specifications page.'
+  - 'Third-party products: Selected top AIB partner models from Sapphire (NITRO+ and PULSE series), PowerColor (Red Devil and Hellhound series), XFX (MERC 310 and reference models), ASUS (TUF Gaming series), MSI (Gaming Trio Classic), Gigabyte (Gaming OC), and ASRock (Phantom Gaming and Taichi series). Model numbers verified from manufacturer websites and major retailers including Newegg, Amazon, and Micro Center.'

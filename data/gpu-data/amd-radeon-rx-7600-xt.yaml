@@ -15,7 +15,7 @@ supportedHardwareOperations:
   - INT8
   - INT4
 releaseDate: "2024-01-24"
-lastModified: "2025-12-18T00:00:00Z"
+lastModified: "2025-12-21T00:00:00Z"
 
 summary: >-
   The AMD Radeon RX 7600 XT was unveiled in January, 2024 as one of the GPUs
@@ -23,6 +23,69 @@ summary: >-
   Accelerators which accelerate the GEMM operations that are critical to machine
   learning/AI performance.
       With 32 compute units (CUs) and 64 AI Accelerators, it has significantly lower compute capacity compared to the 7900 XTX's 96 CUs and 192 AI Accelerators, but the RDNA 3 architecture's AI Accelerators and it's lower price make it a consideration among AMD GPUs for AI/machine learning.
+
+manufacturerIdentifiers:
+  - type: board_model
+    value: AMD D745
+  - type: gpu_variant
+    value: Navi 33 XT
+  - type: codename
+    value: Hotpink Bonefish
+
+thirdPartyProducts:
+  - company: Sapphire
+    productName: PULSE AMD Radeon RX 7600 XT 16G GDDR6
+    identifier: 11339-04-20G
+    identifierType: model_number
+  - company: XFX
+    productName: SPEEDSTER QICK 309 AMD Radeon RX 7600 XT
+    identifier: RX-76TQICKB9
+    identifierType: model_number
+  - company: XFX
+    productName: SPEEDSTER SWFT 210 AMD Radeon RX 7600 XT
+    identifier: RX-76TSWFTFP
+    identifierType: model_number
+  - company: PowerColor
+    productName: Hellhound Radeon RX 7600 XT
+    identifier: RX 7600 XT 16G-L/OC
+    identifierType: model_number
+  - company: PowerColor
+    productName: Fighter Radeon RX 7600 XT
+    identifier: RX 7600 XT 16G-F
+    identifierType: model_number
+  - company: Gigabyte
+    productName: Radeon RX 7600 XT GAMING OC 16G
+    identifier: GV-R76XTGAMING OC-16GD
+    identifierType: model_number
+  - company: ASUS
+    productName: TUF Gaming Radeon RX 7600 XT OC Edition
+    identifier: TUF-RX7600XT-O16G-GAMING
+    identifierType: model_number
+  - company: ASUS
+    productName: TUF Gaming Radeon RX 7600 XT OC Edition
+    identifier: 90YV0K20-M0NA00
+    identifierType: part_number
+  - company: ASUS
+    productName: Dual Radeon RX 7600 XT OC Edition
+    identifier: DUAL-RX7600XT-O16G
+    identifierType: model_number
+  - company: ASUS
+    productName: Dual Radeon RX 7600 XT OC Edition
+    identifier: 90YV0K21-M0NA00
+    identifierType: part_number
+  - company: ASRock
+    productName: Radeon RX 7600 XT Challenger 16GB OC
+    identifier: RX7600XT CL 16GO
+    identifierType: model_number
+  - company: ASRock
+    productName: Radeon RX 7600 XT Steel Legend 16GB OC
+    identifier: RX7600XT SL 16GO
+    identifierType: model_number
+  - company: ASRock
+    productName: Radeon RX 7600 XT Steel Legend 16GB OC
+    identifier: 90-GA4ZZZ-00UANF
+    identifierType: part_number
+
 references:
   - https://www.amd.com/en/products/specifications/graphics
   - https://www.amd.com/en/products/graphics/amd-radeon-rx-7600-xt
@@ -31,7 +94,26 @@ references:
   - https://gpuopen.com/learn/wmma_on_rdna3/
   - https://gpuopen.com/learn/amd-lab-notes/amd-lab-notes-matrix-cores-readme/
   - https://wccftech.com/amd-radeon-rx-7600-xt-16-gb-rnda-3-gpu-2048-cores-16-gb-vram-tackles-rtx-4060-329-us/
+  - https://www.techpowerup.com/gpu-specs/sapphire-pulse-rx-7600-xt.b11669
+  - https://www.techpowerup.com/gpu-specs/powercolor-hellhound-rx-7600-xt.b11672
+  - https://www.techpowerup.com/gpu-specs/powercolor-fighter-rx-7600-xt.b11673
+  - https://www.techpowerup.com/gpu-specs/xfx-speedster-swft210-rx-7600-xt.b11671
+  - https://www.techpowerup.com/gpu-specs/gigabyte-rx-7600-xt-gaming-oc.b11482
+  - https://www.techpowerup.com/gpu-specs/asrock-rx-7600-xt-challenger-oc.b11670
+  - https://www.techpowerup.com/gpu-specs/asrock-rx-7600-xt-steel-legend-oc.b11667
+  - https://www.asus.com/us/motherboards-components/graphics-cards/tuf-gaming/tuf-rx7600xt-o16g-gaming/
+  - https://www.asus.com/motherboards-components/graphics-cards/dual/dual-rx7600xt-o16g/
+  - https://www.xfxforce.com/shop/xfx-speedster-qick-309-amd-radeon-tm-rx-7600-xt
+  - https://www.xfxforce.com/shop/xfx-speedster-swft-210-amd-radeon-tm-rx-7600-xt
+  - https://www.sapphiretech.com/en/consumer/pulse-radeon-rx-7600-xt-16g-gddr6
+  - https://www.gigabyte.com/Graphics-Card/GV-R76XTGAMING-OC-16GD-rev-10-11
+  - https://videocardz.com/newz/amd-launches-radeon-rx-7600-xt-with-navi-33-gpu-and-16gb-memory-at-329
+
 notes:
   - 'tensorCoreCount: tracking the AI Accelerators as "tensor cores"'
   - "int8TOPS: More Information Needed"
   - MSRP of $329 USD sourced from AMD official press release dated January 8, 2024.
+  - 'Manufacturer identifiers sourced from VideoCardz and TechPowerUp GPU Database: Navi 33 XT variant (215-163000047), board model AMD D745, codename "Hotpink Bonefish"'
+  - Third-party product model numbers sourced from TechPowerUp GPU Database, manufacturer official product pages (Sapphire, XFX, Gigabyte, ASUS, ASRock), and verified from multiple retailer listings
+  - ASUS products include both model numbers (consumer-facing) and part numbers (manufacturer codes starting with 90YV)
+  - ASRock Steel Legend part number 90-GA4ZZZ-00UANF sourced from PCPartPicker and verified from search results

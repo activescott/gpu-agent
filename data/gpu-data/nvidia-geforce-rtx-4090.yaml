@@ -19,7 +19,7 @@ supportedHardwareOperations:
   - FP8
 supportedCUDAComputeCapability: 8.9
 releaseDate: "2022-10-12"
-lastModified: "2025-12-18T00:00:00Z"
+lastModified: "2025-12-20T00:00:00Z"
 
 summary: |
   The NVIDIA GeForce RTX 4090 is a graphics card released in 2022,
@@ -31,15 +31,104 @@ summary: |
   capabilities for machine learning tasks, particularly inference and training
   workloads that benefit from its large memory and high core count. It uses a
   PCI-Express 4.0 x16 host interface.
+
+manufacturerIdentifiers:
+  - type: nvpn
+    value: "900-1G136-2530-000"
+
+thirdPartyProducts:
+  - company: ASUS
+    productName: ROG Strix GeForce RTX 4090 OC Edition 24GB GDDR6X
+    identifier: ROG-STRIX-RTX4090-O24G-GAMING
+    identifierType: model_number
+  - company: ASUS
+    productName: ROG Strix GeForce RTX 4090 24GB GDDR6X
+    identifier: ROG-STRIX-RTX4090-24G-GAMING
+    identifierType: model_number
+  - company: ASUS
+    productName: TUF Gaming GeForce RTX 4090 OC Edition 24GB GDDR6X
+    identifier: TUF-RTX4090-O24G-GAMING
+    identifierType: model_number
+  - company: ASUS
+    productName: TUF Gaming GeForce RTX 4090 24GB GDDR6X
+    identifier: TUF-RTX4090-24G-GAMING
+    identifierType: model_number
+  - company: Gigabyte
+    productName: GeForce RTX 4090 AERO OC 24G
+    identifier: GV-N4090AERO OC-24GD
+    identifierType: model_number
+  - company: Gigabyte
+    productName: GeForce RTX 4090 GAMING OC 24G
+    identifier: GV-N4090GAMING OC-24GD
+    identifierType: model_number
+  - company: Zotac
+    productName: GeForce RTX 4090 Trinity
+    identifier: ZT-D40900D-10P
+    identifierType: model_number
+  - company: Zotac
+    productName: GeForce RTX 4090 Trinity OC
+    identifier: ZT-D40900J-10P
+    identifierType: model_number
+  - company: PNY
+    productName: XLR8 Gaming VERTO EPIC-X RGB GeForce RTX 4090
+    identifier: VCG409024TFXXPB1
+    identifierType: model_number
+  - company: PNY
+    productName: XLR8 Gaming VERTO EPIC-X RGB OC GeForce RTX 4090
+    identifier: VCG409024TFXXPB1-O
+    identifierType: model_number
+  - company: Palit
+    productName: GeForce RTX 4090 GameRock OC
+    identifier: NED4090S19SB-1020G
+    identifierType: model_number
+  - company: Palit
+    productName: GeForce RTX 4090 GameRock
+    identifier: NED4090019SB-1020G
+    identifierType: model_number
+  - company: Gainward
+    productName: GeForce RTX 4090 Phantom
+    identifier: NED4090019SB-1020P
+    identifierType: model_number
+  - company: Gainward
+    productName: GeForce RTX 4090 Phantom GS
+    identifier: NED4090S19SB-1020P
+    identifierType: model_number
+  - company: INNO3D
+    productName: GeForce RTX 4090 iCHILL X3
+    identifier: C40903-246XX-1833VA47
+    identifierType: model_number
+  - company: GALAX
+    productName: GeForce RTX 4090 SG 1-Click OC
+    identifier: 49NXM5MD6DSG
+    identifierType: model_number
+  - company: GALAX
+    productName: GeForce RTX 4090 HOF
+    identifier: 49NXM5MD7FAI
+    identifierType: model_number
+
 references:
   - https://images.nvidia.com/aem-dam/Solutions/geforce/ada/nvidia-ada-gpu-architecture.pdf
   - https://images.nvidia.com/aem-dam/Solutions/Data-Center/l4/nvidia-ada-gpu-architecture-whitepaper-v2.1.pdf
   - https://www.nvidia.com/en-us/geforce/graphics-cards/40-series/rtx-4090/
   - https://lambdalabs.com/blog/nvidia-rtx-4090-vs-rtx-3090-deep-learning-benchmark
   - https://www.nvidia.com/en-us/geforce/news/geforce-rtx-4090-out-now/
+  - https://pcpartpicker.com/product/BCGbt6/nvidia-founders-edition-geforce-rtx-4090-24-gb-video-card-900-1g136-2530-000
+  - https://www.techpowerup.com/gpu-specs/nvidia-geforce-rtx-4090-founders-edition.b9915
+  - https://rog.asus.com/graphics-cards/graphics-cards/rog-strix/rog-strix-rtx4090-o24g-gaming-model/
+  - https://www.msi.com/Graphics-Card/GeForce-RTX-4090-SUPRIM-X-24G
+  - https://www.gigabyte.com/Graphics-Card/GV-N4090AERO-OC-24GD
+  - https://www.zotac.com/us/product/graphics_card/zotac-gaming-geforce-rtx-4090-trinity
+  - https://www.pny.com/pny-geforce-rtx-4090-24gb-xlr8-rgb-triple-fan
+  - https://www.palit.com/palit/vgapro.php?id=4578&lang=en
+  - https://www.gainward.com/main/vgapro.php?id=1163&lang=en
+  - https://inno3d.com/product/inno3d-geforce-rtx-4090-ichill-x3
+  - https://www.galax.com/en/graphics-card/geforce-rtx-4090-sg.html
 
 notes:
   - MSRP of $1599 USD sourced from NVIDIA's official announcement. A Founders Edition was available at this price. Due to high demand and limited availability, most RTX 4090 cards are priced between $1,700 and $2,000 or higher.
   - fp16TFLOPS is "Peak FP16 Tensor TFLOPS with FP16 Accumulate" as that's what NVIDIA publishes. Using the "with sparsity" metric.
   - int8TOPS is "peak INT 8 TOPS" using "Effective TOPS / TFLOPS using the new Sparsity Feature". They also reveal it as 660.6 "based on GPU Boost Clock". This comes from the ada-gpu-architecture-whitepaper-v2.1.
   - Power based on what NVIDIA refers to as "TGP (Total Graphics Power)"
+  - NVIDIA Founders Edition part number 900-1G136-2530-000 sourced from PCPartPicker and TechPowerUp GPU Database.
+  - Third-party product identifiers sourced from official manufacturer websites and TechPowerUp GPU Database. EVGA did not produce RTX 4090 cards as they exited the GPU market in September 2022.
+  - AIB partners include ASUS, MSI, Gigabyte, Zotac, PNY, Palit, Gainward, INNO3D, GALAX/KFA2, and Colorful. Each manufacturer offers multiple variants with different cooling solutions and factory overclocks.

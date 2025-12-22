@@ -19,7 +19,7 @@ supportedHardwareOperations:
   - BF16
 supportedCUDAComputeCapability: 8
 releaseDate: "2021-04-12"
-lastModified: "2025-12-18T18:00:00Z"
+lastModified: "2025-12-19T00:00:00Z"
 
 summary: The NVIDIA A30, launched on April 12th, 2021 with part number
   900-21001-0040-100, is a professional-grade accelerator geared towards machine
@@ -29,12 +29,83 @@ summary: The NVIDIA A30, launched on April 12th, 2021 with part number
   substantial tensor core count, which significantly boosts the speed of machine
   learning applications. Its optimized power consumption also makes it a
   preferred choice for sustainable, high-efficiency data center deployments.
+
+manufacturerIdentifiers:
+  - type: nvpn
+    value: 900-21001-0040-000
+  - type: nvpn
+    value: 900-21001-0040-100
+  - type: nvpn
+    value: 900-21001-0140-130
+  - type: nvpn
+    value: 900-21001-0205-000
+  - type: board_id
+    value: PG506-232
+  - type: board_id
+    value: PG506-242
+
+thirdPartyProducts:
+  - company: Dell
+    productName: NVIDIA Ampere A30 165W 24GB Passive FHFL Double Wide Full Height PCIe GPU
+    identifier: 1GXPG
+    identifierType: part_number
+  - company: Dell
+    productName: NVIDIA Ampere A30 165W 24GB Passive FHFL Double Wide Full Height PCIe GPU
+    identifier: W3C1G
+    identifierType: part_number
+  - company: Dell
+    productName: Dell NVIDIA A30 Tensor Core GPU Accelerator 24GB
+    identifier: 699-21001-0205-600
+    identifierType: part_number
+  - company: Dell
+    productName: Dell NVIDIA A30 Tensor Core GPU Accelerator 24GB
+    identifier: 699-21001-0205-601
+    identifierType: part_number
+  - company: HPE
+    productName: NVIDIA A30 PCIe Non-CEC Accelerator for HPE
+    identifier: R9S38C
+    identifierType: part_number
+  - company: Lenovo
+    productName: ThinkSystem NVIDIA A30 24GB PCIe Gen4 Passive GPU w/o CEC
+    identifier: 4X67A76581
+    identifierType: part_number
+  - company: PNY
+    productName: PNY NVIDIA A30 Module 24GB HBM2 with ECC
+    identifier: TCSA30M-PB
+    identifierType: sku
+  - company: Supermicro
+    productName: Supermicro A30 Passive Graphic Card 24 GB HBM2
+    identifier: GPU-NVTA30
+    identifierType: part_number
+  - company: Supermicro
+    productName: NVIDIA A30 24GB CoWoS HBM2 PCIe 4.0 W/O CEC
+    identifier: GPU-NVA30-NC
+    identifierType: part_number
+  - company: Cisco
+    productName: NVIDIA A30 Tensor Core GPU for UCS C-Series
+    identifier: UCSC-GPU-A30=
+    identifierType: part_number
+
 references:
   - https://www.nvidia.com/en-us/data-center/products/a30-gpu/
   - https://www.techpowerup.com/gpu-specs/a30-pcie.c3792
   - https://cyfuture.cloud/kb/gpu/what-is-the-price-of-nvidia-a30-gpu
   - https://www.router-switch.com/nvidia-a30.html
   - https://www.nvidia.com/en-us/data-center/tensor-cores/
+  - https://www.techpowerup.com/gpu-specs/pg506-232.c3799
+  - https://www.techpowerup.com/gpu-specs/pg506-242.c3823
+  - https://www.itcreations.com/product/130375
+  - https://www.dell.com/en-us/shop/nvidia-ampere-a30-pcie-165w-24gb-passive-double-wide-full-height-gpu/apd/490-bgus/graphic-video-cards
+  - https://www.hpe.com/us/en/product-catalog/options/pip.nvidia-accelerators.1014670675.html
+  - https://lenovopress.lenovo.com/lp1774-thinksystem-nvidia-a30-24gb-pcie-gen4-passive-gpu
+  - https://www.pny.com/en-eu/nvidia-a30
+  - https://www.scan.co.uk/products/pny-nvidia-a30-24gb-hbm2-with-ecc-passive-graphics-card-3804-cuda-52-tflops-dp-103-tflops-sp-165-tfl
+  - https://www.exxactcorp.com/Supermicro-GPU-NVTA30-E3770654
+  - https://www.ahead-it.eu/en/shop/hardware/supermicro/supermicro-gpu-nva30-nc-nvidia-a30-24gb-cowos-hbm2-pcie-4-0-w-o-cec
+  - https://www.cisco.com/c/dam/en/us/products/collateral/servers-unified-computing/ucs-c-series-rack-servers/nvidia-a30-gpu.pdf
+  - https://www.serversupply.com/GPU/HBM2/24GB/NVIDIA/699-21001-0205-600_379654.htm
+  - https://www.serversupply.com/GPU/HBM2/24GB/NVIDIA/900-21001-0040-000_395416.htm
+
 notes:
   - 'fp32TFLOPS: NOTE: This is the Tensor Core FP32 performance, not the CUDA
     FP32 performance. Noted in the data sheet as "NVIDIA A30 delivers 165
@@ -42,3 +113,17 @@ notes:
   - "fp16TFLOPS: NOTE: This is the Tensor Core FP16 performance, not the CUDA
     FP16 performance."
   - MSRP of $4,599 USD verified from 3 sources - Cyfuture Cloud cites Thinkmate offering the NVIDIA A30 GPU at $4,599.00, Amazon lists the PNY NVIDIA A30 Module 24GB at $5,199.00, and router-switch.com notes the retail price hovers between $3,500-$5,000 depending on supplier and availability.
+  - "NVIDIA part number 900-21001-0040-000 sourced from multiple vendor listings including Acmemicro and Exxact for the Tensor Core A30 24GB HBM2 Dual Slot PCIe 4.0 GPU Card with Passive Cooling"
+  - "NVIDIA part number 900-21001-0040-100 sourced from multiple vendor listings for the NVIDIA A30 GPU Non-CEC 24GB variant"
+  - "NVIDIA part number 900-21001-0140-130 sourced from serversupply.com for Dell variant - NVIDIA Ampere A30 165W 24GB Passive FHFL Double Wide Full Height PCIe GPU"
+  - "NVIDIA part number 900-21001-0205-000 sourced from enterasource.com for NVIDIA A30 Tensor Core GPU 24GB HBM2 AI HPC Inference variant"
+  - "Board ID PG506-232 and PG506-242 sourced from TechPowerUp GPU Database. Both are variants of the NVIDIA A30 based on GA100 graphics processor with 3584 shading units, 224 tensor cores, 24GB HBM2 memory"
+  - "Dell part numbers 1GXPG and W3C1G sourced from itcreations.com for Dell NVIDIA A30 Tensor Core GPU Accelerator 24GB HBM2"
+  - "Dell OEM part number 699-21001-0205-600 sourced from serversupply.com and shop.bytestock.com for Dell NVIDIA A30 variant"
+  - "Dell OEM part number 699-21001-0205-601 sourced from itcreations.com for Dell NVIDIA A30 Tensor Core GPU Accelerator with dual-slot form factor"
+  - "HPE part number R9S38C sourced from hpe.com official product catalog for NVIDIA A30 PCIe Non-CEC Accelerator for HPE"
+  - "Lenovo part number 4X67A76581 sourced from Lenovo Press Product Guide (lenovopress.lenovo.com/lp1774) for ThinkSystem NVIDIA A30 24GB PCIe Gen4 Passive GPU w/o CEC"
+  - "PNY SKU TCSA30M-PB sourced from pny.com/en-eu and scan.co.uk for PNY NVIDIA A30 Module 24GB HBM2 with ECC"
+  - "Supermicro part number GPU-NVTA30 sourced from exxactcorp.com and sabrepc.com for Supermicro A30 Passive 24 GB HBM2 Graphic Card"
+  - "Supermicro part number GPU-NVA30-NC sourced from ahead-it.eu for NVIDIA A30 24GB CoWoS HBM2 PCIe 4.0 without CEC (corresponding to NVIDIA part number 900-21001-0040-100)"
+  - "Cisco part number UCSC-GPU-A30= sourced from Cisco official datasheet (cisco.com) for NVIDIA A30 Tensor Core GPU for UCS C-Series rack servers"

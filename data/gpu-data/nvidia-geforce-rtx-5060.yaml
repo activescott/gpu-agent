@@ -33,6 +33,48 @@ summary: |
   448 GB/s memory bandwidth on a 128-bit bus, matching the RTX 5060 Ti's bandwidth despite
   having less VRAM.
 
+thirdPartyProducts:
+  - company: ASUS
+    productName: TUF Gaming GeForce RTX 5060 8GB GDDR7 OC Edition
+    identifier: TUF-RTX5060-O8G-GAMING
+    identifierType: model_number
+  - company: ASUS
+    productName: Dual GeForce RTX 5060 8GB GDDR7 OC Edition
+    identifier: DUAL-RTX5060-O8G
+    identifierType: model_number
+  - company: ASUS
+    productName: Prime GeForce RTX 5060 8GB GDDR7
+    identifier: PRIME-RTX5060-8G
+    identifierType: model_number
+  - company: Gigabyte
+    productName: GeForce RTX 5060 GAMING OC 8G
+    identifier: GV-N5060GAMING OC-8GD
+    identifierType: model_number
+  - company: Gigabyte
+    productName: GeForce RTX 5060 EAGLE OC 8G
+    identifier: GV-N5060EAGLE OC-8GD
+    identifierType: model_number
+  - company: Gigabyte
+    productName: GeForce RTX 5060 OC Low Profile 8G
+    identifier: GV-N5060OC-LP-8GD
+    identifierType: model_number
+  - company: Zotac
+    productName: ZOTAC Gaming GeForce RTX 5060 Twin Edge OC
+    identifier: ZT-D50600H-10M
+    identifierType: model_number
+  - company: PNY
+    productName: XLR8 Gaming GeForce RTX 5060 VERTO EPIC-X RGB
+    identifier: VCG50608DFXPB1
+    identifierType: model_number
+  - company: Palit
+    productName: GeForce RTX 5060 GamingPro OC
+    identifier: NED5060S19T9-1043A
+    identifierType: model_number
+  - company: Gainward
+    productName: GeForce RTX 5060 Panther OC
+    identifier: NED506019T9-1043A
+    identifierType: model_number
+
 references:
   - https://images.nvidia.com/aem-dam/Solutions/geforce/blackwell/nvidia-rtx-blackwell-gpu-architecture.pdf
   - https://www.nvidia.com/en-us/geforce/graphics-cards/50-series/rtx-5060-family/
@@ -40,6 +82,9 @@ references:
   - https://www.techpowerup.com/gpu-specs/geforce-rtx-5060.c4409
   - https://www.nvidia.com/en-us/geforce/news/ultimate-guide-to-5060/
   - https://www.nvidia.com/en-us/geforce/news/rtx-5060-out-now/
+  - https://www.asus.com/motherboards-components/graphics-cards/dual/dual-rtx5060-o8g/
+  - https://www.gigabyte.com/Graphics-Card/GV-N5060GAMING-OC-8GD
+  - https://www.tomshardware.com/pc-components/gpus/nvidia-geforce-rtx-5060-ti-and-5060-graphics-card-roundup-every-announced-card-from-every-aib-partner
 
 notes:
   - fp16TFLOPS of 76.71 represents "Peak FP16 Tensor TFLOPS with FP16 Accumulate" using the "with sparsity" metric. Dense performance is 38.35 TFLOPS, sparse is 76.71 TFLOPS. Following the same pattern as other Blackwell GPUs, NVIDIA publishes the sparse performance.
@@ -51,3 +96,6 @@ notes:
   - Process node is 4nm with 21.9 billion transistors.
   - The RTX 5060 and RTX 5060 Ti share the same memory bandwidth (448 GB/s) but differ in VRAM capacity (8GB vs 16GB).
   - MSRP of $299 USD sourced from nvidia.com official product page (https://www.nvidia.com/en-us/geforce/news/rtx-5060-out-now/). No Founders Edition available; pricing is for partner cards.
+  - No NVIDIA Founders Edition was released for the RTX 5060. All cards are from AIB partners including ASUS, MSI, Gigabyte, Zotac, PNY, Palit, Gainward, Colorful, INNO3D, GALAX/KFA2.
+  - Gigabyte offers a unique low-profile RTX 5060 OC Low Profile 8G (GV-N5060OC-LP-8GD) for small form factor and server builds. It is 182mm long with three small fans.
+  - Third-party product identifiers sourced from official manufacturer websites (ASUS, Gigabyte), Tom's Hardware RTX 5060 roundup, Newegg, and Best Buy product listings.

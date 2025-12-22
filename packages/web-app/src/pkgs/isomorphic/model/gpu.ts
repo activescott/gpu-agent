@@ -2,6 +2,24 @@ import { stripIndents } from "common-tags"
 import { z } from "zod"
 import { GpuSpecsSchema } from "./specs"
 
+// Manufacturer identifiers (NVPN, OPN, board_id, product_sku, etc.)
+export const ManufacturerIdentifierSchema = z.object({
+  type: z.string(),
+  value: z.string(),
+})
+export type ManufacturerIdentifier = z.infer<
+  typeof ManufacturerIdentifierSchema
+>
+
+// Third-party products from OEMs, AIBs (Add-In Board partners), and system integrators
+export const ThirdPartyProductSchema = z.object({
+  company: z.string(),
+  productName: z.string(),
+  identifier: z.string(),
+  identifierType: z.enum(["part_number", "sku", "model_number"]),
+})
+export type ThirdPartyProduct = z.infer<typeof ThirdPartyProductSchema>
+
 export const GpuSchema = z
   .object({
     name: z.string(),
@@ -31,6 +49,13 @@ export const GpuSchema = z
     msrpUSD: z.number().optional().nullable(),
     // Notes about the GPU specs (e.g., MSRP sources, calculation explanations)
     notes: z.array(z.string()).optional().default([]),
+    // Manufacturer identifiers (NVPN, OPN, board_id, etc.)
+    manufacturerIdentifiers: z
+      .array(ManufacturerIdentifierSchema)
+      .optional()
+      .nullable(),
+    // Third-party product information (Dell, ASUS, etc.)
+    thirdPartyProducts: z.array(ThirdPartyProductSchema).optional().nullable(),
   })
   .extend(GpuSpecsSchema.shape)
 

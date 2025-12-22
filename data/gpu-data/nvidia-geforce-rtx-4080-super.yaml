@@ -19,7 +19,7 @@ supportedHardwareOperations:
   - FP8
 supportedCUDAComputeCapability: 8.9
 releaseDate: "2024-01-31"
-lastModified: "2025-12-18T00:00:00Z"
+lastModified: "2025-12-20T00:00:00Z"
 
 summary: |
   The NVIDIA GeForce RTX 4080 SUPER is a graphics card released in January 2024,
@@ -31,6 +31,115 @@ summary: |
   for both gaming and machine learning workloads. The card maxes out the AD103 silicon,
   similar to how the RTX 2080 Super maximized its predecessor's chip. It uses a
   PCI-Express 4.0 x16 host interface and features 736.6 GB/s memory bandwidth.
+
+manufacturerIdentifiers:
+  - type: nvpn
+    value: "900-1G136-2555-000"
+  - type: board_id
+    value: PG139 SKU 355
+
+thirdPartyProducts:
+  - company: ASUS
+    productName: ROG STRIX GeForce RTX 4080 SUPER OC Edition
+    identifier: ROG-STRIX-RTX4080S-O16G-GAMING
+    identifierType: model_number
+  - company: ASUS
+    productName: ROG STRIX GeForce RTX 4080 SUPER White OC Edition
+    identifier: ROG-STRIX-RTX4080S-O16G-WHITE
+    identifierType: model_number
+  - company: ASUS
+    productName: ROG STRIX GeForce RTX 4080 SUPER
+    identifier: ROG-STRIX-RTX4080S-16G-GAMING
+    identifierType: model_number
+  - company: ASUS
+    productName: TUF Gaming GeForce RTX 4080 SUPER OC Edition
+    identifier: TUF-RTX4080S-O16G-GAMING
+    identifierType: model_number
+  - company: ASUS
+    productName: TUF Gaming GeForce RTX 4080 SUPER
+    identifier: TUF-RTX4080S-16G-GAMING
+    identifierType: model_number
+  - company: ASUS
+    productName: ProArt GeForce RTX 4080 SUPER
+    identifier: PROART-RTX4080S-16G
+    identifierType: model_number
+  - company: MSI
+    productName: GeForce RTX 4080 SUPER 16G GAMING X TRIO
+    identifier: 912-V511-XXX
+    identifierType: part_number
+  - company: MSI
+    productName: GeForce RTX 4080 SUPER 16G VENTUS 3X OC
+    identifier: G408S16GV3XC
+    identifierType: sku
+  - company: MSI
+    productName: GeForce RTX 4080 SUPER 16G SUPRIM X
+    identifier: 912-V511-248
+    identifierType: part_number
+  - company: MSI
+    productName: GeForce RTX 4080 SUPER 16G Gaming X Slim
+    identifier: 912-V511-257
+    identifierType: part_number
+  - company: MSI
+    productName: GeForce RTX 4080 SUPER 16G EXPERT
+    identifier: 912-V511-242
+    identifierType: part_number
+  - company: Gigabyte
+    productName: GeForce RTX 4080 SUPER GAMING OC
+    identifier: GV-N408SGAMING OC-16GD
+    identifierType: model_number
+  - company: Gigabyte
+    productName: GeForce RTX 4080 SUPER WINDFORCE V2
+    identifier: GV-N408SWF3V2-16GD
+    identifierType: model_number
+  - company: Gigabyte
+    productName: GeForce RTX 4080 SUPER WINDFORCE
+    identifier: GV-N408SWF3-16GD
+    identifierType: model_number
+  - company: Gigabyte
+    productName: AORUS GeForce RTX 4080 SUPER MASTER
+    identifier: GV-N408SAORUS M-16GD
+    identifierType: model_number
+  - company: PNY
+    productName: GeForce RTX 4080 SUPER VERTO Overclocked Triple Fan
+    identifier: VCG4080S16TFXPB1-O
+    identifierType: sku
+  - company: Zotac
+    productName: GAMING GeForce RTX 4080 SUPER Trinity Black Edition
+    identifier: ZT-D40820D-10P
+    identifierType: part_number
+  - company: Zotac
+    productName: GAMING GeForce RTX 4080 SUPER AMP
+    identifier: ZT-D40820F-10P
+    identifierType: part_number
+  - company: Zotac
+    productName: GAMING GeForce RTX 4080 SUPER Trinity OC White Edition
+    identifier: ZT-D40820Q-10P
+    identifierType: part_number
+  - company: Palit
+    productName: GeForce RTX 4080 SUPER GamingPro
+    identifier: NED408S019T2-1032A
+    identifierType: model_number
+  - company: Palit
+    productName: GeForce RTX 4080 SUPER GamingPro OC
+    identifier: NED408ST19T2-1032A
+    identifierType: model_number
+  - company: Gainward
+    productName: GeForce RTX 4080 SUPER Phoenix
+    identifier: 471056224-4229
+    identifierType: part_number
+  - company: Gainward
+    productName: GeForce RTX 4080 SUPER Phoenix
+    identifier: NED408S019T2-1032X
+    identifierType: model_number
+  - company: Gainward
+    productName: GeForce RTX 4080 SUPER Python III OC
+    identifier: 471056224-4809
+    identifierType: part_number
+  - company: Gainward
+    productName: GeForce RTX 4080 SUPER Python III OC
+    identifier: NED408SS19T2-1032T
+    identifierType: model_number
+
 references:
   - https://images.nvidia.com/aem-dam/Solutions/geforce/ada/nvidia-ada-gpu-architecture.pdf
   - https://images.nvidia.com/aem-dam/Solutions/Data-Center/l4/nvidia-ada-gpu-architecture-whitepaper-v2.1.pdf
@@ -38,6 +147,24 @@ references:
   - https://www.nvidia.com/en-us/geforce/news/geforce-rtx-4080-4070-ti-4070-super-gpu/
   - https://www.techpowerup.com/review/nvidia-geforce-rtx-4080-super-founders-edition/
   - https://www.bestgpusforai.com/gpu-comparison/5090-vs-4080-super
+  - https://pcpartpicker.com/product/9crqqs/nvidia-founders-edition-geforce-rtx-4080-super-16-gb-video-card-900-1g136-2555-000
+  - https://videocardz.com/newz/nvidia-geforce-rtx-4080-super-listed-with-ad103-gpu-and-new-device-id
+  - https://www.tomshardware.com/pc-components/gpus/here-are-all-the-nvidia-rtx-4080-super-cards-currently-listed-including-specs-photos-and-pricing
+  - https://www.techpowerup.com/gpu-specs/asus-rog-strix-rtx-4080-super-gaming.b11501
+  - https://www.asus.com/motherboards-components/graphics-cards/tuf-gaming/tuf-rtx4080s-o16g-gaming/
+  - https://rog.asus.com/us/graphics-cards/graphics-cards/rog-strix/rog-strix-rtx4080s-o16g-white/
+  - https://www.msi.com/Graphics-Card/GeForce-RTX-4080-SUPER-16G-VENTUS-3X-OC
+  - https://www.msi.com/Graphics-Card/GeForce-RTX-4080-SUPER-16G-GAMING-X-TRIO
+  - https://www.bestbuy.com/site/msi-nvidia-geforce-rtx-4080-super-16gb-ventus-3x-oc-16gb-gddr6x-pci-express-4-0-graphics-card-black/6571812.p?skuId=6571812
+  - https://www.bhphotovideo.com/c/product/1805075-REG/gigabyte_gv_n408sgaming_oc_16gd_geforce_rtx_4080_super.html
+  - https://www.bestbuy.com/site/gigabyte-nvidia-geforce-rtx-4080-super-windforce-v2-16gb-gddr6x-pci-express-4-0-graphics-card-black/6573357.p?skuId=6573357
+  - https://www.bestbuy.com/site/pny-geforce-rtx-4080-super-verto-overclocked-16gb-graphics-card-with-triple-fans-black/6574654.p?skuId=6574654
+  - https://www.amazon.com/ZOTAC-Graphics-IceStorm-Advanced-ZT-D40820D-10P/dp/B0CSBDFS55
+  - https://www.amazon.com/ZOTAC-Graphics-IceStorm-Advanced-ZT-D40820F-10P/dp/B0D17XR7SF
+  - https://www.amazon.com/ZOTAC-Graphics-IceStorm-Advanced-ZT-D40820Q-10P/dp/B0CSBDKXK3
+  - https://www.techpowerup.com/gpu-specs/palit-rtx-4080-super-gamingpro.b11560
+  - https://www.techpowerup.com/gpu-specs/gainward-rtx-4080-super-phoenix.b11550
+  - https://www.gainward.com/main/vgapro.php?id=1211&lang=en
 
 notes:
   - MSRP of $999 USD sourced from NVIDIA's official announcement. A Founders Edition was available at this price, representing a $200 price reduction from the original RTX 4080's $1199 MSRP.
@@ -47,3 +174,11 @@ notes:
   - Power based on what NVIDIA refers to as "TGP (Total Graphics Power)"
   - The RTX 4080 SUPER uses the fully enabled AD103 chip (all 80 SMs), whereas the original RTX 4080 uses 76 of 80 SMs
   - Memory bandwidth calculated as 256-bit interface × 23 Gbps = 736 GB/s
+  - NVIDIA Founders Edition part number (NVPN) is 900-1G136-2555-000, sourced from PCPartPicker and Newegg product listings
+  - Board identifier is PG139 SKU 355 with AD103-400 GPU (fully enabled), and Device PCI ID is 2703, sourced from VideoCardz
+  - Third-party manufacturer identifiers sourced from official product pages, retail listings (Best Buy, Newegg, Amazon, B&H Photo), and TechPowerUp GPU Database
+  - ASUS uses model number format with variant suffix (e.g., ROG-STRIX-RTX4080S-O16G-GAMING for OC, ROG-STRIX-RTX4080S-16G-GAMING for non-OC)
+  - MSI uses internal 912-V511-XXX part numbers for inventory management in addition to public SKUs
+  - Gigabyte uses GV-N408S prefix for all RTX 4080 SUPER models
+  - Zotac uses ZT-D40820X-10P format where X varies by model (D=Trinity Black, F=AMP, Q=Trinity White OC)
+  - Palit and Gainward (sister companies) both released RTX 4080 SUPER models; some Gainward models have both numeric and alphanumeric identifiers

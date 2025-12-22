@@ -14,7 +14,7 @@ supportedHardwareOperations:
   - FP32
   - FP16
 releaseDate: "2020-12-08"
-lastModified: "2025-12-18T00:00:00Z"
+lastModified: "2025-12-21T00:00:00Z"
 
 summary: >-
   The AMD Radeon RX 6900 XT was released in December 2020 as AMD's flagship gaming GPU
@@ -28,12 +28,69 @@ summary: >-
   with DirectX 12 Ultimate support including hardware-accelerated ray tracing and
   variable rate shading. It represented AMD's return to the high-end GPU market after
   years of ceding that segment to NVIDIA.
+
+manufacturerIdentifiers:
+  - type: opn
+    value: "100-438373"
+
+thirdPartyProducts:
+  - company: Sapphire
+    productName: NITRO+ AMD Radeon RX 6900 XT 16G GDDR6
+    identifier: 11308-01-20G
+    identifierType: model_number
+  - company: Sapphire
+    productName: NITRO+ AMD Radeon RX 6900 XT Special Edition 16G GDDR6
+    identifier: 11308-03-20G
+    identifierType: model_number
+  - company: PowerColor
+    productName: Red Devil AMD Radeon RX 6900 XT Limited Edition 16GB GDDR6
+    identifier: AXRX 6900 XT 16GBD6-2DHCE/OC
+    identifierType: model_number
+  - company: PowerColor
+    productName: Red Devil AMD Radeon RX 6900 XT Ultimate 16GB GDDR6
+    identifier: AXRX 6900XTU 16GBD6-3DHE/OC
+    identifierType: model_number
+  - company: XFX
+    productName: Speedster SWFT 319 AMD Radeon RX 6900 XT CORE Gaming Graphics Card
+    identifier: RX-69XTAQFD9
+    identifierType: model_number
+  - company: XFX
+    productName: Speedster MERC 319 AMD Radeon RX 6900 XT Ultra Gaming Graphics Card
+    identifier: RX-69XTACUD9
+    identifierType: model_number
+  - company: ASUS
+    productName: ROG Strix LC Radeon RX 6900 XT OC Edition 16GB GDDR6
+    identifier: ROG-STRIX-LC-RX6900XT-O16G-GAMING
+    identifierType: model_number
+  - company: ASUS
+    productName: ROG Strix LC Radeon RX 6900 XT TOP Edition 16GB GDDR6
+    identifier: ROG-STRIX-LC-RX6900XT-T16G-GAMING
+    identifierType: model_number
+  - company: Gigabyte
+    productName: Radeon RX 6900 XT GAMING OC 16G
+    identifier: GV-R69XTGAMING OC-16GD
+    identifierType: model_number
+  - company: ASRock
+    productName: AMD Radeon RX 6900 XT Phantom Gaming D 16G OC
+    identifier: RX6900XT PGD 16GO
+    identifierType: model_number
+
 references:
   - https://www.techpowerup.com/gpu-specs/radeon-rx-6900-xt.c3481
   - https://www.amd.com/en/products/graphics/desktops/radeon/6000-series/amd-radeon-rx-6900-xt.html
   - https://www.tomshardware.com/reviews/amd-radeon-rx-6900-xt-review
   - https://en.wikipedia.org/wiki/RDNA_2
   - https://www.anandtech.com/show/16303/lauching-today-amds-radeon-rx-6900-xt
+  - https://pcpartpicker.com/forums/topic/395316-part-addition-amd-radeon-rx-6900-xt-graphics-reference-card
+  - https://www.sapphiretech.com/en/consumer/nitro-radeon-rx-6900-xt-16g-gddr6
+  - https://www.powercolor.com/product-detail175.htm
+  - https://www.powercolor.com/product-detail172.htm
+  - https://www.xfxforce.com/shop/xfx-speedster-swft-319-amd-radeon-tm-rx-6900-xt-core
+  - https://www.xfxforce.com/shop/xfx-amd-radeon-tm-rx-6900xt-16gb-gddr6-merc-319
+  - https://rog.asus.com/graphics-cards/graphics-cards/rog-strix/rog-strix-lc-rx6900xt-o16g-gaming-model/
+  - https://www.msi.com/Graphics-Card/Radeon-RX-6900-XT-GAMING-X-TRIO-16G
+  - https://www.gigabyte.com/Graphics-Card/GV-R69XTGAMING-OC-16GD
+  - https://www.asrock.com/Graphics-Card/AMD/Radeon%20RX%206900%20XT%20Phantom%20Gaming%20D%2016G%20OC/
 notes:
   - FP32 TFLOPS calculated as 5,120 stream processors × 2,250 MHz boost clock × 2 ops/cycle / 1,000,000 = 23.04 TFLOPS
   - FP16 performance is 46.08 TFLOPS calculated at 2:1 ratio to FP32, which is standard for RDNA 2 architecture
@@ -44,3 +101,12 @@ notes:
   - Built on TSMC 7nm process with 520 mm² die size containing 26.8 billion transistors
   - Uses the full Navi 21 XTX die with all 80 compute units enabled
   - MSRP of $999 USD verified from multiple sources including AnandTech, TechPowerUp, and Tom's Hardware at launch on December 8, 2020
+  - AMD OPN (Ordering Part Number) 100-438373 sourced from AMD reference card box and verified from PCPartPicker and eBay listings for the AMD reference edition
+  - AIB partner model numbers verified from official manufacturer product pages including Sapphire, PowerColor, XFX, ASUS ROG, MSI, Gigabyte, and ASRock
+  - Sapphire NITRO+ models (11308-01-20G and 11308-03-20G Special Edition) verified from Sapphire official website and Amazon listings
+  - PowerColor Red Devil models verified from PowerColor official product pages and include both Limited Edition and Ultimate variants with different boost clocks
+  - XFX Speedster models (SWFT 319 and MERC 319) verified from XFX official store pages
+  - ASUS ROG Strix LC models include liquid-cooled variants with OC Edition (up to 2365 MHz boost) and TOP Edition (up to 2525 MHz boost)
+  - MSI Gaming X Trio verified from MSI official product page with boost clock up to 2340 MHz
+  - Gigabyte Gaming OC model (GV-R69XTGAMING OC-16GD) verified from Gigabyte official website with WINDFORCE 3X cooling
+  - ASRock Phantom Gaming D OC model verified from ASRock official product page

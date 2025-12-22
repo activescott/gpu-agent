@@ -20,7 +20,7 @@ supportedHardwareOperations:
   - BF16
 supportedCUDAComputeCapability: 8.6
 releaseDate: "2020-09-24"
-lastModified: "2025-12-18T00:00:00Z"
+lastModified: "2025-12-20T00:00:00Z"
 
 summary: |
   The NVIDIA GeForce RTX 3090 is NVIDIA's flagship consumer graphics card launched in September 2020,
@@ -35,6 +35,110 @@ summary: |
   few consumer GPUs to support 2-way NVLink. At launch, it was positioned as the spiritual successor
   to NVIDIA's Titan series, offering professional-grade memory capacity in a GeForce product.
 
+manufacturerIdentifiers:
+  - type: board_id
+    value: PG136
+  - type: nvpn
+    value: 900-1G136-2510-000
+
+thirdPartyProducts:
+  - company: ASUS
+    productName: ROG STRIX GeForce RTX 3090 Gaming OC
+    identifier: ROG-STRIX-RTX3090-O24G-GAMING
+    identifierType: model_number
+  - company: ASUS
+    productName: ROG STRIX GeForce RTX 3090 Gaming
+    identifier: ROG-STRIX-RTX3090-24G-GAMING
+    identifierType: model_number
+  - company: ASUS
+    productName: TUF Gaming GeForce RTX 3090 OC Edition
+    identifier: TUF-RTX3090-O24G-GAMING
+    identifierType: model_number
+  - company: ASUS
+    productName: TUF Gaming GeForce RTX 3090
+    identifier: TUF-RTX3090-24G-GAMING
+    identifierType: model_number
+  - company: Gigabyte
+    productName: GeForce RTX 3090 Gaming OC
+    identifier: GV-N3090GAMING-OC-24GD
+    identifierType: model_number
+  - company: Gigabyte
+    productName: AORUS GeForce RTX 3090 Master
+    identifier: GV-N3090AORUS-M-24GD
+    identifierType: model_number
+  - company: Gigabyte
+    productName: AORUS GeForce RTX 3090 Xtreme
+    identifier: GV-N3090AORUS-X-24GD
+    identifierType: model_number
+  - company: Gigabyte
+    productName: AORUS GeForce RTX 3090 Gaming Box
+    identifier: GV-N3090IXEB-24GD
+    identifierType: model_number
+  - company: PNY
+    productName: GeForce RTX 3090 XLR8 Gaming REVEL EPIC-X RGB Triple Fan
+    identifier: VCG309024TFXPPB
+    identifierType: model_number
+  - company: PNY
+    productName: GeForce RTX 3090 XLR8 Gaming UPRISING EPIC-X RGB Triple Fan
+    identifier: VCG309024TFXMPB
+    identifierType: model_number
+  - company: Zotac
+    productName: ZOTAC Gaming GeForce RTX 3090 Trinity
+    identifier: ZT-A30900D-10P
+    identifierType: model_number
+  - company: Zotac
+    productName: ZOTAC Gaming GeForce RTX 3090 Trinity OC
+    identifier: ZT-A30900J-10P
+    identifierType: model_number
+  - company: EVGA
+    productName: GeForce RTX 3090 FTW3 Gaming
+    identifier: 24G-P5-3985-KR
+    identifierType: model_number
+  - company: EVGA
+    productName: GeForce RTX 3090 FTW3 Ultra Gaming
+    identifier: 24G-P5-3987-KR
+    identifierType: model_number
+  - company: EVGA
+    productName: GeForce RTX 3090 XC3 Gaming
+    identifier: 24G-P5-3973-KR
+    identifierType: model_number
+  - company: EVGA
+    productName: GeForce RTX 3090 XC3 Ultra Gaming
+    identifier: 24G-P5-3975-KR
+    identifierType: model_number
+  - company: Palit
+    productName: GeForce RTX 3090 GamingPro
+    identifier: NED3090019SB-132BA
+    identifierType: model_number
+  - company: Palit
+    productName: GeForce RTX 3090 GamingPro OC
+    identifier: NED3090S19SB-132BA
+    identifierType: model_number
+  - company: Gainward
+    productName: GeForce RTX 3090 Phantom
+    identifier: 471056224-2058
+    identifierType: model_number
+  - company: Gainward
+    productName: GeForce RTX 3090 Phantom GS
+    identifier: 471056224-2072
+    identifierType: model_number
+  - company: Gainward
+    productName: GeForce RTX 3090 Phantom+
+    identifier: 471056224-2867
+    identifierType: model_number
+  - company: KFA2
+    productName: GeForce RTX 3090 SG (1-Click OC)
+    identifier: 39NSM5MD1GNK
+    identifierType: model_number
+  - company: KFA2
+    productName: GeForce RTX 3090 EX Gamer (1-Click OC)
+    identifier: 39NXM5MD1JNK
+    identifierType: model_number
+  - company: KFA2
+    productName: GeForce RTX 3090 HOF
+    identifier: 39NXM5MD3BNK
+    identifierType: model_number
+
 references:
   - https://www.nvidia.com/content/PDF/nvidia-ampere-ga-102-gpu-architecture-whitepaper-v2.1.pdf
   - https://www.nvidia.com/en-us/geforce/graphics-cards/30-series/rtx-3090-3090ti/
@@ -42,6 +146,22 @@ references:
   - https://www.techpowerup.com/gpu-specs/geforce-rtx-3090.c3622
   - https://www.tomshardware.com/features/nvidia-ampere-architecture-deep-dive
   - https://forums.developer.nvidia.com/t/rtx-3090-peak-performance/198049
+  - https://pcserverandparts.com/nvidia-geforce-rtx-3090-founders-edition-24gb-gddr6x-graphics-card-w-cable-pg136-900-1g136-2510-000/
+  - https://videocardz.net/nvidia-geforce-rtx-3090
+  - https://rog.asus.com/graphics-cards/graphics-cards/rog-strix/rog-strix-rtx3090-o24g-gaming-model/
+  - https://www.asus.com/motherboards-components/graphics-cards/tuf-gaming/tuf-rtx3090-24g-gaming/techspec/
+  - https://www.techpowerup.com/gpu-specs/msi-rtx-3090-gaming-x-trio.b7955
+  - https://us.msi.com/Graphics-Card/GeForce-RTX-3090-VENTUS-3X-24G-OC
+  - https://www.gigabyte.com/Graphics-Card/GV-N3090GAMING-OC-24GD
+  - https://www.gigabyte.com/Graphics-Card/GV-N3090AORUS-M-24GD-rev-10
+  - https://www.pny.com/geforce-rtx-3090-xlr8-gaming-epic-x-rgb-triple-fan-p
+  - https://www.zotac.com/us/product/graphics_card/zotac-gaming-geforce-rtx-3090-trinity
+  - https://www.zotac.com/us/product/graphics_card/zotac-gaming-geforce-rtx-3090-trinity-oc
+  - https://www.evga.com/products/specs/gpu.aspx?pn=e2763314-163f-4391-8935-ea2c5dffd06b
+  - https://www.evga.com/products/specs/gpu.aspx?pn=33f1145e-3d3c-49de-a475-88f3e9df0115
+  - https://www.palit.com/palit/vgapro.php?id=3731&lang=en
+  - https://www.gainward.com/main/vgapro.php?id=1091&lang=en
+  - https://www.techpowerup.com/gpu-specs/kfa2-rtx-3090-sg-1-click-oc.b7990
 
 notes:
   - fp32TFLOPS of 35.58 calculated as 10,496 CUDA cores × 1.695 GHz boost clock × 2 ops/cycle = 35.58 TFLOPS, per TechPowerUp GPU Database. Ampere architecture features 2 FP32 ops per cycle through dedicated FP32 datapath and shared INT32/FP32 datapath.
@@ -56,3 +176,5 @@ notes:
   - The RTX 3090 and RTX 3090 Ti are the only GeForce 30-series cards that support 2-way NVLink for multi-GPU configurations.
   - Released September 24, 2020 at $1,499 USD MSRP, positioned as a "BFGPU" (Big Ferocious GPU) targeting both gamers and content creators.
   - MSRP of $1499 USD sourced from NVIDIA official product announcement at https://www.nvidia.com/en-us/geforce/news/introducing-rtx-30-series-graphics-cards/
+  - NVIDIA Founders Edition uses board ID PG136 and NVPN 900-1G136-2510-000 per multiple retail sources and schematics.
+  - Third-party products include AIB partner cards from ASUS (ROG STRIX, TUF Gaming), MSI (Gaming X Trio, Ventus), Gigabyte (Gaming OC, AORUS Master/Xtreme), PNY (XLR8 REVEL/UPRISING), Zotac (Trinity), EVGA (FTW3, XC3), Palit (GamingPro), Gainward (Phantom), and KFA2 (SG, EX Gamer, HOF). Each AIB partner offers multiple variants with different cooling solutions, factory overclocks, and RGB lighting.

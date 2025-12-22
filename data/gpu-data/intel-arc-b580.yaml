@@ -18,7 +18,7 @@ supportedHardwareOperations:
   - INT8
   - INT4
 releaseDate: "2024-12-13"
-lastModified: "2025-12-18T00:00:00Z"
+lastModified: "2025-12-21T00:00:00Z"
 
 summary: |
   The Intel Arc B580 is a discrete graphics card launched in December 2024, featuring Intel's second-generation
@@ -34,13 +34,90 @@ summary: |
   include support for DirectX 12 Ultimate, Vulkan 1.4, PCIe 4.0 x8, and Intel's XeSS upscaling technology powered
   by the XMX AI accelerators.
 
+manufacturerIdentifiers:
+  - type: product_code
+    value: 31P06HB0BA
+  - type: sku
+    value: "241598"
+
+thirdPartyProducts:
+  - company: ASRock
+    productName: ASRock Intel Arc B580 Steel Legend 12GB OC
+    identifier: 90-GA5CZZ-00UANF
+    identifierType: part_number
+  - company: ASRock
+    productName: ASRock Intel Arc B580 Challenger 12GB OC
+    identifier: 90-GA5LZZ-00UANF
+    identifierType: part_number
+  - company: Sparkle
+    productName: SPARKLE Intel Arc B580 TITAN OC
+    identifier: SB580T-12GOC
+    identifierType: model_number
+  - company: Sparkle
+    productName: SPARKLE Arc B580 GUARDIAN
+    identifier: SB580G-12G
+    identifierType: model_number
+  - company: Gunnir
+    productName: GUNNIR Intel Arc B580 Photon 12G OC Black
+    identifier: B580 Photon 12G OC Black
+    identifierType: model_number
+  - company: Gunnir
+    productName: GUNNIR Intel Arc B580 Photon 12G OC White
+    identifier: B580 Photon 12G OC White
+    identifierType: model_number
+  - company: Gunnir
+    productName: GUNNIR Intel Arc B580 Index 12GB
+    identifier: B580 Index 12GB
+    identifierType: model_number
+  - company: Maxsun
+    productName: MAXSUN Intel Arc B580 iCraft 12G
+    identifier: MS-Intel ARC B580 iCraft 12G
+    identifierType: model_number
+  - company: Maxsun
+    productName: MAXSUN Intel Arc B580 Milestone 12G
+    identifier: MS-Intel ARC B580 Milestone 12G
+    identifierType: model_number
+  - company: Acer
+    productName: Acer Nitro Intel Arc B580 OC 12GB
+    identifier: DP.Z4BWW.P01
+    identifierType: part_number
+  - company: Onix
+    productName: ONIX LUMI Intel Arc B580 OC 12GB
+    identifier: "8346-00278"
+    identifierType: part_number
+  - company: Onix
+    productName: ONIX ODYSSEY Intel Arc B580 12GB
+    identifier: "8346-00178"
+    identifierType: part_number
+
 references:
   - https://www.intel.com/content/www/us/en/products/sku/241598/intel-arc-b580-graphics/specifications.html
+  - https://www.intel.com/content/www/us/en/products/sku/241598/intel-arc-b580-graphics/ordering.html
   - https://www.techpowerup.com/gpu-specs/arc-b580.c4244
   - https://www.intel.com/content/www/us/en/developer/articles/technical/introduction-to-the-xe-hpg-architecture.html
   - https://chipsandcheese.com/p/intels-battlemage-architecture
   - https://www.intel.com/content/www/us/en/docs/oneapi/optimization-guide-gpu/2024-1/xmx.html
   - https://www.tomshardware.com/pc-components/gpus/intel-arc-b580-review-the-new-usd249-gpu-champion-has-arrived
+  - https://www.asrock.com/Graphics-Card/Intel/Intel%20Arc%20B580%20Steel%20Legend%2012GB%20OC/
+  - https://www.asrock.com/Graphics-Card/Intel/Intel%20Arc%20B580%20Challenger%2012GB%20OC/
+  - https://www.cclonline.com/90-ga5czz-00uanf-asrock-intel-arc-b580-steel-legend-oc-12gb-gddr6-graphics-card/
+  - https://www.amazon.com/ASRock-Intel-B580-Challenger-Graphics/dp/B0DNV4NWF7
+  - https://www.sparkle.com.tw/en/products/85daec5f2c4b9e001940d03e3d6173b0
+  - https://www.sparkle.com.tw/files/20241203213858182.pdf
+  - https://www.techpowerup.com/gpu-specs/sparkle-arc-b580-titan-oc.b11935
+  - https://www.techpowerup.com/gpu-specs/sparkle-arc-b580-guardian.b12162
+  - https://www.techpowerup.com/gpu-specs/gunnir-arc-b580-photon-oc.b11939
+  - https://www.amazon.com/WEELIAO-GUNNIR-B580-12GB-Photon/dp/B0DPMFXBV5
+  - https://www.amazon.com/WEELIAO-GUNNIR-B580-Index-PCI-Express/dp/B0DPMFJQ9V
+  - https://www.maxsun.com/products/intel-arc-b580-icraft-12g
+  - https://www.maxsun.com/products/intel-arc-b580-milestone
+  - https://www.acer.com/us-en/desktops-and-all-in-ones/components/nitro-intel-arc-b580-oc-12gb
+  - https://www.bhphotovideo.com/c/product/1874395-REG/acer_dp_z4bww_p01_nitro_oc_arc_b580.html
+  - https://onixsys.com/onix-lumi-intel-arc-b580-gddr6-oc-12gb-en/
+  - https://onixsys.com/onix-odyssey-intel-arc-b580-gddr6-12gb-en/
+  - https://www.newegg.com/onix-lumi-8346-00278-arc-b580-12gb-graphics-card-double-fans/p/N82E16814987002
+  - https://www.newegg.com/onix-odyssey-8346-00178-arc-b580-12gb-graphics-card-double-fans/p/N82E16814987001
+  - https://www.guru3d.com/story/intel-arc-b580-and-b580-graphics-cards-has-6-brands-partners-but-not-msi-asus-and/
 
 notes:
   - "FP32 TFLOPS calculated as 2,560 shading units × 2.670 GHz boost clock × 2 ops/cycle ÷ 1000 = 13.67 TFLOPS"
@@ -57,3 +134,14 @@ notes:
   - "TDP specified as 190W by Intel, using single 8-pin power connector with 600W PSU recommended"
   - "Launch date: December 13, 2024, with MSRP of $249 USD"
   - "MSRP of $249 USD sourced from Intel.com official product specifications page and verified by Tom's Hardware review."
+  - "Intel product code 31P06HB0BA sourced from Intel ARK ordering page (intel.com/content/www/us/en/products/sku/241598/intel-arc-b580-graphics/ordering.html) for Intel Arc B580 Limited Edition"
+  - "Intel SKU 241598 identified from Intel ARK product page URL"
+  - "ASRock Steel Legend part number 90-GA5CZZ-00UANF sourced from CCL Online and Amazon.se retailer listings"
+  - "ASRock Challenger part number 90-GA5LZZ-00UANF sourced from Technical Reality retailer listing"
+  - "Sparkle TITAN OC model number SB580T-12GOC sourced from official Sparkle product page and Amazon listing"
+  - "Sparkle GUARDIAN model number SB580G-12G sourced from TechPowerUp GPU Database and VideoCardz"
+  - "Gunnir Photon and Index model names sourced from Amazon listings and TechPowerUp GPU Database. Gunnir offers Photon models in Black and White variants, plus entry-level Index dual-fan model"
+  - "Maxsun iCraft and Milestone model names sourced from official Maxsun product pages (maxsun.com). Model numbers prefixed with 'MS-Intel ARC B580' per official naming"
+  - "Acer Nitro part number DP.Z4BWW.P01 sourced from B&H Photo retailer listing"
+  - "Onix LUMI part number 8346-00278 and ODYSSEY part number 8346-00178 sourced from Newegg and official Onix Technology website. Onix is reportedly affiliated with Sapphire Technology"
+  - "Intel Arc B580 has 6 AIB partners at launch: ASRock, Sparkle, Gunnir, Maxsun, Acer, and Onix. Major brands like MSI, ASUS, and Gigabyte are notably absent from the B580 lineup"

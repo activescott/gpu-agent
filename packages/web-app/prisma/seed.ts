@@ -230,6 +230,13 @@ async function seedGpus(prisma: PrismaClient): Promise<void> {
       msrpUSD: gpu.msrpUSD,
       // prisma doesn't like it when these nullable list args are undefined, so we have to catch that here:
       notes: isNil(gpu.notes) ? { equals: null } : { equals: gpu.notes },
+      // JSON fields need special handling for comparison
+      manufacturerIdentifiers: isNil(gpu.manufacturerIdentifiers)
+        ? { equals: Prisma.DbNull }
+        : { equals: gpu.manufacturerIdentifiers },
+      thirdPartyProducts: isNil(gpu.thirdPartyProducts)
+        ? { equals: Prisma.DbNull }
+        : { equals: gpu.thirdPartyProducts },
     }
     const gpuCount = await prisma.gpu.count({
       where,

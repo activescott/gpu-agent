@@ -19,7 +19,7 @@ supportedHardwareOperations:
   - FP8
 supportedCUDAComputeCapability: 8.9
 releaseDate: "2023-06-29"
-lastModified: "2025-12-18T00:00:00Z"
+lastModified: "2025-12-20T00:00:00Z"
 
 summary: |
   The NVIDIA GeForce RTX 4060 is a mainstream graphics card released in June 2023,
@@ -31,6 +31,120 @@ summary: |
   delivers better performance through architectural improvements and higher clock speeds.
   It uses a PCI-Express 4.0 x8 interface and features 272 GB/s memory bandwidth on a 128-bit bus.
 
+manufacturerIdentifiers:
+  - type: product_sku
+    value: PG173 SKU 371
+  - type: board_id
+    value: PG173
+  - type: gpu_variant
+    value: AD107-400-A1
+
+thirdPartyProducts:
+  - company: ASUS
+    productName: Dual GeForce RTX 4060 OC Edition 8GB GDDR6
+    identifier: DUAL-RTX4060-O8G
+    identifierType: model_number
+  - company: ASUS
+    productName: Dual GeForce RTX 4060 V2 OC Edition 8GB GDDR6
+    identifier: DUAL-RTX4060-O8G-V2
+    identifierType: model_number
+  - company: ASUS
+    productName: Dual GeForce RTX 4060 8GB GDDR6
+    identifier: DUAL-RTX4060-8G
+    identifierType: model_number
+  - company: ASUS
+    productName: ROG STRIX RTX 4060 GAMING OC
+    identifier: ROG-STRIX-RTX4060-O8G-GAMING
+    identifierType: model_number
+  - company: Gigabyte
+    productName: GeForce RTX 4060 GAMING OC 8G
+    identifier: GV-N4060GAMING-OC-8GD
+    identifierType: part_number
+  - company: Gigabyte
+    productName: GeForce RTX 4060 WINDFORCE OC 8G
+    identifier: GV-N4060WF2OC-8GD
+    identifierType: part_number
+  - company: PNY
+    productName: GeForce RTX 4060 8GB VERTO Dual Fan
+    identifier: VCG40608DFXPB1
+    identifierType: part_number
+  - company: PNY
+    productName: GeForce RTX 4060 8GB VERTO Dual Fan OC
+    identifier: VCG40608DFXPB1-O
+    identifierType: part_number
+  - company: Zotac
+    productName: GAMING GeForce RTX 4060 8GB Twin Edge OC
+    identifier: ZT-D40600H-10M
+    identifierType: part_number
+  - company: Zotac
+    productName: GAMING GeForce RTX 4060 8GB Twin Edge White RGB OC
+    identifier: ZT-D40600Q-10M
+    identifierType: part_number
+  - company: Zotac
+    productName: GAMING GeForce RTX 4060 8GB Solo
+    identifier: ZT-D40600G-10L
+    identifierType: part_number
+  - company: Zotac
+    productName: GeForce RTX 4060 8GB OC
+    identifier: ZT-D40600P-10SMP
+    identifierType: part_number
+  - company: Palit
+    productName: GeForce RTX 4060 Dual 8GB
+    identifier: NE64060019P1-1070D
+    identifierType: part_number
+  - company: Palit
+    productName: GeForce RTX 4060 Dual OC 8GB
+    identifier: NE64060T19P1-1070D
+    identifierType: part_number
+  - company: Gainward
+    productName: GeForce RTX 4060 Ghost 8GB
+    identifier: NE64060019P1-1070B
+    identifierType: part_number
+  - company: Gainward
+    productName: GeForce RTX 4060 Ghost OC 8GB
+    identifier: NE64060T19P1-1070B
+    identifierType: part_number
+  - company: Gainward
+    productName: GeForce RTX 4060 Pegasus 8GB
+    identifier: NE64060019P1-1070E
+    identifierType: part_number
+  - company: Colorful
+    productName: iGame GeForce RTX 4060 Ultra W OC 8GB
+    identifier: iGame RTX 4060 Ultra W OC
+    identifierType: model_number
+  - company: Colorful
+    productName: iGame GeForce RTX 4060 Ultra W DUO OC 8GB
+    identifier: iGame RTX 4060 Ultra W DUO OC
+    identifierType: model_number
+  - company: Colorful
+    productName: iGame GeForce RTX 4060 Ultra W DUO 8GB
+    identifier: iGame RTX 4060 Ultra W DUO
+    identifierType: model_number
+  - company: GALAX
+    productName: GeForce RTX 4060 1-Click OC 2X V2
+    identifier: 46NSL8MD9NXK
+    identifierType: part_number
+  - company: KFA2
+    productName: GeForce RTX 4060 1-Click OC 2X V2
+    identifier: 46NSL8MD9NXK
+    identifierType: part_number
+  - company: KFA2
+    productName: GeForce RTX 4060 EX 2X (1-Click OC)
+    identifier: RTX 4060 EX
+    identifierType: model_number
+  - company: INNO3D
+    productName: GeForce RTX 4060 TWIN X2 8GB
+    identifier: N40602-08D6-173051N
+    identifierType: part_number
+  - company: INNO3D
+    productName: GeForce RTX 4060 TWIN X2 OC 8GB
+    identifier: N40602-08D6X-173051N
+    identifierType: part_number
+  - company: INNO3D
+    productName: GeForce RTX 4060 COMPACT 8GB
+    identifier: N40602-08D6-173051N
+    identifierType: part_number
+
 references:
   - https://images.nvidia.com/aem-dam/Solutions/geforce/ada/nvidia-ada-gpu-architecture.pdf
   - https://images.nvidia.com/aem-dam/Solutions/Data-Center/l4/nvidia-ada-gpu-architecture-whitepaper-v2.1.pdf
@@ -39,6 +153,18 @@ references:
   - https://nvidianews.nvidia.com/news/geforce-rtx-4060-family-is-here-nvidias-revolutionary-ada-lovelace-architecture-comes-to-core-gamers-everywhere-starting-at-299
   - https://www.waredb.com/processor/nvidia-geforce-rtx-4060
   - https://www.techpowerup.com/gpu-specs/geforce-rtx-4060.c3942
+  - https://videocardz.com/newz/nvidia-ad107-400-gpu-for-geforce-rtx-4060-has-been-pictured
+  - https://devicehunt.com/view/type/pci/vendor/10DE/device/2882
+  - https://wccftech.com/nvidia-geforce-rtx-4060-ti-ad106-350-160w-rtx-4060-ad107-400-115w-gpus-launch-in-may/
+  - https://www.asus.com/motherboards-components/graphics-cards/dual/dual-rtx4060-o8g/
+  - https://www.msi.com/Graphics-Card/GeForce-RTX-4060-VENTUS-2X-BLACK-8G-OC
+  - https://www.gigabyte.com/Graphics-Card/GV-N4060GAMING-OC-8GD
+  - https://www.pny.com/pny-geforce-rtx-4060-8gb-verto-dual-fan
+  - https://www.amazon.com/ZOTAC-GeForce-128-bit-Graphics-ZT-D40600H-10M/dp/B0CCST62N5
+  - https://www.palit.com/palit/vgapro.php?id=4908&lang=en
+  - https://www.gainward.com/main/vgapro.php?id=1191&lang=en
+  - https://www.inno3d.com/product/inno3d-geforce-rtx-4060-twin-x2
+  - https://www.galax.com/en/graphics-card/1clickoc-series/geforce-rtx-4060-oc-2x-v2.html
 
 notes:
   - MSRP of $299 USD verified from multiple sources including NVIDIA's official announcement and press release. Note that no Founders Edition was released for the RTX 4060 (only the RTX 4060 Ti received a Founders Edition). The $299 MSRP applies to AIB partner models.
@@ -50,3 +176,7 @@ notes:
   - Memory bandwidth calculated as 128-bit interface × 17 Gbps = 272 GB/s.
   - Process node is TSMC 4N (5nm-class) with 18.9 billion transistors.
   - The RTX 4060's narrow PCIe x8 interface and 128-bit memory bus were controversial choices, but the large 24MB L2 cache helps compensate for the limited memory bandwidth.
+  - Manufacturer identifiers sourced from VideoCardz, Device Hunt PCI database, and WCCFTech reporting on reference board designs. The PG173 SKU 371 is the reference AIC (Add-in Card) board design used by third-party manufacturers. PCI IDs (vendor 0x10DE, device 0x2882) are standard NVIDIA identifiers for the RTX 4060.
+  - No NVIDIA Founders Edition was produced for the RTX 4060, hence no NVIDIA NVPN part number exists for this model. All RTX 4060 cards are manufactured by AIB partners (ASUS, MSI, Gigabyte, etc.).
+  - Third-party product information sourced from official manufacturer websites and TechPowerUp GPU Database. EVGA does not manufacture RTX 4060 cards as they exited the GPU market in September 2022 before the RTX 40 series launch.
+  - GALAX and KFA2 are the same company with regional branding differences (GALAX in Asia/Americas, KFA2 in Europe), hence they share the same part number 46NSL8MD9NXK for the 1-Click OC 2X V2 model.

@@ -112,6 +112,8 @@ This ensures migrations created in the container are properly synced to your loc
 
 **Automatic Migration Behavior:** Migrations and seeding run automatically when containers start (via `docker/docker-entrypoint.sh`). This applies to both local development and Kubernetes production environments.
 
+**Testing Migrations:** To test new migrations locally, stop the `scripts/dev` process and restart it. The container will restart and run any pending migrations on startup. This matches how migrations run in production, so it's the preferred way to test database schema changes.
+
 ### Testing
 
 Use `scripts/test-e2e` to run e2e tests. This script handles setup and runs tests against the local dev environment.

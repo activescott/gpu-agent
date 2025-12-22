@@ -19,7 +19,7 @@ supportedHardwareOperations:
   - FP8
 supportedCUDAComputeCapability: 8.9
 releaseDate: "2024-01-24"
-lastModified: "2025-12-18T00:00:00Z"
+lastModified: "2025-12-20T00:00:00Z"
 
 summary: |
   The NVIDIA GeForce RTX 4070 Ti SUPER is a high-performance graphics card released in January 2024,
@@ -33,6 +33,112 @@ summary: |
   a PCI-Express 4.0 x16 interface and features 672.3 GB/s memory bandwidth. The card launched at
   $799 USD, offering strong value in the enthusiast segment.
 
+manufacturerIdentifiers:
+  - type: board_id
+    value: PG141
+  - type: product_sku
+    value: PG141 SKU 323
+  - type: gpu_variant
+    value: AD103-275-A1
+
+thirdPartyProducts:
+  - company: ASUS
+    productName: TUF Gaming GeForce RTX 4070 Ti SUPER OC Edition 16GB GDDR6X
+    identifier: TUF-RTX4070TIS-O16G-GAMING
+    identifierType: model_number
+  - company: ASUS
+    productName: TUF Gaming GeForce RTX 4070 Ti SUPER 16GB GDDR6X
+    identifier: TUF-RTX4070TIS-16G-GAMING
+    identifierType: model_number
+  - company: ASUS
+    productName: Dual GeForce RTX 4070 Ti SUPER OC Edition 16GB GDDR6X
+    identifier: DUAL-RTX4070TIS-O16G
+    identifierType: model_number
+  - company: ASUS
+    productName: Dual GeForce RTX 4070 Ti SUPER 16GB GDDR6X
+    identifier: DUAL-RTX4070TIS-16G
+    identifierType: model_number
+  - company: ASUS
+    productName: Prime GeForce RTX 4070 Ti SUPER OC Edition 16GB GDDR6X
+    identifier: PRIME-RTX4070TIS-O16G
+    identifierType: model_number
+  - company: ASUS
+    productName: Prime GeForce RTX 4070 Ti SUPER 16GB GDDR6X
+    identifier: PRIME-RTX4070TIS-16G
+    identifierType: model_number
+  - company: ASUS
+    productName: ProArt GeForce RTX 4070 Ti SUPER 16GB
+    identifier: PROART-RTX4070TIS-16G
+    identifierType: model_number
+  - company: Gigabyte
+    productName: GeForce RTX 4070 Ti SUPER GAMING OC 16G
+    identifier: GV-N407TSGAMING-OC-16GD
+    identifierType: model_number
+  - company: Gigabyte
+    productName: GeForce RTX 4070 Ti SUPER AERO OC 16G
+    identifier: GV-N407TSAERO-OC-16GD
+    identifierType: model_number
+  - company: Gigabyte
+    productName: GeForce RTX 4070 Ti SUPER EAGLE OC 16G
+    identifier: GV-N407TSEAGLE-OC-16GD
+    identifierType: model_number
+  - company: Gigabyte
+    productName: GeForce RTX 4070 Ti SUPER AI TOP 16G
+    identifier: GV-N407TSAI-TOP-16GD
+    identifierType: model_number
+  - company: Gigabyte
+    productName: GeForce RTX 4070 Ti SUPER WINDFORCE OC 16G
+    identifier: GV-N407TSWF3OC-16GD
+    identifierType: model_number
+  - company: Gigabyte
+    productName: AORUS GeForce RTX 4070 Ti SUPER MASTER 16G
+    identifier: GV-N407TSAORUS-M-16GD
+    identifierType: model_number
+  - company: PNY
+    productName: GeForce RTX 4070 Ti SUPER 16GB XLR8 Gaming VERTO EPIC-X RGB OC Edition
+    identifier: VCG4070TS16TFXXPB1-O
+    identifierType: sku
+  - company: PNY
+    productName: GeForce RTX 4070 Ti SUPER 16GB VERTO Overclocked Triple Fan
+    identifier: VCG4070TS16TFXPB1-O
+    identifierType: sku
+  - company: Zotac
+    productName: GAMING GeForce RTX 4070 Ti SUPER Trinity Black Edition 16GB GDDR6X
+    identifier: ZT-D40730D-10P
+    identifierType: model_number
+  - company: Zotac
+    productName: RTX 4070 Ti SUPER SOLID OC
+    identifier: ZT-D40730RC-10P
+    identifierType: model_number
+  - company: Zotac
+    productName: RTX 4070 Ti SUPER AMP HOLO
+    identifier: ZT-D40730F-10P
+    identifierType: model_number
+  - company: Gainward
+    productName: GeForce RTX 4070 Ti SUPER Panther OC
+    identifier: NED47TSS19T2-1043Z
+    identifierType: model_number
+  - company: Gainward
+    productName: GeForce RTX 4070 Ti SUPER Phoenix GS
+    identifier: NED47TSH19T2-1043X
+    identifierType: model_number
+  - company: Gainward
+    productName: GeForce RTX 4070 Ti SUPER Phantom
+    identifier: NED47TS019T2-1045P
+    identifierType: model_number
+  - company: Palit
+    productName: GeForce RTX 4070 Ti SUPER GamingPro
+    identifier: NED47TS019T2-1043A
+    identifierType: model_number
+  - company: Palit
+    productName: GeForce RTX 4070 Ti SUPER GamingPro OC
+    identifier: NED47TS019T2-1043A-OC
+    identifierType: model_number
+  - company: Palit
+    productName: GeForce RTX 4070 Ti SUPER GameRock OmniBlack
+    identifier: NED47TS019T2-GAMEROCK
+    identifierType: model_number
+
 references:
   - https://www.nvidia.com/en-us/geforce/graphics-cards/40-series/rtx-4070-family/
   - https://www.nvidia.com/en-us/geforce/news/geforce-rtx-4080-4070-ti-4070-super-gpu/
@@ -40,6 +146,24 @@ references:
   - https://wccftech.com/nvidia-geforce-rtx-4070-ti-super-gpu-launch-available-starting-799-usd/
   - https://images.nvidia.com/aem-dam/Solutions/geforce/ada/nvidia-ada-gpu-architecture.pdf
   - https://images.nvidia.com/aem-dam/Solutions/Data-Center/l4/nvidia-ada-gpu-architecture-whitepaper-v2.1.pdf
+  - https://videocardz.com/newz/nvidia-geforce-rtx-4070-ti-super-with-ad103-gpu-and-16gb-memory-is-now-available
+  - https://www.igorslab.de/en/nvidia-geforce-rtx-4000-super-news-of-the-ad103-16-gb-and-pcie-5-1-for-the-new-generation/
+  - https://www.asus.com/motherboards-components/graphics-cards/tuf-gaming/tuf-rtx4070tis-o16g-gaming/
+  - https://www.asus.com/motherboards-components/graphics-cards/dual/dual-rtx4070tis-16g/
+  - https://www.asus.com/motherboards-components/graphics-cards/prime/prime-rtx4070tis-16g/
+  - https://www.msi.com/Graphics-Card/GeForce-RTX-4070-Ti-SUPER-16G-EXPERT
+  - https://www.msi.com/Graphics-Card/GeForce-RTX-4070-Ti-SUPER-16G-GAMING-SLIM
+  - https://www.gigabyte.com/Graphics-Card/GV-N407TSGAMING-OC-16GD
+  - https://www.gigabyte.com/Graphics-Card/GV-N407TSAERO-OC-16GD
+  - https://www.gigabyte.com/Graphics-Card/GV-N407TSEAGLE-OC-16GD
+  - https://www.pny.com/pny-geforce-rtx-4070-ti-super-16gb-verto-triple-fan-oc-edition
+  - https://www.pny.com/pny-geforce-rtx-4070-ti-super-16-gb-xlr8-gaming-verto-triple-fan-epic-x-rgb-oc-edition
+  - https://www.zotac.com/us/product/graphics_card/zotac-gaming-geforce-rtx-4070-ti-super-trinity-black-edition-16gb-gddr6x
+  - https://www.gainward.com/main/vgapro.php?id=1208&lang=en
+  - https://www.gainward.com/main/vgapro.php?id=1204&lang=en
+  - https://www.palit.com/palit/vgapro.php?id=5057&lang=en
+  - https://www.techpowerup.com/gpu-specs/gainward-rtx-4070-ti-super-panther-oc.b11555
+  - https://www.techpowerup.com/gpu-specs/palit-rtx-4070-ti-super-gamingpro.b11564
 
 notes:
   - MSRP of $799 USD sourced from NVIDIA's official announcement. Note that no Founders Edition was released for the RTX 4070 Ti SUPER (partner cards only). The $799 price matches the original RTX 4070 Ti while offering significantly better specifications.
@@ -52,3 +176,5 @@ notes:
   - Memory bandwidth calculated as 256-bit interface × 21 Gbps effective / 8 = 672 GB/s.
   - Process node is TSMC 4N (5nm-class) with 45.9 billion transistors and a die size of 379 mm².
   - Compared to the standard RTX 4070 Ti, the SUPER variant offers approximately 10% more CUDA cores, 33% more VRAM, 33% more memory bandwidth, and improved 4K gaming performance.
+  - "Manufacturer identifiers: Board ID PG141 with SKU 323 confirmed from TechPowerUp and VideoCardz. The GPU variant is AD103-275-A1 (some cards may also use AD102-175 variant on the same PG141 SKU 323 board). Process technology is TSMC 4N (5nm-class)."
+  - "Third-party products: NVIDIA did not release a Founders Edition for the RTX 4070 Ti SUPER. All products are from AIB (Add-In-Board) partners. Part numbers sourced from official manufacturer websites and TechPowerUp GPU Database. EVGA does not have any RTX 4070 Ti SUPER products as they exited the GPU market in September 2022. Major AIB partners include ASUS (7 models), MSI (8 models), Gigabyte (6 models), PNY (2 models), Zotac (3 models), Gainward (3 models), and Palit (3 models)."

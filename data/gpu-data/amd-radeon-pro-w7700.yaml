@@ -17,7 +17,7 @@ supportedHardwareOperations:
   - INT8
   - INT4
 releaseDate: "2023-11-13"
-lastModified: "2025-12-18T00:00:00Z"
+lastModified: "2025-12-19T00:00:00Z"
 
 summary: >-
   The AMD Radeon Pro W7700 is a professional workstation graphics card launched in November 2023,
@@ -30,12 +30,38 @@ summary: >-
   this dual-slot card targets professional content creation, CAD, and AI workloads. It features
   four DisplayPort 2.1 outputs with UHBR 20 support providing up to 80 Gb/s of display link
   bandwidth, making it suitable for multi-display professional workflows.
+
+manufacturerIdentifiers:
+  - type: opn
+    value: 100-300000006
+  - type: upc
+    value: "727419314992"
+  - type: ean
+    value: "0727419314992"
+
+thirdPartyProducts:
+  - company: Dell
+    productName: AMD Radeon PRO W7700, 16 GB GDDR6, Full Height, PCIe 4.0x16, Graphics Card
+    identifier: 490-BKKF
+    identifierType: part_number
+  - company: Dell
+    productName: AMD Radeon PRO W7700, 16 GB GDDR6, Full Height, PCIe 4.0x16, Graphics Card
+    identifier: 3VM76
+    identifierType: part_number
+  - company: Lenovo
+    productName: AMD Radeon Pro W7700 - graphics card - Radeon Pro W7700 - 16 GB
+    identifier: "78806877"
+    identifierType: part_number
+
 references:
   - https://www.amd.com/en/products/graphics/workstations/radeon-pro/w7700.html
   - https://www.amd.com/en/newsroom/press-releases/2023-11-13-new-amd-radeon-pro-workstation-graphics-card-to-po.html
   - https://www.techpowerup.com/315699/amd-announces-new-radeon-pro-w7700-workstation-graphics-card
   - https://www.anandtech.com/show/21137/amd-intros-radeon-pro-w7700-rounding-out-rdna-3-for-workstations
   - https://ir.amd.com/news-events/press-releases/detail/1165/new-amd-radeon-pro-workstation-graphics-card-to-power-next-generation-professional-content-creation-cad-and-ai-applications
+  - https://www.bhphotovideo.com/c/product/1801478-REG/amd_100_300000006_radeon_pro_w7700_graphic.html
+  - https://www.dell.com/en-us/shop/dell-amd-radeon-pro-w7700-16-gb-gddr6-full-height-pcie-40x16-graphics-card/apd/490-bkkf/graphic-video-cards
+  - https://www.lenovo.com/au/en/p/accessories-and-software/graphics-cards/graphics_cards/78806877
 notes:
   - FP32 TFLOPS of 31.95 calculated as 3,072 stream processors × 2,600 MHz boost clock × 2 ops/cycle = 31.95 TFLOPS
   - FP16 performance is 63.9 TFLOPS calculated at 2:1 ratio to FP32, which is standard for RDNA 3 architecture
@@ -47,3 +73,8 @@ notes:
   - Released November 13, 2023 at $999 USD MSRP
   - Some sources report 28.27 TFLOPS FP32; 31.95 TFLOPS is peak at boost clock (2,600 MHz), while 28.27 TFLOPS may represent sustained performance at lower clocks
   - MSRP of $999 USD sourced from AMD official press release dated November 13, 2023.
+  - AMD Ordering Part Number (OPN) 100-300000006 sourced from multiple retailers including B&H Photo, Newegg, and Micro Center
+  - UPC 727419314992 and EAN 0727419314992 sourced from retail product listings
+  - Dell part number 490-BKKF and OEM part number 3VM76 sourced from Dell.com official product page
+  - Lenovo part number 78806877 sourced from Lenovo Australia official product page
+  - HP/HPE part numbers could not be verified from publicly available sources; HP Z4 G4 and Z4 G5 workstations are confirmed compatible but specific option part numbers were not found

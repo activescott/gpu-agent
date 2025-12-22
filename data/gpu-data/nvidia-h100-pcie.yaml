@@ -19,7 +19,7 @@ supportedHardwareOperations:
   - FP8
 supportedCUDAComputeCapability: 9
 releaseDate: "2023-03-21"
-lastModified: "2025-12-18T18:00:00Z"
+lastModified: "2025-12-19T00:00:00Z"
 
 summary: The NVIDIA H100 PCIe 80GB is a professional graphics card designed
   primarily for machine learning and high-performance computing applications.
@@ -36,6 +36,77 @@ summary: The NVIDIA H100 PCIe 80GB is a professional graphics card designed
   the H200 supports the faster HBM3 memory system, which can deliver up to 3
   TB/s, a significant increase over the previous generation's capabilities. A
   common nvidia part number for this card is 900-21010-000-000.
+
+manufacturerIdentifiers:
+  - type: nvpn
+    value: "900-21010-0000-000"
+  - type: product_sku
+    value: P1010 SKU 200
+  - type: nvpn
+    value: "699-21010-0200-xxx"
+
+thirdPartyProducts:
+  - company: Dell
+    productName: NVIDIA H100 PCIe Tensor Core GPU 80GB
+    identifier: DGP4C
+    identifierType: part_number
+  - company: Dell
+    productName: NVIDIA H100 PCIe Tensor Core GPU 80GB with Passive Heatsink
+    identifier: DP44G
+    identifierType: part_number
+  - company: Dell
+    productName: NVIDIA H100 PCIe Tensor Core GPU 80GB
+    identifier: "900-21010-0100-030-DELL"
+    identifierType: part_number
+  - company: HPE
+    productName: NVIDIA H100 80GB PCIe Accelerator for HPE
+    identifier: R9S41C
+    identifierType: part_number
+  - company: HP
+    productName: NVIDIA H100 PCIe Tensor Core GPU 80GB
+    identifier: P54751-001
+    identifierType: part_number
+  - company: PNY
+    productName: NVIDIA H100 Tensor Core GPU 80GB PCIe
+    identifier: NVH100TCGPU-KIT
+    identifierType: sku
+  - company: PNY
+    productName: NVIDIA H100 Tensor Core GPU 80GB PCIe Retail
+    identifier: XNVH100TCGPU-KIT-RETAIL
+    identifierType: sku
+  - company: Supermicro
+    productName: NVIDIA H100 80GB PCIe 5.0 x16 Passive Cooling
+    identifier: GPU-NVH100-80
+    identifierType: part_number
+  - company: Supermicro
+    productName: NVIDIA H100 80GB PCIe 5.0 x16 Passive Cooling
+    identifier: GPU-NVH800-80
+    identifierType: part_number
+  - company: Supermicro
+    productName: NVIDIA H100 80GB GPU PCIe 5.0
+    identifier: "699-21010-0200-600"
+    identifierType: part_number
+  - company: Lenovo
+    productName: ThinkSystem NVIDIA H100 80GB PCIe Gen5 Passive GPU
+    identifier: 4X67A82257
+    identifierType: part_number
+  - company: Cisco
+    productName: NVIDIA H100 PCIe 350W 80GB 2-Slot FHFL GPU
+    identifier: UCSC-GPU-H100
+    identifierType: part_number
+  - company: Cisco
+    productName: NVIDIA H100 350W 80GB 2-Slot FHFL GPU
+    identifier: UCSC-GPU-H100-80
+    identifierType: part_number
+  - company: Cisco
+    productName: NVIDIA H100 350W 80GB 2-Slot FHFL GPU (Spare)
+    identifier: UCSC-GPU-H100-80=
+    identifierType: part_number
+  - company: Cisco
+    productName: Cisco UCS NVIDIA H100 80GB Passive 350W DW FH/HL GPU
+    identifier: UCSX-GPU-H100-80
+    identifierType: part_number
+
 references:
   - https://resources.nvidia.com/en-us-tensor-core/nvidia-tensor-core-gpu-datasheet
   - https://www.nvidia.com/en-us/data-center/h100/
@@ -46,8 +117,30 @@ references:
   - https://www.shopblt.com/item/lenovo-thinksystem-nvidia-h100-80gb-pcie/lenovo_4x67a82257.html
   - https://www.tech-america.com/item/cisco-nvidia-h100-graphic-card/ucsc-gpu-h100-80
   - https://www.cdw.com/product/nvidia-h100-gpu-computing-processor-nvidia-h100-tensor-core-80-gb/8268491
+  - https://www.serversupply.com/GPU/HBM2E/80GB/NVIDIA/900-21010-0000-000_387928.htm
+  - https://www.itcreations.com/product/140934
+  - https://www.itcreations.com/product/149409
+  - https://www.hpe.com/us/en/product-catalog/options/pip.specifications.nvidia-accelerators.1014716083.html
+  - https://buy.hpe.com/us/en/Options/Server-Accelerators/Computational-and-Graphics-Accelerators-for-Servers/Computational-and-Graphics-Accelerators-with-HPE/NVIDIA-H100-80GB-PCIe-Accelerator-for-HPE/p/R9S41C
+  - https://www.itcreations.com/product/146020
+  - https://www.centralcomputer.com/pny-nvidia-h100-tensor-core-gpu-accelerator-80gb-hbm2e-nvh100tcgpu-kit.html
+  - https://www.itcreations.com/product/146438
+  - https://www.renewtech.com/supermicro-699-21010-0200-600.html
+  - https://www.ahead-it.eu/en/shop/hardware/supermicro/supermicro-gpu-nvh100-80-nr-nvidia-h100-80gb-pcie-5-0-x16-passive-cooling
+  - https://lenovopress.lenovo.com/lp1732-thinksystem-nvidia-h100-pcie-gen5-gpu
+  - https://serverproven.lenovo.com/option/4X67A82257/
+  - https://www.itcreations.com/product/145735
+  - https://www.provantage.com/cisco-systems-ucsc-gpu-h100-80~4CSC651P.htm
+  - https://www.connection.com/product/cisco-nvidia-h100-pcie-graphics-card-80gb/ucsc-gpu-h100-80/41789563
+  - https://expresscomputersystems.com/products/cisco-ucs-nvidia-h100-80gb-passive-350w-dw-fh-hl-gpu-ucsx-gpu-h100-80
+  - https://www.nvidia.com/content/dam/en-zz/Solutions/gtcs22/data-center/h100/PB-11133-001_v01.pdf
+  - https://server2u.com/shop/900-21010-0000-000-900-21010-0300-030-nvidia-h100-pcie-80gb-60144
+
 notes:
   - "fp32TFLOPS: NOTE: FP32 Tensor Core"
   - "fp16TFLOPS: NOTE: FP16 Tensor Core"
   - "int8TOPS: NOTE: INT8 Tensor Core"
   - "Estimated MSRP of $98,000 USD for H100 80GB PCIe based on OEM list prices. NVIDIA does not publish official MSRP for data center GPUs. OEM list prices corroborated by 3 independent sources: CDW lists Cisco UCSC-GPU-H100-80= at $103,085.66, Tech-America lists Cisco UCSC-GPU-H100-80 MSRP at $99,696, and ShopBLT lists Lenovo 4X67A82257 at $90,935. The $98,000 estimate represents the average of these OEM list prices. H100 pricing varies by form factor (PCIe vs SXM) and memory size (80GB vs 96GB)."
+  - "Manufacturer identifiers sourced from NVIDIA official documentation and OEM product listings. Primary NVPN 900-21010-0000-000 confirmed across multiple resellers. Product SKU P1010 SKU 200 and alternate NVPN 699-21010-0200-xxx found in NVIDIA product briefs and OEM documentation."
+  - "Third-party product identifiers sourced from official OEM websites and authorized reseller listings. Dell part numbers (DGP4C, DP44G, 900-21010-0100-030-DELL) from ITCreations and Express Computer Systems. HPE part number (R9S41C) from HPE official product catalog. HP part number (P54751-001) from ITCreations. PNY SKUs (NVH100TCGPU-KIT, XNVH100TCGPU-KIT-RETAIL) from Central Computer and ITCreations. Supermicro OEM part numbers (GPU-NVH100-80, GPU-NVH800-80, 699-21010-0200-600) from Ahead-IT and Renewtech. Lenovo part number (4X67A82257) from Lenovo Press and ServerProven. Cisco part numbers (UCSC-GPU-H100, UCSC-GPU-H100-80, UCSC-GPU-H100-80=, UCSX-GPU-H100-80) from Provantage, Connection, and Express Computer Systems."
+  - "Note: Part number 900-21010-0300-030 is a variant SKU found in some reseller listings but specific differences from 900-21010-0000-000 are not documented in available sources."

@@ -14,7 +14,7 @@ supportedHardwareOperations:
   - FP32
   - FP16
 releaseDate: "2022-05-10"
-lastModified: "2025-12-18T22:30:00Z"
+lastModified: "2025-12-21T00:00:00Z"
 
 summary: >-
   The AMD Radeon RX 6750 XT was released in May 2022 as a refreshed mid-range gaming
@@ -28,12 +28,75 @@ summary: >-
   offers improved performance through higher clocks and faster memory while maintaining
   excellent 1440p gaming capabilities with DirectX 12 Ultimate support including
   hardware-accelerated ray tracing.
+
+manufacturerIdentifiers:
+  - type: opn
+    value: "100-438412"
+
+thirdPartyProducts:
+  - company: Sapphire
+    productName: SAPPHIRE NITRO+ AMD Radeon RX 6750 XT 12G GDDR6
+    identifier: 11318-01-20G
+    identifierType: model_number
+  - company: Sapphire
+    productName: SAPPHIRE PULSE AMD Radeon RX 6750 XT 12G GDDR6
+    identifier: 11318-03-20G
+    identifierType: model_number
+  - company: PowerColor
+    productName: PowerColor Red Devil AMD Radeon RX 6750 XT 12GB GDDR6
+    identifier: AXRX 6750XT 12GBD6-3DHE/OC
+    identifierType: model_number
+  - company: XFX
+    productName: XFX SPEEDSTER QICK 319 AMD Radeon RX 6750 XT CORE Gaming
+    identifier: RX-675XYJFDP
+    identifierType: model_number
+  - company: XFX
+    productName: XFX SPEEDSTER QICK 319 AMD Radeon RX 6750 XT ULTRA Gaming
+    identifier: RX-675XYLUDP
+    identifierType: model_number
+  - company: XFX
+    productName: XFX SPEEDSTER MERC 319 AMD Radeon RX 6750 XT BLACK Gaming
+    identifier: RX-675XYTBDP
+    identifierType: model_number
+  - company: ASRock
+    productName: ASRock Radeon RX 6750 XT Challenger Pro 12GB OC
+    identifier: RX6750XT CLP 12GO
+    identifierType: model_number
+  - company: ASUS
+    productName: ASUS ROG STRIX Radeon RX 6750 XT OC Edition 12GB GDDR6
+    identifier: ROG-STRIX-RX6750XT-O12G-GAMING
+    identifierType: model_number
+  - company: ASUS
+    productName: ASUS Dual AMD Radeon RX 6750 XT OC Edition 12GB GDDR6
+    identifier: DUAL-RX6750XT-O12G
+    identifierType: model_number
+  - company: Gigabyte
+    productName: Gigabyte Radeon RX 6750 XT GAMING OC 12G
+    identifier: GV-R675XTGAMING OC-12GD
+    identifierType: model_number
+  - company: Gigabyte
+    productName: Gigabyte AORUS Radeon RX 6750 XT ELITE 12G
+    identifier: GV-R675XTAORUS E-12GD
+    identifierType: model_number
+
 references:
   - https://www.techpowerup.com/gpu-specs/radeon-rx-6750-xt.c3879
   - https://www.amd.com/en/products/graphics/desktops/radeon/6000-series/amd-radeon-rx-6750-xt.html
   - https://www.tomshardware.com/reviews/amd-radeon-rx-6750-xt-review
   - https://en.wikipedia.org/wiki/RDNA_2
   - https://wccftech.com/amd-radeon-rx-6950-xt-rx-6750-xt-rx-6650-xt-official-launch-specs-prices-performance/
+  - https://pcpartpicker.com/product/7twypg/amd-100-438412-radeon-rx-6750-xt-12-gb-video-card-100-438412
+  - https://www.sapphiretech.com/en/consumer/nitro-radeon-rx-6750-xt-12g-gddr6
+  - https://www.sapphiretech.com/en/consumer/pulse-radeon-rx-6750-xt-12g-gddr6
+  - https://www.powercolor.com/product-detail133.htm
+  - https://www.xfxforce.com/shop/xfx-speedster-qick-319-amd-radeon-tm-rx-6750-xt-core
+  - https://www.asrock.com/Graphics-Card/AMD/Radeon%20RX%206750%20XT%20Challenger%20Pro%2012GB%20OC/
+  - https://rog.asus.com/graphics-cards/graphics-cards/rog-strix/rog-strix-rx6750xt-o12g-gaming-model/
+  - https://www.asus.com/motherboards-components/graphics-cards/dual/dual-rx6750xt-o12g/
+  - https://www.msi.com/Graphics-Card/Radeon-RX-6750-XT-GAMING-X-TRIO-12G
+  - https://www.msi.com/Graphics-Card/Radeon-RX-6750-XT-MECH-2X-12G-OC
+  - https://www.gigabyte.com/Graphics-Card/GV-R675XTGAMING-OC-12GD
+  - https://www.gigabyte.com/Graphics-Card/GV-R675XTAORUS-E-12GD
 notes:
   - FP32 TFLOPS calculated as 2,560 stream processors × 2,600 MHz boost clock × 2 ops/cycle / 1,000,000 = 13.31 TFLOPS
   - FP16 performance is 26.62 TFLOPS calculated at 2:1 ratio to FP32, which is standard for RDNA 2 architecture
@@ -45,3 +108,11 @@ notes:
   - Released as a refresh of the RX 6700 XT with higher clocks (2,600 MHz vs 2,581 MHz boost), faster memory (18 Gbps vs 16 Gbps), and higher TDP (250W vs 230W)
   - Release date of May 10, 2022 per AMD official press release; some third-party sources list March 3, 2022
   - MSRP of $549 USD verified from multiple sources including TechPowerUp, WCCFtech, and VideoCardz at launch on May 10, 2022
+  - AMD OPN (Ordering Part Number) 100-438412 sourced from PCPartPicker and multiple retailers for the AMD reference design
+  - Sapphire model numbers 11318-01-20G (NITRO+) and 11318-03-20G (PULSE) sourced from Sapphire official website and retailers
+  - PowerColor model number AXRX 6750XT 12GBD6-3DHE/OC sourced from PowerColor official website and Newegg
+  - XFX model numbers RX-675XYJFDP, RX-675XYLUDP, and RX-675XYTBDP sourced from XFX official website and retailers
+  - ASRock model number RX6750XT CLP 12GO sourced from ASRock official website and Newegg
+  - ASUS model numbers ROG-STRIX-RX6750XT-O12G-GAMING and DUAL-RX6750XT-O12G sourced from ASUS official website
+  - MSI model numbers sourced from MSI official website and Newegg listings
+  - Gigabyte model numbers GV-R675XTGAMING OC-12GD and GV-R675XTAORUS E-12GD sourced from Gigabyte official website

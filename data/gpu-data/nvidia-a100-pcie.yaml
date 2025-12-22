@@ -19,7 +19,83 @@ supportedHardwareOperations:
   - BF16
 supportedCUDAComputeCapability: 8
 releaseDate: "2021-06-28"
-lastModified: "2025-12-18T00:00:00Z"
+lastModified: "2025-12-19T00:00:00Z"
+
+manufacturerIdentifiers:
+  - type: Board Number
+    value: P1001 SKU 200
+  - type: NVPN
+    value: 900-21001-0020-100
+  - type: NVPN (with CEC)
+    value: 900-21001-0020-000
+  - type: NVPN (Liquid Cooled)
+    value: 900-21001-0060-000
+
+thirdPartyProducts:
+  - company: Dell
+    productName: NVIDIA Ampere A100, PCIe, 300W, 80GB Passive, Double Wide, Full Height GPU
+    identifier: 490-BHBK
+    identifierType: part_number
+  - company: Dell
+    productName: NVIDIA A100 80GB PCIe GPU
+    identifier: 575TK
+    identifierType: part_number
+  - company: Dell
+    productName: NVIDIA A100 80GB PCIe GPU
+    identifier: WGWR4
+    identifierType: part_number
+  - company: Dell
+    productName: NVIDIA A100 80GB PCIe GPU (OEM)
+    identifier: 900-21001-0120-030-DELL
+    identifierType: part_number
+  - company: HPE
+    productName: NVIDIA A100 80GB PCIe Non-CEC Accelerator
+    identifier: R9P49C
+    identifierType: part_number
+  - company: HPE
+    productName: NVIDIA A100 80GB PCIe Non-CEC Accelerator
+    identifier: P49082-001
+    identifierType: part_number
+  - company: HPE
+    productName: SPS-PCA NVIDIA A100 80GB PCIe GPU
+    identifier: P54869-001
+    identifierType: part_number
+  - company: Lenovo
+    productName: ThinkSystem NVIDIA A100 80GB PCIe Gen4 Passive GPU w/o CEC
+    identifier: 4X67A76715
+    identifierType: part_number
+  - company: PNY
+    productName: NVIDIA A100 80GB PCIe GPU
+    identifier: NVA100TCGPU80-KIT
+    identifierType: sku
+  - company: PNY
+    productName: NVIDIA A100 80GB PCIe GPU (Non-CEC)
+    identifier: NVA100TCGPU80NC-KIT
+    identifierType: sku
+  - company: PNY
+    productName: NVIDIA A100 80GB PCIe GPU
+    identifier: TCSA100M-80GB-PB
+    identifierType: sku
+  - company: Supermicro
+    productName: NVIDIA A100 80GB CoWoS HBM2 PCIe w/o CEC
+    identifier: GPU-NVA100-80-NC
+    identifierType: part_number
+  - company: Cisco
+    productName: NVIDIA Tesla A100 80GB PCIe GPU
+    identifier: UCSC-GPU-A100-80
+    identifierType: part_number
+  - company: Cisco
+    productName: NVIDIA Tesla A100 80GB PCIe GPU (Spare/Orderable)
+    identifier: UCSC-GPU-A100-80=
+    identifierType: part_number
+  - company: Cisco
+    productName: Tesla A100, Passive, 300W, 80GB
+    identifier: UCSC-GPUA100-80-D
+    identifierType: part_number
+  - company: Advantech
+    productName: Tesla A100 80GB PCIe DSFH w/ATX BKT (Bundle Sale)
+    identifier: SKY-TESL-A100-80P
+    identifierType: part_number
 
 summary: The NVIDIA A100 PCIe 80GB was announced in May 2020, is a formidable
   accelerator in the field of machine learning and artificial intelligence.
@@ -42,7 +118,27 @@ references:
   - https://modal.com/blog/nvidia-a100-price-article
   - https://www.lovechip.com/blog/the-nvidia-a100-gpu-the-ai-workhorse-that-changed-everything
   - https://www.nvidia.com/en-us/data-center/tensor-cores/
+  - https://insidesystems.com/product/575tk/
+  - https://www.dell.com/en-us/shop/nvidia-ampere-a100-pcie-300w-80gb-passive-double-wide-full-height-gpu-customer-install/apd/490-bhbk/graphic-video-cards
+  - https://expresscomputersystems.com/products/hpe-nvidia-a100-80gb-pcie-non-cec-accelerator-r9p49c
+  - https://www.hpe.com/us/en/product-catalog/compute/accelerators/pip.specifications.nvidia-accelerators.1014651806.html
+  - https://lenovopress.lenovo.com/lp1734-thinksystem-nvidia-a100-pcie-40-gpu
+  - https://www.pny.com/nvidia-a100-80gb
+  - https://store.supermicro.com/us_en/supermicro-nvidia-a100-ampere-40-gb-graphics-card.html
+  - https://www.expresscomputersystems.com/products/cisco-nvidia-tesla-a100-80gb-dw-ucsc-gpu-a100-80
+  - https://www.advantech.com/en-us/products/8d6a8886-b57e-493f-87c8-6f1e02d0608a/sky-tesl-a100-80p/mod_7af76fc9-a36d-4e4b-8ab8-b91d0248507a
+  - https://devicehunt.com/view/type/pci/vendor/10DE/device/20B5
 notes:
   - "fp32TFLOPS: NOTE: This is the Tensor Core FP32 performance, not the CUDA
     FP32 performance. The A40 for example doesn't have such a spec (only CUDA)."
   - "Estimated MSRP of $15,000 USD for the A100 PCIe 80GB based on launch-time market pricing. NVIDIA does not publish official MSRP for data center GPUs. Sources from around the 2020-2021 launch period cite A100 40GB PCIe at ~$10,000-$12,000 and 80GB PCIe at ~$15,000-$20,000. Note: A100 pricing varies significantly by form factor (PCIe vs SXM) and memory size (40GB vs 80GB). SXM variants are typically more expensive than PCIe. Sources: CNBC, Modal.com, LoveChip, Wikipedia."
+  - "Board Number P1001 SKU 200 sourced from TechPowerUp GPU Database."
+  - "NVIDIA part number 900-21001-0020-100 (non-CEC version) is the primary NVPN for A100 PCIe 80GB. Part number scheme: 900-21001-XXXX-1XX indicates non-CEC (without secondary root of trust), while 900-21001-XXXX-0XX indicates CEC variant (with secondary root of trust). Sources: harddiskdirect.com, acmemicro.com, bitworks.io."
+  - "PCI Device ID 10DE:20B5 sourced from Device Hunt and NVIDIA driver documentation. Vendor ID 10DE is NVIDIA Corporation, Device ID 20B5 is GA100 [A100 PCIe 80GB]."
+  - "Dell part numbers verified from multiple reseller sources including Inside Systems, Express Computer Systems, and Dell official product page."
+  - "HPE part numbers R9P49C (product number), P49082-001 (part number), and P54869-001 (spare part number) verified from Express Computer Systems, HPE official product catalog, and ShopBLT.com."
+  - "Lenovo part number 4X67A76715 verified from Lenovo Press product guide and multiple reseller sources. Note: Lenovo A100 PCIe products are now withdrawn, but SXM variants remain available."
+  - "PNY part numbers NVA100TCGPU80-KIT (standard), NVA100TCGPU80NC-KIT (non-CEC), and TCSA100M-80GB-PB verified from PNY official website and multiple reseller sources."
+  - "Supermicro part number GPU-NVA100-80-NC verified from Supermicro official store and authorized resellers. This part corresponds to NVIDIA base part 900-21001-0020-100."
+  - "Cisco part numbers UCSC-GPU-A100-80, UCSC-GPU-A100-80=, and UCSC-GPUA100-80-D verified from Express Computer Systems, Provantage, and Cisco documentation. Note: Cisco requires unique SBIOS ID for GPU cards, so all A100 cards must be procured from Cisco."
+  - "Advantech part number SKY-TESL-A100-80P verified from Advantech official product page and pf-electronic.pl. This is a bundle sale item including ATX bracket."

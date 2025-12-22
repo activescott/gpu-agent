@@ -14,7 +14,7 @@ supportedHardwareOperations:
   - FP32
   - FP16
 releaseDate: "2022-01-19"
-lastModified: "2025-12-18T22:30:00Z"
+lastModified: "2025-12-21T00:00:00Z"
 
 summary: >-
   The AMD Radeon RX 6500 XT was released in January 2022 as an entry-level gaming
@@ -30,12 +30,65 @@ summary: >-
   significant performance loss on older PCIe 3.0 systems, and it lacks hardware
   video encoding and AV1 decoding. Originally designed for laptops, the desktop
   version received criticism for these limitations.
+
+manufacturerIdentifiers:
+  - type: opn
+    value: "215-135000006"
+
+thirdPartyProducts:
+  - company: Sapphire
+    productName: PULSE AMD Radeon RX 6500 XT 4G GDDR6
+    identifier: 11314-01-20G
+    identifierType: model_number
+  - company: ASUS
+    productName: Dual AMD Radeon RX 6500 XT OC Edition 4GB GDDR6
+    identifier: DUAL-RX6500XT-O4G
+    identifierType: model_number
+  - company: ASUS
+    productName: TUF Gaming Radeon RX 6500 XT OC Edition 4GB GDDR6
+    identifier: TUF-RX6500XT-O4G-GAMING
+    identifierType: model_number
+  - company: PowerColor
+    productName: Fighter AMD Radeon RX 6500 XT OC 4GB GDDR6
+    identifier: AXRX 6500 XT 4GBD6-DH/OC
+    identifierType: model_number
+  - company: ASRock
+    productName: Radeon RX 6500 XT Phantom Gaming D 4GB OC
+    identifier: RX6500XT PGD 4GO
+    identifierType: model_number
+  - company: XFX
+    productName: Speedster QICK 210 AMD Radeon RX 6500 XT Core Gaming Graphics Card 4GB GDDR6
+    identifier: RX-65XT4DBDQ
+    identifierType: model_number
+  - company: MSI
+    productName: Radeon RX 6500 XT MECH 2X 4G OC
+    identifier: R6500XTM2X4C
+    identifierType: part_number
+  - company: Gigabyte
+    productName: Radeon RX 6500 XT GAMING OC 4G
+    identifier: GV-R65XTGAMING OC-4GD
+    identifierType: model_number
+  - company: Gigabyte
+    productName: Radeon RX 6500 XT EAGLE 4G
+    identifier: GV-R65XTEAGLE-4GD
+    identifierType: model_number
+
 references:
   - https://www.techpowerup.com/gpu-specs/radeon-rx-6500-xt.c3850
   - https://www.amd.com/en/products/graphics/desktops/radeon/6000-series/amd-radeon-rx-6500-xt.html
   - https://www.tomshardware.com/reviews/amd-radeon-rx-6500-xt-review-xfx
   - https://en.wikipedia.org/wiki/RDNA_2
   - https://www.notebookcheck.net/Initial-AMD-Radeon-RX-6500-XT-prices-rubbish-US-199-MSRP.591616.0.html
+  - https://processordb.mit.edu/database/soc/4059
+  - https://www.techpowerup.com/gpu-specs/sapphire-pulse-rx-6500-xt.b9440
+  - https://www.techpowerup.com/gpu-specs/asus-dual-rx-6500-xt-oc.b9392
+  - https://www.asus.com/us/motherboards-components/graphics-cards/tuf-gaming/tuf-rx6500xt-o4g-gaming/
+  - https://www.techpowerup.com/gpu-specs/powercolor-fighter-rx-6500-xt-oc.b9441
+  - https://www.techpowerup.com/gpu-specs/asrock-rx-6500-xt-phantom-gaming-d-oc.b9395
+  - https://www.techpowerup.com/gpu-specs/xfx-speedster-qick-210-rx-6500-xt-core.b9429
+  - https://www.bhphotovideo.com/c/product/1700901-REG/msi_r6500xtm2x4c_radeon_rx_6500_xt.html
+  - https://www.gigabyte.com/Graphics-Card/GV-R65XTGAMING-OC-4GD
+  - https://www.gigabyte.com/Graphics-Card/GV-R65XTEAGLE-4GD
 notes:
   - FP32 TFLOPS calculated as 1,024 stream processors × 2,815 MHz boost clock × 2 ops/cycle / 1,000,000 = 5.77 TFLOPS
   - FP16 performance is 11.54 TFLOPS calculated at 2:1 ratio to FP32, which is standard for RDNA 2 architecture
@@ -49,3 +102,13 @@ notes:
   - Lacks hardware video encoder (VCN encoder) and AV1 decode support
   - Originally designed as a laptop GPU (Navi 24) and adapted for desktop use
   - MSRP of $199 USD verified from multiple sources including Tom's Hardware, NotebookCheck, and PC Gamer at launch on January 19, 2022
+  - AMD Ordering Part Number (OPN) 215-135000006 sourced from MIT ProcessorDB and verified across multiple TechPowerUp GPU Database entries for RX 6500 XT variants
+  - Sapphire PULSE model number 11314-01-20G sourced from TechPowerUp GPU Database
+  - ASUS DUAL model number DUAL-RX6500XT-O4G sourced from TechPowerUp GPU Database and ASUS official product page
+  - ASUS TUF Gaming model number TUF-RX6500XT-O4G-GAMING sourced from ASUS official product page and Newegg
+  - PowerColor Fighter model number AXRX 6500 XT 4GBD6-DH/OC sourced from TechPowerUp GPU Database
+  - ASRock Phantom Gaming D model number RX6500XT PGD 4GO sourced from TechPowerUp GPU Database
+  - XFX Speedster QICK 210 model number RX-65XT4DBDQ sourced from TechPowerUp GPU Database
+  - MSI MECH 2X part number R6500XTM2X4C sourced from B&H Photo, MSI official product page, and multiple retailers
+  - Gigabyte GAMING OC model number GV-R65XTGAMING OC-4GD sourced from Gigabyte official product page and Amazon
+  - Gigabyte EAGLE model number GV-R65XTEAGLE-4GD sourced from Gigabyte official product page and Newegg

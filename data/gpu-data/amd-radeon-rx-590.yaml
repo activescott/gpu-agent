@@ -10,11 +10,50 @@ maxTDPWatts: 175
 gpuArchitecture: Graphics Core Next 4
 supportedHardwareOperations: []
 releaseDate: "2018-11-15"
-lastModified: "2025-12-18T00:00:00Z"
+lastModified: "2025-12-21T00:00:00Z"
 
 summary: The AMD Radeon RX 590, launched on November 15th, 2018, uses the 12 nm
   process with the Polaris 30 graphics processor. It's a performance-segment
   card with a dual-slot form factor and a TDP of 175 W.
+
+thirdPartyProducts:
+  - company: Sapphire
+    productName: NITRO+ Radeon RX 590 8GB Special Edition
+    identifier: 11289-01-20G
+    identifierType: model_number
+  - company: Sapphire
+    productName: NITRO+ Radeon RX 590 8GB
+    identifier: 11289-05-20G
+    identifierType: model_number
+  - company: Sapphire
+    productName: NITRO+ Radeon RX 590 8GB
+    identifier: 11289-07-20G
+    identifierType: model_number
+  - company: PowerColor
+    productName: Red Devil Radeon RX 590 8GB GDDR5
+    identifier: AXRX 590 8GBD5-3DH/OC
+    identifierType: model_number
+  - company: PowerColor
+    productName: Red Dragon Radeon RX 590 8GB GDDR5
+    identifier: AXRX 590 8GBD5-DHD
+    identifierType: model_number
+  - company: XFX
+    productName: Radeon RX 590 Fatboy 8GB 1580MHz
+    identifier: RX-590P8DFD6
+    identifierType: model_number
+  - company: XFX
+    productName: Radeon RX 590 Fatboy Core Edition 8GB 1545MHz
+    identifier: RX-590P8DLD6
+    identifierType: model_number
+  - company: ASUS
+    productName: ROG STRIX Radeon RX 590 8G GAMING
+    identifier: ROG-STRIX-RX590-8G-GAMING
+    identifierType: model_number
+  - company: Gigabyte
+    productName: Radeon RX 590 GAMING 8G
+    identifier: GV-RX590GAMING-8GD
+    identifierType: model_number
+
 references:
   - https://www.amd.com/en/products/specifications/graphics
   - https://www.tomshardware.com/reviews/amd-radeon-rx-590,5907.html
@@ -22,6 +61,19 @@ references:
   - https://en.wikipedia.org/wiki/Graphics_Core_Next
   - https://www.techpowerup.com/249540/amd-radeon-rx-590-launch-price-other-details-revealed
   - https://videocardz.com/amd/radeon-500/radeon-rx-590
+  - https://pcpartpicker.com/product/nLNv6h/sapphire-radeon-rx-590-8-gb-nitro-video-card-11289-01-20g
+  - https://pcpartpicker.com/product/hPyV3C/sapphire-radeon-rx-590-8-gb-nitro-video-card-11289-05-20g
+  - https://pcpartpicker.com/product/jX97YJ/sapphire-radeon-rx-590-8-gb-nitro-video-card-11289-07-20g
+  - https://www.amazon.com/PowerColor-AXRX-590-8GBD5-3DH-OC/dp/B07KB2F3GL
+  - https://www.powercolor.com/product?id=1551768690
+  - https://www.powercolor.com/product?id=1551768831
+  - https://www.xfxforce.com/gpus/amd-radeon-tm-rx-590-fatboy-8gb-2
+  - https://pcpartpicker.com/product/LPkj4D/asus-radeon-rx-590-8-gb-strix-gaming-video-card-rog-strix-rx590-8g-gaming
+  - https://www.msi.com/Graphics-card/Radeon-RX-590-ARMOR-8G-OC
+  - https://www.gigabyte.com/Graphics-Card/GV-RX590GAMING-8GD-rev-10
+  - https://www.asrock.com/Graphics-Card/AMD/Phantom%20Gaming%20X%20Radeon%20RX590%208G%20OC/
+  - https://www.legitreviews.com/amd-radeon-rx-590-roundup-powercolor-sapphire-and-xfx_209326
+
 notes:
   - 'int8TOPS: "More Information Needed"'
   - "supportedHardwareOperations: \"Since the introduction of AMD's CDNA
@@ -29,6 +81,13 @@ notes:
     hardware-accelerated through Matrix Core Processing Units.\" (presumably
     GEMM wasn't supported in previous architectures and I can find no reference
     to them in GCN)
-    – https://gpuopen.com/learn/amd-lab-notes/amd-lab-notes-matrix-cores-README\
-    /"
+    – https://gpuopen.com/learn/amd-lab-notes/amd-lab-notes-matrix-cores-README/"
   - MSRP of $279 USD sourced from AMD official announcement verified by TechPowerUp and VideoCardz coverage.
+  - "AMD does not publish OPN (Ordering Part Numbers) for consumer GPUs like the RX 590. AIB partners (Sapphire, PowerColor, XFX, ASUS, MSI, Gigabyte, ASRock) manufactured all RX 590 cards with their own part numbers."
+  - "Sapphire NITRO+ RX 590 part numbers sourced from PCPartPicker and official Sapphire product pages. Models include Special Edition (11289-01-20G) in blue/white and standard editions (11289-05-20G, 11289-07-20G) with different color schemes."
+  - "PowerColor RX 590 part numbers sourced from Amazon and official PowerColor product pages. Red Devil model (AXRX 590 8GBD5-3DH/OC) features 1576MHz boost clock while Red Dragon (AXRX 590 8GBD5-DHD) runs at 1545MHz."
+  - "XFX RX 590 part numbers sourced from XFX official website and PCPartPicker. Fatboy model (RX-590P8DFD6) runs at 1580MHz while Fatboy Core Edition (RX-590P8DLD6) runs at 1545MHz."
+  - "ASUS ROG STRIX RX 590 model number (ROG-STRIX-RX590-8G-GAMING) sourced from PCPartPicker and official ASUS product support pages."
+  - "MSI RX 590 ARMOR model sourced from MSI official product pages. ARMOR 8G OC variant features 1565MHz boost clock, 20MHz higher than reference."
+  - "Gigabyte RX 590 GAMING model (GV-RX590GAMING-8GD) sourced from Gigabyte official website and PCPartPicker. Available in Rev. 1.0 and Rev. 2.0 with same model number."
+  - "ASRock Phantom Gaming X RX 590 model sourced from ASRock official website and Tom's Hardware review. Features 1560MHz boost clock."

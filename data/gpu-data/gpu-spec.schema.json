@@ -121,6 +121,53 @@
       "items": {
         "type": "string"
       }
+    },
+    "manufacturerIdentifiers": {
+      "type": "array",
+      "description": "Official identifiers from the GPU manufacturer (NVIDIA, AMD, Intel). Only include model numbers, part numbers, and SKUs - NOT PCI device IDs or other hardware bus identifiers. Manufacturers often have MULTIPLE identifier types - for example, NVIDIA uses both 'Product SKU' (e.g., PG133 SKU 242) AND 'NVPN' part numbers (e.g., 900-2G133-0080-000). Include ALL official identifiers found in datasheets and product documentation.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "The type of identifier. Common types by manufacturer: NVIDIA: 'product_sku' (e.g., 'PG133 SKU 242'), 'nvpn' (e.g., '900-2G133-0080-000'), 'board_id' (e.g., 'PG133'). AMD: 'opn' (Ordering Part Number), 'model_number'. Intel: 'product_code', 'mm_number' (Material Master), 'spec_code'. DO NOT include PCI device IDs, vendor IDs, or other hardware bus identifiers."
+          },
+          "value": {
+            "type": "string",
+            "description": "The identifier value exactly as shown in official documentation"
+          }
+        },
+        "required": ["type", "value"],
+        "additionalProperties": false
+      }
+    },
+    "thirdPartyProducts": {
+      "type": "array",
+      "description": "Products from third-party companies (OEMs, AIB partners) based on this GPU. These are companies that manufacture graphics cards using the GPU chip. For datacenter GPUs: Dell, HP/HPE, Lenovo, Supermicro, PNY. For consumer GPUs: ASUS, MSI, Gigabyte, EVGA, Sapphire, PowerColor, XFX, Zotac, PNY. A single company may have MULTIPLE products with different identifiers - include them as separate entries.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "company": {
+            "type": "string",
+            "description": "Company name. Use consistent names: 'Dell' (not 'Dell Technologies'), 'HP' or 'HPE', 'ASUS' (not 'Asus'), 'MSI', 'Gigabyte', 'PNY', 'EVGA', 'Sapphire', 'PowerColor', 'XFX', 'Zotac', 'Supermicro', 'Lenovo'"
+          },
+          "productName": {
+            "type": "string",
+            "description": "The company's official product name for this card (e.g., 'NVIDIA L40S 48GB GDDR6 350W PCIe x16 DW FHFL GPU' for Dell, 'ROG STRIX GeForce RTX 4090 OC Edition' for ASUS)"
+          },
+          "identifier": {
+            "type": "string",
+            "description": "The identifier value (part number, SKU, or model number). IMPORTANT: This must be a unique identifier, NOT the product name. If identifier equals productName, the entry is invalid and should be removed."
+          },
+          "identifierType": {
+            "type": "string",
+            "enum": ["part_number", "sku", "model_number"],
+            "description": "Type of identifier: 'part_number' = Internal inventory/ordering code, often alphanumeric (e.g., Dell '7WK28', HP 'L57056-001', Supermicro 'GPU-NRTXA6000-AC'). 'sku' = Stock Keeping Unit, retail/sales identifier (e.g., PNY 'TCSL40SPCIE-PB'). 'model_number' = Consumer-facing product identifier (e.g., ASUS 'ROG-STRIX-RTX4090-O24G-GAMING')."
+          }
+        },
+        "required": ["company", "productName", "identifier", "identifierType"],
+        "additionalProperties": false
+      }
     }
   },
   "additionalProperties": false

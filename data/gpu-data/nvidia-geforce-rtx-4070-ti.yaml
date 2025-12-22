@@ -19,7 +19,7 @@ supportedHardwareOperations:
   - FP8
 supportedCUDAComputeCapability: 8.9
 releaseDate: "2023-01-05"
-lastModified: "2025-12-18T00:00:00Z"
+lastModified: "2025-12-20T00:00:00Z"
 
 summary: |
   The NVIDIA GeForce RTX 4070 Ti is a graphics card released in 2022,
@@ -32,6 +32,53 @@ summary: |
   tasks, particularly inference and training workloads that benefit from its
   large memory and high core count. It uses a PCI-Express 4.0 x16 host
   interface.
+
+manufacturerIdentifiers:
+  - type: board_id
+    value: PG141
+  - type: product_sku
+    value: PG141 SKU 331
+  - type: gpu_variant
+    value: AD104-400-A1
+
+thirdPartyProducts:
+  - company: ASUS
+    productName: ROG STRIX GeForce RTX 4070 Ti 12GB GDDR6X
+    identifier: ROG-STRIX-RTX4070TI-12G-GAMING
+    identifierType: model_number
+  - company: ASUS
+    productName: ROG STRIX GeForce RTX 4070 Ti 12GB GDDR6X OC Edition
+    identifier: ROG-STRIX-RTX4070TI-O12G-GAMING
+    identifierType: model_number
+  - company: ASUS
+    productName: TUF Gaming GeForce RTX 4070 Ti 12GB GDDR6X
+    identifier: TUF-RTX4070TI-12G-GAMING
+    identifierType: model_number
+  - company: ASUS
+    productName: TUF Gaming GeForce RTX 4070 Ti 12GB GDDR6X OC Edition
+    identifier: TUF-RTX4070TI-O12G-GAMING
+    identifierType: model_number
+  - company: Gigabyte
+    productName: GeForce RTX 4070 Ti EAGLE OC 12G
+    identifier: GV-N407TEAGLE-OC-12GD
+    identifierType: model_number
+  - company: Gigabyte
+    productName: GeForce RTX 4070 Ti GAMING OC 12G
+    identifier: GV-N407TGAMING OC-12GD
+    identifierType: model_number
+  - company: PNY
+    productName: GeForce RTX 4070 Ti 12GB XLR8 Gaming VERTO EPIC-X RGB Triple Fan
+    identifier: VCG4070T12TFXXPB1-O
+    identifierType: part_number
+  - company: Zotac
+    productName: ZOTAC GAMING GeForce RTX 4070 Ti Trinity
+    identifier: ZT-D40710D-10P
+    identifierType: part_number
+  - company: Zotac
+    productName: ZOTAC GAMING GeForce RTX 4070 Ti Trinity OC
+    identifier: ZT-D40710J-10P
+    identifierType: part_number
+
 references:
   - https://images.nvidia.com/aem-dam/Solutions/geforce/ada/nvidia-ada-gpu-architecture.pdf
   - https://images.nvidia.com/aem-dam/Solutions/Data-Center/l4/nvidia-ada-gpu-architecture-whitepaper-v2.1.pdf
@@ -41,9 +88,26 @@ references:
   - https://videocardz.com/newz/nvidia-geforce-rtx-4070-ti-officially-costs-799-launches-january-5th
   - https://www.techpowerup.com/302975/nvidia-geforce-rtx-4070-ti-launched-at-usd-799-with-performance-matching-rtx-3090-ti
   - https://images.nvidia.com/aem-dam/Solutions/geforce/blackwell/nvidia-rtx-blackwell-gpu-architecture.pdf
+  - https://www.techpowerup.com/gpu-specs/gigabyte-rtx-4070-ti-gaming-oc.b10193
+  - https://www.techpowerup.com/gpu-specs/gigabyte-rtx-4070-ti-eagle.b10276
+  - https://gccgamers.com/news/geforce-rtx-4070-ti-specs-walkthrough
+  - https://www.asus.com/motherboards-components/graphics-cards/tuf-gaming/tuf-rtx4070ti-o12g-gaming/
+  - https://rog.asus.com/graphics-cards/graphics-cards/rog-strix/rog-strix-rtx4070ti-o12g-gaming-model/
+  - https://www.msi.com/Graphics-Card/GeForce-RTX-4070-Ti-SUPRIM-X-12G
+  - https://www.msi.com/Graphics-Card/GeForce-RTX-4070-Ti-GAMING-X-TRIO-12G/support
+  - https://www.gigabyte.com/Graphics-Card/GV-N407TEAGLE-OC-12GD-rev-10
+  - https://www.pny.com/pny-geforce-rtx-4070-ti-12gb-xlr8-gaming-verto-epic-x-triple-fan
+  - https://www.zotac.com/us/product/graphics_card/zotac-gaming-geforce-rtx-4070-ti-trinity
+  - https://www.zotac.com/us/product/graphics_card/zotac-gaming-geforce-rtx-4070-ti-trinity-oc
 
 notes:
   - MSRP of $799 USD verified from multiple credible sources. Note that no Founders Edition was released for the RTX 4070 Ti (partner cards only). This GPU was originally planned as the RTX 4080 12GB at $899 but was "unlaunched" after controversy and re-released as the RTX 4070 Ti at $799.
   - fp16TFLOPS is "Peak FP16 Tensor TFLOPS with FP16 Accumulate" as that's what NVIDIA publishes. Using the "with sparsity" metric.
   - int8TOPS is "peak INT 8 TOPS" using "Effective TOPS / TFLOPS using the new Sparsity Feature". They also reveal it as 660.6 "based on GPU Boost Clock". This comes from the ada-gpu-architecture-whitepaper-v2.1.
   - Power based on what NVIDIA refers to as "TGP (Total Graphics Power)"
+  - "Manufacturer identifiers: Board ID PG141 with SKU 331 confirmed from TechPowerUp GPU Database and GCC Gamers. GPU variant is AD104-400-A1 based on Ada Lovelace architecture. Note: NVIDIA did not release a Founders Edition for RTX 4070 Ti, so no official NVPN exists for a reference design - all cards are AIB partner models."
+  - "Third-party products: ASUS offers four models - two ROG STRIX variants (standard ROG-STRIX-RTX4070TI-12G-GAMING and OC Edition ROG-STRIX-RTX4070TI-O12G-GAMING) and two TUF Gaming variants (standard TUF-RTX4070TI-12G-GAMING and OC Edition TUF-RTX4070TI-O12G-GAMING). Model numbers sourced from official ASUS product pages."
+  - "MSI model numbers sourced from official MSI product pages - includes SUPRIM X 12G and GAMING X TRIO 12G variants."
+  - "Gigabyte model numbers sourced from official Gigabyte product pages and TechPowerUp - GV-N407TEAGLE-OC-12GD (Eagle OC) and GV-N407TGAMING OC-12GD (Gaming OC)."
+  - "PNY part number VCG4070T12TFXXPB1-O sourced from TechPowerUp GPU Database and official PNY product page for the XLR8 Gaming VERTO EPIC-X RGB Triple Fan variant."
+  - "Zotac part numbers sourced from official Zotac product pages - ZT-D40710D-10P (Trinity standard) and ZT-D40710J-10P (Trinity OC)."

@@ -22,7 +22,7 @@ supportedHardwareOperations:
   - FP4
 supportedCUDAComputeCapability: 12.8
 releaseDate: "2025-01-30"
-lastModified: "2025-12-18T22:30:00Z"
+lastModified: "2025-12-19T22:00:00Z"
 
 summary: |
   The NVIDIA GeForce RTX 5090 was the first GeForce RTX 50 series product that was launched using the GB202 GPU.
@@ -51,6 +51,69 @@ summary: |
 
   Palit-owned Gainward's Nvidia RTX™ 5090 series includes the [Gainward GeForce RTX™ 5090 Phantom](https://www.gainward.com/main/vgapro.php?id=1225&lang=en) and [Gainward GeForce RTX™ 5090 Phantom GS](https://www.gainward.com/main/vgapro.php?id=1226&lang=en).
 
+manufacturerIdentifiers:
+  - type: board_id
+    value: PG145
+  - type: product_sku
+    value: PG145 SKU 30
+  - type: nvpn
+    value: 900-1G144-2530-000
+  - type: gpu_variant
+    value: GB202-300-A1
+
+thirdPartyProducts:
+  - company: ASUS
+    productName: ROG Astral GeForce RTX 5090 OC Edition 32GB GDDR7
+    identifier: ROG-ASTRAL-RTX5090-O32G-GAMING
+    identifierType: model_number
+  - company: ASUS
+    productName: ROG Matrix Platinum GeForce RTX 5090 30th Anniversary Edition
+    identifier: ROG-MATRIX-RTX5090-P32G-30TH
+    identifierType: model_number
+  - company: ASUS
+    productName: TUF Gaming GeForce RTX 5090 32GB GDDR7
+    identifier: TUF-RTX5090-32G-GAMING
+    identifierType: model_number
+  - company: Gigabyte
+    productName: GeForce RTX 5090 GAMING OC 32G
+    identifier: GV-N5090GAMING-OC-32GD
+    identifierType: model_number
+  - company: Gigabyte
+    productName: GeForce RTX 5090 WINDFORCE OC 32G
+    identifier: GV-N5090WF3OC-32GD
+    identifierType: model_number
+  - company: Gigabyte
+    productName: AORUS GeForce RTX 5090 MASTER 32G
+    identifier: GV-N5090AORUS-M-32GD
+    identifierType: model_number
+  - company: PNY
+    productName: GeForce RTX 5090 Triple Fan 32GB GDDR7
+    identifier: VCG509032TFXPB1
+    identifierType: sku
+  - company: PNY
+    productName: GeForce RTX 5090 OC Triple Fan 32GB GDDR7
+    identifier: VCG509032TFXPB1-O
+    identifierType: sku
+  - company: PNY
+    productName: GeForce RTX 5090 ARGB Triple Fan 32GB GDDR7
+    identifier: VCG509032TFXXPB1
+    identifierType: sku
+  - company: PNY
+    productName: GeForce RTX 5090 ARGB OC Triple Fan 32GB GDDR7
+    identifier: VCG509032TFXXPB1-O
+    identifierType: sku
+  - company: Zotac
+    productName: ZOTAC Gaming GeForce RTX 5090 SOLID OC
+    identifier: ZT-B50900J-10P
+    identifierType: model_number
+  - company: Zotac
+    productName: ZOTAC Gaming GeForce RTX 5090 SOLID
+    identifier: ZT-B50900D-10P
+    identifierType: model_number
+  - company: Zotac
+    productName: ZOTAC Gaming GeForce RTX 5090 SOLID OC White Edition
+    identifier: ZT-B50900Q-10P
+    identifierType: model_number
 
 references:
   - https://images.nvidia.com/aem-dam/Solutions/geforce/blackwell/nvidia-rtx-blackwell-gpu-architecture.pdf
@@ -60,6 +123,21 @@ references:
   - https://arxiv.org/abs/2310.16836
   - https://www.tomshardware.com/pc-components/gpus/nvidia-blackwell-architecture-deep-dive-a-closer-look-at-the-upgrades-coming-with-rtx-50-series-gpus
   - https://www.techpowerup.com/gpu-specs/geforce-rtx-5090.c4216
+  - https://www.techpowerup.com/gpu-specs/nvidia-geforce-rtx-5090-founders-edition.b12225
+  - https://videocardz.com/nvidia/geforce-50/geforce-rtx-5090
+  - https://www.bestbuy.com/product/nvidia-geforce-rtx-5090-32gb-gddr7-founders-edition-graphics-card-dark-gun-metal/J3GWYHGPCP
+  - https://www.techpowerup.com/330230/nvidia-geforce-rtx-5090-powered-by-gb202-silicon-512-bit-gddr7-asic-pictured
+  - https://www.topcpu.net/en/news/nvidia-gb202-chip-unveiled-for-the-first-time-to-be-used-in-rtx-5090-with-512-bit-gddr7-memory
+  - https://rog.asus.com/graphics-cards/graphics-cards/rog-astral/rog-astral-rtx5090-o32g-gaming/
+  - https://www.asus.com/us/motherboards-components/graphics-cards/tuf-gaming/tuf-rtx5090-32g-gaming/
+  - https://www.msi.com/Graphics-Card/GeForce-RTX-5090-32G-SUPRIM-SOC
+  - https://www.msi.com/Graphics-Card/GeForce-RTX-5090-32G-GAMING-TRIO-OC
+  - https://www.gigabyte.com/Graphics-Card/GV-N5090GAMING-OC-32GD
+  - https://www.gigabyte.com/Graphics-Card/GV-N5090WF3OC-32GD
+  - https://www.gigabyte.com/Graphics-Card/GV-N5090AORUS-M-32GD
+  - https://www.pny.com/geforce-rtx-5090-models
+  - https://www.bhphotovideo.com/c/product/1874647-REG/pny_vcg509032tfxpb1_o_nvidia_geforce_rtx_5090.html
+  - https://www.zotac.com/us/product/graphics_card/zotac-gaming-geforce-rtx-5090-solid
 
 notes:
   - We use the peak TOPS/FLOPS specs using the sparsity feature.
@@ -68,3 +146,5 @@ notes:
   - int8TOPS is "peak INT 8 TOPS" using "Effective TOPS / TFLOPS using the new Sparsity Feature". They also reveal it as 660.6 "based on GPU Boost Clock". This comes from the blackwell gpu architecture pdf.
   - fp32TFLOPS is "Peak TF32 Tensor TFLOPS1" as published in the blackwell gpu architecture pdf.
   - MSRP of $1,999 USD for the Founders Edition sourced from nvidia.com official press release (https://nvidianews.nvidia.com/news/nvidia-blackwell-geforce-rtx-50-series-opens-new-world-of-ai-computer-graphics).
+  - "Manufacturer identifiers: Board ID PG145 with SKU 30 confirmed from TechPowerUp and VideoCardz. NVPN (NVIDIA Part Number) 900-1G144-2530-000 for Founders Edition confirmed from Best Buy and Newegg. GPU variant is GB202-300-A1, the cut-down version of the full GB202 die featuring 170 out of 192 SMs enabled (21,760 CUDA cores)."
+  - "Third-party products: Part numbers and model numbers sourced from official manufacturer websites and authorized retailers. ASUS offers ROG Astral (ROG-ASTRAL-RTX5090-O32G-GAMING), ROG Matrix Platinum 30th Anniversary Edition (ROG-MATRIX-RTX5090-P32G-30TH), and TUF Gaming (TUF-RTX5090-32G-GAMING) variants. MSI lineup includes SUPRIM SOC, GAMING TRIO OC, VANGUARD SOC, VENTUS 3X OC, SUPRIM LIQUID SOC, and VANGUARD SOC LAUNCH EDITION. Gigabyte uses GV-N5090 prefix for GAMING OC (GV-N5090GAMING-OC-32GD), WINDFORCE OC (GV-N5090WF3OC-32GD), and AORUS MASTER (GV-N5090AORUS-M-32GD). PNY uses VCG509032 prefix with variants for standard (VCG509032TFXPB1), overclocked (VCG509032TFXPB1-O), ARGB (VCG509032TFXXPB1), and ARGB OC (VCG509032TFXXPB1-O). Zotac uses ZT-B50900 prefix for SOLID OC (ZT-B50900J-10P), SOLID non-OC (ZT-B50900D-10P), and SOLID OC White Edition (ZT-B50900Q-10P)."

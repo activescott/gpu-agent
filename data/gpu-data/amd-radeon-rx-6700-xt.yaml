@@ -14,7 +14,7 @@ supportedHardwareOperations:
   - FP32
   - FP16
 releaseDate: "2021-03-18"
-lastModified: "2025-12-18T22:30:00Z"
+lastModified: "2025-12-21T00:00:00Z"
 
 summary: >-
   The AMD Radeon RX 6700 XT was released in March 2021 as a mid-range gaming GPU
@@ -27,12 +27,83 @@ summary: >-
   AMD's primary 1440p gaming card, competing with NVIDIA's RTX 3060 Ti and RTX
   3070. It offers excellent performance per watt and solid 1440p gaming with
   DirectX 12 Ultimate support including hardware-accelerated ray tracing.
+
+manufacturerIdentifiers:
+  - type: model_number
+    value: D512
+
+thirdPartyProducts:
+  - company: Sapphire
+    productName: NITRO+ AMD Radeon RX 6700 XT 12G GDDR6
+    identifier: 11306-01-20G
+    identifierType: model_number
+  - company: Sapphire
+    productName: PULSE AMD Radeon RX 6700 XT 12G GDDR6
+    identifier: 11306-02-20G
+    identifierType: model_number
+  - company: Sapphire
+    productName: PULSE AMD Radeon RX 6700 XT OC 12G GDDR6
+    identifier: 11306-05-20G
+    identifierType: model_number
+  - company: ASUS
+    productName: ROG STRIX Radeon RX 6700 XT OC Edition 12GB GDDR6
+    identifier: ROG-STRIX-RX6700XT-O12G-GAMING
+    identifierType: model_number
+  - company: PowerColor
+    productName: Red Devil AMD Radeon RX 6700 XT 12GB GDDR6
+    identifier: AXRX 6700XT 12GBD6-3DHE/OC
+    identifierType: model_number
+  - company: XFX
+    productName: SPEEDSTER QICK 319 AMD Radeon RX 6700 XT BLACK Gaming
+    identifier: RX-67XTYPBDP
+    identifierType: model_number
+  - company: XFX
+    productName: SPEEDSTER QICK 319 AMD Radeon RX 6700 XT CORE Gaming
+    identifier: RX-67XTYLUDP
+    identifierType: model_number
+  - company: XFX
+    productName: SPEEDSTER SWFT 309 AMD Radeon RX 6700 XT CORE Gaming
+    identifier: RX-67XTYJFDV
+    identifierType: model_number
+  - company: Gigabyte
+    productName: AORUS Radeon RX 6700 XT ELITE 12G
+    identifier: GV-R67XTAORUS E-12GD
+    identifierType: model_number
+  - company: Gigabyte
+    productName: Radeon RX 6700 XT GAMING OC 12G
+    identifier: GV-R67XTGAMING OC-12GD
+    identifierType: model_number
+  - company: Gigabyte
+    productName: Radeon RX 6700 XT EAGLE 12G
+    identifier: GV-R67XTEAGLE-12GD
+    identifierType: model_number
+  - company: ASRock
+    productName: Radeon RX 6700 XT Challenger D 12GB
+    identifier: RX6700XT CLD 12G
+    identifierType: model_number
+  - company: ASRock
+    productName: Radeon RX 6700 XT Challenger Pro 12GB OC
+    identifier: RX6700XT CLP 12GO
+    identifierType: model_number
+
 references:
   - https://www.techpowerup.com/gpu-specs/radeon-rx-6700-xt.c3695
   - https://www.amd.com/en/products/graphics/desktops/radeon/6000-series/amd-radeon-rx-6700-xt.html
   - https://www.tomshardware.com/reviews/amd-radeon-rx-6700-xt-review
   - https://en.wikipedia.org/wiki/RDNA_2
   - https://videocardz.com/newz/amd-announces-radeon-rx-6700-xt-at-479-usd-launches-on-march-18th
+  - https://pcper.com/2021/03/amd-radeon-rx-6700-xt-review-reference-performance/
+  - https://www.sapphiretech.com/en/consumer/nitro-radeon-rx-6700-xt-12g-gddr6
+  - https://www.sapphiretech.com/en/consumer/pulse-radeon-rx-6700-xt-12g-gddr6
+  - https://rog.asus.com/graphics-cards/graphics-cards/rog-strix/rog-strix-rx6700xt-o12g-gaming-model/
+  - https://www.powercolor.com/product-detail66.htm
+  - https://www.xfxforce.com/shop/xfx-speedster-qick-319-amd-radeon-tm-rx-6700-xt-black-gaming-graphics-card-with-12gb-gddr6-hdmi-3xdp-amd-rdna-tm-2-
+  - https://www.gigabyte.com/Graphics-Card/GV-R67XTAORUS-E-12GD
+  - https://www.gigabyte.com/Graphics-Card/GV-R67XTGAMING-OC-12GD
+  - https://www.msi.com/Graphics-Card/Radeon-RX-6700-XT-MECH-2X-12G-OC/Specification
+  - https://us.msi.com/Graphics-Card/Radeon-RX-6700-XT-GAMING-X-12G/Specification
+  - https://www.asrock.com/Graphics-Card/AMD/Radeon%20RX%206700%20XT%20Challenger%20D%2012GB/
+  - https://www.asrock.com/Graphics-Card/AMD/Radeon%20RX%206700%20XT%20Challenger%20Pro%2012GB%20OC/
 notes:
   - FP32 TFLOPS calculated as 2,560 stream processors × 2,581 MHz boost clock × 2 ops/cycle / 1,000,000 = 13.21 TFLOPS
   - FP16 performance is 26.43 TFLOPS per TechPowerUp GPU Database (2:1 ratio to FP32, standard for RDNA 2 architecture)
@@ -42,3 +113,11 @@ notes:
   - The 96MB Infinity Cache significantly improves effective memory bandwidth beyond the raw 384 GB/s specification
   - Built on TSMC 7nm process with 335 mm² die size containing 17.2 billion transistors
   - MSRP of $479 USD verified from multiple sources including VideoCardz, PC Gamer, and Tom's Hardware at launch on March 18, 2021
+  - AMD reference card model number D512 sourced from PC Perspective review and eBay listings. Full board/BIOS identifier is 109-D512A7-00_02
+  - Sapphire model numbers 11306-01-20G (NITRO+), 11306-02-20G (PULSE), and 11306-05-20G (PULSE OC) sourced from PCPartPicker and official Sapphire product pages
+  - ASUS model number ROG-STRIX-RX6700XT-O12G-GAMING sourced from ASUS ROG official product page and PCPartPicker
+  - PowerColor model number AXRX 6700XT 12GBD6-3DHE/OC sourced from PowerColor official product page and PCPartPicker
+  - XFX model numbers RX-67XTYPBDP (QICK 319 BLACK), RX-67XTYLUDP (QICK 319 CORE), and RX-67XTYJFDV (SWFT 309) sourced from XFX official product pages
+  - Gigabyte model numbers GV-R67XTAORUS E-12GD (AORUS ELITE), GV-R67XTGAMING OC-12GD (GAMING OC), and GV-R67XTEAGLE-12GD (EAGLE) sourced from Gigabyte official product pages
+  - MSI model numbers sourced from MSI official specification pages for MECH 2X 12G OC and GAMING X 12G variants
+  - ASRock model numbers RX6700XT CLD 12G (Challenger D) and RX6700XT CLP 12GO (Challenger Pro OC) sourced from ASRock official product pages and Newegg listings

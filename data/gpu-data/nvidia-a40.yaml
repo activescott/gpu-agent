@@ -19,15 +19,72 @@ supportedHardwareOperations:
   - BF16
 supportedCUDAComputeCapability: 8.6
 releaseDate: "2020-10-05"
-lastModified: "2025-12-18T00:00:00Z"
+lastModified: "2025-12-19T00:00:00Z"
 
 summary: The NVIDIA A40, launched in October 2020 with part number
-  900-2G133-0000-100, is a professional-grade GPU built on the GA102 processor.
+  900-2G133-0000-000, is a professional-grade GPU built on the GA102 processor.
   It is tailored for high-end machine learning applications, offering
   exceptional performance in both AI training and inference tasks. The A40's
   introduction marks a significant milestone in GPU technology, showcasing
   advancements in memory capacity, bandwidth, and processing power, suitable for
   the most demanding AI workloads.
+
+manufacturerIdentifiers:
+  - type: nvpn
+    value: 900-2G133-0000-000
+  - type: nvpn
+    value: 900-2G133-0000-100
+  - type: nvpn
+    value: 900-2G133-0100-030
+  - type: board_id
+    value: PG133C
+
+thirdPartyProducts:
+  - company: Dell
+    productName: Nvidia A40 48GB x16 PCI-e 300W DW FH/HL GPU
+    identifier: W6GX6
+    identifierType: part_number
+  - company: Dell
+    productName: Dell Nvidia A40 GPU Accelerator 48GB
+    identifier: M9WT5
+    identifierType: part_number
+  - company: Dell
+    productName: NVIDIA Ampere A40, PCIe, 300W, 48GB Passive, Double Wide, Full Height GPU
+    identifier: 490-BGKE
+    identifierType: part_number
+  - company: Dell
+    productName: NVIDIA Ampere A40 GPU Accelerator
+    identifier: 490-BGSJ
+    identifierType: part_number
+  - company: Dell
+    productName: Dell NVIDIA A40 GPU Accelerator
+    identifier: 490-BGKG
+    identifierType: part_number
+  - company: Dell
+    productName: Dell NVIDIA A40 GPU Accelerator
+    identifier: 699-2G133-0200-C00
+    identifierType: part_number
+  - company: HPE
+    productName: NVIDIA A40 48GB PCIe Non-CEC Accelerator for HPE
+    identifier: R9S37C
+    identifierType: part_number
+  - company: Lenovo
+    productName: ThinkSystem NVIDIA A40 48GB PCIe 4.0 Passive GPU w/o CEC
+    identifier: 4X67A72593
+    identifierType: part_number
+  - company: PNY
+    productName: PNY NVIDIA A40 48GB GDDR6 ECC Data Centre GPU
+    identifier: TCSA40M-PB
+    identifierType: sku
+  - company: Cisco
+    productName: Cisco NVIDIA Tesla A40 Graphic Card 48GB
+    identifier: UCSC-GPU-A40
+    identifierType: part_number
+  - company: Advantech
+    productName: Tesla A40 48GB PCIe DSFH w/ATX BKT
+    identifier: SKY-TESL-A40-48P
+    identifierType: part_number
+
 references:
   - https://www.nvidia.com/en-us/data-center/a40/
   - https://www.techpowerup.com/gpu-specs/a40-pcie.c3700
@@ -35,5 +92,33 @@ references:
   - https://www.nextplatform.com/2021/04/15/nvidia-rounds-out-ampere-lineup-with-two-new-accelerators/
   - https://www.hummingbirdnetworks.com/nvidia-tesla-a40-rtx-gpu-computing-processor-tesla-a40-rtx-48-gb-for-p-n-ucsc-c240-m6l-ch-ucsc-c240-m6s-ch-ucsc-c240-m6sn-ucsc-c240-m6sx-rf-ucsc-gpu-a40
   - https://www.redcorp.com/en/product/servers-miscellaneous-accessories/lenovo/thinksystem-nvidia-a40-48gb-pci-e-gen4-passive-gpu-4x67a72593/m852qy81
+  - https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/a40/NVIDIA%20A40%20Product%20Brief.pdf
+  - https://pcserverandparts.com/nvidia-a40-gpu-accelerator-48gb-gddr6-tesla-ampere-used-pg133c-900-2g133-0000-000-699-2g133-0200-c00/
+  - https://www.acmemicro.com/Product/17961/NVIDIA-900-2G133-0000-000-Ampere-A40-48GB-GDDR6-w-ECC---Dual-Slot---PCIe-4-0-Graphic-Card----Passive-Cooling
+  - https://www.dell.com/en-us/shop/nvidia-ampere-a40-pcie-300w-48gb-passive-double-wide-full-height-gpu/apd/490-bgke/graphic-video-cards
+  - https://www.expresscomputersystems.com/products/nvidia-a40-48gb-gpu-noncec-accelerator-r9s37c
+  - https://buy.hpe.com/us/en/options/server-accelerators/computational-graphics-accelerators-for-servers/computational-graphics-accelerators-for-proliant-servers/nvidia-a40-48gb-pcie-non-cec-accelerator-for-hpe/p/r9s37c
+  - https://lenovopress.lenovo.com/lp1773-thinksystem-nvidia-a40-48gb-pcie-gen4-passive-gpu
+  - https://www.pny.com/file%20library/company/support/product%20brochures/nvidia%20data%20center%20gpus/nvidia-a40-datasheet.pdf
+  - https://www.scan.co.uk/products/48gb-pny-nvidia-telsa-a40-card-pcie-40-x16-ampere-10752-core-gddr6-w-ecc-passive
+  - https://www.expresscomputersystems.com/products/cisco-nvidia-tesla-a40-dw-ucsc-gpu-a40
+  - https://www.advantech.com/en-us/products/8d6a8886-b57e-493f-87c8-6f1e02d0608a/sky-tesl-a40-48p/mod_458ee4c5-1c38-4ed7-80e6-b246c54d373f
+  - https://www.ebay.com/p/17053130735
+
 notes:
   - "Estimated MSRP of $27,500 USD for the NVIDIA A40 based on OEM list prices. NVIDIA does not publish official MSRP for data center GPUs. OEM list prices corroborated by 2 independent sources: Cisco UCSC-GPU-A40 has list price of $27,561.22 per Hummingbird Networks, and Lenovo ThinkSystem A40 (4X67A72593) is listed at €26,526.32 (~$28,500 USD) per Redcorp. Note: Current market/resale prices (~$5,500) are significantly lower due to depreciation but do not reflect original launch list pricing."
+  - "NVIDIA part number 900-2G133-0000-000 is the primary NVPN. Sourced from multiple vendor listings including acmemicro.com, serversupply.com, and pcserverandparts.com"
+  - "NVIDIA part number 900-2G133-0000-100 sourced from wiredzone.com (Leadtek variant)"
+  - "NVIDIA part number 900-2G133-0100-030 sourced from eBay listing for Dell M9WT5 variant"
+  - "Board ID PG133C sourced from multiple vendor listings including pcserverandparts.com, ebay.com, and harddiskdirect.com"
+  - "Dell part number W6GX6 sourced from expresscomputersystems.com"
+  - "Dell part number M9WT5 sourced from expresscomputersystems.com and eBay listings"
+  - "Dell part number 490-BGKE sourced from Dell official website (dell.com) and multiple reseller listings"
+  - "Dell part number 490-BGSJ sourced from itcreations.com"
+  - "Dell part number 490-BGKG sourced from itcreations.com"
+  - "Dell OEM part number 699-2G133-0200-C00 sourced from pcserverandparts.com and marigoldsystems.com"
+  - "HPE part number R9S37C sourced from HPE official store (buy.hpe.com) and expresscomputersystems.com"
+  - "Lenovo part number 4X67A72593 sourced from Lenovo Press Product Guide (lenovopress.lenovo.com/lp1773) and redcorp.com"
+  - "PNY SKU TCSA40M-PB sourced from PNY datasheet, scan.co.uk, and novatech.co.uk"
+  - "Cisco part number UCSC-GPU-A40 sourced from Cisco official documentation and expresscomputersystems.com"
+  - "Advantech part number SKY-TESL-A40-48P sourced from Advantech official website (advantech.com) and westercom.eu"

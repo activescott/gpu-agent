@@ -15,7 +15,7 @@ supportedHardwareOperations:
   - INT8
   - INT4
 releaseDate: "2023-09-06"
-lastModified: "2025-12-18T00:00:00Z"
+lastModified: "2025-12-21T00:00:00Z"
 
 summary: >-
   The AMD Radeon RX 7800 XT was unveiled in August, 2023 as one of the GPUs
@@ -25,6 +25,79 @@ summary: >-
       With 60 compute units (CUs) and 120 AI Accelerators, it has lower compute capacity compared to the 7900 XTX's 96 CUs and 192 AI Accelerators, but the RDNA 3 architecture's AI Accelerators make it a contender among AMD GPUs for AI/machine learning.
       Some common models of this card are the PowerColor RX7800XT 16G-E/OC (B0CFPSX77R), the ASRock RX7800XT CL 16GO (B0CHK3929K), Gigabyte GV-R78XTGAMING OC-16GD (B0CGHQ32S2), and Sapphire 11330-03-20G (B0CFWRLDB5).
       The lowest price for all of these is tracked and continuously updated below.
+
+manufacturerIdentifiers: []
+
+thirdPartyProducts:
+  - company: Sapphire
+    productName: NITRO+ AMD Radeon RX 7800 XT 16G GDDR6
+    identifier: 11330-01-20G
+    identifierType: model_number
+  - company: Sapphire
+    productName: PULSE AMD Radeon RX 7800 XT 16G GDDR6
+    identifier: 11330-02-20G
+    identifierType: model_number
+  - company: Sapphire
+    productName: PURE AMD Radeon RX 7800 XT 16G GDDR6
+    identifier: 11330-03-20G
+    identifierType: model_number
+  - company: PowerColor
+    productName: Red Devil AMD Radeon RX 7800 XT 16GB GDDR6
+    identifier: RX7800XT 16G-E/OC
+    identifierType: model_number
+  - company: PowerColor
+    productName: Hellhound AMD Radeon RX 7800 XT 16GB GDDR6
+    identifier: RX7800XT 16G-L/OC
+    identifierType: model_number
+  - company: PowerColor
+    productName: Fighter AMD Radeon RX 7800 XT 16GB GDDR6
+    identifier: RX7800XT 16G-F/OC
+    identifierType: model_number
+  - company: PowerColor
+    productName: AMD Radeon RX 7800 XT Dual Fan 16GB GDDR6
+    identifier: RX7800XT16GP
+    identifierType: part_number
+  - company: XFX
+    productName: Speedster MERC 319 Radeon RX 7800 XT Black Edition
+    identifier: RX-78TMERCB9
+    identifierType: model_number
+  - company: XFX
+    productName: Speedster QICK 319 Radeon RX 7800 XT Core Edition
+    identifier: RX-78TQICKF9
+    identifierType: model_number
+  - company: XFX
+    productName: Speedster SWFT 210 Radeon RX 7800 XT Core Edition
+    identifier: RX-78TSWFTFP
+    identifierType: model_number
+  - company: ASUS
+    productName: TUF Gaming Radeon RX 7800 XT OC Edition 16GB GDDR6
+    identifier: TUF-RX7800XT-O16G-GAMING
+    identifierType: model_number
+  - company: ASUS
+    productName: TUF Gaming Radeon RX 7800 XT White OC Edition 16GB GDDR6
+    identifier: TUF-RX7800XT-O16G-WHITE-GAMING
+    identifierType: model_number
+  - company: ASUS
+    productName: TUF Gaming Radeon RX 7800 XT OG OC Edition 16GB GDDR6
+    identifier: TUF-RX7800XT-O16G-OG-GAMING
+    identifierType: model_number
+  - company: Gigabyte
+    productName: Radeon RX 7800 XT GAMING OC 16G
+    identifier: GV-R78XTGAMING OC-16GD
+    identifierType: model_number
+  - company: Gigabyte
+    productName: Radeon RX 7800 XT GAMING 16G
+    identifier: GV-R78XTGAMING-16GD
+    identifierType: model_number
+  - company: ASRock
+    productName: Radeon RX 7800 XT Challenger 16GB OC
+    identifier: RX7800XT CL 16GO
+    identifierType: model_number
+  - company: ASRock
+    productName: Radeon RX 7800 XT Steel Legend 16GB OC
+    identifier: RX7800XT SL 16GO
+    identifierType: model_number
+
 references:
   - https://www.amd.com/en/products/specifications/graphics
   - https://www.amd.com/en/products/graphics/amd-radeon-rx-7800-xt
@@ -34,7 +107,40 @@ references:
   - https://gpuopen.com/learn/wmma_on_rdna3/
   - https://gpuopen.com/learn/amd-lab-notes/amd-lab-notes-matrix-cores-readme/
   - https://wccftech.com/amd-radeon-rx-7600-xt-16-gb-rnda-3-gpu-2048-cores-16-gb-vram-tackles-rtx-4060-329-us/
+  - https://www.sapphiretech.com/en/consumer/nitro-radeon-rx-7800-xt-16g-gddr6
+  - https://pcpartpicker.com/product/N4P8TW/sapphire-nitro-radeon-rx-7800-xt-16-gb-video-card-11330-01-20g
+  - https://pcpartpicker.com/product/fcBzK8/sapphire-pulse-radeon-rx-7800-xt-16-gb-video-card-11330-02-20g
+  - https://www.theitdepot.com/sapphire_pure_amd_radeon_rx_7800_xt_16g_gddr6_11330-03-20g
+  - https://www.powercolor.com/product-detail32.htm
+  - https://www.powercolor.com/product-detail31.htm
+  - https://www.powercolor.com/product-detail33.htm
+  - https://www.powercolor.com/product-detail38.htm
+  - https://www.microcenter.com/product/689972/powercolor-amd-radeon-rx-7800-xt-dual-fan-16gb-gddr6-pcie-40-graphics-card
+  - https://www.xfxforce.com/shop/xfx-speedster-merc319-radeon-tm-rx-7800-xt-black-edition
+  - https://pcpartpicker.com/product/MQwmP6/xfx-speedster-merc-319-black-radeon-rx-7800-xt-16-gb-video-card-rx-78tmercb9
+  - https://www.xfxforce.com/shop/xfx-speedster-qick-319-radeon-tm-rx-7800-xt-core-edition
+  - https://www.xfxforce.com/shop/xfx-speedster-swft-210-radeon-tm-rx-7800-xt-core-edition
+  - https://pcpartpicker.com/product/7WWJ7P/xfx-speedster-swft-210-core-radeon-rx-7800-xt-16-gb-video-card-rx-78tswftfp
+  - https://www.asus.com/motherboards-components/graphics-cards/tuf-gaming/tuf-rx7800xt-o16g-gaming/
+  - https://www.asus.com/motherboards-components/graphics-cards/tuf-gaming/tuf-rx7800xt-o16g-white-gaming/
+  - https://www.asus.com/motherboards-components/graphics-cards/tuf-gaming/tuf-rx7800xt-o16g-og-gaming/
+  - https://www.gigabyte.com/Graphics-Card/GV-R78XTGAMING-OC-16GD
+  - https://pcpartpicker.com/product/mHpQzy/gigabyte-gaming-oc-radeon-rx-7800-xt-16-gb-video-card-gv-r78xtgaming-oc-16gd
+  - https://www.asrock.com/Graphics-Card/AMD/Radeon%20RX%207800%20XT%20Challenger%2016GB%20OC/
+  - https://www.asrock.com/Graphics-Card/AMD/Radeon%20RX%207800%20XT%20Steel%20Legend%2016GB%20OC/index.asp
+  - https://pcpartpicker.com/product/bfV2FT/asrock-steel-legend-oc-radeon-rx-7800-xt-16-gb-video-card-rx7800xt-sl-16go
+  - https://www.driveridentifier.com/scan/amd-radeon-rx-7800-xt-driver/download/1180551139/23D0239AA34B4732ACD2DDCAFE0FD2F0/PCI%5CVEN_1002&DEV_747E&SUBSYS_2427148C&REV_C8
+
 notes:
   - 'tensorCoreCount: tracking the AI Accelerators as "tensor cores"'
   - "int8TOPS: More Information Needed"
   - MSRP of $499 USD sourced from AMD announcement at Gamescom 2023, verified from Tom's Hardware and TechPowerUp.
+  - 'PCI Device ID 747E (vendor 1002) sourced from driver download sites and confirmed across multiple AIB partner products'
+  - 'Sapphire model numbers 11330-01-20G (NITRO+), 11330-02-20G (PULSE), and 11330-03-20G (PURE) sourced from PCPartPicker, Amazon, Micro Center, and retail listings'
+  - 'PowerColor model numbers sourced from PowerColor official website and Micro Center retail listings'
+  - 'XFX model numbers RX-78TMERCB9, RX-78TQICKF9, and RX-78TSWFTFP sourced from XFX official website and PCPartPicker'
+  - 'ASUS TUF Gaming model numbers sourced from ASUS Global official product pages. Note: ASUS did not release a ROG STRIX variant of the RX 7800 XT'
+  - 'Gigabyte model numbers GV-R78XTGAMING OC-16GD (overclocked) and GV-R78XTGAMING-16GD (non-OC) sourced from Gigabyte official website and retail listings'
+  - 'ASRock model numbers RX7800XT CL 16GO (Challenger) and RX7800XT SL 16GO (Steel Legend) sourced from ASRock official website and PCPartPicker'
+  - 'MSI was notably absent from the RX 7800 XT launch and did not produce any RX 7800 XT graphics cards as of the research date'
+  - 'AMD did not produce a reference "Made by AMD" (MBA) edition for retail sale. Sapphire was the only AIB partner to offer a reference design variant'

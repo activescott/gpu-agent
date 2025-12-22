@@ -19,7 +19,7 @@ supportedHardwareOperations:
   - FP8
 supportedCUDAComputeCapability: 8.9
 releaseDate: "2024-01-17"
-lastModified: "2025-12-18T00:00:00Z"
+lastModified: "2025-12-20T00:00:00Z"
 
 summary: |
   The NVIDIA GeForce RTX 4070 SUPER is a high-performance graphics card released in January 2024,
@@ -31,6 +31,117 @@ summary: |
   performance for both 1440p/4K gaming and machine learning workloads. It uses a PCI-Express
   4.0 x16 interface and features 504 GB/s memory bandwidth on a 192-bit bus.
 
+manufacturerIdentifiers:
+  - type: nvpn
+    value: "900-1G141-2534-000"
+  - type: product_sku
+    value: "PG141 SKU 334"
+  - type: board_id
+    value: "PG141"
+  - type: gpu_variant
+    value: "AD104-350"
+
+thirdPartyProducts:
+  # ASUS Products
+  - company: ASUS
+    productName: "Dual GeForce RTX 4070 SUPER 12GB GDDR6X"
+    identifier: "DUAL-RTX4070S-12G"
+    identifierType: model_number
+  - company: ASUS
+    productName: "Dual GeForce RTX 4070 SUPER OC Edition 12GB GDDR6X"
+    identifier: "DUAL-RTX4070S-O12G"
+    identifierType: model_number
+  - company: ASUS
+    productName: "Dual GeForce RTX 4070 SUPER EVO OC Edition 12GB GDDR6X"
+    identifier: "DUAL-RTX4070S-O12G-EVO"
+    identifierType: model_number
+  - company: ASUS
+    productName: "Dual GeForce RTX 4070 SUPER White OC Edition 12GB GDDR6X"
+    identifier: "DUAL-RTX4070S-O12G-WHITE"
+    identifierType: model_number
+  - company: ASUS
+    productName: "TUF Gaming GeForce RTX 4070 SUPER 12GB GDDR6X"
+    identifier: "TUF-RTX4070S-12G-GAMING"
+    identifierType: model_number
+  - company: ASUS
+    productName: "TUF Gaming GeForce RTX 4070 SUPER 12GB GDDR6X OC Edition"
+    identifier: "TUF-RTX4070S-O12G-GAMING"
+    identifierType: model_number
+
+  # Gigabyte Products
+  - company: Gigabyte
+    productName: "GeForce RTX 4070 SUPER GAMING OC 12G"
+    identifier: "GV-N407SGAMING OC-12GD"
+    identifierType: model_number
+  - company: Gigabyte
+    productName: "GeForce RTX 4070 SUPER WINDFORCE OC 12G"
+    identifier: "GV-N407SWF3OC-12GD"
+    identifierType: model_number
+  - company: Gigabyte
+    productName: "GeForce RTX 4070 SUPER AERO OC 12G"
+    identifier: "GV-N407SAERO OC-12GD"
+    identifierType: model_number
+  - company: Gigabyte
+    productName: "AORUS GeForce RTX 4070 SUPER MASTER 12G"
+    identifier: "GV-N407SAORUS M-12GD"
+    identifierType: model_number
+
+  # PNY Products
+  - company: PNY
+    productName: "GeForce RTX 4070 SUPER 12GB VERTO Dual Fan Overclocked Edition"
+    identifier: "VCG4070S12DFXPB1-O"
+    identifierType: model_number
+  - company: PNY
+    productName: "GeForce RTX 4070 SUPER 12GB VERTO Dual Fan"
+    identifier: "VCG4070S12DFXPO"
+    identifierType: model_number
+  - company: PNY
+    productName: "XLR8 Gaming VERTO EPIC-X RGB Triple Fan OC"
+    identifier: "VCG4070S12TFXXPB1-O"
+    identifierType: model_number
+
+  # Zotac Products
+  - company: Zotac
+    productName: "GAMING GeForce RTX 4070 SUPER Twin Edge 12GB GDDR6X"
+    identifier: "ZT-D40720E-10M"
+    identifierType: model_number
+  - company: Zotac
+    productName: "GAMING GeForce RTX 4070 SUPER Twin Edge OC 12GB GDDR6X"
+    identifier: "ZT-D40720H-10M"
+    identifierType: model_number
+
+  # Palit Products
+  - company: Palit
+    productName: "GeForce RTX 4070 SUPER Dual"
+    identifier: "NED407S019K9-1043D"
+    identifierType: part_number
+  - company: Palit
+    productName: "GeForce RTX 4070 SUPER Dual OC"
+    identifier: "NED407SS19K9-1043D"
+    identifierType: part_number
+  - company: Palit
+    productName: "GeForce RTX 4070 SUPER JetStream OC"
+    identifier: "NED407ST19K9-1043J"
+    identifierType: part_number
+
+  # Colorful Products
+  - company: Colorful
+    productName: "iGame GeForce RTX 4070 SUPER Ultra W OC 12GB"
+    identifier: "iGame GeForce RTX 4070 SUPER Ultra W OC"
+    identifierType: model_number
+  - company: Colorful
+    productName: "iGame GeForce RTX 4070 SUPER Advanced OC 12GB"
+    identifier: "iGame GeForce RTX 4070 SUPER Advanced OC"
+    identifierType: model_number
+  - company: Colorful
+    productName: "iGame GeForce RTX 4070 SUPER Vulcan W OC 12GB"
+    identifier: "iGame GeForce RTX 4070 SUPER Vulcan W OC"
+    identifierType: model_number
+  - company: Colorful
+    productName: "iGame GeForce RTX 4070 SUPER Vulcan OC 12GB"
+    identifier: "iGame GeForce RTX 4070 SUPER Vulcan OC"
+    identifierType: model_number
+
 references:
   - https://images.nvidia.com/aem-dam/Solutions/geforce/ada/nvidia-ada-gpu-architecture.pdf
   - https://images.nvidia.com/aem-dam/Solutions/Data-Center/l4/nvidia-ada-gpu-architecture-whitepaper-v2.1.pdf
@@ -38,6 +149,21 @@ references:
   - https://www.nvidia.com/en-us/geforce/news/geforce-rtx-4080-4070-ti-4070-super-gpu/
   - https://www.waredb.com/processor/nvidia-geforce-rtx-4070-super
   - https://www.techpowerup.com/gpu-specs/geforce-rtx-4070-super.c4214
+  - https://videocardz.net/nvidia-geforce-rtx-4070-super
+  - https://www.newegg.com/nvidia-founders-edition-900-1g141-2534-000-geforce-rtx-4070-super-12gb-graphics-card/p/1FT-0004-008P2
+  - https://www.asus.com/us/motherboards-components/graphics-cards/dual/dual-rtx4070s-o12g/
+  - https://www.asus.com/us/motherboards-components/graphics-cards/tuf-gaming/tuf-rtx4070s-o12g-gaming/
+  - https://us.msi.com/Graphics-Card/GeForce-RTX-4070-SUPER-12G-VENTUS-3X-OC/Specification
+  - https://us.msi.com/Graphics-Card/GeForce-RTX-4070-SUPER-12G-GAMING-X-SLIM/Specification
+  - https://www.gigabyte.com/Graphics-Card/GV-N407SGAMING-OC-12GD
+  - https://www.gigabyte.com/Graphics-Card/GV-N407SWF3OC-12GD-rev-10
+  - https://www.amazon.com/PNY-Graphics-SFF-Ready-DisplayPort-supports/dp/B0CS197RJM
+  - https://www.newegg.com/pny-geforce-rtx-4070-super-vcg4070s12tfxxpb1-o/p/N82E16814133864
+  - https://www.zotac.com/us/product/graphics_card/zotac-gaming-geforce-rtx-4070-super-twin-edge-oc-12gb-gddr6x
+  - https://www.palit.com/palit/vgapro.php?id=4997&lang=en
+  - https://www.palit.com/palit/vgapro.php?id=5077&lang=en
+  - https://en.colorful.cn/en/home/product?mid=102&id=008fb798-f96a-49d8-ab36-d6c723b7a909
+  - https://en.colorful.cn/en/home/product?mid=102&id=aa12009a-02f0-45a2-9bbe-1211583e910f
 
 notes:
   - MSRP of $599 USD sourced from NVIDIA's official announcement. A Founders Edition was available at this price, matching the original RTX 4070's launch price while offering significantly better performance.
@@ -49,3 +175,9 @@ notes:
   - Memory bandwidth calculated as 192-bit interface × 21 Gbps = 504 GB/s.
   - Process node is TSMC 4N (5nm-class) with 35.8 billion transistors.
   - The RTX 4070 SUPER offers significantly better value than the original RTX 4070, with 21% more CUDA cores and 12GB VRAM (vs 12GB) at the same MSRP and power envelope.
+  - NVIDIA Part Number (NVPN) 900-1G141-2534-000 sourced from Best Buy and Newegg listings for the Founders Edition.
+  - Product SKU PG141 SKU 334 and Board ID PG141 sourced from VideoCardz.net technical specifications.
+  - PCI Device ID 2783 and GPU variant AD104-350 sourced from VideoCardz.com and linux-hardware.org.
+  - Third-party product identifiers sourced from official manufacturer websites (ASUS, MSI, Gigabyte, Zotac, Palit, Colorful) and retail listings (Amazon, Newegg, Micro Center).
+  - EVGA does not manufacture RTX 4070 SUPER cards as they exited the GPU market in September 2022 before the RTX 40 series launch.
+  - Gainward RTX 4070 SUPER models (Panther OC, Ghost) exist but specific part numbers were not available from search results.

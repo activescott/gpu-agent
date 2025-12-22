@@ -19,7 +19,7 @@ supportedHardwareOperations:
   - BF16
 supportedCUDAComputeCapability: 8.6
 releaseDate: "2021-04-12"
-lastModified: "2025-12-18T22:30:00Z"
+lastModified: "2025-12-19T12:00:00Z"
 
 summary: The NVIDIA RTX A5000 GPU is a high-end graphics card designed for
   demanding applications, including machine learning and advanced rendering. It
@@ -27,6 +27,51 @@ summary: The NVIDIA RTX A5000 GPU is a high-end graphics card designed for
   GDDR6 memory. The RTX A5000 is known for its balance between performance,
   power consumption, and memory capabilities, making it a versatile choice for a
   range of AI and ML workloads.
+
+manufacturerIdentifiers:
+  - type: board_id
+    value: PG132
+  - type: product_sku
+    value: PG132 SKU 500
+  - type: nvpn
+    value: 900-5G132-2200-000
+  - type: nvpn
+    value: 900-5G132-2500-000
+  - type: nvpn
+    value: 900-5G132-1700-000
+  - type: nvpn
+    value: 900-5G132-0100-001
+
+thirdPartyProducts:
+  - company: PNY
+    productName: NVIDIA RTX A5000 24GB GDDR6 Graphics Card
+    identifier: VCNRTXA5000-PB
+    identifierType: sku
+  - company: Dell
+    productName: NVIDIA RTX A5000 24 GB GDDR6 Graphics Card
+    identifier: 490-BHTI
+    identifierType: part_number
+  - company: Dell
+    productName: NVIDIA RTX A5000 24GB GDDR6 Graphics Card
+    identifier: J4KCH
+    identifierType: part_number
+  - company: HP
+    productName: NVIDIA RTX A5000 24GB 4DP GFX
+    identifier: 20X23AA
+    identifierType: part_number
+  - company: Lenovo
+    productName: NVIDIA RTX A5000 24GB GDDR6 Graphics Card
+    identifier: 4X61D97085
+    identifierType: part_number
+  - company: Supermicro
+    productName: NVIDIA RTX A5000 Graphic Card 24 GB GDDR6 ECC
+    identifier: GPU-NVQRTX-A5000
+    identifierType: part_number
+  - company: ASUS
+    productName: NVIDIA RTX A5000 24GB 230W
+    identifier: 90SKC000-M5LAN0
+    identifierType: part_number
+
 references:
   - https://www.techpowerup.com/gpu-specs/rtx-a5000.c3748
   - https://www.nvidia.com/en-us/design-visualization/rtx-a5000/
@@ -36,6 +81,15 @@ references:
   - https://www.aspsys.com/nvidia-gpus/
   - https://www.nvidia.com/content/PDF/nvidia-ampere-ga-102-gpu-architecture-whitepaper-v2.pdf
   - https://www.nvidia.com/en-us/data-center/tensor-cores/
+  - https://www.serversupply.com/GPU/GDDR6/24GB/NVIDIA/900-5G132-2200-000_399632.htm
+  - https://pcserverandparts.com/dell-nvidia-rtx-a5000-24gb-gddr6-graphics-card-used-j4kch-900-5g132-0100-001/
+  - https://www.compeve.com/pciexpress-c-3_32/pny-nvidia-rtx-a5000-vcnrtxa5000-pg132-24gb-gddr6-ecc-4xdp-9005g1321700000-p-15187.html
+  - https://www.dell.com/en-us/shop/dell-nvidia-rtx-a5000-24-gb-gddr6-full-height-pcie-40x16-4-dp-graphics-card/apd/490-bhti/graphic-video-cards
+  - https://www.connection.com/product/hp-nvidia-rtx-a5000-24gb-4dp-gfx/20x23aa/41281319
+  - https://www.connection.com/product/lenovo-nvidia-rtx-a5000-pcie-4.0-x16-graphics-card-24gb-gddr6/4x61d97085/41295516
+  - https://www.exxactcorp.com/Supermicro-GPU-NVQRTX-A5000-E3770660
+  - https://smicro.eu/asus-nvidia-rtx-a5000-with-24gb-230w-90skc000-m5lan0-1
+
 notes:
   - "int8TOPS: INT8 TOPS is hard to find for this card. See the
     forums.developer.nvidia.com reference below: The INT8 TOPS performance of
@@ -45,3 +99,5 @@ notes:
     sparsity, the performance should be double this number, meaning the INT8
     TOPS performance would be approximately 444.4 TOPS."
   - MSRP of $2,250 USD verified from 3 sources - DEVELOP3D notes expected street price of $2,250, CG Channel confirms pricing of $1,000 for RTX A4000 and $2,250 for RTX A5000, and TechPowerUp GPU Database lists launch price.
+  - "Manufacturer identifiers: Board ID PG132 with SKU 500 confirmed from TechPowerUp and multiple reseller listings. Multiple NVPN (NVIDIA Part Numbers) exist for different variants: 900-5G132-2200-000 (standard), 900-5G132-2500-000 (retail), 900-5G132-1700-000 (PNY), and 900-5G132-0100-001 (Dell OEM)."
+  - "Third-party products: Part numbers sourced from official vendor websites and authorized resellers. PNY uses VCNRTXA5000-PB as their primary SKU. Dell offers two part numbers (490-BHTI and J4KCH/0J4KCH) for different configurations. HP uses 20X23AA. Lenovo uses 4X61D97085. Supermicro uses GPU-NVQRTX-A5000. ASUS uses 90SKC000-M5LAN0."

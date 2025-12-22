@@ -14,7 +14,76 @@ supportedHardwareOperations:
   - FP32
   - FP16
 releaseDate: "2020-11-18"
-lastModified: "2025-12-18T00:00:00Z"
+lastModified: "2025-12-21T00:00:00Z"
+
+manufacturerIdentifiers:
+  - type: part_number
+    value: 102-D41205
+  - type: board_number
+    value: 109-D412A7-00_03
+  - type: gpu_variant
+    value: Navi 21 XT (215-121000177)
+
+thirdPartyProducts:
+  # ASUS
+  - company: ASUS
+    productName: TUF Gaming Radeon RX 6800 XT OC Edition
+    identifier: TUF-RX6800XT-O16G-GAMING
+    identifierType: model_number
+  - company: ASUS
+    productName: ROG STRIX LC Radeon RX 6800 XT OC Edition (Liquid Cooled)
+    identifier: ROG-STRIX-LC-RX6800XT-O16G-GAMING
+    identifierType: model_number
+  # Sapphire
+  - company: Sapphire
+    productName: NITRO+ AMD Radeon RX 6800 XT
+    identifier: 11304-02-20G
+    identifierType: part_number
+  - company: Sapphire
+    productName: NITRO+ AMD Radeon RX 6800 XT SE (Special Edition)
+    identifier: 11304-01-20G
+    identifierType: part_number
+  - company: Sapphire
+    productName: PULSE AMD Radeon RX 6800 XT
+    identifier: 11304-03-20G
+    identifierType: part_number
+  # PowerColor
+  - company: PowerColor
+    productName: Red Devil AMD Radeon RX 6800 XT
+    identifier: AXRX 6800XT 16GBD6-3DHE/OC
+    identifierType: part_number
+  - company: PowerColor
+    productName: Red Devil AMD Radeon RX 6800 XT Limited Edition
+    identifier: AXRX 6800XT 16GBD6-2DHCE/OC
+    identifierType: part_number
+  # XFX
+  - company: XFX
+    productName: Speedster MERC 319 AMD Radeon RX 6800 XT CORE
+    identifier: RX-68XTALFD9
+    identifierType: model_number
+  # MSI
+  - company: MSI
+    productName: Radeon RX 6800 XT GAMING X TRIO
+    identifier: RX 6800 XT Gaming X Trio 16G
+    identifierType: model_number
+  # Gigabyte
+  - company: Gigabyte
+    productName: AORUS Radeon RX 6800 XT MASTER
+    identifier: GV-R68XTAORUS M-16GD
+    identifierType: model_number
+  - company: Gigabyte
+    productName: AORUS Radeon RX 6800 XT MASTER TYPE C
+    identifier: GV-R68XTAORUS-M-16GC
+    identifierType: model_number
+  - company: Gigabyte
+    productName: Radeon RX 6800 XT GAMING OC
+    identifier: GV-R68XTGAMING OC-16GD
+    identifierType: model_number
+  # ASRock
+  - company: ASRock
+    productName: Radeon RX 6800 XT Taichi X 16G OC
+    identifier: RX6800XT TCX 16GO
+    identifierType: model_number
 
 summary: >-
   The AMD Radeon RX 6800 XT was released in November 2020 as AMD's high-end gaming GPU
@@ -31,6 +100,18 @@ references:
   - https://www.amd.com/en/products/graphics/desktops/radeon/6000-series/amd-radeon-rx-6800-xt.html
   - https://www.tomsguide.com/news/amd-radeon-rx-6800-xt-price-release-date-specs-and-more
   - https://en.wikipedia.org/wiki/Radeon_RX_6000_series
+  - https://devicehunt.com/view/type/pci/vendor/1002/device/73BF
+  - https://www.sapphiretech.com/en/consumer/nitro-radeon-rx-6800-xt-16g-gddr6
+  - https://www.sapphiretech.com/en/consumer/nitro-radeon-rx-6800-xt-se-16g-gddr6
+  - https://www.powercolor.com/product-detail193.htm
+  - https://www.powercolor.com/product-detail194.htm
+  - https://www.xfxforce.com/shop/xfx-speedster-merc-319-amd-radeon-tm-rx-6800-xt-core-gaming-graphics-card-with-16gb-gddr6-amd-rdna-tm-2
+  - https://www.asus.com/motherboards-components/graphics-cards/tuf-gaming/tuf-rx6800xt-o16g-gaming/techspec/
+  - https://rog.asus.com/graphics-cards/graphics-cards/rog-strix/rog-strix-lc-rx6800xt-o16g-gaming-model/spec/
+  - https://www.msi.com/Graphics-Card/Radeon-RX-6800-XT-GAMING-X-TRIO-16G
+  - https://www.gigabyte.com/Graphics-Card/GV-R68XTAORUS-M-16GD
+  - https://www.gigabyte.com/Graphics-Card/GV-R68XTGAMING-OC-16GD/sp
+  - https://www.asrock.com/Graphics-Card/AMD/Radeon%20RX%206800%20XT%20Taichi%20X%2016G%20OC/
 notes:
   - FP16 performance is 41.47 TFLOPS calculated at 2:1 ratio to FP32, which is standard for RDNA 2 architecture
   - FP32 TFLOPS calculated as 4,608 stream processors × 2,250 MHz boost clock × 2 ops/cycle = 20.74 TFLOPS
@@ -39,3 +120,10 @@ notes:
   - The 128MB Infinity Cache significantly improves effective memory bandwidth beyond the raw 512 GB/s specification
   - Built on TSMC 7nm process with 520 mm² die size containing 26.8 billion transistors
   - MSRP of $649 USD verified from multiple sources including Tom's Guide, Wikipedia, and VideoCardz at launch on November 18, 2020
+  - AMD reference card part number 102-D41205 with board number 109-D412A7-00_03 sourced from TechPowerUp GPU Database
+  - GPU variant Navi 21 XT (215-121000177) is the specific silicon used for RX 6800 XT
+  - PCI Device ID 1002:73BF is shared across RX 6800, RX 6800 XT, and RX 6900 XT as they use the same Navi 21 GPU with different configurations
+  - Third-party AIB partners include ASUS (TUF Gaming, ROG STRIX series), Sapphire (NITRO+, PULSE series), PowerColor (Red Devil series), XFX (Speedster MERC series), MSI (GAMING X TRIO series), Gigabyte (AORUS MASTER, GAMING OC series), and ASRock (Taichi X series)
+  - Model numbers and part numbers sourced from manufacturer official websites, TechPowerUp GPU Database, and authorized retailer listings
+  - Sapphire offers multiple variants including NITRO+ standard (11304-02-20G), NITRO+ SE Special Edition (11304-01-20G), and PULSE (11304-03-20G)
+  - PowerColor Red Devil Limited Edition was a very limited production run with only 1000 units manufactured

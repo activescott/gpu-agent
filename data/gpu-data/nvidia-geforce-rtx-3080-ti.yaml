@@ -17,7 +17,7 @@ supportedHardwareOperations:
   - BF16
 supportedCUDAComputeCapability: 8.6
 releaseDate: "2021-06-03"
-lastModified: "2025-12-18T00:00:00Z"
+lastModified: "2025-12-20T00:00:00Z"
 
 summary: |
   The NVIDIA GeForce RTX 3080 Ti is a flagship-class graphics card released in June 2021,
@@ -30,12 +30,150 @@ summary: |
   PCI-Express 4.0 x16 interface and features 912 GB/s memory bandwidth on a 384-bit bus,
   matching the RTX 3090's memory subsystem.
 
+manufacturerIdentifiers:
+  - type: nvpn
+    value: "900-1G133-2518-000"
+  - type: board_id
+    value: GA102-225
+
+thirdPartyProducts:
+  - company: ASUS
+    productName: TUF Gaming GeForce RTX 3080 Ti 12GB GDDR6X
+    identifier: TUF-RTX3080Ti-12G-GAMING
+    identifierType: model_number
+  - company: ASUS
+    productName: TUF Gaming GeForce RTX 3080 Ti OC Edition 12GB GDDR6X
+    identifier: TUF-RTX3080Ti-O12G-GAMING
+    identifierType: model_number
+  - company: ASUS
+    productName: ROG Strix GeForce RTX 3080 Ti OC Edition 12GB GDDR6X
+    identifier: ROG-STRIX-RTX3080Ti-O12G-GAMING
+    identifierType: model_number
+  - company: ASUS
+    productName: ROG Strix LC GeForce RTX 3080 Ti OC Edition 12GB GDDR6X
+    identifier: ROG-STRIX-RTX3080Ti-O12G-LC
+    identifierType: model_number
+  - company: Gigabyte
+    productName: GeForce RTX 3080 Ti EAGLE 12G
+    identifier: GV-N308TEAGLE-12GD
+    identifierType: model_number
+  - company: Gigabyte
+    productName: GeForce RTX 3080 Ti EAGLE OC 12G
+    identifier: GV-N308TEAGLE OC-12GD
+    identifierType: model_number
+  - company: Gigabyte
+    productName: AORUS GeForce RTX 3080 Ti MASTER 12G
+    identifier: GV-N308TAORUS M-12GD
+    identifierType: model_number
+  - company: Gigabyte
+    productName: AORUS GeForce RTX 3080 Ti GAMING BOX 12G
+    identifier: GV-N308TIXEB-12GD
+    identifierType: model_number
+  - company: PNY
+    productName: XLR8 Gaming REVEL EPIC-X RGB GeForce RTX 3080 Ti
+    identifier: VCG3080T12TFXPPB
+    identifierType: model_number
+  - company: Zotac
+    productName: GAMING GeForce RTX 3080 Ti Trinity
+    identifier: ZT-A30810D-10P
+    identifierType: model_number
+  - company: Zotac
+    productName: GAMING GeForce RTX 3080 Ti Trinity OC
+    identifier: ZT-A30810J-10P
+    identifierType: model_number
+  - company: Zotac
+    productName: GeForce RTX 3080 Ti AMP Holo
+    identifier: ZT-A30810F-10P
+    identifierType: model_number
+  - company: EVGA
+    productName: GeForce RTX 3080 Ti XC3 GAMING
+    identifier: 12G-P5-3953-KR
+    identifierType: model_number
+  - company: EVGA
+    productName: GeForce RTX 3080 Ti XC3 ULTRA GAMING
+    identifier: 12G-P5-3955-KR
+    identifierType: model_number
+  - company: EVGA
+    productName: GeForce RTX 3080 Ti XC3 ULTRA HYBRID GAMING
+    identifier: 12G-P5-3958-KR
+    identifierType: model_number
+  - company: EVGA
+    productName: GeForce RTX 3080 Ti FTW3 GAMING
+    identifier: 12G-P5-3965-KR
+    identifierType: model_number
+  - company: EVGA
+    productName: GeForce RTX 3080 Ti FTW3 ULTRA GAMING
+    identifier: 12G-P5-3967-KR
+    identifierType: model_number
+  - company: EVGA
+    productName: GeForce RTX 3080 Ti FTW3 ULTRA HYBRID GAMING
+    identifier: 12G-P5-3968-KR
+    identifierType: model_number
+  - company: Palit
+    productName: GeForce RTX 3080 Ti GamingPro
+    identifier: NED308T019KB-132AA
+    identifierType: model_number
+  - company: Palit
+    productName: GeForce RTX 3080 Ti GameRock
+    identifier: NED308T019KB-1020G
+    identifierType: model_number
+  - company: Palit
+    productName: GeForce RTX 3080 Ti GameRock OC
+    identifier: NED308TT19KB-1020G
+    identifierType: model_number
+  - company: Gainward
+    productName: GeForce RTX 3080 Ti Phoenix
+    identifier: NED308T019KB-132AX
+    identifierType: model_number
+  - company: Gainward
+    productName: GeForce RTX 3080 Ti Phantom GS
+    identifier: NED308TT19KB-1020M
+    identifierType: model_number
+  - company: GALAX
+    productName: GeForce RTX 3080 Ti SG 1-Click OC
+    identifier: 38IOM5MD99DK
+    identifierType: model_number
+  - company: GALAX
+    productName: GeForce RTX 3080 Ti EXG 1-Click OC
+    identifier: 38IOM5MD1JAK
+    identifierType: model_number
+  - company: GALAX
+    productName: GeForce RTX 3080 Ti HOF
+    identifier: 38IOM5MD3BHK
+    identifierType: model_number
+  - company: INNO3D
+    productName: GeForce RTX 3080 Ti iCHILL X3
+    identifier: C308T3-126XX-1810VA37
+    identifierType: model_number
+  - company: INNO3D
+    productName: GeForce RTX 3080 Ti iCHILL X4
+    identifier: C308T4-126XX-1810VA36
+    identifierType: model_number
+  - company: INNO3D
+    productName: GeForce RTX 3080 Ti iCHILL FROSTBITE
+    identifier: C308T-126XX-1810FB
+    identifierType: model_number
+
 references:
   - https://www.nvidia.com/content/PDF/nvidia-ampere-ga-102-gpu-architecture-whitepaper-v2.1.pdf
   - https://www.nvidia.com/en-us/geforce/graphics-cards/30-series/rtx-3080-3080ti/
   - https://www.nvidia.com/en-us/geforce/news/rtx-3080-ti-3070-ti-graphics-cards/
   - https://www.waredb.com/processor/nvidia-geforce-rtx-3080-ti
   - https://www.techpowerup.com/gpu-specs/geforce-rtx-3080-ti.c3505
+  - https://pcpartpicker.com/product/c2kWGX/nvidia-geforce-rtx-3080-ti-12-gb-founders-edition-video-card-900-1g133-2518-000
+  - https://www.asus.com/motherboards-components/graphics-cards/tuf-gaming/tuf-rtx3080ti-o12g-gaming/
+  - https://rog.asus.com/graphics-cards/graphics-cards/rog-strix/rog-strix-rtx3080ti-o12g-gaming-model/
+  - https://www.msi.com/Graphics-Card/GeForce-RTX-3080-Ti-VENTUS-3X-12G-OC
+  - https://www.gigabyte.com/Graphics-Card/GV-N308TEAGLE-12GD
+  - https://www.zotac.com/us/product/graphics_card/zotac-gaming-geforce-rtx-3080-ti-trinity
+  - https://www.evga.com/products/product.aspx?pn=12G-P5-3955-KR
+  - https://www.evga.com/products/product.aspx?pn=12G-P5-3967-KR
+  - https://www.palit.com/palit/vgapro.php?id=4152&lang=en
+  - https://www.gainward.com/main/vgapro.php?id=1129&lang=en
+  - https://www.techpowerup.com/gpu-specs/kfa2-rtx-3080-ti-sg-1-click-oc.b8916
+  - https://inno3d.com/product/inno3d-geforce-rtx-3080-ti-ichill-x3
+  - https://www.techpowerup.com/281355/nvidia-geforce-rtx-3080-ti-ga102-225-gpu-pictured-and-detailed
+  - https://videocardz.com/newz/NVIDIA-geforce-rtx-3080-ti-to-feature-ga102-225-gpu-rtx-3070-ti-gets-ga104-400
 
 notes:
   - fp16TFLOPS of 136.40 represents "Peak FP16 Tensor TFLOPS" using the "with sparsity" metric. Dense performance is 68.20 TFLOPS, sparse is 136.40 TFLOPS. Following Ampere architecture standards, NVIDIA publishes sparse tensor performance.
@@ -47,3 +185,8 @@ notes:
   - Process node is Samsung 8nm with approximately 28.3 billion transistors.
   - The RTX 3080 Ti shares the same GPU die and memory configuration as the RTX 3090, differing primarily in VRAM capacity (12GB vs 24GB).
   - MSRP of $1199 USD sourced from NVIDIA official product announcement at https://www.nvidia.com/en-us/geforce/news/rtx-3080-ti-3070-ti-graphics-cards/
+  - NVIDIA Founders Edition part number (NVPN) 900-1G133-2518-000 sourced from PCPartPicker, Micro Center, and Newegg listings.
+  - GPU Board ID GA102-225 sourced from TechPowerUp and VideoCardz technical articles documenting the GA102-225-A1 chip variant used in RTX 3080 Ti.
+  - Third-party product identifiers sourced from official manufacturer websites (ASUS, MSI, Gigabyte, Zotac, EVGA, Palit, Gainward, INNO3D) and TechPowerUp GPU Database.
+  - AIB partners include ASUS, MSI, Gigabyte, PNY, Zotac, EVGA, Palit, Gainward, INNO3D, and GALAX/KFA2. Each manufacturer offers multiple variants with different cooling solutions and factory overclocks.
+  - EVGA produced extensive RTX 3080 Ti lineup including XC3 and FTW3 series before exiting the GPU market in September 2022.

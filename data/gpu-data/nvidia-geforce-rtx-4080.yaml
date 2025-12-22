@@ -19,7 +19,7 @@ supportedHardwareOperations:
   - FP8
 supportedCUDAComputeCapability: 8.9
 releaseDate: "2022-11-16"
-lastModified: "2025-12-18T00:00:00Z"
+lastModified: "2025-12-20T00:00:00Z"
 
 summary: |
   The NVIDIA GeForce RTX 4080 is a graphics card released in 2022,
@@ -32,12 +32,113 @@ summary: |
   tasks, particularly inference and training workloads that benefit from its
   large memory and high core count. It uses a PCI-Express 4.0 x16 host
   interface.
+
+manufacturerIdentifiers:
+  - type: nvpn
+    value: 900-1G136-2560-000
+  - type: board_id
+    value: PG139
+  - type: product_sku
+    value: PG139 SKU 360
+  - type: product_sku
+    value: PG139 SKU 362
+
+thirdPartyProducts:
+  - company: ASUS
+    productName: ROG Strix GeForce RTX 4080 16GB GDDR6X OC Edition
+    identifier: ROG-STRIX-RTX4080-O16G-GAMING
+    identifierType: model_number
+  - company: ASUS
+    productName: ROG Strix GeForce RTX 4080 16GB GDDR6X
+    identifier: ROG-STRIX-RTX4080-16G-GAMING
+    identifierType: model_number
+  - company: ASUS
+    productName: ROG Strix GeForce RTX 4080 16GB GDDR6X White OC Edition
+    identifier: ROG-STRIX-RTX4080-O16G-WHITE
+    identifierType: model_number
+  - company: ASUS
+    productName: ROG Strix GeForce RTX 4080 16GB White Edition
+    identifier: ROG-STRIX-RTX4080-16G-WHITE
+    identifierType: model_number
+  - company: ASUS
+    productName: TUF RTX 4080 GAMING OC
+    identifier: TUF-RTX4080-O16G-GAMING
+    identifierType: model_number
+  - company: ASUS
+    productName: TUF RTX 4080 GAMING
+    identifier: TUF-RTX4080-16G-GAMING
+    identifierType: model_number
+  - company: MSI
+    productName: GeForce RTX 4080 16GB SUPRIM X
+    identifier: RTX 4080 16GB SUPRIM X
+    identifierType: model_number
+  - company: MSI
+    productName: GeForce RTX 4080 16GB SUPRIM
+    identifier: RTX 4080 16GB SUPRIM
+    identifierType: model_number
+  - company: Gigabyte
+    productName: GeForce RTX 4080 GAMING OC
+    identifier: GV-N4080GAMING OC-16GD
+    identifierType: model_number
+  - company: Gigabyte
+    productName: AORUS GeForce RTX 4080 MASTER
+    identifier: GV-N4080AORUS M-16GD
+    identifierType: model_number
+  - company: Gigabyte
+    productName: AORUS GeForce RTX 4080 XTREME WATERFORCE
+    identifier: GV-N4080AORUSX WB-16GD
+    identifierType: model_number
+  - company: PNY
+    productName: XLR8 Gaming VERTO EPIC-X RGB GeForce RTX 4080 16GB
+    identifier: VCG408016TFXXPB1
+    identifierType: model_number
+  - company: PNY
+    productName: XLR8 Gaming VERTO EPIC-X RGB GeForce RTX 4080 16GB OC
+    identifier: VCG408016TFXXPB1-O
+    identifierType: model_number
+  - company: Zotac
+    productName: ZOTAC GAMING GeForce RTX 4080 16GB Trinity
+    identifier: ZT-D40810D-10P
+    identifierType: model_number
+  - company: Zotac
+    productName: ZOTAC GAMING GeForce RTX 4080 16GB Trinity OC
+    identifier: ZT-D40810J-10P
+    identifierType: model_number
+  - company: Palit
+    productName: GeForce RTX 4080 GamingPro
+    identifier: NED4080019T2-1032A
+    identifierType: model_number
+  - company: Palit
+    productName: GeForce RTX 4080 GamingPro OC
+    identifier: NED4080T19T2-1032A
+    identifierType: model_number
+  - company: Gainward
+    productName: GeForce RTX 4080 Phantom
+    identifier: NED4080019T2-1030P
+    identifierType: model_number
+  - company: Gainward
+    productName: GeForce RTX 4080 Phantom
+    identifier: 471056224-3505
+    identifierType: part_number
+
 references:
   - https://images.nvidia.com/aem-dam/Solutions/geforce/ada/nvidia-ada-gpu-architecture.pdf
   - https://images.nvidia.com/aem-dam/Solutions/Data-Center/l4/nvidia-ada-gpu-architecture-whitepaper-v2.1.pdf
   - https://www.nvidia.com/en-us/geforce/graphics-cards/40-series/rtx-4080/
   - https://lambdalabs.com/blog/nvidia-rtx-4090-vs-rtx-3090-deep-learning-benchmark
   - https://www.nvidia.com/en-us/geforce/news/geforce-rtx-4090-out-now/
+  - https://pcpartpicker.com/product/6nWzK8/nvidia-founders-edition-geforce-rtx-4080-16-gb-video-card-900-1g136-2560-000
+  - https://gitlab.com/CalcProgrammer1/OpenRGB/-/issues/3219
+  - https://www.overclock.net/threads/official-nvidia-rtx-4080-super-owners-club.1800848/page-7
+  - https://rog.asus.com/us/graphics-cards/graphics-cards/rog-strix/rog-strix-rtx4080-o16g-gaming-model/spec/
+  - https://www.techpowerup.com/gpu-specs/asus-tuf-rtx-4080-gaming-oc.b9747
+  - https://www.msi.com/Graphics-Card/GeForce-RTX-4080-16GB-SUPRIM/Specification
+  - https://www.gigabyte.com/Graphics-Card/GV-N4080GAMING-OC-16GD
+  - https://www.gigabyte.com/Graphics-Card/GV-N4080AORUS-M-16GD
+  - https://www.pny.com/pny-geforce-rtx-4080-16gb-xlr8-gaming-verto-epic-x-rgb-triple-fan
+  - https://www.techpowerup.com/gpu-specs/zotac-rtx-4080-trinity.b9860
+  - https://www.palit.com/palit/vgapro.php?id=4688&lang=en&pn=NED4080019T2-1032A&tab=sp
+  - https://www.gainward.com/main/vgapro.php?id=1166&lang=en
 
 notes:
   - MSRP of $1199 USD sourced from NVIDIA's official announcement. A Founders Edition was available at this price. The RTX 4080 was later replaced by the RTX 4080 SUPER at $999, representing a significant price reduction.
@@ -46,3 +147,14 @@ notes:
   - int8TOPS of 779.82 is "peak INT8 TOPS" using "Effective TOPS using the new Sparsity Feature". This comes from the ada-gpu-architecture-whitepaper-v2.1.
   - Power based on what NVIDIA refers to as "TGP (Total Graphics Power)"
   - The RTX 4080 uses 76 of 80 streaming multiprocessors on the AD103 chip, whereas the RTX 4080 SUPER uses all 80 SMs
+  - NVIDIA part number (NVPN) 900-1G136-2560-000 sourced from NVIDIA Founders Edition product listings on PCPartPicker, Newegg, and Best Buy
+  - Board ID PG139 sourced from Overclock.net RTX 4080 Owner's Club forums and BIOS documentation
+  - Product SKU variants PG139 SKU 360 and PG139 SKU 362 represent different chip SKU revisions (300-0 and 301-0) found on AIB partner cards, sourced from Overclock.net forums
+  - Device ID 0x2704 and Subsystem ID 0x1794 (for Founders Edition) sourced from OpenRGB GitLab issue #3219
+  - ASUS model numbers sourced from official ASUS ROG product specification pages and TechPowerUp GPU Database
+  - MSI model numbers sourced from official MSI product specification pages
+  - Gigabyte model numbers sourced from official Gigabyte product pages
+  - PNY model numbers sourced from official PNY product pages and B&H Photo. VCG408016TFXXPB1 is the standard model, VCG408016TFXXPB1-O is the overclocked variant
+  - Zotac model numbers sourced from TechPowerUp GPU Database and Zotac official product pages. ZT-D40810D-10P is the standard Trinity, ZT-D40810J-10P is the Trinity OC variant
+  - Palit model numbers sourced from official Palit product pages. NED4080019T2-1032A is the standard GamingPro, NED4080T19T2-1032A is the GamingPro OC variant
+  - Gainward model numbers sourced from official Gainward product pages and LDLC retailer listings

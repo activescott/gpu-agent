@@ -22,7 +22,95 @@ supportedHardwareOperations:
   - FP4
 supportedCUDAComputeCapability: 12.8
 releaseDate: "2025-01-30"
-lastModified: "2025-12-18T22:30:00Z"
+lastModified: "2025-12-19T00:00:00Z"
+
+manufacturerIdentifiers:
+  - type: product_sku
+    value: PG144/147 SKU 45
+  - type: board_id
+    value: PG147
+  - type: gpu_die
+    value: GB203-400-A1
+  - type: nvpn
+    value: 900-1G144-2545-000
+
+thirdPartyProducts:
+  - company: ASUS
+    productName: ROG Astral GeForce RTX 5080 OC Edition
+    identifier: ROG-ASTRAL-RTX5080-O16G-GAMING
+    identifierType: model_number
+  - company: ASUS
+    productName: TUF Gaming GeForce RTX 5080 OC
+    identifier: TUF-RTX5080-O16G-GAMING
+    identifierType: model_number
+  - company: ASUS
+    productName: PRIME GeForce RTX 5080 OC Edition
+    identifier: PRIME-RTX5080-O16G
+    identifierType: model_number
+  - company: ASUS
+    productName: PRIME GeForce RTX 5080
+    identifier: PRIME-RTX5080-16G
+    identifierType: model_number
+  - company: MSI
+    productName: GeForce RTX 5080 16G GAMING TRIO OC
+    identifier: G5080-16GTC
+    identifierType: model_number
+  - company: MSI
+    productName: GeForce RTX 5080 16G SUPRIM LIQUID SOC
+    identifier: G5080-16SLS
+    identifierType: model_number
+  - company: MSI
+    productName: GeForce RTX 5080 16G VANGUARD SOC
+    identifier: G5080-16VGS
+    identifierType: model_number
+  - company: MSI
+    productName: GeForce RTX 5080 16G VENTUS 3X OC PLUS
+    identifier: G5080-16V3CP
+    identifierType: model_number
+  - company: Gigabyte
+    productName: GeForce RTX 5080 GAMING OC 16G
+    identifier: GV-N5080GAMING OC-16GD
+    identifierType: model_number
+  - company: Gigabyte
+    productName: GeForce RTX 5080 AORUS MASTER ICE 16G
+    identifier: GV-N5080AORUSM ICE-16GD
+    identifierType: model_number
+  - company: Gigabyte
+    productName: GeForce RTX 5080 WINDFORCE SFF 16G
+    identifier: GV-N5080WF3-16GD
+    identifierType: model_number
+  - company: Gigabyte
+    productName: GeForce RTX 5080 WINDFORCE OC SFF 16G
+    identifier: GV-N5080WF3OC-16GD
+    identifierType: model_number
+  - company: PNY
+    productName: GeForce RTX 5080 OC Triple Fan
+    identifier: VCG508016TFXPB1-O
+    identifierType: model_number
+  - company: PNY
+    productName: GeForce RTX 5080 ARGB OC Triple Fan
+    identifier: VCG508016TFXXPB1-O
+    identifierType: model_number
+  - company: Zotac
+    productName: GAMING GeForce RTX 5080 AMP Extreme INFINITY
+    identifier: ZT-B50800B-10P
+    identifierType: model_number
+  - company: Zotac
+    productName: GAMING GeForce RTX 5080 SOLID OC
+    identifier: ZT-B50800J-10P
+    identifierType: model_number
+  - company: Palit
+    productName: GeForce RTX 5080 GamingPro OC
+    identifier: NE75080S19T2-GB2031A
+    identifierType: model_number
+  - company: Palit
+    productName: GeForce RTX 5080 GameRock
+    identifier: NE75080019T2-GB2030G
+    identifierType: model_number
+  - company: Gainward
+    productName: GeForce RTX 5080 Phoenix
+    identifier: NE75080019T2-GB2031X
+    identifierType: model_number
 
 summary: |
   The NVIDIA GeForce RTX 5080 was the first GeForce RTX 50 series product that was launched using the GB203 GPU.
@@ -35,12 +123,21 @@ summary: |
 
 references:
   - https://images.nvidia.com/aem-dam/Solutions/geforce/blackwell/nvidia-rtx-blackwell-gpu-architecture.pdf
-  - https://www.nvidia.com/en-us/geforce/graphics-cards/50-series/rtx-5090/
+  - https://www.nvidia.com/en-us/geforce/graphics-cards/50-series/rtx-5080/
   - https://www.nvidia.com/en-us/geforce/graphics-cards/compare/
   - https://nvidianews.nvidia.com/news/nvidia-blackwell-geforce-rtx-50-series-opens-new-world-of-ai-computer-graphics
   - https://arxiv.org/abs/2310.16836
   - https://www.tomshardware.com/pc-components/gpus/nvidia-blackwell-architecture-deep-dive-a-closer-look-at-the-upgrades-coming-with-rtx-50-series-gpus
   - https://www.techpowerup.com/gpu-specs/geforce-rtx-5080.c4217
+  - https://videocardz.com/nvidia/geforce-50/geforce-rtx-5080
+  - https://pcpartpicker.com/product/87WmP6/nvidia-founders-edition-geforce-rtx-5080-16-gb-video-card-900-1g144-2545-000
+  - https://www.asus.com/us/motherboards-components/graphics-cards/prime/prime-rtx5080-o16g/
+  - https://us-store.msi.com/RTX-5080
+  - https://www.gigabyte.com/Graphics-Card/GV-N5080GAMING-OC-16GD
+  - https://www.pny.com/geforce-rtx-5080-models
+  - https://www.zotac.com/us/product/graphics_card/zotac-gaming-geforce-rtx-5080-amp-extreme-infinity
+  - https://www.palit.com/palit/vgapro.php?id=5395&lang=en
+  - https://www.gainward.com/main/vgapro.php?id=1229&lang=en
 
 notes:
   - We use the peak TOPS/FLOPS specs using the sparsity feature.
@@ -49,3 +146,5 @@ notes:
   - int8TOPS is "peak INT 8 TOPS" using "Effective TOPS / TFLOPS using the new Sparsity Feature". They also reveal it as 660.6 "based on GPU Boost Clock". This comes from the blackwell gpu architecture pdf.
   - fp32TFLOPS is "Peak TF32 Tensor TFLOPS1" as published in the blackwell gpu architecture pdf.
   - MSRP of $999 USD for the Founders Edition sourced from nvidia.com official press release (https://nvidianews.nvidia.com/news/nvidia-blackwell-geforce-rtx-50-series-opens-new-world-of-ai-computer-graphics).
+  - Manufacturer identifiers sourced from VideoCardz.com and TechPowerUp GPU Database, which report the RTX 5080 uses PG144/147 SKU 45 board and GB203-400-A1 GPU die. Founders Edition NVPN (900-1G144-2545-000) sourced from PCPartPicker and Best Buy retail listings.
+  - Third-party products represent major AIB partners (ASUS, MSI, Gigabyte, PNY, Zotac, Palit, Gainward). Model numbers sourced from manufacturer websites, retail listings (Best Buy, Micro Center, Newegg), and TechPowerUp GPU Database. Note that EVGA exited the graphics card business in 2022 and does not produce RTX 5080 cards.

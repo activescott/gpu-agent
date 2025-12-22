@@ -18,7 +18,7 @@ supportedHardwareOperations:
   - FP8
 supportedCUDAComputeCapability: 8.9
 releaseDate: "2023-03-21"
-lastModified: "2025-12-18T18:00:00Z"
+lastModified: "2025-12-18T22:00:00Z"
 
 summary: The NVIDIA L4 GPU was introduced in March 2023 with part number
   900-2G193-0000-000. It, along with the L40 are the NVIDIA Ada Lovelace
@@ -29,6 +29,75 @@ summary: The NVIDIA L4 GPU was introduced in March 2023 with part number
   GPUs such as the such as the L40 at 300W and L40S at 350W. It is a single-slot
   PCIe 4.0 x16 card without connectivity for monitors.
 maxTDPWatts: 72
+
+manufacturerIdentifiers:
+  - type: product_sku
+    value: PG193 SKU 200
+  - type: nvpn
+    value: 699-2G193-0200-xxx
+  - type: nvpn
+    value: 900-2G193-0000-000
+  - type: nvpn
+    value: 900-2G193-0000-001
+  - type: nvpn
+    value: 900-2G193-0100-001
+  - type: nvpn
+    value: 900-2G193-0200-000
+
+thirdPartyProducts:
+  - company: Dell
+    productName: NVIDIA L4, PCIe, 72-Watt, 24GB Passive, Single Wide Full Height GPU
+    identifier: 540-BDTP
+    identifierType: sku
+  - company: Dell
+    productName: NVIDIA L4, PCIe, 72-Watt, 24GB Passive, Single Wide Full Height GPU
+    identifier: NG3PY
+    identifierType: part_number
+  - company: Dell
+    productName: NVIDIA L4, PCIe, 72-Watt, 24GB Passive, Single Wide Low Profile GPU
+    identifier: 540-BDTM
+    identifierType: sku
+  - company: Dell
+    productName: NVIDIA L4 PCIe 72-Watt 24GB Passive Single Wide Full Height GPU (Dell OEM)
+    identifier: 900-2G193-0100-001
+    identifierType: part_number
+  - company: HPE
+    productName: NVIDIA L4 24GB PCIe Accelerator for HPE
+    identifier: S0K89C
+    identifierType: sku
+  - company: HPE
+    productName: NVIDIA L4 24GB PCIe Accelerator for HPE
+    identifier: P59360-001
+    identifierType: part_number
+  - company: Lenovo
+    productName: ThinkSystem NVIDIA L4 24GB PCIe Gen4 Passive GPU
+    identifier: 4X67A84824
+    identifierType: part_number
+  - company: Cisco
+    productName: NVIDIA L4 70W 24GB 1-Slot GPU
+    identifier: UCSC-GPU-L4
+    identifierType: part_number
+  - company: Cisco
+    productName: NVIDIA L4 70W 24GB 1-Slot GPU
+    identifier: UCSC-GPU-L4=
+    identifierType: part_number
+  - company: Cisco
+    productName: NVIDIA L4 Tensor Core, 70W, 24GB (X-Series)
+    identifier: UCSX-GPU-L4=
+    identifierType: part_number
+  - company: PNY
+    productName: NVIDIA L4 Graphic Card - Low-profile - 24 GB
+    identifier: NVL4TCGPU-KIT
+    identifierType: part_number
+  - company: PNY
+    productName: NVIDIA L4 Graphic Card - Full Height - 24 GB
+    identifier: NVL4TCGPUATX-KIT
+    identifierType: part_number
+  - company: Supermicro
+    productName: NVIDIA Ada L4 24GB GDDR6 PCIe 4.0 Graphics Card
+    identifier: GPU-NVL4
+    identifierType: part_number
+
 references:
   - https://www.nvidia.com/en-us/data-center/l4/
   - https://nvdam.widen.net/s/rvq98gbwsw/l4-datasheet-2595652
@@ -39,5 +108,21 @@ references:
   - https://developer.nvidia.com/blog/supercharging-ai-video-and-ai-inference-performance-with-nvidia-l4-gpus/
   - https://buy.bluum.com/lenovo-thinksystem-nvidia-l4-pcie-gen4-passive-graphic-card-24-gb/
   - https://www.compsource.com/buy/UCSCGPUL4/Cisco-91
+  - https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/l4/PB-11316-001_v01.pdf
+  - https://www.dell.com/en-us/shop/nvidia-l4-pcie-72-watt-24gb-passive-single-wide-full-height-gpu-customer-install/apd/540-bdtp/graphic-video-cards
+  - https://www.hpe.com/us/en/product-catalog/options/pip.specifications.nvidia-accelerators.1014731952.html
+  - https://lenovopress.lenovo.com/lp1717-thinksystem-nvidia-l4-24gb-pcie-gen4-passive-gpu
+  - https://www.cisco.com/c/dam/en/us/products/collateral/servers-unified-computing/ucs-c-series-rack-servers/nvidia-l4-gpu.pdf
+  - https://www.pny.com/nvidia-l4
+  - https://store.supermicro.com/supermicro-nvidia-ada-l4-24gb-gddr6-pcie-4-0-graphics-card.html
+
 notes:
   - "Estimated MSRP of $7,000 USD for the NVIDIA L4 based on OEM list prices. NVIDIA does not publish official MSRP for data center GPUs. OEM list prices corroborated by 2 independent sources: Lenovo ThinkSystem NVIDIA L4 (4X67A84824) has MSRP of $7,049 per Bluum, and Cisco UCSC-GPU-L4 is listed at $6,788 per CompSource. Note: Current market/resale prices (~$2,500-$3,000) are significantly lower due to depreciation but do not reflect original launch list pricing."
+  - "Manufacturer identifier 'PG193 SKU 200' sourced from NVIDIA official product brief PB-11316-001_v01 at https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/l4/PB-11316-001_v01.pdf"
+  - "NVPN 699-2G193-0200-xxx is the official NVIDIA part number designation per NVIDIA product brief PB-11316-001_v01. Multiple variants exist with different suffix codes (900-2G193-0000-000, 900-2G193-0000-001, 900-2G193-0100-001, 900-2G193-0200-000) representing different form factors and OEM configurations."
+  - "Dell part numbers 540-BDTP (full-height) and 540-BDTM (low-profile) sourced from official Dell product pages at dell.com"
+  - "HPE part numbers S0K89C (SKU) and P59360-001 (spare part) sourced from https://www.hpe.com/us/en/product-catalog/options/pip.specifications.nvidia-accelerators.1014731952.html"
+  - "Lenovo part number 4X67A84824 sourced from Lenovo Press product guide at https://lenovopress.lenovo.com/lp1717-thinksystem-nvidia-l4-24gb-pcie-gen4-passive-gpu"
+  - "Cisco part numbers UCSC-GPU-L4 (C-Series) and UCSX-GPU-L4= (X-Series) sourced from Cisco official datasheet at https://www.cisco.com/c/dam/en/us/products/collateral/servers-unified-computing/ucs-c-series-rack-servers/nvidia-l4-gpu.pdf"
+  - "PNY part numbers NVL4TCGPU-KIT (low-profile) and NVL4TCGPUATX-KIT (full-height) sourced from https://www.pny.com/nvidia-l4 and verified via multiple retailers"
+  - "Supermicro part number GPU-NVL4 sourced from https://store.supermicro.com/supermicro-nvidia-ada-l4-24gb-gddr6-pcie-4-0-graphics-card.html"

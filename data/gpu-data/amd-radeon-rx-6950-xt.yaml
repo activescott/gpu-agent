@@ -14,7 +14,7 @@ supportedHardwareOperations:
   - FP32
   - FP16
 releaseDate: "2022-05-10"
-lastModified: "2025-12-18T22:30:00Z"
+lastModified: "2025-12-21T00:00:00Z"
 
 summary: >-
   The AMD Radeon RX 6950 XT was released in May 2022 as a refreshed flagship
@@ -32,12 +32,86 @@ summary: >-
   game (2,100 MHz), and boost (2,310 MHz) frequencies, making it the fastest
   RDNA 2 GPU for gaming workloads with DirectX 12 Ultimate support including
   hardware-accelerated ray tracing and variable rate shading.
+
+manufacturerIdentifiers:
+  - type: opn
+    value: 100-438416
+  - type: upc
+    value: "727419314039"
+  - type: ean
+    value: "0727419314039"
+
+thirdPartyProducts:
+  - company: Sapphire
+    productName: NITRO+ AMD Radeon RX 6950 XT 16G GDDR6
+    identifier: 11317-02-20G
+    identifierType: model_number
+  - company: Sapphire
+    productName: NITRO+ AMD Radeon RX 6950 XT PURE 16G GDDR6
+    identifier: 11317-04-20G
+    identifierType: model_number
+  - company: Sapphire
+    productName: TOXIC AMD Radeon RX 6950 XT LE 16G GDDR6
+    identifier: 11317-01-20G
+    identifierType: model_number
+  - company: XFX
+    productName: Speedster MERC 319 AMD Radeon RX 6950 XT Black Gaming Graphics Card
+    identifier: RX-695XATBD9
+    identifierType: model_number
+  - company: XFX
+    productName: Speedster ZERO AMD Radeon RX 6950XT RGB EKWB Waterblock Limited Edition
+    identifier: RX-695XAWBD9
+    identifierType: model_number
+  - company: PowerColor
+    productName: Red Devil AMD Radeon RX 6950 XT 16GB GDDR6
+    identifier: AXRX 6950XT 16GBD6-3DHE/OC
+    identifierType: model_number
+  - company: ASUS
+    productName: ROG Strix LC Radeon RX 6950 XT OC Edition 16GB GDDR6
+    identifier: ROG-STRIX-LC-RX6950XT-O16G-GAMING
+    identifierType: model_number
+  - company: ASUS
+    productName: TUF Gaming Radeon RX 6950 XT OC Edition 16GB GDDR6
+    identifier: TUF-RX6950XT-O16G-GAMING
+    identifierType: model_number
+  - company: Gigabyte
+    productName: Radeon RX 6950 XT GAMING OC 16G
+    identifier: GV-R695XTGAMING-OC-16GD
+    identifierType: model_number
+  - company: Gigabyte
+    productName: AORUS Radeon RX 6950 XT XTREME WATERFORCE WB 16G
+    identifier: GV-R695XTAORUSX-WB-16GD
+    identifierType: model_number
+  - company: ASRock
+    productName: Radeon RX 6950 XT Phantom Gaming 16GB OC
+    identifier: RX6950XT PG 16GO
+    identifierType: model_number
+  - company: ASRock
+    productName: Radeon RX 6950 XT OC Formula 16GB
+    identifier: RX6950XT OCF 16GO
+    identifierType: model_number
+
 references:
   - https://www.techpowerup.com/gpu-specs/radeon-rx-6950-xt.c3875
   - https://www.amd.com/en/products/graphics/desktops/radeon/6000-series/amd-radeon-rx-6950-xt.html
   - https://www.tomshardware.com/reviews/amd-radeon-rx-6950-xt-review
   - https://en.wikipedia.org/wiki/RDNA_2
   - https://www.pcgamer.com/rx-6950-xt-release-date-price/
+  - https://pcpartpicker.com/product/kFRYcf/amd-radeon-rx-6950-xt-16-gb-video-card-100-438416
+  - https://www.scan.co.uk/products/amd-radeon-rx-6950-xt-16gb-gddr6-graphics-card-rdna2-5120-streams-1890mhz-gpu-2310mhz-boost
+  - https://www.sapphiretech.com/en/consumer/nitro-radeon-rx-6950-xt-16g-gddr6
+  - https://www.sapphiretech.com/en/consumer/nitro-radeon-rx-6950-xt-pure-16g-gddr6
+  - https://www.sapphiretech.global/en/consumer/toxic-radeon-rx-6950-xt-le-16g-gddr6
+  - https://www.xfxforce.com/shop/xfx-speedster-merc-319-amd-radeon-tm-rx-6950-xt-black
+  - https://www.xfxforce.com/shop/xfx-speedster-zero-amd-radeon-tm-rx-6950xt-rgb-ekwb-waterblock-limited-edition-with-16gb-gddr6
+  - https://www.powercolor.com/product-detail125.htm
+  - https://rog.asus.com/graphics-cards/graphics-cards/rog-strix/rog-strix-lc-rx6950xt-o16g-gaming-model/
+  - https://www.asus.com/us/motherboards-components/graphics-cards/tuf-gaming/tuf-rx6950xt-o16g-gaming/
+  - https://www.gigabyte.com/Graphics-Card/GV-R695XTGAMING-OC-16GD
+  - https://www.gigabyte.com/Graphics-Card/GV-R695XTAORUSX-WB-16GD
+  - https://www.msi.com/Graphics-Card/Radeon-RX-6950-XT-GAMING-X-TRIO-16G
+  - https://pg.asrock.com/Graphics-Card/AMD/Radeon%20RX%206950%20XT%20Phantom%20Gaming%2016GB%20OC/
+  - https://www.asrock.com/Graphics-Card/AMD/Radeon%20RX%206950%20XT%20OC%20Formula%2016GB/
 notes:
   - FP32 TFLOPS of 23.65 per TechPowerUp GPU Database, calculated as 5,120 stream processors × 2,310 MHz boost clock × 2 ops/cycle / 1,000,000
   - FP16 performance is 47.31 TFLOPS calculated at 2:1 ratio to FP32, which is standard for RDNA 2 architecture
@@ -48,3 +122,18 @@ notes:
   - Built on TSMC 7nm process with 520 mm² die size containing 26.8 billion transistors
   - Released as a refresh of the RX 6900 XT with higher clocks (2,310 MHz vs 2,250 MHz boost), faster memory (18 Gbps vs 16 Gbps), and higher TDP (335W vs 300W)
   - MSRP of $1,099 USD verified from multiple sources including PC Gamer, VideoCardz, and NotebookCheck at launch on May 10, 2022
+  - AMD Ordering Part Number (OPN) 100-438416 is the reference card identifier sourced from PCPartPicker and multiple retailers including Micro Center and SCAN UK
+  - UPC 727419314039 and EAN 0727419314039 sourced from Lambda-Tek and SCAN UK product listings for the AMD reference card
+  - Sapphire NITRO+ model 11317-02-20G sourced from Sapphire official product page and verified at Amazon, Newegg, and Micro Center
+  - Sapphire NITRO+ PURE model 11317-04-20G sourced from Sapphire official product page and verified at Amazon
+  - Sapphire TOXIC LE model 11317-01-20G sourced from Sapphire Global official product page
+  - XFX Speedster MERC 319 model RX-695XATBD9 sourced from XFX official product page and verified at Best Buy, Amazon, and PCPartPicker
+  - XFX Speedster ZERO EKWB model RX-695XAWBD9 sourced from XFX official product page
+  - PowerColor Red Devil model AXRX 6950XT 16GBD6-3DHE/OC sourced from PowerColor official product page and verified at Newegg and PCPartPicker
+  - ASUS ROG Strix LC model ROG-STRIX-LC-RX6950XT-O16G-GAMING sourced from ASUS ROG official product page
+  - ASUS TUF Gaming model TUF-RX6950XT-O16G-GAMING sourced from ASUS official product page and verified at Newegg
+  - Gigabyte Gaming OC model GV-R695XTGAMING-OC-16GD sourced from Gigabyte official product page and verified at Newegg
+  - Gigabyte AORUS XTREME WATERFORCE model GV-R695XTAORUSX-WB-16GD sourced from Gigabyte official product page
+  - MSI Gaming X Trio model RX 6950 XT GAMING X TRIO 16G sourced from MSI official product page and verified at Newegg and Tom's Hardware
+  - ASRock Phantom Gaming model RX6950XT PG 16GO sourced from ASRock Phantom Gaming official product page and verified at Newegg and PCPartPicker
+  - ASRock OC Formula identifier RX6950XT OCF 16GO inferred from ASRock naming convention (OC Formula product page does not display full model number but follows standard ASRock format)

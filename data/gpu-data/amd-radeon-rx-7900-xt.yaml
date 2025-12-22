@@ -16,7 +16,7 @@ supportedHardwareOperations:
   - INT8
   - INT4
 releaseDate: "2022-12-13"
-lastModified: "2025-12-18T00:00:00Z"
+lastModified: "2025-12-21T00:00:00Z"
 
 summary: >-
   The AMD Radeon RX 7900 XT was released alongside the RX 7900 XTX on December
@@ -25,13 +25,103 @@ summary: >-
         With 84 compute units (CUs) and 168 AI Accelerators, it has 12 fewer (CUs), and 6 fewer AI Accelerators than the 7900 XTX but remains a strong contender in the high-performance GPU market.
         Some common part numbers are the PowerColor RX7900XT 20G-L/OC, Sapphire 11323-02-20G, XFX RX-79TMERCU9.
         The lowest price is tracked and continuously updated across multiple sellers for all of these models below.
+
+manufacturerIdentifiers: []
+
+thirdPartyProducts:
+  - company: Sapphire
+    productName: AMD Radeon RX 7900 XT Gaming Graphics Card 20GB GDDR6
+    identifier: 21323-01-20G
+    identifierType: model_number
+  - company: Sapphire
+    productName: PULSE AMD Radeon RX 7900 XT Gaming Graphics Card 20GB GDDR6
+    identifier: 11323-02-20G
+    identifierType: model_number
+  - company: PowerColor
+    productName: Hellhound AMD Radeon RX 7900 XT 20GB GDDR6
+    identifier: RX7900XT 20G-L/OC
+    identifierType: model_number
+  - company: PowerColor
+    productName: Red Devil AMD Radeon RX 7900 XT 20GB GDDR6
+    identifier: RX7900XT 20G-E/OC
+    identifierType: model_number
+  - company: XFX
+    productName: AMD Radeon RX 7900 XT Gaming Graphics Card 20GB GDDR6
+    identifier: RX-79TMBABF9
+    identifierType: model_number
+  - company: XFX
+    productName: Speedster MERC310 AMD Radeon RX 7900 XT 20GB GDDR6
+    identifier: RX-79TMERCU9
+    identifierType: model_number
+  - company: ASRock
+    productName: Phantom Gaming AMD Radeon RX 7900 XT 20GB OC GDDR6
+    identifier: 90-GA3XZZ-00UANF
+    identifierType: part_number
+  - company: ASRock
+    productName: Phantom Gaming OC Radeon RX 7900 XT 20GB
+    identifier: RX7900XT PG 20GO
+    identifierType: model_number
+  - company: ASUS
+    productName: TUF Gaming Radeon RX 7900 XT OC Edition 20GB GDDR6
+    identifier: TUF-RX7900XT-O20G-GAMING
+    identifierType: model_number
+  - company: ASUS
+    productName: TUF Gaming Radeon RX 7900 XT 20GB GDDR6
+    identifier: TUF-RX7900XT-20G-GAMING
+    identifierType: model_number
+  - company: ASUS
+    productName: Radeon RX 7900 XT 20GB GDDR6
+    identifier: RX7900XT-20G
+    identifierType: model_number
+  - company: MSI
+    productName: Radeon RX 7900 XT Gaming Trio Classic 20G
+    identifier: R79XTGTC20G
+    identifierType: model_number
+  - company: Gigabyte
+    productName: Radeon RX 7900 XT Gaming OC 20G
+    identifier: GV-R79XTGAMING OC-20GD
+    identifierType: model_number
+
 references:
   - https://www.amd.com/en/products/specifications/graphics
+  - https://www.amd.com/en/products/graphics/desktops/radeon/7000-series/amd-radeon-rx-7900xt.html
   - https://www.tomshardware.com/reviews/amd-radeon-rx-7900-xtx-and-xt-review-shooting-for-the-top
   - https://www.techpowerup.com/300632/amd-announces-the-usd-999-radeon-rx-7900-xtx-and-usd-899-rx-7900-xt-5nm-rdna3-displayport-2-1-fsr-3-0-fluidmotion
   - https://en.wikipedia.org/wiki/RDNA_3
   - https://gpuopen.com/learn/wmma_on_rdna3/
   - https://gpuopen.com/learn/amd-lab-notes/amd-lab-notes-matrix-cores-readme/
+  - https://www.sapphiretech.com/en/consumer/21323-01-20g-radeon-rx-7900-xt-20g-gddr6
+  - https://www.amazon.com/Sapphire-11323-02-20G-Radeon-Gaming-Graphics/dp/B0BR6L7TKR
+  - https://www.powercolor.com/product-detail120.htm
+  - https://www.powercolor.com/product-detail115.htm
+  - https://www.xfxforce.com/shop/amd-radeon-rx-7900xt
+  - https://www.xfxforce.com/shop/xfx-speedster-merc310-7900xt
+  - https://www.amazon.com/XFX-Speedster-MERC310-Graphics-RX-79TMERCU9/dp/B0BNLT17XQ
+  - https://www.asrock.com/Graphics-Card/AMD/Radeon%20RX%207900%20XT%2020GB/
+  - https://www.asrock.com/Graphics-Card/AMD/Radeon%20RX%207900%20XT%20Phantom%20Gaming%2020GB%20OC/
+  - https://www.asus.com/motherboards-components/graphics-cards/tuf-gaming/tuf-rx7900xt-o20g-gaming/techspec/
+  - https://www.asus.com/motherboards-components/graphics-cards/asus/rx7900xt-20g/
+  - https://www.msi.com/Graphics-Card/Radeon-RX-7900-XT-GAMING-TRIO-CLASSIC-20G
+  - https://www.gigabyte.com/Graphics-Card/GV-R79XTGAMING-OC-20GD
+  - https://www.techpowerup.com/gpu-specs/sapphire-rx-7900-xt.b9923
+  - https://www.techpowerup.com/gpu-specs/xfx-rx-7900-xt.b9928
+  - https://www.techpowerup.com/gpu-specs/asrock-rx-7900-xt-phantom-gaming-oc.b9962
+
 notes:
   - 'tensorCoreCount: tracking the AI Accelerators as "tensor cores"'
   - MSRP of $899 USD sourced from AMD announcement on November 3, 2022, verified from TechPowerUp and Tom's Hardware. AMD later reduced the price to $749 in early 2024.
+  - 'manufacturerIdentifiers: AMD does not publish OPN (Ordering Part Number) or other official identifiers for consumer graphics cards on public product pages. AMD uses product names like "AMD Radeon RX 7900 XT" for consumer identification. The Navi 31 XT GPU die identifiers are not publicly available in consumer documentation.'
+  - 'Sapphire model 21323-01-20G sourced from Sapphire official website and Amazon listing. This is the standard/reference Sapphire RX 7900 XT.'
+  - 'Sapphire PULSE model 11323-02-20G sourced from Amazon and Newegg. The PULSE edition features enhanced cooling solution.'
+  - 'PowerColor Hellhound model RX7900XT 20G-L/OC sourced from PowerColor official website and PCPartPicker. Features 750W PSU requirement and 3-slot design.'
+  - 'PowerColor Red Devil model RX7900XT 20G-E/OC sourced from PowerColor official website and Newegg. Premium model with higher factory overclock and 850W PSU requirement.'
+  - 'XFX reference model RX-79TMBABF9 sourced from TechPowerUp GPU Database and XFX official product page.'
+  - 'XFX Speedster MERC310 model RX-79TMERCU9 sourced from XFX official website and Amazon. Features vapor chamber cooling and dual BIOS.'
+  - 'ASRock Phantom Gaming part number 90-GA3XZZ-00UANF sourced from ASRock official website and multiple retailer listings.'
+  - 'ASRock Phantom Gaming model RX7900XT PG 20GO sourced from PCPartPicker and retailer listings.'
+  - 'ASUS TUF Gaming OC Edition model TUF-RX7900XT-O20G-GAMING sourced from ASUS official website and Amazon. Features 2.54 GHz boost clock.'
+  - 'ASUS TUF Gaming non-OC model TUF-RX7900XT-20G-GAMING sourced from ASUS official website.'
+  - 'ASUS standard model RX7900XT-20G sourced from ASUS official product page.'
+  - 'MSI Gaming Trio Classic model R79XTGTC20G sourced from MSI official website and Amazon.'
+  - 'Gigabyte Gaming OC model GV-R79XTGAMING OC-20GD sourced from Gigabyte official website and Amazon. Features WINDFORCE cooling with 2535 MHz boost clock.'
+  - 'Third-party products limited to top AIB partners with verified model numbers from official manufacturer websites and major retailers. AIB partners include Sapphire, PowerColor, XFX, ASRock, ASUS, MSI, and Gigabyte.'

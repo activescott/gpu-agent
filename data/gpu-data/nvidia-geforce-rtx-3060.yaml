@@ -34,12 +34,80 @@ summary: |
   the successor to the popular GTX 1060, offering twice the raster performance and 10x the
   ray-tracing performance at a $329 price point.
 
+thirdPartyProducts:
+  - company: ASUS
+    productName: ROG Strix GeForce RTX 3060 OC Edition 12GB GDDR6
+    identifier: ROG-STRIX-RTX3060-O12G-GAMING
+    identifierType: model_number
+  - company: ASUS
+    productName: ROG Strix GeForce RTX 3060 V2 OC Edition 12GB GDDR6
+    identifier: ROG-STRIX-RTX3060-O12G-V2-GAMING
+    identifierType: model_number
+  - company: ASUS
+    productName: TUF Gaming GeForce RTX 3060 OC Edition 12GB GDDR6
+    identifier: TUF-RTX3060-O12G-GAMING
+    identifierType: model_number
+  - company: ASUS
+    productName: Dual GeForce RTX 3060 V2 OC Edition 12GB GDDR6
+    identifier: DUAL-RTX3060-O12G-V2
+    identifierType: model_number
+  - company: Gigabyte
+    productName: GeForce RTX 3060 GAMING OC 12G
+    identifier: GV-N3060GAMING OC-12GD
+    identifierType: model_number
+  - company: Gigabyte
+    productName: GeForce RTX 3060 EAGLE OC 12G
+    identifier: GV-N3060EAGLE OC-12GD
+    identifierType: model_number
+  - company: Gigabyte
+    productName: GeForce RTX 3060 VISION OC 12G
+    identifier: GV-N3060VISION OC-12G
+    identifierType: model_number
+  - company: Zotac
+    productName: ZOTAC Gaming GeForce RTX 3060 Twin Edge OC
+    identifier: ZT-A30600H-10M
+    identifierType: model_number
+  - company: Zotac
+    productName: ZOTAC Gaming GeForce RTX 3060 Twin Edge
+    identifier: ZT-A30600E-10M
+    identifierType: model_number
+  - company: Zotac
+    productName: ZOTAC Gaming GeForce RTX 3060
+    identifier: ZT-A30600P-10M
+    identifierType: model_number
+  - company: PNY
+    productName: XLR8 Gaming GeForce RTX 3060 REVEL EPIC-X RGB Dual Fan
+    identifier: VCG306012DFXPPB
+    identifierType: model_number
+  - company: PNY
+    productName: XLR8 Gaming GeForce RTX 3060 REVEL EPIC-X RGB Single Fan
+    identifier: VCG306012SFXPPB
+    identifierType: model_number
+  - company: EVGA
+    productName: GeForce RTX 3060 XC GAMING
+    identifier: 12G-P5-3657-KR
+    identifierType: model_number
+  - company: Palit
+    productName: GeForce RTX 3060 Dual
+    identifier: NE63060019K9-190AD
+    identifierType: model_number
+  - company: Gainward
+    productName: GeForce RTX 3060 Ghost
+    identifier: NE63060019K9-190AU
+    identifierType: model_number
+
 references:
   - https://nvidianews.nvidia.com/news/nvidia-introduces-geforce-rtx-3060-next-generation-of-the-worlds-most-popular-gpu
   - https://www.nvidia.com/en-us/geforce/news/geforce-rtx-3060/
   - https://www.nvidia.com/en-us/geforce/graphics-cards/30-series/rtx-3060-3060ti/
   - https://www.techpowerup.com/gpu-specs/geforce-rtx-3060-12-gb.c3682
   - https://www.waredb.com/processor/nvidia-geforce-rtx-3060
+  - https://rog.asus.com/graphics-cards/graphics-cards/rog-strix/rog-strix-rtx3060-o12g-gaming-model/
+  - https://www.asus.com/us/motherboards-components/graphics-cards/dual/dual-rtx3060-o12g-v2/
+  - https://www.msi.com/Graphics-Card/GeForce-RTX-3060-VENTUS-2X-12G-OC
+  - https://www.gigabyte.com/Graphics-Card/GV-N3060GAMING-OC-12GD
+  - https://www.zotac.com/us/product/graphics_card/zotac-gaming-geforce-rtx-3060-twin-edge-oc
+  - https://www.pny.com/geforce-rtx-3060-12gb-xlr8-revel-epic-x-rgb-df
 
 notes:
   - fp16TFLOPS of 50.95 represents FP16 Tensor TFLOPS using the "with sparsity" metric per Ampere architecture standards. Dense FP16 tensor performance is 25.48 TFLOPS, sparse is 50.95 TFLOPS. NVIDIA publishes sparse tensor performance as the headline figure for Ampere GPUs.
@@ -53,3 +121,5 @@ notes:
   - Supports CUDA Compute Capability 8.6, same as other Ampere GeForce 30-series GPUs.
   - At launch in February 2021, the RTX 3060 was positioned to succeed the GTX 1060 with 2x raster and 10x ray-tracing performance at $329 MSRP.
   - MSRP of $329 USD sourced from NVIDIA official product announcement at https://www.nvidia.com/en-us/geforce/news/geforce-rtx-3060/
+  - No NVIDIA Founders Edition was released for the RTX 3060 (only RTX 3060 Ti had a Founders Edition). All RTX 3060 cards are from AIB partners.
+  - Third-party product identifiers sourced from official manufacturer websites, TechPowerUp GPU Database, Newegg, and Best Buy product listings.

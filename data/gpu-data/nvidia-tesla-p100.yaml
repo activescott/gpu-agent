@@ -13,19 +13,121 @@ supportedHardwareOperations:
   - FP32
 supportedCUDAComputeCapability: 6
 releaseDate: "2016-06-20"
-lastModified: "2025-12-18T18:00:00Z"
+lastModified: "2025-12-19T00:00:00Z"
 
 summary: The NVIDIA Tesla P100 was announced in 2016 as the first of their
   Pascal architecture powered Tesla cards. The Tesla P100 came in PCIe and SXM
   versions and was the first GPU accelerator to use High Bandwidth Memory 2
   (HBM2). It did not have Tensor Cores, so it isn't usually preferred for
   machine learning. However, it's FP32 and FP16 FLOPs are still quite good.
+
+manufacturerIdentifiers:
+  - type: nvpn
+    value: "699-2H400-0201-XXX"
+  - type: nvpn
+    value: "699-2H400-0202-XXX"
+  - type: product_sku
+    value: "900-2H400-0000-000"
+  - type: product_sku
+    value: "900-2H400-0010-000"
+  - type: product_sku
+    value: "900-2H400-0300"
+  - type: product_sku
+    value: "900-2H403-0000-000"
+  - type: gpu_chip
+    value: "GP100-890-A1"
+  - type: gpu_chip
+    value: "GP100-892-A1"
+  - type: gpu_chip
+    value: "GP100-893-A1"
+
+thirdPartyProducts:
+  - company: Dell
+    productName: "NVIDIA Tesla P100 Pascal GPU Accelerator 16GB 3584 CUDA Core PCI-E 3.0 x16"
+    identifier: H7WFC
+    identifierType: part_number
+  - company: Dell
+    productName: "Nvidia Tesla P100 SXM2 16GB GPU Accelerator Card"
+    identifier: 7TGM9
+    identifierType: part_number
+  - company: Dell
+    productName: "NVIDIA Tesla P100 12GB PCI Express Video Graphics Card"
+    identifier: PH400
+    identifierType: part_number
+  - company: Dell
+    productName: "NVIDIA Tesla P100 12GB 250W DW x16 PCI-e Full Height"
+    identifier: 489-BBCH
+    identifierType: part_number
+  - company: HPE
+    productName: "HPE Nvidia Tesla P100 PCI-e 16GB Computational Accelerator"
+    identifier: Q0E21A
+    identifierType: part_number
+  - company: HPE
+    productName: "HPE NVIDIA Tesla P100 16GB PCIe GPU"
+    identifier: "868585-001"
+    identifierType: part_number
+  - company: HPE
+    productName: "HPE NVIDIA Tesla P100 16GB PCIe GPU"
+    identifier: "868199-001"
+    identifierType: part_number
+  - company: HPE
+    productName: "HPE NVIDIA Tesla P100 16GB SXM2 GPU Accelerator"
+    identifier: "876911-001"
+    identifierType: part_number
+  - company: HPE
+    productName: "HPE Nvidia Tesla P100 PCIe 12GB Graphics Card"
+    identifier: Q2S42A
+    identifierType: part_number
+  - company: Lenovo
+    productName: "Lenovo NVIDIA Tesla P100 16GB Graphic Card"
+    identifier: 7X67A00068
+    identifierType: part_number
+  - company: Supermicro
+    productName: "NVIDIA Tesla P100 12GB CoWoS HBM2 PCIe 3.0 - Passive Cooling"
+    identifier: GPU-NVTP100-12
+    identifierType: part_number
+  - company: Supermicro
+    productName: "NVIDIA Tesla P100 16GB CoWoS HBM2 PCIe 3.0 - Passive Cooling"
+    identifier: GPU-NVTP100-16
+    identifierType: part_number
+  - company: Supermicro
+    productName: "NVIDIA Tesla P100 SXM2 16GB CoWoS HBM2, NVLink"
+    identifier: GPU-NVTP100-SXM
+    identifierType: part_number
+  - company: PNY
+    productName: "PNY Tesla P100 16GB HBM2 PCIe GPU"
+    identifier: TCSP100M-16GB-PB
+    identifierType: sku
+  - company: PNY
+    productName: "PNY Tesla P100 12GB HBM2 PCIe GPU"
+    identifier: TCSP100M-12GB-PB
+    identifierType: sku
+  - company: Cisco
+    productName: "Cisco NVIDIA P100 Graphics Card, 16GB"
+    identifier: UCSC-GPU-P100-16G
+    identifierType: part_number
+  - company: Cisco
+    productName: "Cisco NVIDIA P100 Graphics Card, 12GB"
+    identifier: UCSC-GPU-P100-12G
+    identifierType: part_number
+
 references:
   - https://www.anandtech.com/show/10433/nvidia-announces-pci-express-tesla-p100
   - https://developer.nvidia.com/blog/mixed-precision-programming-cuda-8/
   - https://www.anandtech.com/show/10222/nvidia-announces-tesla-p100-accelerator-pascal-power-for-hpc
   - https://technical.city/en/video/Tesla-P100-PCIe-16-GB
   - https://www.techpowerup.com/gpu-specs/tesla-p100-pcie-16-gb.c2888
+  - https://www.bhphotovideo.com/c/product/1368043-REG/nvidia_nvidia_900_2h400_0000_000_tesla_p100_16gb_cowos.html
+  - https://www.disctech.com/NVIDIA-Tesla-P100-900-2H400-0300-GPU-Accelerator-Graphics-Card
+  - https://www.microway.com/hpc-tech-tips/nvidia-tesla-p100-pci-e-16gb-gpu-accelerator-pascal-gp100-close/
+  - https://www.serversupply.com/GPU/GDDR5/16GB/CISCO/UCSC-GPU-P100-16G_401845.htm
+  - https://www.connection.com/product/cisco-nvidia-p100-graphics-card-16gb/ucsc-gpu-p100-16g/33795137
+  - https://www.wiredzone.com/shop/product/10027278-supermicro-gpu-nvtp100-12-nvidia-tesla-p100-12gb-cowos-hbm2-pcie-3-0-passive-cooling-1878
+  - https://www.pny.eu/en/professional/explore-all-products/nvidia-tesla/747-tesla-p100
+  - https://www.sabrepc.com/7X67A00068-Lenovo-S729687
+  - https://support.hpe.com/hpesc/public/docDisplay?docId=a00069881en_us&page=GUID-ADF9D45D-2BBD-459F-9B46-951204022110.html&docLocale=en_US
+  - https://pcserverandparts.com/dell-nvidia-tesla-p100-pascal-16gb-hbm2-graphics-accelerator-used-h7wfc/
+
 notes:
   - "tensorCoreCount: Tesla P100 only has CUDA cores"
   - 'supportedHardwareOperations: It appears that hardware-accelerated GEMM
@@ -35,3 +137,6 @@ notes:
   - "supportedHardwareOperations: The 8-bit and 16-bit DP4A and DP2A dot product
     instructions are supported on GP102-GP106, but not on GP100."
   - MSRP of $5,699 USD for the 16GB PCIe model sourced from technical.city and TechPowerUp GPU Database, which both cite the official NVIDIA launch price on June 20, 2016.
+  - "Manufacturer identifiers: NVPN (NVIDIA Part Number) format 699-2H400-0201-XXX is for 16GB PCIe variants, 699-2H400-0202-XXX is for 12GB PCIe variants. The 900-2H400-XXXX numbers are product SKUs. The 900-2H403-0000-000 SKU is for the SXM2 16GB variant."
+  - "GPU chip variants: GP100-890-A1 (SXM2), GP100-892-A1 (PCIe 12GB), GP100-893-A1 (PCIe 16GB) as documented in NVIDIA datasheets and TechPowerUp GPU Database."
+  - "Third-party products: Tesla P100 was widely adopted across datacenter OEMs. Multiple variants exist with different memory capacities (12GB/16GB) and form factors (PCIe/SXM2). Part numbers vary by vendor, memory configuration, and whether heatsinks are included."

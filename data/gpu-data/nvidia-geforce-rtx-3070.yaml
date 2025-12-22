@@ -17,7 +17,135 @@ supportedHardwareOperations:
   - BF16
 supportedCUDAComputeCapability: 8.6
 releaseDate: "2020-10-29"
-lastModified: "2025-12-18T00:00:00Z"
+lastModified: "2025-12-20T00:00:00Z"
+
+manufacturerIdentifiers:
+  - type: board_id
+    value: PG142 SKU 10
+  - type: nvpn
+    value: "9001G1422510000"
+
+thirdPartyProducts:
+  # ASUS
+  - company: ASUS
+    productName: ROG STRIX GeForce RTX 3070 Gaming OC
+    identifier: ROG-STRIX-RTX3070-O8G-GAMING
+    identifierType: model_number
+  - company: ASUS
+    productName: ROG STRIX GeForce RTX 3070 Gaming
+    identifier: ROG-STRIX-RTX3070-8G-GAMING
+    identifierType: model_number
+  - company: ASUS
+    productName: ROG STRIX GeForce RTX 3070 White OC Edition
+    identifier: ROG-STRIX-RTX3070-O8G-WHITE
+    identifierType: model_number
+  - company: ASUS
+    productName: TUF Gaming GeForce RTX 3070 OC
+    identifier: TUF-RTX3070-O8G-GAMING
+    identifierType: model_number
+  - company: ASUS
+    productName: TUF Gaming GeForce RTX 3070
+    identifier: TUF-RTX3070-8G-GAMING
+    identifierType: model_number
+  - company: ASUS
+    productName: DUAL GeForce RTX 3070
+    identifier: DUAL-RTX3070-8G
+    identifierType: model_number
+  - company: ASUS
+    productName: DUAL GeForce RTX 3070 OC
+    identifier: DUAL-RTX3070-O8G
+    identifierType: model_number
+  # MSI
+  - company: MSI
+    productName: GeForce RTX 3070 GAMING X TRIO
+    identifier: 912-V390-006
+    identifierType: part_number
+  - company: MSI
+    productName: GeForce RTX 3070 GAMING Z TRIO LHR
+    identifier: 912-V390-264
+    identifierType: part_number
+  - company: MSI
+    productName: GeForce RTX 3070 GAMING TRIO PLUS LHR
+    identifier: 912-V390-403
+    identifierType: part_number
+  - company: MSI
+    productName: GeForce RTX 3070 SUPRIM X
+    identifier: 912-V390-005
+    identifierType: part_number
+  # Gigabyte
+  - company: Gigabyte
+    productName: GeForce RTX 3070 AORUS MASTER
+    identifier: GV-N3070AORUS-M-8GD
+    identifierType: model_number
+  - company: Gigabyte
+    productName: GeForce RTX 3070 EAGLE
+    identifier: GV-N3070EAGLE-8GD
+    identifierType: model_number
+  - company: Gigabyte
+    productName: GeForce RTX 3070 EAGLE OC
+    identifier: GV-N3070EAGLE-OC-8GD
+    identifierType: model_number
+  # PNY
+  - company: PNY
+    productName: XLR8 Gaming REVEL EPIC-X RGB
+    identifier: VCG30708TFXPPB
+    identifierType: model_number
+  - company: PNY
+    productName: XLR8 Gaming REVEL EPIC-X RGB LHR
+    identifier: VCG30708LTFXPPB
+    identifierType: model_number
+  - company: PNY
+    productName: GeForce RTX 3070 UPRISING Dual Fan LHR
+    identifier: VCG30708LDFMPB
+    identifierType: model_number
+  # Zotac
+  - company: Zotac
+    productName: GAMING GeForce RTX 3070 Twin Edge OC
+    identifier: ZT-A30700H-10P
+    identifierType: model_number
+  - company: Zotac
+    productName: GAMING GeForce RTX 3070 Twin Edge OC White Edition
+    identifier: ZT-A30700J-10P
+    identifierType: model_number
+  - company: Zotac
+    productName: GeForce RTX 3070 AMP Holo
+    identifier: ZT-A30700F-10P
+    identifierType: model_number
+  # EVGA
+  - company: EVGA
+    productName: GeForce RTX 3070 FTW3 ULTRA GAMING
+    identifier: 08G-P5-3767-KR
+    identifierType: model_number
+  - company: EVGA
+    productName: GeForce RTX 3070 FTW3 ULTRA GAMING LHR
+    identifier: 08G-P5-3767-KL
+    identifierType: model_number
+  - company: EVGA
+    productName: GeForce RTX 3070 XC3 BLACK GAMING
+    identifier: 08G-P5-3751-KR
+    identifierType: model_number
+  # Colorful
+  - company: Colorful
+    productName: iGame GeForce RTX 3070 Advanced OC-V
+    identifier: IGAME-GEFORCE-RTX-3070-ADVANCED-OC-V
+    identifierType: model_number
+  - company: Colorful
+    productName: iGame GeForce RTX 3070 Ultra W OC
+    identifier: iGame RTX 3070 Ultra W OC
+    identifierType: model_number
+  - company: Colorful
+    productName: iGame GeForce RTX 3070 Vulcan
+    identifier: iGame RTX 3070 Vulcan
+    identifierType: model_number
+  # Palit
+  - company: Palit
+    productName: GeForce RTX 3070 GamingPro
+    identifier: NE63070019P2-1041A
+    identifierType: model_number
+  - company: Palit
+    productName: GeForce RTX 3070 GamingPro OC
+    identifier: NE63070S19P2-1041A
+    identifierType: model_number
 
 summary: |
   The NVIDIA GeForce RTX 3070 is a high-performance graphics card released in October 2020,
@@ -36,14 +164,32 @@ references:
   - https://www.nvidia.com/en-us/geforce/news/introducing-rtx-30-series-graphics-cards/
   - https://www.waredb.com/processor/nvidia-geforce-rtx-3070
   - https://www.techpowerup.com/gpu-specs/geforce-rtx-3070.c3674
+  - https://pcpartpicker.com/product/m8pmP6/nvidia-geforce-rtx-3070-8-gb-founders-edition-video-card-9001g1422510000
+  - https://devicehunt.com/view/type/pci/vendor/10DE/device/2484
+  - https://videocardz.net/nvidia-geforce-rtx-3070
+  - https://www.techpowerup.com/gpu-specs/asus-rog-strix-rtx-3070-gaming-oc.b8161
+  - https://www.techpowerup.com/gpu-specs/asus-tuf-rtx-3070-gaming.b8160
+  - https://www.msi.com/Graphics-Card/GeForce-RTX-3070-GAMING-X-TRIO
+  - https://www.gigabyte.com/Graphics-Card/GV-N3070AORUS-M-8GD-rev-10-11
+  - https://www.gigabyte.com/Graphics-Card/GV-N3070EAGLE-OC-8GD-rev-10
+  - https://www.techpowerup.com/gpu-specs/pny-xlr8-rtx-3070-revel-epic-x-triple-fan.b8017
+  - https://www.techpowerup.com/gpu-specs/zotac-rtx-3070-twin-edge-oc.b8055
+  - https://www.evga.com/products/specs/gpu.aspx?pn=a0a9ea39-ef67-4ed3-9b66-692366446c3a
+  - https://www.techpowerup.com/gpu-specs/colorful-igame-rtx-3070-advanced-oc.b8202
+  - https://www.techpowerup.com/gpu-specs/palit-rtx-3070-gamingpro.b8012
 
 notes:
-  - fp16TFLOPS of 81.25 represents "Peak FP16 Tensor TFLOPS" using the "with sparsity" metric. Dense performance is 40.63 TFLOPS, sparse is 81.25 TFLOPS. Following Ampere architecture standards, NVIDIA publishes sparse tensor performance.
-  - int8TOPS of 325.02 is "peak INT8 TOPS" using "Effective TOPS using the Sparsity Feature". Dense performance is 162.51 TOPS, sparse is 325.02 TOPS.
-  - fp32TFLOPS calculated as 5,888 CUDA cores × 1.725 GHz boost clock × 2 ops/cycle = 20.31 TFLOPS. Ampere architecture features 2 FP32 ops per cycle through dedicated FP32 datapath and shared INT32/FP32 datapath.
-  - Power based on what NVIDIA refers to as "TGP (Total Graphics Power)".
+  - "fp16TFLOPS of 81.25 represents Peak FP16 Tensor TFLOPS using the with sparsity metric. Dense performance is 40.63 TFLOPS, sparse is 81.25 TFLOPS. Following Ampere architecture standards, NVIDIA publishes sparse tensor performance."
+  - "int8TOPS of 325.02 is peak INT8 TOPS using Effective TOPS using the Sparsity Feature. Dense performance is 162.51 TOPS, sparse is 325.02 TOPS."
+  - "fp32TFLOPS calculated as 5,888 CUDA cores x 1.725 GHz boost clock x 2 ops/cycle = 20.31 TFLOPS. Ampere architecture features 2 FP32 ops per cycle through dedicated FP32 datapath and shared INT32/FP32 datapath."
+  - Power based on what NVIDIA refers to as TGP (Total Graphics Power).
   - The RTX 3070 uses the GA104-300 variant of the GA104 chip with 46 of 48 streaming multiprocessors enabled.
-  - Memory bandwidth calculated as 256-bit interface × 14 Gbps = 448 GB/s.
+  - Memory bandwidth calculated as 256-bit interface x 14 Gbps = 448 GB/s.
   - Process node is Samsung 8nm with approximately 17.4 billion transistors.
   - At launch, the RTX 3070 was positioned to match the RTX 2080 Ti's performance at a significantly lower price point.
-  - MSRP of $499 USD sourced from NVIDIA official product announcements at https://www.nvidia.com/en-us/geforce/news/geforce-rtx-3070-out-now/ and https://www.nvidia.com/en-us/geforce/news/introducing-rtx-30-series-graphics-cards/
+  - MSRP of $499 USD sourced from NVIDIA official product announcements.
+  - NVIDIA Founders Edition part number (NVPN) 9001G1422510000 sourced from retail product listings.
+  - Board identifier PG142 SKU 10 confirmed from VideoCardz and TechPowerUp sources. The RTX 3070 uses the GA104-300 GPU on the PG142 board.
+  - PCI Device ID 10DE 2484 represents NVIDIA vendor ID (10DE) and RTX 3070 device ID (2484). LHR variant uses device ID 2488.
+  - Third-party manufacturers include major AIB partners including ASUS, MSI, Gigabyte, PNY, Zotac, EVGA, Colorful, and Palit.
+  - Part numbers and model numbers sourced from manufacturer product pages, TechPowerUp GPU Database, and authorized retailer listings.

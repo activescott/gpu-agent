@@ -33,12 +33,58 @@ summary: |
   Shaders, and other advanced features. It uses a PCI-Express 5.0 x16 interface and features
   448 GB/s memory bandwidth on a 128-bit bus.
 
+thirdPartyProducts:
+  - company: ASUS
+    productName: TUF Gaming GeForce RTX 5060 Ti 16GB GDDR7 OC Edition
+    identifier: TUF-RTX5060TI-O16G-GAMING
+    identifierType: model_number
+  - company: ASUS
+    productName: Dual GeForce RTX 5060 Ti 16GB GDDR7 OC Edition
+    identifier: DUAL-RTX5060TI-O16G
+    identifierType: model_number
+  - company: ASUS
+    productName: Prime GeForce RTX 5060 Ti 16GB GDDR7 OC Edition
+    identifier: PRIME-RTX5060TI-O16G
+    identifierType: model_number
+  - company: Gigabyte
+    productName: GeForce RTX 5060 Ti GAMING OC 16G
+    identifier: GV-N506TGAMING OC-16GD
+    identifierType: model_number
+  - company: Gigabyte
+    productName: GeForce RTX 5060 Ti EAGLE OC 16G
+    identifier: GV-N506TEAGLE OC-16GD
+    identifierType: model_number
+  - company: Gigabyte
+    productName: GeForce RTX 5060 Ti WINDFORCE OC 16G
+    identifier: GV-N506TWF2OC-16GD
+    identifierType: model_number
+  - company: Zotac
+    productName: ZOTAC Gaming GeForce RTX 5060 Ti Trinity OC
+    identifier: ZT-D50601D-10P
+    identifierType: model_number
+  - company: PNY
+    productName: XLR8 Gaming GeForce RTX 5060 Ti VERTO EPIC-X RGB
+    identifier: VCG5060T16DFXPB1
+    identifierType: model_number
+  - company: Palit
+    productName: GeForce RTX 5060 Ti GamingPro OC
+    identifier: NED506TS19T9-1043A
+    identifierType: model_number
+  - company: Gainward
+    productName: GeForce RTX 5060 Ti Panther OC
+    identifier: NED506T019T9-1043A
+    identifierType: model_number
+
 references:
   - https://images.nvidia.com/aem-dam/Solutions/geforce/blackwell/nvidia-rtx-blackwell-gpu-architecture.pdf
   - https://www.nvidia.com/en-us/geforce/graphics-cards/50-series/rtx-5060-family/
   - https://www.waredb.com/processor/nvidia-geforce-rtx-5060-ti
   - https://www.techpowerup.com/gpu-specs/geforce-rtx-5060-ti.c4408
   - https://www.nvidia.com/en-us/geforce/news/ultimate-guide-to-5060/
+  - https://www.asus.com/motherboards-components/graphics-cards/tuf-gaming/tuf-rtx5060ti-o16g-gaming/
+  - https://www.asus.com/motherboards-components/graphics-cards/dual/dual-rtx5060ti-o16g/
+  - https://www.gigabyte.com/Graphics-Card/GV-N506TGAMING-OC-16GD
+  - https://www.tomshardware.com/pc-components/gpus/nvidia-geforce-rtx-5060-ti-and-5060-graphics-card-roundup-every-announced-card-from-every-aib-partner
 
 notes:
   - fp16TFLOPS of 94.81 represents "Peak FP16 Tensor TFLOPS with FP16 Accumulate" using the "with sparsity" metric. Dense performance is 47.41 TFLOPS, sparse is 94.81 TFLOPS. Following the same pattern as other Blackwell GPUs, NVIDIA publishes the sparse performance.
@@ -49,3 +95,5 @@ notes:
   - Memory bandwidth calculated as 128-bit interface × 28 Gbps = 448 GB/s.
   - Process node is 4nm with 21.9 billion transistors.
   - MSRP of $429 USD for the 16GB model sourced from nvidia.com official product page (https://www.nvidia.com/en-us/geforce/news/ultimate-guide-to-5060/). An 8GB variant is also available at $379 USD. No Founders Edition available; pricing is for partner cards.
+  - No NVIDIA Founders Edition was released for the RTX 5060 Ti. All cards are from AIB partners including ASUS, MSI, Gigabyte, Zotac, PNY, Palit, Gainward, Colorful, INNO3D, GALAX/KFA2.
+  - Third-party product identifiers sourced from official manufacturer websites (ASUS, Gigabyte), Tom's Hardware RTX 5060 Ti roundup, Newegg, and Best Buy product listings.

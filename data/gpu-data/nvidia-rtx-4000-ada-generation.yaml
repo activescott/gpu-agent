@@ -20,7 +20,55 @@ supportedHardwareOperations:
   - INT4
 supportedCUDAComputeCapability: 8.9
 releaseDate: "2023-08-09"
-lastModified: "2025-12-18T18:00:00Z"
+lastModified: "2025-12-19T00:00:00Z"
+
+manufacturerIdentifiers:
+  - type: nvpn
+    value: "900-5G190-2570-000"
+  - type: nvpn
+    value: "900-5G190-2270-000"
+  - type: nvpn
+    value: "900-5G190-2770-000"
+  - type: nvpn
+    value: "900-5G190-0070-000"
+
+thirdPartyProducts:
+  - company: Dell
+    productName: "Dell NVIDIA RTX 4000 Ada Generation, 20 GB GDDR6, full height, PCIe 4.0x16, 4 DP Graphics Card"
+    identifier: "490-BKHG"
+    identifierType: part_number
+  - company: Dell
+    productName: "Dell NVIDIA RTX 4000 SFF Ada Generation, 20 GB GDDR6, half height, PCIe 4.0x16, 4 mDP Graphics Card"
+    identifier: "490-BKPJ"
+    identifierType: part_number
+  - company: HPE
+    productName: "NVIDIA RTX 4000 Ada Graphics Accelerator for HPE"
+    identifier: "S3T54C"
+    identifierType: sku
+  - company: HP
+    productName: "HP NVIDIA RTX 4000 Ada Generation Graphics Card"
+    identifier: "8D6B7AA"
+    identifierType: part_number
+  - company: Lenovo
+    productName: "ThinkSystem NVIDIA RTX 4000 Ada 20GB PCIe Active GPU"
+    identifier: "4X67A97287"
+    identifierType: part_number
+  - company: Lenovo
+    productName: "NVIDIA RTX 4000 SFF Ada 20GB mini-DP x4 GDDR6 Graphics Card"
+    identifier: "4X61Q50293"
+    identifierType: part_number
+  - company: PNY
+    productName: "PNY NVIDIA RTX 4000 Ada Generation Single-Slot"
+    identifier: "VCNRTX4000ADA-PB"
+    identifierType: sku
+  - company: PNY
+    productName: "PNY NVIDIA RTX 4000 SFF Ada Generation Dual-Slot"
+    identifier: "VCNRTX4000ADALP-PB"
+    identifierType: sku
+  - company: Supermicro
+    productName: "Supermicro NVIDIA RTX 4000 SFF Ada Generation 20GB"
+    identifier: "GPU-NVQRTX4000-ADA-SFF"
+    identifierType: part_number
 
 summary: |
   The NVIDIA RTX 4000 Ada Generation is a professional single-slot workstation GPU released in August 2023,
@@ -45,6 +93,17 @@ references:
   - https://videocardz.net/nvidia-rtx-4000-ada
   - https://www.cgchannel.com/2023/08/nvidia-unveils-rtx-4000-4500-and-5000-workstation-gpus/
   - https://develop3d.com/workstations/nvidia-rtx-4000-4500-5000-ada-generation-gpus-launch/
+  - https://www.bhphotovideo.com/c/product/1882046-REG/nvidia_900_5g190_2270_000_rtx_4000_ada_graphic.html
+  - https://www.amazon.com/NVIDIA-Workstation-Architecture-Professional-900-5G190-2570-000/dp/B0D4V35VBP
+  - https://www.dell.com/en-us/shop/dell-nvidia-rtx-4000-ada-generation-20-gb-gddr6-full-height-pcie-40x16-4-dp-graphics-card/apd/490-bkhg/graphic-video-cards
+  - https://buy.hpe.com/us/en/options/server-accelerators/computational-graphics-accelerators-for-servers/computational-graphics-accelerators-with-hpe/nvidia-rtx-4000-ada-graphics-accelerator-for-hpe/p/s3t54c
+  - https://www.bhphotovideo.com/c/product/1816528-REG/hp_8d6b7aa_nvidia_rtx_4000_ada.html
+  - https://www.lenovo.com/us/en/p/accessories-and-software/graphics-cards/graphics_cards/4x61q50293
+  - https://www.pny.com/nvidia-rtx-4000-ada
+  - https://www.provantage.com/pny-technologies-vcnrtx4000ada-pb~4PNY92E7.htm
+  - https://www.senetic.co.uk/product/GPU-NVQRTX4000-ADA-SFF
+  - https://github.com/NVIDIA/open-gpu-kernel-modules
+  - https://devicehunt.com/view/type/pci/vendor/10DE/device/27B0
 
 notes:
   - FP32 TFLOPS of 26.7 calculated as 6,144 CUDA cores × 2.175 GHz boost clock × 2 ops/cycle ÷ 1000 = 26.73 TFLOPS (rounded to 26.7 as published by NVIDIA).
@@ -58,3 +117,11 @@ notes:
   - Power consumption (TDP) is 130W, representing the maximum thermal design power for the single-slot form factor.
   - Some sources (Lenovo) list tensor performance as 327.6 TFLOPS, but NVIDIA official sources and Leadtek consistently show 427.6 TFLOPS, which appears to be the correct peak FP8 tensor performance with sparsity.
   - MSRP of $1,250 USD confirmed by two independent sources at launch (August 2023, available September 2023). CG Channel reported "The RTX 4000 has a MSRP of $1,250" at https://www.cgchannel.com/2023/08/nvidia-unveils-rtx-4000-4500-and-5000-workstation-gpus/. Develop3D reported "Nvidia RTX 4000 Ada is available in September with an ESP of $1,250" at https://develop3d.com/workstations/nvidia-rtx-4000-4500-5000-ada-generation-gpus-launch/.
+  - NVIDIA part numbers found include 900-5G190-2570-000 (retail/standard), 900-5G190-2270-000 (OEM variant), 900-5G190-2770-000 (Lenovo ThinkSystem variant), and 900-5G190-0070-000 (active cooling variant). Sources from B&H Photo, Amazon, Exxact, and Lenovo Press documentation.
+  - PCI Device ID 27B2 and Subsystem Device ID 181B identified from NVIDIA open-gpu-kernel-modules repository on GitHub. The SFF variant uses PCI Device ID 27B0 with Subsystem Device ID 16FA.
+  - Dell offers two variants with part numbers 490-BKHG (full height) and 490-BKPJ (half height/SFF). Source from dell.com official product pages.
+  - HPE part number S3T54C for server version, HP part number 8D6B7AA for workstation version. Sources from HPE Store and B&H Photo.
+  - Lenovo part numbers include 4X67A97287 (ThinkSystem server variant, feature code C4S1) and 4X61Q50293 (ThinkStation SFF variant). Sources from Lenovo Press and lenovo.com.
+  - PNY offers VCNRTX4000ADA-PB (single-slot) and VCNRTX4000ADALP-PB (SFF dual-slot). Sources from pny.com and ProVantage.
+  - Supermicro part number GPU-NVQRTX4000-ADA-SFF for the SFF variant. Source from Senetic UK.
+  - Multiple NVIDIA part number variants exist for different OEM configurations and form factors. The base part number format is 900-5G190-XXXX-XXX with different suffixes indicating specific SKU configurations.

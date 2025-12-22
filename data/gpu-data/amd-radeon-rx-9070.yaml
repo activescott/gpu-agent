@@ -15,7 +15,7 @@ supportedHardwareOperations:
   - INT8
   - INT4
 releaseDate: "2025-03-06"
-lastModified: "2025-12-18T22:30:00Z"
+lastModified: "2025-12-21T00:00:00Z"
 
 summary: |
   The AMD Radeon RX 9070 is a high-performance graphics card released in March 2025,
@@ -31,6 +31,42 @@ summary: |
   of $549. It uses a PCIe 5.0 x16 interface and offers 640 GB/s memory bandwidth on a
   256-bit bus, matching the RX 9070 XT's memory configuration.
 
+manufacturerIdentifiers: []
+
+thirdPartyProducts:
+  - company: Sapphire
+    productName: SAPPHIRE NITRO+ AMD Radeon RX 9070 OC
+    identifier: "11349-01-20G"
+    identifierType: sku
+  - company: Sapphire
+    productName: SAPPHIRE PULSE AMD Radeon RX 9070
+    identifier: "11349-03-20G"
+    identifierType: sku
+  - company: XFX
+    productName: XFX Swift AMD Radeon RX 9070 OC Triple Fan Gaming Edition
+    identifier: RX-97SWFB3B9
+    identifierType: model_number
+  - company: ASUS
+    productName: ASUS TUF Gaming Radeon RX 9070 OC Edition
+    identifier: TUF-RX9070-O16G-GAMING
+    identifierType: model_number
+  - company: ASRock
+    productName: ASRock Radeon RX 9070 Challenger 16GB
+    identifier: RX9070 CL 16G
+    identifierType: model_number
+  - company: ASRock
+    productName: ASRock Radeon RX 9070 Steel Legend 16GB OC
+    identifier: RX9070 SL 16G OC
+    identifierType: model_number
+  - company: Gigabyte
+    productName: GIGABYTE Radeon RX 9070 Gaming OC 16G
+    identifier: GV-R9070GAMING-OC-16GD
+    identifierType: model_number
+  - company: PowerColor
+    productName: PowerColor Hellhound AMD Radeon RX 9070 16GB GDDR6
+    identifier: RX9070 16G-L/OC
+    identifierType: model_number
+
 references:
   - https://www.amd.com/en/products/graphics/desktops/radeon/9000-series/amd-radeon-rx-9070.html
   - https://www.amd.com/en/products/specifications/graphics
@@ -39,6 +75,14 @@ references:
   - https://www.tomshardware.com/pc-components/gpus/amd-rdna4-rx-9000-series-gpus-specifications-pricing-release-date
   - https://gamersnexus.net/gpus/incredibly-efficient-amd-rx-9070-gpu-review-benchmarks-vs-9070-xt-rtx-5070
   - https://www.gsmarena.com/amd_announces_pricing_and_availability_for_rx_9070_and_9070_xt-news-66772.php
+  - https://www.sapphiretech.com/en/consumer/nitro-radeon-rx-9070-16g-gddr6
+  - https://www.sapphiretech.com/en/consumer/pulse-radeon-rx-9070-16g-gddr6
+  - https://www.xfxforce.com/shop/xfx-swift-amd-radeon-rx-9070-oc-triple-fan-gaming-edition
+  - https://www.asus.com/motherboards-components/graphics-cards/tuf-gaming/tuf-rx9070-o16g-gaming/
+  - https://www.asrock.com/Graphics-Card/AMD/Radeon%20RX%209070%20Challenger%2016GB/
+  - https://www.asrock.com/Graphics-Card/AMD/Radeon%20RX%209070%20Steel%20Legend%2016GB%20OC/
+  - https://www.gigabyte.com/Graphics-Card/GV-R9070GAMING-OC-16GD
+  - https://www.techpowerup.com/gpu-specs/powercolor-hellhound-rx-9070.b12270
 
 notes:
   - tensorCoreCount tracks the 2nd-generation AI Accelerators as "tensor cores". The RX 9070 has 112 AI Accelerators (2 per CU × 56 CUs).
@@ -53,3 +97,7 @@ notes:
   - The RX 9070 offers exceptional efficiency, providing strong performance at lower power consumption compared to the XT variant, making it an attractive option for users prioritizing power efficiency.
   - The RX 9070 shares the same 16GB GDDR6 memory and 256-bit bus as the RX 9070 XT, differentiating primarily through reduced CU count and lower clocks.
   - MSRP of $549 USD sourced from AMD official announcement per GSMArena and Tom's Hardware coverage.
+  - manufacturerIdentifiers is empty because AMD OPN (Ordering Part Number) codes for consumer GPUs are typically not published in consumer-facing documentation. These internal B2B identifiers are used for distribution/ordering purposes and are generally only available through AMD's B2B portals or internal documentation.
+  - thirdPartyProducts includes verified AIB partner model numbers from Sapphire (11349-01-20G for NITRO+, 11349-03-20G for PULSE), XFX (RX-97SWFB3B9 for Swift OC), ASUS (TUF-RX9070-O16G-GAMING for TUF Gaming OC), ASRock (RX9070 CL 16G for Challenger, RX9070 SL 16G OC for Steel Legend OC), Gigabyte (GV-R9070GAMING-OC-16GD for Gaming OC), and PowerColor (RX9070 16G-L/OC for Hellhound). All model numbers verified from manufacturer product pages and retailer listings.
+  - MSI does not appear to have released RX 9070 non-XT models as of the research date. MSI's current focus for AMD RDNA 4 appears to be on RX 9070 XT variants.
+  - Gigabyte does not use their "Eagle" branding for AMD Radeon cards - the Eagle line is exclusive to NVIDIA GeForce products. For the RX 9070, Gigabyte offers Gaming OC and AORUS variants.

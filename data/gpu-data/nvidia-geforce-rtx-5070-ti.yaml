@@ -22,7 +22,154 @@ supportedHardwareOperations:
   - FP4
 supportedCUDAComputeCapability: 12.8
 releaseDate: "2025-02-20"
-lastModified: "2025-12-18T22:30:00Z"
+lastModified: "2025-12-20T22:00:00Z"
+
+manufacturerIdentifiers: []
+
+thirdPartyProducts:
+  # ASUS ROG Strix Series
+  - company: ASUS
+    productName: ROG Strix GeForce RTX 5070 Ti OC Edition 16GB GDDR7
+    identifier: ROG-STRIX-RTX5070TI-O16G-GAMING
+    identifierType: model_number
+
+  # ASUS TUF Gaming Series
+  - company: ASUS
+    productName: TUF Gaming GeForce RTX 5070 Ti OC Edition 16GB GDDR7
+    identifier: TUF-RTX5070TI-O16G-GAMING
+    identifierType: model_number
+
+  # ASUS PRIME Series
+  - company: ASUS
+    productName: PRIME GeForce RTX 5070 Ti 16GB GDDR7
+    identifier: PRIME-RTX5070TI-16G
+    identifierType: model_number
+
+  - company: ASUS
+    productName: PRIME GeForce RTX 5070 Ti OC Edition 16GB GDDR7
+    identifier: PRIME-RTX5070TI-O16G
+    identifierType: model_number
+
+  # MSI Gaming Series
+  - company: MSI
+    productName: GeForce RTX 5070 Ti 16G Gaming Trio OC
+    identifier: G507T-16GT
+    identifierType: model_number
+
+  - company: MSI
+    productName: GeForce RTX 5070 Ti 16G Gaming Trio Plus
+    identifier: G507T-16GTP
+    identifierType: model_number
+
+  # MSI Ventus Series
+  - company: MSI
+    productName: GeForce RTX 5070 Ti 16G Ventus 3X OC
+    identifier: RTX 5070 TI 16G VENTUS 3X OC
+    identifierType: model_number
+
+  # Gigabyte Gaming Series
+  - company: Gigabyte
+    productName: GeForce RTX 5070 Ti Gaming OC 16G
+    identifier: GV-N507TGAMING OC-16GD
+    identifierType: model_number
+
+  # Gigabyte WINDFORCE Series
+  - company: Gigabyte
+    productName: GeForce RTX 5070 Ti WINDFORCE OC SFF 16G
+    identifier: GV-N507TWF3OC-16GD
+    identifierType: model_number
+
+  # Gigabyte EAGLE Series
+  - company: Gigabyte
+    productName: GeForce RTX 5070 Ti EAGLE OC SFF 16G
+    identifier: GV-N507TEAGLE-OC-16GD
+    identifierType: model_number
+
+  # PNY Triple Fan Series
+  - company: PNY
+    productName: GeForce RTX 5070 Ti Triple Fan
+    identifier: VCG5070T16TFXPB1
+    identifierType: part_number
+
+  - company: PNY
+    productName: GeForce RTX 5070 Ti Triple Fan OC
+    identifier: VCG5070T16TFXPB1-O
+    identifierType: part_number
+
+  # Zotac APOCALYPSE Series
+  - company: Zotac
+    productName: GAMING GeForce RTX 5070 Ti APOCALYPSE OC
+    identifier: ZT-B50710C-10P
+    identifierType: part_number
+
+  # Zotac AMP Extreme Series
+  - company: Zotac
+    productName: GAMING GeForce RTX 5070 Ti AMP Extreme INFINITY ULTRA
+    identifier: ZT-B50710BU-10P
+    identifierType: part_number
+
+  - company: Zotac
+    productName: GAMING GeForce RTX 5070 Ti AMP Extreme INFINITY
+    identifier: ZT-B50710B-10P
+    identifierType: part_number
+
+  # Zotac SOLID Series
+  - company: Zotac
+    productName: GAMING GeForce RTX 5070 Ti SOLID OC
+    identifier: ZT-B50710J-10P
+    identifierType: part_number
+
+  - company: Zotac
+    productName: GAMING GeForce RTX 5070 Ti SOLID CORE OC
+    identifier: ZT-B50710J2-10P
+    identifierType: part_number
+
+  - company: Zotac
+    productName: GAMING GeForce RTX 5070 Ti SOLID CORE OC White Edition
+    identifier: ZT-B50710Q2-10P
+    identifierType: part_number
+
+  - company: Zotac
+    productName: GAMING GeForce RTX 5070 Ti SOLID SFF OC
+    identifier: ZT-B50710J3-10P
+    identifierType: part_number
+
+  - company: Zotac
+    productName: GAMING GeForce RTX 5070 Ti SOLID
+    identifier: ZT-B50710D-10P
+    identifierType: part_number
+
+  - company: Zotac
+    productName: GAMING GeForce RTX 5070 Ti SOLID CORE
+    identifier: ZT-B50710D2-10P
+    identifierType: part_number
+
+  - company: Zotac
+    productName: GAMING GeForce RTX 5070 Ti SOLID SFF
+    identifier: ZT-B50710D3-10P
+    identifierType: part_number
+
+  # Palit GameRock Series
+  - company: Palit
+    productName: GeForce RTX 5070 Ti GameRock
+    identifier: NE7507T019T2-GB2030G
+    identifierType: model_number
+
+  # Palit GamingPro Series
+  - company: Palit
+    productName: GeForce RTX 5070 Ti GamingPro-S
+    identifier: NE7507T019T2-GB2031U
+    identifierType: model_number
+
+  - company: Palit
+    productName: GeForce RTX 5070 Ti GamingPro OC
+    identifier: NE7507TS19T2-GB2031A
+    identifierType: model_number
+
+  - company: Palit
+    productName: GeForce RTX 5070 Ti GamingPro-S OC
+    identifier: NE7507TS19T2-GB2031U
+    identifierType: model_number
 
 summary: |
   The NVIDIA GeForce RTX 5070 Ti was the second GeForce RTX 50 series product launched using the GB203 GPU after the RTX 5080.
@@ -30,6 +177,8 @@ summary: |
 
   Other key features include DLSS 4 which uses AI to generate up to three additional frames per traditionally rendered frame boosting frame rates, and the RTX Neural Shaders integrate small AI networks into the shading process, enabling higher quality rendering. RTX Neural Faces uses generative AI to create highly realistic digital human faces. NVIDIA ACE empowers game characters with AI-driven perception, planning, and action.
   These GPUs are designed for gamers, creators, and developers, offering significant performance gains over the RTX 40 series for AI, lifelike in-game characters and AI-powered creative tools. The GeForce RTX 5090 is the flagship model of the RTX 50 series and will be available on January 30th 2025, with other models following in the coming months.
+
+  The RTX 5070 Ti does not have a Founders Edition. NVIDIA only released Founders Editions for the RTX 5090, RTX 5080, and RTX 5070. All RTX 5070 Ti cards are manufactured by AIB partners such as ASUS, MSI, Gigabyte, PNY, Zotac, and Palit.
 
   Related options in the RTX 50 series, including the RTX 5090 and RTX 5080.
 
@@ -42,6 +191,13 @@ references:
   - https://www.tomshardware.com/pc-components/gpus/nvidia-blackwell-architecture-deep-dive-a-closer-look-at-the-upgrades-coming-with-rtx-50-series-gpus
   - https://www.techpowerup.com/gpu-specs/geforce-rtx-5080.c4217
   - https://www.nvidia.com/en-us/geforce/graphics-cards/50-series/rtx-5070-family/
+  - https://rog.asus.com/graphics-cards/graphics-cards/rog-strix/rog-strix-rtx5070ti-o16g-gaming/
+  - https://www.asus.com/us/motherboards-components/graphics-cards/prime/prime-rtx5070ti-o16g/techspec/
+  - https://www.msi.com/Graphics-Card/GeForce-RTX-5070-Ti-16G-GAMING-TRIO-OC/Specification
+  - https://www.gigabyte.com/Graphics-Card/GV-N507TWF3OC-16GD
+  - https://www.pny.com/geforce-rtx-5070-ti-models
+  - https://www.zotac.com/us/product/graphics_card/GeForce-RTX-5070-Ti/all
+  - https://www.palit.com/palit/vgapro.php?id=5605&lang=en
 
 notes:
   - We use the peak TOPS/FLOPS specs using the sparsity feature.
@@ -49,4 +205,8 @@ notes:
   - fp16TFLOPS is "Peak FP16 Tensor TFLOPS with FP16 Accumulate" as that's what NVIDIA publishes.
   - int8TOPS is "peak INT 8 TOPS" using "Effective TOPS / TFLOPS using the new Sparsity Feature". They also reveal it as 660.6 "based on GPU Boost Clock". This comes from the blackwell gpu architecture pdf.
   - fp32TFLOPS is "Peak TF32 Tensor TFLOPS1" as published in the blackwell gpu architecture pdf.
-  - MSRP of $749 USD sourced from nvidia.com official product page (https://www.nvidia.com/en-us/geforce/graphics-cards/50-series/rtx-5070-family/). A Founders Edition is available for this model.
+  - MSRP of $749 USD sourced from nvidia.com official product page (https://www.nvidia.com/en-us/geforce/graphics-cards/50-series/rtx-5070-family/). A Founders Edition is NOT available for this model - only the RTX 5090, 5080, and 5070 have Founders Editions.
+  - No NVIDIA manufacturer identifiers (NVPN, Product SKU) were found in available documentation. The RTX 5070 Ti is only available through AIB partners.
+  - Third-party product identifiers sourced from manufacturer websites including ASUS, MSI, Gigabyte, PNY, Zotac, and Palit official product pages.
+  - EVGA does not manufacture RTX 5070 Ti cards as they exited the GPU market.
+  - maxTDPWatts is 360W based on the official product family page, though some sources reference 300W as the Total Board Power (TBP). The 360W figure represents the maximum power draw.

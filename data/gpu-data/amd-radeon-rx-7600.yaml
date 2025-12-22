@@ -15,7 +15,7 @@ supportedHardwareOperations:
   - INT8
   - INT4
 releaseDate: "2023-05-25"
-lastModified: "2025-12-18T00:00:00Z"
+lastModified: "2025-12-21T00:00:00Z"
 
 summary: |
   The AMD Radeon RX 7600 is a mainstream graphics card released in May 2023,
@@ -29,6 +29,54 @@ summary: |
   RX 7600 XT is memory capacity (8GB vs 16GB) and TDP (165W vs 190W), with both sharing
   the same 32 CU configuration and nearly identical performance in most gaming scenarios.
 
+manufacturerIdentifiers:
+  - type: codename
+    value: Navi 33 XL
+  - type: internal_codename
+    value: Hotpink Bonefish
+
+thirdPartyProducts:
+  - company: Sapphire
+    productName: PULSE AMD Radeon RX 7600 8G GDDR6
+    identifier: 11324-01-20G
+    identifierType: model_number
+  - company: XFX
+    productName: SPEEDSTER SWFT 210 AMD Radeon RX 7600 Core Edition
+    identifier: RX-76PSWFTFY
+    identifierType: model_number
+  - company: XFX
+    productName: SPEEDSTER QICK 308 AMD Radeon RX 7600 Black Edition
+    identifier: RX-76PQICKBY
+    identifierType: model_number
+  - company: PowerColor
+    productName: Fighter AMD Radeon RX 7600 8GB GDDR6
+    identifier: RX 7600 8G-F
+    identifierType: model_number
+  - company: PowerColor
+    productName: Hellhound AMD Radeon RX 7600 8GB GDDR6
+    identifier: RX7600 8G-L/OC
+    identifierType: model_number
+  - company: ASRock
+    productName: Radeon RX 7600 Challenger OC 8GB
+    identifier: 90-GA41ZZ-00UANF
+    identifierType: model_number
+  - company: ASUS
+    productName: ROG Strix Radeon RX 7600 OC Edition 8GB GDDR6
+    identifier: ROG-STRIX-RX7600-O8G-GAMING
+    identifierType: model_number
+  - company: ASUS
+    productName: Dual Radeon RX 7600 OC Edition 8GB GDDR6
+    identifier: DUAL-RX7600-O8G
+    identifierType: model_number
+  - company: Gigabyte
+    productName: Radeon RX 7600 GAMING OC 8G
+    identifier: GV-R76GAMING-OC-8GD
+    identifierType: model_number
+  - company: MSI
+    productName: Radeon RX 7600 MECH 2X CLASSIC 8G OC
+    identifier: R7600M2XC8C
+    identifierType: model_number
+
 references:
   - https://www.amd.com/en/products/graphics/desktops/radeon/7000-series/amd-radeon-rx-7600.html
   - https://www.amd.com/en/newsroom/press-releases/2023-5-24-amd-introduces-amd-radeon-rx-7600-graphics-card-f.html
@@ -37,6 +85,18 @@ references:
   - https://gpuopen.com/learn/wmma_on_rdna3/
   - https://gpuopen.com/learn/amd-lab-notes/amd-lab-notes-matrix-cores-readme/
   - https://www.tomshardware.com/pc-components/gpus/amd-rx-7600-xt-vs-rx-7600-gpu-faceoff-is-16gb-of-video-memory-worth-it-in-a-budget-gpu
+  - https://linux-hardware.org/?id=pci:1002-7480-1849-5311
+  - https://wccftech.com/amd-radeon-rx-7000-ryzen-7000-rdna-3-gpu-codenames-detailed-pink-sardine-igpu-plum-bonito-wheat-nas-hotpink-bonefish-dgpus/
+  - https://www.sapphiretech.com/en/consumer/pulse-radeon-rx-7600-8g-gddr6
+  - https://www.xfxforce.com/shop/xfx-speedster-swft-210-amd-radeon-tm-rx-7600-core-edition
+  - https://www.xfxforce.com/shop/xfx-speedster-qick-308-amd-radeon-tm-rx-7600-black-edition
+  - https://www.techpowerup.com/gpu-specs/powercolor-fighter-rx-7600.b11217
+  - https://www.powercolor.com/product?id=1682402371
+  - https://www.asrock.com/Graphics-Card/AMD/Radeon%20RX%207600%20Challenger%208GB%20OC/
+  - https://rog.asus.com/us/graphics-cards/graphics-cards/rog-strix/rog-strix-rx7600-o8g-gaming/
+  - https://www.asus.com/us/motherboards-components/graphics-cards/dual/dual-rx7600-o8g/
+  - https://www.gigabyte.com/Graphics-Card/GV-R76GAMING-OC-8GD-rev-10-11
+  - https://www.msi.com/Graphics-Card/Radeon-RX-7600-MECH-2X-CLASSIC-8G-OC/Specification
 
 notes:
   - tensorCoreCount tracks the AI Accelerators as "tensor cores". The RX 7600 has 64 AI Accelerators (2 per CU × 32 CUs).
@@ -48,3 +108,5 @@ notes:
   - Process node is TSMC N6 (6nm).
   - int8TOPS information is not readily available from AMD's official specifications for RDNA 3 consumer GPUs.
   - MSRP of $269 USD sourced from AMD official press release dated May 24, 2023.
+  - manufacturerIdentifiers include PCI device ID 1002:7480 for Navi 33 (from Linux hardware database), codename Navi 33 XL, and internal development codename "Hotpink Bonefish" from AMD documentation.
+  - thirdPartyProducts list includes the top AIB partners at launch (Sapphire, XFX, PowerColor, ASRock, ASUS, Gigabyte, MSI) with verified model numbers from their official product pages and retail listings. Model numbers sourced from manufacturer websites and verified through multiple retailers.

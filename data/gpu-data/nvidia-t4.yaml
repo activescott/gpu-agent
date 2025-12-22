@@ -16,7 +16,7 @@ supportedHardwareOperations:
   - INT4
 supportedCUDAComputeCapability: 7.5
 releaseDate: "2018-09-13"
-lastModified: "2025-12-18T22:30:00Z"
+lastModified: "2025-12-19T00:00:00Z"
 
 summary: The NVIDIA T4 is a powerful and versatile GPU designed for a variety of
   applications, including machine learning, data analytics, and virtual desktop
@@ -28,12 +28,109 @@ summary: The NVIDIA T4 is a powerful and versatile GPU designed for a variety of
   make it an ideal choice for energy-efficient, high-density server
   environments. A common part number of HCKJM references the Dell version of the
   card while TCSCT4-KIT references the PNY version of the card.
+
+manufacturerIdentifiers:
+  - type: product_sku
+    value: PG183 SKU 200
+  - type: nvpn
+    value: 699-2G183-0200-xxx
+  - type: nvpn
+    value: 900-2G183-0000-000
+  - type: nvpn
+    value: 900-2G183-0000-001
+  - type: board_id
+    value: PG183
+  - type: gpu_sku
+    value: TU104-895
+
+thirdPartyProducts:
+  - company: Dell
+    productName: NVIDIA Tesla T4 16GB GDDR6 for Dell PowerEdge
+    identifier: HCKJM
+    identifierType: part_number
+  - company: Dell
+    productName: NVIDIA Tesla T4 16GB GDDR6 for Dell PowerEdge
+    identifier: 0HCKJM
+    identifierType: part_number
+  - company: Dell
+    productName: Dell NVIDIA Tesla T4 16GB x16 PCI-e 70W SW FH/HL GPU
+    identifier: 7PH29
+    identifierType: part_number
+  - company: Dell
+    productName: Dell NVIDIA Tesla T4 Turing GPU Accelerator
+    identifier: 900-2G183-0100-002
+    identifierType: part_number
+  - company: HPE
+    productName: NVIDIA T4 16GB Computational Accelerator for HPE
+    identifier: P09571-001
+    identifierType: part_number
+  - company: HPE
+    productName: NVIDIA T4 16GB Computational Accelerator for HPE
+    identifier: R0W29C
+    identifierType: part_number
+  - company: HPE
+    productName: HP NVIDIA Tesla T4 Turing GPU Accelerator
+    identifier: 900-2G183-0300-000
+    identifierType: part_number
+  - company: Lenovo
+    productName: ThinkSystem NVIDIA Tesla T4 16GB PCIe Passive GPU
+    identifier: 4X67A14926
+    identifierType: part_number
+  - company: PNY
+    productName: NVIDIA Tesla T4 Graphic Card 70W 16GB GDDR6 PCIe 3.0 x16 LP Single Slot
+    identifier: TCSCT4-KIT
+    identifierType: sku
+  - company: Supermicro
+    productName: NVIDIA Tesla T4 16GB GDDR6 PCIe 3.0 Passive Cooling Single Slot 70W
+    identifier: GPU-NVTT4
+    identifierType: part_number
+  - company: Cisco
+    productName: NVIDIA T4 PCIE 75W 16GB for UCS C-Series
+    identifier: UCSC-GPU-T4-16
+    identifierType: part_number
+  - company: Cisco
+    productName: NVIDIA Tesla T4 for Cisco UCS
+    identifier: 699-2G183-0200-100
+    identifierType: part_number
+
 references:
   - https://www.nvidia.com/en-us/data-center/tesla-t4/
   - https://techcrunch.com/2018/09/12/nvidia-launches-the-tesla-t4-its-fastest-data-center-inferencing-platform-yet/
   - https://www.techpowerup.com/gpu-specs/tesla-t4.c3316
   - https://www.nvidia.com/en-us/data-center/tensor-cores/
+  - https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/tesla-t4/t4-tensor-core-product-brief.pdf
+  - https://www.marigoldsystems.com/products/nvidia-tesla-t4-16gb-single-slot-gpu-with-full-height-bracket-dpn-hckjm-0hckjm
+  - https://www.expresscomputersystems.com/products/dell-nvidia-tesla-t4-16gb-x16-pci-e-70w-sw-fh-hl-gpu-hckjm
+  - https://support.hpe.com/connect/s/product?language=en_US&l5oid=4206249&kmpmoid=1013114027
+  - https://buy.hpe.com/us/en/options/server-accelerators/computational-graphics-accelerators-for-servers/computational-graphics-accelerators-for-proliant-servers/nvidia-t4-16gb-computational-accelerator-for-hpe/p/r0w29c
+  - https://lenovopress.lenovo.com/lp1926-thinksystem-nvidia-t4-16gb-pcie-passive-gpu
+  - https://www.pny.com/file%20library/company/support/product%20brochures/nvidia%20data%20center%20gpus/nvidia-telsa-t4-datasheet.pdf
+  - https://www.exxactcorp.com/PNY-TCSCT4-KIT-E5418746
+  - https://www.ahead-it.eu/en/shop/hardware/supermicro/supermicro-gpu-nvtt4-nvidia-tesla-t4-16gb-gddr6-pcie-3-0-passive-cooling-single-slot-70w
+  - https://www.provantage.com/cisco-systems-ucsc-gpu-t4-16~7CSC8YWF.htm
+  - https://www.connection.com/product/cisco-nvidia-t4-pcie-graphics-card-16gb/ucsc-gpu-t4-16/36831711
+  - https://devicehunt.com/view/type/pci/vendor/10DE/device/1EB8
+
 notes:
   - 'supportedHardwareOperations: see "Supported Tensor Core precisions" in
     table at end of https://www.nvidia.com/en-us/data-center/tensor-cores/'
   - MSRP of $2,299 USD sourced from TechPowerUp GPU Database which lists the launch price, and verified by TechCrunch article announcing the Tesla T4 launch in September 2018.
+  - "Product SKU PG183 SKU 200 sourced from NVIDIA T4 Product Brief (nvidia.com) and TechPowerUp GPU Database"
+  - "NVIDIA Part Number (NVPN) 699-2G183-0200-xxx is the official NVPN from NVIDIA T4 Product Brief. The 900-2G183-xxxx-xxx series are order part numbers for different variants"
+  - "NVPN 900-2G183-0000-000 is the base order part number with low profile bracket preinstalled, sourced from exxactcorp.com and NVIDIA Product Brief"
+  - "NVPN 900-2G183-0000-001 is the order part number with ATX bracket preinstalled, sourced from exxactcorp.com"
+  - "Board ID PG183 sourced from NVIDIA T4 Product Brief and technical documentation"
+  - "PCI Device ID 0x1EB8 sourced from devicehunt.com and NVIDIA Developer Forums (forums.developer.nvidia.com)"
+  - "PCI Subsystem ID 0x12A2 sourced from NVIDIA T4 Product Brief and devicehunt.com"
+  - "GPU SKU TU104-895 sourced from TechPowerUp GPU Database and NVIDIA Product Brief"
+  - "Dell part number HCKJM and 0HCKJM sourced from marigoldsystems.com and expresscomputersystems.com. Same part, different format (with/without leading zero)"
+  - "Dell part number 7PH29 sourced from expresscomputersystems.com as alternate Dell part number"
+  - "Dell OEM part number 900-2G183-0100-002 sourced from itcreations.com vendor listings"
+  - "HPE part number P09571-001 sourced from serversupply.com and HPE support documentation"
+  - "HPE part number R0W29C sourced from buy.hpe.com official product catalog"
+  - "HPE OEM part number 900-2G183-0300-000 sourced from itcreations.com vendor listings"
+  - "Lenovo part number 4X67A14926 sourced from Lenovo Press Product Guide (lenovopress.lenovo.com/lp1926) and connection.com"
+  - "PNY SKU TCSCT4-KIT sourced from pny.com datasheet and exxactcorp.com"
+  - "Supermicro part number GPU-NVTT4 sourced from ahead-it.eu and wiredzone.com"
+  - "Cisco part number UCSC-GPU-T4-16 sourced from provantage.com and connection.com. UCSC prefix indicates UCS C-Series rack servers"
+  - "Cisco OEM part number 699-2G183-0200-100 sourced from connection.com as the NVIDIA part number for Cisco T4 variant"

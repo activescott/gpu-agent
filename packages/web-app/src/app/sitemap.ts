@@ -44,6 +44,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     newsSitemap(domain_url),
     modelsSitemap(domain_url),
     gpuLearnSitemap(domain_url),
+    gpuCardLearnSitemap(domain_url),
     rankingSitemap(domain_url),
     priceCompareSitemap(domain_url),
     benchmarkLearnSitemap(domain_url),
@@ -55,6 +56,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     newsItems,
     modelsEntries,
     gpuLearnEntries,
+    gpuCardLearnEntries,
     rankingEntries,
     priceCompareEntries,
     benchmarkLearnEntries,
@@ -70,6 +72,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     newsItems,
     modelsEntries,
     gpuLearnEntries,
+    gpuCardLearnEntries,
     rankingEntries,
     priceCompareEntries,
     benchmarkLearnEntries,
@@ -167,6 +170,21 @@ async function gpuLearnSitemap(domain_url: string): Promise<SitemapItem[]> {
   const gpuEntries: SitemapItem[] = gpus.map((gpu) => {
     return {
       url: `${domain_url}/ml/learn/gpu/${gpu.name}`,
+      changeFrequency: "monthly",
+      priority: 0.7,
+      lastModified: gpu.lastModified,
+    } satisfies SitemapItem
+  })
+
+  return gpuEntries
+}
+
+async function gpuCardLearnSitemap(domain_url: string): Promise<SitemapItem[]> {
+  const gpus = await listGpus()
+
+  const gpuEntries: SitemapItem[] = gpus.map((gpu) => {
+    return {
+      url: `${domain_url}/gpu/learn/card/${gpu.name}`,
       changeFrequency: "monthly",
       priority: 0.7,
       lastModified: gpu.lastModified,

@@ -18,10 +18,10 @@ spec:
               value: "true"
             - name: NODE_ENV
               value: "development"
-          # More tolerant probes for development (Next.js compiles on-demand)
+          # Increase CPU limits during dev as e2e tests peg the container
           resources:
             limits:
-              cpu: "2"
+              cpu: "4"
               memory: "4Gi"
             requests:
               cpu: "500m"

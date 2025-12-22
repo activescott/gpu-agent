@@ -60,3 +60,12 @@ export const GpuSchema = z
   .extend(GpuSpecsSchema.shape)
 
 export type Gpu = z.infer<typeof GpuSchema>
+
+/**
+ * Parse and validate a GPU object (typically from Prisma) through the Zod schema.
+ * This validates JSONB fields (manufacturerIdentifiers, thirdPartyProducts) and
+ * ensures the data matches the expected Gpu type.
+ */
+export function parseGpu(data: unknown): Gpu {
+  return GpuSchema.parse(data)
+}

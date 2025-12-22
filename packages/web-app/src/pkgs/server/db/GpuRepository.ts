@@ -1,4 +1,4 @@
-import { Gpu } from "@/pkgs/isomorphic/model"
+import { Gpu, parseGpu } from "@/pkgs/isomorphic/model"
 import { isNil } from "lodash-es"
 import { PrismaClientWithinTransaction, prismaSingleton } from "./db"
 import { GpuSpecKey } from "@/pkgs/isomorphic/model/specs"
@@ -207,7 +207,9 @@ export type PricedGpu = {
 
 export async function listGpus(includeTestGpus = false): Promise<Gpu[]> {
   const gpus = await prismaSingleton.gpu.findMany()
-  return gpus.filter((gpu) => gpu.name !== "test-gpu" || includeTestGpus)
+  return gpus
+    .filter((gpu) => gpu.name !== "test-gpu" || includeTestGpus)
+    .map((gpu) => parseGpu(gpu))
 }
 
 export async function getGpu(
@@ -218,7 +220,7 @@ export async function getGpu(
   if (!result) {
     throw new Error(`Gpu not found: ${name}`)
   }
-  return result
+  return parseGpu(result)
 }
 
 export async function gpuSpecAsPercent(

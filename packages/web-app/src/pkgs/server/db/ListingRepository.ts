@@ -24,7 +24,12 @@
  * ═══════════════════════════════════════════════════════════════════════════
  */
 
-import { Listing, ListingWithMetric, Gpu } from "@/pkgs/isomorphic/model"
+import {
+  Listing,
+  ListingWithMetric,
+  Gpu,
+  parseGpu,
+} from "@/pkgs/isomorphic/model"
 import { createDiag } from "@activescott/diag"
 import { PrismaClientWithinTransaction, prismaSingleton } from "./db"
 import { omit } from "lodash"
@@ -38,6 +43,21 @@ const log = createDiag("shopping-agent:ListingRepository")
 
 /* We keep cachedAt in the DB and it is used in the ListingRepository and in Listings */
 export type CachedListing = Listing & { cachedAt: Date }
+
+// Type for Prisma listing results that include gpu
+type PrismaListingWithGpu = Prisma.ListingGetPayload<{ include: { gpu: true } }>
+
+/**
+ * Parse a Prisma listing result that includes gpu, validating JSONB fields.
+ */
+function parsePrismaListingWithGpu(
+  listing: PrismaListingWithGpu,
+): CachedListing {
+  return {
+    ...listing,
+    gpu: parseGpu(listing.gpu),
+  } satisfies CachedListing
+}
 
 /**
  * Creates a hash of key fields to detect changes in listings
@@ -127,7 +147,7 @@ export async function listActiveListingsForGpus(
   gpuNames: string[],
   prisma: PrismaClientWithinTransaction = prismaSingleton,
 ): Promise<CachedListing[]> {
-  const res = prisma.listing.findMany({
+  const listings = await prisma.listing.findMany({
     where: {
       gpuName: { in: gpuNames },
       archived: false,
@@ -136,7 +156,7 @@ export async function listActiveListingsForGpus(
       gpu: true,
     },
   })
-  return res
+  return listings.map((listing) => parsePrismaListingWithGpu(listing))
 }
 
 export type GpuWithListings = {
@@ -169,11 +189,17 @@ export async function listActiveListingsGroupedByGpu(
     },
   })
 
-  const result = gpus.map((gpu) => ({
-    // NOTE: The returned listing doesn't have the gpu field hydrated, so we add it here
-    listings: gpu.Listing.map((listing) => ({ ...listing, gpu })),
-    gpuName: gpu.name,
-  }))
+  const result = gpus.map((gpu) => {
+    const parsedGpu = parseGpu(gpu)
+    return {
+      // NOTE: The returned listing doesn't have the gpu field hydrated, so we add it here
+      listings: gpu.Listing.map((listing) => ({
+        ...listing,
+        gpu: parsedGpu,
+      })) as CachedListing[],
+      gpuName: gpu.name,
+    }
+  })
   return result
 }
 
@@ -188,13 +214,13 @@ export async function listActiveListings(
     archived: false,
     ...(includeTestGpus ? {} : { gpuName: { not: "test-gpu" } }),
   }
-  const res = prisma.listing.findMany({
+  const listings = await prisma.listing.findMany({
     where: where,
     include: {
       gpu: true,
     },
   })
-  return res
+  return listings.map((listing) => parsePrismaListingWithGpu(listing))
 }
 
 // Legacy alias for backward compatibility
@@ -805,7 +831,7 @@ export async function listArchivedListings(
   endDate: Date,
   prisma: PrismaClientWithinTransaction = prismaSingleton,
 ): Promise<CachedListing[]> {
-  const result = await prisma.listing.findMany({
+  const listings = await prisma.listing.findMany({
     where: {
       gpuName,
       archived: true,
@@ -822,7 +848,7 @@ export async function listArchivedListings(
     },
   })
 
-  return result
+  return listings.map((listing) => parsePrismaListingWithGpu(listing))
 }
 
 /**
@@ -832,7 +858,7 @@ export async function getListingVersionHistory(
   itemId: string,
   prisma: PrismaClientWithinTransaction = prismaSingleton,
 ): Promise<CachedListing[]> {
-  const result = await prisma.listing.findMany({
+  const listings = await prisma.listing.findMany({
     where: {
       itemId,
     },
@@ -844,5 +870,5 @@ export async function getListingVersionHistory(
     },
   })
 
-  return result
+  return listings.map((listing) => parsePrismaListingWithGpu(listing))
 }

@@ -379,6 +379,7 @@ export async function archiveStaleListingsForGpu(
 export type GpuPriceStats = {
   avgPrice: number
   minPrice: number
+  maxPrice: number
   activeListingCount: number
   latestListingDate: Date
 }
@@ -399,6 +400,7 @@ export async function getPriceStats(
         ORDER BY "priceValue"::float ASC
         LIMIT 3
       ) lowest_three) as "minPrice",
+      MAX("priceValue"::float) as "maxPrice",
       COUNT(*)::float as "activeListingCount",
       MAX("itemCreationDate") as "latestListingDate"
     FROM "Listing"
@@ -412,6 +414,7 @@ export async function getPriceStats(
     return {
       avgPrice: 0,
       minPrice: 0,
+      maxPrice: 0,
       activeListingCount: 0,
       latestListingDate: EPOCH,
     }

@@ -5,21 +5,12 @@ import { useEffect, useState, useMemo, type JSX, Fragment } from "react"
 import { composeComparers } from "@/pkgs/isomorphic/collection"
 import { PricedGpu } from "@/pkgs/server/db/GpuRepository"
 import { isNil } from "lodash-es"
-
-const PERCENTILE_75 = 0.75
-const PERCENTILE_50 = 0.5
-const PERCENTILE_25 = 0.25
-
-type TierThreshold = {
-  percentile: number
-  label: string
-}
-
-const TIER_THRESHOLDS: TierThreshold[] = [
-  { percentile: PERCENTILE_75, label: "Top Tier - 75th Percentile" },
-  { percentile: PERCENTILE_50, label: "Middle Tier - 50th Percentile" },
-  { percentile: PERCENTILE_25, label: "Entry Tier - 25th Percentile" },
-]
+import {
+  PERCENTILE_TOP_TIER,
+  PERCENTILE_MIDDLE_TIER,
+  TIER_THRESHOLDS,
+  type TierThreshold,
+} from "@/pkgs/isomorphic/model/tiers"
 
 /**
  * Sort GPUs by percentile (descending - highest performance first).
@@ -320,9 +311,9 @@ export function GpuMetricsTable({
                             pricedGpu.gpu.name,
                           )
                           if (costPercentile === undefined) return ""
-                          if (costPercentile >= PERCENTILE_75)
+                          if (costPercentile >= PERCENTILE_TOP_TIER)
                             return "text-success"
-                          if (costPercentile >= PERCENTILE_50)
+                          if (costPercentile >= PERCENTILE_MIDDLE_TIER)
                             return "text-warning"
                           return "text-danger"
                         })()}

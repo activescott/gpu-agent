@@ -2,15 +2,28 @@ import { GpuInfo, BenchmarkPercentile } from "@/pkgs/client/components/GpuInfo"
 import { GpuSpecKey, GpuSpecKeys } from "@/pkgs/isomorphic/model/specs"
 import { Gpu } from "@/pkgs/isomorphic/model"
 import {
+  PERCENTILE_TOP_TIER,
+  PERCENTILE_ENTRY_TIER,
+} from "@/pkgs/isomorphic/model/tiers"
+import {
   getGpu as getGpuWithoutCache,
   gpuSpecAsPercent,
   getAllMetricDefinitions,
   calculateAllGpuPercentilesForMetric,
   getMetricValuesBySlug,
 } from "@/pkgs/server/db/GpuRepository"
-import { getPriceStats } from "@/pkgs/server/db/ListingRepository"
+import {
+  getPriceStats,
+  GpuPriceStats,
+} from "@/pkgs/server/db/ListingRepository"
 import { createDiag } from "@activescott/diag"
 import { memoize } from "lodash"
+
+// revalidate the data at most every hour:
+export const revalidate = 3600
+
+// Force dynamic rendering to avoid database dependency during Docker build
+export const dynamic = "force-dynamic"
 
 const log = createDiag("shopping-agent:learn:gpuSlug")
 
@@ -46,10 +59,92 @@ function formatIdentifierTypeForSchema(type: string): string {
 }
 
 /**
+ * Pros and cons data for editorial reviews.
+ */
+export interface ProsCons {
+  positiveNotes: string[]
+  negativeNotes: string[]
+}
+
+/**
+ * Generates pros and cons based on GPU spec and benchmark percentiles.
+ * Uses tier thresholds to determine strengths (top tier) and weaknesses (entry tier).
+ * Interleaves specs and benchmarks to ensure both categories are represented.
+ */
+function generateProsCons(
+  gpuSpecPercentages: Record<GpuSpecKey, number>,
+  gpuBenchmarkPercentiles: BenchmarkPercentile[],
+): ProsCons {
+  const specPros: string[] = []
+  const specCons: string[] = []
+  const benchmarkPros: string[] = []
+  const benchmarkCons: string[] = []
+
+  // Spec labels for human-readable output
+  const specLabels: Record<GpuSpecKey, string> = {
+    fp32TFLOPS: "FP32 compute performance",
+    fp16TFLOPS: "FP16 compute performance",
+    tensorCoreCount: "tensor core count",
+    memoryCapacityGB: "memory capacity",
+    memoryBandwidthGBs: "memory bandwidth",
+    int8TOPS: "INT8 inference performance",
+  }
+
+  const percentMultiplier = 100
+
+  // Analyze spec percentiles
+  for (const [key, percentile] of Object.entries(gpuSpecPercentages)) {
+    if (Number.isNaN(percentile)) continue
+    const label = specLabels[key as GpuSpecKey]
+    if (!label) continue
+
+    if (percentile >= PERCENTILE_TOP_TIER) {
+      const topPercent = Math.round((1 - percentile) * percentMultiplier)
+      specPros.push(`Excellent ${label} (top ${topPercent}% of GPUs)`)
+    } else if (percentile <= PERCENTILE_ENTRY_TIER) {
+      specCons.push(`Lower ${label} compared to other GPUs`)
+    }
+  }
+
+  // Analyze gaming benchmarks (only top-tier as pros, entry-tier as cons)
+  for (const benchmark of gpuBenchmarkPercentiles) {
+    if (benchmark.percentile === undefined) continue
+    if (benchmark.percentile >= PERCENTILE_TOP_TIER) {
+      const topPercent = Math.round(
+        (1 - benchmark.percentile) * percentMultiplier,
+      )
+      benchmarkPros.push(
+        `Strong ${benchmark.name} performance (top ${topPercent}% of GPUs)`,
+      )
+    } else if (benchmark.percentile <= PERCENTILE_ENTRY_TIER) {
+      benchmarkCons.push(`Below average ${benchmark.name} performance`)
+    }
+  }
+
+  // Interleave specs and benchmarks to ensure both categories are represented
+  // Take up to 2 from each category for a max of 4 total
+  const maxPerCategory = 2
+  const positiveNotes = [
+    ...specPros.slice(0, maxPerCategory),
+    ...benchmarkPros.slice(0, maxPerCategory),
+  ]
+  const negativeNotes = [
+    ...specCons.slice(0, maxPerCategory),
+    ...benchmarkCons.slice(0, maxPerCategory),
+  ]
+
+  return { positiveNotes, negativeNotes }
+}
+
+/**
  * Builds JSON-LD structured data for the GPU product page.
  * Uses Schema.org Product schema to help search engines understand the page content.
  */
-function buildStructuredData(gpu: Gpu): object {
+function buildStructuredData(
+  gpu: Gpu,
+  priceStats: GpuPriceStats,
+  prosCons: ProsCons,
+): object {
   const structuredData: Record<string, unknown> = {
     "@context": "https://schema.org",
     "@type": "Product",
@@ -60,6 +155,11 @@ function buildStructuredData(gpu: Gpu): object {
       name: extractBrandName(gpu.label),
     },
     category: "Graphics Card",
+  }
+
+  // Add release date if available
+  if (gpu.releaseDate) {
+    structuredData.releaseDate = gpu.releaseDate
   }
 
   // Add manufacturer identifiers as SKU, MPN, and additionalProperty
@@ -77,6 +177,59 @@ function buildStructuredData(gpu: Gpu): object {
     )
   }
 
+  // Add AggregateOffer with pricing data
+  const priceDecimalPlaces = 2
+  if (priceStats.activeListingCount > 0 && priceStats.minPrice > 0) {
+    structuredData.offers = {
+      "@type": "AggregateOffer",
+      lowPrice: priceStats.minPrice.toFixed(priceDecimalPlaces),
+      highPrice: priceStats.maxPrice.toFixed(priceDecimalPlaces),
+      priceCurrency: "USD",
+      offerCount: Math.floor(priceStats.activeListingCount),
+      availability: "https://schema.org/InStock",
+      url: `https://gpupoet.com/ml/shop/gpu/${gpu.name}`,
+    }
+  }
+
+  // Add editorial review with pros/cons
+  const totalStatements =
+    prosCons.positiveNotes.length + prosCons.negativeNotes.length
+  const minStatements = 2
+  if (totalStatements >= minStatements) {
+    const review: Record<string, unknown> = {
+      "@type": "Review",
+      author: {
+        "@type": "Person",
+        name: "Scott Willeke",
+      },
+      reviewBody: gpu.summary,
+    }
+
+    if (prosCons.positiveNotes.length > 0) {
+      review.positiveNotes = {
+        "@type": "ItemList",
+        itemListElement: prosCons.positiveNotes.map((note, index) => ({
+          "@type": "ListItem",
+          position: index + 1,
+          name: note,
+        })),
+      }
+    }
+
+    if (prosCons.negativeNotes.length > 0) {
+      review.negativeNotes = {
+        "@type": "ItemList",
+        itemListElement: prosCons.negativeNotes.map((note, index) => ({
+          "@type": "ListItem",
+          position: index + 1,
+          name: note,
+        })),
+      }
+    }
+
+    structuredData.review = review
+  }
+
   // Add third-party products as related products
   if (gpu.thirdPartyProducts && gpu.thirdPartyProducts.length > 0) {
     structuredData.isRelatedTo = gpu.thirdPartyProducts.map((product) => ({
@@ -92,12 +245,6 @@ function buildStructuredData(gpu: Gpu): object {
 
   return structuredData
 }
-
-// revalidate the data at most every hour:
-export const revalidate = 3600
-
-// Force dynamic rendering to avoid database dependency during Docker build
-export const dynamic = "force-dynamic"
 
 type GpuParams = {
   params: Promise<{ gpuSlug: string }>
@@ -155,7 +302,8 @@ export default async function Page(props: GpuParams) {
   )
 
   const listings = await getPriceStats(gpu.name)
-  const structuredData = buildStructuredData(gpu)
+  const prosCons = generateProsCons(gpuSpecPercentages, gpuBenchmarkPercentiles)
+  const structuredData = buildStructuredData(gpu, listings, prosCons)
 
   return (
     <>
@@ -169,6 +317,7 @@ export default async function Page(props: GpuParams) {
         activeListingCount={listings.activeListingCount}
         gpuSpecPercentages={gpuSpecPercentages}
         gpuBenchmarkPercentiles={gpuBenchmarkPercentiles}
+        prosCons={prosCons}
       />
     </>
   )

@@ -11,6 +11,7 @@ import { FormatCurrency } from "./FormatCurrency"
 import { GpuSpecsTable } from "./GpuSpecsTable"
 import { GpuBenchmarksTable, BenchmarkPercentile } from "./GpuBenchmarksTable"
 import { GpuQuickInfo } from "./GpuQuickInfo"
+import { ProsCons } from "@/app/gpu/learn/card/[gpuSlug]/page"
 
 import type { JSX } from "react"
 
@@ -23,6 +24,7 @@ interface GpuInfoParams {
   activeListingCount: number
   gpuSpecPercentages: Record<GpuSpecKey, number>
   gpuBenchmarkPercentiles?: BenchmarkPercentile[]
+  prosCons?: ProsCons
 }
 
 /**
@@ -71,6 +73,7 @@ export function GpuInfo({
   minimumPrice,
   activeListingCount,
   gpuBenchmarkPercentiles,
+  prosCons,
 }: GpuInfoParams): JSX.Element {
   return (
     <>
@@ -79,6 +82,34 @@ export function GpuInfo({
       </h1>
       <p>{gpu.summary}</p>
       <GpuQuickInfo gpu={gpu} />
+
+      {/* Strengths and Considerations - visible for Google structured data matching */}
+      {prosCons &&
+        (prosCons.positiveNotes.length > 0 ||
+          prosCons.negativeNotes.length > 0) && (
+          <div className="row mt-4 mb-4">
+            {prosCons.positiveNotes.length > 0 && (
+              <div className="col-md-6">
+                <h3 className="h6 text-success">Strengths</h3>
+                <ul className="small mb-0">
+                  {prosCons.positiveNotes.map((note, idx) => (
+                    <li key={idx}>{note}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
+            {prosCons.negativeNotes.length > 0 && (
+              <div className="col-md-6">
+                <h3 className="h6 text-warning">Considerations</h3>
+                <ul className="small mb-0">
+                  {prosCons.negativeNotes.map((note, idx) => (
+                    <li key={idx}>{note}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
+        )}
 
       <GpuSpecsTable gpu={gpu} gpuSpecPercentages={gpuSpecPercentages} />
 

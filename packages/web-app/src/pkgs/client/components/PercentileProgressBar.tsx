@@ -87,6 +87,8 @@ interface PercentileProgressBarProps {
   unit: string
   /** Whether to show the tier badge. Default: true */
   showTier?: boolean
+  /** Whether to highlight as winner (green bar). Default: false */
+  isWinner?: boolean
 }
 
 /**
@@ -98,9 +100,13 @@ export function PercentileProgressBar({
   value,
   unit,
   showTier = true,
+  isWinner = false,
 }: PercentileProgressBarProps): JSX.Element {
   const tier = getTierForPercentile(percentile)
   const percentValue = Math.round(percentile * PERCENT_MULTIPLIER)
+  const barClass = isWinner
+    ? "progress-bar progress-bar-striped progress-bar-animated overflow-visible"
+    : "progress-bar overflow-visible"
 
   return (
     <div
@@ -111,7 +117,7 @@ export function PercentileProgressBar({
       aria-valuemax={PERCENT_MULTIPLIER}
     >
       <div
-        className="progress-bar overflow-visible"
+        className={barClass}
         style={{
           width: `${percentValue}%`,
           minWidth: "fit-content",

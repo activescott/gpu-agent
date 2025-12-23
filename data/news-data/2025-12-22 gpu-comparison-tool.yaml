@@ -1,0 +1,42 @@
+# yaml-language-server: $schema=./news-article.schema.json
+id: gpu1222dec2025compare
+slug: gpu-comparison-tool
+title: "New GPU Comparison Tool: Compare Any Two GPUs Side-by-Side"
+content: |
+  GPU Poet now features a dedicated [GPU Comparison Tool](/gpu/compare) that lets you compare any two graphics cards side-by-side.
+
+  ## What You Can Compare
+
+  The comparison page shows specs, gaming benchmarks, and current pricing for both GPUs in a single view:
+
+  - **Specifications**: Memory, compute performance, power draw, and more with percentile rankings
+  - **Gaming Benchmarks**: FPS data from Counter-Strike 2, 3DMark, Quake II RTX, and other games
+  - **Live Pricing**: Current lowest prices and listing counts with direct links to shop
+
+  ## Winner Highlighting
+
+  When one GPU significantly outperforms the other on a metric, that GPU's progress bar animates to draw your attention. This makes it easy to scan the table and see which card wins each category.
+
+  ## Shareable URLs
+
+  Each comparison has a unique URL like `/gpu/compare/nvidia-geforce-rtx-4080/vs/nvidia-geforce-rtx-4090`. Bookmark comparisons or share them with friends who are also shopping for GPUs.
+
+  ## How to Use It
+
+  1. Visit the [GPU Comparison page](/gpu/compare)
+  2. Select two GPUs using the search dropdowns
+  3. Review specs, benchmarks, and prices side-by-side
+  4. Click pricing links to shop for either card
+
+  Popular comparisons like [RTX 4080 vs RTX 4090](/gpu/compare/nvidia-geforce-rtx-4080/vs/nvidia-geforce-rtx-4090) and [RTX 4070 Super vs RTX 4070 Ti Super](/gpu/compare/nvidia-geforce-rtx-4070-super/vs/nvidia-geforce-rtx-4070-ti-super) are linked from the landing page.
+
+status: PUBLISHED
+tags:
+  - feature
+  - comparison
+  - usability
+  - shopping
+authorFullName: "Scott Willeke"
+createdAt: "2025-12-22T10:00:00Z"
+updatedAt: "2025-12-22T14:15:00Z"
+publishedAt: "2025-12-22T10:00:00Z"

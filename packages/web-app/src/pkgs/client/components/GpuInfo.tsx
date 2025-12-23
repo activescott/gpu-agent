@@ -4,26 +4,18 @@ import {
   ThirdPartyProduct,
 } from "@/pkgs/isomorphic/model"
 import { Fragment } from "react"
-import {
-  GpuSpecKey,
-  GpuSpecKeys,
-  GpuSpecsDescription,
-} from "@/pkgs/isomorphic/model/specs"
+import { GpuSpecKey } from "@/pkgs/isomorphic/model/specs"
 import Link from "next/link"
 import { Feature } from "./Feature"
 import { FormatCurrency } from "./FormatCurrency"
-import { BootstrapIcon } from "./BootstrapIcon"
-import { PercentileProgressBar, NoDataBar } from "./PercentileProgressBar"
+import { GpuSpecsTable } from "./GpuSpecsTable"
+import { GpuBenchmarksTable, BenchmarkPercentile } from "./GpuBenchmarksTable"
+import { GpuQuickInfo } from "./GpuQuickInfo"
 
 import type { JSX } from "react"
 
-export interface BenchmarkPercentile {
-  slug: string
-  name: string
-  unit: string
-  value: number | undefined
-  percentile: number | undefined
-}
+// Re-export for backwards compatibility
+export type { BenchmarkPercentile } from "./GpuBenchmarksTable"
 
 interface GpuInfoParams {
   gpu: Gpu
@@ -31,25 +23,6 @@ interface GpuInfoParams {
   activeListingCount: number
   gpuSpecPercentages: Record<GpuSpecKey, number>
   gpuBenchmarkPercentiles?: BenchmarkPercentile[]
-}
-
-/**
- * Formats a release date string (e.g., "2022-10-12") to a human-readable format.
- */
-function formatReleaseDate(dateString: string): string {
-  const date = new Date(dateString)
-  return date.toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  })
-}
-
-/**
- * Formats MSRP as a currency string with USD suffix.
- */
-function formatMsrp(msrpUSD: number): string {
-  return `$${msrpUSD.toLocaleString()} USD`
 }
 
 /**
@@ -105,134 +78,15 @@ export function GpuInfo({
         {gpu.label} {gpu.memoryCapacityGB}GB Specifications for AI Enthusiasts
       </h1>
       <p>{gpu.summary}</p>
-      <ul>
-        {gpu.releaseDate && (
-          <li>Release Date: {formatReleaseDate(gpu.releaseDate)}</li>
-        )}
-        {gpu.msrpUSD && <li>MSRP: {formatMsrp(gpu.msrpUSD)}</li>}
-        <li>GPU Architecture: {gpu.gpuArchitecture}</li>
-        <li>
-          {/* TODO: Review https://docs.nvidia.com/deeplearning/performance/dl-performance-gpu-background/index.html#gpu-arch__fig2 */}
-          Hardware-Accelerated{" "}
-          <abbr title="Generalized Matrix Multiplication">GEMM</abbr>{" "}
-          Operations:
-          <div className="d-flex flex-row flex-wrap">
-            {[
-              "FP16",
-              "FP32",
-              "BF16",
-              "FP8",
-              "INT8",
-              "INT4",
-              "TF32",
-              "FP64",
-              "INT1",
-            ].map((precision) => {
-              const supported =
-                gpu.supportedHardwareOperations.includes(precision)
-              const title = supported ? "supported" : "not supported"
-              const icon = supported ? "check-circle" : "dash-circle"
-              const colorClass = supported ? "text-success" : "text-warning"
+      <GpuQuickInfo gpu={gpu} />
 
-              return (
-                <span
-                  key={precision}
-                  className={`mx-2 my-1 text-nowrap fs-6 ${colorClass}`}
-                >
-                  <abbr title={title}>
-                    <BootstrapIcon icon={icon} size="xs" alt={title} />
-                  </abbr>{" "}
-                  {precision}
-                </span>
-              )
-            })}
-          </div>
-        </li>
-        <li>
-          CUDA Compute Capability{" "}
-          <span className={`mx-2 my-1 text-nowrap fs-6`}>
-            <abbr title="CUDA Compute Capability refers to the version of the CUDA libraries that the card supports. For the purposes of Machine Learning some notable versions are 5.3 where 16-bit floating point (FP16) operations were introduced and 8.0 where the so-called 'brain floating point' (BF16) was introduced which is a floating point type optimized for machine learning. CUDA is only available for NVIDIA GPUs.">
-              <BootstrapIcon icon="info-circle" size="xs" />
-            </abbr>
-          </span>
-          : {gpu.supportedCUDAComputeCapability ?? "n/a"}{" "}
-        </li>
-      </ul>
-
-      <h2>Specifications for {gpu.label}</h2>
-      <div className="table-responsive">
-        <table className="table table-hover">
-          <thead>
-            <tr>
-              <th style={{ whiteSpace: "nowrap" }}>Specification</th>
-              <th style={{ minWidth: "250px" }}>Performance Ranking</th>
-            </tr>
-          </thead>
-          <tbody>
-            {GpuSpecKeys.map((key) => {
-              const specValue = gpu[key]
-              const percentile = gpuSpecPercentages[key]
-              const specDesc = GpuSpecsDescription[key]
-              const hasData =
-                specValue !== null &&
-                specValue !== undefined &&
-                percentile !== null &&
-                percentile !== undefined
-
-              return (
-                <tr key={key}>
-                  <td style={{ whiteSpace: "nowrap" }}>{specDesc.label}</td>
-                  <td>
-                    {hasData ? (
-                      <PercentileProgressBar
-                        percentile={percentile}
-                        value={specValue}
-                        unit={specDesc.unitShortest}
-                      />
-                    ) : (
-                      <NoDataBar />
-                    )}
-                  </td>
-                </tr>
-              )
-            })}
-          </tbody>
-        </table>
-      </div>
+      <GpuSpecsTable gpu={gpu} gpuSpecPercentages={gpuSpecPercentages} />
 
       {gpuBenchmarkPercentiles && gpuBenchmarkPercentiles.length > 0 && (
-        <>
-          <h2 className="mt-4">Gaming Benchmarks for {gpu.label}</h2>
-          <div className="table-responsive">
-            <table className="table table-hover">
-              <thead>
-                <tr>
-                  <th style={{ whiteSpace: "nowrap" }}>Benchmark</th>
-                  <th style={{ minWidth: "250px" }}>Performance Ranking</th>
-                </tr>
-              </thead>
-              <tbody>
-                {gpuBenchmarkPercentiles.map((benchmark) => (
-                  <tr key={benchmark.slug}>
-                    <td style={{ whiteSpace: "nowrap" }}>{benchmark.name}</td>
-                    <td>
-                      {benchmark.value !== undefined &&
-                      benchmark.percentile !== undefined ? (
-                        <PercentileProgressBar
-                          percentile={benchmark.percentile}
-                          value={benchmark.value}
-                          unit={benchmark.unit}
-                        />
-                      ) : (
-                        <NoDataBar />
-                      )}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </>
+        <GpuBenchmarksTable
+          gpuLabel={gpu.label}
+          benchmarkPercentiles={gpuBenchmarkPercentiles}
+        />
       )}
 
       <div className="row g-4 py-5 row-cols-1 row-cols-lg-3">
@@ -270,6 +124,15 @@ export function GpuInfo({
         >
           We track real-time prices of other GPUs too so that you can compare
           the price/performance of the {gpu.label} GPU to other GPUs.
+        </Feature>
+        <Feature
+          title={`Compare ${gpu.label} to Another GPU`}
+          icon="arrows-expand"
+          callToAction="Compare GPUs Side-by-Side"
+          callToActionLink={`/gpu/compare`}
+        >
+          Compare the {gpu.label} directly to another GPU to see specs,
+          benchmarks, and prices side-by-side.
         </Feature>
       </div>
 

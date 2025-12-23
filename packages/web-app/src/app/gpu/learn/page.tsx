@@ -2,6 +2,7 @@ import { Metadata } from "next"
 import { Feature } from "@/pkgs/client/components/Feature"
 import Link from "next/link"
 import { listGpus } from "@/pkgs/server/db/GpuRepository"
+import { PopularComparisons } from "@/pkgs/client/components/PopularComparisons"
 
 export const metadata: Metadata = {
   title: "Learn About GPUs for AI and Gaming",
@@ -111,6 +112,17 @@ export default async function Page() {
               </ul>
             </div>
           ))}
+        </Feature>
+
+        <Feature title="Tools" icon="tools">
+          <p>Utilities to help you choose the right GPU.</p>
+          <ul>
+            <li>
+              <Link href="/gpu/compare">GPU Comparison Tool</Link> - Compare any
+              two GPUs side-by-side
+            </li>
+          </ul>
+          <PopularComparisons compact />
         </Feature>
       </div>
     </div>

@@ -20,6 +20,7 @@ import { NewsArticlePair } from "@/pkgs/client/components/NewsArticlePair"
 import { AbTestWrapper } from "@/pkgs/client/components/AbTestWrapper"
 import { GpuMetricsTable } from "./gpu/ranking/[category]/[metric]/GpuMetricsTable"
 import { getAllMetricRankings } from "@/pkgs/server/db/GpuRepository"
+import { PopularComparisons } from "@/pkgs/client/components/PopularComparisons"
 
 // revalidate the data at most every N seconds: https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#revalidate
 export const revalidate = 1800
@@ -160,6 +161,10 @@ export default async function Page() {
           Prices for new and used GPUs from eBay. Want listings from another
           site? <Link href="/contact">Let us know</Link>.
         </TipCard>
+      </div>
+
+      <div className="mt-5">
+        <PopularComparisons />
       </div>
 
       <AbTestWrapper

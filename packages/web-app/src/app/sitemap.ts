@@ -48,6 +48,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     rankingSitemap(domain_url),
     priceCompareSitemap(domain_url),
     benchmarkLearnSitemap(domain_url),
+    gpuCompareSitemap(domain_url),
     listCachedListingsGroupedByGpu(false, prismaSingleton),
   ])
   log.debug("Awaiting queries for sitemap generation complete.")
@@ -60,6 +61,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     rankingEntries,
     priceCompareEntries,
     benchmarkLearnEntries,
+    gpuCompareEntries,
     gpusAndListings,
   ] = awaitedQueries
 
@@ -76,6 +78,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     rankingEntries,
     priceCompareEntries,
     benchmarkLearnEntries,
+    gpuCompareEntries,
   ]
   const dynamicEntries: SitemapItem[] = dynamicEntryGroups.flat()
 
@@ -244,6 +247,46 @@ async function benchmarkLearnSitemap(
   })
 
   return benchmarkLearnEntries
+}
+
+// Popular GPU comparisons that users commonly search for
+const POPULAR_GPU_COMPARISONS: [string, string][] = [
+  ["amd-radeon-rx-9070-xt", "nvidia-geforce-rtx-4070-ti-super"],
+  ["nvidia-geforce-rtx-4080", "nvidia-geforce-rtx-4090"],
+  ["nvidia-geforce-rtx-4070-super", "nvidia-geforce-rtx-4070-ti-super"],
+  ["nvidia-geforce-rtx-3060-ti", "nvidia-geforce-rtx-4060"],
+  ["nvidia-geforce-rtx-3090", "nvidia-geforce-rtx-4090"],
+  ["nvidia-geforce-rtx-4060", "nvidia-geforce-rtx-4070"],
+  ["nvidia-geforce-rtx-3080", "nvidia-geforce-rtx-4080"],
+  ["nvidia-geforce-rtx-3070", "nvidia-geforce-rtx-4070"],
+  ["nvidia-geforce-rtx-4080", "nvidia-geforce-rtx-4080-super"],
+  ["nvidia-geforce-rtx-4070-super", "nvidia-geforce-rtx-4070-ti-super"],
+  ["amd-radeon-rx-7900-xtx", "nvidia-geforce-rtx-4090"],
+]
+
+async function gpuCompareSitemap(domain_url: string): Promise<SitemapItem[]> {
+  const entries: SitemapItem[] = []
+
+  // Add the landing page
+  entries.push({
+    url: `${domain_url}/gpu/compare`,
+    changeFrequency: "monthly",
+    priority: 0.7,
+    lastModified: new Date(),
+  })
+
+  // Add popular comparison pages
+  for (const [gpu1, gpu2] of POPULAR_GPU_COMPARISONS) {
+    // GPUs are already in alphabetical order
+    entries.push({
+      url: `${domain_url}/gpu/compare/${gpu1}/vs/${gpu2}`,
+      changeFrequency: "daily",
+      priority: 0.8,
+      lastModified: new Date(),
+    })
+  }
+
+  return entries
 }
 
 function staticSitemap(domain_url: string): SitemapItem[] {

@@ -8,7 +8,10 @@ import {
   GpuWithListings,
   listCachedListingsGroupedByGpu,
 } from "@/pkgs/server/db/ListingRepository"
-import { listGpus } from "@/pkgs/server/db/GpuRepository"
+import {
+  listGpus,
+  getLatestGpuLastModified,
+} from "@/pkgs/server/db/GpuRepository"
 import { prismaSingleton } from "@/pkgs/server/db/db"
 import { EPOCH } from "@/pkgs/isomorphic/duration"
 import { createDiag } from "@activescott/diag"
@@ -198,14 +201,22 @@ async function gpuCardLearnSitemap(domain_url: string): Promise<SitemapItem[]> {
 }
 
 async function rankingSitemap(domain_url: string): Promise<SitemapItem[]> {
-  const metricDefinitions = await listMetricDefinitions()
+  const [metricDefinitions, latestGpuLastModified] = await Promise.all([
+    listMetricDefinitions(),
+    getLatestGpuLastModified(),
+  ])
 
   const rankingEntries: SitemapItem[] = metricDefinitions.map((metric) => {
+    // Use the later of metric update or GPU spec update
+    const lastModified =
+      metric.updatedAt > latestGpuLastModified
+        ? metric.updatedAt
+        : latestGpuLastModified
     return {
       url: `${domain_url}/gpu/ranking/${metric.category}/${metric.slug}`,
       changeFrequency: "daily",
       priority: 0.8,
-      lastModified: new Date(),
+      lastModified,
     } satisfies SitemapItem
   })
 
@@ -213,14 +224,22 @@ async function rankingSitemap(domain_url: string): Promise<SitemapItem[]> {
 }
 
 async function priceCompareSitemap(domain_url: string): Promise<SitemapItem[]> {
-  const metricDefinitions = await listMetricDefinitions()
+  const [metricDefinitions, latestListingDate] = await Promise.all([
+    listMetricDefinitions(),
+    getLatestListingDate(),
+  ])
 
   const priceCompareEntries: SitemapItem[] = metricDefinitions.map((metric) => {
+    // Use the later of metric update or listing update
+    const lastModified =
+      metric.updatedAt > latestListingDate
+        ? metric.updatedAt
+        : latestListingDate
     return {
       url: `${domain_url}/gpu/price-compare/${metric.category}/${metric.slug}`,
       changeFrequency: "daily",
       priority: 0.8,
-      lastModified: new Date(),
+      lastModified,
     } satisfies SitemapItem
   })
 
@@ -242,7 +261,7 @@ async function benchmarkLearnSitemap(
       url: `${domain_url}/gpu/learn/benchmark/gaming/${metric.slug}`,
       changeFrequency: "monthly",
       priority: 0.7,
-      lastModified: new Date(),
+      lastModified: metric.updatedAt,
     } satisfies SitemapItem
   })
 
@@ -267,22 +286,39 @@ const POPULAR_GPU_COMPARISONS: [string, string][] = [
 async function gpuCompareSitemap(domain_url: string): Promise<SitemapItem[]> {
   const entries: SitemapItem[] = []
 
+  // Get the latest GPU modification date for the landing page
+  // and build a map of GPU names to their lastModified dates
+  const [latestGpuLastModified, gpus] = await Promise.all([
+    getLatestGpuLastModified(),
+    listGpus(),
+  ])
+
+  // Build map of GPU name -> lastModified for comparison pages
+  const gpuLastModifiedMap = new Map<string, Date>()
+  for (const gpu of gpus) {
+    gpuLastModifiedMap.set(gpu.name, gpu.lastModified)
+  }
+
   // Add the landing page
   entries.push({
     url: `${domain_url}/gpu/compare`,
     changeFrequency: "monthly",
     priority: 0.7,
-    lastModified: new Date(),
+    lastModified: latestGpuLastModified,
   })
 
   // Add popular comparison pages
   for (const [gpu1, gpu2] of POPULAR_GPU_COMPARISONS) {
-    // GPUs are already in alphabetical order
+    const gpu1LastModified = gpuLastModifiedMap.get(gpu1) ?? EPOCH
+    const gpu2LastModified = gpuLastModifiedMap.get(gpu2) ?? EPOCH
+    const lastModified =
+      gpu1LastModified > gpu2LastModified ? gpu1LastModified : gpu2LastModified
+
     entries.push({
       url: `${domain_url}/gpu/compare/${gpu1}/vs/${gpu2}`,
       changeFrequency: "daily",
       priority: 0.8,
-      lastModified: new Date(),
+      lastModified,
     })
   }
 

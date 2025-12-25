@@ -404,3 +404,17 @@ export async function getAllMetricRankings(
 
   return rankings
 }
+
+/**
+ * Returns the most recent lastModified timestamp across all GPUs.
+ * Useful for sitemap generation where we need a single timestamp.
+ */
+export async function getLatestGpuLastModified(
+  prisma: PrismaClientWithinTransaction = prismaSingleton,
+): Promise<Date> {
+  const result = await prisma.gpu.findFirst({
+    orderBy: { lastModified: "desc" },
+    select: { lastModified: true },
+  })
+  return result?.lastModified ?? new Date(0)
+}

@@ -1,5 +1,6 @@
 # GPU Spec Metric Definitions
 # These metrics represent hardware specifications that are extracted from GPU spec YAML files
+updatedAt: "2025-12-25T00:00:00Z"
 metrics:
   - slug: tensor-cores
     name: Tensor Core Count

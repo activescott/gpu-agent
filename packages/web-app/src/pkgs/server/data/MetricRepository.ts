@@ -21,6 +21,7 @@ const SpecMetricDefinitionSchema = z.object({
 })
 
 const SpecsYamlSchema = z.object({
+  updatedAt: z.string(),
   metrics: z.array(SpecMetricDefinitionSchema),
 })
 
@@ -66,6 +67,8 @@ interface MetricDefinition {
   benchmarkName?: string
   configuration?: string
   configurationId?: string
+  // When the metric definition was last updated (from source YAML)
+  updatedAt: Date
 }
 
 // GPU metric value
@@ -146,6 +149,7 @@ async function loadSpecDefinitions(): Promise<MetricDefinition[]> {
   try {
     const content = await readFile(filePath, "utf8")
     const data = SpecsYamlSchema.parse(yaml.parse(content))
+    const specsUpdatedAt = new Date(data.updatedAt)
 
     return data.metrics.map((m) => ({
       slug: m.slug,
@@ -157,6 +161,7 @@ async function loadSpecDefinitions(): Promise<MetricDefinition[]> {
       description: m.description,
       descriptionDollarsPer: m.descriptionDollarsPer,
       gpuField: m.gpuField,
+      updatedAt: specsUpdatedAt,
     }))
   } catch (error) {
     log.error("Error loading spec definitions:", error)
@@ -244,6 +249,7 @@ async function loadBenchmarkDefinitions(): Promise<MetricDefinition[]> {
       benchmarkName: benchmark.benchmarkName,
       configuration: benchmark.configuration,
       configurationId: benchmark.configurationId,
+      updatedAt: new Date(benchmark.updatedAt),
     })
   }
 

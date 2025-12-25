@@ -67,11 +67,40 @@ export interface ProsCons {
 }
 
 /**
+ * Generates fallback spec-based statements for GPUs that don't have enough
+ * percentile-based pros/cons. These are factual statements about the GPU's specs.
+ */
+function generateFallbackStatements(gpu: Gpu): string[] {
+  const statements: string[] = []
+
+  if (gpu.memoryCapacityGB) {
+    statements.push(
+      `${gpu.memoryCapacityGB}GB VRAM for model and data capacity`,
+    )
+  }
+  if (gpu.fp32TFLOPS) {
+    statements.push(`${gpu.fp32TFLOPS} TFLOPS FP32 compute performance`)
+  }
+  if (gpu.memoryBandwidthGBs) {
+    statements.push(`${gpu.memoryBandwidthGBs} GB/s memory bandwidth`)
+  }
+  if (gpu.tensorCoreCount) {
+    statements.push(
+      `${gpu.tensorCoreCount} Tensor Cores for accelerated AI workloads`,
+    )
+  }
+
+  return statements
+}
+
+/**
  * Generates pros and cons based on GPU spec and benchmark percentiles.
  * Uses tier thresholds to determine strengths (top tier) and weaknesses (entry tier).
  * Interleaves specs and benchmarks to ensure both categories are represented.
+ * Falls back to factual spec statements if not enough percentile-based statements.
  */
 function generateProsCons(
+  gpu: Gpu,
   gpuSpecPercentages: Record<GpuSpecKey, number>,
   gpuBenchmarkPercentiles: BenchmarkPercentile[],
 ): ProsCons {
@@ -132,6 +161,15 @@ function generateProsCons(
     ...specCons.slice(0, maxPerCategory),
     ...benchmarkCons.slice(0, maxPerCategory),
   ]
+
+  // If not enough statements for a valid review, add fallback spec-based statements
+  const minRequiredStatements = 2
+  const totalStatements = positiveNotes.length + negativeNotes.length
+  if (totalStatements < minRequiredStatements) {
+    const fallbackStatements = generateFallbackStatements(gpu)
+    const needed = minRequiredStatements - totalStatements
+    positiveNotes.push(...fallbackStatements.slice(0, needed))
+  }
 
   return { positiveNotes, negativeNotes }
 }
@@ -302,7 +340,11 @@ export default async function Page(props: GpuParams) {
   )
 
   const listings = await getPriceStats(gpu.name)
-  const prosCons = generateProsCons(gpuSpecPercentages, gpuBenchmarkPercentiles)
+  const prosCons = generateProsCons(
+    gpu,
+    gpuSpecPercentages,
+    gpuBenchmarkPercentiles,
+  )
   const structuredData = buildStructuredData(gpu, listings, prosCons)
 
   return (

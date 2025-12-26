@@ -32,6 +32,7 @@ WORKDIR /app
 ENV NODE_ENV=production
 
 # Create non-root user
+# NOTE: UID/GID 1001 must match securityContext in k8s/base/indexnow-job.yaml
 RUN addgroup --system --gid 1001 nodejs && \
     adduser --system --uid 1001 notifier
 

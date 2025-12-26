@@ -13,6 +13,11 @@ spec:
       template:
         spec:
           restartPolicy: OnFailure
+          # NOTE: UID/GID 1001 must match user in packages/indexnow-notifier/Dockerfile
+          securityContext:
+            runAsUser: 1001
+            runAsGroup: 1001
+            fsGroup: 1001
           containers:
             - name: indexnow-notifier
               image: indexnow-notifier-image-placeholder

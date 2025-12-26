@@ -293,10 +293,34 @@ export async function generateMetadata(props: GpuParams) {
   const { gpuSlug } = params
   log.debug("generateStaticMetadata for gpu ", gpuSlug)
   const gpu = await getGpu(gpuSlug)
+
+  const title = `${gpu.label} ${gpu.memoryCapacityGB}GB Specs, Benchmarks & Pricing`
+  const description = `${gpu.label} specifications, gaming benchmarks, and price comparisons. Find the best deals on this GPU.`
+  const url = `https://gpupoet.com/gpu/learn/card/${gpuSlug}`
+
   return {
-    title: `${gpu.label} ${gpu.memoryCapacityGB}GB Specifications for AI Enthusiasts`,
-    description: `Learn about the ${gpu.label} Machine Learning GPU.`,
-    alternates: { canonical: `https://gpupoet.com/gpu/learn/card/${gpuSlug}` },
+    title,
+    description,
+    alternates: { canonical: url },
+    openGraph: {
+      title,
+      description,
+      url,
+      images: [
+        {
+          url: "https://gpupoet.com/images/social.png",
+          width: 2400,
+          height: 1260,
+          alt: `${gpu.label} GPU specs and benchmarks`,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image" as const,
+      title,
+      description,
+      images: ["https://gpupoet.com/images/social.png"],
+    },
   }
 }
 

@@ -31,27 +31,26 @@ patches:
     target:
       kind: StatefulSet
       name: db
-  # IndexNow: Use standard storage class for minikube PVC
+  # Remove IndexNow CronJob (not needed in dev)
   - patch: |-
-      - op: replace
-        path: /spec/storageClassName
-        value: standard
-      - op: remove
-        path: /spec/volumeName
-    target:
-      kind: PersistentVolumeClaim
-      name: indexnow-pvc
-  # IndexNow: Use local sitemap URL for dev
-  - patch: |-
-      - op: replace
-        path: /spec/jobTemplate/spec/template/spec/containers/0/env/1/value
-        value: "http://app:3000/sitemap.xml"
-      - op: replace
-        path: /spec/jobTemplate/spec/template/spec/containers/0/env/2/value
-        value: "localhost:3000"
+      $patch: delete
+      apiVersion: batch/v1
+      kind: CronJob
+      metadata:
+        name: indexnow-notifier
     target:
       kind: CronJob
       name: indexnow-notifier
+  # Remove IndexNow PVC (not needed in dev)
+  - patch: |-
+      $patch: delete
+      apiVersion: v1
+      kind: PersistentVolumeClaim
+      metadata:
+        name: indexnow-pvc
+    target:
+      kind: PersistentVolumeClaim
+      name: indexnow-pvc
 
 secretGenerator:
   - name: app-creds
@@ -68,6 +67,3 @@ images:
   - name: gpupoet-image-db
     newName: postgres
     newTag: "15-alpine"
-  - name: indexnow-notifier-image-placeholder
-    newName: indexnow-notifier-dev
-    newTag: latest

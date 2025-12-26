@@ -78,7 +78,7 @@ export function GpuInfo({
   return (
     <>
       <h1>
-        {gpu.label} {gpu.memoryCapacityGB}GB Specifications for AI Enthusiasts
+        {gpu.label} {gpu.memoryCapacityGB}GB Specs, Benchmarks & Pricing
       </h1>
       <p>{gpu.summary}</p>
       <GpuQuickInfo gpu={gpu} />

@@ -44,12 +44,32 @@ export async function generateMetadata(props: RankingParams) {
 
   const title = generatePageTitle(metricDef)
   const description = `Best GPUs for the money with ${generatePageSummary(metricDef)}`
+  const url = `${domain_url}/gpu/ranking/${categoryTyped}/${metricSlug}`
 
   return {
     title,
     description,
     alternates: {
-      canonical: `${domain_url}/gpu/ranking/${categoryTyped}/${metricSlug}`,
+      canonical: url,
+    },
+    openGraph: {
+      title,
+      description,
+      url,
+      images: [
+        {
+          url: `${domain_url}/images/social.png`,
+          width: 2400,
+          height: 1260,
+          alt: title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image" as const,
+      title,
+      description,
+      images: [`${domain_url}/images/social.png`],
     },
   }
 }

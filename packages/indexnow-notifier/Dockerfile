@@ -6,8 +6,8 @@ WORKDIR /app
 COPY package*.json ./
 COPY packages/indexnow-notifier/package*.json ./packages/indexnow-notifier/
 
-# Install dependencies
-RUN npm ci --workspace=packages/indexnow-notifier --include-workspace-root
+# Install dependencies (--ignore-scripts skips husky install from root package.json)
+RUN npm ci --workspace=packages/indexnow-notifier --include-workspace-root --ignore-scripts
 
 # Build stage
 FROM node:20-alpine AS builder
@@ -39,9 +39,7 @@ RUN addgroup --system --gid 1001 nodejs && \
 COPY --from=builder /app/packages/indexnow-notifier/dist ./dist
 COPY --from=builder /app/packages/indexnow-notifier/package.json ./
 
-# Install only production dependencies
-# Note: We need @activescott/diag from the parent node_modules
-COPY --from=deps /app/node_modules/@activescott ./node_modules/@activescott
+# No production dependencies needed - all code is self-contained
 
 # Create data directory for state files
 RUN mkdir -p /data/pages && chown -R notifier:nodejs /data

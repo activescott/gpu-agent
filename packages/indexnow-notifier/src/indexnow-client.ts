@@ -1,7 +1,7 @@
-import { createDiag } from "@activescott/diag"
+import { createLogger } from "./log.js"
 import { IndexNowResponse } from "./types.js"
 
-const log = createDiag("indexnow-notifier:indexnow-client")
+const log = createLogger("indexnow-client")
 
 const INDEXNOW_ENDPOINT = "https://api.indexnow.org/indexnow"
 const MAX_URLS_PER_REQUEST = 10000

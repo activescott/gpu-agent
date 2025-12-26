@@ -1,7 +1,7 @@
-import { createDiag } from "@activescott/diag"
+import { createLogger } from "./log.js"
 import { SitemapEntry } from "./types.js"
 
-const log = createDiag("indexnow-notifier:sitemap-parser")
+const log = createLogger("sitemap-parser")
 
 /**
  * Type for fetch function to allow dependency injection in tests

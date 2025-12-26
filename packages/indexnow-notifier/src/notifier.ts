@@ -1,10 +1,10 @@
-import { createDiag } from "@activescott/diag"
+import { createLogger } from "./log.js"
 import { fetchSitemap } from "./sitemap-parser.js"
 import { needsNotification, setLastNotified } from "./state-store.js"
 import { notifyIndexNow } from "./indexnow-client.js"
 import { NotifierConfig, NotificationResult, SitemapEntry } from "./types.js"
 
-const log = createDiag("indexnow-notifier:notifier")
+const log = createLogger("notifier")
 
 const MAX_URLS_TO_LOG = 10
 

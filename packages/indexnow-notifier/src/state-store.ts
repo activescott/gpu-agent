@@ -1,8 +1,8 @@
 import { readFile, writeFile, mkdir } from "fs/promises"
 import { join } from "path"
-import { createDiag } from "@activescott/diag"
+import { createLogger } from "./log.js"
 
-const log = createDiag("indexnow-notifier:state-store")
+const log = createLogger("state-store")
 
 /**
  * Encode a URL into a safe filename using URL encoding (percent-encoding).

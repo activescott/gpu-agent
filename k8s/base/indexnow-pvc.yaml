@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: indexnow-pvc
+spec:
+  # Empty string means use manual binding (will be patched by kustomize)
+  storageClassName: ""
+  accessModes:
+    - ReadWriteOnce
+  # Will be patched by kustomize overlays
+  volumeName: PATCH_WITH_KUSTOMIZE
+  resources:
+    requests:
+      storage: 100Mi

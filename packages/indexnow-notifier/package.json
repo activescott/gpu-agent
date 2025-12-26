@@ -1,0 +1,58 @@
+{
+  "name": "@activescott/indexnow-notifier",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "IndexNow notification service for sitemap updates",
+  "exports": {
+    ".": "./dist/es/index.js"
+  },
+  "types": "dist/es/index.d.ts",
+  "bin": {
+    "indexnow-notifier": "./dist/es/cli.js"
+  },
+  "files": [
+    "dist/",
+    "!**/*.test.js",
+    "!**/*.test.d.ts",
+    "!**/__mocks__/"
+  ],
+  "author": {
+    "name": "Scott Willeke",
+    "email": "scott@willeke.com",
+    "url": "https://scott.willeke.com/"
+  },
+  "scripts": {
+    "eslint": "eslint . --ext ts,tsx,js,jsx",
+    "lint": "prettier -l \"{,!(node_modules|dist)/**/}*.{ts,tsx,md,yml,json,html}\" && npm run eslint",
+    "lint-fix": "prettier --write \"{,!(node_modules|dist)/**/}*.{ts,tsx,md,yml,json,html}\" && npm run eslint --fix",
+    "typecheck": "tsc --noEmit --project tsconfig.es.json",
+    "build:es": "rm -rf ./dist/es; npx tsc --project tsconfig.es.json",
+    "dev": "rm -rf ./dist/es; npx tsc --project tsconfig.es.json --watch",
+    "build": "rm -rf ./dist && npm run build:es",
+    "test-watch": "vitest watch",
+    "clean": "rm -rf node_modules; rm -rf dist ; rm -rf .turbo",
+    "test": "vitest run"
+  },
+  "keywords": [
+    "indexnow",
+    "sitemap",
+    "seo",
+    "search-engine",
+    "notification"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "@activescott/eslint-config": "^2.3.6",
+    "@types/node": "^20.9.4",
+    "@typescript-eslint/eslint-plugin": "^6.12.0",
+    "@typescript-eslint/parser": "^6.12.0",
+    "eslint": "^8.54.0",
+    "eslint-config-prettier": "^9.0.0",
+    "prettier": "^3.1.0",
+    "typescript": "^5.3.0",
+    "vitest": "^2.1.0"
+  },
+  "dependencies": {
+    "@activescott/diag": "^2.0.0"
+  }
+}

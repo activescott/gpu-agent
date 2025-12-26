@@ -1,0 +1,20 @@
+extends:
+  - "@activescott/eslint-config"
+
+ignorePatterns:
+  - "dist/**"
+  - "node_modules/**"
+
+env:
+  node: true
+
+rules:
+  # Allow console.log in CLI tool
+  no-console: "off"
+
+overrides:
+  - files:
+      - "**/*.test.ts"
+    rules:
+      # Test files often have assertion values
+      no-magic-numbers: "off"

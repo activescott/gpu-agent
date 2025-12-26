@@ -25,6 +25,31 @@ export const metadata: Metadata = {
   description: maxLength(
     METADATA_MAX_DESCRIPTION_LENGTH,
   )`Find the best GPU for your money with GPU Price/Performance Rankings on specifications such as Tensor Cores, memory bandwidth, FP32/FP16 FLOPs, and more.`,
+
+  openGraph: {
+    title: "Find the best GPU for your money - GPUPoet.com",
+    description:
+      "Find the best GPU for your money with GPU Price/Performance Rankings on specifications such as Tensor Cores, memory bandwidth, FP32/FP16 FLOPs, and more.",
+    url: "https://gpupoet.com",
+    siteName: "GPUPoet",
+    images: [
+      {
+        url: "https://gpupoet.com/images/social.png",
+        width: 2400,
+        height: 1260,
+        alt: "GPUPoet - Smart GPU Price Comparisons",
+      },
+    ],
+    type: "website",
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "Find the best GPU for your money - GPUPoet.com",
+    description:
+      "Find the best GPU for your money with GPU Price/Performance Rankings on specifications such as Tensor Cores, memory bandwidth, FP32/FP16 FLOPs, and more.",
+    images: ["https://gpupoet.com/images/social.png"],
+  },
 }
 
 export default function RootLayout({

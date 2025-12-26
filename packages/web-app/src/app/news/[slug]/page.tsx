@@ -48,6 +48,14 @@ export async function generateMetadata(props: NewsParams) {
       modifiedTime: article.updatedAt?.toISOString(),
       authors: [article.authorFullName],
       tags: article.tags,
+      images: [
+        {
+          url: "https://gpupoet.com/images/social.png",
+          width: 2400,
+          height: 1260,
+          alt: article.title,
+        },
+      ],
     },
     alternates: {
       canonical: `https://gpupoet.com/news/${slug}`,

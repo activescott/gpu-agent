@@ -85,6 +85,12 @@ spec:
                   name: app-creds
                   key: EBAY_CLIENT_SECRET
 
+            - name: INDEXNOW_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: app-creds
+                  key: INDEXNOW_API_KEY
+
           readinessProbe:
             httpGet:
               path: /api/health/readiness

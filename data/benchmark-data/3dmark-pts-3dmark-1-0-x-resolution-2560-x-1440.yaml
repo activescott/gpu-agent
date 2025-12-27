@@ -13,8 +13,8 @@ description: Average FPS in 3DMark Wild Life Extreme, a cross-platform GPU
 descriptionDollarsPer: Dollars per FPS in 3DMark Wild Life Extreme. Lower values
   indicate better cost efficiency for GPU rendering performance.
 category: gaming
-collectedSamples: 241
-updatedAt: 2025-12-12T06:07:39.108Z
+collectedSamples: 249
+updatedAt: 2025-12-23T08:12:19.937Z
 results:
   - gpuNameRaw: ASUS NVIDIA GeForce RTX 5090
     value: 867

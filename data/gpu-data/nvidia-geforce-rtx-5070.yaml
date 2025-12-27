@@ -1,0 +1,152 @@
+# yaml-language-server: $schema=./gpu-spec.schema.json
+name: nvidia-geforce-rtx-5070
+label: NVIDIA GeForce RTX 5070
+msrpUSD: 549
+
+memoryCapacityGB: 12
+int8TOPS: 493.9
+maxTDPWatts: 250
+memoryBandwidthGBs: 672
+tensorCoreCount: 192
+fp32TFLOPS: 61.8
+fp16TFLOPS: 246.9
+
+gpuArchitecture: blackwell
+supportedHardwareOperations:
+  - FP16
+  - INT8
+  - TF32
+  - INT4
+  - BF16
+  - FP8
+  - FP4
+supportedCUDAComputeCapability: 12.8
+releaseDate: "2025-03-05"
+lastModified: "2025-12-26T12:00:00Z"
+
+manufacturerIdentifiers:
+  - type: nvpn
+    value: 900-1G146-2570-000
+  - type: board_id
+    value: PG146
+  - type: board_id
+    value: PG147
+  - type: gpu_die
+    value: GB205-300-A1
+
+thirdPartyProducts:
+  # ASUS PRIME Series
+  - company: ASUS
+    productName: PRIME GeForce RTX 5070 12GB GDDR7
+    identifier: PRIME-RTX5070-12G
+    identifierType: model_number
+
+  - company: ASUS
+    productName: PRIME GeForce RTX 5070 OC Edition 12GB GDDR7
+    identifier: PRIME-RTX5070-O12G
+    identifierType: model_number
+
+  # ASUS TUF Gaming Series
+  - company: ASUS
+    productName: TUF Gaming GeForce RTX 5070 OC Edition 12GB GDDR7
+    identifier: TUF-RTX5070-O12G-GAMING
+    identifierType: model_number
+
+  # MSI Gaming Series
+  - company: MSI
+    productName: GeForce RTX 5070 12G Gaming Trio OC
+    identifier: G5070-12GTC
+    identifierType: model_number
+
+  # Gigabyte WINDFORCE Series
+  - company: Gigabyte
+    productName: GeForce RTX 5070 WINDFORCE OC SFF 12G
+    identifier: GV-N5070WF3OC-12GD
+    identifierType: model_number
+
+  # Gigabyte EAGLE Series
+  - company: Gigabyte
+    productName: GeForce RTX 5070 EAGLE OC SFF 12G
+    identifier: GV-N5070EAGLE-OC-12GD
+    identifierType: model_number
+
+  - company: Gigabyte
+    productName: GeForce RTX 5070 EAGLE OC ICE SFF 12G
+    identifier: GV-N5070EAGLEOC-ICE-12GD
+    identifierType: model_number
+
+  # PNY Triple Fan Series
+  - company: PNY
+    productName: GeForce RTX 5070 OC Triple Fan
+    identifier: VCG507012TFXPB1-O
+    identifierType: part_number
+
+  # Zotac SOLID Series
+  - company: Zotac
+    productName: GAMING GeForce RTX 5070 SOLID
+    identifier: ZT-B50700D-10P
+    identifierType: part_number
+
+  - company: Zotac
+    productName: GAMING GeForce RTX 5070 SOLID OC
+    identifier: ZT-B50700J-10P
+    identifierType: part_number
+
+  # Palit GamingPro Series
+  - company: Palit
+    productName: GeForce RTX 5070 GamingPro
+    identifier: NE75070019K9-GB2050A
+    identifierType: model_number
+
+  - company: Palit
+    productName: GeForce RTX 5070 GamingPro-S
+    identifier: NE75070019K9-GB2050K
+    identifierType: model_number
+
+  # Gainward Phoenix Series
+  - company: Gainward
+    productName: GeForce RTX 5070 Phoenix
+    identifier: NE75070019K9-GB2050X
+    identifierType: model_number
+
+  - company: Gainward
+    productName: GeForce RTX 5070 Phoenix-S
+    identifier: NE75070019K9-GB2050K
+    identifierType: model_number
+
+summary: |
+  The NVIDIA GeForce RTX 5070 is a mid-range desktop graphics card using the GB205 GPU based on the Blackwell architecture. It was announced at CES 2025 on January 6, 2025, and launched on March 5, 2025 with an MSRP of $549 USD.
+
+  Key specifications include 6,144 CUDA cores, 192 Tensor cores (5th generation), 48 RT cores (4th generation), and 12GB of GDDR7 memory on a 192-bit bus providing 672 GB/s bandwidth. The card has a TGP of 250W and requires a 16-pin power connector.
+
+  The RTX 5070 supports NVIDIA's latest features including DLSS 4 with Multi Frame Generation, which uses AI to generate up to three additional frames per traditionally rendered frame. It also features RTX Neural Shaders that integrate small AI networks into the shading process for higher quality rendering.
+
+  Unlike the RTX 5070 Ti, the RTX 5070 has a Founders Edition available directly from NVIDIA. Third-party models are available from ASUS, MSI, Gigabyte, PNY, Zotac, Palit, and Gainward.
+
+  NVIDIA positions the RTX 5070 as delivering RTX 4090-class performance in games with DLSS 4 enabled, at a significantly lower price point and power consumption.
+
+references:
+  - https://www.nvidia.com/en-us/geforce/graphics-cards/50-series/rtx-5070-family/
+  - https://images.nvidia.com/aem-dam/Solutions/geforce/blackwell/nvidia-rtx-blackwell-gpu-architecture.pdf
+  - https://nvidianews.nvidia.com/news/nvidia-blackwell-geforce-rtx-50-series-opens-new-world-of-ai-computer-graphics
+  - https://www.nvidia.com/en-us/geforce/news/rtx-50-series-graphics-cards-gpu-laptop-announcements/
+  - https://www.techpowerup.com/gpu-specs/geforce-rtx-5070.c4218
+  - https://www.asus.com/us/motherboards-components/graphics-cards/prime/prime-rtx5070-12g/techspec/
+  - https://www.msi.com/Graphics-Card/GeForce-RTX-5070-12G-GAMING-TRIO-OC
+  - https://www.gigabyte.com/Graphics-Card/GV-N5070WF3OC-12GD
+  - https://www.pny.com/geforce-rtx-5070-models
+  - https://www.zotac.com/us/product/graphics_card/zotac-gaming-geforce-rtx-5070-solid
+  - https://www.palit.com/palit/vgapro.php?id=5435&lang=en
+  - https://www.gainward.com/main/vgapro.php?id=1235&lang=en
+
+notes:
+  - We use the peak TOPS/FLOPS specs using the sparsity feature.
+  - Blackwell GB205 is the chip (GB205-300-A1 GPU die variant).
+  - fp16TFLOPS is "Peak FP16 Tensor TFLOPS with FP16 Accumulate" (246.9 with sparsity) as published in the Blackwell GPU architecture whitepaper Table 6.
+  - int8TOPS is "peak INT8 TOPS" (493.9 with sparsity) using "Effective TOPS using the new Sparsity Feature". This comes from the Blackwell GPU architecture pdf Table 6.
+  - fp32TFLOPS is "Peak TF32 Tensor TFLOPS" (61.7 with sparsity, rounded to 61.8) as published in the Blackwell GPU architecture pdf Table 6.
+  - MSRP of $549 USD sourced from nvidia.com official product page (https://www.nvidia.com/en-us/geforce/graphics-cards/50-series/rtx-5070-family/).
+  - NVIDIA Founders Edition is available for this model with NVPN 900-1G146-2570-000.
+  - Board variants include PG146 and PG147 based on available documentation.
+  - Third-party product identifiers sourced from manufacturer websites including ASUS, MSI, Gigabyte, PNY, Zotac, Palit, and Gainward official product pages.
+  - EVGA does not manufacture RTX 5070 cards as they exited the GPU market in 2022.

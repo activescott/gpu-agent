@@ -1,0 +1,550 @@
+// Chart component styles
+// Uses Bootstrap variables and CSS custom properties for dark mode compatibility
+
+// Chart colors
+$chart-positive: #22c55e; // Green (below MSRP, good, price drops)
+$chart-negative: #ef4444; // Red (above MSRP, bad, price increases)
+$chart-warning: #f59e0b; // Yellow/Orange (moderate)
+$chart-neutral: #64748b; // Gray
+$chart-bar-bg-light: #e2e8f0; // Light gray background
+$chart-bar-bg-dark: #334155; // Dark gray background for dark mode
+
+// Animation timing
+$chart-animation-duration: 0.6s;
+$chart-animation-easing: ease-out;
+
+// ===========================================
+// Bar Chart (Horizontal)
+// ===========================================
+
+.bar-chart {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.bar-chart-title {
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--bs-body-color);
+}
+
+.bar-chart-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.bar-chart-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.bar-chart-label {
+  flex-shrink: 0;
+  width: 140px;
+  display: flex;
+  flex-direction: column;
+
+  @media (max-width: 576px) {
+    width: 100px;
+  }
+}
+
+.bar-chart-label-text {
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: var(--bs-body-color);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.bar-chart-sublabel {
+  font-size: 0.75rem;
+  color: var(--bs-secondary-color);
+  white-space: nowrap;
+}
+
+.bar-chart-bar-container {
+  flex-grow: 1;
+  height: 32px;
+  background-color: $chart-bar-bg-light;
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+
+  [data-bs-theme="dark"] & {
+    background-color: $chart-bar-bg-dark;
+  }
+}
+
+.bar-chart-bar {
+  height: 100%;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 0.75rem;
+  width: 0;
+  transition: width $chart-animation-duration $chart-animation-easing;
+
+  &.in-view {
+    width: var(--bar-width, 0%);
+  }
+}
+
+.bar-chart-value {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: white;
+  white-space: nowrap;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+// Color variants
+.bar-chart-bar.chart-bar-danger {
+  background: linear-gradient(
+    90deg,
+    $chart-negative 0%,
+    color-mix(in srgb, $chart-negative 80%, black) 100%
+  );
+}
+
+.bar-chart-bar.chart-bar-success {
+  background: linear-gradient(
+    90deg,
+    $chart-positive 0%,
+    color-mix(in srgb, $chart-positive 80%, black) 100%
+  );
+}
+
+.bar-chart-bar.chart-bar-warning {
+  background: linear-gradient(
+    90deg,
+    $chart-warning 0%,
+    color-mix(in srgb, $chart-warning 80%, black) 100%
+  );
+}
+
+.bar-chart-bar.chart-bar-primary {
+  background: linear-gradient(
+    90deg,
+    var(--bs-primary) 0%,
+    color-mix(in srgb, var(--bs-primary) 80%, black) 100%
+  );
+}
+
+.bar-chart-watermark {
+  position: absolute;
+  bottom: 0.5rem;
+  right: 0.5rem;
+  font-size: 0.7rem;
+  color: var(--bs-secondary-color);
+  opacity: 0.6;
+  font-weight: 500;
+}
+
+// ===========================================
+// Diverging Bar Chart (positive/negative)
+// ===========================================
+
+.diverging-bar-chart {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.diverging-bar-chart-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.diverging-bar-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.diverging-bar-label {
+  flex-shrink: 0;
+  width: 140px;
+  display: flex;
+  flex-direction: column;
+
+  @media (max-width: 576px) {
+    width: 100px;
+  }
+}
+
+.diverging-bar-track {
+  flex-grow: 1;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.diverging-bar-left,
+.diverging-bar-right {
+  flex: 1;
+  height: 100%;
+  position: relative;
+  background-color: $chart-bar-bg-light;
+  border-radius: 4px 0 0 4px;
+  overflow: hidden;
+
+  [data-bs-theme="dark"] & {
+    background-color: $chart-bar-bg-dark;
+  }
+}
+
+.diverging-bar-right {
+  border-radius: 0 4px 4px 0;
+}
+
+.diverging-bar-center {
+  width: 2px;
+  height: 100%;
+  background-color: var(--bs-border-color);
+  flex-shrink: 0;
+}
+
+.diverging-bar {
+  height: 100%;
+  position: absolute;
+  top: 0;
+  display: flex;
+  align-items: center;
+  width: 0;
+  transition: width $chart-animation-duration $chart-animation-easing;
+
+  &.in-view {
+    width: var(--bar-width, 0%);
+  }
+}
+
+.diverging-bar-negative {
+  right: 0;
+  border-radius: 4px 0 0 4px;
+  background: linear-gradient(
+    270deg,
+    $chart-negative 0%,
+    color-mix(in srgb, $chart-negative 80%, black) 100%
+  );
+  justify-content: flex-start;
+  padding-left: 0.75rem;
+}
+
+.diverging-bar-positive {
+  left: 0;
+  border-radius: 0 4px 4px 0;
+  background: linear-gradient(
+    90deg,
+    $chart-positive 0%,
+    color-mix(in srgb, $chart-positive 80%, black) 100%
+  );
+  justify-content: flex-end;
+  padding-right: 0.75rem;
+}
+
+.diverging-bar-value {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: white;
+  white-space: nowrap;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+// ===========================================
+// Chart Container (wrapper with share)
+// ===========================================
+
+.chart-container {
+  position: relative;
+  background-color: var(--bs-body-bg);
+  border: 1px solid var(--bs-border-color);
+  border-radius: 0.5rem;
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.chart-container-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+  gap: 1rem;
+}
+
+.chart-container-title {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--bs-body-color);
+}
+
+.chart-container-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+// ===========================================
+// Share Menu
+// ===========================================
+
+.share-menu {
+  position: relative;
+  display: inline-block;
+}
+
+.share-menu-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.375rem 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--bs-secondary-color);
+  background-color: transparent;
+  border: 1px solid var(--bs-border-color);
+  border-radius: 0.375rem;
+  cursor: pointer;
+  transition:
+    background-color 0.15s,
+    border-color 0.15s;
+
+  &:hover {
+    background-color: var(--bs-tertiary-bg);
+    border-color: var(--bs-secondary-color);
+  }
+
+  &:focus {
+    outline: 2px solid var(--bs-primary);
+    outline-offset: 2px;
+  }
+}
+
+.share-menu-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 0.25rem;
+  min-width: 180px;
+  background-color: var(--bs-body-bg);
+  border: 1px solid var(--bs-border-color);
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  padding: 0.5rem 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition:
+    opacity 0.15s,
+    transform 0.15s,
+    visibility 0.15s;
+
+  &.open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+}
+
+.share-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 0.625rem 1rem;
+  font-size: 0.875rem;
+  color: var(--bs-body-color);
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.1s;
+
+  &:hover {
+    background-color: var(--bs-tertiary-bg);
+  }
+
+  svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+  }
+}
+
+.share-menu-divider {
+  height: 1px;
+  background-color: var(--bs-border-color);
+  margin: 0.5rem 0;
+}
+
+// ===========================================
+// Line Chart (Time Series)
+// ===========================================
+
+.line-chart {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.line-chart-container {
+  background-color: var(--bs-body-bg);
+  border-radius: 0.25rem;
+  padding: 0.5rem 0;
+}
+
+.line-chart-svg {
+  width: 100%;
+  height: auto;
+  max-height: 300px;
+}
+
+.line-chart-grid {
+  stroke: var(--bs-border-color);
+  stroke-width: 1;
+  stroke-dasharray: 4, 4;
+  opacity: 0.5;
+}
+
+.line-chart-axis-label {
+  font-size: 11px;
+  fill: var(--bs-secondary-color);
+  font-family: inherit;
+}
+
+.line-chart-axis-title {
+  font-size: 12px;
+  fill: var(--bs-body-color);
+  font-weight: 500;
+  font-family: inherit;
+}
+
+.line-chart-line {
+  stroke-dasharray: var(--path-length, 1000);
+  stroke-dashoffset: var(--path-length, 1000);
+  transition: stroke-dashoffset 0.8s ease-out;
+  transition-delay: calc(var(--series-index, 0) * 0.2s);
+
+  &.in-view {
+    stroke-dashoffset: 0;
+  }
+}
+
+.line-chart-point {
+  opacity: 0;
+  transform-origin: center;
+  transition:
+    opacity 0.2s ease-out,
+    transform 0.2s ease-out;
+  transition-delay: var(--point-delay, 0.6s);
+
+  &.in-view {
+    opacity: 1;
+  }
+
+  &:hover {
+    r: 6;
+    cursor: pointer;
+  }
+}
+
+.line-chart-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 0.75rem;
+  padding: 0.5rem 0;
+}
+
+.line-chart-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+
+.line-chart-legend-color {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.line-chart-legend-label {
+  font-size: 0.8rem;
+  color: var(--bs-secondary-color);
+}
+
+// ===========================================
+// Chart.js Wrapper Component
+// ===========================================
+
+.chartjs-wrapper {
+  position: relative;
+  margin-bottom: 1.5rem;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+
+  &.in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.chartjs-title {
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--bs-body-color);
+}
+
+.chartjs-container {
+  position: relative;
+  width: 100%;
+
+  canvas {
+    width: 100% !important;
+  }
+}
+
+.chartjs-watermark {
+  position: absolute;
+  bottom: 0.5rem;
+  right: 0.5rem;
+  font-size: 0.7rem;
+  color: var(--bs-secondary-color);
+  opacity: 0.6;
+  font-weight: 500;
+}
+
+// Loading placeholder for lazy-loaded Chart.js
+.chart-loading-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--bs-tertiary-bg);
+  border-radius: 0.25rem;
+}
+
+.chart-loading-spinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid var(--bs-border-color);
+  border-top-color: var(--bs-primary);
+  border-radius: 50%;
+  animation: chartjs-spin 0.8s linear infinite;
+}
+
+@keyframes chartjs-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

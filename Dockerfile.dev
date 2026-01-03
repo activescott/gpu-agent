@@ -1,7 +1,18 @@
-FROM node:20-alpine
+FROM node:20-slim
 
 # Install dependencies and tools needed for development
-RUN apk add --no-cache libc6-compat wget
+# Canvas native dependencies required for chartjs-node-canvas server-side chart rendering
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    wget \
+    build-essential \
+    libcairo2-dev \
+    libpango1.0-dev \
+    libjpeg-dev \
+    libgif-dev \
+    librsvg2-dev \
+    libpixman-1-dev \
+    python3 \
+    && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 

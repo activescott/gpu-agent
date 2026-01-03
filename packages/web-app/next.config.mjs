@@ -7,6 +7,10 @@ const nextConfig = {
   // Transpile workspace packages that export TypeScript source files
   transpilePackages: ["@activescott/filter-items"],
 
+  // Native modules that should not be bundled by Next.js
+  // Required for chartjs-node-canvas server-side chart rendering
+  serverExternalPackages: ["canvas", "chartjs-node-canvas"],
+
   // MDX configuration: https://nextjs.org/docs/app/building-your-application/configuring/mdx
   pageExtensions: ["mdx", "ts", "tsx"],
 

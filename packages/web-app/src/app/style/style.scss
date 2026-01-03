@@ -53,3 +53,152 @@
     color: $light;
   }
 }
+
+// Markdown content styling (news articles, blog posts)
+.markdown-content {
+  // Headings - add visual hierarchy and spacing
+  h2 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--bs-primary);
+    color: var(--bs-primary);
+    font-weight: 600;
+  }
+
+  h3 {
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+    color: var(--bs-secondary);
+  }
+
+  // Paragraphs - better spacing
+  p {
+    margin-bottom: 1rem;
+    line-height: 1.7;
+  }
+
+  // Lists - better spacing and styling
+  ul,
+  ol {
+    margin-bottom: 1.25rem;
+    padding-left: 1.5rem;
+
+    li {
+      margin-bottom: 0.5rem;
+      line-height: 1.6;
+    }
+  }
+
+  // Tables - Bootstrap-like styling with enhancements
+  table {
+    width: 100%;
+    margin-bottom: 1.5rem;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: 0.95rem;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+
+    thead {
+      background: linear-gradient(
+        135deg,
+        var(--bs-primary) 0%,
+        color-mix(in srgb, var(--bs-primary) 85%, black) 100%
+      );
+      color: white;
+
+      th {
+        padding: 0.625rem 0.75rem;
+        text-align: left;
+        font-weight: 500;
+        font-size: 0.875rem;
+        text-transform: uppercase;
+        letter-spacing: 0.03em;
+        border: none;
+
+        &:first-child {
+          border-top-left-radius: 0.5rem;
+        }
+
+        &:last-child {
+          border-top-right-radius: 0.5rem;
+        }
+      }
+    }
+
+    tbody {
+      tr {
+        border-bottom: 1px solid var(--bs-border-color);
+
+        &:nth-child(even) {
+          background-color: var(--bs-tertiary-bg);
+        }
+
+        &:hover {
+          background-color: var(--bs-secondary-bg);
+        }
+
+        &:last-child {
+          td:first-child {
+            border-bottom-left-radius: 0.5rem;
+          }
+
+          td:last-child {
+            border-bottom-right-radius: 0.5rem;
+          }
+        }
+      }
+
+      td {
+        padding: 0.75rem;
+        vertical-align: middle;
+      }
+    }
+
+    // Highlight cells with bold text (key data points)
+    strong {
+      color: var(--bs-success);
+      font-weight: 700;
+    }
+  }
+
+  // Strong/bold text - make data points stand out
+  > p strong,
+  > ul strong,
+  > ol strong {
+    color: var(--bs-emphasis-color);
+  }
+
+  // Horizontal rules - subtle dividers
+  hr {
+    margin: 2rem 0;
+    border: none;
+    border-top: 1px solid var(--bs-border-color);
+  }
+
+  // Emphasis/italic - for callouts
+  em {
+    color: var(--bs-secondary-color);
+  }
+
+  // Links
+  a {
+    color: var(--bs-primary);
+    text-decoration: underline;
+
+    &:hover {
+      color: var(--bs-primary-text-emphasis);
+    }
+  }
+
+  // Blockquotes (if used)
+  blockquote {
+    margin: 1.5rem 0;
+    padding: 1rem 1.5rem;
+    border-left: 4px solid var(--bs-primary);
+    background-color: var(--bs-tertiary-bg);
+    font-style: italic;
+  }
+}

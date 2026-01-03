@@ -1,10 +1,19 @@
-FROM node:20-alpine AS base
+FROM node:20-slim AS base
 
 # Install dependencies only when needed
 FROM base AS deps
-# Check https://github.com/nodejs/docker-node/tree/b4117f9333da4138b03a546ec926ef50a31506c3#nodealpine
-# to understand why libc6-compat might be needed.
-RUN apk add --no-cache libc6-compat wget
+# Canvas native dependencies required for chartjs-node-canvas server-side chart rendering
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    wget \
+    build-essential \
+    libcairo2-dev \
+    libpango1.0-dev \
+    libjpeg-dev \
+    libgif-dev \
+    librsvg2-dev \
+    libpixman-1-dev \
+    python3 \
+    && rm -rf /var/lib/apt/lists/*
 WORKDIR /app
 
 # Install dependencies
@@ -14,6 +23,16 @@ RUN npm ci
 
 # Rebuild the source code only when needed
 FROM base AS builder
+# Need canvas build deps for the build step (node_modules include native bindings)
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    libcairo2 \
+    libpango-1.0-0 \
+    libpangocairo-1.0-0 \
+    libjpeg62-turbo \
+    libgif7 \
+    librsvg2-2 \
+    libpixman-1-0 \
+    && rm -rf /var/lib/apt/lists/*
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
@@ -32,12 +51,24 @@ RUN npm run build
 FROM base AS runner
 WORKDIR /app
 
+# Canvas runtime dependencies for chartjs-node-canvas (runtime libs only)
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    wget \
+    libcairo2 \
+    libpango-1.0-0 \
+    libpangocairo-1.0-0 \
+    libjpeg62-turbo \
+    libgif7 \
+    librsvg2-2 \
+    libpixman-1-0 \
+    && rm -rf /var/lib/apt/lists/*
+
 ENV NODE_ENV=production
 # Uncomment the following line in case you want to disable telemetry during runtime.
 # ENV NEXT_TELEMETRY_DISABLED 1
 
-RUN addgroup --system --gid 1001 nodejs
-RUN adduser --system --uid 1001 nextjs
+RUN groupadd --system --gid 1001 nodejs
+RUN useradd --system --uid 1001 nextjs
 
 # Copy built application
 COPY --from=builder /app/packages/web-app/.next ./packages/web-app/.next

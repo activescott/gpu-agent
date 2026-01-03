@@ -3,6 +3,7 @@ import staticPagesSitemap from "./sitemap.static-pages.json"
 import { ISOMORPHIC_CONFIG } from "@/pkgs/isomorphic/config"
 import { IterableElement } from "type-fest"
 import { listPublishedArticles } from "@/pkgs/server/db/NewsRepository"
+import { listMarketReports } from "@/app/gpu/market-report/reports"
 import {
   getLatestListingDate,
   GpuWithListings,
@@ -45,6 +46,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const awaitedQueries = await Promise.all([
     homePageSitemapItem(domain_url),
     newsSitemap(domain_url),
+    marketReportSitemap(domain_url),
     modelsSitemap(domain_url),
     gpuLearnSitemap(domain_url),
     gpuCardLearnSitemap(domain_url),
@@ -58,6 +60,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const [
     homePageItem,
     newsItems,
+    marketReportItems,
     modelsEntries,
     gpuLearnEntries,
     gpuCardLearnEntries,
@@ -75,6 +78,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // these have the same shape, but need flattened:
   const dynamicEntryGroups: SitemapItem[][] = [
     newsItems,
+    marketReportItems,
     modelsEntries,
     gpuLearnEntries,
     gpuCardLearnEntries,
@@ -153,6 +157,22 @@ async function newsSitemap(domain_url: string): Promise<SitemapItem[]> {
   }
 
   return [newsRoot, ...newsEntries]
+}
+
+function marketReportSitemap(domain_url: string): SitemapItem[] {
+  // Market reports are now TSX files, metadata is in the registry
+  const marketReports = listMarketReports()
+
+  const reportEntries: SitemapItem[] = marketReports.map((report) => {
+    return {
+      url: `${domain_url}/gpu/market-report/${report.slug}`,
+      changeFrequency: "monthly",
+      priority: 0.8,
+      lastModified: report.updatedAt,
+    } satisfies SitemapItem
+  })
+
+  return reportEntries
 }
 
 async function modelsSitemap(domain_url: string): Promise<SitemapItem[]> {

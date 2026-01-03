@@ -114,6 +114,40 @@ This ensures migrations created in the container are properly synced to your loc
 
 **Testing Migrations:** To test new migrations locally, stop the `scripts/dev` process and restart it. The container will restart and run any pending migrations on startup. This matches how migrations run in production, so it's the preferred way to test database schema changes.
 
+### Production Database Queries
+
+Use `scripts/psql-prod` to query the production PostgreSQL database:
+
+```bash
+# Ad-hoc query
+./scripts/psql-prod 'SELECT COUNT(*) FROM "Listing";'
+
+# Run a pre-built report query
+./scripts/psql-prod "$(cat scripts/queries/market-snapshot.sql)"
+```
+
+**Available Query Scripts** in `scripts/queries/`:
+- `market-snapshot.sql` - Current listings by GPU with price stats
+- `monthly-price-changes.sql` - Month-over-month price movements
+- `price-vs-msrp.sql` - Current prices compared to MSRP
+- `condition-analysis.sql` - New vs Used vs Refurbished pricing
+- `scalper-premiums.sql` - RTX 50 series markup over MSRP
+- `best-deals.sql` - GPUs with biggest discounts below MSRP
+
+**Prerequisites:** kubectl configured with `nas` context and access to `gpupoet-prod` namespace.
+
+### GPU Market Report Generation
+
+Monthly GPU market reports can be generated using Claude Code:
+
+```bash
+claude "Run the gpu-market-report skill for February 2026"
+```
+
+See `.claude/skills/gpu-market-report.md` for the full skill documentation.
+
+Existing reports are TSX files in `packages/web-app/src/app/gpu/market-report/`.
+
 ### Testing
 
 Use `scripts/test-e2e` to run e2e tests. This script handles setup and runs tests against the local dev environment.

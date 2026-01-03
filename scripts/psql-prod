@@ -1,0 +1,15 @@
+#!/bin/bash
+# Query production PostgreSQL database
+# Usage: ./scripts/psql-prod 'SELECT * FROM "Listing" LIMIT 10;'
+#        ./scripts/psql-prod "$(cat scripts/queries/market-snapshot.sql)"
+
+set -e
+
+if [ -z "$1" ]; then
+    echo "Usage: $0 '<SQL query>'"
+    echo "Example: $0 'SELECT COUNT(*) FROM \"Listing\";'"
+    exit 1
+fi
+
+kubectl --context=nas -n gpupoet-prod exec db-0 -- \
+    psql -U gpu_agent -d gpu_agent -c "$1"

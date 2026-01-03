@@ -16,3 +16,4 @@ dist/
 k8s/overlays/dev/.env.dev.app
 
 *.tsbuildinfo
+data/prod-backups/

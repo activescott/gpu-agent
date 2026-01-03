@@ -1,0 +1,78 @@
+/**
+ * Shared types for high-order chart components.
+ * These components embed SQL queries and return ChartConfig for rendering.
+ */
+
+/**
+ * Date range for chart queries.
+ * Format: YYYY-MM (e.g., "2026-01")
+ */
+export interface DateRange {
+  from: string
+  to: string
+}
+
+/**
+ * Props for chart components that render JSX.
+ */
+export interface ChartComponentProps {
+  dateRange: DateRange
+}
+
+/**
+ * Hashtags for social sharing, keyed by chart component name.
+ */
+export const CHART_HASHTAGS: Record<string, string[]> = {
+  ScalperPremiumChart: ["GPU", "RTX5090", "PCGaming"],
+  BestDealsChart: ["GPU", "GPUDeals", "PCGaming"],
+  PriceChangesChart: ["GPU", "GPUPrices"],
+  PriceHistoryChart: ["GPU", "GPUPrices", "PriceTrend"],
+  AmdDealsChart: ["AMD", "Radeon", "GPUDeals"],
+}
+
+/**
+ * Parses a YYYY-MM string into start and end dates for that month.
+ */
+export function parseDateRange(yearMonth: string): {
+  startDate: Date
+  endDate: Date
+} {
+  const [year, month] = yearMonth.split("-").map(Number)
+  const startDate = new Date(year, month - 1, 1)
+  const endDate = new Date(year, month, 0) // Last day of month
+  endDate.setHours(23, 59, 59, 999)
+  return { startDate, endDate }
+}
+
+/**
+ * Formats a GPU name for display.
+ * e.g., "nvidia-geforce-rtx-5090" -> "RTX 5090"
+ */
+export function formatGpuName(name: string): string {
+  // Remove common prefixes
+  let formatted = name
+    .replace(/^nvidia-geforce-/i, "")
+    .replace(/^amd-radeon-/i, "")
+    .replace(/^intel-arc-/i, "Arc ")
+
+  // Convert to uppercase and add spaces
+  formatted = formatted.replaceAll("-", " ").toUpperCase()
+
+  return formatted
+}
+
+/**
+ * Determines the chart color based on a value.
+ * Positive values (premiums) = danger (red)
+ * Negative values (discounts) = success (green)
+ * Near zero = warning (orange)
+ */
+export function getValueColor(
+  value: number,
+  threshold = 10,
+): "danger" | "success" | "warning" | "primary" {
+  if (value > threshold) return "danger"
+  if (value < -threshold) return "success"
+  if (Math.abs(value) <= threshold) return "warning"
+  return "primary"
+}

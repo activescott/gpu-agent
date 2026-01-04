@@ -50,6 +50,17 @@ export const metadata: Metadata = {
       "Find the best GPU for your money with GPU Price/Performance Rankings on specifications such as Tensor Cores, memory bandwidth, FP32/FP16 FLOPs, and more.",
     images: ["https://gpupoet.com/images/social.png"],
   },
+
+  icons: {
+    icon: [
+      { url: "/images/coinpoet-card-128.svg", type: "image/svg+xml" },
+      {
+        url: "/images/coinpoet-card-128.png",
+        type: "image/png",
+        sizes: "128x128",
+      },
+    ],
+  },
 }
 
 export default function RootLayout({

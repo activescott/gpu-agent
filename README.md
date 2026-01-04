@@ -200,6 +200,62 @@ This endpoint:
 - **Internal Only:** Accessible only within the Kubernetes cluster
 - **Monitoring:** Job results are tracked via Prometheus metrics at `/ops/metrics`
 
+### Search Engine Notification
+
+The site automatically notifies search engines about content changes using a Kubernetes CronJob that runs every 4 hours. It supports two providers:
+
+#### IndexNow (Bing, Yandex)
+- Enabled by default when `INDEXNOW_API_KEY` is set
+- Notifies Bing, Yandex, and other participating search engines instantly
+- Generate key: `packages/indexnow-notifier/scripts/generate-key.sh`
+
+#### Google Indexing API (Optional)
+
+**Important Limitation:** Google's Indexing API officially only supports pages with `JobPosting` or `BroadcastEvent` structured data. For general websites, it works but is outside Google's official guidelines. Many sites use it anyway with success.
+
+**Setup Steps:**
+
+1. **Create Google Cloud Project & Enable API**
+   - Go to [Google Cloud Console API Setup](https://console.cloud.google.com/start/api?id=indexing.googleapis.com)
+   - Create a new project or select existing
+   - Enable the Indexing API
+
+2. **Create Service Account**
+   - Go to [Service Accounts](https://console.cloud.google.com/iam-admin/serviceaccounts)
+   - Click "Create Service Account"
+   - Enter name (e.g., "gpupoet-indexing")
+   - Skip permissions section, click Continue
+   - In "Create key" section, select **JSON** format
+   - Click Create - downloads `*.json` key file
+   - **Store this file securely** - it's the only copy
+
+3. **Add Service Account to Search Console**
+   - Go to [Google Search Console](https://search.google.com/search-console/)
+   - Select your property (gpupoet.com)
+   - Go to Settings > Users and permissions
+   - Click "Add user"
+   - Enter service account email from JSON file (`client_email` field)
+   - Set permission to **Owner**
+
+4. **Configure Environment Variable**
+   ```bash
+   # Base64 encode the JSON key file
+   base64 -i service-account.json
+
+   # Add to k8s secret as GOOGLE_SERVICE_ACCOUNT_JSON
+   ```
+
+**Rate Limits:**
+| Provider | Default Quota | Batch Size |
+|----------|---------------|------------|
+| IndexNow | 10,000 URLs/request | 10,000 |
+| Google | 200 requests/day | 100 URLs/batch |
+
+**Configuration:**
+- State is stored per-provider in `/data/pages/indexnow/` and `/data/pages/google/`
+- Providers run independently - failure in one doesn't affect the other
+- Set `ENABLED_PROVIDERS=indexnow,google` to control which providers run
+
 ## Database Architecture
 
 ### Soft Delete with Versioning

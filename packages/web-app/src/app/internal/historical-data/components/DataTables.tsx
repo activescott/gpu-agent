@@ -19,85 +19,79 @@ interface DataTablesProps {
   availabilityTrends: AvailabilityStats[]
 }
 
-const TOP_10 = 10
-
 export default function DataTables({
   priceHistory,
   availabilityTrends,
 }: DataTablesProps) {
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+    <div className="row g-4">
       {/* Price History Table */}
-      <div className="p-6 rounded-lg shadow border">
-        <h3 className="text-lg font-semibold mb-4">Price History Data</h3>
-        <div className="overflow-x-auto">
-          <table className="min-w-full text-sm">
-            <thead>
-              <tr className="border-b">
-                <th className="text-left p-2">Date</th>
-                <th className="text-left p-2">Avg Price</th>
-                <th className="text-left p-2">Median Price</th>
-                <th className="text-left p-2">Min Price</th>
-                <th className="text-left p-2">Max Price</th>
-                <th className="text-left p-2">Listings</th>
-              </tr>
-            </thead>
-            <tbody>
-              {priceHistory.slice(0, TOP_10).map((point, index) => (
-                <tr key={index} className="border-b">
-                  <td className="p-2">
-                    {new Date(point.date).toLocaleDateString()}
-                  </td>
-                  <td className="p-2">${point.avgPrice.toFixed(0)}</td>
-                  <td className="p-2">${point.medianPrice.toFixed(0)}</td>
-                  <td className="p-2">${point.minPrice.toFixed(0)}</td>
-                  <td className="p-2">${point.maxPrice.toFixed(0)}</td>
-                  <td className="p-2">{point.listingCount}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-          {priceHistory.length > TOP_10 && (
-            <p className="text-gray-500 text-sm mt-2">
-              Showing first {TOP_10} of {priceHistory.length} entries
-            </p>
-          )}
+      <div className="col-lg-6">
+        <div className="card h-100">
+          <div className="card-header">
+            <h5 className="card-title mb-0">Price History Data</h5>
+          </div>
+          <div className="card-body">
+            <div className="table-responsive">
+              <table className="table table-striped table-sm">
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>Avg</th>
+                    <th>Median</th>
+                    <th>Min</th>
+                    <th>Max</th>
+                    <th>Listings</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {priceHistory.map((point, index) => (
+                    <tr key={index}>
+                      <td>{new Date(point.date).toLocaleDateString()}</td>
+                      <td>${point.avgPrice.toFixed(0)}</td>
+                      <td>${point.medianPrice.toFixed(0)}</td>
+                      <td>${point.minPrice.toFixed(0)}</td>
+                      <td>${point.maxPrice.toFixed(0)}</td>
+                      <td>{point.listingCount}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
       </div>
 
       {/* Availability Trends Table */}
-      <div className="p-6 rounded-lg shadow border">
-        <h3 className="text-lg font-semibold mb-4">Availability Trends Data</h3>
-        <div className="overflow-x-auto">
-          <table className="min-w-full text-sm">
-            <thead>
-              <tr className="border-b">
-                <th className="text-left p-2">Date</th>
-                <th className="text-left p-2">Listings</th>
-                <th className="text-left p-2">Sellers</th>
-                <th className="text-left p-2">Avg Days</th>
-              </tr>
-            </thead>
-            <tbody>
-              {availabilityTrends.slice(0, TOP_10).map((point, index) => (
-                <tr key={index} className="border-b">
-                  <td className="p-2">
-                    {new Date(point.date).toLocaleDateString()}
-                  </td>
-                  <td className="p-2">{point.availableListings}</td>
-                  <td className="p-2">{point.uniqueSellers}</td>
-                  <td className="p-2">
-                    {point.avgDaysListed?.toFixed(1) || "N/A"}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-          {availabilityTrends.length > TOP_10 && (
-            <p className="text-gray-500 text-sm mt-2">
-              Showing first {TOP_10} of {availabilityTrends.length} entries
-            </p>
-          )}
+      <div className="col-lg-6">
+        <div className="card h-100">
+          <div className="card-header">
+            <h5 className="card-title mb-0">Availability Trends Data</h5>
+          </div>
+          <div className="card-body">
+            <div className="table-responsive">
+              <table className="table table-striped table-sm">
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>Listings</th>
+                    <th>Sellers</th>
+                    <th>Avg Days</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {availabilityTrends.map((point, index) => (
+                    <tr key={index}>
+                      <td>{new Date(point.date).toLocaleDateString()}</td>
+                      <td>{point.availableListings}</td>
+                      <td>{point.uniqueSellers}</td>
+                      <td>{point.avgDaysListed?.toFixed(1) || "N/A"}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
       </div>
     </div>

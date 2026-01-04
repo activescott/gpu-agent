@@ -1,35 +1,12 @@
 "use client"
 
 import { useState, useEffect, useCallback } from "react"
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend,
-} from "chart.js"
 
 import ControlPanel from "./components/ControlPanel"
 import StatsCards from "./components/StatsCards"
 import PriceChart from "./components/PriceChart"
 import AvailabilityChart from "./components/AvailabilityChart"
 import DataTables from "./components/DataTables"
-
-// Register Chart.js components
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend,
-)
 
 interface PriceHistoryPoint {
   date: string
@@ -128,21 +105,26 @@ export default function HistoricalDataPage() {
     }
   }, [selectedGpu, months, fetchHistoricalData])
 
+  // Get the label for the selected GPU
+  const selectedGpuLabel = gpuOptions.find((g) => g.name === selectedGpu)?.label
+
   if (gpuLoading) {
     return (
-      <div className="container mx-auto p-6">
-        <div className="text-center py-8">
-          <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500"></div>
-          <p className="mt-2 text-gray-600">Loading GPU options...</p>
+      <div className="container py-4">
+        <div className="text-center py-5">
+          <div className="spinner-border text-primary" role="status">
+            <span className="visually-hidden">Loading...</span>
+          </div>
+          <p className="mt-3 text-muted">Loading GPU options...</p>
         </div>
       </div>
     )
   }
 
   return (
-    <div className="container mx-auto p-6">
-      <h1 className="text-3xl font-bold mb-6">Historical Data Testing Page</h1>
-      <p className="text-gray-600 mb-8">
+    <div className="container py-4">
+      <h1 className="mb-2">Historical Data Testing Page</h1>
+      <p className="text-muted mb-4">
         This page is for internal testing of historical data functions. It is
         not linked anywhere and not in the sitemap.
       </p>
@@ -159,36 +141,48 @@ export default function HistoricalDataPage() {
 
       {/* Error Display */}
       {error && (
-        <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-6">
+        <div className="alert alert-danger mb-4" role="alert">
           <strong>Error:</strong> {error}
         </div>
       )}
 
       {/* Loading State */}
       {loading && (
-        <div className="text-center py-8">
-          <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500"></div>
-          <p className="mt-2 text-gray-600">Loading historical data...</p>
+        <div className="text-center py-5">
+          <div className="spinner-border text-primary" role="status">
+            <span className="visually-hidden">Loading...</span>
+          </div>
+          <p className="mt-3 text-muted">Loading historical data...</p>
         </div>
       )}
 
       {/* Data Display */}
       {data && !loading && (
-        <div className="space-y-8">
+        <>
           <StatsCards
             volatilityStats={data.volatilityStats}
             dataPointsCount={data.priceHistory.length}
           />
 
-          <PriceChart priceHistory={data.priceHistory} />
+          <div className="mb-4">
+            <PriceChart
+              priceHistory={data.priceHistory}
+              gpuName={selectedGpuLabel}
+            />
+          </div>
 
-          <AvailabilityChart availabilityTrends={data.availabilityTrends} />
+          <div className="mb-4">
+            <AvailabilityChart
+              availabilityTrends={data.availabilityTrends}
+              gpuName={selectedGpuLabel}
+            />
+          </div>
 
           <DataTables
             priceHistory={data.priceHistory}
             availabilityTrends={data.availabilityTrends}
           />
-        </div>
+        </>
       )}
     </div>
   )

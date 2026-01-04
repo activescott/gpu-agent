@@ -17,30 +17,46 @@ export default function StatsCards({
   dataPointsCount,
 }: StatsCardsProps) {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-      <div className="p-4 rounded-lg shadow border">
-        <h3 className="text-lg font-semibold mb-2">Volatility Score</h3>
-        <p className="text-2xl font-bold text-blue-600">
-          {volatilityStats.volatilityScore?.toFixed(
-            VOLATILITY_SCORE_PRECISION_DIGITS,
-          ) || "0.000"}
-        </p>
+    <div className="row g-3 mb-4">
+      <div className="col-md-3 col-sm-6">
+        <div className="card h-100">
+          <div className="card-body">
+            <h6 className="card-subtitle mb-2 text-muted">Volatility Score</h6>
+            <p className="card-title h3 mb-0 text-primary">
+              {volatilityStats.volatilityScore?.toFixed(
+                VOLATILITY_SCORE_PRECISION_DIGITS,
+              ) || "0.000"}
+            </p>
+          </div>
+        </div>
       </div>
-      <div className="p-4 rounded-lg shadow border">
-        <h3 className="text-lg font-semibold mb-2">Price Range</h3>
-        <p className="text-2xl font-bold text-green-600">
-          ${volatilityStats.priceRange?.toFixed(0) || "N/A"}
-        </p>
+      <div className="col-md-3 col-sm-6">
+        <div className="card h-100">
+          <div className="card-body">
+            <h6 className="card-subtitle mb-2 text-muted">Price Range</h6>
+            <p className="card-title h3 mb-0 text-success">
+              ${volatilityStats.priceRange?.toFixed(0) || "N/A"}
+            </p>
+          </div>
+        </div>
       </div>
-      <div className="p-4 rounded-lg shadow border">
-        <h3 className="text-lg font-semibold mb-2">Version Count</h3>
-        <p className="text-2xl font-bold text-purple-600">
-          {volatilityStats.versionCount || 0}
-        </p>
+      <div className="col-md-3 col-sm-6">
+        <div className="card h-100">
+          <div className="card-body">
+            <h6 className="card-subtitle mb-2 text-muted">Version Count</h6>
+            <p className="card-title h3 mb-0 text-info">
+              {volatilityStats.versionCount || 0}
+            </p>
+          </div>
+        </div>
       </div>
-      <div className="p-4 rounded-lg shadow border">
-        <h3 className="text-lg font-semibold mb-2">Data Points</h3>
-        <p className="text-2xl font-bold text-orange-600">{dataPointsCount}</p>
+      <div className="col-md-3 col-sm-6">
+        <div className="card h-100">
+          <div className="card-body">
+            <h6 className="card-subtitle mb-2 text-muted">Data Points</h6>
+            <p className="card-title h3 mb-0 text-warning">{dataPointsCount}</p>
+          </div>
+        </div>
       </div>
     </div>
   )

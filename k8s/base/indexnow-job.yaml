@@ -19,10 +19,16 @@ spec:
           # Fix PV permissions: The host path is owned by root, but the container
           # runs as UID 1001. This init container runs as root to create the
           # directory structure and set ownership before the main container starts.
+          # Creates provider-specific subdirectories for state isolation.
           initContainers:
             - name: fix-permissions
               image: busybox:1.36
-              command: ["sh", "-c", "mkdir -p /data/pages && chown -R 1001:1001 /data"]
+              command:
+                - sh
+                - -c
+                - |
+                  mkdir -p /data/pages/indexnow /data/pages/google
+                  chown -R 1001:1001 /data
               securityContext:
                 runAsUser: 0
               volumeMounts:
@@ -32,17 +38,31 @@ spec:
             - name: indexnow-notifier
               image: indexnow-notifier-image-placeholder
               env:
+                # IndexNow configuration
                 - name: INDEXNOW_API_KEY
                   valueFrom:
                     secretKeyRef:
                       name: app-creds
                       key: INDEXNOW_API_KEY
+                # Google Indexing API configuration (optional)
+                # Set GOOGLE_SERVICE_ACCOUNT_JSON in app-creds secret to enable
+                - name: GOOGLE_SERVICE_ACCOUNT_JSON
+                  valueFrom:
+                    secretKeyRef:
+                      name: app-creds
+                      key: GOOGLE_SERVICE_ACCOUNT_JSON
+                      optional: true
+                # Common configuration
                 - name: SITEMAP_URL
                   value: "https://gpupoet.com/sitemap.xml"
                 - name: HOST
                   value: "gpupoet.com"
                 - name: STATE_DIR
                   value: "/data/pages"
+                # Optional: explicitly control which providers to use
+                # Default: all configured providers are enabled
+                # - name: ENABLED_PROVIDERS
+                #   value: "indexnow,google"
               resources:
                 limits:
                   cpu: "0.1"

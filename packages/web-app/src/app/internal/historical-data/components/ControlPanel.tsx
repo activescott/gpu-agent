@@ -1,7 +1,4 @@
-interface GpuOption {
-  name: string
-  label: string
-}
+import { GpuSelector, GpuOption } from "@/pkgs/client/components/GpuSelector"
 
 interface ControlPanelProps {
   selectedGpu: string
@@ -23,47 +20,51 @@ export default function ControlPanel({
   gpuOptions,
 }: ControlPanelProps) {
   return (
-    <div className="bg-gray-100 p-4 rounded-lg mb-6">
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            GPU Name
-          </label>
-          <select
-            value={selectedGpu}
-            onChange={(e) => setSelectedGpu(e.target.value)}
-            className="w-full p-2 border border-gray-300 rounded-md"
-          >
-            {gpuOptions.map((gpu) => (
-              <option key={gpu.name} value={gpu.name}>
-                {gpu.label}
-              </option>
-            ))}
-          </select>
-        </div>
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            Months of History
-          </label>
-          <select
-            value={months}
-            onChange={(e) => setMonths(Number.parseInt(e.target.value, 10))}
-            className="w-full p-2 border border-gray-300 rounded-md"
-          >
-            <option value={1}>1 Month</option>
-            <option value={3}>3 Months</option>
-            <option value={6}>6 Months</option>
-            <option value={12}>12 Months</option>
-          </select>
-        </div>
-        <div className="flex items-end">
-          <button
-            onClick={onRefresh}
-            disabled={loading}
-            className="w-full bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600 disabled:opacity-50"
-          >
-            {loading ? "Loading..." : "Refresh Data"}
-          </button>
+    <div className="card mb-4">
+      <div className="card-body">
+        <div className="row g-3 align-items-end">
+          <div className="col-md-5">
+            <label className="form-label fw-medium">GPU</label>
+            <GpuSelector
+              gpuOptions={gpuOptions}
+              selectedGpuSlug={selectedGpu}
+              placeholder="Search for a GPU..."
+              onSelect={setSelectedGpu}
+            />
+          </div>
+          <div className="col-md-4">
+            <label className="form-label fw-medium">Months of History</label>
+            <select
+              value={months}
+              onChange={(e) => setMonths(Number.parseInt(e.target.value, 10))}
+              className="form-select"
+            >
+              <option value={1}>1 Month</option>
+              <option value={3}>3 Months</option>
+              <option value={6}>6 Months</option>
+              <option value={12}>12 Months</option>
+            </select>
+          </div>
+          <div className="col-md-3">
+            <button
+              onClick={onRefresh}
+              disabled={loading}
+              className="btn btn-primary w-100"
+            >
+              {loading ? (
+                <>
+                  <span
+                    className="spinner-border spinner-border-sm me-2"
+                    role="status"
+                    aria-hidden="true"
+                  ></span>
+                  Loading...
+                </>
+              ) : (
+                "Refresh Data"
+              )}
+            </button>
+          </div>
         </div>
       </div>
     </div>

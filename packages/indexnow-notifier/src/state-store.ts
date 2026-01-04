@@ -1,6 +1,7 @@
 import { readFile, writeFile, mkdir } from "fs/promises"
 import { join } from "path"
 import { createLogger } from "./log.js"
+import { NotifierProvider } from "./types.js"
 
 const log = createLogger("state-store")
 
@@ -23,21 +24,57 @@ export function decodeFilenameToUrl(filename: string): string {
 }
 
 /**
- * Get the path to the state file for a URL
+ * Extract the domain (hostname) from a URL.
+ * Returns the hostname or "unknown" if parsing fails.
  */
-function getStateFilePath(stateDir: string, url: string): string {
-  return join(stateDir, encodeUrlToFilename(url))
+export function extractDomain(url: string): string {
+  try {
+    const parsed = new URL(url)
+    return parsed.hostname
+  } catch {
+    log.warn(`Failed to parse URL for domain extraction: ${url}`)
+    return "unknown"
+  }
 }
 
 /**
- * Get the last notified timestamp for a URL.
- * Returns null if the URL has never been notified.
+ * Get the domain and provider-specific state directory.
+ * Structure: {stateDir}/{domain}/{provider}/
+ */
+function getProviderStateDir(
+  stateDir: string,
+  domain: string,
+  provider: NotifierProvider,
+): string {
+  return join(stateDir, domain, provider)
+}
+
+/**
+ * Get the path to the state file for a URL and provider.
+ * Structure: {stateDir}/{domain}/{provider}/{encoded-url}.yaml
+ */
+function getStateFilePath(
+  stateDir: string,
+  provider: NotifierProvider,
+  url: string,
+): string {
+  const domain = extractDomain(url)
+  return join(
+    getProviderStateDir(stateDir, domain, provider),
+    encodeUrlToFilename(url),
+  )
+}
+
+/**
+ * Get the last notified timestamp for a URL and provider.
+ * Returns null if the URL has never been notified for this provider.
  */
 export async function getLastNotified(
   stateDir: string,
+  provider: NotifierProvider,
   url: string,
 ): Promise<Date | null> {
-  const filePath = getStateFilePath(stateDir, url)
+  const filePath = getStateFilePath(stateDir, provider, url)
 
   try {
     const content = await readFile(filePath, "utf-8")
@@ -61,45 +98,51 @@ export async function getLastNotified(
 }
 
 /**
- * Set the last notified timestamp for a URL.
- * Creates the state directory if it doesn't exist.
+ * Set the last notified timestamp for a URL and provider.
+ * Creates the domain/provider-specific state directory if it doesn't exist.
  */
 export async function setLastNotified(
   stateDir: string,
+  provider: NotifierProvider,
   url: string,
   timestamp: Date,
 ): Promise<void> {
-  // Ensure directory exists
-  await mkdir(stateDir, { recursive: true })
+  // Ensure domain/provider directory exists
+  const domain = extractDomain(url)
+  const providerDir = getProviderStateDir(stateDir, domain, provider)
+  await mkdir(providerDir, { recursive: true })
 
-  const filePath = getStateFilePath(stateDir, url)
+  const filePath = getStateFilePath(stateDir, provider, url)
   const content = `lastModified: "${timestamp.toISOString()}"\n`
 
   await writeFile(filePath, content, "utf-8")
-  log.debug(`Saved state for ${url}: ${timestamp.toISOString()}`)
+  log.debug(
+    `Saved state for ${domain}/${provider}/${url}: ${timestamp.toISOString()}`,
+  )
 }
 
 /**
- * Check if a URL needs notification based on its last modification date.
+ * Check if a URL needs notification for a specific provider.
  * Returns true if the URL has been modified since the last notification,
- * or if it has never been notified.
+ * or if it has never been notified for this provider.
  */
 export async function needsNotification(
   stateDir: string,
+  provider: NotifierProvider,
   url: string,
   lastModified: Date,
 ): Promise<boolean> {
-  const lastNotified = await getLastNotified(stateDir, url)
+  const lastNotified = await getLastNotified(stateDir, provider, url)
 
   if (lastNotified === null) {
     // Never notified
-    log.debug(`URL never notified: ${url}`)
+    log.debug(`URL never notified for ${provider}: ${url}`)
     return true
   }
 
   if (lastModified > lastNotified) {
     log.debug(
-      `URL updated since last notification: ${url} (modified: ${lastModified.toISOString()}, notified: ${lastNotified.toISOString()})`,
+      `URL updated since last ${provider} notification: ${url} (modified: ${lastModified.toISOString()}, notified: ${lastNotified.toISOString()})`,
     )
     return true
   }

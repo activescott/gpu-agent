@@ -7,7 +7,9 @@ import {
   needsNotification,
   encodeUrlToFilename,
   decodeFilenameToUrl,
+  extractDomain,
 } from "./state-store.js"
+import { NotifierProvider } from "./types.js"
 
 describe("encodeUrlToFilename / decodeFilenameToUrl", () => {
   it("should encode and decode simple URL", () => {
@@ -44,8 +46,30 @@ describe("encodeUrlToFilename / decodeFilenameToUrl", () => {
   })
 })
 
+describe("extractDomain", () => {
+  it("should extract domain from https URL", () => {
+    expect(extractDomain("https://gpupoet.com/page")).toBe("gpupoet.com")
+  })
+
+  it("should extract domain from http URL", () => {
+    expect(extractDomain("http://example.org/path")).toBe("example.org")
+  })
+
+  it("should extract domain with subdomain", () => {
+    expect(extractDomain("https://www.example.com/page")).toBe(
+      "www.example.com",
+    )
+  })
+
+  it("should return 'unknown' for invalid URL", () => {
+    expect(extractDomain("not-a-url")).toBe("unknown")
+  })
+})
+
 describe("state-store", () => {
   const testDir = join(tmpdir(), `indexnow-test-${Date.now()}-${Math.random()}`)
+  const provider: NotifierProvider = "indexnow"
+  const testDomain = "gpupoet.com"
 
   beforeEach(async () => {
     await mkdir(testDir, { recursive: true })
@@ -63,6 +87,7 @@ describe("state-store", () => {
     it("should return null for non-existent URL", async () => {
       const result = await getLastNotified(
         testDir,
+        provider,
         "https://gpupoet.com/new-page",
       )
       expect(result).toBeNull()
@@ -72,42 +97,48 @@ describe("state-store", () => {
       const url = "https://gpupoet.com/existing"
       const timestamp = new Date("2024-01-15T10:00:00Z")
 
-      // Manually create state file
+      // Manually create state file in domain/provider subdirectory
+      const stateFileDir = join(testDir, testDomain, provider)
+      await mkdir(stateFileDir, { recursive: true })
       const filename = encodeUrlToFilename(url)
       await writeFile(
-        join(testDir, filename),
+        join(stateFileDir, filename),
         `lastModified: "${timestamp.toISOString()}"\n`,
         "utf-8",
       )
 
-      const result = await getLastNotified(testDir, url)
+      const result = await getLastNotified(testDir, provider, url)
       expect(result).toEqual(timestamp)
     })
 
     it("should return null for invalid date in state file", async () => {
       const url = "https://gpupoet.com/invalid"
+      const stateFileDir = join(testDir, testDomain, provider)
+      await mkdir(stateFileDir, { recursive: true })
       const filename = encodeUrlToFilename(url)
       await writeFile(
-        join(testDir, filename),
+        join(stateFileDir, filename),
         "lastModified: not-a-date\n",
         "utf-8",
       )
 
-      const result = await getLastNotified(testDir, url)
+      const result = await getLastNotified(testDir, provider, url)
       expect(result).toBeNull()
     })
   })
 
   describe("setLastNotified", () => {
-    it("should create directory and write state file", async () => {
+    it("should create domain/provider directory and write state file", async () => {
       const url = "https://gpupoet.com/new"
       const timestamp = new Date("2024-01-15T12:00:00Z")
-      const subDir = join(testDir, "subdir")
 
-      await setLastNotified(subDir, url, timestamp)
+      await setLastNotified(testDir, provider, url, timestamp)
 
       const filename = encodeUrlToFilename(url)
-      const content = await readFile(join(subDir, filename), "utf-8")
+      const content = await readFile(
+        join(testDir, testDomain, provider, filename),
+        "utf-8",
+      )
       expect(content).toBe(`lastModified: "${timestamp.toISOString()}"\n`)
     })
 
@@ -116,10 +147,10 @@ describe("state-store", () => {
       const oldTimestamp = new Date("2024-01-15T10:00:00Z")
       const newTimestamp = new Date("2024-01-16T10:00:00Z")
 
-      await setLastNotified(testDir, url, oldTimestamp)
-      await setLastNotified(testDir, url, newTimestamp)
+      await setLastNotified(testDir, provider, url, oldTimestamp)
+      await setLastNotified(testDir, provider, url, newTimestamp)
 
-      const result = await getLastNotified(testDir, url)
+      const result = await getLastNotified(testDir, provider, url)
       expect(result).toEqual(newTimestamp)
     })
   })
@@ -129,7 +160,12 @@ describe("state-store", () => {
       const url = "https://gpupoet.com/new"
       const lastModified = new Date("2024-01-15T10:00:00Z")
 
-      const result = await needsNotification(testDir, url, lastModified)
+      const result = await needsNotification(
+        testDir,
+        provider,
+        url,
+        lastModified,
+      )
       expect(result).toBe(true)
     })
 
@@ -138,9 +174,14 @@ describe("state-store", () => {
       const lastNotifiedTime = new Date("2024-01-15T10:00:00Z")
       const lastModified = new Date("2024-01-16T10:00:00Z")
 
-      await setLastNotified(testDir, url, lastNotifiedTime)
+      await setLastNotified(testDir, provider, url, lastNotifiedTime)
 
-      const result = await needsNotification(testDir, url, lastModified)
+      const result = await needsNotification(
+        testDir,
+        provider,
+        url,
+        lastModified,
+      )
       expect(result).toBe(true)
     })
 
@@ -149,9 +190,14 @@ describe("state-store", () => {
       const lastNotifiedTime = new Date("2024-01-16T10:00:00Z")
       const lastModified = new Date("2024-01-15T10:00:00Z")
 
-      await setLastNotified(testDir, url, lastNotifiedTime)
+      await setLastNotified(testDir, provider, url, lastNotifiedTime)
 
-      const result = await needsNotification(testDir, url, lastModified)
+      const result = await needsNotification(
+        testDir,
+        provider,
+        url,
+        lastModified,
+      )
       expect(result).toBe(false)
     })
 
@@ -159,10 +205,52 @@ describe("state-store", () => {
       const url = "https://gpupoet.com/same"
       const timestamp = new Date("2024-01-15T10:00:00Z")
 
-      await setLastNotified(testDir, url, timestamp)
+      await setLastNotified(testDir, provider, url, timestamp)
 
-      const result = await needsNotification(testDir, url, timestamp)
+      const result = await needsNotification(testDir, provider, url, timestamp)
       expect(result).toBe(false)
+    })
+  })
+
+  describe("provider isolation", () => {
+    it("should maintain separate state for different providers", async () => {
+      const url = "https://gpupoet.com/shared-url"
+      const indexnowTimestamp = new Date("2024-01-15T10:00:00Z")
+      const googleTimestamp = new Date("2024-01-16T10:00:00Z")
+
+      await setLastNotified(testDir, "indexnow", url, indexnowTimestamp)
+      await setLastNotified(testDir, "google", url, googleTimestamp)
+
+      const indexnowResult = await getLastNotified(testDir, "indexnow", url)
+      const googleResult = await getLastNotified(testDir, "google", url)
+
+      expect(indexnowResult).toEqual(indexnowTimestamp)
+      expect(googleResult).toEqual(googleTimestamp)
+    })
+
+    it("should detect updates independently per provider", async () => {
+      const url = "https://gpupoet.com/multi-provider"
+      const lastModified = new Date("2024-01-16T10:00:00Z")
+
+      // Only set state for indexnow, not google
+      await setLastNotified(testDir, "indexnow", url, lastModified)
+
+      const indexnowNeeds = await needsNotification(
+        testDir,
+        "indexnow",
+        url,
+        lastModified,
+      )
+      const googleNeeds = await needsNotification(
+        testDir,
+        "google",
+        url,
+        lastModified,
+      )
+
+      // indexnow has state, google doesn't
+      expect(indexnowNeeds).toBe(false)
+      expect(googleNeeds).toBe(true)
     })
   })
 })

@@ -2,7 +2,7 @@ import { rm, mkdir } from "fs/promises"
 import { join } from "path"
 import { tmpdir } from "os"
 import { findUpdatedUrls } from "./notifier.js"
-import { SitemapEntry } from "./types.js"
+import { SitemapEntry, NotifierProvider } from "./types.js"
 import { setLastNotified } from "./state-store.js"
 
 describe("findUpdatedUrls", () => {
@@ -10,6 +10,7 @@ describe("findUpdatedUrls", () => {
     tmpdir(),
     `indexnow-notifier-test-${Date.now()}-${Math.random()}`,
   )
+  const provider: NotifierProvider = "indexnow"
 
   beforeEach(async () => {
     await mkdir(testDir, { recursive: true })
@@ -31,7 +32,7 @@ describe("findUpdatedUrls", () => {
       },
     ]
 
-    const result = await findUpdatedUrls(entries, testDir)
+    const result = await findUpdatedUrls(entries, testDir, provider)
 
     expect(result).toEqual(["https://gpupoet.com/new-page"])
   })
@@ -40,7 +41,12 @@ describe("findUpdatedUrls", () => {
     const url = "https://gpupoet.com/updated"
 
     // Set last notified to older than the sitemap entry
-    await setLastNotified(testDir, url, new Date("2024-01-15T10:00:00Z"))
+    await setLastNotified(
+      testDir,
+      provider,
+      url,
+      new Date("2024-01-15T10:00:00Z"),
+    )
 
     const entries: SitemapEntry[] = [
       {
@@ -49,7 +55,7 @@ describe("findUpdatedUrls", () => {
       },
     ]
 
-    const result = await findUpdatedUrls(entries, testDir)
+    const result = await findUpdatedUrls(entries, testDir, provider)
 
     expect(result).toEqual([url])
   })
@@ -58,7 +64,12 @@ describe("findUpdatedUrls", () => {
     const url = "https://gpupoet.com/unchanged"
 
     // Set last notified to same as sitemap entry
-    await setLastNotified(testDir, url, new Date("2024-01-15T10:00:00Z"))
+    await setLastNotified(
+      testDir,
+      provider,
+      url,
+      new Date("2024-01-15T10:00:00Z"),
+    )
 
     const entries: SitemapEntry[] = [
       {
@@ -67,7 +78,7 @@ describe("findUpdatedUrls", () => {
       },
     ]
 
-    const result = await findUpdatedUrls(entries, testDir)
+    const result = await findUpdatedUrls(entries, testDir, provider)
 
     expect(result).toEqual([])
   })
@@ -76,7 +87,12 @@ describe("findUpdatedUrls", () => {
     const url = "https://gpupoet.com/older"
 
     // Set last notified to newer than sitemap entry
-    await setLastNotified(testDir, url, new Date("2024-01-16T10:00:00Z"))
+    await setLastNotified(
+      testDir,
+      provider,
+      url,
+      new Date("2024-01-16T10:00:00Z"),
+    )
 
     const entries: SitemapEntry[] = [
       {
@@ -85,7 +101,7 @@ describe("findUpdatedUrls", () => {
       },
     ]
 
-    const result = await findUpdatedUrls(entries, testDir)
+    const result = await findUpdatedUrls(entries, testDir, provider)
 
     expect(result).toEqual([])
   })
@@ -94,11 +110,13 @@ describe("findUpdatedUrls", () => {
     // Set up existing state for some URLs
     await setLastNotified(
       testDir,
+      provider,
       "https://gpupoet.com/updated",
       new Date("2024-01-14T00:00:00Z"),
     )
     await setLastNotified(
       testDir,
+      provider,
       "https://gpupoet.com/unchanged",
       new Date("2024-01-12T00:00:00Z"),
     )
@@ -118,7 +136,7 @@ describe("findUpdatedUrls", () => {
       },
     ]
 
-    const result = await findUpdatedUrls(entries, testDir)
+    const result = await findUpdatedUrls(entries, testDir, provider)
 
     expect(result).toHaveLength(2)
     expect(result).toContain("https://gpupoet.com/new")
@@ -127,7 +145,34 @@ describe("findUpdatedUrls", () => {
   })
 
   it("should return empty array for empty sitemap", async () => {
-    const result = await findUpdatedUrls([], testDir)
+    const result = await findUpdatedUrls([], testDir, provider)
     expect(result).toEqual([])
+  })
+
+  it("should find updates per provider independently", async () => {
+    const url = "https://gpupoet.com/multi-provider"
+
+    // Set state only for indexnow
+    await setLastNotified(
+      testDir,
+      "indexnow",
+      url,
+      new Date("2024-01-15T10:00:00Z"),
+    )
+
+    const entries: SitemapEntry[] = [
+      {
+        url,
+        lastModified: new Date("2024-01-15T10:00:00Z"),
+      },
+    ]
+
+    // indexnow should not need notification (already notified)
+    const indexnowResult = await findUpdatedUrls(entries, testDir, "indexnow")
+    expect(indexnowResult).toEqual([])
+
+    // google should need notification (never notified)
+    const googleResult = await findUpdatedUrls(entries, testDir, "google")
+    expect(googleResult).toEqual([url])
   })
 })

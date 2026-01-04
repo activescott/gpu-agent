@@ -5,51 +5,35 @@
 import { createCanvas, loadImage } from "canvas"
 import path from "path"
 import type { ChartConfig } from "@/pkgs/isomorphic/model/news"
+import {
+  IMAGE_WIDTH,
+  IMAGE_HEIGHT,
+  SCALE,
+  CANVAS_WIDTH,
+  CANVAS_HEIGHT,
+  BACKGROUND_COLOR_COMPOSE,
+  TEXT_COLOR,
+  BRAND_COLOR,
+  CENTER_DIVISOR,
+  PADDING,
+  HEADER_Y,
+  FOOTER_Y,
+  LOGO_SIZE,
+  LOGO_TO_BRAND_GAP,
+  TITLE_MARGIN,
+  CHART_Y,
+  TITLE_FONT_SIZE,
+  BRAND_FONT_SIZE,
+  FOOTER_FONT_SIZE,
+  FONT_FAMILY,
+  MIN_TITLE_LENGTH,
+  TITLE_TRUNCATE_SLICE,
+  LOGO_FILENAME,
+} from "@/pkgs/isomorphic/charts"
 import { renderChartToPng, CHART_WIDTH, CHART_HEIGHT } from "./renderChartImage"
 
-/** Final image dimensions (standard OG image size) */
-const IMAGE_WIDTH = 1200
-const IMAGE_HEIGHT = 630
-
-/**
- * Device pixel ratio for high-resolution rendering.
- * 2x provides sharp text on retina displays.
- */
-const SCALE = 2
-
-/** Scaled dimensions for the canvas (internal rendering) */
-const CANVAS_WIDTH = IMAGE_WIDTH * SCALE
-const CANVAS_HEIGHT = IMAGE_HEIGHT * SCALE
-
-/** Colors for the composed image */
-const BACKGROUND_COLOR = "#ffffff"
-const TEXT_COLOR = "#374151"
-const BRAND_COLOR = "#d11363" // GPUPoet brand pink
-
-/** Layout constants */
-const CENTER_DIVISOR = 2
-
-/** Layout positions (in logical pixels, will be scaled) */
-const HEADER_Y = 50
-const CHART_X = (IMAGE_WIDTH - CHART_WIDTH) / CENTER_DIVISOR // Center the chart
-const CHART_Y = 100
-const FOOTER_Y = 580
-
-/** Font settings (sizes in logical pixels, will be scaled) */
-const TITLE_FONT_SIZE = 32
-const BRAND_FONT_SIZE = 28
-const FOOTER_FONT_SIZE = 18
-const FONT_FAMILY = "'Helvetica Neue', Arial, sans-serif"
-
-/** Logo dimensions */
-const LOGO_SIZE = 48
-
-/** Layout constants */
-const PADDING = 48
-const LOGO_TO_BRAND_GAP = 12
-const TITLE_MARGIN = 100
-const MIN_TITLE_LENGTH = 10
-const TITLE_TRUNCATE_SLICE = -4
+/** Chart X position (centered based on actual rendered chart width) */
+const CHART_X = (IMAGE_WIDTH - CHART_WIDTH) / CENTER_DIVISOR
 
 export interface ComposeOptions {
   /** Chart title (displayed at top) */
@@ -70,10 +54,7 @@ let cachedLogo: Awaited<ReturnType<typeof loadImage>> | null = null
  */
 async function getLogoImage(): Promise<Awaited<ReturnType<typeof loadImage>>> {
   if (!cachedLogo) {
-    const logoPath = path.join(
-      process.cwd(),
-      "public/images/coinpoet-card-128.png",
-    )
+    const logoPath = path.join(process.cwd(), `public/images/${LOGO_FILENAME}`)
     cachedLogo = await loadImage(logoPath)
   }
   return cachedLogo
@@ -111,7 +92,7 @@ export async function composeChartImage(
   ctx.scale(SCALE, SCALE)
 
   // Fill background
-  ctx.fillStyle = BACKGROUND_COLOR
+  ctx.fillStyle = BACKGROUND_COLOR_COMPOSE
   ctx.fillRect(0, 0, IMAGE_WIDTH, IMAGE_HEIGHT)
 
   // Draw header with logo and brand
@@ -206,4 +187,4 @@ function drawFooter(ctx: Ctx2D, date?: Date): void {
   }
 }
 
-export { IMAGE_WIDTH, IMAGE_HEIGHT }
+export { IMAGE_WIDTH, IMAGE_HEIGHT } from "@/pkgs/isomorphic/charts"

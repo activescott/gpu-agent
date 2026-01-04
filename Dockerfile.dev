@@ -2,8 +2,10 @@ FROM node:20-slim
 
 # Install dependencies and tools needed for development
 # Canvas native dependencies required for chartjs-node-canvas server-side chart rendering
+# OpenSSL is required by Prisma for database connections
 RUN apt-get update && apt-get install -y --no-install-recommends \
     wget \
+    openssl \
     build-essential \
     libcairo2-dev \
     libpango1.0-dev \

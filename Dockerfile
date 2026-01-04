@@ -52,8 +52,10 @@ FROM base AS runner
 WORKDIR /app
 
 # Canvas runtime dependencies for chartjs-node-canvas (runtime libs only)
+# OpenSSL is required by Prisma for database connections
 RUN apt-get update && apt-get install -y --no-install-recommends \
     wget \
+    openssl \
     libcairo2 \
     libpango-1.0-0 \
     libpangocairo-1.0-0 \

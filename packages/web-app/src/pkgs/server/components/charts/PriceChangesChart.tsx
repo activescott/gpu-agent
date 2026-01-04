@@ -21,7 +21,9 @@ interface PriceChangeRow {
   pctChange: number
 }
 
-const LIMIT_RESULTS = 5
+const LIMIT_RESULTS_DEFAULT = 5
+const MONTH_PAD_LENGTH = 2
+const MIN_PRICE_THRESHOLD = 100
 
 /**
  * Fetches month-over-month price change data.
@@ -29,15 +31,20 @@ const LIMIT_RESULTS = 5
  */
 async function fetchPriceChangesData(
   dateRange: DateRange,
+  resultCount: number = LIMIT_RESULTS_DEFAULT,
 ): Promise<PriceChangeRow[]> {
   const { startDate: currStart, endDate: currEnd } = parseDateRange(
     dateRange.to,
   )
 
+  if (resultCount <= 0) {
+    return []
+  }
+
   // Calculate previous month
   const prevMonth = new Date(currStart)
   prevMonth.setMonth(prevMonth.getMonth() - 1)
-  const prevYearMonth = `${prevMonth.getFullYear()}-${String(prevMonth.getMonth() + 1).padStart(2, "0")}`
+  const prevYearMonth = `${prevMonth.getFullYear()}-${String(prevMonth.getMonth() + 1).padStart(MONTH_PAD_LENGTH, "0")}`
   const { startDate: prevStart, endDate: prevEnd } =
     parseDateRange(prevYearMonth)
 
@@ -70,9 +77,9 @@ async function fetchPriceChangesData(
       ROUND(((c.avg_price - p.avg_price) / p.avg_price * 100)::numeric, 0)::float as "pctChange"
     FROM curr_month c
     JOIN prev_month p ON c."gpuName" = p."gpuName"
-    WHERE p.avg_price > 100
+    WHERE p.avg_price > ${MIN_PRICE_THRESHOLD}
     ORDER BY "pctChange" ASC
-    LIMIT ${LIMIT_RESULTS}
+    LIMIT ${resultCount}
   `
 
   return result
@@ -108,8 +115,9 @@ function buildChartConfig(data: PriceChangeRow[]): DivergingBarChartConfig {
  */
 export async function getPriceChangesConfig(
   dateRange: DateRange,
+  resultCount: number = LIMIT_RESULTS_DEFAULT,
 ): Promise<DivergingBarChartConfig> {
-  const data = await fetchPriceChangesData(dateRange)
+  const data = await fetchPriceChangesData(dateRange, resultCount)
   return buildChartConfig(data)
 }
 
@@ -118,8 +126,9 @@ export async function getPriceChangesConfig(
  */
 export async function PriceChangesChart({
   dateRange,
+  resultCount,
 }: ChartComponentProps): Promise<JSX.Element> {
-  const config = await getPriceChangesConfig(dateRange)
+  const config = await getPriceChangesConfig(dateRange, resultCount)
 
   const shareImageUrl = `/api/images/chart/PriceChangesChart?from=${dateRange.from}&to=${dateRange.to}`
 

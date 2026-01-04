@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=./gpu-spec.schema.json
 name: nvidia-geforce-rtx-4070-ti-super
 label: NVIDIA GeForce RTX 4070 Ti SUPER
+category: gaming
 msrpUSD: 799
 tensorCoreCount: 264
 fp32TFLOPS: 44.10

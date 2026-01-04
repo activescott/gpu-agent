@@ -20,11 +20,17 @@ export const ThirdPartyProductSchema = z.object({
 })
 export type ThirdPartyProduct = z.infer<typeof ThirdPartyProductSchema>
 
+// GPU market segment categories
+export const GpuCategorySchema = z.enum(["gaming", "workstation", "datacenter"])
+export type GpuCategory = z.infer<typeof GpuCategorySchema>
+
 export const GpuSchema = z
   .object({
     name: z.string(),
     label: z.string(),
     series: z.string().optional().nullable(),
+    // GPU market segment: "gaming" (consumer), "workstation" (professional), "datacenter" (enterprise/AI)
+    category: GpuCategorySchema.optional().nullable(),
     gpuArchitecture: z.string(),
     supportedHardwareOperations: z.array(z.string()).describe(stripIndents`
       A list of the supported precisions for hardware-accelerated generalized

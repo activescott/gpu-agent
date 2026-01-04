@@ -15,7 +15,7 @@ export default defineConfig({
   // Limit workers to avoid overwhelming the dev server in Docker
   // CI uses 1 worker, local dev uses 3 (default is half CPU cores which can be too many)
   workers: process.env.CI ? 1 : 3,
-  reporter: "html",
+  reporter: [["list"]],
   use: {
     baseURL,
     trace: "on-first-retry",

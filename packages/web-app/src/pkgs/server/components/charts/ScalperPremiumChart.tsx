@@ -22,6 +22,7 @@ interface ScalperPremiumRow {
 }
 
 const LIMIT_RESULTS = 6
+const HIGH_PREMIUM_THRESHOLD = 75
 
 /**
  * Fetches scalper premium data for RTX 50 series GPUs.
@@ -88,7 +89,7 @@ function buildChartConfig(data: ScalperPremiumRow[]): BarChartConfig {
       label: formatGpuName(row.name),
       value: row.premiumPct,
       sublabel: `$${Math.round(row.lowestAvgPrice)} avg`,
-      color: row.premiumPct > 75 ? "danger" : "warning",
+      color: row.premiumPct > HIGH_PREMIUM_THRESHOLD ? "danger" : "warning",
     })),
   }
 }

@@ -7,6 +7,10 @@ import "./charts.scss"
 // Lazy load the Chart.js implementation to reduce initial bundle size
 const ChartJSImpl = lazy(() => import("./ChartJsImpl"))
 
+// Default chart heights by type
+const DEFAULT_LINE_CHART_HEIGHT = 400
+const DEFAULT_BAR_CHART_HEIGHT = 300
+
 export interface ChartJSProps {
   /** The chart configuration to render */
   config: ChartConfig
@@ -49,7 +53,10 @@ export function ChartJS({
   const [isVisible, setIsVisible] = useState(false)
 
   // Default heights based on chart type
-  const defaultHeight = config.chartType === "line" ? 400 : 300
+  const defaultHeight =
+    config.chartType === "line"
+      ? DEFAULT_LINE_CHART_HEIGHT
+      : DEFAULT_BAR_CHART_HEIGHT
   const chartHeight = height ?? defaultHeight
 
   // Use IntersectionObserver to trigger animation when scrolled into view

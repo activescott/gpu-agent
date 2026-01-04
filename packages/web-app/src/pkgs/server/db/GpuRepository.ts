@@ -11,6 +11,12 @@ import { omit } from "lodash"
  */
 let cachedMetricDefinitions: MetricDefinitionRecord[] | null = null
 
+// Resolution priority constants for sorting (lower = higher priority)
+const PRIORITY_4K = 1
+const PRIORITY_1440P = 2
+const PRIORITY_1080P = 3
+const PRIORITY_OTHER = 4
+
 export interface MetricDefinitionRecord {
   slug: string
   name: string
@@ -30,10 +36,10 @@ export interface MetricDefinitionRecord {
  * Get priority for resolution sorting (4K first, then 1440p, then 1080p)
  */
 function getResolutionPriority(name: string): number {
-  if (name.includes("(4K)")) return 1
-  if (name.includes("(1440p)")) return 2
-  if (name.includes("(1080p)")) return 3
-  return 4
+  if (name.includes("(4K)")) return PRIORITY_4K
+  if (name.includes("(1440p)")) return PRIORITY_1440P
+  if (name.includes("(1080p)")) return PRIORITY_1080P
+  return PRIORITY_OTHER
 }
 
 /**

@@ -13,6 +13,8 @@ import { NextRequest, NextResponse } from "next/server"
 
 // The IndexNow key - must match INDEXNOW_API_KEY env var used by the notifier
 const INDEXNOW_KEY = process.env.INDEXNOW_API_KEY ?? ""
+// Length of ".txt" extension to slice off
+const TXT_EXTENSION_LENGTH = 4
 
 export async function GET(
   _request: NextRequest,
@@ -31,7 +33,7 @@ export async function GET(
   }
 
   // Extract the key from the filename (remove .txt extension)
-  const requestedKey = keyfile.slice(0, -4)
+  const requestedKey = keyfile.slice(0, -TXT_EXTENSION_LENGTH)
 
   // Verify the requested key matches our key
   if (requestedKey !== INDEXNOW_KEY) {

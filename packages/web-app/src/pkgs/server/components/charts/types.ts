@@ -3,6 +3,15 @@
  * These components embed SQL queries and return ChartConfig for rendering.
  */
 
+// Time constants for end-of-day
+const END_OF_DAY_HOURS = 23
+const END_OF_DAY_MINUTES = 59
+const END_OF_DAY_SECONDS = 59
+const END_OF_DAY_MILLISECONDS = 999
+
+// Default threshold for value color determination
+const DEFAULT_VALUE_THRESHOLD = 10
+
 /**
  * Date range for chart queries.
  * Format: YYYY-MM (e.g., "2026-01")
@@ -17,6 +26,8 @@ export interface DateRange {
  */
 export interface ChartComponentProps {
   dateRange: DateRange
+  /** The number of GPU results to return */
+  resultCount?: number
 }
 
 /**
@@ -40,7 +51,12 @@ export function parseDateRange(yearMonth: string): {
   const [year, month] = yearMonth.split("-").map(Number)
   const startDate = new Date(year, month - 1, 1)
   const endDate = new Date(year, month, 0) // Last day of month
-  endDate.setHours(23, 59, 59, 999)
+  endDate.setHours(
+    END_OF_DAY_HOURS,
+    END_OF_DAY_MINUTES,
+    END_OF_DAY_SECONDS,
+    END_OF_DAY_MILLISECONDS,
+  )
   return { startDate, endDate }
 }
 
@@ -69,7 +85,7 @@ export function formatGpuName(name: string): string {
  */
 export function getValueColor(
   value: number,
-  threshold = 10,
+  threshold = DEFAULT_VALUE_THRESHOLD,
 ): "danger" | "success" | "warning" | "primary" {
   if (value > threshold) return "danger"
   if (value < -threshold) return "success"

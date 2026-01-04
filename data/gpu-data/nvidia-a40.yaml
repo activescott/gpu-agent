@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=./gpu-spec.schema.json
 name: nvidia-a40
 label: NVIDIA A40
+category: datacenter
 msrpUSD: 27500
 tensorCoreCount: 336
 fp32TFLOPS: 37.4

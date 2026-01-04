@@ -50,7 +50,7 @@ function Breadcrumbs({ title }: { title: string }): ReactNode {
           <Link href="/">Home</Link>
         </li>
         <li className="breadcrumb-item">
-          <Link href="/gpu">GPUs</Link>
+          <Link href="/gpu/price-compare">GPUs</Link>
         </li>
         <li className="breadcrumb-item">
           <Link href="/news">News</Link>

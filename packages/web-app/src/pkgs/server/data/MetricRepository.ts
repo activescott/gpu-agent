@@ -7,6 +7,18 @@ import { z } from "zod"
 
 const log = createDiag("shopping-agent:MetricRepository")
 
+// Resolution constants for benchmark label extraction
+const RESOLUTION_4K_WIDTH = 3840
+const RESOLUTION_4K_HEIGHT = 2160
+const RESOLUTION_1440P_WIDTH = 2560
+const RESOLUTION_1440P_HEIGHT = 1440
+const RESOLUTION_1080P_WIDTH = 1920
+const RESOLUTION_1080P_HEIGHT = 1080
+const PARSE_RADIX = 10
+// Regex capture group indices
+const REGEX_CAPTURE_WIDTH = 1
+const REGEX_CAPTURE_HEIGHT = 2
+
 // Schema for spec metric definitions from specs.yaml
 const SpecMetricDefinitionSchema = z.object({
   slug: z.string(),
@@ -100,12 +112,21 @@ function extractResolutionLabel(configuration: string): string {
   )
   if (!resolutionMatch) return ""
 
-  const width = Number.parseInt(resolutionMatch[1], 10)
-  const height = Number.parseInt(resolutionMatch[2], 10)
+  const width = Number.parseInt(
+    resolutionMatch[REGEX_CAPTURE_WIDTH],
+    PARSE_RADIX,
+  )
+  const height = Number.parseInt(
+    resolutionMatch[REGEX_CAPTURE_HEIGHT],
+    PARSE_RADIX,
+  )
 
-  if (width === 3840 && height === 2160) return "(4K)"
-  if (width === 2560 && height === 1440) return "(1440p)"
-  if (width === 1920 && height === 1080) return "(1080p)"
+  if (width === RESOLUTION_4K_WIDTH && height === RESOLUTION_4K_HEIGHT)
+    return "(4K)"
+  if (width === RESOLUTION_1440P_WIDTH && height === RESOLUTION_1440P_HEIGHT)
+    return "(1440p)"
+  if (width === RESOLUTION_1080P_WIDTH && height === RESOLUTION_1080P_HEIGHT)
+    return "(1080p)"
   return `(${width}x${height})`
 }
 
@@ -131,8 +152,8 @@ function generateBenchmarkSlug(
   const baseName = benchmarkNameMap[benchmarkId] || benchmarkId
 
   if (resolutionMatch) {
-    const width = resolutionMatch[1]
-    const height = resolutionMatch[2]
+    const width = resolutionMatch[REGEX_CAPTURE_WIDTH]
+    const height = resolutionMatch[REGEX_CAPTURE_HEIGHT]
     return `${baseName}-${width}x${height}`
   }
 

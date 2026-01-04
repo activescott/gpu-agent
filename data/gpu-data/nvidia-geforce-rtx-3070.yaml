@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=./gpu-spec.schema.json
 name: nvidia-geforce-rtx-3070
 label: NVIDIA GeForce RTX 3070
+category: gaming
 msrpUSD: 499
 tensorCoreCount: 184
 fp32TFLOPS: 20.31

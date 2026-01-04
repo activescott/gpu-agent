@@ -23,9 +23,9 @@ interface BestDealRow {
 const LIMIT_RESULTS = 5
 
 /**
- * Fetches best deal data for GPUs below MSRP.
+ * Fetches best deal data for gaming GPUs below MSRP.
  * Uses "lowest average price" (avg of 3 lowest listings) for stable pricing.
- * Excludes RTX 50 series (covered by scalper premium chart).
+ * Filters by gpu.category = 'gaming' and excludes RTX 50 series (covered by scalper premium chart).
  */
 async function fetchBestDealsData(
   dateRange: DateRange,
@@ -47,9 +47,11 @@ async function fetchBestDealsData(
           LIMIT 3
         ) lowest_three) as lowest_avg_price
       FROM "Listing" l
+      JOIN gpu g ON g.name = l."gpuName"
       WHERE l."cachedAt" >= ${startDate}
         AND l."cachedAt" <= ${endDate}
         AND l."archived" = false
+        AND g.category = 'gaming'
         AND l."gpuName" NOT LIKE 'nvidia-geforce-rtx-50%'
       GROUP BY l."gpuName"
     )

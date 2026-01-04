@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=./gpu-spec.schema.json
 name: nvidia-a30
 label: NVIDIA A30
+category: datacenter
 msrpUSD: 4599
 tensorCoreCount: 224
 fp32TFLOPS: 165

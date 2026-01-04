@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=./gpu-spec.schema.json
 name: amd-radeon-rx-6800
 label: AMD Radeon RX 6800
+category: gaming
 msrpUSD: 579
 tensorCoreCount: null
 fp32TFLOPS: 16.17

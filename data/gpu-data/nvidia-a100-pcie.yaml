@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=./gpu-spec.schema.json
 name: nvidia-a100-pcie
 label: NVIDIA A100 PCIe 80GB
+category: datacenter
 msrpUSD: 15000
 tensorCoreCount: 432
 fp32TFLOPS: 156

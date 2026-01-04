@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=./gpu-spec.schema.json
 name: nvidia-geforce-rtx-5060
 label: NVIDIA GeForce RTX 5060
+category: gaming
 msrpUSD: 299
 tensorCoreCount: 120
 fp32TFLOPS: 19.18

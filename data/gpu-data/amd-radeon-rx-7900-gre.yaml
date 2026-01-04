@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=./gpu-spec.schema.json
 name: amd-radeon-rx-7900-gre
 label: AMD Radeon RX 7900 GRE
+category: gaming
 msrpUSD: 549
 gpuArchitecture: RDNA 3
 supportedHardwareOperations:

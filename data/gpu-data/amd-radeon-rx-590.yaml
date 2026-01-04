@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=./gpu-spec.schema.json
 name: amd-radeon-rx-590
 label: AMD Radeon RX 590
+category: gaming
 msrpUSD: 279
 fp32TFLOPS: 7.1
 fp16TFLOPS: 7.1

@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=./gpu-spec.schema.json
 name: amd-radeon-rx-9070
 label: AMD Radeon RX 9070
+category: gaming
 msrpUSD: 549
 tensorCoreCount: 112
 fp32TFLOPS: 36.1

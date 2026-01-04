@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=./gpu-spec.schema.json
 name: nvidia-geforce-rtx-3060
 label: NVIDIA GeForce RTX 3060
+category: gaming
 msrpUSD: 329
 tensorCoreCount: 112
 fp32TFLOPS: 12.74

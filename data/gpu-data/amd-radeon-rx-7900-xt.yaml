@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=./gpu-spec.schema.json
 name: amd-radeon-rx-7900-xt
 label: AMD Radeon RX 7900 XT
+category: gaming
 msrpUSD: 899
 tensorCoreCount: 168
 fp32TFLOPS: 52

@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=./gpu-spec.schema.json
 name: nvidia-rtx-a5000
 label: NVIDIA RTX A5000
+category: workstation
 msrpUSD: 2250
 tensorCoreCount: 256
 fp32TFLOPS: 27.77

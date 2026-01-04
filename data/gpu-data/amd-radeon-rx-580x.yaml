@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=./gpu-spec.schema.json
 name: amd-radeon-rx-580x
 label: AMD Radeon RX 580X
+category: gaming
 msrpUSD: 229
 fp32TFLOPS: 6.2
 fp16TFLOPS: 6.2

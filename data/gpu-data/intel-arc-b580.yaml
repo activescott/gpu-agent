@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=./gpu-spec.schema.json
 name: intel-arc-b580
 label: Intel Arc B580
+category: gaming
 msrpUSD: 249
 tensorCoreCount: 160
 fp32TFLOPS: 13.67

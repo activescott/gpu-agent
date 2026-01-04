@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=./gpu-spec.schema.json
 name: amd-radeon-rx-7700s
 label: AMD Radeon RX 7700S
+category: gaming
 tensorCoreCount: 64
 msrpUSD: 300
 fp32TFLOPS: 20.48

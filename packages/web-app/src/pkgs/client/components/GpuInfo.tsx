@@ -12,6 +12,7 @@ import { GpuSpecsTable } from "./GpuSpecsTable"
 import { GpuBenchmarksTable, BenchmarkPercentile } from "./GpuBenchmarksTable"
 import { GpuQuickInfo } from "./GpuQuickInfo"
 import { ProsCons } from "@/app/gpu/learn/card/[gpuSlug]/page"
+import MarkdownContent from "./MarkdownContent"
 
 import type { JSX } from "react"
 
@@ -80,7 +81,7 @@ export function GpuInfo({
       <h1>
         {gpu.label} {gpu.memoryCapacityGB}GB Specs, Benchmarks & Pricing
       </h1>
-      <p>{gpu.summary}</p>
+      <MarkdownContent content={gpu.summary} />
       <GpuQuickInfo gpu={gpu} />
 
       {/* Strengths and Considerations - visible for Google structured data matching */}

@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=./gpu-spec.schema.json
 name: amd-radeon-pro-w7700
 label: AMD Radeon Pro W7700
+category: workstation
 msrpUSD: 999
 tensorCoreCount: 96
 fp32TFLOPS: 31.95

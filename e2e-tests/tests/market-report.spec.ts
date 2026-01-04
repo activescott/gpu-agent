@@ -168,6 +168,47 @@ test.describe('Market Report Chart Data Validation', () => {
   });
 });
 
+test.describe('Market Report Link Validation', () => {
+  const reportPath = '/gpu/market-report/gpu-market-report-january-2026';
+
+  test('all relative links return valid responses (not 404)', async ({ page, request }) => {
+    // Increase timeout for checking many links
+    test.setTimeout(120_000);
+
+    await page.goto(reportPath);
+
+    // Get all anchor elements and filter for relative links (starting with /)
+    const allLinks = await page.locator('a').all();
+    const hrefs = new Set<string>();
+
+    for (const link of allLinks) {
+      const href = await link.getAttribute('href');
+      // Only check relative links (starting with /) - skip external, mailto, tel, etc.
+      if (href && /^\/[^/]/.test(href)) {
+        hrefs.add(href);
+      }
+    }
+
+    console.log(`Found ${hrefs.size} unique relative links to check`);
+
+    // Check links in parallel for speed
+    const results = await Promise.all(
+      Array.from(hrefs).map(async (href) => {
+        const response = await request.get(href);
+        return { href, status: response.status() };
+      }),
+    );
+
+    const brokenLinks = results.filter((r) => r.status === 404);
+
+    if (brokenLinks.length > 0) {
+      console.log('Broken links found:', brokenLinks);
+    }
+
+    expect(brokenLinks).toEqual([]);
+  });
+});
+
 test.describe('Market Report Chart Image API', () => {
   // Date range for January 2026 report
   const dateParams = 'from=2026-01&to=2026-01';

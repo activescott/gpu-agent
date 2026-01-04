@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=./gpu-spec.schema.json
 name: nvidia-geforce-rtx-4080-super
 label: NVIDIA GeForce RTX 4080 SUPER
+category: gaming
 msrpUSD: 999
 tensorCoreCount: 320
 fp32TFLOPS: 104.45

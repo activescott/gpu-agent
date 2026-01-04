@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=./gpu-spec.schema.json
 name: nvidia-geforce-rtx-4080
 label: NVIDIA Geforce RTX 4080
+category: gaming
 msrpUSD: 1199
 tensorCoreCount: 304
 fp32TFLOPS: 97.4

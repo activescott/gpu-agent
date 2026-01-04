@@ -1,7 +1,7 @@
 "use client"
 
 import type { JSX, ReactNode } from "react"
-import ShareMenu from "./ShareMenu"
+import { ShareMenu } from "./ShareMenu"
 import "./charts.scss"
 
 export interface ChartContainerProps {

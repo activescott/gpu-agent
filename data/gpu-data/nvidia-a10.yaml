@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=./gpu-spec.schema.json
 name: nvidia-a10
 label: NVIDIA A10
+category: datacenter
 msrpUSD: 2800
 tensorCoreCount: 288
 fp32TFLOPS: 31.2

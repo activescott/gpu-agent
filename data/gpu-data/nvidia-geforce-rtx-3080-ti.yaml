@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=./gpu-spec.schema.json
 name: nvidia-geforce-rtx-3080-ti
 label: NVIDIA GeForce RTX 3080 Ti
+category: gaming
 msrpUSD: 1199
 tensorCoreCount: 320
 fp32TFLOPS: 34.10

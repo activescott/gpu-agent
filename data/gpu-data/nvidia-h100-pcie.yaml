@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=./gpu-spec.schema.json
 name: nvidia-h100-pcie
 label: NVIDIA H100 PCIe
+category: datacenter
 msrpUSD: 98000
 tensorCoreCount: 456
 fp32TFLOPS: 756

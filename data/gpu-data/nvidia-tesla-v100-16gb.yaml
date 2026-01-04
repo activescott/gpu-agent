@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=./gpu-spec.schema.json
 name: nvidia-tesla-v100-16gb
 label: NVIDIA Tesla V100 16GB
+category: datacenter
 msrpUSD: 10000
 tensorCoreCount: 640
 fp32TFLOPS: 14

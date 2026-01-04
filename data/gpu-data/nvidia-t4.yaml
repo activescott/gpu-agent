@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=./gpu-spec.schema.json
 name: nvidia-t4
 label: NVIDIA T4
+category: datacenter
 msrpUSD: 2299
 tensorCoreCount: 320
 fp32TFLOPS: 8.1

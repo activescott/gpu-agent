@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=./gpu-spec.schema.json
 name: amd-radeon-rx-6750-gre
 label: AMD Radeon RX 6750 GRE 12GB
+category: gaming
 msrpUSD: 289
 tensorCoreCount: null
 fp32TFLOPS: 13.21

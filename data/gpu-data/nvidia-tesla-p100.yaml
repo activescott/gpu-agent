@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=./gpu-spec.schema.json
 name: nvidia-tesla-p100
 label: NVIDIA Tesla P100
+category: datacenter
 msrpUSD: 5699
 fp32TFLOPS: 10.6
 fp16TFLOPS: 21.2

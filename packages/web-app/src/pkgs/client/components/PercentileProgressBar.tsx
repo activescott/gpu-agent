@@ -14,6 +14,11 @@ const PERCENTILE_75 = 0.75
 const PERCENTILE_50 = 0.5
 const PERCENTILE_25 = 0.25
 
+// Tier array indices
+const TIER_INDEX_TOP = 0
+const TIER_INDEX_MID = 1
+const TIER_INDEX_ENTRY = 2
+
 export type TierThreshold = {
   percentile: number
   label: string
@@ -67,15 +72,15 @@ export function getTierForPercentile(
   percentile: number,
 ): TierThreshold | undefined {
   if (percentile >= PERCENTILE_75) {
-    return TIER_THRESHOLDS[0] // Top Tier
+    return TIER_THRESHOLDS[TIER_INDEX_TOP]
   }
   if (percentile >= PERCENTILE_50) {
-    return TIER_THRESHOLDS[1] // Mid Tier
+    return TIER_THRESHOLDS[TIER_INDEX_MID]
   }
   if (percentile >= PERCENTILE_25) {
-    return TIER_THRESHOLDS[2] // Entry Tier
+    return TIER_THRESHOLDS[TIER_INDEX_ENTRY]
   }
-  return undefined // Below Entry Tier
+  return undefined
 }
 
 interface PercentileProgressBarProps {

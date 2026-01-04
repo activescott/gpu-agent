@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=./gpu-spec.schema.json
 name: amd-radeon-rx-6950-xt
 label: AMD Radeon RX 6950 XT
+category: gaming
 msrpUSD: 1099
 tensorCoreCount: null
 fp32TFLOPS: 23.65

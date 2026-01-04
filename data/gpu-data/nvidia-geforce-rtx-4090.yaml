@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=./gpu-spec.schema.json
 name: nvidia-geforce-rtx-4090
 label: NVIDIA Geforce RTX 4090
+category: gaming
 msrpUSD: 1599
 tensorCoreCount: 512
 fp32TFLOPS: 82.6

@@ -210,6 +210,68 @@ Link to GPU pages using `/gpu/shop/{gpu-name}`:
 - "February GPU Prices: RTX 4070 Super Drops to $650, Best Value in Months"
 - "Spring GPU Market: RTX 50 Scalper Premiums Finally Normalizing"
 
+## Verifying Editorial Accuracy
+
+**IMPORTANT:** After writing the article, verify that all hardcoded editorial claims match the actual chart data. Charts are dynamically generated from the database, but editorial text is static - they can drift out of sync.
+
+### What to Verify
+
+Every hardcoded claim needs verification:
+- GPU names mentioned in editorial text
+- Specific prices (e.g., "$303", "$208")
+- Percentage changes (e.g., "76% drop", "-63% off MSRP")
+- Rankings (e.g., "lowest premium", "biggest drop")
+
+### How to Verify
+
+Each chart component has its own SQL query. To verify editorial claims match chart data:
+
+1. **Find the chart's query** - Look in the chart source file at `src/pkgs/server/components/charts/{ChartName}.tsx`
+
+2. **Adapt the query for psql-prod** - Extract the SQL and replace template variables with actual dates:
+
+```bash
+# Example: Running a chart's query manually
+# 1. Open src/pkgs/server/components/charts/BestDealsChart.tsx
+# 2. Copy the SQL from the $queryRaw block
+# 3. Replace ${startDate} and ${endDate} with actual dates
+# 4. Run with psql-prod:
+
+./scripts/psql-prod "
+  -- Paste adapted SQL here with actual date values
+  -- e.g., WHERE \"cachedAt\" >= '2026-01-01' AND \"cachedAt\" <= '2026-01-31 23:59:59'
+"
+```
+
+3. **Compare results to editorial** - Ensure GPUs mentioned are actually in the chart's top N results and prices/percentages match
+
+### Verification Checklist
+
+For each chart section in the article:
+
+- [ ] Is the GPU mentioned in editorial actually shown in the chart?
+- [ ] Do the prices in editorial match the chart's sublabels?
+- [ ] Do the percentages in editorial match the chart's values?
+- [ ] Does the title/headline stat match the lead chart data?
+
+For hardcoded tables (like data center GPUs):
+
+- [ ] Run a query to get current prices for those specific GPUs
+- [ ] Update the table values to match query results
+
+### Common Pitfalls
+
+1. **Chart shows different GPUs than editorial mentions** - The chart shows top N by a metric, but editorial mentions a GPU not in top N
+2. **Prices from wrong time period** - Query used different date range than the report's `dateRange`
+3. **Percentage direction confusion** - Discounts are negative (-63%), premiums are positive (+50%)
+4. **Stale data** - Editorial was written from old query results that have since changed
+
+### Quick Visual Check
+
+Load the report in the dev environment and for each chart:
+1. Does the chart show the GPUs mentioned in the editorial text below it?
+2. Do the chart's displayed values match the editorial's numbers?
+
 ## Reference Implementation
 
 See the January 2026 report:

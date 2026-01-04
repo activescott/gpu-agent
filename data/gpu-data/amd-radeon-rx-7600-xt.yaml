@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=./gpu-spec.schema.json
 name: amd-radeon-rx-7600-xt
 label: AMD Radeon RX 7600 XT
+category: gaming
 msrpUSD: 329
 tensorCoreCount: 64
 fp32TFLOPS: 22.57

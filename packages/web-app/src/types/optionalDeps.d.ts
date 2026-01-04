@@ -9,10 +9,10 @@ declare module "canvas" {
   export function loadImage(source: Buffer | string): Promise<Image>
 
   export interface Canvas {
-    getContext(contextId: "2d"): CanvasRenderingContext2D
-    toBuffer(mimeType: "image/png"): Buffer
     width: number
     height: number
+    getContext(contextId: "2d"): CanvasRenderingContext2D
+    toBuffer(mimeType: "image/png"): Buffer
   }
 
   export interface CanvasRenderingContext2D {

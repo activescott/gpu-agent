@@ -13,9 +13,11 @@ datasource db {
 
 model gpu {
   // unique name for the card; also primary key
-  name   String  @id @unique
-  label  String
-  series String?
+  name     String  @id @unique
+  label    String
+  series   String?
+  // GPU market segment: "gaming" (consumer), "workstation" (professional), "datacenter" (enterprise/AI)
+  category String?
 
   // Specs (LEGACY - being migrated to GpuMetricValue):
   tensorCoreCount             Float?

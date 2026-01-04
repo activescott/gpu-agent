@@ -19,6 +19,8 @@ const BANDWIDTH_MAX = 2100
 const BANDWIDTH_STEP = 100
 
 const TFLOPS_STEP = 10
+const FALLBACK_MAX = 100
+const FALLBACK_STEP = 10
 
 const TDP_MIN = 100
 const TDP_MAX = 600
@@ -125,7 +127,9 @@ export function buildGpuFilterConfigs(
     const metricMin =
       metricValues.length > 0 ? Math.floor(Math.min(...metricValues)) : 0
     const metricMax =
-      metricValues.length > 0 ? Math.ceil(Math.max(...metricValues)) : 100
+      metricValues.length > 0
+        ? Math.ceil(Math.max(...metricValues))
+        : FALLBACK_MAX
 
     // Determine appropriate step
     let metricStep = 1
@@ -133,8 +137,8 @@ export function buildGpuFilterConfigs(
       metricStep = FPS_STEP
     } else if (isTflops) {
       metricStep = TFLOPS_STEP
-    } else if (metricMax > 100) {
-      metricStep = 10
+    } else if (metricMax > FALLBACK_MAX) {
+      metricStep = FALLBACK_STEP
     }
 
     configs.push({

@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=./gpu-spec.schema.json
 name: nvidia-rtx-4000-ada-generation
 label: NVIDIA RTX 4000 Ada Generation
+category: workstation
 msrpUSD: 1250
 tensorCoreCount: 192
 fp32TFLOPS: 26.7

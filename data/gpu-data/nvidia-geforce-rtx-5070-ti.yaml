@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=./gpu-spec.schema.json
 name: nvidia-geforce-rtx-5070-ti
 label: NVIDIA GeForce RTX 5070 Ti
+category: gaming
 msrpUSD: 749
 
 memoryCapacityGB: 16

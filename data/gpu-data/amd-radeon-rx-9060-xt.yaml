@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=./gpu-spec.schema.json
 name: amd-radeon-rx-9060-xt
 label: AMD Radeon RX 9060 XT
+category: gaming
 msrpUSD: 350
 tensorCoreCount: 64
 fp32TFLOPS: 25.6

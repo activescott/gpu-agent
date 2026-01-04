@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=./gpu-spec.schema.json
 name: nvidia-geforce-rtx-3090
 label: NVIDIA GeForce RTX 3090
+category: gaming
 msrpUSD: 1499
 tensorCoreCount: 328
 fp32TFLOPS: 35.58

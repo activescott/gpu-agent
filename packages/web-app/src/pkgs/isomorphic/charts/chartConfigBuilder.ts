@@ -30,6 +30,20 @@ const BACKGROUND_COLOR = "#ffffff"
 /** Default bar corner radius */
 const BAR_BORDER_RADIUS = 4
 
+/** Font and layout constants */
+const BASE_FONT_SIZE = 12
+const BASE_PADDING = 10
+const PADDING_RIGHT_MULTIPLIER = 2
+const ROUND_TO_NEAREST = 10
+
+/** Line chart point styling */
+const POINT_RADIUS = 4
+const POINT_HOVER_RADIUS = 6
+const LINE_BORDER_WIDTH = 2
+
+/** Legend padding */
+const LEGEND_PADDING = 20
+
 type ChartColorKey = keyof typeof CHART_COLORS
 
 /**
@@ -82,8 +96,8 @@ function buildBarChartConfig(
   const values = config.data.map((d) => d.value)
   const colors = config.data.map((d) => CHART_COLORS[d.color ?? "primary"])
   const scale = options.scale ?? 1
-  const fontSize = 12 * scale
-  const padding = 10 * scale
+  const fontSize = BASE_FONT_SIZE * scale
+  const padding = BASE_PADDING * scale
 
   return {
     type: "bar",
@@ -149,7 +163,7 @@ function buildBarChartConfig(
       layout: {
         padding: {
           left: padding,
-          right: padding * 2,
+          right: padding * PADDING_RIGHT_MULTIPLIER,
           top: padding,
           bottom: padding,
         },
@@ -175,13 +189,13 @@ function buildDivergingChartConfig(
   })
 
   const scale = options.scale ?? 1
-  const fontSize = 12 * scale
-  const padding = 10 * scale
+  const fontSize = BASE_FONT_SIZE * scale
+  const padding = BASE_PADDING * scale
 
   // Calculate symmetric axis bounds centered at 0
   // Find the maximum absolute value and round up to a nice number
   const maxAbsValue = Math.max(...values.map((v) => Math.abs(v)))
-  const axisBound = Math.ceil(maxAbsValue / 10) * 10 // Round up to nearest 10
+  const axisBound = Math.ceil(maxAbsValue / ROUND_TO_NEAREST) * ROUND_TO_NEAREST
 
   return {
     type: "bar",
@@ -253,7 +267,7 @@ function buildDivergingChartConfig(
       layout: {
         padding: {
           left: padding,
-          right: padding * 2,
+          right: padding * PADDING_RIGHT_MULTIPLIER,
           top: padding,
           bottom: padding,
         },
@@ -270,8 +284,8 @@ function buildLineChartConfig(
   options: ChartRenderOptions,
 ): ChartConfiguration<"line"> {
   const scale = options.scale ?? 1
-  const fontSize = 12 * scale
-  const padding = 10 * scale
+  const fontSize = BASE_FONT_SIZE * scale
+  const padding = BASE_PADDING * scale
 
   // Extract x-axis labels from first series
   const labels = config.series[0]?.data.map((p) => p.x) ?? []
@@ -282,9 +296,9 @@ function buildLineChartConfig(
     borderColor: CHART_COLORS[series.color ?? "primary"],
     backgroundColor: CHART_COLORS[series.color ?? "primary"],
     tension: 0.3, // Smooth curves
-    pointRadius: 4 * scale,
-    pointHoverRadius: 6 * scale,
-    borderWidth: 2 * scale,
+    pointRadius: POINT_RADIUS * scale,
+    pointHoverRadius: POINT_HOVER_RADIUS * scale,
+    borderWidth: LINE_BORDER_WIDTH * scale,
     fill: false,
   }))
 
@@ -309,7 +323,7 @@ function buildLineChartConfig(
           labels: {
             color: TEXT_COLOR,
             usePointStyle: true,
-            padding: 20 * scale,
+            padding: LEGEND_PADDING * scale,
             font: { size: fontSize },
           },
         },
@@ -365,7 +379,7 @@ function buildLineChartConfig(
       layout: {
         padding: {
           left: padding,
-          right: padding * 2,
+          right: padding * PADDING_RIGHT_MULTIPLIER,
           top: padding,
           bottom: padding,
         },

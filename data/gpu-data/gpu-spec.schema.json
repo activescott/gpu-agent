@@ -7,6 +7,7 @@
   "required": [
     "name",
     "label",
+    "category",
     "msrpUSD",
     "fp32TFLOPS",
     "fp16TFLOPS",
@@ -31,6 +32,11 @@
       "type": "string",
       "description": "Human-readable name of the GPU",
       "minLength": 1
+    },
+    "category": {
+      "type": "string",
+      "description": "GPU market segment: gaming (consumer graphics cards), workstation (professional visualization), or datacenter (enterprise/AI compute)",
+      "enum": ["gaming", "workstation", "datacenter"]
     },
     "msrpUSD": {
       "type": ["number", "null"],

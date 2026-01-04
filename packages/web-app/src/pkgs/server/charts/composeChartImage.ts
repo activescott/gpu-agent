@@ -26,9 +26,12 @@ const BACKGROUND_COLOR = "#ffffff"
 const TEXT_COLOR = "#374151"
 const BRAND_COLOR = "#d11363" // GPUPoet brand pink
 
+/** Layout constants */
+const CENTER_DIVISOR = 2
+
 /** Layout positions (in logical pixels, will be scaled) */
 const HEADER_Y = 50
-const CHART_X = (IMAGE_WIDTH - CHART_WIDTH) / 2 // Center the chart
+const CHART_X = (IMAGE_WIDTH - CHART_WIDTH) / CENTER_DIVISOR // Center the chart
 const CHART_Y = 100
 const FOOTER_Y = 580
 
@@ -40,6 +43,13 @@ const FONT_FAMILY = "'Helvetica Neue', Arial, sans-serif"
 
 /** Logo dimensions */
 const LOGO_SIZE = 48
+
+/** Layout constants */
+const PADDING = 48
+const LOGO_TO_BRAND_GAP = 12
+const TITLE_MARGIN = 100
+const MIN_TITLE_LENGTH = 10
+const TITLE_TRUNCATE_SLICE = -4
 
 export interface ComposeOptions {
   /** Chart title (displayed at top) */
@@ -126,9 +136,8 @@ async function drawHeader(
   logoImage: Awaited<ReturnType<typeof loadImage>>,
   title: string,
 ): Promise<void> {
-  const padding = 48
-  const logoX = padding
-  const logoY = HEADER_Y - LOGO_SIZE / 2
+  const logoX = PADDING
+  const logoY = HEADER_Y - LOGO_SIZE / CENTER_DIVISOR
 
   // Draw logo at native resolution for sharpness
   // Save current transform and temporarily reset scale
@@ -145,7 +154,7 @@ async function drawHeader(
   ctx.restore() // Restore 2x scale for remaining drawing
 
   // Brand name next to logo
-  const brandX = logoX + LOGO_SIZE + 12
+  const brandX = logoX + LOGO_SIZE + LOGO_TO_BRAND_GAP
   ctx.fillStyle = BRAND_COLOR
   ctx.font = `bold ${BRAND_FONT_SIZE}px ${FONT_FAMILY}`
   ctx.textAlign = "left"
@@ -159,23 +168,21 @@ async function drawHeader(
 
   // Truncate title if too long
   const maxTitleWidth =
-    IMAGE_WIDTH - brandX - ctx.measureText("GPUPoet.com").width - 100
+    IMAGE_WIDTH - brandX - ctx.measureText("GPUPoet.com").width - TITLE_MARGIN
   let displayTitle = title
   while (
     ctx.measureText(displayTitle).width > maxTitleWidth &&
-    displayTitle.length > 10
+    displayTitle.length > MIN_TITLE_LENGTH
   ) {
-    displayTitle = displayTitle.slice(0, -4) + "..."
+    displayTitle = displayTitle.slice(0, TITLE_TRUNCATE_SLICE) + "..."
   }
-  ctx.fillText(displayTitle, IMAGE_WIDTH - padding, HEADER_Y)
+  ctx.fillText(displayTitle, IMAGE_WIDTH - PADDING, HEADER_Y)
 }
 
 /**
  * Draws the footer with data attribution and date.
  */
 function drawFooter(ctx: Ctx2D, date?: Date): void {
-  const padding = 48
-
   ctx.fillStyle = TEXT_COLOR
   ctx.font = `${FOOTER_FONT_SIZE}px ${FONT_FAMILY}`
   ctx.textBaseline = "middle"
@@ -184,7 +191,7 @@ function drawFooter(ctx: Ctx2D, date?: Date): void {
   ctx.textAlign = "left"
   ctx.fillText(
     "Data from GPUPoet.com • Real-time GPU price tracking",
-    padding,
+    PADDING,
     FOOTER_Y,
   )
 
@@ -195,7 +202,7 @@ function drawFooter(ctx: Ctx2D, date?: Date): void {
       month: "long",
       year: "numeric",
     })
-    ctx.fillText(dateStr, IMAGE_WIDTH - padding, FOOTER_Y)
+    ctx.fillText(dateStr, IMAGE_WIDTH - PADDING, FOOTER_Y)
   }
 }
 

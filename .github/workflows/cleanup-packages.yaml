@@ -24,3 +24,10 @@ jobs:
           # are needed due to multi-stage builds. So we have to be careful to
           # account that each tagged version is essentially 3 "versions".
           min-versions-to-keep: 12
+
+      - name: "delete all packages except the latest N versions"
+        uses: actions/delete-package-versions@v5
+        with:
+          package-name: "gpu-agent/indexnow-notifier"
+          package-type: "container"
+          min-versions-to-keep: 12

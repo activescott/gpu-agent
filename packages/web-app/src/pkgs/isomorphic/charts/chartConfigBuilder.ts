@@ -359,7 +359,8 @@ function buildLineChartConfig(
         },
         y: {
           grid: {
-            display: false, // No grid lines for cleaner look
+            color: "rgba(209, 213, 219, 0.1)", // Very subtle horizontal grid lines
+            lineWidth: 0.5,
           },
           ticks: {
             color: TEXT_COLOR,

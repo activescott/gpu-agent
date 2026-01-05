@@ -3,7 +3,7 @@ import {
   ManufacturerIdentifier,
   ThirdPartyProduct,
 } from "@/pkgs/isomorphic/model"
-import { Fragment } from "react"
+import { Fragment, ReactNode } from "react"
 import { GpuSpecKey } from "@/pkgs/isomorphic/model/specs"
 import Link from "next/link"
 import { Feature } from "./Feature"
@@ -26,6 +26,8 @@ interface GpuInfoParams {
   gpuSpecPercentages: Record<GpuSpecKey, number>
   gpuBenchmarkPercentiles?: BenchmarkPercentile[]
   prosCons?: ProsCons
+  /** Optional content to render before References section */
+  children?: ReactNode
 }
 
 /**
@@ -75,6 +77,7 @@ export function GpuInfo({
   activeListingCount,
   gpuBenchmarkPercentiles,
   prosCons,
+  children,
 }: GpuInfoParams): JSX.Element {
   return (
     <>
@@ -161,12 +164,15 @@ export function GpuInfo({
           title={`Compare ${gpu.label} to Another GPU`}
           icon="arrows-expand"
           callToAction="Compare GPUs Side-by-Side"
-          callToActionLink={`/gpu/compare`}
+          callToActionLink={`/gpu/compare/${gpu.name}`}
         >
           Compare the {gpu.label} directly to another GPU to see specs,
           benchmarks, and prices side-by-side.
         </Feature>
       </div>
+
+      {/* Slot for additional content before Product Identifiers */}
+      {children}
 
       {/* Product Identifiers Section - SEO-optimized, collapsible for minimal UX impact */}
       {((gpu.manufacturerIdentifiers &&

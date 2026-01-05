@@ -53,13 +53,30 @@ export const metadata: Metadata = {
 
   icons: {
     icon: [
-      { url: "/images/coinpoet-card-128.svg", type: "image/svg+xml" },
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon.ico", sizes: "16x16 32x32 48x48" },
+      { url: "/favicon-16x16.png", type: "image/png", sizes: "16x16" },
+      { url: "/favicon-32x32.png", type: "image/png", sizes: "32x32" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
+    other: [
       {
-        url: "/images/coinpoet-card-128.png",
-        type: "image/png",
-        sizes: "128x128",
+        rel: "mask-icon",
+        url: "/safari-pinned-tab.svg",
+        color: "#d11363",
       },
     ],
+  },
+
+  manifest: "/site.webmanifest",
+
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#1a1a1a" },
+  ],
+
+  other: {
+    "msapplication-TileColor": "#d11363",
   },
 }
 

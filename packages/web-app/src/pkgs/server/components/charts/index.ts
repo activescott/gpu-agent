@@ -22,6 +22,7 @@ export { BestDealsChart } from "./BestDealsChart"
 export { PriceChangesChart } from "./PriceChangesChart"
 export { PriceHistoryChart } from "./PriceHistoryChart"
 export { AmdDealsChart } from "./AmdDealsChart"
+export { GpuPriceHistoryChart } from "./GpuPriceHistoryChart"
 
 // Config Fetchers (for image API)
 export { getScalperPremiumConfig } from "./ScalperPremiumChart"
@@ -29,6 +30,7 @@ export { getBestDealsConfig } from "./BestDealsChart"
 export { getPriceChangesConfig } from "./PriceChangesChart"
 export { getPriceHistoryConfig } from "./PriceHistoryChart"
 export { getAmdDealsConfig } from "./AmdDealsChart"
+export { getGpuPriceHistoryConfig } from "./GpuPriceHistoryChart"
 
 import type { ChartConfig } from "@/pkgs/isomorphic/model/news"
 import type { DateRange } from "./types"

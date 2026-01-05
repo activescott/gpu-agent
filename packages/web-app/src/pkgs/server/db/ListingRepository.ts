@@ -635,9 +635,7 @@ export async function topNListingsByCostPerformanceBySlug(
 // New types for historical data analysis
 export interface PriceHistoryPoint {
   date: Date
-  avgPrice: number
-  minPrice: number
-  maxPrice: number
+  lowestAvgPrice: number
   medianPrice: number
   listingCount: number
 }
@@ -681,20 +679,37 @@ export async function getHistoricalPriceData(
   const startDate = new Date()
   startDate.setMonth(startDate.getMonth() - months)
 
+  // Calculate daily stats with lowestAvgPrice (avg of 3 lowest listings per day)
+  // Using LATERAL join for efficient per-day calculation
   const result = await prisma.$queryRaw<PriceHistoryPoint[]>`
     SELECT
-      DATE_TRUNC('day', "cachedAt") as "date",
-      AVG("priceValue"::float) as "avgPrice",
-      MIN("priceValue"::float) as "minPrice",
-      MAX("priceValue"::float) as "maxPrice",
-      PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY "priceValue"::float) as "medianPrice",
-      COUNT(*)::float as "listingCount"
-    FROM "Listing"
-    WHERE
-      "gpuName" = ${gpuName}
-      AND "cachedAt" >= ${startDate}
-    GROUP BY DATE_TRUNC('day', "cachedAt")
-    ORDER BY "date"
+      d."date",
+      COALESCE(l."lowestAvgPrice", d."medianPrice") as "lowestAvgPrice",
+      d."medianPrice",
+      d."listingCount"
+    FROM (
+      SELECT
+        DATE_TRUNC('day', "cachedAt") as "date",
+        PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY "priceValue"::float) as "medianPrice",
+        COUNT(*)::float as "listingCount"
+      FROM "Listing"
+      WHERE
+        "gpuName" = ${gpuName}
+        AND "cachedAt" >= ${startDate}
+      GROUP BY DATE_TRUNC('day', "cachedAt")
+    ) d
+    LEFT JOIN LATERAL (
+      SELECT AVG(sub.price) as "lowestAvgPrice"
+      FROM (
+        SELECT "priceValue"::float as price
+        FROM "Listing"
+        WHERE "gpuName" = ${gpuName}
+          AND DATE_TRUNC('day', "cachedAt") = d."date"
+        ORDER BY "priceValue"::float ASC
+        LIMIT 3
+      ) sub
+    ) l ON TRUE
+    ORDER BY d."date"
   `
 
   return result

@@ -9,6 +9,8 @@ import type { JSX } from "react"
 
 interface GpuCompareLandingProps {
   gpuOptions: GpuOption[]
+  /** Optional pre-selected first GPU slug */
+  initialGpu1Slug?: string
 }
 
 /**
@@ -17,9 +19,10 @@ interface GpuCompareLandingProps {
  */
 export function GpuCompareLanding({
   gpuOptions,
+  initialGpu1Slug,
 }: GpuCompareLandingProps): JSX.Element {
   const router = useRouter()
-  const [gpu1Slug, setGpu1Slug] = useState<string | undefined>()
+  const [gpu1Slug, setGpu1Slug] = useState<string | undefined>(initialGpu1Slug)
   const [gpu2Slug, setGpu2Slug] = useState<string | undefined>()
 
   const handleCompare = () => {

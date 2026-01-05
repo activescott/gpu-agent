@@ -10,9 +10,7 @@ import DataTables from "./components/DataTables"
 
 interface PriceHistoryPoint {
   date: string
-  avgPrice: number
-  minPrice: number
-  maxPrice: number
+  lowestAvgPrice: number
   medianPrice: number
   listingCount: number
 }

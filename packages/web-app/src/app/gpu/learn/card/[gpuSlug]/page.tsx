@@ -16,6 +16,7 @@ import {
   getPriceStats,
   GpuPriceStats,
 } from "@/pkgs/server/db/ListingRepository"
+import { GpuPriceHistoryChart } from "@/pkgs/server/components/charts"
 import { createDiag } from "@activescott/diag"
 import { memoize } from "lodash"
 
@@ -384,7 +385,13 @@ export default async function Page(props: GpuParams) {
         gpuSpecPercentages={gpuSpecPercentages}
         gpuBenchmarkPercentiles={gpuBenchmarkPercentiles}
         prosCons={prosCons}
-      />
+      >
+        {/* Price History Chart - rendered before References */}
+        <section className="mt-5">
+          <h2 className="h4 mb-3">Price History</h2>
+          <GpuPriceHistoryChart gpuName={gpu.name} gpuLabel={gpu.label} />
+        </section>
+      </GpuInfo>
     </>
   )
 }

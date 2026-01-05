@@ -7,9 +7,7 @@ import { downloadChartWithBranding } from "@/pkgs/client/components/charts/downl
 
 interface PriceHistoryPoint {
   date: string
-  avgPrice: number
-  minPrice: number
-  maxPrice: number
+  lowestAvgPrice: number
   medianPrice: number
   listingCount: number
 }
@@ -21,7 +19,7 @@ interface PriceChartProps {
 
 /**
  * Price history chart component with matching market report styling.
- * Shows average, median, min, and max prices over time.
+ * Shows median and lowest average (avg of 3 lowest) prices over time.
  */
 export default function PriceChart({ priceHistory, gpuName }: PriceChartProps) {
   const chartRef = useRef<HTMLDivElement>(null)
@@ -43,14 +41,6 @@ export default function PriceChart({ priceHistory, gpuName }: PriceChartProps) {
       unit: "$",
       series: [
         {
-          label: "Average Price",
-          color: "primary",
-          data: priceHistory.map((point, index) => ({
-            x: labels[index],
-            y: Math.round(point.avgPrice),
-          })),
-        },
-        {
           label: "Median Price",
           color: "success",
           data: priceHistory.map((point, index) => ({
@@ -59,19 +49,11 @@ export default function PriceChart({ priceHistory, gpuName }: PriceChartProps) {
           })),
         },
         {
-          label: "Min Price",
+          label: "Lowest Avg Price",
           color: "warning",
           data: priceHistory.map((point, index) => ({
             x: labels[index],
-            y: Math.round(point.minPrice),
-          })),
-        },
-        {
-          label: "Max Price",
-          color: "danger",
-          data: priceHistory.map((point, index) => ({
-            x: labels[index],
-            y: Math.round(point.maxPrice),
+            y: Math.round(point.lowestAvgPrice),
           })),
         },
       ],

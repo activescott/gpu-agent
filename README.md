@@ -114,6 +114,18 @@ This ensures migrations created in the container are properly synced to your loc
 
 **Testing Migrations:** To test new migrations locally, stop the `scripts/dev` process and restart it. The container will restart and run any pending migrations on startup. This matches how migrations run in production, so it's the preferred way to test database schema changes.
 
+**CRITICAL - Migration File Requirement:** When modifying `schema.prisma`, you MUST create a migration file before deploying to production. If you reset the dev database (`prisma migrate reset`) after modifying the schema, the dev database will be in sync with your schema changes, but NO migration file is created. Running `prisma migrate dev` will report "Already in sync" even though production doesn't have the new columns. In this case, you must manually create the migration file:
+
+```bash
+# Create migration directory
+mkdir -p packages/web-app/prisma/migrations/YYYYMMDDHHMMSS_migration_name
+
+# Create migration.sql with the appropriate ALTER TABLE statement
+echo 'ALTER TABLE "TableName" ADD COLUMN "columnName" TYPE;' > packages/web-app/prisma/migrations/YYYYMMDDHHMMSS_migration_name/migration.sql
+```
+
+The migration will run automatically on container startup in production.
+
 ### Production Database Queries
 
 Use `scripts/psql-prod` to query the production PostgreSQL database:

@@ -148,11 +148,13 @@ function buildMetricsRegistry(
 
 export function getPrometheusMetrics(): Registry<client.OpenMetricsContentType> {
   if (!hasMetrics()) {
-    log.warn(
-      "no metrics available - cache revalidation job may not have run yet, returning NaN values",
+    log.info(
+      "no metrics available yet - cache revalidation job may not have run, returning default values",
     )
-    // Return empty/NaN metrics instead of null to keep Prometheus scrapes successful
-    const emptyStats: ListingStats = {
+    // Return default metrics that won't trigger alerts
+    // Uses current timestamp and success=true so Prometheus alerts don't fire
+    // before the first cache revalidation job runs (within 30 min via CronJob)
+    const defaultStats: ListingStats = {
       staleGpusAtStart: [],
       listingCachedCount: 0,
       oldestCachedAtStart: null,
@@ -162,7 +164,7 @@ export function getPrometheusMetrics(): Registry<client.OpenMetricsContentType> 
       staleGpusRemaining: 0,
       maxTimeToCacheOneGpu: 0,
     }
-    return buildMetricsRegistry(emptyStats, new Date(0), false)
+    return buildMetricsRegistry(defaultStats, new Date(), true)
   }
 
   const storedMetrics = currentMetrics!

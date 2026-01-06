@@ -82,13 +82,24 @@ describe("metricsStore", () => {
   })
 
   describe("getPrometheusMetrics", () => {
-    it("should return registry with NaN values when no metrics available", async () => {
+    it("should return registry with safe default values when no metrics available", async () => {
       const registry = getPrometheusMetrics()
       expect(registry).toBeTruthy()
 
       const metricsText = await registry.metrics()
-      expect(metricsText).toContain("coinpoet_last_job_success 0")
-      expect(metricsText).toContain("coinpoet_last_job_timestamp_seconds 0")
+      // Default values use success=true and current timestamp to avoid triggering alerts
+      // before the first cache revalidation job runs
+      expect(metricsText).toContain("coinpoet_last_job_success 1")
+      // Timestamp should be current time (not 0), verify it's a reasonable recent value
+      const timestampMatch = metricsText.match(
+        /coinpoet_last_job_timestamp_seconds (\d+)/,
+      )
+      expect(timestampMatch).toBeTruthy()
+      const timestamp = Number.parseInt(timestampMatch![1], 10)
+      // Should be within last minute (current time in seconds)
+      const nowSeconds = Math.floor(Date.now() / 1000)
+      expect(timestamp).toBeGreaterThan(nowSeconds - 60)
+      expect(timestamp).toBeLessThanOrEqual(nowSeconds)
     })
 
     it("should return Prometheus registry when metrics available", async () => {

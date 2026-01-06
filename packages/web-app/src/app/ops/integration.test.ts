@@ -47,15 +47,19 @@ describe("Cache Revalidation Integration", () => {
       // Step 1: Verify initial state - no metrics available
       expect(hasMetrics()).toBe(false)
 
-      // Step 2: Verify metrics endpoint returns NaN values before any job
+      // Step 2: Verify metrics endpoint returns safe defaults before any job
+      // (success=1 and current timestamp to avoid triggering alerts before first CronJob run)
       const initialMetricsResponse = await metricsGet()
       const initialMetricsText = await initialMetricsResponse.text()
 
       expect(initialMetricsResponse.status).toBe(200)
-      expect(initialMetricsText).toContain("coinpoet_last_job_success 0")
-      expect(initialMetricsText).toContain(
-        "coinpoet_last_job_timestamp_seconds 0",
+      expect(initialMetricsText).toContain("coinpoet_last_job_success 1")
+      // Timestamp should be current time (not 0)
+      const timestampMatch = initialMetricsText.match(
+        /coinpoet_last_job_timestamp_seconds (\d+)/,
       )
+      expect(timestampMatch).toBeTruthy()
+      expect(Number.parseInt(timestampMatch![1], 10)).toBeGreaterThan(0)
 
       // Step 3: Mock successful revalidation and trigger job (simulates CronJob call)
       mockRevalidateCachedListings.mockResolvedValueOnce(mockSuccessResult)

@@ -4,7 +4,7 @@
 			"path": "."
 		},
 		{
-			"path": "../gpu-agent-data"
+			"path": "../gpu-poet-data"
 		},
 		{
 			"path": "../home-infra-k8s-flux"

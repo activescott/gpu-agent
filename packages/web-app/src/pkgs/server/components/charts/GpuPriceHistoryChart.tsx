@@ -16,12 +16,12 @@ const PERCENT_MULTIPLIER = 100
 const PRICE_DIFF_THRESHOLD = 10
 
 interface PriceInsights {
-  /** Percentage change in median price from start to end of period */
-  medianPriceChange: number
-  /** Current (latest) median price */
-  currentMedianPrice: number
-  /** Average median price over the period */
-  averageMedianPrice: number
+  /** Percentage change in lowest average price from start to end of period */
+  lowestAvgPriceChange: number
+  /** Current (latest) lowest average price */
+  currentLowestAvgPrice: number
+  /** Average of lowest average prices over the period */
+  periodLowestAvgPrice: number
   /** Whether the trend is up, down, or stable */
   trend: "up" | "down" | "stable"
   /** Number of days of data */
@@ -30,35 +30,36 @@ interface PriceInsights {
 
 /**
  * Calculates price insights from historical data.
+ * Uses lowest average price (average of 3 lowest listings per day) for trends.
  */
 function calculateInsights(data: PriceHistoryPoint[]): PriceInsights {
   const firstPoint = data[0]
   const lastPoint = data.at(-1)!
 
-  const startMedian = firstPoint.medianPrice
-  const endMedian = lastPoint.medianPrice
+  const startLowestAvg = firstPoint.lowestAvgPrice
+  const endLowestAvg = lastPoint.lowestAvgPrice
 
-  const medianPriceChange =
-    ((endMedian - startMedian) / startMedian) * PERCENT_MULTIPLIER
+  const lowestAvgPriceChange =
+    ((endLowestAvg - startLowestAvg) / startLowestAvg) * PERCENT_MULTIPLIER
 
-  const averageMedianPrice =
-    data.reduce((sum, point) => sum + point.medianPrice, 0) / data.length
+  const periodLowestAvgPrice =
+    data.reduce((sum, point) => sum + point.lowestAvgPrice, 0) / data.length
 
   // Consider stable if change is within ±3%
   const stableThreshold = 3
   let trend: "up" | "down" | "stable"
-  if (medianPriceChange > stableThreshold) {
+  if (lowestAvgPriceChange > stableThreshold) {
     trend = "up"
-  } else if (medianPriceChange < -stableThreshold) {
+  } else if (lowestAvgPriceChange < -stableThreshold) {
     trend = "down"
   } else {
     trend = "stable"
   }
 
   return {
-    medianPriceChange,
-    currentMedianPrice: endMedian,
-    averageMedianPrice,
+    lowestAvgPriceChange,
+    currentLowestAvgPrice: endLowestAvg,
+    periodLowestAvgPrice,
     trend,
     daysOfData: data.length,
   }
@@ -161,7 +162,7 @@ export async function GpuPriceHistoryChart({
   }
 
   const insights = calculateInsights(data)
-  const changePercent = Math.abs(insights.medianPriceChange).toFixed(1)
+  const changePercent = Math.abs(insights.lowestAvgPriceChange).toFixed(1)
   let trendText: string
   if (insights.trend === "up") {
     trendText = `up ${changePercent}%`
@@ -188,22 +189,24 @@ export async function GpuPriceHistoryChart({
         deals.
       </p>
       <p className="text-muted small mb-3">
-        <strong>Trend:</strong> Over this period, the median price has been{" "}
-        {trendText}. The current median is{" "}
+        <strong>Trend:</strong> Over this period, the lowest average price has
+        been {trendText}. The current lowest average is{" "}
         <strong>
-          ${Math.round(insights.currentMedianPrice).toLocaleString()}
+          ${Math.round(insights.currentLowestAvgPrice).toLocaleString()}
         </strong>
-        {Math.abs(insights.currentMedianPrice - insights.averageMedianPrice) >
-          PRICE_DIFF_THRESHOLD && (
+        {Math.abs(
+          insights.currentLowestAvgPrice - insights.periodLowestAvgPrice,
+        ) > PRICE_DIFF_THRESHOLD && (
           <>
             , compared to a typical{" "}
             <strong>
-              ${Math.round(insights.averageMedianPrice).toLocaleString()}
+              ${Math.round(insights.periodLowestAvgPrice).toLocaleString()}
             </strong>{" "}
             over the period
           </>
         )}
-        .
+        . The lowest average price is calculated as the average of the three
+        lowest-priced listings each day.
       </p>
 
       <ChartJS config={config} height={400} showWatermark />

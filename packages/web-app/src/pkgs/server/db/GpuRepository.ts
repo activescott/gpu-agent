@@ -27,6 +27,8 @@ export interface MetricDefinitionRecord {
   description: string
   descriptionDollarsPer: string
   gpuField: string | null
+  /** For benchmarks: number of public benchmark results this metric is based on */
+  collectedSamples: number | null
 }
 
 /**
@@ -82,6 +84,7 @@ async function getMetricDefinitions(
       description: true,
       descriptionDollarsPer: true,
       gpuField: true,
+      collectedSamples: true,
     },
     // Sort by name to group related benchmarks together (e.g., Counter-Strike 2 configs grouped)
     // and by slug as secondary sort to order resolutions logically (1920x1080 < 2560x1440 < 3840x2160)

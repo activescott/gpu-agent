@@ -79,6 +79,8 @@ interface MetricDefinition {
   benchmarkName?: string
   configuration?: string
   configurationId?: string
+  // For benchmarks: number of public benchmark results this metric is based on
+  collectedSamples?: number
   // When the metric definition was last updated (from source YAML)
   updatedAt: Date
 }
@@ -270,6 +272,7 @@ async function loadBenchmarkDefinitions(): Promise<MetricDefinition[]> {
       benchmarkName: benchmark.benchmarkName,
       configuration: benchmark.configuration,
       configurationId: benchmark.configurationId,
+      collectedSamples: benchmark.collectedSamples,
       updatedAt: new Date(benchmark.updatedAt),
     })
   }

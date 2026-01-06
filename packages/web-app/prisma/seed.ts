@@ -436,6 +436,7 @@ async function seedMetricDefinitions(prisma: PrismaClient): Promise<void> {
         benchmarkName: benchmarkData.benchmarkName,
         configuration: benchmarkData.configuration,
         configurationId: benchmarkData.configurationId,
+        collectedSamples: benchmarkData.collectedSamples,
         gpuField: null,
       },
       create: {
@@ -451,6 +452,7 @@ async function seedMetricDefinitions(prisma: PrismaClient): Promise<void> {
         benchmarkName: benchmarkData.benchmarkName,
         configuration: benchmarkData.configuration,
         configurationId: benchmarkData.configurationId,
+        collectedSamples: benchmarkData.collectedSamples,
         gpuField: null,
       },
     })

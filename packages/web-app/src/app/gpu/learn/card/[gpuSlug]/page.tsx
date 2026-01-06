@@ -355,6 +355,7 @@ export default async function Page(props: GpuParams) {
         unit: metric.unitShortest,
         value: valueMap.get(gpu.name),
         percentile: percentileMap.get(gpu.name),
+        collectedSamples: metric.collectedSamples,
       }
     }),
   )

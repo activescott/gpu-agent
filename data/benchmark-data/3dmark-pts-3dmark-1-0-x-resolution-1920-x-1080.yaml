@@ -13,94 +13,90 @@ description: Average FPS in 3DMark Wild Life Extreme, a cross-platform GPU
 descriptionDollarsPer: Dollars per FPS in 3DMark Wild Life Extreme. Lower values
   indicate better cost efficiency for GPU rendering performance.
 category: gaming
-collectedSamples: 543
-updatedAt: 2025-12-12T06:06:10.483Z
+collectedSamples: 567
+updatedAt: 2026-01-06T00:37:05.145Z
 results:
-  - gpuNameRaw: NVIDIA GeForce RTX 4090
-    value: 966
-  - gpuNameRaw: NVIDIA GeForce RTX 4080
-    value: 846
-  - gpuNameRaw: XFX AMD Radeon RX 7900 XTX
-    value: 723
-  - gpuNameRaw: AMD Radeon RX 6800 XT
-    value: 624
-  - gpuNameRaw: NVIDIA GeForce RTX 3090
-    value: 612
-  - gpuNameRaw: NVIDIA GeForce RTX 3080 Ti
-    value: 598
-  - gpuNameRaw: AMD Radeon Pro W7900
-    value: 595
-  - gpuNameRaw: AMD Radeon RX 7800 XT
-    value: 583
-  - gpuNameRaw: AMD Radeon RX 7900 GRE
-    value: 581
-  - gpuNameRaw: NVIDIA GeForce RTX 3080
-    value: 549
-  - gpuNameRaw: AMD Radeon RX 6800
-    value: 544
-  - gpuNameRaw: NVIDIA GeForce RTX 3070 Ti
-    value: 490
+  - gpuNameRaw: AMD Phoenix1
+    value: 88
+  - gpuNameRaw: AMD Phoenix2
+    value: 45
+  - gpuNameRaw: AMD Radeon 780M
+    value: 76
+  - gpuNameRaw: AMD Radeon PRO W7500
+    value: 162
+  - gpuNameRaw: AMD Radeon PRO W7600
+    value: 278
   - gpuNameRaw: AMD Radeon Pro W7700
     value: 481
-  - gpuNameRaw: NVIDIA GeForce RTX 3070
-    value: 439
   - gpuNameRaw: AMD Radeon PRO W7700
     value: 437
+  - gpuNameRaw: AMD Radeon Pro W7900
+    value: 595
+  - gpuNameRaw: AMD Radeon RX 56
+    value: 252
+  - gpuNameRaw: AMD Radeon RX 5700
+    value: 271
+  - gpuNameRaw: AMD Radeon RX 5700 XT
+    value: 329
+  - gpuNameRaw: AMD Radeon RX 6600 XT
+    value: 334
   - gpuNameRaw: AMD Radeon RX 6700 XT
     value: 436
   - gpuNameRaw: AMD Radeon RX 6750 XT
     value: 435
-  - gpuNameRaw: NVIDIA RTX 4000 Ada Generation
-    value: 406
-  - gpuNameRaw: NVIDIA GeForce RTX 3060 Ti
-    value: 405
-  - gpuNameRaw: XFX AMD Radeon RX 7700S
-    value: 385
-  - gpuNameRaw: MSI NVIDIA GeForce RTX 4060
-    value: 376
-  - gpuNameRaw: AMD Radeon RX 7700S
-    value: 343
+  - gpuNameRaw: AMD Radeon RX 6800
+    value: 544
   - gpuNameRaw: AMD Radeon RX 7600
     value: 335
-  - gpuNameRaw: AMD Radeon RX 6600 XT
-    value: 334
-  - gpuNameRaw: Intel Arc A770 DG2
-    value: 330
-  - gpuNameRaw: AMD Radeon RX 5700 XT
-    value: 329
-  - gpuNameRaw: Intel Arc A750 DG2
-    value: 327
-  - gpuNameRaw: NVIDIA GeForce RTX 2060 SUPER
-    value: 303
+  - gpuNameRaw: AMD Radeon RX 7700S
+    value: 343
+  - gpuNameRaw: AMD Radeon RX 7800 XT
+    value: 583
+  - gpuNameRaw: AMD Radeon RX 7900 GRE
+    value: 581
   - gpuNameRaw: eVGA NVIDIA GeForce RTX 3060
     value: 300
   - gpuNameRaw: Gigabyte AMD Radeon RX 6600
-    value: 290
-  - gpuNameRaw: Intel Arc A580 DG2
-    value: 282
-  - gpuNameRaw: AMD Radeon PRO W7600
-    value: 278
-  - gpuNameRaw: AMD Radeon RX 5700
-    value: 271
-  - gpuNameRaw: AMD Radeon RX 56
-    value: 252
-  - gpuNameRaw: NVIDIA RTX 2000 Ada Generation
-    value: 244
-  - gpuNameRaw: Sapphire AMD Radeon RX 590
-    value: 170
-  - gpuNameRaw: AMD Radeon PRO W7500
-    value: 162
-  - gpuNameRaw: NVIDIA RTX A1000
-    value: 143
+    value: 280
   - gpuNameRaw: Intel Arc A380 DG2
     value: 105
-  - gpuNameRaw: AMD Phoenix1
-    value: 88
-  - gpuNameRaw: AMD Radeon 780M
-    value: 76
-  - gpuNameRaw: MSI Intel ADL GT2
-    value: 65
-  - gpuNameRaw: AMD Phoenix2
-    value: 45
+  - gpuNameRaw: Intel Arc A580 DG2
+    value: 282
+  - gpuNameRaw: Intel Arc A750 DG2
+    value: 327
+  - gpuNameRaw: Intel Arc A770 DG2
+    value: 330
   - gpuNameRaw: Intel Iris Plus ICL GT2
     value: 28
+  - gpuNameRaw: MSI Intel ADL GT2
+    value: 65
+  - gpuNameRaw: MSI NVIDIA GeForce RTX 4060
+    value: 376
+  - gpuNameRaw: NVIDIA GeForce RTX 2060 SUPER
+    value: 303
+  - gpuNameRaw: NVIDIA GeForce RTX 3060 Ti
+    value: 405
+  - gpuNameRaw: NVIDIA GeForce RTX 3070
+    value: 439
+  - gpuNameRaw: NVIDIA GeForce RTX 3070 Ti
+    value: 490
+  - gpuNameRaw: NVIDIA GeForce RTX 3080
+    value: 549
+  - gpuNameRaw: NVIDIA GeForce RTX 3090
+    value: 612
+  - gpuNameRaw: NVIDIA GeForce RTX 4080
+    value: 835
+  - gpuNameRaw: NVIDIA GeForce RTX 4090
+    value: 966
+  - gpuNameRaw: NVIDIA RTX 2000 Ada Generation
+    value: 244
+  - gpuNameRaw: NVIDIA RTX 4000 Ada Generation
+    value: 406
+  - gpuNameRaw: NVIDIA RTX A1000
+    value: 143
+  - gpuNameRaw: Sapphire AMD Radeon RX 590
+    value: 170
+  - gpuNameRaw: XFX AMD Radeon RX 7700S
+    value: 385
+  - gpuNameRaw: XFX AMD Radeon RX 7900 XTX
+    value: 723

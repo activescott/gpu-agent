@@ -14,77 +14,77 @@ descriptionDollarsPer: Dollars per FPS in 3DMark Wild Life Extreme. Lower values
   indicate better cost efficiency for GPU rendering performance.
 category: gaming
 collectedSamples: 249
-updatedAt: 2025-12-23T08:12:19.937Z
+updatedAt: 2026-01-06T00:38:13.698Z
 results:
-  - gpuNameRaw: ASUS NVIDIA GeForce RTX 5090
-    value: 867
-  - gpuNameRaw: NVIDIA GeForce RTX 4090
-    value: 765
-  - gpuNameRaw: NVIDIA RTX 6000 Ada Generation
-    value: 612
-  - gpuNameRaw: AMD Radeon RX 7900 XTX
-    value: 592
-  - gpuNameRaw: NVIDIA GeForce RTX 4080
-    value: 584
-  - gpuNameRaw: Sapphire AMD Radeon AI PRO R9700
-    value: 552
-  - gpuNameRaw: AMD Radeon PRO W7900
-    value: 533
-  - gpuNameRaw: AMD Radeon RX 7900 XT
-    value: 513
-  - gpuNameRaw: Gigabyte AMD Radeon RX 9070
-    value: 471
-  - gpuNameRaw: NVIDIA GeForce RTX 3090
-    value: 411
-  - gpuNameRaw: AMD Radeon RX 6800 XT
-    value: 400
-  - gpuNameRaw: NVIDIA GeForce RTX 3080 Ti
-    value: 399
-  - gpuNameRaw: AMD Radeon RX 7800 XT
-    value: 382
-  - gpuNameRaw: NVIDIA GeForce RTX 3080
-    value: 363
-  - gpuNameRaw: XFX AMD Radeon RX 7700 XT
-    value: 349
-  - gpuNameRaw: AMD Radeon RX 6800
-    value: 340
   - gpuNameRaw: AMD Radeon Pro W7700
     value: 311
-  - gpuNameRaw: NVIDIA GeForce RTX 3070 Ti
-    value: 310
-  - gpuNameRaw: NVIDIA RTX 4000 Ada Generation
-    value: 285
-  - gpuNameRaw: NVIDIA GeForce RTX 3070
-    value: 282
-  - gpuNameRaw: AMD Radeon RX 6750 XT
-    value: 275
-  - gpuNameRaw: AMD Radeon RX 6700 XT
-    value: 266
-  - gpuNameRaw: NVIDIA GeForce RTX 3060 Ti
-    value: 252
-  - gpuNameRaw: Intel BMG G21
-    value: 246
-  - gpuNameRaw: XFX AMD Radeon RX 7700S
-    value: 230
-  - gpuNameRaw: MSI NVIDIA GeForce RTX 4060
-    value: 227
-  - gpuNameRaw: AMD Radeon RX 7600
-    value: 214
-  - gpuNameRaw: AMD Radeon RX 6600 XT
-    value: 207
-  - gpuNameRaw: AMD Radeon RX 7700S
-    value: 204
-  - gpuNameRaw: AMD Radeon RX 5700 XT
-    value: 200
-  - gpuNameRaw: NVIDIA GeForce RTX 2060 SUPER
-    value: 187
-  - gpuNameRaw: eVGA NVIDIA GeForce RTX 3060
-    value: 184
+  - gpuNameRaw: AMD Radeon PRO W7900
+    value: 533
   - gpuNameRaw: AMD Radeon RX 5700
     value: 173
+  - gpuNameRaw: AMD Radeon RX 5700 XT
+    value: 200
+  - gpuNameRaw: AMD Radeon RX 6600 XT
+    value: 207
+  - gpuNameRaw: AMD Radeon RX 6700 XT
+    value: 266
+  - gpuNameRaw: AMD Radeon RX 6750 XT
+    value: 275
+  - gpuNameRaw: AMD Radeon RX 6800
+    value: 340
+  - gpuNameRaw: AMD Radeon RX 6800 XT
+    value: 400
+  - gpuNameRaw: AMD Radeon RX 7600
+    value: 214
+  - gpuNameRaw: AMD Radeon RX 7700S
+    value: 204
+  - gpuNameRaw: AMD Radeon RX 7800 XT
+    value: 382
+  - gpuNameRaw: AMD Radeon RX 7900 XT
+    value: 513
+  - gpuNameRaw: AMD Radeon RX 7900 XTX
+    value: 592
+  - gpuNameRaw: ASUS NVIDIA GeForce RTX 5090
+    value: 867
+  - gpuNameRaw: eVGA NVIDIA GeForce RTX 3060
+    value: 184
   - gpuNameRaw: Gigabyte AMD Radeon RX 6600
     value: 169
-  - gpuNameRaw: Sapphire AMD Radeon RX 590
-    value: 105
+  - gpuNameRaw: Gigabyte AMD Radeon RX 9070
+    value: 471
+  - gpuNameRaw: Intel BMG G21
+    value: 246
+  - gpuNameRaw: MSI NVIDIA GeForce RTX 4060
+    value: 227
+  - gpuNameRaw: NVIDIA GeForce RTX 2060 SUPER
+    value: 187
+  - gpuNameRaw: NVIDIA GeForce RTX 3060 Ti
+    value: 252
+  - gpuNameRaw: NVIDIA GeForce RTX 3070
+    value: 282
+  - gpuNameRaw: NVIDIA GeForce RTX 3070 Ti
+    value: 310
+  - gpuNameRaw: NVIDIA GeForce RTX 3080
+    value: 363
+  - gpuNameRaw: NVIDIA GeForce RTX 3080 Ti
+    value: 399
+  - gpuNameRaw: NVIDIA GeForce RTX 3090
+    value: 411
+  - gpuNameRaw: NVIDIA GeForce RTX 4080
+    value: 584
+  - gpuNameRaw: NVIDIA GeForce RTX 4090
+    value: 765
+  - gpuNameRaw: NVIDIA RTX 4000 Ada Generation
+    value: 285
+  - gpuNameRaw: NVIDIA RTX 6000 Ada Generation
+    value: 612
   - gpuNameRaw: NVIDIA RTX A1000
     value: 92
+  - gpuNameRaw: Sapphire AMD Radeon AI PRO R9700
+    value: 552
+  - gpuNameRaw: Sapphire AMD Radeon RX 590
+    value: 105
+  - gpuNameRaw: XFX AMD Radeon RX 7700 XT
+    value: 349
+  - gpuNameRaw: XFX AMD Radeon RX 7700S
+    value: 230

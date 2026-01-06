@@ -87,6 +87,9 @@ model MetricDefinition {
   // For specs: maps to field name in gpu-specs YAML
   gpuField          String?      // e.g., "fp32TFLOPS"
 
+  // For benchmarks: number of public benchmark results this metric is based on
+  collectedSamples  Int?
+
   values            GpuMetricValue[]
 
   createdAt         DateTime @default(now())

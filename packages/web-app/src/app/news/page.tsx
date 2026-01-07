@@ -34,28 +34,22 @@ export default async function Page(): Promise<ReactNode> {
 
   return (
     <main className="max-w-4xl mx-auto p-6">
-      <h1 className="text-3xl font-bold mb-8">News</h1>
-
       {/* Market Reports Section */}
       {marketReports.length > 0 && (
-        <section className="mb-8">
-          <h2 className="text-2xl font-semibold mb-4">Market Reports</h2>
-          <div className="space-y-4">
-            {marketReports.map((report) => (
-              <MarketReportSummary key={report.slug} report={report} />
-            ))}
-          </div>
+        <section>
+          <h1 className="mt-4">Market Reports</h1>
+          {marketReports.map((report) => (
+            <MarketReportSummary key={report.slug} report={report} />
+          ))}
         </section>
       )}
 
       {/* News Articles Section */}
       <section>
-        <h2 className="text-2xl font-semibold mb-4">Articles</h2>
-        <div className="space-y-6">
-          {articles.map((article) => (
-            <ArticleSummary key={article.id} article={article} />
-          ))}
-        </div>
+        <h1 className="mt-5">Other News</h1>
+        {articles.map((article) => (
+          <ArticleSummary key={article.id} article={article} />
+        ))}
       </section>
     </main>
   )

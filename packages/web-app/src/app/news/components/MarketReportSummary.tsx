@@ -10,7 +10,7 @@ export function MarketReportSummary({
   report,
 }: MarketReportSummaryProps): ReactNode {
   return (
-    <article className="p-6 mt-5">
+    <article className="p-6 mt-2 mb-5">
       <h3>
         <a href={`/gpu/market-report/${report.slug}`}>{report.title}</a>
       </h3>

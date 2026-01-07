@@ -8,7 +8,7 @@ interface ArticleSummaryProps {
 
 export function ArticleSummary({ article }: ArticleSummaryProps): ReactNode {
   return (
-    <article className="p-6 mt-5">
+    <article className="p-6 mt-2 mb-5">
       <h2>
         <a href={`/news/${article.slug}`}>{article.title}</a>
       </h2>

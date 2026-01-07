@@ -1,0 +1,44 @@
+# yaml-language-server: $schema=./news-article.schema.json
+id: gpu0106jan2026xpn
+slug: january-2026-gpu-expansion
+title: "5 New GPUs Added: RTX 4060 Ti, RTX 3090 Ti, and More"
+content: |
+  Just added five GPUs to the database tonight. A mix of gaming cards I'd been meaning to add and some newer workstation hardware.
+
+  ## Gaming Cards
+
+  Two NVIDIA cards that were gaps in the lineup:
+
+  - [NVIDIA GeForce RTX 4060 Ti](/gpu/learn/card/nvidia-geforce-rtx-4060-ti) - The mid-range Ada card. 4,352 CUDA cores, 8GB GDDR6, $399 MSRP. There's also a 16GB variant at $499. Solid 1080p card, though the 128-bit bus raised some eyebrows at launch.
+
+  - [NVIDIA GeForce RTX 3090 Ti](/gpu/learn/card/nvidia-geforce-rtx-3090-ti) - The fully unlocked GA102. All 84 SMs enabled, 24GB GDDR6X at 21 Gbps, first GeForce to break 1 TB/s memory bandwidth. Launched at $1,999 and ate 450W doing it.
+
+  ## Workstation Cards
+
+  Three professional GPUs focused on AI inference:
+
+  - [AMD Radeon AI PRO R9700](/gpu/learn/card/amd-radeon-ai-pro-r9700) - AMD's RDNA 4 workstation card. 32GB GDDR6, 47.8 TFLOPS FP32, 128 AI accelerators. $1,299 and aimed squarely at local AI workloads.
+
+  - [Intel Arc Pro B50](/gpu/learn/card/intel-arc-pro-b50) - The compact Xe2 option. 16GB, 70W TDP, no external power needed. $349 gets you 170 INT8 TOPS in a low-profile card.
+
+  - [Intel Arc Pro B60](/gpu/learn/card/intel-arc-pro-b60) - Bigger Xe2 with 24GB and 200W TDP. 197 INT8 TOPS. Intel's pitching it as "LLM inference ready" at $599.
+
+  ## What's Next
+
+  Still working through some older cards I want to add. If there's a GPU you're looking for that's not in the database, let me know.
+status: PUBLISHED
+tags:
+  - update
+  - nvidia
+  - amd
+  - intel
+  - database
+  - rtx-40-series
+  - rtx-30-series
+  - rdna-4
+  - xe2
+  - workstation
+authorFullName: "Scott Willeke"
+createdAt: "2026-01-07T04:00:00Z"
+updatedAt: "2026-01-07T04:00:00Z"
+publishedAt: "2026-01-07T04:00:00Z"

@@ -1,0 +1,162 @@
+# yaml-language-server: $schema=./gpu-spec.schema.json
+name: nvidia-geforce-rtx-4060-ti
+label: NVIDIA GeForce RTX 4060 Ti
+category: gaming
+msrpUSD: 399
+tensorCoreCount: 136
+fp32TFLOPS: 22.06
+fp16TFLOPS: 176.5
+int8TOPS: 353
+memoryCapacityGB: 8
+memoryBandwidthGBs: 288
+maxTDPWatts: 160
+gpuArchitecture: ada
+supportedHardwareOperations:
+  - FP16
+  - FP32
+  - INT8
+  - INT4
+  - TF32
+  - BF16
+  - FP8
+supportedCUDAComputeCapability: 8.9
+releaseDate: "2023-05-24"
+lastModified: "2026-01-06T00:00:00Z"
+
+summary: |
+  The NVIDIA GeForce RTX 4060 Ti is a mid-range gaming graphics card released in May 2023,
+  featuring the Ada Lovelace architecture based on the AD106-350 GPU. It offers 4,352 CUDA cores,
+  136 4th-generation tensor cores, and 34 3rd-generation RT cores. The card is available in both
+  8GB and 16GB GDDR6 variants, with the 8GB model launching at $399 USD and the 16GB model at $499 USD
+  in July 2023. With a 128-bit memory interface running at 18 Gbps, it delivers 288 GB/s bandwidth
+  complemented by an expanded 32MB L2 cache (8x larger than RTX 3060 Ti). The RTX 4060 Ti provides
+  22.06 TFLOPS of FP32 performance and 353 AI TOPS for INT8 workloads with sparsity, making it
+  suitable for 1080p gaming and AI inference tasks. Notably, it uses a PCIe 4.0 x8 interface rather
+  than x16, and supports DLSS 3 with frame generation, AV1 encoding via 8th-gen NVENC, and has a
+  TDP of 160W for the 8GB model. The card uses the same PG190 board design as the RTX 3060 Ti,
+  with SKU 361 for 8GB and SKU 363 for 16GB variants.
+
+manufacturerIdentifiers:
+  - type: board_id
+    value: PG190 SKU 361
+  - type: nvpn
+    value: "900-1G141-2560-000"
+
+thirdPartyProducts:
+  # ASUS
+  - company: ASUS
+    productName: TUF Gaming GeForce RTX 4060 Ti 8GB GDDR6 OC Edition
+    identifier: TUF-RTX4060TI-O8G-GAMING
+    identifierType: model_number
+  - company: ASUS
+    productName: Dual GeForce RTX 4060 Ti OC Edition 8GB GDDR6
+    identifier: DUAL-RTX4060TI-O8G
+    identifierType: model_number
+  - company: ASUS
+    productName: Dual GeForce RTX 4060 Ti 8GB GDDR6
+    identifier: DUAL-RTX4060TI-8G
+    identifierType: model_number
+  - company: ASUS
+    productName: Dual GeForce RTX 4060 Ti White OC Edition 8GB GDDR6
+    identifier: DUAL-RTX4060TI-O8G-WHITE
+    identifierType: model_number
+  - company: ASUS
+    productName: Dual GeForce RTX 4060 Ti OC Edition 16GB GDDR6
+    identifier: DUAL-RTX4060TI-O16G
+    identifierType: model_number
+  # MSI
+  - company: MSI
+    productName: GeForce RTX 4060 Ti GAMING X 8G
+    identifier: GeForce RTX 4060 Ti GAMING X 8G
+    identifierType: model_number
+  - company: MSI
+    productName: GeForce RTX 4060 Ti GAMING X 16G
+    identifier: GeForce RTX 4060 Ti GAMING X 16G
+    identifierType: model_number
+  - company: MSI
+    productName: GeForce RTX 4060 Ti VENTUS 2X BLACK 16G OC
+    identifier: GeForce RTX 4060 Ti VENTUS 2X BLACK 16G OC
+    identifierType: model_number
+  - company: MSI
+    productName: GeForce RTX 4060 Ti VENTUS 3X 16G OC
+    identifier: GeForce RTX 4060 Ti VENTUS 3X 16G OC
+    identifierType: model_number
+  # Gigabyte
+  - company: Gigabyte
+    productName: GeForce RTX 4060 Ti GAMING OC 8G
+    identifier: GV-N406TGAMING-OC-8GD
+    identifierType: model_number
+  - company: Gigabyte
+    productName: GeForce RTX 4060 Ti GAMING OC 16G
+    identifier: GV-N406TGAMING-OC-16GD
+    identifierType: model_number
+  # Zotac
+  - company: Zotac
+    productName: GAMING GeForce RTX 4060 Ti 8GB Twin Edge
+    identifier: ZT-D40610E-10M
+    identifierType: model_number
+  - company: Zotac
+    productName: GAMING GeForce RTX 4060 Ti 16GB Twin Edge
+    identifier: ZT-D40620E-10M
+    identifierType: model_number
+  - company: Zotac
+    productName: GeForce RTX 4060 Ti AMP 16GB
+    identifier: ZT-D40620F-10SMP
+    identifierType: model_number
+  # PNY
+  - company: PNY
+    productName: GeForce RTX 4060 Ti 8GB VERTO Dual Fan
+    identifier: VCG4060T8DFXPB1
+    identifierType: model_number
+  - company: PNY
+    productName: GeForce RTX 4060 Ti 8GB VERTO OC Dual Fan
+    identifier: VCG4060T8DFXPB1-O
+    identifierType: model_number
+  - company: PNY
+    productName: GeForce RTX 4060 Ti 16GB VERTO Dual Fan
+    identifier: VCG4060T16DFXPB1
+    identifierType: model_number
+  - company: PNY
+    productName: GeForce RTX 4060 Ti 16GB XLR8 Gaming VERTO OC Dual Fan
+    identifier: VCG4060T16DFXPB1-O
+    identifierType: model_number
+  # Palit
+  - company: Palit
+    productName: GeForce RTX 4060 Ti 8GB Dual
+    identifier: NE6406T019P1-1060D
+    identifierType: model_number
+  - company: Palit
+    productName: GeForce RTX 4060 Ti 8GB StormX
+    identifier: NE6406T019P1-1060F
+    identifierType: model_number
+
+references:
+  - https://www.nvidia.com/en-us/geforce/graphics-cards/40-series/rtx-4060-4060ti/
+  - https://www.nvidia.com/en-us/geforce/news/geforce-rtx-4060-4060ti/
+  - https://images.nvidia.com/aem-dam/Solutions/Data-Center/l4/nvidia-ada-gpu-architecture-whitepaper-v2.1.pdf
+  - https://en.wikipedia.org/wiki/GeForce_RTX_40_series
+  - https://videocardz.com/nvidia/geforce-40/geforce-rtx-4060-ti
+  - https://videocardz.com/newz/nvidia-geforce-rtx-4060-ti-16gb-to-feature-ad106-351-gpu-and-165w-tdp
+  - https://pcpartpicker.com/product/63wmP6/nvidia-founders-edition-geforce-rtx-4060-ti-8-gb-video-card-900-1g141-2560-000
+  - https://www.asus.com/motherboards-components/graphics-cards/tuf-gaming/tuf-rtx4060ti-o8g-gaming/
+  - https://www.asus.com/motherboards-components/graphics-cards/dual/dual-rtx4060ti-o8g/
+  - https://www.msi.com/Graphics-Card/GeForce-RTX-4060-Ti-GAMING-X-8G
+  - https://www.gigabyte.com/Graphics-Card/GV-N406TGAMING-OC-8GD
+  - https://www.zotac.com/us/product/graphics_card/zotac-gaming-geforce-rtx-4060-ti-8gb-twin-edge
+  - https://www.pny.com/pny-geforce-rtx-4060-ti-8gb-verto-dual-fan
+  - https://www.palit.com/palit/vgapro.php?id=4838&lang=en
+
+notes:
+  - MSRP of $399 USD for the 8GB variant sourced from NVIDIA's official announcement on May 18, 2023. A 16GB variant was released on July 18, 2023, at $499 USD. Both variants share identical specifications except for memory capacity and TDP (160W for 8GB, 165W for 16GB).
+  - FP32 TFLOPS of 22.06 sourced from NVIDIA official specifications. Calculated as 4,352 CUDA cores x 2.535 GHz boost clock x 2 ops/cycle = 22.06 TFLOPS. Ada Lovelace architecture maintains the dual FP32 datapath introduced in Ampere.
+  - FP16 TFLOPS of 176.5 represents Peak FP16 Tensor TFLOPS with sparsity enabled on 4th-generation tensor cores. Dense FP16 performance is approximately 88.25 TFLOPS. NVIDIA publishes sparse tensor performance as the headline metric.
+  - INT8 TOPS of 353 is peak INT8 TOPS using the sparsity feature on 4th-generation tensor cores. Dense INT8 performance is approximately 176.5 TOPS.
+  - Memory bandwidth calculated as 128-bit interface x 18 Gbps = 288 GB/s. The card features an expanded 32MB L2 cache, 8x larger than RTX 3060 Ti, to compensate for the narrower memory bus.
+  - The RTX 4060 Ti uses a PCIe 4.0 x8 interface rather than the full x16 used by other RTX 40 series cards. This is the first consumer RTX card to use x8 lanes.
+  - Supported hardware operations include FP32, FP16, FP8 (E4M3/E5M2), INT8, INT4, TF32, and BF16. Ada Lovelace's 4th-generation tensor cores add FP8 support compared to Ampere's 3rd-generation cores. Note that while the tensor cores support FP8 data types, the Transformer Engine feature (automatic FP8/FP16 dynamic precision switching) is only available on datacenter GPUs like H100 and requires specific software support.
+  - Board identifier PG190 SKU 361 for the 8GB model (SKU 363 for 16GB). Interestingly, the RTX 4060 Ti uses the same PG190 board design as the RTX 3060 Ti, which is uncommon for next-generation GPU upgrades.
+  - The GPU uses AD106-350-A1 chip for the 8GB variant and AD106-351 for the 16GB variant. The AD106 die contains 34 enabled SMs out of a possible total.
+  - NVIDIA Founders Edition part number (NVPN) 900-1G141-2560-000 for the 8GB model sourced from PCPartPicker and retail product listings.
+  - Third-party manufacturers include ASUS, MSI, Gigabyte, Zotac, PNY, and Palit. EVGA did not produce RTX 4060 Ti cards as they exited the GPU market in September 2022.
+  - Model numbers and part numbers sourced from official manufacturer product pages and TechPowerUp GPU Database.
+  - The card received criticism at launch for having only 8GB of VRAM compared to the RTX 3060's 12GB, despite being a higher-tier product.

@@ -1,0 +1,85 @@
+# yaml-language-server: $schema=./gpu-spec.schema.json
+name: intel-arc-pro-b50
+label: Intel Arc Pro B50
+category: workstation
+msrpUSD: 349
+tensorCoreCount: 128
+fp32TFLOPS: 10.65
+fp16TFLOPS: 21.3
+int8TOPS: 170
+memoryCapacityGB: 16
+memoryBandwidthGBs: 224
+maxTDPWatts: 70
+gpuArchitecture: Xe2
+supportedHardwareOperations:
+  - FP32
+  - FP16
+  - FP64
+  - BF16
+  - INT8
+  - INT4
+releaseDate: "2025-09-03"
+lastModified: "2026-01-06T00:00:00Z"
+
+manufacturerIdentifiers:
+  - type: product_code
+    value: "33P6PEB0BB"
+  - type: spec_code
+    value: "242615"
+
+summary: |
+  The Intel Arc Pro B50 is a compact, power-efficient workstation GPU released on September 3, 2025, built on Intel's Xe2
+  (Battlemage) architecture using TSMC's 5nm process. It features 16 Xe cores, 128 XMX (Xe Matrix Extension) engines for
+  AI acceleration, and 16 dedicated ray tracing units, with 19.6 billion transistors on a 272mm² die. The GPU delivers
+  10.65 TFLOPS of FP32 compute performance and 21.3 TFLOPS of FP16 performance, paired with 16GB of GDDR6 memory on a
+  128-bit interface running at 14 Gbps for 224 GB/s of memory bandwidth. With a remarkably low 70W TBP (Total Board Power),
+  the Arc Pro B50 requires no external power connectors and draws power entirely from the PCIe slot, making it ideal for
+  compact workstations and SFF (Small Form Factor) systems. The card ships with both standard and low-profile I/O brackets
+  in a dual-slot form factor. The 128 XMX engines deliver up to 170 TOPS of INT8 AI performance, supporting multiple
+  precision formats including FP16, BF16, INT8, INT4, and INT2 for AI inference and machine learning workloads. The XMX
+  units support matrix operations with FP16 and BF16 multiply operations with either 16-bit or 32-bit accumulation,
+  providing flexibility for various AI and professional applications. Clock speeds range from 1700 MHz base to 2600 MHz
+  boost, and the GPU supports PCIe 5.0 x8 interface. Display connectivity includes four DisplayPort 2.1 outputs with UHBR
+  13.5 support, capable of driving up to four displays at resolutions up to 7680x4320 (8K) at 60Hz. The card supports
+  modern APIs including DirectX 12 Ultimate, Vulkan 1.4, OpenGL 4.6, and OpenCL 3.0, along with Intel's oneAPI, OpenVINO,
+  XeSS upscaling technology, and PyTorch IPEX extension for AI/ML frameworks. Announced at Computex 2025 in May with an
+  initial MSRP target of $299, the final launch price was adjusted to $349 due to memory pricing and tariff considerations,
+  with Intel offsetting the price increase by enhancing performance specifications. Available through Intel-authorized
+  resellers starting September 2025, the Arc Pro B50 targets entry-level professional workstation users in fields like
+  3D rendering, video editing, CAD, and AI development, offering exceptional power efficiency and compact form factor at
+  an accessible price point.
+
+references:
+  - https://www.intel.com/content/www/us/en/products/sku/242615/intel-arc-pro-b50-graphics/specifications.html
+  - https://www.intel.com/content/www/us/en/products/sku/242615/intel-arc-pro-b50-graphics/ordering.html
+  - https://www.intel.com/content/www/us/en/products/docs/discrete-gpus/arc/workstations/b-series/overview.html
+  - https://newsroom.intel.com/client-computing/computex-intel-unveils-new-gpus-ai-workstations
+  - https://videocardz.com/newz/intel-launches-arc-pro-b50-graphics-card-at-349
+  - https://www.tomshardware.com/pc-components/gpus/intel-launches-usd299-arc-pro-b50-with-16gb-of-memory-project-battlematrix-workstations-with-24gb-arc-pro-b60-gpus
+  - https://www.storagereview.com/review/intel-arc-pro-b50-gpu-review-an-affordable-low-power-workstation-gpu
+  - https://www.guru3d.com/story/intel-arc-pro-b50-gpu-launched-at-for-compact-workstations/
+  - https://www.pugetsystems.com/labs/articles/intel-arc-pro-b50-review/
+  - https://www.topcpu.net/en/cpu/intel-arc-pro-b50
+  - https://www.intel.com/content/www/us/en/docs/vtune-profiler/user-guide/2025-1/xve-fp16-bf16-int8-int4-int2-xmx-instructions.html
+  - https://chipsandcheese.com/p/intels-battlemage-architecture
+  - https://www.hwcooling.net/en/batttlemage-details-of-intel-xe2-gpu-architecture-analysis/
+
+notes:
+  - FP32 TFLOPS of 10.65 sourced directly from Intel's official product specifications page at intel.com.
+  - FP16 TFLOPS of 21.3 sourced from TopCPU.net and StorageReview.com. This represents a 2:1 ratio of FP16 to FP32 performance, which is typical for XMX engines.
+  - INT8 TOPS of 170 sourced from Intel's official specifications and confirmed across multiple sources including StorageReview and Tom's Hardware.
+  - Memory bandwidth calculated as 128-bit interface × 14 Gbps ÷ 8 bits/byte = 224 GB/s, confirmed by Intel official specifications.
+  - TensorCoreCount represents the 128 XMX (Xe Matrix Extension) engines, which are Intel's equivalent to NVIDIA's Tensor Cores and AMD's AI Accelerators.
+  - Supported hardware operations based on Intel's XMX documentation showing support for FP16, BF16, INT8, INT4, and INT2 matrix operations with 16-bit or 32-bit accumulation. FP32 and FP64 operations are supported on general-purpose shader units (XVEs). Source from Intel VTune Profiler documentation.
+  - MSRP of $349 USD sourced from Intel's official launch announcement on September 3, 2025. Originally announced at Computex 2025 (May 2025) with $299 target price, but adjusted to $349 at launch due to memory pricing and tariff considerations. Sources from VideoCardz.net and Tom's Hardware.
+  - Release date of September 3, 2025 confirmed by multiple sources. Pre-orders began September 4, 2025, with full retail availability on September 18, 2025 via Newegg and authorized resellers.
+  - Product code 33P6PEB0BB and spec code 242615 sourced from Intel's official ordering and compliance information page.
+  - GPU architecture is Xe2 (codename Battlemage), manufactured on TSMC's 5nm (N5) process with 19.6 billion transistors on a 272mm² die. Specific GPU model is BMG-G21.
+  - The card features 2,048 FP32 cores organized into 16 Xe cores across 4 render slices, with 128 vector engines for general-purpose compute and 128 XMX engines for AI workloads.
+  - Power consumption of 70W TBP represents total board power with no external power connectors required - all power is drawn from the PCIe slot.
+  - The Arc Pro B50 is a dual-slot card that ships with both standard and low-profile brackets for SFF compatibility.
+  - "Clock speeds: base 1700 MHz, boost up to 2600 MHz as specified by Intel."
+  - Display outputs include four DisplayPort 2.1 connections with UHBR 13.5 support, capable of 7680x4320@60Hz (8K).
+  - API support includes DirectX 12 Ultimate, Vulkan 1.4, OpenGL 4.6, OpenCL 3.0, Intel oneAPI, OpenVINO, XeSS, and PyTorch IPEX extension.
+  - No OEM/third-party products documented yet as the GPU is newly launched (September 2025) and OEM adoption is still ramping up. Dell, HP, Lenovo, and Supermicro part numbers were not available in public sources at time of research.
+  - Performance analysis from Puget Systems and StorageReview confirms the Arc Pro B50 delivers competitive performance in professional workloads including 3D rendering, video editing, and AI inference at its price point.

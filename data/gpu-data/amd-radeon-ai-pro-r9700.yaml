@@ -1,0 +1,91 @@
+# yaml-language-server: $schema=./gpu-spec.schema.json
+name: amd-radeon-ai-pro-r9700
+label: AMD Radeon AI PRO R9700
+category: workstation
+msrpUSD: 1299
+tensorCoreCount: 128
+fp32TFLOPS: 47.8
+fp16TFLOPS: 96
+int8TOPS: 192
+memoryCapacityGB: 32
+memoryBandwidthGBs: 640
+maxTDPWatts: 300
+gpuArchitecture: RDNA 4
+supportedHardwareOperations:
+  - FP16
+  - FP32
+  - BF16
+  - INT8
+  - INT4
+  - FP8
+releaseDate: "2025-07-23"
+lastModified: "2026-01-06T00:00:00Z"
+
+summary: |
+  The AMD Radeon AI PRO R9700 is a professional AI workstation GPU released on July 23, 2025,
+  built on AMD's RDNA 4 architecture using the Navi 48 GPU die manufactured on TSMC's 4nm process.
+  Featuring 64 compute units with 4,096 stream processors and 128 second-generation AI Accelerators,
+  the card is designed for local AI inference, model fine-tuning, and complex creative workloads.
+  It includes 32GB of high-speed GDDR6 memory on a 256-bit interface running at 20 Gbps, delivering
+  640 GB/s of memory bandwidth. The GPU delivers 47.8 TFLOPS of FP32 performance and 96 TFLOPS of FP16
+  (Half-Precision) performance, with clock speeds ranging from 1,620 MHz base to 2,920 MHz boost
+  (game clock of 2,350 MHz). The 2nd-generation AI Accelerators support FP8, FP16, and INT8 precisions
+  with sparsity acceleration enabling up to 4× FP16 and 8× INT8 throughput for AI workloads, reaching
+  up to 1,531 TOPS of INT4 sparse AI performance. The card features a compact dual-slot design with
+  a blower-style cooling solution and a 300W TDP, using PCIe 5.0 connectivity for maximum bandwidth.
+  AMD positions this as their flagship AI workstation GPU, fully compatible with the ROCm open software
+  platform with support for PyTorch, ONNX Runtime, and TensorFlow frameworks. Display connectivity
+  includes four DisplayPort 2.1 outputs. Available initially in SI-built workstation systems from
+  Boxx and Velocity Micro, with standalone cards from ASRock, ASUS, Gigabyte, PowerColor, Sapphire,
+  XFX, and Yeston available later in Q3 2025. Priced at $1,299 USD, it targets AI developers, data
+  scientists, and creative professionals who need substantial local AI inference capability.
+
+manufacturerIdentifiers:
+  - type: opn
+    value: 100-300000008
+
+thirdPartyProducts:
+  - company: XFX
+    productName: XFX AMD Radeon AI Pro R9700 32GB GDDR6 4xDP
+    identifier: RX-9R700AMCDF
+    identifierType: model_number
+  - company: ASRock
+    productName: ASRock AMD Radeon AI PRO R9700 32GB GDDR6
+    identifier: RADEON AI PRO R9700 32G
+    identifierType: model_number
+  - company: PowerColor
+    productName: PowerColor Radeon AI PRO R9700 32GB
+    identifier: AXAIRPR9700 32GBDP
+    identifierType: model_number
+  - company: Sapphire
+    productName: Sapphire Radeon AI PRO R9700 32GB
+    identifier: 32-700-20G-00
+    identifierType: model_number
+
+references:
+  - https://www.amd.com/en/products/graphics/workstations/radeon-ai-pro/ai-9000-series/amd-radeon-ai-pro-r9700.html
+  - https://www.amd.com/en/blogs/2025/amd-radeon-ai-pro-r9700-to-be-available-in-workstation.html
+  - https://www.xfxforce.com/shop/xfx-amd-radeon-ai-pro-r9700-32gb-gddr6-4xdp-amd-rdna-tm-4
+  - https://www.guru3d.com/story/amd-radeon-ai-pro-r9700-gpu-launch-date-and-specifications/
+  - https://www.guru3d.com/story/amd-radeon-ai-pro-r9700-gddr6-price-and-release-date/
+  - https://www.newegg.com/insider/news-amd-radeon-ai-pro-r9700-launches-july-23-what-you-need-to-know/
+  - https://videocardz.net/amd-radeon-ai-pro-r9700
+  - https://www.tweaktown.com/news/105297/amd-radeon-ai-pro-r9700-gpu-announced-rdna-4-and-32gb-of-memory/index.html
+  - https://technical.city/en/video/Radeon-AI-PRO-R9700
+  - https://cputronic.com/en/gpu/amd-radeon-ai-pro-r9700
+
+notes:
+  - MSRP of $1,299 USD sourced from AMD official blog post and retail listings. Available July 23, 2025 in SI-built systems, with standalone cards from board partners available later in Q3 2025.
+  - FP32 TFLOPS of 47.8 calculated as 4,096 stream processors × 2,920 MHz boost clock × 4 ops/cycle (dual-issue) ÷ 1,000,000 = 47.8 TFLOPS. RDNA 4 architecture features dual-issue FP32 capability, effectively doubling shader throughput compared to single-issue designs.
+  - FP16 TFLOPS of 96 represents Peak Half-Precision performance as specified by AMD. RDNA 4 AI Accelerators provide 2:1 FP16 to FP32 performance ratio on AI-focused operations.
+  - INT8 TOPS of 192 is estimated based on 2:1 INT8 to FP16 ratio typical for RDNA 4 architecture. AMD publishes up to 1,531 TOPS for INT4 sparse AI performance with sparsity acceleration enabled.
+  - tensorCoreCount of 128 represents the 2nd-generation AI Accelerators (2 per compute unit × 64 compute units), which are AMD's dedicated matrix multiplication units for AI workloads.
+  - Memory bandwidth calculated as 256-bit interface × 20 Gbps ÷ 8 bits/byte = 640 GB/s, confirmed by AMD specifications.
+  - RDNA 4 architecture includes redesigned 3rd-generation Ray Tracing Accelerators and 2nd-generation AI Accelerators with support for sparsity acceleration.
+  - Supported hardware operations include FP8, FP16, BF16, INT8, and INT4 on AI Accelerators, with FP32 operations on general shader units. Sparsity acceleration enables up to 4× FP16 and 8× INT8 throughput.
+  - The GPU uses the Navi 48 GPU die manufactured on TSMC's 4nm process with 64 Compute Units.
+  - Clock speeds specified by AMD as Base Clock 1,620 MHz, Game Clock 2,350 MHz, Boost Clock up to 2,920 MHz.
+  - Board partners include ASRock, ASUS, Gigabyte, PowerColor, Sapphire, XFX, and Yeston. Part numbers sourced from XFX official product page and third-party retail listings.
+  - The card features a compact dual-slot design with blower-style cooling, four DisplayPort 2.1 outputs, and PCIe 5.0 x16 interface.
+  - AMD positioning emphasizes ROCm platform compatibility with PyTorch, ONNX Runtime, TensorFlow, and other AI/ML frameworks for local AI inference and model fine-tuning workloads.
+  - System integrators offering workstations with R9700 include Boxx and Velocity Micro at launch.

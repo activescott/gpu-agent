@@ -1,0 +1,146 @@
+# yaml-language-server: $schema=./gpu-spec.schema.json
+name: nvidia-geforce-rtx-3090-ti
+label: NVIDIA GeForce RTX 3090 Ti
+category: gaming
+msrpUSD: 1999
+tensorCoreCount: 336
+fp32TFLOPS: 40.00
+fp16TFLOPS: 159.99
+int8TOPS: 320
+memoryCapacityGB: 24
+memoryBandwidthGBs: 1008
+maxTDPWatts: 450
+gpuArchitecture: Ampere
+supportedHardwareOperations:
+  - FP16
+  - FP32
+  - FP64
+  - INT8
+  - INT4
+  - TF32
+  - BF16
+supportedCUDAComputeCapability: 8.6
+releaseDate: "2022-03-29"
+lastModified: "2026-01-06T00:00:00Z"
+
+summary: |
+  The NVIDIA GeForce RTX 3090 Ti is NVIDIA's ultimate consumer graphics card launched in March 2022,
+  representing the fully unlocked Ampere architecture based on the GA102-350-A1 GPU. Unlike the RTX 3090
+  which used 82 of 84 streaming multiprocessors, the 3090 Ti utilizes all 84 SMs, delivering 10,752 CUDA
+  cores, 336 3rd-generation tensor cores, and 84 2nd-generation RT cores. Built on Samsung's 8nm process
+  with 28.3 billion transistors and a die size of 628 mm², it features 24GB of GDDR6X memory at 21 Gbps
+  on a 384-bit bus, delivering a groundbreaking 1,008 GB/s of memory bandwidth - the first GeForce card
+  to surpass 1 TB/s. With a TDP of 450W (100W higher than the RTX 3090), it delivers 40 Shader-TFLOPs,
+  78 RT-TFLOPs, and 320 Tensor-TFLOPs. The use of Micron's 2GB GDDR6X modules (vs 1GB on RTX 3090)
+  reduced module count from 24 to 12, improving energy efficiency. The 3rd-generation Tensor Cores
+  support fine-grained structured sparsity (2:4 pattern), enabling up to 640 INT8 TOPS with sparsity
+  and 160 FP16 TFLOPS for sparse tensor operations. The RTX 3090 Ti uses a PCI-Express 4.0 x16
+  interface and was positioned as the fastest GeForce GPU available, targeting extreme 4K/8K gaming
+  and professional creative workflows. It features a new 12-pin power connector (16-pin on some AIB
+  models) and requires robust cooling due to its high power draw.
+
+manufacturerIdentifiers:
+  - type: board_id
+    value: PG136C
+  - type: nvpn
+    value: "900-1G136-2505-000"
+
+thirdPartyProducts:
+  - company: ASUS
+    productName: TUF Gaming GeForce RTX 3090 Ti OC Edition
+    identifier: TUF-RTX3090TI-O24G-GAMING
+    identifierType: model_number
+  - company: MSI
+    productName: GeForce RTX 3090 Ti GAMING X TRIO
+    identifier: RTX 3090 Ti GAMING X TRIO 24G
+    identifierType: model_number
+  - company: MSI
+    productName: GeForce RTX 3090 Ti SUPRIM X
+    identifier: RTX 3090 Ti SUPRIM X 24G
+    identifierType: model_number
+  - company: MSI
+    productName: GeForce RTX 3090 Ti SUPRIM SE
+    identifier: RTX 3090 Ti SUPRIM SE 24G
+    identifierType: model_number
+  - company: Gigabyte
+    productName: GeForce RTX 3090 Ti GAMING OC
+    identifier: GV-N309TGAMING OC-24GD
+    identifierType: model_number
+  - company: Gigabyte
+    productName: GeForce RTX 3090 Ti GAMING
+    identifier: GV-N309TGAMING-24GD
+    identifierType: model_number
+  - company: Gigabyte
+    productName: AORUS GeForce RTX 3090 Ti XTREME WATERFORCE
+    identifier: GV-N309TAORUSX W-24GD
+    identifierType: model_number
+  - company: EVGA
+    productName: GeForce RTX 3090 Ti FTW3 Ultra Gaming
+    identifier: 24G-P5-4985-KR
+    identifierType: model_number
+  - company: EVGA
+    productName: GeForce RTX 3090 Ti FTW3 Gaming
+    identifier: 24G-P5-4983-KR
+    identifierType: model_number
+  - company: PNY
+    productName: XLR8 Gaming UPRISING EPIC-X RGB OC
+    identifier: VCG3090T24TFXMPB-O
+    identifierType: model_number
+  - company: PNY
+    productName: XLR8 Gaming UPRISING EPIC-X RGB
+    identifier: VCG3090T24TFXMPB
+    identifierType: model_number
+  - company: Zotac
+    productName: GAMING GeForce RTX 3090 Ti AMP Extreme Holo
+    identifier: ZT-A30910B-10P
+    identifierType: model_number
+  - company: Zotac
+    productName: GeForce RTX 3090 Ti PGF OC
+    identifier: ZT-A30910P-10P
+    identifierType: model_number
+  - company: Palit
+    productName: GeForce RTX 3090 Ti GameRock
+    identifier: NED309T019SB-1022G
+    identifierType: model_number
+  - company: Palit
+    productName: GeForce RTX 3090 Ti GameRock OC
+    identifier: NED309TS19SB-1022G
+    identifierType: model_number
+
+references:
+  - https://www.nvidia.com/en-us/geforce/graphics-cards/30-series/rtx-3090-3090ti/
+  - https://www.nvidia.com/en-us/geforce/news/geforce-rtx-3090-ti-out-now/
+  - https://www.nvidia.com/content/PDF/nvidia-ampere-ga-102-gpu-architecture-whitepaper-v2.1.pdf
+  - https://www.tomshardware.com/news/nvidia-geforce-rtx-3090-ti-launches-at-1999-dollars
+  - https://videocardz.com/nvidia/geforce-30/geforce-rtx-3090-ti
+  - https://www.anandtech.com/show/17334/nvidia-releases-geforce-rtx-3090-ti-ampere-the-allpowerful-
+  - https://www.techpowerup.com/289430/nvidia-geforce-rtx-3090-ti-to-feature-21-gbps-gddr6x-memory
+  - https://www.guru3d.com/news-story/geforce-rtx-3090-ti-specs-include-1tbs-memory-speed.html
+  - https://wccftech.com/roundup/nvidia-geforce-rtx-3090-ti/
+  - https://www.waredb.com/processor/nvidia-geforce-rtx-3090-ti
+  - https://pcpartpicker.com/product/C7bTwP/nvidia-geforce-rtx-3090-ti-24-gb-founders-edition-video-card-9001g1362505000
+  - https://www.tweaktown.com/news/84541/nvidia-pg136c-pcb-for-the-geforce-rtx-3090-ti-founders-edition/index.html
+  - https://us.msi.com/Graphics-Card/GeForce-RTX-3090-Ti-GAMING-X-TRIO-24G
+  - https://www.msi.com/Graphics-Card/GeForce-RTX-3090-Ti-SUPRIM-X-24G
+  - https://www.gigabyte.com/Graphics-Card/GV-N309TGAMING-OC-24GD
+  - https://www.evga.com/products/specs/gpu.aspx?pn=8c56db37-8817-4886-a232-2b7476eb92e1
+  - https://www.pny.com/geforce-rtx-3090ti-xlr8-gaming-uprising-epic-x-rgb-triple-fan
+  - https://www.zotac.com/us/product/graphics_card/zotac-gaming-geforce-rtx-3090-ti-amp-extreme-holo
+  - https://www.palit.com/palit/vgapro.php?id=4548&lang=en&pn=NED309T019SB-1022G
+
+notes:
+  - fp32TFLOPS of 40.00 calculated as 10,752 CUDA cores × 1.860 GHz boost clock × 2 ops/cycle = 40.00 TFLOPS. Ampere architecture features 2 FP32 ops per cycle through dedicated FP32 datapath and shared INT32/FP32 datapath. This represents approximately 11% increase over RTX 3090's 35.58 TFLOPS.
+  - fp16TFLOPS of 159.99 represents sparse FP16 Tensor Core performance using Ampere's 2:4 structured sparsity feature. Dense FP16 performance is approximately 80 TFLOPS (84 SMs × 4 tensor cores per SM × 256 FP16 FLOPS per cycle × 1.860 GHz). NVIDIA typically publishes sparse tensor performance for Ampere GPUs. This represents approximately 12% increase over RTX 3090's 142.74 sparse TFLOPS.
+  - int8TOPS of 320 represents sparse INT8 Tensor Core performance with 2:4 structured sparsity. Dense INT8 performance is approximately 160 TOPS. INT8 operations run at 2× the rate of FP16. With sparsity enabled, sparse INT8 reaches approximately 640 TOPS. This represents approximately 12% increase over RTX 3090's 285 sparse TOPS.
+  - All primary performance metrics (fp16TFLOPS, int8TOPS) represent sparse tensor operations following NVIDIA's published specifications for Ampere. Ampere's 2:4 structured sparsity feature is supported in TensorRT 8+, cuBLASLt, and compatible AI frameworks when models are appropriately pruned.
+  - Power figure of 450W is based on NVIDIA's TGP (Total Graphics Power) specification, representing a 100W increase over the RTX 3090's 350W TDP. This 28.6% power increase corresponds to the fully unlocked GA102 die and higher memory speeds.
+  - The RTX 3090 Ti uses all 84 of 84 possible streaming multiprocessors on the GA102-350-A1 die, making it the first fully unlocked GA102 GPU. Each SM contains 128 CUDA cores, 4 tensor cores, and 1 RT core, totaling 10,752 CUDA cores, 336 tensor cores, and 84 RT cores.
+  - Memory bandwidth calculated as 384-bit interface × 21 Gbps GDDR6X = 1,008 GB/s, making the RTX 3090 Ti the first GeForce card in history to surpass 1 TB/s memory bandwidth. This represents a 7.7% increase over the RTX 3090's 936.2 GB/s.
+  - The 3rd-generation Tensor Cores support TF32 (TensorFloat-32), BF16 (BFloat16), FP16, INT8, and INT4 precisions. INT8 operates at 2x the rate of FP16, and INT4 at 4x the FP16 rate. The sparsity feature provides 2x acceleration when enabled.
+  - FP64 (double precision) performance is 1:64 ratio of FP32, yielding approximately 625 GFLOPS.
+  - The RTX 3090 Ti uses Micron's 2GB GDDR6X memory modules (MT61K512M32KPA-21U) running at 21 Gbps, compared to 1GB modules at 19.5 Gbps on the RTX 3090. This reduced the module count from 24 to 12, improving power efficiency despite higher memory speeds.
+  - Released March 29, 2022 at $1,999 USD MSRP, positioned as the ultimate GeForce GPU and spiritual successor to the Titan series. The $500 premium over RTX 3090 reflected the fully unlocked die, faster memory, and higher power delivery requirements.
+  - MSRP of $1999 USD sourced from NVIDIA official product announcement at https://www.nvidia.com/en-us/geforce/news/geforce-rtx-3090-ti-out-now/ and https://www.tomshardware.com/news/nvidia-geforce-rtx-3090-ti-launches-at-1999-dollars
+  - NVIDIA Founders Edition uses board ID PG136C (revision of PG136 used on RTX 3090) and NVPN 900-1G136-2505-000 per PCPartPicker and TweakTown sources. The "C" revision accommodated the 12-pin power connector and higher power delivery requirements.
+  - Third-party products include AIB partner cards from ASUS (TUF Gaming), MSI (Gaming X Trio, SUPRIM X/SE), Gigabyte (Gaming OC, AORUS XTREME WATERFORCE), EVGA (FTW3), PNY (XLR8 UPRISING), Zotac (AMP Extreme Holo, PGF), and Palit (GameRock). Many AIB variants feature enhanced cooling solutions and power delivery to handle the 450W TDP.
+  - The RTX 3090 Ti features a new 12-pin PCIe Gen 5 power connector on the Founders Edition (compatible with included 3×8-pin adapter), while some AIB partners use three 8-pin connectors or other configurations to meet the 450W power requirement.

@@ -534,6 +534,7 @@ async function seedGpuMetricValues(prisma: PrismaClient): Promise<void> {
 
   // Seed benchmark values from benchmark data files
   let benchmarkValuesCount = 0
+  const unmappedGpus = new Set<string>()
   let benchmarkFiles: string[]
 
   try {
@@ -572,11 +573,25 @@ async function seedGpuMetricValues(prisma: PrismaClient): Promise<void> {
     }
 
     for (const result of benchmarkData.results) {
-      // Map GPU name
-      const mappedName =
-        gpuNameMappings[result.gpuNameRaw] || result.gpuNameMapped
+      // Map GPU name - check mapping file first, then fall back to gpuNameMapped
+      const mappingValue = gpuNameMappings[result.gpuNameRaw]
 
-      if (!mappedName || !gpuNames.has(mappedName)) {
+      // IGNORE means explicitly skip this GPU without logging
+      if (mappingValue === "IGNORE") {
+        continue
+      }
+
+      const mappedName = mappingValue || result.gpuNameMapped
+
+      if (!mappedName) {
+        unmappedGpus.add(result.gpuNameRaw)
+        continue
+      }
+      if (!gpuNames.has(mappedName)) {
+        // Mapped name doesn't exist in GPU table
+        console.warn(
+          `UNMAPPED_GPU: "${result.gpuNameRaw}" mapped to "${mappedName}" but GPU not found in database`,
+        )
         continue
       }
 
@@ -600,6 +615,14 @@ async function seedGpuMetricValues(prisma: PrismaClient): Promise<void> {
   console.log(`Upserted ${benchmarkValuesCount} benchmark metric values`)
 
   console.info("GPU metric values seeding complete")
+
+  if (unmappedGpus.size > 0) {
+    console.log(`\n⚠️  UNMAPPED BENCHMARK GPUS (${unmappedGpus.size} unique):`)
+    for (const gpuName of [...unmappedGpus].sort()) {
+      console.log(`  - ${gpuName}`)
+    }
+    console.log(`Add mappings to data/benchmark-data/gpu-name-mapping.yaml\n`)
+  }
 }
 
 /* eslint-disable unicorn/prefer-top-level-await -- because this file's tsconfig is unexpected (maybe this could be fixed with another tsconfig in the same dir?) */

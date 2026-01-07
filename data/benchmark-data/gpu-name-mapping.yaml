@@ -104,3 +104,27 @@
 # AMD Radeon RX 6800 Series
 "AMD Radeon RX 6800": "amd-radeon-rx-6800"
 "AMD Radeon RX 6800 XT": "amd-radeon-rx-6800-xt"
+
+# =============================================================================
+# IGNORED GPUs
+# Use "IGNORE" to silently skip GPUs without logging as unmapped
+# =============================================================================
+
+# NVIDIA RTX 20 Series (not tracked)
+"ASUS NVIDIA GeForce RTX 2070": IGNORE
+"NVIDIA GeForce RTX 2060": IGNORE
+"NVIDIA GeForce RTX 2060 SUPER": IGNORE
+"NVIDIA GeForce RTX 2070 SUPER": IGNORE
+"NVIDIA GeForce RTX 2080 Ti": IGNORE
+
+# Mobile/Laptop GPUs
+"AMD Radeon 8060S": IGNORE
+"NVIDIA GeForce RTX 3080 Laptop GPU + Intel UHD": IGNORE
+"XFX AMD Radeon RX 7700S": IGNORE
+
+# Integrated Graphics / APUs
+"AMD Phoenix1": IGNORE
+"AMD Phoenix2": IGNORE
+"AMD Radeon 780M": IGNORE
+"Intel Iris Plus ICL GT2": IGNORE
+"MSI Intel ADL GT2": IGNORE

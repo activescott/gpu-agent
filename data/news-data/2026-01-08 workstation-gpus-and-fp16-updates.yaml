@@ -1,0 +1,53 @@
+# yaml-language-server: $schema=./news-article.schema.json
+id: gpu0108jan2026wkst
+slug: workstation-gpus-and-fp16-updates
+title: "6 New Workstation GPUs Added + FP16 Performance Updates"
+content: |
+  Added six workstation GPUs to the database and corrected FP16 performance metrics across the RTX 30 series.
+
+  ## New Workstation GPUs
+
+  ### AMD Radeon Pro W7000 Series (RDNA 3)
+
+  Three AMD professional cards designed for content creation and CAD workloads:
+
+  - [AMD Radeon Pro W7500](/gpu/learn/card/amd-radeon-pro-w7500) - Entry-level at $429. 8GB GDDR6, 12.19 TFLOPS FP32, just 70W TDP. No external power needed.
+
+  - [AMD Radeon Pro W7600](/gpu/learn/card/amd-radeon-pro-w7600) - Mid-range option. 8GB at 18 Gbps, slightly faster memory than the W7500.
+
+  - [AMD Radeon Pro W7900](/gpu/learn/card/amd-radeon-pro-w7900) - Top of the W7000 series at $3,999. 48GB GDDR6, 61 TFLOPS FP32, 295W TDP.
+
+  ### NVIDIA RTX Workstation Cards
+
+  Three NVIDIA professional GPUs spanning Ampere and Ada architectures:
+
+  - [NVIDIA RTX A1000](/gpu/learn/card/nvidia-rtx-a1000) - $365 entry point. Ampere architecture, 8GB, 50W TDP. Single-slot, low-profile. Great for compact workstations.
+
+  - [NVIDIA RTX 2000 Ada](/gpu/learn/card/nvidia-rtx-2000-ada-generation) - $625. Entry Ada workstation card with 16GB and 70W TDP. 191.9 INT8 TOPS for AI workloads.
+
+  - [NVIDIA RTX 6000 Ada](/gpu/learn/card/nvidia-rtx-6000-ada-generation) - $6,800. Top of the Ada workstation line with 48GB GDDR6, 91.1 FP32 TFLOPS, and 1,457 INT8 TOPS with sparsity.
+
+  ## FP16 Performance Corrections
+
+  Updated FP16 TFLOPS values for the RTX 30 series. Previous values incorrectly listed dense tensor performance instead of sparse tensor performance. The RTX 3090, for example, went from 142.74 TFLOPS to 285.5 TFLOPS. This aligns with how we report Ada and workstation card metrics.
+
+  Affected cards: RTX 3060, 3070, 3070 Ti, 3080, 3080 Ti, 3090, 3090 Ti, and RTX A5000.
+
+  ## Benchmark Mapping Updates
+
+  Expanded GPU name mappings for benchmark data integration. Added support for RTX 4070/4080 SUPER variants, AMD RX 6000 series cards, and the new workstation GPUs. Also cleaned up mappings to ignore unsupported hardware like mobile GPUs and integrated graphics.
+status: PUBLISHED
+tags:
+  - update
+  - nvidia
+  - amd
+  - database
+  - workstation
+  - rtx-30-series
+  - rdna-3
+  - ada
+  - ampere
+authorFullName: "Scott Willeke"
+createdAt: "2026-01-08T22:00:00Z"
+updatedAt: "2026-01-08T22:00:00Z"
+publishedAt: "2026-01-08T22:00:00Z"

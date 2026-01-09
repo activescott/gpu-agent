@@ -1,0 +1,72 @@
+# yaml-language-server: $schema=./gpu-spec.schema.json
+name: nvidia-rtx-2000-ada-generation
+label: NVIDIA RTX 2000 Ada Generation
+category: workstation
+msrpUSD: 625
+tensorCoreCount: 88
+fp32TFLOPS: 12.0
+fp16TFLOPS: 95.9
+int8TOPS: 191.9
+memoryCapacityGB: 16
+memoryBandwidthGBs: 224
+maxTDPWatts: 70
+gpuArchitecture: ada
+supportedHardwareOperations:
+  - FP32
+  - FP16
+  - TF32
+  - BF16
+  - FP8
+  - INT8
+  - INT4
+supportedCUDAComputeCapability: 8.9
+releaseDate: "2024-02-12"
+lastModified: "2026-01-08T00:00:00Z"
+
+manufacturerIdentifiers:
+  - type: nvpn
+    value: "900-5G192-2250-000"
+
+thirdPartyProducts:
+  - company: PNY
+    productName: "NVIDIA RTX 2000 Ada Generation 16GB GDDR6 Graphics Card"
+    identifier: "VCNRTX2000ADA-PB"
+    identifierType: sku
+  - company: Dell
+    productName: "Dell NVIDIA RTX 2000 Ada Generation, 16 GB GDDR6, dual slot, low profile, PCIe 4.0x8, 4 mini DP Graphics Card"
+    identifier: "490-BKLT"
+    identifierType: part_number
+  - company: Lenovo
+    productName: "NVIDIA RTX 2000 Ada 16GB mini-DP x4 GDDR6 Graphics Card"
+    identifier: "4X61Q50292"
+    identifierType: part_number
+
+summary: |
+  The NVIDIA RTX 2000 Ada Generation is an entry-level professional workstation GPU released in February 2024,
+  built on the Ada Lovelace architecture using the AD107 chip with TSMC's 4N custom process. It features 2,816 CUDA cores,
+  88 fourth-generation Tensor Cores, and 22 third-generation RT Cores, paired with 16GB of GDDR6 ECC memory.
+  The fourth-generation Tensor Cores introduce FP8 precision support and deliver 191.9 TFLOPS of tensor performance
+  using sparsity, providing significant AI acceleration for professional workloads. With a TDP of only 70W and no
+  external power connector required, the RTX 2000 Ada offers exceptional power efficiency in a compact dual-slot,
+  low-profile form factor. The GPU delivers 12.0 TFLOPS of FP32 performance and 27.7 TFLOPS of RT Core performance.
+  Memory bandwidth of 224 GB/s is provided through a 128-bit memory interface running at 14 Gbps effective speed.
+  With PCI Express 4.0 x8 interface and four mini DisplayPort 1.4a outputs supporting up to 7680×4320 resolution
+  at 60Hz, it's designed for professional visualization, CAD, 3D modeling, rendering, and AI/ML workloads in
+  compact workstation environments.
+
+references:
+  - https://www.nvidia.com/en-us/products/workstations/rtx-2000/
+  - https://www.pny.com/nvidia-rtx-2000-ada
+  - https://www.nvidia.com/en-us/design-visualization/desktop-graphics/
+  - https://images.nvidia.com/aem-dam/en-zz/Solutions/technologies/NVIDIA-ADA-GPU-PROVIZ-Architecture-Whitepaper_1.1.pdf
+
+notes:
+  - FP32 TFLOPS of 12.0 sourced from NVIDIA official product page and confirmed by PNY product page.
+  - Tensor performance of 191.9 TFLOPS represents peak FP8 tensor performance with sparsity.
+  - FP16 TFLOPS of 95.9 represents Peak Sparse Tensor Core performance (calculated as half of FP8 Sparse performance). This metric is selected to align with the card's workstation AI capabilities.
+  - INT8 TOPS of 191.9 based on Ada Lovelace tensor core specifications where INT8 performance equals FP8 performance.
+  - Memory bandwidth calculated as 128-bit interface × 14 Gbps ÷ 8 bits/byte = 224 GB/s.
+  - CUDA Compute Capability 8.9 is standard for Ada Lovelace architecture workstation GPUs.
+  - The GPU uses the AD107 chip with 22 of 24 SMs enabled, fabricated on TSMC 4N custom process.
+  - TDP is 70W, no external power connector required.
+  - MSRP of $625 USD positions it as the entry-level model in the Ada workstation lineup.

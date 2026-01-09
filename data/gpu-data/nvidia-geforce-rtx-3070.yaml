@@ -5,7 +5,7 @@ category: gaming
 msrpUSD: 499
 tensorCoreCount: 184
 fp32TFLOPS: 20.31
-fp16TFLOPS: 81.25
+fp16TFLOPS: 162.5
 int8TOPS: 325.02
 memoryCapacityGB: 8
 memoryBandwidthGBs: 448
@@ -180,7 +180,8 @@ references:
   - https://www.techpowerup.com/gpu-specs/palit-rtx-3070-gamingpro.b8012
 
 notes:
-  - "fp16TFLOPS of 81.25 represents Peak FP16 Tensor TFLOPS using the with sparsity metric. Dense performance is 40.63 TFLOPS, sparse is 81.25 TFLOPS. Following Ampere architecture standards, NVIDIA publishes sparse tensor performance."
+  - "FP16 TFLOPS of 162.5 represents Peak Sparse Tensor Core performance (approx 8x FP32). Dense Tensor performance is ~81 TFLOPS."
+  - "Note: Previous versions incorrectly listed dense performance (81.25 TFLOPS) as sparse. Updated to match Workstation and Ada generation metrics (162.5 TFLOPS)."
   - "int8TOPS of 325.02 is peak INT8 TOPS using Effective TOPS using the Sparsity Feature. Dense performance is 162.51 TOPS, sparse is 325.02 TOPS."
   - "fp32TFLOPS calculated as 5,888 CUDA cores x 1.725 GHz boost clock x 2 ops/cycle = 20.31 TFLOPS. Ampere architecture features 2 FP32 ops per cycle through dedicated FP32 datapath and shared INT32/FP32 datapath."
   - Power based on what NVIDIA refers to as TGP (Total Graphics Power).

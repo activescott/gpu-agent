@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=./gpu-spec.schema.json
 name: test-gpu
 label: Test GPU
+category: gaming
 msrpUSD: 100
 tensorCoreCount: 1
 fp32TFLOPS: 1.1

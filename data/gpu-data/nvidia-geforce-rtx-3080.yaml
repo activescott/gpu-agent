@@ -5,7 +5,7 @@ category: gaming
 msrpUSD: 699
 tensorCoreCount: 272
 fp32TFLOPS: 29.77
-fp16TFLOPS: 119.07
+fp16TFLOPS: 238.2
 int8TOPS: 476.28
 memoryCapacityGB: 10
 memoryBandwidthGBs: 760
@@ -105,8 +105,9 @@ references:
   - https://videocardz.com/newz/nvidia-geforce-rtx-3090-3080-pg133a-board-gets-rra-certification
 
 notes:
-  - fp16TFLOPS of 119.07 represents "Peak FP16 Tensor TFLOPS" using the "with sparsity" metric. Dense performance is 59.54 TFLOPS, sparse is 119.07 TFLOPS. Following Ampere architecture standards, NVIDIA publishes sparse tensor performance.
-  - int8TOPS of 476.28 is "peak INT8 TOPS" using "Effective TOPS using the Sparsity Feature". Dense performance is 238.14 TOPS, sparse is 476.28 TOPS.
+  - "FP16 TFLOPS of 238.2 represents Peak Sparse Tensor Core performance (approx 8x FP32). Dense Tensor performance is ~119 TFLOPS."
+  - "Note: Previous versions incorrectly listed dense performance (119.1 TFLOPS) as sparse. Updated to match Workstation and Ada generation metrics (238.2 TFLOPS)."
+  - "INT8 TOPS of 476.28 represents Peak Sparse INT8 Tensor performance."
   - fp32TFLOPS calculated as 8,704 CUDA cores × 1.71 GHz boost clock × 2 ops/cycle = 29.77 TFLOPS. Ampere architecture features 2 FP32 ops per cycle through dedicated FP32 datapath and shared INT32/FP32 datapath.
   - Power based on what NVIDIA refers to as "TGP (Total Graphics Power)".
   - The RTX 3080 uses the GA102-200 variant of the GA102 chip with 68 of 84 streaming multiprocessors enabled.

@@ -5,8 +5,8 @@ category: gaming
 msrpUSD: 1999
 tensorCoreCount: 336
 fp32TFLOPS: 40.00
-fp16TFLOPS: 159.99
-int8TOPS: 320
+fp16TFLOPS: 320.0
+int8TOPS: 640.0
 memoryCapacityGB: 24
 memoryBandwidthGBs: 1008
 maxTDPWatts: 450
@@ -130,8 +130,9 @@ references:
 
 notes:
   - fp32TFLOPS of 40.00 calculated as 10,752 CUDA cores × 1.860 GHz boost clock × 2 ops/cycle = 40.00 TFLOPS. Ampere architecture features 2 FP32 ops per cycle through dedicated FP32 datapath and shared INT32/FP32 datapath. This represents approximately 11% increase over RTX 3090's 35.58 TFLOPS.
-  - fp16TFLOPS of 159.99 represents sparse FP16 Tensor Core performance using Ampere's 2:4 structured sparsity feature. Dense FP16 performance is approximately 80 TFLOPS (84 SMs × 4 tensor cores per SM × 256 FP16 FLOPS per cycle × 1.860 GHz). NVIDIA typically publishes sparse tensor performance for Ampere GPUs. This represents approximately 12% increase over RTX 3090's 142.74 sparse TFLOPS.
-  - int8TOPS of 320 represents sparse INT8 Tensor Core performance with 2:4 structured sparsity. Dense INT8 performance is approximately 160 TOPS. INT8 operations run at 2× the rate of FP16. With sparsity enabled, sparse INT8 reaches approximately 640 TOPS. This represents approximately 12% increase over RTX 3090's 285 sparse TOPS.
+  - "FP16 TFLOPS of 320.0 represents Peak Sparse Tensor Core performance (approx 8x FP32). Dense Tensor performance is ~160 TFLOPS."
+  - "Note: Previous versions incorrectly listed dense performance (160.0 TFLOPS) as sparse. Updated to match Workstation and Ada generation metrics (320.0 TFLOPS)."
+  - "INT8 TOPS of 640.0 represents Peak Sparse INT8 Tensor performance (approx 16x FP32)."
   - All primary performance metrics (fp16TFLOPS, int8TOPS) represent sparse tensor operations following NVIDIA's published specifications for Ampere. Ampere's 2:4 structured sparsity feature is supported in TensorRT 8+, cuBLASLt, and compatible AI frameworks when models are appropriately pruned.
   - Power figure of 450W is based on NVIDIA's TGP (Total Graphics Power) specification, representing a 100W increase over the RTX 3090's 350W TDP. This 28.6% power increase corresponds to the fully unlocked GA102 die and higher memory speeds.
   - The RTX 3090 Ti uses all 84 of 84 possible streaming multiprocessors on the GA102-350-A1 die, making it the first fully unlocked GA102 GPU. Each SM contains 128 CUDA cores, 4 tensor cores, and 1 RT core, totaling 10,752 CUDA cores, 336 tensor cores, and 84 RT cores.

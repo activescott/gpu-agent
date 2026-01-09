@@ -1,0 +1,80 @@
+# yaml-language-server: $schema=./gpu-spec.schema.json
+name: amd-radeon-pro-w7600
+label: AMD Radeon Pro W7600
+category: workstation
+msrpUSD: 599
+tensorCoreCount: 64
+fp32TFLOPS: 21.4
+fp16TFLOPS: 42.8
+int8TOPS: null
+memoryCapacityGB: 8
+memoryBandwidthGBs: 288
+maxTDPWatts: 130
+gpuArchitecture: RDNA 3
+supportedHardwareOperations:
+  - FP16
+  - FP32
+  - BF16
+  - INT8
+  - INT4
+releaseDate: "2023-08-03"
+lastModified: "2026-01-07T00:00:00Z"
+
+summary: >-
+  The AMD Radeon Pro W7600 is a professional workstation graphics card launched on August 3, 2023,
+  featuring AMD's RDNA 3 architecture on the Navi 33 GPU. Built on TSMC's 6nm process as a
+  monolithic die containing 13.3 billion transistors across 204 mm², the card features 32 compute
+  units with 2,048 stream processors and 64 AI Accelerators for enhanced machine learning performance.
+  It includes 32 second-generation ray tracing accelerators and 8GB of GDDR6 memory on a 128-bit bus,
+  delivering 288 GB/s of bandwidth with 32MB of AMD Infinity Cache. The W7600 offers 21.4 TFLOPS of
+  peak FP32 performance and 42.8 TFLOPS of peak FP16 performance. With a TDP of
+  130W and positioned at $599, this single-slot card targets mainstream professional content creation,
+  CAD, and engineering workflows. It features four DisplayPort 2.1 outputs with UHBR 20 support
+  providing up to 80 Gb/s of display link bandwidth, making it suitable for multi-display professional
+  workflows up to 8K resolution. The card requires a single 6-pin PCIe power connector and uses a
+  PCIe 4.0 x8 interface.
+
+manufacturerIdentifiers:
+  - type: opn
+    value: 100-300000077
+
+thirdPartyProducts:
+  - company: Dell
+    productName: AMD Radeon Pro W7600, 8 GB GDDR6, Full Height, PCIe 4.0x8, 4 DP Graphics Card
+    identifier: 490-BJZF
+    identifierType: part_number
+  - company: HP
+    productName: AMD Radeon Pro W7600 Graphics Card
+    identifier: 8D6B9AA
+    identifierType: part_number
+
+references:
+  - https://www.amd.com/en/products/graphics/workstations/radeon-pro/w7600.html
+  - https://www.amd.com/en/newsroom/press-releases/2023-8-3-new-amd-radeon-pro-w7000-series-workstation-graphi.html
+  - https://ir.amd.com/news-events/press-releases/detail/1147/new-amd-radeon-pro-w7000-series-workstation-graphics-cards
+  - https://www.cgchannel.com/2023/08/amd-launches-radeon-pro-w7600-and-radeon-pro-w7500/
+  - https://www.storagereview.com/review/amd-radeon-pro-w7500-and-w7600-review
+  - https://www.tomshardware.com/news/amd-radeon-pro-w7600-and-w7500-revealed
+  - https://www.techpowerup.com/312011/amd-announces-radeon-pro-w7600-and-w7500-graphics-cards
+  - https://www.bhphotovideo.com/c/product/1781098-REG/amd_100_300000077_radeon_pro_w7600_graphic.html
+  - https://www.dell.com/en-us/shop/dell-amd-radeon-pro-w7600-8-gb-gddr6-full-height-pcie-40x8-4-dp-graphics-card/apd/490-bjzf/graphic-video-cards
+  - https://wccftech.com/amd-radeon-pro-w7600-workstation-gpu-benchmarked-navi-33-2048-cores-8-gb-vram/
+notes:
+  - 'FP32 TFLOPS of 21.4 sourced from AMD''s official product page "Peak Single Precision" specification. Note: Earlier press materials stated 20.0 TFLOPS; currently selected value reflects the final product page peak spec despite discrepancies with launch documentation.'
+  - FP16 TFLOPS of 42.8 calculated at 2:1 ratio to FP32 peak performance, which is standard for RDNA 3 architecture.
+  - tensorCoreCount of 64 represents the AI Accelerators (2 per compute unit × 32 compute units), consistent with RDNA 3 architecture
+  - Memory bandwidth calculated as 128-bit bus × 18 Gbps effective = 288 GB/s, confirmed by multiple sources
+  - RDNA 3 architecture includes dedicated AI Accelerators supporting Wave Matrix Multiply Accumulate (WMMA) operations for machine learning workloads
+  - RDNA 3 AI Accelerators support FP16, BF16, INT8, and INT4 data types for matrix operations
+  - Built on TSMC 6nm (N6) process as a monolithic die (not chiplet design like Navi 31/32)
+  - Navi 33 die specifications - 204 mm² die size, 13.3 billion transistors
+  - Released August 3, 2023 at $599 USD MSRP per AMD official press release
+  - MSRP of $599 USD sourced from AMD official press release dated August 3, 2023
+  - AMD Ordering Part Number (OPN) 100-300000077 sourced from multiple retailers including B&H Photo, Amazon, Newegg, and Micro Center
+  - UPC 727419314855 and EAN 0727419314855 are retail product codes documented for reference only
+  - Dell part number 490-BJZF sourced from Dell.com official product page
+  - HP part number 8D6B9AA sourced from HP channel partners
+  - int8TOPS is null because AMD does not publish separate INT8 TOPS specifications for RDNA 3 workstation GPUs; INT8 is supported via AI Accelerators but runs at same speed as FP16
+  - Card features 32MB AMD Infinity Cache for improved memory performance
+  - Single-slot design with blower-style cooler, requires single 6-pin PCIe power connector
+  - PCIe 4.0 x8 interface (not x16)

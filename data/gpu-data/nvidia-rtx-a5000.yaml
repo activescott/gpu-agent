@@ -5,7 +5,7 @@ category: workstation
 msrpUSD: 2250
 tensorCoreCount: 256
 fp32TFLOPS: 27.77
-fp16TFLOPS: 27.77
+fp16TFLOPS: 222.2
 int8TOPS: 444.4
 memoryCapacityGB: 24
 memoryBandwidthGBs: 768
@@ -98,7 +98,9 @@ notes:
     card's Tensor performance is listed as 222.2 TFLOPS (Tera Floating-Point
     Operations Per Second). It's suggested that for INT8 calculations with
     sparsity, the performance should be double this number, meaning the INT8
-    TOPS performance would be approximately 444.4 TOPS."
+    TOPS would be approximately 444.4."
+  - "FP16 TFLOPS of 222.2 represents Peak Sparse Tensor Core performance (sourced from NVIDIA datasheet Tensor Performance)."
+  - "Note: Previous versions incorrectly listed dense performance (111.1 TFLOPS) as sparse. Updated to match Workstation and Ada generation metrics (222.2 TFLOPS)."
   - MSRP of $2,250 USD verified from 3 sources - DEVELOP3D notes expected street price of $2,250, CG Channel confirms pricing of $1,000 for RTX A4000 and $2,250 for RTX A5000, and TechPowerUp GPU Database lists launch price.
   - "Manufacturer identifiers: Board ID PG132 with SKU 500 confirmed from TechPowerUp and multiple reseller listings. Multiple NVPN (NVIDIA Part Numbers) exist for different variants: 900-5G132-2200-000 (standard), 900-5G132-2500-000 (retail), 900-5G132-1700-000 (PNY), and 900-5G132-0100-001 (Dell OEM)."
   - "Third-party products: Part numbers sourced from official vendor websites and authorized resellers. PNY uses VCNRTXA5000-PB as their primary SKU. Dell offers two part numbers (490-BHTI and J4KCH/0J4KCH) for different configurations. HP uses 20X23AA. Lenovo uses 4X61D97085. Supermicro uses GPU-NVQRTX-A5000. ASUS uses 90SKC000-M5LAN0."

@@ -29,11 +29,13 @@
 "NVIDIA GeForce RTX 4070 Ti SUPER": "nvidia-geforce-rtx-4070-ti-super"
 # 4070 SUPER
 "ASUS NVIDIA GeForce RTX 4070 SUPER": "nvidia-geforce-rtx-4070-super"
+"NVIDIA GeForce RTX 4070 SUPER": "nvidia-geforce-rtx-4070-super"
 # 4080
 "NVIDIA GeForce RTX 4080": "nvidia-geforce-rtx-4080"
 "ASUS NVIDIA GeForce RTX 4080": "nvidia-geforce-rtx-4080"
 # 4080 SUPER
 "ASUS NVIDIA GeForce RTX 4080 SUPER": "nvidia-geforce-rtx-4080-super"
+"NVIDIA GeForce RTX 4080 SUPER": "nvidia-geforce-rtx-4080-super"
 # 4090
 "NVIDIA GeForce RTX 4090": "nvidia-geforce-rtx-4090"
 "ASUS NVIDIA GeForce RTX 4090": "nvidia-geforce-rtx-4090"
@@ -93,7 +95,24 @@
 "AMD Radeon RX 7700S": "amd-radeon-rx-7700s"
 
 # AMD Radeon Pro Series
+"AMD Radeon Pro W7500": "amd-radeon-pro-w7500"
+"AMD Radeon PRO W7500": "amd-radeon-pro-w7500"
+"AMD Radeon Pro W7600": "amd-radeon-pro-w7600"
+"AMD Radeon PRO W7600": "amd-radeon-pro-w7600"
 "AMD Radeon Pro W7700": "amd-radeon-pro-w7700"
+"AMD Radeon PRO W7700": "amd-radeon-pro-w7700"
+"AMD Radeon Pro W7900": "amd-radeon-pro-w7900"
+"AMD Radeon PRO W7900": "amd-radeon-pro-w7900"
+
+# NVIDIA RTX Workstation Series (Ada Generation)
+"NVIDIA RTX 2000 Ada Generation": "nvidia-rtx-2000-ada-generation"
+"NVIDIA RTX 6000 Ada Generation": "nvidia-rtx-6000-ada-generation"
+
+# NVIDIA RTX Workstation Series (Ampere)
+"NVIDIA RTX A1000": "nvidia-rtx-a1000"
+
+# AMD Radeon AI PRO Series
+"Sapphire AMD Radeon AI PRO R9700": "amd-radeon-ai-pro-r9700"
 
 # Intel Arc Series (BMG-G21 chipset = Battlemage)
 "Intel BMG G21": "intel-arc-b580"
@@ -104,6 +123,13 @@
 # AMD Radeon RX 6800 Series
 "AMD Radeon RX 6800": "amd-radeon-rx-6800"
 "AMD Radeon RX 6800 XT": "amd-radeon-rx-6800-xt"
+
+# AMD Radeon RX 6000 Series (additional)
+"AMD Radeon RX 6500 XT": "amd-radeon-rx-6500-xt"
+"AMD Radeon RX 6600 XT": "amd-radeon-rx-6600-xt"
+"Gigabyte AMD Radeon RX 6600": "amd-radeon-rx-6600"
+"AMD Radeon RX 6700 XT": "amd-radeon-rx-6700-xt"
+"AMD Radeon RX 6750 XT": "amd-radeon-rx-6750-xt"
 
 # =============================================================================
 # IGNORED GPUs
@@ -128,3 +154,22 @@
 "AMD Radeon 780M": IGNORE
 "Intel Iris Plus ICL GT2": IGNORE
 "MSI Intel ADL GT2": IGNORE
+
+# Old AMD GPUs (pre-2023)
+"AMD Radeon RX 56": IGNORE
+"AMD Radeon RX 5700": IGNORE
+"AMD Radeon RX 5700 XT": IGNORE
+"Sapphire AMD Radeon RX 590": IGNORE
+
+# Old NVIDIA Quadro
+"NVIDIA Quadro RTX 4000": IGNORE
+
+# Intel Arc A-series (Alchemist) - not supported
+"Intel Arc A380 DG2": IGNORE
+"Intel Arc A580 DG2": IGNORE
+"Intel Arc A750 DG2": IGNORE
+"Intel Arc A770": IGNORE
+"Intel Arc A770 DG2": IGNORE
+"ASUS Intel Arc A580 DG2": IGNORE
+"ASUS Intel Arc A750 DG2": IGNORE
+"ASUS Intel Arc A770 DG2": IGNORE

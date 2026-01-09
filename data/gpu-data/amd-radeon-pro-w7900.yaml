@@ -1,0 +1,64 @@
+# yaml-language-server: $schema=./gpu-spec.schema.json
+name: amd-radeon-pro-w7900
+label: AMD Radeon Pro W7900
+category: workstation
+msrpUSD: 3999
+tensorCoreCount: 192
+fp32TFLOPS: 61.0
+fp16TFLOPS: 122.0
+int8TOPS: null
+memoryCapacityGB: 48
+memoryBandwidthGBs: 864
+maxTDPWatts: 295
+gpuArchitecture: RDNA 3
+supportedHardwareOperations:
+  - FP16
+  - FP32
+  - BF16
+  - INT8
+  - INT4
+releaseDate: "2023-04-13"
+lastModified: "2026-01-08T00:00:00Z"
+
+summary: >-
+  The AMD Radeon Pro W7900 is AMD's flagship RDNA 3 professional workstation graphics card, launched in
+  April 2023 on the full Navi 31 GPU. Built on TSMC's 5nm process with a chiplet design, the card
+  features 96 compute units with 6,144 stream processors and 192 AI Accelerators for enhanced machine
+  learning performance. It includes 96 second-generation ray tracing accelerators and 48GB of GDDR6
+  memory with ECC support on a 384-bit bus, delivering 864 GB/s of bandwidth. The W7900 offers 61 TFLOPS
+  of FP32 performance and 122 TFLOPS FP16 performance. With a TDP of 295W and positioned at $3,999 at
+  launch, this dual-slot blower-style card targets high-end professional content creation, CAD,
+  simulation, and AI workloads. It features three DisplayPort 2.1 outputs with UHBR 20 support
+  providing up to 80 Gb/s of display bandwidth per port.
+
+manufacturerIdentifiers:
+  - type: opn
+    value: 100-300000049
+
+thirdPartyProducts:
+  - company: Dell
+    productName: AMD Radeon PRO W7900, 48 GB GDDR6, Graphics Card
+    identifier: 490-BKXB
+    identifierType: part_number
+  - company: HP
+    productName: AMD Radeon Pro W7900 Professional Graphics
+    identifier: 8D5C1AA
+    identifierType: part_number
+
+references:
+  - https://www.amd.com/en/products/graphics/workstations/radeon-pro/w7900.html
+  - https://www.amd.com/en/newsroom/press-releases/2023-1-4-amd-radeon-pro-w7000-series-workstation-graphics-.html
+  - https://ir.amd.com/news-events/press-releases/detail/1138/amd-radeon-pro-w7000-series-workstation-graphics-cards
+
+notes:
+  - FP32 TFLOPS of 61 per AMD official specifications for peak single-precision performance
+  - FP16 performance is 122 TFLOPS at 2:1 ratio to FP32, standard for RDNA 3 architecture
+  - tensorCoreCount of 192 represents the AI Accelerators (2 per compute unit x 96 compute units)
+  - Memory bandwidth of 864 GB/s calculated as 384-bit bus x 18 Gbps effective / 8
+  - RDNA 3 architecture includes dedicated AI Accelerators for machine learning workloads
+  - Built on TSMC 5nm process with chiplet design featuring full Navi 31 GPU
+  - Includes ECC memory support for professional applications requiring data integrity
+  - MSRP of $3,999 USD sourced from AMD official press release dated January 4, 2023 at CES 2023
+  - AMD Ordering Part Number (OPN) 100-300000049 sourced from retail listings
+  - Released April 13, 2023 as AMD's flagship professional workstation GPU
+  - Competes with NVIDIA RTX 6000 Ada Generation in the professional workstation segment

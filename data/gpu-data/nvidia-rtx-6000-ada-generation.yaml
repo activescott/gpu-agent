@@ -1,0 +1,83 @@
+# yaml-language-server: $schema=./gpu-spec.schema.json
+name: nvidia-rtx-6000-ada-generation
+label: NVIDIA RTX 6000 Ada Generation
+category: workstation
+msrpUSD: 6800
+tensorCoreCount: 568
+fp32TFLOPS: 91.1
+fp16TFLOPS: 728.5
+int8TOPS: 1457
+memoryCapacityGB: 48
+memoryBandwidthGBs: 960
+maxTDPWatts: 300
+gpuArchitecture: ada
+supportedHardwareOperations:
+  - FP32
+  - FP16
+  - TF32
+  - BF16
+  - FP8
+  - INT8
+  - INT4
+  - FP64
+supportedCUDAComputeCapability: 8.9
+releaseDate: "2022-12-03"
+lastModified: "2026-01-08T00:00:00Z"
+
+manufacturerIdentifiers:
+  - type: nvpn
+    value: "900-5G133-2250-000"
+  - type: nvpn
+    value: "900-5G133-2550-000"
+  - type: nvpn
+    value: "900-5G133-0150-001"
+  - type: nvpn
+    value: "900-5G133-2750-001"
+
+thirdPartyProducts:
+  - company: PNY
+    productName: "NVIDIA RTX 6000 Ada Graphics Card 48GB GDDR6"
+    identifier: "VCNRTX6000ADA-PB"
+    identifierType: sku
+  - company: Dell
+    productName: "Dell NVIDIA RTX 6000 Ada Generation, 48 GB GDDR6, full height, PCIe 4.0x16, 4 DP Graphics Card"
+    identifier: "490-BJMS"
+    identifierType: part_number
+  - company: HP
+    productName: "HP NVIDIA RTX 6000 Ada Generation Graphics Card"
+    identifier: "79C23AA"
+    identifierType: part_number
+  - company: Lenovo
+    productName: "ThinkSystem NVIDIA RTX 6000 Ada 48GB PCIe Active GPU"
+    identifier: "4X67A89324"
+    identifierType: part_number
+
+summary: |
+  The NVIDIA RTX 6000 Ada Generation is the flagship of NVIDIA's Ada Lovelace professional workstation lineup, released on December 3, 2022.
+  Built on the Ada Lovelace architecture using TSMC's 4nm process (4N), the GPU features 76.3 billion transistors on
+  a 608.4mm² die. It combines 18,176 CUDA cores, 568 fourth-generation Tensor Cores, and 142 third-generation RT Cores
+  with 48GB of GDDR6 ECC memory. The fourth-generation Tensor Cores deliver 1,457 TFLOPS of peak tensor performance
+  with sparsity, providing up to 2X the AI performance over the previous RTX A6000 generation. With 91.1 TFLOPS of
+  FP32 performance and 210.6 TFLOPS of RT core performance, the RTX 6000 Ada delivers 2-4X the performance of its
+  predecessor while maintaining the same 300W TDP. Memory bandwidth of 960 GB/s is provided through a 384-bit memory
+  interface running at 20 Gbps effective speed. The card features a dual-slot form factor with active blower cooling
+  and supports PCIe 4.0 x16 interface with four DisplayPort 1.4a outputs.
+
+references:
+  - https://www.nvidia.com/en-us/products/workstations/rtx-6000/
+  - https://www.nvidia.com/content/dam/en-zz/Solutions/design-visualization/rtx-6000/proviz-print-rtx6000-datasheet-web-2504660.pdf
+  - https://images.nvidia.com/aem-dam/en-zz/Solutions/technologies/NVIDIA-ADA-GPU-PROVIZ-Architecture-Whitepaper_1.1.pdf
+  - https://www.leadtek.com/eng/products/workstation_graphics(2)/NVIDIA_RTX_6000_Ada_Generation(40949)/detail
+  - https://nvidianews.nvidia.com/news/nvidias-new-ada-lovelace-rtx-gpu-arrives-for-designers-and-creators
+  - https://lenovopress.lenovo.com/lp1940-thinksystem-nvidia-rtx-6000-ada-48gb-pcie-active-gpu
+
+notes:
+  - FP32 TFLOPS of 91.1 is the official peak single-precision performance published by NVIDIA.
+  - FP16 TFLOPS of 728.5 represents Peak Sparse Tensor Core performance (derived as half of FP8 Sparse performance). This metric is selected to align with the card's workstation AI capabilities; standard CUDA Core FP16 performance is 91.1 TFLOPS.
+  - INT8 TOPS of 1,457 represents peak tensor performance with sparsity from NVIDIA datasheet.
+  - Memory bandwidth calculated as 384-bit × 20 Gbps ÷ 8 = 960 GB/s.
+  - CUDA Compute Capability 8.9 confirmed for Ada Lovelace architecture.
+  - The GPU uses the AD102 chip with 142 of 144 SMs enabled (18,176 of 18,432 CUDA cores).
+  - TDP is 300W, same as previous generation RTX A6000 despite 2-4X higher performance.
+  - MSRP of $6,800 USD from NVIDIA official page, confirmed by multiple sources at launch.
+  - Release date December 3, 2022 confirmed by multiple sources. Announced September 20, 2022.

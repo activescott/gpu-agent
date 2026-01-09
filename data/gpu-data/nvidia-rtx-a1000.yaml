@@ -1,0 +1,87 @@
+# yaml-language-server: $schema=./gpu-spec.schema.json
+name: nvidia-rtx-a1000
+label: NVIDIA RTX A1000
+category: workstation
+msrpUSD: 365
+tensorCoreCount: 72
+fp32TFLOPS: 6.74
+fp16TFLOPS: 53.8
+int8TOPS: 107.8
+memoryCapacityGB: 8
+memoryBandwidthGBs: 192
+maxTDPWatts: 50
+gpuArchitecture: ampere
+supportedHardwareOperations:
+  - FP32
+  - FP16
+  - TF32
+  - BF16
+  - INT8
+  - INT4
+  - FP64
+supportedCUDAComputeCapability: 8.6
+releaseDate: "2024-04-16"
+lastModified: "2026-01-07T00:00:00Z"
+
+manufacturerIdentifiers:
+  - type: nvpn
+    value: "900-5G172-2780-000"
+  - type: nvpn
+    value: "900-5G172-2280-000"
+  - type: nvpn
+    value: "900-5G172-2281-000"
+
+thirdPartyProducts:
+  - company: PNY
+    productName: "PNY NVIDIA RTX A1000 8GB GDDR6 Graphics Card"
+    identifier: "VCNRTXA1000ATX-PB"
+    identifierType: sku
+  - company: Dell
+    productName: "Dell NVIDIA RTX A1000, 8 GB GDDR6, full height, PCIe 4.0x8, 4 mDP Graphics Card"
+    identifier: "490-BKQH"
+    identifierType: part_number
+  - company: Dell
+    productName: "Dell NVIDIA RTX A1000, 8 GB GDDR6, half height, PCIe 4.0x8, 4 mDP Graphics Card"
+    identifier: "490-BKQJ"
+    identifierType: part_number
+  - company: Lenovo
+    productName: "ThinkSystem NVIDIA RTX A1000 8GB PCIe Gen4 Active GPU"
+    identifier: "4X67A96431"
+    identifierType: part_number
+  - company: Supermicro
+    productName: "Supermicro NVIDIA RTX A1000 8GB GDDR6 PCIe 4.0 Active Cooling"
+    identifier: "GPU-NVQRTX-A1000"
+    identifierType: part_number
+
+summary: |
+  The NVIDIA RTX A1000 is an entry-level professional workstation GPU released on April 16, 2024,
+  built on the Ampere architecture using the GA107 chip with 8nm process technology. It features
+  2,304 CUDA cores, 72 third-generation Tensor Cores, and 18 second-generation RT Cores, paired
+  with 8GB of GDDR6 memory. The third-generation Tensor Cores deliver 53.8 TFLOPS of FP16
+  performance with sparsity and 107.8 TOPS of INT8 performance with sparsity, making it capable
+  of handling AI-augmented workflows including AI denoising and DLSS. With a remarkably low TDP
+  of only 50W and a single-slot, low-profile form factor, the card requires no auxiliary power
+  connector and is designed for compact workstations where space and power are constrained.
+  Memory bandwidth of 192 GB/s is provided through a 128-bit memory interface. The GPU features
+  PCI Express 4.0 x8 interface and four Mini DisplayPort 1.4a outputs, supporting up to four
+  5K displays simultaneously.
+
+references:
+  - https://www.nvidia.com/en-us/products/workstations/rtx-a1000/
+  - https://www.cgchannel.com/2024/04/nvidia-unveils-new-rtx-a400-and-rtx-a1000-pro-gpus/
+  - https://blogs.nvidia.com/blog/ampere-rtx-a400-a1000-ai/
+  - https://www.tomshardware.com/pc-components/gpus/ampere-rides-again-as-nvidia-unveils-single-slot-rtx-a1000-and-a400-for-professionals-the-latter-featuring-a-massively-cut-down-ga107-chip
+  - https://lenovopress.lenovo.com/lp2172-thinksystem-nvidia-rtx-a1000-8gb-pcie-gen4-active-gpu
+  - https://www.leadtek.com/eng/products/workstation_graphics(2)/NVIDIA_RTX_A1000(51012)/detail
+  - https://www.pny.com/en-eu/rtx-a1000
+
+notes:
+  - FP32 TFLOPS of 6.74 sourced from NVIDIA official product page and Lenovo Press documentation.
+  - FP16 TFLOPS of 53.8 represents peak tensor performance with sparsity from NVIDIA product page.
+  - INT8 TOPS of 107.8 calculated as approximately double FP16 tensor performance (53.8 × 2).
+  - Memory bandwidth calculated as 128-bit × 12 Gbps ÷ 8 = 192 GB/s.
+  - CUDA Compute Capability 8.6 confirmed for GA107 Ampere chip.
+  - The GPU uses the GA107 chip with 2,304 of 3,072 possible CUDA cores enabled.
+  - TDP is 50W, no auxiliary power connector required.
+  - Released April 16, 2024, filling the entry-level workstation gap with RT and tensor capabilities.
+  - MSRP of $365 USD from NVIDIA marketplace listing.

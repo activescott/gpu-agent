@@ -16,20 +16,25 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     python3 \
     && rm -rf /var/lib/apt/lists/*
 
+# Create /app owned by node so npm ci can create node_modules
+RUN mkdir -p /app && chown node:node /app
 WORKDIR /app
 
 # Set development environment
 ENV NODE_ENV=development
 
-# Copy package files and install dependencies (including devDependencies)
-COPY package*.json ./
-COPY packages/web-app/package*.json ./packages/web-app/
-COPY packages/ebay-client/package*.json ./packages/ebay-client/
+# Copy all source files with node ownership (avoids slow chown -R later)
+COPY --chown=node:node . .
 
-# Copy all source files for dependency resolution
-COPY . .
+# Copy entrypoint script (needs root for chmod)
+COPY docker/docker-entrypoint.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh
+
+# Switch to node user - all subsequent commands run as node
+USER node
 
 # Install all dependencies (dev dependencies included for development)
+# Runs as node, so node_modules will be owned by node
 RUN npm ci
 
 # Generate Prisma client (needed for development)
@@ -37,16 +42,6 @@ RUN cd packages/web-app && npx prisma generate
 
 # Create directories that may be volume mounted
 RUN mkdir -p /app/packages/web-app/.next /app/packages/web-app/.turbo
-
-# Set proper permissions for development (allow writing to mounted volumes)
-RUN chown -R node:node /app
-
-# Copy and set up entrypoint script (unified for dev and prod)
-COPY docker/docker-entrypoint.sh /usr/local/bin/
-RUN chmod +x /usr/local/bin/docker-entrypoint.sh
-
-# Switch to node user for development
-USER node
 
 EXPOSE 3000
 

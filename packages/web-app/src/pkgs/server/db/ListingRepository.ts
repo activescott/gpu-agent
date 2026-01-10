@@ -382,6 +382,8 @@ export type GpuPriceStats = {
   maxPrice: number
   activeListingCount: number
   latestListingDate: Date
+  /** Image URL from a representative listing, for use in structured data */
+  representativeImageUrl: string | null
 }
 
 export async function getPriceStats(
@@ -417,9 +419,21 @@ export async function getPriceStats(
       maxPrice: 0,
       activeListingCount: 0,
       latestListingDate: EPOCH,
+      representativeImageUrl: null,
     }
   }
-  return result[0]
+
+  // Get a representative image from the most recent active listing
+  const listingWithImage = await prisma.listing.findFirst({
+    where: { gpuName: gpuName, archived: false },
+    select: { thumbnailImageUrl: true },
+    orderBy: { itemCreationDate: "desc" },
+  })
+
+  return {
+    ...result[0],
+    representativeImageUrl: listingWithImage?.thumbnailImageUrl ?? null,
+  }
 }
 
 /**

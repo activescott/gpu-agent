@@ -201,6 +201,15 @@ function buildStructuredData(
     structuredData.releaseDate = gpu.releaseDate
   }
 
+  // Add image if available from listings (for rich results display)
+  if (priceStats.representativeImageUrl) {
+    // Convert relative proxy URL to absolute URL via gpupoet.com
+    const absoluteImageUrl = priceStats.representativeImageUrl.startsWith("/")
+      ? `https://gpupoet.com${priceStats.representativeImageUrl}`
+      : priceStats.representativeImageUrl
+    structuredData.image = [absoluteImageUrl]
+  }
+
   // Add manufacturer identifiers as SKU, MPN, and additionalProperty
   if (gpu.manufacturerIdentifiers && gpu.manufacturerIdentifiers.length > 0) {
     const firstId = gpu.manufacturerIdentifiers[0]

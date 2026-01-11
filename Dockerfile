@@ -76,6 +76,7 @@ RUN useradd --system --uid 1001 nextjs
 COPY --from=builder /app/packages/web-app/.next ./packages/web-app/.next
 COPY --from=builder /app/packages/web-app/public ./packages/web-app/public
 COPY --from=builder /app/packages/web-app/package.json ./packages/web-app/package.json
+COPY --from=builder /app/packages/web-app/next.config.mjs ./packages/web-app/next.config.mjs
 
 # Set ownership of .next directory to nextjs user for write permissions
 RUN chown -R nextjs:nodejs /app/packages/web-app/.next

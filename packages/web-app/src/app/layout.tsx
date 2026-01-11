@@ -1,4 +1,4 @@
-import type { Metadata } from "next"
+import type { Metadata, Viewport } from "next"
 import "./style/style.scss"
 import { SiteFooter } from "@/pkgs/client/components/SiteFooter"
 import {
@@ -70,14 +70,16 @@ export const metadata: Metadata = {
 
   manifest: "/site.webmanifest",
 
+  other: {
+    "msapplication-TileColor": "#d11363",
+  },
+}
+
+export const viewport: Viewport = {
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "#ffffff" },
     { media: "(prefers-color-scheme: dark)", color: "#1a1a1a" },
   ],
-
-  other: {
-    "msapplication-TileColor": "#d11363",
-  },
 }
 
 export default function RootLayout({

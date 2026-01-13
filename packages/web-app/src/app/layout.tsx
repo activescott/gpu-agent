@@ -7,7 +7,6 @@ import {
 } from "@/pkgs/client/analytics/provider"
 import { SiteHeader } from "@/pkgs/client/components/SiteHeader"
 import { Alert } from "@/pkgs/client/components/Alert"
-import { DomainMigrationBanner } from "@/pkgs/client/components/DomainMigrationBanner"
 import Link from "next/link"
 import { maxLength } from "@/pkgs/isomorphic/string"
 import { GoogleAdsTag } from "@/pkgs/client/analytics/GoogleAdsTag"
@@ -93,7 +92,6 @@ export default function RootLayout({
         <AnalyticsProvider>
           <SiteHeader />
           <main className="p-3 container">
-            <DomainMigrationBanner />
             <Alert kind="secondary">
               What do you think? Please{" "}
               <Link href="/contact" className="alert-link">

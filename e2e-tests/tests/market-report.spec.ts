@@ -106,7 +106,11 @@ test.describe('Market Report', () => {
 test.describe('Market Report Chart Data Validation', () => {
   const reportPath = '/gpu/market-report/gpu-market-report-january-2026';
 
+  // Skip in dev environment - these tests require historical data that only exists in production
+  const isProduction = process.env.BASE_URL?.includes('gpupoet.com') ?? false;
+
   test('charts do not show insufficient data alerts', async ({ page }) => {
+    test.skip(!isProduction, 'Requires historical data only available in production');
     await page.goto(reportPath);
 
     // Scroll through the page to trigger lazy loading of all content
@@ -132,6 +136,7 @@ test.describe('Market Report Chart Data Validation', () => {
   });
 
   test('all chart images contain actual data', async ({ request }) => {
+    test.skip(!isProduction, 'Requires historical data only available in production');
     const dateParams = 'from=2026-01&to=2026-01';
 
     // Minimum image sizes to indicate actual chart data was rendered

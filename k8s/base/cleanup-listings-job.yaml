@@ -1,0 +1,38 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: cleanup-listings
+spec:
+  schedule: "0 3 * * *" # Run daily at 3 AM UTC
+  concurrencyPolicy: Forbid
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          restartPolicy: OnFailure
+          containers:
+            - name: cleanup-listings
+              # Use lightweight curl image for simple HTTP requests
+              image: curlimages/curl:latest
+              command:
+                - /bin/sh
+                - -c
+                - |
+                  echo "Starting cleanup listings job..."
+
+                  # Call the internal cleanup-listings endpoint
+                  if curl -f -X POST -w "Status: %{http_code}\n" http://app:3000/ops/cleanup-listings; then
+                    echo "Cleanup listings completed successfully"
+                  else
+                    echo "Cleanup listings failed"
+                    exit 1
+                  fi
+
+              # https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
+              resources:
+                limits:
+                  cpu: "0.1"
+                  memory: "100Mi"
+                requests:
+                  cpu: "0.05"
+                  memory: "50Mi"

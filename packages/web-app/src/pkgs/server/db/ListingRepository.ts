@@ -93,6 +93,7 @@ async function findActiveByItemId(
     where: {
       itemId,
       archived: false,
+      exclude: false,
     },
     select: {
       id: true,
@@ -151,6 +152,7 @@ export async function listActiveListingsForGpus(
     where: {
       gpuName: { in: gpuNames },
       archived: false,
+      exclude: false,
     },
     include: {
       gpu: true,
@@ -184,6 +186,7 @@ export async function listActiveListingsGroupedByGpu(
       Listing: {
         where: {
           archived: false,
+          exclude: false,
         },
       },
     },
@@ -212,6 +215,7 @@ export async function listActiveListings(
 ): Promise<CachedListing[]> {
   const where: Prisma.ListingWhereInput = {
     archived: false,
+    exclude: false,
     ...(includeTestGpus ? {} : { gpuName: { not: "test-gpu" } }),
   }
   const listings = await prisma.listing.findMany({
@@ -235,6 +239,7 @@ export async function getLatestListingDate(
   const result = await prisma.listing.findFirst({
     where: {
       archived: false,
+      exclude: false,
     },
     orderBy: { itemCreationDate: "desc" },
     select: { itemCreationDate: true },
@@ -398,7 +403,7 @@ export async function getPriceStats(
       (SELECT AVG(price) FROM (
         SELECT "priceValue"::float as price
         FROM "Listing"
-        WHERE "gpuName" = ${gpuName} AND "archived" = false
+        WHERE "gpuName" = ${gpuName} AND "archived" = false AND "exclude" = false
         ORDER BY "priceValue"::float ASC
         LIMIT 3
       ) lowest_three) as "minPrice",
@@ -409,6 +414,7 @@ export async function getPriceStats(
   WHERE
     "gpuName" = ${gpuName}
     AND "archived" = false
+    AND "exclude" = false
   ;`) as GpuPriceStats[]
 
   if (result.length === 0) {
@@ -425,7 +431,7 @@ export async function getPriceStats(
 
   // Get a representative image from the most recent active listing
   const listingWithImage = await prisma.listing.findFirst({
-    where: { gpuName: gpuName, archived: false },
+    where: { gpuName: gpuName, archived: false, exclude: false },
     select: { thumbnailImageUrl: true },
     orderBy: { itemCreationDate: "desc" },
   })
@@ -469,6 +475,7 @@ export async function topNListingsByCostPerformance(
     FROM "Listing"
     INNER JOIN "gpu" ON "Listing"."gpuName" = "gpu"."name"
     WHERE "Listing"."archived" = false
+      AND "Listing"."exclude" = false
       AND ${specFieldName} IS NOT NULL
       AND ${specFieldName} > 0
     ORDER BY ("Listing"."priceValue"::float / ${specFieldName}::float)
@@ -576,6 +583,7 @@ export async function topNListingsByCostPerformanceBySlug(
     INNER JOIN "gpu" g ON l."gpuName" = g."name"
     INNER JOIN "GpuMetricValue" mv ON g."name" = mv."gpuName"
     WHERE l."archived" = false
+      AND l."exclude" = false
       AND mv."metricSlug" = ${metricSlug}
       AND mv."value" > 0
     ORDER BY (l."priceValue"::float / mv."value"::float)
@@ -695,6 +703,7 @@ export async function getHistoricalPriceData(
 
   // Calculate daily stats with lowestAvgPrice (avg of 3 lowest listings per day)
   // Using LATERAL join for efficient per-day calculation
+  // NOTE: Includes archived listings for historical analysis, but excludes data quality issues
   const result = await prisma.$queryRaw<PriceHistoryPoint[]>`
     SELECT
       d."date",
@@ -710,6 +719,7 @@ export async function getHistoricalPriceData(
       WHERE
         "gpuName" = ${gpuName}
         AND "cachedAt" >= ${startDate}
+        AND "exclude" = false
       GROUP BY DATE_TRUNC('day', "cachedAt")
     ) d
     LEFT JOIN LATERAL (
@@ -719,6 +729,7 @@ export async function getHistoricalPriceData(
         FROM "Listing"
         WHERE "gpuName" = ${gpuName}
           AND DATE_TRUNC('day', "cachedAt") = d."date"
+          AND "exclude" = false
         ORDER BY "priceValue"::float ASC
         LIMIT 3
       ) sub
@@ -741,10 +752,11 @@ export async function getMonthlyAverages(
   const startDate = new Date(year, month - 1, 1)
   const endDate = new Date(year, month, 0)
 
+  // NOTE: Includes archived listings for historical analysis, but excludes data quality issues
   const result = await prisma.$queryRaw<
     Omit<MonthlyPriceStats, "priceVolatility">[]
   >`
-    SELECT 
+    SELECT
       "gpuName",
       ${monthYear} as "monthYear",
       AVG("priceValue"::float) as "avgPrice",
@@ -752,10 +764,11 @@ export async function getMonthlyAverages(
       MAX("priceValue"::float) as "maxPrice",
       COUNT(*)::float as "activeListingCount"
     FROM "Listing"
-    WHERE 
+    WHERE
       "gpuName" = ANY(${gpuNames})
       AND "cachedAt" >= ${startDate}
       AND "cachedAt" <= ${endDate}
+      AND "exclude" = false
     GROUP BY "gpuName"
   `
 
@@ -763,18 +776,19 @@ export async function getMonthlyAverages(
   const volatilityResults = await prisma.$queryRaw<
     { gpuName: string; priceVolatility: number }[]
   >`
-    SELECT 
+    SELECT
       "gpuName",
-      CASE 
-        WHEN AVG("priceValue"::float) > 0 
-        THEN STDDEV("priceValue"::float) / AVG("priceValue"::float) 
-        ELSE 0 
+      CASE
+        WHEN AVG("priceValue"::float) > 0
+        THEN STDDEV("priceValue"::float) / AVG("priceValue"::float)
+        ELSE 0
       END as "priceVolatility"
     FROM "Listing"
-    WHERE 
+    WHERE
       "gpuName" = ANY(${gpuNames})
       AND "cachedAt" >= ${startDate}
       AND "cachedAt" <= ${endDate}
+      AND "exclude" = false
     GROUP BY "gpuName"
   `
 
@@ -799,17 +813,19 @@ export async function getAvailabilityTrends(
   const startDate = new Date()
   startDate.setMonth(startDate.getMonth() - months)
 
+  // NOTE: Includes archived listings for historical analysis, but excludes data quality issues
   const result = await prisma.$queryRaw<AvailabilityStats[]>`
-    SELECT 
+    SELECT
       DATE_TRUNC('day', "cachedAt") as "date",
       COUNT(*)::float as "availableListings",
       COUNT(DISTINCT "sellerUsername")::float as "uniqueSellers",
       AVG(EXTRACT(EPOCH FROM ("cachedAt" - "itemCreationDate")) / 86400)::float as "avgDaysListed"
     FROM "Listing"
-    WHERE 
+    WHERE
       "gpuName" = ${gpuName}
       AND "cachedAt" >= ${startDate}
       AND "itemCreationDate" IS NOT NULL
+      AND "exclude" = false
     GROUP BY DATE_TRUNC('day', "cachedAt")
     ORDER BY "date"
   `
@@ -828,20 +844,22 @@ export async function getPriceVolatility(
   const startDate = new Date()
   startDate.setMonth(startDate.getMonth() - months)
 
+  // NOTE: Includes archived listings for historical analysis, but excludes data quality issues
   const result = await prisma.$queryRaw<VolatilityStats[]>`
-    SELECT 
+    SELECT
       ${gpuName} as "gpuName",
-      CASE 
-        WHEN AVG("priceValue"::float) > 0 
-        THEN STDDEV("priceValue"::float) / AVG("priceValue"::float) 
-        ELSE 0 
+      CASE
+        WHEN AVG("priceValue"::float) > 0
+        THEN STDDEV("priceValue"::float) / AVG("priceValue"::float)
+        ELSE 0
       END as "volatilityScore",
       (MAX("priceValue"::float) - MIN("priceValue"::float)) as "priceRange",
       COUNT(DISTINCT "version")::float as "versionCount"
     FROM "Listing"
-    WHERE 
+    WHERE
       "gpuName" = ${gpuName}
       AND "cachedAt" >= ${startDate}
+      AND "exclude" = false
   `
 
   return (
@@ -903,4 +921,108 @@ export async function getListingVersionHistory(
   })
 
   return listings.map((listing) => parsePrismaListingWithGpu(listing))
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// DATA QUALITY EXCLUSION METHODS
+// ═══════════════════════════════════════════════════════════════════════════
+
+/**
+ * Excludes a listing for data quality issues.
+ * Unlike archive, excluded listings are omitted from ALL queries including historical.
+ * The listing is preserved for potential ML training to detect similar issues.
+ *
+ * @param itemId - The eBay item ID of the listing to exclude
+ * @param reason - The reason for exclusion (see EXCLUDE_REASONS in listing.ts)
+ * @param prisma - Prisma client
+ */
+export async function excludeListingForDataQuality(
+  itemId: string,
+  reason: string,
+  prisma: PrismaClientWithinTransaction = prismaSingleton,
+): Promise<void> {
+  await prisma.listing.updateMany({
+    where: {
+      itemId,
+      archived: false,
+    },
+    data: {
+      exclude: true,
+      excludeReason: reason,
+    },
+  })
+  log.info(`Excluded listing ${itemId} for data quality issue: ${reason}`)
+}
+
+/**
+ * Lists excluded listings for analysis/ML training.
+ * Supports filtering by reason and GPU name, with pagination.
+ *
+ * @param options - Filter and pagination options
+ * @param prisma - Prisma client
+ * @returns Excluded listings and total count
+ */
+export async function listExcludedListings(
+  options: {
+    reason?: string
+    gpuName?: string
+    limit?: number
+    offset?: number
+  } = {},
+  prisma: PrismaClientWithinTransaction = prismaSingleton,
+): Promise<{ listings: CachedListing[]; total: number }> {
+  const DEFAULT_LIMIT = 100
+  const { reason, gpuName, limit = DEFAULT_LIMIT, offset = 0 } = options
+
+  const where: Prisma.ListingWhereInput = {
+    exclude: true,
+    ...(reason ? { excludeReason: reason } : {}),
+    ...(gpuName ? { gpuName } : {}),
+  }
+
+  const [listings, total] = await Promise.all([
+    prisma.listing.findMany({
+      where,
+      include: {
+        gpu: true,
+      },
+      orderBy: {
+        cachedAt: "desc",
+      },
+      take: limit,
+      skip: offset,
+    }),
+    prisma.listing.count({ where }),
+  ])
+
+  return {
+    listings: listings.map((listing) => parsePrismaListingWithGpu(listing)),
+    total,
+  }
+}
+
+/**
+ * Gets summary stats of excluded listings by reason.
+ * Useful for monitoring data quality issues over time.
+ *
+ * @param prisma - Prisma client
+ * @returns Array of reason/count pairs, sorted by count descending
+ */
+export async function getExclusionStats(
+  prisma: PrismaClientWithinTransaction = prismaSingleton,
+): Promise<{ reason: string; count: number }[]> {
+  const result = await prisma.$queryRaw<{ reason: string; count: bigint }[]>`
+    SELECT
+      COALESCE("excludeReason", 'unknown') as "reason",
+      COUNT(*)::bigint as "count"
+    FROM "Listing"
+    WHERE "exclude" = true
+    GROUP BY "excludeReason"
+    ORDER BY "count" DESC
+  `
+
+  return result.map((row) => ({
+    reason: row.reason,
+    count: Number(row.count),
+  }))
 }

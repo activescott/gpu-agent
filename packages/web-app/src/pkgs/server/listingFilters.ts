@@ -117,6 +117,8 @@ const nonGpuKeywords = [
   // e.g. "MSI NVIDIA GeForce RTX 4090 SUPRIM 24GB GDDR6X Liquid Cooler Block Only"
   "Block Only",
   "card only",
+  // e.g. "OEM Backplate For EVGA NVIDIA GeForce RTX 3060 XC 12GB Gaming Card" - $4.99 accessory
+  "Backplate For",
 ].map((word) => word.toLowerCase())
 
 function gpuAccessoryFilter(item: Listing): boolean {

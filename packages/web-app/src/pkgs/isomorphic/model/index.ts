@@ -13,6 +13,6 @@ export {
   GpuMetricKeys,
   GpuMetricsDescription,
 } from "./metrics"
-export { convertEbayItemToListing } from "./listing"
-export type { Listing, ListingWithMetric } from "./listing"
+export { convertEbayItemToListing, EXCLUDE_REASONS } from "./listing"
+export type { Listing, ListingWithMetric, ExcludeReason } from "./listing"
 export type { NewsArticle } from "./news"

@@ -89,12 +89,15 @@ case $1 in
     migrate)
         shift
         if [[ $# -eq 0 ]]; then
-            die "migrate requires a subcommand (dev, deploy, reset, status)"
+            # No subcommand, just run prisma migrate
+            run_in_container "npx prisma migrate"
+            exit 0
         fi
         subcommand="$1"
         shift
         case $subcommand in
             dev)
+                # Special handling for dev: sync migration files back to local filesystem
                 # Collect remaining args and extract migration name
                 args=""
                 migration_name=""
@@ -139,10 +142,8 @@ case $1 in
                     echo "New migrations synced to local filesystem. Don't forget to commit them!"
                 fi
                 ;;
-            deploy)
-                run_in_container "npx prisma migrate deploy"
-                ;;
             reset)
+                # Confirmation prompt for destructive operation
                 echo "WARNING: This will reset the database and delete all data!"
                 read -p "Are you sure? (yes/no): " confirm
                 if [[ "$confirm" != "yes" ]]; then
@@ -151,27 +152,15 @@ case $1 in
                 fi
                 run_in_container "npx prisma migrate reset --force"
                 ;;
-            status)
-                run_in_container "npx prisma migrate status"
-                ;;
             *)
-                die "Unknown migrate subcommand: $subcommand"
+                # Pass any other migrate subcommand directly to prisma
+                run_in_container "npx prisma migrate $subcommand $@"
                 ;;
         esac
         ;;
-    seed)
-        run_in_container "npx prisma db seed"
-        ;;
-    studio)
-        echo "Note: Prisma Studio will be available on port 5555"
-        echo "You may need to set up port forwarding separately."
-        run_in_container "npx prisma studio"
-        ;;
-    generate)
-        run_in_container "npx prisma generate"
-        ;;
     *)
-        die "Unknown command: $1"
+        # Pass any other command directly to prisma
+        run_in_container "npx prisma $@"
         ;;
 esac
 

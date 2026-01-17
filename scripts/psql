@@ -1,0 +1,26 @@
+#!/bin/bash
+# Query local dev PostgreSQL database
+# Usage: ./scripts/psql 'SELECT * FROM "Listing" LIMIT 10;'
+#        ./scripts/psql   (interactive mode)
+
+set -e
+
+if ! command -v minikube &> /dev/null; then
+    echo "Error: minikube is not installed. Install it with: brew install minikube"
+    exit 1
+fi
+
+if ! minikube status &> /dev/null; then
+    echo "Error: minikube is not running. Start it with: ./scripts/dev"
+    exit 1
+fi
+
+if [ -z "$1" ]; then
+    # Interactive mode
+    minikube kubectl -- exec -it -n gpupoet-dev db-0 -- \
+        psql -U gpu_agent -d gpu_agent
+else
+    # Query mode
+    minikube kubectl -- exec -it -n gpupoet-dev db-0 -- \
+        psql -U gpu_agent -d gpu_agent -c "$1"
+fi

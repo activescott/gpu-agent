@@ -76,3 +76,33 @@ function proxyImageUrl(imageUrl: string): string {
   const EBAY_IMAGE_HOST = /^https:\/\/i.ebayimg.com\//
   return imageUrl.replace(EBAY_IMAGE_HOST, EBAY_IMAGE_PROXY_PATH)
 }
+
+/**
+ * Common reasons for excluding a listing from all queries.
+ * These listings are data quality issues, not legitimate GPU listings.
+ * Preserved for potential ML training to detect similar issues.
+ *
+ * Usage: When setting excludeReason on a listing, use one of these values.
+ * The values are stored as strings in the database for flexibility.
+ */
+export const EXCLUDE_REASONS = {
+  /** GPU accessory like backplate, bracket, fan, shroud */
+  ACCESSORY: "accessory",
+  /** Empty box only, no GPU included */
+  BOX_ONLY: "box_only",
+  /** Modified/neutered card with reduced specs */
+  NEUTERED: "neutered",
+  /** Suspected scam or fraudulent listing */
+  SCAM: "scam",
+  /** Seller-defined variations bundle (price misleading) */
+  VARIATION_BUNDLE: "variation_bundle",
+  /** For parts/not working condition */
+  FOR_PARTS: "for_parts",
+  /** Low seller feedback (< 90%) */
+  LOW_FEEDBACK: "low_feedback",
+  /** Other data quality issue */
+  OTHER: "other",
+} as const
+
+export type ExcludeReason =
+  (typeof EXCLUDE_REASONS)[keyof typeof EXCLUDE_REASONS]

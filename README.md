@@ -99,8 +99,11 @@ Use `scripts/prisma-migrate` to run Prisma commands. All Prisma commands must ru
 # Generate Prisma client after schema changes
 ./scripts/prisma-migrate generate
 
-# Access database directly
-minikube kubectl -- exec -it -n gpupoet-dev db-0 -- psql -U gpu_agent -d gpu_agent
+# Access database directly (interactive)
+./scripts/psql
+
+# Run a query against local dev database
+./scripts/psql 'SELECT COUNT(*) FROM "Listing";'
 ```
 
 **Creating Migrations:** When you run `./scripts/prisma-migrate migrate dev --name your_migration`, the script:
@@ -147,6 +150,23 @@ Use `scripts/psql-prod` to query the production PostgreSQL database:
 - `best-deals.sql` - GPUs with biggest discounts below MSRP
 
 **Prerequisites:** kubectl configured with `nas` context and access to `gpupoet-prod` namespace.
+
+### Restoring Production Data to Dev
+
+To restore the latest production database backup to your local dev environment:
+
+```bash
+./scripts/restore-prod-db
+```
+
+This script will:
+1. Connect to nas.activescott.com via SSH (will prompt for passphrase)
+2. Download the latest backup to `data/prod-backups/`
+3. Restore the backup to your local dev database
+
+**Prerequisites:**
+- Dev environment running (`npm run dev`)
+- SSH access to nas.activescott.com
 
 ### GPU Market Report Generation
 

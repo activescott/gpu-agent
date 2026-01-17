@@ -1,0 +1,164 @@
+#!/usr/bin/env bash
+this_dir=$(cd $(dirname "$0"); pwd)
+this_script=$(basename $0)
+workspace_root=$(cd "$this_dir/.."; pwd)
+
+set -euo pipefail
+
+# Paths
+src_dir="$workspace_root/k8s/base"
+flux_repo="/Users/scott/src/activescott/home-infra-k8s-flux"
+dest_base="$flux_repo/apps/base/gpupoet"
+dest_prod="$flux_repo/apps/production/gpupoet"
+
+help () {
+  cat << END_DOC
+USAGE: $this_script [OPTIONS]
+
+Synchronizes k8s definitions from gpu-poet to the flux repo.
+
+Copies k8s/base/*.yaml files to:
+  $dest_base
+
+Options:
+  -h, --help    Show this help message
+  -n, --dry-run Show what would be copied without making changes
+
+END_DOC
+}
+
+dry_run=false
+
+# Parse arguments
+while [[ $# -gt 0 ]]; do
+    case "${1}" in
+        -h|--help)
+            help
+            exit 0
+            ;;
+        -n|--dry-run)
+            dry_run=true
+            shift
+            ;;
+        *)
+            echo "Unknown option: $1"
+            help
+            exit 1
+            ;;
+    esac
+done
+
+echo "=== Sync K8s Definitions to Flux Repo ==="
+echo ""
+echo "Source:      $src_dir"
+echo "Destination: $dest_base"
+echo ""
+
+# Check destination exists
+if [[ ! -d "$dest_base" ]]; then
+    echo "ERROR: Destination directory does not exist: $dest_base"
+    exit 1
+fi
+
+# Show what will change
+echo "=== Changes to be applied ==="
+echo ""
+
+# Get list of yaml files
+src_files=$(cd "$src_dir" && ls -1 *.yaml 2>/dev/null | sort)
+dest_files=$(cd "$dest_base" && ls -1 *.yaml 2>/dev/null | sort)
+
+# Show new files
+new_files=$(comm -23 <(echo "$src_files") <(echo "$dest_files"))
+if [[ -n "$new_files" ]]; then
+    echo "NEW files to add:"
+    for f in $new_files; do
+        echo "  + $f"
+    done
+    echo ""
+fi
+
+# Show removed files
+removed_files=$(comm -13 <(echo "$src_files") <(echo "$dest_files"))
+if [[ -n "$removed_files" ]]; then
+    echo "FILES to remove (exist in dest but not in source):"
+    for f in $removed_files; do
+        echo "  - $f"
+    done
+    echo ""
+fi
+
+# Show modified files
+modified_files=""
+for f in $src_files; do
+    if [[ -f "$dest_base/$f" ]]; then
+        if ! diff -q "$src_dir/$f" "$dest_base/$f" > /dev/null 2>&1; then
+            modified_files="$modified_files $f"
+        fi
+    fi
+done
+if [[ -n "$modified_files" ]]; then
+    echo "MODIFIED files:"
+    for f in $modified_files; do
+        echo "  ~ $f"
+        # Show brief diff summary
+        diff --brief "$src_dir/$f" "$dest_base/$f" 2>/dev/null || true
+    done
+    echo ""
+    echo "Detailed diffs:"
+    for f in $modified_files; do
+        echo "--- $f ---"
+        diff -u "$dest_base/$f" "$src_dir/$f" | head -50 || true
+        echo ""
+    done
+fi
+
+# Check if nothing changed
+if [[ -z "$new_files" && -z "$removed_files" && -z "$modified_files" ]]; then
+    echo "No changes detected. Files are already in sync."
+    exit 0
+fi
+
+# Dry run mode
+if [[ "$dry_run" == "true" ]]; then
+    echo "DRY RUN: No changes made."
+    exit 0
+fi
+
+# Confirm
+echo ""
+read -p "Apply these changes? (yes/no): " confirm
+if [[ "$confirm" != "yes" ]]; then
+    echo "Aborted."
+    exit 0
+fi
+
+# Perform sync
+echo ""
+echo "Syncing files..."
+rsync -av --delete --include="*.yaml" --exclude="*" "$src_dir/" "$dest_base/"
+
+echo ""
+echo "=== Sync complete ==="
+
+# Print prominent warning
+echo ""
+echo "╔══════════════════════════════════════════════════════════════════════════════╗"
+echo "║                                                                              ║"
+echo "║   ⚠️  WARNING: PRODUCTION OVERLAY MAY NEED UPDATES!                           ║"
+echo "║                                                                              ║"
+echo "║   Review the production overlay for any necessary patches or additions:     ║"
+echo "║                                                                              ║"
+echo "║   $dest_prod/kustomization.yaml"
+echo "║                                                                              ║"
+echo "║   Common updates needed:                                                     ║"
+echo "║   - Add imagePullSecrets patches for new Deployments/CronJobs               ║"
+echo "║   - Add PVC volume patches for new PersistentVolumeClaims                   ║"
+echo "║   - Update secret references if new secrets are needed                      ║"
+echo "║                                                                              ║"
+echo "║   After reviewing, commit changes in the flux repo:                         ║"
+echo "║   cd $flux_repo"
+echo "║   git add -A && git commit -m 'chore: sync gpupoet k8s definitions'         ║"
+echo "║                                                                              ║"
+echo "╚══════════════════════════════════════════════════════════════════════════════╝"
+echo ""

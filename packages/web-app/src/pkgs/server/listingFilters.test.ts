@@ -4,6 +4,56 @@ import { chainAsync } from "irritable-iterable"
 import { createFilterForGpu, sellerFeedbackFilter } from "./listingFilters"
 import { arrayToAsyncIterable } from "../isomorphic/collection"
 
+it("should filter out backplate accessories but keep GPUs with backplate in name", async () => {
+  const gpu = await loadGpuFromYaml("amd-radeon-rx-7800-xt.yaml")
+
+  const listings: AsyncIterable<Listing> = arrayToAsyncIterable([
+    // INVALID: Accessory - should be filtered out
+    {
+      title: "OEM Backplate For AMD Radeon RX 7800 XT 16GB Gaming Card",
+      itemAffiliateWebUrl: "https://example.com",
+      buyingOptions: ["FIXED_PRICE"],
+      sellerFeedbackPercentage: "100",
+    },
+    // INVALID: Accessory with different casing - should be filtered out
+    {
+      title: "Custom BACKPLATE FOR Sapphire AMD Radeon RX 7800 XT 16GB",
+      itemAffiliateWebUrl: "https://example.com",
+      buyingOptions: ["FIXED_PRICE"],
+      sellerFeedbackPercentage: "100",
+    },
+    // VALID: Actual GPU with "Backplate Special Edition" - should pass
+    {
+      title:
+        "PowerColor Red Devil Radeon RX 7800 XT Backplate Special Edition AMD 16GB GDDR6",
+      itemAffiliateWebUrl: "https://example.com",
+      buyingOptions: ["FIXED_PRICE"],
+      sellerFeedbackPercentage: "100",
+    },
+    // VALID: Actual GPU with "Backplate" but not "Backplate For" - should pass
+    {
+      title:
+        "XFX Speedster MERC 310 AMD Radeon RX 7800 XT 16GB Black Edition Backplate",
+      itemAffiliateWebUrl: "https://example.com",
+      buyingOptions: ["FIXED_PRICE"],
+      sellerFeedbackPercentage: "100",
+    },
+    // HACK cast for test purposes
+  ] as unknown as Listing[])
+
+  const filtered = await chainAsync(listings)
+    .filter(createFilterForGpu(gpu))
+    .collect()
+
+  expect(filtered).toHaveLength(2)
+  expect(filtered.map((l) => l.title)).toContain(
+    "PowerColor Red Devil Radeon RX 7800 XT Backplate Special Edition AMD 16GB GDDR6",
+  )
+  expect(filtered.map((l) => l.title)).toContain(
+    "XFX Speedster MERC 310 AMD Radeon RX 7800 XT 16GB Black Edition Backplate",
+  )
+})
+
 it("should filter out box-only items", async () => {
   const gpu = await loadGpuFromYaml("amd-radeon-rx-7800-xt.yaml")
 

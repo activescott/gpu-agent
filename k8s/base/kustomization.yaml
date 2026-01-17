@@ -7,5 +7,6 @@ resources:
   - db-deployment.yaml
   - db-service.yaml
   - cache-revalidation-job.yaml
+  - cleanup-listings-job.yaml
   - indexnow-job.yaml
   - indexnow-pvc.yaml

@@ -11,8 +11,15 @@ spec:
     - host: gpupoet.com
       http:
         paths:
-          # Block external access to the cache revalidation endpoint
+          # Block external access to internal ops endpoints
           - path: /ops/revalidate-cache
+            pathType: Exact
+            backend:
+              service:
+                name: nonexistent-service
+                port:
+                  number: 80
+          - path: /ops/cleanup-listings
             pathType: Exact
             backend:
               service:

@@ -125,6 +125,11 @@ model Listing {
   archived   Boolean   @default(false)
   archivedAt DateTime?
 
+  // Data quality exclusion - excluded listings are omitted from ALL queries (active + historical)
+  // Unlike archived, which preserves data for historical analysis, exclude marks data quality issues
+  exclude       Boolean   @default(false)
+  excludeReason String?   // Common values: see EXCLUDE_REASONS in listing.ts
+
   title                    String
   priceValue               String
   priceCurrency            String
@@ -160,6 +165,7 @@ model Listing {
   @@index([itemId, version])
   @@index([gpuName, archived, cachedAt])
   @@index([gpuName, stale])
+  @@index([gpuName, exclude, cachedAt])
 }
 
 enum NewsStatus {

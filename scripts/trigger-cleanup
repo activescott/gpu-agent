@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+this_dir=$(cd $(dirname "$0"); pwd)
+this_script=$(basename $0)
+
+set -euo pipefail
+
+host="${1:-localhost:3000}"
+
+help () {
+  cat << END_DOC
+USAGE: $this_script [HOST]
+
+Triggers the cleanup endpoint to exclude invalid listings based on current filters.
+
+Arguments:
+  HOST    Target host (default: localhost:3000)
+
+Examples:
+  $this_script                    # Run against local dev
+  $this_script localhost:3000     # Explicit local dev
+
+END_DOC
+}
+
+case "${1:-}" in
+    -h|--help)
+        help
+        exit 0
+        ;;
+esac
+
+echo "Triggering cleanup on $host..."
+curl -X POST "http://$host/ops/cleanup-listings"

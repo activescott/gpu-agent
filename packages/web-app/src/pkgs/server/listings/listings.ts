@@ -8,8 +8,10 @@ import { cacheEbayListingsForGpu } from "./ebay"
 import { CACHED_LISTINGS_DURATION_MS } from "../cacheConfig"
 import { withTransaction } from "../db/db"
 import { chain } from "irritable-iterable"
-import { PrismaClientKnownRequestError } from "@prisma/client/runtime/library"
-import { withRetry } from "@/pkgs/isomorphic/retry"
+import {
+  withRetry,
+  shouldRetryPrismaTransaction,
+} from "@/pkgs/isomorphic/retry"
 
 const log = createDiag("shopping-agent:shop:listings")
 
@@ -142,7 +144,7 @@ export async function revalidateCachedListings(
           isolationLevel: "RepeatableRead",
         },
       ),
-    shouldRetryTransaction,
+    shouldRetryPrismaTransaction,
   )
 
   statsFinal.totalDuration = Date.now() - start.getTime()
@@ -152,30 +154,6 @@ export async function revalidateCachedListings(
   )
 
   return statsFinal
-}
-
-function shouldRetryTransaction(error: unknown, retryCount: number): boolean {
-  const prismaError =
-    error instanceof PrismaClientKnownRequestError
-      ? (error as PrismaClientKnownRequestError)
-      : null
-
-  log.warn(`transaction failed. checking if retryable...`, {
-    prismaErrorCode: prismaError?.code,
-    retryCount,
-    err: error,
-  })
-  // https://www.prisma.io/docs/orm/reference/error-reference#error-codes
-  const TRANSACTION_DEADLOCK_OR_WRITE_CONFLICT = "P2034"
-  const MAX_RETRIES = 3
-  if (
-    retryCount < MAX_RETRIES &&
-    prismaError?.code === TRANSACTION_DEADLOCK_OR_WRITE_CONFLICT
-  ) {
-    return true
-  }
-  log.error(`transaction failed permanently after ${retryCount} retries`, error)
-  return false
 }
 
 function getOldestCachedAt(listings: CachedListing[]): Date {

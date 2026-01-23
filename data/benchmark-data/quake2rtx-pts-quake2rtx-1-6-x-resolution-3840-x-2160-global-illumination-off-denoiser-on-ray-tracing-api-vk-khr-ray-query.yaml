@@ -16,7 +16,7 @@ descriptionDollarsPer: Dollars per FPS in Quake II RTX. Lower values indicate
   better cost efficiency for ray tracing performance.
 category: gaming
 collectedSamples: 333
-updatedAt: 2026-01-06T00:40:27.189Z
+updatedAt: 2026-01-23T04:31:34.764Z
 results:
   - gpuNameRaw: AMD Radeon RX 6700 XT
     value: 23

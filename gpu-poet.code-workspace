@@ -5,9 +5,6 @@
 		},
 		{
 			"path": "../gpu-poet-data"
-		},
-		{
-			"path": "../home-infra-k8s-flux"
 		}
 	],
 	"settings": {

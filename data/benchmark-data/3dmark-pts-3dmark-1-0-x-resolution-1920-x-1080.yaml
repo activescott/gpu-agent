@@ -13,8 +13,8 @@ description: Average FPS in 3DMark Wild Life Extreme, a cross-platform GPU
 descriptionDollarsPer: Dollars per FPS in 3DMark Wild Life Extreme. Lower values
   indicate better cost efficiency for GPU rendering performance.
 category: gaming
-collectedSamples: 567
-updatedAt: 2026-01-06T00:37:05.145Z
+collectedSamples: 570
+updatedAt: 2026-01-23T04:28:44.274Z
 results:
   - gpuNameRaw: AMD Phoenix1
     value: 88

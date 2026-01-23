@@ -21,7 +21,7 @@ export default function SiteHeaderNavItems(): JSX.Element {
         href="/gpu/price-compare/ai/fp16-flops"
         label="AI GPU Prices"
       />
-      <NavItemLink href="/gpu/price-compare" label="Compare All GPU Prices" />
+      <NavItemLink href="/gpu/compare" label="Compare" />
       <NavItemLink href="/gpu/learn" label="Learn" />
     </ul>
   )

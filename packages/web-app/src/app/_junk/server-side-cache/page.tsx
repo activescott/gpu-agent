@@ -5,9 +5,9 @@ https://nextjs.org/docs/app/building-your-application/data-fetching/fetching-cac
 
 import { cache } from "react"
 
-import { createDiag } from "@activescott/diag"
+import { createLogger } from "@/lib/logger"
 
-const log = createDiag("shopping-agent:shop")
+const log = createLogger("shop")
 
 export const revalidate = 3600 // revalidate the data at most every hour
 

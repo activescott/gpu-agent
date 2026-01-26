@@ -1,8 +1,11 @@
 import { PostHog, usePostHog } from "posthog-js/react"
 import { isProduction } from "@/pkgs/isomorphic/config"
-import { createDiag } from "@activescott/diag"
-
-const trace = createDiag("shopping-agent:analytics")
+const trace = {
+  debug: console.debug,
+  info: console.info,
+  warn: console.warn,
+  error: console.error,
+}
 
 // NOTE: see posthog config in app/providers.tsx and see https://posthog.com/docs/libraries/next-js#accessing-posthog-using-the-provider
 

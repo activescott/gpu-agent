@@ -5,10 +5,10 @@ import {
   gpuSpecAsPercent,
 } from "@/pkgs/server/db/GpuRepository"
 import { getPriceStats } from "@/pkgs/server/db/ListingRepository"
-import { createDiag } from "@activescott/diag"
+import { createLogger } from "@/lib/logger"
 import { memoize } from "lodash"
 
-const log = createDiag("shopping-agent:learn:gpuSlug")
+const log = createLogger("learn:gpuSlug")
 
 const getGpu = memoize(getGpuWithoutCache)
 
@@ -25,7 +25,7 @@ type GpuParams = {
 export async function generateMetadata(props: GpuParams) {
   const params = await props.params
   const { gpuSlug } = params
-  log.debug("generateStaticMetadata for gpu ", gpuSlug)
+  log.debug({ gpuSlug }, "generateStaticMetadata for gpu")
   const gpu = await getGpu(gpuSlug)
   return {
     title: `${gpu.label} ${gpu.memoryCapacityGB}GB Specifications for AI Enthusiasts`,

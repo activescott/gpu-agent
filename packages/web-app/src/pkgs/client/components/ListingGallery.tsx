@@ -3,10 +3,14 @@ import { useSorting } from "@/pkgs/client/components/SortPanel"
 import { GpuMetricKey, Gpu, Listing } from "../../isomorphic/model"
 import { ListingCard } from "./ListingCard"
 import { useMemo, type JSX } from "react"
-import { createDiag } from "@activescott/diag"
 import { divideSafe } from "@/pkgs/isomorphic/math"
 
-const log = createDiag("shopping-agent:ListingGallery")
+const log = {
+  debug: console.debug,
+  info: console.info,
+  warn: console.warn,
+  error: console.error,
+}
 
 interface ListingItem {
   specs: Gpu

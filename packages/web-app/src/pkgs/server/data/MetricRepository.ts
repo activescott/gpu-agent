@@ -2,10 +2,10 @@ import path from "path"
 import yaml from "yaml"
 import { appRoot } from "@/pkgs/server/path"
 import { readFile, readdir } from "fs/promises"
-import { createDiag } from "@activescott/diag"
+import { createLogger } from "@/lib/logger"
 import { z } from "zod"
 
-const log = createDiag("shopping-agent:MetricRepository")
+const log = createLogger("MetricRepository")
 
 // Resolution constants for benchmark label extraction
 const RESOLUTION_4K_WIDTH = 3840
@@ -167,7 +167,7 @@ function generateBenchmarkSlug(
  */
 async function loadSpecDefinitions(): Promise<MetricDefinition[]> {
   const filePath = path.join(getMetricDefinitionsDir(), "specs.yaml")
-  log.debug("Loading spec definitions from:", filePath)
+  log.debug({ filePath }, "Loading spec definitions")
 
   try {
     const content = await readFile(filePath, "utf8")
@@ -187,7 +187,7 @@ async function loadSpecDefinitions(): Promise<MetricDefinition[]> {
       updatedAt: specsUpdatedAt,
     }))
   } catch (error) {
-    log.error("Error loading spec definitions:", error)
+    log.error({ err: error }, "Error loading spec definitions")
     return []
   }
 }
@@ -204,7 +204,7 @@ async function loadBenchmarkData(
     const content = await readFile(filePath, "utf8")
     return BenchmarkDataSchema.parse(yaml.parse(content))
   } catch (error) {
-    log.error(`Error loading benchmark file ${fileName}:`, error)
+    log.error({ err: error, fileName }, "Error loading benchmark file")
     return null
   }
 }
@@ -227,7 +227,7 @@ async function loadAllBenchmarkData(): Promise<BenchmarkData[]> {
 
     return results.filter((r): r is BenchmarkData => r !== null)
   } catch (error) {
-    log.error("Error loading benchmark data:", error)
+    log.error({ err: error }, "Error loading benchmark data")
     return []
   }
 }

@@ -3,9 +3,9 @@ import {
   secondsToMilliseconds,
 } from "@/pkgs/isomorphic/duration"
 import { cleanupInvalidListings, CleanupStats } from "@/pkgs/server/listings"
-import { createDiag } from "@activescott/diag"
+import { createLogger } from "@/lib/logger"
 
-const log = createDiag("shopping-agent:ops:cleanup-listings")
+const log = createLogger("ops:cleanup-listings")
 
 const DEFAULT_TIMEOUT_SECONDS = minutesToSeconds(5)
 
@@ -46,7 +46,7 @@ export async function POST() {
     const duration = Date.now() - start
     const errorMessage = error instanceof Error ? error.message : String(error)
 
-    log.error(`cleanup failed after ${duration}ms:`, error)
+    log.error({ err: error }, `cleanup failed after ${duration}ms`)
 
     return Response.json(
       {

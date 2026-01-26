@@ -1,23 +1,23 @@
-import { createDiag } from "@activescott/diag"
+import { createLogger } from "@/lib/logger"
 import { Gpu, Listing } from "../isomorphic/model"
 
-const log = createDiag("shopping-agent:shop:listingFilters")
+const log = createLogger("shop:listingFilters")
 
 /**
  * A filter that is suitable for all GPUs
  */
 function allListingFilters(item: Listing): boolean {
   if (typeof item.itemAffiliateWebUrl !== "string") {
-    log.error("item has no affiliate link", item.itemId)
+    log.error({ itemId: item.itemId }, "item has no affiliate link")
     return false
   }
   if (!item.buyingOptions.includes("FIXED_PRICE")) {
-    log.debug("item is not fixed price", item.itemId)
+    log.debug({ itemId: item.itemId }, "item is not fixed price")
     return false
   }
   if (item.itemGroupType === "SELLER_DEFINED_VARIATIONS") {
     // some of them shove a bunch of different types of GPUs into one listing, but the listing returns the lowest price so it makes the item appear artificially cheap
-    log.debug("item has SELLER_DEFINED_VARIATIONS", item.itemId)
+    log.debug({ itemId: item.itemId }, "item has SELLER_DEFINED_VARIATIONS")
     return false
   }
   return true

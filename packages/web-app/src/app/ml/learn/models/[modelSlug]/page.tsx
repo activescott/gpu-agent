@@ -1,10 +1,10 @@
 import { ModelInfo } from "@/pkgs/client/components/ModelInfo"
 import { getModelTypeLabel } from "@/pkgs/isomorphic/model"
 import { getModel, getModelSlugs } from "@/pkgs/server/data/ModelRepository"
-import { createDiag } from "@activescott/diag"
+import { createLogger } from "@/lib/logger"
 import { notFound } from "next/navigation"
 
-const log = createDiag("shopping-agent:learn:modelSlug")
+const log = createLogger("learn:modelSlug")
 
 // revalidate the data at most every hour:
 export const revalidate = 3600
@@ -19,7 +19,7 @@ type ModelParams = {
 export async function generateMetadata(props: ModelParams) {
   const params = await props.params
   const { modelSlug } = params
-  log.debug("generateMetadata for model", modelSlug)
+  log.debug({ modelSlug }, "generateMetadata for model")
 
   try {
     const model = await getModel(modelSlug)
@@ -58,7 +58,7 @@ export default async function Page(props: ModelParams) {
     const model = await getModel(modelSlug)
     return <ModelInfo model={model} />
   } catch (error) {
-    log.error("Failed to load model:", modelSlug, error)
+    log.error({ err: error, modelSlug }, "Failed to load model")
     notFound()
   }
 }

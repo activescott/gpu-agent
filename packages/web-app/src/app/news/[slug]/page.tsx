@@ -3,12 +3,12 @@ import { notFound } from "next/navigation"
 import MarkdownContent from "@/pkgs/client/components/MarkdownContent"
 import { getPublishedArticleBySlug } from "@/pkgs/server/db/NewsRepository"
 
-import { createDiag } from "@activescott/diag"
+import { createLogger } from "@/lib/logger"
 import { ReactNode } from "react"
 import { ArticleTag } from "../components/ArticleTag"
 import Link from "next/link"
 
-const log = createDiag("shopping-agent:news")
+const log = createLogger("news")
 
 // revalidate the data at most every N seconds: https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#revalidate
 export const revalidate = 21_600

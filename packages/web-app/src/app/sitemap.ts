@@ -15,7 +15,7 @@ import {
 } from "@/pkgs/server/db/GpuRepository"
 import { prismaSingleton } from "@/pkgs/server/db/db"
 import { EPOCH } from "@/pkgs/isomorphic/duration"
-import { createDiag } from "@activescott/diag"
+import { createLogger } from "@/lib/logger"
 import { listModels } from "@/pkgs/server/data/ModelRepository"
 import { listMetricDefinitions } from "@/pkgs/server/data/MetricRepository"
 
@@ -27,7 +27,7 @@ export const revalidate = 86_400
 // Force dynamic rendering to avoid database dependency during Docker build
 export const dynamic = "force-dynamic"
 
-const log = createDiag("shopping-agent:sitemap")
+const log = createLogger("sitemap")
 
 type SitemapItem = IterableElement<MetadataRoute.Sitemap>
 

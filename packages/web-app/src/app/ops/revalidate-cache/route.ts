@@ -4,9 +4,9 @@ import {
 } from "@/pkgs/isomorphic/duration"
 import { revalidateCachedListings } from "@/pkgs/server/listings"
 import { updateMetrics } from "@/pkgs/server/metrics/metricsStore"
-import { createDiag } from "@activescott/diag"
+import { createLogger } from "@/lib/logger"
 
-const log = createDiag("shopping-agent:ops:revalidate-cache")
+const log = createLogger("ops:revalidate-cache")
 
 // eslint-disable-next-line no-magic-numbers
 const DEFAULT_TIMEOUT_SECONDS = minutesToSeconds(25) // 25 minutes - leave buffer for cron job
@@ -62,7 +62,7 @@ export async function POST() {
       errorMessage,
     )
 
-    log.error(`cache revalidation failed after ${duration}ms:`, error)
+    log.error({ err: error }, `cache revalidation failed after ${duration}ms`)
 
     return Response.json(
       {

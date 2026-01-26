@@ -17,7 +17,7 @@ import {
   SERVER_CONFIG,
 } from "@/pkgs/isomorphic/config"
 import { arrayToAsyncIterable } from "@/pkgs/isomorphic/collection"
-import { createDiag } from "@activescott/diag"
+import { createLogger } from "@/lib/logger"
 import { chainAsync } from "irritable-iterable"
 import fs from "fs"
 import EBAY_US from "@activescott/ebay-client/categories/US_EBAY"
@@ -26,7 +26,7 @@ import { Integer } from "type-fest"
 import path from "path"
 import { appRoot } from "../path"
 
-const log = createDiag("shopping-agent:shop:listings:ebay")
+const log = createLogger("shop:listings:ebay")
 
 /**
  * Fetches new listings from ebay for the specified GPU and caches them.
@@ -133,7 +133,7 @@ async function dumpTestListingsToJson(
   gpuName: string,
   items: AsyncIterable<ItemSummary>,
 ): Promise<ItemSummary[]> {
-  log.info("Dumping listings to json at", getTestListingsPath(gpuName))
+  log.info({ path: getTestListingsPath(gpuName) }, "Dumping listings to json")
   let count = 0
   const listings: ItemSummary[] = []
   for await (const item of items) {

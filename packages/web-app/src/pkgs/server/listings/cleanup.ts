@@ -1,4 +1,4 @@
-import { createDiag } from "@activescott/diag"
+import { createLogger } from "@/lib/logger"
 import {
   listActiveListingsGroupedByGpu,
   GpuWithListings,
@@ -13,7 +13,7 @@ import {
 import { createFilterForGpu, sellerFeedbackFilter } from "../listingFilters"
 import { EXCLUDE_REASONS, ExcludeReason } from "@/pkgs/isomorphic/model"
 
-const log = createDiag("shopping-agent:shop:cleanup")
+const log = createLogger("shop:cleanup")
 
 const MAX_WAIT_SECONDS = 10
 

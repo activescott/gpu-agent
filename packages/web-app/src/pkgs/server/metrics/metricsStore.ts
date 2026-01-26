@@ -1,9 +1,9 @@
-import { createDiag } from "@activescott/diag"
+import { createLogger } from "@/lib/logger"
 import { millisecondsToSeconds } from "../../isomorphic/duration"
 import { ListingStats } from "../listings/listings"
 import client, { Registry, Gauge } from "prom-client"
 
-const log = createDiag("shopping-agent:metrics:store")
+const log = createLogger("metrics:store")
 
 interface StoredMetrics {
   stats: ListingStats

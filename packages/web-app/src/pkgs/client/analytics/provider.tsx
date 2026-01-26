@@ -4,9 +4,12 @@ import { PostHogProvider } from "posthog-js/react"
 import { usePathname, useSearchParams } from "next/navigation"
 import { Suspense, useEffect, useState, type JSX } from "react"
 import { useConfigApi } from "@/pkgs/client/hooks/useConfigApi"
-import { createDiag } from "@activescott/diag"
-
-const log = createDiag("shopping-agent:analytics:provider")
+const log = {
+  debug: console.debug,
+  info: console.info,
+  warn: console.warn,
+  error: console.error,
+}
 
 // Posthog+NextJS: https://posthog.com/docs/libraries/next-js?tab=App+router
 

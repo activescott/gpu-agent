@@ -1,4 +1,4 @@
-import { createDiag } from "@activescott/diag"
+import { createLogger } from "../logger.js"
 import {
   AuthToken,
   EbayClientCredentialsGrantResponse,
@@ -9,7 +9,7 @@ import { fetchImpl } from "../util/fetch.js"
 import { secondsToMilliseconds } from "../util/time.js"
 import { AspectFilter, Category, ItemSummary } from "./types.js"
 
-const logger = createDiag("ebay-client:buy")
+const logger = createLogger("buy")
 
 export function createBuyApi(options: BuyApiOptions): BuyApi {
   return new BuyApiImpl(options)
@@ -148,10 +148,7 @@ class BuyApiImpl implements BuyApi {
         page = (await resp.json()) as SearchPageResponse
       }
     } catch (error) {
-      logger.error("error searching items. Details:", {
-        cause: error,
-        page: page,
-      })
+      logger.error({ err: error, page }, "error searching items")
     }
   }
 
@@ -175,7 +172,7 @@ class BuyApiImpl implements BuyApi {
 
   private async getAccessToken(): Promise<string> {
     if (!this.authToken || this.authToken.expires_at <= Date.now()) {
-      logger.debug("fetching access token from", this.baseUrl())
+      logger.debug({ baseUrl: this.baseUrl() }, "fetching access token")
       try {
         // https://developer.ebay.com/api-docs/static/oauth-client-credentials-grant.html
         const form = new URLSearchParams()

@@ -4,11 +4,15 @@ import {
   GpuMetricKeys,
   GpuMetricsDescription,
 } from "@/pkgs/isomorphic/model"
-import { createDiag } from "@activescott/diag"
 import { BootstrapIcon } from "./BootstrapIcon"
 import { useState, type JSX } from "react"
 
-const log = createDiag("shopping-agent:SortPanel")
+const log = {
+  debug: console.debug,
+  info: console.info,
+  warn: console.warn,
+  error: console.error,
+}
 
 interface SortValue {
   metricKey: GpuMetricKey

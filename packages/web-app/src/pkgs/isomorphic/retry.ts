@@ -1,7 +1,7 @@
-import { createDiag } from "@activescott/diag"
+import { createLogger } from "@/lib/logger"
 import { PrismaClientKnownRequestError } from "@prisma/client/runtime/library"
 
-const log = createDiag("shopping-agent:isomorphic:retry")
+const log = createLogger("isomorphic:retry")
 
 const TRANSACTION_DEADLOCK_OR_WRITE_CONFLICT = "P2034"
 const MAX_TRANSACTION_RETRIES = 3
@@ -19,11 +19,10 @@ export function shouldRetryPrismaTransaction(
       ? (error as PrismaClientKnownRequestError)
       : null
 
-  log.warn(`transaction failed. checking if retryable...`, {
-    prismaErrorCode: prismaError?.code,
-    retryCount,
-    err: error,
-  })
+  log.warn(
+    { prismaErrorCode: prismaError?.code, retryCount, err: error },
+    "transaction failed, checking if retryable",
+  )
 
   // https://www.prisma.io/docs/orm/reference/error-reference#error-codes
   if (
@@ -33,7 +32,7 @@ export function shouldRetryPrismaTransaction(
     return true
   }
 
-  log.error(`transaction failed permanently after ${retryCount} retries`, error)
+  log.error({ err: error, retryCount }, "transaction failed permanently")
   return false
 }
 
@@ -43,12 +42,12 @@ export async function withRetry<T>(
 ): Promise<T> {
   for (let retryCount = 0; ; retryCount++) {
     if (retryCount > 1) {
-      log.warn(`retrying...`, { retryCount })
+      log.warn({ retryCount }, "retrying...")
     }
     try {
       const result = await retryable()
       if (retryCount > 1) {
-        log.warn(`retrying succeeded.`, { retryCount })
+        log.warn({ retryCount }, "retrying succeeded")
       }
       return result
     } catch (error: unknown) {

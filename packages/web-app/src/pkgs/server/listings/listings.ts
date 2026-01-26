@@ -1,4 +1,4 @@
-import { createDiag } from "@activescott/diag"
+import { createLogger } from "@/lib/logger"
 import {
   CachedListing,
   listCachedListingsGroupedByGpu,
@@ -13,7 +13,7 @@ import {
   shouldRetryPrismaTransaction,
 } from "@/pkgs/isomorphic/retry"
 
-const log = createDiag("shopping-agent:shop:listings")
+const log = createLogger("shop:listings")
 
 export interface ListingStats {
   staleGpusAtStart: { gpuName: string; oldestCachedAt: Date }[]

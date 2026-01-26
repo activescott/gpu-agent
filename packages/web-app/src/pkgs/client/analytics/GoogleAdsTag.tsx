@@ -1,11 +1,15 @@
 "use client"
 import Script from "next/script"
-import { createDiag } from "@activescott/diag"
 import { usePathname, useSearchParams } from "next/navigation"
 import { Suspense, useEffect, type JSX } from "react"
 import { usePostHog } from "posthog-js/react"
 
-const log = createDiag("shopping-agent:analytics:GoogleAdWordsTag")
+const log = {
+  debug: console.debug,
+  info: console.info,
+  warn: console.warn,
+  error: console.error,
+}
 /**
  *
  * NOTE: More about google tag at https://support.google.com/google-ads/answer/7548399?hl=en

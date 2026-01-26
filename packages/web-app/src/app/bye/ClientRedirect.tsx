@@ -3,11 +3,15 @@ import {
   AnalyticsActions,
   useAnalytics,
 } from "@/pkgs/client/analytics/reporter"
-import { createDiag } from "@activescott/diag"
 import { RedirectType, redirect, useSearchParams } from "next/navigation"
 import { useEffect } from "react"
 
-const log = createDiag("shopping-agent:ClientRedirect")
+const log = {
+  debug: console.debug,
+  info: console.info,
+  warn: console.warn,
+  error: console.error,
+}
 
 export default function ClientRedirect() {
   const searchParams = useSearchParams()

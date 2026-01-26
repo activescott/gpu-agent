@@ -1,4 +1,4 @@
-import { createDiag } from "@activescott/diag"
+import { createLogger } from "@/lib/logger"
 import { Suspense, type JSX } from "react"
 import { ShopListingsWithFilters } from "./ShopListingsWithFilters"
 import { getGpu } from "@/pkgs/server/db/GpuRepository"
@@ -9,7 +9,7 @@ import { Integer } from "type-fest"
 import { listActiveListingsForGpus } from "@/pkgs/server/db/ListingRepository"
 import Link from "next/link"
 
-const log = createDiag("shopping-agent:gpu:shop:gpuSlug")
+const log = createLogger("gpu:shop:gpuSlug")
 
 // revalidate the data at most every hour: https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#revalidate
 export const revalidate = 3600
@@ -25,7 +25,7 @@ type GpuParams = {
 export async function generateMetadata(props: GpuParams) {
   const params = await props.params
   const { gpuSlug } = params
-  log.debug("generateStaticMetadata for gpu ", gpuSlug)
+  log.debug({ gpuSlug }, "generateStaticMetadata for gpu")
   const gpu = await getGpu(gpuSlug)
   return {
     title: `Best Prices for ${gpu.label}`,

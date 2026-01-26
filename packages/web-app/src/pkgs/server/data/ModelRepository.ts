@@ -3,9 +3,9 @@ import yaml from "yaml"
 import { MlModel, MlModelSchema } from "@/pkgs/isomorphic/model"
 import { appRoot } from "@/pkgs/server/path"
 import { readFile, readdir } from "fs/promises"
-import { createDiag } from "@activescott/diag"
+import { createLogger } from "@/lib/logger"
 
-const log = createDiag("shopping-agent:ModelRepository")
+const log = createLogger("ModelRepository")
 
 function getModelDataDir(): string {
   return path.join(appRoot(), "..", "..", "..", "data", "model-data")
@@ -16,7 +16,7 @@ function getModelDataDir(): string {
  */
 export async function getModel(modelSlug: string): Promise<MlModel> {
   const filePath = path.join(getModelDataDir(), `${modelSlug}.yaml`)
-  log.debug("Loading model from:", filePath)
+  log.debug({ filePath }, "Loading model")
   const content = await readFile(filePath, "utf8")
   const modelData = yaml.parse(content)
   return MlModelSchema.parse(modelData)

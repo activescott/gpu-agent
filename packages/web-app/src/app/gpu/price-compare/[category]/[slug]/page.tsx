@@ -7,10 +7,10 @@ import {
 } from "@/pkgs/server/db/GpuRepository"
 import { MetricSelector } from "@/pkgs/client/components/MetricSelector"
 import { PriceCompareWithFilters } from "./PriceCompareWithFilters"
-import { createDiag } from "@activescott/diag"
+import { createLogger } from "@/lib/logger"
 import { notFound } from "next/navigation"
 
-const log = createDiag("shopping-agent:gpu:price-compare:category:slug")
+const log = createLogger("gpu:price-compare:category:slug")
 
 // revalidate the data at most every hour: https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#revalidate
 export const revalidate = 3600
@@ -26,7 +26,7 @@ export async function generateMetadata(props: CostPerMetricParams) {
   const params = await props.params
   const { category, slug } = params
 
-  log.debug("generateMetadata for category", category, "slug", slug)
+  log.debug({ category, slug }, "generateMetadata for category")
 
   // Look up metric definition from database - uses slug directly with GpuMetricValue
   const metricDef = await getMetricDefinitionBySlug(slug)

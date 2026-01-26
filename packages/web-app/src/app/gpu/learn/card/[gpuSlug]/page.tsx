@@ -17,7 +17,7 @@ import {
   GpuPriceStats,
 } from "@/pkgs/server/db/ListingRepository"
 import { GpuPriceHistoryChart } from "@/pkgs/server/components/charts"
-import { createDiag } from "@activescott/diag"
+import { createLogger } from "@/lib/logger"
 import { memoize } from "lodash"
 
 // revalidate the data at most every hour:
@@ -26,7 +26,7 @@ export const revalidate = 3600
 // Force dynamic rendering to avoid database dependency during Docker build
 export const dynamic = "force-dynamic"
 
-const log = createDiag("shopping-agent:learn:gpuSlug")
+const log = createLogger("learn:gpuSlug")
 
 const getGpu = memoize(getGpuWithoutCache)
 
@@ -301,7 +301,7 @@ type GpuParams = {
 export async function generateMetadata(props: GpuParams) {
   const params = await props.params
   const { gpuSlug } = params
-  log.debug("generateStaticMetadata for gpu ", gpuSlug)
+  log.debug({ gpuSlug }, "generateStaticMetadata for gpu")
   const gpu = await getGpu(gpuSlug)
 
   const title = `${gpu.label} ${gpu.memoryCapacityGB}GB Specs, Benchmarks & Pricing`

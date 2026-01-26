@@ -30,7 +30,7 @@ import {
   Gpu,
   parseGpu,
 } from "@/pkgs/isomorphic/model"
-import { createDiag } from "@activescott/diag"
+import { createLogger } from "@/lib/logger"
 import { PrismaClientWithinTransaction, prismaSingleton } from "./db"
 import { omit } from "lodash"
 import { GpuMetricKey } from "@/pkgs/isomorphic/model/metrics"
@@ -39,7 +39,7 @@ import { CACHED_LISTINGS_DURATION_MS } from "../cacheConfig"
 import { EPOCH } from "@/pkgs/isomorphic/duration"
 import { createHash } from "crypto"
 
-const log = createDiag("shopping-agent:ListingRepository")
+const log = createLogger("ListingRepository")
 
 /* We keep cachedAt in the DB and it is used in the ListingRepository and in Listings */
 export type CachedListing = Listing & { cachedAt: Date }

@@ -170,13 +170,13 @@ This script will:
 
 ### GPU Market Report Generation
 
-Monthly GPU market reports can be generated using Claude Code:
+Monthly GPU market reports can be generated using Claude Code from the `gpu-poet-data` repo:
 
 ```bash
 claude "Run the gpu-market-report skill for February 2026"
 ```
 
-See `.claude/skills/gpu-market-report.md` for the full skill documentation.
+The skill is defined in `gpu-poet-data/.claude/skills/gpu-market-report/SKILL.md`.
 
 Existing reports are TSX files in `packages/web-app/src/app/gpu/market-report/`.
 

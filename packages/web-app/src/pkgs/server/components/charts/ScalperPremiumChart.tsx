@@ -43,14 +43,14 @@ async function fetchScalperPremiumData(
           WHERE l2."gpuName" = l."gpuName"
             AND l2."cachedAt" >= ${startDate}
             AND l2."cachedAt" <= ${endDate}
-            AND l2."archived" = false
+            AND l2."exclude" = false
           ORDER BY "priceValue"::float ASC
           LIMIT 3
         ) lowest_three) as lowest_avg_price
       FROM "Listing" l
       WHERE l."cachedAt" >= ${startDate}
         AND l."cachedAt" <= ${endDate}
-        AND l."archived" = false
+        AND l."exclude" = false
         AND l."gpuName" LIKE 'nvidia-geforce-rtx-50%'
       GROUP BY l."gpuName"
     )
@@ -65,7 +65,7 @@ async function fetchScalperPremiumData(
     JOIN "Listing" l ON l."gpuName" = la.name
       AND l."cachedAt" >= ${startDate}
       AND l."cachedAt" <= ${endDate}
-      AND l."archived" = false
+      AND l."exclude" = false
     WHERE g."msrpUSD" IS NOT NULL
       AND g."msrpUSD" > 0
     GROUP BY la.name, g."msrpUSD", la.lowest_avg_price

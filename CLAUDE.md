@@ -15,3 +15,4 @@ This file contains instructions and context for Claude Code sessions working wit
   - The dev environment takes ~33s to start. Start it in background and use `sleep 33` right away.
 - Always use `minikube kubectl` instead of bare `kubectl` for the correct context.
 - Save all approved plans to `/Users/scott/src/activescott/gpu-poet-data/docs/plans/` with format `YYYY-MM-DD-plan-name.md`.
+- **Taking screenshots**: Use `./scripts/screenshot <url> [output-dir]` to capture pages for visual verification. It auto-splits long pages into viewport-sized chunks. Dev environment must be running first. Use `SELECTOR='.my-class'` to capture a specific element.

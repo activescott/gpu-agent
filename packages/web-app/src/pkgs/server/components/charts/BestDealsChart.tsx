@@ -42,7 +42,7 @@ async function fetchBestDealsData(
           WHERE l2."gpuName" = l."gpuName"
             AND l2."cachedAt" >= ${startDate}
             AND l2."cachedAt" <= ${endDate}
-            AND l2."archived" = false
+            AND l2."exclude" = false
           ORDER BY "priceValue"::float ASC
           LIMIT 3
         ) lowest_three) as lowest_avg_price
@@ -50,7 +50,7 @@ async function fetchBestDealsData(
       JOIN gpu g ON g.name = l."gpuName"
       WHERE l."cachedAt" >= ${startDate}
         AND l."cachedAt" <= ${endDate}
-        AND l."archived" = false
+        AND l."exclude" = false
         AND g.category = 'gaming'
         AND l."gpuName" NOT LIKE 'nvidia-geforce-rtx-50%'
       GROUP BY l."gpuName"

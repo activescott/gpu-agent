@@ -56,7 +56,7 @@ async function fetchPriceChangesData(
       FROM "Listing"
       WHERE "cachedAt" >= ${currStart}
         AND "cachedAt" <= ${currEnd}
-        AND "archived" = false
+        AND "exclude" = false
       GROUP BY "gpuName"
       HAVING COUNT(*) >= 3
     ),
@@ -67,6 +67,7 @@ async function fetchPriceChangesData(
       FROM "Listing"
       WHERE "cachedAt" >= ${prevStart}
         AND "cachedAt" <= ${prevEnd}
+        AND "exclude" = false
       GROUP BY "gpuName"
       HAVING COUNT(*) >= 3
     )

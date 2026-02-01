@@ -1,0 +1,108 @@
+#!/bin/bash
+# Take screenshots of a page using Playwright.
+# Optimized for AI/LLM analysis: automatically splits long pages into
+# viewport-sized chunks so each image is readable at full resolution.
+#
+# Usage:
+#   ./scripts/screenshot <url> [output-dir]
+#   ./scripts/screenshot http://localhost:3000/gpu/market-report/gpu-market-report-february-2026
+#   ./scripts/screenshot http://localhost:3000/gpu/market-report/gpu-market-report-february-2026 /tmp/report-shots
+#   ./scripts/screenshot https://gpupoet.com/gpu/price-compare /tmp/price-shots
+#
+# Output:
+#   Short pages:  <output-dir>/screenshot.png
+#   Long pages:   <output-dir>/screenshot-1.png, screenshot-2.png, ...
+#   Prints each file path to stdout (one per line) for easy consumption.
+#
+# Options (via environment variables):
+#   WIDTH=1280     Viewport width (default: 1280)
+#   HEIGHT=900     Viewport height (default: 900)
+#   SELECTOR=      CSS selector to screenshot a specific element instead of the page
+
+set -e
+
+if [ -z "$1" ]; then
+    echo "Usage: $0 <url> [output-dir]"
+    echo ""
+    echo "Examples:"
+    echo "  $0 http://localhost:3000/gpu/market-report/gpu-market-report-february-2026"
+    echo "  $0 http://localhost:3000/some/page /tmp/my-shots"
+    echo ""
+    echo "Environment variables:"
+    echo "  WIDTH=1280      Viewport width"
+    echo "  HEIGHT=900      Viewport height"
+    echo "  SELECTOR=       CSS selector for element screenshot"
+    exit 1
+fi
+
+url="$1"
+output_dir="${2:-/tmp/screenshots}"
+width="${WIDTH:-1280}"
+height="${HEIGHT:-900}"
+selector="${SELECTOR:-}"
+
+mkdir -p "$output_dir"
+
+script_dir="$(cd "$(dirname "$0")" && pwd)"
+e2e_dir="$script_dir/../e2e-tests"
+
+cd "$e2e_dir"
+
+node -e "
+const { chromium } = require('@playwright/test');
+const path = require('path');
+
+(async () => {
+  const browser = await chromium.launch();
+  const page = await browser.newPage({
+    viewport: { width: ${width}, height: ${height} },
+    deviceScaleFactor: 1,
+  });
+  await page.goto('${url}');
+  await page.waitForLoadState('networkidle');
+
+  const outputDir = '${output_dir}';
+  const selector = '${selector}';
+
+  if (selector) {
+    // Element screenshot - single file
+    const el = await page.locator(selector).first();
+    const filePath = path.join(outputDir, 'screenshot.png');
+    await el.screenshot({ path: filePath });
+    console.log(filePath);
+  } else {
+    // Get full page height
+    const pageHeight = await page.evaluate(() => document.documentElement.scrollHeight);
+    const viewportHeight = ${height};
+
+    if (pageHeight <= viewportHeight * 1.5) {
+      // Short page - single screenshot
+      const filePath = path.join(outputDir, 'screenshot.png');
+      await page.screenshot({ path: filePath, fullPage: true });
+      console.log(filePath);
+    } else {
+      // Long page - split into viewport-sized chunks with slight overlap
+      const overlap = 50; // pixels of overlap between chunks for context
+      const step = viewportHeight - overlap;
+      const chunks = Math.ceil(pageHeight / step);
+
+      for (let i = 0; i < chunks; i++) {
+        const y = i * step;
+        const filePath = path.join(outputDir, 'screenshot-' + String(i + 1) + '.png');
+        await page.screenshot({
+          path: filePath,
+          clip: {
+            x: 0,
+            y: y,
+            width: ${width},
+            height: Math.min(viewportHeight, pageHeight - y),
+          },
+        });
+        console.log(filePath);
+      }
+    }
+  }
+
+  await browser.close();
+})();
+"

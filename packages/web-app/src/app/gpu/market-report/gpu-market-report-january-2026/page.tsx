@@ -36,7 +36,7 @@ export const reportMetadata: MarketReportMetadata = {
     "buying-guide",
     "analysis",
   ],
-  dateRange: { from: "2026-01", to: "2026-01" },
+  dateRange: { from: "2025-12", to: "2025-12" },
 }
 
 /**

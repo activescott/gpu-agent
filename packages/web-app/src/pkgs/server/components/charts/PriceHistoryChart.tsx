@@ -61,6 +61,7 @@ async function fetchPriceHistoryData(
       FROM "Listing"
       WHERE "cachedAt" >= ${startDate}
         AND "cachedAt" <= ${endDate}
+        AND "exclude" = false
         AND "gpuName" = ANY(${gpus})
     )
     SELECT

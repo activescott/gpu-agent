@@ -96,12 +96,12 @@ spec:
               path: /api/health/readiness
               port: 3000
             # next is a pig
-            initialDelaySeconds: 30
+            initialDelaySeconds: 40
             periodSeconds: 10
 
           livenessProbe:
             httpGet:
               path: /api/health/liveness
               port: 3000
-            initialDelaySeconds: 10
+            initialDelaySeconds: 40
             periodSeconds: 10

@@ -28,16 +28,17 @@ const MONTHS_TO_SHOW = 6
  * GPUs to show in the price history chart.
  * Curated list of popular GPUs for market reports.
  */
-const TRACKED_GPUS = [
+const DEFAULT_GPUS = [
   "nvidia-geforce-rtx-4070-super",
   "nvidia-geforce-rtx-3080",
 ]
 
-const GPU_COLORS: Record<string, "primary" | "success" | "warning" | "danger"> =
-  {
-    "nvidia-geforce-rtx-4070-super": "primary",
-    "nvidia-geforce-rtx-3080": "success",
-  }
+const COLOR_PALETTE: ("primary" | "success" | "warning" | "danger")[] = [
+  "primary",
+  "success",
+  "warning",
+  "danger",
+]
 
 /**
  * Fetches monthly price history for tracked GPUs.
@@ -45,6 +46,7 @@ const GPU_COLORS: Record<string, "primary" | "success" | "warning" | "danger"> =
  */
 async function fetchPriceHistoryData(
   dateRange: DateRange,
+  gpus: string[] = DEFAULT_GPUS,
 ): Promise<MonthlyPriceRow[]> {
   const [year, month] = dateRange.to.split("-").map(Number)
   const endDate = new Date(year, month, 0) // Last day of target month
@@ -59,7 +61,7 @@ async function fetchPriceHistoryData(
       FROM "Listing"
       WHERE "cachedAt" >= ${startDate}
         AND "cachedAt" <= ${endDate}
-        AND "gpuName" = ANY(${TRACKED_GPUS})
+        AND "gpuName" = ANY(${gpus})
     )
     SELECT
       "gpuName",
@@ -77,7 +79,10 @@ async function fetchPriceHistoryData(
 /**
  * Transforms raw data into chart series format.
  */
-function buildSeries(data: MonthlyPriceRow[]): LineChartSeries[] {
+function buildSeries(
+  data: MonthlyPriceRow[],
+  gpus: string[],
+): LineChartSeries[] {
   // Group by GPU
   const byGpu = new Map<string, MonthlyPriceRow[]>()
   for (const row of data) {
@@ -86,12 +91,15 @@ function buildSeries(data: MonthlyPriceRow[]): LineChartSeries[] {
     byGpu.set(row.gpuName, existing)
   }
 
-  // Convert to series format
+  // Convert to series format, using GPU order for color assignment
   const series: LineChartSeries[] = []
   for (const [gpuName, rows] of byGpu) {
+    const gpuIndex = gpus.indexOf(gpuName)
+    const color =
+      COLOR_PALETTE[gpuIndex >= 0 ? gpuIndex % COLOR_PALETTE.length : 0]
     series.push({
       label: formatGpuName(gpuName),
-      color: GPU_COLORS[gpuName] || "primary",
+      color,
       data: rows.map((row) => ({
         x: row.monthLabel,
         y: Math.round(row.avgPrice),
@@ -105,7 +113,10 @@ function buildSeries(data: MonthlyPriceRow[]): LineChartSeries[] {
 /**
  * Builds the chart configuration from the data.
  */
-function buildChartConfig(data: MonthlyPriceRow[]): LineChartConfig {
+function buildChartConfig(
+  data: MonthlyPriceRow[],
+  gpus: string[],
+): LineChartConfig {
   return {
     id: "price-history",
     title: "GPU Price Trends (6 Month)",
@@ -113,7 +124,7 @@ function buildChartConfig(data: MonthlyPriceRow[]): LineChartConfig {
     unit: "$",
     xAxisLabel: "Month",
     yAxisLabel: "Avg Price ($)",
-    series: buildSeries(data),
+    series: buildSeries(data, gpus),
   }
 }
 
@@ -124,19 +135,27 @@ export async function getPriceHistoryConfig(
   dateRange: DateRange,
 ): Promise<LineChartConfig> {
   const data = await fetchPriceHistoryData(dateRange)
-  return buildChartConfig(data)
+  return buildChartConfig(data, DEFAULT_GPUS)
 }
 
 // Minimum data points required for a meaningful trend
 const MIN_DATA_POINTS = 2
+
+interface PriceHistoryChartProps extends ChartComponentProps {
+  /** Optional list of GPU slugs to track. Defaults to a curated list of popular GPUs. */
+  gpus?: string[]
+}
 
 /**
  * React Server Component for rendering the chart on a page.
  */
 export async function PriceHistoryChart({
   dateRange,
-}: ChartComponentProps): Promise<JSX.Element> {
-  const config = await getPriceHistoryConfig(dateRange)
+  gpus,
+}: PriceHistoryChartProps): Promise<JSX.Element> {
+  const trackedGpus = gpus ?? DEFAULT_GPUS
+  const data = await fetchPriceHistoryData(dateRange, trackedGpus)
+  const config = buildChartConfig(data, trackedGpus)
 
   const shareImageUrl = `/api/images/chart/PriceHistoryChart?from=${dateRange.from}&to=${dateRange.to}`
 

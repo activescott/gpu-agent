@@ -12,6 +12,7 @@
 import type { DateRange } from "@/pkgs/server/components/charts"
 
 // Import metadata from each report page
+import { reportMetadata as february2026 } from "../gpu-market-report-february-2026/page"
 import { reportMetadata as january2026 } from "../gpu-market-report-january-2026/page"
 
 /**
@@ -31,7 +32,7 @@ export interface MarketReportMetadata {
 /**
  * All market reports, newest first.
  */
-const reports: MarketReportMetadata[] = [january2026]
+const reports: MarketReportMetadata[] = [february2026, january2026]
 
 /**
  * Lists all market report metadata, sorted by publish date (newest first).

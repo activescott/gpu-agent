@@ -17,10 +17,9 @@ import { ReactNode } from "react"
 import { listPublishedArticles } from "@/pkgs/server/db/NewsRepository"
 import { TipCard } from "../pkgs/client/components/TipCard"
 import { NewsArticlePair } from "@/pkgs/client/components/NewsArticlePair"
-import { AbTestWrapper } from "@/pkgs/client/components/AbTestWrapper"
-import { GpuMetricsTable } from "./gpu/ranking/[category]/[metric]/GpuMetricsTable"
-import { getAllMetricRankings } from "@/pkgs/server/db/GpuRepository"
 import { PopularComparisons } from "@/pkgs/client/components/PopularComparisons"
+import { listMarketReports } from "./gpu/market-report/reports"
+import type { NewsItem } from "@/pkgs/client/components/NewsArticlePair"
 
 // revalidate the data at most every N seconds: https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#revalidate
 export const revalidate = 1800
@@ -34,109 +33,42 @@ export const metadata: Metadata = {
 }
 
 const TOP_N_LISTINGS = 10
-const TOP_N_RANKINGS = 4
 const TOP_N_GROUP_SIZE = 2
 
 export default async function Page() {
-  // Fetch listings data (for control variant)
   const topListingsPromises = GpuSpecKeys.map(async (spec) => {
     const listings = await topNListingsByCostPerformance(spec, TOP_N_LISTINGS)
     return { spec, listings }
   })
 
-  // Fetch ranking data (for test variant)
-  const rankingDataPromise = getAllMetricRankings(TOP_N_RANKINGS)
-
-  // Fetch news articles
   const newsPromise = listPublishedArticles()
 
-  // Await all data in parallel
-  const [topListingsGroup, rankingData, rawNewsArticles] = await Promise.all([
+  const [topListingsGroup, rawNewsArticles] = await Promise.all([
     Promise.all(topListingsPromises),
-    rankingDataPromise,
     newsPromise,
   ])
 
   // Filter and sort news articles
   const oneYearAgo = new Date()
   oneYearAgo.setFullYear(oneYearAgo.getFullYear() - 1)
-  const newsArticles = rawNewsArticles
+  const recentArticles: NewsItem[] = rawNewsArticles
     .filter((article) => article.publishedAt > oneYearAgo)
     .sort((a, b) => b.publishedAt.getTime() - a.publishedAt.getTime())
 
-  // Separate ranking data by category
-  const aiRankings = rankingData.filter((r) => r.category === "ai")
-  const gamingRankings = rankingData.filter((r) => r.category === "gaming")
-
-  // Build control content (existing carousels)
-  const controlContent = (
-    <div className="d-flex flex-column">
-      {topListingsGroup.map(({ spec, listings }, groupIndex) => (
-        <div key={spec}>
-          <TopListingsCarousel spec={spec} listings={listings} />
-          {/* Insert news articles after every second carousel */}
-          {groupIndex % TOP_N_GROUP_SIZE === 1 &&
-            groupIndex < topListingsGroup.length - 1 && (
-              <NewsArticlePair
-                startIndex={groupIndex - 1}
-                articles={newsArticles.slice(
-                  Math.floor(groupIndex / TOP_N_GROUP_SIZE) * TOP_N_GROUP_SIZE,
-                  Math.floor(groupIndex / TOP_N_GROUP_SIZE) * TOP_N_GROUP_SIZE +
-                    TOP_N_GROUP_SIZE,
-                )}
-              />
-            )}
-        </div>
-      ))}
-    </div>
-  )
-
-  // Build test content (ranking tables)
-  const testContent = (
-    <div className="d-flex flex-column">
-      <h3 className="mt-4">Gaming Performance Rankings</h3>
-      {gamingRankings.map(({ metricSlug, metricName, metricUnit, topGpus }) => {
-        return (
-          <div key={metricSlug} className="my-container m-2 mt-5">
-            <GpuMetricsTable
-              metricUnit={metricUnit}
-              gpuList={topGpus}
-              maxRows={TOP_N_RANKINGS}
-              showTierDividers={false}
-              header={{
-                title: `Top GPUs by ${metricName}`,
-                href: `/gpu/ranking/gaming/${metricSlug}`,
-              }}
-            />
-          </div>
-        )
-      })}
-
-      {/* News articles between Gaming and AI */}
-      <NewsArticlePair
-        startIndex={0}
-        articles={newsArticles.slice(0, TOP_N_GROUP_SIZE)}
-      />
-
-      <h3 className="mt-4">AI Performance Rankings</h3>
-      {aiRankings.map(({ metricSlug, metricName, metricUnit, topGpus }) => {
-        return (
-          <div key={metricSlug} className="my-container m-2 mt-5">
-            <GpuMetricsTable
-              metricUnit={metricUnit}
-              gpuList={topGpus}
-              maxRows={TOP_N_RANKINGS}
-              showTierDividers={false}
-              header={{
-                title: `Top GPUs by ${metricName}`,
-                href: `/gpu/ranking/ai/${metricSlug}`,
-              }}
-            />
-          </div>
-        )
-      })}
-    </div>
-  )
+  // Prepend the latest market report so it always appears in the first row
+  const latestReport = listMarketReports()[0]
+  const newsArticles: NewsItem[] = latestReport
+    ? [
+        {
+          id: latestReport.slug,
+          title: latestReport.title,
+          publishedAt: latestReport.publishedAt,
+          slug: latestReport.slug,
+          href: `/gpu/market-report/${latestReport.slug}`,
+        },
+        ...recentArticles,
+      ]
+    : recentArticles
 
   return (
     <div>
@@ -167,11 +99,27 @@ export default async function Page() {
         <PopularComparisons />
       </div>
 
-      <AbTestWrapper
-        featureFlag="home-page-ranking-tables-vs-carousels"
-        controlContent={controlContent}
-        testContent={testContent}
-      />
+      <div className="d-flex flex-column">
+        {topListingsGroup.map(({ spec, listings }, groupIndex) => (
+          <div key={spec}>
+            <TopListingsCarousel spec={spec} listings={listings} />
+            {/* Insert news articles after every second carousel */}
+            {groupIndex % TOP_N_GROUP_SIZE === 1 &&
+              groupIndex < topListingsGroup.length - 1 && (
+                <NewsArticlePair
+                  startIndex={groupIndex - 1}
+                  articles={newsArticles.slice(
+                    Math.floor(groupIndex / TOP_N_GROUP_SIZE) *
+                      TOP_N_GROUP_SIZE,
+                    Math.floor(groupIndex / TOP_N_GROUP_SIZE) *
+                      TOP_N_GROUP_SIZE +
+                      TOP_N_GROUP_SIZE,
+                  )}
+                />
+              )}
+          </div>
+        ))}
+      </div>
     </div>
   )
 }

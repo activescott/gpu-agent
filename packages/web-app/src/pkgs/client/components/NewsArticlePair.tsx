@@ -1,15 +1,24 @@
-import { NewsArticle } from "@/pkgs/isomorphic/model"
 import { ReactNode } from "react"
 import { BootstrapIcon, BootstrapIconName } from "./BootstrapIcon"
 import { TipCard } from "./TipCard"
 import Link from "next/link"
+
+/** Lightweight item type for news-style cards on the home page. */
+export interface NewsItem {
+  id: string
+  title: string
+  publishedAt: Date
+  /** Link href. Defaults to /news/{slug} if not provided. */
+  href?: string
+  slug: string
+}
 
 // NOTE: used on home page - very specific to a need there.
 export function NewsArticlePair({
   articles,
   startIndex,
 }: {
-  articles: NewsArticle[]
+  articles: NewsItem[]
   startIndex: number
 }): ReactNode {
   const newsIcons: BootstrapIconName[] = [
@@ -33,7 +42,7 @@ export function NewsArticlePair({
         <TipCard key={article.id} icon={selectNewsIcon(index)}>
           <div className="d-flex flex-column">
             <Link
-              href={`/news/${article.slug}`}
+              href={article.href ?? `/news/${article.slug}`}
               className="text-decoration-none fw-semibold mb-1"
             >
               {article.title}

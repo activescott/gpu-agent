@@ -212,6 +212,16 @@ export default async function February2026Report(): Promise<ReactNode> {
           pattern is consistent across the whole lineup: best deals are near
           MSRP, median prices are roughly double that.
         </p>
+        <p>
+          Why such a big gap? Those near-MSRP listings are <em>fleeting</em>. I
+          checked the data: the cheapest RTX 5090 listings in January were an
+          ASUS ROG Astral at $1,989 and an FE at $1,996 &mdash; essentially
+          MSRP. Each appeared in our data exactly once before selling. Out of
+          1,489 total RTX 5090 listings in January, only a handful were anywhere
+          near MSRP. The rest? $3,000+. The &ldquo;best deal&rdquo; column
+          reflects real prices that real sellers listed at &mdash; but you had
+          to be watching at the right moment to grab them.
+        </p>
         <div className="alert alert-warning mt-3">
           <strong>My take:</strong> Good deals exist, but you need to be fast
           and persistent. If you see an RTX 50 card near MSRP, buy it

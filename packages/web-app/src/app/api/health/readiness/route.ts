@@ -1,5 +1,8 @@
 import { NextResponse } from "next/server"
 import { prismaSingleton } from "@/pkgs/server/db/db"
+import { createLogger } from "@/lib/logger"
+
+const log = createLogger("api:health:readiness")
 
 /**
  * Service readiness probe.
@@ -28,7 +31,7 @@ export async function GET() {
     await prismaSingleton.$queryRaw`SELECT 1`
     checks["database"] = "ok"
   } catch (error) {
-    console.error("Readiness check failed:", error)
+    log.error({ err: error }, "Readiness check failed")
     checks["database"] = "failed"
     return NextResponse.json(
       {

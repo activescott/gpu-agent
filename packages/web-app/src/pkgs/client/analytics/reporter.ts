@@ -1,11 +1,8 @@
 import { PostHog, usePostHog } from "posthog-js/react"
 import { isProduction } from "@/pkgs/isomorphic/config"
-const trace = {
-  debug: console.debug,
-  info: console.info,
-  warn: console.warn,
-  error: console.error,
-}
+import { createClientLogger } from "@/lib/clientLogger"
+
+const trace = createClientLogger("analytics:reporter")
 
 // NOTE: see posthog config in app/providers.tsx and see https://posthog.com/docs/libraries/next-js#accessing-posthog-using-the-provider
 

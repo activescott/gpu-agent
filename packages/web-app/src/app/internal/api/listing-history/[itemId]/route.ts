@@ -1,6 +1,9 @@
 import { NextRequest, NextResponse } from "next/server"
 import { getListingVersionHistory } from "@/pkgs/server/db/ListingRepository"
 import { prismaSingleton } from "@/pkgs/server/db/db"
+import { createLogger } from "@/lib/logger"
+
+const log = createLogger("internal:api:listing-history")
 
 export async function GET(
   request: NextRequest,
@@ -20,8 +23,7 @@ export async function GET(
       versionHistory,
     })
   } catch (error) {
-    // eslint-disable-next-line no-console
-    console.error("Error fetching listing version history:", error)
+    log.error({ err: error }, "Error fetching listing version history")
     return NextResponse.json(
       { error: "Internal server error" },
       { status: 500 },

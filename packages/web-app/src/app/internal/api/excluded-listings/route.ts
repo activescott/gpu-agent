@@ -3,6 +3,11 @@ import {
   listExcludedListings,
   getExclusionStats,
 } from "@/pkgs/server/db/ListingRepository"
+import { createLogger } from "@/lib/logger"
+
+const log = createLogger("internal:api:excluded-listings")
+
+const DEFAULT_PAGINATION_LIMIT = 100
 
 export async function GET(request: Request) {
   try {
@@ -11,7 +16,7 @@ export async function GET(request: Request) {
     const gpuName = searchParams.get("gpuName") || undefined
     const limit = searchParams.get("limit")
       ? Number.parseInt(searchParams.get("limit")!)
-      : 100
+      : DEFAULT_PAGINATION_LIMIT
     const offset = searchParams.get("offset")
       ? Number.parseInt(searchParams.get("offset")!)
       : 0
@@ -46,8 +51,7 @@ export async function GET(request: Request) {
       },
     })
   } catch (error) {
-    // eslint-disable-next-line no-console
-    console.error("Error fetching excluded listings:", error)
+    log.error({ err: error }, "Error fetching excluded listings")
     return NextResponse.json(
       { error: "Failed to fetch excluded listings" },
       { status: 500 },

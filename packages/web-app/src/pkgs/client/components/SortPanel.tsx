@@ -6,13 +6,9 @@ import {
 } from "@/pkgs/isomorphic/model"
 import { BootstrapIcon } from "./BootstrapIcon"
 import { useState, type JSX } from "react"
+import { createClientLogger } from "@/lib/clientLogger"
 
-const log = {
-  debug: console.debug,
-  info: console.info,
-  warn: console.warn,
-  error: console.error,
-}
+const log = createClientLogger("components:SortPanel")
 
 interface SortValue {
   metricKey: GpuMetricKey

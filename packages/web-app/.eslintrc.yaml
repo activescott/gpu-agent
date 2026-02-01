@@ -38,8 +38,9 @@ rules:
   unicorn/no-new-array: off
   # -1 is the default "not found" result in JS array methods:
   no-magic-numbers:
-    - "warn"
+    - "error"
     - ignore: [-1, 1, 0, 24]
+  no-console: "error"
   # wtf is this a warn?
   "@typescript-eslint/no-explicit-any": "error"
   # Allow variables named _ to be unused (common pattern for intentionally unused variables)
@@ -56,7 +57,7 @@ rules:
         camelCase: true
         pascalCase: true
   import/no-unused-modules:
-    - warn
+    - error
     - unusedExports: true
       missingExports: true
       ignoreExports:

@@ -32,6 +32,8 @@ interface ExcludedListingsData {
   }
 }
 
+const CURRENCY_DECIMAL_PLACES = 2
+
 export default function ExcludedListingsPage() {
   const [loading, setLoading] = useState(true)
   const [data, setData] = useState<ExcludedListingsData | null>(null)
@@ -260,7 +262,12 @@ export default function ExcludedListingsPage() {
                     <td>
                       <small className="text-muted">{listing.gpuLabel}</small>
                     </td>
-                    <td>${Number.parseFloat(listing.priceValue).toFixed(2)}</td>
+                    <td>
+                      $
+                      {Number.parseFloat(listing.priceValue).toFixed(
+                        CURRENCY_DECIMAL_PLACES,
+                      )}
+                    </td>
                     <td>{listing.condition || "-"}</td>
                     <td>
                       <small>{listing.sellerUsername}</small>

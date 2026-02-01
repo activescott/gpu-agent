@@ -3,15 +3,11 @@ import {
   AnalyticsActions,
   useAnalytics,
 } from "@/pkgs/client/analytics/reporter"
+import { createClientLogger } from "@/lib/clientLogger"
 import { RedirectType, redirect, useSearchParams } from "next/navigation"
 import { useEffect } from "react"
 
-const log = {
-  debug: console.debug,
-  info: console.info,
-  warn: console.warn,
-  error: console.error,
-}
+const log = createClientLogger("bye:ClientRedirect")
 
 export default function ClientRedirect() {
   const searchParams = useSearchParams()

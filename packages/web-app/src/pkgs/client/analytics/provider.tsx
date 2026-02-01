@@ -4,12 +4,9 @@ import { PostHogProvider } from "posthog-js/react"
 import { usePathname, useSearchParams } from "next/navigation"
 import { Suspense, useEffect, useState, type JSX } from "react"
 import { useConfigApi } from "@/pkgs/client/hooks/useConfigApi"
-const log = {
-  debug: console.debug,
-  info: console.info,
-  warn: console.warn,
-  error: console.error,
-}
+import { createClientLogger } from "@/lib/clientLogger"
+
+const log = createClientLogger("analytics:provider")
 
 // Posthog+NextJS: https://posthog.com/docs/libraries/next-js?tab=App+router
 

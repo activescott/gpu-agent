@@ -4,13 +4,9 @@ import { GpuMetricKey, Gpu, Listing } from "../../isomorphic/model"
 import { ListingCard } from "./ListingCard"
 import { useMemo, type JSX } from "react"
 import { divideSafe } from "@/pkgs/isomorphic/math"
+import { createClientLogger } from "@/lib/clientLogger"
 
-const log = {
-  debug: console.debug,
-  info: console.info,
-  warn: console.warn,
-  error: console.error,
-}
+const log = createClientLogger("components:ListingGallery")
 
 interface ListingItem {
   specs: Gpu

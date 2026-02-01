@@ -16,6 +16,9 @@ import { NextRequest, NextResponse } from "next/server"
 import { composeChartImage } from "@/pkgs/server/charts"
 import { getGpuPriceHistoryConfig } from "@/pkgs/server/components/charts"
 import { getGpu } from "@/pkgs/server/db/GpuRepository"
+import { createLogger } from "@/lib/logger"
+
+const log = createLogger("api:images:chart:GpuPriceHistoryChart")
 
 // Use Node.js runtime for canvas rendering
 export const runtime = "nodejs"
@@ -84,7 +87,7 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
       },
     })
   } catch (error) {
-    console.error(`Error rendering GpuPriceHistoryChart for ${gpuSlug}:`, error)
+    log.error({ err: error, gpuSlug }, "Error rendering GpuPriceHistoryChart")
     return NextResponse.json(
       { error: "Failed to render chart image" },
       { status: 500 },

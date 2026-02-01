@@ -13,6 +13,9 @@ import {
   CHART_COMPONENT_NAMES,
   parseDateRange,
 } from "@/pkgs/server/components/charts"
+import { createLogger } from "@/lib/logger"
+
+const log = createLogger("api:images:chart")
 
 // Use Node.js runtime for canvas rendering
 export const runtime = "nodejs"
@@ -103,7 +106,7 @@ export async function GET(
       },
     })
   } catch (error) {
-    console.error(`Error rendering chart ${componentName}:`, error)
+    log.error({ err: error, componentName }, "Error rendering chart")
     return NextResponse.json(
       { error: "Failed to render chart image" },
       { status: 500 },

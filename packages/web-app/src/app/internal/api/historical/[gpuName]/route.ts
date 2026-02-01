@@ -5,6 +5,9 @@ import {
   getPriceVolatility,
 } from "@/pkgs/server/db/ListingRepository"
 import { prismaSingleton } from "@/pkgs/server/db/db"
+import { createLogger } from "@/lib/logger"
+
+const log = createLogger("internal:api:historical")
 
 export async function GET(
   request: NextRequest,
@@ -39,8 +42,7 @@ export async function GET(
       volatilityStats,
     })
   } catch (error) {
-    // eslint-disable-next-line no-console
-    console.error("Error fetching historical data:", error)
+    log.error({ err: error }, "Error fetching historical data")
     return NextResponse.json(
       { error: "Internal server error" },
       { status: 500 },

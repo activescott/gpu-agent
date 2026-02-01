@@ -7,7 +7,8 @@ import { createLogger } from "@/lib/logger"
 
 const log = createLogger("ops:cleanup-listings")
 
-const DEFAULT_TIMEOUT_SECONDS = minutesToSeconds(5)
+const DEFAULT_TIMEOUT_MINUTES = 5
+const DEFAULT_TIMEOUT_SECONDS = minutesToSeconds(DEFAULT_TIMEOUT_MINUTES)
 
 /**
  * Cleanup endpoint that applies listing filters to all active listings and

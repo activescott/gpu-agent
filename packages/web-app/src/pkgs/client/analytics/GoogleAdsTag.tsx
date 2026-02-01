@@ -3,13 +3,9 @@ import Script from "next/script"
 import { usePathname, useSearchParams } from "next/navigation"
 import { Suspense, useEffect, type JSX } from "react"
 import { usePostHog } from "posthog-js/react"
+import { createClientLogger } from "@/lib/clientLogger"
 
-const log = {
-  debug: console.debug,
-  info: console.info,
-  warn: console.warn,
-  error: console.error,
-}
+const log = createClientLogger("analytics:GoogleAdsTag")
 /**
  *
  * NOTE: More about google tag at https://support.google.com/google-ads/answer/7548399?hl=en

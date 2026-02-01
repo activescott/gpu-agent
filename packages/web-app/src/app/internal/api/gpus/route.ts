@@ -1,5 +1,8 @@
 import { NextResponse } from "next/server"
 import { listGpus } from "@/pkgs/server/db/GpuRepository"
+import { createLogger } from "@/lib/logger"
+
+const log = createLogger("internal:api:gpus")
 
 export async function GET() {
   try {
@@ -10,8 +13,7 @@ export async function GET() {
 
     return NextResponse.json(gpuOptions)
   } catch (error) {
-    // eslint-disable-next-line no-console
-    console.error("Error fetching GPU list:", error)
+    log.error({ err: error }, "Error fetching GPU list")
     return NextResponse.json(
       { error: "Failed to fetch GPU list" },
       { status: 500 },

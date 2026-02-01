@@ -1,7 +1,7 @@
 /**
  * GPU Market Report - January 2026
  *
- * RTX 50 series launch chaos, incredible used deals on last-gen cards,
+ * RTX 50 series launch pricing, incredible used deals on last-gen cards,
  * and data center GPUs selling for pennies on the dollar.
  */
 import type { Metadata } from "next"
@@ -23,11 +23,11 @@ import {
 export const reportMetadata: MarketReportMetadata = {
   slug: "gpu-market-report-january-2026",
   title:
-    "GPU Market January 2026: RTX 5090 at 50% Premium While Tesla P100 Drops to $89",
+    "GPU Market January 2026: RTX 50 Near MSRP While Used GPUs Hit 70% Off",
   description:
     "RTX 50 series launch pricing analysis, best used GPU deals, and month-over-month price changes.",
   publishedAt: new Date("2026-01-03T06:00:00Z"),
-  updatedAt: new Date("2026-01-03T18:00:00Z"),
+  updatedAt: new Date("2026-02-01T12:00:00Z"),
   author: "Scott Willeke",
   tags: [
     "market-report",
@@ -36,7 +36,7 @@ export const reportMetadata: MarketReportMetadata = {
     "buying-guide",
     "analysis",
   ],
-  dateRange: { from: "2025-12", to: "2025-12" },
+  dateRange: { from: "2026-01", to: "2026-01" },
 }
 
 /**
@@ -88,7 +88,7 @@ export default async function January2026Report(): Promise<ReactNode> {
         <p>
           Welcome to the first GPU Poet Market Report, where we analyze
           real-world GPU pricing data to help you make smarter buying decisions.
-          This month: RTX 50 series launch chaos, incredible used deals on
+          This month: RTX 50 series launch pricing, incredible used deals on
           last-gen cards, and data center GPUs selling for pennies on the
           dollar.
         </p>
@@ -103,49 +103,51 @@ export default async function January2026Report(): Promise<ReactNode> {
       </div>
 
       {/* RTX 50 Series Section */}
-      <ChartSection title="RTX 50 Series: Scalper Madness">
+      <ChartSection title="RTX 50 Series: Launch Pricing">
         <p className="mb-4">
           The RTX 50 series launched with demand far exceeding supply.
           Here&apos;s what you&apos;ll actually pay on eBay right now:
         </p>
         <ScalperPremiumChart dateRange={dateRange} />
         <div className="alert alert-warning mt-3">
-          <strong>Our take:</strong> The{" "}
+          <strong>Our take:</strong> Despite launch day hype, RTX 50 prices are
+          stabilizing fast. The{" "}
           <Link href="/gpu/learn/card/nvidia-geforce-rtx-5090">RTX 5090</Link>{" "}
-          commands a 50% premium at{" "}
-          <Link href="/gpu/shop/nvidia-geforce-rtx-5090">$3,000</Link> ($1,001
-          over MSRP). The{" "}
+          is the only card still above MSRP at{" "}
+          <Link href="/gpu/shop/nvidia-geforce-rtx-5090">$2,088</Link> (+4%).
+          The{" "}
           <Link href="/gpu/learn/card/nvidia-geforce-rtx-5080">RTX 5080</Link>{" "}
-          follows at 32% above MSRP. Good news: the{" "}
+          is already below MSRP at{" "}
+          <Link href="/gpu/shop/nvidia-geforce-rtx-5080">$900</Link> (-10%), and
+          the{" "}
           <Link href="/gpu/learn/card/nvidia-geforce-rtx-5070">RTX 5070</Link>{" "}
           and <Link href="/gpu/learn/card/nvidia-geforce-rtx-5060">5060</Link>{" "}
-          are now available near MSRP. If you want top-tier performance, wait
-          2-3 months for 5090/5080 supply to normalize.
+          are 8-15% below MSRP. The scalper premium window closed quickly on
+          this launch.
         </div>
       </ChartSection>
 
       {/* Best Value Section */}
-      <ChartSection title="Best Value: Used RTX 30 Series">
+      <ChartSection title="Best Value: Used Gaming GPUs">
         <p className="mb-4">
-          While everyone fights over RTX 50 cards, the used market for RTX 30
-          series has never been better:
+          While everyone fights over RTX 50 cards, the used market for last-gen
+          gaming GPUs has never been better:
         </p>
         <BestDealsChart dateRange={dateRange} />
         <div className="alert alert-success mt-3">
           <strong>Our take:</strong> The{" "}
+          <Link href="/gpu/learn/card/nvidia-geforce-rtx-3070">RTX 3070</Link>{" "}
+          at <Link href="/gpu/shop/nvidia-geforce-rtx-3070">$145</Link> (-71%
+          off MSRP) and{" "}
           <Link href="/gpu/learn/card/nvidia-geforce-rtx-3080-ti">
             RTX 3080 Ti
           </Link>{" "}
-          at <Link href="/gpu/shop/nvidia-geforce-rtx-3080-ti">$436</Link> (-64%
-          off MSRP) is the performance king. The{" "}
-          <Link href="/gpu/learn/card/nvidia-geforce-rtx-3080">RTX 3080</Link>{" "}
-          at <Link href="/gpu/shop/nvidia-geforce-rtx-3080">$303</Link> and{" "}
-          <Link href="/gpu/learn/card/nvidia-geforce-rtx-3070">RTX 3070</Link>{" "}
-          at <Link href="/gpu/shop/nvidia-geforce-rtx-3070">$208</Link> deliver
-          excellent 1440p gaming for well over half off. Even the{" "}
-          <Link href="/gpu/learn/card/nvidia-geforce-rtx-3060">RTX 3060</Link>{" "}
-          at <Link href="/gpu/shop/nvidia-geforce-rtx-3060">$145</Link> is a
-          steal for 1080p builds.
+          at <Link href="/gpu/shop/nvidia-geforce-rtx-3080-ti">$363</Link>{" "}
+          (-70%) are standout deals for 1440p gaming. The{" "}
+          <Link href="/gpu/learn/card/amd-radeon-rx-6900-xt">RX 6900 XT</Link>{" "}
+          at <Link href="/gpu/shop/amd-radeon-rx-6900-xt">$290</Link> (-71%)
+          also delivers excellent rasterization performance at a similar
+          discount.
         </div>
       </ChartSection>
 
@@ -158,11 +160,11 @@ export default async function January2026Report(): Promise<ReactNode> {
         <p className="mt-3">
           The{" "}
           <Link href="/gpu/learn/card/amd-radeon-rx-6900-xt">RX 6900 XT</Link>{" "}
-          at <Link href="/gpu/shop/amd-radeon-rx-6900-xt">$368</Link> (-63% off
+          at <Link href="/gpu/shop/amd-radeon-rx-6900-xt">$290</Link> (-71% off
           MSRP) rivals an RTX 3080 Ti in rasterization performance. The{" "}
           <Link href="/gpu/learn/card/amd-radeon-rx-6950-xt">RX 6950 XT</Link>{" "}
-          at <Link href="/gpu/shop/amd-radeon-rx-6950-xt">$416</Link> offers
-          even more headroom for demanding games.
+          at <Link href="/gpu/shop/amd-radeon-rx-6950-xt">$335</Link> (-70%)
+          offers even more headroom for demanding games.
         </p>
       </ChartSection>
 
@@ -189,9 +191,9 @@ export default async function January2026Report(): Promise<ReactNode> {
               </td>
               <td>$5,699</td>
               <td>
-                <Link href="/gpu/shop/nvidia-tesla-p100">$89</Link>
+                <Link href="/gpu/shop/nvidia-tesla-p100">$83</Link>
               </td>
-              <td className="text-success fw-bold">-98%</td>
+              <td className="text-success fw-bold">-99%</td>
             </tr>
             <tr>
               <td>
@@ -201,7 +203,7 @@ export default async function January2026Report(): Promise<ReactNode> {
               </td>
               <td>$10,000</td>
               <td>
-                <Link href="/gpu/shop/nvidia-tesla-v100-16gb">$325</Link>
+                <Link href="/gpu/shop/nvidia-tesla-v100-16gb">$312</Link>
               </td>
               <td className="text-success fw-bold">-97%</td>
             </tr>
@@ -213,7 +215,7 @@ export default async function January2026Report(): Promise<ReactNode> {
               </td>
               <td>$11,500</td>
               <td>
-                <Link href="/gpu/shop/nvidia-tesla-v100-32gb">$669</Link>
+                <Link href="/gpu/shop/nvidia-tesla-v100-32gb">$703</Link>
               </td>
               <td className="text-success fw-bold">-94%</td>
             </tr>
@@ -223,17 +225,17 @@ export default async function January2026Report(): Promise<ReactNode> {
               </td>
               <td>$2,299</td>
               <td>
-                <Link href="/gpu/shop/nvidia-t4">$435</Link>
+                <Link href="/gpu/shop/nvidia-t4">$387</Link>
               </td>
-              <td className="text-success">-81%</td>
+              <td className="text-success">-83%</td>
             </tr>
           </tbody>
         </table>
         <p className="text-muted">
-          The Tesla P100 at <Link href="/gpu/shop/nvidia-tesla-p100">$89</Link>{" "}
+          The Tesla P100 at <Link href="/gpu/shop/nvidia-tesla-p100">$83</Link>{" "}
           is absurd value for ML experimentation, though it lacks newer features
           like Tensor Cores. The V100 16GB at{" "}
-          <Link href="/gpu/shop/nvidia-tesla-v100-16gb">$325</Link> is a better
+          <Link href="/gpu/shop/nvidia-tesla-v100-16gb">$312</Link> is a better
           all-around choice for serious ML work.
         </p>
       </section>
@@ -245,11 +247,11 @@ export default async function January2026Report(): Promise<ReactNode> {
         </p>
         <PriceChangesChart dateRange={dateRange} resultCount={5} />
         <p className="mt-3">
-          The RTX 3070&apos;s massive 76% price drop (from $1,200 to{" "}
-          <Link href="/gpu/shop/nvidia-geforce-rtx-3070">$284</Link>) is the
+          The RTX 3070&apos;s massive 63% average price drop (from $1,200 to{" "}
+          <Link href="/gpu/shop/nvidia-geforce-rtx-3070">$442</Link>) is the
           standout this month. The{" "}
-          <Link href="/gpu/learn/card/amd-radeon-rx-6600-xt">RX 6600 XT</Link>{" "}
-          also saw a significant 33% decline. These drops reflect the RTX 50
+          <Link href="/gpu/learn/card/amd-radeon-rx-6800-xt">RX 6800 XT</Link>{" "}
+          also saw a significant 22% decline. These drops reflect the RTX 50
           series launch pushing last-gen prices down.
         </p>
       </ChartSection>
@@ -274,22 +276,22 @@ export default async function January2026Report(): Promise<ReactNode> {
               <div className="card-body">
                 <ul className="mb-0">
                   <li>
-                    <Link href="/gpu/shop/nvidia-geforce-rtx-3080">
-                      Used RTX 3080
-                    </Link>{" "}
-                    ($303) - Best price/performance for 1440p gaming
-                  </li>
-                  <li>
                     <Link href="/gpu/shop/nvidia-geforce-rtx-3070">
                       Used RTX 3070
                     </Link>{" "}
-                    ($208) - Budget king for 1080p/1440p
+                    ($145) - 71% off, great for 1080p/1440p
+                  </li>
+                  <li>
+                    <Link href="/gpu/shop/nvidia-geforce-rtx-3080-ti">
+                      Used RTX 3080 Ti
+                    </Link>{" "}
+                    ($363) - 70% off, high-end 1440p performance
                   </li>
                   <li>
                     <Link href="/gpu/shop/nvidia-tesla-v100-16gb">
                       Tesla V100 16GB
                     </Link>{" "}
-                    ($325) - ML experimentation bargain
+                    ($312) - ML experimentation bargain
                   </li>
                 </ul>
               </div>
@@ -306,19 +308,14 @@ export default async function January2026Report(): Promise<ReactNode> {
                   <li>
                     <Link href="/gpu/shop/nvidia-geforce-rtx-5090">
                       RTX 5090
-                    </Link>
-                    /<Link href="/gpu/shop/nvidia-geforce-rtx-5080">5080</Link>{" "}
-                    - Give it 2-3 months for scalper premiums to normalize
+                    </Link>{" "}
+                    - Only 4% above MSRP but supply remains tight
                   </li>
                   <li>
                     <Link href="/gpu/learn/card/nvidia-geforce-rtx-4070-super">
                       RTX 4070 Super
                     </Link>{" "}
-                    - Currently{" "}
-                    <Link href="/gpu/shop/nvidia-geforce-rtx-4070-super">
-                      $671
-                    </Link>
-                    , may fall further as RTX 50 supply improves
+                    - May fall further as RTX 50 supply improves
                   </li>
                 </ul>
               </div>
@@ -345,6 +342,15 @@ export default async function January2026Report(): Promise<ReactNode> {
           </div>
         </div>
       </section>
+
+      {/* Editorial Note */}
+      <div className="alert alert-secondary mb-5">
+        <strong>Editor&apos;s note (February 1, 2026):</strong> I corrected
+        several prices and percentages in this report after identifying
+        calculation errors in my data pipeline. The original figures overstated
+        RTX 50 series scalper premiums and understated discounts on used gaming
+        GPUs. All values now reflect the corrected data.
+      </div>
 
       {/* Methodology */}
       <section className="mb-5">

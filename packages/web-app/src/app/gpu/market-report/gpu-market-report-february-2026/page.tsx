@@ -23,9 +23,9 @@ import {
 export const reportMetadata: MarketReportMetadata = {
   slug: "gpu-market-report-february-2026",
   title:
-    "GPU Market February 2026: RTX 50 Premiums Vanish While AI GPU Prices Surge 30%",
+    "GPU Market February 2026: RTX 50 Deals Exist but Median Buyer Still Pays 75-90% Over MSRP",
   description:
-    "RTX 50 series scalper premiums have nearly vanished after a year on the market. Used GPU prices are split: budget cards rising, high-end falling. Data center AI GPUs surged 20-30% in a single month. I rank the best GPUs per dollar for Counter-Strike 2 and AI workloads, and share buy/wait/sell recommendations.",
+    "A year after launch, patient RTX 50 buyers can find near-MSRP deals, but the median listing is still 75-90% above MSRP. Used GPU prices are split: budget cards rising, high-end falling. Data center AI GPUs surged 20-30%. Dollar-per-frame rankings for CS2, best AI GPUs on a budget, and buy/wait/sell recommendations.",
   publishedAt: new Date("2026-02-01T06:00:00Z"),
   updatedAt: new Date("2026-02-01T18:00:00Z"),
   author: "Scott Willeke",
@@ -91,12 +91,13 @@ export default async function February2026Report(): Promise<ReactNode> {
       <div className="lead mb-5">
         <p>
           Last month I reported on RTX 50 series launch chaos and the great
-          deals on used GPUs. I expected this month&apos;s data to show a
-          stabilizing market. The RTX 50 side of the story is good news: after a
-          year on the market, scalper premiums have almost entirely disappeared.
-          The{" "}
-          <Link href="/gpu/learn/card/nvidia-geforce-rtx-5090">RTX 5090</Link>{" "}
-          is the only card still above MSRP, and just barely at 4%.
+          deals on used GPUs. I expected this month&apos;s data to show premiums
+          normalizing. The picture is more interesting than that: patient buyers{" "}
+          <em>can</em> find RTX 50 cards near MSRP, but the median listing is
+          still 75-90% above MSRP. The{" "}
+          <Link href="/gpu/learn/card/nvidia-geforce-rtx-5090">RTX 5090</Link>
+          &apos;s best deals came in around $2,088, but the median buyer paid
+          $3,775 &mdash; a 89% scalper premium.
         </p>
         <p>
           But the used GPU market is more complicated. It&apos;s split in two:
@@ -124,33 +125,103 @@ export default async function February2026Report(): Promise<ReactNode> {
       </div>
 
       {/* RTX 50 Series Section */}
-      <ChartSection title="RTX 50 Series: Premiums Nearly Gone">
+      <ChartSection title="RTX 50 Series: Deals Exist, but Patience Required">
         <p className="mb-4">
-          A year after launch, the scalper premium story has changed completely.
-          Five of six RTX 50 series cards are now trading <em>below</em> MSRP on
-          the used market:
+          A year after launch, the RTX 50 series market has a split personality.
+          The chart below shows the best available deals (lowest average of 3
+          cheapest listings) &mdash; and those deals are near or below MSRP. But
+          the <em>typical</em> listing tells a different story:
         </p>
         <ScalperPremiumChart dateRange={dateRange} />
-        <p className="mt-3">
-          Here&apos;s what I&apos;d note: the{" "}
-          <Link href="/gpu/learn/card/nvidia-geforce-rtx-5090">RTX 5090</Link>{" "}
-          is the only card still above MSRP at a modest 4% premium, with its
-          lowest average price around{" "}
-          <Link href="/gpu/shop/nvidia-geforce-rtx-5090">$2,088</Link> against a
-          $1,999 MSRP. The{" "}
+        <table className="table table-striped mt-3 mb-3">
+          <thead>
+            <tr>
+              <th>GPU</th>
+              <th>MSRP</th>
+              <th>Best Deal</th>
+              <th>Median Price</th>
+              <th>Median vs MSRP</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <Link href="/gpu/shop/nvidia-geforce-rtx-5060">RTX 5060</Link>
+              </td>
+              <td>$299</td>
+              <td>$253</td>
+              <td>$521</td>
+              <td className="text-danger fw-bold">+74%</td>
+            </tr>
+            <tr>
+              <td>
+                <Link href="/gpu/shop/nvidia-geforce-rtx-5060-ti">
+                  RTX 5060 Ti
+                </Link>
+              </td>
+              <td>$429</td>
+              <td>$400</td>
+              <td>$750</td>
+              <td className="text-danger fw-bold">+75%</td>
+            </tr>
+            <tr>
+              <td>
+                <Link href="/gpu/shop/nvidia-geforce-rtx-5070">RTX 5070</Link>
+              </td>
+              <td>$549</td>
+              <td>$506</td>
+              <td>$965</td>
+              <td className="text-danger fw-bold">+76%</td>
+            </tr>
+            <tr>
+              <td>
+                <Link href="/gpu/shop/nvidia-geforce-rtx-5070-ti">
+                  RTX 5070 Ti
+                </Link>
+              </td>
+              <td>$749</td>
+              <td>$738</td>
+              <td>$1,404</td>
+              <td className="text-danger fw-bold">+87%</td>
+            </tr>
+            <tr>
+              <td>
+                <Link href="/gpu/shop/nvidia-geforce-rtx-5080">RTX 5080</Link>
+              </td>
+              <td>$999</td>
+              <td>$900</td>
+              <td>$1,798</td>
+              <td className="text-danger fw-bold">+80%</td>
+            </tr>
+            <tr>
+              <td>
+                <Link href="/gpu/shop/nvidia-geforce-rtx-5090">RTX 5090</Link>
+              </td>
+              <td>$1,999</td>
+              <td>$2,088</td>
+              <td>$3,775</td>
+              <td className="text-danger fw-bold">+89%</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>
+          The gap here is striking. You <em>can</em> find an{" "}
           <Link href="/gpu/learn/card/nvidia-geforce-rtx-5060">RTX 5060</Link>{" "}
-          is the best deal at 15% below its $299 MSRP, averaging around{" "}
-          <Link href="/gpu/shop/nvidia-geforce-rtx-5060">$253</Link>. The{" "}
-          <Link href="/gpu/learn/card/nvidia-geforce-rtx-5080">RTX 5080</Link>{" "}
-          is available for around{" "}
-          <Link href="/gpu/shop/nvidia-geforce-rtx-5080">$900</Link>, 10% below
-          its $999 MSRP.
+          for <Link href="/gpu/shop/nvidia-geforce-rtx-5060">$253</Link> &mdash;
+          15% below MSRP. But the median buyer paid $521, a 74% premium. The
+          pattern is consistent across the whole lineup: best deals are near
+          MSRP, median prices are roughly double that.
         </p>
-        <p className="text-muted mt-2">
-          This is a meaningful shift from the launch window, when premiums of
-          50-100% were common. If you&apos;ve been waiting for RTX 50 cards to
-          reach fair prices, that time has arrived for most of the lineup.
-        </p>
+        <div className="alert alert-warning mt-3">
+          <strong>My take:</strong> Good deals exist, but you need to be fast
+          and persistent. If you see an RTX 50 card near MSRP, buy it
+          immediately &mdash; those listings don&apos;t last. If you&apos;re not
+          willing to stalk listings, expect to pay 75-90% over MSRP, which for
+          most cards means waiting is the better move. The{" "}
+          <Link href="/gpu/learn/card/nvidia-geforce-rtx-5060">RTX 5060</Link>{" "}
+          at $253 best-deal is the most attainable since it&apos;s the cheapest
+          card and has the most listings (2,392 in January).
+        </div>
       </ChartSection>
 
       {/* The Used Market Split */}
@@ -308,11 +379,13 @@ export default async function February2026Report(): Promise<ReactNode> {
             <tr>
               <td>RTX 50 series (used)</td>
               <td>GDDR7</td>
-              <td className="text-success fw-bold">At or below MSRP</td>
+              <td className="text-danger fw-bold">+74% to +89% median</td>
               <td>
-                <Link href="/gpu/shop/nvidia-geforce-rtx-5080">5080</Link> at
-                -10%, <Link href="/gpu/shop/nvidia-geforce-rtx-5060">5060</Link>{" "}
-                at -15% vs MSRP
+                Best deals near MSRP, but median{" "}
+                <Link href="/gpu/shop/nvidia-geforce-rtx-5080">5080</Link>{" "}
+                $1,798 (+80%),{" "}
+                <Link href="/gpu/shop/nvidia-geforce-rtx-5060">5060</Link> $521
+                (+74%)
               </td>
             </tr>
             <tr>
@@ -333,14 +406,13 @@ export default async function February2026Report(): Promise<ReactNode> {
 
         <h3 className="h5 mt-4 mb-3">My take</h3>
         <p>
-          The data is mixed, which makes me less convinced of a broad
-          memory-driven price increase than the headlines would suggest. Yes,
-          data center GPUs using HBM are surging &mdash; but that&apos;s more
-          likely AI demand than a memory supply issue. Consumer GPUs are split:
-          budget cards rising, high-end falling, and RTX 50 series at or below
-          MSRP. If memory shortages were the primary driver, we&apos;d expect to
-          see <em>all</em> categories rising. That&apos;s not what the data
-          shows.
+          The data actually supports the memory shortage narrative more than I
+          expected. Data center GPUs using HBM are surging (+23-29%), RTX 50
+          series cards using GDDR7 have median prices 75-90% above MSRP, and
+          budget used cards using GDDR6/6X are rising (+8-12%). High-end
+          last-gen cards are the one exception, falling 13-22% &mdash; likely
+          because RTX 50 availability (even at premium prices) is pulling
+          high-end buyers away from the used RTX 40 market.
         </p>
         <p>
           The budget card increases (+8-12%) are more consistent with demand

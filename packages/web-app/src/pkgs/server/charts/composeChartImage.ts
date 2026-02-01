@@ -35,7 +35,7 @@ import { renderChartToPng, CHART_WIDTH, CHART_HEIGHT } from "./renderChartImage"
 /** Chart X position (centered based on actual rendered chart width) */
 const CHART_X = (IMAGE_WIDTH - CHART_WIDTH) / CENTER_DIVISOR
 
-export interface ComposeOptions {
+interface ComposeOptions {
   /** Chart title (displayed at top) */
   title?: string
   /** Optional date to display in footer */
@@ -186,5 +186,3 @@ function drawFooter(ctx: Ctx2D, date?: Date): void {
     ctx.fillText(dateStr, IMAGE_WIDTH - PADDING, FOOTER_Y)
   }
 }
-
-export { IMAGE_WIDTH, IMAGE_HEIGHT } from "@/pkgs/isomorphic/charts"

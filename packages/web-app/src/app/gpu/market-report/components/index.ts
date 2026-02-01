@@ -1,4 +1,4 @@
 /**
  * Shared components for market reports.
  */
-export { ReportLayout, ReportFooter, ChartSection } from "./ReportLayout"
+export { ReportLayout, ChartSection } from "./ReportLayout"

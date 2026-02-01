@@ -8,13 +8,8 @@
  */
 
 // Types
-export type { DateRange, ChartComponentProps } from "./types"
-export {
-  CHART_HASHTAGS,
-  parseDateRange,
-  formatGpuName,
-  getValueColor,
-} from "./types"
+export type { DateRange } from "./types"
+export { parseDateRange } from "./types"
 
 // Chart Components (React Server Components)
 export { ScalperPremiumChart } from "./ScalperPremiumChart"
@@ -25,11 +20,6 @@ export { AmdDealsChart } from "./AmdDealsChart"
 export { GpuPriceHistoryChart } from "./GpuPriceHistoryChart"
 
 // Config Fetchers (for image API)
-export { getScalperPremiumConfig } from "./ScalperPremiumChart"
-export { getBestDealsConfig } from "./BestDealsChart"
-export { getPriceChangesConfig } from "./PriceChangesChart"
-export { getPriceHistoryConfig } from "./PriceHistoryChart"
-export { getAmdDealsConfig } from "./AmdDealsChart"
 export { getGpuPriceHistoryConfig } from "./GpuPriceHistoryChart"
 
 import type { ChartConfig } from "@/pkgs/isomorphic/model/news"

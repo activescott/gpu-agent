@@ -19,13 +19,13 @@ const TIER_INDEX_TOP = 0
 const TIER_INDEX_MID = 1
 const TIER_INDEX_ENTRY = 2
 
-export type TierThreshold = {
+type TierThreshold = {
   percentile: number
   label: string
   shortLabel: string
 }
 
-export const TIER_THRESHOLDS: TierThreshold[] = [
+const TIER_THRESHOLDS: TierThreshold[] = [
   { percentile: PERCENTILE_75, label: "Top Tier", shortLabel: "Top" },
   { percentile: PERCENTILE_50, label: "Mid Tier", shortLabel: "Mid" },
   { percentile: PERCENTILE_25, label: "Entry Tier", shortLabel: "Entry" },
@@ -34,7 +34,7 @@ export const TIER_THRESHOLDS: TierThreshold[] = [
 /**
  * Formats a percentile (0-1) as an ordinal string (e.g., "95th")
  */
-export function formatPercentileOrdinal(percentile: number): string {
+function formatPercentileOrdinal(percentile: number): string {
   const percentValue = Math.round(percentile * PERCENT_MULTIPLIER)
   const suffix = getOrdinalSuffix(percentValue)
   return `${percentValue}${suffix}`
@@ -68,9 +68,7 @@ function getOrdinalSuffix(n: number): string {
 /**
  * Returns the tier for a given percentile
  */
-export function getTierForPercentile(
-  percentile: number,
-): TierThreshold | undefined {
+function getTierForPercentile(percentile: number): TierThreshold | undefined {
   if (percentile >= PERCENTILE_75) {
     return TIER_THRESHOLDS[TIER_INDEX_TOP]
   }

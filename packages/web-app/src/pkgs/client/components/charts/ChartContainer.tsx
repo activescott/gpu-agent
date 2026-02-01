@@ -4,7 +4,7 @@ import type { JSX, ReactNode } from "react"
 import { ShareMenu } from "./ShareMenu"
 import "./charts.scss"
 
-export interface ChartContainerProps {
+interface ChartContainerProps {
   /** Title displayed above the chart */
   title: string
   /** The chart component to render */
@@ -50,5 +50,3 @@ export function ChartContainer({
     </div>
   )
 }
-
-export default ChartContainer

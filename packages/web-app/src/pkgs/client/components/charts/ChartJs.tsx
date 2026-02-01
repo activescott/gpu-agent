@@ -11,7 +11,7 @@ const ChartJSImpl = lazy(() => import("./ChartJsImpl"))
 const DEFAULT_LINE_CHART_HEIGHT = 400
 const DEFAULT_BAR_CHART_HEIGHT = 300
 
-export interface ChartJSProps {
+interface ChartJSProps {
   /** The chart configuration to render */
   config: ChartConfig
   /** Optional height for the chart (default: 300px for bar charts, 400px for line charts) */
@@ -98,5 +98,3 @@ export function ChartJS({
     </div>
   )
 }
-
-export default ChartJS

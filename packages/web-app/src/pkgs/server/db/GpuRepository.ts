@@ -1,5 +1,4 @@
 import { Gpu, parseGpu } from "@/pkgs/isomorphic/model"
-import { isNil } from "lodash-es"
 import { PrismaClientWithinTransaction, prismaSingleton } from "./db"
 import { GpuSpecKey } from "@/pkgs/isomorphic/model/specs"
 import { Prisma } from "@prisma/client"
@@ -311,107 +310,6 @@ export async function calculateAllGpuPercentilesForMetric(
     percentileMap.set(row.name, row.pct)
   }
   return percentileMap
-}
-
-type MetricRankingData = {
-  metricSlug: string
-  metricName: string
-  metricUnit: string
-  category: "ai" | "gaming"
-  topGpus: PricedGpu[]
-}
-
-/**
- * Fetches all metric values for a given metric slug from GpuMetricValue table
- * @returns Map of GPU name to metric value
- */
-async function getMetricValuesForMetricSlug(
-  metricSlug: string,
-  prisma: PrismaClientWithinTransaction = prismaSingleton,
-): Promise<Map<string, number>> {
-  const results = await prisma.gpuMetricValue.findMany({
-    where: { metricSlug },
-    select: { gpuName: true, value: true },
-  })
-
-  const valueMap = new Map<string, number>()
-  for (const row of results) {
-    valueMap.set(row.gpuName, row.value)
-  }
-  return valueMap
-}
-
-/**
- * Fetches ranking data for all metrics and returns top N GPUs per metric.
- * Fully data-driven - loads metric definitions from database.
- */
-const DEFAULT_TOP_N_RANKINGS = 3
-
-export async function getAllMetricRankings(
-  topN: number = DEFAULT_TOP_N_RANKINGS,
-): Promise<MetricRankingData[]> {
-  // Fetch base GPU price stats once
-  const allPricedGpus = await calculateGpuPriceStats()
-
-  // Get all metric definitions from database
-  const metricDefinitions = await getMetricDefinitions()
-  const metricSlugs = metricDefinitions.map((d) => d.slug)
-
-  // Fetch percentiles and metric values for all metrics in parallel
-  const metricDataPromises = metricSlugs.map(async (metricSlug) => {
-    const [percentileMap, valueMap] = await Promise.all([
-      calculateAllGpuPercentilesForMetric(metricSlug),
-      getMetricValuesForMetricSlug(metricSlug),
-    ])
-    return { metricSlug, percentileMap, valueMap }
-  })
-
-  const metricDataResults = await Promise.all(metricDataPromises)
-
-  // Build a lookup map for metric definitions
-  const metricDefMap = new Map(metricDefinitions.map((d) => [d.slug, d]))
-
-  // Build ranking data for each metric
-  const rankings: MetricRankingData[] = metricDataResults.map(
-    ({ metricSlug, percentileMap, valueMap }) => {
-      // Merge percentiles and filter/sort for this metric
-      const gpusWithPercentiles = allPricedGpus
-        .map((gpu) => ({
-          ...gpu,
-          percentile: percentileMap.get(gpu.gpu.name),
-          metricValue: valueMap.get(gpu.gpu.name),
-        }))
-        .filter((gpu) => {
-          return (
-            gpu.price.activeListingCount > 0 &&
-            !isNil(gpu.metricValue) &&
-            gpu.metricValue > 0
-          )
-        })
-
-      // Sort by raw metric value (descending - highest performance first)
-      gpusWithPercentiles.sort((a, b) => {
-        const metricA = a.metricValue ?? 0
-        const metricB = b.metricValue ?? 0
-        return metricB - metricA
-      })
-
-      const metricDef = metricDefMap.get(metricSlug)
-      if (!metricDef) {
-        throw new Error(`Unknown metric slug: ${metricSlug}`)
-      }
-
-      return {
-        metricSlug,
-        metricName: metricDef.name,
-        metricUnit: metricDef.unitShortest,
-        category: metricDef.category as "ai" | "gaming",
-        topGpus: gpusWithPercentiles.slice(0, topN),
-      }
-    },
-  )
-
-  return rankings
 }
 
 /**

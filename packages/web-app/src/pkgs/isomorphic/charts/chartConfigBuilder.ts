@@ -15,7 +15,7 @@ import type {
  * Color palette matching the site's Bootstrap-based theming.
  * Maps semantic color names to hex values.
  */
-export const CHART_COLORS = {
+const CHART_COLORS = {
   danger: "#ef4444", // Red - above MSRP, bad
   success: "#22c55e", // Green - below MSRP, good
   warning: "#f59e0b", // Orange - moderate
@@ -44,12 +44,10 @@ const LINE_BORDER_WIDTH = 2
 /** Legend padding */
 const LEGEND_PADDING = 20
 
-type ChartColorKey = keyof typeof CHART_COLORS
-
 /**
  * Options for chart rendering mode
  */
-export interface ChartRenderOptions {
+interface ChartRenderOptions {
   /** If true, disables animations (for server-side rendering) */
   serverSide?: boolean
   /** Chart dimensions (required for server-side) */
@@ -387,13 +385,6 @@ function buildLineChartConfig(
       },
     },
   }
-}
-
-/**
- * Get a color value from the palette
- */
-export function getChartColor(color: ChartColorKey | undefined): string {
-  return CHART_COLORS[color ?? "primary"]
 }
 
 /**

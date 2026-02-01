@@ -81,7 +81,7 @@ function ReportHeader({
   )
 }
 
-export function ReportFooter(): ReactNode {
+function ReportFooter(): ReactNode {
   return (
     <div className="mt-5 pt-4 border-top">
       <div className="row">

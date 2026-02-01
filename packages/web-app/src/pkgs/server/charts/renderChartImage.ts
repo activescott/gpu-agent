@@ -68,18 +68,4 @@ export async function renderChartToPng(config: ChartConfig): Promise<Buffer> {
   return buffer
 }
 
-/**
- * Renders a raw Chart.js configuration to PNG.
- * Useful when you need more control over the Chart.js config.
- *
- * @param config - Chart.js configuration object
- * @returns PNG image data as a Buffer
- */
-export async function renderChartJsConfigToPng(
-  config: ChartConfiguration,
-): Promise<Buffer> {
-  const renderer = getChartRenderer()
-  return renderer.renderToBuffer(config)
-}
-
 export { CHART_WIDTH, CHART_HEIGHT }

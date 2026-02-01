@@ -3,70 +3,57 @@ import { z } from "zod"
 const NewsStatus = z.enum(["DRAFT", "PUBLISHED"])
 type NewsStatus = z.infer<typeof NewsStatus>
 
-// Color options for charts
-const ChartColorSchema = z.enum(["danger", "success", "warning", "primary"])
+// Chart types (plain TypeScript — not used for runtime validation)
+type ChartColor = "danger" | "success" | "warning" | "primary"
 
-// Bar chart data item (for bar and diverging charts)
-const BarChartDataItemSchema = z.object({
-  label: z.string(),
-  value: z.number(),
-  sublabel: z.string().optional(),
-  color: ChartColorSchema.optional(),
-})
+interface BarChartDataItem {
+  label: string
+  value: number
+  sublabel?: string
+  color?: ChartColor
+}
 
-// Line chart data point
-const LineChartPointSchema = z.object({
-  x: z.string(), // e.g., "Aug 2025" or "2025-08"
-  y: z.number(),
-})
+interface LineChartPoint {
+  x: string // e.g., "Aug 2025" or "2025-08"
+  y: number
+}
 
-// Line chart series (one line on the chart)
-const LineChartSeriesSchema = z.object({
-  label: z.string(),
-  color: ChartColorSchema.optional(),
-  data: z.array(LineChartPointSchema),
-})
+export interface LineChartSeries {
+  label: string
+  color?: ChartColor
+  data: LineChartPoint[]
+}
 
-// Bar chart configuration
-const BarChartConfigSchema = z.object({
-  id: z.string(),
-  title: z.string(),
-  chartType: z.literal("bar"),
-  unit: z.string().optional(),
-  data: z.array(BarChartDataItemSchema),
-})
+export interface BarChartConfig {
+  id: string
+  title: string
+  chartType: "bar"
+  unit?: string
+  data: BarChartDataItem[]
+}
 
-// Diverging bar chart configuration (for positive/negative values)
-const DivergingBarChartConfigSchema = z.object({
-  id: z.string(),
-  title: z.string(),
-  chartType: z.literal("diverging"),
-  unit: z.string().optional(),
-  data: z.array(BarChartDataItemSchema),
-})
+export interface DivergingBarChartConfig {
+  id: string
+  title: string
+  chartType: "diverging"
+  unit?: string
+  data: BarChartDataItem[]
+}
 
-// Line chart configuration (for time-series data)
-const LineChartConfigSchema = z.object({
-  id: z.string(),
-  title: z.string(),
-  chartType: z.literal("line"),
-  xAxisLabel: z.string().optional(),
-  yAxisLabel: z.string().optional(),
-  unit: z.string().optional(), // e.g., "$" for currency
-  series: z.array(LineChartSeriesSchema),
-})
+export interface LineChartConfig {
+  id: string
+  title: string
+  chartType: "line"
+  xAxisLabel?: string
+  yAxisLabel?: string
+  unit?: string
+  series: LineChartSeries[]
+}
 
-// Union of all chart types using discriminated union on chartType
-const ChartConfigSchema = z.discriminatedUnion("chartType", [
-  BarChartConfigSchema,
-  DivergingBarChartConfigSchema,
-  LineChartConfigSchema,
-])
-
-// ChartData now contains an array of dynamic charts
-const ChartDataSchema = z.object({
-  charts: z.array(ChartConfigSchema),
-})
+export type ChartConfig =
+  | BarChartConfig
+  | DivergingBarChartConfig
+  | LineChartConfig
 
 export const NewsArticleSchema = z.object({
   id: z.string().cuid2(),
@@ -84,22 +71,3 @@ export const NewsArticleSchema = z.object({
 })
 
 export type NewsArticle = z.infer<typeof NewsArticleSchema>
-export type ChartData = z.infer<typeof ChartDataSchema>
-export type ChartConfig = z.infer<typeof ChartConfigSchema>
-export type BarChartConfig = z.infer<typeof BarChartConfigSchema>
-export type DivergingBarChartConfig = z.infer<
-  typeof DivergingBarChartConfigSchema
->
-export type LineChartConfig = z.infer<typeof LineChartConfigSchema>
-export type BarChartDataItem = z.infer<typeof BarChartDataItemSchema>
-export type LineChartPoint = z.infer<typeof LineChartPointSchema>
-export type LineChartSeries = z.infer<typeof LineChartSeriesSchema>
-
-// Re-export the schemas for use in other modules
-export {
-  ChartDataSchema,
-  ChartConfigSchema,
-  BarChartDataItemSchema,
-  LineChartPointSchema,
-  LineChartSeriesSchema,
-}

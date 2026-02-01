@@ -62,7 +62,7 @@ async function getLogoImage(): Promise<HTMLImageElement> {
   })
 }
 
-export interface DownloadChartOptions {
+interface DownloadChartOptions {
   /** Chart title displayed in header */
   title: string
   /** Filename for download (without extension) */

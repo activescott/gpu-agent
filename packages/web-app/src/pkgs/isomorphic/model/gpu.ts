@@ -3,7 +3,7 @@ import { z } from "zod"
 import { GpuSpecsSchema } from "./specs"
 
 // Manufacturer identifiers (NVPN, OPN, board_id, product_sku, etc.)
-export const ManufacturerIdentifierSchema = z.object({
+const ManufacturerIdentifierSchema = z.object({
   type: z.string(),
   value: z.string(),
 })
@@ -12,7 +12,7 @@ export type ManufacturerIdentifier = z.infer<
 >
 
 // Third-party products from OEMs, AIBs (Add-In Board partners), and system integrators
-export const ThirdPartyProductSchema = z.object({
+const ThirdPartyProductSchema = z.object({
   company: z.string(),
   productName: z.string(),
   identifier: z.string(),
@@ -21,8 +21,7 @@ export const ThirdPartyProductSchema = z.object({
 export type ThirdPartyProduct = z.infer<typeof ThirdPartyProductSchema>
 
 // GPU market segment categories
-export const GpuCategorySchema = z.enum(["gaming", "workstation", "datacenter"])
-export type GpuCategory = z.infer<typeof GpuCategorySchema>
+const GpuCategorySchema = z.enum(["gaming", "workstation", "datacenter"])
 
 export const GpuSchema = z
   .object({

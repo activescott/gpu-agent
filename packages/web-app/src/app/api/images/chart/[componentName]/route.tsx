@@ -31,7 +31,6 @@ interface ChartParams {
  * - from: Start month (YYYY-MM format)
  * - to: End month (YYYY-MM format)
  */
-// eslint-disable-next-line import/no-unused-modules
 export async function GET(
   request: NextRequest,
   { params }: ChartParams,

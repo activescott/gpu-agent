@@ -60,10 +60,13 @@ rules:
     - unusedExports: true
       missingExports: true
       ignoreExports:
-        # because next page.tsx layout.tsx and route.ts require a default exported module and no code explicitly imports it.
+        # because next page.tsx layout.tsx and route.ts/tsx require a default exported module and no code explicitly imports it.
         - "**/page.tsx"
         - "**/layout.tsx"
         - "**/route.ts"
+        - "**/route.tsx"
+        # ambient module declarations are consumed by the TypeScript compiler, not by imports
+        - "**/*.d.ts"
   # Because https://eslint.org/blog/2022/07/interesting-bugs-caught-by-no-constant-binary-expression/
   no-constant-binary-expression: "error"
 overrides:

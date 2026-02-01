@@ -5,7 +5,7 @@ import { useCallback, useEffect, useRef, useState } from "react"
 import { BootstrapIcon } from "../BootstrapIcon"
 import "./charts.scss"
 
-export interface ShareMenuProps {
+interface ShareMenuProps {
   /** Title to use when sharing */
   title: string
   /** URL to share (defaults to current page) */
@@ -196,5 +196,3 @@ export function ShareMenu({
     </div>
   )
 }
-
-export default ShareMenu

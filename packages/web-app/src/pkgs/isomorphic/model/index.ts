@@ -1,9 +1,4 @@
-export {
-  GpuSchema,
-  ManufacturerIdentifierSchema,
-  ThirdPartyProductSchema,
-  parseGpu,
-} from "./gpu"
+export { GpuSchema, parseGpu } from "./gpu"
 export type { Gpu, ManufacturerIdentifier, ThirdPartyProduct } from "./gpu"
 export { MlModelSchema, getModelTypeLabel } from "./mlModel"
 export type { MlModel } from "./mlModel"
@@ -15,4 +10,3 @@ export {
 } from "./metrics"
 export { convertEbayItemToListing, EXCLUDE_REASONS } from "./listing"
 export type { Listing, ListingWithMetric, ExcludeReason } from "./listing"
-export type { NewsArticle } from "./news"

@@ -1,47 +1,24 @@
 "use client"
 
-// Re-export everything from the @activescott/filter-items package
+// Re-export used items from the @activescott/filter-items package
 // The "use client" directive is needed for Next.js to treat these as client components
 
 // Types
 export type {
-  FilterOperator,
-  FilterValue,
   CategoricalFilterConfig,
   NumericFilterConfig,
   FilterConfig,
   FilterState,
-  FilterOption,
 } from "@activescott/filter-items"
-
-export { isCategoricalFilter, isNumericFilter } from "@activescott/filter-items"
 
 // URL utilities
 export {
   parseFiltersFromURL,
-  serializeFiltersToURL,
   updateURLWithFilters,
-  mergeFilterState,
-  clearAllFilters,
-  hasActiveFilters,
-  countActiveFilters,
 } from "@activescott/filter-items"
 
 // Filter logic
-export {
-  applyFilters,
-  getFilterSummary,
-  getAllFiltersSummary,
-  getOperatorLabel,
-} from "@activescott/filter-items"
+export { applyFilters } from "@activescott/filter-items"
 
 // Components
-export {
-  FilterItems,
-  FilterLayout,
-  CategoricalFilter,
-  NumericFilter,
-  FilterSummary,
-  FilterMobileButton,
-  ActiveFilterChips,
-} from "@activescott/filter-items"
+export { FilterItems, FilterLayout } from "@activescott/filter-items"

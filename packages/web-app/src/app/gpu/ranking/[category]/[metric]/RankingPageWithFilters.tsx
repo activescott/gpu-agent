@@ -19,14 +19,14 @@ import type { PricedGpu } from "@/pkgs/server/db/GpuRepository"
 import { GpuMetricsTable } from "./GpuMetricsTable"
 
 /** Gaming benchmark definition for filter config */
-export interface GamingBenchmarkDef {
+interface GamingBenchmarkDef {
   slug: string
   name: string
   unit: string
 }
 
 /** Extended PricedGpu with benchmark values for filtering */
-export interface PricedGpuWithBenchmarks extends PricedGpu {
+interface PricedGpuWithBenchmarks extends PricedGpu {
   benchmarkValues?: Record<string, number>
 }
 

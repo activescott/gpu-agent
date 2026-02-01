@@ -42,12 +42,3 @@ export function listMarketReports(): MarketReportMetadata[] {
     (a, b) => b.publishedAt.getTime() - a.publishedAt.getTime(),
   )
 }
-
-/**
- * Gets market report metadata by slug.
- */
-export function getMarketReportMetadata(
-  slug: string,
-): MarketReportMetadata | undefined {
-  return reports.find((r) => r.slug === slug)
-}

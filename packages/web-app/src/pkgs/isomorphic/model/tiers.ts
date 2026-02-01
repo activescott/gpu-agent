@@ -30,14 +30,3 @@ export const TIER_THRESHOLDS: TierThreshold[] = [
     shortLabel: "Entry Tier",
   },
 ]
-
-/**
- * Returns the tier threshold for a given percentile.
- * Returns null if the percentile is below all tier thresholds.
- */
-export function getTierForPercentile(percentile: number): TierThreshold | null {
-  for (const tier of TIER_THRESHOLDS) {
-    if (percentile >= tier.percentile) return tier
-  }
-  return null
-}

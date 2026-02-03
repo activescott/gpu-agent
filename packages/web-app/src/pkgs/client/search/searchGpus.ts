@@ -51,11 +51,26 @@ const MAX_PAGE_RESULTS = 4
 
 export function search(query: string, gpus: SearchableGpu[]): SearchResult[] {
   const q = query.trim().toLowerCase()
-  if (!q) return []
+  if (!q) return allGpusByReleaseDate(gpus)
 
   const gpuResults = searchGpus(q, gpus)
   const pageResults = searchPages(q)
   return [...gpuResults, ...pageResults]
+}
+
+function allGpusByReleaseDate(gpus: SearchableGpu[]): SearchResult[] {
+  return [...gpus]
+    .sort((a, b) => {
+      const da = a.releaseDate ?? ""
+      const db = b.releaseDate ?? ""
+      return db.localeCompare(da)
+    })
+    .map((gpu) => ({
+      type: "gpu",
+      label: gpu.label,
+      description: formatGpuDescription(gpu),
+      href: `/gpu/learn/card/${gpu.name}`,
+    }))
 }
 
 function searchGpus(q: string, gpus: SearchableGpu[]): SearchResult[] {

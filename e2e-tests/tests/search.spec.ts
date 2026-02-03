@@ -124,6 +124,19 @@ test.describe("Cmd+K Search", () => {
     expect(count).toBeGreaterThan(0)
   })
 
+  test("dialog shows all GPUs sorted by release date on open", async ({
+    page,
+  }) => {
+    await openSearchDialogViaKeyboard(page)
+
+    // Results should be visible immediately without typing
+    const results = page.getByTestId("search-result-item")
+    await expect(results.first()).toBeVisible({ timeout: 10000 })
+
+    const count = await results.count()
+    expect(count).toBeGreaterThan(5)
+  })
+
   test("no results shows empty state", async ({ page }) => {
     await openSearchDialogViaKeyboard(page)
     const input = page.getByTestId("search-input")

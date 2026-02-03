@@ -7,6 +7,7 @@ export interface SearchableGpu {
   category: string | null
   memoryCapacityGB: number
   fp32TFLOPS: number
+  releaseDate: string | null
 }
 
 let cached: SearchableGpu[] | null = null

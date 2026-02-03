@@ -12,6 +12,7 @@ export async function GET() {
     category: gpu.category ?? null,
     memoryCapacityGB: gpu.memoryCapacityGB,
     fp32TFLOPS: gpu.fp32TFLOPS,
+    releaseDate: gpu.releaseDate ?? null,
   }))
   return NextResponse.json(data)
 }

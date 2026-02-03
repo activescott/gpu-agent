@@ -3,12 +3,16 @@
 import { useCallback, useEffect, useState, type JSX } from "react"
 import dynamic from "next/dynamic"
 import { BootstrapIcon } from "./BootstrapIcon"
+import { useSearchData } from "../hooks/useSearchData"
 
 const SearchDialog = dynamic(() => import("./SearchDialog"), { ssr: false })
 
 export function SearchTrigger(): JSX.Element {
   const [open, setOpen] = useState(false)
   const [isMac, setIsMac] = useState(true)
+
+  // Prefetch search data so it's cached before the dialog opens
+  useSearchData()
 
   useEffect(() => {
     setIsMac(navigator.platform.toUpperCase().includes("MAC"))

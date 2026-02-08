@@ -5,40 +5,56 @@
 # NVIDIA RTX 50 Series
 "ASUS NVIDIA GeForce RTX 5090": "nvidia-geforce-rtx-5090"
 "NVIDIA GeForce RTX 5090": "nvidia-geforce-rtx-5090"
+"NVIDIA GeForce RTX 5090/PCIe/SSE2": "nvidia-geforce-rtx-5090"
 "ASUS NVIDIA GeForce RTX 5080": "nvidia-geforce-rtx-5080"
 "NVIDIA GeForce RTX 5080": "nvidia-geforce-rtx-5080"
+"NVIDIA GeForce RTX 5080/PCIe/SSE2": "nvidia-geforce-rtx-5080"
 "NVIDIA GeForce RTX 5070 Ti": "nvidia-geforce-rtx-5070-ti"
+"NVIDIA GeForce RTX 5070 Ti/PCIe/SSE2": "nvidia-geforce-rtx-5070-ti"
+# 5060
+"NVIDIA GeForce RTX 5060/PCIe/SSE2": "nvidia-geforce-rtx-5060"
 # 5060 Ti
 "NVIDIA GeForce RTX 5060 Ti": "nvidia-geforce-rtx-5060-ti"
+"NVIDIA GeForce RTX 5060 Ti/PCIe/SSE2": "nvidia-geforce-rtx-5060-ti"
 # 5070
 "NVIDIA GeForce RTX 5070": "nvidia-geforce-rtx-5070"
+"NVIDIA GeForce RTX 5070/PCIe/SSE2": "nvidia-geforce-rtx-5070"
 
 # NVIDIA RTX 40 Series
 # 4070
 "NVIDIA GeForce RTX 4070": "nvidia-geforce-rtx-4070"
 "ASUS NVIDIA GeForce RTX 4070": "nvidia-geforce-rtx-4070"
+"NVIDIA GeForce RTX 4070/PCIe/SSE2": "nvidia-geforce-rtx-4070"
 # 4060
 "ASUS NVIDIA GeForce RTX 4060": "nvidia-geforce-rtx-4060"
 "MSI NVIDIA GeForce RTX 4060": "nvidia-geforce-rtx-4060"
+"NVIDIA GeForce RTX 4060/PCIe/SSE2": "nvidia-geforce-rtx-4060"
 # 4060 Ti
 "NVIDIA GeForce RTX 4060 Ti": "nvidia-geforce-rtx-4060-ti"
+"NVIDIA GeForce RTX 4060 Ti/PCIe/SSE2": "nvidia-geforce-rtx-4060-ti"
 # 4070 Ti
 "NVIDIA GeForce RTX 4070 Ti": "nvidia-geforce-rtx-4070-ti"
+"NVIDIA GeForce RTX 4070 Ti/PCIe/SSE2": "nvidia-geforce-rtx-4070-ti"
 # 4070 Ti SUPER
 "ASUS NVIDIA GeForce RTX 4070 Ti SUPER": "nvidia-geforce-rtx-4070-ti-super"
 "NVIDIA GeForce RTX 4070 Ti SUPER": "nvidia-geforce-rtx-4070-ti-super"
+"NVIDIA GeForce RTX 4070 Ti SUPER/PCIe/SSE2": "nvidia-geforce-rtx-4070-ti-super"
 # 4070 SUPER
 "ASUS NVIDIA GeForce RTX 4070 SUPER": "nvidia-geforce-rtx-4070-super"
 "NVIDIA GeForce RTX 4070 SUPER": "nvidia-geforce-rtx-4070-super"
+"NVIDIA GeForce RTX 4070 SUPER/PCIe/SSE2": "nvidia-geforce-rtx-4070-super"
 # 4080
 "NVIDIA GeForce RTX 4080": "nvidia-geforce-rtx-4080"
 "ASUS NVIDIA GeForce RTX 4080": "nvidia-geforce-rtx-4080"
+"NVIDIA GeForce RTX 4080/PCIe/SSE2": "nvidia-geforce-rtx-4080"
 # 4080 SUPER
 "ASUS NVIDIA GeForce RTX 4080 SUPER": "nvidia-geforce-rtx-4080-super"
 "NVIDIA GeForce RTX 4080 SUPER": "nvidia-geforce-rtx-4080-super"
+"NVIDIA GeForce RTX 4080 SUPER/PCIe/SSE2": "nvidia-geforce-rtx-4080-super"
 # 4090
 "NVIDIA GeForce RTX 4090": "nvidia-geforce-rtx-4090"
 "ASUS NVIDIA GeForce RTX 4090": "nvidia-geforce-rtx-4090"
+"NVIDIA GeForce RTX 4090/PCIe/SSE2": "nvidia-geforce-rtx-4090"
 
 # NVIDIA RTX 4000 Ada Generation
 "NVIDIA RTX 4000 Ada Generation": "nvidia-rtx-4000-ada-generation"
@@ -46,23 +62,33 @@
 # NVIDIA RTX 30 Series
 # 3060
 "eVGA NVIDIA GeForce RTX 3060": "nvidia-geforce-rtx-3060"
+"NVIDIA GeForce RTX 3060/PCIe/SSE2": "nvidia-geforce-rtx-3060"
 # 3060 Ti
 "NVIDIA GeForce RTX 3060 Ti": "nvidia-geforce-rtx-3060-ti"
+"NVIDIA GeForce RTX 3060 Ti/PCIe/SSE2": "nvidia-geforce-rtx-3060-ti"
 # 3070
 "NVIDIA GeForce RTX 3070": "nvidia-geforce-rtx-3070"
 "NVIDIA GeForce RTX 3060": "nvidia-geforce-rtx-3060"
+"NVIDIA GeForce RTX 3070/PCIe/SSE2": "nvidia-geforce-rtx-3070"
 # 3070 Ti
 "NVIDIA GeForce RTX 3070 Ti": "nvidia-geforce-rtx-3070-ti"
+"NVIDIA GeForce RTX 3070 Ti/PCIe/SSE2": "nvidia-geforce-rtx-3070-ti"
 # 3080
 "NVIDIA GeForce RTX 3080": "nvidia-geforce-rtx-3080"
+"NVIDIA GeForce RTX 3080/PCIe/SSE2": "nvidia-geforce-rtx-3080"
 # 3080 Ti
 "NVIDIA GeForce RTX 3080 Ti": "nvidia-geforce-rtx-3080-ti"
+"NVIDIA GeForce RTX 3080 Ti/PCIe/SSE2": "nvidia-geforce-rtx-3080-ti"
 # 3090
 "NVIDIA GeForce RTX 3090": "nvidia-geforce-rtx-3090"
+"NVIDIA GeForce RTX 3090/PCIe/SSE2": "nvidia-geforce-rtx-3090"
+# 3090 Ti
+"NVIDIA GeForce RTX 3090 Ti/PCIe/SSE2": "nvidia-geforce-rtx-3090-ti"
 
 # AMD Radeon RX 9000 Series (Navi 48 chipset)
 "Gigabyte AMD Radeon RX 9070": "amd-radeon-rx-9070"
 "AMD Radeon RX 9070 XT": "amd-radeon-rx-9070-xt"
+"AMD Radeon RX 9060 XT": "amd-radeon-rx-9060-xt"
 # Chipset name variants (Navi 48 = RX 9070 series)
 "AMD Navi 48": "amd-radeon-rx-9070-xt"
 "Gigabyte AMD Navi 48": "amd-radeon-rx-9070-xt"
@@ -119,6 +145,7 @@
 "ASUS Intel BMG G21": "intel-arc-b580"
 "Intel Arc B580": "intel-arc-b580"
 "ASUS Intel Arc B580": "intel-arc-b580"
+"Intel(R) Arc(TM) B580 Graphics": "intel-arc-b580"
 
 # AMD Radeon RX 6800 Series
 "AMD Radeon RX 6800": "amd-radeon-rx-6800"
@@ -142,11 +169,126 @@
 "NVIDIA GeForce RTX 2060 SUPER": IGNORE
 "NVIDIA GeForce RTX 2070 SUPER": IGNORE
 "NVIDIA GeForce RTX 2080 Ti": IGNORE
+"GeForce RTX 2060/PCIe/SSE2": IGNORE
+"NVIDIA GeForce RTX 2050/PCIe/SSE2": IGNORE
+"NVIDIA GeForce RTX 2060 SUPER/PCIe/SSE2": IGNORE
+"NVIDIA GeForce RTX 2060/PCIe/SSE2": IGNORE
+"NVIDIA GeForce RTX 2070 SUPER/PCIe/SSE2": IGNORE
+"NVIDIA GeForce RTX 2070 with Max-Q Design/PCIe/SSE2": IGNORE
+"NVIDIA GeForce RTX 2070/PCIe/SSE2": IGNORE
+"NVIDIA GeForce RTX 2080 SUPER/PCIe/SSE2": IGNORE
+"NVIDIA GeForce RTX 2080 Super with Max-Q Design/PCIe/SSE2": IGNORE
+"NVIDIA GeForce RTX 2080 Ti/PCIe/SSE2": IGNORE
+"NVIDIA GeForce RTX 2080/PCIe/SSE2": IGNORE
+
+# NVIDIA GTX 10 Series (not tracked)
+"GeForce GT 1030/PCIe/SSE2": IGNORE
+"GeForce GTX 1050 Ti/PCIe/SSE2": IGNORE
+"GeForce GTX 1050/PCIe/SSE2": IGNORE
+"GeForce GTX 1060/PCIe/SSE2": IGNORE
+"GeForce GTX 1070/PCIe/SSE2": IGNORE
+"GeForce GTX 1650/PCIe/SSE2": IGNORE
+"GeForce GTX 1660 SUPER/PCIe/SSE2": IGNORE
+"GeForce GTX 1660 Ti/PCIe/SSE2": IGNORE
+"NVIDIA GeForce GT 1030/PCIe/SSE2": IGNORE
+"NVIDIA GeForce GTX 1050 Ti/PCIe/SSE2": IGNORE
+"NVIDIA GeForce GTX 1050/PCIe/SSE2": IGNORE
+"NVIDIA GeForce GTX 1060 3GB/PCIe/SSE2": IGNORE
+"NVIDIA GeForce GTX 1060 5GB/PCIe/SSE2": IGNORE
+"NVIDIA GeForce GTX 1060 6GB/PCIe/SSE2": IGNORE
+"NVIDIA GeForce GTX 1060 with Max-Q Design/PCIe/SSE2": IGNORE
+"NVIDIA GeForce GTX 1060/PCIe/SSE2": IGNORE
+"NVIDIA GeForce GTX 1070 Ti/PCIe/SSE2": IGNORE
+"NVIDIA GeForce GTX 1070/PCIe/SSE2": IGNORE
+"NVIDIA GeForce GTX 1080 Ti/PCIe/SSE2": IGNORE
+"NVIDIA GeForce GTX 1080/PCIe/SSE2": IGNORE
+"NVIDIA GeForce GTX 1650 SUPER/PCIe/SSE2": IGNORE
+"NVIDIA GeForce GTX 1650 Ti/PCIe/SSE2": IGNORE
+"NVIDIA GeForce GTX 1650 with Max-Q Design/PCIe/SSE2": IGNORE
+"NVIDIA GeForce GTX 1650/PCIe/SSE2": IGNORE
+"NVIDIA GeForce GTX 1660 SUPER/PCIe/SSE2": IGNORE
+"NVIDIA GeForce GTX 1660 Ti with Max-Q Design/PCIe/SSE2": IGNORE
+"NVIDIA GeForce GTX 1660 Ti/PCIe/SSE2": IGNORE
+"NVIDIA GeForce GTX 1660/PCIe/SSE2": IGNORE
+"NVIDIA P104-100/PCIe/SSE2": IGNORE
+"NVIDIA P106-100/PCIe/SSE2": IGNORE
+
+# Older NVIDIA GPUs (GTX 900, 700, 600, etc.)
+"GeForce GT 430/PCIe/SSE2": IGNORE
+"GeForce GT 730/PCIe/SSE2": IGNORE
+"GeForce GTX 550 Ti/PCIe/SSE2": IGNORE
+"GeForce GTX 560 Ti/PCIe/SSE2": IGNORE
+"GeForce GTX 560/PCIe/SSE2": IGNORE
+"GeForce GTX 570/PCIe/SSE2": IGNORE
+"GeForce GTX 650/PCIe/SSE2": IGNORE
+"GeForce GTX 750 Ti/PCIe/SSE2": IGNORE
+"GeForce GTX 760/PCIe/SSE2": IGNORE
+"GeForce GTX 960M/PCIe/SSE2": IGNORE
+"NVIDIA GeForce GT 710/PCIe/SSE2": IGNORE
+"NVIDIA GeForce GT 730/PCIe/SSE2": IGNORE
+"NVIDIA GeForce GTX 650/PCIe/SSE2": IGNORE
+"NVIDIA GeForce GTX 660 Ti/PCIe/SSE2": IGNORE
+"NVIDIA GeForce GTX 660/PCIe/SSE2": IGNORE
+"NVIDIA GeForce GTX 750 Ti/PCIe/SSE2": IGNORE
+"NVIDIA GeForce GTX 750/PCIe/SSE2": IGNORE
+"NVIDIA GeForce GTX 760/PCIe/SSE2": IGNORE
+"NVIDIA GeForce GTX 770/PCIe/SSE2": IGNORE
+"NVIDIA GeForce GTX 860M/PCIe/SSE2": IGNORE
+"NVIDIA GeForce GTX 950/PCIe/SSE2": IGNORE
+"NVIDIA GeForce GTX 950M/PCIe/SSE2": IGNORE
+"NVIDIA GeForce GTX 960/PCIe/SSE2": IGNORE
+"NVIDIA GeForce GTX 960M/PCIe/SSE2": IGNORE
+"NVIDIA GeForce GTX 970/PCIe/SSE2": IGNORE
+"NVIDIA GeForce GTX 980 Ti/PCIe/SSE2": IGNORE
+"NVIDIA GeForce GTX 980/PCIe/SSE2": IGNORE
+"NVIDIA GeForce GTX 980M/PCIe/SSE2": IGNORE
+"NVIDIA GeForce GTX TITAN X/PCIe/SSE2": IGNORE
+"NVIDIA GeForce MX110/PCIe/SSE2": IGNORE
+"NVIDIA GeForce MX130/PCIe/SSE2": IGNORE
+"NVIDIA GeForce MX150/PCIe/SSE2": IGNORE
+"NVIDIA GeForce MX250/PCIe/SSE2": IGNORE
+"NVIDIA GeForce MX330/PCIe/SSE2": IGNORE
+"NVIDIA GeForce MX350/PCIe/SSE2": IGNORE
+"NVIDIA GeForce MX450/PCIe/SSE2": IGNORE
+"NVIDIA GeForce MX550/PCIe/SSE2": IGNORE
+"NVIDIA TITAN V/PCIe/SSE2": IGNORE
+"Tesla P4/PCIe/SSE2": IGNORE
 
 # Mobile/Laptop GPUs
 "AMD Radeon 8060S": IGNORE
 "NVIDIA GeForce RTX 3080 Laptop GPU + Intel UHD": IGNORE
 "XFX AMD Radeon RX 7700S": IGNORE
+"AMD Radeon RX 6600M": IGNORE
+"AMD Radeon(TM) 610M": IGNORE
+"GeForce RTX 3050 Ti Laptop GPU/PCIe/SSE2": IGNORE
+"GeForce RTX 3060 Laptop GPU/PCIe/SSE2": IGNORE
+"NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2": IGNORE
+"NVIDIA GeForce RTX 3050 Laptop GPU/PCIe/SSE2": IGNORE
+"NVIDIA GeForce RTX 3050 Ti Laptop GPU/PCIe/SSE2": IGNORE
+"NVIDIA GeForce RTX 3060 Laptop GPU/PCIe/SSE2": IGNORE
+"NVIDIA GeForce RTX 3070 Laptop GPU/PCIe/SSE2": IGNORE
+"NVIDIA GeForce RTX 3070 Ti Laptop GPU/PCIe/SSE2": IGNORE
+"NVIDIA GeForce RTX 3080 Laptop GPU/PCIe/SSE2": IGNORE
+"NVIDIA GeForce RTX 3080 Ti Laptop GPU/PCIe/SSE2": IGNORE
+"NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2": IGNORE
+"NVIDIA GeForce RTX 4060 Laptop GPU/PCIe/SSE2": IGNORE
+"NVIDIA GeForce RTX 4070 Laptop GPU/PCIe/SSE2": IGNORE
+"NVIDIA GeForce RTX 4080 Laptop GPU/PCIe/SSE2": IGNORE
+"NVIDIA GeForce RTX 4090 Laptop GPU/PCIe/SSE2": IGNORE
+"NVIDIA GeForce RTX 5050 Laptop GPU/PCIe/SSE2": IGNORE
+"NVIDIA GeForce RTX 5060 Laptop GPU/PCIe/SSE2": IGNORE
+"NVIDIA GeForce RTX 5070 Laptop GPU/PCIe/SSE2": IGNORE
+"NVIDIA GeForce RTX 5070 Ti Laptop GPU/PCIe/SSE2": IGNORE
+"NVIDIA GeForce RTX 5080 Laptop GPU/PCIe/SSE2": IGNORE
+"NVIDIA GeForce RTX 5090 Laptop GPU/PCIe/SSE2": IGNORE
+"NVIDIA RTX A1000 Laptop GPU/PCIe/SSE2": IGNORE
+"NVIDIA RTX A2000 Laptop GPU/PCIe/SSE2": IGNORE
+"NVIDIA RTX A3000 Laptop GPU/PCIe/SSE2": IGNORE
+"Quadro K2100M/PCIe/SSE2": IGNORE
+"Quadro M1000M/PCIe/SSE2": IGNORE
+"Quadro M1200/PCIe/SSE2": IGNORE
+"Quadro M2000M/PCIe/SSE2": IGNORE
+
 
 # Integrated Graphics / APUs
 "AMD Phoenix1": IGNORE

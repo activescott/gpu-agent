@@ -1,0 +1,32 @@
+# yaml-language-server: $schema=./news-article.schema.json
+id: gpu0208feb2026fmk
+slug: furmark-stress-test-benchmark
+title: "New Benchmark: FurMark GPU Stress Test Data Added"
+content: |
+  We've added FurMark (GL) benchmark data to GPU Poet at three resolutions: [1080p](/gpu/ranking/gaming/furmark-gl-fps-1920x1080), [1440p](/gpu/ranking/gaming/furmark-gl-fps-2560x1440), and [4K](/gpu/ranking/gaming/furmark-gl-fps-3840x2160).
+
+  FurMark is a GPU stress test by Geeks3D that renders a fur-covered torus with heavy fragment shading using OpenGL. Unlike burst-oriented gaming benchmarks, it sustains maximum GPU load, so it shows how cards handle thermals and power delivery over time. Useful if you're playing demanding high-resolution games, evaluating used hardware, or testing overclock stability.
+
+  ## The Data
+
+  Benchmark scores come from [gpumagick.com](https://gpumagick.com) community submissions — over 10,000 samples at 1080p, ~5,000 at 1440p, and 1,300+ at 4K. Since it runs on OpenGL, NVIDIA, AMD, and Intel GPUs all run the same code path, making cross-vendor comparisons straightforward.
+
+  The rankings cover 150+ GPU models at 1080p and 65+ at 4K, from current RTX 50-series and RX 9000-series cards down to older hardware.
+
+  ## Rankings
+
+  - [FurMark 1080p Rankings](/gpu/ranking/gaming/furmark-gl-fps-1920x1080)
+  - [FurMark 1440p Rankings](/gpu/ranking/gaming/furmark-gl-fps-2560x1440)
+  - [FurMark 4K Rankings](/gpu/ranking/gaming/furmark-gl-fps-3840x2160)
+  - [About the FurMark Benchmark](/gpu/learn/benchmark/gaming/furmark-gl-fps-3840x2160)
+
+  This brings GPU Poet's gaming benchmarks to four: Counter-Strike 2, 3DMark Wild Life Extreme, Quake II RTX, and now FurMark.
+status: PUBLISHED
+tags:
+  - feature
+  - benchmarks
+  - furmark
+authorFullName: "Scott Willeke"
+createdAt: "2026-02-08T10:00:00Z"
+updatedAt: "2026-02-08T10:00:00Z"
+publishedAt: "2026-02-08T10:00:00Z"

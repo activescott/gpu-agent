@@ -26,6 +26,8 @@ export interface MetricDefinitionRecord {
   description: string
   descriptionDollarsPer: string
   gpuField: string | null
+  /** For benchmarks: short identifier grouping related configurations (e.g., "cs2", "furmark-gl") */
+  benchmarkId: string | null
   /** For benchmarks: number of public benchmark results this metric is based on */
   collectedSamples: number | null
 }
@@ -83,6 +85,7 @@ async function getMetricDefinitions(
       description: true,
       descriptionDollarsPer: true,
       gpuField: true,
+      benchmarkId: true,
       collectedSamples: true,
     },
     // Sort by name to group related benchmarks together (e.g., Counter-Strike 2 configs grouped)

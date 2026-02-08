@@ -67,13 +67,18 @@ export default async function Page() {
           </p>
           <ul>
             <li>
-              <Link href="/gpu/benchmark/gaming/counter-strike-2-fps-3840x2160">
-                Counter-Strike 2 Benchmarks
+              <Link href="/gpu/learn/benchmark/gaming/counter-strike-2-fps-3840x2160">
+                About the Counter-Strike 2 Benchmarks
               </Link>
             </li>
             <li>
-              <Link href="/gpu/benchmark/gaming/3dmark-wildlife-extreme-fps">
-                3DMark Wild Life Extreme Benchmarks
+              <Link href="/gpu/learn/benchmark/gaming/3dmark-wildlife-extreme-fps-3840x2160">
+                About the 3DMark Wild Life Extreme Benchmarks
+              </Link>
+            </li>
+            <li>
+              <Link href="/gpu/learn/benchmark/gaming/furmark-gl-fps-3840x2160">
+                About the FurMark Benchmarks
               </Link>
             </li>
             <li>

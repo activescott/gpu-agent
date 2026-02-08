@@ -12,6 +12,16 @@ type BenchmarkParams = {
   params: Promise<{ benchmark: string }>
 }
 
+/** Strips resolution suffixes like "(4K)" and qualifier tags like "(GL)" from
+the metric name and appends "Benchmark". e.g. "FurMark (GL) (4K)" -> "FurMark
+Benchmark" */ function benchmarkTitle(metricName: string): string {
+  return (
+    "About the " +
+    metricName.replaceAll(/\s*\([^)]*\)/g, "").trim() +
+    " Benchmark"
+  )
+}
+
 export async function generateMetadata(props: BenchmarkParams) {
   const params = await props.params
   const { benchmark } = params
@@ -27,7 +37,7 @@ export async function generateMetadata(props: BenchmarkParams) {
   }
 
   return {
-    title: `${metric.name} - Gaming GPU Benchmark`,
+    title: `${benchmarkTitle(metric.name)} - Gaming GPU Benchmark`,
     description: metric.description,
     alternates: {
       canonical: `https://gpupoet.com/gpu/learn/benchmark/gaming/${benchmark}`,
@@ -43,12 +53,12 @@ export default async function Page(props: BenchmarkParams) {
   const metric = await getMetricDefinitionBySlug(benchmark)
 
   if (!metric || metric.category !== "gaming") {
-    notFound()
+    throw notFound()
   }
 
   return (
     <main className="container">
-      <h1>{metric.name}</h1>
+      <h1>{benchmarkTitle(metric.name)}</h1>
 
       <div className="mb-4">
         <span className="badge bg-primary me-2">Gaming</span>
@@ -86,18 +96,33 @@ export default async function Page(props: BenchmarkParams) {
 
       <section className="mb-4">
         <h2>About the data</h2>
-        <p>
-          Benchmark data is sourced from{" "}
-          <a
-            href="https://openbenchmarking.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            OpenBenchmarking.org
-          </a>
-          , an open-source benchmark database that aggregates real-world
-          performance data from hardware enthusiasts around the world.
-        </p>
+        {metric.benchmarkId === "furmark-gl" ? (
+          <p>
+            Benchmark data is sourced from{" "}
+            <a
+              href="https://gpumagick.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              gpumagick.com
+            </a>{" "}
+            community submissions, aggregating real-world FurMark scores from
+            hardware enthusiasts.
+          </p>
+        ) : (
+          <p>
+            Benchmark data is sourced from{" "}
+            <a
+              href="https://openbenchmarking.org"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              OpenBenchmarking.org
+            </a>
+            , an open-source benchmark database that aggregates real-world
+            performance data from hardware enthusiasts around the world.
+          </p>
+        )}
       </section>
     </main>
   )

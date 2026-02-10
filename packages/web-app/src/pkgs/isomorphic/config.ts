@@ -37,6 +37,10 @@ export const SERVER_CONFIG = {
       "EBAY_AFFILIATE_CAMPAIGN_ID",
       process.env.EBAY_AFFILIATE_CAMPAIGN_ID,
     ),
+  ADMIN_USERNAME: (): string =>
+    returnOrThrow("ADMIN_USERNAME", process.env.ADMIN_USERNAME),
+  ADMIN_PASSWORD: (): string =>
+    returnOrThrow("ADMIN_PASSWORD", process.env.ADMIN_PASSWORD),
   MAX_LISTINGS_TO_CACHE_PER_GPU: (): number => 100,
 }
 

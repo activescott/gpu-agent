@@ -17,10 +17,10 @@ fi
 
 if [ -z "$1" ]; then
     # Interactive mode
-    minikube kubectl -- exec -it -n gpupoet-dev db-0 -- \
+    kubectl --context minikube exec -it -n gpupoet-dev db-0 -- \
         psql -U gpu_agent -d gpu_agent
 else
     # Query mode
-    minikube kubectl -- exec -it -n gpupoet-dev db-0 -- \
+    kubectl --context minikube exec -it -n gpupoet-dev db-0 -- \
         psql -U gpu_agent -d gpu_agent -c "$1"
 fi

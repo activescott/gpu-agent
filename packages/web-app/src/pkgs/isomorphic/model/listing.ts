@@ -28,6 +28,7 @@ export interface Listing {
   gpu: Gpu
   // string | null because prisma :/
   itemGroupType?: string | "SELLER_DEFINED_VARIATIONS" | null
+  excludeReason?: string | null
 }
 
 /**
@@ -100,6 +101,8 @@ export const EXCLUDE_REASONS = {
   FOR_PARTS: "for_parts",
   /** Low seller feedback (< 90%) */
   LOW_FEEDBACK: "low_feedback",
+  /** Bulk sale listing with multiple GPUs (e.g., "8x RTX 5090") */
+  BULK_SALE: "bulk_sale",
   /** Other data quality issue */
   OTHER: "other",
 } as const

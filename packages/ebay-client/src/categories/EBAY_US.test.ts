@@ -1,4 +1,4 @@
-import categories from "./EBAY_US.js"
+import categories from "./EBAY_US"
 
 it("should have some categories", () => {
   expect(categories).toHaveProperty("Root")

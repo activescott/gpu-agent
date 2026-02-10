@@ -1,8 +1,8 @@
 import path from "path"
-import { EbayClientCredentialsGrantResponse, EbayEnvironment } from "../auth.js"
-import { BuyApiOptions, createBuyApi } from "../buy/buy.js"
-import { fetchImpl } from "../util/fetch.js"
-import { asMockedFunction } from "../util/testing.js"
+import { EbayClientCredentialsGrantResponse, EbayEnvironment } from "../auth"
+import { BuyApiOptions, createBuyApi } from "../buy/buy"
+import { fetchImpl } from "../util/fetch"
+import { asMockedFunction } from "../util/testing"
 import { chainAsync } from "irritable-iterable"
 import { readFile } from "fs/promises"
 
@@ -10,7 +10,7 @@ import { readFile } from "fs/promises"
 
 //////////
 // mocking
-jest.mock("../util/fetch.js")
+jest.mock("../util/fetch")
 //////////
 
 describe("createBuyApi", () => {

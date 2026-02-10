@@ -7,8 +7,7 @@
       "env": ["DEBUG"]
     },
     "shopping-agent#build": {
-      // requires ebay-client to be built before shopping-agent builds
-      "dependsOn": ["@activescott/ebay-client#build"],
+      "dependsOn": ["^build"],
       "env": [
         // invalidates cache of the shopping-agent site/app upon env changing https://turbo.build/repo/docs/reference/configuration#env,
         "POSTGRES_PRISMA_URL",
@@ -56,8 +55,7 @@
     },
     
     "shopping-agent#test": {
-      // requires ebay-client to be built before tests run in shopping-agent: https://turbo.build/repo/docs/reference/configuration#arbitrary-task-relationships
-      "dependsOn": ["@activescott/ebay-client#build"]
+      "dependsOn": ["^build"]
     },
     "watch": {
       "dependsOn": ["^watch"]

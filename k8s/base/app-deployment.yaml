@@ -91,6 +91,18 @@ spec:
                   name: app-creds
                   key: INDEXNOW_API_KEY
 
+            - name: ADMIN_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: app-creds
+                  key: ADMIN_USERNAME
+
+            - name: ADMIN_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: app-creds
+                  key: ADMIN_PASSWORD
+
           readinessProbe:
             httpGet:
               path: /api/health/readiness

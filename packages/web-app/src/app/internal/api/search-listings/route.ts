@@ -1,32 +1,35 @@
 import { NextResponse } from "next/server"
-import {
-  listExcludedListings,
-  getExclusionStats,
-} from "@/pkgs/server/db/ListingRepository"
+import { searchActiveListings } from "@/pkgs/server/db/ListingRepository"
 import { createLogger } from "@/lib/logger"
 
-const log = createLogger("internal:api:excluded-listings")
+const log = createLogger("internal:api:search-listings")
 
-const DEFAULT_PAGINATION_LIMIT = 100
+const DEFAULT_PAGINATION_LIMIT = 50
 
 export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url)
-    const reason = searchParams.get("reason") || undefined
-    const gpuName = searchParams.get("gpuName") || undefined
-    const limit = searchParams.get("limit")
-      ? Number.parseInt(searchParams.get("limit")!)
+    const query = searchParams.get("q")
+
+    if (!query || query.trim().length === 0) {
+      return NextResponse.json(
+        { error: "Query parameter 'q' is required" },
+        { status: 400 },
+      )
+    }
+
+    const limitParam = searchParams.get("limit")
+    const limit = limitParam
+      ? Number.parseInt(limitParam)
       : DEFAULT_PAGINATION_LIMIT
-    const offset = searchParams.get("offset")
-      ? Number.parseInt(searchParams.get("offset")!)
-      : 0
+    const offsetParam = searchParams.get("offset")
+    const offset = offsetParam ? Number.parseInt(offsetParam) : 0
 
-    const [{ listings, total }, stats] = await Promise.all([
-      listExcludedListings({ reason, gpuName, limit, offset }),
-      getExclusionStats(),
-    ])
+    const { listings, total } = await searchActiveListings(query.trim(), {
+      limit,
+      offset,
+    })
 
-    // Convert listings to a simpler format for the frontend
     const formattedListings = listings.map((listing) => ({
       itemId: listing.itemId,
       title: listing.title,
@@ -38,13 +41,11 @@ export async function GET(request: Request) {
       sellerUsername: listing.sellerUsername,
       sellerFeedbackPercentage: listing.sellerFeedbackPercentage,
       itemAffiliateWebUrl: listing.itemAffiliateWebUrl,
-      excludeReason: listing.excludeReason,
     }))
 
     return NextResponse.json({
       listings: formattedListings,
       total,
-      stats,
       pagination: {
         limit,
         offset,
@@ -52,9 +53,9 @@ export async function GET(request: Request) {
       },
     })
   } catch (error) {
-    log.error({ err: error }, "Error fetching excluded listings")
+    log.error({ err: error }, "Error searching listings")
     return NextResponse.json(
-      { error: "Failed to fetch excluded listings" },
+      { error: "Failed to search listings" },
       { status: 500 },
     )
   }

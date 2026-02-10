@@ -5,7 +5,7 @@ const nextConfig = {
   poweredByHeader: false,
 
   // Transpile workspace packages that export TypeScript source files
-  transpilePackages: ["@activescott/filter-items"],
+  transpilePackages: ["@activescott/filter-items", "@activescott/ebay-client"],
 
   // Native modules that should not be bundled by Next.js
   // Required for chartjs-node-canvas server-side chart rendering

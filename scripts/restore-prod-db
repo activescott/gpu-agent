@@ -47,7 +47,7 @@ check_minikube() {
 }
 
 check_db_pod() {
-    if ! minikube kubectl -- get pod db-0 -n "$namespace" &> /dev/null; then
+    if ! kubectl --context minikube get pod db-0 -n "$namespace" &> /dev/null; then
         die "Database pod not found. Is the dev server running? Start it with: ./scripts/dev"
     fi
 }
@@ -101,32 +101,32 @@ echo ""
 
 # Terminate existing connections and restore
 echo "Terminating existing database connections..."
-minikube kubectl -- exec db-0 -n "$namespace" -- psql -U "$db_user" -d postgres -c \
+kubectl --context minikube exec db-0 -n "$namespace" -- psql -U "$db_user" -d postgres -c \
     "SELECT pg_terminate_backend(pid) FROM pg_stat_activity WHERE datname = '$db_name' AND pid <> pg_backend_pid();" \
     2>/dev/null || true
 
 echo "Dropping and recreating database..."
-minikube kubectl -- exec db-0 -n "$namespace" -- psql -U "$db_user" -d postgres -c "DROP DATABASE IF EXISTS $db_name;"
-minikube kubectl -- exec db-0 -n "$namespace" -- psql -U "$db_user" -d postgres -c "CREATE DATABASE $db_name OWNER $db_user;"
+kubectl --context minikube exec db-0 -n "$namespace" -- psql -U "$db_user" -d postgres -c "DROP DATABASE IF EXISTS $db_name;"
+kubectl --context minikube exec db-0 -n "$namespace" -- psql -U "$db_user" -d postgres -c "CREATE DATABASE $db_name OWNER $db_user;"
 
 echo "Restoring database from backup..."
 # Use psql for plain text dumps (.dump files from pg_dump without --format=custom)
-minikube kubectl -- exec -i db-0 -n "$namespace" -- psql -U "$db_user" -d "$db_name" < "$local_backup_path"
+kubectl --context minikube exec -i db-0 -n "$namespace" -- psql -U "$db_user" -d "$db_name" < "$local_backup_path"
 
 echo ""
 echo "=== Applying pending migrations ==="
 echo ""
 # Get the app pod to run migrations
-app_pod=$(minikube kubectl -- get pods -n "$namespace" -l app=app -o jsonpath='{.items[0].metadata.name}' 2>/dev/null)
+app_pod=$(kubectl --context minikube get pods -n "$namespace" -l app=app -o jsonpath='{.items[0].metadata.name}' 2>/dev/null)
 if [[ -z "$app_pod" ]]; then
     echo "WARNING: No app pod found. You'll need to run migrations manually:"
     echo "  ./scripts/prisma-migrate migrate deploy"
 else
     echo "Running prisma migrate deploy in pod $app_pod..."
-    minikube kubectl -- exec "$app_pod" -n "$namespace" -- sh -c "cd /app/packages/web-app && npx prisma migrate deploy"
+    kubectl --context minikube exec "$app_pod" -n "$namespace" -- sh -c "cd /app/packages/web-app && npx prisma migrate deploy"
 fi
 
 echo ""
 echo "=== Restore complete! ==="
 echo ""
-echo "Verify with: minikube kubectl -- exec -it -n $namespace db-0 -- psql -U $db_user -d $db_name -c 'SELECT COUNT(*) FROM \"Listing\";'"
+echo "Verify with: kubectl --context minikube exec -it -n $namespace db-0 -- psql -U $db_user -d $db_name -c 'SELECT COUNT(*) FROM \"Listing\";'"

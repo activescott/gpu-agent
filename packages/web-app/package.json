@@ -6,7 +6,7 @@
     "prep": "mkdir public/images; npm run prep-bootstrap-icons",
     "prep-bootstrap-icons": "cp -f ${npm_config_local_prefix}/node_modules/bootstrap-icons/bootstrap-icons.svg public/images/",
     "predev": "npm run prep",
-    "dev": "next dev --turbopack",
+    "dev": "next dev --turbopack | pino-pretty",
     "//preinstall": "cd ../../packages/ebay-client && npm i && npm run build",
     "gen-sitemap": "npx ts-node src/scripts/gen-sitemap.ts",
     "prebuild": "npm run prep",

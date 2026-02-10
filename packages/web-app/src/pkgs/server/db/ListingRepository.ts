@@ -1026,3 +1026,44 @@ export async function getExclusionStats(
     count: Number(row.count),
   }))
 }
+
+/**
+ * Searches active (non-archived, non-excluded) listings by title.
+ */
+export async function searchActiveListings(
+  query: string,
+  options: { limit?: number; offset?: number } = {},
+  prisma: PrismaClientWithinTransaction = prismaSingleton,
+): Promise<{ listings: CachedListing[]; total: number }> {
+  const DEFAULT_LIMIT = 50
+  const { limit = DEFAULT_LIMIT, offset = 0 } = options
+
+  const where: Prisma.ListingWhereInput = {
+    archived: false,
+    exclude: false,
+    title: {
+      contains: query,
+      mode: "insensitive",
+    },
+  }
+
+  const [listings, total] = await Promise.all([
+    prisma.listing.findMany({
+      where,
+      include: {
+        gpu: true,
+      },
+      orderBy: {
+        cachedAt: "desc",
+      },
+      take: limit,
+      skip: offset,
+    }),
+    prisma.listing.count({ where }),
+  ])
+
+  return {
+    listings: listings.map((listing) => parsePrismaListingWithGpu(listing)),
+    total,
+  }
+}

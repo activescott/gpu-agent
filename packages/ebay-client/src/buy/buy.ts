@@ -1,13 +1,13 @@
-import { createLogger } from "../logger.js"
+import { createLogger } from "../logger"
 import {
   AuthToken,
   EbayClientCredentialsGrantResponse,
   EbayOAuthCredentials,
   MapEbayEnvironmentToUrl,
-} from "../auth.js"
-import { fetchImpl } from "../util/fetch.js"
-import { secondsToMilliseconds } from "../util/time.js"
-import { AspectFilter, Category, ItemSummary } from "./types.js"
+} from "../auth"
+import { fetchImpl } from "../util/fetch"
+import { secondsToMilliseconds } from "../util/time"
+import { AspectFilter, Category, ItemSummary } from "./types"
 
 const logger = createLogger("buy")
 
@@ -135,7 +135,9 @@ class BuyApiImpl implements BuyApi {
     try {
       while (page) {
         // NOTE: page.itemSummaries can be undefined
-        if (page.itemSummaries) {
+        if (!page.itemSummaries || page.itemSummaries.length === 0) {
+          logger.warn("ZERO itemSummaries in page!")
+        } else {
           for (const item of page.itemSummaries) {
             yield item
           }
@@ -167,7 +169,14 @@ class BuyApiImpl implements BuyApi {
       options.headers["X-EBAY-C-ENDUSERCTX"] =
         `affiliateCampaignId=${this.options.affiliateCampaignId}`
     }
-    return fetchImpl(url.href, options)
+    const resp = await fetchImpl(url.href, options)
+    if (!resp.ok) {
+      const body = await resp.text().catch(() => "(unable to read body)")
+      throw new Error(
+        `eBay API request failed: ${resp.status} ${resp.statusText} - ${body}`,
+      )
+    }
+    return resp
   }
 
   private async getAccessToken(): Promise<string> {
@@ -205,6 +214,14 @@ class BuyApiImpl implements BuyApi {
           token_type: json.token_type,
           expires_at: Date.now() + secondsToMilliseconds(json.expires_in),
         }
+        if (this.authToken.expires_at <= Date.now()) {
+          throw new Error(
+            `received an access token that is already expired: ${JSON.stringify(
+              this.authToken,
+            )}`,
+          )
+        }
+        logger.debug("Access token fetched: %s", this.authToken)
       } catch (error) {
         throw new Error(`failed to get auth token`, { cause: error })
       }

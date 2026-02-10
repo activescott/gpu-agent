@@ -16,9 +16,11 @@ dist
 .env.test.local
 .env.production.local
 
-# IDE files
+# IDE and tool config
 .vscode
 .idea
+.claude
+.mcp.json
 
 # OS files
 .DS_Store
@@ -41,6 +43,10 @@ e2e-tests
 
 # Kubernetes manifests (not needed in container)
 k8s
+
+# Dev scripts (not needed in container)
+scripts
+specs
 
 # Misc
 *.log

@@ -1,0 +1,22 @@
+#!/bin/bash
+# Unarchives the latest version of each listing that was cached/updated in the last 7 days.
+# Uses DISTINCT ON to avoid unique constraint violations (one active per itemId).
+# Usage: ./scripts/unarchive-recent-listings
+
+set -e
+
+dir="$(cd "$(dirname "$0")" && pwd)"
+
+sql='
+UPDATE "Listing"
+SET archived = false, "archivedAt" = NULL
+WHERE id IN (
+  SELECT DISTINCT ON ("itemId") id
+  FROM "Listing"
+  WHERE "archivedAt" >= NOW() - INTERVAL '\''7 days'\''
+  ORDER BY "itemId", version DESC
+);
+'
+
+echo "Unarchiving latest version of each listing archived in the last 7 days (prod)..."
+"$dir/psql-prod" "$sql"

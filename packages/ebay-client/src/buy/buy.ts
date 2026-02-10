@@ -11,6 +11,13 @@ import { AspectFilter, Category, ItemSummary } from "./types"
 
 const logger = createLogger("buy")
 
+const tokenCache = new Map<string, AuthToken>()
+
+/** Clears the module-level OAuth token cache. Exported for testing. */
+export function clearTokenCache(): void {
+  tokenCache.clear()
+}
+
 export function createBuyApi(options: BuyApiOptions): BuyApi {
   return new BuyApiImpl(options)
 }
@@ -86,8 +93,6 @@ export interface BuyApiOptions {
 }
 
 class BuyApiImpl implements BuyApi {
-  private authToken?: AuthToken
-
   public constructor(private options: BuyApiOptions) {
     if (!options.credentials) {
       throw new Error("missing credentials")
@@ -180,7 +185,9 @@ class BuyApiImpl implements BuyApi {
   }
 
   private async getAccessToken(): Promise<string> {
-    if (!this.authToken || this.authToken.expires_at <= Date.now()) {
+    const cacheKey = this.options.credentials.clientID
+    const cached = tokenCache.get(cacheKey)
+    if (!cached || cached.expires_at <= Date.now()) {
       logger.debug({ baseUrl: this.baseUrl() }, "fetching access token")
       try {
         // https://developer.ebay.com/api-docs/static/oauth-client-credentials-grant.html
@@ -209,23 +216,24 @@ class BuyApiImpl implements BuyApi {
           )
         }
         const json = (await result.json()) as EbayClientCredentialsGrantResponse
-        this.authToken = {
+        const token: AuthToken = {
           access_token: json.access_token,
           token_type: json.token_type,
           expires_at: Date.now() + secondsToMilliseconds(json.expires_in),
         }
-        if (this.authToken.expires_at <= Date.now()) {
+        if (token.expires_at <= Date.now()) {
           throw new Error(
             `received an access token that is already expired: ${JSON.stringify(
-              this.authToken,
+              token,
             )}`,
           )
         }
-        logger.debug("Access token fetched: %s", this.authToken)
+        tokenCache.set(cacheKey, token)
+        logger.info("Access token fetched and cached successfully")
       } catch (error) {
         throw new Error(`failed to get auth token`, { cause: error })
       }
     }
-    return this.authToken.access_token
+    return tokenCache.get(cacheKey)!.access_token
   }
 }

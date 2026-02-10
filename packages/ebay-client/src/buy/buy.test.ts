@@ -1,6 +1,6 @@
 import path from "path"
 import { EbayClientCredentialsGrantResponse, EbayEnvironment } from "../auth"
-import { BuyApiOptions, createBuyApi } from "../buy/buy"
+import { BuyApiOptions, clearTokenCache, createBuyApi } from "../buy/buy"
 import { fetchImpl } from "../util/fetch"
 import { asMockedFunction } from "../util/testing"
 import { chainAsync } from "irritable-iterable"
@@ -51,6 +51,10 @@ describe("search", () => {
       clientSecret: "bar",
     },
   }
+
+  beforeEach(() => {
+    clearTokenCache()
+  })
 
   it("should call fetch for credentials", async () => {
     const api = createBuyApi(defaultOptions)

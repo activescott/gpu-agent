@@ -5,6 +5,14 @@ const logger = createLogger("fetch")
 
 type FetchRequestInfo = Parameters<typeof fetch>[0]
 
+export type FetchMetricsHook = (path: string, status: number) => void
+
+let metricsHook: FetchMetricsHook | undefined
+
+export function setFetchMetricsHook(hook: FetchMetricsHook): void {
+  metricsHook = hook
+}
+
 const DEFAULT_RETRIES = 4
 const DEFAULT_RETRY_BACKOFF_FACTOR = 2
 const DEFAULT_MIN_TIMEOUT_MS = 2000
@@ -22,6 +30,17 @@ export function fetchImpl(
   return retry(
     async (bail) => {
       const resp = await fetch(input, init)
+      if (metricsHook) {
+        try {
+          const pathname = new URL(String(input)).pathname
+          metricsHook(pathname, resp.status)
+        } catch {
+          logger.warn(
+            { url: input },
+            "Failed to parse URL for metrics hook or invoke metrics hook",
+          )
+        }
+      }
       if (resp.status === HTTP_STATUS.TOO_MANY_REQUESTS) {
         const headers = Object.fromEntries(resp.headers.entries())
         const retryAfterMs = parseRetryAfter(resp.headers.get("Retry-After"))

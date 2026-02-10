@@ -1,11 +1,13 @@
 import { getPrometheusMetrics } from "@/pkgs/server/metrics/metricsStore"
+import { getEbayMetricsRegistry } from "@/pkgs/server/metrics/ebayMetrics"
 
 // keep revalidate=0 to ensure fresh metrics on each request
-// eslint-disable-next-line import/no-unused-modules
+// eslint-disable-next-line import/no-unused-modules -- Next.js route convention
 export const revalidate = 0
 
 /**
- * Prometheus metrics endpoint that serves metrics from the last cache revalidation job.
+ * Prometheus metrics endpoint that serves metrics from the last cache revalidation job
+ * and eBay API call counters.
  *
  * This endpoint is publicly accessible (via ingress) and scraped by Prometheus to monitor
  * the health and performance of the cache revalidation system. Metrics reflect the state
@@ -14,17 +16,22 @@ export const revalidate = 0
  * Returns HTTP 200 with Prometheus-formatted metrics even when no job has run yet
  * (using NaN values) to keep Prometheus scrapes successful.
  */
-// eslint-disable-next-line import/no-unused-modules
+// eslint-disable-next-line import/no-unused-modules -- Next.js route convention
 export async function GET() {
-  const registry = getPrometheusMetrics()
-  const textResponse = await registry.metrics()
+  const jobRegistry = getPrometheusMetrics()
+  const ebayRegistry = getEbayMetricsRegistry()
+  const [jobMetrics, ebayMetrics] = await Promise.all([
+    jobRegistry.metrics(),
+    ebayRegistry.metrics(),
+  ])
+  const textResponse = jobMetrics + "\n" + ebayMetrics
 
   const MAX_CACHE_AGE_SECONDS = 60
   return new Response(textResponse, {
     status: 200,
     headers: {
       "Cache-Control": `max-age=${MAX_CACHE_AGE_SECONDS}`,
-      "Content-Type": registry.contentType,
+      "Content-Type": jobRegistry.contentType,
     },
   })
 }

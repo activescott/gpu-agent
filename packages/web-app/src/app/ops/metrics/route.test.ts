@@ -1,13 +1,17 @@
 import { GET } from "./route"
 import { getPrometheusMetrics } from "../../../pkgs/server/metrics/metricsStore"
+import { getEbayMetricsRegistry } from "../../../pkgs/server/metrics/ebayMetrics"
 import { openMetricsContentType } from "prom-client"
 
-// Mock the metrics store
+// Mock the metrics store and ebay metrics
 jest.mock("../../../pkgs/server/metrics/metricsStore")
+jest.mock("../../../pkgs/server/metrics/ebayMetrics")
 
 const mockGetPrometheusMetrics = getPrometheusMetrics as jest.MockedFunction<
   typeof getPrometheusMetrics
 >
+const mockGetEbayMetricsRegistry =
+  getEbayMetricsRegistry as jest.MockedFunction<typeof getEbayMetricsRegistry>
 
 type GetPrometheusMetricsReturnType = ReturnType<typeof getPrometheusMetrics>
 
@@ -41,6 +45,9 @@ describe("/ops/metrics", () => {
   beforeEach(() => {
     jest.clearAllMocks()
     jest.spyOn(Date, "now").mockReturnValue(1_000_000) // Fixed timestamp for consistent testing
+    // Return an empty ebay metrics registry by default
+    const emptyEbayRegistry = createMockRegistry("")
+    mockGetEbayMetricsRegistry.mockReturnValue(emptyEbayRegistry)
   })
 
   afterEach(() => {
@@ -65,7 +72,7 @@ coinpoet_listings_cached_total 150`
 
       // Verify response status and content
       expect(response.status).toBe(200)
-      expect(text).toBe(mockMetricsContent)
+      expect(text).toContain(mockMetricsContent)
 
       // Verify correct Content-Type for Prometheus
       expect(response.headers.get("Content-Type")).toBe(

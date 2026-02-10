@@ -232,6 +232,11 @@ This endpoint:
 - **Internal Only:** Accessible only within the Kubernetes cluster
 - **Monitoring:** Job results are tracked via Prometheus metrics at `/ops/metrics`
 
+#### eBay API Rate Limits
+eBay enforces rate limits on both their Browse API and OAuth token endpoint. The app uses module-level OAuth token caching (shared across all `BuyApiImpl` instances per process) to minimize token requests, and Prometheus metrics (`coinpoet_ebay_api_calls_total`) to track API call volume.
+- [API Call Limits](https://developer.ebay.com/develop/get-started/api-call-limits)
+- [OAuth Rate Limits](https://developer.ebay.com/api-docs/static/oauth-rate-limits.html)
+
 ### Search Engine Notification
 
 The site automatically notifies search engines about content changes using a Kubernetes CronJob that runs every 4 hours. It supports two providers:

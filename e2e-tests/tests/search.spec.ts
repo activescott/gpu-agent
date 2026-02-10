@@ -5,14 +5,12 @@ test.describe("Cmd+K Search", () => {
   test.setTimeout(60000)
 
   test.beforeEach(async ({ page }) => {
-    await page.goto("/", { timeout: 45000 })
-    await page.waitForLoadState("networkidle")
-    await expect(page).toHaveTitle(/GPU/i)
+    await page.goto("/", { timeout: 45000, waitUntil: "networkidle" })
+    await expect(page).toHaveTitle(/GPU/i, { timeout: 15000 })
     // Wait for client-side hydration so the search trigger is interactive
     await expect(page.getByTestId("search-trigger")).toBeVisible({
       timeout: 10000,
     })
-    await page.waitForTimeout(500)
   })
 
   async function openSearchDialog(page: import("@playwright/test").Page) {

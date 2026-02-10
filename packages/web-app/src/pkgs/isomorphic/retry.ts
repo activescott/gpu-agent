@@ -19,9 +19,10 @@ export function shouldRetryPrismaTransaction(
       ? (error as PrismaClientKnownRequestError)
       : null
 
+  const errorMessage = error instanceof Error ? error.message : String(error)
   log.warn(
     { prismaErrorCode: prismaError?.code, retryCount, err: error },
-    "transaction failed, checking if retryable",
+    `transaction failed, checking if retryable: code=${prismaError?.code ?? "unknown"} message=${errorMessage}`,
   )
 
   // https://www.prisma.io/docs/orm/reference/error-reference#error-codes
@@ -32,7 +33,10 @@ export function shouldRetryPrismaTransaction(
     return true
   }
 
-  log.error({ err: error, retryCount }, "transaction failed permanently")
+  log.error(
+    { err: error, retryCount },
+    `transaction failed permanently: code=${prismaError?.code ?? "unknown"} message=${errorMessage}`,
+  )
   return false
 }
 

@@ -76,9 +76,13 @@ function hashKeyFields(listing: {
 }
 
 /**
- * Finds the current active listing by itemId
+ * Finds the current non-archived listing by itemId.
+ * NOTE: Does NOT filter on `exclude` because the DB's partial unique index
+ * `one_active_per_item` enforces uniqueness on (itemId) WHERE archived=false,
+ * regardless of exclude status. If we filtered on exclude=false here, we'd
+ * miss excluded-but-not-archived listings and try to create duplicates.
  */
-async function findActiveByItemId(
+async function findNonArchivedByItemId(
   itemId: string,
   prisma: PrismaClientWithinTransaction,
 ): Promise<{
@@ -93,7 +97,6 @@ async function findActiveByItemId(
     where: {
       itemId,
       archived: false,
-      exclude: false,
     },
     select: {
       id: true,
@@ -130,7 +133,7 @@ async function didListingDataChange(
   },
   prisma: PrismaClientWithinTransaction,
 ): Promise<DataChangeCheckResult> {
-  const current = await findActiveByItemId(itemId, prisma)
+  const current = await findNonArchivedByItemId(itemId, prisma)
   if (!current) {
     return { didChange: false }
   }
@@ -328,7 +331,10 @@ export async function addOrRefreshListingsForGpu(
       noChangeCount++
     } else {
       // No existing listing, create new one
-      log.debug(`Creating new listing for ${freshListing.itemId}`)
+      log.info(
+        { itemId: freshListing.itemId, gpuName },
+        `Creating new listing for itemId=${freshListing.itemId} gpuName=${gpuName}`,
+      )
       await prisma.listing.create({
         data: {
           ...listingData,

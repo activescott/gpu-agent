@@ -62,7 +62,10 @@ export async function POST() {
       errorMessage,
     )
 
-    log.error({ err: error }, `cache revalidation failed after ${duration}ms`)
+    log.error(
+      { err: error },
+      `cache revalidation failed after ${duration}ms: ${errorMessage}`,
+    )
 
     return Response.json(
       {

@@ -4,6 +4,7 @@ import {
   listCachedListingsGroupedByGpu,
 } from "../db/ListingRepository"
 import { EPOCH, secondsToMilliseconds } from "../../isomorphic/duration"
+import type { Listing } from "@/pkgs/isomorphic/model"
 import { cacheEbayListingsForGpu } from "./ebay"
 import { CACHED_LISTINGS_DURATION_MS } from "../cacheConfig"
 import { withTransaction } from "../db/db"
@@ -113,7 +114,10 @@ export async function revalidateCachedListings(
                 break
               }
               const cachingStart = Date.now()
-              const cached = await cacheEbayListingsForGpu(gpu.gpuName, prisma)
+              const cached = await cacheEbayListingsForGpuWithLogging(
+                gpu.gpuName,
+                prisma,
+              )
               listingCachedCount += chain(cached).size()
               const cachingEnd = Date.now() - cachingStart
               if (!maxTimeToCacheOneGpu || cachingEnd > maxTimeToCacheOneGpu) {
@@ -154,6 +158,22 @@ export async function revalidateCachedListings(
   )
 
   return statsFinal
+}
+
+async function cacheEbayListingsForGpuWithLogging(
+  gpuName: string,
+  prisma: Parameters<typeof cacheEbayListingsForGpu>[1],
+): Promise<Iterable<Listing>> {
+  try {
+    return await cacheEbayListingsForGpu(gpuName, prisma)
+  } catch (error) {
+    const errorMessage = error instanceof Error ? error.message : String(error)
+    log.error(
+      { err: error, gpuName },
+      `caching listings failed for gpu=${gpuName}: ${errorMessage}`,
+    )
+    throw error
+  }
 }
 
 function getOldestCachedAt(listings: CachedListing[]): Date {

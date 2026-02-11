@@ -1,5 +1,7 @@
 -- Price vs MSRP Analysis
 -- Shows current prices compared to MSRP for new and used conditions
+-- NOTE: No "archived" filter — archived listings are valid historical data.
+--       Only "exclude" filters out data quality issues (scams, accessories, etc.)
 
 SELECT
   g.name,
@@ -9,7 +11,7 @@ SELECT
   ROUND(((AVG(l."priceValue"::numeric) FILTER (WHERE l.condition = 'New') / NULLIF(g."msrpUSD"::numeric, 0) - 1) * 100)::numeric, 1) as new_vs_msrp_pct,
   ROUND(((AVG(l."priceValue"::numeric) FILTER (WHERE l.condition = 'Used') / NULLIF(g."msrpUSD"::numeric, 0) - 1) * 100)::numeric, 1) as used_vs_msrp_pct
 FROM gpu g
-LEFT JOIN "Listing" l ON g.name = l."gpuName" AND l.archived = false
+LEFT JOIN "Listing" l ON g.name = l."gpuName" AND l."exclude" = false
 WHERE g."msrpUSD" IS NOT NULL AND g."msrpUSD" > 0
 GROUP BY g.name, g."msrpUSD"
 HAVING COUNT(l.id) > 5

@@ -1,5 +1,7 @@
 -- Market Snapshot: Current active listings by GPU
 -- Shows listing counts, price ranges, and supply indicators
+-- NOTE: This query uses "archived = false" because it shows currently-active eBay listings.
+--       For historical analysis, remove the "archived" filter and add a cachedAt date range.
 
 SELECT
   "gpuName",
@@ -10,5 +12,6 @@ SELECT
   ROUND(PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY "priceValue"::numeric)::numeric, 0) as median_price
 FROM "Listing"
 WHERE archived = false
+  AND "exclude" = false
 GROUP BY "gpuName"
 ORDER BY active_listings DESC;

@@ -139,6 +139,7 @@ export default async function February2026Report(): Promise<ReactNode> {
               <th>GPU</th>
               <th>MSRP</th>
               <th>Best Deal</th>
+              <th>Best Deal vs MSRP</th>
               <th>Median Price</th>
               <th>Median vs MSRP</th>
             </tr>
@@ -150,6 +151,7 @@ export default async function February2026Report(): Promise<ReactNode> {
               </td>
               <td>$299</td>
               <td>$253</td>
+              <td className="text-success fw-bold">-15%</td>
               <td>$521</td>
               <td className="text-danger fw-bold">+74%</td>
             </tr>
@@ -161,6 +163,7 @@ export default async function February2026Report(): Promise<ReactNode> {
               </td>
               <td>$429</td>
               <td>$400</td>
+              <td className="text-success fw-bold">-7%</td>
               <td>$750</td>
               <td className="text-danger fw-bold">+75%</td>
             </tr>
@@ -170,6 +173,7 @@ export default async function February2026Report(): Promise<ReactNode> {
               </td>
               <td>$549</td>
               <td>$506</td>
+              <td className="text-success fw-bold">-8%</td>
               <td>$965</td>
               <td className="text-danger fw-bold">+76%</td>
             </tr>
@@ -181,6 +185,7 @@ export default async function February2026Report(): Promise<ReactNode> {
               </td>
               <td>$749</td>
               <td>$738</td>
+              <td className="text-success fw-bold">-1%</td>
               <td>$1,404</td>
               <td className="text-danger fw-bold">+87%</td>
             </tr>
@@ -190,6 +195,7 @@ export default async function February2026Report(): Promise<ReactNode> {
               </td>
               <td>$999</td>
               <td>$900</td>
+              <td className="text-success fw-bold">-10%</td>
               <td>$1,798</td>
               <td className="text-danger fw-bold">+80%</td>
             </tr>
@@ -199,6 +205,7 @@ export default async function February2026Report(): Promise<ReactNode> {
               </td>
               <td>$1,999</td>
               <td>$2,088</td>
+              <td className="text-danger fw-bold">+4%</td>
               <td>$3,775</td>
               <td className="text-danger fw-bold">+89%</td>
             </tr>

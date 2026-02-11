@@ -1,5 +1,7 @@
 -- Scalper Premiums: New launches vs MSRP
 -- Useful for tracking launch pricing chaos
+-- NOTE: No "archived" filter — archived listings are valid historical data.
+--       Only "exclude" filters out data quality issues (scams, accessories, etc.)
 
 SELECT
   g.name,
@@ -9,7 +11,7 @@ SELECT
   ROUND(MIN(l."priceValue"::numeric), 0) as min_price,
   ROUND(((AVG(l."priceValue"::numeric) / g."msrpUSD"::numeric - 1) * 100)::numeric, 0) as premium_pct
 FROM gpu g
-JOIN "Listing" l ON g.name = l."gpuName" AND l.archived = false
+JOIN "Listing" l ON g.name = l."gpuName" AND l."exclude" = false
 WHERE g."msrpUSD" IS NOT NULL
   AND g."msrpUSD" > 0
   AND g.name LIKE 'nvidia-geforce-rtx-50%'  -- RTX 50 series

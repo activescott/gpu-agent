@@ -1,5 +1,7 @@
 -- Monthly Price Changes: Compare current month vs previous month
 -- Shows biggest movers (up and down)
+-- NOTE: No "archived" filter — archived listings are valid historical data.
+--       Only "exclude" filters out data quality issues (scams, accessories, etc.)
 
 WITH current_month AS (
   SELECT
@@ -7,6 +9,7 @@ WITH current_month AS (
     AVG("priceValue"::numeric) as curr_avg
   FROM "Listing"
   WHERE DATE_TRUNC('month', "cachedAt") = DATE_TRUNC('month', CURRENT_DATE)
+    AND "exclude" = false
   GROUP BY "gpuName"
 ),
 prev_month AS (
@@ -15,6 +18,7 @@ prev_month AS (
     AVG("priceValue"::numeric) as prev_avg
   FROM "Listing"
   WHERE DATE_TRUNC('month', "cachedAt") = DATE_TRUNC('month', CURRENT_DATE - INTERVAL '1 month')
+    AND "exclude" = false
   GROUP BY "gpuName"
 )
 SELECT

@@ -1,5 +1,7 @@
 -- Condition Analysis: New vs Used vs Refurbished pricing
 -- Shows price gaps between conditions for popular GPUs
+-- NOTE: No "archived" filter — archived listings are valid historical data.
+--       Only "exclude" filters out data quality issues (scams, accessories, etc.)
 
 SELECT
   "gpuName",
@@ -9,7 +11,7 @@ SELECT
   ROUND(MIN("priceValue"::numeric), 0) as min_price,
   ROUND(MAX("priceValue"::numeric), 0) as max_price
 FROM "Listing"
-WHERE archived = false
+WHERE "exclude" = false
 GROUP BY "gpuName", condition
 HAVING COUNT(*) >= 3
 ORDER BY "gpuName", avg_price DESC;

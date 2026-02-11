@@ -1,5 +1,7 @@
 -- Best Deals: GPUs with biggest discounts below MSRP
 -- Great for "value" recommendations
+-- NOTE: No "archived" filter — archived listings are valid historical data.
+--       Only "exclude" filters out data quality issues (scams, accessories, etc.)
 
 SELECT
   g.name,
@@ -9,7 +11,7 @@ SELECT
   ROUND(((MIN(l."priceValue"::numeric) / g."msrpUSD"::numeric - 1) * 100)::numeric, 1) as min_vs_msrp_pct,
   COUNT(*) as listings
 FROM gpu g
-JOIN "Listing" l ON g.name = l."gpuName" AND l.archived = false
+JOIN "Listing" l ON g.name = l."gpuName" AND l."exclude" = false
 WHERE g."msrpUSD" IS NOT NULL
   AND g."msrpUSD" > 0
 GROUP BY g.name, g."msrpUSD"

@@ -130,18 +130,19 @@ class BuyApiImpl implements BuyApi {
     return {
       total: firstPage.total,
       // now searchItems will continue to return items as needed
-      items: this.searchItems(firstPage),
+      items: this.searchItems(firstPage, { query }),
     }
   }
 
   private async *searchItems(
     page: SearchPageResponse,
+    options: Pick<SearchOptions, "query">,
   ): AsyncGenerator<ItemSummary, void, unknown> {
     try {
       while (page) {
         // NOTE: page.itemSummaries can be undefined
         if (!page.itemSummaries || page.itemSummaries.length === 0) {
-          logger.warn("ZERO itemSummaries in page!")
+          logger.warn(`ZERO itemSummaries in page! for query ${options?.query}`)
         } else {
           for (const item of page.itemSummaries) {
             yield item

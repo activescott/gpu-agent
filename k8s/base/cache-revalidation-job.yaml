@@ -4,11 +4,11 @@ metadata:
   name: cache-revalidation
 spec:
   # We get 5,000 API calls per day in eBay's call limits per
-  # https://developer.ebay.com/develop/get-started/api-call-limits. Given we use
-  # ~1,000 API calls per run, we get 5 runs per day. Seems to me the easiest
-  # thing to do in cron for this is just pick 5 times and separate them by
-  # commas.
-  schedule: "0 1,6,11,16,21 * * *"
+  # https://developer.ebay.com/develop/get-started/api-call-limits. 
+  # In some extreme circumstances I've seen it use ~1,000 API calls per run (5 runs per day). 
+  # However, under normal circumstances it seems to use ~230 calls.
+  # So 6 runs (every 4 hrs) should be plenty conservative.
+  schedule: "0 /4 * * *"
   concurrencyPolicy: Forbid
   jobTemplate:
     spec:

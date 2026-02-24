@@ -6,6 +6,7 @@ msrpUSD: 269
 tensorCoreCount: 64
 fp32TFLOPS: 21.75
 fp16TFLOPS: 43.5
+int8TOPS: 43.5
 memoryCapacityGB: 8
 memoryBandwidthGBs: 288
 maxTDPWatts: 165
@@ -16,7 +17,7 @@ supportedHardwareOperations:
   - INT8
   - INT4
 releaseDate: "2023-05-25"
-lastModified: "2025-12-21T00:00:00Z"
+lastModified: "2026-02-24T00:00:00Z"
 
 summary: |
   The AMD Radeon RX 7600 is a mainstream graphics card released in May 2023,
@@ -107,7 +108,7 @@ notes:
   - TDP (TBP - Typical Board Power) is 165W, requiring a minimum 550W power supply.
   - The RX 7600 and RX 7600 XT have identical core specifications (32 CUs, 2,048 shaders, 64 AI Accelerators) but differ in VRAM (8GB vs 16GB) and TDP (165W vs 190W), resulting in only 4-6% performance difference in most scenarios.
   - Process node is TSMC N6 (6nm).
-  - int8TOPS information is not readily available from AMD's official specifications for RDNA 3 consumer GPUs.
+  - 'int8TOPS of 43.5: RDNA 3 AI Accelerators perform INT8 WMMA operations at 1:1 ratio with FP16 (same throughput per AMD GPUOpen WMMA documentation). Source: https://gpuopen.com/learn/wmma_on_rdna3/'
   - MSRP of $269 USD sourced from AMD official press release dated May 24, 2023.
   - manufacturerIdentifiers include PCI device ID 1002:7480 for Navi 33 (from Linux hardware database), codename Navi 33 XL, and internal development codename "Hotpink Bonefish" from AMD documentation.
   - thirdPartyProducts list includes the top AIB partners at launch (Sapphire, XFX, PowerColor, ASRock, ASUS, Gigabyte, MSI) with verified model numbers from their official product pages and retail listings. Model numbers sourced from manufacturer websites and verified through multiple retailers.

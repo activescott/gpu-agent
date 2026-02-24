@@ -6,6 +6,7 @@ msrpUSD: 499
 tensorCoreCount: 120
 fp32TFLOPS: 37
 fp16TFLOPS: 74
+int8TOPS: 74
 memoryCapacityGB: 16
 memoryBandwidthGBs: 624
 maxTDPWatts: 263
@@ -16,7 +17,7 @@ supportedHardwareOperations:
   - INT8
   - INT4
 releaseDate: "2023-09-06"
-lastModified: "2025-12-21T00:00:00Z"
+lastModified: "2026-02-24T00:00:00Z"
 
 summary: >-
   The AMD Radeon RX 7800 XT was unveiled in August, 2023 as one of the GPUs
@@ -134,7 +135,7 @@ references:
 
 notes:
   - 'tensorCoreCount: tracking the AI Accelerators as "tensor cores"'
-  - "int8TOPS: More Information Needed"
+  - 'int8TOPS of 74: RDNA 3 AI Accelerators perform INT8 WMMA operations at 1:1 ratio with FP16 (same throughput per AMD GPUOpen WMMA documentation). Source: https://gpuopen.com/learn/wmma_on_rdna3/'
   - MSRP of $499 USD sourced from AMD announcement at Gamescom 2023, verified from Tom's Hardware and TechPowerUp.
   - 'PCI Device ID 747E (vendor 1002) sourced from driver download sites and confirmed across multiple AIB partner products'
   - 'Sapphire model numbers 11330-01-20G (NITRO+), 11330-02-20G (PULSE), and 11330-03-20G (PURE) sourced from PCPartPicker, Amazon, Micro Center, and retail listings'

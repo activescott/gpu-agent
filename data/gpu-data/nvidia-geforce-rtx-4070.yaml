@@ -6,7 +6,7 @@ msrpUSD: 599
 tensorCoreCount: 184
 fp32TFLOPS: 58.2
 fp16TFLOPS: 233.2
-int8TOPS: 466.4
+int8TOPS: 233.2
 memoryCapacityGB: 12
 memoryBandwidthGBs: 504
 maxTDPWatts: 200
@@ -20,7 +20,7 @@ supportedHardwareOperations:
   - FP8
 supportedCUDAComputeCapability: 8.9
 releaseDate: "2023-04-13"
-lastModified: "2025-12-20T00:00:00Z"
+lastModified: "2026-02-24T00:00:00Z"
 
 summary: |
   The NVIDIA GeForce RTX 4070 is a graphics card released in 2022,
@@ -102,7 +102,7 @@ references:
 notes:
   - MSRP of $599 USD sourced from NVIDIA's official announcement. A Founders Edition was available at this price. The official MSRP was later lowered to $549 following the launch of the RTX 4070 SUPER in January 2024.
   - fp16TFLOPS is "Peak FP16 Tensor TFLOPS with FP16 Accumulate" as that's what NVIDIA publishes. Using the "with sparsity" metric.
-  - int8TOPS is "peak INT 8 TOPS" using "Effective TOPS / TFLOPS using the new Sparsity Feature". They also reveal it as 660.6 "based on GPU Boost Clock". This comes from the ada-gpu-architecture-whitepaper-v2.1.
+  - 'int8TOPS of 233.2 represents non-sparse (dense) INT8 performance, derived from sparse INT8 of 466.4 TOPS ÷ 2 per NVIDIA Ada architecture whitepaper. With 2:4 structured sparsity, INT8 performance is 466.4 TOPS. Dense value used for consistent cross-vendor comparison.'
   - Power based on what NVIDIA refers to as "TGP (Total Graphics Power)"
   - NVIDIA part number 900-1G141-2544-000 sourced from Amazon and PCPartPicker listings for the Founders Edition
   - Product SKU PG141 SKU 344 sourced from VideoCardz and NotebookCheck technical articles

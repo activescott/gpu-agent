@@ -6,7 +6,7 @@ msrpUSD: 1599
 tensorCoreCount: 512
 fp32TFLOPS: 82.6
 fp16TFLOPS: 660.6
-int8TOPS: 1321.2
+int8TOPS: 660.6
 memoryCapacityGB: 24
 memoryBandwidthGBs: 1008
 maxTDPWatts: 450
@@ -20,7 +20,7 @@ supportedHardwareOperations:
   - FP8
 supportedCUDAComputeCapability: 8.9
 releaseDate: "2022-10-12"
-lastModified: "2025-12-20T00:00:00Z"
+lastModified: "2026-02-24T00:00:00Z"
 
 summary: |
   The NVIDIA GeForce RTX 4090 is a graphics card released in 2022,
@@ -128,7 +128,7 @@ references:
 notes:
   - MSRP of $1599 USD sourced from NVIDIA's official announcement. A Founders Edition was available at this price. Due to high demand and limited availability, most RTX 4090 cards are priced between $1,700 and $2,000 or higher.
   - fp16TFLOPS is "Peak FP16 Tensor TFLOPS with FP16 Accumulate" as that's what NVIDIA publishes. Using the "with sparsity" metric.
-  - int8TOPS is "peak INT 8 TOPS" using "Effective TOPS / TFLOPS using the new Sparsity Feature". They also reveal it as 660.6 "based on GPU Boost Clock". This comes from the ada-gpu-architecture-whitepaper-v2.1.
+  - 'int8TOPS of 660.6 represents non-sparse (dense) INT8 performance, derived from sparse INT8 of 1321.2 TOPS ÷ 2 per NVIDIA Ada architecture whitepaper. With 2:4 structured sparsity, INT8 performance is 1321.2 TOPS. Dense value used for consistent cross-vendor comparison.'
   - Power based on what NVIDIA refers to as "TGP (Total Graphics Power)"
   - NVIDIA Founders Edition part number 900-1G136-2530-000 sourced from PCPartPicker and TechPowerUp GPU Database.
   - Third-party product identifiers sourced from official manufacturer websites and TechPowerUp GPU Database. EVGA did not produce RTX 4090 cards as they exited the GPU market in September 2022.

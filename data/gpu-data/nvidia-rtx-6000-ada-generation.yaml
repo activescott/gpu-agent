@@ -6,7 +6,7 @@ msrpUSD: 6800
 tensorCoreCount: 568
 fp32TFLOPS: 91.1
 fp16TFLOPS: 728.5
-int8TOPS: 1457
+int8TOPS: 728.5
 memoryCapacityGB: 48
 memoryBandwidthGBs: 960
 maxTDPWatts: 300
@@ -22,7 +22,7 @@ supportedHardwareOperations:
   - FP64
 supportedCUDAComputeCapability: 8.9
 releaseDate: "2022-12-03"
-lastModified: "2026-01-08T00:00:00Z"
+lastModified: "2026-02-24T00:00:00Z"
 
 manufacturerIdentifiers:
   - type: nvpn
@@ -56,8 +56,7 @@ summary: |
   The NVIDIA RTX 6000 Ada Generation is the flagship of NVIDIA's Ada Lovelace professional workstation lineup, released on December 3, 2022.
   Built on the Ada Lovelace architecture using TSMC's 4nm process (4N), the GPU features 76.3 billion transistors on
   a 608.4mm² die. It combines 18,176 CUDA cores, 568 fourth-generation Tensor Cores, and 142 third-generation RT Cores
-  with 48GB of GDDR6 ECC memory. The fourth-generation Tensor Cores deliver 1,457 TFLOPS of peak tensor performance
-  with sparsity, providing up to 2X the AI performance over the previous RTX A6000 generation. With 91.1 TFLOPS of
+  with 48GB of GDDR6 ECC memory. The fourth-generation Tensor Cores deliver 728.5 TOPS of dense INT8 performance (1,457 TOPS with sparsity), providing up to 2X the AI performance over the previous RTX A6000 generation. With 91.1 TFLOPS of
   FP32 performance and 210.6 TFLOPS of RT core performance, the RTX 6000 Ada delivers 2-4X the performance of its
   predecessor while maintaining the same 300W TDP. Memory bandwidth of 960 GB/s is provided through a 384-bit memory
   interface running at 20 Gbps effective speed. The card features a dual-slot form factor with active blower cooling
@@ -74,7 +73,7 @@ references:
 notes:
   - FP32 TFLOPS of 91.1 is the official peak single-precision performance published by NVIDIA.
   - FP16 TFLOPS of 728.5 represents Peak Sparse Tensor Core performance (derived as half of FP8 Sparse performance). This metric is selected to align with the card's workstation AI capabilities; standard CUDA Core FP16 performance is 91.1 TFLOPS.
-  - INT8 TOPS of 1,457 represents peak tensor performance with sparsity from NVIDIA datasheet.
+  - 'int8TOPS of 728.5 represents non-sparse (dense) INT8 performance, derived from sparse INT8 of 1457 TOPS ÷ 2 per NVIDIA Ada Lovelace architecture. With 2:4 structured sparsity, INT8 performance is 1457 TOPS. Dense value used for consistent cross-vendor comparison.'
   - Memory bandwidth calculated as 384-bit × 20 Gbps ÷ 8 = 960 GB/s.
   - CUDA Compute Capability 8.9 confirmed for Ada Lovelace architecture.
   - The GPU uses the AD102 chip with 142 of 144 SMs enabled (18,176 of 18,432 CUDA cores).

@@ -60,7 +60,7 @@
     },
     "int8TOPS": {
       "type": ["number", "null"],
-      "description": "8-bit integer performance in TOPS (null if not applicable)",
+      "description": "8-bit integer non-sparse (dense) performance in TOPS. For GPUs with 2:4 structured sparsity (e.g. NVIDIA Ampere+), use the dense value without sparsity for fair cross-vendor comparison. Sparse performance is typically 2x dense. Null if not applicable.",
       "minimum": 0
     },
     "memoryCapacityGB": {

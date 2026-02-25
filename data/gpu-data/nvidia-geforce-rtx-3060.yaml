@@ -6,7 +6,7 @@ msrpUSD: 329
 tensorCoreCount: 112
 fp32TFLOPS: 12.74
 fp16TFLOPS: 101.9
-int8TOPS: 203.80
+int8TOPS: 101.90
 memoryCapacityGB: 12
 memoryBandwidthGBs: 360
 maxTDPWatts: 170
@@ -21,13 +21,13 @@ supportedHardwareOperations:
   - BF16
 supportedCUDAComputeCapability: 8.6
 releaseDate: "2021-02-25"
-lastModified: "2025-12-18T00:00:00Z"
+lastModified: "2026-02-24T00:00:00Z"
 
 summary: |
   The NVIDIA GeForce RTX 3060 is a mainstream gaming graphics card released in February 2021,
   featuring the Ampere architecture based on the GA106 GPU. It offers 3,584 CUDA cores,
   112 3rd-generation tensor cores, and 12GB of GDDR6 memory running at 15 Gbps, delivering
-  203.80 INT8 TOPS with sparsity for AI workloads. NVIDIA officially specified the card at
+  101.90 INT8 TOPS (dense) for AI workloads. NVIDIA officially specified the card at
   13 shader-TFLOPS, 25 RT-TFLOPS for ray tracing, and 101 tensor-TFLOPS for DLSS acceleration.
   With a TDP of 170W, it provides excellent performance-per-watt for gaming at 1080p/1440p
   and machine learning inference workloads. The RTX 3060 uses a PCI-Express 4.0 x16 interface
@@ -112,7 +112,7 @@ references:
 
 notes:
   - "FP16 TFLOPS of 101.9 represents Peak Sparse Tensor Core performance (8x FP32). Dense Tensor performance is ~51 TFLOPS."
-  - "INT8 TOPS of 203.8 represents Peak Sparse INT8 Tensor performance."
+  - 'int8TOPS of 101.90 represents non-sparse (dense) INT8 performance, derived from sparse INT8 of 203.80 TOPS ÷ 2 per NVIDIA Ampere architecture whitepaper. With 2:4 structured sparsity, INT8 performance is 203.80 TOPS. Dense value used for consistent cross-vendor comparison.'
   - "Note: Previous versions incorrectly listed dense performance (50.95 TFLOPS) as sparse. Updated to match Workstation and Ada generation metrics (101.9 TFLOPS)."
   - fp32TFLOPS calculated as 3,584 CUDA cores × 1.777 GHz boost clock × 2 ops/cycle = 12.74 TFLOPS. Ampere architecture features 2 FP32 ops per cycle through dedicated FP32 datapath and shared INT32/FP32 datapath.
   - NVIDIA officially specified the RTX 3060 at 13 shader-TFLOPS (FP32), 25 RT-TFLOPS (ray tracing), and 101 tensor-TFLOPS (general tensor performance for DLSS).

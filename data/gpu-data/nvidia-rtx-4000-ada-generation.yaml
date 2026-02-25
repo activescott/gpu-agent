@@ -6,7 +6,7 @@ msrpUSD: 1250
 tensorCoreCount: 192
 fp32TFLOPS: 26.7
 fp16TFLOPS: 213.8
-int8TOPS: 427.6
+int8TOPS: 213.8
 memoryCapacityGB: 20
 memoryBandwidthGBs: 360
 maxTDPWatts: 130
@@ -21,7 +21,7 @@ supportedHardwareOperations:
   - INT4
 supportedCUDAComputeCapability: 8.9
 releaseDate: "2023-08-09"
-lastModified: "2025-12-19T00:00:00Z"
+lastModified: "2026-02-24T00:00:00Z"
 
 manufacturerIdentifiers:
   - type: nvpn
@@ -76,7 +76,7 @@ summary: |
   built on the Ada Lovelace architecture using the AD104 chip with TSMC's 5nm process. It features 6,144 CUDA cores,
   192 fourth-generation Tensor Cores, and 48 third-generation RT Cores, paired with 20GB of GDDR6 ECC memory.
   The fourth-generation Tensor Cores introduce FP8 precision support and deliver up to 3X AI performance improvement
-  over the previous Ampere generation, with 427.6 TFLOPS of tensor performance using sparsity. The card's tensor
+  over the previous Ampere generation, with 213.8 TOPS of dense INT8 performance (427.6 TOPS with sparsity). The card's tensor
   cores support multiple precision formats including FP8 (in both E4M3 and E5M2 formats), TF32, BF16, FP16, INT8,
   and INT4, making it highly versatile for AI inference and machine learning workloads. With a TDP of only 130W
   in a single-slot form factor, the RTX 4000 Ada offers exceptional power efficiency for professional visualization,
@@ -110,7 +110,7 @@ notes:
   - FP32 TFLOPS of 26.7 calculated as 6,144 CUDA cores × 2.175 GHz boost clock × 2 ops/cycle ÷ 1000 = 26.73 TFLOPS (rounded to 26.7 as published by NVIDIA).
   - Tensor performance of 427.6 TFLOPS represents peak FP8 tensor performance with sparsity, as published by NVIDIA and confirmed across multiple official sources including Leadtek and NVIDIA product pages.
   - FP16 TFLOPS of 213.8 is calculated based on the Ada Lovelace tensor core architecture where FP16 with sparsity delivers approximately half the performance of FP8 with sparsity (427.6 TFLOPS ÷ 2 = 213.8 TFLOPS).
-  - INT8 TOPS of 427.6 is based on Ada Lovelace tensor core specifications where INT8 performance with sparsity equals FP8 performance with sparsity, following the pattern observed in other Ada generation GPUs.
+  - 'int8TOPS of 213.8 represents non-sparse (dense) INT8 performance, derived from sparse INT8 of 427.6 TOPS ÷ 2 per NVIDIA Ada Lovelace architecture. With 2:4 structured sparsity, INT8 performance is 427.6 TOPS. Dense value used for consistent cross-vendor comparison.'
   - Memory bandwidth calculated as 160-bit interface × 18 Gbps ÷ 8 bits/byte = 360 GB/s.
   - Fourth-generation Tensor Cores support FP8 in both E4M3 and E5M2 formats, along with TF32, BF16, FP16, INT8, and INT4 precision modes.
   - CUDA Compute Capability 8.9 confirmed from TechPowerUp specifications for Ada Lovelace AD104 chip.

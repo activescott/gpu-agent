@@ -6,7 +6,7 @@ msrpUSD: 1199
 tensorCoreCount: 304
 fp32TFLOPS: 97.4
 fp16TFLOPS: 398.8
-int8TOPS: 779.82
+int8TOPS: 389.91
 memoryCapacityGB: 16
 memoryBandwidthGBs: 716.8
 maxTDPWatts: 320
@@ -20,7 +20,7 @@ supportedHardwareOperations:
   - FP8
 supportedCUDAComputeCapability: 8.9
 releaseDate: "2022-11-16"
-lastModified: "2025-12-20T00:00:00Z"
+lastModified: "2026-02-24T00:00:00Z"
 
 summary: |
   The NVIDIA GeForce RTX 4080 is a graphics card released in 2022,
@@ -145,7 +145,7 @@ notes:
   - MSRP of $1199 USD sourced from NVIDIA's official announcement. A Founders Edition was available at this price. The RTX 4080 was later replaced by the RTX 4080 SUPER at $999, representing a significant price reduction.
   - fp32TFLOPS calculated as 9,728 CUDA cores × 2.505 GHz boost clock × 4 ops/cycle = 97.48 TFLOPS. The "4 ops/cycle" comes from Ada Lovelace's dual-issue FP32 capability where each SM can execute 2 FP32 operations on the dedicated FP32 pipeline plus 2 more FP32 operations on the INT32/FP32 shared pipeline, totaling 4 FP32 ops per cycle under optimal conditions.
   - fp16TFLOPS is "Peak FP16 Tensor TFLOPS with FP16 Accumulate" as that's what NVIDIA publishes. Using the "with sparsity" metric.
-  - int8TOPS of 779.82 is "peak INT8 TOPS" using "Effective TOPS using the new Sparsity Feature". This comes from the ada-gpu-architecture-whitepaper-v2.1.
+  - 'int8TOPS of 389.91 represents non-sparse (dense) INT8 performance, derived from sparse INT8 of 779.82 TOPS ÷ 2 per NVIDIA Ada architecture whitepaper. With 2:4 structured sparsity, INT8 performance is 779.82 TOPS. Dense value used for consistent cross-vendor comparison.'
   - Power based on what NVIDIA refers to as "TGP (Total Graphics Power)"
   - The RTX 4080 uses 76 of 80 streaming multiprocessors on the AD103 chip, whereas the RTX 4080 SUPER uses all 80 SMs
   - NVIDIA part number (NVPN) 900-1G136-2560-000 sourced from NVIDIA Founders Edition product listings on PCPartPicker, Newegg, and Best Buy

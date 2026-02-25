@@ -6,7 +6,7 @@ msrpUSD: 399
 tensorCoreCount: 152
 fp32TFLOPS: 16.2
 fp16TFLOPS: 129.6
-int8TOPS: 259.2
+int8TOPS: 129.6
 memoryCapacityGB: 8
 memoryBandwidthGBs: 448
 maxTDPWatts: 200
@@ -19,13 +19,13 @@ supportedHardwareOperations:
   - INT8
 supportedCUDAComputeCapability: 8.6
 releaseDate: "2020-12-02"
-lastModified: "2025-12-20T00:00:00Z"
+lastModified: "2026-02-24T00:00:00Z"
 
 summary: |
   The NVIDIA GeForce RTX 3060 Ti is a mainstream gaming graphics card launched on December 2, 2020,
   featuring NVIDIA's Ampere architecture based on the GA104-200 GPU. It offers 4,864 CUDA cores,
   152 3rd-generation tensor cores, and 38 2nd-generation RT cores with 8GB of GDDR6 memory running
-  at 14 Gbps. The card delivers 259.2 INT8 TOPS with sparsity acceleration for AI workloads,
+  at 14 Gbps. The card delivers 129.6 INT8 TOPS (dense) for AI workloads,
   making it suitable for INT8-quantized inference tasks. Designed to outperform the previous
   generation's RTX 2080 SUPER at a $399 launch price, the RTX 3060 Ti provides excellent
   price-to-performance for both gaming at 1440p and machine learning inference workloads.
@@ -179,7 +179,7 @@ references:
 
 notes:
   - FP16 TFLOPS of 129.6 represents peak FP16 Tensor TFLOPS using the sparsity feature. Dense FP16 performance is approximately 64.8 TFLOPS. Following Ampere architecture standards, NVIDIA publishes sparse tensor performance which achieves 2x throughput.
-  - INT8 TOPS of 259.2 represents peak INT8 TOPS with sparsity acceleration enabled on the 3rd-generation Tensor Cores. This makes the card suitable for INT8-quantized AI inference workloads.
+  - 'int8TOPS of 129.6 represents non-sparse (dense) INT8 performance, derived from sparse INT8 of 259.2 TOPS ÷ 2 per NVIDIA Ampere architecture whitepaper. With 2:4 structured sparsity, INT8 performance is 259.2 TOPS. Dense value used for consistent cross-vendor comparison.'
   - FP32 TFLOPS calculated as 4,864 CUDA cores × 1.665 GHz boost clock × 2 ops/cycle = 16.2 TFLOPS. Ampere architecture features dual FP32 datapaths enabling 2 FP32 operations per cycle per CUDA core.
   - Memory bandwidth calculated as 256-bit interface × 14 Gbps = 448 GB/s.
   - The RTX 3060 Ti uses the GA104-200-A1 variant of the GA104 chip with 38 of 48 streaming multiprocessors enabled.

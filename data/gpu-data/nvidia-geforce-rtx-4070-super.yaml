@@ -6,7 +6,7 @@ msrpUSD: 599
 tensorCoreCount: 224
 fp32TFLOPS: 35.48
 fp16TFLOPS: 141.93
-int8TOPS: 567.71
+int8TOPS: 283.86
 memoryCapacityGB: 12
 memoryBandwidthGBs: 504
 maxTDPWatts: 220
@@ -20,13 +20,13 @@ supportedHardwareOperations:
   - FP8
 supportedCUDAComputeCapability: 8.9
 releaseDate: "2024-01-17"
-lastModified: "2025-12-20T00:00:00Z"
+lastModified: "2026-02-24T00:00:00Z"
 
 summary: |
   The NVIDIA GeForce RTX 4070 SUPER is a high-performance graphics card released in January 2024,
   featuring the Ada Lovelace architecture based on the AD104 GPU. It offers 7,168 CUDA cores,
   224 4th-generation tensor cores, and 12GB of GDDR6X memory running at 21 Gbps, delivering
-  568 AI TOPS for INT8 workloads with sparsity. The card represents a mid-generation refresh
+  283.86 AI TOPS for INT8 workloads (dense). The card represents a mid-generation refresh
   of the RTX 4070, offering significantly improved performance with 21% more CUDA cores (7,168
   vs 5,888) while maintaining the same 220W TDP. The RTX 4070 SUPER provides excellent
   performance for both 1440p/4K gaming and machine learning workloads. It uses a PCI-Express
@@ -169,7 +169,7 @@ references:
 notes:
   - MSRP of $599 USD sourced from NVIDIA's official announcement. A Founders Edition was available at this price, matching the original RTX 4070's launch price while offering significantly better performance.
   - fp16TFLOPS of 141.93 represents "Peak FP16 Tensor TFLOPS with FP16 Accumulate" using the "with sparsity" metric. Dense performance is 70.96 TFLOPS, sparse is 141.93 TFLOPS. Following the same pattern as other Ada GPUs, NVIDIA publishes the sparse performance.
-  - int8TOPS of 567.71 is "peak INT8 TOPS" using "Effective TOPS using the new Sparsity Feature". Dense performance is 283.85 TOPS, sparse is 567.71 TOPS.
+  - 'int8TOPS of 283.86 represents non-sparse (dense) INT8 performance, derived from sparse INT8 of 567.71 TOPS ÷ 2 per NVIDIA Ada architecture whitepaper. With 2:4 structured sparsity, INT8 performance is 567.71 TOPS. Dense value used for consistent cross-vendor comparison.'
   - fp32TFLOPS calculated as 7,168 CUDA cores × 2.475 GHz boost clock × 4 ops/cycle = 70.96 TFLOPS standard or 35.48 TFLOPS for non-tensor operations. The "4 ops/cycle" comes from Ada Lovelace's dual-issue FP32 capability where each SM can execute 2 FP32 operations on the dedicated FP32 pipeline plus 2 more FP32 operations on the INT32/FP32 shared pipeline, totaling 4 FP32 ops per cycle under optimal conditions.
   - Power based on what NVIDIA refers to as "TGP (Total Graphics Power)".
   - The RTX 4070 SUPER uses the AD104-350 variant of the AD104 chip with 56 of 60 streaming multiprocessors enabled.

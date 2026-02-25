@@ -6,7 +6,7 @@ msrpUSD: 429
 tensorCoreCount: 144
 fp32TFLOPS: 23.70
 fp16TFLOPS: 94.81
-int8TOPS: 379.26
+int8TOPS: 189.63
 memoryCapacityGB: 16
 memoryBandwidthGBs: 448
 maxTDPWatts: 180
@@ -21,13 +21,13 @@ supportedHardwareOperations:
   - FP4
 supportedCUDAComputeCapability: 12.8
 releaseDate: "2025-04-16"
-lastModified: "2025-12-18T00:00:00Z"
+lastModified: "2026-02-24T00:00:00Z"
 
 summary: |
   The NVIDIA GeForce RTX 5060 Ti is a mid-range graphics card released in 2025,
   featuring the Blackwell architecture based on the GB206 GPU. It offers 4,608 CUDA cores,
   144 5th-generation tensor cores, and 16GB of GDDR7 memory running at 28 Gbps, delivering
-  379 AI TOPS for INT8 workloads. The card provides excellent performance for both gaming
+  189.63 AI TOPS for INT8 workloads (dense). The card provides excellent performance for both gaming
   and AI/ML applications at 1440p and 4K resolutions. With a TDP of 180W, it's significantly
   more power-efficient than previous generations while offering enhanced AI capabilities
   through Blackwell's 5th Gen Tensor Cores. The RTX 5060 Ti supports DLSS 4, RTX Neural
@@ -89,7 +89,7 @@ references:
 
 notes:
   - fp16TFLOPS of 94.81 represents "Peak FP16 Tensor TFLOPS with FP16 Accumulate" using the "with sparsity" metric. Dense performance is 47.41 TFLOPS, sparse is 94.81 TFLOPS. Following the same pattern as other Blackwell GPUs, NVIDIA publishes the sparse performance.
-  - int8TOPS of 379.26 is "peak INT8 TOPS" using "Effective TOPS using the new Sparsity Feature". Dense performance is 189.63 TOPS, sparse is 379.26 TOPS.
+  - 'int8TOPS of 189.63 represents non-sparse (dense) INT8 performance, derived from sparse INT8 of 379.26 TOPS ÷ 2 per NVIDIA Blackwell architecture whitepaper. With 2:4 structured sparsity, INT8 performance is 379.26 TOPS. Dense value used for consistent cross-vendor comparison.'
   - fp32TFLOPS of 23.70 represents the peak TF32 tensor TFLOPS performance as published for Blackwell architecture GPUs.
   - Power based on what NVIDIA refers to as "TGP (Total Graphics Power)".
   - The RTX 5060 Ti uses the GB206 chip with 4,608 CUDA cores across 36 streaming multiprocessors.

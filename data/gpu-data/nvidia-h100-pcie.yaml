@@ -6,7 +6,7 @@ msrpUSD: 98000
 tensorCoreCount: 456
 fp32TFLOPS: 756
 fp16TFLOPS: 1513
-int8TOPS: 3026
+int8TOPS: 1513
 memoryCapacityGB: 80
 memoryBandwidthGBs: 2039
 maxTDPWatts: 350
@@ -20,7 +20,7 @@ supportedHardwareOperations:
   - FP8
 supportedCUDAComputeCapability: 9
 releaseDate: "2023-03-21"
-lastModified: "2025-12-19T00:00:00Z"
+lastModified: "2026-02-24T00:00:00Z"
 
 summary: The NVIDIA H100 PCIe 80GB is a professional graphics card designed
   primarily for machine learning and high-performance computing applications.
@@ -140,7 +140,7 @@ references:
 notes:
   - "fp32TFLOPS: NOTE: FP32 Tensor Core"
   - "fp16TFLOPS: NOTE: FP16 Tensor Core"
-  - "int8TOPS: NOTE: INT8 Tensor Core"
+  - 'int8TOPS of 1513 represents non-sparse (dense) INT8 Tensor Core performance, derived from sparse INT8 of 3026 TOPS ÷ 2 per NVIDIA Hopper architecture datasheet. With 2:4 structured sparsity, INT8 performance is 3026 TOPS. Dense value used for consistent cross-vendor comparison.'
   - "Estimated MSRP of $98,000 USD for H100 80GB PCIe based on OEM list prices. NVIDIA does not publish official MSRP for data center GPUs. OEM list prices corroborated by 3 independent sources: CDW lists Cisco UCSC-GPU-H100-80= at $103,085.66, Tech-America lists Cisco UCSC-GPU-H100-80 MSRP at $99,696, and ShopBLT lists Lenovo 4X67A82257 at $90,935. The $98,000 estimate represents the average of these OEM list prices. H100 pricing varies by form factor (PCIe vs SXM) and memory size (80GB vs 96GB)."
   - "Manufacturer identifiers sourced from NVIDIA official documentation and OEM product listings. Primary NVPN 900-21010-0000-000 confirmed across multiple resellers. Product SKU P1010 SKU 200 and alternate NVPN 699-21010-0200-xxx found in NVIDIA product briefs and OEM documentation."
   - "Third-party product identifiers sourced from official OEM websites and authorized reseller listings. Dell part numbers (DGP4C, DP44G, 900-21010-0100-030-DELL) from ITCreations and Express Computer Systems. HPE part number (R9S41C) from HPE official product catalog. HP part number (P54751-001) from ITCreations. PNY SKUs (NVH100TCGPU-KIT, XNVH100TCGPU-KIT-RETAIL) from Central Computer and ITCreations. Supermicro OEM part numbers (GPU-NVH100-80, GPU-NVH800-80, 699-21010-0200-600) from Ahead-IT and Renewtech. Lenovo part number (4X67A82257) from Lenovo Press and ServerProven. Cisco part numbers (UCSC-GPU-H100, UCSC-GPU-H100-80, UCSC-GPU-H100-80=, UCSX-GPU-H100-80) from Provantage, Connection, and Express Computer Systems."

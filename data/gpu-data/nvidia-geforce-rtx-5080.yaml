@@ -5,7 +5,7 @@ category: gaming
 msrpUSD: 999
 
 memoryCapacityGB: 16
-int8TOPS: 900.4
+int8TOPS: 450.2
 maxTDPWatts: 360
 memoryBandwidthGBs: 960
 tensorCoreCount: 336
@@ -23,7 +23,7 @@ supportedHardwareOperations:
   - FP4
 supportedCUDAComputeCapability: 12.8
 releaseDate: "2025-01-30"
-lastModified: "2025-12-19T00:00:00Z"
+lastModified: "2026-02-24T00:00:00Z"
 
 manufacturerIdentifiers:
   - type: product_sku
@@ -144,7 +144,7 @@ notes:
   - We use the peak TOPS/FLOPS specs using the sparsity feature.
   - Blackwell GB203 is the chip
   - fp16TFLOPS is "Peak FP16 Tensor TFLOPS with FP16 Accumulate" as that's what NVIDIA publishes.
-  - int8TOPS is "peak INT 8 TOPS" using "Effective TOPS / TFLOPS using the new Sparsity Feature". They also reveal it as 660.6 "based on GPU Boost Clock". This comes from the blackwell gpu architecture pdf.
+  - 'int8TOPS of 450.2 represents non-sparse (dense) INT8 performance, derived from sparse INT8 of 900.4 TOPS ÷ 2 per NVIDIA Blackwell architecture whitepaper. With 2:4 structured sparsity, INT8 performance is 900.4 TOPS. Dense value used for consistent cross-vendor comparison.'
   - fp32TFLOPS is "Peak TF32 Tensor TFLOPS1" as published in the blackwell gpu architecture pdf.
   - MSRP of $999 USD for the Founders Edition sourced from nvidia.com official press release (https://nvidianews.nvidia.com/news/nvidia-blackwell-geforce-rtx-50-series-opens-new-world-of-ai-computer-graphics).
   - Manufacturer identifiers sourced from VideoCardz.com and TechPowerUp GPU Database, which report the RTX 5080 uses PG144/147 SKU 45 board and GB203-400-A1 GPU die. Founders Edition NVPN (900-1G144-2545-000) sourced from PCPartPicker and Best Buy retail listings.

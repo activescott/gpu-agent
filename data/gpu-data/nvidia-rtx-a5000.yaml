@@ -6,7 +6,7 @@ msrpUSD: 2250
 tensorCoreCount: 256
 fp32TFLOPS: 27.77
 fp16TFLOPS: 222.2
-int8TOPS: 444.4
+int8TOPS: 222.2
 memoryCapacityGB: 24
 memoryBandwidthGBs: 768
 maxTDPWatts: 230
@@ -20,7 +20,7 @@ supportedHardwareOperations:
   - BF16
 supportedCUDAComputeCapability: 8.6
 releaseDate: "2021-04-12"
-lastModified: "2025-12-19T12:00:00Z"
+lastModified: "2026-02-24T00:00:00Z"
 
 summary: The NVIDIA RTX A5000 GPU is a high-end graphics card designed for
   demanding applications, including machine learning and advanced rendering. It
@@ -92,13 +92,7 @@ references:
   - https://smicro.eu/asus-nvidia-rtx-a5000-with-24gb-230w-90skc000-m5lan0-1
 
 notes:
-  - "int8TOPS: INT8 TOPS is hard to find for this card. See the
-    forums.developer.nvidia.com reference below: The INT8 TOPS performance of
-    the RTX A5000 can be inferred from its Tensor performance specification. The
-    card's Tensor performance is listed as 222.2 TFLOPS (Tera Floating-Point
-    Operations Per Second). It's suggested that for INT8 calculations with
-    sparsity, the performance should be double this number, meaning the INT8
-    TOPS would be approximately 444.4."
+  - 'int8TOPS of 222.2 represents non-sparse (dense) INT8 performance, derived from sparse INT8 of 444.4 TOPS ÷ 2. For Ampere architecture, INT8 sparse = 2× FP16 sparse tensor performance (222.2 TFLOPS). Dense value used for consistent cross-vendor comparison. Source: NVIDIA Ampere professional graphics line card and forums.developer.nvidia.com.'
   - "FP16 TFLOPS of 222.2 represents Peak Sparse Tensor Core performance (sourced from NVIDIA datasheet Tensor Performance)."
   - "Note: Previous versions incorrectly listed dense performance (111.1 TFLOPS) as sparse. Updated to match Workstation and Ada generation metrics (222.2 TFLOPS)."
   - MSRP of $2,250 USD verified from 3 sources - DEVELOP3D notes expected street price of $2,250, CG Channel confirms pricing of $1,000 for RTX A4000 and $2,250 for RTX A5000, and TechPowerUp GPU Database lists launch price.

@@ -5,7 +5,7 @@ category: gaming
 msrpUSD: 1999
 
 memoryCapacityGB: 32
-int8TOPS: 1676
+int8TOPS: 838
 maxTDPWatts: 575
 memoryBandwidthGBs: 1792
 tensorCoreCount: 680
@@ -23,7 +23,7 @@ supportedHardwareOperations:
   - FP4
 supportedCUDAComputeCapability: 12.8
 releaseDate: "2025-01-30"
-lastModified: "2025-12-19T22:00:00Z"
+lastModified: "2026-02-24T00:00:00Z"
 
 summary: |
   The NVIDIA GeForce RTX 5090 was the first GeForce RTX 50 series product that was launched using the GB202 GPU.
@@ -144,7 +144,7 @@ notes:
   - We use the peak TOPS/FLOPS specs using the sparsity feature.
   - Blackwell GB203 is the chip
   - fp16TFLOPS is "Peak FP16 Tensor TFLOPS with FP16 Accumulate" as that's what NVIDIA publishes.
-  - int8TOPS is "peak INT 8 TOPS" using "Effective TOPS / TFLOPS using the new Sparsity Feature". They also reveal it as 660.6 "based on GPU Boost Clock". This comes from the blackwell gpu architecture pdf.
+  - 'int8TOPS of 838 represents non-sparse (dense) INT8 performance, derived from sparse INT8 of 1676 TOPS ÷ 2 per NVIDIA Blackwell architecture whitepaper. With 2:4 structured sparsity, INT8 performance is 1676 TOPS. Dense value used for consistent cross-vendor comparison.'
   - fp32TFLOPS is "Peak TF32 Tensor TFLOPS1" as published in the blackwell gpu architecture pdf.
   - MSRP of $1,999 USD for the Founders Edition sourced from nvidia.com official press release (https://nvidianews.nvidia.com/news/nvidia-blackwell-geforce-rtx-50-series-opens-new-world-of-ai-computer-graphics).
   - "Manufacturer identifiers: Board ID PG145 with SKU 30 confirmed from TechPowerUp and VideoCardz. NVPN (NVIDIA Part Number) 900-1G144-2530-000 for Founders Edition confirmed from Best Buy and Newegg. GPU variant is GB202-300-A1, the cut-down version of the full GB202 die featuring 170 out of 192 SMs enabled (21,760 CUDA cores)."

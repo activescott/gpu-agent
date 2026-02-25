@@ -5,7 +5,7 @@ category: gaming
 msrpUSD: 549
 
 memoryCapacityGB: 12
-int8TOPS: 493.9
+int8TOPS: 246.95
 maxTDPWatts: 250
 memoryBandwidthGBs: 672
 tensorCoreCount: 192
@@ -23,7 +23,7 @@ supportedHardwareOperations:
   - FP4
 supportedCUDAComputeCapability: 12.8
 releaseDate: "2025-03-05"
-lastModified: "2025-12-26T12:00:00Z"
+lastModified: "2026-02-24T00:00:00Z"
 
 manufacturerIdentifiers:
   - type: nvpn
@@ -144,7 +144,7 @@ notes:
   - We use the peak TOPS/FLOPS specs using the sparsity feature.
   - Blackwell GB205 is the chip (GB205-300-A1 GPU die variant).
   - fp16TFLOPS is "Peak FP16 Tensor TFLOPS with FP16 Accumulate" (246.9 with sparsity) as published in the Blackwell GPU architecture whitepaper Table 6.
-  - int8TOPS is "peak INT8 TOPS" (493.9 with sparsity) using "Effective TOPS using the new Sparsity Feature". This comes from the Blackwell GPU architecture pdf Table 6.
+  - 'int8TOPS of 246.95 represents non-sparse (dense) INT8 performance, derived from sparse INT8 of 493.9 TOPS ÷ 2 per NVIDIA Blackwell architecture whitepaper Table 6. With 2:4 structured sparsity, INT8 performance is 493.9 TOPS. Dense value used for consistent cross-vendor comparison.'
   - fp32TFLOPS is "Peak TF32 Tensor TFLOPS" (61.7 with sparsity, rounded to 61.8) as published in the Blackwell GPU architecture pdf Table 6.
   - MSRP of $549 USD sourced from nvidia.com official product page (https://www.nvidia.com/en-us/geforce/graphics-cards/50-series/rtx-5070-family/).
   - NVIDIA Founders Edition is available for this model with NVPN 900-1G146-2570-000.

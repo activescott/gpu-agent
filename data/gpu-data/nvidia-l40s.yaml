@@ -6,7 +6,7 @@ msrpUSD: 45000
 tensorCoreCount: 568
 fp32TFLOPS: 183
 fp16TFLOPS: 362
-int8TOPS: 1466
+int8TOPS: 733
 memoryCapacityGB: 48
 memoryBandwidthGBs: 864
 maxTDPWatts: 350
@@ -20,7 +20,7 @@ supportedHardwareOperations:
   - FP8
 supportedCUDAComputeCapability: 8.9
 releaseDate: "2023-08-08"
-lastModified: "2025-12-18T21:30:00Z"
+lastModified: "2026-02-24T00:00:00Z"
 
 summary: The NVIDIA L40S GPU was introduced in August 2023 (part number
   900-2g133-0080-000). It is the successor to the NVIDIA L40 (part number
@@ -106,11 +106,7 @@ notes:
     https://images.nvidia.com/content/Solutions/data-center/vgpu-L40-datasheet.\
     pdf"
   - "fp16TFLOPS: L40 is 181.05"
-  - "int8TOPS: From
-    https://www.exxactcorp.com/blog/components/NVIDIA-L40S-GPU-Compared-to-A100\
-    -and-H100-Tensor-Core-GPU. L40 was 362 according to
-    https://images.nvidia.com/aem-dam/Solutions/Data-Center/l4/nvidia-ada-gpu-a\
-    rchitecture-whitepaper-v2.1.pdf"
+  - 'int8TOPS of 733 represents non-sparse (dense) INT8 performance, derived from sparse INT8 of 1466 TOPS ÷ 2 per NVIDIA Ada architecture whitepaper. With 2:4 structured sparsity, INT8 performance is 1466 TOPS. Dense value used for consistent cross-vendor comparison. Source: Lenovo Press (lenovopress.lenovo.com/lp1812) and Exxact Corp comparison.'
   - "Estimated MSRP of $45,000 USD for the NVIDIA L40S based on OEM list prices. NVIDIA does not publish official MSRP for data center GPUs. OEM list prices corroborated by 2 independent sources: Lenovo ThinkSystem NVIDIA L40S (4X67A90669) has MSRP of $51,579 per multioculus.com, and Cisco UCSX-GPU-L40S has MSRP of $39,094.50 per Bluum. The $45,000 estimate represents the midpoint of these OEM list prices. Note: Current market/resale prices (~$7,500) are significantly lower due to depreciation but do not reflect original launch list pricing."
   - "NVIDIA part number 900-2G133-0080-000 sourced from multiple vendor listings and official NVIDIA product documentation"
   - "NVIDIA part number 900-2G133-0180-030 found at serverorbit.com and serversupply.com for L40S variant"

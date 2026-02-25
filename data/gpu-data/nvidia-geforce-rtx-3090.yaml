@@ -6,7 +6,7 @@ msrpUSD: 1499
 tensorCoreCount: 328
 fp32TFLOPS: 35.58
 fp16TFLOPS: 285.5
-int8TOPS: 570.0
+int8TOPS: 285.0
 memoryCapacityGB: 24
 memoryBandwidthGBs: 936.2
 maxTDPWatts: 350
@@ -21,7 +21,7 @@ supportedHardwareOperations:
   - BF16
 supportedCUDAComputeCapability: 8.6
 releaseDate: "2020-09-24"
-lastModified: "2025-12-20T00:00:00Z"
+lastModified: "2026-02-24T00:00:00Z"
 
 summary: |
   The NVIDIA GeForce RTX 3090 is NVIDIA's flagship consumer graphics card launched in September 2020,
@@ -31,7 +31,7 @@ summary: |
   The card features an unprecedented 24GB of GDDR6X memory running at 19.5 Gbps on a 384-bit bus,
   delivering 936.2 GB/s of memory bandwidth. With a TDP of 350W, the RTX 3090 was designed for 8K HDR
   gaming and professional creative workflows. The 3rd-generation Tensor Cores support fine-grained
-  structured sparsity (2:4 pattern), enabling up to 571 INT8 TOPS with sparsity and 143 FP16 TFLOPS
+  structured sparsity (2:4 pattern), enabling up to 285.0 INT8 TOPS (dense) and 143 FP16 TFLOPS
   for dense tensor operations. The RTX 3090 uses a PCI-Express 4.0 x16 interface and is one of the
   few consumer GPUs to support 2-way NVLink. At launch, it was positioned as the spiritual successor
   to NVIDIA's Titan series, offering professional-grade memory capacity in a GeForce product.
@@ -167,7 +167,7 @@ references:
 notes:
   - fp32TFLOPS of 35.58 calculated as 10,496 CUDA cores × 1.695 GHz boost clock × 2 ops/cycle = 35.58 TFLOPS, per TechPowerUp GPU Database. Ampere architecture features 2 FP32 ops per cycle through dedicated FP32 datapath and shared INT32/FP32 datapath.
   - "FP16 TFLOPS of 285.5 represents Peak Sparse Tensor Core performance (approx 8x FP32)."
-  - "INT8 TOPS of 570.0 represents Peak Sparse INT8 Tensor performance."
+  - 'int8TOPS of 285.0 represents non-sparse (dense) INT8 performance, derived from sparse INT8 of 570.0 TOPS ÷ 2 per NVIDIA Ampere architecture whitepaper. With 2:4 structured sparsity, INT8 performance is 570.0 TOPS. Dense value used for consistent cross-vendor comparison.'
   - "Note: Previous versions incorrectly listed dense performance (142.75 TFLOPS) as sparse. Updated to match Workstation and Ada generation metrics (285.5 TFLOPS)."
   - Power figure of 350W is based on NVIDIA's TGP (Total Graphics Power) specification.
   - The RTX 3090 uses 82 of the 84 possible streaming multiprocessors on the GA102 die, with each SM containing 128 CUDA cores, 4 tensor cores, and 1 RT core.

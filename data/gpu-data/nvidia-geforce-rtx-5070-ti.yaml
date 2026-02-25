@@ -5,12 +5,12 @@ category: gaming
 msrpUSD: 749
 
 memoryCapacityGB: 16
-int8TOPS: 900.4
-maxTDPWatts: 360
-memoryBandwidthGBs: 960
-tensorCoreCount: 336
-fp32TFLOPS: 112.6
-fp16TFLOPS: 450.2
+int8TOPS: 351.5
+maxTDPWatts: 300
+memoryBandwidthGBs: 896
+tensorCoreCount: 280
+fp32TFLOPS: 87.9
+fp16TFLOPS: 351.5
 
 gpuArchitecture: blackwell
 supportedHardwareOperations:
@@ -23,7 +23,7 @@ supportedHardwareOperations:
   - FP4
 supportedCUDAComputeCapability: 12.8
 releaseDate: "2025-02-20"
-lastModified: "2025-12-20T22:00:00Z"
+lastModified: "2026-02-25T00:00:00Z"
 
 manufacturerIdentifiers: []
 
@@ -181,6 +181,8 @@ summary: |
 
   The RTX 5070 Ti does not have a Founders Edition. NVIDIA only released Founders Editions for the RTX 5090, RTX 5080, and RTX 5070. All RTX 5070 Ti cards are manufactured by AIB partners such as ASUS, MSI, Gigabyte, PNY, Zotac, and Palit.
 
+  The RTX 5070 Ti uses the GB203-300 variant with 8,960 CUDA cores (70 SMs), 280 5th-generation Tensor Cores, and 70 RT cores. It features 16GB GDDR7 memory on a 256-bit interface with 896 GB/s bandwidth.
+
   Related options in the RTX 50 series, including the RTX 5090 and RTX 5080.
 
 references:
@@ -190,8 +192,9 @@ references:
   - https://nvidianews.nvidia.com/news/nvidia-blackwell-geforce-rtx-50-series-opens-new-world-of-ai-computer-graphics
   - https://arxiv.org/abs/2310.16836
   - https://www.tomshardware.com/pc-components/gpus/nvidia-blackwell-architecture-deep-dive-a-closer-look-at-the-upgrades-coming-with-rtx-50-series-gpus
-  - https://www.techpowerup.com/gpu-specs/geforce-rtx-5080.c4217
   - https://www.nvidia.com/en-us/geforce/graphics-cards/50-series/rtx-5070-family/
+  - https://www.ign.com/articles/nvidia-geforce-rtx-5070-ti-review
+  - https://www.tomshardware.com/pc-components/gpus/nvidia-geforce-rtx-5070-ti-review-asus
   - https://rog.asus.com/graphics-cards/graphics-cards/rog-strix/rog-strix-rtx5070ti-o16g-gaming/
   - https://www.asus.com/us/motherboards-components/graphics-cards/prime/prime-rtx5070ti-o16g/techspec/
   - https://www.msi.com/Graphics-Card/GeForce-RTX-5070-Ti-16G-GAMING-TRIO-OC/Specification
@@ -201,13 +204,14 @@ references:
   - https://www.palit.com/palit/vgapro.php?id=5605&lang=en
 
 notes:
-  - We use the peak TOPS/FLOPS specs using the sparsity feature.
-  - Blackwell GB203 is the chip
-  - fp16TFLOPS is "Peak FP16 Tensor TFLOPS with FP16 Accumulate" as that's what NVIDIA publishes.
-  - int8TOPS is "peak INT 8 TOPS" using "Effective TOPS / TFLOPS using the new Sparsity Feature". They also reveal it as 660.6 "based on GPU Boost Clock". This comes from the blackwell gpu architecture pdf.
-  - fp32TFLOPS is "Peak TF32 Tensor TFLOPS1" as published in the blackwell gpu architecture pdf.
+  - Blackwell GB203-300 is the GPU variant with 70 SMs enabled (vs 84 SMs in GB203-400 for RTX 5080)
+  - 'fp16TFLOPS of 351.5 represents Peak FP16 Tensor TFLOPS with FP16 Accumulate using 2:4 structured sparsity, per NVIDIA Blackwell architecture whitepaper. Without sparsity the value is 175.8 TFLOPS. Sparse value is used to match NVIDIA''s published specifications.'
+  - 'int8TOPS of 351.5 represents non-sparse (dense) INT8 performance per NVIDIA Blackwell architecture whitepaper. With 2:4 structured sparsity, INT8 performance is 703 TOPS. Dense value used for consistent cross-vendor comparison.'
+  - 'fp32TFLOPS of 87.9 is "Peak TF32 Tensor TFLOPS" with sparsity per NVIDIA Blackwell architecture whitepaper. Without sparsity the value is 43.9 TFLOPS. Non-tensor FP32 CUDA core performance is also 43.9 TFLOPS.'
+  - 'tensorCoreCount of 280 (5th-generation Tensor Cores) confirmed from NVIDIA Blackwell whitepaper and IGN review. RTX 5070 Ti has 70 SMs × 4 Tensor Cores per SM = 280 Tensor Cores.'
+  - 'maxTDPWatts changed from 360W to 300W based on NVIDIA Blackwell whitepaper (TGP = 300W). The 360W figure in earlier sources may have been an error or confusion with RTX 5080''s 360W TDP.'
+  - 'memoryBandwidthGBs of 896 per NVIDIA Blackwell whitepaper (16 GB GDDR7, 256-bit interface, 28 Gbps effective).'
   - MSRP of $749 USD sourced from nvidia.com official product page (https://www.nvidia.com/en-us/geforce/graphics-cards/50-series/rtx-5070-family/). A Founders Edition is NOT available for this model - only the RTX 5090, 5080, and 5070 have Founders Editions.
   - No NVIDIA manufacturer identifiers (NVPN, Product SKU) were found in available documentation. The RTX 5070 Ti is only available through AIB partners.
   - Third-party product identifiers sourced from manufacturer websites including ASUS, MSI, Gigabyte, PNY, Zotac, and Palit official product pages.
   - EVGA does not manufacture RTX 5070 Ti cards as they exited the GPU market.
-  - maxTDPWatts is 360W based on the official product family page, though some sources reference 300W as the Total Board Power (TBP). The 360W figure represents the maximum power draw.

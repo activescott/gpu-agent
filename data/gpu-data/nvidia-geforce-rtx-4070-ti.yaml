@@ -6,7 +6,7 @@ msrpUSD: 799
 tensorCoreCount: 240
 fp32TFLOPS: 80.2
 fp16TFLOPS: 320.8
-int8TOPS: 641.4
+int8TOPS: 320.7
 memoryCapacityGB: 12
 memoryBandwidthGBs: 504
 maxTDPWatts: 285
@@ -20,7 +20,7 @@ supportedHardwareOperations:
   - FP8
 supportedCUDAComputeCapability: 8.9
 releaseDate: "2023-01-05"
-lastModified: "2025-12-20T00:00:00Z"
+lastModified: "2026-02-24T00:00:00Z"
 
 summary: |
   The NVIDIA GeForce RTX 4070 Ti is a graphics card released in 2022,
@@ -104,7 +104,7 @@ references:
 notes:
   - MSRP of $799 USD verified from multiple credible sources. Note that no Founders Edition was released for the RTX 4070 Ti (partner cards only). This GPU was originally planned as the RTX 4080 12GB at $899 but was "unlaunched" after controversy and re-released as the RTX 4070 Ti at $799.
   - fp16TFLOPS is "Peak FP16 Tensor TFLOPS with FP16 Accumulate" as that's what NVIDIA publishes. Using the "with sparsity" metric.
-  - int8TOPS is "peak INT 8 TOPS" using "Effective TOPS / TFLOPS using the new Sparsity Feature". They also reveal it as 660.6 "based on GPU Boost Clock". This comes from the ada-gpu-architecture-whitepaper-v2.1.
+  - 'int8TOPS of 320.7 represents non-sparse (dense) INT8 performance, derived from sparse INT8 of 641.4 TOPS ÷ 2 per NVIDIA Ada architecture whitepaper. With 2:4 structured sparsity, INT8 performance is 641.4 TOPS. Dense value used for consistent cross-vendor comparison.'
   - Power based on what NVIDIA refers to as "TGP (Total Graphics Power)"
   - "Manufacturer identifiers: Board ID PG141 with SKU 331 confirmed from TechPowerUp GPU Database and GCC Gamers. GPU variant is AD104-400-A1 based on Ada Lovelace architecture. Note: NVIDIA did not release a Founders Edition for RTX 4070 Ti, so no official NVPN exists for a reference design - all cards are AIB partner models."
   - "Third-party products: ASUS offers four models - two ROG STRIX variants (standard ROG-STRIX-RTX4070TI-12G-GAMING and OC Edition ROG-STRIX-RTX4070TI-O12G-GAMING) and two TUF Gaming variants (standard TUF-RTX4070TI-12G-GAMING and OC Edition TUF-RTX4070TI-O12G-GAMING). Model numbers sourced from official ASUS product pages."

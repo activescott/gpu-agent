@@ -6,7 +6,7 @@ msrpUSD: 7000
 tensorCoreCount: 240
 fp32TFLOPS: 120
 fp16TFLOPS: 242
-int8TOPS: 485
+int8TOPS: 242.5
 memoryCapacityGB: 24
 memoryBandwidthGBs: 300
 gpuArchitecture: ada
@@ -19,7 +19,7 @@ supportedHardwareOperations:
   - FP8
 supportedCUDAComputeCapability: 8.9
 releaseDate: "2023-03-21"
-lastModified: "2025-12-18T22:00:00Z"
+lastModified: "2026-02-24T00:00:00Z"
 
 summary: The NVIDIA L4 GPU was introduced in March 2023 with part number
   900-2G193-0000-000. It, along with the L40 are the NVIDIA Ada Lovelace
@@ -118,6 +118,7 @@ references:
   - https://store.supermicro.com/supermicro-nvidia-ada-l4-24gb-gddr6-pcie-4-0-graphics-card.html
 
 notes:
+  - 'int8TOPS of 242.5 represents non-sparse (dense) INT8 performance, derived from sparse INT8 of 485 TOPS ÷ 2 per NVIDIA Ada architecture whitepaper. With 2:4 structured sparsity, INT8 performance is 485 TOPS. Dense value used for consistent cross-vendor comparison.'
   - "Estimated MSRP of $7,000 USD for the NVIDIA L4 based on OEM list prices. NVIDIA does not publish official MSRP for data center GPUs. OEM list prices corroborated by 2 independent sources: Lenovo ThinkSystem NVIDIA L4 (4X67A84824) has MSRP of $7,049 per Bluum, and Cisco UCSC-GPU-L4 is listed at $6,788 per CompSource. Note: Current market/resale prices (~$2,500-$3,000) are significantly lower due to depreciation but do not reflect original launch list pricing."
   - "Manufacturer identifier 'PG193 SKU 200' sourced from NVIDIA official product brief PB-11316-001_v01 at https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/l4/PB-11316-001_v01.pdf"
   - "NVPN 699-2G193-0200-xxx is the official NVIDIA part number designation per NVIDIA product brief PB-11316-001_v01. Multiple variants exist with different suffix codes (900-2G193-0000-000, 900-2G193-0000-001, 900-2G193-0100-001, 900-2G193-0200-000) representing different form factors and OEM configurations."

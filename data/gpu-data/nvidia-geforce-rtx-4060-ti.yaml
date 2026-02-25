@@ -6,7 +6,7 @@ msrpUSD: 399
 tensorCoreCount: 136
 fp32TFLOPS: 22.06
 fp16TFLOPS: 176.5
-int8TOPS: 353
+int8TOPS: 176.5
 memoryCapacityGB: 8
 memoryBandwidthGBs: 288
 maxTDPWatts: 160
@@ -21,7 +21,7 @@ supportedHardwareOperations:
   - FP8
 supportedCUDAComputeCapability: 8.9
 releaseDate: "2023-05-24"
-lastModified: "2026-01-06T00:00:00Z"
+lastModified: "2026-02-24T00:00:00Z"
 
 summary: |
   The NVIDIA GeForce RTX 4060 Ti is a mid-range gaming graphics card released in May 2023,
@@ -30,7 +30,7 @@ summary: |
   8GB and 16GB GDDR6 variants, with the 8GB model launching at $399 USD and the 16GB model at $499 USD
   in July 2023. With a 128-bit memory interface running at 18 Gbps, it delivers 288 GB/s bandwidth
   complemented by an expanded 32MB L2 cache (8x larger than RTX 3060 Ti). The RTX 4060 Ti provides
-  22.06 TFLOPS of FP32 performance and 353 AI TOPS for INT8 workloads with sparsity, making it
+  22.06 TFLOPS of FP32 performance and 176.5 AI TOPS for INT8 workloads (dense), making it
   suitable for 1080p gaming and AI inference tasks. Notably, it uses a PCIe 4.0 x8 interface rather
   than x16, and supports DLSS 3 with frame generation, AV1 encoding via 8th-gen NVENC, and has a
   TDP of 160W for the 8GB model. The card uses the same PG190 board design as the RTX 3060 Ti,
@@ -150,7 +150,7 @@ notes:
   - MSRP of $399 USD for the 8GB variant sourced from NVIDIA's official announcement on May 18, 2023. A 16GB variant was released on July 18, 2023, at $499 USD. Both variants share identical specifications except for memory capacity and TDP (160W for 8GB, 165W for 16GB).
   - FP32 TFLOPS of 22.06 sourced from NVIDIA official specifications. Calculated as 4,352 CUDA cores x 2.535 GHz boost clock x 2 ops/cycle = 22.06 TFLOPS. Ada Lovelace architecture maintains the dual FP32 datapath introduced in Ampere.
   - FP16 TFLOPS of 176.5 represents Peak FP16 Tensor TFLOPS with sparsity enabled on 4th-generation tensor cores. Dense FP16 performance is approximately 88.25 TFLOPS. NVIDIA publishes sparse tensor performance as the headline metric.
-  - INT8 TOPS of 353 is peak INT8 TOPS using the sparsity feature on 4th-generation tensor cores. Dense INT8 performance is approximately 176.5 TOPS.
+  - 'int8TOPS of 176.5 represents non-sparse (dense) INT8 performance, derived from sparse INT8 of 353 TOPS ÷ 2 per NVIDIA Ada architecture whitepaper. With 2:4 structured sparsity, INT8 performance is 353 TOPS. Dense value used for consistent cross-vendor comparison.'
   - Memory bandwidth calculated as 128-bit interface x 18 Gbps = 288 GB/s. The card features an expanded 32MB L2 cache, 8x larger than RTX 3060 Ti, to compensate for the narrower memory bus.
   - The RTX 4060 Ti uses a PCIe 4.0 x8 interface rather than the full x16 used by other RTX 40 series cards. This is the first consumer RTX card to use x8 lanes.
   - Supported hardware operations include FP32, FP16, FP8 (E4M3/E5M2), INT8, INT4, TF32, and BF16. Ada Lovelace's 4th-generation tensor cores add FP8 support compared to Ampere's 3rd-generation cores. Note that while the tensor cores support FP8 data types, the Transformer Engine feature (automatic FP8/FP16 dynamic precision switching) is only available on datacenter GPUs like H100 and requires specific software support.

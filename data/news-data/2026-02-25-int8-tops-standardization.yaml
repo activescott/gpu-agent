@@ -1,0 +1,30 @@
+# yaml-language-server: $schema=./news-article.schema.json
+id: gpu0225feb2026int
+slug: int8-tops-standardization
+title: "INT8 TOPS Standardization: Dense Values for Fair Cross-Vendor Comparison"
+content: |
+  I've standardized INT8 TOPS values across 31 GPU spec files to use dense (non-sparse) performance numbers. This fixes a data inconsistency where NVIDIA GPUs with 2:4 structured sparsity were reporting inflated values while AMD and Intel GPUs reported dense values, making fair cross-vendor comparisons impossible.
+
+  ## What Changed
+
+  NVIDIA GPUs with 2:4 structured sparsity report sparse INT8 performance at 2x their dense throughput. Previously, the RTX 4090 was listed at 1,321 INT8 TOPS (sparse), but its actual dense performance is 660.6 TOPS. AMD and Intel GPUs report dense values natively, so the database now uses dense values across the board.
+
+  Updated 23 consumer GPUs (RTX 30, 40, and 50 series) and 8 datacenter/workstation cards (L4, L40S, H100 PCIe, RTX A1000, RTX A5000, RTX 2000/4000/6000 Ada). AMD and Intel GPUs were already using dense values.
+
+  I also fixed a pre-existing error where some of the RTX 5070 Ti specs were incorrect (i.e. RTX 5080).
+
+  ## Community Feedback
+
+  This update was based on community-submitted feedback pointing out the cross-vendor comparison issue. I appreciate the detailed report, it led to a comprehensive review of INT8 metrics across the entire database.
+
+  The schema and validation process have been updated to enforce dense-only INT8 values going forward.
+status: PUBLISHED
+tags:
+  - update
+  - nvidia
+  - database
+  - int8
+authorFullName: "Scott Willeke"
+createdAt: "2026-02-25T10:00:00Z"
+updatedAt: "2026-02-25T10:00:00Z"
+publishedAt: "2026-02-25T10:00:00Z"

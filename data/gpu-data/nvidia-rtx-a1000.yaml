@@ -6,7 +6,7 @@ msrpUSD: 365
 tensorCoreCount: 72
 fp32TFLOPS: 6.74
 fp16TFLOPS: 53.8
-int8TOPS: 107.8
+int8TOPS: 53.9
 memoryCapacityGB: 8
 memoryBandwidthGBs: 192
 maxTDPWatts: 50
@@ -21,7 +21,7 @@ supportedHardwareOperations:
   - FP64
 supportedCUDAComputeCapability: 8.6
 releaseDate: "2024-04-16"
-lastModified: "2026-01-07T00:00:00Z"
+lastModified: "2026-02-24T00:00:00Z"
 
 manufacturerIdentifiers:
   - type: nvpn
@@ -58,7 +58,7 @@ summary: |
   built on the Ampere architecture using the GA107 chip with 8nm process technology. It features
   2,304 CUDA cores, 72 third-generation Tensor Cores, and 18 second-generation RT Cores, paired
   with 8GB of GDDR6 memory. The third-generation Tensor Cores deliver 53.8 TFLOPS of FP16
-  performance with sparsity and 107.8 TOPS of INT8 performance with sparsity, making it capable
+  performance with sparsity and 53.9 TOPS of dense INT8 performance (107.8 TOPS with sparsity), making it capable
   of handling AI-augmented workflows including AI denoising and DLSS. With a remarkably low TDP
   of only 50W and a single-slot, low-profile form factor, the card requires no auxiliary power
   connector and is designed for compact workstations where space and power are constrained.
@@ -78,7 +78,7 @@ references:
 notes:
   - FP32 TFLOPS of 6.74 sourced from NVIDIA official product page and Lenovo Press documentation.
   - FP16 TFLOPS of 53.8 represents peak tensor performance with sparsity from NVIDIA product page.
-  - INT8 TOPS of 107.8 calculated as approximately double FP16 tensor performance (53.8 × 2).
+  - 'int8TOPS of 53.9 represents non-sparse (dense) INT8 performance, derived from sparse INT8 of 107.8 TOPS ÷ 2 per NVIDIA Ampere architecture. With 2:4 structured sparsity, INT8 performance is 107.8 TOPS. Dense value used for consistent cross-vendor comparison.'
   - Memory bandwidth calculated as 128-bit × 12 Gbps ÷ 8 = 192 GB/s.
   - CUDA Compute Capability 8.6 confirmed for GA107 Ampere chip.
   - The GPU uses the GA107 chip with 2,304 of 3,072 possible CUDA cores enabled.

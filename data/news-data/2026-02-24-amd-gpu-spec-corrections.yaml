@@ -3,7 +3,7 @@ id: gpu0224feb2026amd
 slug: amd-gpu-spec-corrections
 title: "AMD GPU Specification Corrections: R9700, RX 7900 GRE, and RDNA 3 INT8 Updates"
 content: |
-  We've corrected several AMD GPU specifications after a community member reported inaccuracies in our database. Thanks to that report, we did a thorough review against AMD's official datasheets and documentation.
+  I've corrected several AMD GPU specifications after a community member reported inaccuracies in the database. Thanks to that report, I did a thorough review against AMD's official datasheets and documentation.
 
   ## What Was Fixed
 
@@ -11,13 +11,13 @@ content: |
 
   The [AMD Radeon RX 7900 GRE](/gpu/learn/card/amd-radeon-rx-7900-gre) had an incorrect INT8 value. AMD's RDNA 3 architecture supports INT8 at the same throughput as FP16 (1:1 ratio), confirmed by the [WMMA documentation on GPUOpen](https://gpuopen.com/learn/wmma_on_rdna3/). The RX 7900 GRE is now listed at 91.96 INT8 TOPS instead of 183.92.
 
-  We also added missing INT8 TOPS values for four other RDNA 3 cards: [RX 7800 XT](/gpu/learn/card/amd-radeon-rx-7800-xt), [RX 7700 XT](/gpu/learn/card/amd-radeon-rx-7700-xt), [RX 7600 XT](/gpu/learn/card/amd-radeon-rx-7600-xt), and [RX 7600](/gpu/learn/card/amd-radeon-rx-7600).
+  I also added missing INT8 TOPS values for four other RDNA 3 cards: [RX 7800 XT](/gpu/learn/card/amd-radeon-rx-7800-xt), [RX 7700 XT](/gpu/learn/card/amd-radeon-rx-7700-xt), [RX 7600 XT](/gpu/learn/card/amd-radeon-rx-7600-xt), and [RX 7600](/gpu/learn/card/amd-radeon-rx-7600).
 
   Product identifiers for third-party R9700 models (XFX, ASRock, Sapphire) were also corrected.
 
   ## Community Feedback
 
-  We appreciate the detailed bug report. User feedback like this helps keep GPU Poet's data accurate. All specifications now cite official AMD sources.
+  I appreciate the detailed bug report. User feedback like this helps keep GPU Poet's data accurate. All specifications now cite official AMD sources.
 status: PUBLISHED
 tags:
   - update

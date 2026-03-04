@@ -8,7 +8,7 @@ spec:
   # In some extreme circumstances I've seen it use ~1,000 API calls per run (5 runs per day). 
   # However, under normal circumstances it seems to use ~230 calls.
   # So 6 runs (every 4 hrs) should be plenty conservative.
-  schedule: "0 /4 * * *"
+  schedule: "0 */4 * * *"
   concurrencyPolicy: Forbid
   jobTemplate:
     spec:

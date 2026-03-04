@@ -48,6 +48,9 @@ k8s
 scripts
 specs
 
+# Database backups (large files, not needed in container)
+data/prod-backups
+
 # Misc
 *.log
 *.pid

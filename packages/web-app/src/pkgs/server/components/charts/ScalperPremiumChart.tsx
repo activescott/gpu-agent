@@ -88,7 +88,7 @@ function buildChartConfig(data: ScalperPremiumRow[]): BarChartConfig {
     data: data.map((row) => ({
       label: formatGpuName(row.name),
       value: row.premiumPct,
-      sublabel: `$${Math.round(row.lowestAvgPrice)} avg`,
+      sublabel: `$${Math.round(row.lowestAvgPrice)} best deal`,
       color: row.premiumPct > HIGH_PREMIUM_THRESHOLD ? "danger" : "warning",
     })),
   }

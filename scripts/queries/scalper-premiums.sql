@@ -28,11 +28,8 @@ SELECT
   la.name,
   g."msrpUSD"::float as msrp,
   COUNT(*) as listings,
-  ROUND(AVG(l."priceValue"::float)) as avg_price,
   ROUND(la.lowest_avg_price::numeric) as best_deal,
-  ROUND(PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY l."priceValue"::float)) as median_price,
-  ROUND(((la.lowest_avg_price / g."msrpUSD"::float - 1) * 100)::numeric) as best_deal_premium_pct,
-  ROUND(((PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY l."priceValue"::float) / g."msrpUSD"::float - 1) * 100)::numeric) as median_premium_pct
+  ROUND(((la.lowest_avg_price / g."msrpUSD"::float - 1) * 100)::numeric) as best_deal_premium_pct
 FROM lowest_avg la
 JOIN gpu g ON g.name = la.name
 JOIN "Listing" l ON l."gpuName" = la.name

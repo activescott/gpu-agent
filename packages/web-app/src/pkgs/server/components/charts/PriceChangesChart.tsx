@@ -16,8 +16,8 @@ import {
 
 interface PriceChangeRow {
   gpuName: string
-  prevMonthAvg: number
-  currMonthAvg: number
+  prevBestDeal: number
+  currBestDeal: number
   pctChange: number
 }
 
@@ -49,36 +49,58 @@ async function fetchPriceChangesData(
     parseDateRange(prevYearMonth)
 
   const result = await prismaSingleton.$queryRaw<PriceChangeRow[]>`
-    WITH curr_month AS (
+    WITH curr_ranked AS (
       SELECT
         "gpuName",
-        AVG("priceValue"::float) as avg_price
+        "priceValue"::float as price,
+        ROW_NUMBER() OVER (
+          PARTITION BY "gpuName"
+          ORDER BY "priceValue"::float ASC
+        ) as rn
       FROM "Listing"
       WHERE "cachedAt" >= ${currStart}
         AND "cachedAt" <= ${currEnd}
         AND "exclude" = false
+    ),
+    curr_month AS (
+      SELECT
+        "gpuName",
+        AVG(price) as best_deal
+      FROM curr_ranked
+      WHERE rn <= 3
       GROUP BY "gpuName"
       HAVING COUNT(*) >= 3
     ),
-    prev_month AS (
+    prev_ranked AS (
       SELECT
         "gpuName",
-        AVG("priceValue"::float) as avg_price
+        "priceValue"::float as price,
+        ROW_NUMBER() OVER (
+          PARTITION BY "gpuName"
+          ORDER BY "priceValue"::float ASC
+        ) as rn
       FROM "Listing"
       WHERE "cachedAt" >= ${prevStart}
         AND "cachedAt" <= ${prevEnd}
         AND "exclude" = false
+    ),
+    prev_month AS (
+      SELECT
+        "gpuName",
+        AVG(price) as best_deal
+      FROM prev_ranked
+      WHERE rn <= 3
       GROUP BY "gpuName"
       HAVING COUNT(*) >= 3
     )
     SELECT
       c."gpuName",
-      p.avg_price as "prevMonthAvg",
-      c.avg_price as "currMonthAvg",
-      ROUND(((c.avg_price - p.avg_price) / p.avg_price * 100)::numeric, 0)::float as "pctChange"
+      p.best_deal as "prevBestDeal",
+      c.best_deal as "currBestDeal",
+      ROUND(((c.best_deal - p.best_deal) / p.best_deal * 100)::numeric, 0)::float as "pctChange"
     FROM curr_month c
     JOIN prev_month p ON c."gpuName" = p."gpuName"
-    WHERE p.avg_price > ${MIN_PRICE_THRESHOLD}
+    WHERE p.best_deal > ${MIN_PRICE_THRESHOLD}
     ORDER BY "pctChange" ASC
     LIMIT ${resultCount}
   `
@@ -105,7 +127,7 @@ function buildChartConfig(data: PriceChangeRow[]): DivergingBarChartConfig {
     data: data.map((row) => ({
       label: formatGpuName(row.gpuName),
       value: row.pctChange,
-      sublabel: formatPriceChange(row.prevMonthAvg, row.currMonthAvg),
+      sublabel: formatPriceChange(row.prevBestDeal, row.currBestDeal),
       color: getValueColor(row.pctChange),
     })),
   }

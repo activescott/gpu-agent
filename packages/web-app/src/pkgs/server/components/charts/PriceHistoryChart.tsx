@@ -18,7 +18,7 @@ import {
 interface MonthlyPriceRow {
   gpuName: string
   monthLabel: string
-  avgPrice: number
+  bestDealPrice: number
   monthOrder: number
 }
 
@@ -53,11 +53,15 @@ async function fetchPriceHistoryData(
   const startDate = new Date(year, month - MONTHS_TO_SHOW, 1)
 
   const result = await prismaSingleton.$queryRaw<MonthlyPriceRow[]>`
-    WITH monthly_data AS (
+    WITH ranked AS (
       SELECT
         "gpuName",
         DATE_TRUNC('month', "cachedAt") as month_date,
-        "priceValue"::float as price
+        "priceValue"::float as price,
+        ROW_NUMBER() OVER (
+          PARTITION BY "gpuName", DATE_TRUNC('month', "cachedAt")
+          ORDER BY "priceValue"::float ASC
+        ) as rn
       FROM "Listing"
       WHERE "cachedAt" >= ${startDate}
         AND "cachedAt" <= ${endDate}
@@ -67,9 +71,10 @@ async function fetchPriceHistoryData(
     SELECT
       "gpuName",
       TO_CHAR(month_date, 'Mon ''YY') as "monthLabel",
-      AVG(price) as "avgPrice",
+      AVG(price) as "bestDealPrice",
       EXTRACT(YEAR FROM month_date) * 12 + EXTRACT(MONTH FROM month_date) as "monthOrder"
-    FROM monthly_data
+    FROM ranked
+    WHERE rn <= 3
     GROUP BY "gpuName", month_date
     ORDER BY "gpuName", "monthOrder"
   `
@@ -103,7 +108,7 @@ function buildSeries(
       color,
       data: rows.map((row) => ({
         x: row.monthLabel,
-        y: Math.round(row.avgPrice),
+        y: Math.round(row.bestDealPrice),
       })),
     })
   }
@@ -124,7 +129,7 @@ function buildChartConfig(
     chartType: "line",
     unit: "$",
     xAxisLabel: "Month",
-    yAxisLabel: "Avg Price ($)",
+    yAxisLabel: "Best Deal ($)",
     series: buildSeries(data, gpus),
   }
 }

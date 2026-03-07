@@ -61,24 +61,40 @@ export default async function March2026Report(): Promise<ReactNode> {
 
   return (
     <ReportLayout metadata={reportMetadata}>
+      {/* Editor's note */}
+      <div className="alert alert-info mb-4">
+        <strong>Editor&apos;s note (March 7, 2026):</strong> I&apos;ve updated
+        this article based on reader feedback. The original version used median
+        eBay prices, which are inflated by overpriced listings that never sell.
+        All prices now use &quot;best deal&quot; pricing (average of the 3
+        cheapest listings), which better represents what you can actually find.
+        I&apos;ve also added notes about retail availability for new-gen GPUs.
+        Thanks to the r/gpu community for the candid feedback.
+      </div>
+
       {/* Introduction */}
       <div className="lead mb-5">
         <p>
-          February&apos;s eBay data tells two stories. RTX 50 cards are still
-          selling for 67-93% above MSRP, and only the{" "}
-          <Link href="/gpu/shop/nvidia-geforce-rtx-5080">5080</Link> and{" "}
-          <Link href="/gpu/shop/nvidia-geforce-rtx-5070-ti">5070 Ti</Link>{" "}
-          showed improvement. The rest got worse. On the other hand, prior-gen
-          prices are dropping fast. The{" "}
-          <Link href="/gpu/shop/nvidia-geforce-rtx-3070">RTX 3070</Link> fell
-          32% in one month and the{" "}
+          February&apos;s eBay data tells two stories. If you&apos;re patient,
+          three RTX 50 cards (the{" "}
+          <Link href="/gpu/shop/nvidia-geforce-rtx-5060">5060</Link>,{" "}
+          <Link href="/gpu/shop/nvidia-geforce-rtx-5060-ti">5060 Ti</Link>, and{" "}
+          <Link href="/gpu/shop/nvidia-geforce-rtx-5070">5070</Link>) now have
+          best deals at or below MSRP on eBay, and the{" "}
+          <Link href="/gpu/shop/nvidia-geforce-rtx-5080">5080</Link> is within
+          2%. But the <Link href="/gpu/shop/nvidia-geforce-rtx-5090">5090</Link>{" "}
+          is still 40% above even at best-deal pricing. Meanwhile, prior-gen
+          prices are dropping fast, with cards like the{" "}
+          <Link href="/gpu/shop/nvidia-geforce-rtx-3070">RTX 3070</Link> and{" "}
           <Link href="/gpu/shop/nvidia-geforce-rtx-4070-ti">RTX 4070 Ti</Link>{" "}
-          fell 25%.
+          trending sharply downward. All prices in this report are eBay listed
+          prices (what sellers are asking). For new-gen GPUs, retail stock has
+          been improving, so check major retailers too.
         </p>
       </div>
 
       {/* RTX 50 Series */}
-      <ChartSection title="RTX 50 Series: Budget Cards Getting Worse">
+      <ChartSection title="RTX 50 Series: Best Deals Near MSRP, But Stock Is Thin">
         <p className="mb-4">
           The chart below shows the best available price (lowest average of 3
           listings) for each RTX 50 card vs. MSRP. Three cards (the{" "}
@@ -86,17 +102,15 @@ export default async function March2026Report(): Promise<ReactNode> {
           <Link href="/gpu/shop/nvidia-geforce-rtx-5060-ti">5060 Ti</Link>, and{" "}
           <Link href="/gpu/shop/nvidia-geforce-rtx-5070">5070</Link>) can be
           found near or below MSRP if you&apos;re fast. The{" "}
+          <Link href="/gpu/shop/nvidia-geforce-rtx-5080">5080</Link> is within
+          2% of MSRP. The{" "}
           <Link href="/gpu/shop/nvidia-geforce-rtx-5090">5090</Link> is still
           40% above even at best-deal pricing.
         </p>
         <p className="mb-4">
-          Don&apos;t let those best deals fool you though. The median eBay buyer
-          is paying 67-93% over MSRP depending on the card. And the budget cards
-          actually got <em>worse</em> from January: the 5060 median climbed from
-          $521 to $577, the 5060 Ti from $750 to $809. Only the{" "}
-          <Link href="/gpu/shop/nvidia-geforce-rtx-5080">5080</Link> and{" "}
-          <Link href="/gpu/shop/nvidia-geforce-rtx-5070-ti">5070 Ti</Link> saw
-          their medians drop.
+          Keep in mind: these are eBay listed prices. Retail stock at Best Buy,
+          Newegg, and Microcenter has been improving for the budget RTX 50
+          cards, so it&apos;s worth checking those too.
         </p>
         <ScalperPremiumChart dateRange={dateRange} />
       </ChartSection>
@@ -104,31 +118,26 @@ export default async function March2026Report(): Promise<ReactNode> {
       {/* Prior-Gen Price Drops */}
       <ChartSection title="Prior-Gen GPUs Are Cratering">
         <p className="mb-4">
-          This is where the February data got interesting. The{" "}
-          <Link href="/gpu/shop/nvidia-geforce-rtx-3070">RTX 3070</Link> dropped
-          32% month-over-month to a $299 average. The{" "}
-          <Link href="/gpu/shop/nvidia-geforce-rtx-3090">RTX 3090</Link> fell
-          22% to $2,905. And the{" "}
-          <Link href="/gpu/shop/nvidia-geforce-rtx-4070-ti">RTX 4070 Ti</Link>{" "}
-          dropped 25% to $646. These aren&apos;t small moves.
+          This is where the February data got interesting. Prior-gen best-deal
+          prices are sliding across the board. The chart below shows 6-month
+          best-deal pricing for the{" "}
+          <Link href="/gpu/shop/nvidia-geforce-rtx-3070">RTX 3070</Link>,{" "}
+          <Link href="/gpu/shop/nvidia-geforce-rtx-4070-ti">4070 Ti</Link>, and{" "}
+          <Link href="/gpu/shop/nvidia-geforce-rtx-4070">4070</Link>. The
+          downward trend is clear, especially on the RTX 3070.
         </p>
         <p className="mb-4">
           RTX 40 series is more of a mixed bag. The non-Super variants are
-          dropping:{" "}
-          <Link href="/gpu/shop/nvidia-geforce-rtx-4060-ti">RTX 4060 Ti</Link>{" "}
-          fell 15%, the{" "}
-          <Link href="/gpu/shop/nvidia-geforce-rtx-4080">RTX 4080</Link> fell
-          9%, and the{" "}
-          <Link href="/gpu/shop/nvidia-geforce-rtx-4070">RTX 4070</Link> fell
-          8%. But the{" "}
-          <Link href="/gpu/shop/nvidia-geforce-rtx-4090">RTX 4090</Link> held
-          flat, and some Super variants rose (the 4070 Super jumped 11%).
+          trending down, as the chart shows for the{" "}
+          <Link href="/gpu/shop/nvidia-geforce-rtx-4070-ti">4070 Ti</Link> and{" "}
+          <Link href="/gpu/shop/nvidia-geforce-rtx-4070">4070</Link>. But the{" "}
+          <Link href="/gpu/shop/nvidia-geforce-rtx-4090">RTX 4090</Link> has
+          held steady, and some Super variants have ticked up.
         </p>
         <PriceHistoryChart
           dateRange={dateRange}
           gpus={[
             "nvidia-geforce-rtx-3070",
-            "nvidia-geforce-rtx-3090",
             "nvidia-geforce-rtx-4070-ti",
             "nvidia-geforce-rtx-4070",
           ]}
@@ -136,9 +145,8 @@ export default async function March2026Report(): Promise<ReactNode> {
         <div className="alert alert-success mt-3">
           <strong>Our take:</strong> If you&apos;re in the market for a used GPU
           and don&apos;t need the absolute latest, this is a great time to buy.
-          The RTX 3070 at ~$280 median is genuinely good value. These drops are
-          likely driven by sellers dumping old cards as RTX 50 stock slowly
-          improves.
+          RTX 3070 best deals are around $190. These drops are likely driven by
+          sellers dumping old cards as RTX 50 stock slowly improves.
         </div>
       </ChartSection>
 
@@ -162,24 +170,26 @@ export default async function March2026Report(): Promise<ReactNode> {
       <ChartSection title="AMD: RX 6000 Deals vs RX 9000 Scalping">
         <p className="mb-4">
           AMD is living in two worlds right now. The used{" "}
-          <Link href="/gpu/shop/amd-radeon-rx-6950-xt">RX 6950 XT</Link> has a
-          median price of $450, which is 59% below its $1,099 MSRP. The{" "}
-          <Link href="/gpu/shop/amd-radeon-rx-6900-xt">RX 6900 XT</Link> is 48%
-          below at $518. Great deals on powerful cards.
+          <Link href="/gpu/shop/amd-radeon-rx-6950-xt">RX 6950 XT</Link> has
+          best deals around $403, which is 63% below its $1,099 MSRP. The{" "}
+          <Link href="/gpu/shop/amd-radeon-rx-6900-xt">RX 6900 XT</Link> is 62%
+          below at ~$375.
         </p>
         <p className="mb-4">
-          But AMD&apos;s new{" "}
+          The new RX 9000 series is a different story on eBay. The{" "}
           <Link href="/gpu/shop/amd-radeon-rx-9070-xt">RX 9070 XT</Link> ($599
-          MSRP) has a median of $1,187, a 98% premium. The{" "}
+          MSRP) has best deals around $693, about 16% above MSRP. The{" "}
           <Link href="/gpu/shop/amd-radeon-rx-9060-xt">RX 9060 XT</Link> ($350
-          MSRP) is even worse at 104% above. The new-GPU scalping problem
-          isn&apos;t just NVIDIA.
+          MSRP) is 6% above at ~$370. Not as inflated as the RTX 5090, but
+          retail stock has been improving for these too, so check your local
+          retailers.
         </p>
         <AmdDealsChart dateRange={dateRange} />
         <div className="alert alert-success mt-3">
-          <strong>Our take:</strong> Skip the RX 9000 series on eBay right now.
-          A used RX 6900 XT or 6950 XT at $400-500 offers similar rasterization
-          performance without the scalper tax.
+          <strong>Our take:</strong> The RX 9000 series eBay premiums are mild
+          compared to RTX 50 high-end, but check retailers first. A used RX 6900
+          XT at ~$375 offers similar rasterization performance at a fraction of
+          the price.
         </div>
       </ChartSection>
 
@@ -205,19 +215,20 @@ export default async function March2026Report(): Promise<ReactNode> {
       {/* Recommendations */}
       <ChartSection title="Buy / Wait / Sell">
         <div className="alert alert-success mb-3">
-          <strong>Buy:</strong> Used RTX 3070 (~$280), RTX 3080 Ti (~$400), RX
-          6950 XT (~$450). Prior-gen prices are dropping fast and these cards
-          still handle 1080p/1440p gaming and light AI workloads.
+          <strong>Buy:</strong> Used RTX 3070 (best deals ~$190), RTX 3080 Ti
+          (~$400), RX 6900 XT (~$375). Prior-gen prices are dropping fast and
+          these cards still handle 1080p/1440p gaming and light AI workloads.
         </div>
         <div className="alert alert-warning mb-3">
-          <strong>Wait:</strong> RTX 50 series (except 5090). Medians are still
-          67-93% above MSRP, but best deals are approaching MSRP. Give it
-          another month or two for supply to catch up.
+          <strong>Wait:</strong> RTX 50 series (except 5090 if you must have
+          it). Best deals on the 5060, 5060 Ti, and 5070 are at or below MSRP,
+          but stock is thin. Give it another month or two for supply to
+          normalize.
         </div>
         <div className="alert alert-danger mb-3">
           <strong>Sell:</strong> If you&apos;re sitting on RTX 30 series cards
-          you plan to replace, list them soon. The RTX 3070 dropped 32% in
-          February alone and the trend isn&apos;t slowing.
+          you plan to replace, list them soon. Prior-gen prices fell sharply in
+          February and the trend isn&apos;t slowing.
         </div>
       </ChartSection>
     </ReportLayout>

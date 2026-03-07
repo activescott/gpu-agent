@@ -1,6 +1,6 @@
 /**
  * GpuPriceHistoryChart - Shows price history for a single GPU.
- * Displays median and lowest average prices over time as a line chart.
+ * Displays lowest average prices over time as a line chart.
  */
 import type { LineChartConfig } from "@/pkgs/isomorphic/model/news"
 import { ChartJS, ChartContainer } from "@/pkgs/client/components/charts"
@@ -97,14 +97,6 @@ function buildChartConfig(
     yAxisLabel: "Price ($)",
     series: [
       {
-        label: "Median Price",
-        color: "success",
-        data: data.map((point, index) => ({
-          x: labels[index],
-          y: Math.round(point.medianPrice),
-        })),
-      },
-      {
         label: "Lowest Avg Price",
         color: "warning",
         data: data.map((point, index) => ({
@@ -131,7 +123,7 @@ export async function getGpuPriceHistoryConfig(
 
 /**
  * React Server Component for rendering GPU price history chart.
- * Shows median and lowest average prices over time.
+ * Shows lowest average prices over time.
  */
 export async function GpuPriceHistoryChart({
   gpuName,
@@ -182,11 +174,9 @@ export async function GpuPriceHistoryChart({
       <p className="text-muted small mb-3">
         This chart tracks {gpuLabel} prices over the past {months} months based
         on eBay listings. The{" "}
-        <strong className="text-success">green line</strong> shows the median
-        price across all listings each day, while the{" "}
         <strong className="text-warning">yellow line</strong> shows the average
-        of the three lowest-priced listings—a useful indicator for finding
-        deals.
+        of the three lowest-priced listings each day—a useful indicator for
+        finding deals.
       </p>
       <p className="text-muted small mb-3">
         <strong>Trend:</strong> Over this period, the lowest average price has

@@ -469,6 +469,7 @@ export async function topNListingsByCostPerformance(
   spec: GpuMetricKey,
   n: number,
   prisma: PrismaClientWithinTransaction = prismaSingleton,
+  { minMemoryGB = 0 }: { minMemoryGB?: number } = {},
 ): Promise<Listing[]> {
   const dbColumnName = prismaFieldToDbColumn(spec)
   const specFieldName = Prisma.raw(`"gpu"."${dbColumnName}"`)
@@ -484,6 +485,7 @@ export async function topNListingsByCostPerformance(
       AND "Listing"."exclude" = false
       AND ${specFieldName} IS NOT NULL
       AND ${specFieldName} > 0
+      AND "gpu"."memoryCapacityGB" >= ${minMemoryGB}
     ORDER BY ("Listing"."priceValue"::float / ${specFieldName}::float)
     LIMIT ${n}
   `)

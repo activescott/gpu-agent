@@ -44,6 +44,7 @@ export const metadata: Metadata = {
 const TOP_N_LISTINGS = 10
 const TOP_N_GROUP_SIZE = 2
 const HOME_GAMING_RESOLUTION = "2560x1440"
+const MIN_AI_VRAM_GB = 10
 
 interface GamingCarouselData {
   slug: string
@@ -59,7 +60,12 @@ export default async function Page() {
   )
 
   const aiListingsPromises = GpuSpecKeys.map(async (spec) => {
-    const listings = await topNListingsByCostPerformance(spec, TOP_N_LISTINGS)
+    const listings = await topNListingsByCostPerformance(
+      spec,
+      TOP_N_LISTINGS,
+      undefined,
+      { minMemoryGB: MIN_AI_VRAM_GB },
+    )
     return { spec, listings }
   })
 

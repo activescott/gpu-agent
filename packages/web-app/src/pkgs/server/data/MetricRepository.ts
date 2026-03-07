@@ -39,6 +39,7 @@ const SpecsYamlSchema = z.object({
 
 // Schema for benchmark data from YAML files
 const BenchmarkDataSchema = z.object({
+  metricSlug: z.string(),
   benchmarkId: z.string(),
   benchmarkName: z.string(),
   configuration: z.string(),
@@ -133,36 +134,6 @@ function extractResolutionLabel(configuration: string): string {
 }
 
 /**
- * Generate a slug from benchmark data
- * e.g., "cs2" + "3840 x 2160" -> "counter-strike-2-fps-3840x2160"
- */
-function generateBenchmarkSlug(
-  benchmarkId: string,
-  configuration: string,
-): string {
-  const resolutionMatch = configuration.match(
-    /resolution:\s*(\d+)\s*x\s*(\d+)/i,
-  )
-
-  // Map benchmark IDs to readable names
-  const benchmarkNameMap: Record<string, string> = {
-    cs2: "counter-strike-2-fps",
-    "3dmark": "3dmark-wildlife-extreme-fps",
-    quake2rtx: "quake2rtx-fps",
-  }
-
-  const baseName = benchmarkNameMap[benchmarkId] || benchmarkId
-
-  if (resolutionMatch) {
-    const width = resolutionMatch[REGEX_CAPTURE_WIDTH]
-    const height = resolutionMatch[REGEX_CAPTURE_HEIGHT]
-    return `${baseName}-${width}x${height}`
-  }
-
-  return baseName
-}
-
-/**
  * Load spec metric definitions from YAML
  */
 async function loadSpecDefinitions(): Promise<MetricDefinition[]> {
@@ -243,10 +214,7 @@ async function loadBenchmarkDefinitions(): Promise<MetricDefinition[]> {
   const definitions: MetricDefinition[] = []
 
   for (const benchmark of benchmarks) {
-    const slug = generateBenchmarkSlug(
-      benchmark.benchmarkId,
-      benchmark.configuration,
-    )
+    const slug = benchmark.metricSlug
 
     // Skip if we've already seen this slug
     if (seenSlugs.has(slug)) {

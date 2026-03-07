@@ -1,5 +1,5 @@
 "use client"
-import { Listing } from "@/pkgs/isomorphic/model"
+import { Listing, ListingWithMetric } from "@/pkgs/isomorphic/model"
 import {
   GpuSpecKey,
   GpuSpecs,
@@ -15,26 +15,62 @@ import { SvgIcon } from "./SvgIcon"
 
 import type { JSX } from "react"
 
-interface ListingCardProps {
+export interface SmallCardMetricInfo {
+  unit: string
+  descriptionDollarsPer: string
+}
+
+interface SpecBasedProps {
   item: Listing
   specs: GpuSpecs
   highlightSpec: GpuSpecKey
+  metricInfo?: never
+  metricValue?: never
 }
 
-export function ListingCardSmall({
-  item,
-  specs,
-  highlightSpec,
-}: ListingCardProps): JSX.Element {
+interface MetricBasedProps {
+  item: ListingWithMetric
+  metricInfo: SmallCardMetricInfo
+  metricValue: number
+  specs?: never
+  highlightSpec?: never
+}
+
+type ListingCardProps = SpecBasedProps | MetricBasedProps
+
+function resolveMetric(
+  props: ListingCardProps,
+  cost: number,
+): { costPerMetric: number; unit: string; tooltip: string } {
+  if (props.metricInfo) {
+    return {
+      costPerMetric: divideSafe(cost, props.metricValue),
+      unit: props.metricInfo.unit,
+      tooltip: props.metricInfo.descriptionDollarsPer,
+    }
+  }
+  const { specs, highlightSpec } = props
+  return {
+    costPerMetric: divideSafe(cost, specs[highlightSpec]),
+    unit: GpuSpecsDescription[highlightSpec].unit,
+    tooltip: GpuSpecsDescription[highlightSpec].descriptionDollarsPer,
+  }
+}
+
+export function ListingCardSmall(props: ListingCardProps): JSX.Element {
   const {
-    priceValue,
-    title,
-    condition,
-    itemLocationCountry,
-    itemAffiliateWebUrl,
-  } = item
+    item: {
+      priceValue,
+      title,
+      condition,
+      itemLocationCountry,
+      itemAffiliateWebUrl,
+    },
+    item,
+  } = props
   const imageUrl = chooseBestImageUrl(item)
   const cost = Number(priceValue)
+  const { costPerMetric, unit, tooltip } = resolveMetric(props, cost)
 
   return (
     <div className="card mb-3 d-inline-block mx-2 border-0 shadow max-width-vw-75-xs max-width-vw-25-m">
@@ -70,18 +106,8 @@ export function ListingCardSmall({
               {itemLocationCountry && (
                 <CountryPill isoCountryCode={itemLocationCountry}></CountryPill>
               )}
-              <SpecPill
-                key={highlightSpec}
-                infoTipText={
-                  GpuSpecsDescription[highlightSpec].descriptionDollarsPer
-                }
-                color={
-                  highlightSpec === highlightSpec ? "primary" : "secondary"
-                }
-                outline
-              >
-                {formatPrice(divideSafe(cost, specs[highlightSpec]))} /{" "}
-                {GpuSpecsDescription[highlightSpec].unit}
+              <SpecPill infoTipText={tooltip} color="primary" outline>
+                {formatPrice(costPerMetric)} / {unit}
               </SpecPill>
             </div>
             <ListingAffiliateLink

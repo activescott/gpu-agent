@@ -66,12 +66,6 @@ export function ListingCardSmall({
               className="card-text text-align-start"
               style={{ minHeight: "2lh" }}
             >
-              <ListingAffiliateLink to={itemAffiliateWebUrl} listing={item}>
-                <AttributePill className="underline-on-hover">
-                  {formatPrice(cost)} <span className="fw-lighter">@</span>{" "}
-                  <SvgIcon icon="ebay" size="xs" />
-                </AttributePill>
-              </ListingAffiliateLink>
               {condition && <AttributePill>{condition}</AttributePill>}
               {itemLocationCountry && (
                 <CountryPill isoCountryCode={itemLocationCountry}></CountryPill>
@@ -84,11 +78,19 @@ export function ListingCardSmall({
                 color={
                   highlightSpec === highlightSpec ? "primary" : "secondary"
                 }
+                outline
               >
                 {formatPrice(divideSafe(cost, specs[highlightSpec]))} /{" "}
                 {GpuSpecsDescription[highlightSpec].unit}
               </SpecPill>
             </div>
+            <ListingAffiliateLink
+              to={itemAffiliateWebUrl}
+              listing={item}
+              className="btn btn-primary fw-semibold text-decoration-none d-block mt-2"
+            >
+              {formatPrice(cost)} @ <SvgIcon icon="ebay" size="xs" />
+            </ListingAffiliateLink>
           </div>
         </div>
       </div>

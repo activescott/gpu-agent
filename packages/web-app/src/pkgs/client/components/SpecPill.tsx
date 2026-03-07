@@ -10,6 +10,7 @@ interface SpecPillProps {
   infoTipText: string
   infoTipLink?: string
   color?: BootstrapBackgroundColors
+  outline?: boolean
 }
 
 type BootstrapBackgroundColors =
@@ -29,6 +30,7 @@ export const SpecPill = ({
   children,
   infoTipText,
   color = "secondary",
+  outline = false,
 }: SpecPillProps) => {
   const [showTip, setShowTip] = useState(false)
   const arrowRef = useRef(null)
@@ -40,7 +42,7 @@ export const SpecPill = ({
   return (
     <>
       <span
-        className={`badge rounded-pill text-bg-${color} mx-1`}
+        className={`badge rounded-pill ${outline ? `border border-${color} text-${color}` : `text-bg-${color}`} mx-1`}
         ref={refs.setReference}
       >
         <span className="align-middle">{children}</span>

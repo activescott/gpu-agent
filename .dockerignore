@@ -35,8 +35,10 @@ Dockerfile
 .dockerignore
 docker-compose.yml
 
-# Documentation
+# Documentation and root markdown files
 docs
+TODO.md
+CLAUDE.md
 
 # Test files (not needed in container)
 e2e-tests

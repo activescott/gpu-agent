@@ -9,14 +9,24 @@ interface Comparison {
 
 const POPULAR_COMPARISONS: Comparison[] = [
   {
+    gpu1Label: "RTX 4090",
+    gpu2Label: "RTX 5090",
+    url: "/gpu/compare/nvidia-geforce-rtx-4090/vs/nvidia-geforce-rtx-5090",
+  },
+  {
     gpu1Label: "RX 9070 XT",
     gpu2Label: "RTX 4070 Ti Super",
     url: "/gpu/compare/amd-radeon-rx-9070-xt/vs/nvidia-geforce-rtx-4070-ti-super",
   },
   {
-    gpu1Label: "RTX 4090",
-    gpu2Label: "RTX 5090",
-    url: "/gpu/compare/nvidia-geforce-rtx-5090/vs/nvidia-geforce-rtx-4090",
+    gpu1Label: "RTX 5070 Ti",
+    gpu2Label: "RTX 5080",
+    url: "/gpu/compare/nvidia-geforce-rtx-5070-ti/vs/nvidia-geforce-rtx-5080",
+  },
+  {
+    gpu1Label: "RX 9070 XT",
+    gpu2Label: "RTX 5070",
+    url: "/gpu/compare/amd-radeon-rx-9070-xt/vs/nvidia-geforce-rtx-5070",
   },
   {
     gpu1Label: "RTX 4070 Super",
@@ -24,9 +34,14 @@ const POPULAR_COMPARISONS: Comparison[] = [
     url: "/gpu/compare/nvidia-geforce-rtx-4070-super/vs/nvidia-geforce-rtx-4070-ti-super",
   },
   {
-    gpu1Label: "RTX 4060",
-    gpu2Label: "RTX 3060 Ti",
-    url: "/gpu/compare/nvidia-geforce-rtx-3060-ti/vs/nvidia-geforce-rtx-4060",
+    gpu1Label: "RTX 5060 Ti",
+    gpu2Label: "RTX 5070",
+    url: "/gpu/compare/nvidia-geforce-rtx-5060-ti/vs/nvidia-geforce-rtx-5070",
+  },
+  {
+    gpu1Label: "RTX 5070 Ti",
+    gpu2Label: "RTX A5000",
+    url: "/gpu/compare/nvidia-geforce-rtx-5070-ti/vs/nvidia-rtx-a5000",
   },
 ]
 

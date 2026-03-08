@@ -66,3 +66,11 @@ coverage
 
 # Turbo
 .turbo
+
+# Git hooks (pre-commit hook changes shouldn't trigger rebuild)
+.husky
+
+# Editor/tool temp files
+*.swp
+*.swo
+*~

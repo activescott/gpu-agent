@@ -14,21 +14,31 @@ export const metadata: Metadata = {
 export default async function Page() {
   const allGpus = await listGpus()
 
-  // Group GPUs by series
-  const gpusBySeries = allGpus.reduce(
+  // Group GPUs by architecture
+  const gpusByArch = allGpus.reduce(
     (acc, gpu) => {
-      const series = gpu.series ?? "Other"
-      if (!acc[series]) {
-        acc[series] = []
+      const arch = gpu.gpuArchitecture.toLowerCase()
+      if (!acc[arch]) {
+        acc[arch] = []
       }
-      acc[series].push(gpu)
+      acc[arch].push(gpu)
       return acc
     },
     {} as Record<string, typeof allGpus>,
   )
 
-  // Sort series names and GPUs within each series
-  const sortedSeries = Object.keys(gpusBySeries).sort()
+  // Sort architectures by newest GPU release date within each group
+  const sortedArchitectures = Object.keys(gpusByArch).sort((a, b) => {
+    const newestA = gpusByArch[a].reduce((latest, gpu) => {
+      const d = gpu.releaseDate ?? ""
+      return d > latest ? d : latest
+    }, "")
+    const newestB = gpusByArch[b].reduce((latest, gpu) => {
+      const d = gpu.releaseDate ?? ""
+      return d > latest ? d : latest
+    }, "")
+    return newestB.localeCompare(newestA)
+  })
 
   return (
     <div>
@@ -98,18 +108,17 @@ export default async function Page() {
           <p>
             Detailed specifications and performance data for individual GPUs.
           </p>
-          {sortedSeries.map((series) => (
-            <div key={series} className="mb-4">
-              <h4 className="fs-5 text-secondary mb-2">{series}</h4>
+          {sortedArchitectures.map((arch) => (
+            <div key={arch} className="mb-4">
+              <h4 className="fs-6 fw-bold text-primary mb-1 text-capitalize">
+                {arch}
+              </h4>
               <ul className="list-unstyled">
-                {gpusBySeries[series]
+                {gpusByArch[arch]
                   .sort((a, b) => a.label.localeCompare(b.label))
                   .map((gpu) => (
-                    <li key={gpu.name} className="d-inline-block me-2 mb-2">
-                      <Link
-                        href={`/gpu/learn/card/${gpu.name}`}
-                        className="btn btn-sm btn-outline-secondary"
-                      >
+                    <li key={gpu.name}>
+                      <Link href={`/gpu/learn/card/${gpu.name}`}>
                         {gpu.label}
                       </Link>
                     </li>

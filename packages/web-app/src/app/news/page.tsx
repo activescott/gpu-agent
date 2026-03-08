@@ -32,25 +32,32 @@ export default async function Page(): Promise<ReactNode> {
   const articles = await listPublishedArticles()
   const marketReports = listMarketReports()
 
+  // Merge market reports and news articles into a single list sorted by publishedAt
+  const allItems: Array<
+    | { type: "article"; item: (typeof articles)[number] }
+    | { type: "report"; item: (typeof marketReports)[number] }
+  > = [
+    ...articles
+      .filter((a) => a.publishedAt !== null)
+      .map((a) => ({ type: "article" as const, item: a })),
+    ...marketReports.map((r) => ({ type: "report" as const, item: r })),
+  ]
+  allItems.sort(
+    (a, b) =>
+      new Date(b.item.publishedAt!).getTime() -
+      new Date(a.item.publishedAt!).getTime(),
+  )
+
   return (
     <main className="max-w-4xl mx-auto p-6">
-      {/* Market Reports Section */}
-      {marketReports.length > 0 && (
-        <section>
-          <h1 className="mt-4">Market Reports</h1>
-          {marketReports.map((report) => (
-            <MarketReportSummary key={report.slug} report={report} />
-          ))}
-        </section>
+      <h1 className="mt-4">News</h1>
+      {allItems.map((entry) =>
+        entry.type === "report" ? (
+          <MarketReportSummary key={entry.item.slug} report={entry.item} />
+        ) : (
+          <ArticleSummary key={entry.item.id} article={entry.item} />
+        ),
       )}
-
-      {/* News Articles Section */}
-      <section>
-        <h1 className="mt-5">Other News</h1>
-        {articles.map((article) => (
-          <ArticleSummary key={article.id} article={article} />
-        ))}
-      </section>
     </main>
   )
 }

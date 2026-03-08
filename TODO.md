@@ -1,6 +1,16 @@
-- [ ] Nav information hierarchy is unclear. Add a sidebar with structured information hierarchy. URLS already have a clear hierarchy and structure, we just don't show it to users properly in the nav so it's confusing to navigate around the site and understand where you are and what you might have been looking at before if you remember looking at something before. Note - not talking about a history but a way to understand how to find something you know is on the site like "Gaming Rankings" when you're looking at listings or vice versa. Or if you know there are "detail pages for each GPU" how do you find that when you are looking at rankings?
+- [ ] Add the following comparisons as "popular comparisons" at: packages/web-app/src/pkgs/client/components/PopularComparisons.tsx
+  /gpu/compare/nvidia-geforce-rtx-4090/vs/nvidia-geforce-rtx-5090
+  /gpu/compare/amd-radeon-rx-9070-xt/vs/nvidia-geforce-rtx-4070-ti-super
+  /gpu/compare/nvidia-geforce-rtx-5090/vs/nvidia-geforce-rtx-4090
+  /gpu/compare/nvidia-geforce-rtx-5070-ti/vs/nvidia-geforce-rtx-5080
+  /gpu/compare/amd-radeon-rx-9070-xt/vs/nvidia-geforce-rtx-5070
+  /gpu/compare/nvidia-geforce-rtx-4070-super/vs/nvidia-geforce-rtx-4070-ti-super
+  /gpu/compare/nvidia-geforce-rtx-5060-ti/vs/nvidia-geforce-rtx-5070
+  /gpu/compare/nvidia-geforce-rtx-5070-ti/vs/nvidia-rtx-a5000
 
 - [ ] Add listings from newegg for price comparison.
+
+- [ ] Add listings from bestbuy for price comparison. https://developer.bestbuy.com/
 
 - [ ] Add listings from amazon for price comparison. We'll add affilliate links using the amazon affiliate program to add some affilliate identifer to the link.
   - use tinkerbell rest api to scrape amazon (see https://tinkerbellbot.com/ and https://tinkerbellbot.com/api/docs)

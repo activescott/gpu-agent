@@ -49,17 +49,15 @@ export function PopularComparisons({
     return (
       <div>
         <h3 className="h6 mb-2">{title}</h3>
-        <div className="d-flex flex-wrap gap-2">
+        <ul>
           {POPULAR_COMPARISONS.map((comparison) => (
-            <Link
-              key={comparison.url}
-              href={comparison.url}
-              className="btn btn-sm btn-outline-secondary"
-            >
-              {comparison.gpu1Label} vs {comparison.gpu2Label}
-            </Link>
+            <li key={comparison.url}>
+              <Link href={comparison.url}>
+                {comparison.gpu1Label} vs {comparison.gpu2Label}
+              </Link>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
     )
   }

@@ -180,7 +180,7 @@ async function modelsSitemap(domain_url: string): Promise<SitemapItem[]> {
 
   const modelEntries: SitemapItem[] = models.map((model) => {
     return {
-      url: `${domain_url}/ml/learn/models/${model.name}`,
+      url: `${domain_url}/gpu/learn/ai/models/${model.name}`,
       changeFrequency: "monthly",
       priority: 0.7,
       lastModified: new Date(model.updatedAt),
@@ -195,7 +195,7 @@ async function gpuLearnSitemap(domain_url: string): Promise<SitemapItem[]> {
 
   const gpuEntries: SitemapItem[] = gpus.map((gpu) => {
     return {
-      url: `${domain_url}/ml/learn/gpu/${gpu.name}`,
+      url: `${domain_url}/gpu/learn/card/${gpu.name}`,
       changeFrequency: "monthly",
       priority: 0.7,
       lastModified: gpu.lastModified,

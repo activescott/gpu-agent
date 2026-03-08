@@ -43,10 +43,8 @@ export function SearchTrigger(): JSX.Element {
         data-testid="search-trigger"
       >
         <BootstrapIcon icon="search" size="xs" />
-        <span className="search-trigger-text d-none d-md-inline">
-          Search...
-        </span>
-        <kbd className="search-trigger-kbd d-none d-lg-inline">
+        <span className="search-trigger-text">Search GPUs...</span>
+        <kbd className="search-trigger-kbd d-none d-sm-inline">
           {isMac ? "\u2318" : "Ctrl"}K
         </kbd>
       </button>

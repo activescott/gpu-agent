@@ -1,4 +1,4 @@
-import { Alert } from "../../../../../pkgs/client/components/Alert"
+import { Alert } from "@/pkgs/client/components/Alert"
 
 # How much memory does my GPU need to run an LLM?
 
@@ -22,11 +22,11 @@ Similarly, if a model uses "double-precision" size parameters at 32 bits, or 4 b
 ```
 
 {/* prettier-ignore */}
-<Alert kind="success">We track GPU prices and provide rankings for machine-learning cost/performance, such as [GPUs Ranked by Cost per Memory Capacity](/ml/learn/gpu/ranking/memory-gb).</Alert>
+<Alert kind="success">We track GPU prices and provide rankings for machine-learning cost/performance, such as [GPUs Ranked by Cost per Memory Capacity](/gpu/ranking/ai/memory-gb).</Alert>
 
-The largest memory on a single GPU available, as far as I know, are the [NVIDIA A100](/ml/learn/gpu/nvidia-a100-pcie) and the [NVIDIA H100](/ml/learn/gpu/nvidia-h100-pcie), each offering 80GB of GPU RAM.
+The largest memory on a single GPU available, as far as I know, are the [NVIDIA A100](/gpu/learn/card/nvidia-a100-pcie) and the [NVIDIA H100](/gpu/learn/card/nvidia-h100-pcie), each offering 80GB of GPU RAM.
 
-Due to these large memory requirements, usually, the larger models are [quantitized down to lower precision](/ml/learn/quantization), which can reduce accuracy in some cases but makes them feasible on single-GPU machines.
+Due to these large memory requirements, usually, the larger models are [quantitized down to lower precision](/gpu/learn/ai/quantization), which can reduce accuracy in some cases but makes them feasible on single-GPU machines.
 
 There are some ways to optimize throughput in the face of limited memory, such as [vLLM](https://blog.vllm.ai/2023/06/20/vllm.html), which is reasonably easy to set up if you're familiar with Linux.
 

@@ -23,7 +23,7 @@ export default function Page() {
           icon="person-raised-hand"
         >
           {sitemapJson.data
-            .filter((item) => item.path.startsWith("/ml/learn/faq"))
+            .filter((item) => item.path.startsWith("/gpu/learn/ai/faq"))
             .map((item) => (
               <li key={item.path}>
                 <a href={item.path}>{item.title}</a>
@@ -33,7 +33,7 @@ export default function Page() {
 
         <Feature title="Use Cases for Machine Learning" icon="puzzle">
           {sitemapJson.data
-            .filter((item) => item.path.startsWith("/ml/learn/use-case"))
+            .filter((item) => item.path.startsWith("/gpu/learn/ai/use-case"))
             .map((item) => (
               <li key={item.path}>
                 <a href={item.path}>{item.title}</a>
@@ -43,7 +43,7 @@ export default function Page() {
 
         <Feature title="Machine Learning Models" icon="layers">
           {sitemapJson.data
-            .filter((item) => item.path.startsWith("/ml/learn/models"))
+            .filter((item) => item.path.startsWith("/gpu/learn/ai/models"))
 
             .map((item) => (
               <li key={item.path}>
@@ -54,8 +54,9 @@ export default function Page() {
 
         <Feature title="GPU Specifications" icon="motherboard">
           {sitemapJson.data
-            .filter((item) => item.path.startsWith("/ml/learn/gpu"))
-            .filter((item) => !item.path.startsWith("/ml/learn/gpu/ranking"))
+            .filter((item) =>
+              item.path.startsWith("/gpu/learn/ai/quantization"),
+            )
             .map((item) => (
               <li key={item.path}>
                 <a href={item.path}>{item.title}</a>

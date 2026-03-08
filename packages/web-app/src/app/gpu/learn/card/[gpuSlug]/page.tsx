@@ -235,7 +235,7 @@ function buildStructuredData(
       priceCurrency: "USD",
       offerCount: Math.floor(priceStats.activeListingCount),
       availability: "https://schema.org/InStock",
-      url: `https://gpupoet.com/ml/shop/gpu/${gpu.name}`,
+      url: `https://gpupoet.com/gpu/shop/${gpu.name}`,
     }
   }
 

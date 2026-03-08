@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=./news-article.schema.json
+id: gpu0307mar2026nav
+slug: sidebar-navigation-and-search
+title: "New Sidebar Navigation and Improved Search"
+content: |
+  We've added a persistent sidebar to the site that shows the full navigation structure at a glance. You can now quickly jump between Rankings, Prices, Compare, Learn, Market Reports, and News without hunting through menus.
+
+  ## What's New
+
+  - **Sidebar navigation** on every page showing all major sections with active state highlighting
+  - **Bigger, centered search bar** in the header with keyboard shortcut (Cmd+K / Ctrl+K)
+  - **Simplified header** focused on branding and search
+  - **Mobile support** with a hamburger menu toggle for the sidebar on smaller screens
+
+  ## AI/ML Content Reorganized
+
+  All AI and machine learning content has been consolidated under [/gpu/learn/ai](/gpu/learn/ai), including FAQ articles, use-case guides, and model pages. Old `/ml/learn/*` URLs automatically redirect to the new locations, so existing bookmarks and links will continue to work.
+status: PUBLISHED
+tags:
+  - update
+  - navigation
+authorFullName: "Scott Willeke"
+createdAt: "2026-03-07T10:00:00Z"
+updatedAt: "2026-03-07T10:00:00Z"
+publishedAt: "2026-03-07T10:00:00Z"

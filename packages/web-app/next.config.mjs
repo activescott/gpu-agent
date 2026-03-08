@@ -100,8 +100,27 @@ const nextConfig = {
         destination: "/gpu/ranking/ai/fp32-flops",
         permanent: true,
       },
-      // Learn pages - keeping at /ml/learn for now
-      // Note: Removed redirects for use-case and models pages because /gpu/learn/ai/* routes don't exist yet
+      // Learn pages migrated to /gpu/learn/ai/*
+      {
+        source: "/ml/learn/faq/:slug",
+        destination: "/gpu/learn/ai/faq/:slug",
+        permanent: true,
+      },
+      {
+        source: "/ml/learn/use-case/:slug",
+        destination: "/gpu/learn/ai/use-case/:slug",
+        permanent: true,
+      },
+      {
+        source: "/ml/learn/models/:slug",
+        destination: "/gpu/learn/ai/models/:slug",
+        permanent: true,
+      },
+      {
+        source: "/ml/learn/quantization",
+        destination: "/gpu/learn/ai/quantization",
+        permanent: true,
+      },
       {
         source: "/ml/learn/gpu/specifications",
         destination: "/gpu/ranking/ai/fp32-flops",
@@ -174,7 +193,7 @@ const nextConfig = {
       // Model slug renames
       {
         source: "/ml/learn/models/dlrm-v2",
-        destination: "/ml/learn/models/dlrm",
+        destination: "/gpu/learn/ai/models/dlrm",
         permanent: true,
       },
 

@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next"
 import "./style/style.scss"
 import { SiteFooter } from "@/pkgs/client/components/SiteFooter"
+import { SiteSidebar } from "@/pkgs/client/components/SiteSidebar"
 import {
   AnalyticsPageView,
   AnalyticsProvider,
@@ -91,16 +92,19 @@ export default function RootLayout({
       <body>
         <AnalyticsProvider>
           <SiteHeader />
-          <main className="p-3 container">
-            <Alert kind="secondary">
-              What do you think? Please{" "}
-              <Link href="/contact" className="alert-link">
-                drop us a line
-              </Link>{" "}
-              and let us know what you like and what can be better. 🙏
-            </Alert>
-            {children}
-          </main>
+          <div className="d-flex">
+            <SiteSidebar />
+            <main className="p-3 container-xl">
+              <Alert kind="secondary">
+                What do you think? Please{" "}
+                <Link href="/contact" className="alert-link">
+                  drop us a line
+                </Link>{" "}
+                and let us know what you like and what can be better. 🙏
+              </Alert>
+              {children}
+            </main>
+          </div>
           <SiteFooter />
         </AnalyticsProvider>
         <AnalyticsPageView />

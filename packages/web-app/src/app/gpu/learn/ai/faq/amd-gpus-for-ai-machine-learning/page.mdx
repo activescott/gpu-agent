@@ -8,7 +8,7 @@ There are two AMD GPU architectures that are relevant to machine learning: RDNA3
 
 ### AMD RDNA3 GPU Architecture GEMM AI Performance
 
-The AMD RDNA 3 GPU microarchitecture was released in November, 2022 [^RDNA-PR] with [Radeon RX 7900 XTX](/ml/learn/gpu/amd-radeon-rx-7900-xtx), and the [Radeon RX 7900 XT](/ml/learn/gpu/amd-radeon-rx-7900-xt). RDNA3 includes the **Wave MMA** (matrix multiply-accumulate) instructions. Wave MMA accelerates the Generalized Matrix Multiplication (GEMM) operations that are critical to machine learning's neural network models (also known as "deep learning" models). Wave MMA was purpose built as an accelerator for machine learning/AI use cases. Wave MMA instructions operate similarly to Nvidia's Tensor Core operations. Wave MMA accelerators matrix operations at precisions FP16, BF16, INT8, and INT4.
+The AMD RDNA 3 GPU microarchitecture was released in November, 2022 [^RDNA-PR] with [Radeon RX 7900 XTX](/gpu/learn/card/amd-radeon-rx-7900-xtx), and the [Radeon RX 7900 XT](/gpu/learn/card/amd-radeon-rx-7900-xt). RDNA3 includes the **Wave MMA** (matrix multiply-accumulate) instructions. Wave MMA accelerates the Generalized Matrix Multiplication (GEMM) operations that are critical to machine learning's neural network models (also known as "deep learning" models). Wave MMA was purpose built as an accelerator for machine learning/AI use cases. Wave MMA instructions operate similarly to Nvidia's Tensor Core operations. Wave MMA accelerators matrix operations at precisions FP16, BF16, INT8, and INT4.
 
 ### AMD CDNA GPU Architecture GEMM AI Performance
 
@@ -22,7 +22,7 @@ In addition to the hardware support for GEMM operations, you must consider the c
 
 ### AMD GPU Support in PyTorch and TensorFlow
 
-With the PyTorch 1.8 release in March 2021, PyTorch provided an installation option for the ROCm platform (more on ROCm in the section below).[^PyTorch-ROCm] As AMD updates ROCm, PyTorch will support more GPUs. For example, in late 2023, AMD updated ROCm and PyTorch to support the [AMD Radeon RX 7900 XT](/ml/learn/gpu/amd-radeon-rx-7900-xt).[^7900XT-PyTorch]
+With the PyTorch 1.8 release in March 2021, PyTorch provided an installation option for the ROCm platform (more on ROCm in the section below).[^PyTorch-ROCm] As AMD updates ROCm, PyTorch will support more GPUs. For example, in late 2023, AMD updated ROCm and PyTorch to support the [AMD Radeon RX 7900 XT](/gpu/learn/card/amd-radeon-rx-7900-xt).[^7900XT-PyTorch]
 
 AMD's ROCm documentation provides [instructions for getting started with AMD GPUs for TensorFlow](https://rocm.docs.amd.com/projects/install-on-linux/en/latest/how-to/3rd-party/tensorflow-install.html), and for [using AMD GPUs with PyTorch](https://rocm.docs.amd.com/projects/install-on-linux/en/latest/how-to/3rd-party/pytorch-install.html).
 

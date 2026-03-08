@@ -111,7 +111,7 @@ export function ModelInfo({ model }: ModelInfoProps): JSX.Element {
           title="Compare GPUs for AI/ML"
           icon="gpu-card"
           callToAction="View GPU Rankings"
-          callToActionLink="/ml/learn/gpu/ranking"
+          callToActionLink="/gpu/ranking/ai/fp32-flops"
         >
           Compare GPUs by price-per-performance metrics for machine learning
           workloads.

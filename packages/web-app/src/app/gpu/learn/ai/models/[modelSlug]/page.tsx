@@ -29,7 +29,7 @@ export async function generateMetadata(props: ModelParams) {
       title: `About the ${model.label} Model (${typeLabel})`,
       description: model.summary.slice(0, META_DESCRIPTION_MAX_LENGTH),
       alternates: {
-        canonical: `https://gpupoet.com/ml/learn/models/${modelSlug}`,
+        canonical: `https://gpupoet.com/gpu/learn/ai/models/${modelSlug}`,
       },
     }
   } catch {

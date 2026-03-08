@@ -11,72 +11,62 @@
       "lastModified": "2025-01-04T22:57:12.000Z"
     },
     {
-      "path": "/ml/learn",
+      "path": "/gpu/learn/ai",
       "title": "What to Look for in a GPU for Machine Learning",
       "lastModified": "2025-01-17T06:24:26.000Z"
     },
     {
-      "path": "/ml/learn/use-case/speech-to-text",
+      "path": "/gpu/learn/ai/use-case/speech-to-text",
       "title": "Speech-to-Text: A Machine Learning Approach",
       "lastModified": "2025-01-04T22:57:12.000Z"
     },
     {
-      "path": "/ml/learn/use-case/recommendation-systems",
+      "path": "/gpu/learn/ai/use-case/recommendation-systems",
       "title": "Deep Learning Recommendation Models (DLRMs) in Machine Learning",
       "lastModified": "2025-01-04T22:57:12.000Z"
     },
     {
-      "path": "/ml/learn/use-case/object-detection",
+      "path": "/gpu/learn/ai/use-case/object-detection",
       "title": "Object Detection: A Machine Learning Technique for Recognizing Objects in Images and Videos",
       "lastModified": "2025-01-04T22:57:12.000Z"
     },
     {
-      "path": "/ml/learn/use-case/medical-image-segmentation",
+      "path": "/gpu/learn/ai/use-case/medical-image-segmentation",
       "title": "Medical Image Segmentation: A Machine Learning Perspective",
       "lastModified": "2025-01-04T22:57:12.000Z"
     },
     {
-      "path": "/ml/learn/use-case/large-language-model-llm",
+      "path": "/gpu/learn/ai/use-case/large-language-model-llm",
       "title": "Large Language Models (LLMs) in Machine Learning",
       "lastModified": "2025-01-04T22:57:12.000Z"
     },
     {
-      "path": "/ml/learn/use-case/language-processing",
+      "path": "/gpu/learn/ai/use-case/language-processing",
       "title": "Language Processing in Machine Learning",
       "lastModified": "2025-01-04T22:57:12.000Z"
     },
     {
-      "path": "/ml/learn/use-case/image-classification",
+      "path": "/gpu/learn/ai/use-case/image-classification",
       "title": "Image Classification: A Machine Learning Technique",
       "lastModified": "2025-01-04T22:57:12.000Z"
     },
     {
-      "path": "/ml/learn/quantization",
+      "path": "/gpu/learn/ai/quantization",
       "title": "Quantization in Machine Learning and Deep Learning",
       "lastModified": "2025-01-04T22:57:12.000Z"
     },
     {
-      "path": "/ml/learn/gpu/specifications",
-      "title": "Demystifying GPU Specifications for Machine Learning & AI Use Cases",
-      "lastModified": "2025-01-04T22:57:12.000Z"
-    },
-    {
-      "path": "/ml/learn/gpu/ranking",
-      "title": "Best GPUs for the Money Rankings",
-      "lastModified": "2025-01-17T06:24:26.000Z"
-    },
-    {
-      "path": "/ml/learn/faq/how-much-gpu-memory-for-llm",
+      "path": "/gpu/learn/ai/faq/how-much-gpu-memory-for-llm",
       "title": "How much memory does my GPU need to run an LLM?",
       "lastModified": "2025-01-04T22:57:12.000Z"
     },
     {
-      "path": "/ml/learn/faq/begginers-ai-for-finance-or-sports",
+      "path": "/gpu/learn/ai/faq/begginers-ai-for-finance-or-sports",
       "title": "Beginners' Guide to AI for Trading and Sports Predictions",
       "lastModified": "2025-01-04T22:57:12.000Z"
     },
     {
-      "path": "/ml/learn/faq/amd-gpus-for-ai-machine-learning",
+      "path": "/gpu/learn/ai/faq/amd-gpus-for-ai-machine-learning",
       "title": "Can I Use AMD GPUs with AI & Machine Learning?",
       "lastModified": "2025-01-04T22:57:12.000Z"
     },

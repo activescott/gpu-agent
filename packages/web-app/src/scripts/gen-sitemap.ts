@@ -53,7 +53,8 @@ const filterOutPagePredicates: FilterOutPagePredicate[] = [
   {
     reason: "not a known static page",
     shouldExclude: (item) =>
-      !item.path.startsWith("/ml/learn") &&
+      !item.path.startsWith("/gpu/learn/ai") &&
+      !item.path.startsWith("/gpu/learn/faq") &&
       !item.path.startsWith("/policy") &&
       !item.path.startsWith("/about"),
   },

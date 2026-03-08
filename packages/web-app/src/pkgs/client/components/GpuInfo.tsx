@@ -129,7 +129,7 @@ export function GpuInfo({
           title={`Real-time ${gpu.label} GPU Prices`}
           icon="gpu-card"
           callToAction="Buy Now"
-          callToActionLink={`/ml/shop/gpu/${gpu.name}`}
+          callToActionLink={`/gpu/shop/${gpu.name}`}
         >
           We&apos;re tracking <em>{activeListingCount}</em> of the {gpu.label}{" "}
           GPUs currently available for sale.{" "}
@@ -155,7 +155,7 @@ export function GpuInfo({
           title={`Compare Price/Performance to other GPUs`}
           icon="shop-window"
           callToAction="Compare GPU Price/Performance"
-          callToActionLink={`/ml/learn/gpu/ranking`}
+          callToActionLink="/gpu/ranking/ai/fp32-flops"
         >
           We track real-time prices of other GPUs too so that you can compare
           the price/performance of the {gpu.label} GPU to other GPUs.

@@ -3,7 +3,7 @@ import { test, expect } from '@playwright/test';
 test.describe('MDX Table Styling', () => {
   test('should add table class to GFM tables in MDX pages', async ({ page }) => {
     // Navigate to a page with a GFM table
-    await page.goto('/ml/learn/use-case/language-processing');
+    await page.goto('/gpu/learn/ai/use-case/language-processing');
     
     // Wait for the page heading to ensure content is loaded
     await expect(page.locator('h1')).toContainText('Language Processing');

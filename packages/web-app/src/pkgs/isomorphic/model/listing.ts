@@ -103,6 +103,8 @@ export const EXCLUDE_REASONS = {
   LOW_FEEDBACK: "low_feedback",
   /** Bulk sale listing with multiple GPUs (e.g., "8x RTX 5090") */
   BULK_SALE: "bulk_sale",
+  /** Incorrectly matched GPU (e.g. listing was for a GTX 980, and was matched as a T4) */
+  MISMATCHED_GPU: "mismatched_gpu",
   /** Other data quality issue */
   OTHER: "other",
 } as const

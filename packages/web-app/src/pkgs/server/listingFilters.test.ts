@@ -118,6 +118,36 @@ it("should filter out box-only items", async () => {
   expect(filtered).toHaveLength(1)
 })
 
+it("should reject listings where GPU name only matches inside a part number", async () => {
+  const gpu = await loadGpuFromYaml("nvidia-t4.yaml")
+
+  const listings: AsyncIterable<Listing> = arrayToAsyncIterable([
+    // INVALID: "T4" only appears inside part number VCGGTX980T4XPB-CG, and "16 g" would match "x16 GPU" without word boundaries
+    {
+      title:
+        "PNY NVIDIA GeForce GTX 980 4GB GDDR5 PCIe x16 GPU P/N: VCGGTX980T4XPB-CG Tested",
+      itemAffiliateWebUrl: "https://example.com",
+      buyingOptions: ["FIXED_PRICE"],
+      sellerFeedbackPercentage: "100",
+    },
+    // VALID: Actual T4 listing
+    {
+      title: "NVIDIA Tesla T4 16GB GDDR6 PCIe GPU Accelerator Card",
+      itemAffiliateWebUrl: "https://example.com",
+      buyingOptions: ["FIXED_PRICE"],
+      sellerFeedbackPercentage: "100",
+    },
+    // HACK cast for test purposes
+  ] as unknown as Listing[])
+
+  const filtered = await chainAsync(listings)
+    .filter(createFilterForGpu(gpu))
+    .collect()
+
+  expect(filtered).toHaveLength(1)
+  expect(filtered[0].title).toContain("Tesla T4 16GB")
+})
+
 describe("sellerFeedbackFilter", () => {
   it("should filter out sellers with <90% feedback", async () => {
     const listings = [

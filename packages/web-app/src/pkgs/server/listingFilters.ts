@@ -48,48 +48,38 @@ export function createFilterForGpu(gpu: Gpu): Predicate {
 }
 
 function createRequireMemoryKeywordFilter(gpu: Gpu) {
-  const requiredKeywords = [
-    `${gpu.memoryCapacityGB}gb`,
-    `${gpu.memoryCapacityGB} gb`,
-    `${gpu.memoryCapacityGB}g`,
-    `${gpu.memoryCapacityGB} g`,
-  ]
-  return createRequireKeywordsPredicate(requiredKeywords, false)
+  // Match memory capacity as a word boundary to avoid false positives like "x16 GPU" matching "16 g"
+  const memoryPattern = new RegExp(`\\b${gpu.memoryCapacityGB}\\s?gb?\\b`, "i")
+  return (item: Listing): boolean => memoryPattern.test(item.title)
 }
 
 function createRequiredLabelFilter(gpu: Gpu) {
-  const nameKeywords = gpu.label.split(" ")
-  const requiredKeywords = [...nameKeywords].map((word) => word.toLowerCase())
-  return createRequireKeywordsPredicate(requiredKeywords)
-}
-
-function createRequireKeywordsPredicate(
-  keywords: string[],
-  requireAllKeywords = true,
-) {
+  // Use word-boundary regex to avoid false positives like "T4" matching inside part numbers (e.g. "VCGGTX980T4XPB-CG")
+  const keywordPatterns = gpu.label
+    .split(" ")
+    .map((word) => new RegExp(`\\b${escapeRegExp(word)}\\b`, "i"))
   return (item: Listing): boolean => {
-    // if it doesn't include some required keywords, it's probably not a card, so don't show it:
-    const includeListing = requireAllKeywords
-      ? keywords.every((requiredKeyword) =>
-          item.title.toLowerCase().includes(requiredKeyword),
-        )
-      : keywords.some((requiredKeyword) =>
-          item.title.toLowerCase().includes(requiredKeyword),
-        )
-
-    if (!includeListing && !isExpectedToBeFilteredOut(item)) {
+    const title = item.title
+    const matches = keywordPatterns.every((pattern) => pattern.test(title))
+    if (!matches && !isExpectedToBeFilteredOut(item)) {
       log.debug(
         "required keywords not in item title: %o. Item title: %s . Item Url: %s",
-        keywords.filter(
-          (requiredKeyword) =>
-            !item.title.toLowerCase().includes(requiredKeyword),
-        ),
+        gpu.label
+          .split(" ")
+          .filter(
+            (word) =>
+              !new RegExp(`\\b${escapeRegExp(word)}\\b`, "i").test(title),
+          ),
         item.title,
         item.itemAffiliateWebUrl,
       )
     }
-    return includeListing
+    return matches
   }
+}
+
+function escapeRegExp(str: string): string {
+  return str.replaceAll(/[$()*+.?[\\\]^{|}]/g, "\\$&")
 }
 
 const nonGpuKeywords = [

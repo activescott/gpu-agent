@@ -339,18 +339,28 @@ const nextConfig = {
 
       // FurMark GL slug rename (furmark-gl- -> furmark-gl-fps-)
       {
-        source: "/gpu/price-compare/gaming/furmark-gl-:resolution",
-        destination: "/gpu/price-compare/gaming/furmark-gl-fps-:resolution",
+        source: "/gpu/price-compare/gaming/furmark-gl-1920x1080",
+        destination: "/gpu/price-compare/gaming/furmark-gl-fps-1920x1080",
         permanent: true,
       },
       {
-        source: "/gpu/learn/benchmark/gaming/furmark-gl-:resolution",
-        destination: "/gpu/learn/benchmark/gaming/furmark-gl-fps-:resolution",
+        source: "/gpu/price-compare/gaming/furmark-gl-2560x1440",
+        destination: "/gpu/price-compare/gaming/furmark-gl-fps-2560x1440",
         permanent: true,
       },
       {
-        source: "/gpu/ranking/gaming/furmark-gl-:resolution",
-        destination: "/gpu/ranking/gaming/furmark-gl-fps-:resolution",
+        source: "/gpu/learn/benchmark/gaming/furmark-gl-3840x2160",
+        destination: "/gpu/learn/benchmark/gaming/furmark-gl-fps-3840x2160",
+        permanent: true,
+      },
+      {
+        source: "/gpu/learn/benchmark/gaming/furmark-gl-1920x1080",
+        destination: "/gpu/learn/benchmark/gaming/furmark-gl-fps-1920x1080",
+        permanent: true,
+      },
+      {
+        source: "/gpu/ranking/gaming/furmark-gl-3840x2160",
+        destination: "/gpu/ranking/gaming/furmark-gl-fps-3840x2160",
         permanent: true,
       },
     ]

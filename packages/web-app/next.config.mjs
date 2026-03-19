@@ -336,6 +336,23 @@ const nextConfig = {
         destination: "/gpu/learn/benchmark/gaming/quake-ii-rtx-fps-3840x2160",
         permanent: true,
       },
+
+      // FurMark GL slug rename (furmark-gl- -> furmark-gl-fps-)
+      {
+        source: "/gpu/price-compare/gaming/furmark-gl-:resolution",
+        destination: "/gpu/price-compare/gaming/furmark-gl-fps-:resolution",
+        permanent: true,
+      },
+      {
+        source: "/gpu/learn/benchmark/gaming/furmark-gl-:resolution",
+        destination: "/gpu/learn/benchmark/gaming/furmark-gl-fps-:resolution",
+        permanent: true,
+      },
+      {
+        source: "/gpu/ranking/gaming/furmark-gl-:resolution",
+        destination: "/gpu/ranking/gaming/furmark-gl-fps-:resolution",
+        permanent: true,
+      },
     ]
   },
 

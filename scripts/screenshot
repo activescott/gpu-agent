@@ -6,8 +6,8 @@
 # Usage:
 #   ./scripts/screenshot <url> [output-dir]
 #   ./scripts/screenshot http://localhost:3000/gpu/market-report/gpu-market-report-february-2026
-#   ./scripts/screenshot http://localhost:3000/gpu/market-report/gpu-market-report-february-2026 /tmp/report-shots
-#   ./scripts/screenshot https://gpupoet.com/gpu/price-compare /tmp/price-shots
+#   ./scripts/screenshot http://localhost:3000/gpu/market-report/gpu-market-report-february-2026 .screenshots/report
+#   ./scripts/screenshot https://gpupoet.com/gpu/price-compare .screenshots/prices
 #
 # Output:
 #   Short pages:  <output-dir>/screenshot.png
@@ -26,7 +26,7 @@ if [ -z "$1" ]; then
     echo ""
     echo "Examples:"
     echo "  $0 http://localhost:3000/gpu/market-report/gpu-market-report-february-2026"
-    echo "  $0 http://localhost:3000/some/page /tmp/my-shots"
+    echo "  $0 http://localhost:3000/some/page .screenshots/my-shots"
     echo ""
     echo "Environment variables:"
     echo "  WIDTH=1280      Viewport width"
@@ -36,7 +36,7 @@ if [ -z "$1" ]; then
 fi
 
 url="$1"
-output_dir="${2:-/tmp/screenshots}"
+output_dir="${2:-.screenshots}"
 width="${WIDTH:-1280}"
 height="${HEIGHT:-900}"
 selector="${SELECTOR:-}"

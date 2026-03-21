@@ -458,7 +458,7 @@ function prismaFieldToDbColumn(fieldName: GpuMetricKey): string {
 }
 
 /**
- * DEPRECATED: Use topNListingsByCostPerformanceBySlug instead.
+ * DEPRECATED: Use listingsByCostPerformanceBySlug instead.
  *
  * This function queries GPU table fields directly, which requires hardcoded
  * field mappings. The new function uses GpuMetricValue table instead.
@@ -572,13 +572,18 @@ export async function topNListingsByCostPerformance(
  * @param prisma - Prisma client
  * @returns Listings ordered by cost/performance (lowest $/metric first)
  */
-export async function topNListingsByCostPerformanceBySlug(
+export async function listingsByCostPerformanceBySlug(
   metricSlug: string,
-  n: number,
+  limit?: number,
   prisma: PrismaClientWithinTransaction = prismaSingleton,
 ): Promise<ListingWithMetric[]> {
-  // Query listings joined with GpuMetricValue to get cost/performance ordering
-  // We join through gpu to get all GPU fields needed for the Listing.gpu object
+  // Query listings for this metric, sorted by cost/performance ratio.
+  // When no limit is specified, all listings are returned so client-side
+  // filters work correctly — a top-N cutoff would exclude high-memory or
+  // expensive GPUs that don't rank well on cost/performance but are still
+  // relevant when filtered.
+  const limitClause =
+    limit === undefined ? Prisma.empty : Prisma.sql`LIMIT ${limit}`
   const result = await prisma.$queryRaw<
     (Prisma.$ListingPayload["scalars"] &
       Prisma.$gpuPayload["scalars"] & { metricValue: number })[]
@@ -595,7 +600,7 @@ export async function topNListingsByCostPerformanceBySlug(
       AND mv."metricSlug" = ${metricSlug}
       AND mv."value" > 0
     ORDER BY (l."priceValue"::float / mv."value"::float)
-    LIMIT ${n}
+    ${limitClause}
   `)
 
   return result.map((row): ListingWithMetric => {

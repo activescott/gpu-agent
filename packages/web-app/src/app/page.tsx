@@ -9,7 +9,7 @@ import {
 import { Carousel } from "@/pkgs/client/components/Carousel"
 import {
   topNListingsByCostPerformance,
-  topNListingsByCostPerformanceBySlug,
+  listingsByCostPerformanceBySlug,
 } from "@/pkgs/server/db/ListingRepository"
 import {
   ListingCardSmall,
@@ -71,7 +71,7 @@ export default async function Page() {
 
   const gamingListingsPromises = gamingMetrics.map(
     async (metric): Promise<GamingCarouselData> => {
-      const listings = await topNListingsByCostPerformanceBySlug(
+      const listings = await listingsByCostPerformanceBySlug(
         metric.slug,
         TOP_N_LISTINGS,
       )

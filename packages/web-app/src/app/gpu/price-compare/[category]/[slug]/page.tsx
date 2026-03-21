@@ -1,5 +1,5 @@
 import { Suspense } from "react"
-import { topNListingsByCostPerformanceBySlug } from "@/pkgs/server/db/ListingRepository"
+import { listingsByCostPerformanceBySlug } from "@/pkgs/server/db/ListingRepository"
 import {
   getAllMetricDefinitions,
   getMetricDefinitionBySlug,
@@ -69,11 +69,13 @@ export default async function Page(props: CostPerMetricParams) {
     // We allow it but could redirect if needed
   }
 
-  // Fetch listings and gaming benchmark values in parallel
-  const TOP_N = 100
+  // Fetch all listings for this metric (sorted by cost/performance) and gaming
+  // benchmark values in parallel. We fetch all rather than a top-N subset so
+  // that client-side filters (e.g. memory >= 24 GB) can surface GPUs that would
+  // otherwise be excluded by a cost/performance cutoff.
   const [topListings, allMetricDefinitions, gamingBenchmarkValues] =
     await Promise.all([
-      topNListingsByCostPerformanceBySlug(slug, TOP_N),
+      listingsByCostPerformanceBySlug(slug),
       getAllMetricDefinitions(),
       getAllMetricValuesForCategory("gaming"),
     ])

@@ -72,13 +72,11 @@ export async function POST() {
   try {
     amazonResult = await revalidateAmazonListings()
 
-    if (amazonResult.gpuName) {
-      recordAmazonSearch(
-        amazonResult.gpuName,
-        amazonResult.success,
-        amazonResult.listingCachedCount,
-      )
-    }
+    recordAmazonSearch(
+      amazonResult.gpuName ?? "unknown",
+      amazonResult.success,
+      amazonResult.listingCachedCount,
+    )
   } catch (error) {
     const errorMessage = error instanceof Error ? error.message : String(error)
     log.warn(

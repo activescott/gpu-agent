@@ -200,14 +200,15 @@ export interface AmazonListingStats {
  */
 export async function revalidateAmazonListings(): Promise<AmazonListingStats> {
   const start = Date.now()
+  let gpuName: string | null = null
 
   try {
-    const staleGpu = await findMostStaleGpuForSource(
+    gpuName = await findMostStaleGpuForSource(
       "amazon",
       CACHED_LISTINGS_DURATION_MS,
     )
 
-    if (!staleGpu) {
+    if (!gpuName) {
       log.info("No stale Amazon GPUs found, skipping Amazon revalidation")
       return {
         gpuName: null,
@@ -217,12 +218,12 @@ export async function revalidateAmazonListings(): Promise<AmazonListingStats> {
       }
     }
 
-    log.info(`Revalidating Amazon listings for ${staleGpu}`)
+    log.info(`Revalidating Amazon listings for ${gpuName}`)
 
     const listings = await withRetry(
       () =>
         withTransaction(
-          async (prisma) => cacheAmazonListingsForGpu(staleGpu, prisma),
+          async (prisma) => cacheAmazonListingsForGpu(gpuName!, prisma),
           {
             // eslint-disable-next-line no-magic-numbers
             timeout: secondsToMilliseconds(120),
@@ -237,11 +238,11 @@ export async function revalidateAmazonListings(): Promise<AmazonListingStats> {
     const listingCount = listings.length
     const duration = Date.now() - start
     log.info(
-      `Amazon revalidation completed: ${listingCount} listings for ${staleGpu} in ${duration}ms`,
+      `Amazon revalidation completed: ${listingCount} listings for ${gpuName} in ${duration}ms`,
     )
 
     return {
-      gpuName: staleGpu,
+      gpuName,
       listingCachedCount: listingCount,
       totalDuration: duration,
       success: true,
@@ -251,10 +252,10 @@ export async function revalidateAmazonListings(): Promise<AmazonListingStats> {
     const duration = Date.now() - start
     log.error(
       { err: error },
-      `Amazon revalidation failed after ${duration}ms: ${errorMessage}`,
+      `Amazon revalidation failed for ${gpuName ?? "unknown"} after ${duration}ms: ${errorMessage}`,
     )
     return {
-      gpuName: null,
+      gpuName,
       listingCachedCount: 0,
       totalDuration: duration,
       success: false,

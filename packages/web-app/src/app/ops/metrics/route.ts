@@ -1,5 +1,6 @@
 import { getPrometheusMetrics } from "@/pkgs/server/metrics/metricsStore"
 import { getEbayMetricsRegistry } from "@/pkgs/server/metrics/ebayMetrics"
+import { getAmazonMetricsRegistry } from "@/pkgs/server/metrics/amazonMetrics"
 
 // keep revalidate=0 to ensure fresh metrics on each request
 // eslint-disable-next-line import/no-unused-modules -- Next.js route convention
@@ -20,11 +21,13 @@ export const revalidate = 0
 export async function GET() {
   const jobRegistry = getPrometheusMetrics()
   const ebayRegistry = getEbayMetricsRegistry()
-  const [jobMetrics, ebayMetrics] = await Promise.all([
+  const amazonRegistry = getAmazonMetricsRegistry()
+  const [jobMetrics, ebayMetrics, amazonMetrics] = await Promise.all([
     jobRegistry.metrics(),
     ebayRegistry.metrics(),
+    amazonRegistry.metrics(),
   ])
-  const textResponse = jobMetrics + "\n" + ebayMetrics
+  const textResponse = jobMetrics + "\n" + ebayMetrics + "\n" + amazonMetrics
 
   const MAX_CACHE_AGE_SECONDS = 60
   return new Response(textResponse, {

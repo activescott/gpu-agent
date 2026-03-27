@@ -8,5 +8,22 @@ export {
   GpuMetricKeys,
   GpuMetricsDescription,
 } from "./metrics"
-export { convertEbayItemToListing, EXCLUDE_REASONS } from "./listing"
-export type { Listing, ListingWithMetric, ExcludeReason } from "./listing"
+export {
+  convertEbayItemToListing,
+  convertAmazonResultToListing,
+  EXCLUDE_REASONS,
+  // eslint-disable-next-line import/no-unused-modules -- used by amazon.ts server-side at runtime
+  AmazonSearchResultSchema,
+  // eslint-disable-next-line import/no-unused-modules -- used by amazon.ts server-side at runtime
+  AmazonSearchResponseSchema,
+} from "./listing"
+export type {
+  Listing,
+  ListingWithMetric,
+  ListingSource,
+  ExcludeReason,
+  // eslint-disable-next-line import/no-unused-modules -- used by amazon.ts server-side at runtime
+  AmazonSearchResult,
+  // eslint-disable-next-line import/no-unused-modules -- used by amazon.ts server-side at runtime
+  AmazonSearchResponse,
+} from "./listing"

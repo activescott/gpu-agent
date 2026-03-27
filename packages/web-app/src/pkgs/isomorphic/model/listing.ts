@@ -1,5 +1,8 @@
 import { ItemSummary } from "@activescott/ebay-client"
+import { z } from "zod"
 import { Gpu } from "./gpu"
+
+export type ListingSource = "ebay" | "amazon"
 
 export interface Listing {
   itemId: string
@@ -29,6 +32,7 @@ export interface Listing {
   // string | null because prisma :/
   itemGroupType?: string | "SELLER_DEFINED_VARIATIONS" | null
   excludeReason?: string | null
+  source?: ListingSource
 }
 
 /**
@@ -111,3 +115,56 @@ export const EXCLUDE_REASONS = {
 
 export type ExcludeReason =
   (typeof EXCLUDE_REASONS)[keyof typeof EXCLUDE_REASONS]
+
+export const AmazonSearchResultSchema = z.object({
+  asin: z.string(),
+  title: z.string(),
+  price: z.number().nullable(),
+  mainImageUrl: z.string().nullable(),
+  condition: z.string().nullable(),
+  brand: z.string().nullable(),
+  reviewRating: z.number().nullable(),
+  reviewCount: z.number().nullable(),
+  isBulkDeal: z.boolean(),
+  productUrl: z.string(),
+  affiliateUrl: z.string(),
+})
+
+export type AmazonSearchResult = z.infer<typeof AmazonSearchResultSchema>
+
+export const AmazonSearchResponseSchema = z.object({
+  results: z.array(AmazonSearchResultSchema),
+})
+
+export type AmazonSearchResponse = z.infer<typeof AmazonSearchResponseSchema>
+
+export function convertAmazonResultToListing(
+  result: AmazonSearchResult,
+  gpu: Gpu,
+): Listing {
+  return {
+    itemId: result.asin,
+    title: result.title,
+    priceValue: result.price === null ? "0" : String(result.price),
+    priceCurrency: "USD",
+    buyingOptions: ["FIXED_PRICE"],
+    imageUrl: result.mainImageUrl ?? "",
+    adultOnly: false,
+    itemHref: result.productUrl,
+    leafCategoryIds: [],
+    listingMarketplaceId: "AMAZON_US",
+    sellerUsername: "Amazon",
+    sellerFeedbackPercentage: "100",
+    sellerFeedbackScore: 1000,
+    condition: result.condition ?? "New",
+    conditionId: null,
+    itemAffiliateWebUrl: result.affiliateUrl,
+    thumbnailImageUrl: result.mainImageUrl ?? "",
+    epid: "",
+    itemCreationDate: null,
+    gpu,
+    itemLocationCountry: "US",
+    itemGroupType: null,
+    source: "amazon",
+  }
+}

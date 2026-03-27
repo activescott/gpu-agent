@@ -3,15 +3,21 @@ kind: CronJob
 metadata:
   name: cache-revalidation
 spec:
-  # We get 5,000 API calls per day in eBay's call limits per
-  # https://developer.ebay.com/develop/get-started/api-call-limits. 
-  # In some extreme circumstances I've seen it use ~1,000 API calls per run (5 runs per day). 
-  # However, under normal circumstances it seems to use ~230 calls.
-  # So 6 runs (every 4 hrs) should be plenty conservative.
-  schedule: "0 */4 * * *"
+  # Run every 10 minutes to support both eBay and Amazon listing revalidation.
+  #
+  # eBay: Refreshes all stale GPUs (6-hour TTL via CACHED_LISTINGS_DURATION_MS).
+  #   More frequent runs are safe — eBay staleness checks prevent unnecessary API calls.
+  #   eBay API budget: 5,000 calls/day. Normal usage: ~230 calls per stale run.
+  #
+  # Amazon: Refreshes only 1 GPU per run (anti-bot measure).
+  #   With ~75 GPUs, takes ~12.5 hours to cycle through all at 10-min intervals.
+  #   The amazon-searcher service handles the actual scraping via Playwright/Firefox.
+  schedule: "*/10 * * * *"
   concurrencyPolicy: Forbid
   jobTemplate:
     spec:
+      # 9-minute deadline prevents overlapping with the next 10-minute cron run
+      activeDeadlineSeconds: 540
       template:
         spec:
           restartPolicy: OnFailure

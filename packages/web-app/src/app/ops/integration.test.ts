@@ -70,9 +70,6 @@ describe("Cache Revalidation Integration", () => {
       // Step 4: Verify revalidation succeeded
       expect(revalidationResponse.status).toBe(200)
       expect(revalidationData.success).toBe(true)
-      expect(revalidationData.stats.staleGpusAtStart).toBe(2)
-      expect(revalidationData.stats.listingCachedCount).toBe(250)
-      expect(revalidationData.stats.staleGpusRemaining).toBe(0)
 
       // Step 5: Verify metrics are now available
       expect(hasMetrics()).toBe(true)

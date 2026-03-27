@@ -42,6 +42,10 @@ export const SERVER_CONFIG = {
   ADMIN_PASSWORD: (): string =>
     returnOrThrow("ADMIN_PASSWORD", process.env.ADMIN_PASSWORD),
   MAX_LISTINGS_TO_CACHE_PER_GPU: (): number => 100,
+  AMAZON_SEARCHER_URL: (): string =>
+    process.env.AMAZON_SEARCHER_URL || "http://amazon-searcher:3001",
+  AMAZON_AFFILIATE_TAG: (): string | undefined =>
+    process.env.AMAZON_AFFILIATE_TAG,
 }
 
 const returnOrThrow = (key: string, value: string | undefined): string => {

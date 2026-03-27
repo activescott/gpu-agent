@@ -51,7 +51,16 @@ patches:
     target:
       kind: PersistentVolumeClaim
       name: indexnow-pvc
-
+  # Enable pretty logging for amazon-searcher in dev
+  - patch: |-
+      - op: add
+        path: /spec/template/spec/containers/0/env/-
+        value:
+          name: LOG_PRETTY
+          value: "true"
+    target:
+      kind: Deployment
+      name: amazon-searcher
 secretGenerator:
   - name: app-creds
     envs:
@@ -67,3 +76,6 @@ images:
   - name: gpupoet-image-db
     newName: postgres
     newTag: "15-alpine"
+  - name: amazon-searcher-image-placeholder
+    newName: ghcr.io/activescott/amazon-searcher
+    newTag: latest

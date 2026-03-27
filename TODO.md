@@ -14,6 +14,8 @@
   - NewEgg: They don't have an API, so like amazon will require scraping.
   - Walmart: They don't have an API, so like amazon will require scraping.
 
+- [ ] post next monthly report to https://www.reddit.com/r/LocalLLM/
+
 - [ ] Upgrade prisma according to https://www.prisma.io/docs/orm/more/upgrade-guides/upgrading-versions/upgrading-to-prisma-7
 
 - [ ] Why do we use https://skaffold.dev/docs/port-forwarding/ port forwarding? We have an ingress configured, shouldn't we disable it?

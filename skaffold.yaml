@@ -42,7 +42,6 @@ build:
             dest: /app/
           - src: "data/news-data/**/*"
             dest: /app/
-
 manifests:
   kustomize:
     paths:
@@ -71,3 +70,8 @@ portForward:
     localPort: 3000
     # make the port forward available from other hosts and not from the local host only:
     address: 0.0.0.0
+  - resourceType: service
+    resourceName: amazon-searcher
+    namespace: gpupoet-dev
+    port: 3001
+    localPort: 3001

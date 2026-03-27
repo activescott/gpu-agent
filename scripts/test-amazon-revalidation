@@ -1,0 +1,79 @@
+#!/usr/bin/env bash
+this_dir=$(cd $(dirname "$0"); pwd)
+this_script=$(basename $0)
+
+set -euo pipefail
+
+host="${1:-localhost:3000}"
+password="${2:-admin}"
+
+help () {
+  cat << END_DOC
+USAGE: $this_script [HOST] [ADMIN_PASSWORD]
+
+Triggers the cache revalidation endpoint which runs the full Amazon search flow
+end-to-end: web app → amazon-searcher → Oxylabs proxy → Amazon → parse → DB.
+
+This is the same flow that runs in production via the CronJob.
+
+Arguments:
+  HOST             Target host (default: localhost:3000)
+  ADMIN_PASSWORD   Admin password for /ops endpoint (default: admin)
+
+Examples:
+  $this_script                           # Local dev (default password)
+  $this_script localhost:3000 admin      # Explicit
+  $this_script gpupoet.com secretpass    # Production
+
+After running, check:
+  - App logs for "Searching Amazon for <gpu>" and "Fetched N results"
+  - Metrics at http://\$HOST/ops/metrics (search for coinpoet_amazon_)
+
+END_DOC
+}
+
+case "${1:-}" in
+    -h|--help)
+        help
+        exit 0
+        ;;
+esac
+
+echo "=== Amazon Revalidation Test ==="
+echo "Host: $host"
+echo ""
+
+echo "--- Triggering cache revalidation ---"
+echo "(this runs eBay + Amazon revalidation — Amazon portion takes 15-30s)"
+echo ""
+
+response=$(curl -s -w "\n%{http_code}" -X POST "http://$host/ops/revalidate-cache" \
+  -H "Authorization: Bearer $password" 2>&1)
+
+http_code=$(echo "$response" | tail -1)
+body=$(echo "$response" | sed '$d')
+
+if [ "$http_code" = "200" ]; then
+  echo "OK (200)"
+  echo "$body" | jq . 2>/dev/null || echo "$body"
+else
+  echo "FAILED (HTTP $http_code)"
+  echo "$body"
+  exit 1
+fi
+
+echo ""
+echo "--- Checking Amazon Metrics ---"
+metrics=$(curl -s "http://$host/ops/metrics" 2>/dev/null)
+
+echo "Amazon searches (success):"
+echo "$metrics" | grep 'coinpoet_amazon_searches_total.*status="success"' || echo "  (none yet)"
+
+echo "Amazon searches (error):"
+echo "$metrics" | grep 'coinpoet_amazon_searches_total.*status="error"' || echo "  (none)"
+
+echo "Amazon listings cached:"
+echo "$metrics" | grep 'coinpoet_amazon_listings_cached' || echo "  (none yet)"
+
+echo "Last success timestamp:"
+echo "$metrics" | grep 'coinpoet_amazon_last_success_timestamp' || echo "  (none yet)"

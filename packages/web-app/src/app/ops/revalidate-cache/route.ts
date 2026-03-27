@@ -2,8 +2,13 @@ import {
   minutesToSeconds,
   secondsToMilliseconds,
 } from "@/pkgs/isomorphic/duration"
-import { revalidateCachedListings } from "@/pkgs/server/listings"
+import {
+  revalidateCachedListings,
+  revalidateAmazonListings,
+} from "@/pkgs/server/listings"
+import type { AmazonListingStats } from "@/pkgs/server/listings"
 import { updateMetrics } from "@/pkgs/server/metrics/metricsStore"
+import { recordAmazonSearch } from "@/pkgs/server/metrics/amazonMetrics"
 import { createLogger } from "@/lib/logger"
 
 const log = createLogger("ops:revalidate-cache")
@@ -12,9 +17,12 @@ const log = createLogger("ops:revalidate-cache")
 const DEFAULT_TIMEOUT_SECONDS = minutesToSeconds(25) // 25 minutes - leave buffer for cron job
 
 /**
- * Cache revalidation endpoint called by Kubernetes CronJob every 30 minutes.
- * This endpoint triggers the revalidation of stale GPU listing caches and updates
- * metrics for Prometheus monitoring.
+ * Cache revalidation endpoint called by Kubernetes CronJob every 10 minutes.
+ * This endpoint triggers the revalidation of stale GPU listing caches from
+ * both eBay and Amazon, and updates metrics for Prometheus monitoring.
+ *
+ * eBay: Refreshes all stale GPUs within the time budget.
+ * Amazon: Refreshes only the single most-stale GPU per run (anti-bot measure).
  *
  * Note: This endpoint is blocked from external access via ingress configuration.
  * Only internal Kubernetes services can call this endpoint.
@@ -23,6 +31,10 @@ export async function POST() {
   const start = Date.now()
   log.info("starting cache revalidation job")
 
+  let ebaySuccess = true
+  let ebayError: string | undefined
+
+  // eBay revalidation
   try {
     const result = await revalidateCachedListings(
       secondsToMilliseconds(DEFAULT_TIMEOUT_SECONDS),
@@ -30,22 +42,12 @@ export async function POST() {
 
     updateMetrics(result, true)
 
-    const duration = Date.now() - start
-    log.info(`cache revalidation completed successfully in ${duration}ms`)
-
-    return Response.json({
-      success: true,
-      duration,
-      stats: {
-        staleGpusAtStart: result.staleGpusAtStart.length,
-        listingCachedCount: result.listingCachedCount,
-        staleGpusRemaining: result.staleGpusRemaining,
-        totalDuration: result.totalDuration,
-      },
-    })
+    log.info(
+      `eBay cache revalidation completed: ${result.listingCachedCount} listings cached`,
+    )
   } catch (error) {
-    const duration = Date.now() - start
-    const errorMessage = error instanceof Error ? error.message : String(error)
+    ebaySuccess = false
+    ebayError = error instanceof Error ? error.message : String(error)
 
     updateMetrics(
       {
@@ -53,27 +55,56 @@ export async function POST() {
         listingCachedCount: 0,
         oldestCachedAtStart: null,
         oldestCachedAtRemaining: null,
-        totalDuration: duration,
+        totalDuration: Date.now() - start,
         timeoutMs: secondsToMilliseconds(DEFAULT_TIMEOUT_SECONDS),
         staleGpusRemaining: 0,
         maxTimeToCacheOneGpu: 0,
       },
       false,
-      errorMessage,
+      ebayError,
     )
 
-    log.error(
+    log.error({ err: error }, `eBay cache revalidation failed: ${ebayError}`)
+  }
+
+  // Amazon revalidation (non-fatal — eBay results are unaffected)
+  let amazonResult: AmazonListingStats | null = null
+  try {
+    amazonResult = await revalidateAmazonListings()
+
+    if (amazonResult.gpuName) {
+      recordAmazonSearch(
+        amazonResult.gpuName,
+        amazonResult.success,
+        amazonResult.listingCachedCount,
+      )
+    }
+  } catch (error) {
+    const errorMessage = error instanceof Error ? error.message : String(error)
+    log.warn(
       { err: error },
-      `cache revalidation failed after ${duration}ms: ${errorMessage}`,
+      `Amazon revalidation failed (non-fatal): ${errorMessage}`,
     )
+    recordAmazonSearch("unknown", false)
+  }
 
+  const duration = Date.now() - start
+
+  if (!ebaySuccess) {
     return Response.json(
       {
         success: false,
-        error: errorMessage,
+        error: ebayError,
         duration,
+        amazon: amazonResult,
       },
       { status: 500 },
     )
   }
+
+  return Response.json({
+    success: true,
+    duration,
+    amazon: amazonResult,
+  })
 }

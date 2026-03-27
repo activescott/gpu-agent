@@ -173,6 +173,15 @@ git commit -m "chore: update sitemap"
 
 The sitemap is automatically updated by GitHub Actions when relevant files change.
 
+## Amazon Searcher Testing
+
+The amazon-searcher microservice runs in minikube alongside the main app. Code lives in `packages/amazon-searcher/`. Oxylabs proxy credentials go in `k8s/overlays/dev/.env.dev.app` (see `.env.dev.app.example`).
+
+- **Test a search**: `./scripts/test-amazon-searcher` (random GPU) or `./scripts/test-amazon-searcher "AMD Radeon RX 9070 XT"`
+- **Test full revalidation flow**: `./scripts/test-amazon-revalidation`
+- **Debug 0-result searches**: `./scripts/amazon-debug-trace` pulls the Playwright trace from the pod. Traces are auto-saved when a search returns 0 results (dev mode only).
+- **Iterative debugging**: Use `/test-amazon-searcher` skill for the full test-diagnose-fix workflow when searches fail or Amazon changes their HTML.
+
 ## Verifying Infrastructure Changes
 
 When modifying Docker or Kubernetes files (Dockerfiles, entrypoint scripts, k8s manifests, skaffold.yaml), always verify by:

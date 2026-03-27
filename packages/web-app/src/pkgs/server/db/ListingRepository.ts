@@ -27,6 +27,7 @@
 import {
   Listing,
   ListingWithMetric,
+  ListingSource,
   Gpu,
   parseGpu,
 } from "@/pkgs/isomorphic/model"
@@ -55,6 +56,7 @@ function parsePrismaListingWithGpu(
 ): CachedListing {
   return {
     ...listing,
+    source: listing.source === "amazon" ? "amazon" : "ebay",
     gpu: parseGpu(listing.gpu),
   } satisfies CachedListing
 }
@@ -85,6 +87,7 @@ function hashKeyFields(listing: {
 async function findNonArchivedByItemId(
   itemId: string,
   prisma: PrismaClientWithinTransaction,
+  source: ListingSource = "ebay",
 ): Promise<{
   id: string
   version: number
@@ -96,6 +99,7 @@ async function findNonArchivedByItemId(
   return await prisma.listing.findFirst({
     where: {
       itemId,
+      source,
       archived: false,
     },
     select: {
@@ -132,8 +136,9 @@ async function didListingDataChange(
     condition?: string | null
   },
   prisma: PrismaClientWithinTransaction,
+  source: ListingSource = "ebay",
 ): Promise<DataChangeCheckResult> {
-  const current = await findNonArchivedByItemId(itemId, prisma)
+  const current = await findNonArchivedByItemId(itemId, prisma, source)
   if (!current) {
     return { didChange: false }
   }
@@ -156,6 +161,7 @@ export async function listActiveListingsForGpus(
       gpuName: { in: gpuNames },
       archived: false,
       exclude: false,
+      source: "ebay",
     },
     include: {
       gpu: true,
@@ -190,6 +196,7 @@ export async function listActiveListingsGroupedByGpu(
         where: {
           archived: false,
           exclude: false,
+          source: "ebay",
         },
       },
     },
@@ -219,6 +226,7 @@ export async function listActiveListings(
   const where: Prisma.ListingWhereInput = {
     archived: false,
     exclude: false,
+    source: "ebay",
     ...(includeTestGpus ? {} : { gpuName: { not: "test-gpu" } }),
   }
   const listings = await prisma.listing.findMany({
@@ -243,6 +251,7 @@ export async function getLatestListingDate(
     where: {
       archived: false,
       exclude: false,
+      source: "ebay",
     },
     orderBy: { itemCreationDate: "desc" },
     select: { itemCreationDate: true },
@@ -264,11 +273,12 @@ export async function addOrRefreshListingsForGpu(
   freshListingsFromEbay: Listing[],
   gpuName: string,
   prisma: PrismaClientWithinTransaction,
+  source: ListingSource = "ebay",
 ): Promise<void> {
-  log.info(`Processing listings for ${gpuName}...`)
+  log.info(`Processing ${source} listings for ${gpuName}...`)
   if (freshListingsFromEbay.length === 0) {
     log.warn(
-      `No listings from ebay to add or refresh for gpu ${gpuName}. Aborting attempt to cache new listings.`,
+      `No listings from ${source} to add or refresh for gpu ${gpuName}. Aborting attempt to cache new listings.`,
     )
     return
   }
@@ -282,8 +292,9 @@ export async function addOrRefreshListingsForGpu(
   for (const freshListing of freshListingsFromEbay) {
     const listingData = {
       // NOTE: prisma doesn't like the hydrated gpu field in the listing, so we omit it
-      ...omit(freshListing, "gpu"),
+      ...omit(freshListing, "gpu", "source"),
       gpuName,
+      source,
       cachedAt,
     }
 
@@ -296,6 +307,7 @@ export async function addOrRefreshListingsForGpu(
         condition: freshListing.condition,
       },
       prisma,
+      source,
     )
 
     if (changeCheck.didChange && changeCheck.existingListing) {
@@ -368,12 +380,14 @@ export async function addOrRefreshListingsForGpu(
 export async function archiveStaleListingsForGpu(
   gpuName: string,
   prisma: PrismaClientWithinTransaction = prismaSingleton,
+  source: ListingSource = "ebay",
 ): Promise<void> {
-  log.info(`Archiving stale listings for ${gpuName}`)
+  log.info(`Archiving stale ${source} listings for ${gpuName}`)
   const archivedAt = new Date()
   const resp = await prisma.listing.updateMany({
     where: {
       gpuName,
+      source,
       archived: false,
       cachedAt: { lt: new Date(Date.now() - CACHED_LISTINGS_DURATION_MS) },
     },
@@ -409,7 +423,7 @@ export async function getPriceStats(
       (SELECT AVG(price) FROM (
         SELECT "priceValue"::float as price
         FROM "Listing"
-        WHERE "gpuName" = ${gpuName} AND "archived" = false AND "exclude" = false
+        WHERE "gpuName" = ${gpuName} AND "archived" = false AND "exclude" = false AND "source" = 'ebay'
         ORDER BY "priceValue"::float ASC
         LIMIT 3
       ) lowest_three) as "minPrice",
@@ -421,6 +435,7 @@ export async function getPriceStats(
     "gpuName" = ${gpuName}
     AND "archived" = false
     AND "exclude" = false
+    AND "source" = 'ebay'
   ;`) as GpuPriceStats[]
 
   if (result.length === 0) {
@@ -437,7 +452,12 @@ export async function getPriceStats(
 
   // Get a representative image from the most recent active listing
   const listingWithImage = await prisma.listing.findFirst({
-    where: { gpuName: gpuName, archived: false, exclude: false },
+    where: {
+      gpuName: gpuName,
+      archived: false,
+      exclude: false,
+      source: "ebay",
+    },
     select: { thumbnailImageUrl: true },
     orderBy: { itemCreationDate: "desc" },
   })
@@ -483,6 +503,7 @@ export async function topNListingsByCostPerformance(
     INNER JOIN "gpu" ON "Listing"."gpuName" = "gpu"."name"
     WHERE "Listing"."archived" = false
       AND "Listing"."exclude" = false
+      AND "Listing"."source" = 'ebay'
       AND ${specFieldName} IS NOT NULL
       AND ${specFieldName} > 0
       AND "gpu"."memoryCapacityGB" >= ${minMemoryGB}
@@ -597,6 +618,7 @@ export async function listingsByCostPerformanceBySlug(
     INNER JOIN "GpuMetricValue" mv ON g."name" = mv."gpuName"
     WHERE l."archived" = false
       AND l."exclude" = false
+      AND l."source" = 'ebay'
       AND mv."metricSlug" = ${metricSlug}
       AND mv."value" > 0
     ORDER BY (l."priceValue"::float / mv."value"::float)
@@ -733,6 +755,7 @@ export async function getHistoricalPriceData(
         "gpuName" = ${gpuName}
         AND "cachedAt" >= ${startDate}
         AND "exclude" = false
+        AND "source" = 'ebay'
       GROUP BY DATE_TRUNC('day', "cachedAt")
     ) d
     LEFT JOIN LATERAL (
@@ -743,6 +766,7 @@ export async function getHistoricalPriceData(
         WHERE "gpuName" = ${gpuName}
           AND DATE_TRUNC('day', "cachedAt") = d."date"
           AND "exclude" = false
+          AND "source" = 'ebay'
         ORDER BY "priceValue"::float ASC
         LIMIT 3
       ) sub
@@ -782,6 +806,7 @@ export async function getMonthlyAverages(
       AND "cachedAt" >= ${startDate}
       AND "cachedAt" <= ${endDate}
       AND "exclude" = false
+      AND "source" = 'ebay'
     GROUP BY "gpuName"
   `
 
@@ -802,6 +827,7 @@ export async function getMonthlyAverages(
       AND "cachedAt" >= ${startDate}
       AND "cachedAt" <= ${endDate}
       AND "exclude" = false
+      AND "source" = 'ebay'
     GROUP BY "gpuName"
   `
 
@@ -839,6 +865,7 @@ export async function getAvailabilityTrends(
       AND "cachedAt" >= ${startDate}
       AND "itemCreationDate" IS NOT NULL
       AND "exclude" = false
+      AND "source" = 'ebay'
     GROUP BY DATE_TRUNC('day', "cachedAt")
     ORDER BY "date"
   `
@@ -873,6 +900,7 @@ export async function getPriceVolatility(
       "gpuName" = ${gpuName}
       AND "cachedAt" >= ${startDate}
       AND "exclude" = false
+      AND "source" = 'ebay'
   `
 
   return (
@@ -1054,6 +1082,7 @@ export async function searchActiveListings(
   const where: Prisma.ListingWhereInput = {
     archived: false,
     exclude: false,
+    source: "ebay",
     title: {
       contains: query,
       mode: "insensitive",
@@ -1079,4 +1108,55 @@ export async function searchActiveListings(
     listings: listings.map((listing) => parsePrismaListingWithGpu(listing)),
     total,
   }
+}
+
+/**
+ * Finds the GPU with the most stale listings for a given source, or any GPU
+ * that has no listings for that source at all.
+ * Returns the GPU name, or null if no GPU needs refreshing.
+ */
+export async function findMostStaleGpuForSource(
+  source: ListingSource,
+  staleThresholdMs: number,
+  prisma: PrismaClientWithinTransaction = prismaSingleton,
+): Promise<string | null> {
+  const staleThreshold = new Date(Date.now() - staleThresholdMs)
+
+  // First, check for GPUs that have zero listings for this source (need bootstrapping)
+  const gpusWithNoListings = await prisma.$queryRaw<{ name: string }[]>`
+    SELECT g."name"
+    FROM "gpu" g
+    WHERE g."name" != 'test-gpu'
+      AND NOT EXISTS (
+        SELECT 1 FROM "Listing" l
+        WHERE l."gpuName" = g."name"
+          AND l."source" = ${source}
+          AND l."archived" = false
+      )
+    LIMIT 1
+  `
+
+  if (gpusWithNoListings.length > 0) {
+    return gpusWithNoListings[0].name
+  }
+
+  // Then, find the GPU with the oldest cachedAt for this source
+  const staleGpus = await prisma.$queryRaw<
+    { gpuName: string; oldestCachedAt: Date }[]
+  >`
+    SELECT "gpuName", MIN("cachedAt") as "oldestCachedAt"
+    FROM "Listing"
+    WHERE "source" = ${source}
+      AND "archived" = false
+    GROUP BY "gpuName"
+    HAVING MIN("cachedAt") < ${staleThreshold}
+    ORDER BY MIN("cachedAt") ASC
+    LIMIT 1
+  `
+
+  if (staleGpus.length > 0) {
+    return staleGpus[0].gpuName
+  }
+
+  return null
 }

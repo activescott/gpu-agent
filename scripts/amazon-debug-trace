@@ -1,0 +1,83 @@
+#!/usr/bin/env bash
+this_dir=$(cd $(dirname "$0"); pwd)
+this_script=$(basename $0)
+
+set -euo pipefail
+
+help () {
+  cat << END_DOC
+USAGE: $this_script [QUERY_SLUG]
+
+Pulls the most recent Playwright trace from the amazon-searcher pod and opens
+it in the Playwright Trace Viewer. Traces are saved when a search returns 0
+results (dev mode only, requires LOG_PRETTY=true).
+
+Arguments:
+  QUERY_SLUG   Optional: specific query slug to pull (e.g. "nvidia_geforce_rtx_5070_ti")
+               If omitted, pulls the most recently modified trace.
+
+Examples:
+  $this_script                              # Most recent trace
+  $this_script nvidia_geforce_rtx_5070_ti   # Specific query trace
+
+END_DOC
+}
+
+case "${1:-}" in
+    -h|--help)
+        help
+        exit 0
+        ;;
+esac
+
+debug_dir="/tmp/amazon-searcher-debug"
+local_dir="/tmp/amazon-searcher-debug-local"
+mkdir -p "$local_dir"
+
+pod=$(kubectl --context minikube -n gpupoet-dev get pods -l app=amazon-searcher -o jsonpath='{.items[0].metadata.name}' 2>/dev/null || true)
+if [ -z "$pod" ]; then
+  echo "ERROR: No amazon-searcher pod found in gpupoet-dev namespace."
+  exit 1
+fi
+
+if [ -n "${1:-}" ]; then
+  # Specific slug requested
+  slug="$1"
+else
+  # Find the most recently modified trace
+  slug=$(kubectl --context minikube -n gpupoet-dev exec "$pod" -- \
+    find "$debug_dir" -name "trace.zip" -printf "%T@ %h\n" 2>/dev/null \
+    | sort -rn | head -1 | awk '{print $2}' | xargs basename 2>/dev/null || true)
+
+  if [ -z "$slug" ]; then
+    # Try ls-based fallback (find -printf not available on all systems)
+    slug=$(kubectl --context minikube -n gpupoet-dev exec "$pod" -- \
+      ls -t "$debug_dir" 2>/dev/null | head -1 || true)
+  fi
+
+  if [ -z "$slug" ]; then
+    echo "ERROR: No debug traces found in pod. Traces are only saved on 0-result searches in dev mode."
+    exit 1
+  fi
+fi
+
+echo "Pulling trace for: $slug"
+trace_path="$local_dir/$slug/trace.zip"
+html_path="$local_dir/$slug/page.html"
+mkdir -p "$local_dir/$slug"
+
+kubectl --context minikube -n gpupoet-dev cp "$pod:$debug_dir/$slug/trace.zip" "$trace_path" 2>/dev/null
+kubectl --context minikube -n gpupoet-dev cp "$pod:$debug_dir/$slug/page.html" "$html_path" 2>/dev/null || true
+
+if [ ! -f "$trace_path" ]; then
+  echo "ERROR: Could not pull trace.zip for '$slug' from pod."
+  echo "Available traces:"
+  kubectl --context minikube -n gpupoet-dev exec "$pod" -- ls "$debug_dir" 2>/dev/null || echo "  (none)"
+  exit 1
+fi
+
+echo "Trace: $trace_path"
+[ -f "$html_path" ] && echo "HTML:  $html_path"
+echo ""
+echo "Opening Playwright Trace Viewer..."
+npx playwright show-trace "$trace_path"

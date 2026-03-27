@@ -103,6 +103,16 @@ spec:
                   name: app-creds
                   key: ADMIN_PASSWORD
 
+            - name: AMAZON_SEARCHER_URL
+              value: "http://amazon-searcher:3001"
+
+            - name: AMAZON_AFFILIATE_TAG
+              valueFrom:
+                secretKeyRef:
+                  name: app-creds
+                  key: AMAZON_AFFILIATE_TAG
+                  optional: true
+
           readinessProbe:
             httpGet:
               path: /api/health/readiness

@@ -2,10 +2,12 @@ import { createLogger } from "@/lib/logger"
 import {
   CachedListing,
   listCachedListingsGroupedByGpu,
+  findMostStaleGpuForSource,
 } from "../db/ListingRepository"
 import { EPOCH, secondsToMilliseconds } from "../../isomorphic/duration"
 import type { Listing } from "@/pkgs/isomorphic/model"
 import { cacheEbayListingsForGpu } from "./ebay"
+import { cacheAmazonListingsForGpu } from "./amazon"
 import { CACHED_LISTINGS_DURATION_MS } from "../cacheConfig"
 import { withTransaction } from "../db/db"
 import { chain } from "irritable-iterable"
@@ -182,4 +184,81 @@ function getOldestCachedAt(listings: CachedListing[]): Date {
     .reduce((oldest, current) => {
       return current < oldest ? current : oldest
     }, new Date())
+}
+
+export interface AmazonListingStats {
+  gpuName: string | null
+  listingCachedCount: number
+  totalDuration: number
+  success: boolean
+  error?: string
+}
+
+/**
+ * Revalidates Amazon listings for the single most-stale GPU.
+ * Only one GPU is refreshed per run to avoid bot detection by Amazon.
+ */
+export async function revalidateAmazonListings(): Promise<AmazonListingStats> {
+  const start = Date.now()
+
+  try {
+    const staleGpu = await findMostStaleGpuForSource(
+      "amazon",
+      CACHED_LISTINGS_DURATION_MS,
+    )
+
+    if (!staleGpu) {
+      log.info("No stale Amazon GPUs found, skipping Amazon revalidation")
+      return {
+        gpuName: null,
+        listingCachedCount: 0,
+        totalDuration: Date.now() - start,
+        success: true,
+      }
+    }
+
+    log.info(`Revalidating Amazon listings for ${staleGpu}`)
+
+    const listings = await withRetry(
+      () =>
+        withTransaction(
+          async (prisma) => cacheAmazonListingsForGpu(staleGpu, prisma),
+          {
+            // eslint-disable-next-line no-magic-numbers
+            timeout: secondsToMilliseconds(120),
+            // eslint-disable-next-line no-magic-numbers
+            maxWait: secondsToMilliseconds(10),
+            isolationLevel: "RepeatableRead",
+          },
+        ),
+      shouldRetryPrismaTransaction,
+    )
+
+    const listingCount = listings.length
+    const duration = Date.now() - start
+    log.info(
+      `Amazon revalidation completed: ${listingCount} listings for ${staleGpu} in ${duration}ms`,
+    )
+
+    return {
+      gpuName: staleGpu,
+      listingCachedCount: listingCount,
+      totalDuration: duration,
+      success: true,
+    }
+  } catch (error) {
+    const errorMessage = error instanceof Error ? error.message : String(error)
+    const duration = Date.now() - start
+    log.error(
+      { err: error },
+      `Amazon revalidation failed after ${duration}ms: ${errorMessage}`,
+    )
+    return {
+      gpuName: null,
+      listingCachedCount: 0,
+      totalDuration: duration,
+      success: false,
+      error: errorMessage,
+    }
+  }
 }

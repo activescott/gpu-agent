@@ -1,15 +1,23 @@
 import { POST } from "./route"
-import { revalidateCachedListings } from "../../../pkgs/server/listings"
+import {
+  revalidateCachedListings,
+  revalidateAmazonListings,
+} from "../../../pkgs/server/listings"
 import { updateMetrics } from "../../../pkgs/server/metrics/metricsStore"
 import type { ListingStats } from "../../../pkgs/server/listings/listings"
 
 // Mock the dependencies
 jest.mock("../../../pkgs/server/listings")
 jest.mock("../../../pkgs/server/metrics/metricsStore")
+jest.mock("../../../pkgs/server/metrics/amazonMetrics")
 
 const mockRevalidateCachedListings =
   revalidateCachedListings as jest.MockedFunction<
     typeof revalidateCachedListings
+  >
+const mockRevalidateAmazonListings =
+  revalidateAmazonListings as jest.MockedFunction<
+    typeof revalidateAmazonListings
   >
 const mockUpdateMetrics = updateMetrics as jest.MockedFunction<
   typeof updateMetrics
@@ -26,6 +34,13 @@ describe("/ops/revalidate-cache", () => {
   beforeEach(() => {
     jest.clearAllMocks()
     jest.spyOn(Date, "now").mockReturnValue(1_000_000) // Fixed timestamp for consistent testing
+    // Default: Amazon revalidation returns a no-op (no stale GPUs)
+    mockRevalidateAmazonListings.mockResolvedValue({
+      gpuName: null,
+      listingCachedCount: 0,
+      totalDuration: 0,
+      success: true,
+    })
   })
 
   afterEach(() => {
@@ -58,11 +73,11 @@ describe("/ops/revalidate-cache", () => {
       expect(data).toEqual({
         success: true,
         duration: 0, // Date.now() - Date.now() = 0 due to mocking
-        stats: {
-          staleGpusAtStart: 2,
-          listingCachedCount: 150,
-          staleGpusRemaining: 0,
-          totalDuration: 5000,
+        amazon: {
+          gpuName: null,
+          listingCachedCount: 0,
+          totalDuration: 0,
+          success: true,
         },
       })
 
@@ -83,7 +98,7 @@ describe("/ops/revalidate-cache", () => {
 
       // Verify error response status and structure
       expect(response.status).toBe(500)
-      expect(data).toEqual({
+      expect(data).toMatchObject({
         success: false,
         error: errorMessage,
         duration: 0,

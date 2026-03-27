@@ -152,6 +152,9 @@ model Listing {
   itemLocationCountry      String?
   itemGroupType            String?
 
+  // The marketplace source this listing was fetched from ("ebay" or "amazon")
+  source String @default("ebay")
+
   // relation per https://www.prisma.io/docs/concepts/components/prisma-schema/relations/one-to-many-relations
   // when gpu is deleted, so are its listings
   gpu     gpu    @relation(fields: [gpuName], references: [name], onDelete: NoAction, onUpdate: Cascade)
@@ -166,6 +169,7 @@ model Listing {
   @@index([gpuName, archived, cachedAt])
   @@index([gpuName, stale])
   @@index([gpuName, exclude, cachedAt])
+  @@index([gpuName, source, archived, cachedAt])
 }
 
 enum NewsStatus {

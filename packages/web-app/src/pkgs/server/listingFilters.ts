@@ -4,9 +4,11 @@ import { Gpu, Listing } from "../isomorphic/model"
 const log = createLogger("shop:listingFilters")
 
 /**
- * A filter that is suitable for all GPUs
+ * eBay-specific filter: validates affiliate link, buying options, and variation bundles.
+ * Passes through for non-eBay listings.
  */
 function allListingFilters(item: Listing): boolean {
+  if (item.source && item.source !== "ebay") return true
   if (typeof item.itemAffiliateWebUrl !== "string") {
     log.error({ itemId: item.itemId }, "item has no affiliate link")
     return false
@@ -23,8 +25,17 @@ function allListingFilters(item: Listing): boolean {
   return true
 }
 
-const conditionFilter = (item: Listing): boolean => {
-  // https://developer.ebay.com/devzone/finding/CallRef/Enums/conditionIdList.html
+/**
+ * Filters out listings in non-working condition.
+ * eBay: uses conditionId "7000" (for parts/not working).
+ * Amazon: if condition is null, assume "New" (keep). If condition contains "for parts", exclude.
+ */
+function conditionFilter(item: Listing): boolean {
+  if (item.source === "amazon") {
+    if (!item.condition) return true // null condition from Amazon search = assume "New"
+    return !item.condition.toLowerCase().includes("for parts")
+  }
+  // eBay: https://developer.ebay.com/devzone/finding/CallRef/Enums/conditionIdList.html
   const FOR_PARTS_NOT_WORKING = "7000"
   return item.conditionId !== FOR_PARTS_NOT_WORKING
 }
@@ -127,9 +138,17 @@ function gpuAccessoryFilter(item: Listing): boolean {
   return true
 }
 
+/**
+ * eBay-specific filter: requires seller feedback >= 90%.
+ * Passes through for non-eBay listings (Amazon search results don't include seller info).
+ */
 export function sellerFeedbackFilter(
-  item: Pick<Listing, "sellerFeedbackPercentage" | "itemAffiliateWebUrl">,
+  item: Pick<
+    Listing,
+    "sellerFeedbackPercentage" | "itemAffiliateWebUrl" | "source"
+  >,
 ): boolean {
+  if (item.source && item.source !== "ebay") return true
   // filter out sellers with <90% feedback
   const MINIMUM_FEEDBACK_PERCENTAGE = 90
   if (

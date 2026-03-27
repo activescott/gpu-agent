@@ -5,6 +5,9 @@
 		},
 		{
 			"path": "../gpu-poet-data"
+		},
+		{
+			"path": "../amazon-searcher"
 		}
 	],
 	"settings": {

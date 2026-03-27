@@ -10,3 +10,5 @@ resources:
   - cleanup-listings-job.yaml
   - indexnow-job.yaml
   - indexnow-pvc.yaml
+  - amazon-searcher-deployment.yaml
+  - amazon-searcher-service.yaml

@@ -1,0 +1,111 @@
+#!/usr/bin/env bash
+this_dir=$(cd $(dirname "$0"); pwd)
+this_script=$(basename $0)
+
+set -euo pipefail
+
+host="localhost:3001"
+
+default_queries=(
+  "NVIDIA GeForce RTX 5070 Ti"
+  "NVIDIA GeForce RTX 5080"
+  "AMD Radeon RX 9070 XT"
+  "AMD Radeon RX 9070"
+  "AMD Radeon RX 9060 XT"
+)
+random_query="${default_queries[$((RANDOM % ${#default_queries[@]}))]}"
+query="${1:-$random_query}"
+
+help () {
+  cat << END_DOC
+USAGE: $this_script [SEARCH_QUERY]
+
+Tests the amazon-searcher microservice directly by hitting its /search endpoint.
+Use this to verify the searcher is running, Oxylabs proxy is working, and
+Amazon search results are being extracted correctly.
+
+Arguments:
+  SEARCH_QUERY   GPU search query (default: "NVIDIA GeForce RTX 4060 Ti")
+
+Examples:
+  $this_script                          # Default: RTX 4060 Ti
+  $this_script "AMD Radeon RX 9060 XT"  # Custom query
+
+END_DOC
+}
+
+case "${1:-}" in
+    -h|--help)
+        help
+        exit 0
+        ;;
+esac
+
+echo "=== Amazon Searcher Test ==="
+echo "Host: $host"
+echo "Query: $query"
+echo ""
+
+# Health check
+echo "--- Health Check ---"
+health=$(curl -s -o /dev/null -w "%{http_code}" "http://$host/health" 2>/dev/null || echo "000")
+if [ "$health" = "200" ]; then
+  echo "OK (200)"
+else
+  echo "FAILED (HTTP $health) — is the amazon-searcher running at $host?"
+  exit 1
+fi
+echo ""
+
+# Search
+echo "--- Searching: \"$query\" ---"
+echo "(this takes 15-30 seconds — homepage visit + delays + scroll)"
+echo ""
+
+response=$(curl -s --max-time 120 -X POST "http://$host/search" \
+  -H "Content-Type: application/json" \
+  -d "{\"searchQuery\": \"$query\"}" 2>&1)
+
+# Check for error
+if echo "$response" | jq -e '.error' > /dev/null 2>&1; then
+  echo "ERROR: $(echo "$response" | jq -r '.error')"
+  exit 1
+fi
+
+# Parse results
+count=$(echo "$response" | jq '.results | length')
+echo "Results: $count listings"
+echo ""
+
+if [ "$count" = "0" ]; then
+  echo "WARNING: 0 results — possible bot detection. Check amazon-searcher logs."
+  # Try to pull debug artifacts from the pod
+  slug=$(echo "$query" | tr '[:upper:]' '[:lower:]' | sed 's/[^a-z0-9]/_/g')
+  debug_dir="/tmp/amazon-searcher-debug/$slug"
+  local_dir="/tmp/amazon-searcher-debug-local/$slug"
+  mkdir -p "$local_dir"
+  pod=$(kubectl --context minikube -n gpupoet-dev get pods -l app=amazon-searcher -o jsonpath='{.items[0].metadata.name}' 2>/dev/null || true)
+  if [ -n "$pod" ]; then
+    echo "Pulling debug artifacts from pod $pod..."
+    kubectl --context minikube -n gpupoet-dev cp "$pod:$debug_dir/trace.zip" "$local_dir/trace.zip" 2>/dev/null && echo "  Trace: $local_dir/trace.zip" && echo "  View: npx playwright show-trace $local_dir/trace.zip" || echo "  (no trace)"
+    kubectl --context minikube -n gpupoet-dev cp "$pod:$debug_dir/page.html" "$local_dir/page.html" 2>/dev/null && echo "  HTML: $local_dir/page.html" || echo "  (no HTML)"
+  fi
+  exit 1
+fi
+
+# Show top 5 by price
+echo "--- Top 5 Cheapest ---"
+echo "$response" | jq -r '.results | sort_by(.price) | .[0:5][] | "  $\(.price) — \(.brand // "?") — \(.title[0:80])"'
+echo ""
+
+# Summary stats
+echo "--- Summary ---"
+echo "$response" | jq '{
+  total: (.results | length),
+  with_price: ([.results[] | select(.price != null)] | length),
+  with_image: ([.results[] | select(.mainImageUrl != null)] | length),
+  with_rating: ([.results[] | select(.reviewRating != null)] | length),
+  min_price: ([.results[].price] | min),
+  max_price: ([.results[].price] | max),
+  brands: ([.results[].brand | select(. != null)] | unique)
+}'

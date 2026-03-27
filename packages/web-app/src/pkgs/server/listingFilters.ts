@@ -3,23 +3,31 @@ import { Gpu, Listing } from "../isomorphic/model"
 
 const log = createLogger("shop:listingFilters")
 
+type LogFn = (msg: string, ...args: unknown[]) => void
+
 /**
  * eBay-specific filter: validates affiliate link, buying options, and variation bundles.
  * Passes through for non-eBay listings.
  */
-function allListingFilters(item: Listing): boolean {
+function allListingFilters(item: Listing, logFn: LogFn): boolean {
   if (item.source && item.source !== "ebay") return true
   if (typeof item.itemAffiliateWebUrl !== "string") {
-    log.error({ itemId: item.itemId }, "item has no affiliate link")
+    logFn(
+      "item %s rejected by allListingFilters: no affiliate link",
+      item.itemId,
+    )
     return false
   }
   if (!item.buyingOptions.includes("FIXED_PRICE")) {
-    log.debug({ itemId: item.itemId }, "item is not fixed price")
+    logFn("item %s rejected by allListingFilters: not fixed price", item.itemId)
     return false
   }
   if (item.itemGroupType === "SELLER_DEFINED_VARIATIONS") {
     // some of them shove a bunch of different types of GPUs into one listing, but the listing returns the lowest price so it makes the item appear artificially cheap
-    log.debug({ itemId: item.itemId }, "item has SELLER_DEFINED_VARIATIONS")
+    logFn(
+      "item %s rejected by allListingFilters: SELLER_DEFINED_VARIATIONS",
+      item.itemId,
+    )
     return false
   }
   return true
@@ -30,41 +38,67 @@ function allListingFilters(item: Listing): boolean {
  * eBay: uses conditionId "7000" (for parts/not working).
  * Amazon: if condition is null, assume "New" (keep). If condition contains "for parts", exclude.
  */
-function conditionFilter(item: Listing): boolean {
+function conditionFilter(item: Listing, logFn: LogFn): boolean {
   if (item.source === "amazon") {
-    if (!item.condition) return true // null condition from Amazon search = assume "New"
-    return !item.condition.toLowerCase().includes("for parts")
+    if (!item.condition) return true
+    if (item.condition.toLowerCase().includes("for parts")) {
+      logFn(
+        "item %s rejected by conditionFilter: condition contains 'for parts'",
+        item.itemId,
+      )
+      return false
+    }
+    return true
   }
-  // eBay: https://developer.ebay.com/devzone/finding/CallRef/Enums/conditionIdList.html
   const FOR_PARTS_NOT_WORKING = "7000"
-  return item.conditionId !== FOR_PARTS_NOT_WORKING
+  if (item.conditionId === FOR_PARTS_NOT_WORKING) {
+    logFn(
+      "item %s rejected by conditionFilter: FOR_PARTS_NOT_WORKING",
+      item.itemId,
+    )
+    return false
+  }
+  return true
 }
 
 type Predicate = (item: Listing) => boolean
 
 /**
  * Creates a filter for filtering listings for the specified GPU.
+ * @param logFn - Controls the log level for filter rejection messages. Pass log.info for visibility (e.g., Amazon) or log.debug for quiet (e.g., eBay).
  */
-export function createFilterForGpu(gpu: Gpu): Predicate {
-  const requiredKeywordsFilter = createRequiredLabelFilter(gpu)
+export function createFilterForGpu(
+  gpu: Gpu,
+  logFn: LogFn = log.debug.bind(log),
+): Predicate {
+  const requiredKeywordsFilter = createRequiredLabelFilter(gpu, logFn)
 
   return composePredicates(
-    sellerFeedbackFilter,
-    allListingFilters,
-    conditionFilter,
+    (item) => sellerFeedbackFilter(item, logFn),
+    (item) => allListingFilters(item, logFn),
+    (item) => conditionFilter(item, logFn),
     requiredKeywordsFilter,
-    createRequireMemoryKeywordFilter(gpu),
-    gpuAccessoryFilter,
+    createRequireMemoryKeywordFilter(gpu, logFn),
+    (item) => gpuAccessoryFilter(item, logFn),
   )
 }
 
-function createRequireMemoryKeywordFilter(gpu: Gpu) {
+function createRequireMemoryKeywordFilter(gpu: Gpu, logFn: LogFn) {
   // Match memory capacity as a word boundary to avoid false positives like "x16 GPU" matching "16 g"
   const memoryPattern = new RegExp(`\\b${gpu.memoryCapacityGB}\\s?gb?\\b`, "i")
-  return (item: Listing): boolean => memoryPattern.test(item.title)
+  return (item: Listing): boolean => {
+    if (memoryPattern.test(item.title)) return true
+    logFn(
+      "item %s rejected by memoryKeywordFilter: title missing '%sGB'. Title: %s",
+      item.itemId,
+      gpu.memoryCapacityGB,
+      item.title,
+    )
+    return false
+  }
 }
 
-function createRequiredLabelFilter(gpu: Gpu) {
+function createRequiredLabelFilter(gpu: Gpu, logFn: LogFn) {
   // Use word-boundary regex to avoid false positives like "T4" matching inside part numbers (e.g. "VCGGTX980T4XPB-CG")
   const keywordPatterns = gpu.label
     .split(" ")
@@ -72,17 +106,17 @@ function createRequiredLabelFilter(gpu: Gpu) {
   return (item: Listing): boolean => {
     const title = item.title
     const matches = keywordPatterns.every((pattern) => pattern.test(title))
-    if (!matches && !isExpectedToBeFilteredOut(item)) {
-      log.debug(
-        "required keywords not in item title: %o. Item title: %s . Item Url: %s",
-        gpu.label
-          .split(" ")
-          .filter(
-            (word) =>
-              !new RegExp(`\\b${escapeRegExp(word)}\\b`, "i").test(title),
-          ),
+    if (!matches) {
+      const missingKeywords = gpu.label
+        .split(" ")
+        .filter(
+          (word) => !new RegExp(`\\b${escapeRegExp(word)}\\b`, "i").test(title),
+        )
+      logFn(
+        "item %s rejected by requiredLabelFilter: missing keywords %o. Title: %s",
+        item.itemId,
+        missingKeywords,
         item.title,
-        item.itemAffiliateWebUrl,
       )
     }
     return matches
@@ -122,16 +156,16 @@ const nonGpuKeywords = [
   "Backplate For",
 ].map((word) => word.toLowerCase())
 
-function gpuAccessoryFilter(item: Listing): boolean {
-  if (
-    nonGpuKeywords.some((accessory) =>
-      item.title.toLowerCase().includes(accessory),
-    )
-  ) {
-    log.debug(
-      "item filtered out as a accessory: %s %s",
+function gpuAccessoryFilter(item: Listing, logFn: LogFn): boolean {
+  const matched = nonGpuKeywords.find((keyword) =>
+    item.title.toLowerCase().includes(keyword),
+  )
+  if (matched) {
+    logFn(
+      "item %s rejected by gpuAccessoryFilter: matched keyword '%s'. Title: %s",
+      item.itemId,
+      matched,
       item.title,
-      item.itemAffiliateWebUrl,
     )
     return false
   }
@@ -145,8 +179,9 @@ function gpuAccessoryFilter(item: Listing): boolean {
 export function sellerFeedbackFilter(
   item: Pick<
     Listing,
-    "sellerFeedbackPercentage" | "itemAffiliateWebUrl" | "source"
+    "sellerFeedbackPercentage" | "itemAffiliateWebUrl" | "source" | "itemId"
   >,
+  logFn: LogFn = log.debug.bind(log),
 ): boolean {
   if (item.source && item.source !== "ebay") return true
   // filter out sellers with <90% feedback
@@ -158,48 +193,11 @@ export function sellerFeedbackFilter(
   ) {
     return true
   }
-  log.debug(
-    "item filtered out as a low feedback seller: %s %s",
+  logFn(
+    "item %s rejected by sellerFeedbackFilter: feedback %s%%",
+    item.itemId,
     item.sellerFeedbackPercentage,
-    item.itemAffiliateWebUrl,
   )
-  return false
-}
-
-function isExpectedToBeFilteredOut(item: Listing): boolean {
-  // log any that don't appear to be common non-cards:
-  // some GPUs that we *never* want that I've found that show up in NVIDIA T4 searches that aren't T4s:
-  const wrongGpuKeywords = [
-    "GeForce RTX 3060",
-    "Geforce RTX 3070",
-    "GeForce RTX 3080",
-    "GEFORCE GTX960",
-    "GEFORCE GTX 960",
-    "GEFORCE GTX 980",
-    "GTX1050Ti",
-    "GEFORCE GTX 770",
-    "GeForce GTX 1050",
-    "FX 5500",
-    "Quadro",
-    // A5000 16GB (QN20-E5-A1) is a mobile GPU that wasn't benchmarked: https://www.techpowerup.com/gpu-specs/rtx-a5000-mobile.c3805
-    "A5000 16GB",
-    "QN20-E5-A1",
-  ].map((word) => word.toLowerCase())
-
-  if (
-    nonGpuKeywords.some((accessory) =>
-      item.title.toLowerCase().includes(accessory),
-    )
-  ) {
-    return true
-  }
-  if (
-    wrongGpuKeywords.some((accessory) =>
-      item.title.toLowerCase().includes(accessory),
-    )
-  ) {
-    return true
-  }
   return false
 }
 

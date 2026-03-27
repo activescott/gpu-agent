@@ -73,7 +73,8 @@ export async function cacheAmazonListingsForGpu(
     .map((r) => convertAmazonResultToListing(r, gpu))
 
   // Apply filters (each filter self-selects based on source)
-  const filter = createFilterForGpu(gpu)
+  // Use info-level logging for Amazon so filter rejections are visible in production
+  const filter = createFilterForGpu(gpu, log.info.bind(log))
   listings = listings.filter((listing) => filter(listing))
 
   log.info(`After filtering: ${listings.length} Amazon listings for ${gpuName}`)

@@ -58,8 +58,9 @@ model gpu {
   thirdPartyProducts      Json?  @db.JsonB
 
   // Relations
-  metricValues  GpuMetricValue[]
-  Listing       Listing[]
+  metricValues    GpuMetricValue[]
+  Listing         Listing[]
+  searchHistory   GpuSearchHistory[]
 
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
@@ -170,6 +171,21 @@ model Listing {
   @@index([gpuName, stale])
   @@index([gpuName, exclude, cachedAt])
   @@index([gpuName, source, archived, cachedAt])
+}
+
+// Tracks when a search was last attempted for a GPU on each source (Amazon, eBay).
+// Prevents re-searching GPUs that returned 0 results — without this, a GPU with no
+// listings would be picked as "most stale" on every revalidation run.
+model GpuSearchHistory {
+  id          String   @id @default(cuid())
+  gpuName     String
+  gpu         gpu      @relation(fields: [gpuName], references: [name], onDelete: Cascade)
+  source      String   // "ebay" | "amazon"
+  searchedAt  DateTime @default(now())
+  resultCount Int      @default(0) // listings that passed filters
+
+  @@unique([gpuName, source])
+  @@index([source, searchedAt])
 }
 
 enum NewsStatus {

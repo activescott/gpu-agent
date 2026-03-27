@@ -8,6 +8,7 @@ import { PrismaClientWithinTransaction } from "../db/db"
 import {
   addOrRefreshListingsForGpu,
   archiveStaleListingsForGpu,
+  recordSearchAttempt,
 } from "../db/ListingRepository"
 import { createFilterForGpu } from "../listingFilters"
 import { createLogger } from "@/lib/logger"
@@ -81,6 +82,7 @@ export async function cacheAmazonListingsForGpu(
 
   await addOrRefreshListingsForGpu(listings, gpuName, prisma, "amazon")
   await archiveStaleListingsForGpu(gpuName, prisma, "amazon")
+  await recordSearchAttempt(gpuName, "amazon", listings.length, prisma)
 
   const duration = Date.now() - start
   log.info(`Caching Amazon listings for ${gpuName} completed in ${duration}ms`)

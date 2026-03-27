@@ -1111,9 +1111,15 @@ export async function searchActiveListings(
 }
 
 /**
- * Finds the GPU with the most stale listings for a given source, or any GPU
- * that has no listings for that source at all.
- * Returns the GPU name, or null if no GPU needs refreshing.
+ * Finds the GPU most in need of a search for the given source.
+ * Uses GpuSearchHistory to track when each GPU was last searched, so GPUs
+ * that return 0 results aren't re-searched every run.
+ *
+ * Priority: GPUs never searched for this source first (oldest GPU name),
+ * then GPUs whose last search is older than the staleness threshold.
+ *
+ * // TODO: After validating this approach for Amazon, consider using it for eBay too
+ * // to avoid re-searching obscure GPUs that consistently return 0 eBay results.
  */
 export async function findMostStaleGpuForSource(
   source: ListingSource,
@@ -1122,35 +1128,33 @@ export async function findMostStaleGpuForSource(
 ): Promise<string | null> {
   const staleThreshold = new Date(Date.now() - staleThresholdMs)
 
-  // First, check for GPUs that have zero listings for this source (need bootstrapping)
-  const gpusWithNoListings = await prisma.$queryRaw<{ name: string }[]>`
+  // First, find GPUs that have never been searched for this source
+  const neverSearched = await prisma.$queryRaw<{ name: string }[]>`
     SELECT g."name"
     FROM "gpu" g
     WHERE g."name" != 'test-gpu'
       AND NOT EXISTS (
-        SELECT 1 FROM "Listing" l
-        WHERE l."gpuName" = g."name"
-          AND l."source" = ${source}
-          AND l."archived" = false
+        SELECT 1 FROM "GpuSearchHistory" h
+        WHERE h."gpuName" = g."name"
+          AND h."source" = ${source}
       )
+    ORDER BY g."name" ASC
     LIMIT 1
   `
 
-  if (gpusWithNoListings.length > 0) {
-    return gpusWithNoListings[0].name
+  if (neverSearched.length > 0) {
+    return neverSearched[0].name
   }
 
-  // Then, find the GPU with the oldest cachedAt for this source
+  // Then, find the GPU with the oldest searchedAt for this source
   const staleGpus = await prisma.$queryRaw<
-    { gpuName: string; oldestCachedAt: Date }[]
+    { gpuName: string; searchedAt: Date }[]
   >`
-    SELECT "gpuName", MIN("cachedAt") as "oldestCachedAt"
-    FROM "Listing"
+    SELECT "gpuName", "searchedAt"
+    FROM "GpuSearchHistory"
     WHERE "source" = ${source}
-      AND "archived" = false
-    GROUP BY "gpuName"
-    HAVING MIN("cachedAt") < ${staleThreshold}
-    ORDER BY MIN("cachedAt") ASC
+      AND "searchedAt" < ${staleThreshold}
+    ORDER BY "searchedAt" ASC
     LIMIT 1
   `
 
@@ -1159,4 +1163,31 @@ export async function findMostStaleGpuForSource(
   }
 
   return null
+}
+
+/**
+ * Records that a search was attempted for a GPU on a given source.
+ * Upserts into GpuSearchHistory so we track the attempt even when 0 results pass filters.
+ */
+export async function recordSearchAttempt(
+  gpuName: string,
+  source: ListingSource,
+  resultCount: number,
+  prisma: PrismaClientWithinTransaction = prismaSingleton,
+): Promise<void> {
+  await prisma.gpuSearchHistory.upsert({
+    where: {
+      gpuName_source: { gpuName, source },
+    },
+    update: {
+      searchedAt: new Date(),
+      resultCount,
+    },
+    create: {
+      gpuName,
+      source,
+      searchedAt: new Date(),
+      resultCount,
+    },
+  })
 }

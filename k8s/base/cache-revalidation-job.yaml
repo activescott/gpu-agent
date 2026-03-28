@@ -10,14 +10,14 @@ spec:
   #   eBay API budget: 5,000 calls/day. Normal usage: ~230 calls per stale run.
   #
   # Amazon: Refreshes only 1 GPU per run (anti-bot measure).
-  #   With ~75 GPUs, takes ~12.5 hours to cycle through all at 10-min intervals.
+  #   With ~75 GPUs, takes ~25 hours to cycle through all at 20-min intervals.
   #   The amazon-searcher service handles the actual scraping via Playwright/Firefox.
-  schedule: "*/10 * * * *"
+  schedule: "*/20 * * * *"
   concurrencyPolicy: Forbid
   jobTemplate:
     spec:
-      # 9-minute deadline prevents overlapping with the next 10-minute cron run
-      activeDeadlineSeconds: 540
+      # 18-minute deadline prevents overlapping with the next 20-minute cron run
+      activeDeadlineSeconds: 1080
       template:
         spec:
           restartPolicy: OnFailure

@@ -51,8 +51,12 @@ patches:
     target:
       kind: PersistentVolumeClaim
       name: indexnow-pvc
-  # Enable pretty logging for amazon-searcher in dev
+  # Override imagePullPolicy for locally-built amazon-searcher image
+  # and enable pretty logging in dev
   - patch: |-
+      - op: replace
+        path: /spec/template/spec/containers/0/imagePullPolicy
+        value: IfNotPresent
       - op: add
         path: /spec/template/spec/containers/0/env/-
         value:
@@ -77,5 +81,5 @@ images:
     newName: postgres
     newTag: "15-alpine"
   - name: amazon-searcher-image-placeholder
-    newName: ghcr.io/activescott/amazon-searcher
+    newName: amazon-searcher-dev
     newTag: latest

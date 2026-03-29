@@ -42,6 +42,10 @@ build:
             dest: /app/
           - src: "data/news-data/**/*"
             dest: /app/
+    - image: amazon-searcher-dev
+      context: ../amazon-searcher
+      docker:
+        dockerfile: Dockerfile
 manifests:
   kustomize:
     paths:

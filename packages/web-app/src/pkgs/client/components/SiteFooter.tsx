@@ -20,10 +20,13 @@ export const SiteFooter = () => {
       </div>
       <div>
         <div className="muted fst-italic mx-5 my-3">
-          The site is 100% free to use and does not require any registration.
-          You do not pay any money. When you click a link to a product and
-          purchase an item, it may generate a small referral fee for the site at
-          no cost to you. Thank you for your support! 🙏
+          As an Amazon Associate and eBay Partner, gpupoet.com earns from
+          qualifying purchases. Product links may generate a small referral fee
+          at no cost to you.{" "}
+          <a className="text-muted" href="/policy/affiliate-disclosure">
+            Learn more
+          </a>
+          .
         </div>
         <ul className="nav justify-content-evenly">
           <li className="navbar-text">

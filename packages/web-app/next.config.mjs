@@ -42,11 +42,6 @@ const nextConfig = {
         source: "/ei/:path*",
         destination: "https://i.ebayimg.com/:path*",
       },
-      /* proxy amazon images for content blockers */
-      {
-        source: "/ai/:path*",
-        destination: "https://m.media-amazon.com/:path*",
-      },
     ]
   },
   async redirects() {

@@ -11,6 +11,7 @@ import Image from "next/image"
 import { ListingAffiliateLink } from "./ListingAffiliateLink"
 import { divideSafe } from "@/pkgs/isomorphic/math"
 import { MarketplaceIcon } from "./MarketplaceIcon"
+import { AmazonPriceDisclaimer } from "./AmazonPriceDisclaimer"
 
 const fmtInteger = new Intl.NumberFormat("en-US", {
   style: "currency",
@@ -57,6 +58,7 @@ export const ListingCard = ({
     condition,
     itemLocationCountry,
     source,
+    cachedAt,
   } = item
 
   const imageUrl = chooseBestImageUrl(item)
@@ -109,6 +111,7 @@ export const ListingCard = ({
               </span>
             )}
           </SpecPill>
+          <AmazonPriceDisclaimer source={source} cachedAt={cachedAt} />
         </div>
       </div>
       <div className="card-footer d-flex">

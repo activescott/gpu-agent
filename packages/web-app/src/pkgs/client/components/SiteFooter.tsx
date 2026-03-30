@@ -23,9 +23,9 @@ export const SiteFooter = () => {
           As an Amazon Associate and eBay Partner, gpupoet.com earns from
           qualifying purchases. Product links may generate a small referral fee
           at no cost to you.{" "}
-          <a className="text-muted" href="/policy/affiliate-disclosure">
+          <Link className="text-muted" href="/policy/affiliate-disclosure">
             Learn more
-          </a>
+          </Link>
           .
         </div>
         <ul className="nav justify-content-evenly">

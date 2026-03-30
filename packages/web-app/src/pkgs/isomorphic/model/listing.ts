@@ -33,6 +33,7 @@ export interface Listing {
   itemGroupType?: string | "SELLER_DEFINED_VARIATIONS" | null
   excludeReason?: string | null
   source?: ListingSource
+  cachedAt?: Date
 }
 
 /**

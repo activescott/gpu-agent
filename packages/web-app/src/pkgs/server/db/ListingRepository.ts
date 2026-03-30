@@ -546,6 +546,7 @@ export async function topNListingsByCostPerformance(
       itemLocationCountry: row.itemLocationCountry,
       itemGroupType: row.itemGroupType,
       source: row.source === "amazon" ? "amazon" : "ebay",
+      cachedAt: row.cachedAt,
       // GPU object with all specs and benchmarks
       gpu: {
         // Required fields
@@ -652,6 +653,7 @@ export async function listingsByCostPerformanceBySlug(
       itemLocationCountry: row.itemLocationCountry,
       itemGroupType: row.itemGroupType,
       source: row.source === "amazon" ? "amazon" : "ebay",
+      cachedAt: row.cachedAt,
       // The metric value from GpuMetricValue for the queried metric slug
       metricValue: row.metricValue,
       // GPU object - note: we include legacy fields for backwards compatibility

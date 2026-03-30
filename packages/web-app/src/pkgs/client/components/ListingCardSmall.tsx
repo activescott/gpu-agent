@@ -12,6 +12,7 @@ import { SpecPill } from "./SpecPill"
 import { ListingAffiliateLink } from "./ListingAffiliateLink"
 import { divideSafe } from "@/pkgs/isomorphic/math"
 import { MarketplaceIcon } from "./MarketplaceIcon"
+import { AmazonPriceDisclaimer } from "./AmazonPriceDisclaimer"
 
 import type { JSX } from "react"
 
@@ -119,6 +120,7 @@ export function ListingCardSmall(props: ListingCardProps): JSX.Element {
               <MarketplaceIcon source={source} size="small" />{" "}
               {formatPrice(cost)}
             </ListingAffiliateLink>
+            <AmazonPriceDisclaimer source={source} cachedAt={item.cachedAt} />
           </div>
         </div>
       </div>

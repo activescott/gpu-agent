@@ -7,6 +7,7 @@ import { ListingAffiliateLink } from "./ListingAffiliateLink"
 import { divideSafe } from "@/pkgs/isomorphic/math"
 import type { MetricInfo } from "./ListingGalleryWithMetric"
 import { MarketplaceIcon } from "./MarketplaceIcon"
+import { AmazonPriceDisclaimer } from "./AmazonPriceDisclaimer"
 
 const fmtInteger = new Intl.NumberFormat("en-US", {
   style: "currency",
@@ -102,6 +103,7 @@ export const ListingCardWithMetric = ({
     itemLocationCountry,
     gpu,
     source,
+    cachedAt,
   } = item
 
   // metricValue is only present when item is ListingWithMetric
@@ -156,6 +158,7 @@ export const ListingCardWithMetric = ({
               memoryCapacityGB={gpu.memoryCapacityGB}
             />
           )}
+          <AmazonPriceDisclaimer source={source} cachedAt={cachedAt} />
         </div>
       </div>
       <div className="card-footer d-flex">

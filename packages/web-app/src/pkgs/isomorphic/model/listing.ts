@@ -138,6 +138,21 @@ export const AmazonSearchResponseSchema = z.object({
 
 export type AmazonSearchResponse = z.infer<typeof AmazonSearchResponseSchema>
 
+/**
+ * Infers the condition of an Amazon listing from title keywords.
+ * Title-based detection takes precedence over the scraper-provided condition
+ * because the scraper may not reliably extract condition info.
+ */
+function inferAmazonCondition(
+  title: string,
+  scrapedCondition: string | null,
+): string {
+  const titleLower = title.toLowerCase()
+  if (titleLower.includes("refurbished")) return "Refurbished"
+  if (titleLower.includes("renewed")) return "Renewed"
+  return scrapedCondition ?? "New"
+}
+
 export function convertAmazonResultToListing(
   result: AmazonSearchResult,
   gpu: Gpu,
@@ -156,7 +171,7 @@ export function convertAmazonResultToListing(
     sellerUsername: "Amazon",
     sellerFeedbackPercentage: "100",
     sellerFeedbackScore: 1000,
-    condition: result.condition ?? "New",
+    condition: inferAmazonCondition(result.title, result.condition),
     conditionId: null,
     itemAffiliateWebUrl: result.affiliateUrl,
     thumbnailImageUrl: result.mainImageUrl ?? "",

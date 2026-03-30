@@ -161,7 +161,7 @@ export async function listActiveListingsForGpus(
       gpuName: { in: gpuNames },
       archived: false,
       exclude: false,
-      source: "ebay",
+      source: { in: ["ebay", "amazon"] },
     },
     include: {
       gpu: true,
@@ -196,7 +196,7 @@ export async function listActiveListingsGroupedByGpu(
         where: {
           archived: false,
           exclude: false,
-          source: "ebay",
+          source: { in: ["ebay", "amazon"] },
         },
       },
     },
@@ -226,7 +226,7 @@ export async function listActiveListings(
   const where: Prisma.ListingWhereInput = {
     archived: false,
     exclude: false,
-    source: "ebay",
+    source: { in: ["ebay", "amazon"] },
     ...(includeTestGpus ? {} : { gpuName: { not: "test-gpu" } }),
   }
   const listings = await prisma.listing.findMany({
@@ -251,7 +251,7 @@ export async function getLatestListingDate(
     where: {
       archived: false,
       exclude: false,
-      source: "ebay",
+      source: { in: ["ebay", "amazon"] },
     },
     orderBy: { itemCreationDate: "desc" },
     select: { itemCreationDate: true },
@@ -423,7 +423,7 @@ export async function getPriceStats(
       (SELECT AVG(price) FROM (
         SELECT "priceValue"::float as price
         FROM "Listing"
-        WHERE "gpuName" = ${gpuName} AND "archived" = false AND "exclude" = false AND "source" = 'ebay'
+        WHERE "gpuName" = ${gpuName} AND "archived" = false AND "exclude" = false AND "source" IN ('ebay', 'amazon')
         ORDER BY "priceValue"::float ASC
         LIMIT 3
       ) lowest_three) as "minPrice",
@@ -435,7 +435,7 @@ export async function getPriceStats(
     "gpuName" = ${gpuName}
     AND "archived" = false
     AND "exclude" = false
-    AND "source" = 'ebay'
+    AND "source" IN ('ebay', 'amazon')
   ;`) as GpuPriceStats[]
 
   if (result.length === 0) {
@@ -456,7 +456,7 @@ export async function getPriceStats(
       gpuName: gpuName,
       archived: false,
       exclude: false,
-      source: "ebay",
+      source: { in: ["ebay", "amazon"] },
     },
     select: { thumbnailImageUrl: true },
     orderBy: { itemCreationDate: "desc" },
@@ -503,7 +503,7 @@ export async function topNListingsByCostPerformance(
     INNER JOIN "gpu" ON "Listing"."gpuName" = "gpu"."name"
     WHERE "Listing"."archived" = false
       AND "Listing"."exclude" = false
-      AND "Listing"."source" = 'ebay'
+      AND "Listing"."source" IN ('ebay', 'amazon')
       AND ${specFieldName} IS NOT NULL
       AND ${specFieldName} > 0
       AND "gpu"."memoryCapacityGB" >= ${minMemoryGB}
@@ -545,6 +545,7 @@ export async function topNListingsByCostPerformance(
       itemCreationDate: row.itemCreationDate,
       itemLocationCountry: row.itemLocationCountry,
       itemGroupType: row.itemGroupType,
+      source: row.source === "amazon" ? "amazon" : "ebay",
       // GPU object with all specs and benchmarks
       gpu: {
         // Required fields
@@ -618,7 +619,7 @@ export async function listingsByCostPerformanceBySlug(
     INNER JOIN "GpuMetricValue" mv ON g."name" = mv."gpuName"
     WHERE l."archived" = false
       AND l."exclude" = false
-      AND l."source" = 'ebay'
+      AND l."source" IN ('ebay', 'amazon')
       AND mv."metricSlug" = ${metricSlug}
       AND mv."value" > 0
     ORDER BY (l."priceValue"::float / mv."value"::float)
@@ -650,6 +651,7 @@ export async function listingsByCostPerformanceBySlug(
       itemCreationDate: row.itemCreationDate,
       itemLocationCountry: row.itemLocationCountry,
       itemGroupType: row.itemGroupType,
+      source: row.source === "amazon" ? "amazon" : "ebay",
       // The metric value from GpuMetricValue for the queried metric slug
       metricValue: row.metricValue,
       // GPU object - note: we include legacy fields for backwards compatibility
@@ -755,7 +757,7 @@ export async function getHistoricalPriceData(
         "gpuName" = ${gpuName}
         AND "cachedAt" >= ${startDate}
         AND "exclude" = false
-        AND "source" = 'ebay'
+        AND "source" IN ('ebay', 'amazon')
       GROUP BY DATE_TRUNC('day', "cachedAt")
     ) d
     LEFT JOIN LATERAL (
@@ -766,7 +768,7 @@ export async function getHistoricalPriceData(
         WHERE "gpuName" = ${gpuName}
           AND DATE_TRUNC('day', "cachedAt") = d."date"
           AND "exclude" = false
-          AND "source" = 'ebay'
+          AND "source" IN ('ebay', 'amazon')
         ORDER BY "priceValue"::float ASC
         LIMIT 3
       ) sub
@@ -806,7 +808,7 @@ export async function getMonthlyAverages(
       AND "cachedAt" >= ${startDate}
       AND "cachedAt" <= ${endDate}
       AND "exclude" = false
-      AND "source" = 'ebay'
+      AND "source" IN ('ebay', 'amazon')
     GROUP BY "gpuName"
   `
 
@@ -827,7 +829,7 @@ export async function getMonthlyAverages(
       AND "cachedAt" >= ${startDate}
       AND "cachedAt" <= ${endDate}
       AND "exclude" = false
-      AND "source" = 'ebay'
+      AND "source" IN ('ebay', 'amazon')
     GROUP BY "gpuName"
   `
 
@@ -865,7 +867,7 @@ export async function getAvailabilityTrends(
       AND "cachedAt" >= ${startDate}
       AND "itemCreationDate" IS NOT NULL
       AND "exclude" = false
-      AND "source" = 'ebay'
+      AND "source" IN ('ebay', 'amazon')
     GROUP BY DATE_TRUNC('day', "cachedAt")
     ORDER BY "date"
   `
@@ -900,7 +902,7 @@ export async function getPriceVolatility(
       "gpuName" = ${gpuName}
       AND "cachedAt" >= ${startDate}
       AND "exclude" = false
-      AND "source" = 'ebay'
+      AND "source" IN ('ebay', 'amazon')
   `
 
   return (

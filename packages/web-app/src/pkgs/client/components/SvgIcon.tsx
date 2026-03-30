@@ -5,6 +5,7 @@ interface Props {
   svgViewBox?: string
   size?: "xs" | "small" | "medium"
   className?: string
+  alt?: string
 }
 
 export const SvgIcon = (props: Props): JSX.Element => {
@@ -29,6 +30,8 @@ export const SvgIcon = (props: Props): JSX.Element => {
       className={props.className}
       viewBox={props.svgViewBox}
       style={svgStyle}
+      role="img"
+      aria-label={props.alt}
     >
       <use href={`/images/${props.icon}.svg#root`}></use>
     </svg>

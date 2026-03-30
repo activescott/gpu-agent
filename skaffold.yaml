@@ -33,6 +33,9 @@ build:
           # ebay-client package sources
           - src: "packages/ebay-client/src/**/*"
             dest: /app/
+          # filter-items package sources
+          - src: "packages/filter-items/src/**/*"
+            dest: /app/
           # Data directory
           - src: "data/benchmark-data/**/*"
             dest: /app/

@@ -34,6 +34,7 @@ export function ListingAffiliateLink({
           "listing-id": listing.itemId,
           "gpu-name": listing.gpu.name,
           "listing-price": listing.priceValue,
+          "listing-source": listing.source ?? "ebay",
         })
       }}
       className={className}

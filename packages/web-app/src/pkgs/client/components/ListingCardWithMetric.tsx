@@ -1,5 +1,4 @@
 "use client"
-import { SvgIcon } from "@/pkgs/client/components/SvgIcon"
 import { SpecPill } from "@/pkgs/client/components/SpecPill"
 import { AttributePill, CountryPill } from "./AttributePill"
 import { Listing, ListingWithMetric } from "@/pkgs/isomorphic/model"
@@ -7,6 +6,7 @@ import Image from "next/image"
 import { ListingAffiliateLink } from "./ListingAffiliateLink"
 import { divideSafe } from "@/pkgs/isomorphic/math"
 import type { MetricInfo } from "./ListingGalleryWithMetric"
+import { MarketplaceIcon } from "./MarketplaceIcon"
 
 const fmtInteger = new Intl.NumberFormat("en-US", {
   style: "currency",
@@ -101,6 +101,7 @@ export const ListingCardWithMetric = ({
     condition,
     itemLocationCountry,
     gpu,
+    source,
   } = item
 
   // metricValue is only present when item is ListingWithMetric
@@ -161,12 +162,9 @@ export const ListingCardWithMetric = ({
         <ListingAffiliateLink
           to={itemAffiliateWebUrl}
           listing={item}
-          className="btn btn-primary my-1 me-auto"
+          className="btn btn-primary d-flex align-items-center gap-1"
         >
-          Buy &nbsp;
-          <span className="fs-small fw-lighter">
-            @ <SvgIcon icon="ebay" />
-          </span>
+          <MarketplaceIcon source={source} /> Buy Now
         </ListingAffiliateLink>
       </div>
     </div>

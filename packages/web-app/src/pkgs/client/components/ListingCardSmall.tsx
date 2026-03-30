@@ -11,7 +11,7 @@ import { AttributePill, CountryPill } from "./AttributePill"
 import { SpecPill } from "./SpecPill"
 import { ListingAffiliateLink } from "./ListingAffiliateLink"
 import { divideSafe } from "@/pkgs/isomorphic/math"
-import { SvgIcon } from "./SvgIcon"
+import { MarketplaceIcon } from "./MarketplaceIcon"
 
 import type { JSX } from "react"
 
@@ -65,6 +65,7 @@ export function ListingCardSmall(props: ListingCardProps): JSX.Element {
       condition,
       itemLocationCountry,
       itemAffiliateWebUrl,
+      source,
     },
     item,
   } = props
@@ -113,9 +114,10 @@ export function ListingCardSmall(props: ListingCardProps): JSX.Element {
             <ListingAffiliateLink
               to={itemAffiliateWebUrl}
               listing={item}
-              className="btn btn-primary fw-semibold text-decoration-none d-block mt-2"
+              className="btn btn-primary mt-2 d-block gap-1"
             >
-              {formatPrice(cost)} @ <SvgIcon icon="ebay" size="xs" />
+              <MarketplaceIcon source={source} size="small" />{" "}
+              {formatPrice(cost)}
             </ListingAffiliateLink>
           </div>
         </div>

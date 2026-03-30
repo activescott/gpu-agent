@@ -1,5 +1,4 @@
 "use client"
-import { SvgIcon } from "@/pkgs/client/components/SvgIcon"
 import { SpecPill } from "@/pkgs/client/components/SpecPill"
 import { AttributePill, CountryPill } from "./AttributePill"
 import {
@@ -11,6 +10,7 @@ import { Listing, Gpu } from "@/pkgs/isomorphic/model"
 import Image from "next/image"
 import { ListingAffiliateLink } from "./ListingAffiliateLink"
 import { divideSafe } from "@/pkgs/isomorphic/math"
+import { MarketplaceIcon } from "./MarketplaceIcon"
 
 const fmtInteger = new Intl.NumberFormat("en-US", {
   style: "currency",
@@ -56,6 +56,7 @@ export const ListingCard = ({
     title,
     condition,
     itemLocationCountry,
+    source,
   } = item
 
   const imageUrl = chooseBestImageUrl(item)
@@ -116,10 +117,7 @@ export const ListingCard = ({
           listing={item}
           className="btn btn-primary my-1 me-auto"
         >
-          Buy &nbsp;
-          <span className="fs-small fw-lighter">
-            @ <SvgIcon icon="ebay" />
-          </span>
+          <MarketplaceIcon source={source} /> Buy Now
         </ListingAffiliateLink>
       </div>
     </div>

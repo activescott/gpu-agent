@@ -20,7 +20,7 @@ export function CategoricalFilter({
   currentValue,
   onChange,
 }: CategoricalFilterProps): JSX.Element {
-  const { options, displayName, name } = config
+  const { options, displayName, name, maxHeight } = config
 
   // Get currently selected values (if no filter, all are shown/selected)
   const selectedValues = getSelectedValues(currentValue, options)
@@ -76,7 +76,14 @@ export function CategoricalFilter({
       </div>
 
       <div className="collapse show" id={`filter-collapse-${name}`}>
-        <div className="filter-options">
+        <div
+          className="filter-options"
+          style={
+            maxHeight
+              ? { maxHeight: `${maxHeight}px`, overflowY: "auto" }
+              : undefined
+          }
+        >
           {options.map((option) => (
             <FilterCheckbox
               key={option.value}

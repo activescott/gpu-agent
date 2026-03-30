@@ -24,6 +24,7 @@ interface FilterableListing {
     priceValue: string
     condition: string | null
     itemLocationCountry?: string | null
+    source?: string
   }
 }
 

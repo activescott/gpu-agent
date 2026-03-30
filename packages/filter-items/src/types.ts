@@ -32,6 +32,10 @@ export interface CategoricalFilterConfig {
   displayName: string
   /** Available options for selection */
   options: FilterOption[]
+  /** Accordion group for organizing filters. Filters without a group go into the default (first) section. */
+  group?: string
+  /** Max height in pixels for the options list. Overflows scroll. */
+  maxHeight?: number
 }
 
 /**
@@ -63,6 +67,10 @@ export interface NumericFilterConfig {
   unit?: string
   /** Default operator when no filter is active (default: "gte") */
   defaultOperator?: "gte" | "lte" | "range"
+  /** When true, hides the operator dropdown and locks the filter to its defaultOperator. */
+  lockOperator?: boolean
+  /** Accordion group for organizing filters. Filters without a group go into the default (first) section. */
+  group?: string
 }
 
 /**

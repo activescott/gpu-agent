@@ -31,6 +31,7 @@ export function NumericFilter({
     step,
     unit,
     defaultOperator = "gte",
+    lockOperator,
   } = config
 
   // Derive values from props (fully controlled)
@@ -101,18 +102,20 @@ export function NumericFilter({
         {isActive && <span className="badge bg-secondary">Active</span>}
       </div>
 
-      {/* Operator selector */}
-      <div className="mb-2">
-        <select
-          className="form-select form-select-sm"
-          value={operator}
-          onChange={handleOperatorChange}
-          aria-label={`Filter type for ${displayName}`}
-        >
-          <option value="gte">At least</option>
-          <option value="lte">At most</option>
-        </select>
-      </div>
+      {/* Operator selector (hidden when locked) */}
+      {!lockOperator && (
+        <div className="mb-2">
+          <select
+            className="form-select form-select-sm"
+            value={operator}
+            onChange={handleOperatorChange}
+            aria-label={`Filter type for ${displayName}`}
+          >
+            <option value="gte">At least</option>
+            <option value="lte">At most</option>
+          </select>
+        </div>
+      )}
 
       {/* Range slider */}
       <div className="mb-1">

@@ -98,6 +98,7 @@ export function buildGpuFilterConfigs(
       step: BANDWIDTH_STEP,
       unit: "GB/s",
       defaultOperator: "gte",
+      group: "Advanced",
     } satisfies NumericFilterConfig,
 
     // TDP filter (numeric) - default to "At most"
@@ -110,6 +111,7 @@ export function buildGpuFilterConfigs(
       step: TDP_STEP,
       unit: "W",
       defaultOperator: "lte",
+      group: "Advanced",
     } satisfies NumericFilterConfig,
   ]
 
@@ -171,6 +173,8 @@ export function buildGpuFilterConfigs(
         step: FPS_STEP,
         unit: benchmark.unit,
         defaultOperator: "gte",
+        lockOperator: true,
+        group: resolutionGroupName(benchmark.name),
       } satisfies NumericFilterConfig)
     }
   }
@@ -182,6 +186,7 @@ export function buildGpuFilterConfigs(
       name: "series",
       displayName: "Series",
       options: seriesValues.map((v) => ({ value: v, label: v })),
+      group: "Advanced",
     } satisfies CategoricalFilterConfig)
   }
 
@@ -273,6 +278,20 @@ function extractUniqueValues(
   return [...values].sort()
 }
 
+const RESOLUTION_PATTERN = /\((1080p|1440p|4K)\)/
+
+/**
+ * Derives an accordion group name from a benchmark display name by extracting
+ * the resolution (e.g., "Counter-Strike 2 (1080p)" → "Benchmarks: 1080p").
+ */
+function resolutionGroupName(benchmarkName: string): string {
+  const match = RESOLUTION_PATTERN.exec(benchmarkName)
+  if (match) {
+    return `Benchmarks: ${match[1]}`
+  }
+  return "Benchmarks"
+}
+
 /**
  * Options for building listing filter configs
  */
@@ -331,6 +350,17 @@ export function buildListingFilterConfigs(
         { value: "Refurbished", label: "Refurbished" },
       ],
     } satisfies CategoricalFilterConfig,
+
+    // Marketplace filter (categorical)
+    {
+      type: "categorical",
+      name: "source",
+      displayName: "Marketplace",
+      options: [
+        { value: "ebay", label: "eBay" },
+        { value: "amazon", label: "Amazon" },
+      ],
+    } satisfies CategoricalFilterConfig,
   ]
 
   // Add country filter if countries are available
@@ -343,6 +373,8 @@ export function buildListingFilterConfigs(
         value: code,
         label: code,
       })),
+      maxHeight: 200,
+      group: "Country",
     } satisfies CategoricalFilterConfig)
   }
 
@@ -362,7 +394,7 @@ export function buildListingFilterConfigs(
       defaultOperator: "gte",
     } satisfies NumericFilterConfig)
 
-    // Add gaming benchmark filters (for cross-category filtering)
+    // Add gaming benchmark filters grouped by resolution
     if (gamingBenchmarks && gamingBenchmarks.length > 0) {
       for (const benchmark of gamingBenchmarks) {
         // Skip if this is the current metric being displayed
@@ -379,6 +411,8 @@ export function buildListingFilterConfigs(
           step: FPS_STEP,
           unit: benchmark.unit,
           defaultOperator: "gte",
+          lockOperator: true,
+          group: resolutionGroupName(benchmark.name),
         } satisfies NumericFilterConfig)
       }
     }
@@ -393,6 +427,7 @@ interface ListingWithBenchmarks {
     priceValue: string
     condition: string | null
     itemLocationCountry?: string | null
+    source?: string
     gpu: Record<string, unknown>
   }
   benchmarkValues?: Record<string, number>
@@ -422,6 +457,9 @@ export function getListingFieldValue(
     case "itemLocationCountry": {
       return listing.item.itemLocationCountry
     }
+    case "source": {
+      return listing.item.source ?? "ebay"
+    }
     case "memoryCapacityGB": {
       return listing.item.gpu.memoryCapacityGB
     }
@@ -448,6 +486,7 @@ interface ShopListingItem {
     priceValue: string
     condition: string | null
     itemLocationCountry?: string | null
+    source?: string
   }
   specs: Record<string, unknown>
 }
@@ -469,6 +508,9 @@ export function getShopListingFieldValue(
     }
     case "itemLocationCountry": {
       return listing.item.itemLocationCountry
+    }
+    case "source": {
+      return listing.item.source ?? "ebay"
     }
     default: {
       // Fallback to specs if needed in future

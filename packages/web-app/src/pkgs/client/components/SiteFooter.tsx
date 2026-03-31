@@ -23,7 +23,10 @@ export const SiteFooter = () => {
           As an Amazon Associate and eBay Partner, gpupoet.com earns from
           qualifying purchases. Product links may generate a small referral fee
           at no cost to you.{" "}
-          <Link className="text-muted" href="/policy/affiliate-disclosure">
+          <Link
+            className="text-muted"
+            href="/gpu/learn/faq#:~:text=How does GPUPoet make money?"
+          >
             Learn more
           </Link>
           .

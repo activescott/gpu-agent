@@ -31,6 +31,23 @@ patches:
     target:
       kind: StatefulSet
       name: db
+  # Suspend cache revalidation CronJob in dev.
+  # The local dev DB is typically a snapshot from ./scripts/restore-prod-db which
+  # already contains fresh listings. If the cron runs against stale snapshot data,
+  # every GPU appears stale and the job hits eBay's rate limit (429s).
+  #
+  # To get fresh listings in dev, either:
+  #   1. Run ./scripts/restore-prod-db to restore a recent production snapshot
+  #   2. Comment out this patch and restart ./scripts/dev to re-enable the cron
+  #   3. Trigger a one-off revalidation manually:
+  #      kubectl --context minikube create job --from=cronjob/cache-revalidation manual-revalidation -n gpupoet-dev
+  - patch: |-
+      - op: add
+        path: /spec/suspend
+        value: true
+    target:
+      kind: CronJob
+      name: cache-revalidation
   # Remove IndexNow CronJob (not needed in dev)
   - patch: |-
       $patch: delete

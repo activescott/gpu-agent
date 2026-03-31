@@ -134,6 +134,9 @@ echo "Configuring Docker to use minikube's Docker daemon..."
 eval $(minikube docker-env)
 
 # Run skaffold dev with proper context
-# --cleanup=false: Preserve resources (including database PVC and data) when stopping with Ctrl+C
-#   This ensures database data persists between dev runs
-skaffold dev --port-forward --cleanup=false
+# --cleanup=true (default): Delete deployed resources (Deployments, CronJobs, Services)
+#   when stopping with Ctrl+C. This prevents the dev CronJob from continuing to
+#   hit eBay's API in the background after the dev session ends (dev and prod share
+#   the same API key). Database PVCs are safe — Kubernetes retains StatefulSet PVCs
+#   even when the StatefulSet is deleted, so DB data persists between dev runs.
+skaffold dev --port-forward

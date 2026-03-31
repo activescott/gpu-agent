@@ -3,14 +3,14 @@ kind: CronJob
 metadata:
   name: cache-revalidation
 spec:
-  # Run every 10 minutes to support both eBay and Amazon listing revalidation.
+  # Run every 20 minutes for both eBay and Amazon listing revalidation.
   #
-  # eBay: Refreshes all stale GPUs (6-hour TTL via CACHED_LISTINGS_DURATION_MS).
-  #   More frequent runs are safe — eBay staleness checks prevent unnecessary API calls.
-  #   eBay API budget: 5,000 calls/day. Normal usage: ~230 calls per stale run.
+  # eBay: Refreshes up to 2 stale GPUs per run (6-hour TTL).
+  #   With ~75 GPUs, cycles through all in ~12 hours.
+  #   eBay API budget: 5,000 calls/day. 2 GPUs/run ≈ 144 calls/day.
   #
-  # Amazon: Refreshes only 1 GPU per run (anti-bot measure).
-  #   With ~75 GPUs, takes ~25 hours to cycle through all at 20-min intervals.
+  # Amazon: Refreshes 1 GPU per run (anti-bot measure).
+  #   With ~75 GPUs, cycles through all in ~25 hours.
   #   The amazon-searcher service handles the actual scraping via Playwright/Firefox.
   schedule: "*/20 * * * *"
   concurrencyPolicy: Forbid
@@ -18,6 +18,10 @@ spec:
     spec:
       # 18-minute deadline prevents overlapping with the next 20-minute cron run
       activeDeadlineSeconds: 1080
+      # Only retry once on failure. Each retry triggers a full revalidation cycle
+      # (Amazon search + eBay queries), wasting API budget. Better to wait for the
+      # next cron run in 20 minutes than burn through retries.
+      backoffLimit: 1
       template:
         spec:
           restartPolicy: OnFailure

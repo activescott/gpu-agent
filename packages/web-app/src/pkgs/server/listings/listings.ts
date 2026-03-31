@@ -86,31 +86,26 @@ export async function revalidateCachedListings(
           }))
 
           if (staleGpus.length > 0) {
-            // first sort the listings with the oldest ones first so that we re-cache those first (in case we exceed time budget)
+            // Sort oldest first so the most stale GPUs get refreshed first
             gpusWithOldestCachedAt.sort((a, b) => {
               return a.oldestCachedAt.getTime() - b.oldestCachedAt.getTime()
             })
 
-            let timeBudgetRemaining = timeoutMs - (Date.now() - start.getTime())
-
-            // remove some buffer time to allow listListingsAll to still return results from DB
-            // eslint-disable-next-line no-magic-numbers
-            timeBudgetRemaining -= secondsToMilliseconds(10)
-
-            // it's really 1-4 seconds normally, but the max can be ~6s from some anecdotal monitoring
-            // eslint-disable-next-line no-magic-numbers
-            const TIME_TO_CACHE_ONE_GPU = secondsToMilliseconds(4)
+            // Limit to 2 GPUs per run to avoid hitting eBay's rate limit (5,000 calls/day).
+            // Dev and prod share the same API key, so bursting through all stale GPUs
+            // in one run can exhaust the budget and cause 429 errors.
+            // With 2 GPUs per 20-min cron run, all ~74 GPUs cycle in ~12 hours.
+            const MAX_GPUS_PER_RUN = 2
+            let gpusProcessed = 0
 
             for (
               let gpu = staleGpus.pop();
               gpu !== undefined;
               gpu = staleGpus.pop()
             ) {
-              if (timeBudgetRemaining < TIME_TO_CACHE_ONE_GPU) {
-                log.warn(
-                  `time budget exceeded, stopping caching of GPUs early. Remaining time: ${timeBudgetRemaining}ms, total duration: ${
-                    Date.now() - start.getTime()
-                  }ms. Remaining GPUs: ${staleGpus.length}.`,
+              if (gpusProcessed >= MAX_GPUS_PER_RUN) {
+                log.info(
+                  `Reached per-run limit of ${MAX_GPUS_PER_RUN} GPUs. ${staleGpus.length} stale GPUs remaining for next run.`,
                 )
                 staleGpusRemaining = staleGpus.length
                 break
@@ -121,6 +116,7 @@ export async function revalidateCachedListings(
                 prisma,
               )
               listingCachedCount += chain(cached).size()
+              gpusProcessed++
               const cachingEnd = Date.now() - cachingStart
               if (!maxTimeToCacheOneGpu || cachingEnd > maxTimeToCacheOneGpu) {
                 maxTimeToCacheOneGpu = cachingEnd
@@ -129,7 +125,6 @@ export async function revalidateCachedListings(
                 staleGpus.length > 0
                   ? getOldestCachedAt(staleGpus.flatMap((gpu) => gpu.listings))
                   : null
-              timeBudgetRemaining -= cachingEnd
             }
           }
           return {

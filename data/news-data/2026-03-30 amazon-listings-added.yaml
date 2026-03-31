@@ -1,0 +1,21 @@
+# yaml-language-server: $schema=./news-article.schema.json
+id: gpu0330mar2026amz
+slug: amazon-listings-added
+title: "Amazon Listings Now Available Alongside eBay"
+content: |
+  GPU Poet now pulls listings from Amazon in addition to eBay. Amazon results appear on all [price-compare](/gpu/price-compare), [ranking](/gpu/ranking/ai/fp32-flops), and individual [shop pages](/gpu/shop/nvidia-geforce-rtx-4070) right alongside eBay listings.
+
+  ## What's New
+
+  Each listing card now shows a marketplace icon indicating whether it's from eBay or Amazon. Amazon listings include a price timestamp showing when the price was last checked.
+
+  A new **Marketplace** filter has been added across all listing pages — you can show only eBay, only Amazon, or both.
+status: PUBLISHED
+tags:
+  - feature
+  - shopping
+  - amazon
+authorFullName: "Scott Willeke"
+createdAt: "2026-03-30T10:00:00Z"
+updatedAt: "2026-03-30T10:00:00Z"
+publishedAt: "2026-03-30T10:00:00Z"

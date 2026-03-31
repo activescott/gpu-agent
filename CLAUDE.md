@@ -2,6 +2,10 @@
 
 This file contains instructions and context for Claude Code sessions working with this repository.
 
+## Additional Agents and Skills
+
+The private `gpu-poet-data` repo at `../gpu-poet-data/` contains agents and skills that apply to this project. Check `.claude/agents/` in that repo when looking for skills related to news articles, GPU specs, benchmarks, or data management.
+
 ## Important Instructions
 
 - Always use scripts/dev to start the dev environment:

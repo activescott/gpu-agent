@@ -186,6 +186,13 @@ The amazon-searcher microservice runs in minikube alongside the main app. Code l
 - **Debug 0-result searches**: `./scripts/amazon-debug-trace` pulls the Playwright trace from the pod. Traces are auto-saved when a search returns 0 results (dev mode only).
 - **Iterative debugging**: Use `/test-amazon-searcher` skill for the full test-diagnose-fix workflow when searches fail or Amazon changes their HTML.
 
+## Alerting
+
+Alert rules and Alertmanager config (Telegram notifications) are in the flux repo:
+- **Rules**: `home-infra-k8s-flux/apps/production/monitoring/prometheus/helmrelease.yaml` under `serverFiles.alerting_rules.yml`
+- **Routing/Telegram**: Same file under `alertmanagerFiles.alertmanager.yml`
+- **Secrets**: `kustomization.yaml` generates `alertmanager-secrets` from `.env.secret.alertmanager.encrypted`
+
 ## Verifying Infrastructure Changes
 
 When modifying Docker or Kubernetes files (Dockerfiles, entrypoint scripts, k8s manifests, skaffold.yaml), always verify by:

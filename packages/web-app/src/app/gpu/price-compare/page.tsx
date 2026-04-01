@@ -14,9 +14,9 @@ export const dynamic = "force-dynamic"
 
 export async function generateMetadata() {
   return {
-    title: "Shop All GPUs - Compare Prices with Performance Filters",
+    title: "Shop All GPUs - Compare Prices vs Performance Benchmarks",
     description:
-      "Browse all available GPUs with real-time eBay prices. Filter by price, memory, architecture, and gaming benchmarks to find the perfect GPU for your budget.",
+      "Browse GPU prices from eBay and Amazon. Filter by price, memory, architecture, and gaming benchmarks to find the best price/performance GPU available.",
     alternates: {
       canonical: "https://gpupoet.com/gpu/price-compare",
     },
@@ -55,10 +55,10 @@ export default async function Page() {
       <div className="mb-4">
         <h1>Shop All GPUs</h1>
         <p className="lead">
-          Find your perfect GPU from real-time eBay listings. Use the filters to
-          narrow down by price, memory, architecture, and gaming benchmark
-          performance. This combines live market prices with real-world
-          performance data to help you find the best value.
+          Find the top performing GPU for the money using prices across eBay and
+          Amazon listings. Use the filters to narrow down by price, memory,
+          architecture, and gaming benchmark performance. Combine live market
+          prices with real-world performance data to find the best value.
         </p>
       </div>
       <Suspense fallback={<div>Loading filters...</div>}>

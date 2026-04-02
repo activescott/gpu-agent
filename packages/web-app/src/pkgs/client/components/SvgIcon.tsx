@@ -1,9 +1,27 @@
 import { CSSProperties, type JSX } from "react"
 
+type CSSWidth = CSSProperties["width"]
+type CSSHeight = CSSProperties["height"]
+
 interface Props {
   icon: string
   svgViewBox?: string
+  /**
+   * The size of the icon. Mutually exclusive with width and height. If width or
+   * height is provided, it will override the size prop.
+   */
   size?: "xs" | "small" | "medium"
+
+  /**
+   * The width and height of the icon. Mutually exclusive with size. If width or
+   * height is provided, it will override the size prop.
+   */
+  width?: CSSWidth
+  /**
+   * The width and height of the icon. Mutually exclusive with size. If width or
+   * height is provided, it will override the size prop.
+   */
+  height?: CSSHeight
   className?: string
   alt?: string
 }
@@ -22,8 +40,13 @@ export const SvgIcon = (props: Props): JSX.Element => {
     medium: "48px",
   }
 
-  svgStyle.width = sizes[props.size!]
-  svgStyle.height = sizes[props.size!]
+  if (props.width || props.height) {
+    svgStyle.width = props.width
+    svgStyle.height = props.height
+  } else {
+    svgStyle.width = sizes[props.size!]
+    svgStyle.height = sizes[props.size!]
+  }
 
   return (
     <svg

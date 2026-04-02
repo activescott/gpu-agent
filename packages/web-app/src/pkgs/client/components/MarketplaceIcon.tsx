@@ -22,5 +22,5 @@ export function MarketplaceIcon({
   // force it to at least small size for ebay since the svg is less detailed and
   // doesn't look good at xs size. This mostly true on the "Buy" buttons in listings
   size = size === "xs" ? "small" : size
-  return <EbayIcon size={size} />
+  return <EbayIcon />
 }

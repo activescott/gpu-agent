@@ -10,33 +10,18 @@ import {
 } from "@/pkgs/isomorphic/model"
 import { getMetricCategory } from "@/pkgs/isomorphic/model/metrics"
 import Image from "next/image"
-import { ListingAffiliateLink } from "./ListingAffiliateLink"
 import { divideSafe } from "@/pkgs/isomorphic/math"
 import type { MetricInfo } from "./ListingGalleryWithMetric"
-import { MarketplaceIcon } from "./MarketplaceIcon"
 import { AmazonPriceDisclaimer } from "./AmazonPriceDisclaimer"
+import { formatPrice } from "./format"
+import { BuyNowButton } from "./BuyNowButton"
 
-const fmtInteger = new Intl.NumberFormat("en-US", {
-  style: "currency",
-  currency: "USD",
-  maximumFractionDigits: 0,
-})
-const fmtDecimal = new Intl.NumberFormat("en-US", {
-  style: "currency",
-  currency: "USD",
-  maximumFractionDigits: 2,
-})
 const fmtCostPerMetric = new Intl.NumberFormat("en-US", {
   style: "currency",
   currency: "USD",
   minimumFractionDigits: 2,
   maximumFractionDigits: 2,
 })
-
-export function formatPrice(price: number): string {
-  if (price < 1) return fmtDecimal.format(price)
-  return fmtInteger.format(price)
-}
 
 const formatCostPerMetric = (price: number) => {
   return fmtCostPerMetric.format(price)
@@ -154,7 +139,6 @@ function resolveMetricData(
 export function ListingCardWithMetric(props: ListingCardWithMetricProps) {
   const {
     item: {
-      itemAffiliateWebUrl,
       priceValue,
       title,
       condition,
@@ -217,13 +201,7 @@ export function ListingCardWithMetric(props: ListingCardWithMetricProps) {
         </div>
       </div>
       <div className="card-footer d-flex">
-        <ListingAffiliateLink
-          to={itemAffiliateWebUrl}
-          listing={item}
-          className="btn btn-primary d-flex align-items-center gap-1"
-        >
-          <MarketplaceIcon source={source} /> Buy Now
-        </ListingAffiliateLink>
+        <BuyNowButton item={item} />
       </div>
     </div>
   )

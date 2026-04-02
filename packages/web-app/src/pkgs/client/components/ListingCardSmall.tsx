@@ -5,16 +5,15 @@ import {
   GpuSpecs,
   GpuSpecsDescription,
 } from "@/pkgs/isomorphic/model/specs"
-import { chooseBestImageUrl, formatPrice } from "./ListingCardWithMetric"
+import { chooseBestImageUrl } from "./ListingCardWithMetric"
+import { formatPrice } from "./format"
 import Image from "next/image"
 import { AttributePill, CountryPill } from "./AttributePill"
 import { SpecPill } from "./SpecPill"
-import { ListingAffiliateLink } from "./ListingAffiliateLink"
 import { divideSafe } from "@/pkgs/isomorphic/math"
-import { MarketplaceIcon } from "./MarketplaceIcon"
 import { AmazonPriceDisclaimer } from "./AmazonPriceDisclaimer"
-
 import type { JSX } from "react"
+import { BuyNowButton } from "./BuyNowButton"
 
 export interface SmallCardMetricInfo {
   unit: string
@@ -60,14 +59,7 @@ function resolveMetric(
 
 export function ListingCardSmall(props: ListingCardProps): JSX.Element {
   const {
-    item: {
-      priceValue,
-      title,
-      condition,
-      itemLocationCountry,
-      itemAffiliateWebUrl,
-      source,
-    },
+    item: { priceValue, title, condition, itemLocationCountry, source },
     item,
   } = props
   const imageUrl = chooseBestImageUrl(item)
@@ -101,7 +93,7 @@ export function ListingCardSmall(props: ListingCardProps): JSX.Element {
               {title}
             </h5>
             <div
-              className="card-text text-align-start"
+              className="card-text d-flex flex-wrap gap-1 align-items-center"
               style={{ minHeight: "2lh" }}
             >
               {condition && <AttributePill>{condition}</AttributePill>}
@@ -111,16 +103,10 @@ export function ListingCardSmall(props: ListingCardProps): JSX.Element {
               <SpecPill infoTipText={tooltip} color="primary" outline>
                 {formatPrice(costPerMetric)} / {unit}
               </SpecPill>
+
+              <BuyNowButton item={item} />
+              <AmazonPriceDisclaimer source={source} cachedAt={item.cachedAt} />
             </div>
-            <ListingAffiliateLink
-              to={itemAffiliateWebUrl}
-              listing={item}
-              className="btn btn-primary mt-2 d-block gap-1"
-            >
-              <MarketplaceIcon source={source} size="small" />{" "}
-              {formatPrice(cost)}
-            </ListingAffiliateLink>
-            <AmazonPriceDisclaimer source={source} cachedAt={item.cachedAt} />
           </div>
         </div>
       </div>

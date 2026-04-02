@@ -1,7 +1,14 @@
 "use client"
 import { SpecPill } from "@/pkgs/client/components/SpecPill"
 import { AttributePill, CountryPill } from "./AttributePill"
-import { Listing, ListingWithMetric } from "@/pkgs/isomorphic/model"
+import {
+  Gpu,
+  GpuMetricKey,
+  GpuMetricsDescription,
+  Listing,
+  ListingWithMetric,
+} from "@/pkgs/isomorphic/model"
+import { getMetricCategory } from "@/pkgs/isomorphic/model/metrics"
 import Image from "next/image"
 import { ListingAffiliateLink } from "./ListingAffiliateLink"
 import { divideSafe } from "@/pkgs/isomorphic/math"
@@ -26,7 +33,7 @@ const fmtCostPerMetric = new Intl.NumberFormat("en-US", {
   maximumFractionDigits: 2,
 })
 
-const formatPrice = (price: number) => {
+export function formatPrice(price: number): string {
   if (price < 1) return fmtDecimal.format(price)
   return fmtInteger.format(price)
 }
@@ -35,11 +42,23 @@ const formatCostPerMetric = (price: number) => {
   return fmtCostPerMetric.format(price)
 }
 
-interface ListingCardWithMetricProps {
+/** For price-compare pages where metric value comes from the ListingWithMetric query */
+interface MetricInfoProps {
   item: Listing | ListingWithMetric
-  /** When provided, shows cost-per-metric pill. When omitted, shows GPU info instead. */
   metricInfo?: MetricInfo
+  specs?: never
+  highlightSpec?: never
 }
+
+/** For shop pages where metric value is derived from GPU specs */
+interface SpecsProps {
+  item: Listing
+  specs: Gpu
+  highlightSpec: GpuMetricKey
+  metricInfo?: never
+}
+
+type ListingCardWithMetricProps = MetricInfoProps | SpecsProps
 
 interface MetricDisplayProps {
   metricInfo: MetricInfo
@@ -87,33 +106,69 @@ function GpuInfoDisplay({ gpuName, memoryCapacityGB }: GpuInfoDisplayProps) {
   )
 }
 
+function resolveMetricData(
+  props: ListingCardWithMetricProps,
+  cost: number,
+): {
+  metricInfo: MetricInfo
+  metricValue: number
+  costPerMetric: number
+} | null {
+  if (props.specs) {
+    const desc = GpuMetricsDescription[props.highlightSpec]
+    const metricValue = props.specs[props.highlightSpec]
+    if (metricValue == null) return null
+    return {
+      metricInfo: {
+        slug: props.highlightSpec,
+        name: desc.label,
+        category: getMetricCategory(props.highlightSpec),
+        unit: desc.unit,
+        unitShortest: desc.unitShortest,
+        descriptionDollarsPer: desc.descriptionDollarsPer,
+      },
+      metricValue,
+      costPerMetric: divideSafe(cost, metricValue),
+    }
+  }
+
+  if (props.metricInfo) {
+    const metricValue =
+      "metricValue" in props.item ? props.item.metricValue : undefined
+    if (metricValue == null) return null
+    return {
+      metricInfo: props.metricInfo,
+      metricValue,
+      costPerMetric: divideSafe(cost, metricValue),
+    }
+  }
+
+  return null
+}
+
 /**
  * A listing card component that displays a listing with optional metric value.
- * When metricInfo is provided, shows cost-per-metric. Otherwise shows GPU info.
+ * Accepts either specs + highlightSpec (for shop pages) or metricInfo (for price-compare pages).
+ * When no metric can be resolved, shows GPU name and memory instead.
  */
-export const ListingCardWithMetric = ({
-  item,
-  metricInfo,
-}: ListingCardWithMetricProps) => {
+export function ListingCardWithMetric(props: ListingCardWithMetricProps) {
   const {
-    itemAffiliateWebUrl,
-    priceValue,
-    title,
-    condition,
-    itemLocationCountry,
-    gpu,
-    source,
-    cachedAt,
-  } = item
-
-  // metricValue is only present when item is ListingWithMetric
-  const metricValue = "metricValue" in item ? item.metricValue : undefined
+    item: {
+      itemAffiliateWebUrl,
+      priceValue,
+      title,
+      condition,
+      itemLocationCountry,
+      gpu,
+      source,
+      cachedAt,
+    },
+    item,
+  } = props
 
   const imageUrl = chooseBestImageUrl(item)
   const cost = Number(priceValue)
-
-  const costPerMetric =
-    metricInfo && metricValue ? divideSafe(cost, metricValue) : undefined
+  const resolved = resolveMetricData(props, cost)
 
   return (
     <div className="card m-1" style={{ width: "18rem" }}>
@@ -146,11 +201,11 @@ export const ListingCardWithMetric = ({
             <CountryPill isoCountryCode={itemLocationCountry}></CountryPill>
           )}
           <br />
-          {metricInfo && costPerMetric !== undefined && metricValue ? (
+          {resolved ? (
             <MetricDisplay
-              metricInfo={metricInfo}
-              costPerMetric={costPerMetric}
-              metricValue={metricValue}
+              metricInfo={resolved.metricInfo}
+              costPerMetric={resolved.costPerMetric}
+              metricValue={resolved.metricValue}
             />
           ) : (
             <GpuInfoDisplay
@@ -174,8 +229,7 @@ export const ListingCardWithMetric = ({
   )
 }
 
-function chooseBestImageUrl(item: Listing | ListingWithMetric): string {
-  // thumbnailImages is conditional, but usually the same image as image, but smaller.
+export function chooseBestImageUrl(item: Listing | ListingWithMetric): string {
   if (item.thumbnailImageUrl) {
     return item.thumbnailImageUrl
   }

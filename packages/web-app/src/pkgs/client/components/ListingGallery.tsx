@@ -1,7 +1,7 @@
 "use client"
 import { useSorting } from "@/pkgs/client/components/SortPanel"
 import { GpuMetricKey, Gpu, Listing } from "../../isomorphic/model"
-import { ListingCard } from "./ListingCard"
+import { ListingCardWithMetric } from "./ListingCardWithMetric"
 import { useMemo, type JSX } from "react"
 import { divideSafe } from "@/pkgs/isomorphic/math"
 import { createClientLogger } from "@/lib/clientLogger"
@@ -47,7 +47,7 @@ export function ListingGallery({
     <div id="listingContainer" className="d-flex flex-wrap">
       {hideSort == false && sortPanel}
       {sortedListings.map(({ item, specs }, index) => (
-        <ListingCard
+        <ListingCardWithMetric
           key={`${item.itemId}-${index.toString()}`}
           item={item}
           specs={specs}

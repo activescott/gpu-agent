@@ -5,7 +5,7 @@ import {
   GpuSpecs,
   GpuSpecsDescription,
 } from "@/pkgs/isomorphic/model/specs"
-import { chooseBestImageUrl, formatPrice } from "./ListingCard"
+import { chooseBestImageUrl, formatPrice } from "./ListingCardWithMetric"
 import Image from "next/image"
 import { AttributePill, CountryPill } from "./AttributePill"
 import { SpecPill } from "./SpecPill"

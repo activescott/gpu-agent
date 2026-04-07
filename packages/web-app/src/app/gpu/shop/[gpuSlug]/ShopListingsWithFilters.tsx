@@ -4,7 +4,8 @@ import type { JSX } from "react"
 import { getShopListingFieldValue } from "@/components/gpu/gpuFilterConfig"
 import { ListingsWithFilters } from "@/components/gpu/ListingsWithFilters"
 import { ListingGallery } from "@/pkgs/client/components/ListingGallery"
-import type { Gpu, Listing, GpuMetricKey } from "@/pkgs/isomorphic/model"
+import type { Gpu, Listing } from "@/pkgs/isomorphic/model"
+import type { SortKey } from "@/pkgs/client/components/SortPanel"
 
 interface ListingItem {
   specs: Gpu
@@ -13,7 +14,7 @@ interface ListingItem {
 
 interface ShopListingsWithFiltersProps {
   listings: ListingItem[]
-  initialSortKey: GpuMetricKey
+  initialSortKey: SortKey
 }
 
 /**

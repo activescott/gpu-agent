@@ -10,8 +10,18 @@ import { createClientLogger } from "@/lib/clientLogger"
 
 const log = createClientLogger("components:SortPanel")
 
+export type SortKey = GpuMetricKey | "price"
+
+const PRICE_SORT_KEY = "price"
+
+function isValidSortKey(value: string): value is SortKey {
+  return (
+    value === PRICE_SORT_KEY || GpuMetricKeys.includes(value as GpuMetricKey)
+  )
+}
+
 interface SortValue {
-  metricKey: GpuMetricKey
+  metricKey: SortKey
   ascending: boolean
 }
 
@@ -64,13 +74,16 @@ const SortPanel = ({ value, onChange }: SortPanelProps) => {
           defaultValue={value?.metricKey}
           onChange={(e) => {
             log.debug(`${e.target.id} changed: %o`, selectedOptions(e.target))
-            const option = e.target.selectedOptions[0]
-            onChange({
-              ...value,
-              metricKey: option.value as GpuMetricKey,
-            })
+            const selected = e.target.selectedOptions[0].value
+            if (isValidSortKey(selected)) {
+              onChange({
+                ...value,
+                metricKey: selected,
+              })
+            }
           }}
         >
+          <option value={PRICE_SORT_KEY}>Price (lowest first)</option>
           <optgroup label="AI / ML Performance">
             {aiMetrics.map((metricKey) => (
               <option key={metricKey} value={metricKey}>

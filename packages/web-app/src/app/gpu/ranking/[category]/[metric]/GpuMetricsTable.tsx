@@ -1,7 +1,15 @@
 "use client"
 import { FormatCurrency } from "@/pkgs/client/components/FormatCurrency"
+import { BootstrapIcon } from "@/pkgs/client/components/BootstrapIcon"
 import Link from "next/link"
-import { useEffect, useState, useMemo, type JSX, Fragment } from "react"
+import {
+  useState,
+  useMemo,
+  useCallback,
+  type JSX,
+  type CSSProperties,
+  Fragment,
+} from "react"
 import { composeComparers } from "@/pkgs/isomorphic/collection"
 import { PricedGpu } from "@/pkgs/server/db/GpuRepository"
 import { isNil } from "lodash-es"
@@ -12,37 +20,68 @@ import {
   type TierThreshold,
 } from "@/pkgs/isomorphic/model/tiers"
 
-/**
- * Sort GPUs by percentile (descending - highest performance first).
- * GPUs without listings or percentile data are sorted to the bottom.
- */
-function sortGpusByPercentile(gpus: PricedGpu[]): PricedGpu[] {
-  // GPUs without listings go to bottom
-  const listingCountNotZeroComparer = (a: PricedGpu, b: PricedGpu): number => {
+type RankingSortField = "price" | "percentile" | "dollarsPer" | "name"
+type SortDirection = "asc" | "desc"
+
+const DEFAULT_DIRECTIONS: Record<RankingSortField, SortDirection> = {
+  price: "asc",
+  dollarsPer: "asc",
+  percentile: "desc",
+  name: "asc",
+}
+
+function getDollarsPer(gpu: PricedGpu): number | null {
+  const metricValue = gpu.metricValue
+  if (
+    gpu.price.activeListingCount > 0 &&
+    !isNil(metricValue) &&
+    metricValue > 0
+  ) {
+    const cost = gpu.price.minPrice / metricValue
+    return Number.isFinite(cost) ? cost : null
+  }
+  return null
+}
+
+function getSortableValue(
+  gpu: PricedGpu,
+  field: RankingSortField,
+): number | string {
+  switch (field) {
+    case "price": {
+      return gpu.price.minPrice
+    }
+    case "percentile": {
+      return gpu.percentile ?? -1
+    }
+    case "dollarsPer": {
+      return getDollarsPer(gpu) ?? Number.MAX_VALUE
+    }
+    case "name": {
+      return gpu.gpu.label.toLowerCase()
+    }
+  }
+}
+
+function sortGpusByField(
+  gpus: PricedGpu[],
+  field: RankingSortField,
+  direction: SortDirection,
+): PricedGpu[] {
+  const noListingsToBottom = (a: PricedGpu, b: PricedGpu): number => {
     if (a.price.activeListingCount === 0) return 1
     return b.price.activeListingCount === 0 ? -1 : 0
   }
 
-  // GPUs without percentile data go to bottom (among those with listings)
-  const hasPercentileComparer = (a: PricedGpu, b: PricedGpu): number => {
-    if (a.percentile === undefined) return 1
-    return b.percentile === undefined ? -1 : 0
+  const fieldComparer = (a: PricedGpu, b: PricedGpu): number => {
+    const aVal = getSortableValue(a, field)
+    const bVal = getSortableValue(b, field)
+    if (aVal < bVal) return direction === "asc" ? -1 : 1
+    if (aVal > bVal) return direction === "asc" ? 1 : -1
+    return 0
   }
 
-  // Sort by percentile descending (highest performance first)
-  const percentileComparer = (a: PricedGpu, b: PricedGpu): number => {
-    const aPercentile = a.percentile ?? 0
-    const bPercentile = b.percentile ?? 0
-    return bPercentile - aPercentile // descending
-  }
-
-  return [...gpus].sort(
-    composeComparers(
-      listingCountNotZeroComparer,
-      hasPercentileComparer,
-      percentileComparer,
-    ),
-  )
+  return [...gpus].sort(composeComparers(noListingsToBottom, fieldComparer))
 }
 
 const PERCENT_MULTIPLIER = 100
@@ -149,24 +188,34 @@ export function GpuMetricsTable({
   showTierDividers = true,
   header,
 }: GpuMetricsTableProps): JSX.Element {
-  const [gpus, setGpus] = useState<PricedGpu[]>(gpuList)
+  const [sortField, setSortField] = useState<RankingSortField>("dollarsPer")
+  const [sortDirection, setSortDirection] = useState<SortDirection>("asc")
 
-  useEffect(() => {
-    const sorted = sortGpusByPercentile(gpuList)
-    setGpus(sorted)
-  }, [gpuList])
+  const sortedGpus = useMemo(
+    () => sortGpusByField(gpuList, sortField, sortDirection),
+    [gpuList, sortField, sortDirection],
+  )
 
-  // Calculate cost percentiles for the $ per Metric column
   const costPercentiles = useMemo(
     () => calculateCostPercentiles(gpuList),
     [gpuList],
   )
 
-  // Track which tier dividers we've already rendered
-  const renderedTiers = new Set<number>()
+  const handleHeaderClick = useCallback(
+    (field: RankingSortField) => {
+      if (field === sortField) {
+        setSortDirection((d) => (d === "asc" ? "desc" : "asc"))
+      } else {
+        setSortField(field)
+        setSortDirection(DEFAULT_DIRECTIONS[field])
+      }
+    },
+    [sortField],
+  )
 
-  // Apply maxRows limit if set
-  const displayGpus = maxRows ? gpus.slice(0, maxRows) : gpus
+  const renderedTiers = new Set<number>()
+  const displayGpus = maxRows ? sortedGpus.slice(0, maxRows) : sortedGpus
+  const showTiers = showTierDividers && sortField === "percentile"
 
   return (
     <div className="table-responsive-lg">
@@ -182,30 +231,42 @@ export function GpuMetricsTable({
       <table className="table table-hover">
         <thead>
           <tr>
-            <th
+            <SortableHeader
+              field="name"
+              label="GPU"
+              activeField={sortField}
+              direction={sortDirection}
+              onClick={handleHeaderClick}
               style={{ textAlign: "left", whiteSpace: "nowrap", width: "1%" }}
-            >
-              GPU
-            </th>
-            <th
+            />
+            <SortableHeader
+              field="price"
+              label="Lowest Average Price"
+              activeField={sortField}
+              direction={sortDirection}
+              onClick={handleHeaderClick}
               style={{ textAlign: "right", whiteSpace: "nowrap", width: "1%" }}
-            >
-              Lowest Average Price
-            </th>
-            <th
+            />
+            <SortableHeader
+              field="percentile"
+              label="Raw Performance Ranking (Percentile)"
+              activeField={sortField}
+              direction={sortDirection}
+              onClick={handleHeaderClick}
               style={{
                 textAlign: "left",
                 whiteSpace: "nowrap",
                 minWidth: "200px",
               }}
-            >
-              Raw Performance Ranking (Percentile)
-            </th>
-            <th
+            />
+            <SortableHeader
+              field="dollarsPer"
+              label={`$ per ${metricUnit}`}
+              activeField={sortField}
+              direction={sortDirection}
+              onClick={handleHeaderClick}
               style={{ textAlign: "right", whiteSpace: "nowrap", width: "1%" }}
-            >
-              $ per {metricUnit}
-            </th>
+            />
           </tr>
         </thead>
         <tbody>
@@ -220,9 +281,8 @@ export function GpuMetricsTable({
                 ? pricedGpu.price.minPrice / metricValue
                 : 0
 
-            // Check if we need to render a tier divider before this GPU
             const tierDividers: TierThreshold[] = []
-            if (showTierDividers && percentile !== undefined) {
+            if (showTiers && percentile !== undefined) {
               for (const tier of TIER_THRESHOLDS) {
                 if (
                   !renderedTiers.has(tier.percentile) &&
@@ -333,5 +393,41 @@ export function GpuMetricsTable({
         </tbody>
       </table>
     </div>
+  )
+}
+
+interface SortableHeaderProps {
+  field: RankingSortField
+  label: string
+  activeField: RankingSortField
+  direction: SortDirection
+  onClick: (field: RankingSortField) => void
+  style?: CSSProperties
+}
+
+function SortableHeader({
+  field,
+  label,
+  activeField,
+  direction,
+  onClick,
+  style,
+}: SortableHeaderProps): JSX.Element {
+  const isActive = field === activeField
+  return (
+    <th
+      style={{ ...style, cursor: "pointer", userSelect: "none" }}
+      onClick={() => onClick(field)}
+    >
+      {label}{" "}
+      {isActive ? (
+        <BootstrapIcon
+          icon={direction === "asc" ? "sort-up" : "sort-down"}
+          size="xs"
+        />
+      ) : (
+        <BootstrapIcon icon="arrow-down-up" size="xs" />
+      )}
+    </th>
   )
 }

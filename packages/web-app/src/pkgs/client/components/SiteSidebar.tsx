@@ -9,6 +9,8 @@ interface NavItem {
   label: string
   href: string
   icon: BootstrapIconName
+  /** Override the href for active-state matching (e.g. match a category prefix instead of a specific slug) */
+  activePrefix?: string
 }
 
 interface NavSection {
@@ -27,11 +29,13 @@ const navSections: NavSection[] = [
       {
         label: "Gaming Rankings",
         href: "/gpu/ranking/gaming/3dmark-wildlife-extreme-fps-3840x2160",
+        activePrefix: "/gpu/ranking/gaming",
         icon: "controller",
       },
       {
         label: "AI Rankings",
         href: "/gpu/ranking/ai/fp32-flops",
+        activePrefix: "/gpu/ranking/ai",
         icon: "cpu",
       },
     ],
@@ -49,11 +53,13 @@ const navSections: NavSection[] = [
       {
         label: "Gaming Prices",
         href: "/gpu/price-compare/gaming/3dmark-wildlife-extreme-fps-3840x2160",
+        activePrefix: "/gpu/price-compare/gaming",
         icon: "controller",
       },
       {
         label: "AI Prices",
         href: "/gpu/price-compare/ai/fp16-flops",
+        activePrefix: "/gpu/price-compare/ai",
         icon: "cpu",
       },
     ],
@@ -156,17 +162,20 @@ export function SiteSidebar(): JSX.Element {
             </div>
             <div className="nav flex-column ms-3">
               {section.items.map((item) => {
+                const matchPath = item.activePrefix ?? item.href
                 const pathMatches =
-                  pathname === item.href || pathname.startsWith(item.href + "/")
+                  pathname === matchPath || pathname.startsWith(matchPath + "/")
                 const hasSiblingMatch =
                   pathMatches &&
-                  section.items.some(
-                    (other) =>
-                      other !== item &&
-                      other.href.length > item.href.length &&
-                      (pathname === other.href ||
-                        pathname.startsWith(other.href + "/")),
-                  )
+                  section.items.some((other) => {
+                    if (other === item) return false
+                    const otherMatch = other.activePrefix ?? other.href
+                    return (
+                      otherMatch.length > matchPath.length &&
+                      (pathname === otherMatch ||
+                        pathname.startsWith(otherMatch + "/"))
+                    )
+                  })
                 const isActive = pathMatches && !hasSiblingMatch
                 return (
                   <Link

@@ -2,7 +2,8 @@ import { createLogger } from "@/lib/logger"
 import { Suspense, type JSX } from "react"
 import { ShopListingsWithFilters } from "./ShopListingsWithFilters"
 import { getGpu } from "@/pkgs/server/db/GpuRepository"
-import { Gpu, GpuMetricKey, GpuMetricKeys } from "@/pkgs/isomorphic/model"
+import { Gpu, type GpuMetricKey, GpuMetricKeys } from "@/pkgs/isomorphic/model"
+import type { SortKey } from "@/pkgs/client/components/SortPanel"
 import { chain } from "irritable-iterable"
 import { ISOMORPHIC_CONFIG } from "@/pkgs/isomorphic/config"
 import { Integer } from "type-fest"
@@ -34,8 +35,8 @@ export async function generateMetadata(props: GpuParams) {
   }
 }
 
-function isValidMetricKey(key: string): key is GpuMetricKey {
-  return GpuMetricKeys.includes(key as GpuMetricKey)
+function isValidSortKey(key: string): key is SortKey {
+  return key === "price" || GpuMetricKeys.includes(key as GpuMetricKey)
 }
 
 export default async function Page(props: GpuParams) {
@@ -53,9 +54,8 @@ export default async function Page(props: GpuParams) {
     .head(ISOMORPHIC_CONFIG.MAX_LISTINGS_PER_PAGE() as Integer<number>)
     .collect()
 
-  // Use sortBy query parameter if valid, otherwise default to fp32TFLOPS
-  const initialSortKey: GpuMetricKey =
-    sortBy && isValidMetricKey(sortBy) ? sortBy : "fp32TFLOPS"
+  const initialSortKey: SortKey =
+    sortBy && isValidSortKey(sortBy) ? sortBy : "price"
 
   return (
     <main>

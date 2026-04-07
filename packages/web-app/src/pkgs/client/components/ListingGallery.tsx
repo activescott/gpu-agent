@@ -1,6 +1,6 @@
 "use client"
-import { useSorting } from "@/pkgs/client/components/SortPanel"
-import { GpuMetricKey, Gpu, Listing } from "../../isomorphic/model"
+import { useSorting, type SortKey } from "@/pkgs/client/components/SortPanel"
+import { Gpu, Listing } from "../../isomorphic/model"
 import { ListingCardWithMetric } from "./ListingCardWithMetric"
 import { useMemo, type JSX } from "react"
 import { divideSafe } from "@/pkgs/isomorphic/math"
@@ -16,7 +16,7 @@ interface ListingItem {
 interface ListingGalleryProps {
   listings: ListingItem[]
   hideSort?: boolean
-  initialSortKey: GpuMetricKey
+  initialSortKey: SortKey
 }
 
 export function ListingGallery({
@@ -51,7 +51,9 @@ export function ListingGallery({
           key={`${item.itemId}-${index.toString()}`}
           item={item}
           specs={specs}
-          highlightSpec={sortValue.metricKey}
+          highlightSpec={
+            sortValue.metricKey === "price" ? "fp32TFLOPS" : sortValue.metricKey
+          }
         />
       ))}
     </div>
@@ -59,21 +61,28 @@ export function ListingGallery({
 }
 
 interface SortValue {
-  metricKey: GpuMetricKey
+  metricKey: SortKey
   ascending: boolean
 }
 
 function sortListings(listings: ListingItem[], sortValue: SortValue) {
   const sorted = listings.sort((a, b) => {
     const { metricKey, ascending } = sortValue
-    const aValue = divideSafe(
-      Number.parseFloat(a.item.priceValue),
-      a.specs[metricKey],
-    )
-    const bValue = divideSafe(
-      Number.parseFloat(b.item.priceValue),
-      b.specs[metricKey],
-    )
+    let aValue: number
+    let bValue: number
+    if (metricKey === "price") {
+      aValue = Number.parseFloat(a.item.priceValue)
+      bValue = Number.parseFloat(b.item.priceValue)
+    } else {
+      aValue = divideSafe(
+        Number.parseFloat(a.item.priceValue),
+        a.specs[metricKey],
+      )
+      bValue = divideSafe(
+        Number.parseFloat(b.item.priceValue),
+        b.specs[metricKey],
+      )
+    }
     return ascending ? aValue - bValue : bValue - aValue
   })
   return sorted

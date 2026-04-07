@@ -39,6 +39,10 @@ export const CHART_HASHTAGS: Record<string, string[]> = {
   PriceChangesChart: ["GPU", "GPUPrices"],
   PriceHistoryChart: ["GPU", "GPUPrices", "PriceTrend"],
   AmdDealsChart: ["AMD", "Radeon", "GPUDeals"],
+  DollarsPerTflopChart: ["GPU", "GPUValue", "PricePerformance"],
+  DollarsPerFpsChart: ["GPU", "CS2", "GPUValue", "PricePerformance"],
+  DollarsPerInt8TopChart: ["GPU", "AI", "Inference", "PricePerformance"],
+  DollarsPerFps4kChart: ["GPU", "4KGaming", "CS2", "PricePerformance"],
 }
 
 /**

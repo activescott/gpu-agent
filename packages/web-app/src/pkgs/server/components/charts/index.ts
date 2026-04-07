@@ -18,6 +18,10 @@ export { PriceChangesChart } from "./PriceChangesChart"
 export { PriceHistoryChart } from "./PriceHistoryChart"
 export { AmdDealsChart } from "./AmdDealsChart"
 export { GpuPriceHistoryChart } from "./GpuPriceHistoryChart"
+export { DollarsPerTflopChart } from "./DollarsPerTflopChart"
+export { DollarsPerFpsChart } from "./DollarsPerFpsChart"
+export { DollarsPerInt8TopChart } from "./DollarsPerInt8TopChart"
+export { DollarsPerFps4kChart } from "./DollarsPerFps4kChart"
 
 // Config Fetchers (for image API)
 export { getGpuPriceHistoryConfig } from "./GpuPriceHistoryChart"
@@ -29,6 +33,10 @@ import { getBestDealsConfig } from "./BestDealsChart"
 import { getPriceChangesConfig } from "./PriceChangesChart"
 import { getPriceHistoryConfig } from "./PriceHistoryChart"
 import { getAmdDealsConfig } from "./AmdDealsChart"
+import { getDollarsPerTflopConfig } from "./DollarsPerTflopChart"
+import { getDollarsPerFpsConfig } from "./DollarsPerFpsChart"
+import { getDollarsPerInt8TopConfig } from "./DollarsPerInt8TopChart"
+import { getDollarsPerFps4kConfig } from "./DollarsPerFps4kChart"
 
 /**
  * Registry mapping component names to their config fetcher functions.
@@ -43,6 +51,10 @@ export const chartConfigFetchers: Record<
   PriceChangesChart: getPriceChangesConfig,
   PriceHistoryChart: getPriceHistoryConfig,
   AmdDealsChart: getAmdDealsConfig,
+  DollarsPerTflopChart: getDollarsPerTflopConfig,
+  DollarsPerFpsChart: getDollarsPerFpsConfig,
+  DollarsPerInt8TopChart: getDollarsPerInt8TopConfig,
+  DollarsPerFps4kChart: getDollarsPerFps4kConfig,
 }
 
 /**

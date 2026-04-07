@@ -85,6 +85,7 @@ function buildChartConfig(data: ScalperPremiumRow[]): BarChartConfig {
     title: "RTX 50 Series Scalper Premiums",
     chartType: "bar",
     unit: "% vs MSRP",
+    orientation: "vertical",
     data: data.map((row) => ({
       label: formatGpuName(row.name),
       value: row.premiumPct,

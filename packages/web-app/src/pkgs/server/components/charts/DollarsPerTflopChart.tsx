@@ -1,0 +1,115 @@
+/**
+ * DollarsPerTflopChart - Shows price-per-TFLOP rankings for gaming GPUs.
+ * Displays as a vertical bar chart sorted by best value (lowest $/TFLOP).
+ */
+import { prismaSingleton } from "@/pkgs/server/db/db"
+import type { BarChartConfig } from "@/pkgs/isomorphic/model/news"
+import { ChartJS, ChartContainer } from "@/pkgs/client/components/charts"
+import {
+  DateRange,
+  ChartComponentProps,
+  parseDateRange,
+  formatGpuName,
+  CHART_HASHTAGS,
+} from "./types"
+
+interface DollarsPerTflopRow {
+  gpuName: string
+  bestDeal: number
+  fp32Tflops: number
+  dollarsPerTflop: number
+}
+
+const LIMIT_RESULTS = 15
+const GOOD_VALUE_THRESHOLD = 8
+const FAIR_VALUE_THRESHOLD = 10
+
+async function fetchDollarsPerTflopData(
+  dateRange: DateRange,
+): Promise<DollarsPerTflopRow[]> {
+  const { startDate, endDate } = parseDateRange(dateRange.to)
+
+  const result = await prismaSingleton.$queryRaw<DollarsPerTflopRow[]>`
+    WITH march_prices AS (
+      SELECT
+        l."gpuName",
+        (SELECT AVG(price) FROM (
+          SELECT "priceValue"::float as price
+          FROM "Listing" l2
+          WHERE l2."gpuName" = l."gpuName"
+            AND l2."cachedAt" >= ${startDate}
+            AND l2."cachedAt" <= ${endDate}
+            AND l2."exclude" = false
+          ORDER BY "priceValue"::float ASC
+          LIMIT 3
+        ) t) as "bestDeal"
+      FROM "Listing" l
+      WHERE l."cachedAt" >= ${startDate}
+        AND l."cachedAt" <= ${endDate}
+        AND l."exclude" = false
+      GROUP BY l."gpuName"
+    )
+    SELECT
+      p."gpuName",
+      ROUND(p."bestDeal"::numeric)::float as "bestDeal",
+      g."fp32TFLOPS"::float as "fp32Tflops",
+      ROUND((p."bestDeal" / NULLIF(g."fp32TFLOPS"::float, 0))::numeric, 1)::float as "dollarsPerTflop"
+    FROM march_prices p
+    JOIN gpu g ON g.name = p."gpuName"
+    JOIN "GpuMetricValue" mem ON mem."gpuName" = p."gpuName" AND mem."metricSlug" = 'memory-gb'
+    WHERE g."fp32TFLOPS" IS NOT NULL AND g."fp32TFLOPS" > 0
+      AND mem.value::float >= 16
+      AND p."bestDeal" > 50
+    ORDER BY "dollarsPerTflop" ASC
+    LIMIT ${LIMIT_RESULTS}
+  `
+
+  return result
+}
+
+function valueColor(value: number): "success" | "warning" | "primary" {
+  if (value <= GOOD_VALUE_THRESHOLD) return "success"
+  if (value <= FAIR_VALUE_THRESHOLD) return "warning"
+  return "primary"
+}
+
+function buildChartConfig(data: DollarsPerTflopRow[]): BarChartConfig {
+  return {
+    id: "dollars-per-tflop",
+    title: "Best Value GPUs: $/TFLOP",
+    chartType: "bar",
+    unit: "$",
+    orientation: "vertical",
+    data: data.map((row) => ({
+      label: formatGpuName(row.gpuName),
+      value: row.dollarsPerTflop,
+      sublabel: `$${Math.round(row.bestDeal)} best deal, ${row.fp32Tflops} TFLOPS`,
+      color: valueColor(row.dollarsPerTflop),
+    })),
+  }
+}
+
+export async function getDollarsPerTflopConfig(
+  dateRange: DateRange,
+): Promise<BarChartConfig> {
+  const data = await fetchDollarsPerTflopData(dateRange)
+  return buildChartConfig(data)
+}
+
+export async function DollarsPerTflopChart({
+  dateRange,
+}: ChartComponentProps): Promise<JSX.Element> {
+  const config = await getDollarsPerTflopConfig(dateRange)
+  const shareImageUrl = `/api/images/chart/DollarsPerTflopChart?from=${dateRange.from}&to=${dateRange.to}`
+
+  return (
+    <ChartContainer
+      title={config.title}
+      subtitle="Lower is better"
+      shareImageUrl={shareImageUrl}
+      hashtags={CHART_HASHTAGS.DollarsPerTflopChart ?? ["GPU", "GPUValue"]}
+    >
+      <ChartJS config={config} />
+    </ChartContainer>
+  )
+}

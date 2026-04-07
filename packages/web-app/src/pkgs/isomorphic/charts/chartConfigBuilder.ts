@@ -96,6 +96,11 @@ function buildBarChartConfig(
   const scale = options.scale ?? 1
   const fontSize = BASE_FONT_SIZE * scale
   const padding = BASE_PADDING * scale
+  const isVertical = config.orientation === "vertical"
+
+  // For vertical bars, the value axis is y and the category axis is x
+  // For horizontal bars (default), the value axis is x and the category axis is y
+  const valueAxis = isVertical ? "y" : "x"
 
   return {
     type: "bar",
@@ -113,7 +118,7 @@ function buildBarChartConfig(
       ],
     },
     options: {
-      indexAxis: "y", // Horizontal bar chart
+      indexAxis: isVertical ? "x" : "y",
       responsive: true,
       maintainAspectRatio: false,
       animation: options.serverSide ? false : undefined,
@@ -125,37 +130,70 @@ function buildBarChartConfig(
           enabled: !options.serverSide,
           callbacks: {
             label: (context) => {
-              const value = context.parsed.x
+              const value =
+                valueAxis === "y" ? context.parsed.y : context.parsed.x
               const unit = config.unit ?? ""
+              const formatted = unit.startsWith("$")
+                ? `${unit}${value}`
+                : `${value}${unit}`
               const dataItem = config.data[context.dataIndex]
               const sublabel = dataItem?.sublabel
-              return sublabel
-                ? `${value}${unit} (${sublabel})`
-                : `${value}${unit}`
+              return sublabel ? `${formatted} (${sublabel})` : formatted
             },
           },
         },
       },
       scales: {
         x: {
-          beginAtZero: true,
-          grid: {
-            color: GRID_COLOR,
-          },
-          ticks: {
-            color: TEXT_COLOR,
-            font: { size: fontSize },
-            callback: (value) => `${value}${config.unit ?? ""}`,
-          },
+          ...(isVertical
+            ? {
+                grid: { display: false },
+                ticks: {
+                  color: TEXT_COLOR,
+                  font: { size: fontSize },
+                  maxRotation: 45,
+                  minRotation: 45,
+                },
+              }
+            : {
+                beginAtZero: true,
+                grid: { color: GRID_COLOR },
+                ticks: {
+                  color: TEXT_COLOR,
+                  font: { size: fontSize },
+                  callback: (value: string | number) =>
+                    `${value}${config.unit ?? ""}`,
+                },
+              }),
         },
         y: {
-          grid: {
-            display: false,
-          },
-          ticks: {
-            color: TEXT_COLOR,
-            font: { size: fontSize },
-          },
+          ...(isVertical
+            ? {
+                beginAtZero: true,
+                grid: {
+                  drawTicks: false,
+                  color: (ctx: { tick: { value: number } }) =>
+                    ctx.tick.value === 0
+                      ? "rgba(209, 213, 219, 0.5)"
+                      : "transparent",
+                },
+                ticks: {
+                  color: TEXT_COLOR,
+                  font: { size: fontSize },
+                  callback: (value: string | number) => {
+                    const unit = config.unit ?? ""
+                    if (unit.startsWith("$")) return `${unit}${value}`
+                    return `${value}${unit}`
+                  },
+                },
+              }
+            : {
+                grid: { display: false },
+                ticks: {
+                  color: TEXT_COLOR,
+                  font: { size: fontSize },
+                },
+              }),
         },
       },
       layout: {
@@ -357,8 +395,7 @@ function buildLineChartConfig(
         },
         y: {
           grid: {
-            color: "rgba(209, 213, 219, 0.1)", // Very subtle horizontal grid lines
-            lineWidth: 0.5,
+            display: false,
           },
           ticks: {
             color: TEXT_COLOR,

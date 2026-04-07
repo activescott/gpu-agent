@@ -29,6 +29,7 @@ export interface BarChartConfig {
   title: string
   chartType: "bar"
   unit?: string
+  orientation?: "horizontal" | "vertical"
   data: BarChartDataItem[]
 }
 

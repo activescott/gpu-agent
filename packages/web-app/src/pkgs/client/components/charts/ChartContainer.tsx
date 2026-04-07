@@ -7,6 +7,8 @@ import "./charts.scss"
 interface ChartContainerProps {
   /** Title displayed above the chart */
   title: string
+  /** Subtitle displayed below the title (e.g., "Lower is better") */
+  subtitle?: string
   /** The chart component to render */
   children: ReactNode
   /** URL to the shareable image (e.g., /api/og/chart/scalper-premium.png) */
@@ -25,6 +27,7 @@ interface ChartContainerProps {
  */
 export function ChartContainer({
   title,
+  subtitle,
   children,
   shareImageUrl,
   shareUrl,
@@ -34,7 +37,17 @@ export function ChartContainer({
   return (
     <div className="chart-container">
       <div className="chart-container-header">
-        <h4 className="chart-container-title">{title}</h4>
+        <div>
+          <h4 className="chart-container-title">{title}</h4>
+          {subtitle && (
+            <p
+              className="chart-container-subtitle"
+              style={{ color: "#6b7280", fontSize: "0.85rem", margin: 0 }}
+            >
+              {subtitle}
+            </p>
+          )}
+        </div>
         {shareImageUrl && (
           <div className="chart-container-actions">
             <ShareMenu

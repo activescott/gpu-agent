@@ -1,0 +1,79 @@
+# yaml-language-server: $schema=./gpu-spec.schema.json
+name: intel-arc-b570
+label: Intel Arc B570
+category: gaming
+msrpUSD: 219
+tensorCoreCount: 144
+fp32TFLOPS: 11.52
+fp16TFLOPS: 23.04
+int8TOPS: 203
+memoryCapacityGB: 10
+memoryBandwidthGBs: 380
+maxTDPWatts: 150
+gpuArchitecture: Xe2-HPG (Battlemage)
+supportedHardwareOperations:
+  - FP16
+  - FP32
+  - FP64
+  - BF16
+  - INT8
+  - INT4
+releaseDate: "2025-01-16"
+lastModified: "2026-04-07T00:00:00Z"
+
+summary: |
+  The Intel Arc B570 is a discrete graphics card launched in January 2025, featuring Intel's second-generation
+  Xe2-HPG (Battlemage) architecture on the BMG-G21 silicon. Built on TSMC's 5nm process with 18 Xe-cores
+  (2,304 shading units), 144 XMX (Xe Matrix Extension) engines for AI acceleration, and 18 ray tracing units,
+  the B570 sits just below the B580 in Intel's Battlemage consumer lineup. It includes 10GB of GDDR6 memory
+  on a 160-bit bus running at 19 Gbps, delivering 380 GB/s of memory bandwidth. The B570 offers 11.52 TFLOPS
+  of FP32 performance and 203 TOPS of INT8 performance through its XMX engines, which support FP16, BF16,
+  INT8, and INT4 precision formats for AI/ML workloads. With a TDP of 150W and positioned at a $219 launch
+  price, the Arc B570 offers strong value for 1080p and entry-level 1440p gaming. The architecture features
+  the same die as the B580 (BMG-G21) but with two fewer active Xe-cores and a reduced 160-bit memory interface
+  instead of the B580's 192-bit interface. Notable features include support for DirectX 12 Ultimate, Vulkan 1.3,
+  PCIe 4.0 x8, and Intel's XeSS upscaling technology powered by the XMX AI accelerators. The 144 XMX engines
+  support INT4, INT8, FP16, and BF16 matrix operations via the DPAS (Dot Product Accumulate Systolic) instruction
+  for accelerated AI inference and upscaling.
+
+manufacturerIdentifiers:
+  - type: sku
+    value: "241676"
+
+thirdPartyProducts:
+  - company: ASRock
+    productName: ASRock Intel Arc B570 Challenger 10GB OC
+    identifier: 90-GA5KZZ-00UANF
+    identifierType: part_number
+  - company: Sparkle
+    productName: SPARKLE Intel Arc B570 GUARDIAN OC
+    identifier: SB570G-10GOC
+    identifierType: model_number
+
+references:
+  - https://www.intel.com/content/www/us/en/products/sku/241676/intel-arc-b570-graphics/specifications.html
+  - https://www.intel.com/content/www/us/en/products/sku/241676/intel-arc-b570-graphics/ordering.html
+  - https://www.techpowerup.com/gpu-specs/arc-b570.c4245
+  - https://newsroom.intel.com/client-computing/intel-launches-arc-b-series-graphics-cards
+  - https://www.tomshardware.com/pc-components/gpus/intel-arc-b570-review
+  - https://chipsandcheese.com/p/intels-battlemage-architecture
+  - https://www.intel.com/content/www/us/en/docs/oneapi/optimization-guide-gpu/2024-1/xmx.html
+  - https://en.wikipedia.org/wiki/Intel_Arc#Battlemage
+
+notes:
+  - 'FP32 TFLOPS of 11.52 calculated as 2,304 shading units × 2,500 MHz boost clock × 2 ops/cycle ÷ 1,000 = 11.52 TFLOPS, consistent with Intel official specifications and TechPowerUp GPU Database'
+  - 'FP16 TFLOPS of 23.04 represents the 2:1 ratio to FP32 on Xe2-HPG architecture Xe Vector Engines, per TechPowerUp specifications'
+  - 'int8TOPS of 203 represents non-sparse (dense) INT8 performance sourced from Intel official product specifications page (SKU 241676). Intel Arc architecture does not implement NVIDIA-style 2:4 structured sparsity; values are inherently dense. Dense value used for consistent cross-vendor comparison.'
+  - 'tensorCoreCount of 144 refers to the XMX (Xe Matrix Extension) engines, Intel''s equivalent to NVIDIA tensor cores. Calculated as 18 Xe-cores × 8 XMX engines per Xe-core = 144 total XMX engines, per Intel Battlemage architecture documentation'
+  - 'XMX engines support FP16, BF16, INT8, INT4, and INT2 data types for matrix operations via DPAS (Dot Product Accumulate Systolic) instruction'
+  - 'FP32 and FP64 operations are handled by the Xe Vector Engines (XVEs), not the XMX units'
+  - 'Memory bandwidth of 380 GB/s calculated as 160-bit interface ÷ 8 bits/byte × 19 Gbps = 380 GB/s, confirmed by Intel official specifications'
+  - 'Built on TSMC N5 (5nm) process node, using the same BMG-G21 die as the Arc B580 but with 18 active Xe-cores (vs 20 on B580)'
+  - 'The 160-bit memory bus (vs 192-bit on B580) results in lower memory bandwidth (380 GB/s vs 456 GB/s) but the 10GB GDDR6 VRAM capacity is competitive at the $219 price point'
+  - 'TDP of 150W sourced from Intel official product specifications; lower than B580''s 190W due to fewer active Xe-cores'
+  - 'Release date of January 16, 2025, per Intel Newsroom launch announcement. The B570 was announced at CES 2025 and launched shortly after the B580 (December 2024)'
+  - 'MSRP of $219 USD sourced from Intel.com official product page at launch'
+  - 'Intel SKU 241676 identified from Intel ARK product page URL'
+  - 'ASRock Challenger part number 90-GA5KZZ-00UANF sourced from ASRock product listings'
+  - 'Sparkle GUARDIAN OC model number SB570G-10GOC sourced from Newegg product listing. Note: Sparkle does not make a B570 TITAN variant (TITAN is B580-only)'
+  - 'Intel Arc B570 AIB partners include ASRock, Sparkle, Gunnir, Maxsun, and others'

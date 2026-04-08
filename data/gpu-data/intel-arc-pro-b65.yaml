@@ -1,0 +1,72 @@
+# yaml-language-server: $schema=./gpu-spec.schema.json
+name: intel-arc-pro-b65
+label: Intel Arc Pro B65
+category: workstation
+msrpUSD: 799
+tensorCoreCount: 160
+fp32TFLOPS: 12.28
+fp16TFLOPS: 24.58
+int8TOPS: 197
+memoryCapacityGB: 32
+memoryBandwidthGBs: 608
+maxTDPWatts: 200
+gpuArchitecture: Xe2
+supportedHardwareOperations:
+  - FP16
+  - FP32
+  - FP64
+  - BF16
+  - TF32
+  - INT8
+  - INT4
+releaseDate: "2026-04-15"
+lastModified: "2026-04-07T00:00:00Z"
+
+summary: |
+  The Intel Arc Pro B65 is a professional workstation GPU announced on March 25, 2026 alongside the Arc Pro B70,
+  with AIB partner availability in mid-April 2026. Built on the Xe2 (Battlemage) architecture using TSMC's 5nm process,
+  featuring 20 Xe2 cores, 160 XMX (Xe Matrix eXtension) engines for AI acceleration, and 20 ray tracing units. The B65
+  is distinguished from the Arc Pro B60 primarily by its expanded 32GB GDDR6 memory capacity on a wider 256-bit memory
+  interface running at 19 Gbps, delivering 608 GB/s of memory bandwidth. This makes it particularly well-suited for
+  large-scale AI inference workloads and professional applications requiring extensive VRAM. The GPU delivers 12.28 TFLOPS
+  of FP32 compute performance and 197 TOPS of INT8 AI inference performance through its 160 XMX engines. The XMX engines
+  support a wide range of precision formats including INT2, INT4, INT8, FP16, BF16, and TF32, providing exceptional
+  flexibility for AI inference tasks. With a TBP of 200W, the Arc Pro B65 shares its power envelope with the Arc Pro B60.
+  The GPU uses a cut-down BMG-G31 die (27.7 billion transistors on a 368mm2 die, manufactured on TSMC N5), the same
+  larger die used by the Arc Pro B70 but with 20 of 32 Xe2 cores active. This distinguishes the B65 from the Arc Pro
+  B60 and Arc B580, which use the smaller BMG-G21 die. The B65 supports PCIe 5.0 x16 interface and features DisplayPort 2.1 outputs with support for up to four
+  displays at resolutions up to 7680x4320. The card has been certified for professional applications including Autodesk
+  Maya, SolidWorks, Adobe Premiere Pro, Blender, and DaVinci Resolve. The GPU also supports SR-IOV, Linux containers,
+  and parallel multi-GPU operation. Intel's expanded VRAM strategy positions the Arc Pro B65 as an inference workstation
+  GPU targeting LLM inference tasks where 32GB VRAM enables loading larger AI models without quantization or offloading.
+
+manufacturerIdentifiers:
+  - type: spec_code
+    value: "245796"
+
+references:
+  - https://www.intel.com/content/www/us/en/products/sku/245796/intel-arc-pro-b65-graphics/specifications.html
+  - https://www.intel.com/content/www/us/en/products/docs/discrete-gpus/arc/workstations/b-series/overview.html
+  - https://www.servethehome.com/intel-announces-arc-pro-b70-and-b65-video-cards-big-battlemage-brings-big-memory-for-ai-workstations/
+  - https://www.tomshardware.com/pc-components/gpus/intel-arc-pro-b70-and-arc-pro-b65-gpus-bring-32gb-of-ram-to-ai-and-pro-apps-bigger-battlemage-finally-arrives-but-its-not-for-gaming
+  - https://hothardware.com/news/intel-arc-pro-b70-b65-cards-debut
+  - https://en.wikipedia.org/wiki/Intel_Arc
+  - https://chipsandcheese.com/p/intels-battlemage-architecture
+  - https://www.hwcooling.net/en/batttlemage-details-of-intel-xe2-gpu-architecture-analysis/
+
+notes:
+  - 'FP32 TFLOPS of 12.28 sourced from Intel official product specifications. The Arc Pro B65 uses a cut-down BMG-G31 die with 20 active Xe2 cores (of 32 total) at 2400 MHz boost clock, delivering the same compute throughput as the B60 despite using a different die.'
+  - 'FP16 TFLOPS of 24.58 based on 2:1 ratio of FP16 to FP32 performance, consistent with Xe2 architecture and identical to the Arc Pro B60. Intel does not publish FP16 TFLOPS directly for professional workstation GPUs. Value follows the same methodology documented for the Arc Pro B60.'
+  - 'INT8 TOPS of 197 represents dense (non-sparse) INT8 AI performance sourced from Intel official product specifications. Intel Arc XMX engines do not implement NVIDIA-style 2:4 structured sparsity, so published values are inherently dense and used directly for cross-vendor comparison. The B65 uses the same compute configuration as the B60 (20 Xe2 cores, 160 XMX engines at 2400 MHz), resulting in the same INT8 TOPS.'
+  - 'Memory bandwidth of 608 GB/s calculated as 256-bit interface x 19 Gbps / 8 bits/byte = 608 GB/s. The B65 uses a wider 256-bit memory bus compared to the B60s 192-bit bus (456 GB/s), providing significantly higher bandwidth while maintaining the same 19 Gbps GDDR6 memory speed.'
+  - 'Memory capacity of 32GB GDDR6 is the primary differentiator from the Arc Pro B60 (24GB on 192-bit bus). The wider 256-bit bus enables both higher bandwidth and larger VRAM capacity.'
+  - 'TBP (Total Board Power) is 200W sourced from Intel official specifications. Despite using the larger BMG-G31 die (vs B60 on BMG-G21), the TBP matches the B60 because only 20 of 32 Xe2 cores are active.'
+  - 'XMX (Xe Matrix eXtension) engine count of 160 based on 20 Xe2 cores x 8 XMX engines per core, confirmed by architecture documentation. These are Intel dedicated AI accelerators, equivalent to tensor cores in NVIDIA GPUs.'
+  - 'Xe2 architecture XMX engines support INT2, INT4, INT8, FP16, BF16, and TF32 precision formats on dedicated matrix multiplication hardware, as documented in Xe2 architecture analysis and Intel VTune Profiler documentation.'
+  - 'FP64 double precision performance is supported on general-purpose shader units (XVEs) per Xe2 architecture documentation, though Intel does not officially publish FP64 TFLOPS for this GPU.'
+  - 'Estimated MSRP of $799 USD based on market positioning between the B60 ($599) and B70 ($949-$950). Intel has not published an official MSRP for the B65. The B65 premium over the B60 reflects the additional VRAM (32GB vs 24GB) and memory bandwidth (608 vs 456 GB/s) from the wider 256-bit memory interface.'
+  - 'Announced March 25, 2026 alongside the Arc Pro B70. The B65 is available through AIB partners only (Intel is not producing a reference design), with availability estimated mid-April 2026. Source: ServeTheHome, Tom''s Hardware, and HotHardware launch coverage.'
+  - 'The B65 uses the BMG-G31 die (27.7 billion transistors, 368mm2, TSMC N5), the same die as the Arc Pro B70, but with 20 of 32 Xe2 cores active. This is distinct from the Arc Pro B60 and Arc B580 which use the smaller BMG-G21 die (19.6 billion transistors, 272mm2). The B65 features PCIe 5.0 x16 (vs B60''s PCIe 5.0 x8) and a 256-bit/32GB GDDR6 memory configuration.'
+  - 'The GPU supports DirectX 12 Ultimate, Vulkan 1.3, OpenGL 4.6, and OpenCL 3.0 APIs.'
+  - 'Intel Project Battlematrix multi-GPU strategy applies to the B65, enabling configurations with multiple B65 GPUs providing very large combined VRAM pools for LLM inference workloads.'
+  - 'No third-party AIB products documented as confirmed product data for B65 AIB cards was not available in public sources at time of research. AIB partners confirmed for the B60 (ASRock, Maxsun) may also offer B65 variants.'

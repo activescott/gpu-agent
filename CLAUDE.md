@@ -6,6 +6,16 @@ This file contains instructions and context for Claude Code sessions working wit
 
 The private `gpu-poet-data` repo at `../gpu-poet-data/` contains agents and skills that apply to this project. Check `.claude/agents/` in that repo when looking for skills related to news articles, GPU specs, benchmarks, or data management.
 
+## Data Sync from gpu-poet-data
+
+GPU specs, model specs, and benchmark data are authored in the private `gpu-poet-data` repo and synced here for deployment. The data files under `data/` in this repo should NOT be edited directly — they are overwritten by the sync script.
+
+**To deploy data changes:**
+1. Make and commit changes in `gpu-poet-data`
+2. Run `gpu-poet-data/scripts/copy-to-gpu-poet.sh` to sync files to this repo's `data/` directory
+3. Commit and push the synced files here — the push triggers GitHub Actions (`build.yaml`) which builds and deploys the site
+4. Verify the build completes: `gh run list --repo activescott/gpu-poet --limit 3`
+
 ## Important Instructions
 
 - Always use scripts/dev to start the dev environment:

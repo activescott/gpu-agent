@@ -29,8 +29,8 @@ function CookieBanner() {
       {showBanner && (
         <div className="m-2 border border-primary-subtle rounded p-2">
           <p>
-            We use cookies for sign in and to understand how you use the product
-            and help us improve it. Please accept cookies to help us improve.
+            This site uses cookies for sign in and to understand how you use the
+            site so I can improve it. Please accept cookies to help me improve.
           </p>
           <Button
             variant="outline-secondary"

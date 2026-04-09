@@ -96,11 +96,11 @@ export default function RootLayout({
             <SiteSidebar />
             <main className="p-3 container-xl">
               <Alert kind="secondary">
-                What do you think? Please{" "}
+                I&apos;d love to hear what you think! Please{" "}
                 <Link href="/contact" className="alert-link">
-                  drop us a line
+                  drop me a line
                 </Link>{" "}
-                and let us know what you like and what can be better. 🙏
+                and let me know what you like and what could be better. 🙏
               </Alert>
               {children}
             </main>

@@ -166,7 +166,7 @@ export default async function Page() {
         </TipCard>
         <TipCard svgIcon="ebay">
           Prices for new and used GPUs from eBay. Want listings from another
-          site? <Link href="/contact">Let us know</Link>.
+          site? <Link href="/contact">Let me know</Link>.
         </TipCard>
       </div>
 

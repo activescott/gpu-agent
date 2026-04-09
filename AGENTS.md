@@ -29,13 +29,7 @@ GPU specs, model specs, and benchmark data are authored in the private `gpu-poet
 - Save all approved plans to `/Users/scott/src/activescott/gpu-poet-data/docs/plans/` with format `YYYY-MM-DD-plan-name.md`.
 - **Taking screenshots**: Use `./scripts/screenshot <url> [output-dir]` to capture pages for visual verification. It auto-splits long pages into viewport-sized chunks. Dev environment must be running first. Use `SELECTOR='.my-class'` to capture a specific element.
 
-## Database Architecture
-
-### Soft Delete with Versioning
-- Uses `archived: boolean` and `archivedAt: DateTime?` instead of hard deletes
-- Implements versioning with `version: int` field for change tracking
-- Change detection via MD5 hashing of key fields: `itemId + priceValue + title + condition`
-- Uses `exclude: boolean` and `excludeReason: string?` for data quality filtering (scams, accessories, etc.)
+## Database Query Gotchas
 
 ### Query Filter Rules
 - Queries for **current/active listings** should filter `archived = false` AND `exclude = false`
@@ -43,40 +37,6 @@ GPU specs, model specs, and benchmark data are authored in the private `gpu-poet
 - **All queries** must filter `exclude = false` to remove data quality issues (scams, accessories, box-only, etc.)
 - Use `cachedAt` (not `createdAt`) for date ranges — `cachedAt` captures "what was on the market during this period" including carry-over listings from prior months still active. `createdAt` only records when a listing was first seen.
 - The `priceValue` column is stored as string/Decimal — always cast with `::float` in ORDER BY to avoid alphabetical sorting
-
-### Repository Pattern
-- Data access layer in `/src/pkgs/server/db/`
-- Example: `ListingRepository.ts` with methods like `getHistoricalPriceData()`
-- Always use transaction-aware `PrismaClientWithinTransaction` parameter
-
-## Code Conventions
-
-### ESLint Rules
-- `no-magic-numbers` - Use named constants instead of numeric literals
-- `complexity` limits - Break down complex functions
-- `unicorn/prefer-number-properties` - Use `Number.parseInt()` instead of `parseInt()`
-- `import/no-unused-modules` - Remove unused exports (warnings on API routes are normal)
-
-## File Locations Reference
-
-### Key Configuration Files
-- `/packages/web-app/prisma/schema.prisma` - Database schema
-- `/k8s/overlays/dev/.env.dev.app` - Development environment variables
-- `/skaffold.yaml` - Skaffold development configuration
-- `/k8s/` - Kubernetes manifests (base + overlays)
-- `/e2e-tests/playwright.config.ts` - E2E test configuration
-
-### Important Code Locations
-- `/packages/web-app/src/pkgs/server/db/` - Database repositories
-- `/packages/web-app/src/app/internal/` - Internal testing pages
-- `/packages/web-app/src/app/internal/api/` - Internal API endpoints
-- `/packages/web-app/prisma/migrations/` - Database migration files
-
-### Data Locations
-- `/data/gpu-specs/` - GPU specification YAML files (CC BY-SA 4.0)
-- `/data/benchmark-data/` - Gaming benchmark YAML files (CC BY-SA 4.0)
-- `/data/metric-definitions/` - Metric metadata YAML files (units, descriptions)
-- `/data/news-data/` - News article YAML files (CC BY-SA 4.0)
 
 ## Adding New Metrics (Specs or Benchmarks)
 
@@ -122,71 +82,6 @@ mkdir -p packages/web-app/prisma/migrations/YYYYMMDDHHMMSS_migration_name
 echo 'ALTER TABLE "TableName" ADD COLUMN "columnName" TYPE;' > packages/web-app/prisma/migrations/YYYYMMDDHHMMSS_migration_name/migration.sql
 ```
 
-## Search Engine Notification
-
-The site automatically notifies search engines about content changes using a Kubernetes CronJob that runs every 4 hours. It supports two providers:
-
-### IndexNow (Bing, Yandex)
-- Enabled by default when `INDEXNOW_API_KEY` is set
-- Notifies Bing, Yandex, and other participating search engines instantly
-- Generate key: `packages/indexnow-notifier/scripts/generate-key.sh`
-
-### Google Indexing API (Optional)
-
-**Important Limitation:** Google's Indexing API officially only supports pages with `JobPosting` or `BroadcastEvent` structured data. For general websites, it works but is outside Google's official guidelines. Many sites use it anyway with success.
-
-**Setup Steps:**
-
-1. **Create Google Cloud Project & Enable API**
-   - Go to [Google Cloud Console API Setup](https://console.cloud.google.com/start/api?id=indexing.googleapis.com)
-   - Create a new project or select existing
-   - Enable the Indexing API
-
-2. **Create Service Account**
-   - Go to [Service Accounts](https://console.cloud.google.com/iam-admin/serviceaccounts)
-   - Click "Create Service Account"
-   - Enter name (e.g., "gpupoet-indexing")
-   - Skip permissions section, click Continue
-   - In "Create key" section, select **JSON** format
-   - Click Create - downloads `*.json` key file
-   - **Store this file securely** - it's the only copy
-
-3. **Add Service Account to Search Console**
-   - Go to [Google Search Console](https://search.google.com/search-console/)
-   - Select your property (gpupoet.com)
-   - Go to Settings > Users and permissions
-   - Click "Add user"
-   - Enter service account email from JSON file (`client_email` field)
-   - Set permission to **Owner**
-
-4. **Configure Environment Variable**
-   ```bash
-   base64 -i service-account.json
-   # Add to k8s secret as GOOGLE_SERVICE_ACCOUNT_JSON
-   ```
-
-**Rate Limits:**
-| Provider | Default Quota | Batch Size |
-|----------|---------------|------------|
-| IndexNow | 10,000 URLs/request | 10,000 |
-| Google | 200 requests/day | 100 URLs/batch |
-
-**Configuration:**
-- State is stored per-provider in `/data/pages/indexnow/` and `/data/pages/google/`
-- Providers run independently - failure in one doesn't affect the other
-- Set `ENABLED_PROVIDERS=indexnow,google` to control which providers run
-
-## Manual Sitemap Generation
-
-```bash
-cd packages/web-app
-npm run gen-sitemap
-git add src/app/sitemap.static-pages.json
-git commit -m "chore: update sitemap"
-```
-
-The sitemap is automatically updated by GitHub Actions when relevant files change.
-
 ## Amazon Searcher Testing
 
 The amazon-searcher microservice runs in minikube alongside the main app. Code lives in `packages/amazon-searcher/`. Oxylabs proxy credentials go in `k8s/overlays/dev/.env.dev.app` (see `.env.dev.app.example`).
@@ -196,15 +91,24 @@ The amazon-searcher microservice runs in minikube alongside the main app. Code l
 - **Debug 0-result searches**: `./scripts/amazon-debug-trace` pulls the Playwright trace from the pod. Traces are auto-saved when a search returns 0 results (dev mode only).
 - **Iterative debugging**: Use `/test-amazon-searcher` skill for the full test-diagnose-fix workflow when searches fail or Amazon changes their HTML.
 
+## Production Deployment (K8s Manifests)
+
+K8s manifests exist in **two places** that must be kept in sync:
+- **`gpu-poet/k8s/base/`** — used by local dev (minikube via skaffold)
+- **`home-infra-k8s-flux/apps/base/gpupoet/`** — used by production (Flux GitOps)
+
+When changing CronJobs, ingress rules, deployments, or services, update both repos.
+
+**Deployment order matters** when changes include new endpoints:
+1. Push `gpu-poet` first — triggers GitHub Actions CI to build and publish the container image
+2. Wait for CI to complete (`gh run list --repo activescott/gpu-poet --limit 1`)
+3. Then push `home-infra-k8s-flux` — Flux deploys the new manifests referencing the new endpoints
+
+If flux is pushed before the new container is live, CronJobs may hit endpoints that don't exist yet.
+
 ## Alerting
 
 Alert rules and Alertmanager config (Telegram notifications) are in the flux repo:
 - **Rules**: `home-infra-k8s-flux/apps/production/monitoring/prometheus/helmrelease.yaml` under `serverFiles.alerting_rules.yml`
 - **Routing/Telegram**: Same file under `alertmanagerFiles.alertmanager.yml`
 - **Secrets**: `kustomization.yaml` generates `alertmanager-secrets` from `.env.secret.alertmanager.encrypted`
-
-## Verifying Infrastructure Changes
-
-When modifying Docker or Kubernetes files (Dockerfiles, entrypoint scripts, k8s manifests, skaffold.yaml), always verify by:
-1. Running `npm run dev` and confirming the container starts
-2. Running `./scripts/test-e2e` to ensure the application functions correctly

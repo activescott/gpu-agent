@@ -125,6 +125,45 @@ curl -X POST http://localhost:3000/ops/revalidate-amazon
 
 In production, separate K8s CronJobs run eBay (every 20 min) and Amazon (every 10 min) automatically.
 
+### Sitemap Generation
+
+```bash
+cd packages/web-app
+npm run gen-sitemap
+git add src/app/sitemap.static-pages.json
+git commit -m "chore: update sitemap"
+```
+
+The sitemap is automatically updated by GitHub Actions when relevant files change.
+
+### Search Engine Notification
+
+The site notifies search engines about content changes using a Kubernetes CronJob that runs every 4 hours. It supports two providers:
+
+**IndexNow (Bing, Yandex)**
+- Enabled by default when `INDEXNOW_API_KEY` is set
+- Generate key: `packages/indexnow-notifier/scripts/generate-key.sh`
+
+**Google Indexing API (Optional)**
+
+Note: Google's Indexing API officially only supports pages with `JobPosting` or `BroadcastEvent` structured data. For general websites, it works but is outside Google's official guidelines.
+
+Setup:
+1. Create a GCP project and enable the [Indexing API](https://console.cloud.google.com/start/api?id=indexing.googleapis.com)
+2. Create a service account with a JSON key
+3. Add the service account email as **Owner** in [Google Search Console](https://search.google.com/search-console/) > Settings > Users and permissions
+4. Base64-encode the JSON key and add to k8s secret as `GOOGLE_SERVICE_ACCOUNT_JSON`
+
+| Provider | Default Quota | Batch Size |
+|----------|---------------|------------|
+| IndexNow | 10,000 URLs/request | 10,000 |
+| Google | 200 requests/day | 100 URLs/batch |
+
+Configuration:
+- State is stored per-provider in `/data/pages/indexnow/` and `/data/pages/google/`
+- Providers run independently — failure in one doesn't affect the other
+- Set `ENABLED_PROVIDERS=indexnow,google` to control which providers run
+
 ### Deployment
 
 - Production runs on Kubernetes with persistent volumes for the database

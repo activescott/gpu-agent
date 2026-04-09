@@ -1,0 +1,48 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: amazon-revalidation
+spec:
+  # Run every 10 minutes for Amazon listing revalidation.
+  #
+  # Refreshes 1 GPU per run (anti-bot measure).
+  #   With ~75 GPUs, cycles through all in ~12.5 hours.
+  #   The amazon-searcher service handles the actual scraping via Playwright/Firefox.
+  schedule: "*/10 * * * *"
+  concurrencyPolicy: Forbid
+  jobTemplate:
+    spec:
+      # 9-minute deadline prevents overlapping with the next 10-minute cron run
+      activeDeadlineSeconds: 540
+      # Only retry once on failure. Better to wait for the
+      # next cron run in 10 minutes than burn through retries.
+      backoffLimit: 1
+      template:
+        spec:
+          restartPolicy: OnFailure
+          containers:
+            - name: amazon-revalidation
+              # Use lightweight curl image for simple HTTP requests
+              image: curlimages/curl:latest
+              command:
+                - /bin/sh
+                - -c
+                - |
+                  echo "Starting Amazon revalidation job..."
+
+                  # Call the internal revalidate-amazon endpoint
+                  if curl -f -X POST -w "Status: %{http_code}\n" http://app:3000/ops/revalidate-amazon; then
+                    echo "Amazon revalidation completed successfully"
+                  else
+                    echo "Amazon revalidation failed"
+                    exit 1
+                  fi
+
+              # https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
+              resources:
+                limits:
+                  cpu: "0.1"
+                  memory: "100Mi"
+                requests:
+                  cpu: "0.05"
+                  memory: "50Mi"

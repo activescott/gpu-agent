@@ -43,11 +43,11 @@ echo "=== Amazon Revalidation Test ==="
 echo "Host: $host"
 echo ""
 
-echo "--- Triggering cache revalidation ---"
-echo "(this runs eBay + Amazon revalidation — Amazon portion takes 15-30s)"
+echo "--- Triggering Amazon revalidation ---"
+echo "(this refreshes the single most-stale GPU from Amazon — takes 15-30s)"
 echo ""
 
-response=$(curl -s -w "\n%{http_code}" -X POST "http://$host/ops/revalidate-cache" \
+response=$(curl -s -w "\n%{http_code}" -X POST "http://$host/ops/revalidate-amazon" \
   -H "Authorization: Bearer $password" 2>&1)
 
 http_code=$(echo "$response" | tail -1)

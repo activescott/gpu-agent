@@ -112,15 +112,18 @@ cd e2e-tests && npm run test:prod               # Against production
 - Application: http://localhost:3000/api/health
 - Metrics: http://localhost:3000/ops/metrics
 
-### Cache Revalidation
+### Listing Revalidation
 
-The app needs cache revalidation to populate listing data. In dev, trigger it manually after starting:
+The app needs listing revalidation to populate listing data. In dev, trigger it manually after starting:
 
 ```bash
-curl -X POST http://localhost:3000/ops/revalidate-cache
+# eBay listings
+curl -X POST http://localhost:3000/ops/revalidate-ebay
+# Amazon listings
+curl -X POST http://localhost:3000/ops/revalidate-amazon
 ```
 
-In production, a K8s CronJob runs this every 30 minutes automatically.
+In production, separate K8s CronJobs run eBay (every 20 min) and Amazon (every 10 min) automatically.
 
 ### Deployment
 

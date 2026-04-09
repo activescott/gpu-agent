@@ -17,7 +17,7 @@ patches:
       - op: replace
         path: /spec/rules/0/host
         value: gpupoet.local
-      # Remove the /ops/revalidate-cache blocking rule for dev (allows manual testing)
+      # Remove the /ops/revalidate-ebay blocking rule for dev (allows manual testing)
       - op: remove
         path: /spec/rules/0/http/paths/0
     target:
@@ -31,7 +31,7 @@ patches:
     target:
       kind: StatefulSet
       name: db
-  # Suspend cache revalidation CronJob in dev.
+  # Suspend eBay revalidation CronJob in dev.
   # The local dev DB is typically a snapshot from ./scripts/restore-prod-db which
   # already contains fresh listings. If the cron runs against stale snapshot data,
   # every GPU appears stale and the job hits eBay's rate limit (429s).
@@ -40,14 +40,24 @@ patches:
   #   1. Run ./scripts/restore-prod-db to restore a recent production snapshot
   #   2. Comment out this patch and restart ./scripts/dev to re-enable the cron
   #   3. Trigger a one-off revalidation manually:
-  #      kubectl --context minikube create job --from=cronjob/cache-revalidation manual-revalidation -n gpupoet-dev
+  #      kubectl --context minikube create job --from=cronjob/ebay-revalidation manual-ebay -n gpupoet-dev
   - patch: |-
       - op: add
         path: /spec/suspend
         value: true
     target:
       kind: CronJob
-      name: cache-revalidation
+      name: ebay-revalidation
+  # Suspend Amazon revalidation CronJob in dev (same rationale as eBay above).
+  # To trigger manually:
+  #   kubectl --context minikube create job --from=cronjob/amazon-revalidation manual-amazon -n gpupoet-dev
+  - patch: |-
+      - op: add
+        path: /spec/suspend
+        value: true
+    target:
+      kind: CronJob
+      name: amazon-revalidation
   # Remove IndexNow CronJob (not needed in dev)
   - patch: |-
       $patch: delete

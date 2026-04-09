@@ -1,17 +1,13 @@
 apiVersion: batch/v1
 kind: CronJob
 metadata:
-  name: cache-revalidation
+  name: ebay-revalidation
 spec:
-  # Run every 20 minutes for both eBay and Amazon listing revalidation.
+  # Run every 20 minutes for eBay listing revalidation.
   #
-  # eBay: Refreshes up to 2 stale GPUs per run (6-hour TTL).
-  #   With ~75 GPUs, cycles through all in ~12 hours.
-  #   eBay API budget: 5,000 calls/day. 2 GPUs/run ≈ 144 calls/day.
-  #
-  # Amazon: Refreshes 1 GPU per run (anti-bot measure).
-  #   With ~75 GPUs, cycles through all in ~25 hours.
-  #   The amazon-searcher service handles the actual scraping via Playwright/Firefox.
+  # Refreshes up to 4 stale GPUs per run (6-hour TTL).
+  #   With ~75 GPUs, cycles through all in ~6 hours.
+  #   eBay API budget: 5,000 calls/day. 4 GPUs/run ≈ 900-1050 calls/day (~20% of budget).
   schedule: "*/20 * * * *"
   concurrencyPolicy: Forbid
   jobTemplate:
@@ -19,27 +15,27 @@ spec:
       # 18-minute deadline prevents overlapping with the next 20-minute cron run
       activeDeadlineSeconds: 1080
       # Only retry once on failure. Each retry triggers a full revalidation cycle
-      # (Amazon search + eBay queries), wasting API budget. Better to wait for the
+      # (eBay queries), wasting API budget. Better to wait for the
       # next cron run in 20 minutes than burn through retries.
       backoffLimit: 1
       template:
         spec:
           restartPolicy: OnFailure
           containers:
-            - name: cache-revalidation
+            - name: ebay-revalidation
               # Use lightweight curl image for simple HTTP requests
               image: curlimages/curl:latest
               command:
                 - /bin/sh
                 - -c
                 - |
-                  echo "Starting cache revalidation job..."
+                  echo "Starting eBay revalidation job..."
 
-                  # Call the internal revalidate-cache endpoint
-                  if curl -f -X POST -w "Status: %{http_code}\n" http://app:3000/ops/revalidate-cache; then
-                    echo "Cache revalidation completed successfully"
+                  # Call the internal revalidate-ebay endpoint
+                  if curl -f -X POST -w "Status: %{http_code}\n" http://app:3000/ops/revalidate-ebay; then
+                    echo "eBay revalidation completed successfully"
                   else
-                    echo "Cache revalidation failed"
+                    echo "eBay revalidation failed"
                     exit 1
                   fi
 

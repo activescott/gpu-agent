@@ -12,7 +12,14 @@ spec:
       http:
         paths:
           # Block external access to internal ops endpoints
-          - path: /ops/revalidate-cache
+          - path: /ops/revalidate-ebay
+            pathType: Exact
+            backend:
+              service:
+                name: nonexistent-service
+                port:
+                  number: 80
+          - path: /ops/revalidate-amazon
             pathType: Exact
             backend:
               service:

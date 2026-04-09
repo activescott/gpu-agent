@@ -1,4 +1,4 @@
-import { POST as revalidateCachePost } from "./revalidate-cache/route"
+import { POST as revalidateCachePost } from "./revalidate-ebay/route"
 import { GET as metricsGet } from "./metrics/route"
 import { revalidateCachedListings } from "../../pkgs/server/listings"
 import {

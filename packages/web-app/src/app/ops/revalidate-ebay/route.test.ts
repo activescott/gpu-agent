@@ -1,46 +1,30 @@
 import { POST } from "./route"
-import {
-  revalidateCachedListings,
-  revalidateAmazonListings,
-} from "../../../pkgs/server/listings"
+import { revalidateCachedListings } from "../../../pkgs/server/listings"
 import { updateMetrics } from "../../../pkgs/server/metrics/metricsStore"
 import type { ListingStats } from "../../../pkgs/server/listings/listings"
 
-// Mock the dependencies
 jest.mock("../../../pkgs/server/listings")
 jest.mock("../../../pkgs/server/metrics/metricsStore")
-jest.mock("../../../pkgs/server/metrics/amazonMetrics")
 
 const mockRevalidateCachedListings =
   revalidateCachedListings as jest.MockedFunction<
     typeof revalidateCachedListings
-  >
-const mockRevalidateAmazonListings =
-  revalidateAmazonListings as jest.MockedFunction<
-    typeof revalidateAmazonListings
   >
 const mockUpdateMetrics = updateMetrics as jest.MockedFunction<
   typeof updateMetrics
 >
 
 /**
- * Tests for the cache revalidation endpoint that is called by Kubernetes CronJob.
+ * Tests for the eBay revalidation endpoint called by Kubernetes CronJob.
  *
- * This endpoint is triggered every 30 minutes by a K8s CronJob to refresh stale
- * GPU listing caches. The endpoint is blocked from external access via ingress
- * and only accessible to internal Kubernetes services.
+ * This endpoint is triggered every 20 minutes by a K8s CronJob to refresh stale
+ * GPU listing caches from eBay. The endpoint is blocked from external access via
+ * ingress and only accessible to internal Kubernetes services.
  */
-describe("/ops/revalidate-cache", () => {
+describe("/ops/revalidate-ebay", () => {
   beforeEach(() => {
     jest.clearAllMocks()
-    jest.spyOn(Date, "now").mockReturnValue(1_000_000) // Fixed timestamp for consistent testing
-    // Default: Amazon revalidation returns a no-op (no stale GPUs)
-    mockRevalidateAmazonListings.mockResolvedValue({
-      gpuName: null,
-      listingCachedCount: 0,
-      totalDuration: 0,
-      success: true,
-    })
+    jest.spyOn(Date, "now").mockReturnValue(1_000_000)
   })
 
   afterEach(() => {
@@ -68,23 +52,13 @@ describe("/ops/revalidate-cache", () => {
       const response = await POST()
       const data = await response.json()
 
-      // Verify response status and structure
       expect(response.status).toBe(200)
       expect(data).toEqual({
         success: true,
-        duration: 0, // Date.now() - Date.now() = 0 due to mocking
-        amazon: {
-          gpuName: null,
-          listingCachedCount: 0,
-          totalDuration: 0,
-          success: true,
-        },
+        duration: 0,
       })
 
-      // Verify revalidateCachedListings was called with correct timeout
-      expect(mockRevalidateCachedListings).toHaveBeenCalledWith(1_500_000) // 25 minutes in ms
-
-      // Verify metrics were updated with success
+      expect(mockRevalidateCachedListings).toHaveBeenCalledWith(1_500_000)
       expect(mockUpdateMetrics).toHaveBeenCalledWith(mockSuccessResult, true)
     })
 
@@ -96,7 +70,6 @@ describe("/ops/revalidate-cache", () => {
       const response = await POST()
       const data = await response.json()
 
-      // Verify error response status and structure
       expect(response.status).toBe(500)
       expect(data).toMatchObject({
         success: false,
@@ -104,7 +77,6 @@ describe("/ops/revalidate-cache", () => {
         duration: 0,
       })
 
-      // Verify metrics were updated with failure
       expect(mockUpdateMetrics).toHaveBeenCalledWith(
         {
           staleGpusAtStart: [],
@@ -138,12 +110,11 @@ describe("/ops/revalidate-cache", () => {
     })
 
     it("should calculate duration correctly", async () => {
-      // Mock Date.now to return different values for start and end
       let callCount = 0
       jest.spyOn(Date, "now").mockImplementation(() => {
         callCount++
-        if (callCount === 1) return 1_000_000 // start
-        return 1_005_000 // end (5 seconds later)
+        if (callCount === 1) return 1_000_000
+        return 1_005_000
       })
 
       mockRevalidateCachedListings.mockResolvedValueOnce(mockSuccessResult)
@@ -151,7 +122,7 @@ describe("/ops/revalidate-cache", () => {
       const response = await POST()
       const data = await response.json()
 
-      expect(data.duration).toBe(5000) // 5 seconds difference
+      expect(data.duration).toBe(5000)
     })
 
     it("should return correct Content-Type header", async () => {
@@ -167,7 +138,7 @@ describe("/ops/revalidate-cache", () => {
 
       await POST()
 
-      // Verify 25 minutes timeout (25 * 60 * 1000 = 1_500_000ms)
+      // 25 minutes timeout (25 * 60 * 1000 = 1_500_000ms)
       expect(mockRevalidateCachedListings).toHaveBeenCalledWith(1_500_000)
     })
   })

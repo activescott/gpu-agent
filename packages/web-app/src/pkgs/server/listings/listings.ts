@@ -91,11 +91,12 @@ export async function revalidateCachedListings(
               return a.oldestCachedAt.getTime() - b.oldestCachedAt.getTime()
             })
 
-            // Limit to 2 GPUs per run to avoid hitting eBay's rate limit (5,000 calls/day).
+            // Limit to 4 GPUs per run to stay well under eBay's rate limit (5,000 calls/day).
             // Dev and prod share the same API key, so bursting through all stale GPUs
             // in one run can exhaust the budget and cause 429 errors.
-            // With 2 GPUs per 20-min cron run, all ~74 GPUs cycle in ~12 hours.
-            const MAX_GPUS_PER_RUN = 2
+            // With 4 GPUs per 20-min cron run, all ~75 GPUs cycle in ~6 hours
+            // using ~900-1050 API calls/day (~20% of budget).
+            const MAX_GPUS_PER_RUN = 4
             let gpusProcessed = 0
 
             for (
@@ -181,7 +182,7 @@ function getOldestCachedAt(listings: CachedListing[]): Date {
     }, new Date())
 }
 
-export interface AmazonListingStats {
+interface AmazonListingStats {
   gpuName: string | null
   listingCachedCount: number
   totalDuration: number

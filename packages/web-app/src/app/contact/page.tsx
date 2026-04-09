@@ -4,7 +4,7 @@ import type { JSX } from "react"
 
 export const metadata: Metadata = {
   title: "Contact GPUPoet.com",
-  description: `Contact GPU Poet. Have a question, suggestion, or want to report a bug? Let us know!`,
+  description: `Contact GPU Poet. Have a question, suggestion, or want to report a bug? Let me know!`,
 }
 
 export default function Page(): JSX.Element {

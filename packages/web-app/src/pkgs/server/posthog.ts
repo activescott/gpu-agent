@@ -10,7 +10,7 @@ let posthogClient: PostHog | null = null
 function getPostHogClient(): PostHog {
   if (!posthogClient) {
     posthogClient = new PostHog(ISOMORPHIC_CONFIG.PUBLIC_POSTHOG_KEY(), {
-      host: "https://app.posthog.com",
+      host: "https://us.i.posthog.com",
       flushAt: 1,
       flushInterval: 0,
     })

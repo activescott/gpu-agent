@@ -13,15 +13,15 @@ description: Average FPS in 3DMark Wild Life Extreme, a cross-platform GPU
 descriptionDollarsPer: Dollars per FPS in 3DMark Wild Life Extreme. Lower values
   indicate better cost efficiency for GPU rendering performance.
 category: gaming
-collectedSamples: 570
-updatedAt: 2026-01-23T04:28:44.274Z
+collectedSamples: 608
+updatedAt: 2026-04-08T15:29:55.841Z
 results:
   - gpuNameRaw: AMD Phoenix1
     value: 88
   - gpuNameRaw: AMD Phoenix2
     value: 45
-  - gpuNameRaw: AMD Radeon 780M
-    value: 76
+  - gpuNameRaw: AMD Radeon 890M
+    value: 96
   - gpuNameRaw: AMD Radeon PRO W7500
     value: 162
   - gpuNameRaw: AMD Radeon PRO W7600
@@ -70,6 +70,8 @@ results:
     value: 28
   - gpuNameRaw: MSI Intel ADL GT2
     value: 65
+  - gpuNameRaw: MSI Intel Iris Xe ADL GT2
+    value: 53
   - gpuNameRaw: MSI NVIDIA GeForce RTX 4060
     value: 376
   - gpuNameRaw: NVIDIA GeForce RTX 2060 SUPER
@@ -88,6 +90,8 @@ results:
     value: 835
   - gpuNameRaw: NVIDIA GeForce RTX 4090
     value: 966
+  - gpuNameRaw: NVIDIA GeForce RTX 5090
+    value: 1067
   - gpuNameRaw: NVIDIA RTX 2000 Ada Generation
     value: 244
   - gpuNameRaw: NVIDIA RTX 4000 Ada Generation

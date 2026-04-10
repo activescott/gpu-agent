@@ -12,6 +12,7 @@
 "NVIDIA GeForce RTX 5070 Ti": "nvidia-geforce-rtx-5070-ti"
 "NVIDIA GeForce RTX 5070 Ti/PCIe/SSE2": "nvidia-geforce-rtx-5070-ti"
 # 5060
+"NVIDIA GeForce RTX 5060": "nvidia-geforce-rtx-5060"
 "NVIDIA GeForce RTX 5060/PCIe/SSE2": "nvidia-geforce-rtx-5060"
 # 5060 Ti
 "NVIDIA GeForce RTX 5060 Ti": "nvidia-geforce-rtx-5060-ti"
@@ -28,6 +29,7 @@
 # 4060
 "ASUS NVIDIA GeForce RTX 4060": "nvidia-geforce-rtx-4060"
 "MSI NVIDIA GeForce RTX 4060": "nvidia-geforce-rtx-4060"
+"NVIDIA GeForce RTX 4060": "nvidia-geforce-rtx-4060"
 "NVIDIA GeForce RTX 4060/PCIe/SSE2": "nvidia-geforce-rtx-4060"
 # 4060 Ti
 "NVIDIA GeForce RTX 4060 Ti": "nvidia-geforce-rtx-4060-ti"
@@ -88,6 +90,10 @@
 # AMD Radeon RX 9000 Series (Navi 48 chipset)
 "Gigabyte AMD Radeon RX 9070": "amd-radeon-rx-9070"
 "AMD Radeon RX 9070 XT": "amd-radeon-rx-9070-xt"
+"AMD Radeon RX 9070 XT (radeonsi gfx1201 LLVM 21.1.8 DRM 3.64 6.17.7-ba25.fc43.x86_64)": "amd-radeon-rx-9070-xt"
+"AMD Radeon RX 9070 XT (radeonsi gfx1201 LLVM 21.1.8 DRM 3.64 6.18.7-200.fc43.x86_64)": "amd-radeon-rx-9070-xt"
+"AMD Radeon RX 9070 XT (RADV GFX1201)": "amd-radeon-rx-9070-xt"
+"AMD Radeon RX 9070": "amd-radeon-rx-9070"
 "AMD Radeon RX 9060 XT": "amd-radeon-rx-9060-xt"
 # Chipset name variants (Navi 48 = RX 9070 series)
 "AMD Navi 48": "amd-radeon-rx-9070-xt"
@@ -105,6 +111,8 @@
 "XFX AMD Radeon RX 7700 XT": "amd-radeon-rx-7700-xt"
 # 7800
 "AMD Radeon RX 7800 XT": "amd-radeon-rx-7800-xt"
+"AMD  Radeon RX 7800 XT": "amd-radeon-rx-7800-xt"
+"AMD Radeon RX 7800 XT (RADV NAVI32)": "amd-radeon-rx-7800-xt"
 "ASUS AMD Radeon RX 7800 XT": "amd-radeon-rx-7800-xt"
 # 7900
 "AMD Radeon RX 7900 XT": "amd-radeon-rx-7900-xt"
@@ -146,6 +154,7 @@
 "Intel Arc B580": "intel-arc-b580"
 "ASUS Intel Arc B580": "intel-arc-b580"
 "Intel(R) Arc(TM) B580 Graphics": "intel-arc-b580"
+"Intel(R) Arc(TM) B570 Graphics": "intel-arc-b570"
 
 # AMD Radeon RX 6800 Series
 "AMD Radeon RX 6800": "amd-radeon-rx-6800"
@@ -153,10 +162,19 @@
 
 # AMD Radeon RX 6000 Series (additional)
 "AMD Radeon RX 6500 XT": "amd-radeon-rx-6500-xt"
+"AMD Radeon RX6500 XT": "amd-radeon-rx-6500-xt"
+"AMD Radeon(TM) RX 6500 XT": "amd-radeon-rx-6500-xt"
+"AMD Radeon RX 6600": "amd-radeon-rx-6600"
+"AMD Radeon RX 6600 (radeonsi navi23 LLVM 21.1.8 DRM 3.64 6.18.4-1-MANJARO)": "amd-radeon-rx-6600"
 "AMD Radeon RX 6600 XT": "amd-radeon-rx-6600-xt"
+"AMD Radeon RX 6650 XT": "amd-radeon-rx-6650-xt"
 "Gigabyte AMD Radeon RX 6600": "amd-radeon-rx-6600"
 "AMD Radeon RX 6700 XT": "amd-radeon-rx-6700-xt"
+"AMD Radeon RX 6750 GRE 12GB": "amd-radeon-rx-6750-gre"
 "AMD Radeon RX 6750 XT": "amd-radeon-rx-6750-xt"
+"AMD Radeon RX 6750 XT (radeonsi navi22 LLVM 21.1.8 DRM 3.64 6.18.5-200.nobara.fc43.x86_64)": "amd-radeon-rx-6750-xt"
+"AMD Radeon RX 6900 XT": "amd-radeon-rx-6900-xt"
+"AMD Radeon RX 6950 XT": "amd-radeon-rx-6950-xt"
 
 # =============================================================================
 # IGNORED GPUs
@@ -167,8 +185,12 @@
 "ASUS NVIDIA GeForce RTX 2070": IGNORE
 "NVIDIA GeForce RTX 2060": IGNORE
 "NVIDIA GeForce RTX 2060 SUPER": IGNORE
+"NVIDIA GeForce RTX 2070": IGNORE
 "NVIDIA GeForce RTX 2070 SUPER": IGNORE
+"NVIDIA GeForce RTX 2080": IGNORE
+"NVIDIA GeForce RTX 2080 SUPER": IGNORE
 "NVIDIA GeForce RTX 2080 Ti": IGNORE
+"GeForce RTX 2060 SUPER/PCIe/SSE2": IGNORE
 "GeForce RTX 2060/PCIe/SSE2": IGNORE
 "NVIDIA GeForce RTX 2050/PCIe/SSE2": IGNORE
 "NVIDIA GeForce RTX 2060 SUPER/PCIe/SSE2": IGNORE
@@ -181,8 +203,13 @@
 "NVIDIA GeForce RTX 2080 Ti/PCIe/SSE2": IGNORE
 "NVIDIA GeForce RTX 2080/PCIe/SSE2": IGNORE
 
-# NVIDIA GTX 10 Series (not tracked)
+# NVIDIA GTX 10 Series and older (not tracked)
+"GeForce GT 710/PCIe/SSE2": IGNORE
+"GeForce GT 740/PCIe/SSE2": IGNORE
 "GeForce GT 1030/PCIe/SSE2": IGNORE
+"GeForce GTX 650 Ti/PCIe/SSE2": IGNORE
+"GeForce GTX 660/PCIe/SSE2": IGNORE
+"GeForce GTX TITAN Black/PCIe/SSE2": IGNORE
 "GeForce GTX 1050 Ti/PCIe/SSE2": IGNORE
 "GeForce GTX 1050/PCIe/SSE2": IGNORE
 "GeForce GTX 1060/PCIe/SSE2": IGNORE
@@ -212,6 +239,15 @@
 "NVIDIA GeForce GTX 1660/PCIe/SSE2": IGNORE
 "NVIDIA P104-100/PCIe/SSE2": IGNORE
 "NVIDIA P106-100/PCIe/SSE2": IGNORE
+"NVIDIA GeForce GTX 1630/PCIe/SSE2": IGNORE
+"NVIDIA GeForce 940MX/PCIe/SSE2": IGNORE
+"NVIDIA GeForce GT 740/PCIe/SSE2": IGNORE
+"NVIDIA GeForce GTX 745/PCIe/SSE2": IGNORE
+"NVIDIA GeForce GTX 850M/PCIe/SSE2": IGNORE
+"NVIDIA GeForce GTX 1080": IGNORE
+"NVIDIA GeForce GTX 1650": IGNORE
+"NVIDIA GeForce GTX 1660 SUPER": IGNORE
+"NVIDIA GeForce GTX 1660 Ti": IGNORE
 
 # Older NVIDIA GPUs (GTX 900, 700, 600, etc.)
 "GeForce GT 430/PCIe/SSE2": IGNORE
@@ -254,6 +290,43 @@
 "NVIDIA TITAN V/PCIe/SSE2": IGNORE
 "Tesla P4/PCIe/SSE2": IGNORE
 
+# NVIDIA RTX 30 Series without PCIe suffix (FurMark)
+"NVIDIA GeForce RTX 3050": IGNORE
+"NVIDIA GeForce RTX 3050/PCIe/SSE2": IGNORE
+"NVIDIA GeForce RTX 3050 Laptop GPU": IGNORE
+"NVIDIA GeForce RTX 3050 Ti Laptop GPU": IGNORE
+"NVIDIA GeForce RTX 3060 Laptop GPU": IGNORE
+"NVIDIA GeForce RTX 3070 Laptop GPU": IGNORE
+
+# NVIDIA RTX 40/50 Series Laptop (without PCIe suffix)
+"NVIDIA GeForce RTX 4050 Laptop GPU": IGNORE
+"NVIDIA GeForce RTX 4060 Laptop GPU": IGNORE
+"NVIDIA GeForce RTX 4070 Laptop GPU": IGNORE
+"NVIDIA GeForce RTX 5050 Laptop GPU": IGNORE
+"NVIDIA GeForce RTX 5050/PCIe/SSE2": IGNORE
+"NVIDIA GeForce RTX 5060 Laptop GPU": IGNORE
+"NVIDIA GeForce RTX 5070 Ti Laptop GPU": IGNORE
+"NVIDIA GeForce RTX 5080 Laptop GPU": IGNORE
+"NVIDIA GeForce RTX 5090 D v2/PCIe/SSE2": IGNORE
+
+# NVIDIA workstation (not tracked)
+"NVIDIA CMP 30HX/PCIe/SSE2": IGNORE
+"NVIDIA CMP 40HX/PCIe/SSE2": IGNORE
+"NVIDIA RTX A2000 12GB/PCIe/SSE2": IGNORE
+"NVIDIA RTX A2000 8GB Laptop GPU/PCIe/SSE2": IGNORE
+"NVIDIA RTX A4000/PCIe/SSE2": IGNORE
+"NVIDIA RTX A4000 Laptop GPU/PCIe/SSE2": IGNORE
+"NVIDIA T1000/PCIe/SSE2": IGNORE
+"Quadro P600/PCIe/SSE2": IGNORE
+"Quadro P620/PCIe/SSE2": IGNORE
+"Quadro P1000/PCIe/SSE2": IGNORE
+"Quadro P2000/PCIe/SSE2": IGNORE
+"Quadro P5000/PCIe/SSE2": IGNORE
+"Quadro RTX 3000/PCIe/SSE2": IGNORE
+"Quadro T1000/PCIe/SSE2": IGNORE
+"Quadro T2000/PCIe/SSE2": IGNORE
+"Quadro T2000 with Max-Q Design/PCIe/SSE2": IGNORE
+
 # Mobile/Laptop GPUs
 "AMD Radeon 8060S": IGNORE
 "NVIDIA GeForce RTX 3080 Laptop GPU + Intel UHD": IGNORE
@@ -294,13 +367,82 @@
 "AMD Phoenix1": IGNORE
 "AMD Phoenix2": IGNORE
 "AMD Radeon 780M": IGNORE
+"AMD Radeon 780M Graphics": IGNORE
+"AMD Radeon 760M Graphics": IGNORE
+"AMD Radeon 890M": IGNORE
+"AMD Radeon(TM) 880M Graphics": IGNORE
+"AMD Radeon (TM) Graphics": IGNORE
+"AMD Radeon(TM) Graphics": IGNORE
 "Intel Iris Plus ICL GT2": IGNORE
 "MSI Intel ADL GT2": IGNORE
+"MSI Intel Iris Xe ADL GT2": IGNORE
+"Intel(R) Arc(TM) 140T GPU (16GB)": IGNORE
+"Intel(R) Arc(TM) 140V GPU (16GB)": IGNORE
+"Intel(R) Arc(TM) Graphics": IGNORE
+"Intel(R) Graphics": IGNORE
+"Intel(R) HD Graphics 520": IGNORE
+"Intel(R) HD Graphics 530": IGNORE
+"Intel(R) HD Graphics 620": IGNORE
+"Intel(R) HD Graphics 630": IGNORE
+"Intel(R) HD Graphics Gen11": IGNORE
+"Intel(R) Iris(R) Plus Graphics": IGNORE
+"Intel(R) Iris(R) Xe Graphics": IGNORE
+"Intel(R) UHD Graphics": IGNORE
+"Intel(R) UHD Graphics 610": IGNORE
+"Intel(R) UHD Graphics 620": IGNORE
+"Intel(R) UHD Graphics 630": IGNORE
+"Intel(R) UHD Graphics 730": IGNORE
+"Intel(R) UHD Graphics 770": IGNORE
 
 # Old AMD GPUs (pre-2023)
 "AMD Radeon RX 56": IGNORE
+"AMD Radeon RX 5600 XT": IGNORE
 "AMD Radeon RX 5700": IGNORE
 "AMD Radeon RX 5700 XT": IGNORE
+"AMD Radeon RX 580 2048SP": IGNORE
+"AMD Radeon RX 580 Series (radeonsi polaris10 ACO DRM 3.61 6.14.0-37-generic)": IGNORE
+"AMD Radeon RX 640": IGNORE
+"AMD Radeon RX590 GME": IGNORE
+"AMD Radeon RX 6800M": IGNORE
+"AMD Radeon RX 6700": IGNORE
+"AMD Radeon RX 6750 GRE 10GB": IGNORE
+"AMD Radeon VII": IGNORE
+"AMD Radeon Pro VII": IGNORE
+"AMD Radeon(TM) RX 6400": IGNORE
+"AMD Radeon(TM) RX Vega 11 Graphics": IGNORE
+"AMD Radeon(TM) Vega 3 Graphics": IGNORE
+"AMD Radeon(TM) Vega 8 Graphics": IGNORE
+"AMD Radeon (TM) R7 360 Series": IGNORE
+"AMD Radeon (TM) R7 370 Series": IGNORE
+"AMD Radeon (TM) R9 370 Series": IGNORE
+"AMD Radeon (TM) R9 380 Series": IGNORE
+"AMD Radeon (TM) R9 390 Series": IGNORE
+"AMD Radeon (TM) RX 480": IGNORE
+"AMD Radeon HD 5800 Series": IGNORE
+"AMD Radeon HD 6800 Series": IGNORE
+"AMD Radeon HD 6900 Series": IGNORE
+"AMD Radeon HD 7700 Series": IGNORE
+"AMD Radeon HD 7800 Series": IGNORE
+"AMD Radeon R7 200 Series": IGNORE
+"AMD Radeon R9 200 / HD 7900 Series": IGNORE
+"AMD Radeon R9 200 Series": IGNORE
+"AMD Radeon RX Vega (radeonsi vega10 ACO DRM 3.61 6.14.0-37-generic)": IGNORE
+"AMD Radeon RX Vega (RADV VEGA10)": IGNORE
+"ATI Radeon HD 4800 Series": IGNORE
+"Radeon (TM) Pro WX 5100 Graphics": IGNORE
+"Radeon (TM) RX 470 Graphics": IGNORE
+"Radeon (TM) RX 480 Graphics": IGNORE
+"Radeon RX 470 Series": IGNORE
+"Radeon RX 5500 XT": IGNORE
+"Radeon RX 560 Series": IGNORE
+"Radeon RX 560 XT": IGNORE
+"Radeon RX 560X Series": IGNORE
+"Radeon RX 570 Series": IGNORE
+"Radeon RX 580 Series": IGNORE
+"Radeon RX 590 Series": IGNORE
+"Radeon RX Vega": IGNORE
+"Radeon RX550/550 Series": IGNORE
+"Radeon(TM) RX 460 Graphics": IGNORE
 "Sapphire AMD Radeon RX 590": IGNORE
 
 # Old NVIDIA Quadro
@@ -315,3 +457,18 @@
 "ASUS Intel Arc A580 DG2": IGNORE
 "ASUS Intel Arc A750 DG2": IGNORE
 "ASUS Intel Arc A770 DG2": IGNORE
+"Intel(R) Arc(TM) A380 Graphics": IGNORE
+"Intel(R) Arc(TM) A580 Graphics": IGNORE
+"Intel(R) Arc(TM) A750 Graphics": IGNORE
+"Intel(R) Arc(TM) A770 Graphics": IGNORE
+
+# AMD BC mining ASICs
+"AMD BC-250 (radeonsi gfx1013 LLVM 21.1.8 DRM 3.64 6.17.7-ba22.fc43.x86_64)": IGNORE
+"AMD BC-250 (radeonsi gfx1013 LLVM 21.1.8 DRM 3.64 6.17.7-ba25.fc43.x86_64)": IGNORE
+"AMD BC-250 (RADV GFX1013)": IGNORE
+
+# AMD APU/IGP driver strings
+"AMD Radeon Graphics (radeonsi gfx1201 ACO DRM 3.61 6.14.0-27-generic)": IGNORE
+"AMD Radeon Graphics (radeonsi rembrandt LLVM 20.1.2 DRM 3.61 6.14.0-37-generic)": IGNORE
+"AMD Radeon RX 7650 GRE": IGNORE
+"AMD Radeon RX 9070 GRE": IGNORE

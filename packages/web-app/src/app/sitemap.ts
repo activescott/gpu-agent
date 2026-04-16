@@ -18,7 +18,10 @@ import { EPOCH } from "@/pkgs/isomorphic/duration"
 import { createLogger } from "@/lib/logger"
 import { listModels } from "@/pkgs/server/data/ModelRepository"
 import { listMetricDefinitions } from "@/pkgs/server/data/MetricRepository"
-import { listValidYearMonths } from "@/pkgs/isomorphic/yearMonth"
+import {
+  getYearMonthContentLastModified,
+  listValidYearMonths,
+} from "@/pkgs/isomorphic/yearMonth"
 
 /* eslint-disable import/no-unused-modules */
 
@@ -352,11 +355,18 @@ async function gpuCompareSitemap(domain_url: string): Promise<SitemapItem[]> {
 async function gpuPriceByMonthSitemap(
   domain_url: string,
 ): Promise<SitemapItem[]> {
-  const [gpus, latestListingDate] = await Promise.all([
-    listGpus(),
-    getLatestListingDate(),
-  ])
+  const gpus = await listGpus()
   const validMonths = listValidYearMonths()
+  const now = new Date()
+
+  // Per-month lastmod is min(end of month, now). See
+  // getYearMonthContentLastModified for rationale. Deliberately NOT per-GPU —
+  // per-GPU listing dates would shift on every scrape run and turn lastmod
+  // into noise Google discounts.
+  const lastModifiedByMonth = new Map<string, Date>()
+  for (const ym of validMonths) {
+    lastModifiedByMonth.set(ym.slug, getYearMonthContentLastModified(ym, now))
+  }
 
   const entries: SitemapItem[] = []
   for (const gpu of gpus) {
@@ -365,7 +375,7 @@ async function gpuPriceByMonthSitemap(
         url: `${domain_url}/gpu/learn/price/${ym.slug}/${gpu.name}`,
         changeFrequency: "daily",
         priority: 0.7,
-        lastModified: latestListingDate,
+        lastModified: lastModifiedByMonth.get(ym.slug),
       })
     }
   }

@@ -6,6 +6,7 @@ import {
   parseYearMonthSlug,
   getCurrentYearMonth,
   formatYearMonthSlug,
+  getYearMonthContentLastModified,
   YearMonth,
 } from "@/pkgs/isomorphic/yearMonth"
 import { getGpu as getGpuWithoutCache } from "@/pkgs/server/db/GpuRepository"
@@ -106,6 +107,7 @@ function buildStructuredData(
   monthStats: MonthlyLowestAveragePriceStats | undefined,
   currentStats: GpuPriceStats,
 ): object {
+  const contentLastModified = getYearMonthContentLastModified(target)
   const structuredData: Record<string, unknown> = {
     "@context": "https://schema.org",
     "@type": "Product",
@@ -116,6 +118,7 @@ function buildStructuredData(
       name: extractBrandName(gpu.label),
     },
     category: "Graphics Card",
+    dateModified: contentLastModified.toISOString(),
   }
 
   if (gpu.releaseDate) {
@@ -129,7 +132,10 @@ function buildStructuredData(
     structuredData.image = [absoluteImageUrl]
   }
 
-  // Month-specific aggregate offer using lowest-average price range
+  // Month-specific aggregate offer using lowest-average price range.
+  // validThrough bounds the offer at the last moment of the target month
+  // (or now for the current month — prices are still evolving).
+  const offerValidThrough = contentLastModified.toISOString()
   if (monthStats && monthStats.minLowestAvgPrice > 0) {
     structuredData.offers = {
       "@type": "AggregateOffer",
@@ -137,6 +143,7 @@ function buildStructuredData(
       highPrice: monthStats.maxLowestAvgPrice.toFixed(PRICE_DECIMALS),
       priceCurrency: "USD",
       validFrom: `${target.isoMonth}-01`,
+      validThrough: offerValidThrough,
       url: `https://gpupoet.com/gpu/shop/${gpu.name}`,
     }
   } else if (currentStats.activeListingCount > 0 && currentStats.minPrice > 0) {

@@ -104,6 +104,45 @@ export function getCurrentYearMonth(): YearMonth {
   return buildYearMonth(now.getFullYear(), now.getMonth() + 1)
 }
 
+const END_OF_DAY_HOUR = 23
+const END_OF_DAY_MIN_SEC = 59
+
+/**
+ * Returns the last instant (23:59:59 local) of the given YearMonth.
+ */
+function getEndOfYearMonth(ym: YearMonth): Date {
+  // new Date(year, month, 0) gives the last day of (month - 1 + 1) = month.
+  return new Date(
+    ym.year,
+    ym.month,
+    0,
+    END_OF_DAY_HOUR,
+    END_OF_DAY_MIN_SEC,
+    END_OF_DAY_MIN_SEC,
+  )
+}
+
+/**
+ * Returns the effective "content last modified" date for a price-by-month
+ * page: min(end of that month, now).
+ *
+ * - For past months the chart data is stable once the month's listings are
+ *   archived, so lastmod is fixed at end of month — Google can safely
+ *   crawl once and skip re-crawls.
+ * - For the current month the value is "now", signalling that data is
+ *   still evolving as new listings arrive.
+ *
+ * Used by both the sitemap and the page's JSON-LD / metadata so they
+ * stay consistent.
+ */
+export function getYearMonthContentLastModified(
+  ym: YearMonth,
+  now: Date = new Date(),
+): Date {
+  const endOfMonth = getEndOfYearMonth(ym)
+  return endOfMonth < now ? endOfMonth : now
+}
+
 function buildYearMonth(year: number, month: number): YearMonth {
   return {
     year,

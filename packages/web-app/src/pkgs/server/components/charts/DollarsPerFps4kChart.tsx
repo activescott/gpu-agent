@@ -28,24 +28,23 @@ async function fetchData(dateRange: DateRange): Promise<DollarsPerFps4kRow[]> {
   const { startDate, endDate } = parseDateRange(dateRange.to)
 
   return prismaSingleton.$queryRaw<DollarsPerFps4kRow[]>`
-    WITH prices AS (
-      SELECT
-        l."gpuName",
-        (SELECT AVG(price) FROM (
-          SELECT "priceValue"::float as price
-          FROM "Listing" l2
-          WHERE l2."gpuName" = l."gpuName"
-            AND l2."cachedAt" >= ${startDate}
-            AND l2."cachedAt" <= ${endDate}
-            AND l2."exclude" = false
-          ORDER BY "priceValue"::float ASC
-          LIMIT 3
-        ) t) as "bestDeal"
+    -- Temporal correctness: use createdAt+archivedAt for "active during window" (see getHistoricalPriceData)
+    WITH active_versions AS (
+      SELECT DISTINCT ON (l."itemId") l."gpuName", l."priceValue"::float AS price
       FROM "Listing" l
-      WHERE l."cachedAt" >= ${startDate}
-        AND l."cachedAt" <= ${endDate}
-        AND l."exclude" = false
-      GROUP BY l."gpuName"
+      WHERE l."exclude" = false
+        AND l."source" IN ('ebay', 'amazon')
+        AND l."createdAt" < ${endDate}::timestamp + INTERVAL '1 day'
+        AND (l."archivedAt" IS NULL OR l."archivedAt" >= ${startDate})
+      ORDER BY l."itemId", l."priceValue"::float ASC
+    ),
+    ranked AS (
+      SELECT "gpuName", price, ROW_NUMBER() OVER (PARTITION BY "gpuName" ORDER BY price ASC) AS rn
+      FROM active_versions
+    ),
+    prices AS (
+      SELECT "gpuName", AVG(price) AS "bestDeal"
+      FROM ranked WHERE rn <= 3 GROUP BY "gpuName"
     )
     SELECT
       p."gpuName",

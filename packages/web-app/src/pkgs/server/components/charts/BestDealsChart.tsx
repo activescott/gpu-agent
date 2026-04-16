@@ -32,28 +32,35 @@ async function fetchBestDealsData(
 ): Promise<BestDealRow[]> {
   const { startDate, endDate } = parseDateRange(dateRange.to)
 
+  // Temporal correctness: "listings active at some point during [startDate, endDate]"
+  // uses createdAt + archivedAt (immutable per row), NOT cachedAt (overwritten on refresh).
+  // See getHistoricalPriceData for the full rationale.
   const result = await prismaSingleton.$queryRaw<BestDealRow[]>`
-    WITH lowest_avg AS (
-      SELECT
-        l."gpuName" as name,
-        (SELECT AVG(price) FROM (
-          SELECT "priceValue"::float as price
-          FROM "Listing" l2
-          WHERE l2."gpuName" = l."gpuName"
-            AND l2."cachedAt" >= ${startDate}
-            AND l2."cachedAt" <= ${endDate}
-            AND l2."exclude" = false
-          ORDER BY "priceValue"::float ASC
-          LIMIT 3
-        ) lowest_three) as lowest_avg_price
+    WITH active_versions AS (
+      SELECT DISTINCT ON (l."itemId")
+        l."gpuName",
+        l."priceValue"::float AS price
       FROM "Listing" l
       JOIN gpu g ON g.name = l."gpuName"
-      WHERE l."cachedAt" >= ${startDate}
-        AND l."cachedAt" <= ${endDate}
-        AND l."exclude" = false
+      WHERE l."exclude" = false
+        AND l."source" IN ('ebay', 'amazon')
+        AND l."createdAt" < ${endDate}::timestamp + INTERVAL '1 day'
+        AND (l."archivedAt" IS NULL OR l."archivedAt" >= ${startDate})
         AND g.category = 'gaming'
         AND l."gpuName" NOT LIKE 'nvidia-geforce-rtx-50%'
-      GROUP BY l."gpuName"
+      -- Pick the cheapest price observed for each listing during the window
+      ORDER BY l."itemId", l."priceValue"::float ASC
+    ),
+    ranked AS (
+      SELECT "gpuName", price,
+        ROW_NUMBER() OVER (PARTITION BY "gpuName" ORDER BY price ASC) AS rn
+      FROM active_versions
+    ),
+    lowest_avg AS (
+      SELECT "gpuName" AS name, AVG(price) AS lowest_avg_price
+      FROM ranked
+      WHERE rn <= 3
+      GROUP BY "gpuName"
     )
     SELECT
       la.name,

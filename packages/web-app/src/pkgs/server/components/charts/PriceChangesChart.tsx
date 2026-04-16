@@ -48,50 +48,44 @@ async function fetchPriceChangesData(
   const { startDate: prevStart, endDate: prevEnd } =
     parseDateRange(prevYearMonth)
 
+  // Temporal correctness: "active during window" uses createdAt+archivedAt, NOT cachedAt.
+  // See getHistoricalPriceData for the full rationale.
   const result = await prismaSingleton.$queryRaw<PriceChangeRow[]>`
-    WITH curr_ranked AS (
-      SELECT
-        "gpuName",
-        "priceValue"::float as price,
-        ROW_NUMBER() OVER (
-          PARTITION BY "gpuName"
-          ORDER BY "priceValue"::float ASC
-        ) as rn
-      FROM "Listing"
-      WHERE "cachedAt" >= ${currStart}
-        AND "cachedAt" <= ${currEnd}
-        AND "exclude" = false
+    WITH curr_active AS (
+      SELECT DISTINCT ON (l."itemId") l."gpuName", l."priceValue"::float AS price
+      FROM "Listing" l
+      WHERE l."exclude" = false
+        AND l."source" IN ('ebay', 'amazon')
+        AND l."createdAt" < ${currEnd}::timestamp + INTERVAL '1 day'
+        AND (l."archivedAt" IS NULL OR l."archivedAt" >= ${currStart})
+      ORDER BY l."itemId", l."priceValue"::float ASC
+    ),
+    curr_ranked AS (
+      SELECT "gpuName", price, ROW_NUMBER() OVER (PARTITION BY "gpuName" ORDER BY price ASC) AS rn
+      FROM curr_active
     ),
     curr_month AS (
-      SELECT
-        "gpuName",
-        AVG(price) as best_deal
-      FROM curr_ranked
-      WHERE rn <= 3
-      GROUP BY "gpuName"
-      HAVING COUNT(*) >= 3
+      SELECT "gpuName", AVG(price) AS best_deal
+      FROM curr_ranked WHERE rn <= 3
+      GROUP BY "gpuName" HAVING COUNT(*) >= 3
+    ),
+    prev_active AS (
+      SELECT DISTINCT ON (l."itemId") l."gpuName", l."priceValue"::float AS price
+      FROM "Listing" l
+      WHERE l."exclude" = false
+        AND l."source" IN ('ebay', 'amazon')
+        AND l."createdAt" < ${prevEnd}::timestamp + INTERVAL '1 day'
+        AND (l."archivedAt" IS NULL OR l."archivedAt" >= ${prevStart})
+      ORDER BY l."itemId", l."priceValue"::float ASC
     ),
     prev_ranked AS (
-      SELECT
-        "gpuName",
-        "priceValue"::float as price,
-        ROW_NUMBER() OVER (
-          PARTITION BY "gpuName"
-          ORDER BY "priceValue"::float ASC
-        ) as rn
-      FROM "Listing"
-      WHERE "cachedAt" >= ${prevStart}
-        AND "cachedAt" <= ${prevEnd}
-        AND "exclude" = false
+      SELECT "gpuName", price, ROW_NUMBER() OVER (PARTITION BY "gpuName" ORDER BY price ASC) AS rn
+      FROM prev_active
     ),
     prev_month AS (
-      SELECT
-        "gpuName",
-        AVG(price) as best_deal
-      FROM prev_ranked
-      WHERE rn <= 3
-      GROUP BY "gpuName"
-      HAVING COUNT(*) >= 3
+      SELECT "gpuName", AVG(price) AS best_deal
+      FROM prev_ranked WHERE rn <= 3
+      GROUP BY "gpuName" HAVING COUNT(*) >= 3
     )
     SELECT
       c."gpuName",

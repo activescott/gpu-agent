@@ -52,27 +52,39 @@ async function fetchPriceHistoryData(
   const endDate = new Date(year, month, 0) // Last day of target month
   const startDate = new Date(year, month - MONTHS_TO_SHOW, 1)
 
+  // Temporal correctness: per-month "active at some point during this month" uses
+  // createdAt + archivedAt (immutable per row), NOT cachedAt (overwritten on refresh).
+  // See getHistoricalPriceData for the full rationale.
   const result = await prismaSingleton.$queryRaw<MonthlyPriceRow[]>`
-    WITH ranked AS (
-      SELECT
-        "gpuName",
-        DATE_TRUNC('month', "cachedAt") as month_date,
-        "priceValue"::float as price,
-        ROW_NUMBER() OVER (
-          PARTITION BY "gpuName", DATE_TRUNC('month', "cachedAt")
-          ORDER BY "priceValue"::float ASC
-        ) as rn
-      FROM "Listing"
-      WHERE "cachedAt" >= ${startDate}
-        AND "cachedAt" <= ${endDate}
-        AND "exclude" = false
-        AND "gpuName" = ANY(${gpus})
+    WITH months AS (
+      SELECT DATE_TRUNC('month', generate_series(${startDate}::timestamp, ${endDate}::timestamp, '1 month'::interval)) AS month_date
+    ),
+    active_per_month AS (
+      -- For each (month, itemId), pick the listing's lowest observed price while
+      -- it was active during that month.
+      SELECT DISTINCT ON (m.month_date, l."itemId")
+        m.month_date,
+        l."gpuName",
+        l."priceValue"::float AS price
+      FROM months m
+      CROSS JOIN "Listing" l
+      WHERE l."gpuName" = ANY(${gpus})
+        AND l."exclude" = false
+        AND l."source" IN ('ebay', 'amazon')
+        AND l."createdAt" < m.month_date + INTERVAL '1 month'
+        AND (l."archivedAt" IS NULL OR l."archivedAt" >= m.month_date)
+      ORDER BY m.month_date, l."itemId", l."priceValue"::float ASC
+    ),
+    ranked AS (
+      SELECT "gpuName", month_date, price,
+        ROW_NUMBER() OVER (PARTITION BY "gpuName", month_date ORDER BY price ASC) AS rn
+      FROM active_per_month
     )
     SELECT
       "gpuName",
-      TO_CHAR(month_date, 'Mon ''YY') as "monthLabel",
-      AVG(price) as "bestDealPrice",
-      EXTRACT(YEAR FROM month_date) * 12 + EXTRACT(MONTH FROM month_date) as "monthOrder"
+      TO_CHAR(month_date, 'Mon ''YY') AS "monthLabel",
+      AVG(price) AS "bestDealPrice",
+      EXTRACT(YEAR FROM month_date) * 12 + EXTRACT(MONTH FROM month_date) AS "monthOrder"
     FROM ranked
     WHERE rn <= 3
     GROUP BY "gpuName", month_date

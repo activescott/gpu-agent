@@ -72,6 +72,15 @@ export default async function March2026Report(): Promise<ReactNode> {
         Thanks to the r/gpu community for the candid feedback.
       </div>
 
+      {/* Additional note on data methodology update */}
+      <div className="alert alert-info mb-4" role="note">
+        <strong>Editor&apos;s note (2026-04-16):</strong> This article was
+        lightly edited after we identified a small bias in our historical price
+        calculation. The chart data and the RTX 5090&apos;s premium over MSRP
+        (previously &ldquo;40% above&rdquo;, now 47%) have been corrected. The
+        overall analysis is unchanged.
+      </div>
+
       {/* Introduction */}
       <div className="lead mb-5">
         <p>
@@ -83,7 +92,7 @@ export default async function March2026Report(): Promise<ReactNode> {
           best deals at or below MSRP on eBay, and the{" "}
           <Link href="/gpu/shop/nvidia-geforce-rtx-5080">5080</Link> is within
           2%. But the <Link href="/gpu/shop/nvidia-geforce-rtx-5090">5090</Link>{" "}
-          is still 40% above even at best-deal pricing. Meanwhile, prior-gen
+          is still 47% above even at best-deal pricing. Meanwhile, prior-gen
           prices are dropping fast, with cards like the{" "}
           <Link href="/gpu/shop/nvidia-geforce-rtx-3070">RTX 3070</Link> and{" "}
           <Link href="/gpu/shop/nvidia-geforce-rtx-4070-ti">RTX 4070 Ti</Link>{" "}
@@ -105,7 +114,7 @@ export default async function March2026Report(): Promise<ReactNode> {
           <Link href="/gpu/shop/nvidia-geforce-rtx-5080">5080</Link> is within
           2% of MSRP. The{" "}
           <Link href="/gpu/shop/nvidia-geforce-rtx-5090">5090</Link> is still
-          40% above even at best-deal pricing.
+          47% above even at best-deal pricing.
         </p>
         <p className="mb-4">
           Keep in mind: these are eBay listed prices. Retail stock at Best Buy,

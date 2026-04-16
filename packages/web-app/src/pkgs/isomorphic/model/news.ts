@@ -6,6 +6,15 @@ type NewsStatus = z.infer<typeof NewsStatus>
 // Chart types (plain TypeScript — not used for runtime validation)
 type ChartColor = "danger" | "success" | "warning" | "primary"
 
+export interface ChartAnnotation {
+  type: "line"
+  /** Value on the x-axis where the annotation line should appear */
+  xValue: string
+  /** Label text displayed on the annotation */
+  label: string
+  color?: ChartColor
+}
+
 interface BarChartDataItem {
   label: string
   value: number
@@ -49,6 +58,7 @@ export interface LineChartConfig {
   yAxisLabel?: string
   unit?: string
   series: LineChartSeries[]
+  annotations?: ChartAnnotation[]
 }
 
 export type ChartConfig =

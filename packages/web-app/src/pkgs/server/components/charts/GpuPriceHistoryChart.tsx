@@ -2,7 +2,10 @@
  * GpuPriceHistoryChart - Shows price history for a single GPU.
  * Displays lowest average prices over time as a line chart.
  */
-import type { LineChartConfig } from "@/pkgs/isomorphic/model/news"
+import type {
+  LineChartConfig,
+  ChartAnnotation,
+} from "@/pkgs/isomorphic/model/news"
 import { ChartJS, ChartContainer } from "@/pkgs/client/components/charts"
 import {
   getHistoricalPriceData,
@@ -72,6 +75,10 @@ interface GpuPriceHistoryChartProps {
   gpuLabel: string
   /** Number of months of history to show (default: 6) */
   months?: number
+  /** When provided, draws a vertical annotation line at this date on the chart */
+  annotationDate?: Date
+  /** Label text for the annotation line */
+  annotationLabel?: string
 }
 
 /**
@@ -80,6 +87,8 @@ interface GpuPriceHistoryChartProps {
 function buildChartConfig(
   data: Awaited<ReturnType<typeof getHistoricalPriceData>>,
   gpuLabel: string,
+  annotationDate?: Date,
+  annotationLabel?: string,
 ): LineChartConfig {
   const labels = data.map((point) =>
     new Date(point.date).toLocaleDateString("en-US", {
@@ -87,6 +96,26 @@ function buildChartConfig(
       day: "numeric",
     }),
   )
+
+  let annotations: ChartAnnotation[] | undefined
+  if (annotationDate) {
+    const annotationDateLabel = annotationDate.toLocaleDateString("en-US", {
+      month: "short",
+      day: "numeric",
+    })
+    // Find the closest label to the annotation date
+    const exactIndex = labels.indexOf(annotationDateLabel)
+    if (exactIndex !== -1) {
+      annotations = [
+        {
+          type: "line",
+          xValue: labels[exactIndex],
+          label: annotationLabel ?? annotationDateLabel,
+          color: "primary",
+        },
+      ]
+    }
+  }
 
   return {
     id: "gpu-price-history",
@@ -105,6 +134,7 @@ function buildChartConfig(
         })),
       },
     ],
+    annotations,
   }
 }
 
@@ -129,9 +159,16 @@ export async function GpuPriceHistoryChart({
   gpuName,
   gpuLabel,
   months = DEFAULT_MONTHS,
+  annotationDate,
+  annotationLabel,
 }: GpuPriceHistoryChartProps): Promise<JSX.Element> {
   const data = await getHistoricalPriceData(gpuName, months)
-  const config = buildChartConfig(data, gpuLabel)
+  const config = buildChartConfig(
+    data,
+    gpuLabel,
+    annotationDate,
+    annotationLabel,
+  )
 
   const shareImageUrl = `/api/images/chart/GpuPriceHistoryChart?gpu=${encodeURIComponent(gpuName)}&months=${months}`
 

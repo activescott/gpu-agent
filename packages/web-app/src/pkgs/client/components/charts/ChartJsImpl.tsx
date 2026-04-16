@@ -14,6 +14,7 @@ import {
   Legend,
   Filler,
 } from "chart.js"
+import annotationPlugin from "chartjs-plugin-annotation"
 import { Bar, Line } from "react-chartjs-2"
 import type { ChartConfig } from "@/pkgs/isomorphic/model/news"
 import { chartConfigToChartJS } from "@/pkgs/isomorphic/charts"
@@ -29,6 +30,7 @@ ChartJSLib.register(
   Tooltip,
   Legend,
   Filler,
+  annotationPlugin,
 )
 
 export interface ChartJSImplProps {

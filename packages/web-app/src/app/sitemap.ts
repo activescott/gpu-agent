@@ -18,6 +18,7 @@ import { EPOCH } from "@/pkgs/isomorphic/duration"
 import { createLogger } from "@/lib/logger"
 import { listModels } from "@/pkgs/server/data/ModelRepository"
 import { listMetricDefinitions } from "@/pkgs/server/data/MetricRepository"
+import { listValidYearMonths } from "@/pkgs/isomorphic/yearMonth"
 
 /* eslint-disable import/no-unused-modules */
 
@@ -54,6 +55,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priceCompareSitemap(domain_url),
     benchmarkLearnSitemap(domain_url),
     gpuCompareSitemap(domain_url),
+    gpuPriceByMonthSitemap(domain_url),
     listCachedListingsGroupedByGpu(false, prismaSingleton),
   ])
   log.debug("Awaiting queries for sitemap generation complete.")
@@ -68,6 +70,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priceCompareEntries,
     benchmarkLearnEntries,
     gpuCompareEntries,
+    gpuPriceByMonthEntries,
     gpusAndListings,
   ] = awaitedQueries
 
@@ -86,6 +89,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priceCompareEntries,
     benchmarkLearnEntries,
     gpuCompareEntries,
+    gpuPriceByMonthEntries,
   ]
   const dynamicEntries: SitemapItem[] = dynamicEntryGroups.flat()
 
@@ -342,6 +346,29 @@ async function gpuCompareSitemap(domain_url: string): Promise<SitemapItem[]> {
     })
   }
 
+  return entries
+}
+
+async function gpuPriceByMonthSitemap(
+  domain_url: string,
+): Promise<SitemapItem[]> {
+  const [gpus, latestListingDate] = await Promise.all([
+    listGpus(),
+    getLatestListingDate(),
+  ])
+  const validMonths = listValidYearMonths()
+
+  const entries: SitemapItem[] = []
+  for (const gpu of gpus) {
+    for (const ym of validMonths) {
+      entries.push({
+        url: `${domain_url}/gpu/learn/price/${ym.slug}/${gpu.name}`,
+        changeFrequency: "daily",
+        priority: 0.7,
+        lastModified: latestListingDate,
+      })
+    }
+  }
   return entries
 }
 

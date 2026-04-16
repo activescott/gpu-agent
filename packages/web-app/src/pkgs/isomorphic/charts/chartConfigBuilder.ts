@@ -5,6 +5,10 @@
  */
 import type { ChartConfiguration } from "chart.js"
 import type {
+  AnnotationOptions,
+  AnnotationPluginOptions,
+} from "chartjs-plugin-annotation"
+import type {
   ChartConfig,
   BarChartConfig,
   DivergingBarChartConfig,
@@ -312,6 +316,16 @@ function buildDivergingChartConfig(
   }
 }
 
+/** Annotation line styling */
+const ANNOTATION_BORDER_WIDTH = 2
+const ANNOTATION_DASH_SEGMENT = 6
+const ANNOTATION_BORDER_DASH = [
+  ANNOTATION_DASH_SEGMENT,
+  ANNOTATION_DASH_SEGMENT,
+]
+const ANNOTATION_LABEL_FONT_SIZE = 11
+const ANNOTATION_LABEL_PADDING = 4
+
 /**
  * Builds Chart.js configuration for a line chart.
  */
@@ -337,6 +351,35 @@ function buildLineChartConfig(
     borderWidth: LINE_BORDER_WIDTH * scale,
     fill: false,
   }))
+
+  // Build annotation plugin config if annotations are provided
+  let annotationPluginConfig: AnnotationPluginOptions | undefined
+  if (config.annotations && config.annotations.length > 0) {
+    const annotationEntries: Record<string, AnnotationOptions> = {}
+    for (const [i, ann] of config.annotations.entries()) {
+      const labelIndex = labels.indexOf(ann.xValue)
+      if (labelIndex === -1) continue
+      const lineAnnotation: AnnotationOptions<"line"> = {
+        type: "line",
+        xMin: labelIndex,
+        xMax: labelIndex,
+        borderColor: CHART_COLORS[ann.color ?? "primary"],
+        borderWidth: ANNOTATION_BORDER_WIDTH * scale,
+        borderDash: ANNOTATION_BORDER_DASH,
+        label: {
+          content: ann.label,
+          display: true,
+          position: "start",
+          backgroundColor: CHART_COLORS[ann.color ?? "primary"],
+          color: "#ffffff",
+          font: { size: ANNOTATION_LABEL_FONT_SIZE * scale },
+          padding: ANNOTATION_LABEL_PADDING * scale,
+        },
+      }
+      annotationEntries[`annotation${i}`] = lineAnnotation
+    }
+    annotationPluginConfig = { annotations: annotationEntries }
+  }
 
   return {
     type: "line",
@@ -374,6 +417,9 @@ function buildLineChartConfig(
             },
           },
         },
+        ...(annotationPluginConfig
+          ? { annotation: annotationPluginConfig }
+          : {}),
       },
       scales: {
         x: {

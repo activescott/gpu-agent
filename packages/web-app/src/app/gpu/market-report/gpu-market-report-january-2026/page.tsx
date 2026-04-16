@@ -61,6 +61,14 @@ export default async function January2026Report(): Promise<ReactNode> {
 
   return (
     <ReportLayout metadata={reportMetadata}>
+      {/* Editorial note about historical data methodology update */}
+      <div className="alert alert-info mb-4" role="note">
+        <strong>Editor&apos;s note (2026-04-16):</strong> This article was
+        lightly edited after we identified a small bias in our historical price
+        calculation. The chart data and a few specific price figures have been
+        corrected (for example the RTX 3070 best deal and the Tesla V100
+        prices). The overall analysis is unchanged.
+      </div>
       {/* Introduction */}
       <div className="lead mb-5">
         <p>
@@ -115,7 +123,7 @@ export default async function January2026Report(): Promise<ReactNode> {
         <div className="alert alert-success mt-3">
           <strong>Our take:</strong> The{" "}
           <Link href="/gpu/learn/card/nvidia-geforce-rtx-3070">RTX 3070</Link>{" "}
-          at <Link href="/gpu/shop/nvidia-geforce-rtx-3070">$145</Link> (-71%
+          at <Link href="/gpu/shop/nvidia-geforce-rtx-3070">$168</Link> (-66%
           off MSRP) and{" "}
           <Link href="/gpu/learn/card/nvidia-geforce-rtx-3080-ti">
             RTX 3080 Ti
@@ -181,7 +189,7 @@ export default async function January2026Report(): Promise<ReactNode> {
               </td>
               <td>$10,000</td>
               <td>
-                <Link href="/gpu/shop/nvidia-tesla-v100-16gb">$312</Link>
+                <Link href="/gpu/shop/nvidia-tesla-v100-16gb">$298</Link>
               </td>
               <td className="text-success fw-bold">-97%</td>
             </tr>
@@ -193,9 +201,9 @@ export default async function January2026Report(): Promise<ReactNode> {
               </td>
               <td>$11,500</td>
               <td>
-                <Link href="/gpu/shop/nvidia-tesla-v100-32gb">$703</Link>
+                <Link href="/gpu/shop/nvidia-tesla-v100-32gb">$610</Link>
               </td>
-              <td className="text-success fw-bold">-94%</td>
+              <td className="text-success fw-bold">-95%</td>
             </tr>
             <tr>
               <td>
@@ -213,7 +221,7 @@ export default async function January2026Report(): Promise<ReactNode> {
           The Tesla P100 at <Link href="/gpu/shop/nvidia-tesla-p100">$83</Link>{" "}
           is absurd value for ML experimentation, though it lacks newer features
           like Tensor Cores. The V100 16GB at{" "}
-          <Link href="/gpu/shop/nvidia-tesla-v100-16gb">$312</Link> is a better
+          <Link href="/gpu/shop/nvidia-tesla-v100-16gb">$298</Link> is a better
           all-around choice for serious ML work.
         </p>
       </section>
@@ -257,7 +265,7 @@ export default async function January2026Report(): Promise<ReactNode> {
                     <Link href="/gpu/shop/nvidia-geforce-rtx-3070">
                       Used RTX 3070
                     </Link>{" "}
-                    ($145) - 71% off, great for 1080p/1440p
+                    ($168) - 66% off, great for 1080p/1440p
                   </li>
                   <li>
                     <Link href="/gpu/shop/nvidia-geforce-rtx-3080-ti">
@@ -269,7 +277,7 @@ export default async function January2026Report(): Promise<ReactNode> {
                     <Link href="/gpu/shop/nvidia-tesla-v100-16gb">
                       Tesla V100 16GB
                     </Link>{" "}
-                    ($312) - ML experimentation bargain
+                    ($298) - ML experimentation bargain
                   </li>
                 </ul>
               </div>

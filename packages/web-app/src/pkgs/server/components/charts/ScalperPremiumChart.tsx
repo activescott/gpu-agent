@@ -34,41 +34,42 @@ async function fetchScalperPremiumData(
   const { startDate, endDate } = parseDateRange(dateRange.to)
 
   const result = await prismaSingleton.$queryRaw<ScalperPremiumRow[]>`
-    WITH lowest_avg AS (
-      SELECT
-        l."gpuName" as name,
-        (SELECT AVG(price) FROM (
-          SELECT "priceValue"::float as price
-          FROM "Listing" l2
-          WHERE l2."gpuName" = l."gpuName"
-            AND l2."cachedAt" >= ${startDate}
-            AND l2."cachedAt" <= ${endDate}
-            AND l2."exclude" = false
-          ORDER BY "priceValue"::float ASC
-          LIMIT 3
-        ) lowest_three) as lowest_avg_price
+    -- Temporal correctness: use createdAt+archivedAt for "active during window" (see getHistoricalPriceData).
+    -- We compute one price per listing (distinct by itemId) using the listing's lowest observed
+    -- price in the window, then aggregate per GPU.
+    WITH active_versions AS (
+      SELECT DISTINCT ON (l."itemId") l."gpuName", l."priceValue"::float AS price
       FROM "Listing" l
-      WHERE l."cachedAt" >= ${startDate}
-        AND l."cachedAt" <= ${endDate}
-        AND l."exclude" = false
+      WHERE l."exclude" = false
+        AND l."source" IN ('ebay', 'amazon')
+        AND l."createdAt" < ${endDate}::timestamp + INTERVAL '1 day'
+        AND (l."archivedAt" IS NULL OR l."archivedAt" >= ${startDate})
         AND l."gpuName" LIKE 'nvidia-geforce-rtx-50%'
-      GROUP BY l."gpuName"
+      ORDER BY l."itemId", l."priceValue"::float ASC
+    ),
+    ranked AS (
+      SELECT "gpuName", price, ROW_NUMBER() OVER (PARTITION BY "gpuName" ORDER BY price ASC) AS rn
+      FROM active_versions
+    ),
+    lowest_avg AS (
+      SELECT "gpuName" AS name, AVG(price) AS lowest_avg_price
+      FROM ranked WHERE rn <= 3 GROUP BY "gpuName"
+    ),
+    avg_per_gpu AS (
+      SELECT "gpuName", AVG(price) AS avg_price
+      FROM active_versions GROUP BY "gpuName"
     )
     SELECT
       la.name,
       g."msrpUSD"::float as msrp,
-      AVG(l."priceValue"::float) as "avgPrice",
+      a.avg_price as "avgPrice",
       la.lowest_avg_price as "lowestAvgPrice",
       ROUND(((la.lowest_avg_price / g."msrpUSD"::float - 1) * 100)::numeric, 0)::float as "premiumPct"
     FROM lowest_avg la
     JOIN gpu g ON g.name = la.name
-    JOIN "Listing" l ON l."gpuName" = la.name
-      AND l."cachedAt" >= ${startDate}
-      AND l."cachedAt" <= ${endDate}
-      AND l."exclude" = false
+    JOIN avg_per_gpu a ON a."gpuName" = la.name
     WHERE g."msrpUSD" IS NOT NULL
       AND g."msrpUSD" > 0
-    GROUP BY la.name, g."msrpUSD", la.lowest_avg_price
     ORDER BY "premiumPct" DESC
     LIMIT ${LIMIT_RESULTS}
   `

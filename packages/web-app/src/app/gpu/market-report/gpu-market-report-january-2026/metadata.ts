@@ -7,7 +7,7 @@ export const reportMetadata: MarketReportMetadata = {
   description:
     "RTX 50 series launch pricing analysis, best used GPU deals, and month-over-month price changes.",
   publishedAt: new Date("2026-01-03T06:00:00Z"),
-  updatedAt: new Date("2026-02-01T12:00:00Z"),
+  updatedAt: new Date("2026-04-16T18:00:00Z"),
   author: "Scott Willeke",
   tags: [
     "market-report",

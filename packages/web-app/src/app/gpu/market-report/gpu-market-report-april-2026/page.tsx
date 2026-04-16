@@ -60,6 +60,17 @@ export default async function April2026Report(): Promise<ReactNode> {
 
   return (
     <ReportLayout metadata={reportMetadata}>
+      {/* Editorial note about historical data methodology update */}
+      <div className="alert alert-info mb-4" role="note">
+        <strong>Editor&apos;s note (2026-04-16):</strong> This article was
+        lightly edited after we identified a small bias in our historical price
+        calculation. The chart data, the T4 inference-value numbers, the
+        datacenter GPU month-over-month drops (L40S 34%→21%, A40 17%→8%), and
+        the RTX 4090 six-month move (-1.6%→-4.2%) have been corrected. The
+        overall conclusions &mdash; older prior-gen cards still lead on $/FPS,
+        the T4/P100 still lead on raw VRAM-per-dollar, and datacenter prices
+        continue to fall &mdash; are unchanged.
+      </div>
       <div className="lead mb-5">
         <p>
           The surprise in March&apos;s data wasn&apos;t RTX 50 series (those
@@ -124,13 +135,13 @@ export default async function April2026Report(): Promise<ReactNode> {
           For running inference locally, INT8 is one of the most common
           quantization formats for deploying LLMs efficiently (tools like
           llama.cpp and vLLM support it widely). Here&apos;s how current GPUs
-          stack up on $/INT8 TOP. The <Link href="/gpu/shop/nvidia-t4">T4</Link>{" "}
-          at $62 and 130 INT8 TOPS ($0.47/TOP, 16GB) is hard to beat on pure
-          value. For more raw throughput, the{" "}
-          <Link href="/gpu/shop/intel-arc-b580">Intel Arc B580</Link> ($234, 233
-          TOPS, 12GB) at $1.00/TOP and the{" "}
-          <Link href="/gpu/shop/nvidia-geforce-rtx-3080">RTX 3080</Link> ($276,
-          238 TOPS, 10GB) at $1.16/TOP deliver nearly 2x the TOPS.
+          stack up on $/INT8 TOP. The{" "}
+          <Link href="/gpu/shop/intel-arc-b580">Intel Arc B580</Link> ($238, 233
+          TOPS, 12GB) at $1.02/TOP leads on pure value. The{" "}
+          <Link href="/gpu/shop/nvidia-geforce-rtx-3080">RTX 3080</Link> ($282,
+          238 TOPS, 10GB) is right behind at $1.18/TOP, while the{" "}
+          <Link href="/gpu/shop/nvidia-t4">T4</Link> ($202, 130 TOPS, 16GB) at
+          $1.55/TOP gives you more VRAM headroom at a similar value.
         </p>
         <DollarsPerInt8TopChart dateRange={dateRange} />
         <div className="alert alert-info mt-3">
@@ -150,17 +161,17 @@ export default async function April2026Report(): Promise<ReactNode> {
           least 16GB to do anything useful, and more is better. The chart below
           ranks all 16GB+ GPUs by $/TFLOP. The{" "}
           <Link href="/gpu/shop/nvidia-tesla-p100">Tesla P100</Link> ($70, 16GB)
-          and <Link href="/gpu/shop/nvidia-t4">T4</Link> ($62, 16GB) lead on raw
-          value, though they&apos;re older architectures. For more modern
+          and <Link href="/gpu/shop/nvidia-t4">T4</Link> ($202, 16GB) lead on
+          raw value, though they&apos;re older architectures. For more modern
           compute, the{" "}
           <Link href="/gpu/shop/nvidia-geforce-rtx-4080">RTX 4080</Link> ($793,
           16GB, 97.4 TFLOPS) at $8.10/TFLOP is strong. For larger models, the{" "}
           <Link href="/gpu/shop/nvidia-tesla-v100-32gb">V100 32GB</Link> at $608
           gives you the VRAM headroom. Used datacenter cards are dropping fast:
-          the <Link href="/gpu/shop/nvidia-l40s">L40S</Link> fell 34% in March
-          ($8,558 to $5,633, 48GB), and the{" "}
-          <Link href="/gpu/shop/nvidia-a40">A40</Link> dropped 17% ($4,500 to
-          $3,750, 48GB).
+          the <Link href="/gpu/shop/nvidia-l40s">L40S</Link> fell 21% in March
+          ($7,858 to $6,216, 48GB), and the{" "}
+          <Link href="/gpu/shop/nvidia-a40">A40</Link> dropped 8% ($4,500 to
+          $4,150, 48GB).
         </p>
         <DollarsPerTflopChart dateRange={dateRange} />
         <div className="alert alert-info mt-3">
@@ -199,8 +210,8 @@ export default async function April2026Report(): Promise<ReactNode> {
         <p className="mb-4">
           The longer view puts March in context. RTX 40 non-Super cards are in a
           clear downtrend as RTX 50 supply improves. The{" "}
-          <Link href="/gpu/shop/nvidia-geforce-rtx-4090">RTX 4090</Link> barely
-          moved (-1.6%), holding at $1,850. The{" "}
+          <Link href="/gpu/shop/nvidia-geforce-rtx-4090">RTX 4090</Link> eased
+          4.2% to $1,850. The{" "}
           <Link href="/gpu/shop/nvidia-geforce-rtx-4060-ti">RTX 4060 Ti</Link>{" "}
           dropped another 12% to $240.
         </p>

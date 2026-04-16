@@ -3,11 +3,11 @@ import type { MarketReportMetadata } from "../reports"
 export const reportMetadata: MarketReportMetadata = {
   slug: "gpu-market-report-february-2026",
   title:
-    "GPU Market February 2026: RTX 50 Deals Exist but Median Buyer Still Pays 75-90% Over MSRP",
+    "GPU Market February 2026: RTX 50 Deals Exist but Median Buyer Still Pays 44-82% Over MSRP",
   description:
-    "A year after launch, patient RTX 50 buyers can find near-MSRP deals, but the median listing is still 75-90% above MSRP. Used GPU prices are split: budget cards rising, high-end falling. Data center AI GPUs surged 20-30%. Dollar-per-frame rankings for CS2, best AI GPUs on a budget, and buy/wait/sell recommendations.",
+    "A year after launch, patient RTX 50 buyers can find near-MSRP deals, but the median listing is still 44-82% above MSRP. Used GPU prices are split: budget cards rising, high-end falling. Data center AI GPUs surged 20-30%. Dollar-per-frame rankings for CS2, best AI GPUs on a budget, and buy/wait/sell recommendations.",
   publishedAt: new Date("2026-02-01T06:00:00Z"),
-  updatedAt: new Date("2026-02-01T18:00:00Z"),
+  updatedAt: new Date("2026-04-16T18:00:00Z"),
   author: "Scott Willeke",
   tags: [
     "market-report",

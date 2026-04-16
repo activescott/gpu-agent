@@ -310,6 +310,14 @@ export async function addOrRefreshListingsForGpu(
       source,
     )
 
+    // ⚠️ IMPORTANT: `createdAt` must NEVER be passed to any `.update()` below.
+    // It is the immutable "we first observed this row" anchor and is used by
+    // historical queries (e.g. `getHistoricalPriceData`) via
+    // `MIN("createdAt") OVER (PARTITION BY "itemId")` to determine when each
+    // listing entered our dataset. Overwriting it — the way `cachedAt` gets
+    // overwritten on every refresh — would silently break historical accuracy
+    // across every chart on the site. Only `archived`, `archivedAt`, and
+    // `cachedAt` should be mutated on existing rows.
     if (changeCheck.didChange && changeCheck.existingListing) {
       // Archive the current version so we can report on historical data
       log.info(
@@ -324,7 +332,9 @@ export async function addOrRefreshListingsForGpu(
       })
       archivedCount++
 
-      // Create new version
+      // Create new version — gets its own fresh `createdAt` via Prisma default.
+      // The previous version's `createdAt` is preserved on the now-archived row,
+      // which is what makes per-day historical queries possible.
       await prisma.listing.create({
         data: {
           ...listingData,
@@ -333,7 +343,8 @@ export async function addOrRefreshListingsForGpu(
       })
       createdCount++
     } else if (changeCheck.existingListing) {
-      // Listing exists and hasn't changed. Update the cachedAt timestamp so it doesn't become stale:
+      // Listing exists and hasn't changed. Update `cachedAt` (freshness signal)
+      // but NEVER touch `createdAt` — see warning above.
       await prisma.listing.update({
         where: { id: changeCheck.existingListing.id },
         data: {
@@ -728,9 +739,29 @@ export interface VolatilityStats {
 /**
  * Gets historical price data for a GPU over the specified number of months.
  *
- * IMPORTANT: This query intentionally includes BOTH active and archived listings
- * to provide complete historical price data. Do NOT add an archived=false filter
- * to this query - archived listings are essential for historical analysis.
+ * TEMPORAL CORRECTNESS — READ BEFORE MODIFYING:
+ *
+ * This query determines "which listings were active on day D" using each
+ * version's `createdAt` (immutable per row) and `archivedAt` (set when a
+ * version is superseded or the listing disappears).  A listing version is
+ * considered active on day D when:
+ *
+ *   createdAt < D + 1 day AND (archivedAt IS NULL OR archivedAt >= D)
+ *
+ * `DISTINCT ON ("itemId")` with `ORDER BY COALESCE(archivedAt, infinity)` picks
+ * exactly one version per listing per day — the one whose end-of-life is
+ * closest to D from above — which is the version that was live on D.
+ *
+ * DO NOT switch this back to filtering by `DATE_TRUNC('day', cachedAt)`:
+ * `cachedAt` is overwritten on every scrape refresh, so any "day bucket"
+ * keyed on it only contains listings we happened to re-observe that day,
+ * which is a tiny biased subsample of the actual active population.  This
+ * was the long-standing bug fixed on 2026-04-16; see
+ * gpu-poet-data/specs/listing-historical-accuracy/plan.md.
+ *
+ * This query intentionally includes BOTH active and archived listings to
+ * provide complete historical price data.  Do NOT add an archived=false
+ * filter — archived listings are essential for historical analysis.
  */
 export async function getHistoricalPriceData(
   gpuName: string,
@@ -740,49 +771,63 @@ export async function getHistoricalPriceData(
   const startDate = new Date()
   startDate.setMonth(startDate.getMonth() - months)
 
-  // Calculate daily stats with lowestAvgPrice (avg of 3 lowest listings per day)
-  // Using LATERAL join for efficient per-day calculation
-  // NOTE: Includes archived listings for historical analysis, but excludes data quality issues
   const result = await prisma.$queryRaw<PriceHistoryPoint[]>`
-    SELECT
-      d."date",
-      COALESCE(l."lowestAvgPrice", d."medianPrice") as "lowestAvgPrice",
-      d."medianPrice",
-      d."listingCount"
-    FROM (
+    WITH days AS (
+      SELECT DATE_TRUNC('day', generate_series(${startDate}::timestamp, NOW(), '1 day'::interval))::date AS day
+    ),
+    active_versions AS (
+      SELECT DISTINCT ON (d.day, l."itemId")
+        d.day,
+        l."itemId",
+        l."priceValue"::float AS price
+      FROM days d
+      CROSS JOIN "Listing" l
+      WHERE l."gpuName" = ${gpuName}
+        AND l."exclude" = false
+        AND l."source" IN ('ebay', 'amazon')
+        AND l."createdAt" < d.day + INTERVAL '1 day'
+        AND (l."archivedAt" IS NULL OR l."archivedAt" >= d.day)
+      ORDER BY d.day, l."itemId", COALESCE(l."archivedAt", 'infinity'::timestamp) ASC
+    ),
+    daily_stats AS (
       SELECT
-        DATE_TRUNC('day', "cachedAt") as "date",
-        PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY "priceValue"::float) as "medianPrice",
-        COUNT(*)::float as "listingCount"
-      FROM "Listing"
-      WHERE
-        "gpuName" = ${gpuName}
-        AND "cachedAt" >= ${startDate}
-        AND "exclude" = false
-        AND "source" IN ('ebay', 'amazon')
-      GROUP BY DATE_TRUNC('day', "cachedAt")
-    ) d
-    LEFT JOIN LATERAL (
-      SELECT AVG(sub.price) as "lowestAvgPrice"
+        day AS "date",
+        PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY price) AS "medianPrice",
+        COUNT(*)::float AS "listingCount"
+      FROM active_versions
+      GROUP BY day
+    ),
+    daily_lowest AS (
+      SELECT day, AVG(price) AS "lowestAvgPrice"
       FROM (
-        SELECT "priceValue"::float as price
-        FROM "Listing"
-        WHERE "gpuName" = ${gpuName}
-          AND DATE_TRUNC('day', "cachedAt") = d."date"
-          AND "exclude" = false
-          AND "source" IN ('ebay', 'amazon')
-        ORDER BY "priceValue"::float ASC
-        LIMIT 3
-      ) sub
-    ) l ON TRUE
-    ORDER BY d."date"
+        SELECT day, price, ROW_NUMBER() OVER (PARTITION BY day ORDER BY price ASC) AS rn
+        FROM active_versions
+      ) ranked
+      WHERE rn <= 3
+      GROUP BY day
+    )
+    SELECT
+      s."date",
+      COALESCE(l."lowestAvgPrice", s."medianPrice") AS "lowestAvgPrice",
+      s."medianPrice",
+      s."listingCount"
+    FROM daily_stats s
+    LEFT JOIN daily_lowest l ON l.day = s."date"
+    WHERE s."listingCount" > 0
+    ORDER BY s."date"
   `
 
   return result
 }
 
 /**
- * Gets monthly averages for multiple GPUs for a specific month
+ * Gets monthly averages for multiple GPUs for a specific month.
+ *
+ * ⚠️ KNOWN BIAS: This function groups by `cachedAt`, which has the sampling
+ * issue described in `getHistoricalPriceData`. Only used by the internal
+ * `/api/internal/api/monthly-stats` route right now; if a public page needs
+ * monthly stats, prefer `getHistoricalPriceData` + `bucketDailyPricesByMonth`
+ * (see pkgs/isomorphic/pricing.ts) instead.
  */
 export async function getMonthlyAverages(
   gpuNames: string[],
@@ -846,7 +891,12 @@ export async function getMonthlyAverages(
 }
 
 /**
- * Gets availability trends for a GPU over the specified number of months
+ * Gets availability trends for a GPU over the specified number of months.
+ *
+ * ⚠️ KNOWN BIAS: This function groups by `cachedAt`, which has the sampling
+ * issue described in `getHistoricalPriceData`. Only used by the internal
+ * `/api/internal/api/historical/[gpuName]` route right now; rewrite with the
+ * `createdAt` + `archivedAt` pattern before exposing to public pages.
  */
 export async function getAvailabilityTrends(
   gpuName: string,

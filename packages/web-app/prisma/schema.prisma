@@ -161,9 +161,18 @@ model Listing {
   gpu     gpu    @relation(fields: [gpuName], references: [name], onDelete: NoAction, onUpdate: Cascade)
   gpuName String
 
+  // createdAt: the immutable "we first observed this row" timestamp. Set on INSERT,
+  // NEVER updated — application code must not modify this field. This is the
+  // authoritative anchor for historical temporal queries: to ask "was this listing
+  // observable on day D?" use MIN("createdAt") OVER (PARTITION BY "itemId") <= D.
+  // Do NOT use cachedAt for historical temporal filtering — cachedAt is overwritten
+  // on every refresh, which makes it useless for "active on day D" queries.
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
-  // note cachedAt is essentially createdAt but allows us to use it explicitly and potentially update it separately from createdAt or updatedAt
+  // cachedAt: the "last time we observed this specific row" timestamp. Updated on every
+  // refresh that sees this row unchanged. Useful for "how recently did we see this?"
+  // freshness checks, but NOT safe for historical "active on day D" queries — use
+  // createdAt + archivedAt for that.
   cachedAt DateTime   @default(now())
 
   @@index([itemId, version])

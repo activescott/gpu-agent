@@ -242,7 +242,11 @@ export async function listActiveListings(
 export const listCachedListings = listActiveListings
 
 /**
- * Returns the latest creation date across all listings.
+ * Returns the date of the most recent listing row insertion across all active listings.
+ * Used as lastmod for sitemap entries that depend on "when did the listing data last change?"
+ *
+ * Uses `createdAt` (immutable per row, set on INSERT) instead of `itemCreationDate`
+ * (which is null for 100% of Amazon listings and caused this function to return EPOCH).
  */
 export async function getLatestListingDate(
   prisma: PrismaClientWithinTransaction = prismaSingleton,
@@ -253,15 +257,14 @@ export async function getLatestListingDate(
       exclude: false,
       source: { in: ["ebay", "amazon"] },
     },
-    orderBy: { itemCreationDate: "desc" },
-    select: { itemCreationDate: true },
+    orderBy: { createdAt: "desc" },
+    select: { createdAt: true },
   })
-  if (result?.itemCreationDate === undefined) {
-    log.error(
-      "No itemCreationDate for active listings found in the database. Returning EPOCH.",
-    )
+  if (!result) {
+    log.error("No active listings found in the database. Returning EPOCH.")
+    return EPOCH
   }
-  return result?.itemCreationDate ?? EPOCH
+  return result.createdAt
 }
 
 /**

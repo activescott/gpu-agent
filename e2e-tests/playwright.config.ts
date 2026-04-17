@@ -1,8 +1,8 @@
-import { defineConfig, devices } from "@playwright/test"
+import { defineConfig, devices } from "@playwright/test";
 
 // Use BASE_URL environment variable for testing against different environments
 // Default to localhost for local development (run `npm run docker:dev` first)
-const baseURL = process.env.BASE_URL || "http://localhost:3000"
+const baseURL = process.env.BASE_URL || "http://localhost:3000";
 
 /**
  * See https://playwright.dev/docs/test-configuration.
@@ -27,4 +27,4 @@ export default defineConfig({
       use: { ...devices["Desktop Chrome"] },
     },
   ],
-})
+});

@@ -1,60 +1,66 @@
-import { test, expect } from '@playwright/test';
+import { test, expect } from "@playwright/test";
 
 // Minimum percentage of GPUs that should have listings
 const MIN_LISTINGS_PERCENT = 50;
 // Minimum percentage of GPUs that should have the spec data
 const MIN_SPEC_PERCENT = 75;
 
-test.describe('GPU Ranking Page', () => {
-  test('should display metric selector on gaming benchmark page', async ({ page }) => {
+test.describe("GPU Ranking Page", () => {
+  test("should display metric selector on gaming benchmark page", async ({
+    page,
+  }) => {
     // Navigate to a gaming benchmark ranking page
-    await page.goto('/gpu/ranking/gaming/counter-strike-2-fps-3840x2160');
+    await page.goto("/gpu/ranking/gaming/counter-strike-2-fps-3840x2160");
 
     // Wait for page to load
     await expect(page).toHaveTitle(/Counter.*Strike|GPUs Ranked by/i);
 
     // The MetricSelector should be visible with the "Compare GPUs by metric:" label
-    const metricSelectorLabel = page.getByText('Compare GPUs by metric:');
+    const metricSelectorLabel = page.getByText("Compare GPUs by metric:");
     await expect(metricSelectorLabel).toBeVisible();
 
     // Category tabs should be present (at least Gaming Benchmarks)
-    const gamingBenchmarksTab = page.getByRole('button', { name: /Gaming Benchmarks/i });
+    const gamingBenchmarksTab = page.getByRole("button", {
+      name: /Gaming Benchmarks/i,
+    });
     await expect(gamingBenchmarksTab).toBeVisible();
 
     // At least one metric link should be present
-    const metricLinks = page.locator('.nav-underline .nav-link');
+    const metricLinks = page.locator(".nav-underline .nav-link");
     const linkCount = await metricLinks.count();
     expect(linkCount).toBeGreaterThan(1); // Should have category tabs + metric links
   });
 
-  test('should display metric selector on AI spec page', async ({ page }) => {
+  test("should display metric selector on AI spec page", async ({ page }) => {
     // Navigate to an AI spec ranking page
-    await page.goto('/gpu/ranking/ai/fp32-flops');
+    await page.goto("/gpu/ranking/ai/fp32-flops");
 
     // Wait for page to load
     await expect(page).toHaveTitle(/FP32.*TFLOPs|GPUs Ranked by/i);
 
     // The MetricSelector should be visible with the "Compare GPUs by metric:" label
-    const metricSelectorLabel = page.getByText('Compare GPUs by metric:');
+    const metricSelectorLabel = page.getByText("Compare GPUs by metric:");
     await expect(metricSelectorLabel).toBeVisible();
 
     // AI Specs tab should be present
-    const aiSpecsTab = page.getByRole('button', { name: /AI Specs/i });
+    const aiSpecsTab = page.getByRole("button", { name: /AI Specs/i });
     await expect(aiSpecsTab).toBeVisible();
   });
-  test('should have reasonable coverage of listings and specs on fp32-flops ranking', async ({ page }) => {
+  test("should have reasonable coverage of listings and specs on fp32-flops ranking", async ({
+    page,
+  }) => {
     // Navigate to the FP32 FLOPS ranking page (old route for backwards compatibility)
-    await page.goto('/ml/learn/gpu/ranking/fp32-flops');
+    await page.goto("/ml/learn/gpu/ranking/fp32-flops");
 
     // Wait for page to load
     await expect(page).toHaveTitle(/FP32.*TFLOPs|GPUs Ranked by/i);
 
     // Find the ranking table
-    const table = page.getByRole('table').first();
+    const table = page.getByRole("table").first();
     await expect(table).toBeVisible();
 
     // Get all data rows (excluding header row)
-    const rows = table.getByRole('row');
+    const rows = table.getByRole("row");
     const totalRows = await rows.count();
     const dataRowCount = totalRows - 1; // Subtract header row
 
@@ -75,7 +81,7 @@ test.describe('GPU Ranking Page', () => {
       }
 
       // Check if row has spec data (doesn't say "metric n/a" for this metric)
-      if (!rowText?.includes('metric n/a')) {
+      if (!rowText?.includes("metric n/a")) {
         rowsWithSpec++;
       }
     }
@@ -88,9 +94,9 @@ test.describe('GPU Ranking Page', () => {
     expect(specPercent).toBeGreaterThanOrEqual(MIN_SPEC_PERCENT);
   });
 
-  test('should not contain NaN values on AI ranking page', async ({ page }) => {
+  test("should not contain NaN values on AI ranking page", async ({ page }) => {
     // Navigate to the new AI ranking route
-    await page.goto('/gpu/ranking/ai/fp32-flops');
+    await page.goto("/gpu/ranking/ai/fp32-flops");
 
     // Wait for page to load
     await expect(page).toHaveTitle(/FP32.*TFLOPs|GPUs Ranked by/i);
@@ -99,17 +105,19 @@ test.describe('GPU Ranking Page', () => {
     const content = await page.content();
 
     // Verify no NaN values appear in the page
-    expect(content).not.toContain('$NaN');
+    expect(content).not.toContain("$NaN");
     expect(content).not.toMatch(/\$\s*NaN/i);
 
     // Also check the table is visible
-    const table = page.getByRole('table').first();
+    const table = page.getByRole("table").first();
     await expect(table).toBeVisible();
   });
 
-  test('should not contain NaN values on gaming ranking page', async ({ page }) => {
+  test("should not contain NaN values on gaming ranking page", async ({
+    page,
+  }) => {
     // Navigate to a gaming ranking route
-    await page.goto('/gpu/ranking/gaming/counter-strike-2-fps-3840x2160');
+    await page.goto("/gpu/ranking/gaming/counter-strike-2-fps-3840x2160");
 
     // Wait for page to load
     await expect(page).toHaveTitle(/Counter.*Strike|GPUs Ranked by/i);
@@ -118,60 +126,64 @@ test.describe('GPU Ranking Page', () => {
     const content = await page.content();
 
     // Verify no NaN values appear in the page
-    expect(content).not.toContain('$NaN');
+    expect(content).not.toContain("$NaN");
     expect(content).not.toMatch(/\$\s*NaN/i);
 
     // Also check the table is visible
-    const table = page.getByRole('table').first();
+    const table = page.getByRole("table").first();
     await expect(table).toBeVisible();
   });
 
-  test('should have correct table structure with 4 columns', async ({ page }) => {
+  test("should have correct table structure with 4 columns", async ({
+    page,
+  }) => {
     // Navigate to a gaming ranking route
-    await page.goto('/gpu/ranking/gaming/counter-strike-2-fps-3840x2160');
+    await page.goto("/gpu/ranking/gaming/counter-strike-2-fps-3840x2160");
 
     // Wait for the table to be visible
-    const table = page.getByRole('table').first();
+    const table = page.getByRole("table").first();
     await expect(table).toBeVisible();
 
     // Verify column headers using direct locator (more reliable than role-based)
-    const headers = table.locator('thead th');
+    const headers = table.locator("thead th");
     await expect(headers).toHaveCount(4);
 
     // Check header text (using flexible matching)
-    await expect(headers.nth(0)).toContainText('GPU');
-    await expect(headers.nth(1)).toContainText('Lowest Average Price');
-    await expect(headers.nth(2)).toContainText('Raw Performance Ranking');
-    await expect(headers.nth(3)).toContainText('$ per');
+    await expect(headers.nth(0)).toContainText("GPU");
+    await expect(headers.nth(1)).toContainText("Lowest Average Price");
+    await expect(headers.nth(2)).toContainText("Raw Performance Ranking");
+    await expect(headers.nth(3)).toContainText("$ per");
   });
 
-  test('should have GPU name links that work', async ({ page }) => {
+  test("should have GPU name links that work", async ({ page }) => {
     // Navigate to a gaming ranking route
-    await page.goto('/gpu/ranking/gaming/counter-strike-2-fps-3840x2160');
+    await page.goto("/gpu/ranking/gaming/counter-strike-2-fps-3840x2160");
 
     // Wait for the table to be visible
-    const table = page.getByRole('table').first();
+    const table = page.getByRole("table").first();
     await expect(table).toBeVisible();
 
     // Find the first GPU link in the table
-    const firstGpuLink = table.getByRole('link').first();
+    const firstGpuLink = table.getByRole("link").first();
     await expect(firstGpuLink).toBeVisible();
 
     // Verify the link points to a GPU learn page
-    const href = await firstGpuLink.getAttribute('href');
+    const href = await firstGpuLink.getAttribute("href");
     expect(href).toMatch(/\/gpu\/learn\/card\//);
   });
 
-  test('should display percentile bars for GPUs with performance data', async ({ page }) => {
+  test("should display percentile bars for GPUs with performance data", async ({
+    page,
+  }) => {
     // Navigate to a gaming ranking route
-    await page.goto('/gpu/ranking/gaming/counter-strike-2-fps-3840x2160');
+    await page.goto("/gpu/ranking/gaming/counter-strike-2-fps-3840x2160");
 
     // Wait for the table to be visible
-    const table = page.getByRole('table').first();
+    const table = page.getByRole("table").first();
     await expect(table).toBeVisible();
 
     // Find progress bars (percentile visualization)
-    const progressBars = table.locator('.progress');
+    const progressBars = table.locator(".progress");
 
     // Should have at least some progress bars (GPUs with spec data)
     const progressBarCount = await progressBars.count();
@@ -184,12 +196,14 @@ test.describe('GPU Ranking Page', () => {
     expect(progressBarText).toMatch(/\d+(st|nd|rd|th)\s*@\s*\d+/);
   });
 
-  test('should display tier dividers when GPUs span multiple performance tiers', async ({ page }) => {
+  test("should display tier dividers when GPUs span multiple performance tiers", async ({
+    page,
+  }) => {
     // Navigate to a gaming ranking route
-    await page.goto('/gpu/ranking/gaming/counter-strike-2-fps-3840x2160');
+    await page.goto("/gpu/ranking/gaming/counter-strike-2-fps-3840x2160");
 
     // Wait for the table to be visible
-    const table = page.getByRole('table').first();
+    const table = page.getByRole("table").first();
     await expect(table).toBeVisible();
 
     // Look for tier divider rows (they have specific text patterns)
@@ -198,10 +212,10 @@ test.describe('GPU Ranking Page', () => {
     // At least one tier divider should exist if we have GPUs across tiers
     // Using flexible matching since exact tiers depend on data
     const hasTierDividers =
-      pageContent.includes('Top Tier') ||
-      pageContent.includes('Middle Tier') ||
-      pageContent.includes('Entry Tier') ||
-      pageContent.includes('Percentile');
+      pageContent.includes("Top Tier") ||
+      pageContent.includes("Middle Tier") ||
+      pageContent.includes("Entry Tier") ||
+      pageContent.includes("Percentile");
 
     // This test is informational - we expect tier dividers but won't fail
     // if the data happens to all be in one tier
@@ -211,16 +225,18 @@ test.describe('GPU Ranking Page', () => {
     }
   });
 
-  test('should display formatted prices in Lowest Price column', async ({ page }) => {
+  test("should display formatted prices in Lowest Price column", async ({
+    page,
+  }) => {
     // Navigate to a gaming ranking route
-    await page.goto('/gpu/ranking/gaming/counter-strike-2-fps-3840x2160');
+    await page.goto("/gpu/ranking/gaming/counter-strike-2-fps-3840x2160");
 
     // Wait for the table to be visible
-    const table = page.getByRole('table').first();
+    const table = page.getByRole("table").first();
     await expect(table).toBeVisible();
 
     // Get all table rows (excluding header)
-    const rows = table.getByRole('row');
+    const rows = table.getByRole("row");
     const totalRows = await rows.count();
 
     // Check that we have price data in the expected format

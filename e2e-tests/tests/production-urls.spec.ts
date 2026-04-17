@@ -1,4 +1,4 @@
-import { test, expect } from "@playwright/test"
+import { test, expect } from "@playwright/test";
 
 /**
  * Production sitemap URLs snapshot.
@@ -99,38 +99,40 @@ const PRODUCTION_URLS = [
   "/ml/learn/faq/begginers-ai-for-finance-or-sports",
   "/ml/learn/faq/amd-gpus-for-ai-machine-learning",
   "/about",
-]
+];
 
-const BASE_URL = "http://localhost:3000"
-const BATCH_SIZE = 10 // Process URLs in parallel batches
-const TIMEOUT_MS = 30_000
+const BASE_URL = "http://localhost:3000";
+const BATCH_SIZE = 10; // Process URLs in parallel batches
+const TIMEOUT_MS = 30_000;
 
 interface UrlResult {
-  url: string
-  status: number
-  finalUrl?: string
-  error?: string
+  url: string;
+  status: number;
+  finalUrl?: string;
+  error?: string;
 }
 
 async function testUrl(url: string): Promise<UrlResult> {
-  const fullUrl = `${BASE_URL}${url}`
+  const fullUrl = `${BASE_URL}${url}`;
 
   try {
     // Use redirect: 'manual' to capture redirect status codes
     const response = await fetch(fullUrl, {
       redirect: "manual",
       signal: AbortSignal.timeout(TIMEOUT_MS),
-    })
+    });
 
-    const status = response.status
-    let finalUrl: string | undefined
+    const status = response.status;
+    let finalUrl: string | undefined;
 
     // If it's a redirect, follow it to get the final URL
     if (status >= 300 && status < 400) {
-      const location = response.headers.get("location")
+      const location = response.headers.get("location");
       if (location) {
         // Make location absolute if it's relative
-        finalUrl = location.startsWith("/") ? `${BASE_URL}${location}` : location
+        finalUrl = location.startsWith("/")
+          ? `${BASE_URL}${location}`
+          : location;
       }
     }
 
@@ -138,35 +140,35 @@ async function testUrl(url: string): Promise<UrlResult> {
       url,
       status,
       finalUrl: finalUrl !== fullUrl ? finalUrl : undefined,
-    }
+    };
   } catch (error) {
-    const errorMessage = error instanceof Error ? error.message : String(error)
-    return { url, status: 0, error: errorMessage }
+    const errorMessage = error instanceof Error ? error.message : String(error);
+    return { url, status: 0, error: errorMessage };
   }
 }
 
 async function processBatch(urls: string[]): Promise<UrlResult[]> {
-  return Promise.all(urls.map(testUrl))
+  return Promise.all(urls.map(testUrl));
 }
 
 test.describe("Production URL Compatibility", () => {
   test("all production URLs should load or redirect", async () => {
     // Increase timeout based on URL count
-    const MS_PER_URL = 5_000 // Much faster with fetch
-    test.setTimeout(PRODUCTION_URLS.length * MS_PER_URL)
+    const MS_PER_URL = 5_000; // Much faster with fetch
+    test.setTimeout(PRODUCTION_URLS.length * MS_PER_URL);
 
-    const results: UrlResult[] = []
+    const results: UrlResult[] = [];
 
     // Process URLs in batches to avoid overwhelming the server
     for (let i = 0; i < PRODUCTION_URLS.length; i += BATCH_SIZE) {
-      const batch = PRODUCTION_URLS.slice(i, i + BATCH_SIZE)
-      const batchResults = await processBatch(batch)
-      results.push(...batchResults)
+      const batch = PRODUCTION_URLS.slice(i, i + BATCH_SIZE);
+      const batchResults = await processBatch(batch);
+      results.push(...batchResults);
     }
 
     // Categorize results
-    const redirects = results.filter((r) => r.finalUrl)
-    const warnings = results.filter((r) => r.status === 500)
+    const redirects = results.filter((r) => r.finalUrl);
+    const warnings = results.filter((r) => r.status === 500);
     const errors = results.filter(
       (r) =>
         r.error ||
@@ -175,40 +177,44 @@ test.describe("Production URL Compatibility", () => {
           r.status !== 307 &&
           r.status !== 500 &&
           !(r.status >= 300 && r.status < 400)), // Allow all redirect codes
-    )
+    );
 
     // Log summary for review
     if (redirects.length > 0) {
-      console.log("\nRedirected URLs:")
+      console.log("\nRedirected URLs:");
       redirects.forEach((r) => {
-        console.log(`  ${r.url} → ${r.finalUrl}`)
-      })
+        console.log(`  ${r.url} → ${r.finalUrl}`);
+      });
     }
 
     if (warnings.length > 0) {
-      console.log("\nWarnings (500 errors in dev mode, OK in production):")
+      console.log("\nWarnings (500 errors in dev mode, OK in production):");
       warnings.forEach((r) => {
-        console.log(`  ${r.url}`)
-      })
+        console.log(`  ${r.url}`);
+      });
     }
 
     if (errors.length > 0) {
-      console.log("\nFailed URLs:")
+      console.log("\nFailed URLs:");
       errors.forEach((r) => {
-        console.log(`  ${r.url} (status: ${r.status}): ${r.error || "Unexpected status"}`)
-      })
+        console.log(
+          `  ${r.url} (status: ${r.status}): ${r.error || "Unexpected status"}`,
+        );
+      });
 
       // Fail the test with a summary
-      throw new Error(`${errors.length} URLs failed. See console output for details.`)
+      throw new Error(
+        `${errors.length} URLs failed. See console output for details.`,
+      );
     }
 
     // All URLs should have been tested
-    expect(results.length).toBeGreaterThanOrEqual(PRODUCTION_URLS.length)
+    expect(results.length).toBeGreaterThanOrEqual(PRODUCTION_URLS.length);
 
     // Log summary
-    console.log(`\n✓ Test complete: ${PRODUCTION_URLS.length} URLs tested`)
-    console.log(`  - ${redirects.length} redirects working`)
-    console.log(`  - ${warnings.length} dev mode warnings (OK in production)`)
-    console.log(`  - ${errors.length} failures`)
-  })
-})
+    console.log(`\n✓ Test complete: ${PRODUCTION_URLS.length} URLs tested`);
+    console.log(`  - ${redirects.length} redirects working`);
+    console.log(`  - ${warnings.length} dev mode warnings (OK in production)`);
+    console.log(`  - ${errors.length} failures`);
+  });
+});

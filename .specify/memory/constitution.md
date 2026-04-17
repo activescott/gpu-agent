@@ -179,6 +179,7 @@ directly degrade the user experience.
 
 ESLint rules are enforced and MUST NOT be disabled without
 justification:
+
 - `no-magic-numbers`: Use named constants
 - `complexity`: Break down complex functions
 - `unicorn/prefer-number-properties`: Use `Number.parseInt()`

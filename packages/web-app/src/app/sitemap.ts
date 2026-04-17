@@ -408,12 +408,13 @@ function computeLatestListingDateForGpus(
   gpusAndListings: GpuWithListings[],
 ): GpuWithLatestListingDate[] {
   return gpusAndListings.map((gpuWithListings) => {
+    // Use cachedAt (latest refresh) as a per-GPU "data last changed" signal.
+    // Earlier code used itemCreationDate, which is null for Amazon listings
+    // and caused EPOCH fallbacks. cachedAt is populated on every listing.
     const latestListingDate = gpuWithListings.listings.reduce(
       (prev, current) => {
-        const itemCreationDate = current.itemCreationDate
-        return itemCreationDate && itemCreationDate > prev
-          ? itemCreationDate
-          : prev
+        const date = current.cachedAt
+        return date && date > prev ? date : prev
       },
       EPOCH,
     )

@@ -826,11 +826,10 @@ export async function getHistoricalPriceData(
 /**
  * Gets monthly averages for multiple GPUs for a specific month.
  *
- * ⚠️ KNOWN BIAS: This function groups by `cachedAt`, which has the sampling
- * issue described in `getHistoricalPriceData`. Only used by the internal
- * `/api/internal/api/monthly-stats` route right now; if a public page needs
- * monthly stats, prefer `getHistoricalPriceData` + `bucketDailyPricesByMonth`
- * (see pkgs/isomorphic/pricing.ts) instead.
+ * Temporal correctness: uses createdAt + archivedAt to determine "listings
+ * active at some point during the month", with DISTINCT ON ("itemId") so
+ * each listing contributes one price. See getHistoricalPriceData for the
+ * full rationale.
  */
 export async function getMonthlyAverages(
   gpuNames: string[],
@@ -841,45 +840,51 @@ export async function getMonthlyAverages(
   const startDate = new Date(year, month - 1, 1)
   const endDate = new Date(year, month, 0)
 
-  // NOTE: Includes archived listings for historical analysis, but excludes data quality issues
   const result = await prisma.$queryRaw<
     Omit<MonthlyPriceStats, "priceVolatility">[]
   >`
+    WITH active_versions AS (
+      SELECT DISTINCT ON (l."itemId") l."gpuName", l."priceValue"::float AS price
+      FROM "Listing" l
+      WHERE l."gpuName" = ANY(${gpuNames})
+        AND l."exclude" = false
+        AND l."source" IN ('ebay', 'amazon')
+        AND l."createdAt" < ${endDate}::timestamp + INTERVAL '1 day'
+        AND (l."archivedAt" IS NULL OR l."archivedAt" >= ${startDate})
+      ORDER BY l."itemId", l."priceValue"::float ASC
+    )
     SELECT
       "gpuName",
       ${monthYear} as "monthYear",
-      AVG("priceValue"::float) as "avgPrice",
-      MIN("priceValue"::float) as "minPrice",
-      MAX("priceValue"::float) as "maxPrice",
+      AVG(price) as "avgPrice",
+      MIN(price) as "minPrice",
+      MAX(price) as "maxPrice",
       COUNT(*)::float as "activeListingCount"
-    FROM "Listing"
-    WHERE
-      "gpuName" = ANY(${gpuNames})
-      AND "cachedAt" >= ${startDate}
-      AND "cachedAt" <= ${endDate}
-      AND "exclude" = false
-      AND "source" IN ('ebay', 'amazon')
+    FROM active_versions
     GROUP BY "gpuName"
   `
 
-  // Calculate volatility for each GPU
   const volatilityResults = await prisma.$queryRaw<
     { gpuName: string; priceVolatility: number }[]
   >`
+    WITH active_versions AS (
+      SELECT DISTINCT ON (l."itemId") l."gpuName", l."priceValue"::float AS price
+      FROM "Listing" l
+      WHERE l."gpuName" = ANY(${gpuNames})
+        AND l."exclude" = false
+        AND l."source" IN ('ebay', 'amazon')
+        AND l."createdAt" < ${endDate}::timestamp + INTERVAL '1 day'
+        AND (l."archivedAt" IS NULL OR l."archivedAt" >= ${startDate})
+      ORDER BY l."itemId", l."priceValue"::float ASC
+    )
     SELECT
       "gpuName",
       CASE
-        WHEN AVG("priceValue"::float) > 0
-        THEN STDDEV("priceValue"::float) / AVG("priceValue"::float)
+        WHEN AVG(price) > 0
+        THEN STDDEV(price) / AVG(price)
         ELSE 0
       END as "priceVolatility"
-    FROM "Listing"
-    WHERE
-      "gpuName" = ANY(${gpuNames})
-      AND "cachedAt" >= ${startDate}
-      AND "cachedAt" <= ${endDate}
-      AND "exclude" = false
-      AND "source" IN ('ebay', 'amazon')
+    FROM active_versions
     GROUP BY "gpuName"
   `
 
@@ -896,10 +901,9 @@ export async function getMonthlyAverages(
 /**
  * Gets availability trends for a GPU over the specified number of months.
  *
- * ⚠️ KNOWN BIAS: This function groups by `cachedAt`, which has the sampling
- * issue described in `getHistoricalPriceData`. Only used by the internal
- * `/api/internal/api/historical/[gpuName]` route right now; rewrite with the
- * `createdAt` + `archivedAt` pattern before exposing to public pages.
+ * Temporal correctness: uses createdAt + archivedAt to determine "listings
+ * active on each day", with DISTINCT ON ("itemId") per day. See
+ * getHistoricalPriceData for the full rationale.
  */
 export async function getAvailabilityTrends(
   gpuName: string,
@@ -909,29 +913,45 @@ export async function getAvailabilityTrends(
   const startDate = new Date()
   startDate.setMonth(startDate.getMonth() - months)
 
-  // NOTE: Includes archived listings for historical analysis, but excludes data quality issues
   const result = await prisma.$queryRaw<AvailabilityStats[]>`
+    WITH days AS (
+      SELECT DATE_TRUNC('day', generate_series(${startDate}::timestamp, NOW(), '1 day'::interval))::date AS day
+    ),
+    active_versions AS (
+      SELECT DISTINCT ON (d.day, l."itemId")
+        d.day,
+        l."itemId",
+        l."sellerUsername",
+        EXTRACT(EPOCH FROM (d.day - l."itemCreationDate"::date)) / 86400 AS days_listed
+      FROM days d
+      CROSS JOIN "Listing" l
+      WHERE l."gpuName" = ${gpuName}
+        AND l."exclude" = false
+        AND l."source" IN ('ebay', 'amazon')
+        AND l."createdAt" < d.day + INTERVAL '1 day'
+        AND (l."archivedAt" IS NULL OR l."archivedAt" >= d.day)
+        AND l."itemCreationDate" IS NOT NULL
+      ORDER BY d.day, l."itemId", COALESCE(l."archivedAt", 'infinity'::timestamp) ASC
+    )
     SELECT
-      DATE_TRUNC('day', "cachedAt") as "date",
-      COUNT(*)::float as "availableListings",
-      COUNT(DISTINCT "sellerUsername")::float as "uniqueSellers",
-      AVG(EXTRACT(EPOCH FROM ("cachedAt" - "itemCreationDate")) / 86400)::float as "avgDaysListed"
-    FROM "Listing"
-    WHERE
-      "gpuName" = ${gpuName}
-      AND "cachedAt" >= ${startDate}
-      AND "itemCreationDate" IS NOT NULL
-      AND "exclude" = false
-      AND "source" IN ('ebay', 'amazon')
-    GROUP BY DATE_TRUNC('day', "cachedAt")
-    ORDER BY "date"
+      day AS "date",
+      COUNT(DISTINCT "itemId")::float AS "availableListings",
+      COUNT(DISTINCT "sellerUsername")::float AS "uniqueSellers",
+      AVG(days_listed)::float AS "avgDaysListed"
+    FROM active_versions
+    GROUP BY day
+    ORDER BY day
   `
 
   return result
 }
 
 /**
- * Gets price volatility statistics for a GPU over the specified number of months
+ * Gets price volatility statistics for a GPU over the specified number of months.
+ *
+ * Temporal correctness: uses createdAt + archivedAt to determine "listings
+ * active at some point during the window". See getHistoricalPriceData for
+ * the full rationale.
  */
 export async function getPriceVolatility(
   gpuName: string,
@@ -941,23 +961,27 @@ export async function getPriceVolatility(
   const startDate = new Date()
   startDate.setMonth(startDate.getMonth() - months)
 
-  // NOTE: Includes archived listings for historical analysis, but excludes data quality issues
   const result = await prisma.$queryRaw<VolatilityStats[]>`
+    WITH active_versions AS (
+      SELECT DISTINCT ON (l."itemId") l."priceValue"::float AS price, l."version"
+      FROM "Listing" l
+      WHERE l."gpuName" = ${gpuName}
+        AND l."exclude" = false
+        AND l."source" IN ('ebay', 'amazon')
+        AND l."createdAt" < NOW()
+        AND (l."archivedAt" IS NULL OR l."archivedAt" >= ${startDate})
+      ORDER BY l."itemId", COALESCE(l."archivedAt", 'infinity'::timestamp) ASC
+    )
     SELECT
       ${gpuName} as "gpuName",
       CASE
-        WHEN AVG("priceValue"::float) > 0
-        THEN STDDEV("priceValue"::float) / AVG("priceValue"::float)
+        WHEN AVG(price) > 0
+        THEN STDDEV(price) / AVG(price)
         ELSE 0
       END as "volatilityScore",
-      (MAX("priceValue"::float) - MIN("priceValue"::float)) as "priceRange",
+      (MAX(price) - MIN(price)) as "priceRange",
       COUNT(DISTINCT "version")::float as "versionCount"
-    FROM "Listing"
-    WHERE
-      "gpuName" = ${gpuName}
-      AND "cachedAt" >= ${startDate}
-      AND "exclude" = false
-      AND "source" IN ('ebay', 'amazon')
+    FROM active_versions
   `
 
   return (

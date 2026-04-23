@@ -106,8 +106,40 @@ function buildStructuredData(
   target: YearMonth,
   monthStats: MonthlyLowestAveragePriceStats | undefined,
   currentStats: GpuPriceStats,
-): object {
+): object | null {
   const contentLastModified = getYearMonthContentLastModified(target)
+
+  // Build the offers object first — if we have no price data at all,
+  // Product structured data would be invalid (Google requires at least one
+  // of offers/review/aggregateRating).
+  const offerValidThrough = contentLastModified.toISOString()
+  let offers: Record<string, unknown> | null = null
+  if (monthStats && monthStats.minLowestAvgPrice > 0) {
+    offers = {
+      "@type": "AggregateOffer",
+      lowPrice: monthStats.minLowestAvgPrice.toFixed(PRICE_DECIMALS),
+      highPrice: monthStats.maxLowestAvgPrice.toFixed(PRICE_DECIMALS),
+      priceCurrency: "USD",
+      validFrom: `${target.isoMonth}-01`,
+      validThrough: offerValidThrough,
+      url: `https://gpupoet.com/gpu/shop/${gpu.name}`,
+    }
+  } else if (currentStats.activeListingCount > 0 && currentStats.minPrice > 0) {
+    offers = {
+      "@type": "AggregateOffer",
+      lowPrice: currentStats.minPrice.toFixed(PRICE_DECIMALS),
+      highPrice: currentStats.maxPrice.toFixed(PRICE_DECIMALS),
+      priceCurrency: "USD",
+      offerCount: Math.floor(currentStats.activeListingCount),
+      availability: "https://schema.org/InStock",
+      url: `https://gpupoet.com/gpu/shop/${gpu.name}`,
+    }
+  }
+
+  if (!offers) {
+    return null
+  }
+
   const structuredData: Record<string, unknown> = {
     "@context": "https://schema.org",
     "@type": "Product",
@@ -119,6 +151,7 @@ function buildStructuredData(
     },
     category: "Graphics Card",
     dateModified: contentLastModified.toISOString(),
+    offers,
   }
 
   if (gpu.releaseDate) {
@@ -130,33 +163,6 @@ function buildStructuredData(
       ? `https://gpupoet.com${currentStats.representativeImageUrl}`
       : currentStats.representativeImageUrl
     structuredData.image = [absoluteImageUrl]
-  }
-
-  // Month-specific aggregate offer using lowest-average price range.
-  // validThrough bounds the offer at the last moment of the target month
-  // (or now for the current month — prices are still evolving).
-  const offerValidThrough = contentLastModified.toISOString()
-  if (monthStats && monthStats.minLowestAvgPrice > 0) {
-    structuredData.offers = {
-      "@type": "AggregateOffer",
-      lowPrice: monthStats.minLowestAvgPrice.toFixed(PRICE_DECIMALS),
-      highPrice: monthStats.maxLowestAvgPrice.toFixed(PRICE_DECIMALS),
-      priceCurrency: "USD",
-      validFrom: `${target.isoMonth}-01`,
-      validThrough: offerValidThrough,
-      url: `https://gpupoet.com/gpu/shop/${gpu.name}`,
-    }
-  } else if (currentStats.activeListingCount > 0 && currentStats.minPrice > 0) {
-    // Fallback to current stats if no month data
-    structuredData.offers = {
-      "@type": "AggregateOffer",
-      lowPrice: currentStats.minPrice.toFixed(PRICE_DECIMALS),
-      highPrice: currentStats.maxPrice.toFixed(PRICE_DECIMALS),
-      priceCurrency: "USD",
-      offerCount: Math.floor(currentStats.activeListingCount),
-      availability: "https://schema.org/InStock",
-      url: `https://gpupoet.com/gpu/shop/${gpu.name}`,
-    }
   }
 
   return structuredData
@@ -290,10 +296,12 @@ export default async function Page(props: CurrentPriceParams) {
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-      />
+      {structuredData && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        />
+      )}
       <div className="container py-4">
         <header className="mb-4">
           <h1 className="h2 mb-2">

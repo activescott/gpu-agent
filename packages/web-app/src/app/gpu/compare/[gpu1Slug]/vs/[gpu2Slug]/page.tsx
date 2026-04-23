@@ -8,7 +8,10 @@ import {
   getMetricValuesBySlug,
   listGpus,
 } from "@/pkgs/server/db/GpuRepository"
-import { getPriceStats } from "@/pkgs/server/db/ListingRepository"
+import {
+  getPriceStats,
+  GpuPriceStats,
+} from "@/pkgs/server/db/ListingRepository"
 import { notFound, redirect } from "next/navigation"
 import { BenchmarkPercentile } from "@/pkgs/client/components/GpuBenchmarksTable"
 import { GpuComparisonView } from "@/pkgs/client/components/GpuComparisonView"
@@ -53,33 +56,49 @@ function extractBrandName(label: string): string {
 /**
  * Builds JSON-LD structured data for the comparison page.
  */
-function buildStructuredData(gpu1: Gpu, gpu2: Gpu): object {
+const PRICE_DECIMALS = 2
+
+function buildProductEntity(gpu: Gpu, priceStats: GpuPriceStats): object {
+  const product: Record<string, unknown> = {
+    "@type": "Product",
+    name: `${gpu.label} ${gpu.memoryCapacityGB}GB`,
+    description: gpu.summary,
+    brand: {
+      "@type": "Brand",
+      name: extractBrandName(gpu.label),
+    },
+    category: "Graphics Card",
+  }
+
+  if (priceStats.activeListingCount > 0 && priceStats.minPrice > 0) {
+    product.offers = {
+      "@type": "AggregateOffer",
+      lowPrice: priceStats.minPrice.toFixed(PRICE_DECIMALS),
+      highPrice: priceStats.maxPrice.toFixed(PRICE_DECIMALS),
+      priceCurrency: "USD",
+      offerCount: Math.floor(priceStats.activeListingCount),
+      availability: "https://schema.org/InStock",
+      url: `https://gpupoet.com/gpu/shop/${gpu.name}`,
+    }
+  }
+
+  return product
+}
+
+function buildStructuredData(
+  gpu1: Gpu,
+  gpu2: Gpu,
+  gpu1PriceStats: GpuPriceStats,
+  gpu2PriceStats: GpuPriceStats,
+): object {
   return {
     "@context": "https://schema.org",
     "@type": "WebPage",
     name: `${gpu1.label} vs ${gpu2.label} - GPU Comparison`,
     description: `Compare ${gpu1.label} and ${gpu2.label} specifications, benchmarks, and prices.`,
     mainEntity: [
-      {
-        "@type": "Product",
-        name: `${gpu1.label} ${gpu1.memoryCapacityGB}GB`,
-        description: gpu1.summary,
-        brand: {
-          "@type": "Brand",
-          name: extractBrandName(gpu1.label),
-        },
-        category: "Graphics Card",
-      },
-      {
-        "@type": "Product",
-        name: `${gpu2.label} ${gpu2.memoryCapacityGB}GB`,
-        description: gpu2.summary,
-        brand: {
-          "@type": "Brand",
-          name: extractBrandName(gpu2.label),
-        },
-        category: "Graphics Card",
-      },
+      buildProductEntity(gpu1, gpu1PriceStats),
+      buildProductEntity(gpu2, gpu2PriceStats),
     ],
   }
 }
@@ -208,7 +227,12 @@ export default async function ComparePage(props: CompareParams) {
   const allGpus = await listGpus()
   const gpuOptions = allGpus.map((g) => ({ name: g.name, label: g.label }))
 
-  const structuredData = buildStructuredData(gpu1Data.gpu, gpu2Data.gpu)
+  const structuredData = buildStructuredData(
+    gpu1Data.gpu,
+    gpu2Data.gpu,
+    gpu1Data.priceStats,
+    gpu2Data.priceStats,
+  )
 
   return (
     <>

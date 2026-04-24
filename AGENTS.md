@@ -106,6 +106,12 @@ When changing CronJobs, ingress rules, deployments, or services, update both rep
 
 If flux is pushed before the new container is live, CronJobs may hit endpoints that don't exist yet.
 
+## PostHog Analytics
+
+**Server-side PostHog pitfall:** Do NOT use `posthog-node` to send experiment exposure events (`$feature_flag_called`) from the server. The events will carry the server's IP address instead of the real visitor's IP. If the server IP matches a PostHog test account filter (e.g. `50.46.x.x`), all experiment exposures get silently filtered out — resulting in 0 data.
+
+Instead, evaluate feature flags client-side using `useFeatureFlagVariantKey` from `posthog-js/react`. This ensures `$feature_flag_called` events are sent from the browser with the correct IP, host, and session context.
+
 ## Alerting
 
 Alert rules and Alertmanager config (Telegram notifications) are in the flux repo:

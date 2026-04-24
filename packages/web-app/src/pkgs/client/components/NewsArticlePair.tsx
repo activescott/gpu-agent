@@ -51,7 +51,9 @@ export function NewsArticlePair({
               <span className="me-1">
                 <BootstrapIcon icon="calendar3" size="xs" />
               </span>
-              {article.publishedAt!.toLocaleDateString()}
+              {article.publishedAt!.toLocaleDateString("en-US", {
+                timeZone: "America/Los_Angeles",
+              })}
             </div>
           </div>
         </TipCard>

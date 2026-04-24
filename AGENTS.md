@@ -112,6 +112,10 @@ If flux is pushed before the new container is live, CronJobs may hit endpoints t
 
 Instead, evaluate feature flags client-side using `useFeatureFlagVariantKey` from `posthog-js/react`. This ensures `$feature_flag_called` events are sent from the browser with the correct IP, host, and session context.
 
+## SEO Experiments
+
+SEO experiments are tracked in `../gpu-poet-data/docs/seo/experiments/`. At session start, check for experiments with status "Observing" whose observation period has ended — pull GSC results and prompt the user to record conclusions. See the README there for process details and `_template.md` for the experiment format. SEO insights (ad-hoc analysis) are in `../gpu-poet-data/docs/seo/insights/`.
+
 ## Alerting
 
 Alert rules and Alertmanager config (Telegram notifications) are in the flux repo:

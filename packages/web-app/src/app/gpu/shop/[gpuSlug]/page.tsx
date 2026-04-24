@@ -7,7 +7,10 @@ import type { SortKey } from "@/pkgs/client/components/SortPanel"
 import { chain } from "irritable-iterable"
 import { ISOMORPHIC_CONFIG } from "@/pkgs/isomorphic/config"
 import { Integer } from "type-fest"
-import { listActiveListingsForGpus } from "@/pkgs/server/db/ListingRepository"
+import {
+  listActiveListingsForGpus,
+  getPriceStats,
+} from "@/pkgs/server/db/ListingRepository"
 import Link from "next/link"
 
 const log = createLogger("gpu:shop:gpuSlug")
@@ -28,9 +31,17 @@ export async function generateMetadata(props: GpuParams) {
   const { gpuSlug } = params
   log.debug({ gpuSlug }, "generateStaticMetadata for gpu")
   const gpu = await getGpu(gpuSlug)
+  const stats = await getPriceStats(gpuSlug)
+  const hasListings = stats.activeListingCount > 0
+  const title = hasListings
+    ? `${gpu.label} for Sale — ${stats.activeListingCount} Active Listings | GPU Poet`
+    : `${gpu.label} — Price History & Availability | GPU Poet`
+  const description = hasListings
+    ? `${stats.activeListingCount} ${gpu.label} GPUs for sale from $${Math.round(stats.minPrice).toLocaleString()} to $${Math.round(stats.maxPrice).toLocaleString()}. Compare real-time prices from eBay and Amazon, updated every 30 minutes.`
+    : `${gpu.label} price history and availability tracking. Compare historical prices and get notified when listings appear. Tracked continuously by GPU Poet.`
   return {
-    title: `Best Prices for ${gpu.label}`,
-    description: `Compare prices across the Internet for ${gpu.label}`,
+    title,
+    description,
     alternates: { canonical: `https://gpupoet.com/gpu/shop/${gpuSlug}` },
   }
 }

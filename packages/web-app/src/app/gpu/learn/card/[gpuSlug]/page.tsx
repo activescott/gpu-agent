@@ -303,9 +303,13 @@ export async function generateMetadata(props: GpuParams) {
   const { gpuSlug } = params
   log.debug({ gpuSlug }, "generateStaticMetadata for gpu")
   const gpu = await getGpu(gpuSlug)
+  const stats = await getPriceStats(gpuSlug)
 
   const title = `${gpu.label} ${gpu.memoryCapacityGB}GB Specs, Benchmarks & Pricing`
-  const description = `${gpu.label} specifications, gaming benchmarks, and price comparisons. Find the best deals on this GPU.`
+  const hasListings = stats.activeListingCount > 0
+  const description = hasListings
+    ? `${gpu.label} ${gpu.memoryCapacityGB}GB full specs, benchmarks, and real-time pricing from ${stats.activeListingCount} listings starting at $${Math.round(stats.minPrice).toLocaleString()}. Tracked continuously by GPU Poet.`
+    : `${gpu.label} ${gpu.memoryCapacityGB}GB full specs, benchmarks, and historical pricing data. Updated daily by GPU Poet.`
   const url = `https://gpupoet.com/gpu/learn/card/${gpuSlug}`
 
   return {

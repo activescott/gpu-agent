@@ -17,14 +17,28 @@ import { notFound } from "next/navigation"
 // revalidate the data at most every hour: https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#revalidate
 export const revalidate = 3600
 
-function generatePageTitle(metricDef: MetricDefinitionRecord) {
+function generatePageHeading(metricDef: MetricDefinitionRecord) {
   const isBenchmarkMetric = metricDef.metricType === "benchmark"
-  return `GPUs Ranked by $ per ${metricDef.unit} ${isBenchmarkMetric ? `in ${metricDef.name}` : ""}`
+  if (isBenchmarkMetric) {
+    return `${metricDef.name} GPU Benchmark Rankings`
+  }
+  return `GPU ${metricDef.name} Ranking — All GPUs Compared`
 }
 
 function generatePageSummary(metricDef: MetricDefinitionRecord) {
   const isBenchmarkMetric = metricDef.metricType === "benchmark"
   return `cost ratios of price to performance using a combination of real-time pricing data collected throughout the day and ${isBenchmarkMetric ? "recent real-world crowd-sourced benchmarks for GPUs" : "researched performance specifications for the GPU"}.`
+}
+
+function generateMetaDescription(
+  metricDef: MetricDefinitionRecord,
+  gpuCount: number,
+) {
+  const isBenchmarkMetric = metricDef.metricType === "benchmark"
+  if (isBenchmarkMetric) {
+    return `Compare ${gpuCount}+ GPUs ranked by ${metricDef.name} benchmark performance. See which GPU scores highest with full specs and current prices.`
+  }
+  return `Compare ${gpuCount}+ GPUs ranked by ${metricDef.name}. See which GPU has the highest ${metricDef.unit} with full specs and current prices.`
 }
 
 type RankingParams = {
@@ -42,8 +56,9 @@ export async function generateMetadata(props: RankingParams) {
     return { title: "Not Found" }
   }
 
-  const title = generatePageTitle(metricDef)
-  const description = `Best GPUs for the money with ${generatePageSummary(metricDef)}`
+  const metricValues = await getMetricValuesBySlug(metricSlug)
+  const title = `${generatePageHeading(metricDef)} | GPU Poet`
+  const description = generateMetaDescription(metricDef, metricValues.size)
   const url = `${domain_url}/gpu/ranking/${categoryTyped}/${metricSlug}`
 
   return {
@@ -129,7 +144,7 @@ export default async function Page(props: RankingParams) {
 
   return (
     <>
-      <h1>{generatePageTitle(metricDef)}</h1>
+      <h1>{generatePageHeading(metricDef)}</h1>
       <p>This page shows {generatePageSummary(metricDef)}</p>
       <p>
         Something missing? <Link href="/contact">Let us know</Link> and

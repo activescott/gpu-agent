@@ -2,10 +2,45 @@ import { NextRequest, NextResponse } from "next/server"
 import { SERVER_CONFIG } from "@/pkgs/isomorphic/config"
 import { createLogger } from "@/lib/logger"
 
-const log = createLogger("middleware:internal-auth")
+const log = createLogger("middleware")
+
+const POSTHOG_INGESTION_HOST = "https://us.i.posthog.com"
 
 // eslint-disable-next-line import/no-unused-modules -- Next.js middleware convention
 export function middleware(request: NextRequest) {
+  if (request.nextUrl.pathname.startsWith("/a/")) {
+    return handlePostHogProxy(request)
+  }
+  return handleInternalAuth(request)
+}
+
+/**
+ * Proxy PostHog ingestion requests, forwarding the real client IP via
+ * X-Forwarded-For so PostHog can geo-locate visitors correctly.
+ * Replaces the next.config.mjs rewrite which lost the client IP.
+ */
+async function handlePostHogProxy(request: NextRequest): Promise<Response> {
+  const pathname = request.nextUrl.pathname.replace(/^\/a/, "")
+  const search = request.nextUrl.search
+  const destination = `${POSTHOG_INGESTION_HOST}${pathname}${search}`
+
+  const headers = new Headers(request.headers)
+  // Traefik sets X-Forwarded-For with the real client IP; forward it to PostHog.
+  const clientIp = request.headers.get("x-forwarded-for") ?? "unknown"
+  headers.set("X-Forwarded-For", clientIp)
+  // Remove host header so it isn't sent as the K8s internal hostname
+  headers.delete("host")
+
+  return fetch(destination, {
+    method: request.method,
+    headers,
+    body: request.method === "GET" ? undefined : request.body,
+    // @ts-expect-error -- duplex is required for streaming request bodies in Node but not in the TS types yet
+    duplex: "half",
+  })
+}
+
+function handleInternalAuth(request: NextRequest) {
   let username: string
   let password: string
   try {
@@ -58,5 +93,5 @@ export function middleware(request: NextRequest) {
 
 // eslint-disable-next-line import/no-unused-modules -- Next.js middleware convention
 export const config = {
-  matcher: ["/internal/:path*"],
+  matcher: ["/internal/:path*", "/a/:path*"],
 }

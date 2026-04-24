@@ -30,11 +30,7 @@ const nextConfig = {
 
   async rewrites() {
     return [
-      // posthog reverse-proxy ingestion per https://posthog.com/docs/advanced/proxy/nextjs
-      {
-        source: "/a/:path*",
-        destination: "https://app.posthog.com/:path*",
-      },
+      // PostHog proxy moved to middleware.ts for proper X-Forwarded-For handling
       /* proxy ebay images as content blockers block them from a different domain
       images could be in https://i.ebayimg.com/thumbs/images/... or https://i.ebayimg.com/images/...
       */

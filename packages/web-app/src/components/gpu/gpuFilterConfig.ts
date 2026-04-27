@@ -9,6 +9,31 @@ import type { PricedGpu } from "@/pkgs/server/db/GpuRepository"
 const PRICE_MIN = 0
 const PRICE_MAX = 5000
 const PRICE_STEP = 50
+/* eslint-disable no-magic-numbers -- preset budget tiers for quick-select buttons, not algorithmic constants */
+const PRICE_PRESET_TIERS = [
+  500, 1000, 1500, 2000, 2500, 3000, 4000, 5000, 7500, 10_000, 15_000, 20_000,
+  30_000, 50_000,
+]
+/* eslint-enable no-magic-numbers */
+const MAX_VISIBLE_PRESETS = 7
+
+/**
+ * Select budget presets appropriate for the given price range.
+ * Picks tiers that fit within [0, maxPrice] and evenly samples if there are too many.
+ */
+function selectPricePresets(maxPrice: number): number[] {
+  const eligible = PRICE_PRESET_TIERS.filter((t) => t < maxPrice)
+  if (eligible.length <= MAX_VISIBLE_PRESETS) return eligible
+  // Evenly sample: always include first and last, spread the rest
+  const result: number[] = [eligible[0]]
+  const stepSize = (eligible.length - 1) / (MAX_VISIBLE_PRESETS - 1)
+  for (let i = 1; i < MAX_VISIBLE_PRESETS - 1; i++) {
+    result.push(eligible[Math.round(i * stepSize)])
+  }
+  const last = eligible.at(-1)
+  if (last !== undefined) result.push(last)
+  return result
+}
 
 const MEMORY_MIN = 4
 const MEMORY_MAX = 80
@@ -74,6 +99,7 @@ export function buildGpuFilterConfigs(
       step: PRICE_STEP,
       unit: "$",
       defaultOperator: "lte",
+      presets: selectPricePresets(PRICE_MAX),
     } satisfies NumericFilterConfig,
 
     // Memory filter (numeric) - default to "At least"
@@ -337,6 +363,7 @@ export function buildListingFilterConfigs(
       step: PRICE_STEP,
       unit: "$",
       defaultOperator: "lte",
+      presets: selectPricePresets(roundedMaxPrice),
     } satisfies NumericFilterConfig,
 
     // Condition filter (categorical)

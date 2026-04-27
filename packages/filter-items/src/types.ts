@@ -69,6 +69,8 @@ export interface NumericFilterConfig {
   defaultOperator?: "gte" | "lte" | "range"
   /** When true, hides the operator dropdown and locks the filter to its defaultOperator. */
   lockOperator?: boolean
+  /** Preset values for quick selection buttons. When provided, renders clickable preset buttons below the slider. */
+  presets?: number[]
   /** Accordion group for organizing filters. Filters without a group go into the default (first) section. */
   group?: string
 }

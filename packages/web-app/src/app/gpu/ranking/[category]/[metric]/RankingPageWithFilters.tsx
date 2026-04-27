@@ -15,6 +15,10 @@ import {
   buildGpuFilterConfigs,
   getGpuFieldValue,
 } from "@/components/gpu/gpuFilterConfig"
+import {
+  useAnalytics,
+  AnalyticsActions,
+} from "@/pkgs/client/analytics/reporter"
 import type { PricedGpu } from "@/pkgs/server/db/GpuRepository"
 import { GpuMetricsTable } from "./GpuMetricsTable"
 
@@ -98,6 +102,18 @@ export function RankingPageWithFilters({
     updateURLWithFilters(newFilters)
   }, [])
 
+  const analytics = useAnalytics()
+  const handleTrack = useCallback(
+    (filterName: string, interactionType: string, value: number) => {
+      analytics.trackAction(AnalyticsActions.FilterInteraction, {
+        filter_name: filterName,
+        interaction_type: interactionType,
+        value,
+      })
+    },
+    [analytics],
+  )
+
   // Render filter panel
   const filterPanel = (
     <FilterItems
@@ -105,6 +121,7 @@ export function RankingPageWithFilters({
       filters={filters}
       onFilterChange={handleFilterChange}
       title="Filter GPUs"
+      onTrack={handleTrack}
     />
   )
 

@@ -9,6 +9,7 @@ const trace = createClientLogger("analytics:reporter")
 export enum AnalyticsActions {
   BuyNow = "Buy Now",
   RedirectToAffiliate = "Redirect to Affiliate",
+  FilterInteraction = "Filter Interaction",
 }
 
 // avoid any here and be more constrained

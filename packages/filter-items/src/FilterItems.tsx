@@ -21,6 +21,8 @@ interface FilterItemsProps {
   onFilterChange: (filters: FilterState) => void
   /** Optional title for the filter panel */
   title?: string
+  /** Analytics callback for tracking filter interactions */
+  onTrack?: (filterName: string, interactionType: string, value: number) => void
 }
 
 /**
@@ -34,6 +36,7 @@ export function FilterItems({
   filters,
   onFilterChange,
   title = "Filters",
+  onTrack,
 }: FilterItemsProps): JSX.Element {
   const [openSection, setOpenSection] = useState<string>(PRIMARY_GROUP_NAME)
 
@@ -107,6 +110,7 @@ export function FilterItems({
                     configs={section.configs}
                     filters={filters}
                     onFilterChange={handleFilterChange}
+                    onTrack={onTrack}
                   />
                 </Collapsible>
               )
@@ -164,6 +168,7 @@ interface FilterListProps {
   configs: FilterConfig[]
   filters: FilterState
   onFilterChange: (filterName: string, value: FilterValue | null) => void
+  onTrack?: (filterName: string, interactionType: string, value: number) => void
 }
 
 /**
@@ -173,6 +178,7 @@ function FilterList({
   configs,
   filters,
   onFilterChange,
+  onTrack,
 }: FilterListProps): JSX.Element {
   return (
     <div className="filter-list d-flex flex-column gap-4">
@@ -197,6 +203,7 @@ function FilterList({
               config={config}
               currentValue={currentValue}
               onChange={(value) => onFilterChange(config.name, value)}
+              onTrack={onTrack ? (type, val) => onTrack(config.name, type, val) : undefined}
             />
           )
         }

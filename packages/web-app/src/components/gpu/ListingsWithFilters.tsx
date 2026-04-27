@@ -1,8 +1,12 @@
 "use client"
 
-import { type JSX, type ReactNode } from "react"
+import { useCallback, type JSX, type ReactNode } from "react"
 import { FilterItems, FilterLayout } from "@/components/filter-items"
 import { useListingFilters } from "@/components/gpu/useListingFilters"
+import {
+  useAnalytics,
+  AnalyticsActions,
+} from "@/pkgs/client/analytics/reporter"
 
 /** Gaming benchmark definition for filter config */
 interface GamingBenchmarkDef {
@@ -68,12 +72,25 @@ export function ListingsWithFilters<T extends FilterableListing>({
     currentMetricSlug,
   })
 
+  const analytics = useAnalytics()
+  const handleTrack = useCallback(
+    (filterName: string, interactionType: string, value: number) => {
+      analytics.trackAction(AnalyticsActions.FilterInteraction, {
+        filter_name: filterName,
+        interaction_type: interactionType,
+        value,
+      })
+    },
+    [analytics],
+  )
+
   const filterPanel = (
     <FilterItems
       configs={filterConfigs}
       filters={filters}
       onFilterChange={handleFilterChange}
       title={filterTitle}
+      onTrack={handleTrack}
     />
   )
 

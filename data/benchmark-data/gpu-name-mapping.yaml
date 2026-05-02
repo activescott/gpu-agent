@@ -153,8 +153,11 @@
 "ASUS Intel BMG G21": "intel-arc-b580"
 "Intel Arc B580": "intel-arc-b580"
 "ASUS Intel Arc B580": "intel-arc-b580"
+"Intel Arc B580 BMG G21": "intel-arc-b580"
 "Intel(R) Arc(TM) B580 Graphics": "intel-arc-b580"
 "Intel(R) Arc(TM) B570 Graphics": "intel-arc-b570"
+"Intel Arc Pro B50 BMG G21": "intel-arc-pro-b50"
+"Intel(R) Arc(TM) Pro B50 Graphics": "intel-arc-pro-b50"
 
 # AMD Radeon RX 6800 Series
 "AMD Radeon RX 6800": "amd-radeon-rx-6800"

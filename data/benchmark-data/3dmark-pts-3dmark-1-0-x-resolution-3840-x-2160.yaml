@@ -13,8 +13,8 @@ description: Average FPS in 3DMark Wild Life Extreme, a cross-platform GPU
 descriptionDollarsPer: Dollars per FPS in 3DMark Wild Life Extreme. Lower values
   indicate better cost efficiency for GPU rendering performance.
 category: gaming
-collectedSamples: 459
-updatedAt: 2026-04-08T15:30:05.865Z
+collectedSamples: 467
+updatedAt: 2026-04-26T21:36:31.093Z
 results:
   - gpuNameRaw: AMD Radeon 8060S
     value: 116
@@ -78,6 +78,8 @@ results:
     value: 78
   - gpuNameRaw: Gigabyte AMD Radeon RX 9070
     value: 253
+  - gpuNameRaw: Intel Arc B580 BMG G21
+    value: 134
   - gpuNameRaw: Intel BMG G21
     value: 121
   - gpuNameRaw: MSI NVIDIA GeForce RTX 4060
@@ -109,9 +111,11 @@ results:
   - gpuNameRaw: NVIDIA RTX 4000 Ada Generation
     value: 149
   - gpuNameRaw: NVIDIA RTX 6000 Ada Generation
-    value: 288
+    value: 283
   - gpuNameRaw: NVIDIA RTX A1000
     value: 48
+  - gpuNameRaw: NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition
+    value: 417
   - gpuNameRaw: Sapphire AMD Radeon AI PRO R9700
     value: 273
   - gpuNameRaw: XFX AMD Radeon RX 7700 XT

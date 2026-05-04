@@ -1,5 +1,7 @@
 {
-  "maxFetchedId": 2575256,
-  "totalCached": 34950,
-  "lastRunAt": "2026-04-28T11:09:03.054Z"
+  "minAttemptedId": 2198726,
+  "maxAttemptedId": 2575256,
+  "totalCached": 46360,
+  "totalNotFound": 3590,
+  "lastRunAt": "2026-05-04T00:33:08.118Z"
 }

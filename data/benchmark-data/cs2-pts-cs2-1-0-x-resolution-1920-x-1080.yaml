@@ -14,7 +14,7 @@ descriptionDollarsPer: Dollars per FPS in Counter-Strike 2. Lower values
   indicate better cost efficiency for competitive gaming performance.
 category: gaming
 collectedSamples: 209
-updatedAt: 2026-04-26T21:35:24.193Z
+updatedAt: 2026-05-03T12:14:27.522Z
 results:
   - gpuNameRaw: AMD Radeon 8060S
     value: 177

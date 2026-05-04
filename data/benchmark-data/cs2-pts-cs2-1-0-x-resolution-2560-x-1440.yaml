@@ -14,7 +14,7 @@ descriptionDollarsPer: Dollars per FPS in Counter-Strike 2. Lower values
   indicate better cost efficiency for competitive gaming performance.
 category: gaming
 collectedSamples: 273
-updatedAt: 2026-04-26T21:35:03.599Z
+updatedAt: 2026-05-03T12:14:05.140Z
 results:
   - gpuNameRaw: AMD Navi 48
     value: 265

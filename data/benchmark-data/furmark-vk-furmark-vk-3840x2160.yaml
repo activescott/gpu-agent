@@ -12,33 +12,41 @@ description: Median FPS in FurMark 2 (Vulkan), a GPU stress test and benchmark
 descriptionDollarsPer: Dollars per FPS in FurMark 2 (Vulkan). Lower values
   indicate better cost efficiency for GPU compute-heavy rendering.
 category: gaming
-collectedSamples: 193
-updatedAt: 2026-05-04T00:33:08.334Z
+collectedSamples: 252
+updatedAt: 2026-05-05T09:22:57.649Z
 results:
   - gpuNameRaw: AMD Radeon RX 6800 XT
     value: 75
   - gpuNameRaw: AMD Radeon RX 6900 XT
-    value: 97
+    value: 96
   - gpuNameRaw: AMD Radeon RX 7900 XT
     value: 116
   - gpuNameRaw: AMD Radeon RX 7900 XTX
-    value: 124
-  - gpuNameRaw: AMD Radeon RX 9070 XT
     value: 128
+  - gpuNameRaw: AMD Radeon RX 9070
+    value: 109
+  - gpuNameRaw: AMD Radeon RX 9070 XT
+    value: 127
   - gpuNameRaw: AMD Radeon RX 9070 XT (RADV GFX1201)
-    value: 132
+    value: 126
   - gpuNameRaw: NVIDIA GeForce RTX 3060 Ti
     value: 50
   - gpuNameRaw: NVIDIA GeForce RTX 3070 Ti
-    value: 65
+    value: 66
   - gpuNameRaw: NVIDIA GeForce RTX 3080
     value: 68
+  - gpuNameRaw: NVIDIA GeForce RTX 3090
+    value: 84
   - gpuNameRaw: NVIDIA GeForce RTX 4070
     value: 60
   - gpuNameRaw: NVIDIA GeForce RTX 4070 Ti SUPER
     value: 87
+  - gpuNameRaw: NVIDIA GeForce RTX 4080
+    value: 122
+  - gpuNameRaw: NVIDIA GeForce RTX 4080 SUPER
+    value: 126
   - gpuNameRaw: NVIDIA GeForce RTX 4090
-    value: 197
+    value: 184
   - gpuNameRaw: NVIDIA GeForce RTX 5060
     value: 42
   - gpuNameRaw: NVIDIA GeForce RTX 5070
@@ -46,6 +54,6 @@ results:
   - gpuNameRaw: NVIDIA GeForce RTX 5070 Ti
     value: 131
   - gpuNameRaw: NVIDIA GeForce RTX 5080
-    value: 160
+    value: 162
   - gpuNameRaw: NVIDIA GeForce RTX 5090
-    value: 248
+    value: 247

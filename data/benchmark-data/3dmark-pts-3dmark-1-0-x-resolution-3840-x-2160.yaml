@@ -14,7 +14,7 @@ descriptionDollarsPer: Dollars per FPS in 3DMark Wild Life Extreme. Lower values
   indicate better cost efficiency for GPU rendering performance.
 category: gaming
 collectedSamples: 482
-updatedAt: 2026-05-05T09:27:22.439Z
+updatedAt: 2026-05-05T21:47:22.137Z
 results:
   - gpuNameRaw: AMD Radeon 8060S
     value: 116

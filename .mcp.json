@@ -1,0 +1,20 @@
+{
+  "mcpServers": {
+    "grafana": {
+      "type": "stdio",
+      "command": "mcp-grafana",
+      "args": [],
+      "env": {
+        "GRAFANA_URL": "https://grafana.activescott.com/"
+      }
+    },
+    "gsc": {
+      "type": "stdio",
+      "command": "node",
+      "args": [
+        "/Users/scott/src/google-search-console-mcp/build/index.js"
+      ],
+      "env": {}
+    }
+  }
+}

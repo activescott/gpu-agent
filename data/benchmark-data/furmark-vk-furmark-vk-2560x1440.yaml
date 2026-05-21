@@ -12,13 +12,13 @@ description: Median FPS in FurMark 2 (Vulkan), a GPU stress test and benchmark
 descriptionDollarsPer: Dollars per FPS in FurMark 2 (Vulkan). Lower values
   indicate better cost efficiency for GPU compute-heavy rendering.
 category: gaming
-collectedSamples: 1697
-updatedAt: 2026-05-20T12:18:04.329Z
+collectedSamples: 1765
+updatedAt: 2026-05-21T06:20:00.432Z
 results:
   - gpuNameRaw: AMD  Radeon RX 7800 XT
     value: 162
   - gpuNameRaw: AMD BC-250 (RADV GFX1013)
-    value: 61
+    value: 62
   - gpuNameRaw: AMD Radeon RX 5700
     value: 73
   - gpuNameRaw: AMD Radeon RX 5700 XT
@@ -32,9 +32,11 @@ results:
   - gpuNameRaw: AMD Radeon RX 6650 XT
     value: 88
   - gpuNameRaw: AMD Radeon RX 6700 XT
+    value: 110
+  - gpuNameRaw: AMD Radeon RX 6700 XT (RADV NAVI22)
     value: 111
   - gpuNameRaw: AMD Radeon RX 6750 XT
-    value: 107
+    value: 108
   - gpuNameRaw: AMD Radeon RX 6800
     value: 113
   - gpuNameRaw: AMD Radeon RX 6800 (RADV NAVI21)
@@ -58,7 +60,7 @@ results:
   - gpuNameRaw: AMD Radeon RX 7900 XT
     value: 194
   - gpuNameRaw: AMD Radeon RX 7900 XTX
-    value: 255
+    value: 256
   - gpuNameRaw: AMD Radeon RX 7900 XTX (RADV NAVI31)
     value: 257
   - gpuNameRaw: AMD Radeon RX 9060 XT
@@ -66,7 +68,7 @@ results:
   - gpuNameRaw: AMD Radeon RX 9060 XT (RADV GFX1200)
     value: 135
   - gpuNameRaw: AMD Radeon RX 9070
-    value: 203
+    value: 200
   - gpuNameRaw: AMD Radeon RX 9070 XT
     value: 242
   - gpuNameRaw: AMD Radeon RX 9070 XT (RADV GFX1201)
@@ -108,9 +110,9 @@ results:
   - gpuNameRaw: NVIDIA GeForce RTX 3060
     value: 73
   - gpuNameRaw: NVIDIA GeForce RTX 3060 Laptop GPU
-    value: 59
+    value: 64
   - gpuNameRaw: NVIDIA GeForce RTX 3060 Ti
-    value: 99
+    value: 98
   - gpuNameRaw: NVIDIA GeForce RTX 3070
     value: 113
   - gpuNameRaw: NVIDIA GeForce RTX 3070 Laptop GPU
@@ -118,17 +120,17 @@ results:
   - gpuNameRaw: NVIDIA GeForce RTX 3070 Ti
     value: 132
   - gpuNameRaw: NVIDIA GeForce RTX 3080
-    value: 112
+    value: 111
   - gpuNameRaw: NVIDIA GeForce RTX 3080 Laptop GPU
-    value: 85
+    value: 71
   - gpuNameRaw: NVIDIA GeForce RTX 3080 Ti
     value: 127
   - gpuNameRaw: NVIDIA GeForce RTX 3080 Ti Laptop GPU
     value: 85
   - gpuNameRaw: NVIDIA GeForce RTX 3090
-    value: 141
+    value: 142
   - gpuNameRaw: NVIDIA GeForce RTX 4060
-    value: 76
+    value: 75
   - gpuNameRaw: NVIDIA GeForce RTX 4060 Laptop GPU
     value: 99
   - gpuNameRaw: NVIDIA GeForce RTX 4060 Ti
@@ -136,21 +138,23 @@ results:
   - gpuNameRaw: NVIDIA GeForce RTX 4070
     value: 145
   - gpuNameRaw: NVIDIA GeForce RTX 4070 Laptop GPU
-    value: 121
+    value: 122
   - gpuNameRaw: NVIDIA GeForce RTX 4070 SUPER
-    value: 165
+    value: 166
   - gpuNameRaw: NVIDIA GeForce RTX 4070 Ti
     value: 220
   - gpuNameRaw: NVIDIA GeForce RTX 4070 Ti SUPER
-    value: 207
+    value: 205
   - gpuNameRaw: NVIDIA GeForce RTX 4080
     value: 253
   - gpuNameRaw: NVIDIA GeForce RTX 4080 Laptop GPU
-    value: 167
+    value: 158
   - gpuNameRaw: NVIDIA GeForce RTX 4080 SUPER
     value: 254
   - gpuNameRaw: NVIDIA GeForce RTX 4090
     value: 328
+  - gpuNameRaw: NVIDIA GeForce RTX 5050
+    value: 76
   - gpuNameRaw: NVIDIA GeForce RTX 5060
     value: 109
   - gpuNameRaw: NVIDIA GeForce RTX 5060 Laptop GPU

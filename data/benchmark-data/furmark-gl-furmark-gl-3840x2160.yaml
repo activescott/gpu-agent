@@ -13,8 +13,8 @@ description: Median FPS in FurMark 2 (OpenGL), a GPU stress test and benchmark
 descriptionDollarsPer: Dollars per FPS in FurMark 2 (OpenGL). Lower values
   indicate better cost efficiency for GPU compute-heavy rendering.
 category: gaming
-collectedSamples: 8971
-updatedAt: 2026-05-21T00:37:42.351Z
+collectedSamples: 9407
+updatedAt: 2026-05-21T22:42:51.941Z
 results:
   - gpuNameRaw: AMD  Radeon RX 7800 XT
     value: 87
@@ -36,22 +36,22 @@ results:
   - gpuNameRaw: AMD Radeon RX 6600 XT
     value: 48
   - gpuNameRaw: AMD Radeon RX 6600M
-    value: 32
+    value: 34
   - gpuNameRaw: AMD Radeon RX 6650 XT
     value: 48
   - gpuNameRaw: AMD Radeon RX 6700
     value: 48
   - gpuNameRaw: AMD Radeon RX 6700 XT
-    value: 63
+    value: 62
   - gpuNameRaw: AMD Radeon RX 6750 GRE 10GB
-    value: 45
+    value: 47
   - gpuNameRaw: AMD Radeon RX 6750 XT
     value: 64
   - gpuNameRaw: AMD Radeon RX 6750 XT (radeonsi navi22 LLVM 21.1.8 DRM 3.64
       6.16.4-107.bazzite.fc42.x86_64)
     value: 56
   - gpuNameRaw: AMD Radeon RX 6800
-    value: 71
+    value: 72
   - gpuNameRaw: AMD Radeon RX 6800 XT
     value: 89
   - gpuNameRaw: AMD Radeon RX 6900 XT
@@ -133,7 +133,7 @@ results:
   - gpuNameRaw: NVIDIA GeForce GTX 1650 SUPER/PCIe/SSE2
     value: 20
   - gpuNameRaw: NVIDIA GeForce GTX 1650 Ti with Max-Q Design/PCIe/SSE2
-    value: 11
+    value: 12
   - gpuNameRaw: NVIDIA GeForce GTX 1650/PCIe/SSE2
     value: 14
   - gpuNameRaw: NVIDIA GeForce GTX 1660 SUPER/PCIe/SSE2
@@ -177,7 +177,7 @@ results:
   - gpuNameRaw: NVIDIA GeForce RTX 3060/PCIe/SSE2
     value: 41
   - gpuNameRaw: NVIDIA GeForce RTX 3070 Laptop GPU/PCIe/SSE2
-    value: 45
+    value: 39
   - gpuNameRaw: NVIDIA GeForce RTX 3070 Ti Laptop GPU/PCIe/SSE2
     value: 46
   - gpuNameRaw: NVIDIA GeForce RTX 3070 Ti/PCIe/SSE2
@@ -185,13 +185,13 @@ results:
   - gpuNameRaw: NVIDIA GeForce RTX 3070/PCIe/SSE2
     value: 58
   - gpuNameRaw: NVIDIA GeForce RTX 3080 Laptop GPU/PCIe/SSE2
-    value: 43
+    value: 46
   - gpuNameRaw: NVIDIA GeForce RTX 3080 Ti Laptop GPU/PCIe/SSE2
     value: 45
   - gpuNameRaw: NVIDIA GeForce RTX 3080 Ti/PCIe/SSE2
     value: 78
   - gpuNameRaw: NVIDIA GeForce RTX 3080/PCIe/SSE2
-    value: 70
+    value: 71
   - gpuNameRaw: NVIDIA GeForce RTX 3090 Ti/PCIe/SSE2
     value: 93
   - gpuNameRaw: NVIDIA GeForce RTX 3090/PCIe/SSE2
@@ -199,7 +199,7 @@ results:
   - gpuNameRaw: NVIDIA GeForce RTX 4060 Laptop GPU/PCIe/SSE2
     value: 37
   - gpuNameRaw: NVIDIA GeForce RTX 4060 Ti/PCIe/SSE2
-    value: 45
+    value: 46
   - gpuNameRaw: NVIDIA GeForce RTX 4060/PCIe/SSE2
     value: 36
   - gpuNameRaw: NVIDIA GeForce RTX 4070 Laptop GPU/PCIe/SSE2
@@ -213,11 +213,11 @@ results:
   - gpuNameRaw: NVIDIA GeForce RTX 4070/PCIe/SSE2
     value: 70
   - gpuNameRaw: NVIDIA GeForce RTX 4080 Laptop GPU/PCIe/SSE2
-    value: 84
+    value: 79
   - gpuNameRaw: NVIDIA GeForce RTX 4080 SUPER/PCIe/SSE2
     value: 136
   - gpuNameRaw: NVIDIA GeForce RTX 4080/PCIe/SSE2
-    value: 134
+    value: 135
   - gpuNameRaw: NVIDIA GeForce RTX 4090 D/PCIe/SSE2
     value: 178
   - gpuNameRaw: NVIDIA GeForce RTX 4090 Laptop GPU/PCIe/SSE2
@@ -241,23 +241,25 @@ results:
   - gpuNameRaw: NVIDIA GeForce RTX 5070/PCIe/SSE2
     value: 106
   - gpuNameRaw: NVIDIA GeForce RTX 5080 Laptop GPU/PCIe/SSE2
-    value: 93
+    value: 92
   - gpuNameRaw: NVIDIA GeForce RTX 5080/PCIe/SSE2
     value: 166
   - gpuNameRaw: NVIDIA GeForce RTX 5090 D v2/PCIe/SSE2
     value: 235
   - gpuNameRaw: NVIDIA GeForce RTX 5090 D/PCIe/SSE2
-    value: 242
-  - gpuNameRaw: NVIDIA GeForce RTX 5090 Laptop GPU/PCIe/SSE2
-    value: 106
-  - gpuNameRaw: NVIDIA GeForce RTX 5090/PCIe/SSE2
     value: 241
+  - gpuNameRaw: NVIDIA GeForce RTX 5090 Laptop GPU/PCIe/SSE2
+    value: 105
+  - gpuNameRaw: NVIDIA GeForce RTX 5090/PCIe/SSE2
+    value: 242
+  - gpuNameRaw: NVIDIA P106-100/PCIe/SSE2
+    value: 16
   - gpuNameRaw: NVIDIA RTX A2000 Laptop GPU/PCIe/SSE2
     value: 22
   - gpuNameRaw: NVIDIA RTX A3000 12GB Laptop GPU/PCIe/SSE2
     value: 37
   - gpuNameRaw: NVIDIA RTX A4000/PCIe/SSE2
-    value: 34
+    value: 35
   - gpuNameRaw: NVIDIA RTX PRO 6000 Blackwell Workstation Edition/PCIe/SSE2
     value: 255
   - gpuNameRaw: NVIDIA T1000 8GB/PCIe/SSE2
@@ -292,5 +294,7 @@ results:
     value: 23
   - gpuNameRaw: Radeon RX 590 Series
     value: 23
+  - gpuNameRaw: Radeon RX Vega
+    value: 33
   - gpuNameRaw: Tesla V100-SXM2-16GB/PCIe/SSE2
     value: 78

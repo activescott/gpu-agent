@@ -1,5 +1,6 @@
 import { Metadata } from "next"
 import { Feature } from "@/pkgs/client/components/Feature"
+import { listModels } from "@/pkgs/server/data/ModelRepository"
 import sitemapJson from "../../../sitemap.static-pages.json"
 
 export const metadata: Metadata = {
@@ -9,7 +10,9 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://gpupoet.com/gpu/learn/ai" },
 }
 
-export default function Page() {
+export default async function Page() {
+  const models = await listModels()
+
   return (
     <div>
       <h1>{metadata.title as string}</h1>
@@ -42,14 +45,11 @@ export default function Page() {
         </Feature>
 
         <Feature title="Machine Learning Models" icon="layers">
-          {sitemapJson.data
-            .filter((item) => item.path.startsWith("/gpu/learn/ai/models"))
-
-            .map((item) => (
-              <li key={item.path}>
-                <a href={item.path}>{item.title}</a>
-              </li>
-            ))}
+          {models.map((model) => (
+            <li key={model.name}>
+              <a href={`/gpu/learn/ai/models/${model.name}`}>{model.label}</a>
+            </li>
+          ))}
         </Feature>
 
         <Feature title="GPU Specifications" icon="motherboard">

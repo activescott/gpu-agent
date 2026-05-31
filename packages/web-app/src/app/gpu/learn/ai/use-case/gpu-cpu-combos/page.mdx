@@ -1,0 +1,55 @@
+export const _metadata = {
+  prompt: `Editorial introducing GPU+CPU combo products (DGX Spark, Strix Halo, Apple M-series, MI300A, GH200/GB200) as a category distinct from discrete GPUs. Cover the memory bandwidth vs capacity tradeoff, price tiers, ecosystem differences (CUDA/ROCm/MLX). Concise. End with a prompt asking readers if they want these listed on GPU Poet.`,
+}
+
+# GPU+CPU Combos for AI
+
+Some recent chips pair a CPU and GPU on one package with **unified memory** shared between them. Instead of a discrete GPU with its own dedicated VRAM, these combos let the GPU directly address tens or hundreds of gigabytes of system memory — enough to fit very large language models on a desktop or mini-PC. The tradeoffs aren't obvious from a spec sheet.
+
+There's no single industry-standard name yet — vendors call them "APUs" (AMD), ["Superchips"](https://www.nvidia.com/en-us/data-center/grace-hopper-superchip/) (NVIDIA), or just "SoCs" (Apple). The shared idea: one chip, one memory pool, designed (at least in part) for AI workloads.
+
+| Product | Memory | Bandwidth | Price (system) | Software |
+|---|---|---|---|---|
+| **[NVIDIA DGX Spark](https://www.nvidia.com/en-us/products/workstations/dgx-spark/)** (GB10) | 128 GB LPDDR5X | 273 GB/s | $3,000 | CUDA |
+| **[AMD Strix Halo](https://www.amd.com/en/products/processors/desktops/ryzen/ryzen-ai-halo/ryzen-ai-max-plus-395.html)** (Ryzen AI Max+ 395) | up to 128 GB LPDDR5X | 256 GB/s | ~$2,000 | ROCm |
+| **[Apple M4 Max](https://www.apple.com/mac-studio/)** (Mac Studio/MBP) | up to 128 GB | ~546 GB/s | $2,000+ | MLX / Metal |
+| **[Apple M3 Ultra](https://www.apple.com/mac-studio/)** (Mac Studio) | up to 512 GB | **819 GB/s** | $4,000+ | MLX / Metal |
+| **[NVIDIA GH200](https://www.nvidia.com/en-us/data-center/grace-hopper-superchip/)** (Grace Hopper) | 480 GB LPDDR + 144 GB HBM3e | 4 TB/s (HBM) | $35,000–45,000/chip | CUDA |
+| **[NVIDIA GB200](https://www.nvidia.com/en-us/data-center/gb200-nvl72/)** (Grace Blackwell) | 384 GB HBM3e | 8 TB/s/GPU | [$60–70K/chip, $2–3M rack](https://www.tomshardware.com/pc-components/gpus/nvidias-next-gen-blackwell-ai-gpus-to-cost-up-to-dollar70000-fully-equipped-servers-range-up-to-dollar3000000-report) | CUDA |
+| **[AMD MI300A](https://www.amd.com/en/products/accelerators/instinct/mi300/mi300a.html)** | 128 GB HBM3 | 5.3 TB/s | $10,000–15,000+ | ROCm |
+
+## The Bandwidth vs Capacity Tradeoff
+
+The defining design choice is which memory technology to use:
+
+- **LPDDR5X** is cheap (~$3–5/GB), dense, and low-power. You can solder 128 GB next to an SoC for under $600 in materials. But on a 256-bit bus it [tops out around 273 GB/s](https://www.lmsys.org/blog/2025-10-13-nvidia-dgx-spark/).
+- **HBM3/HBM3e** is fast (3–8 TB/s) but [expensive — roughly $8–10/GB in 2025, with a ~20% price hike planned for 2026](https://www.trendforce.com/news/2025/12/24/news-samsung-sk-hynix-reportedly-plan-20-hbm3e-price-hike-for-2026-as-nvidia-h200-asic-demand-rises/) — and that's before the advanced 2.5D packaging needed to attach it to a GPU. 128 GB of HBM dies alone runs $1,000+ before assembly.
+
+That's why a $3,000 DGX Spark uses LPDDR5X and a $15,000+ AMD MI300A uses HBM. There's no $3,000 box with HBM bandwidth — [advanced packaging (TSMC's CoWoS) and HBM supply were the primary bottleneck for AI chip production in 2025](https://epoch.ai/data-insights/ai-chip-supply-chain-constraints), and that capacity is allocated to datacenter parts.
+
+**This matters for AI workloads:** large language model **decoding** (generating one token at a time) is memory-bandwidth-bound, while **prefill** (processing your prompt) is compute-bound — [a well-documented split](https://towardsdatascience.com/prefill-is-compute-bound-decode-is-memory-bound-why-your-gpu-shouldnt-do-both/) that production inference systems increasingly handle on separate GPU pools. Tokens per second during decode scales almost linearly with memory bandwidth; prefill scales with raw tensor core throughput.
+
+[A real example on a 120-billion-parameter model](https://aimultiple.com/dgx-spark-alternatives): DGX Spark generates ~39 tokens/sec, while a 3× RTX 3090 setup (with ~3.4× the aggregate bandwidth) does ~124 tokens/sec — a near-perfect linear scaling. So if "wait time for the AI to respond" is what you care about, bandwidth is the number that matters most, and a maxed-out Mac Studio (819 GB/s) or a stack of discrete GPUs will outperform a Spark or Strix Halo at the same model size.
+
+## The Ecosystem Story
+
+Hardware is only half the picture. The software stack you're locked into shapes what's possible:
+
+- **CUDA** (NVIDIA): every ML framework supports it natively. Lowest porting friction. Spark, Jetson, GH200, GB200 all share this stack.
+- **ROCm** (AMD): improving rapidly but still has rough edges for niche operators. Strix Halo and MI300A run here.
+- **MLX / Metal** (Apple): excellent for Apple-native workflows (mlx, ollama on Mac, Core ML), but most published research code targets CUDA and needs porting.
+
+For many buyers, the ecosystem question dominates the spec sheet. A Mac Studio with 3× the bandwidth of a Spark doesn't help if the model you want to run only ships CUDA kernels.
+
+## Where Each One Fits
+
+- **Spark / Strix Halo** ($2–3K): fit big models locally, accept slower generation, value low power and small form factor. Spark wins on software, Strix Halo on price and x86 compatibility.
+- **Mac Studio M3 Ultra** ($4K+): best bandwidth-per-dollar for local LLM decode if you can live with MLX/Metal.
+- **Discrete GPUs (RTX 5090, RTX Pro 6000 Blackwell)**: 6× the bandwidth and much higher FLOPS, but capacity is capped (32–96 GB) and you need a host PC. Better for models that fit, worse for ones that don't.
+- **MI300A / GH200 / GB200**: enterprise-only. If your budget starts with five figures per chip, you're not shopping at this end of the market.
+
+## Should These Be on GPU Poet?
+
+For now, no. GPU Poet is built to compare **discrete GPU cards** on price, performance, and benchmarks — and the comparisons it produces (price per teraflop, gaming FPS, eBay listings) don't translate cleanly to soldered CPU+GPU systems. Putting a DGX Spark next to an RTX 5090 in the same table would mislead more buyers than it would help, because the tradeoffs that matter (bandwidth-vs-capacity, ecosystem lock-in, total system cost) aren't visible in the existing columns.
+
+That said — if you'd find it useful to see Spark, Strix Halo, Mac Studio, or similar combos compared on GPU Poet, [let me know](mailto:hello@gpupoet.com) what comparisons you'd want and I'll revisit.

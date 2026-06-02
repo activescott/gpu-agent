@@ -56,7 +56,7 @@ async function fetchPriceChangesData(
       FROM "Listing" l
       WHERE l."exclude" = false
         AND l."source" IN ('ebay', 'amazon')
-        AND l."createdAt" < ${currEnd}::timestamp + INTERVAL '1 day'
+        AND l."createdAt" <= ${currEnd}::timestamp
         AND (l."archivedAt" IS NULL OR l."archivedAt" >= ${currStart})
       ORDER BY l."itemId", l."priceValue"::float ASC
     ),
@@ -74,7 +74,7 @@ async function fetchPriceChangesData(
       FROM "Listing" l
       WHERE l."exclude" = false
         AND l."source" IN ('ebay', 'amazon')
-        AND l."createdAt" < ${prevEnd}::timestamp + INTERVAL '1 day'
+        AND l."createdAt" <= ${prevEnd}::timestamp
         AND (l."archivedAt" IS NULL OR l."archivedAt" >= ${prevStart})
       ORDER BY l."itemId", l."priceValue"::float ASC
     ),

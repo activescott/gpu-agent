@@ -42,7 +42,7 @@ async function fetchScalperPremiumData(
       FROM "Listing" l
       WHERE l."exclude" = false
         AND l."source" IN ('ebay', 'amazon')
-        AND l."createdAt" < ${endDate}::timestamp + INTERVAL '1 day'
+        AND l."createdAt" <= ${endDate}::timestamp
         AND (l."archivedAt" IS NULL OR l."archivedAt" >= ${startDate})
         AND l."gpuName" LIKE 'nvidia-geforce-rtx-50%'
       ORDER BY l."itemId", l."priceValue"::float ASC

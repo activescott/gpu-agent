@@ -34,7 +34,7 @@ async function fetchData(dateRange: DateRange): Promise<DollarsPerFps4kRow[]> {
       FROM "Listing" l
       WHERE l."exclude" = false
         AND l."source" IN ('ebay', 'amazon')
-        AND l."createdAt" < ${endDate}::timestamp + INTERVAL '1 day'
+        AND l."createdAt" <= ${endDate}::timestamp
         AND (l."archivedAt" IS NULL OR l."archivedAt" >= ${startDate})
       ORDER BY l."itemId", l."priceValue"::float ASC
     ),

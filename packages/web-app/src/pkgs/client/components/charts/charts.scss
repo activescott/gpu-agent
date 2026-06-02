@@ -75,7 +75,7 @@ $chart-animation-easing: ease-out;
   overflow: hidden;
   position: relative;
 
-  [data-bs-theme="dark"] & {
+  @media (prefers-color-scheme: dark) {
     background-color: $chart-bar-bg-dark;
   }
 }
@@ -195,7 +195,7 @@ $chart-animation-easing: ease-out;
   border-radius: 4px 0 0 4px;
   overflow: hidden;
 
-  [data-bs-theme="dark"] & {
+  @media (prefers-color-scheme: dark) {
     background-color: $chart-bar-bg-dark;
   }
 }

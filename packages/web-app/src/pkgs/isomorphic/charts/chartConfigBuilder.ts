@@ -26,10 +26,21 @@ const CHART_COLORS = {
   primary: "#3b82f6", // Blue - default
 } as const
 
-/** Text and grid colors for chart elements */
-const TEXT_COLOR = "#374151" // gray-700
-const GRID_COLOR = "#e5e7eb" // gray-200
+/** Text and grid colors for chart elements (light mode) */
+const TEXT_COLOR_LIGHT = "#374151" // gray-700
+const GRID_COLOR_LIGHT = "#e5e7eb" // gray-200
+/** Text and grid colors for chart elements (dark mode) */
+const TEXT_COLOR_DARK = "#d1d5db" // gray-300, readable on dark bg
+const GRID_COLOR_DARK = "#374151" // gray-700, subtle on dark bg
 const BACKGROUND_COLOR = "#ffffff"
+
+function textColor(darkMode: boolean): string {
+  return darkMode ? TEXT_COLOR_DARK : TEXT_COLOR_LIGHT
+}
+
+function gridColor(darkMode: boolean): string {
+  return darkMode ? GRID_COLOR_DARK : GRID_COLOR_LIGHT
+}
 
 /** Default bar corner radius */
 const BAR_BORDER_RADIUS = 4
@@ -59,6 +70,8 @@ interface ChartRenderOptions {
   height?: number
   /** Scale factor for fonts (for high-DPI rendering). Default: 1 */
   scale?: number
+  /** If true, uses dark-mode text/grid colors for readable contrast on dark backgrounds. Default: false */
+  darkMode?: boolean
 }
 
 /**
@@ -101,6 +114,8 @@ function buildBarChartConfig(
   const fontSize = BASE_FONT_SIZE * scale
   const padding = BASE_PADDING * scale
   const isVertical = config.orientation === "vertical"
+  const TEXT_COLOR = textColor(options.darkMode ?? false)
+  const GRID_COLOR = gridColor(options.darkMode ?? false)
 
   // For vertical bars, the value axis is y and the category axis is x
   // For horizontal bars (default), the value axis is x and the category axis is y
@@ -231,6 +246,8 @@ function buildDivergingChartConfig(
   const scale = options.scale ?? 1
   const fontSize = BASE_FONT_SIZE * scale
   const padding = BASE_PADDING * scale
+  const TEXT_COLOR = textColor(options.darkMode ?? false)
+  const GRID_COLOR = gridColor(options.darkMode ?? false)
 
   // Calculate symmetric axis bounds centered at 0
   // Find the maximum absolute value and round up to a nice number
@@ -336,6 +353,7 @@ function buildLineChartConfig(
   const scale = options.scale ?? 1
   const fontSize = BASE_FONT_SIZE * scale
   const padding = BASE_PADDING * scale
+  const TEXT_COLOR = textColor(options.darkMode ?? false)
 
   // Extract x-axis labels from first series
   const labels = config.series[0]?.data.map((p) => p.x) ?? []

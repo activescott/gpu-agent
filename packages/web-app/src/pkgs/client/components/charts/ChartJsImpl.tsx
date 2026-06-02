@@ -1,6 +1,6 @@
 "use client"
 
-import { useMemo } from "react"
+import { useEffect, useMemo, useState } from "react"
 import type { ChartData, ChartOptions } from "chart.js"
 import {
   Chart as ChartJSLib,
@@ -45,10 +45,24 @@ export interface ChartJSImplProps {
  * Renders charts using react-chartjs-2 based on ChartConfig.
  */
 export function ChartJSImpl({ config, height }: ChartJSImplProps): JSX.Element {
+  // Detect dark mode via prefers-color-scheme (site uses $color-mode-type: media-query).
+  // Re-render when the user's system theme changes.
+  const [darkMode, setDarkMode] = useState<boolean>(() => {
+    if (typeof window === "undefined") return false
+    return window.matchMedia("(prefers-color-scheme: dark)").matches
+  })
+
+  useEffect(() => {
+    const mq = window.matchMedia("(prefers-color-scheme: dark)")
+    const handler = (e: MediaQueryListEvent) => setDarkMode(e.matches)
+    mq.addEventListener("change", handler)
+    return () => mq.removeEventListener("change", handler)
+  }, [])
+
   // Convert our config to Chart.js config
   const chartConfig = useMemo(() => {
-    return chartConfigToChartJS(config, { serverSide: false })
-  }, [config])
+    return chartConfigToChartJS(config, { serverSide: false, darkMode })
+  }, [config, darkMode])
 
   // Determine which chart component to use based on chart type
   switch (config.chartType) {

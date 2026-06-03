@@ -17,7 +17,7 @@ supportedHardwareOperations:
   - INT8
   - INT4
 releaseDate: "2023-09-06"
-lastModified: "2026-02-24T00:00:00Z"
+lastModified: "2026-06-03T00:00:00Z"
 
 summary: >-
   The AMD Radeon RX 7700 XT was unveiled in August, 2023 as one of the GPUs
@@ -37,5 +37,6 @@ references:
   - https://wccftech.com/amd-radeon-rx-7600-xt-16-gb-rnda-3-gpu-2048-cores-16-gb-vram-tackles-rtx-4060-329-us/
 notes:
   - 'tensorCoreCount: tracking the AI Accelerators as "tensor cores"'
+  - 'fp16TFLOPS of 70 represents FP16 Matrix throughput (dense) via RDNA 3 AI Accelerators (WMMA), per AMD product page convention (Peak Half Precision (FP16 Matrix) Performance). This equals 2x FP32 vector on RDNA 3 silicon. AMD also publishes FP16 Vector = FP32 Vector on the same product page; that SIMD path is NOT used here in favor of the matrix path which is the cross-vendor analog of NVIDIA tensor-core FP16. See policy in .claude/agents/gpu-researcher.md.'
   - 'int8TOPS of 70: RDNA 3 AI Accelerators perform INT8 WMMA operations at 1:1 ratio with FP16 (same throughput per AMD GPUOpen WMMA documentation). Source: https://gpuopen.com/learn/wmma_on_rdna3/'
   - MSRP of $449 USD sourced from AMD announcement at Gamescom 2023, verified from Tom's Hardware and multiple sources. AMD later reduced the price to $419 in February 2024.

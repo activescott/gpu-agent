@@ -17,7 +17,7 @@ supportedHardwareOperations:
   - INT8
   - INT4
 releaseDate: "2023-09-06"
-lastModified: "2026-02-24T00:00:00Z"
+lastModified: "2026-06-03T00:00:00Z"
 
 summary: >-
   The AMD Radeon RX 7800 XT was unveiled in August, 2023 as one of the GPUs
@@ -135,6 +135,7 @@ references:
 
 notes:
   - 'tensorCoreCount: tracking the AI Accelerators as "tensor cores"'
+  - 'fp16TFLOPS of 74 represents FP16 Matrix throughput (dense) via RDNA 3 AI Accelerators (WMMA), per AMD product page convention (Peak Half Precision (FP16 Matrix) Performance = 74.6 TFLOPs; calculated 2 × 37.3 = 74.6, file stores rounded 74). AMD also publishes FP16 Vector = FP32 Vector on the same product page; that SIMD path is NOT used here in favor of the matrix path which is the cross-vendor analog of NVIDIA tensor-core FP16. See policy in .claude/agents/gpu-researcher.md.'
   - 'int8TOPS of 74: RDNA 3 AI Accelerators perform INT8 WMMA operations at 1:1 ratio with FP16 (same throughput per AMD GPUOpen WMMA documentation). Source: https://gpuopen.com/learn/wmma_on_rdna3/'
   - MSRP of $499 USD sourced from AMD announcement at Gamescom 2023, verified from Tom's Hardware and TechPowerUp.
   - 'PCI Device ID 747E (vendor 1002) sourced from driver download sites and confirmed across multiple AIB partner products'

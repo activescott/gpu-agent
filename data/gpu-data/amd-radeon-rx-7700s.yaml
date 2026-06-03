@@ -18,7 +18,7 @@ supportedHardwareOperations:
   - INT8
   - INT4
 releaseDate: "2023-01-04"
-lastModified: "2025-12-21T08:00:00Z"
+lastModified: "2026-06-03T00:00:00Z"
 
 summary: >-
   The AMD Radeon RX 7700S is a mobile graphics card launched in January 2023, featuring
@@ -44,7 +44,7 @@ references:
   - https://laptopmedia.com/video-card/amd-radeon-rx-7700s/
 notes:
   - FP32 TFLOPS of 20.48 per TechPowerUp GPU Database and multiple authoritative sources
-  - FP16 performance is 40.96 TFLOPS at 2:1 ratio to FP32, standard for RDNA 3 architecture
+  - 'fp16TFLOPS of 40.96 represents FP16 Matrix throughput (dense) via RDNA 3 AI Accelerators (WMMA), per AMD product page convention. This equals 2x FP32 vector on RDNA 3 silicon. AMD also publishes FP16 Vector = FP32 Vector on the same product page; that SIMD path is NOT used here in favor of the matrix path which is the cross-vendor analog of NVIDIA tensor-core FP16. See policy in .claude/agents/gpu-researcher.md.'
   - Note on calculation - Simple formula (2048 SPs × 2.5 GHz × 2) yields 10.24 TFLOPS, but authoritative sources consistently report 20.48 TFLOPS, suggesting RDNA 3 achieves higher effective throughput
   - tensorCoreCount of 64 represents the AI Accelerators (2 per compute unit × 32 compute units)
   - Memory bandwidth calculated as 128-bit bus × 18 Gbps effective = 288 GB/s

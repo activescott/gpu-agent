@@ -1,0 +1,114 @@
+# yaml-language-server: $schema=./gpu-spec.schema.json
+name: nvidia-rtx-pro-5000-blackwell
+label: NVIDIA RTX PRO 5000 Blackwell
+category: workstation
+msrpUSD: 4199
+tensorCoreCount: 440
+fp32TFLOPS: 65.0
+fp16TFLOPS: 516.0
+int8TOPS: 516.0
+memoryCapacityGB: 48
+memoryBandwidthGBs: 1344
+maxTDPWatts: 300
+gpuArchitecture: blackwell
+supportedHardwareOperations:
+  - FP32
+  - FP16
+  - TF32
+  - BF16
+  - FP8
+  - FP4
+  - INT8
+  - INT4
+supportedCUDAComputeCapability: 12.0
+releaseDate: "2025-03-18"
+lastModified: "2026-06-02T00:00:00Z"
+
+manufacturerIdentifiers:
+  - type: nvpn
+    value: "900-5G153-2250-000"
+
+thirdPartyProducts:
+  - company: PNY
+    productName: "NVIDIA RTX PRO 5000 Blackwell Workstation Edition 48GB GDDR7 Graphics Card (Retail)"
+    identifier: "VCNRTXPRO5000B-PB"
+    identifierType: sku
+  - company: PNY
+    productName: "NVIDIA RTX PRO 5000 Blackwell Workstation Edition 48GB GDDR7 Graphics Card (Bulk)"
+    identifier: "VCNRTXPRO5000B-BLK"
+    identifierType: sku
+  - company: Dell
+    productName: "Dell NVIDIA RTX PRO 5000 Blackwell Workstation Edition, 48 GB GDDR7, full height, PCIe 5.0x16, 4 DP"
+    identifier: "490-BLQB"
+    identifierType: part_number
+  - company: HP
+    productName: "HP NVIDIA RTX PRO 5000 Blackwell 48GB 4DP Graphics Card"
+    identifier: "B11F1AA"
+    identifierType: part_number
+  - company: Lenovo
+    productName: "NVIDIA RTX PRO 5000 Blackwell 48GB DP*4 GDDR7 Graphics Card"
+    identifier: "4X61T68168"
+    identifierType: part_number
+
+summary: |
+  The NVIDIA RTX PRO 5000 Blackwell is a professional dual-slot, full-height workstation GPU
+  launched on March 18, 2025, built on the NVIDIA Blackwell architecture (GB202-250-A1 die,
+  TSMC 4nm process). It features 14,080 CUDA cores across 110 streaming multiprocessors,
+  440 fifth-generation Tensor Cores, and 110 fourth-generation RT Cores. As the flagship of
+  the RTX PRO Blackwell desktop GPU family, it delivers 65 TFLOPS of FP32 compute and 2,064
+  AI TOPS (FP4 with sparsity).
+
+  The card features 48 GB of GDDR7 ECC memory on a 384-bit memory bus providing 1,344 GB/s
+  bandwidth. The fifth-generation Tensor Cores support FP4 and FP8 precisions alongside BF16,
+  TF32, FP16, INT8, and INT4, enabling broad AI and machine learning workloads. The
+  fourth-generation RT Cores provide hardware-accelerated ray tracing with doubled throughput
+  versus the prior generation. The card also includes Multi-Instance GPU (MIG) support,
+  allowing the GPU to be partitioned into up to two independent 24GB instances.
+
+  With a TDP of 300W in a dual-slot, full-height form factor (4.4" H x 10.5" L), the RTX PRO
+  5000 Blackwell requires one 16-pin PCIe CEM5 power connector. It connects via PCIe 5.0 x16
+  and provides four DisplayPort 2.1b outputs. Video engine support includes three ninth-
+  generation NVENC encoders, three sixth-generation NVDEC decoders, and one JPEG encoder.
+
+  The RTX PRO 5000 Blackwell uses a cut-down GB202 die (110 of 170 SMs active), the same
+  top-tier Blackwell die used in the consumer GeForce RTX 5090 (which enables all 170 SMs
+  with 21,760 CUDA cores). NVIDIA later added a 72GB variant (NVPN 900-5G153-2270-000),
+  launched in December 2025, which uses a 512-bit memory bus to accommodate the higher memory
+  capacity while sharing the same compute configuration and 300W TDP. The GPU is distributed
+  through PNY and available from workstation OEMs including Dell, HP, and Lenovo.
+
+references:
+  - https://www.nvidia.com/en-us/products/workstations/professional-desktop-gpus/rtx-pro-5000/
+  - https://openzeka.com/wp-content/uploads/2025/03/workstation-datasheet-blackwell-rtx-pro-5000.pdf
+  - https://developer.nvidia.com/cuda-gpus
+  - https://www.pny.com/nvidia-rtx-pro-5000-blackwell
+  - https://www.newegg.com/pny-technologies-inc-blackwell-vcnrtxpro5000b-pb-rtx-pro-5000-48gb-graphics-card/p/N82E16814985049
+  - https://www.newegg.com/nvidia-blackwell-900-5g153-2250-000-rtx-pro-5000-48gb-graphics-card/p/N82E16814132111
+  - https://www.dell.com/en-us/shop/dell-nvidia-rtx-pro-5000-blackwell-workstation-edition-48-gb-gddr7-full-height-pcie-50x16-4-dp/apd/490-blqb/graphic-video-cards
+  - https://www.redcorp.com/en/product/video-card/hp/nvidia-rtx-pro-5000-blackwell-48gb-4dp-graphics-card-b11f1aa/1170rzm4
+  - https://www.lenovo.com/ie/en/p/accessories-and-software/graphics-cards/graphics_cards/4x61t68168
+  - https://hmc-tech.com/gpus/nvidia-rtx-pro-5000-blackwell
+  - https://technical.city/en/video/RTX-PRO-5000-Blackwell
+  - https://wccftech.com/nvidia-rtx-pro-5000-blackwell-gpu-big-memory-upgrade-packs-72-gb/
+  - https://www.cgchannel.com/2025/03/nvidia-unveils-blackwell-rtx-pro-gpus-with-up-to-96gb-vram/
+  - https://www.techradar.com/pro/great-news-nvidia-finally-has-a-72gb-graphics-card-but-since-its-the-rtx-pro-5000-blackwell-it-will-probably-cost-you-just-a-bit-more-than-a-64gb-ddr5-stick-sarcasm
+  - https://www.cdw.com/product/pny-nvidia-rtx-quadro-pro-5000-graphic-card-48-gb-gddr7-full-height/8388916
+  - https://www.nvidia.com/content/dam/en-zz/Solutions/products/workstations/professional-desktop-gpus/rtx-pro-5000-blackwell/workstation-datasheet-blackwell-rtx-pro-5000-gtc25-spring-nvidia-3658700.pdf
+  - https://www.pny.com/file%20library/company/support/product%20brochures/nvidia%20rtx/english/nvidia-rtx-pro-5000-blackwell.pdf
+
+notes:
+  - 'FP32 TFLOPS of 65.0 sourced from the official NVIDIA RTX PRO 5000 Blackwell datasheet (openzeka mirror of GTC25 Spring 2025 PDF) and confirmed by the wccftech article citing official specs (65 TFLOPS FP32 / 196 TFLOPS RT). hmc-tech.com calculates 73.69 TFLOPS using a boost clock of 2,617 MHz (14,080 × 2617 × 2 / 1,000,000), and technical.city reports 66.94 TFLOPS. The official NVIDIA datasheet value of 65 TFLOPS is used as the authoritative figure; the discrepancy reflects that NVIDIA workstation cards apply a thermal/power-headroom clock target lower than the rated peak boost, consistent with the RTX PRO 4500 (51 TFLOPS official vs. computed ~50.5 TFLOPS).'
+  - 'AI TOPS of 2,064 sourced from the Newegg product listing (N82E16814985049) for the PNY VCNRTXPRO5000B-PB and confirmed by the wccftech article specifications table for the 48GB variant. This value represents theoretical FP4 TOPS with sparsity (FP4 sparse), consistent with the footnote in the PNY 72GB datasheet which states "Effective FP4 TOPS with sparsity." Note: the radargit review also cites 2,064 TOPS for the 48GB variant; the wccftech article additionally notes a value of 2,142 TOPS in one table (likely reflecting a later revision or the 72GB variant). The 2,064 figure is used as the primary value based on Newegg listing and multiple corroborating sources.'
+  - 'int8TOPS of 516 represents non-sparse (dense) INT8 performance, derived from FP4 sparse TOPS: 2,064 (FP4 sparse) / 4 = 516 TOPS. Derivation: FP4 sparse = 2x INT8 sparse = 4x INT8 dense per Blackwell 5th-gen tensor core architecture. Dense value used for consistent cross-vendor comparison. Sanity check: 516 TOPS / 65 TFLOPS FP32 = 7.9:1 ratio, consistent with RTX 5090 (838 TOPS INT8 dense / 105 TFLOPS FP32 = 8:1).'
+  - 'fp16TFLOPS of 516.0 is FP16 Tensor Core throughput with 2:4 structured sparsity, derived from FP4 sparse TOPS using the Blackwell tensor core ratio (FP16 sparse = FP4 sparse / 4): 2,064 / 4 = 516 TFLOPS. Dense FP16 Tensor = 516 / 2 = 258 TFLOPS. The official NVIDIA datasheet for this workstation card does not publish FP16 Tensor performance separately.'
+  - 'Memory bandwidth of 1,344 GB/s confirmed by official NVIDIA datasheet (openzeka PDF), PNY product page, CDW, and multiple resellers. The 48GB variant uses a 384-bit memory bus at 28 Gbps per pin: 384 bits / 8 bytes × 28,000 MHz / 1000 = 1,344 GB/s. Note: a later combined 48GB/72GB NVIDIA datasheet PDF (nvidia.com CDN, gtc25-spring-nvidia-3658700.pdf) incorrectly shows 512-bit for both variants; Newegg and some resellers copied this error. The 384-bit value is corroborated by the PNY product page and datasheet, CDW, TechPowerUp database, and Insight.com, and is arithmetically consistent with the stated 1,344 GB/s bandwidth at 28 Gbps GDDR7 (512-bit at 28 Gbps would yield 1,792 GB/s, not 1,344 GB/s). The 72GB variant does use a 512-bit bus (confirmed by TechRadar article citing the 72GB variant datasheet).'
+  - 'CUDA core count of 14,080 confirmed by the official NVIDIA datasheet, PNY product page, Newegg listing, CDW listing, hmc-tech, and technical.city. This corresponds to 110 streaming multiprocessors (14,080 / 128 cores per SM = 110 SMs). The GB202 die has 170 SMs at full configuration (RTX 5090: 21,760 CUDA cores); the RTX PRO 5000 uses 110 of 170 SMs active.'
+  - 'Tensor core count of 440 confirmed by Newegg product listing (specifications table lists "Tensor Cores: 440") and CDW listing. Matches the SM count: 110 SMs × 4 tensor cores per SM = 440 tensor cores. RT core count of 110 (one per SM, 4th generation) confirmed by CDW listing and hmc-tech.'
+  - 'TDP of 300W confirmed by official NVIDIA datasheet, PNY product page, CG Channel, Newegg, CDW, and ServeTheHome. Requires one 16-pin PCIe CEM5 power connector.'
+  - 'GPU die is GB202-250-A1 on TSMC 4nm process with 92.2 billion transistors and 762 mm2 die area (per hmc-tech, consistent with GB202 parameters). Architecture uses compute capability 12.0 (sm_120), consistent with all Blackwell consumer and professional GPUs using GB202 or GB203 dies. RTX 5090 (also GB202) is confirmed sm_120 at developer.nvidia.com/cuda-gpus; the RTX PRO 5000 uses the same die so the same compute capability applies.'
+  - 'Release date of March 18, 2025 per TechPowerUp GPU database and CG Channel (cgchannel.com, March 2025 article). NVIDIA announced the RTX PRO Blackwell GPU family at GTC25 Spring on March 18, 2025. OEM availability through Dell, HP, and Lenovo workstation systems followed in summer 2025.'
+  - 'FP4 hardware precision is supported by 5th-generation Tensor Cores. FP8, BF16, TF32, FP16, INT8, and INT4 are also supported by Blackwell architecture tensor cores. The card supports MIG (Multi-Instance GPU) with up to 2x24GB instances per the official NVIDIA datasheet.'
+  - '3x NVENC (9th generation) and 3x NVDEC (6th generation) encoders/decoders confirmed by PNY product page and CDW listing. The earlier version of the official GTC25 datasheet PDF listed 2x NVENC and 2x NVDEC; the updated PNY product page (and CDW listing) shows 3x NVENC, 3x NVDEC, and 1x JPEG encoder, consistent with the GB202 die capabilities. The higher video engine count versus the RTX PRO 4500 Blackwell (GB203, 2x NVENC) reflects the larger die.'
+  - 'Estimated MSRP of $4,199 USD based on launch-time retail list pricing. NVIDIA does not publish an official MSRP for professional workstation GPUs. Central Computer listed the NVIDIA OEM 48GB variant (NVPN 900-5G153-2550-000) at $4,199.99 at launch; this price is independently cited by TechRadar in their December 2025 article on the 72GB variant (techradar.com, in references). CG Channel cited a Connection reseller price of ~$4,569 at launch. Dell lists the 490-BLQB variant at $5,299.99 on dell.com (OEM configuration includes Dell overhead). Note: NVIDIA also assigned NVPN 900-5G153-2250-000 to the same 48GB product (listed on Newegg and B&H); the two NVPNs (2250-000 and 2550-000) appear to represent the same SKU with different packaging or revision. The $4,199 figure reflects the lowest documented retail list price for the 48GB variant, verified from 2 sources.'
+  - 'NVPN 900-5G153-2250-000 sourced from Newegg product listing (N82E16814132111) and B&H Photo (product 1943539-REG), both listing this as the manufacturer part number for the OEM 48GB variant. A second NVPN, 900-5G153-2550-000, also exists for the same 48GB product (listed by Central Computer, exxactcorp, and others); the two NVPNs likely reflect different OEM/retail packaging revisions. The board_id prefix 5G153 identifies the GB202-based RTX PRO 5000 Blackwell product family. The 72GB variant uses NVPN 900-5G153-2270-000 (sourced from B&H Photo product listing 1938762-REG, confirmed by esaitech and serversupply.com).'
+  - 'PNY retail SKU VCNRTXPRO5000B-PB and bulk SKU VCNRTXPRO5000B-BLK confirmed from PNY product page (pny.com). Dell part number 490-BLQB confirmed from dell.com official product page. HP part number B11F1AA confirmed from redcorp.com product listing. Lenovo part number 4X61T68168 confirmed from lenovo.com (Ireland) product page for the 48GB GDDR7 variant.'

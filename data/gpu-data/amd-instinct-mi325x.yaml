@@ -1,0 +1,94 @@
+# yaml-language-server: $schema=./gpu-spec.schema.json
+name: amd-instinct-mi325x
+label: AMD Instinct MI325X
+category: datacenter
+msrpUSD: null
+tensorCoreCount: 1216
+fp32TFLOPS: 163.4
+fp16TFLOPS: 2614.9
+int8TOPS: 2614.9
+memoryCapacityGB: 256
+memoryBandwidthGBs: 6000
+maxTDPWatts: 1000
+gpuArchitecture: CDNA 3
+supportedHardwareOperations:
+  - FP16
+  - FP32
+  - FP64
+  - INT8
+  - TF32
+  - BF16
+  - FP8
+releaseDate: "2024-10-10"
+lastModified: "2026-06-03T00:00:00Z"
+
+summary: >-
+  The AMD Instinct MI325X is AMD's Q4 2024 refresh of the MI300X, launched on
+  October 10, 2024 at the AMD Advancing AI 2024 event. It uses the same CDNA 3
+  multi-chiplet architecture and identical compute silicon as the MI300X — 8
+  Accelerator Complex Dies (XCDs) on TSMC N5 and 4 I/O Dies on TSMC N6,
+  totaling 153 billion transistors, 304 Compute Units, 19,456 Stream Processors,
+  and 1,216 Matrix Cores. The sole hardware change relative to the MI300X is a
+  memory upgrade from 192 GB HBM3 to 256 GB HBM3e, increasing peak memory
+  bandwidth from 5.3 TB/s to 6.0 TB/s via an 8,192-bit memory interface clocked
+  at 6 GHz. This 33% memory capacity increase and 13% bandwidth increase come
+  with a higher TDP of 1,000W (up from 750W on the MI300X) due to the
+  faster HBM3e stack speeds. Compute performance is identical to the MI300X:
+  FP64 vector 81.7 TFLOPS, FP32/FP64 matrix 163.4 TFLOPS, FP16/BF16 dense
+  1,307.4 TFLOPS (2,614.9 TFLOPS with 2:4 structured sparsity), FP8 dense
+  2,614.9 TFLOPS, and INT8 dense 2,614.9 TOPS. The MI325X uses the OAM
+  (OCP Accelerator Module) form factor with a PCIe 5.0 x16 host interface and
+  8 Infinity Fabric links at 128 GB/s each. Up to 8 MI325X OAMs mount on a
+  Universal Base Board (UBB) to form the AMD Instinct MI325X Platform, providing
+  2 TB of aggregate HBM3e memory per node. AMD had originally announced the
+  MI325X with 288 GB of HBM3e memory, but reduced the usable capacity to 256 GB
+  at actual launch. OEM platforms include the HPE ProLiant Compute XD685 (5U,
+  8-GPU), Supermicro H14 8U 8-GPU system, Gigabyte G893-ZX1-AAX2, and the
+  Supermicro AS-4126GS-NMR-LCC (4U, 8-GPU with liquid cooling). The MI325X
+  targets large language model inference workloads where its 256 GB memory
+  capacity per accelerator provides a significant advantage over competing
+  solutions for fitting large models.
+
+manufacturerIdentifiers:
+  - type: opn
+    value: 100-300000108H
+
+thirdPartyProducts:
+  - company: Supermicro
+    productName: 4U Dual-CPU AMD EPYC System with 8x AMD Instinct MI325X GPU and Liquid Cooling
+    identifier: AS-4126GS-NMR-LCC
+    identifierType: model_number
+  - company: Gigabyte
+    productName: AMD Instinct MI325X Platform 8-GPU Server
+    identifier: G893-ZX1-AAX2
+    identifierType: model_number
+
+references:
+  - https://www.amd.com/en/products/accelerators/instinct/mi300/mi325x.html
+  - https://www.amd.com/content/dam/amd/en/documents/instinct-tech-docs/product-briefs/instinct-mi325x-datasheet.pdf
+  - https://instinct.docs.amd.com/projects/system-acceptance/en/latest/gpus/mi325x.html
+  - https://wccftech.com/amd-instinct-mi325x-first-ai-gpu-256-gb-hbm3e-288-gb-mi355x-cdna-4-next-year/
+  - https://www.datacenterdynamics.com/en/news/amd-details-instinct-mi325x-gpu-with-256gb-of-hbm3e/
+  - https://www.tomshardware.com/tech-industry/artificial-intelligence/amds-instinct-mi325x-smiles-for-the-camera-256-gb-of-hbm3e
+  - https://www.storagenewsletter.com/2024/10/16/hpe-proliant-compute-xd685-server-purpose-built-solutions-powered-by-amd-to-accelerate-training-for-large-complex-ai-models/
+  - https://computeprices.com/gpus/mi325x
+  - https://aiwiki.ai/wiki/amd_instinct_mi325x
+  - https://www.rackmountnet.com/product/as-4126gs-nmr-lcc/
+  - https://www.gigabyte.com/Enterprise/GPU-Server/G893-ZX1-AAX2
+  - https://www.wiredzone.com/shop/product/10032305-amd-100-300000108h-instinct-mi325x-gpu-graphics-processing-unit-256gb-hbm3e-memory-air-cooling-ac-instinct-mi300-series-15002
+
+notes:
+  - 'fp32TFLOPS of 163.4 represents peak FP32 vector performance per AMD official product page (amd.com/en/products/accelerators/instinct/mi300/mi325x.html). AMD also lists FP32 matrix and FP64 matrix performance at 163.4 TFLOPS. Note: FP32 vector equals FP64 matrix on CDNA 3 due to architecture design.'
+  - 'fp16TFLOPS of 2614.9 represents peak FP16 matrix performance with 2:4 structured sparsity per AMD official product page. Dense (non-sparse) FP16 matrix performance is 1307.4 TFLOPS (1.30 PFLOPs per AMD page). Sparse value used to maintain consistency with MI300X sibling file and agent policy (FP16 Matrix SPARSE).'
+  - 'int8TOPS of 2614.9 represents non-sparse (dense) INT8 matrix performance per AMD official product page (listed as "Peak INT8 Performance: 2.6 POPs"). With 2:4 structured sparsity, INT8 performance is 5229.8 TOPS. Dense value used for consistent cross-vendor comparison.'
+  - 'Additional precision performance per AMD official product page: FP64 vector 81.7 TFLOPS; FP64 matrix 163.4 TFLOPS; TF32 dense 653.7 TFLOPS / sparse 1307.4 TFLOPS (1.30 PFLOPs); BF16 dense 1307.4 TFLOPS / sparse 2614.9 TFLOPS (2.61 PFLOPs); FP8 dense 2614.9 TFLOPS / sparse 5229.8 TFLOPS (5.22 PFLOPs).'
+  - 'tensorCoreCount of 1216 represents AMD Matrix Cores (4 per compute unit x 304 compute units = 1216). AMD uses the term "Matrix Cores" rather than "Tensor Cores". Confirmed on AMD official product page which lists "Matrix Cores: 1,216".'
+  - 'memoryBandwidthGBs of 6000 represents peak theoretical bandwidth of 6.0 TB/s from 256 GB HBM3e via 8192-bit memory interface at 6 GHz per AMD official product page. Confirmed by multiple independent sources (wccftech, datacenterdynamics, computeprices.com).'
+  - 'The MI325X is a memory-capacity upgrade over the MI300X (192 GB HBM3 at 5.3 TB/s / 750W) to 256 GB HBM3e at 6.0 TB/s / 1000W. Compute silicon is identical: same 304 CUs, 1216 Matrix Cores, 19456 stream processors, same compute TFLOPS. Tom''s Hardware confirmed "304 compute units" and "19,456 stream processors". Source: tomshardware.com article January 2025.'
+  - 'AMD had originally pre-announced the MI325X with 288 GB of HBM3e at AMD Advancing AI 2024 announcement, but reduced it to 256 GB at actual launch on October 10, 2024. The 288 GB figure represents the MI355X (CDNA 4, expected 2025). Source: wccftech.com and tomshardware.com.'
+  - 'Architecture uses a chiplet design: 8 Accelerator Complex Dies (XCDs) on TSMC N5 (5nm) and 4 I/O Dies (IOD) on TSMC N6 (6nm). Transistor count is 153 billion across the package — identical to MI300X since same silicon. Source: AMD official product page.'
+  - 'Form factor is OAM (OCP Accelerator Module), not a traditional PCIe card. Host interface is PCIe 5.0 x16. Infinity Fabric provides 8 links at 128 GB/s each (896 GB/s aggregate inter-GPU). Peak engine clock is 2,100 MHz. Last-level cache (LLC/Infinity Cache) is 256 MB. Source: AMD official product page.'
+  - 'FP8 support uses both E5M2 and E4M3 formats. AMD CDNA 3 implements 2:4 structured sparsity for AI precision types (TF32, FP16, BF16, FP8, INT8). No INT4 or FP4 hardware support on CDNA 3.'
+  - 'MSRP is null because AMD does not publish official MSRP for datacenter GPU accelerators and no verified OEM list price could be confirmed from authoritative launch-time sources. Cloud compute pricing for MI325X instances (mid-2025): approximately $2.00-$2.29 per GPU-hour (Vultr, DigitalOcean). Analyst estimates and market reports from late 2024 suggest per-module pricing in the $10,000-$20,000 range, but no single authoritative OEM list price was confirmed. Note: MI325X is deployed as an OAM module within complete server systems rather than sold as a standalone retail product.'
+  - 'Third-party products: Supermicro AS-4126GS-NMR-LCC (4U dual-CPU system with 8x MI325X GPUs and liquid cooling) confirmed from anewtech.net and serversimply.com reseller listings (serversimply.com describes it as supporting "MI325X / MI355X 8-GPU"). Note: Supermicro''s own product page for AS-4126GS-NMR-LCC was updated to feature MI355X by mid-2025, but the chassis supports both generations. Gigabyte G893-ZX1-AAX2 (8U GPU server with 8x MI325X OAM modules) confirmed from gigabyte.com official product page. HPE ProLiant Compute XD685 and Lenovo ThinkSystem servers also support MI325X but no standalone GPU module part numbers were found — these OEMs sell complete server systems rather than individual MI325X OAM modules with their own part numbers.'
+  - 'AMD OPN (Ordering Part Number) 100-300000108H confirmed for the AMD Instinct MI325X 256GB HBM3e from wiredzone.com reseller listing (both Direct Liquid Cooling / UBB8 and Air Cooling variants). AMD official product page does not list an OPN directly, but the 100-300000108H OPN follows AMD''s standard format (same as MI300X OPN 100-300000045H). Source: wiredzone.com product listings for AMD-100-300000108H.'

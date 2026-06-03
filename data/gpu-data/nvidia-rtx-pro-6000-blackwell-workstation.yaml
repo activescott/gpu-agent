@@ -1,0 +1,103 @@
+# yaml-language-server: $schema=./gpu-spec.schema.json
+name: nvidia-rtx-pro-6000-blackwell-workstation
+label: NVIDIA RTX PRO 6000 Blackwell Workstation Edition
+category: workstation
+msrpUSD: 8565
+tensorCoreCount: 752
+fp32TFLOPS: 125.0
+fp16TFLOPS: 1000.0
+int8TOPS: 1000.0
+memoryCapacityGB: 96
+memoryBandwidthGBs: 1792
+maxTDPWatts: 600
+gpuArchitecture: blackwell
+supportedHardwareOperations:
+  - FP32
+  - FP16
+  - TF32
+  - BF16
+  - FP8
+  - FP4
+  - INT8
+  - INT4
+supportedCUDAComputeCapability: 12.0
+releaseDate: "2025-03-18"
+lastModified: "2026-06-02T00:00:00Z"
+
+manufacturerIdentifiers:
+  - type: nvpn
+    value: "900-5G144-2200-000"
+  - type: nvpn
+    value: "900-5G144-2500-000"
+
+thirdPartyProducts:
+  - company: PNY
+    productName: "NVIDIA RTX PRO 6000 Blackwell Workstation Edition 96GB GDDR7 Graphics Card (Retail)"
+    identifier: "VCNRTXPRO6000B-PB"
+    identifierType: sku
+  - company: PNY
+    productName: "NVIDIA RTX PRO 6000 Blackwell Workstation Edition 96GB GDDR7 Graphics Card (Bulk)"
+    identifier: "VCNRTXPRO6000B-SB"
+    identifierType: sku
+  - company: Dell
+    productName: "NVIDIA RTX PRO 6000 Blackwell Workstation Edition, 96 GB GDDR7, full height, PCIe 5.0x16, 4 DP, 600W"
+    identifier: "AD368558"
+    identifierType: part_number
+  - company: HP
+    productName: "HP NVIDIA RTX PRO 6000 Blackwell 96GB 4DP Graphics Card"
+    identifier: "B11F0AA"
+    identifierType: part_number
+
+summary: |
+  The NVIDIA RTX PRO 6000 Blackwell Workstation Edition is the flagship of the NVIDIA RTX PRO Blackwell
+  professional workstation GPU family, announced at GTC25 Spring on March 18, 2025, and available
+  in April 2025 through distribution partners. It succeeds the RTX 6000 Ada Generation and represents
+  a substantial generational leap: double the CUDA cores (24,064 vs 12,288 on Ada), double the
+  memory capacity (96 GB vs 48 GB), and double the TDP (600 W vs 300 W).
+
+  Built on the NVIDIA Blackwell architecture using a full-configuration GB202 die (TSMC 4nm process,
+  92.2 billion transistors, ~750 mm2 die area), the RTX PRO 6000 Blackwell Workstation Edition
+  features 24,064 CUDA cores across 188 streaming multiprocessors, 752 fifth-generation Tensor Cores,
+  and 188 fourth-generation RT Cores. With 188 of 192 SMs enabled, it is the highest-core-count
+  GB202-based product shipping, surpassing the consumer GeForce RTX 5090 which enables 170 of 192 SMs
+  (21,760 CUDA cores). It delivers 96 GB GDDR7 ECC memory on a 512-bit memory bus providing
+  1,792 GB/s bandwidth, compared to the RTX 5090's 32 GB on a 512-bit bus. The 5th-generation Tensor Cores support FP4
+  and FP8 precisions alongside BF16, TF32, FP16, INT8, and INT4, delivering 4,000 AI TOPS (FP4
+  with sparsity) and 125 TFLOPS of FP32 compute.
+
+  The card uses NVIDIA's Double Flow Through active thermal design with dual fans in a dual-slot,
+  full-height form factor (5.4 in H x 12.0 in L) and requires a single 16-pin PCIe CEM5 power
+  connector for its 600 W TDP. It connects via PCIe 5.0 x16 and provides four DisplayPort 2.1b
+  outputs supporting up to 8K at 240 Hz or 16K at 60 Hz. Video engine support includes four
+  ninth-generation NVENC encoders and four sixth-generation NVDEC decoders. The card also supports
+  Multi-Instance GPU (MIG) with up to 4 fully isolated GPU instances. The GPU is distributed
+  through PNY and available from workstation OEMs including Dell and HP.
+
+references:
+  - https://www.nvidia.com/en-us/products/workstations/professional-desktop-gpus/rtx-pro-6000/
+  - https://www.nvidia.com/content/dam/en-zz/Solutions/data-center/rtx-pro-6000-blackwell-workstation-edition/workstation-blackwell-rtx-pro-6000-workstation-edition-nvidia-us-3519208-web.pdf
+  - https://developer.nvidia.com/cuda-gpus
+  - https://www.cgchannel.com/2025/03/nvidia-unveils-blackwell-rtx-pro-gpus-with-up-to-96gb-vram/
+  - https://www.tweaktown.com/news/104126/nvidias-new-rtx-pro-6000-blackwell-gpu-with-96gb-gddr7-costs-8435-should-launch-in-may/index.html
+  - https://www.tomshardware.com/pc-components/gpus/nvidia-rtx-pro-6000-blackwell-gpu-is-listed-for-usd8-565-at-us-retailer-26-percent-more-expensive-than-the-last-gen-rtx-6000-ada
+  - https://www.killerstartups.com/nvidia-rtx-pro-6000-blackwell-gpu-announced/
+  - https://www.dell.com/en-us/shop/nvidia-rtx-pro-6000-blackwell-600w/apd/ad368558/graphic-video-cards
+  - https://www.gpus.net/gpus/nvidia_rtx_pro_6000_workstation/nvidia_rtx_pro_6000_blackwell_workstation_edition
+  - https://www.serversupply.com/GPU/GDDR7/96GB/NVIDIA/900-5G144-2200-000_409294.htm
+
+notes:
+  - 'FP32 TFLOPS of 125.0 is the peak single-precision performance published in the official NVIDIA RTX PRO 6000 Blackwell Workstation Edition datasheet (workstation-blackwell-rtx-pro-6000-workstation-edition-nvidia-us-3519208-web.pdf, footnote: "Peak rates based on GPU Boost Clock"). Confirmed by CG Channel article (125 TFLOPs) and TweakTown article (125 TFLOPS). Sanity check: 24,064 CUDA cores x 2,617 MHz boost x 2 ops/cycle / 1,000,000 = 125.96 TFLOPS, consistent with the official 125 TFLOPS figure.'
+  - 'AI TOPS of 4,000 sourced from the official NVIDIA RTX PRO 6000 Blackwell Workstation Edition datasheet and confirmed by the NVIDIA product page. Per datasheet footnotes: "Peak rates based on GPU Boost Clock. Effective FP4 TOPS with sparsity." This represents FP4 sparse theoretical peak performance.'
+  - 'int8TOPS of 1,000.0 represents non-sparse (dense) INT8 performance, derived from FP4 sparse TOPS: 4,000 (FP4 sparse) / 4 = 1,000 TOPS. Derivation: FP4 sparse = 2x INT8 sparse = 4x INT8 dense per Blackwell 5th-gen tensor core architecture. Dense value used for consistent cross-vendor comparison. Sanity check: 1,000 TOPS / 125 TFLOPS FP32 = 8:1 ratio, consistent with RTX PRO 5000 Blackwell (516 TOPS INT8 dense / 65 TFLOPS FP32 = 7.9:1).'
+  - 'fp16TFLOPS of 1,000.0 is FP16 Tensor Core throughput with 2:4 structured sparsity, derived from FP4 sparse TOPS using the Blackwell tensor core ratio (FP16 sparse = FP4 sparse / 4): 4,000 / 4 = 1,000 TFLOPS. Dense FP16 Tensor = 1,000 / 2 = 500 TFLOPS. The official NVIDIA datasheet for this workstation card does not publish FP16 Tensor performance separately.'
+  - 'Memory bandwidth of 1,792 GB/s confirmed by official NVIDIA datasheet and product page. Arithmetic check: 512-bit bus x 28 Gbps / 8 = 512 / 8 x 28,000 = 1,792 GB/s. Consistent with 96 GB GDDR7 configuration using dual-sided memory modules (48 GB per side).'
+  - 'CUDA core count of 24,064 confirmed by official NVIDIA datasheet, CG Channel article, Tom''s Hardware article, and serversupply.com listing. This corresponds to 188 streaming multiprocessors (24,064 / 128 cores per SM = 188 SMs). The GB202 die has 192 SMs at full theoretical configuration; the RTX PRO 6000 uses 188 of 192 SMs enabled (97.9% utilization), more than the consumer GeForce RTX 5090 which uses 170 of 192 SMs (21,760 CUDA cores).'
+  - 'Tensor core count of 752 confirmed by serversupply.com listing (citing official NVIDIA specs: "752 NVIDIA Tensor Cores"), Tom''s Hardware article, and gpus.net specifications. Matches SM count: 188 SMs x 4 tensor cores per SM = 752 tensor cores. RT core count of 188 (one per SM, 4th generation) confirmed by same sources.'
+  - 'TDP of 600 W confirmed by official NVIDIA datasheet, product page, CG Channel article, and multiple resellers. Requires one 16-pin PCIe CEM5 power connector. The Workstation Edition uses NVIDIA''s Double Flow Through active cooling with dual fans; the related Max-Q Workstation Edition uses the same die at 300 W TDP.'
+  - 'GPU die is GB202 on TSMC 4nm (4NP) process with 92.2 billion transistors and approximately 750 mm2 die area, per gpus.net and consistent with RTX 5090 GB202 parameters. Architecture uses CUDA compute capability 12.0 (sm_120), confirmed by developer.nvidia.com/cuda-gpus for the RTX PRO 6000 Blackwell Workstation Edition. All Blackwell workstation GPUs use compute capability 12.0.'
+  - 'Release date of March 18, 2025 reflects the GTC25 Spring announcement date. CG Channel reports the RTX PRO 6000 Blackwell Workstation Edition became available through PNY and TD SYNNEX distribution in April 2025. The Tweaktown article (March 23, 2025) anticipated a May 2025 launch based on retailer listings; actual distribution availability was April 2025 per CG Channel.'
+  - 'FP4 hardware precision is supported by 5th-generation Tensor Cores. FP8, BF16, TF32, FP16, INT8, and INT4 are also supported by Blackwell architecture tensor cores. The official NVIDIA datasheet footnote states the product is based on a published Khronos specification. MIG support allows up to 4 fully isolated GPU instances per the NVIDIA product page.'
+  - '4x NVENC (9th generation) and 4x NVDEC (6th generation) encoders/decoders confirmed by the official NVIDIA product page. This is more than the RTX PRO 5000 Blackwell (3x NVENC, 3x NVDEC) reflecting the larger GB202 die with full SM count versus the RTX PRO 5000''s 110-of-170 SM configuration.'
+  - 'Estimated MSRP of $8,565 USD based on launch-time retailer listing pricing. NVIDIA does not publish an official MSRP for professional workstation GPUs. The boxed retail version (900-5G144-2500-000) was listed at $8,565 and the bulk OEM version (900-5G144-2200-000) at $8,435 by Connection (US-based IT reseller) shortly after the March 2025 announcement. These prices are independently reported by TweakTown, Tom''s Hardware, and KillerStartups in articles from March 2025. The $8,565 figure represents the retail boxed price. Note: current market prices are higher ($10,000-$12,500+) as demand exceeds supply.'
+  - 'NVPN 900-5G144-2200-000 (OEM/bulk) sourced from B&H Photo product listing (product 1895402-REG), Newegg listing, serversupply.com, and CDW (CDW part 9039015). NVPN 900-5G144-2500-000 (retail boxed) sourced from B&H Photo product listing (product 1903949-REG) and gpus.net. The board_id prefix 5G144 identifies the GB202-based RTX PRO 6000 Blackwell Workstation Edition product family. Compare: the RTX PRO 5000 Blackwell (also GB202) uses the 5G153 prefix.'
+  - 'PNY retail SKU VCNRTXPRO6000B-PB confirmed from Dell.com product page (AD368558, listing manufacturer part VCNRTXPRO6000B-PB). PNY bulk SKU VCNRTXPRO6000B-SB confirmed from gpus.net vendor listing. Dell part number AD368558 confirmed from dell.com official product page for the 600W Workstation Edition. HP part number B11F0AA confirmed from gpus.net vendor listing (HP price: $11,520).'

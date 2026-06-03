@@ -1,0 +1,114 @@
+# yaml-language-server: $schema=./gpu-spec.schema.json
+name: nvidia-h200-nvl
+label: NVIDIA H200 NVL
+category: datacenter
+msrpUSD: 34500
+tensorCoreCount: 528
+fp32TFLOPS: 60
+fp16TFLOPS: 1671
+int8TOPS: 1671
+memoryCapacityGB: 141
+memoryBandwidthGBs: 4800
+maxTDPWatts: 600
+gpuArchitecture: hopper
+supportedHardwareOperations:
+  - FP16
+  - FP32
+  - FP64
+  - INT8
+  - TF32
+  - BF16
+  - FP8
+supportedCUDAComputeCapability: 9
+releaseDate: "2024-11-18"
+lastModified: "2026-06-02T00:00:00Z"
+
+summary: >-
+  The NVIDIA H200 NVL is a PCIe form-factor datacenter GPU accelerator built on
+  the Hopper GH100 architecture, announced at SC24 on November 18, 2024.
+  It shares the same GH100 silicon die and 141 GB HBM3e memory at 4.8 TB/s as
+  the H200 SXM, but operates at a lower TDP of up to 600 W (configurable down
+  to 450 W) to enable deployment in air-cooled enterprise rack designs that
+  cannot accommodate liquid-cooled SXM baseboard systems. The "NVL" designation
+  refers to NVLink bridge connectors on the PCIe card, enabling 2-way or 4-way
+  GPU interconnect at 900 GB/s per GPU — substantially higher bandwidth than
+  PCIe Gen5 alone (128 GB/s). The lower thermal envelope results in modestly
+  reduced peak compute: FP32 CUDA core performance is 60 TFLOPS (vs. 67 TFLOPS
+  for the SXM), and FP16/BF16 Tensor Core performance with sparsity is 1,671
+  TFLOPS (vs. 1,979 TFLOPS for the SXM). FP8 Tensor Core performance with
+  sparsity is 3,341 TFLOPS. The H200 NVL connects via PCIe Gen5 x16 and
+  supports Multi-Instance GPU (MIG) with up to 7 instances, confidential
+  computing, and NVIDIA's Transformer Engine for FP8 mixed-precision training.
+  It is the successor to the H100 PCIe and is positioned as the flexible,
+  single-GPU or multi-GPU accelerator for air-cooled data centers, delivering
+  approximately 2.35x the memory bandwidth and 1.76x the memory capacity of
+  the H100 PCIe while retaining PCIe form-factor compatibility.
+
+manufacturerIdentifiers:
+  - type: nvpn
+    value: "900-21010-0040-000"
+  - type: nvpn
+    value: "900-21010-0140-030"
+
+thirdPartyProducts:
+  - company: HPE
+    productName: NVIDIA H200 NVL 141GB PCIe Accelerator for HPE
+    identifier: S3U30C
+    identifierType: part_number
+  - company: Dell
+    productName: NVIDIA H200 NVL PCIe GPU 141GB HBM3E 600W
+    identifier: P6RPC
+    identifierType: part_number
+  - company: Dell
+    productName: NVIDIA H200 NVL PCIe GPU 141GB HBM3E
+    identifier: "490-BKRM"
+    identifierType: part_number
+  - company: Lenovo
+    productName: ThinkSystem NVIDIA H200 NVL 141GB PCIe Gen5 Passive GPU
+    identifier: 4X67A97315
+    identifierType: part_number
+  - company: Cisco
+    productName: NVIDIA OEM H200-NVL GPU 600W 141GB 2-Slot FHFL
+    identifier: UCSC-GPU-H200-NVL
+    identifierType: part_number
+  - company: Cisco
+    productName: NVIDIA OEM H200-NVL GPU 600W 141GB 2-Slot FHFL (Spare)
+    identifier: UCSC-GPU-H200-NVL=
+    identifierType: part_number
+  - company: PNY
+    productName: PNY NVIDIA H200 NVL Tensor Core GPU 141GB PCIe
+    identifier: NVH200NVLTCGPU-KIT
+    identifierType: sku
+
+references:
+  - https://openzeka.com/wp-content/uploads/2024/11/h200-gpu-datasheet.pdf
+  - https://www.nvidia.com/en-us/data-center/h200/
+  - https://lenovopress.lenovo.com/lp1944.pdf
+  - https://www.techpowerup.com/gpu-specs/h200-nvl.c4254
+  - https://serverproven.lenovo.com/option/4X67A97315/
+  - https://www.newegg.com/p/N82E16888892009
+  - https://directmacro.com/hpe-s3u30c-graphics-card.html
+  - https://www.itcreations.com/product/156760
+  - https://en.wikipedia.org/wiki/Hopper_(microarchitecture)
+  - https://www.runpod.io/articles/guides/nvidia-h200-gpu
+  - https://www.spheron.network/blog/nvidia-h200-specs/
+  - https://www.pny.com/en-eu/file%20library/professional/datasheet/data%20center%20cards/h200-nvl-datasheet.pdf
+  - https://www.dell.com/en-sg/shop/nvidia-h200-nvl-pcie-450w-600w-141gb-passive-double-wide-full-height-gpu/apd/490-bkrm/graphic-video-cards
+  - https://www.insight.com/en_US/shop/product/CAI-GPU-H200-NVL/cisco%20systems/CAI-GPU-H200-NVL/NVIDIA-H200-NVL-GPU-computing-processor-NVIDIA-H200-NVL-Tensor-Core-141-GB-HBM3-Dualslot-PCIe-50-x16-600-W/
+
+notes:
+  - 'fp32TFLOPS of 60 represents FP32 CUDA core (non-tensor) performance per the NVIDIA H200 datasheet (openzeka.com/wp-content/uploads/2024/11/h200-gpu-datasheet.pdf, which is the SC24 edition of the H200 datasheet). This is lower than the H200 SXM (67 TFLOPS) due to lower GPU boost clock at the 600W PCIe thermal envelope vs. 700W SXM configuration.'
+  - 'fp16TFLOPS of 1671 represents FP16 Tensor Core performance with 2:4 structured sparsity per the NVIDIA H200 SC24 datasheet. NVIDIA convention for datacenter GPUs publishes the sparsity-accelerated Tensor Core value. Without sparsity, FP16 Tensor Core performance is approximately 835-836 TFLOPS per the Lenovo H200 NVL product guide (lenovopress.lenovo.com/lp1944.pdf). The sparse value of 1671 TFLOPS is used here per NVIDIA datacenter GPU convention, consistent with H100 SXM and H200 SXM specifications in this database.'
+  - 'int8TOPS of 1671 represents non-sparse (dense) INT8 Tensor Core performance, derived from sparse INT8 of 3341 TOPS / 2 per the NVIDIA H200 SC24 datasheet. The datasheet footnote indicates tensor-core values are with 2:4 structured sparsity. Dense value used for consistent cross-vendor comparison. Note: the Lenovo H200 NVL product guide (lenovopress.lenovo.com/lp1944.pdf) lists the NVL INT8 dense value as 1,570 TOPS, which does not follow 2x sparsity arithmetic (1570 x 2 = 3140, not 3341). NVIDIA does not publish a separate dense INT8 value; 3341 / 2 = 1671 is used here per database convention, consistent with how other Hopper GPUs in this database are specified.'
+  - 'TF32 Tensor Core performance with sparsity is 835 TFLOPS per the NVIDIA H200 SC24 datasheet. Without sparsity, TF32 is approximately 418 TFLOPS per the Lenovo H200 NVL product guide.'
+  - 'FP8 Tensor Core performance with sparsity is 3341 TFLOPS per the NVIDIA H200 SC24 datasheet; without sparsity approximately 1671 TFLOPS (3341 / 2 per database convention). Note: the Lenovo H200 NVL product guide (lenovopress.lenovo.com/lp1944.pdf) lists FP8 dense as 1,570 TFLOPS, which is approximately 6% lower than 3341 / 2 and does not follow strict 2x sparsity arithmetic. The Lenovo figure may reflect a different measurement methodology or a document error; 3341 / 2 is used here for consistency with the H200 SXM and other Hopper GPUs in this database.'
+  - 'FP64 performance: 30 TFLOPS (CUDA core) and 60 TFLOPS (FP64 Tensor Core with sparsity) per the NVIDIA H200 SC24 datasheet. These values are lower than the H200 SXM (34 TFLOPS CUDA, 67 TFLOPS Tensor Core) due to the lower clock speed in the 600W NVL configuration.'
+  - 'Memory bandwidth of 4800 GB/s (4.8 TB/s) and 141 GB HBM3e confirmed by the NVIDIA H200 SC24 datasheet. Memory subsystem is identical to the H200 SXM; bandwidth is limited only by the HBM3e stacks, not by the thermal configuration.'
+  - 'TDP of 600W is the maximum configurable power for the H200 NVL per the NVIDIA H200 SC24 datasheet. The Dell product listing (490-BKRM) specifies 450W-600W configurable range, confirming the card can operate at lower power profiles for constrained rack environments.'
+  - 'CUDA core count of 16,896 and tensor core count of 528 are per the GH100 full die configuration, identical to the H200 SXM. The H200 NVL uses the same GH100 silicon as the SXM variant. TechPowerUp GPU Database snippet confirms 528 tensor cores. runpod.io H200 guide confirms 16,896 CUDA cores for the NVL variant.'
+  - 'NVLink bandwidth of 900 GB/s per GPU confirmed by the NVIDIA H200 SC24 datasheet. The NVL suffix denotes NVLink bridge connectors on the PCIe card enabling 2-way or 4-way GPU direct interconnect at 900 GB/s per GPU (NVLink 4.0). This differentiates the H200 NVL from a plain H200 PCIe card.'
+  - 'PCIe Gen5 x16 (128 GB/s) confirmed by multiple sources: NVIDIA H200 SC24 datasheet, itcreations.com listing (900-21010-0140-030-DELL specifies PCI-E 5.0), and Lenovo H200 NVL product guide.'
+  - 'Release date of 2024-11-18 per TechPowerUp GPU Database. The H200 NVL was announced at SC24 (Supercomputing 2024) on November 18, 2024, marking its general commercial availability. The H200 SXM was announced earlier at SC23 in November 2023.'
+  - 'Estimated MSRP of $34,500 USD for H200 NVL PCIe based on OEM list prices. NVIDIA does not publish official MSRP for datacenter GPUs. OEM list prices corroborated by 2 independent sources: DirectMacro lists HPE S3U30C at $34,500 USD (directmacro.com), and Newegg lists the NVIDIA reference card (900-21010-0040-000) at $35,998 (newegg.com). The $34,500 estimate uses the HPE OEM list price as the more conservative and directly sourced OEM list price. TRG Datacenters price guide estimates $31,000-$32,000 per NVL card, suggesting market pricing at or below OEM list prices. Note: pricing varies by configuration and reseller.'
+  - 'manufacturerIdentifiers: NVPN 900-21010-0040-000 is the primary NVIDIA reference card part number confirmed across multiple resellers including Newegg and Dihuni. NVPN 900-21010-0140-030 is a Dell-specific variant confirmed from itcreations.com (900-21010-0140-030-DELL) and serversupply.com. Board ID for the H200 NVL was not confirmed from an official NVIDIA document; community sources suggest PG520 but this could not be verified, so it is omitted.'
+  - 'thirdPartyProducts: HPE part number S3U30C confirmed from directmacro.com and kcomputers.com listings. Dell part numbers P6RPC (eBay listing from Dell, ubbcentral.com) and 490-BKRM (Dell product page dell.com/en-sg/shop) confirmed. Lenovo part number 4X67A97315 confirmed from lenovopress.lenovo.com/lp1944.pdf and serverproven.lenovo.com. Cisco part numbers UCSC-GPU-H200-NVL and UCSC-GPU-H200-NVL= confirmed from neobits.com and aztekcomputers.com. PNY SKU NVH200NVLTCGPU-KIT confirmed from dihuni.com, sabrepc.com, and exxactcorp.com.'

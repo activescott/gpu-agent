@@ -18,7 +18,7 @@ supportedHardwareOperations:
   - INT8
   - INT4
 releaseDate: "2023-08-03"
-lastModified: "2026-01-07T00:00:00Z"
+lastModified: "2026-06-03T00:00:00Z"
 
 summary: >-
   The AMD Radeon Pro W7500 is a professional workstation graphics card launched on August 3, 2023,
@@ -65,7 +65,7 @@ references:
   - https://en.wikipedia.org/wiki/RDNA_3
 notes:
   - FP32 TFLOPS of 12.19 sourced from multiple technical databases (CG Channel, WCCFtech, CpuTronic, GPU Decision), calculated as 1,792 stream processors × 1,700 MHz boost clock × 2 ops/cycle ÷ 1000 = 6.09 TFLOPS per compute operation, with full precision yielding 12.19 TFLOPS
-  - FP16 performance of 24.38 TFLOPS sourced from technical databases, calculated at 2:1 ratio to FP32, which is standard for RDNA 3 architecture
+  - 'fp16TFLOPS of 24.38 represents FP16 Matrix throughput (dense) via RDNA 3 AI Accelerators (WMMA), per AMD product page convention. This equals 2x FP32 vector on RDNA 3 silicon. AMD also publishes FP16 Vector = FP32 Vector on the same product page; that SIMD path is NOT used here in favor of the matrix path which is the cross-vendor analog of NVIDIA tensor-core FP16. See policy in .claude/agents/gpu-researcher.md.'
   - tensorCoreCount of 56 represents the AI Accelerators (2 per compute unit × 28 compute units)
   - Memory bandwidth calculated as 128-bit bus × 10.8 Gbps effective (1344 MHz × 8) ÷ 8 = 172.8 GB/s, rounded to 172 GB/s
   - Memory speed is 10.8-11 Gbps GDDR6 per multiple sources

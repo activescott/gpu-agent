@@ -1,0 +1,88 @@
+# yaml-language-server: $schema=./gpu-spec.schema.json
+name: amd-instinct-mi350x
+label: AMD Instinct MI350X
+category: datacenter
+msrpUSD: null
+tensorCoreCount: 1024
+fp32TFLOPS: 144.2
+fp16TFLOPS: 4600
+int8TOPS: 4600
+memoryCapacityGB: 288
+memoryBandwidthGBs: 8000
+maxTDPWatts: 1000
+gpuArchitecture: CDNA 4
+supportedHardwareOperations:
+  - FP16
+  - FP32
+  - FP64
+  - INT8
+  - BF16
+  - FP8
+  - FP4
+releaseDate: "2025-06-12"
+lastModified: "2026-06-03T00:00:00Z"
+
+summary: >-
+  The AMD Instinct MI350X is AMD's first CDNA 4 architecture AI and HPC
+  datacenter accelerator, launched on June 12, 2025 at the AMD Advancing AI
+  2025 event in San Jose, California. It uses a multi-chiplet design with 8
+  Accelerator Complex Dies (XCDs) manufactured on TSMC N3P (3 nm) plus 2 I/O
+  dies on TSMC 6 nm, totaling 185 billion transistors across the package. The
+  MI350X delivers 256 CDNA 4 compute units (32 CUs per XCD), 16,384 stream
+  processors, and 1,024 Matrix Cores, with native hardware support for FP4,
+  FP6, FP8, FP16, BF16, FP32, FP64, and INT8 precisions. The defining features of CDNA 4 include redesigned
+  matrix-core engines that add native MXFP4 and MXFP6 (microscaling)
+  throughput, enabling 9.2 PFLOPS of peak FP4/MXFP4 performance per
+  accelerator - a major generational leap for low-precision AI inference.
+  FP16/BF16 matrix dense performance is 2.3 PFLOPS (4.6 PFLOPS with 2:4
+  structured sparsity), FP8 dense is 4.6 PFLOPS, and INT8 dense is 4.6 POPS.
+  FP32 and FP64 vector performance are 144.2 and 72.1 TFLOPS respectively. The
+  MI350X is equipped with 288 GB of 12-high HBM3E memory (supplied by Samsung
+  and Micron) via an 8,192-bit interface at 8 GHz, delivering 8 TB/s (8,000
+  GB/s) of peak memory bandwidth - a 33% improvement over the MI325X. At 1,000W
+  TBP, it is the air-cooled variant of the CDNA 4 family; the MI355X (1,400W,
+  liquid-cooled) achieves higher performance through higher clock speeds with
+  the same die and memory configuration. The MI350X uses the OAM (OCP
+  Accelerator Module) form factor with a PCIe 5.0 x16 host interface and 7
+  fourth-generation Infinity Fabric links at approximately 153-160 GB/s each.
+  Up to 8 MI350X OAMs mount on a Universal Base Board 2.0 (UBB 2.0) to form
+  the AMD Instinct MI350X Platform with 2.3 TB aggregate HBM3E. AMD claims 4x
+  AI compute improvement and 35x inference performance improvement versus the
+  MI325X. The MI350X is packaged using TSMC CoWoS-S technology. Mass
+  production and customer shipments were slated for Q3 2025.
+
+thirdPartyProducts:
+  - company: Supermicro
+    productName: 8U DP AMD EPYC 8-GPU Universal GPU Server with AMD Instinct MI350X
+    identifier: AS-8126GS-TNMR
+    identifierType: model_number
+
+references:
+  - https://www.amd.com/en/products/accelerators/instinct/mi350/mi350x.html
+  - https://www.amd.com/en/products/accelerators/instinct/mi350.html
+  - https://ir.amd.com/news-events/press-releases/detail/1255/amd-unveils-vision-for-an-open-ai-ecosystem-detailing-new-silicon-software-and-systems-at-advancing-ai-2025
+  - https://www.extremetech.com/computing/amd-launches-instinct-mi350x-and-mi355x-ai-gpus
+  - https://www.trendforce.com/news/2025/06/13/news-unpacking-amds-mi350-powered-by-tsmcs-n3p-with-samsung-micron-as-dual-hbm3e-suppliers/
+  - https://www.servethehome.com/amd-dives-deep-on-cdna-4-architecture-and-mi350-accelerator-at-hot-chips-2025/
+  - https://www.storagereview.com/review/supermicro-jumpstart-review-h14-with-amd-instinct-mi350x
+  - https://instinct.docs.amd.com/projects/system-acceptance/en/latest/gpus/mi350x.html
+  - https://www.supermicro.com/datasheet/h14/datasheet_H14_4U8U_8GPU_MI350.pdf
+  - https://en.wikipedia.org/wiki/AMD_Instinct
+
+notes:
+  - 'fp32TFLOPS of 144.2 represents peak FP32 vector performance per AMD official product page (amd.com/en/products/accelerators/instinct/mi350/mi350x.html). AMD also lists FP32 matrix performance at 144.2 TFLOPS. Note: CDNA 4 achieves FP32 vector equals FP32 matrix parity, unlike earlier CDNA architectures where FP32 vector did not equal FP64 matrix.'
+  - 'fp16TFLOPS of 4600 represents peak FP16 matrix performance with 2:4 structured sparsity (4.6 PFLOPs) per AMD official product page. Dense (non-sparse) FP16 matrix performance is 2300 TFLOPS (2.3 PFLOPs). Sparse value used per agent policy (FP16 Matrix SPARSE). BF16 has identical dense/sparse values: 2.3 PFLOPs dense / 4.6 PFLOPs sparse.'
+  - 'int8TOPS of 4600 represents non-sparse (dense) INT8 matrix performance per AMD official product page (listed as "Peak INT8 Matrix Performance: 4.6 POPs"). With 2:4 structured sparsity, INT8 performance is 9200 TOPS (9.2 POPs). Dense value used for consistent cross-vendor comparison.'
+  - 'Additional precision performance per AMD official product page: FP64 vector 72.1 TFLOPS; FP64 matrix 72.1 TFLOPS; FP8 MXFP8 dense 4.6 PFLOPs; FP8 OCP-FP8 (E5M2, E4M3) dense 4.6 PFLOPs; FP8 OCP sparse 9.2 PFLOPs; FP6 (MXFP6) 9.2 PFLOPs; FP4 (MXFP4) 9.2 PFLOPs. Note: FP6 support is not representable in the schema''s supportedHardwareOperations enum but CDNA 4 supports native MXFP6 precision.'
+  - 'tensorCoreCount of 1024 represents AMD Matrix Cores per AMD official product page listing "Matrix Cores: 1,024". CDNA 4 has 4 Matrix Cores per compute unit x 256 compute units = 1,024. AMD uses the term "Matrix Cores" rather than "Tensor Cores".'
+  - 'memoryBandwidthGBs of 8000 represents peak theoretical bandwidth of 8 TB/s from 288 GB HBM3E via 8192-bit memory interface at 8 GHz per AMD official product page. Confirmed by ExtremeTech launch article and TrendForce supply chain report. The 8 GHz memory clock uses 12-high HBM3E stacks supplied by Samsung and Micron (per TrendForce).'
+  - 'Architecture: 8 Accelerator Complex Dies (XCDs, 32 CUs each) on TSMC N3P (3 nm) plus 2 I/O dies on TSMC 6 nm. Total 185 billion transistors per AMD official product page and Hot Chips 2025 coverage (servethehome.com). Packaged with TSMC CoWoS-S technology (TrendForce). The MI350X uses 8 XCDs vs 4 I/O dies in MI300X/MI325X - Hot Chips 2025 confirmed 8 XCDs on 2 I/O dies (4 compute dies per base die).'
+  - 'Peak engine clock is 2,200 MHz per AMD official product page. Hot Chips 2025 (servethehome.com) cited 2.4 GHz - this likely refers to a different operating point or the MI355X; the AMD product page value of 2,200 MHz is used as authoritative.'
+  - 'Form factor is OAM (OCP Accelerator Module) with Passive OAM cooling at 1,000W TBP per AMD official product page. Host interface is PCIe 5.0 x16. Infinity Fabric has 7 links per GPU at approximately 153 GB/s per link (AMD product page lists 153 GB/s peak IF bandwidth); Supermicro MI350X datasheet cites 160 GB/s per link. AMD product page value used. LLC / Infinity Cache is 256 MB per AMD official product page.'
+  - 'MI350X vs MI355X: Both use the same CDNA 4 die, same 288 GB HBM3E, same 8 TB/s bandwidth. MI350X TBP = 1,000W (air-cooled), MI355X TBP = 1,400W (liquid-cooled). MI355X achieves higher FP32 (157.3 TFLOPS) and FP64 (78.6 TFLOPS) through higher clock speeds. Per AMD official series page and ExtremeTech.'
+  - 'AMD claims 4x AI compute improvement and 35x inference performance improvement vs MI325X per AMD official announcement (ir.amd.com press release, June 12, 2025) and ExtremeTech launch coverage. The 35x inference improvement is workload-specific and reflects optimizations beyond raw FLOPS.'
+  - 'FP4 (MXFP4) performance is 9.2 PFLOPs (9,200 TFLOPS) per AMD official product page. The task brief mentioned "~18.5 PFLOPS" FP4 - this was likely the 8-GPU platform FP16 dense value (8 x 2.3 = 18.4 PFLOPS), not per-GPU FP4. Per-GPU FP4 = 9.2 PFLOPS per AMD official page. The 8-GPU platform FP4 would be 8 x 9.2 = 73.6 PFLOPS.'
+  - 'TF32 and INT4 are excluded from supportedHardwareOperations. The AMD MI350X official product page footnotes explicitly state: "TF32 support through software emulation" - CDNA 4 dropped native TF32 hardware acceleration present in CDNA 3 (MI325X). INT4 is not listed as a hardware-supported precision on the AMD official product page; StorageReview mentions "INT4 QAT" but this refers to software-level quantization (models quantized to INT4 running on INT8/FP8 hardware), not native INT4 matrix acceleration. Source: amd.com/en/products/accelerators/instinct/mi350/mi350x.html footnotes.'
+  - 'MSRP is null because AMD does not publish official MSRP for datacenter GPU accelerators. No verified OEM list prices were found from resellers (CDW, WiredZone, etc.) at time of research - the MI350X is sold exclusively through OEM system partnerships (Dell, HPE, Lenovo, Supermicro, Cisco, Gigabyte) rather than as a standalone retail module. AMD official MI350 Series page lists OEM partners but provides no pricing. Mass production was slated for Q3 2025. Analyst estimates for MI350 series were not independently confirmed from two separate authoritative sources.'
+  - 'Third-party products: Supermicro AS-8126GS-TNMR (8U dual-processor system with 8x AMD Instinct MI325X/MI350X GPUs) confirmed from Supermicro official product page (supermicro.com) and StorageReview H14 review (storagereview.com). The AMD Instinct MI350X is also supported by Dell (PowerEdge XE-class servers), HPE (ProLiant AI servers), Lenovo (ThinkSystem), and Cisco compute platforms per AMD official MI350 Series page, but no standalone GPU OAM module part numbers were found for those vendors - they sell complete server systems.'
+  - 'Manufacturer OPN identifiers were not found in publicly available reseller listings or documentation at time of research. The AMD MI300X OPN was 100-300000045H and MI325X was 100-300000108H; MI350X likely follows the same 100-3XXXXXXH format but the specific number was not confirmed from authoritative sources.'

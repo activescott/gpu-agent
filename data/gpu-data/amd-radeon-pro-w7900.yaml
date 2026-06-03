@@ -18,7 +18,7 @@ supportedHardwareOperations:
   - INT8
   - INT4
 releaseDate: "2023-04-13"
-lastModified: "2026-01-08T00:00:00Z"
+lastModified: "2026-06-03T00:00:00Z"
 
 summary: >-
   The AMD Radeon Pro W7900 is AMD's flagship RDNA 3 professional workstation graphics card, launched in
@@ -52,7 +52,7 @@ references:
 
 notes:
   - FP32 TFLOPS of 61 per AMD official specifications for peak single-precision performance
-  - FP16 performance is 122 TFLOPS at 2:1 ratio to FP32, standard for RDNA 3 architecture
+  - 'fp16TFLOPS of 122.0 represents FP16 Matrix throughput (dense) via RDNA 3 AI Accelerators (WMMA), per AMD product page convention. This equals 2x FP32 vector on RDNA 3 silicon. AMD also publishes FP16 Vector = FP32 Vector on the same product page; that SIMD path is NOT used here in favor of the matrix path which is the cross-vendor analog of NVIDIA tensor-core FP16. See policy in .claude/agents/gpu-researcher.md.'
   - tensorCoreCount of 192 represents the AI Accelerators (2 per compute unit x 96 compute units)
   - Memory bandwidth of 864 GB/s calculated as 384-bit bus x 18 Gbps effective / 8
   - RDNA 3 architecture includes dedicated AI Accelerators for machine learning workloads

@@ -1,0 +1,103 @@
+# yaml-language-server: $schema=./gpu-spec.schema.json
+name: nvidia-rtx-pro-6000-blackwell-server
+label: NVIDIA RTX PRO 6000 Blackwell Server Edition
+category: datacenter
+msrpUSD: 13825
+tensorCoreCount: 752
+fp32TFLOPS: 120.0
+fp16TFLOPS: 1000.0
+int8TOPS: 1000.0
+memoryCapacityGB: 96
+memoryBandwidthGBs: 1597
+maxTDPWatts: 600
+gpuArchitecture: blackwell
+supportedHardwareOperations:
+  - FP32
+  - FP16
+  - TF32
+  - BF16
+  - FP8
+  - FP4
+  - INT8
+  - INT4
+supportedCUDAComputeCapability: 12.0
+releaseDate: "2025-03-18"
+lastModified: "2026-06-02T00:00:00Z"
+
+manufacturerIdentifiers:
+  - type: nvpn
+    value: "900-2G153-0000-000"
+  - type: nvpn
+    value: "900-2G153-2700-030"
+
+thirdPartyProducts:
+  - company: PNY
+    productName: "NVIDIA RTX PRO 6000 Blackwell Server Edition 96GB GDDR7 GPU (Retail)"
+    identifier: "TCSRTX6000PROSE-PB"
+    identifierType: sku
+  - company: PNY
+    productName: "NVIDIA RTX PRO 6000 Blackwell Server Edition 96GB GDDR7 GPU Kit"
+    identifier: "NVRTXPRO6000TCGPU-KIT"
+    identifierType: sku
+  - company: Lenovo
+    productName: "ThinkSystem NVIDIA RTX PRO 6000 Blackwell Server Edition PCIe Gen5 GPU"
+    identifier: "4X67B09287"
+    identifierType: part_number
+  - company: HPE
+    productName: "NVIDIA RTX PRO 6000 Blackwell Server Edition 96GB PCIe Accelerator for HPE"
+    identifier: "S6A73C"
+    identifierType: part_number
+
+summary: |
+  The NVIDIA RTX PRO 6000 Blackwell Server Edition is the data-center variant of the flagship
+  RTX PRO 6000 Blackwell GPU family, announced at GTC25 Spring on March 18, 2025. It uses the
+  same full-configuration GB202 die as the Workstation Edition — 24,064 CUDA cores across 188
+  streaming multiprocessors, 752 fifth-generation Tensor Cores, and 188 fourth-generation RT Cores
+  — but is optimized for deployment in 1U and 2U rack servers using passive (fanless) cooling that
+  relies on chassis airflow rather than an active cooling solution.
+
+  The Server Edition delivers 120 TFLOPS of FP32 single-precision compute and 4 PFLOPS of peak FP4
+  AI performance, compared to the Workstation Edition's 125 TFLOPS FP32. Both variants carry 96 GB
+  of GDDR7 ECC memory on a 512-bit bus, but the Server Edition operates at a lower memory data rate
+  producing 1,597 GB/s bandwidth versus the Workstation Edition's 1,792 GB/s. The TDP is listed as
+  configurable up to 600 W; PNY documentation states a range of 400 W to 600 W, enabling OEM system
+  builders to tune power draw for specific server chassis thermal envelopes.
+
+  The card connects via PCIe 5.0 x16 and occupies a full-height, full-length dual-slot form factor
+  (4.4 in H x 10.5 in L), a shorter board length than the Workstation Edition (12.0 in), suited to
+  standard 2U rack servers. It supports Multi-Instance GPU (MIG) with up to four fully isolated 24 GB
+  GPU instances. Video engine support includes four ninth-generation NVENC encoders and four
+  sixth-generation NVDEC decoders. Four DisplayPort 2.1b outputs are present but disabled by default
+  in server configurations.
+
+  The card is supplied through OEM server partners including Cisco, Dell Technologies, HPE, Lenovo,
+  and Supermicro. It is also distributed by PNY under the TCSRTX6000PROSE-PB and
+  NVRTXPRO6000TCGPU-KIT SKUs. NVIDIA uses the 2G153 board identifier for the Server Edition,
+  distinct from the 5G144 board identifier used for the Workstation Edition.
+
+references:
+  - https://www.nvidia.com/en-us/data-center/rtx-pro-6000-blackwell-server-edition/
+  - https://nvidianews.nvidia.com/news/nvidia-blackwell-rtx-pro-workstations-servers-agentic-ai
+  - https://lenovopress.lenovo.com/lp2263-thinksystem-nvidia-rtx-pro-6000-blackwell-server-edition-pcie-gen5-gpu
+  - https://www.pny.com/nvidia-rtx-pro-6000-blackwell
+  - https://servero.co.uk/pny-tcsrtx6000prose-pb-rtx-pro-6000-blackwell-server-edition-new
+  - https://www.cdw.com/product/nvidia-rtx-pro-6000-blackwell-server-edition-graphics-card-rtx-pro-60/8426124
+  - https://www.cdw.com/product/nvidia-rtx-pro-6000-blackwell-server-edition-graphics-card-rtx-pro-60/8379294
+  - https://buy.hpe.com/us/en/options/server-accelerators/computational-graphics-accelerators-for-servers/nvidia-rtx-pro-6000-blackwell-server-edition-96gb-pcie-accelerator-for-hpe/p/s6a73c
+  - https://developer.nvidia.com/cuda-gpus
+
+notes:
+  - 'FP32 TFLOPS of 120.0 sourced from the official NVIDIA RTX PRO 6000 Blackwell Server Edition product page (nvidia.com/en-us/data-center/rtx-pro-6000-blackwell-server-edition/) and independently confirmed by the Lenovo ThinkSystem Product Guide (lenovopress.lenovo.com/lp2263) and the PNY datasheet (pny.com/en-eu/file library/professional/datasheet/data center cards/pny-nvidia-rtx-pro-6000-blackwell-server-edition-datasheet.pdf). This is 5 TFLOPS lower than the Workstation Edition (125 TFLOPS), consistent with the lower memory clock speed producing a lower boost clock configuration.'
+  - 'AI performance of 4 PFLOPS (FP4 sparse) sourced from the official NVIDIA product page and confirmed by the Lenovo ThinkSystem Product Guide. The NVIDIA product page also lists: FP8 = 2 PFLOPS, FP16/BF16 = 1 PFLOP, TF32 = 234 TFLOPS. Per the user-brief policy: "AI TOPS" on Blackwell product pages = FP4 sparse.'
+  - 'int8TOPS of 1000.0 represents non-sparse (dense) INT8 performance, derived from FP4 sparse TOPS: 4,000 (FP4 sparse) / 4 = 1,000 TOPS. Derivation chain: FP4 sparse = 2x INT8 sparse = 4x INT8 dense, per Blackwell 5th-generation tensor core architecture. Dense value used for consistent cross-vendor comparison.'
+  - 'fp16TFLOPS of 1000.0 is the FP16 sparse Tensor Core value, derived from the official NVIDIA product page figure (FP16/BF16 = 1 PFLOP = 1,000 TFLOPS with sparsity). This is the FP16 Tensor sparse throughput used as fp16TFLOPS per project policy. Dense FP16 Tensor = 500 TFLOPS.'
+  - 'Memory bandwidth of 1,597 GB/s sourced from the official NVIDIA product page, confirmed by the Lenovo ThinkSystem Product Guide and PNY product page. This is lower than the Workstation Edition (1,792 GB/s) due to a lower GDDR7 data rate. Arithmetic check: 512-bit bus / 8 x 24,954 Mbps effective = ~1,597 GB/s, consistent with approximately 24.95 Gbps per pin versus 28 Gbps for the Workstation Edition.'
+  - 'TDP of 600 W represents the maximum configurable power limit. The PNY product page states "Max Power Consumption: 400 W - 600 W (configurable)", and the Lenovo ThinkSystem Product Guide lists 600 W as the rated TDP. The Dell community forum references a "300W TDP" figure; this appears to represent a software-configured lower power limit rather than the card maximum TDP. The card maximum TDP used here is 600 W. Note: User brief context suggested 300W TDP, but all official OEM documentation (Lenovo, PNY, CDW) confirms the maximum configurable TDP is 600 W.'
+  - 'GPU die is GB202 on TSMC 4nm (4NP) process with 92.2 billion transistors and approximately 750 mm2 die area, same die as the RTX PRO 6000 Blackwell Workstation Edition. Both use CUDA compute capability 12.0 (sm_120), confirmed by developer.nvidia.com/cuda-gpus.'
+  - 'CUDA core count of 24,064 (188 SMs x 128 cores/SM) is identical to the Workstation Edition, confirmed by the NVIDIA product page and Lenovo product guide. Tensor core count of 752 (188 SMs x 4 per SM) and RT core count of 188 (1 per SM) are also identical.'
+  - 'Release date of March 18, 2025 is the GTC25 Spring announcement date, consistent with TechPowerUp GPU database and the official NVIDIA news release (nvidianews.nvidia.com). Availability to OEM server partners followed in subsequent months per the NVIDIA announcement.'
+  - 'Form factor is FHFL dual-slot (4.4 in H x 10.5 in L), confirmed by Lenovo product guide and servero.co.uk listing. This is shorter than the Workstation Edition (12.0 in L) to fit standard 2U server chassis. Cooling is passive (fanless), relying on chassis airflow, confirmed by NVIDIA news release, PNY product page, and servero.co.uk.'
+  - 'MIG support allows up to 4 fully isolated GPU instances of 24 GB each, per the official NVIDIA product page (nvidia.com/en-us/data-center/rtx-pro-6000-blackwell-server-edition/) and the NVIDIA Server Edition datasheet. The PNY product page erroneously states "up to 7 fully isolated instances"; this is contradicted by the official NVIDIA source and appears to be a copy error on PNY''s page. NVLink is not supported (passive server card), confirmed by Lenovo product guide.'
+  - 'NVPN 900-2G153-0000-000 sourced from CDW (cdw.com, CDW part 8379294) and Newegg listings. NVPN 900-2G153-2700-030 sourced from Lenovo ThinkSystem Product Guide (lenovopress.lenovo.com/lp2263, Lenovo feature code CBK8, Lenovo part 4X67B09287). The 2G153 board identifier is specific to the Server Edition; the Workstation Edition uses 5G144.'
+  - 'PNY SKU TCSRTX6000PROSE-PB sourced from servero.co.uk product listing. PNY SKU NVRTXPRO6000TCGPU-KIT sourced from CDW (cdw.com part 8426124) and pny.com product page. Lenovo part number 4X67B09287 with feature code CBK8 sourced from the Lenovo ThinkSystem Product Guide. HPE part number S6A73C sourced from hpe.com official product page (buy.hpe.com/us/en/.../p/s6a73c).'
+  - 'Estimated MSRP of $13,825 USD based on CDW list price for NVRTXPRO6000TCGPU-KIT ($13,824.99 per CDW product page 8426124). NVIDIA does not publish an official MSRP for data center or professional server GPUs. The CDW list price is the primary commercial channel price in the US for the distribution/kit variant. Note: Lenovo ThinkSystem (4X67B09287) and HPE (S6A73C) OEM versions do not publish list prices publicly and are quoted on request. UK pricing via servero.co.uk for TCSRTX6000PROSE-PB is £6,236.58 ex-VAT, which at mid-2025 exchange rates would be approximately $8,000-9,000 USD, suggesting the CDW kit price includes distribution margin. Single-source CDW pricing is used pending additional US market sources.'

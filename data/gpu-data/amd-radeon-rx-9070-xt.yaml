@@ -5,7 +5,7 @@ category: gaming
 msrpUSD: 599
 tensorCoreCount: 128
 fp32TFLOPS: 48.7
-fp16TFLOPS: 97.4
+fp16TFLOPS: 194.8
 memoryCapacityGB: 16
 memoryBandwidthGBs: 640
 maxTDPWatts: 304
@@ -16,7 +16,7 @@ supportedHardwareOperations:
   - INT8
   - INT4
 releaseDate: "2025-03-06"
-lastModified: "2025-12-18T00:00:00Z"
+lastModified: "2026-06-03T00:00:00Z"
 
 summary: |
   The AMD Radeon RX 9070 XT is a high-performance graphics card released in March 2025,
@@ -44,7 +44,7 @@ references:
 notes:
   - tensorCoreCount tracks the 2nd-generation AI Accelerators as "tensor cores". The RX 9070 XT has 128 AI Accelerators (2 per CU × 64 CUs).
   - fp32TFLOPS of 48.7 calculated based on 4,096 stream processors × 2.97 GHz boost clock × 2 (dual-issue) = 48.66 TFLOPS, rounded to 48.7 TFLOPS as reported by AMD.
-  - fp16TFLOPS of 97.4 represents 2x FP32 performance due to packed FP16 operations support in RDNA 4.
+  - 'fp16TFLOPS of 194.8 represents FP16 Matrix throughput (dense) via the 2nd-generation AI Accelerators (WMMA), per AMD product page convention (Peak Half Precision (FP16 Matrix) Performance). RDNA 4 matrix throughput is 4x FP32 vector (verified against AMD-published values for RX 9070=145, RX 9060=86, RX 9070 GRE=137). AMD also publishes FP16 Vector = FP32 Vector = 48.7 TFLOPS (SIMD path); that vector value is NOT used here in favor of the matrix path which is the cross-vendor analog of NVIDIA tensor-core FP16. See policy in .claude/agents/gpu-researcher.md.'
   - Memory bandwidth calculated as 256-bit interface × 20 Gbps = 640 GB/s, enhanced by 64MB 3rd-generation Infinity Cache.
   - TDP is 304W, with some custom models featuring up to 330W power limits.
   - Process node is TSMC 4nm with Navi 48 XTX GPU die.

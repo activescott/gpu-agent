@@ -18,7 +18,7 @@ supportedHardwareOperations:
   - INT8
   - INT4
 releaseDate: "2023-11-13"
-lastModified: "2025-12-19T00:00:00Z"
+lastModified: "2026-06-03T00:00:00Z"
 
 summary: >-
   The AMD Radeon Pro W7700 is a professional workstation graphics card launched in November 2023,
@@ -65,7 +65,7 @@ references:
   - https://www.lenovo.com/au/en/p/accessories-and-software/graphics-cards/graphics_cards/78806877
 notes:
   - FP32 TFLOPS of 31.95 calculated as 3,072 stream processors × 2,600 MHz boost clock × 2 ops/cycle = 31.95 TFLOPS
-  - FP16 performance is 63.9 TFLOPS calculated at 2:1 ratio to FP32, which is standard for RDNA 3 architecture
+  - 'fp16TFLOPS of 63.9 represents FP16 Matrix throughput (dense) via RDNA 3 AI Accelerators (WMMA), per AMD product page convention. This equals 2x FP32 vector on RDNA 3 silicon. AMD also publishes FP16 Vector = FP32 Vector on the same product page; that SIMD path is NOT used here in favor of the matrix path which is the cross-vendor analog of NVIDIA tensor-core FP16. See policy in .claude/agents/gpu-researcher.md.'
   - tensorCoreCount of 96 represents the AI Accelerators (2 per compute unit × 48 compute units)
   - Memory bandwidth calculated as 256-bit bus × 18 Gbps effective = 576 GB/s
   - RDNA 3 architecture includes dedicated AI Accelerators for machine learning workloads

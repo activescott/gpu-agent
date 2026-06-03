@@ -1,0 +1,101 @@
+# yaml-language-server: $schema=./gpu-spec.schema.json
+name: nvidia-rtx-pro-6000-blackwell-max-q
+label: NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition
+category: workstation
+msrpUSD: 10999
+tensorCoreCount: 752
+fp32TFLOPS: 110.0
+fp16TFLOPS: 877.75
+int8TOPS: 877.75
+memoryCapacityGB: 96
+memoryBandwidthGBs: 1792
+maxTDPWatts: 300
+gpuArchitecture: blackwell
+supportedHardwareOperations:
+  - FP32
+  - FP16
+  - TF32
+  - BF16
+  - FP8
+  - FP4
+  - INT8
+  - INT4
+supportedCUDAComputeCapability: 12.0
+releaseDate: "2025-03-18"
+lastModified: "2026-06-02T00:00:00Z"
+
+manufacturerIdentifiers:
+  - type: nvpn
+    value: "900-5G153-2200-000"
+
+thirdPartyProducts:
+  - company: PNY
+    productName: "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition 96GB GDDR7 Graphics Card (Retail)"
+    identifier: "VCNRTXPRO6000BQ-PB"
+    identifierType: sku
+  - company: PNY
+    productName: "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition 96GB GDDR7 Graphics Card (Bulk)"
+    identifier: "VCNRTXPRO6000BQ-BLK"
+    identifierType: sku
+  - company: Dell
+    productName: "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition (300W)"
+    identifier: "490-BLDL"
+    identifierType: part_number
+
+summary: |
+  The NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition is the power-optimized variant of the
+  flagship RTX PRO 6000 Blackwell professional GPU family, designed for compact workstations with
+  constrained airflow and lower power budgets. It was announced at GTC25 Spring on March 18, 2025,
+  alongside the full-power Workstation Edition (600 W) and Server Edition (up to 600 W).
+
+  The Max-Q edition uses the identical full-configuration GB202 die as the 600 W Workstation Edition:
+  24,064 CUDA cores across 188 streaming multiprocessors, 752 fifth-generation Tensor Cores, and
+  188 fourth-generation RT Cores. The core count is the same highest-SM-count GB202 configuration
+  (188 of 192 SMs), surpassing the consumer GeForce RTX 5090 (170 of 192 SMs). The fundamental
+  difference is clock speed: the Max-Q boosts to approximately 2,280 MHz versus 2,617 MHz on the
+  Workstation Edition, trading about 12% FP32 throughput (110 TFLOPS vs 125 TFLOPS) for a halved
+  TDP of 300 W. Importantly, all 96 GB of GDDR7 ECC memory on the 512-bit bus, and its full
+  1,792 GB/s memory bandwidth, are preserved identically between the two editions.
+
+  The 5th-generation Tensor Cores deliver 3,511 AI TOPS (FP4 with 2:4 structured sparsity),
+  supporting FP4, FP8, BF16, TF32, FP16, INT8, and INT4 precision formats. The reduced clock
+  explains the proportional decrease in AI TOPS: 3,511 / 4,000 = 87.8%, matching the FP32 ratio
+  of 110 / 125 = 88.0%. The card supports Multi-Instance GPU (MIG) with up to four fully isolated
+  24 GB GPU instances, identical to the other editions.
+
+  The form factor is 4.4 in H x 10.5 in L, dual-slot, full-height — the same height as the Server
+  Edition (4.4 in) and shorter length than the Workstation Edition (12.0 in). Active (blower-style)
+  cooling is used rather than passive cooling, allowing the Max-Q to target compact tower and
+  small-form-factor workstations rather than rack servers. It connects via PCIe 5.0 x16, requires a
+  single 16-pin PCIe CEM5 power connector for its 300 W TDP, and provides four DisplayPort 2.1b
+  outputs. Video engine support includes four ninth-generation NVENC encoders and four
+  sixth-generation NVDEC decoders. OEM workstation partners including Dell and HP have offered the
+  Max-Q as a BTO option in Precision and Z-series workstations respectively. Distribution through
+  PNY under SKUs VCNRTXPRO6000BQ-PB (retail) and VCNRTXPRO6000BQ-BLK (bulk).
+
+references:
+  - https://www.nvidia.com/en-us/products/workstations/professional-desktop-gpus/rtx-pro-6000-max-q/
+  - https://www.nvidia.com/content/dam/en-zz/Solutions/products/workstations/professional-desktop-gpus/rtx-pro-6000-max-q/workstation-datasheet-blackwell-rtx-pro-6000-max-q-nvidia-3519233.pdf
+  - https://developer.nvidia.com/cuda-gpus
+  - https://www.newegg.com/p/N82E16888884003
+  - https://www.dell.com/en-us/shop/nvidia-rtx-pro-6000-blackwell-max-q-workstation-edition-300w/apd/490-bldl/graphic-video-cards
+  - https://www.serversupply.com/GPU/GDDR7/96GB/PNY%20Technology/VCNRTXPRO6000BQ-BLK_413865.htm
+  - https://www.pny.com/nvidia-rtx-pro-6000-blackwell-max-q
+  - https://www.bhphotovideo.com/c/product/1895189-REG/nvidia_900_5g153_2200_000_rtx_pro_6000_blackwell.html
+  - https://www.bhphotovideo.com/c/product/1898469-REG/pny_vcnrtxpro6000bq_pb_nvidia_rtx_pro_6000.html
+  - https://www.newegg.com/nvidia-900-5g153-2200-000-rtx-pro-6000-96gb-graphics-card/p/N82E16814132105
+
+notes:
+  - 'FP32 TFLOPS of 110.0 sourced directly from the official NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition datasheet (workstation-datasheet-blackwell-rtx-pro-6000-max-q-nvidia-3519233.pdf) and confirmed by the NVIDIA product page (nvidia.com/en-us/products/workstations/professional-desktop-gpus/rtx-pro-6000-max-q/). Footnote states "Peak rates based on GPU Boost Clock." Sanity check: 24,064 CUDA cores x 2,280 MHz boost x 2 ops/cycle / 1,000,000 = 109.7 TFLOPS, consistent with the official 110 TFLOPS. The boost clock of ~2,280 MHz is approximately 87% of the Workstation Edition''s 2,617 MHz boost, matching the 110/125 = 88% FP32 ratio.'
+  - 'AI TOPS of 3,511 sourced directly from the official NVIDIA datasheet (footnotes: "Peak rates based on GPU Boost Clock" and "Effective FP4 TOPS with sparsity") and confirmed by the NVIDIA product page showing 3,511 AI TOPS. The Newegg OEM listing (N82E16814132105) also confirms 3,511 AI TOPS. PNY product page erroneously lists 1,500 TOPS; the official NVIDIA datasheet value of 3,511 is used. Ratio check: 3,511 Max-Q / 4,000 Workstation = 87.8%, matching the FP32 clock ratio of 110/125 = 88.0%, confirming internal consistency.'
+  - 'int8TOPS of 877.75 represents non-sparse (dense) INT8 performance, derived from FP4 sparse TOPS: 3,511 (FP4 sparse) / 4 = 877.75 TOPS. Derivation: FP4 sparse = 2x INT8 sparse = 4x INT8 dense per Blackwell 5th-gen tensor core architecture. Dense value used for consistent cross-vendor comparison.'
+  - 'fp16TFLOPS of 877.75 is FP16 Tensor Core throughput with 2:4 structured sparsity, derived from FP4 sparse TOPS using the Blackwell tensor core ratio (FP16 sparse = FP4 sparse / 4): 3,511 / 4 = 877.75 TFLOPS. Dense FP16 Tensor = 877.75 / 2 = 438.875 TFLOPS. The official NVIDIA datasheet for the Max-Q does not publish FP16 Tensor performance separately. Derived per project policy: fp16TFLOPS = AI TOPS / 4.'
+  - 'Memory bandwidth of 1,792 GB/s confirmed by the official NVIDIA datasheet and product page, and by Provantage listing (1.75 TB/s). The Max-Q runs memory at the same 1,750 MHz (28 Gbps effective) data rate as the full Workstation Edition. Arithmetic check: 512-bit bus x 28 Gbps / 8 = 1,792 GB/s. This is identical to the Workstation Edition despite lower GPU clock — the memory subsystem operates independently of GPU boost clock.'
+  - 'CUDA core count of 24,064 confirmed by official NVIDIA datasheet, Amazon listing (B0GLHB6D3W), Provantage listing, and serversupply.com VCNRTXPRO6000BQ-BLK listing. This is the same 188 SM (24,064 / 128 = 188) full GB202 die as the Workstation Edition. Tensor core count of 752 (188 SMs x 4 tensor cores per SM) confirmed by serversupply.com and Provantage listing. RT core count of 188 (one per SM, 4th generation) is standard for this SM count.'
+  - 'TDP of 300 W confirmed by the official NVIDIA datasheet ("Total Board Power: 300 W"), NVIDIA product page, Newegg listing (N82E16888884003), serversupply.com listing, Provantage listing, and Dell.com product page (490-BLDL listing "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition (300W)"). This is exactly half the Workstation Edition TDP (600 W), achieved through lower GPU boost clock (~2,280 MHz vs 2,617 MHz). The power connector is one 16-pin PCIe CEM5 per the official datasheet.'
+  - 'Form factor is dual-slot, full-height, 4.4 in H x 10.5 in L per official NVIDIA datasheet. This is the same height as the Server Edition (4.4 in) but shorter than the Workstation Edition (12.0 in L). Active (blower-style) thermal solution per official datasheet, in contrast to the Server Edition which uses passive cooling.'
+  - 'CUDA compute capability 12.0 (sm_120) is the standard for all Blackwell workstation GPUs, confirmed by developer.nvidia.com/cuda-gpus. The RTX PRO 6000 Blackwell Workstation Edition uses compute capability 12.0 per that source; the Max-Q uses the same GB202 die and architecture, therefore also uses 12.0.'
+  - 'Release date of March 18, 2025 reflects the GTC25 Spring announcement date, confirmed by the official NVIDIA news release (nvidianews.nvidia.com/news/nvidia-blackwell-rtx-pro-workstations-servers-agentic-ai) and TechPowerUp GPU database entry.'
+  - 'NVPN 900-5G153-2200-000 confirmed by B&H Photo (product 1895189-REG, title "NVIDIA RTX PRO 6000 Blackwell Max-Q 900-5G153-2200-000-01") and Newegg OEM listing (N82E16814132105). The 5G153 board identifier is specific to the Max-Q Workstation Edition (distinct from 5G144 used for the full Workstation Edition). A second NVPN (900-5G153-0000-000) was listed by wiredzone.com (product E8815317) but could not be independently verified; it is therefore omitted pending confirmation.'
+  - 'PNY retail SKU VCNRTXPRO6000BQ-PB confirmed by Amazon listing (ASIN B0GLHB6D3W), Newegg listing (N82E16888884003), B&H Photo (product 1898469-REG), and Provantage. PNY bulk SKU VCNRTXPRO6000BQ-BLK confirmed by serversupply.com listing (VCNRTXPRO6000BQ-BLK_413865). Dell part number 490-BLDL confirmed by dell.com official product page for "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition (300W)."'
+  - 'Estimated MSRP of $10,999 USD based on retail listing price. NVIDIA does not publish an official MSRP for professional workstation GPUs. Newegg lists PNY VCNRTXPRO6000BQ-PB at $10,999 (listing N82E16888884003, confirmed June 2026). B&H Photo lists the same PNY card (product 1898469-REG) at $10,999 (confirmed June 2026). Dell lists the 490-BLDL as a BTO component at $8,959.99 (confirmed June 2026); the Dell BTO price is typically lower than standalone retail. The $10,999 retail price is used as it represents the standalone card market price. Note: current market pricing reflects post-launch supply and demand conditions.'

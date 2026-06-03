@@ -1,0 +1,104 @@
+# yaml-language-server: $schema=./gpu-spec.schema.json
+name: nvidia-rtx-pro-4500-blackwell-server
+label: NVIDIA RTX PRO 4500 Blackwell Server Edition
+category: datacenter
+msrpUSD: 4053
+tensorCoreCount: 328
+fp32TFLOPS: 51.0
+fp16TFLOPS: 406.0
+int8TOPS: 405.5
+memoryCapacityGB: 32
+memoryBandwidthGBs: 800
+maxTDPWatts: 165
+gpuArchitecture: blackwell
+supportedHardwareOperations:
+  - FP32
+  - FP16
+  - TF32
+  - BF16
+  - FP8
+  - FP4
+  - INT8
+  - INT4
+supportedCUDAComputeCapability: 12.0
+releaseDate: "2026-03-17"
+lastModified: "2026-06-02T00:00:00Z"
+
+manufacturerIdentifiers:
+  - type: nvpn
+    value: "900-2G147-2700-030"
+  - type: nvpn
+    value: "900-2G147-0000-000"
+
+thirdPartyProducts:
+  - company: PNY
+    productName: "NVIDIA RTX PRO 4500 Blackwell Server Edition GPU"
+    identifier: "NVRTXPRO4500TCGPU-KIT"
+    identifierType: sku
+  - company: Lenovo
+    productName: "ThinkSystem NVIDIA RTX PRO 4500 Blackwell Server Edition PCIe Gen5 GPU"
+    identifier: "4X67B12675"
+    identifierType: part_number
+  - company: HPE
+    productName: "NVIDIA RTX PRO 4500 Blackwell Server Edition 32GB PCIe Accelerator for HPE"
+    identifier: "S6W30C"
+    identifierType: part_number
+
+summary: |
+  The NVIDIA RTX PRO 4500 Blackwell Server Edition is a passively cooled, single-slot professional
+  server GPU launched on March 17, 2026, built on the NVIDIA Blackwell architecture (GB203 die, TSMC
+  4nm process) with 10,496 CUDA cores across 82 streaming multiprocessors, 328 fifth-generation Tensor
+  Cores, and 82 fourth-generation RT Cores. It is the data center and edge server counterpart to the
+  RTX PRO 4500 Blackwell Workstation Edition, sharing the same GPU silicon but optimized for deployment
+  in 1U and 2U rack servers where passive cooling relies on chassis airflow.
+
+  The card features 32 GB of GDDR7 ECC memory on a 256-bit memory bus providing 800 GB/s bandwidth.
+  Compared to the workstation variant (896 GB/s, 200W), the server edition uses slower 25 Gbps GDDR7
+  memory (versus 28 Gbps), resulting in the lower bandwidth and a reduced 165W TDP. The fifth-generation
+  Tensor Cores deliver 1.6 PFLOPS FP4 (with 2:4 structured sparsity), 811 TFLOPS FP8, 406 TFLOPS FP16
+  and BF16, and 203 TFLOPS TF32, supporting broad AI and machine learning workloads. The fourth-generation
+  RT Cores provide hardware-accelerated ray tracing at 154 TFLOPS peak.
+
+  The single-slot, full-height full-length (FHFL) passive form factor (4.4" H x 10.5" L) enables
+  high-density server deployments. The card connects via PCIe 5.0 x16, requires one 16-pin PCIe CEM5
+  power connector, and has no display outputs (headless, server-only design). Multi-Instance GPU (MIG)
+  support allows partitioning into up to 2 MIG instances of 16 GB each. Video encode/decode engines
+  include three ninth-generation NVENC encoders and three sixth-generation NVDEC decoders with 4:2:2
+  support, enabling video transcoding workloads in server environments.
+
+  The RTX PRO 4500 Blackwell Server Edition uses the GB203 die (same as the GeForce RTX 5080 and the
+  RTX PRO 4500 Workstation Edition), with all 82 of the 84 SMs enabled. CUDA compute capability is 12.0
+  (sm_120). OEM support includes Lenovo ThinkSystem SR665 V3, HPE ProLiant/Mainstream Compute platforms,
+  Supermicro server platforms, and distribution through PNY.
+
+references:
+  - https://www.nvidia.com/en-us/data-center/rtx-pro-4500-blackwell-server-edition/
+  - https://developer.nvidia.com/cuda-gpus
+  - https://lenovopress.lenovo.com/lp2391-thinksystem-nvidia-rtx-pro-4500-blackwell-server-edition-pcie-gen5-gpu
+  - https://www.pny.com/nvidia-rtx-pro-4500-blackwell-server-edition
+  - https://www.pny.com/file%20library/company/support/product%20brochures/nvidia%20data%20center%20gpus/nvidia-rtx-pro-4500-blackwell-server-edition-datasheet.pdf
+  - https://www.hpe.com/psnow/doc/PSN1014927694IEEN
+  - https://buy.hpe.com/us/en/options/server-accelerators/computational-graphics-accelerators-for-servers/nvidia-rtx-pro-4500-blackwell-server-edition-32gb-pcie-accelerator-for-hpe/p/s6w30c
+  - https://www.cdw.com/product/nvidia-rtx-pro-4500-blackwel-serv-ed/9133423
+  - https://www.cdw.com/product/nvidia-rtx-pro-4500-blackwell-server-edition-graphics-card-rtx-pro-45/9077550
+  - https://www.techpowerup.com/gpu-specs/rtx-pro-4500-blackwell-server.c4387
+  - https://www.techpowerup.com/347466/nvidia-launches-rtx-pro-4500-blackwell-server-edition-gpu
+  - https://www.supermicro.com/en/accelerators/nvidia/supermicro-rtx-pro-bse
+
+notes:
+  - 'FP32 TFLOPS of 51.0 sourced directly from NVIDIA official product page (nvidia.com/en-us/data-center/rtx-pro-4500-blackwell-server-edition/) and confirmed by Lenovo ThinkSystem product guide (lenovopress.lenovo.com/lp2391). Same value as the RTX PRO 4500 Workstation Edition because both use the same GB203 die with 10,496 CUDA cores at the same boost clock.'
+  - 'fp16TFLOPS of 406.0 is the FP16/BF16 Tensor Core TFLOPS (with 2:4 structured sparsity) sourced directly from NVIDIA official product page and Lenovo ThinkSystem product guide. The NVIDIA official page lists "FP16 / BF16 Tensor Core TFLOPS: 406 TFLOPS." Dense FP16 Tensor = 406 / 2 = 203 TFLOPS.'
+  - 'int8TOPS of 405.5 represents non-sparse (dense) INT8 performance, derived from sparse FP8 TOPS: 811 (FP8 sparse) / 2 = 405.5 TOPS. In the Blackwell 5th-gen tensor core architecture, INT8 sparse performance equals FP8 sparse performance; dividing by 2 gives the dense (non-sparsity) INT8 value. Source: NVIDIA official product page lists FP8 = 811 TFLOPS. Dense value used for consistent cross-vendor comparison. Note: the sibling RTX PRO 4500 Workstation Edition uses int8TOPS = 404.25, derived as FP4/4 = 1617/4 from the PNY workstation datasheet; the small difference (405.5 vs 404.25) reflects rounding differences between the two source documents for essentially the same silicon.'
+  - 'Memory bandwidth of 800 GB/s per NVIDIA official product page and Lenovo ThinkSystem product guide. This is lower than the workstation variant (896 GB/s) because the server edition uses 25 Gbps GDDR7 memory versus 28 Gbps on the workstation. Calculation: 256 bits / 8 bytes × 25,000 MHz × 2 (DDR) / 1,000 = 800 GB/s. Exxactcorp.com and CDW product page for 900-2G147-0000-000 incorrectly list 896 GB/s (reflecting workstation bandwidth); the NVIDIA official product page is authoritative and shows 800 GB/s, confirmed by Lenovo product guide and Videocardz search snippet noting "lower memory bandwidth" for the server edition.'
+  - 'TDP of 165W per NVIDIA official product page and Lenovo ThinkSystem product guide. Requires one 16-pin PCIe CEM5 power connector. The workstation variant has a 200W TDP; the server edition is reduced due to lower GDDR7 memory speed and passive cooling optimization.'
+  - 'Tensor core count of 328 confirmed by TechPowerUp GPU database search snippet (gpu-specs/rtx-pro-4500-blackwell-server.c4387: "Also included are 328 tensor cores"). Matches the SM count: 82 SMs × 4 tensor cores per SM = 328 tensor cores. RT core count is 82 (one per SM, 4th generation), also confirmed by NVIDIA official page.'
+  - 'CUDA core count of 10,496 confirmed by NVIDIA official product page, Lenovo ThinkSystem product guide, and TechPowerUp GPU database. Same die (GB203) as the RTX PRO 4500 Workstation Edition with 82 of 84 SMs enabled (same as workstation).'
+  - 'GPU die is GB203 on TSMC 4nm process per TechPowerUp GPU database. Architecture uses CUDA compute capability 12.0 (sm_120), confirmed by developer.nvidia.com/cuda-gpus where RTX PRO 4500 Blackwell (both variants) uses CC 12.0. 5th-generation Tensor Cores support FP4, FP8, BF16, TF32, FP16, INT8, and INT4.'
+  - 'Form factor is single-slot, full-height full-length (FHFL), passive cooling, 4.4" H x 10.5" L, as confirmed by NVIDIA official page and Lenovo product guide. No display outputs (headless server design). Supports PCIe 5.0 x16.'
+  - 'MIG support: up to 2 MIG instances of 16 GB each, per NVIDIA official page and Lenovo product guide. NVENC: 3x 9th-gen encoders. NVDEC: 3x 6th-gen decoders with 4:2:2 support per Lenovo product guide.'
+  - 'Release date of March 17, 2026 per TechPowerUp news announcement (techpowerup.com/347466). The NVIDIA data center page also states availability "from leading system builders and cloud service providers" at launch.'
+  - 'NVPN 900-2G147-2700-030 sourced from Lenovo ThinkSystem product guide (lenovopress.lenovo.com/lp2391) as the NVIDIA part number corresponding to Lenovo feature code for GPU 4X67B12675. NVPN 900-2G147-0000-000 sourced from CDW product listing (cdw.com/product/9077550) for the NVIDIA-branded server edition SKU.'
+  - 'PNY SKU NVRTXPRO4500TCGPU-KIT sourced from PNY US datasheet PDF (pny.com/file library/.../nvidia-rtx-pro-4500-blackwell-server-edition-datasheet.pdf) and confirmed by CDW listing (cdw.com/product/9133423).'
+  - 'Lenovo part number 4X67B12675 sourced from Lenovo ThinkSystem product guide (lenovopress.lenovo.com/lp2391). Compatible ThinkSystem server: SR665 V3.'
+  - 'HPE part number S6W30C sourced from HPE buy portal (buy.hpe.com/us/en/options/.../p/s6w30c) and HPE PSNow product sheet (hpe.com/psnow/doc/PSN1014927694IEEN). Product name: "NVIDIA RTX PRO 4500 Blackwell Server Edition 32GB PCIe Accelerator for HPE."'
+  - 'Estimated MSRP of $4,053 USD based on launch-time market pricing. NVIDIA does not publish official MSRP for data center GPUs. CDW lists PNY SKU NVRTXPRO4500TCGPU-KIT at $4,052.99 (cdw.com/product/9133423). The NVIDIA-branded OEM variant (900-2G147-0000-000) is listed as quote-only at CDW (product/9077550). This GPU is primarily sold through server OEM channels (Lenovo ThinkSystem SR665 V3, HPE ProLiant, Supermicro) without published standalone pricing.'

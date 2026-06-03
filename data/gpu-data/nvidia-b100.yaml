@@ -1,0 +1,92 @@
+# yaml-language-server: $schema=./gpu-spec.schema.json
+name: nvidia-b100
+label: NVIDIA B100 SXM
+category: datacenter
+msrpUSD: 32000
+tensorCoreCount: 576
+fp32TFLOPS: 60
+fp16TFLOPS: 3500
+int8TOPS: 3500
+memoryCapacityGB: 192
+memoryBandwidthGBs: 8000
+maxTDPWatts: 700
+gpuArchitecture: blackwell
+supportedHardwareOperations:
+  - FP16
+  - FP32
+  - FP64
+  - INT8
+  - TF32
+  - BF16
+  - FP8
+  - FP4
+supportedCUDAComputeCapability: 10.0
+releaseDate: "2024-11-01"
+lastModified: "2026-06-03T00:00:00Z"
+
+summary: >-
+  The NVIDIA B100 is a Blackwell-architecture datacenter GPU accelerator built
+  for large-scale AI training and inference in x86-based HGX server platforms.
+  Announced at NVIDIA GTC March 2024 alongside the B200 and GB200 Superchip,
+  the B100 is positioned as the lower-power Blackwell datacenter GPU at 700 W
+  TDP — identical to the H100 SXM5 power envelope — making it a drop-in
+  replacement for existing HGX H100 infrastructure without requiring new
+  power delivery or cooling. The B100 uses the same dual-chiplet GB100 package
+  as the B200, with two reticle-sized dies on a single substrate for a combined
+  208 billion transistors, manufactured on TSMC custom 4NP process. It
+  delivers 192 GB of HBM3e memory at 8 TB/s bandwidth via an 8192-bit memory
+  bus (two 4096-bit sub-interfaces, one per die). Tensor Core performance reaches
+  7 PFLOPS FP4, 3.5 PFLOPS FP8/INT8, and 1.75 PFLOPS FP16/BF16 in dense
+  (non-sparse) operation; with 2:4 structured sparsity these double to 14, 7,
+  and 3.5 PFLOPS respectively. The B100 includes 5th-generation NVLink at
+  1.8 TB/s GPU-to-GPU bidirectional bandwidth, connecting up to 8 GPUs per HGX
+  B100 baseboard for 14.4 TB/s total NVLink bandwidth. Compute capability is
+  10.0 (sm_100), enabling access to Blackwell-specific CUDA features including
+  5th-generation Tensor Cores with native FP4 support, a second-generation
+  Transformer Engine supporting FP8 and FP4 precision, NVLink 5, and PCIe 6.0.
+  The B100 shipped in limited quantities in Q4 2024; NVIDIA subsequently
+  concentrated production volume on the B200 and B300. As a result, the B100
+  saw narrower OEM adoption than its announcement suggested.
+
+thirdPartyProducts:
+  - company: Dell
+    productName: Dell PowerEdge XE9680 with NVIDIA HGX B100 (8 GPU, air-cooled)
+    identifier: PowerEdge XE9680
+    identifierType: model_number
+  - company: Inventec
+    productName: Inventec P8000IG6 8x NVIDIA B100 Server
+    identifier: P8000IG6
+    identifierType: model_number
+
+references:
+  - https://nvidianews.nvidia.com/news/nvidia-blackwell-platform-arrives-to-power-a-new-era-of-computing
+  - https://www.nvidia.com/en-us/data-center/technologies/blackwell-architecture/
+  - https://en.wikipedia.org/wiki/Blackwell_(microarchitecture)
+  - https://docs.nvidia.com/cuda/blackwell-compatibility-guide/index.html
+  - https://flopper.io/gpu/nvidia-b100-sxm-192gb/spec-sheet
+  - https://viperatech.com/product/nvidia-b100-blackwell-ai-gpu
+  - https://www.symmatrix.com/product/nvidia-hgx-b100/
+  - https://www.exxactcorp.com/blog/hpc/nvidia-blackwell-deployments-gb200-nvl72-dgx-hgx-b200-hgx-b100
+  - https://newsletter.semianalysis.com/p/nvidia-blackwell-perf-tco-analysis
+  - https://nor-tech.com/wp-content/uploads/2026/03/blackwell-datasheet-B200.pdf
+  - https://www.tomshardware.com/pc-components/gpus/nvidias-next-gen-blackwell-ai-gpus-to-cost-up-to-dollar70000-fully-equipped-servers-range-up-to-dollar3000000-report
+  - https://wccftech.com/nvidia-blackwell-gpus-cost-up-to-35000-usd-ai-servers-3-million-gearing-for-next-gold-rush/
+  - https://technical.city/en/video/B100
+  - https://evertiq.com/news/56157
+  - https://www.dell.com/en-us/blog/dell-poweredge-xe9680-ai-acceleration-announcements-at-nvidia-gtc/
+  - https://www.servethehome.com/unique-inventec-p8000ig6-8x-nvidia-b100-system-shown-at-gtc-2024/
+
+notes:
+  - 'fp32TFLOPS of 60 represents FP32 CUDA core (non-tensor) performance per Flopper.io spec sheet and confirmed via Symmatrix HGX B100 8-GPU system total of 480 TFLOPS / 8 = 60 TFLOPS per GPU. This follows the same convention used for H200 SXM (CUDA core FP32, not TF32 tensor core).'
+  - 'fp16TFLOPS of 3500 represents FP16/BF16 Tensor Core performance with 2:4 structured sparsity per NVIDIA Blackwell datacenter convention. Dense (non-sparse) FP16/BF16 performance is 1750 TFLOPS, confirmed by SemiAnalysis Blackwell performance analysis and Flopper.io B100 spec sheet. The official NVIDIA B200 datasheet (nor-tech.com) explicitly states "Specifications in sparse | dense" with dense = half of sparse, confirming that the well-known 1.75 PFLOPS FP16 figure is dense and 3.5 PFLOPS is sparse. Note: some third-party sources (Viperatech, Exxact) label 1.75 PFLOPS as "dense tensor" without distinguishing the 2:4 sparsity convention, which is consistent with this interpretation. Sparse value of 3500 TFLOPS used here per NVIDIA datacenter GPU convention consistent with H200 SXM specifications.'
+  - 'int8TOPS of 3500 represents non-sparse (dense) INT8 Tensor Core performance. For Blackwell architecture, INT8 dense = FP8 dense (both share the same 5th-generation Tensor Core path). FP8 dense = 3500 TFLOPS = 3.5 PFLOPS, confirmed by Viperatech product page (labeled as dense FP8/INT8 = 3.5 P(FL)OPS) and cross-validated against the official NVIDIA B200 datasheet (B200 INT8 sparse = 10 POPS; dense = 5 POPS; B100 at 700W vs B200 at 1000W TDP ratio gives B100 INT8 dense = approximately 3500 TOPS). With 2:4 structured sparsity, INT8 sparse performance is 7000 TOPS. Dense value used for consistent cross-vendor comparison.'
+  - 'FP64 Tensor Core dense performance is 30 TFLOPS per Viperatech product page, CUDO Compute analysis, and Symmatrix 8-GPU system total (240 TFLOPS / 8 = 30 TFLOPS per GPU). FP64 does not benefit from 2:4 structured sparsity.'
+  - 'FP4 Tensor Core performance: 7 PFLOPS dense / 14 PFLOPS sparse per GPU. Derived from Symmatrix HGX B100 8-GPU system totals (112 PFLOPS sparse FP4 / 8 = 14 PFLOPS per GPU sparse; dense = 14 / 2 = 7 PFLOPS). Confirmed by Viperatech listing FP4 dense = 7 PFLOPS and CUDO Compute analysis.'
+  - 'TF32 dense performance is 875 TFLOPS per GPU, derived as FP16 dense / 2 = 1750 / 2 = 875 TFLOPS. Confirmed by Flopper.io spec sheet (TF32 = 875.0 TFLOPS). With 2:4 structured sparsity, TF32 sparse = 1750 TFLOPS.'
+  - 'Memory bandwidth of 8000 GB/s (8 TB/s) confirmed across all sources including Viperatech, Symmatrix, Exxact, and Flopper.io. The B100 uses 192 GB HBM3e on a dual 4096-bit memory bus (one 4096-bit sub-interface per die) at 7.5 GT/s.'
+  - 'tensorCoreCount of 576 from the Wikipedia Blackwell microarchitecture page (B100 = 576 tensor cores, 5th-generation). Consistent with 18,432 CUDA cores / 128 CUDA cores per SM = 144 SMs, with 4 tensor cores per SM = 576 tensor cores total.'
+  - 'Release date of 2024-11-01 is approximate; Technical.city reports NVIDIA started B100 sales November 2024. B100 was announced at GTC on March 18, 2024. Production shipments began Q4 2024 in limited volume per TrendForce analysis (evertiq.com). NVIDIA subsequently concentrated production on B200 and B300, so B100 saw limited OEM deployment.'
+  - 'CUDA compute capability 10.0 (sm_100) confirmed for B100 by NVIDIA CUDA Blackwell Compatibility Guide at docs.nvidia.com/cuda/blackwell-compatibility-guide/. Both B100 and B200 use sm_100.'
+  - 'Estimated MSRP of $32,000 USD for B100 SXM based on analyst estimates from launch period. NVIDIA does not publish official MSRP for datacenter GPUs. HSBC analyst estimates reported by WccfTech (May 2024) place the B100 average selling price (ASP) at $30,000-$35,000 USD; a broader range of $30,000-$40,000 is also cited. The $32,000 value is within the HSBC $30,000-$35,000 range (the mathematical midpoint is $32,500; $32,000 is used as a round number within the range). Note: The B100 shipped in very limited volume; actual transaction pricing may vary significantly. B200 (1000W TDP) carried a higher price point than B100.'
+  - 'manufacturerIdentifiers: No official NVIDIA board_id or product_sku for the B100 SXM was confirmed from authoritative sources during research. NVIDIA did not publish a standalone B100 GPU datasheet (unlike the H100, which had board ID PG506). The manufacturerIdentifiers section is omitted pending confirmation from an authoritative source.'
+  - 'thirdPartyProducts: Dell PowerEdge XE9680 for B100 confirmed from Dell GTC announcement blog post. Inventec P8000IG6 confirmed shown with 8x B100 at GTC 2024 per ServeTheHome article. Supermicro announced HGX B100 8-GPU system support via press release but no verified Supermicro model number specific to B100 was found in documentation; it is omitted per the critical validation rule against unverified identifiers. Lenovo and HPE part numbers for HGX B100 products were not found in publicly available documentation during research.'

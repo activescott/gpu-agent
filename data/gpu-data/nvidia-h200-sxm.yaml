@@ -1,0 +1,97 @@
+# yaml-language-server: $schema=./gpu-spec.schema.json
+name: nvidia-h200-sxm
+label: NVIDIA H200 SXM
+category: datacenter
+msrpUSD: 40000
+tensorCoreCount: 528
+fp32TFLOPS: 67
+fp16TFLOPS: 1979
+int8TOPS: 1979
+memoryCapacityGB: 141
+memoryBandwidthGBs: 4800
+maxTDPWatts: 700
+gpuArchitecture: hopper
+supportedHardwareOperations:
+  - FP16
+  - FP32
+  - FP64
+  - INT8
+  - TF32
+  - BF16
+  - FP8
+supportedCUDAComputeCapability: 9
+releaseDate: "2024-11-18"
+lastModified: "2026-06-02T00:00:00Z"
+
+summary: >-
+  The NVIDIA H200 SXM is a datacenter GPU accelerator built on the
+  Hopper GH100 architecture using the same silicon die as the H100 SXM,
+  but with a major memory upgrade to 141 GB of HBM3e at 4.8 TB/s bandwidth
+  — approximately 1.75x the capacity and 1.43x the bandwidth of the H100 SXM.
+  Announced at SC23 on November 13, 2023, it began shipping to OEM customers
+  in Q2 2024 and reached general availability in November 2024. The H200 SXM
+  targets HGX H200 and DGX H200 server platforms with the SXM5 socket,
+  connected via NVLink 4 at 900 GB/s bidirectional per GPU and up to eight
+  GPUs per baseboard. It delivers 1,979 TFLOPS of FP16/BF16 Tensor Core
+  performance and 3,958 TFLOPS of FP8 Tensor Core performance (both with
+  sparsity). The vastly expanded memory capacity is the primary differentiator:
+  each H200 SXM can hold a full 70-billion-parameter LLM in a single GPU with
+  headroom to spare, making it a leading choice for large language model
+  inference without multi-GPU memory partitioning. The H200 SXM supports 4th
+  generation Tensor Cores with the Transformer Engine for FP8 mixed-precision
+  training, Multi-Instance GPU (MIG) with up to 7 instances, confidential
+  computing, NVLink 4 fabric for scale-up across eight GPUs, and PCIe Gen5 x16
+  for host connectivity. TDP is rated at 700 W (configurable up to 1000 W in
+  specialized MLPerf configurations). A separate H200 NVL variant in PCIe form
+  factor is available for air-cooled rack deployments.
+
+thirdPartyProducts:
+  - company: Lenovo
+    productName: ThinkSystem NVIDIA HGX H200 8-GPU 700W SXM Baseboard (Standard)
+    identifier: "935-24287-2740-000"
+    identifierType: part_number
+  - company: Lenovo
+    productName: ThinkSystem NVIDIA HGX H200 8-GPU 700W SXM Baseboard (Liquid Cooled)
+    identifier: "935-24287-2741-000"
+    identifierType: part_number
+  - company: Lenovo
+    productName: ThinkSystem NVIDIA HGX H200 4-GPU 700W SXM Baseboard
+    identifier: "935-23087-2741-000"
+    identifierType: part_number
+  - company: Cisco
+    productName: Cisco UCS C885A M8 Server with NVIDIA H200 SXM GPUs
+    identifier: UCSC-C885A-M8
+    identifierType: model_number
+  - company: Dell
+    productName: Dell PowerEdge XE9680 with NVIDIA HGX H200
+    identifier: PowerEdge XE9680
+    identifierType: model_number
+
+references:
+  - https://nor-tech.com/wp-content/uploads/2025/07/h200-datasheet.pdf
+  - https://www.nvidia.com/en-us/data-center/h200/
+  - https://resources.nvidia.com/en-us-gpu-resources/hpc-datasheet-sc23
+  - https://lenovopress.lenovo.com/lp1944-nvidia-h200-141gb-gpu
+  - https://www.techpowerup.com/gpu-specs/h200-sxm-141-gb.c4255
+  - https://en.wikipedia.org/wiki/Hopper_(microarchitecture)
+  - https://aiwiki.ai/wiki/nvidia_h200
+  - https://www.datacenterdynamics.com/en/news/nvidia-unveils-h200-its-latest-high-end-gpu-for-training-ai-models/
+  - https://www.exxactcorp.com/blog/deep-learning/nvidia-h200-the-most-powerful-gpu-for-ai-hpc
+  - https://jarvislabs.ai/blog/h200-price
+  - https://www.mercatus-ai.com/blog/h200-price
+  - https://www.thepricer.org/how-much-does-nvidia-h200-cost/
+  - https://www.cisco.com/c/en/us/products/collateral/servers-unified-computing/ucs-c-series-rack-servers/mlperf-ucs-c885a-h100-h200-wp.html
+
+notes:
+  - 'fp32TFLOPS of 67 represents FP32 CUDA core (non-tensor) performance per the NVIDIA H200 datasheet at nor-tech.com. The H200 SXM uses the same GH100 die as the H100 SXM; FP32 CUDA core performance is unchanged at 67 TFLOPS.'
+  - 'fp16TFLOPS of 1979 represents FP16 Tensor Core performance with 2:4 structured sparsity per the NVIDIA H200 datasheet. NVIDIA convention for datacenter GPUs publishes the sparsity-accelerated FP16 Tensor Core value. Without sparsity, FP16 Tensor Core performance is 989 TFLOPS (1979 / 2). Dense value is 989 TFLOPS. Sparse value of 1979 TFLOPS used here per NVIDIA datacenter GPU convention consistent with H100 SXM specifications.'
+  - 'int8TOPS of 1979 represents non-sparse (dense) INT8 Tensor Core performance, derived from sparse INT8 of 3958 TOPS / 2 per the NVIDIA H200 datasheet (nor-tech.com). The datasheet footnote indicates that tensor-core values shown are with 2:4 structured sparsity. With sparsity, INT8 performance is 3958 TOPS. Dense value used for consistent cross-vendor comparison.'
+  - 'TF32 Tensor Core performance with sparsity is 989 TFLOPS per the NVIDIA H200 datasheet. Without sparsity, TF32 is approximately 494.5 TFLOPS.'
+  - 'FP8 Tensor Core performance with sparsity is 3958 TFLOPS; without sparsity approximately 1979 TFLOPS per the NVIDIA H200 datasheet.'
+  - 'FP64 performance: 34 TFLOPS (CUDA core) and 67 TFLOPS (FP64 Tensor Core), per the NVIDIA H200 datasheet and confirmed by multiple sources including Exxact blog and AIwiki.'
+  - 'Memory bandwidth of 4800 GB/s (4.8 TB/s) confirmed across all sources. Memory is 141 GB HBM3e on a 6144-bit bus at 9.2 Gb/s per pin, using six 24 GB active HBM3e stacks.'
+  - 'Release date of 2024-11-18 (November 18, 2024) per TechPowerUp GPU Database, corresponding to general availability at SC24. The GPU was announced at SC23 on November 13, 2023, and first OEM customer shipments began Q2 2024. Release date reflects general commercial availability.'
+  - 'TDP of 700W is the reference SXM configuration. Power can be configured up to 1000W in specialized HGX configurations for MLPerf and maximum performance deployments per AIwiki and Exxact technical documentation.'
+  - 'Estimated MSRP of $40,000 USD for H200 SXM based on launch-time market pricing from multiple independent sources. NVIDIA does not publish official MSRP for datacenter GPUs. Sources from 2024 launch period cite: jarvislabs.ai lists $40,000-$55,000 SXM launch MSRP; mercatus-ai.com documents Q4 2024 launch pricing at $40,000-$48,000 per single SXM GPU; thepricer.org cites $30,000-$40,000 per unit. Estimate of $40,000 represents the lower bound of launch-period SXM pricing consistent across sources. Note: H200 SXM is not sold as a standalone PCIe card; it is deployed only in HGX H200 server baseboard configurations. Pricing varies by form factor (SXM vs NVL) and system configuration (4-GPU vs 8-GPU HGX board).'
+  - 'thirdPartyProducts: Lenovo HGX baseboard part numbers 935-24287-2740-000, 935-24287-2741-000, and 935-23087-2741-000 are confirmed from Lenovo Press product guide lp1944 (lenovopress.lenovo.com/lp1944). These are multi-GPU HGX baseboard part numbers listed as NVIDIA part numbers in the Lenovo press guide; they identify specific Lenovo ThinkSystem HGX H200 products. Individual per-GPU module part numbers are not available because the H200 SXM is only sold in HGX multi-GPU baseboard configurations. Cisco C885A M8 server (UCSC-C885A-M8) identified from Cisco documentation at cisco.com. Dell PowerEdge XE9680 is the primary Dell server platform for H200 SXM deployments; individual H200 SXM GPU module part numbers for Dell were not found in available documentation.'
+  - 'manufacturerIdentifiers: No board_id or product_sku for the H200 SXM were confirmed from an official NVIDIA datasheet or authoritative source during research. The H100 SXM used PG506; PG520 has been cited in some community sources as the H200 SXM board design, but this could not be verified. The manufacturerIdentifiers section is omitted until an authoritative source confirms the correct identifiers.'

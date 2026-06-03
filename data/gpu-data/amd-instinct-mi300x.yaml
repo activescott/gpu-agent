@@ -1,0 +1,88 @@
+# yaml-language-server: $schema=./gpu-spec.schema.json
+name: amd-instinct-mi300x
+label: AMD Instinct MI300X
+category: datacenter
+msrpUSD: 15000
+tensorCoreCount: 1216
+fp32TFLOPS: 163.4
+fp16TFLOPS: 2614.9
+int8TOPS: 2614.9
+memoryCapacityGB: 192
+memoryBandwidthGBs: 5300
+maxTDPWatts: 750
+gpuArchitecture: CDNA 3
+supportedHardwareOperations:
+  - FP16
+  - FP32
+  - FP64
+  - INT8
+  - TF32
+  - BF16
+  - FP8
+releaseDate: "2023-12-06"
+lastModified: "2026-06-03T00:00:00Z"
+
+summary: >-
+  The AMD Instinct MI300X is AMD's flagship AI and HPC datacenter accelerator,
+  launched on December 6, 2023, as the first commercial chip built on the CDNA 3
+  architecture. It uses a multi-chiplet design with 8 Accelerator Complex Dies
+  (XCDs) on TSMC N5 and 4 I/O dies on TSMC N6, totaling 153 billion transistors
+  across the package. The MI300X delivers 304 CDNA 3 compute units and 1,216
+  Matrix Cores, enabling broad support for AI and HPC data types including FP64
+  vector (81.7 TFLOPS), FP64 matrix (163.4 TFLOPS), FP32 (163.4 TFLOPS), TF32,
+  FP16, BF16, FP8, and INT8 precisions. Its defining feature at launch was an
+  industry-leading 192 GB of on-package HBM3 memory with 5.3 TB/s (5,300 GB/s)
+  of peak memory bandwidth — providing roughly 2.4x the memory capacity and 1.6x
+  the bandwidth of the NVIDIA H100 SXM. The MI300X uses the OAM (OCP Accelerator
+  Module) form factor and connects to the host via PCIe 5.0 x16. Up to 8 MI300X
+  OAM modules are combined on a Universal Base Board (UBB) to form the AMD
+  Instinct MI300X Platform, providing 1.5 TB of aggregate HBM3 memory. The CDNA
+  3 architecture introduces support for FP8 and structured 2:4 sparsity, enabling
+  peak INT8 throughput of 5,229.8 TOPS with sparsity. The MI300X was positioned
+  as a direct competitor to the NVIDIA H100 SXM, particularly for large language
+  model inference workloads where its massive memory advantage reduces the need
+  for multi-GPU parallelism. Common part numbers include AMD OPN 100-300000045H
+  (single OAM module) and 100-300000069H (8-GPU platform UBB configuration).
+
+manufacturerIdentifiers:
+  - type: opn
+    value: "100-300000045H"
+  - type: opn
+    value: "100-300000069H"
+
+thirdPartyProducts:
+  - company: Lenovo
+    productName: ThinkSystem AMD MI300X 192GB 750W 8-GPU Board
+    identifier: C1HK
+    identifierType: part_number
+  - company: Supermicro
+    productName: AMD Instinct MI300X 8-GPU Universal GPU Server
+    identifier: AS-8125GS-TNMR2
+    identifierType: model_number
+
+references:
+  - https://www.amd.com/en/products/accelerators/instinct/mi300/mi300x.html
+  - https://www.amd.com/content/dam/amd/en/documents/instinct-tech-docs/data-sheets/amd-instinct-mi300x-data-sheet.pdf
+  - https://www.amd.com/en/newsroom/press-releases/2023-12-6-amd-delivers-leadership-portfolio-of-data-center-a.html
+  - https://lenovopress.lenovo.com/lp1943-thinksystem-amd-mi300x-192gb-750w-8-gpu-board
+  - https://www.supermicro.com/products/brief/product-brief-AMD-Instinct-MI300-Systems.pdf
+  - https://www.wiredzone.com/shop/product/10031207-amd-100-300000045h-instinct-mi300x-accelerators-192gb-memory-pcie-5-0-x16-oam-module-13892
+  - https://aiwiki.ai/wiki/amd_instinct_mi300x
+  - https://gpucost.org/gpu/mi300x
+  - https://cputronic.com/en/gpu/amd-instinct-mi300x
+  - https://chipsandcheese.com/p/testing-amds-giant-mi300x
+  - https://sourceability.com/post/amd-unveils-mi300x-ai-chip-with-192gb-memory-and-high-efficiency-for-large-language-models
+
+notes:
+  - 'fp32TFLOPS of 163.4 represents peak FP32 vector performance per AMD official datasheet and confirmed by Lenovo Press LP1943. AMD also lists FP64 matrix and FP32 matrix performance at 163.4 TFLOPS. Note: FP32 vector performance equals FP64 matrix performance on CDNA 3 due to architecture design choices.'
+  - 'fp16TFLOPS of 2614.9 represents peak FP16 matrix performance with 2:4 structured sparsity per AMD official datasheet. Dense (non-sparse) FP16 matrix performance is 1307.4 TFLOPS. Sparse value used here to maintain consistency with NVIDIA convention (NVIDIA fp16TFLOPS field also uses sparse tensor core values).'
+  - 'int8TOPS of 2614.9 represents non-sparse (dense) INT8 matrix performance per AMD official datasheet and Lenovo Press LP1943. With 2:4 structured sparsity, INT8 performance is 5229.8 TOPS. Dense value used for consistent cross-vendor comparison.'
+  - 'Additional precision performance per AMD datasheet: FP64 vector 81.7 TFLOPS; FP64 matrix 163.4 TFLOPS; TF32 dense 653.7 TFLOPS / sparse 1307.4 TFLOPS; BF16 dense 1307.4 TFLOPS / sparse 2614.9 TFLOPS; FP8 dense 2614.9 TFLOPS / sparse 5229.8 TFLOPS.'
+  - 'tensorCoreCount of 1216 represents AMD Matrix Cores (4 per compute unit × 304 compute units). AMD uses the term "Matrix Cores" rather than "Tensor Cores".'
+  - 'memoryBandwidthGBs of 5300 represents peak theoretical bandwidth of 5.3 TB/s from 192 GB HBM3 via 8192-bit memory interface at 5.2 GHz per AMD official datasheet.'
+  - 'Architecture uses a chiplet design: 8 Accelerator Complex Dies (XCDs) on TSMC N5 (5nm) and 4 I/O Dies (IOD) on TSMC N6 (6nm). AMD reported transistor count is 153 billion across the package. Source: sourceability.com and aiwiki.ai.'
+  - 'Form factor is OAM (OCP Accelerator Module), not a traditional PCIe card. Host interface is PCIe 5.0 x16 (128 GB/s). Up to 8 MI300X OAMs combine on a Universal Base Board (UBB) to form the MI300X Platform with 1.5 TB aggregate HBM3 and 8x Infinity Fabric links at 128 GB/s each.'
+  - 'FP8 support uses both E5M2 and E4M3 formats. AMD CDNA 3 implements 2:4 structured sparsity for AI precision types (TF32, FP16, BF16, FP8, INT8). No INT4 support at hardware level; INT4 is not listed in AMD CDNA 3 specifications.'
+  - 'Estimated MSRP of $15,000 USD for single AMD Instinct MI300X OAM module. AMD does not publish official MSRP for datacenter accelerators. Multiple sources cite ~$15,000 per unit at launch: gpucost.org lists $15,000 MSRP; cputronic.com lists $14,999 corporate retail. A financial analyst projection in early 2024 cited ~$11,000 (TechPowerUp article via webnuz.com). The $15,000 figure from gpucost.org and cputronic.com represents the most commonly cited market-level pricing for a single OAM module. Note: MI300X is typically deployed in complete 8-GPU server systems rather than sold as individual OAM modules at retail.'
+  - 'Manufacturer identifiers: OPN 100-300000045H is for a single OAM module (confirmed via wiredzone.com reseller listing). OPN 100-300000069H represents the 8-GPU Universal Base Board (UBB) platform configuration (confirmed via lojadojangao.com.br product listing).'
+  - 'Third-party products: Lenovo part number C1HK (ThinkSystem AMD MI300X 192GB 750W 8-GPU Board) sourced from Lenovo Press LP1943. Supermicro system model AS-8125GS-TNMR2 (8U 8-GPU Universal GPU Server) sourced from Supermicro MI300 product brief PDF. Note: Dell PowerEdge XE9680 and HPE Cray XD675 are complete server systems that support MI300X OAMs, but Dell/HPE do not sell the MI300X OAM module as a standalone product with their own part numbers — the accelerator module itself carries AMD OPN identifiers.'

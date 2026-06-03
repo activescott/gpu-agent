@@ -17,7 +17,7 @@ supportedHardwareOperations:
   - INT8
   - INT4
 releaseDate: "2023-05-25"
-lastModified: "2026-02-24T00:00:00Z"
+lastModified: "2026-06-03T00:00:00Z"
 
 summary: |
   The AMD Radeon RX 7600 is a mainstream graphics card released in May 2023,
@@ -103,7 +103,7 @@ references:
 notes:
   - tensorCoreCount tracks the AI Accelerators as "tensor cores". The RX 7600 has 64 AI Accelerators (2 per CU × 32 CUs).
   - fp32TFLOPS calculated as 2,048 stream processors × 2.625 GHz boost clock = 21.75 TFLOPS (using doubled rate for RDNA 3).
-  - fp16TFLOPS is 2x FP32 performance due to packed FP16 operations support in RDNA 3.
+  - 'fp16TFLOPS of 43.5 represents FP16 Matrix throughput (dense) via RDNA 3 AI Accelerators (WMMA), per AMD product page convention (Peak Half Precision (FP16 Matrix) Performance). This equals 2x FP32 vector on RDNA 3 silicon. AMD also publishes FP16 Vector = FP32 Vector on the same product page; that SIMD path is NOT used here in favor of the matrix path which is the cross-vendor analog of NVIDIA tensor-core FP16. See policy in .claude/agents/gpu-researcher.md.'
   - Memory bandwidth calculated as 128-bit interface × 18 Gbps = 288 GB/s, with effective bandwidth reaching 476.9 GB/s due to 32MB Infinity Cache.
   - TDP (TBP - Typical Board Power) is 165W, requiring a minimum 550W power supply.
   - The RX 7600 and RX 7600 XT have identical core specifications (32 CUs, 2,048 shaders, 64 AI Accelerators) but differ in VRAM (8GB vs 16GB) and TDP (165W vs 190W), resulting in only 4-6% performance difference in most scenarios.

@@ -1,0 +1,63 @@
+# yaml-language-server: $schema=./gpu-spec.schema.json
+name: amd-radeon-rx-9060
+label: AMD Radeon RX 9060
+category: gaming
+msrpUSD: null
+tensorCoreCount: 56
+fp32TFLOPS: 21.4
+fp16TFLOPS: 86
+int8TOPS: 172
+memoryCapacityGB: 8
+memoryBandwidthGBs: 288
+maxTDPWatts: 132
+gpuArchitecture: RDNA 4
+supportedHardwareOperations:
+  - FP16
+  - BF16
+  - INT8
+  - INT4
+releaseDate: "2025-08-05"
+lastModified: "2026-06-02T00:00:00Z"
+summary: |
+  The AMD Radeon RX 9060 is an entry-level RDNA 4 graphics card released on August 5, 2025,
+  initially available only through OEM pre-built systems. Based on the Navi 44 XL GPU die
+  (same die as the RX 9060 XT), it operates with 28 compute units and 1,792 stream processors,
+  trimmed down from the 9060 XT's 32 CUs. The card features 56 2nd-generation AI Accelerators,
+  28 3rd-generation Ray Tracing accelerators, and 32 MB of Infinity Cache. With 8 GB of GDDR6
+  memory running at 18 Gbps on a 128-bit interface, it delivers 288 GB/s of memory bandwidth,
+  slightly lower than the 9060 XT's 320 GB/s. The boost clock reaches 2,990 MHz with a game
+  clock of 2,400 MHz, and the total board power is a modest 132W. The card is built on TSMC's
+  4nm (N4P) process with 29.7 billion transistors on a 199 mm2 die. It delivers 21.4 TFLOPS
+  of FP32 compute and 172 TOPS of dense INT8 AI performance through RDNA 4's AI Accelerators.
+  The RX 9060 supports PCIe 5.0 x16 and features DisplayPort 2.1a and HDMI 2.1b outputs.
+  AMD positioned it to compete with NVIDIA's RTX 5050 in the OEM market, with performance
+  approximately 13-14% below the RX 9060 XT 8GB. FSR 4 (FidelityFX Super Resolution 4),
+  AMD's machine-learning upscaling technology exclusive to RDNA 4, is supported.
+manufacturerIdentifiers: []
+thirdPartyProducts: []
+references:
+  - https://www.amd.com/en/products/graphics/desktops/radeon/9000-series/amd-radeon-rx-9060.html
+  - https://www.amd.com/en/products/specifications/graphics
+  - https://en.wikipedia.org/wiki/Radeon_RX_9000_series
+  - https://en.wikipedia.org/wiki/RDNA_4
+  - https://www.guru3d.com/story/radeon-rx-9060-nonxt-official-launch-details-8-gb-gddr6-18-gbps-memory-132-w-tbp/
+  - https://www.techspot.com/news/108933-amd-reveals-vanilla-rx-9060-cut-down-specs.html
+  - https://www.techspot.com/review/3060-amd-radeon-9060/
+  - https://wccftech.com/amd-confirms-radeon-rx-9060-oem-only-availability-but-might-introduce-the-gpu-through-retail-channels/
+  - https://www.techpowerup.com/gpu-specs/radeon-rx-9060.c4326
+notes:
+  - tensorCoreCount tracks the 2nd-generation AI Accelerators as "tensor cores". The RX 9060 has 56 AI Accelerators (2 per CU x 28 CUs).
+  - fp32TFLOPS of 21.4 is sourced directly from the AMD official product page. This reflects RDNA 4 dual-issue FP32 capability; the calculation is 1,792 stream processors x 2,990 MHz x 2 x 2 (dual-issue) = approximately 21.4 TFLOPS.
+  - 'fp16TFLOPS of 86 represents FP16 Matrix throughput (dense) via the 2nd-gen AI Accelerators (WMMA), as published on the AMD product page (Peak Half Precision (FP16 Matrix) Performance = 86 TFLOPS; with 2:4 structured sparsity = 172 TFLOPS). This is the cross-vendor analog of NVIDIA tensor-core FP16. AMD also publishes FP16 Vector = FP32 Vector = 21.4 TFLOPS (SIMD path); that vector value is NOT used here because it understates AI throughput vs. the matrix path. The existing AMD RDNA 3/4 sibling files in this repo store fp16TFLOPS = 2x FP32 (packed-FP16 architectural capability); those files need migration to the matrix value — see project policy in .claude/agents/gpu-researcher.md.'
+  - 'int8TOPS of 172 represents the non-sparse (dense) INT8 matrix performance per AMD official product page (https://www.amd.com/en/products/graphics/desktops/radeon/9000-series/amd-radeon-rx-9060.html). RDNA 4 AI accelerators do support 2:4 structured sparsity (the AMD product page also lists 343 TOPS with structured sparsity = 2x dense), but the dense value is used here for consistent cross-vendor comparison per project convention.'
+  - 'Memory bandwidth of 288 GB/s calculated as 128-bit interface x 18 Gbps = 288 GB/s, confirmed by AMD official product page and multiple third-party sources.'
+  - TDP is 132W Total Board Power per AMD official product page and Guru3D launch coverage.
+  - 'Process node is TSMC 4nm (N4P) with Navi 44 XL GPU die sized at 199 mm2 and 29.7 billion transistors (same die as RX 9060 XT, with 4 CUs disabled).'
+  - 'Boost clock is 2,990 MHz and game clock is 2,400 MHz per AMD official product page and Wikipedia RX 9000 series specifications table.'
+  - PCIe interface is PCIe 5.0 x16, confirmed by Wikipedia Radeon RX 9000 series specifications table and consistent with the RDNA 4 architecture specification.
+  - 'MSRP is null because the RX 9060 launched on August 5, 2025 as an OEM-only product with no official retail MSRP. AMD confirmed OEM-exclusive availability (source: Wccftech). AMD informally stated a $249-$269 price range if a retail version is ever released, but no official MSRP has been announced. TechSpot review estimates approximately $260 based on system pricing comparisons.'
+  - The RX 9060 launched on August 5, 2025 as an OEM-exclusive product (available only through select system integrators in pre-built systems). No retail AIB cards were announced at launch. As of mid-2026, retail AIB partner cards have become available (e.g., ASRock RX 9060 Challenger 8GB OC per Guru3D), so the OEM-only status described at launch no longer reflects the current retail situation. The thirdPartyProducts array should be updated with retail AIB model numbers as they are confirmed.
+  - manufacturerIdentifiers is empty because AMD OPN (Ordering Part Number) codes for consumer GPUs are typically not published in consumer-facing documentation. AMD does not publish OPNs for OEM GPU cards through retail channels.
+  - thirdPartyProducts is empty pending full research of retail AIB partner cards. The RX 9060 launched as OEM-only, but retail cards (e.g., ASRock RX 9060 Challenger 8GB OC) have since become available as of mid-2026. This array should be populated with confirmed retail model numbers and updated accordingly.
+  - RDNA 4 supports FP8 hardware operations (the AMD product page lists FP8 Matrix performance of 172 TFLOPS dense), but for consistency with the existing RX 9060 XT, RX 9070, and RX 9070 XT spec files (which do not include FP8 in supportedHardwareOperations), FP8 has not been added here. If the sibling files are updated to include FP8, this file should be updated as well.
+  - FSR 4 is exclusive to RDNA 4 GPUs and leverages the AI accelerators for ML-based upscaling.

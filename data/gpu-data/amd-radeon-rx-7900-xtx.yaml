@@ -17,7 +17,7 @@ supportedHardwareOperations:
   - INT8
   - INT4
 releaseDate: "2022-12-13"
-lastModified: "2025-12-21T00:00:00Z"
+lastModified: "2026-06-03T00:00:00Z"
 
 summary: >-
   The AMD Radeon RX 7900 XTX, launched on December 13, 2022, is AMD's flagship
@@ -101,6 +101,7 @@ references:
 
 notes:
   - 'tensorCoreCount: tracking the AI Accelerators as "tensor cores"'
+  - 'fp16TFLOPS of 123 represents FP16 Matrix throughput (dense) via RDNA 3 AI Accelerators (WMMA), per AMD product page convention (Peak Half Precision (FP16 Matrix) Performance). This equals 2x FP32 vector on RDNA 3 silicon (2 × 61.4 = 122.8, stored as 123 rounded). AMD also publishes FP16 Vector = FP32 Vector on the same product page; that SIMD path is NOT used here in favor of the matrix path which is the cross-vendor analog of NVIDIA tensor-core FP16. See policy in .claude/agents/gpu-researcher.md.'
   - MSRP of $999 USD sourced from AMD announcement on November 3, 2022, verified from TechPowerUp and PC Gamer. AMD later reduced the price to $899 in 2024.
   - 'Manufacturer identifiers: AMD OPN 102D7020100 and model designation AMD D702 SKU 001 sourced from VideoCardz.net technical specifications page.'
   - 'Third-party products: Selected top AIB partner models from Sapphire (NITRO+ and PULSE series), PowerColor (Red Devil and Hellhound series), XFX (MERC 310 and reference models), ASUS (TUF Gaming series), MSI (Gaming Trio Classic), Gigabyte (Gaming OC), and ASRock (Phantom Gaming and Taichi series). Model numbers verified from manufacturer websites and major retailers including Newegg, Amazon, and Micro Center.'

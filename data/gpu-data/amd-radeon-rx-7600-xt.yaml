@@ -17,7 +17,7 @@ supportedHardwareOperations:
   - INT8
   - INT4
 releaseDate: "2024-01-24"
-lastModified: "2026-02-24T00:00:00Z"
+lastModified: "2026-06-03T00:00:00Z"
 
 summary: >-
   The AMD Radeon RX 7600 XT was unveiled in January, 2024 as one of the GPUs
@@ -113,6 +113,7 @@ references:
 
 notes:
   - 'tensorCoreCount: tracking the AI Accelerators as "tensor cores"'
+  - 'fp16TFLOPS of 45.14 represents FP16 Matrix throughput (dense) via RDNA 3 AI Accelerators (WMMA), per AMD product page convention (Peak Half Precision (FP16 Matrix) Performance). This equals 2x FP32 vector on RDNA 3 silicon. AMD also publishes FP16 Vector = FP32 Vector on the same product page; that SIMD path is NOT used here in favor of the matrix path which is the cross-vendor analog of NVIDIA tensor-core FP16. See policy in .claude/agents/gpu-researcher.md.'
   - 'int8TOPS of 45.14: RDNA 3 AI Accelerators perform INT8 WMMA operations at 1:1 ratio with FP16 (same throughput per AMD GPUOpen WMMA documentation). Source: https://gpuopen.com/learn/wmma_on_rdna3/'
   - MSRP of $329 USD sourced from AMD official press release dated January 8, 2024.
   - 'Manufacturer identifiers sourced from VideoCardz and TechPowerUp GPU Database: Navi 33 XT variant (215-163000047), board model AMD D745, codename "Hotpink Bonefish"'

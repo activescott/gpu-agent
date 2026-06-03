@@ -1,0 +1,94 @@
+# yaml-language-server: $schema=./gpu-spec.schema.json
+name: amd-radeon-rx-9070-gre
+label: AMD Radeon RX 9070 GRE
+category: gaming
+msrpUSD: 549
+tensorCoreCount: 96
+fp32TFLOPS: 34.3
+fp16TFLOPS: 137
+int8TOPS: 274
+memoryCapacityGB: 12
+memoryBandwidthGBs: 432
+maxTDPWatts: 220
+gpuArchitecture: RDNA 4
+supportedHardwareOperations:
+  - FP16
+  - BF16
+  - FP8
+  - INT8
+  - INT4
+releaseDate: "2026-06-02"
+lastModified: "2026-06-02T00:00:00Z"
+
+summary: |
+  The AMD Radeon RX 9070 GRE (Golden Rabbit Edition) is a mid-range gaming graphics card
+  based on the RDNA 4 architecture using the Navi 48 GPU die. Originally launched in China
+  on May 8, 2025, it received a global release on June 2, 2026 at $549 USD. The card features
+  48 compute units with 3,072 stream processors, 96 2nd-generation AI Accelerators, and 12 GB
+  of GDDR6 memory on a 192-bit bus running at 18 Gbps, delivering 432 GB/s of memory bandwidth.
+  It is positioned between the RX 9060 XT and the standard RX 9070 in AMD's lineup, offering
+  a differentiated option with 12 GB VRAM (versus 16 GB on the RX 9070) on a narrower 192-bit
+  bus at the same $549 price point as the RX 9070 at launch. Built on TSMC's N4P (4nm) process,
+  the Navi 48 die measures 356.5 mm2 with 53.9 billion transistors. The boost clock reaches
+  2,790 MHz with a game clock of approximately 2,220 MHz, and total board power is 220 W.
+  With 48 MB of 3rd-generation Infinity Cache and 48 3rd-generation Ray Tracing accelerators,
+  the RX 9070 GRE delivers 34.3 TFLOPS of FP32 compute and 274 TOPS of dense INT8 AI performance.
+  It supports FSR 4 (FidelityFX Super Resolution 4), AMD's machine-learning upscaling solution
+  exclusive to RDNA 4, and uses a PCIe 5.0 x16 interface with DisplayPort 2.1a and HDMI 2.1b outputs.
+
+manufacturerIdentifiers: []
+
+thirdPartyProducts:
+  - company: Sapphire
+    productName: SAPPHIRE PULSE AMD Radeon RX 9070 GRE OC 12GB GDDR6
+    identifier: "11354-01-20G"
+    identifierType: sku
+  - company: XFX
+    productName: XFX Swift AMD Radeon RX 9070 GRE Triple Fan Gaming Edition
+    identifier: RX-97GRE29BA
+    identifierType: model_number
+  - company: PowerColor
+    productName: PowerColor Reaper AMD Radeon RX 9070 GRE 12GB GDDR6
+    identifier: "RX9070GRE 12G-A"
+    identifierType: model_number
+  - company: ASRock
+    productName: ASRock Radeon RX 9070 GRE Steel Legend 12GB OC
+    identifier: "RX9070GRE SLD 12GO"
+    identifierType: model_number
+  - company: Gigabyte
+    productName: GIGABYTE Radeon RX 9070 GRE Gaming OC 12G
+    identifier: "GV-R907GREGAMING OC-12GD"
+    identifierType: model_number
+
+references:
+  - https://www.amd.com/en/products/graphics/desktops/radeon/9000-series/amd-radeon-rx-9070-gre.html
+  - https://www.amd.com/en/products/specifications/graphics
+  - https://en.wikipedia.org/wiki/Radeon_RX_9000_series
+  - https://en.wikipedia.org/wiki/RDNA_4
+  - https://www.tomshardware.com/pc-components/gpus/amds-formerly-china-exclusive-radeon-rx-9070-gre-goes-global-for-usd549-on-june-2-rdna-4-gpu-will-bridge-the-gap-between-rx-9060-xt-and-rx-9070
+  - https://www.tomshardware.com/pc-components/gpus/amd-radeon-rx-9070-gre-review
+  - https://www.tomsguide.com/computing/gpus/amd-radeon-rx-9070-gre-review
+  - https://hothardware.com/reviews/amd-radeon-rx-9070-gre-review
+  - https://pcvenus.com/amd-radeon-rx-9070-gre-global-launch/
+  - https://www.guru3d.com/review/sapphire-pulse-radeon-rx-9070-gre-review/
+  - https://www.sapphiretech.com/en/consumer/pulse-radeon-rx-9070-gre-12g-gddr6
+  - https://www.xfxforce.com/shop/xfx-swift-amd-radeon-rx-9070gre-triple-fan-gaming-edition-2
+  - https://www.newegg.com/p/pl?d=RX+9070+GRE
+
+notes:
+  - 'tensorCoreCount tracks the 2nd-generation AI Accelerators as "tensor cores". The RX 9070 GRE has 96 AI Accelerators (2 per CU x 48 CUs), confirmed by AMD official product page and Tom''s Guide review.'
+  - 'fp32TFLOPS of 34.3 is sourced directly from the AMD official product page (https://www.amd.com/en/products/graphics/desktops/radeon/9000-series/amd-radeon-rx-9070-gre.html). Cross-check: 3,072 stream processors x 2,790 MHz boost x 4 (RDNA 4 dual-issue packed factor) = 34.3 TFLOPS.'
+  - 'fp16TFLOPS of 137 represents FP16 Matrix throughput (dense) via the 2nd-gen AI Accelerators (WMMA), as published on the AMD product page (Peak Half Precision (FP16 Matrix) Performance = 137 TFLOPS; with 2:4 structured sparsity = 274 TFLOPS). This is the cross-vendor analog of NVIDIA tensor-core FP16. AMD also publishes FP16 Vector = FP32 Vector = 34.3 TFLOPS (SIMD path); that vector value is NOT used here because it understates AI throughput vs. the matrix path. The existing AMD RDNA 3/4 sibling files in this repo store fp16TFLOPS = 2x FP32 (packed-FP16 architectural capability); those files need migration to the matrix value — see project policy in .claude/agents/gpu-researcher.md.'
+  - 'int8TOPS of 274 represents the non-sparse (dense) INT8 matrix performance per AMD official product page (https://www.amd.com/en/products/graphics/desktops/radeon/9000-series/amd-radeon-rx-9070-gre.html). The AMD product page also lists 549 TOPS with structured sparsity (2x dense), confirming the dense value is 274 TOPS. Dense value used for consistent cross-vendor comparison per project convention.'
+  - 'Memory bandwidth of 432 GB/s is calculated as 192-bit interface x 18 Gbps = 432 GB/s, confirmed by AMD official product page and multiple third-party reviews (Wikipedia, pcvenus.com, guru3d.com).'
+  - 'Infinity Cache is 48 MB (3rd-generation), confirmed by AMD official product page and Tom''s Hardware review. This is smaller than the 64 MB on the RX 9070 (256-bit bus), proportional to the 192-bit bus width.'
+  - 'TDP is 220 W Total Board Power per AMD official product page. Some AIB partner cards (e.g., Sapphire PULSE OC) may have higher factory power limits. HotHardware notes up to 375 W available to the card in boosted scenarios.'
+  - 'Process node is TSMC N4P (4nm) with the Navi 48 GPU die, measuring 356.5 mm2 with 53.9 billion transistors per Tom''s Hardware review. The Navi 48 die is the same die used in the RX 9070 and RX 9070 XT, with 16 of 64 CUs disabled (48 active CUs vs 56 for RX 9070).'
+  - 'Clock speeds: reference boost clock is 2,790 MHz and game clock is approximately 2,220 MHz per Wikipedia RX 9000 series specifications table. AIB OC models may have higher boost clocks (e.g., Sapphire PULSE OC reaches 2,920 MHz).'
+  - 'Release date is 2026-06-02 (global launch). The card originally launched in China on May 8, 2025 as a China-exclusive product. AMD announced the global launch at Computex 2026, with worldwide availability beginning June 2, 2026 at $549 USD.'
+  - 'MSRP of $549 USD verified from 3 sources: Tom''s Hardware (https://www.tomshardware.com/pc-components/gpus/amds-formerly-china-exclusive-radeon-rx-9070-gre-goes-global-for-usd549-on-june-2-rdna-4-gpu-will-bridge-the-gap-between-rx-9060-xt-and-rx-9070), Tom''s Guide review (https://www.tomsguide.com/computing/gpus/amd-radeon-rx-9070-gre-review), and HotHardware review (https://hothardware.com/reviews/amd-radeon-rx-9070-gre-review). All three independently confirm the $549 USD launch price.'
+  - 'The RX 9070 GRE is positioned between the RX 9060 XT and the RX 9070 in AMD''s lineup. At $549 it matches the RX 9070''s launch price but offers 12 GB on a 192-bit bus versus the RX 9070''s 16 GB on a 256-bit bus. Internal AMD benchmarks show approximately 21% higher average performance over the RTX 5060 Ti 16 GB at 1440p.'
+  - RDNA 4 introduces optimized Compute Units, 3rd-generation Ray Tracing accelerators, and 2nd-generation AI Accelerators. FSR 4 is exclusive to RDNA 4 GPUs and leverages the AI accelerators for ML-based upscaling.
+  - 'manufacturerIdentifiers is empty because AMD OPN (Ordering Part Number) codes for consumer GPUs are typically not published in consumer-facing documentation. These internal B2B identifiers are not available through AMD''s public-facing resources.'
+  - 'thirdPartyProducts includes verified AIB partner model numbers from Sapphire (11354-01-20G for PULSE OC, confirmed from Sapphire official product page search snippet), XFX (RX-97GRE29BA for Swift Triple Fan, confirmed from xfxforce.com official product page), PowerColor (RX9070GRE 12G-A for Reaper, confirmed from eBay and nanokomputer.com listing), ASRock (RX9070GRE SLD 12GO for Steel Legend OC, confirmed from Newegg listing), and Gigabyte (GV-R907GREGAMING OC-12GD for Gaming OC, confirmed from Newegg listing). All model numbers sourced from https://www.newegg.com/p/pl?d=RX+9070+GRE and manufacturer product pages.'
+  - 'FP8 (8-bit floating point) is listed in supportedHardwareOperations because the RDNA 4 2nd-generation AI Accelerators provide hardware FP8 matrix compute support, confirmed by the AMD official product page listing FP8 Peak (Matrix) = 274 TFLOPS and FP8 Peak (Matrix, Structured Sparsity) = 549 TFLOPS (https://www.amd.com/en/products/graphics/desktops/radeon/9000-series/amd-radeon-rx-9070-gre.html).'

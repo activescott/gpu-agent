@@ -63,7 +63,12 @@ function getSortableValue(
   }
 }
 
-function sortGpusByField(
+const FIELDS_REQUIRING_LISTINGS: ReadonlySet<RankingSortField> = new Set([
+  "price",
+  "dollarsPer",
+])
+
+export function sortGpusByField(
   gpus: PricedGpu[],
   field: RankingSortField,
   direction: SortDirection,
@@ -81,7 +86,10 @@ function sortGpusByField(
     return 0
   }
 
-  return [...gpus].sort(composeComparers(noListingsToBottom, fieldComparer))
+  const comparer = FIELDS_REQUIRING_LISTINGS.has(field)
+    ? composeComparers(noListingsToBottom, fieldComparer)
+    : fieldComparer
+  return [...gpus].sort(comparer)
 }
 
 const PERCENT_MULTIPLIER = 100

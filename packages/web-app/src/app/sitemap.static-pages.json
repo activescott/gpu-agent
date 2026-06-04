@@ -66,6 +66,11 @@
       "lastModified": "2026-03-08T05:54:50.000Z"
     },
     {
+      "path": "/gpu/learn/ai/form-factors",
+      "title": "GPU Form Factors: PCIe, SXM, OAM Explained",
+      "lastModified": "2026-06-04T10:00:00.000Z"
+    },
+    {
       "path": "/gpu/learn/ai/faq/how-much-gpu-memory-for-llm",
       "title": "How much memory does my GPU need to run an LLM?",
       "lastModified": "2026-03-08T05:54:50.000Z"

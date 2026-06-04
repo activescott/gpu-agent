@@ -54,8 +54,10 @@ export default async function Page() {
 
         <Feature title="GPU Specifications" icon="motherboard">
           {sitemapJson.data
-            .filter((item) =>
-              item.path.startsWith("/gpu/learn/ai/quantization"),
+            .filter(
+              (item) =>
+                item.path.startsWith("/gpu/learn/ai/quantization") ||
+                item.path.startsWith("/gpu/learn/ai/form-factors"),
             )
             .map((item) => (
               <li key={item.path}>

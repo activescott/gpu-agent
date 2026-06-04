@@ -1,0 +1,74 @@
+export const _metadata = {
+  prompt: `Educational reference for GPU form factors (PCIe add-in card, SXM, OAM, NVL, MXM). Covers all form factors used by GPUs in the GPU Poet database with worked examples. Note that consumer/gaming cards share a single form factor — only datacenter/AI accelerators have unique sockets (SXM, OAM). Concise but complete.`,
+}
+
+# GPU Form Factors Explained: PCIe, SXM, OAM, and the Variants In Between
+
+A "GPU" on a spec sheet is usually a chip plus a board plus a way of plugging into a system. That last part — the form factor — quietly shapes how a card cools itself, how much power it can pull, how it talks to other GPUs, and where you can actually put it.
+
+If you're shopping for a gaming or content-creation GPU, the form factor question is mostly about slot width and power: every consumer card is a PCIe add-in card. The interesting form factors — SXM, OAM, NVLink-bridged PCIe — only show up on datacenter and AI accelerators, where multi-GPU bandwidth and power density really start to matter.
+
+Below is a quick tour of the form factors used by every GPU currently in the GPU Poet database, with examples you can click through.
+
+## PCIe add-in card
+
+The familiar one. A board with a PCIe x16 edge connector that drops into a desktop or server slot. Powered by the slot (up to 75W) plus 6/8/12-pin auxiliary connectors. Cooled either by fans built into the card itself ("active" cooling, what you'd find on a typical desktop GPU) or, in servers, by the chassis fans blowing air through a fanless heatsink on the card ("passive" cooling — only practical with the high-static-pressure airflow a server case provides).
+
+PCIe add-in cards come in different physical sizes that matter when you're picking a card:
+
+- **Low-profile, single-slot, slot-powered** — short bracket, fits 1U servers and small-form-factor desktops. ≤75W so no auxiliary power connector, often passively cooled. Examples: [NVIDIA T4](/gpu/learn/card/nvidia-t4), [NVIDIA L4](/gpu/learn/card/nvidia-l4), [RTX A1000](/gpu/learn/card/nvidia-rtx-a1000).
+- **Compact dual-slot, slot-powered** — half-height or full-height with a low-profile bracket option. Still ≤75W, but two slots wide for a bigger cooler. Examples: [RTX PRO 2000 Blackwell](/gpu/learn/card/nvidia-rtx-pro-2000-blackwell), [Intel Arc Pro B50](/gpu/learn/card/intel-arc-pro-b50).
+- **Full-height, dual-slot** — the default for mainstream gaming and most workstation cards. Examples: [RTX 5070](/gpu/learn/card/nvidia-geforce-rtx-5070), [Radeon RX 9070 XT](/gpu/learn/card/amd-radeon-rx-9070-xt).
+- **Triple-slot and larger** — needed for 300W+ cards. Examples: [RTX 4090](/gpu/learn/card/nvidia-geforce-rtx-4090), [RTX 5090](/gpu/learn/card/nvidia-geforce-rtx-5090).
+- **Full-height full-length, fanless (FHFL passive)** — the server form for datacenter PCIe cards. The card has no fan of its own — just bare heatsink fins — so it relies on the server chassis fans pushing high-pressure air across it. Won't cool itself in a regular desktop case. Examples: [NVIDIA A100 PCIe](/gpu/learn/card/nvidia-a100-pcie), [H100 PCIe](/gpu/learn/card/nvidia-h100-pcie), [L40S](/gpu/learn/card/nvidia-l40s).
+
+## SXM (Server PCI Express Module)
+
+NVIDIA's mezzanine module format for datacenter GPUs. Instead of a slot, the GPU bolts onto a socket on the server's HGX[^hgx] or DGX[^dgx] baseboard. The socket carries PCIe to the host CPU plus high-bandwidth NVLink lanes to the seven sibling GPUs on the same board. SXM modules can run at higher TDPs (700W–1000W+) than PCIe cards because the baseboard handles power and cooling as a unit.
+
+The socket has versioned with each generation: SXM2 (Pascal/Volta), SXM3 (Volta refresh), SXM4 (Ampere), SXM5 (Hopper), SXM6 (Blackwell). Modules are not slot-compatible across versions.
+
+Examples in the database: [Tesla P100](/gpu/learn/card/nvidia-tesla-p100) (SXM2), [Tesla V100 16GB](/gpu/learn/card/nvidia-tesla-v100-16gb) and [32GB](/gpu/learn/card/nvidia-tesla-v100-32gb) (SXM2), [H200 SXM](/gpu/learn/card/nvidia-h200-sxm) (SXM5), [B100](/gpu/learn/card/nvidia-b100) and [B200](/gpu/learn/card/nvidia-b200) (SXM6).
+
+Servethehome has a good walk-through of installing SXM2 modules — torque-spec details and all — at [How to Install NVIDIA Tesla SXM2 GPUs in DeepLearning12](https://www.servethehome.com/how-to-install-nvidia-tesla-sxm2-gpus-in-deeplearning12/). The video below shows the physical assembly clearly.
+
+<div className="ratio ratio-16x9 my-3" style={{ maxWidth: "480px" }}>
+  <iframe
+    src="https://www.youtube.com/embed/ipQXdjjAPGg"
+    title="Installing NVIDIA Tesla SXM2 GPUs in DeepLearning12"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    referrerPolicy="strict-origin-when-cross-origin"
+    allowFullScreen
+  />
+</div>
+
+## OAM (OCP Accelerator Module)
+
+The Open Compute Project's vendor-neutral answer to SXM. An OAM is a 102mm × 165mm mezzanine module that bolts onto a Universal Base Board (UBB[^ubb]) holding up to eight accelerators. The UBB carries PCIe to the host and a fabric (Infinity Fabric on AMD, scale-up Ethernet on some designs) between the accelerators. Because OAM is an open standard, the same socket can host parts from different vendors.
+
+AMD's Instinct datacenter line uses OAM exclusively. Examples: [MI300X](/gpu/learn/card/amd-instinct-mi300x), [MI325X](/gpu/learn/card/amd-instinct-mi325x), [MI350X](/gpu/learn/card/amd-instinct-mi350x), [MI355X](/gpu/learn/card/amd-instinct-mi355x). The OCP specification is published at [opencompute.org](https://www.opencompute.org/wiki/Server/OAI).
+
+## NVL (PCIe with NVLink bridge)
+
+A variant on the FHFL passive PCIe card: each card has NVLink bridge connectors at the top edge so two or four cards can be linked into a single pooled-memory GPU group for LLM inference, without giving up the standard PCIe form factor. Example: [NVIDIA H200 NVL](/gpu/learn/card/nvidia-h200-nvl) — 141GB HBM3e per card, 282GB pooled in a 2-way bridge or 564GB in a 4-way bridge.
+
+## Workstation vs. server variants of the same chip
+
+Some chips ship in multiple board variants that share a socket family (PCIe) but differ in cooling, TDP, and bracket. The RTX PRO 6000 Blackwell, for instance, ships as a [Workstation](/gpu/learn/card/nvidia-rtx-pro-6000-blackwell-workstation) edition (built-in fan, 600W), a [Server](/gpu/learn/card/nvidia-rtx-pro-6000-blackwell-server) edition (no fan on the card — cooled by chassis airflow, 600W), and a [Max-Q](/gpu/learn/card/nvidia-rtx-pro-6000-blackwell-max-q) variant (built-in fan, 300W for multi-GPU workstations). Same chip and feature set, different physical card. The RTX PRO 4500 has [workstation](/gpu/learn/card/nvidia-rtx-pro-4500-blackwell-workstation) and [server](/gpu/learn/card/nvidia-rtx-pro-4500-blackwell-server) editions for the same reason.
+
+## MXM and mobile
+
+Not currently in the database, but worth knowing: MXM is the mezzanine standard for laptop and embedded GPUs. If you see a "mobile" or laptop variant of a GeForce or Radeon card, it's typically an MXM module or a directly-soldered BGA part, with TDPs and clocks much lower than the desktop card of the same name.
+
+## Practical buying notes
+
+- A "PCIe" version of a datacenter GPU is usually slower than the SXM/OAM version of the same chip, because the socketed variant gets a higher power budget and far more inter-GPU bandwidth. Some PCIe cards do have NVLink bridge connectors (the [H200 NVL](/gpu/learn/card/nvidia-h200-nvl) above, plus [A100 PCIe](/gpu/learn/card/nvidia-a100-pcie) and [H100 PCIe](/gpu/learn/card/nvidia-h100-pcie)), but a bridge only links 2–4 adjacent cards. SXM modules on an HGX[^hgx] baseboard get all-to-all NVLink across all 8 GPUs through an NVSwitch fabric, at much higher aggregate bandwidth.
+- SXM and OAM modules can't be dropped into a regular PC — they need the matching baseboard (HGX[^hgx] or DGX[^dgx] for SXM, UBB[^ubb] for OAM).
+- Server PCIe cards (the fanless "passive" datacenter variants) won't cool themselves on a desk; they need a server chassis pushing serious airflow.
+- Slot width and TDP determine whether a card will physically fit and whether your PSU can feed it.
+
+More background reading: NVIDIA's [HGX platform overview](https://www.nvidia.com/en-us/data-center/hgx/), the [OCP OAM specification](https://www.opencompute.org/wiki/Server/OAI), and the Servethehome SXM2 install guide linked above.
+
+[^hgx]: HGX is NVIDIA's reference baseboard design for partners — typically a 4- or 8-GPU SXM baseboard with NVSwitch fabric. OEMs like Dell, Supermicro, Lenovo, and HPE buy the HGX baseboard from NVIDIA and integrate it into their own-branded servers (e.g. "Dell PowerEdge XE9680 with NVIDIA HGX H100"). See [NVIDIA HGX](https://www.nvidia.com/en-us/data-center/hgx/).
+[^dgx]: DGX is NVIDIA's own turnkey server appliance — same SXM modules and a similar baseboard as HGX, but NVIDIA sells the complete machine including chassis, CPUs, storage, networking, and NVIDIA AI Enterprise software. Examples: DGX H100, DGX B200. See [NVIDIA DGX Platform](https://www.nvidia.com/en-us/data-center/dgx-platform/).
+[^ubb]: UBB (Universal Base Board) is the OCP open-spec baseboard that holds up to 8 OAM modules — the OAM equivalent of NVIDIA's HGX. It carries PCIe to the host CPU and the inter-accelerator fabric (Infinity Fabric in AMD MI300X-class systems). Because both OAM and UBB are open standards, any OAM-compatible accelerator can mount on a UBB. AMD's MI300X/MI325X/MI350X/MI355X reference platforms are all UBB-based. See the [OCP UBB spec](https://www.opencompute.org/wiki/Server/OAI).

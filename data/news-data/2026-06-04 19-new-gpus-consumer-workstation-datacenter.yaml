@@ -1,0 +1,56 @@
+# yaml-language-server: $schema=./news-article.schema.json
+id: gpu0604jun2026add
+slug: 19-new-gpus-consumer-workstation-datacenter
+title: "GPU Database Update: 19 New Cards Across Consumer, Workstation, and Datacenter"
+content: |
+  I've added 19 GPUs to the database after a research pass through the latest Blackwell, RDNA 4, and CDNA 3/4 launches. Listings are now being collected for these cards on the same cadence as the rest of the database.
+
+  ## Consumer
+
+  - [NVIDIA GeForce RTX 5050](/gpu/learn/card/nvidia-geforce-rtx-5050) — Blackwell entry point, $249, July 2025.
+  - [AMD Radeon RX 9060](/gpu/learn/card/amd-radeon-rx-9060) — non-XT OEM card, RDNA 4, August 2025.
+  - [AMD Radeon RX 9070 GRE](/gpu/learn/card/amd-radeon-rx-9070-gre) — RDNA 4, 12GB, $549, global launch June 2026.
+
+  ## NVIDIA RTX PRO Blackwell workstation and server
+
+  Eight cards spanning the new RTX PRO Blackwell lineup, from a 70W low-profile up to the 96GB flagship:
+
+  - [RTX PRO 2000 Blackwell](/gpu/learn/card/nvidia-rtx-pro-2000-blackwell) — 16GB GDDR7, 70W.
+  - [RTX PRO 4000 Blackwell](/gpu/learn/card/nvidia-rtx-pro-4000-blackwell) — 24GB GDDR7, 145W.
+  - [RTX PRO 4500 Blackwell Workstation](/gpu/learn/card/nvidia-rtx-pro-4500-blackwell-workstation) — 32GB GDDR7, 200W.
+  - [RTX PRO 4500 Blackwell Server](/gpu/learn/card/nvidia-rtx-pro-4500-blackwell-server) — 32GB GDDR7, 165W passive, March 2026.
+  - [RTX PRO 5000 Blackwell](/gpu/learn/card/nvidia-rtx-pro-5000-blackwell) — 48GB GDDR7, 300W.
+  - [RTX PRO 6000 Blackwell Workstation](/gpu/learn/card/nvidia-rtx-pro-6000-blackwell-workstation) — 96GB GDDR7, 600W.
+  - [RTX PRO 6000 Blackwell Server](/gpu/learn/card/nvidia-rtx-pro-6000-blackwell-server) — 96GB GDDR7, 600W passive.
+  - [RTX PRO 6000 Blackwell Max-Q](/gpu/learn/card/nvidia-rtx-pro-6000-blackwell-max-q) — 96GB GDDR7, 300W.
+
+  ## NVIDIA datacenter
+
+  Hopper-refresh and Blackwell datacenter parts:
+
+  - [H200 SXM](/gpu/learn/card/nvidia-h200-sxm) — 141GB HBM3e, 4.8 TB/s, 700W.
+  - [H200 NVL](/gpu/learn/card/nvidia-h200-nvl) — 141GB HBM3e PCIe-with-NVLink-bridge, 600W.
+  - [B100](/gpu/learn/card/nvidia-b100) — 192GB HBM3e SXM, 700W, drop-in for HGX H100 baseboards.
+  - [B200](/gpu/learn/card/nvidia-b200) — 180GB HBM3e HGX, 7.7 TB/s, 1000W.
+
+  ## AMD Instinct datacenter
+
+  Four CDNA 3/4 OAM accelerators:
+
+  - [MI300X](/gpu/learn/card/amd-instinct-mi300x) — 192GB HBM3, CDNA 3, December 2023.
+  - [MI325X](/gpu/learn/card/amd-instinct-mi325x) — 256GB HBM3e, CDNA 3, October 2024.
+  - [MI350X](/gpu/learn/card/amd-instinct-mi350x) — 288GB HBM3e, CDNA 4 air-cooled, 1000W, June 2025.
+  - [MI355X](/gpu/learn/card/amd-instinct-mi355x) — 288GB HBM3e, CDNA 4 liquid-cooled, 1400W, June 2025.
+
+  A handful of these ship in form factors most buyers haven't dealt with — SXM5/6 modules, OAM accelerators on Universal Base Boards, NVLink-bridged PCIe pairs. If you want the background on what those mean for buying and installation, see [GPU Form Factors Explained](/gpu/learn/ai/form-factors).
+status: PUBLISHED
+tags:
+  - update
+  - database
+  - blackwell
+  - cdna
+  - datacenter
+authorFullName: "Scott Willeke"
+createdAt: "2026-06-04T10:30:00Z"
+updatedAt: "2026-06-04T10:30:00Z"
+publishedAt: "2026-06-04T10:30:00Z"

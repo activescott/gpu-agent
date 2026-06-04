@@ -86,10 +86,10 @@ export async function revalidateCachedListings(
           }))
 
           if (staleGpus.length > 0) {
-            // Sort oldest first so the most stale GPUs get refreshed first
-            gpusWithOldestCachedAt.sort((a, b) => {
-              return a.oldestCachedAt.getTime() - b.oldestCachedAt.getTime()
-            })
+            // Shuffle so a GPU whose searcher persistently returns 0 listings
+            // (and thus stays stale every run) cannot monopolize the per-run
+            // slots and starve other always-stale GPUs (see issue #48).
+            shuffleInPlace(staleGpus)
 
             // Limit to 4 GPUs per run to stay well under eBay's rate limit (5,000 calls/day).
             // Dev and prod share the same API key, so bursting through all stale GPUs
@@ -171,6 +171,13 @@ async function cacheEbayListingsForGpuWithLogging(
       `caching listings failed for gpu=${gpuName}: ${errorMessage}`,
     )
     throw error
+  }
+}
+
+function shuffleInPlace<T>(array: T[]): void {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1))
+    ;[array[i], array[j]] = [array[j], array[i]]
   }
 }
 

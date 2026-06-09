@@ -13,8 +13,8 @@ description: Average FPS in 3DMark Wild Life Extreme, a cross-platform GPU
 descriptionDollarsPer: Dollars per FPS in 3DMark Wild Life Extreme. Lower values
   indicate better cost efficiency for GPU rendering performance.
 category: gaming
-collectedSamples: 625
-updatedAt: 2026-05-25T17:45:40.125Z
+collectedSamples: 628
+updatedAt: 2026-06-08T11:21:03.844Z
 results:
   - gpuNameRaw: AMD Phoenix1
     value: 88
@@ -56,6 +56,8 @@ results:
     value: 581
   - gpuNameRaw: eVGA NVIDIA GeForce RTX 3060
     value: 300
+  - gpuNameRaw: Gigabyte AMD Radeon AI PRO R9700
+    value: 652
   - gpuNameRaw: Gigabyte AMD Radeon RX 6600
     value: 280
   - gpuNameRaw: Intel Arc A380 DG2

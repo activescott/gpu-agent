@@ -13,8 +13,8 @@ description: Average FPS in 3DMark Wild Life Extreme, a cross-platform GPU
 descriptionDollarsPer: Dollars per FPS in 3DMark Wild Life Extreme. Lower values
   indicate better cost efficiency for GPU rendering performance.
 category: gaming
-collectedSamples: 267
-updatedAt: 2026-05-25T17:46:14.923Z
+collectedSamples: 308
+updatedAt: 2026-06-08T11:21:33.358Z
 results:
   - gpuNameRaw: AMD Radeon Pro W7700
     value: 311
@@ -40,22 +40,28 @@ results:
     value: 204
   - gpuNameRaw: AMD Radeon RX 7800 XT
     value: 382
+  - gpuNameRaw: AMD Radeon RX 7900 GRE
+    value: 396
   - gpuNameRaw: AMD Radeon RX 7900 XT
     value: 513
   - gpuNameRaw: AMD Radeon RX 7900 XTX
     value: 592
+  - gpuNameRaw: ASUS AMD Radeon RX 9070 XT
+    value: 494
   - gpuNameRaw: ASUS NVIDIA GeForce RTX 5090
     value: 867
   - gpuNameRaw: eVGA NVIDIA GeForce RTX 3060
     value: 184
   - gpuNameRaw: Gigabyte AMD Radeon RX 6600
     value: 169
-  - gpuNameRaw: Gigabyte AMD Radeon RX 9070
-    value: 471
+  - gpuNameRaw: Gigabyte AMD Radeon RX 9060 XT
+    value: 254
   - gpuNameRaw: Intel BMG G21
     value: 246
+  - gpuNameRaw: Intel BMG G31
+    value: 330
   - gpuNameRaw: MSI NVIDIA GeForce RTX 4060
-    value: 227
+    value: 219
   - gpuNameRaw: NVIDIA GeForce RTX 2060 SUPER
     value: 187
   - gpuNameRaw: NVIDIA GeForce RTX 3060 Ti
@@ -75,7 +81,7 @@ results:
   - gpuNameRaw: NVIDIA GeForce RTX 4090
     value: 765
   - gpuNameRaw: NVIDIA GeForce RTX 5090
-    value: 875
+    value: 858
   - gpuNameRaw: NVIDIA RTX 4000 Ada Generation
     value: 285
   - gpuNameRaw: NVIDIA RTX 6000 Ada Generation

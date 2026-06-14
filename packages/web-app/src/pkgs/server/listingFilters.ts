@@ -154,6 +154,9 @@ const nonGpuKeywords = [
   "card only",
   // e.g. "OEM Backplate For EVGA NVIDIA GeForce RTX 3060 XC 12GB Gaming Card" - $4.99 accessory
   "Backplate For",
+  // Sellers sometimes list non-working cards with normal conditionId but flag "PARTS ONLY" / "for parts" in the title
+  "parts only",
+  "for parts",
 ].map((word) => word.toLowerCase())
 
 function gpuAccessoryFilter(item: Listing, logFn: LogFn): boolean {

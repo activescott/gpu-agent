@@ -159,6 +159,12 @@ function detectExcludeReason(listing: CachedListing): ExcludeReason {
     return EXCLUDE_REASONS.FOR_PARTS
   }
 
+  // Title-based "for parts" / "parts only" — sellers bypass conditionId but flag it in the title
+  const forPartsTitleKeywords = ["parts only", "for parts"]
+  if (forPartsTitleKeywords.some((kw) => titleLower.includes(kw))) {
+    return EXCLUDE_REASONS.FOR_PARTS
+  }
+
   // Check for accessory-related keywords
   const accessoryKeywords = [
     "bracket",

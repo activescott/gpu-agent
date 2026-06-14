@@ -241,3 +241,38 @@ describe("sellerFeedbackFilter", () => {
     expect(filtered[0]).toHaveProperty("sellerFeedbackPercentage", "99.9")
   })
 })
+
+it("should filter out 'parts only' and 'for parts' title patterns", async () => {
+  const gpu = await loadGpuFromYaml("amd-radeon-rx-7800-xt.yaml")
+
+  const listings: AsyncIterable<Listing> = arrayToAsyncIterable([
+    {
+      title: "AMD Radeon RX 7800 XT 16GB PARTS ONLY",
+      itemAffiliateWebUrl: "https://example.com",
+      buyingOptions: ["FIXED_PRICE"],
+      sellerFeedbackPercentage: "100",
+    },
+    {
+      title: "AMD Radeon RX 7800 XT 16GB - for parts or repair",
+      itemAffiliateWebUrl: "https://example.com",
+      buyingOptions: ["FIXED_PRICE"],
+      sellerFeedbackPercentage: "100",
+    },
+    {
+      title: "PowerColor Fighter AMD Radeon RX 7800 XT 16GB GDDR6",
+      itemAffiliateWebUrl: "https://example.com",
+      buyingOptions: ["FIXED_PRICE"],
+      sellerFeedbackPercentage: "100",
+    },
+    // HACK cast for test purposes
+  ] as unknown as Listing[])
+
+  const filtered = await chainAsync(listings)
+    .filter(createFilterForGpu(gpu))
+    .collect()
+
+  expect(filtered).toHaveLength(1)
+  expect(filtered[0].title).toBe(
+    "PowerColor Fighter AMD Radeon RX 7800 XT 16GB GDDR6",
+  )
+})

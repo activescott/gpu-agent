@@ -77,11 +77,16 @@ export function PopularComparisons({
     )
   }
 
+  // Limit grid layout to GRID_MAX_ITEMS entries so they fit in a single row
+  // at lg (col-lg-3 = 4 per row). Compact list (Learn page) shows all.
+  const GRID_MAX_ITEMS = 4
+  const gridItems = POPULAR_COMPARISONS.slice(0, GRID_MAX_ITEMS)
+
   return (
     <div>
       <h3 className="h5 mb-3">{title}</h3>
       <div className="row g-3">
-        {POPULAR_COMPARISONS.map((comparison) => (
+        {gridItems.map((comparison) => (
           <div key={comparison.url} className="col-md-6 col-lg-3">
             <Link
               href={comparison.url}

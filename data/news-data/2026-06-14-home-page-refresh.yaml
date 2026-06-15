@@ -1,0 +1,24 @@
+# yaml-language-server: $schema=./news-article.schema.json
+id: gpu0614jun2026hpr
+slug: home-page-refresh
+title: "Home Page Refresh: Market Report and Buying Context Up Front"
+content: |
+  The home page now opens with the latest [GPU Market Report](/gpu/market-report/gpu-market-report-june-2026) and its key findings summary, alongside the two most recent news stories.
+
+  ## What's New
+
+  - **Market report up top** so the current month's analysis is the first thing you see.
+  - **Buying-context subtitles** on each "Top GPUs" row — short notes on what each metric is good for (INT8 TOPs for quantized LLM inference, FP32 TFLOPs for training, FPS for gaming builds, etc.).
+  - **Learn shortcut** in the home page tip cards links straight to [/gpu/learn](/gpu/learn) for guides on AI specs, gaming benchmarks, and individual cards.
+  - **Cleaner layout** — Popular GPU Comparisons fits on one row, and only recent news cards are interspersed between rankings.
+
+  Let me know what you think — drop feedback on the [contact page](/contact).
+status: PUBLISHED
+tags:
+  - update
+  - home
+  - navigation
+authorFullName: "Scott Willeke"
+createdAt: "2026-06-14T10:00:00Z"
+updatedAt: "2026-06-14T11:00:00Z"
+publishedAt: "2026-06-14T10:00:00Z"

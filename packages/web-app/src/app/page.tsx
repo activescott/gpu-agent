@@ -12,6 +12,7 @@ import { listMarketReports } from "./gpu/market-report/reports"
 import type { NewsItem } from "@/pkgs/client/components/NewsArticlePair"
 import { listMetricDefinitions } from "@/pkgs/server/data/MetricRepository"
 import { HomeCarousels } from "@/pkgs/client/components/HomeCarousels"
+import { HomeEditorialBanner } from "@/pkgs/client/components/HomeEditorialBanner"
 
 // revalidate the data at most every N seconds: https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#revalidate
 export const revalidate = 1800
@@ -27,6 +28,8 @@ export const metadata: Metadata = {
 const TOP_N_LISTINGS = 10
 const HOME_GAMING_RESOLUTION = "2560x1440"
 const MIN_AI_VRAM_GB = 10
+const BANNER_NEWS_COUNT = 2
+const CAROUSEL_NEWS_MAX_AGE_MONTHS = 5
 
 export default async function Page() {
   const allMetrics = await listMetricDefinitions()
@@ -76,20 +79,17 @@ export default async function Page() {
     .filter((article) => article.publishedAt > oneYearAgo)
     .sort((a, b) => b.publishedAt.getTime() - a.publishedAt.getTime())
 
-  // Prepend the latest market report so it always appears in the first row
-  const latestReport = listMarketReports()[0]
-  const newsArticles: NewsItem[] = latestReport
-    ? [
-        {
-          id: latestReport.slug,
-          title: latestReport.title,
-          publishedAt: latestReport.publishedAt,
-          slug: latestReport.slug,
-          href: `/gpu/market-report/${latestReport.slug}`,
-        },
-        ...recentArticles,
-      ]
-    : recentArticles
+  const latestReport = listMarketReports()[0] ?? null
+  const bannerNews = recentArticles.slice(0, BANNER_NEWS_COUNT)
+
+  // Interspersed carousel news: only show articles from the last N months.
+  const carouselNewsCutoff = new Date()
+  carouselNewsCutoff.setMonth(
+    carouselNewsCutoff.getMonth() - CAROUSEL_NEWS_MAX_AGE_MONTHS,
+  )
+  const carouselNews = recentArticles
+    .slice(BANNER_NEWS_COUNT)
+    .filter((article) => article.publishedAt > carouselNewsCutoff)
 
   return (
     <div>
@@ -101,6 +101,8 @@ export default async function Page() {
         for your money.
       </h3>
 
+      <HomeEditorialBanner report={latestReport} latestNews={bannerNews} />
+
       <div className="my-how-to-cards mt-4 d-flex flex-column flex-md-row justify-content-evenly">
         <TipCard icon="trophy-fill">
           Check <Link href="/gpu/ranking/ai/fp32-flops">GPU Rankings</Link> to
@@ -110,9 +112,9 @@ export default async function Page() {
           <Link href="/gpu/price-compare">Browse GPUs for sale</Link> to see
           price vs. performance.
         </TipCard>
-        <TipCard svgIcon="ebay">
-          Prices for new and used GPUs from eBay. Want listings from another
-          site? <Link href="/contact">Let me know</Link>.
+        <TipCard icon="book">
+          <Link href="/gpu/learn">Learn about GPUs</Link> — guides on AI specs,
+          gaming benchmarks, and individual cards.
         </TipCard>
       </div>
 
@@ -123,7 +125,7 @@ export default async function Page() {
       <HomeCarousels
         aiListingsGroup={aiListingsGroup}
         gamingListingsGroup={gamingListingsGroup}
-        newsArticles={newsArticles}
+        newsArticles={carouselNews}
       />
     </div>
   )

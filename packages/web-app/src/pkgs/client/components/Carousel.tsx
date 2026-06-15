@@ -4,10 +4,12 @@ export function Carousel({
   header,
   children,
   href,
+  subtitle,
 }: {
   header: React.ReactNode
   children: React.ReactNode
   href?: string
+  subtitle?: string
 }) {
   return (
     <div className="my-container m-2 mt-5">
@@ -21,6 +23,9 @@ export function Carousel({
             `${header} →`
           )}
         </h4>
+        {subtitle && (
+          <p className="text-body-secondary small mb-3">{subtitle}</p>
+        )}
       </div>
       <div className="overflow-x-scroll">
         <div

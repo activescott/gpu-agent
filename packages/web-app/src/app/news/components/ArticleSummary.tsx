@@ -9,9 +9,9 @@ interface ArticleSummaryProps {
 export function ArticleSummary({ article }: ArticleSummaryProps): ReactNode {
   return (
     <article className="p-6 mt-2 mb-5">
-      <h2>
+      <h3>
         <a href={`/news/${article.slug}`}>{article.title}</a>
-      </h2>
+      </h3>
       <div className="mt-2 text-muted">
         <span>By {article.authorFullName}</span>
         {article.publishedAt && (

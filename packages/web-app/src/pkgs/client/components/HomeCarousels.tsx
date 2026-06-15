@@ -28,6 +28,7 @@ interface GamingCarouselData {
 
 const TOP_N_GROUP_SIZE = 2
 
+/** Home page rows of cost/performance carousels (AI + optional gaming) with news pairs interspersed every two rows. */
 export function HomeCarousels({
   aiListingsGroup,
   gamingListingsGroup,
@@ -64,24 +65,46 @@ export function HomeCarousels({
 
   return (
     <div className="d-flex flex-column">
-      {allCarousels.map((carousel, groupIndex) => (
-        <div key={carousel.key}>
-          {carousel}
-          {groupIndex % TOP_N_GROUP_SIZE === 1 &&
-            groupIndex < allCarousels.length - 1 && (
+      {allCarousels.map((carousel, groupIndex) => {
+        const sliceStart =
+          Math.floor(groupIndex / TOP_N_GROUP_SIZE) * TOP_N_GROUP_SIZE
+        const articles = newsArticles.slice(
+          sliceStart,
+          sliceStart + TOP_N_GROUP_SIZE,
+        )
+        const showNewsPair =
+          groupIndex % TOP_N_GROUP_SIZE === 1 &&
+          groupIndex < allCarousels.length - 1 &&
+          articles.length === TOP_N_GROUP_SIZE
+        return (
+          <div key={carousel.key}>
+            {carousel}
+            {showNewsPair && (
               <NewsArticlePair
                 startIndex={groupIndex - 1}
-                articles={newsArticles.slice(
-                  Math.floor(groupIndex / TOP_N_GROUP_SIZE) * TOP_N_GROUP_SIZE,
-                  Math.floor(groupIndex / TOP_N_GROUP_SIZE) * TOP_N_GROUP_SIZE +
-                    TOP_N_GROUP_SIZE,
-                )}
+                articles={articles}
               />
             )}
-        </div>
-      ))}
+          </div>
+        )
+      })}
     </div>
   )
+}
+
+const AI_CAROUSEL_SUBTITLES: Record<GpuSpecKey, string> = {
+  fp32TFLOPS:
+    "Best price per FP32 TFLOP — useful for ML training, scientific computing, and rendering.",
+  fp16TFLOPS:
+    "Best price per FP16 TFLOP — useful for mixed-precision training and inference.",
+  tensorCoreCount:
+    "Best price per Tensor Core — useful for transformer and deep-learning workloads.",
+  int8TOPS:
+    "Best price per INT8 TOP — useful for quantized LLM inference and edge AI.",
+  memoryCapacityGB:
+    "Best price per GB of VRAM — useful for large-model fine-tuning and high-resolution rendering.",
+  memoryBandwidthGBs:
+    "Best price per GB/s of memory bandwidth — useful for memory-bound LLM inference.",
 }
 
 function TopListingsCarousel({
@@ -95,6 +118,7 @@ function TopListingsCarousel({
     <Carousel
       header={`Top GPUs for ${GpuSpecsDescription[spec].label}`}
       href={canonicalPathForSlug(mapMetricToSlug(spec), "ai")}
+      subtitle={AI_CAROUSEL_SUBTITLES[spec]}
     >
       {listings.map((listing) => (
         <ListingCardSmall
@@ -118,6 +142,7 @@ function GamingListingsCarousel({
     <Carousel
       header={`Top GPUs for ${name}`}
       href={canonicalPathForSlug(slug, "gaming")}
+      subtitle="Best price per FPS at 1440p — top picks for budget-conscious gaming builds."
     >
       {listings.map((listing) => (
         <ListingCardSmall

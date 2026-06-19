@@ -16,7 +16,7 @@ descriptionDollarsPer: Dollars per FPS in Quake II RTX. Lower values indicate
   better cost efficiency for ray tracing performance.
 category: gaming
 collectedSamples: 147
-updatedAt: 2026-06-16T15:46:23.275Z
+updatedAt: 2026-06-17T23:44:42.019Z
 results:
   - gpuNameRaw: AMD Radeon RX 6800
     value: 20

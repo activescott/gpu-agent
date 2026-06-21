@@ -13,8 +13,8 @@ description: Median FPS in FurMark 2 (OpenGL), a GPU stress test and benchmark
 descriptionDollarsPer: Dollars per FPS in FurMark 2 (OpenGL). Lower values
   indicate better cost efficiency for GPU compute-heavy rendering.
 category: gaming
-collectedSamples: 19719
-updatedAt: 2026-06-20T00:39:26.853Z
+collectedSamples: 20339
+updatedAt: 2026-06-21T07:02:46.153Z
 results:
   - gpuNameRaw: AMD  Radeon RX 7800 XT
     value: 87
@@ -23,12 +23,14 @@ results:
   - gpuNameRaw: AMD Radeon Graphics (radeonsi rembrandt LLVM 20.1.2 DRM 3.61
       6.14.0-37-generic)
     value: 8
+  - gpuNameRaw: AMD Radeon Pro V620
+    value: 78
   - gpuNameRaw: AMD Radeon RX 5600 OEM
     value: 34
   - gpuNameRaw: AMD Radeon RX 5600 XT
     value: 35
   - gpuNameRaw: AMD Radeon RX 5700
-    value: 37
+    value: 36
   - gpuNameRaw: AMD Radeon RX 5700 XT
     value: 44
   - gpuNameRaw: AMD Radeon RX 580 2048SP
@@ -96,9 +98,9 @@ results:
       6.17.7-ba29.fc43.x86_64)
     value: 62
   - gpuNameRaw: AMD Radeon RX 9070
-    value: 104
+    value: 103
   - gpuNameRaw: AMD Radeon RX 9070 GRE
-    value: 96
+    value: 92
   - gpuNameRaw: AMD Radeon RX 9070 XT
     value: 130
   - gpuNameRaw: AMD Radeon RX 9070 XT (radeonsi gfx1201 LLVM 21.1.8 DRM 3.64
@@ -157,13 +159,13 @@ results:
   - gpuNameRaw: Intel(R) Graphics
     value: 5
   - gpuNameRaw: Intel(R) Iris(R) Xe Graphics
-    value: 5
+    value: 6
   - gpuNameRaw: Intel(R) UHD Graphics
     value: 5
   - gpuNameRaw: Intel(R) UHD Graphics 730
     value: 2
   - gpuNameRaw: Mesa Intel(R) Arc(tm) B580 Graphics (BMG G21)
-    value: 50
+    value: 52
   - gpuNameRaw: Mesa Intel(R) Arc(tm) Pro B50 Graphics (BMG G21)
     value: 21
   - gpuNameRaw: NVIDIA CMP 40HX/PCIe/SSE2
@@ -180,6 +182,8 @@ results:
     value: 19
   - gpuNameRaw: NVIDIA GeForce GTX 1060 6GB/PCIe/SSE2
     value: 21
+  - gpuNameRaw: NVIDIA GeForce GTX 1060/PCIe/SSE2
+    value: 16
   - gpuNameRaw: NVIDIA GeForce GTX 1070 Ti/PCIe/SSE2
     value: 29
   - gpuNameRaw: NVIDIA GeForce GTX 1070/PCIe/SSE2
@@ -237,7 +241,7 @@ results:
   - gpuNameRaw: NVIDIA GeForce RTX 2080 SUPER/PCIe/SSE2
     value: 54
   - gpuNameRaw: NVIDIA GeForce RTX 2080 Ti/PCIe/SSE2
-    value: 65
+    value: 64
   - gpuNameRaw: NVIDIA GeForce RTX 2080 with Max-Q Design/PCIe/SSE2
     value: 32
   - gpuNameRaw: NVIDIA GeForce RTX 2080/PCIe/SSE2
@@ -259,7 +263,7 @@ results:
   - gpuNameRaw: NVIDIA GeForce RTX 3070 Ti Laptop GPU/PCIe/SSE2
     value: 45
   - gpuNameRaw: NVIDIA GeForce RTX 3070 Ti/PCIe/SSE2
-    value: 68
+    value: 69
   - gpuNameRaw: NVIDIA GeForce RTX 3070/PCIe/SSE2
     value: 58
   - gpuNameRaw: NVIDIA GeForce RTX 3080 Laptop GPU/PCIe/SSE2
@@ -285,7 +289,7 @@ results:
   - gpuNameRaw: NVIDIA GeForce RTX 4070 Laptop GPU/PCIe/SSE2
     value: 43
   - gpuNameRaw: NVIDIA GeForce RTX 4070 SUPER/PCIe/SSE2
-    value: 82
+    value: 80
   - gpuNameRaw: NVIDIA GeForce RTX 4070 Ti SUPER/PCIe/SSE2
     value: 105
   - gpuNameRaw: NVIDIA GeForce RTX 4070 Ti/PCIe/SSE2
@@ -293,7 +297,7 @@ results:
   - gpuNameRaw: NVIDIA GeForce RTX 4070/PCIe/SSE2
     value: 69
   - gpuNameRaw: NVIDIA GeForce RTX 4080 Laptop GPU/PCIe/SSE2
-    value: 85
+    value: 84
   - gpuNameRaw: NVIDIA GeForce RTX 4080 SUPER/PCIe/SSE2
     value: 135
   - gpuNameRaw: NVIDIA GeForce RTX 4080/PCIe/SSE2
@@ -307,7 +311,7 @@ results:
   - gpuNameRaw: NVIDIA GeForce RTX 5050/PCIe/SSE2
     value: 33
   - gpuNameRaw: NVIDIA GeForce RTX 5060 Laptop GPU/PCIe/SSE2
-    value: 40
+    value: 41
   - gpuNameRaw: NVIDIA GeForce RTX 5060 Ti/PCIe/SSE2
     value: 65
   - gpuNameRaw: NVIDIA GeForce RTX 5060/PCIe/SSE2
@@ -339,11 +343,11 @@ results:
   - gpuNameRaw: NVIDIA RTX 4000 Ada Generation/PCIe/SSE2
     value: 58
   - gpuNameRaw: NVIDIA RTX A2000 Laptop GPU/PCIe/SSE2
-    value: 21
+    value: 19
   - gpuNameRaw: NVIDIA RTX A2000/PCIe/SSE2
     value: 21
   - gpuNameRaw: NVIDIA RTX A3000 12GB Laptop GPU/PCIe/SSE2
-    value: 37
+    value: 36
   - gpuNameRaw: NVIDIA RTX A3000 Laptop GPU/PCIe/SSE2
     value: 28
   - gpuNameRaw: NVIDIA RTX A400/PCIe/SSE2
@@ -385,7 +389,7 @@ results:
   - gpuNameRaw: Quadro RTX 5000 with Max-Q Design/PCIe/SSE2
     value: 24
   - gpuNameRaw: Quadro T1000/PCIe/SSE2
-    value: 9
+    value: 10
   - gpuNameRaw: Quadro T2000/PCIe/SSE2
     value: 11
   - gpuNameRaw: Radeon (TM) Pro WX 9100

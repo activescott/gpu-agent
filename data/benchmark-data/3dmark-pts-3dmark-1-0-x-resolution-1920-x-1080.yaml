@@ -13,8 +13,8 @@ description: Average FPS in 3DMark Wild Life Extreme, a cross-platform GPU
 descriptionDollarsPer: Dollars per FPS in 3DMark Wild Life Extreme. Lower values
   indicate better cost efficiency for GPU rendering performance.
 category: gaming
-collectedSamples: 628
-updatedAt: 2026-06-23T16:49:32.882Z
+collectedSamples: 631
+updatedAt: 2026-06-24T14:19:12.140Z
 results:
   - gpuNameRaw: AMD Phoenix1
     value: 88
@@ -104,6 +104,8 @@ results:
     value: 386
   - gpuNameRaw: NVIDIA RTX A1000
     value: 143
+  - gpuNameRaw: Sapphire AMD Radeon AI PRO R9700
+    value: 673
   - gpuNameRaw: Sapphire AMD Radeon RX 590
     value: 170
   - gpuNameRaw: XFX AMD Radeon RX 7700S

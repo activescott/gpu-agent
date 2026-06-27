@@ -12,8 +12,8 @@ description: Median FPS in FurMark 2 (Vulkan), a GPU stress test and benchmark
 descriptionDollarsPer: Dollars per FPS in FurMark 2 (Vulkan). Lower values
   indicate better cost efficiency for GPU compute-heavy rendering.
 category: gaming
-collectedSamples: 1382
-updatedAt: 2026-06-25T22:52:53.605Z
+collectedSamples: 1423
+updatedAt: 2026-06-27T07:18:23.223Z
 results:
   - gpuNameRaw: AMD BC-250 (RADV GFX1013)
     value: 28
@@ -23,6 +23,8 @@ results:
     value: 40
   - gpuNameRaw: AMD Radeon RX 6600
     value: 32
+  - gpuNameRaw: AMD Radeon RX 6600 XT
+    value: 37
   - gpuNameRaw: AMD Radeon RX 6700 XT
     value: 55
   - gpuNameRaw: AMD Radeon RX 6800
@@ -56,7 +58,7 @@ results:
   - gpuNameRaw: AMD Radeon RX 9070 (RADV GFX1201)
     value: 104
   - gpuNameRaw: AMD Radeon RX 9070 XT
-    value: 131
+    value: 130
   - gpuNameRaw: AMD Radeon RX 9070 XT (RADV GFX1201)
     value: 129
   - gpuNameRaw: Intel(R) Arc(TM) B580 Graphics
@@ -106,7 +108,7 @@ results:
   - gpuNameRaw: NVIDIA GeForce RTX 4070 Ti SUPER
     value: 95
   - gpuNameRaw: NVIDIA GeForce RTX 4080
-    value: 125
+    value: 124
   - gpuNameRaw: NVIDIA GeForce RTX 4080 Laptop GPU
     value: 52
   - gpuNameRaw: NVIDIA GeForce RTX 4080 SUPER
@@ -130,6 +132,6 @@ results:
   - gpuNameRaw: NVIDIA GeForce RTX 5090
     value: 247
   - gpuNameRaw: NVIDIA GeForce RTX 5090 D v2
-    value: 230
+    value: 229
   - gpuNameRaw: Quadro RTX 4000
     value: 23

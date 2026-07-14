@@ -13,8 +13,8 @@ description: Median FPS in FurMark 2 (OpenGL), a GPU stress test and benchmark
 descriptionDollarsPer: Dollars per FPS in FurMark 2 (OpenGL). Lower values
   indicate better cost efficiency for GPU compute-heavy rendering.
 category: gaming
-collectedSamples: 27545
-updatedAt: 2026-07-13T20:17:56.758Z
+collectedSamples: 27784
+updatedAt: 2026-07-14T11:10:58.734Z
 results:
   - gpuNameRaw: AMD  Radeon RX 7800 XT
     value: 87
@@ -81,7 +81,7 @@ results:
   - gpuNameRaw: AMD Radeon RX 7650 GRE
     value: 44
   - gpuNameRaw: AMD Radeon RX 7700 XT
-    value: 80
+    value: 79
   - gpuNameRaw: AMD Radeon RX 7800 XT
     value: 83
   - gpuNameRaw: AMD Radeon RX 7800 XT (radeonsi navi32 LLVM 21.1.6 DRM 3.64
@@ -140,7 +140,7 @@ results:
   - gpuNameRaw: AMD Radeon(TM) 610M
     value: 3
   - gpuNameRaw: AMD Radeon(TM) 8060S Graphics
-    value: 53
+    value: 52
   - gpuNameRaw: AMD Radeon(TM) 890M Graphics
     value: 11
   - gpuNameRaw: AMD Radeon(TM) Graphics
@@ -260,7 +260,7 @@ results:
   - gpuNameRaw: NVIDIA GeForce RTX 2070 Super/PCIe/SSE2
     value: 35
   - gpuNameRaw: NVIDIA GeForce RTX 2070 SUPER/PCIe/SSE2
-    value: 49
+    value: 48
   - gpuNameRaw: NVIDIA GeForce RTX 2070 with Max-Q Design/PCIe/SSE2
     value: 23
   - gpuNameRaw: NVIDIA GeForce RTX 2070/PCIe/SSE2
@@ -272,7 +272,7 @@ results:
   - gpuNameRaw: NVIDIA GeForce RTX 2080 SUPER/PCIe/SSE2
     value: 54
   - gpuNameRaw: NVIDIA GeForce RTX 2080 Ti/PCIe/SSE2
-    value: 64
+    value: 65
   - gpuNameRaw: NVIDIA GeForce RTX 2080 with Max-Q Design/PCIe/SSE2
     value: 27
   - gpuNameRaw: NVIDIA GeForce RTX 2080/PCIe/SSE2
@@ -408,7 +408,7 @@ results:
   - gpuNameRaw: NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition/PCIe/SSE2
     value: 188
   - gpuNameRaw: NVIDIA RTX PRO 6000 Blackwell Workstation Edition/PCIe/SSE2
-    value: 253
+    value: 254
   - gpuNameRaw: NVIDIA T1000 8GB/PCIe/SSE2
     value: 13
   - gpuNameRaw: NVIDIA T1200 Laptop GPU/PCIe/SSE2
@@ -420,7 +420,7 @@ results:
   - gpuNameRaw: NVIDIA TITAN X (Pascal)/PCIe/SSE2
     value: 51
   - gpuNameRaw: NVIDIA TITAN Xp/PCIe/SSE2
-    value: 54
+    value: 53
   - gpuNameRaw: Quadro M1200/PCIe/SSE2
     value: 5
   - gpuNameRaw: Quadro P1000/PCIe/SSE2
@@ -455,6 +455,8 @@ results:
     value: 9
   - gpuNameRaw: Radeon RX 570 Series
     value: 20
+  - gpuNameRaw: Radeon RX 5700
+    value: 37
   - gpuNameRaw: Radeon RX 580 Series
     value: 22
   - gpuNameRaw: Radeon RX 590 Series

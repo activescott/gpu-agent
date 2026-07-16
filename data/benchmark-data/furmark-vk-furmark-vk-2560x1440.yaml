@@ -12,8 +12,8 @@ description: Median FPS in FurMark 2 (Vulkan), a GPU stress test and benchmark
 descriptionDollarsPer: Dollars per FPS in FurMark 2 (Vulkan). Lower values
   indicate better cost efficiency for GPU compute-heavy rendering.
 category: gaming
-collectedSamples: 5347
-updatedAt: 2026-07-06T01:26:51.768Z
+collectedSamples: 5702
+updatedAt: 2026-07-16T20:14:58.859Z
 results:
   - gpuNameRaw: AMD  Radeon RX 7800 XT
     value: 163
@@ -25,6 +25,8 @@ results:
     value: 17
   - gpuNameRaw: AMD Radeon Graphics (RADV REMBRANDT)
     value: 19
+  - gpuNameRaw: AMD Radeon R9 200 Series
+    value: 26
   - gpuNameRaw: AMD Radeon RX 5600 XT
     value: 69
   - gpuNameRaw: AMD Radeon RX 570 Series (RADV POLARIS10)
@@ -40,7 +42,7 @@ results:
   - gpuNameRaw: AMD Radeon RX 6600
     value: 65
   - gpuNameRaw: AMD Radeon RX 6600 XT
-    value: 88
+    value: 86
   - gpuNameRaw: AMD Radeon RX 6600 XT (RADV NAVI23)
     value: 88
   - gpuNameRaw: AMD Radeon RX 6650 XT
@@ -48,19 +50,19 @@ results:
   - gpuNameRaw: AMD Radeon RX 6650 XT (RADV NAVI23)
     value: 83
   - gpuNameRaw: AMD Radeon RX 6700
-    value: 73
+    value: 74
   - gpuNameRaw: AMD Radeon RX 6700 XT
     value: 109
   - gpuNameRaw: AMD Radeon RX 6700 XT (RADV NAVI22)
     value: 107
   - gpuNameRaw: AMD Radeon RX 6750 GRE 12GB
-    value: 106
+    value: 105
   - gpuNameRaw: AMD Radeon RX 6750 XT
-    value: 113
+    value: 114
   - gpuNameRaw: AMD Radeon RX 6750 XT (RADV NAVI22)
     value: 114
   - gpuNameRaw: AMD Radeon RX 6800
-    value: 126
+    value: 127
   - gpuNameRaw: AMD Radeon RX 6800 (RADV NAVI21)
     value: 143
   - gpuNameRaw: AMD Radeon RX 6800 XT
@@ -76,15 +78,15 @@ results:
   - gpuNameRaw: AMD Radeon RX 6950 XT
     value: 174
   - gpuNameRaw: AMD Radeon RX 6950 XT (RADV NAVI21)
-    value: 218
+    value: 208
   - gpuNameRaw: AMD Radeon RX 7600
-    value: 96
+    value: 95
   - gpuNameRaw: AMD Radeon RX 7600 (RADV NAVI33)
     value: 100
   - gpuNameRaw: AMD Radeon RX 7600 XT
     value: 100
   - gpuNameRaw: AMD Radeon RX 7700 XT
-    value: 141
+    value: 144
   - gpuNameRaw: AMD Radeon RX 7700S
     value: 87
   - gpuNameRaw: AMD Radeon RX 7800 XT
@@ -108,7 +110,9 @@ results:
   - gpuNameRaw: AMD Radeon RX 9070
     value: 199
   - gpuNameRaw: AMD Radeon RX 9070 (RADV GFX1201)
-    value: 206
+    value: 203
+  - gpuNameRaw: AMD Radeon RX 9070 GRE
+    value: 173
   - gpuNameRaw: AMD Radeon RX 9070 XT
     value: 242
   - gpuNameRaw: AMD Radeon RX 9070 XT (RADV GFX1201)
@@ -146,7 +150,7 @@ results:
   - gpuNameRaw: NVIDIA GeForce GTX 1650 SUPER
     value: 34
   - gpuNameRaw: NVIDIA GeForce GTX 1660
-    value: 38
+    value: 37
   - gpuNameRaw: NVIDIA GeForce GTX 1660 SUPER
     value: 49
   - gpuNameRaw: NVIDIA GeForce GTX 1660 Ti
@@ -154,9 +158,9 @@ results:
   - gpuNameRaw: NVIDIA GeForce RTX 2060
     value: 66
   - gpuNameRaw: NVIDIA GeForce RTX 2060 SUPER
-    value: 73
+    value: 74
   - gpuNameRaw: NVIDIA GeForce RTX 2070
-    value: 71
+    value: 70
   - gpuNameRaw: NVIDIA GeForce RTX 2070 SUPER
     value: 94
   - gpuNameRaw: NVIDIA GeForce RTX 2080
@@ -164,7 +168,7 @@ results:
   - gpuNameRaw: NVIDIA GeForce RTX 2080 SUPER
     value: 99
   - gpuNameRaw: NVIDIA GeForce RTX 2080 Ti
-    value: 115
+    value: 118
   - gpuNameRaw: NVIDIA GeForce RTX 3050
     value: 50
   - gpuNameRaw: NVIDIA GeForce RTX 3050 Laptop GPU
@@ -182,7 +186,7 @@ results:
   - gpuNameRaw: NVIDIA GeForce RTX 3070 Ti
     value: 130
   - gpuNameRaw: NVIDIA GeForce RTX 3070 Ti Laptop GPU
-    value: 78
+    value: 81
   - gpuNameRaw: NVIDIA GeForce RTX 3080
     value: 110
   - gpuNameRaw: NVIDIA GeForce RTX 3080 Laptop GPU
@@ -208,15 +212,15 @@ results:
   - gpuNameRaw: NVIDIA GeForce RTX 4070 Laptop GPU
     value: 119
   - gpuNameRaw: NVIDIA GeForce RTX 4070 SUPER
-    value: 163
+    value: 164
   - gpuNameRaw: NVIDIA GeForce RTX 4070 Ti
-    value: 212
+    value: 213
   - gpuNameRaw: NVIDIA GeForce RTX 4070 Ti SUPER
     value: 210
   - gpuNameRaw: NVIDIA GeForce RTX 4080
     value: 248
   - gpuNameRaw: NVIDIA GeForce RTX 4080 Laptop GPU
-    value: 161
+    value: 162
   - gpuNameRaw: NVIDIA GeForce RTX 4080 SUPER
     value: 252
   - gpuNameRaw: NVIDIA GeForce RTX 4090
@@ -224,13 +228,13 @@ results:
   - gpuNameRaw: NVIDIA GeForce RTX 4090 Laptop GPU
     value: 185
   - gpuNameRaw: NVIDIA GeForce RTX 5050
-    value: 76
+    value: 77
   - gpuNameRaw: NVIDIA GeForce RTX 5050 Laptop GPU
     value: 89
   - gpuNameRaw: NVIDIA GeForce RTX 5060
-    value: 108
+    value: 109
   - gpuNameRaw: NVIDIA GeForce RTX 5060 Laptop GPU
-    value: 99
+    value: 101
   - gpuNameRaw: NVIDIA GeForce RTX 5060 Ti
     value: 144
   - gpuNameRaw: NVIDIA GeForce RTX 5070
@@ -244,9 +248,9 @@ results:
   - gpuNameRaw: NVIDIA GeForce RTX 5080
     value: 297
   - gpuNameRaw: NVIDIA GeForce RTX 5080 Laptop GPU
-    value: 177
+    value: 175
   - gpuNameRaw: NVIDIA GeForce RTX 5090
-    value: 436
+    value: 438
   - gpuNameRaw: NVIDIA GeForce RTX 5090 D v2
     value: 415
   - gpuNameRaw: NVIDIA GeForce RTX 5090 Laptop GPU
@@ -256,7 +260,9 @@ results:
   - gpuNameRaw: NVIDIA T1200 Laptop GPU
     value: 26
   - gpuNameRaw: Radeon (TM) RX 480 Graphics
-    value: 42
+    value: 41
+  - gpuNameRaw: Radeon RX 5500 XT
+    value: 46
   - gpuNameRaw: Radeon RX 570 Series
     value: 35
   - gpuNameRaw: Radeon RX 580 Series

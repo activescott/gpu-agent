@@ -13,15 +13,15 @@ description: Median FPS in FurMark 2 (OpenGL), a GPU stress test and benchmark
 descriptionDollarsPer: Dollars per FPS in FurMark 2 (OpenGL). Lower values
   indicate better cost efficiency for GPU compute-heavy rendering.
 category: gaming
-collectedSamples: 107579
-updatedAt: 2026-07-17T12:34:16.538Z
+collectedSamples: 108844
+updatedAt: 2026-07-18T04:51:46.624Z
 results:
   - gpuNameRaw: AMD  Radeon RX 7800 XT
     value: 168
   - gpuNameRaw: AMD 15D8:C8
     value: 7
   - gpuNameRaw: AMD BC-160
-    value: 69
+    value: 70
   - gpuNameRaw: AMD BC-250 (radeonsi gfx1013 ACO DRM 3.64 6.17.7-ba28.fc43.x86_64)
     value: 59
   - gpuNameRaw: AMD BC-250 (radeonsi gfx1013 ACO DRM 3.64 6.17.7-ba29.fc43.bc250cu.x86_64)
@@ -116,7 +116,7 @@ results:
   - gpuNameRaw: AMD Radeon RX 6600 (radeonsi navi23 ACO DRM 3.64 7.0.10-201.fc44.x86_64)
     value: 63
   - gpuNameRaw: AMD Radeon RX 6600 XT
-    value: 92
+    value: 93
   - gpuNameRaw: AMD Radeon RX 6600 XT (radeonsi navi23 LLVM 21.1.8 DRM 3.64
       6.18.7-76061807-generic)
     value: 85
@@ -147,7 +147,7 @@ results:
       6.19.11-300.fc44.x86_64)
     value: 124
   - gpuNameRaw: AMD Radeon RX 6800
-    value: 137
+    value: 138
   - gpuNameRaw: AMD Radeon RX 6800 XT
     value: 179
   - gpuNameRaw: AMD Radeon RX 6800 XT (radeonsi navi21 LLVM 21.1.6 DRM 3.64
@@ -178,7 +178,7 @@ results:
   - gpuNameRaw: AMD Radeon RX 7600M
     value: 68
   - gpuNameRaw: AMD Radeon RX 7600M XT
-    value: 72
+    value: 73
   - gpuNameRaw: AMD Radeon RX 7650 GRE
     value: 104
   - gpuNameRaw: AMD Radeon RX 7700
@@ -197,11 +197,11 @@ results:
       6.19.10-1-cachyos)
     value: 159
   - gpuNameRaw: AMD Radeon RX 7800M
-    value: 101
+    value: 105
   - gpuNameRaw: AMD Radeon RX 7900 GRE
     value: 198
   - gpuNameRaw: AMD Radeon RX 7900 XT
-    value: 213
+    value: 212
   - gpuNameRaw: AMD Radeon RX 7900 XTX
     value: 264
   - gpuNameRaw: AMD Radeon RX 7900 XTX (radeonsi navi31 ACO DRM 3.64 6.17.0-35-generic)
@@ -274,6 +274,9 @@ results:
   - gpuNameRaw: AMD Radeon RX 9070 XT (radeonsi gfx1201 ACO DRM 3.64
       7.0.11-200.fc44.x86_64)
     value: 232
+  - gpuNameRaw: AMD Radeon RX 9070 XT (radeonsi gfx1201 ACO DRM 3.64
+      7.0.9-ogc3.2.fc44.x86_64)
+    value: 230
   - gpuNameRaw: AMD Radeon RX 9070 XT (radeonsi gfx1201 LLVM 21.1.6 DRM 3.64
       6.19.3-1-cachyos-bore)
     value: 246
@@ -331,7 +334,7 @@ results:
   - gpuNameRaw: GeForce GTX 1060/PCIe/SSE2
     value: 34
   - gpuNameRaw: GeForce GTX 1070/PCIe/SSE2
-    value: 56
+    value: 57
   - gpuNameRaw: GeForce GTX 1080 Ti/PCIe/SSE2
     value: 95
   - gpuNameRaw: GeForce GTX 1080/PCIe/SSE2
@@ -401,7 +404,7 @@ results:
   - gpuNameRaw: Intel(R) Arc(TM) Pro B70 Graphics
     value: 140
   - gpuNameRaw: Intel(R) Graphics
-    value: 13
+    value: 14
   - gpuNameRaw: Intel(R) Iris(R) Plus Graphics
     value: 4
   - gpuNameRaw: Intel(R) Iris(R) Xe Graphics
@@ -497,7 +500,7 @@ results:
   - gpuNameRaw: NVIDIA GeForce GTX 980/PCIe/SSE2
     value: 43
   - gpuNameRaw: NVIDIA GeForce GTX TITAN X/PCIe/SSE2
-    value: 52
+    value: 51
   - gpuNameRaw: NVIDIA GeForce MX450/PCIe/SSE2
     value: 13
   - gpuNameRaw: NVIDIA GeForce RTX 2050/PCIe/SSE2
@@ -629,7 +632,7 @@ results:
   - gpuNameRaw: NVIDIA P106-100/PCIe/SSE2
     value: 41
   - gpuNameRaw: NVIDIA RTX 2000 Ada Generation Laptop GPU/PCIe/SSE2
-    value: 69
+    value: 68
   - gpuNameRaw: NVIDIA RTX 2000 Ada Generation/PCIe/SSE2
     value: 69
   - gpuNameRaw: NVIDIA RTX 3000 Ada Generation Laptop GPU/PCIe/SSE2
@@ -637,7 +640,7 @@ results:
   - gpuNameRaw: NVIDIA RTX 3500 Ada Generation Laptop GPU/PCIe/SSE2
     value: 84
   - gpuNameRaw: NVIDIA RTX 4000 Ada Generation Laptop GPU/PCIe/SSE2
-    value: 136
+    value: 140
   - gpuNameRaw: NVIDIA RTX 4500 Ada Generation/PCIe/SSE2
     value: 162
   - gpuNameRaw: NVIDIA RTX 5000 Ada Generation Laptop GPU/PCIe/SSE2

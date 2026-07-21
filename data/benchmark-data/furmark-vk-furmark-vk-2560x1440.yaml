@@ -12,8 +12,8 @@ description: Median FPS in FurMark 2 (Vulkan), a GPU stress test and benchmark
 descriptionDollarsPer: Dollars per FPS in FurMark 2 (Vulkan). Lower values
   indicate better cost efficiency for GPU compute-heavy rendering.
 category: gaming
-collectedSamples: 6043
-updatedAt: 2026-07-21T02:43:18.730Z
+collectedSamples: 6095
+updatedAt: 2026-07-21T18:39:35.540Z
 results:
   - gpuNameRaw: AMD  Radeon RX 7800 XT
     value: 165
@@ -36,11 +36,11 @@ results:
   - gpuNameRaw: AMD Radeon RX 5700 XT
     value: 85
   - gpuNameRaw: AMD Radeon RX 5700 XT (RADV NAVI10)
-    value: 79
+    value: 80
   - gpuNameRaw: AMD Radeon RX 580 2048SP
     value: 35
   - gpuNameRaw: AMD Radeon RX 6600
-    value: 65
+    value: 64
   - gpuNameRaw: AMD Radeon RX 6600 XT
     value: 86
   - gpuNameRaw: AMD Radeon RX 6600 XT (RADV NAVI23)
@@ -96,7 +96,7 @@ results:
   - gpuNameRaw: AMD Radeon RX 7900 GRE
     value: 192
   - gpuNameRaw: AMD Radeon RX 7900 XT
-    value: 202
+    value: 205
   - gpuNameRaw: AMD Radeon RX 7900 XT (RADV NAVI31)
     value: 209
   - gpuNameRaw: AMD Radeon RX 7900 XTX
@@ -172,7 +172,7 @@ results:
   - gpuNameRaw: NVIDIA GeForce RTX 2080 SUPER
     value: 101
   - gpuNameRaw: NVIDIA GeForce RTX 2080 Ti
-    value: 118
+    value: 117
   - gpuNameRaw: NVIDIA GeForce RTX 3050
     value: 50
   - gpuNameRaw: NVIDIA GeForce RTX 3050 Laptop GPU
@@ -188,7 +188,7 @@ results:
   - gpuNameRaw: NVIDIA GeForce RTX 3070
     value: 112
   - gpuNameRaw: NVIDIA GeForce RTX 3070 Laptop GPU
-    value: 80
+    value: 79
   - gpuNameRaw: NVIDIA GeForce RTX 3070 Ti
     value: 130
   - gpuNameRaw: NVIDIA GeForce RTX 3070 Ti Laptop GPU
@@ -204,9 +204,9 @@ results:
   - gpuNameRaw: NVIDIA GeForce RTX 3090
     value: 144
   - gpuNameRaw: NVIDIA GeForce RTX 3090 Ti
-    value: 164
+    value: 160
   - gpuNameRaw: NVIDIA GeForce RTX 4050 Laptop GPU
-    value: 72
+    value: 70
   - gpuNameRaw: NVIDIA GeForce RTX 4060
     value: 75
   - gpuNameRaw: NVIDIA GeForce RTX 4060 Laptop GPU

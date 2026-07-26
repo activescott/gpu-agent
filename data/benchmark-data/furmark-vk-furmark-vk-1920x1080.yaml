@@ -12,13 +12,13 @@ description: Median FPS in FurMark 2 (Vulkan), a GPU stress test and benchmark
 descriptionDollarsPer: Dollars per FPS in FurMark 2 (Vulkan). Lower values
   indicate better cost efficiency for GPU compute-heavy rendering.
 category: gaming
-collectedSamples: 13470
-updatedAt: 2026-07-25T02:41:50.740Z
+collectedSamples: 13724
+updatedAt: 2026-07-26T11:15:28.521Z
 results:
   - gpuNameRaw: AMD  Radeon RX 7800 XT
     value: 213
   - gpuNameRaw: AMD BC-250 (RADV GFX1013)
-    value: 110
+    value: 111
   - gpuNameRaw: AMD Custom GPU 0405 (RADV VANGOGH)
     value: 18
   - gpuNameRaw: AMD Radeon (TM) Graphics
@@ -74,7 +74,7 @@ results:
   - gpuNameRaw: AMD Radeon RX 570 Series (RADV POLARIS10)
     value: 55
   - gpuNameRaw: AMD Radeon RX 5700
-    value: 111
+    value: 110
   - gpuNameRaw: AMD Radeon RX 5700 XT
     value: 128
   - gpuNameRaw: AMD Radeon RX 5700 XT (RADV NAVI10)
@@ -118,7 +118,7 @@ results:
   - gpuNameRaw: AMD Radeon RX 6700 XT
     value: 154
   - gpuNameRaw: AMD Radeon RX 6700 XT (RADV NAVI22)
-    value: 165
+    value: 166
   - gpuNameRaw: AMD Radeon RX 6750 GRE 10GB
     value: 134
   - gpuNameRaw: AMD Radeon RX 6750 XT
@@ -180,7 +180,7 @@ results:
   - gpuNameRaw: AMD Radeon RX 9060 XT (RADV GFX1200)
     value: 193
   - gpuNameRaw: AMD Radeon RX 9070
-    value: 294
+    value: 292
   - gpuNameRaw: AMD Radeon RX 9070 (RADV GFX1201)
     value: 298
   - gpuNameRaw: AMD Radeon RX 9070 XT
@@ -192,7 +192,7 @@ results:
   - gpuNameRaw: AMD Radeon RX590 GME
     value: 59
   - gpuNameRaw: AMD Radeon RX6500 XT
-    value: 78
+    value: 77
   - gpuNameRaw: AMD Radeon Vega 11 Graphics (RADV RAVEN)
     value: 9
   - gpuNameRaw: AMD Radeon Vega 8 Graphics (RADV RAVEN)
@@ -208,7 +208,7 @@ results:
   - gpuNameRaw: AMD Radeon(TM) 890M Graphics
     value: 28
   - gpuNameRaw: AMD Radeon(TM) Graphics
-    value: 12
+    value: 11
   - gpuNameRaw: AMD Radeon(TM) RX 6400
     value: 44
   - gpuNameRaw: AMD Radeon(TM) RX 6500M
@@ -228,7 +228,7 @@ results:
   - gpuNameRaw: GeForce GTX 1650
     value: 38
   - gpuNameRaw: Intel(R) Arc(TM) 130V GPU (8GB)
-    value: 36
+    value: 38
   - gpuNameRaw: Intel(R) Arc(TM) 140T GPU (16GB)
     value: 48
   - gpuNameRaw: Intel(R) Arc(TM) 140V GPU (16GB)
@@ -238,7 +238,7 @@ results:
   - gpuNameRaw: Intel(R) Arc(TM) A380 Graphics
     value: 45
   - gpuNameRaw: Intel(R) Arc(TM) A580 Graphics
-    value: 127
+    value: 119
   - gpuNameRaw: Intel(R) Arc(TM) A750 Graphics
     value: 160
   - gpuNameRaw: Intel(R) Arc(TM) A770 Graphics
@@ -294,7 +294,7 @@ results:
   - gpuNameRaw: NVIDIA CMP 30HX
     value: 74
   - gpuNameRaw: NVIDIA CMP 40HX
-    value: 105
+    value: 103
   - gpuNameRaw: NVIDIA GeForce 940MX
     value: 11
   - gpuNameRaw: NVIDIA GeForce GT 1030
@@ -324,7 +324,7 @@ results:
   - gpuNameRaw: NVIDIA GeForce GTX 1650 SUPER
     value: 49
   - gpuNameRaw: NVIDIA GeForce GTX 1650 Ti
-    value: 41
+    value: 40
   - gpuNameRaw: NVIDIA GeForce GTX 1650 with Max-Q Design
     value: 30
   - gpuNameRaw: NVIDIA GeForce GTX 1660
@@ -358,7 +358,7 @@ results:
   - gpuNameRaw: NVIDIA GeForce RTX 2070 with Max-Q Design
     value: 59
   - gpuNameRaw: NVIDIA GeForce RTX 2080
-    value: 149
+    value: 150
   - gpuNameRaw: NVIDIA GeForce RTX 2080 SUPER
     value: 164
   - gpuNameRaw: NVIDIA GeForce RTX 2080 Ti
@@ -376,7 +376,7 @@ results:
   - gpuNameRaw: NVIDIA GeForce RTX 3060 Laptop GPU
     value: 94
   - gpuNameRaw: NVIDIA GeForce RTX 3060 Ti
-    value: 143
+    value: 142
   - gpuNameRaw: NVIDIA GeForce RTX 3070
     value: 172
   - gpuNameRaw: NVIDIA GeForce RTX 3070 Laptop GPU
@@ -438,13 +438,13 @@ results:
   - gpuNameRaw: NVIDIA GeForce RTX 5070
     value: 291
   - gpuNameRaw: NVIDIA GeForce RTX 5070 Laptop GPU
-    value: 155
+    value: 154
   - gpuNameRaw: NVIDIA GeForce RTX 5070 Ti
     value: 302
   - gpuNameRaw: NVIDIA GeForce RTX 5070 Ti Laptop GPU
-    value: 190
+    value: 189
   - gpuNameRaw: NVIDIA GeForce RTX 5080
-    value: 389
+    value: 388
   - gpuNameRaw: NVIDIA GeForce RTX 5080 Laptop GPU
     value: 237
   - gpuNameRaw: NVIDIA GeForce RTX 5090
@@ -488,7 +488,7 @@ results:
   - gpuNameRaw: Quadro T2000 with Max-Q Design
     value: 35
   - gpuNameRaw: Radeon (TM) RX 470 Graphics
-    value: 53
+    value: 52
   - gpuNameRaw: Radeon (TM) RX 480 Graphics
     value: 58
   - gpuNameRaw: Radeon 7

@@ -12,8 +12,8 @@ description: Median FPS in FurMark 2 (Vulkan), a GPU stress test and benchmark
 descriptionDollarsPer: Dollars per FPS in FurMark 2 (Vulkan). Lower values
   indicate better cost efficiency for GPU compute-heavy rendering.
 category: gaming
-collectedSamples: 6953
-updatedAt: 2026-07-30T12:59:46.745Z
+collectedSamples: 7090
+updatedAt: 2026-07-31T21:36:07.824Z
 results:
   - gpuNameRaw: AMD  Radeon RX 7800 XT
     value: 164
@@ -70,7 +70,7 @@ results:
   - gpuNameRaw: AMD Radeon RX 6800 (RADV NAVI21)
     value: 143
   - gpuNameRaw: AMD Radeon RX 6800 XT
-    value: 168
+    value: 167
   - gpuNameRaw: AMD Radeon RX 6800 XT (RADV NAVI21)
     value: 153
   - gpuNameRaw: AMD Radeon RX 6800M
@@ -90,7 +90,7 @@ results:
   - gpuNameRaw: AMD Radeon RX 7600 XT
     value: 100
   - gpuNameRaw: AMD Radeon RX 7700 XT
-    value: 144
+    value: 138
   - gpuNameRaw: AMD Radeon RX 7700S
     value: 87
   - gpuNameRaw: AMD Radeon RX 7800 XT
@@ -222,7 +222,7 @@ results:
   - gpuNameRaw: NVIDIA GeForce RTX 4060
     value: 75
   - gpuNameRaw: NVIDIA GeForce RTX 4060 Laptop GPU
-    value: 95
+    value: 94
   - gpuNameRaw: NVIDIA GeForce RTX 4060 Ti
     value: 123
   - gpuNameRaw: NVIDIA GeForce RTX 4070
@@ -242,7 +242,7 @@ results:
   - gpuNameRaw: NVIDIA GeForce RTX 4080 SUPER
     value: 255
   - gpuNameRaw: NVIDIA GeForce RTX 4090
-    value: 342
+    value: 343
   - gpuNameRaw: NVIDIA GeForce RTX 4090 Laptop GPU
     value: 185
   - gpuNameRaw: NVIDIA GeForce RTX 5050
@@ -270,7 +270,7 @@ results:
   - gpuNameRaw: NVIDIA GeForce RTX 5090
     value: 434
   - gpuNameRaw: NVIDIA GeForce RTX 5090 D v2
-    value: 415
+    value: 419
   - gpuNameRaw: NVIDIA GeForce RTX 5090 Laptop GPU
     value: 200
   - gpuNameRaw: NVIDIA RTX PRO 6000 Blackwell Workstation Edition
@@ -282,7 +282,7 @@ results:
   - gpuNameRaw: Radeon RX 5500 XT
     value: 45
   - gpuNameRaw: Radeon RX 570 Series
-    value: 35
+    value: 37
   - gpuNameRaw: Radeon RX 580 Series
     value: 42
   - gpuNameRaw: Radeon RX 590 Series

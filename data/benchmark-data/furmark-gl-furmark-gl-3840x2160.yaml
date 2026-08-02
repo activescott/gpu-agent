@@ -13,8 +13,8 @@ description: Median FPS in FurMark 2 (OpenGL), a GPU stress test and benchmark
 descriptionDollarsPer: Dollars per FPS in FurMark 2 (OpenGL). Lower values
   indicate better cost efficiency for GPU compute-heavy rendering.
 category: gaming
-collectedSamples: 36122
-updatedAt: 2026-08-01T13:54:45.949Z
+collectedSamples: 36465
+updatedAt: 2026-08-02T07:54:25.351Z
 results:
   - gpuNameRaw: AMD  Radeon RX 7800 XT
     value: 87
@@ -70,7 +70,7 @@ results:
   - gpuNameRaw: AMD Radeon RX 6700 XT
     value: 60
   - gpuNameRaw: AMD Radeon RX 6750 GRE 10GB
-    value: 44
+    value: 45
   - gpuNameRaw: AMD Radeon RX 6750 GRE 12GB
     value: 58
   - gpuNameRaw: AMD Radeon RX 6750 XT
@@ -244,6 +244,8 @@ results:
     value: 9
   - gpuNameRaw: NVIDIA GeForce GTX 1060 3GB/PCIe/SSE2
     value: 19
+  - gpuNameRaw: NVIDIA GeForce GTX 1060 5GB/PCIe/SSE2
+    value: 18
   - gpuNameRaw: NVIDIA GeForce GTX 1060 6GB/PCIe/SSE2
     value: 21
   - gpuNameRaw: NVIDIA GeForce GTX 1060 with Max-Q Design/PCIe/SSE2
@@ -298,6 +300,8 @@ results:
     value: 14
   - gpuNameRaw: NVIDIA GeForce GTX TITAN X/PCIe/SSE2
     value: 25
+  - gpuNameRaw: NVIDIA GeForce MX250/PCIe/SSE2
+    value: 4
   - gpuNameRaw: NVIDIA GeForce RTX 2060 SUPER/PCIe/SSE2
     value: 41
   - gpuNameRaw: NVIDIA GeForce RTX 2060/PCIe/SSE2
@@ -347,7 +351,7 @@ results:
   - gpuNameRaw: NVIDIA GeForce RTX 3080 Laptop GPU/PCIe/SSE2
     value: 43
   - gpuNameRaw: NVIDIA GeForce RTX 3080 Ti Laptop GPU/PCIe/SSE2
-    value: 47
+    value: 46
   - gpuNameRaw: NVIDIA GeForce RTX 3080 Ti/PCIe/SSE2
     value: 77
   - gpuNameRaw: NVIDIA GeForce RTX 3080/PCIe/SSE2
@@ -413,7 +417,7 @@ results:
   - gpuNameRaw: NVIDIA GeForce RTX 5090 D V2/PCIe/SSE2
     value: 234
   - gpuNameRaw: NVIDIA GeForce RTX 5090 D/PCIe/SSE2
-    value: 240
+    value: 239
   - gpuNameRaw: NVIDIA GeForce RTX 5090 Laptop GPU/PCIe/SSE2
     value: 111
   - gpuNameRaw: NVIDIA GeForce RTX 5090/PCIe/SSE2
@@ -459,7 +463,7 @@ results:
   - gpuNameRaw: NVIDIA RTX PRO 5000 Blackwell/PCIe/SSE2
     value: 172
   - gpuNameRaw: NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition/PCIe/SSE2
-    value: 188
+    value: 185
   - gpuNameRaw: NVIDIA RTX PRO 6000 Blackwell Workstation Edition/PCIe/SSE2
     value: 251
   - gpuNameRaw: NVIDIA T1000 8GB/PCIe/SSE2
@@ -493,7 +497,7 @@ results:
   - gpuNameRaw: Quadro P620/PCIe/SSE2
     value: 6
   - gpuNameRaw: Quadro RTX 3000/PCIe/SSE2
-    value: 18
+    value: 19
   - gpuNameRaw: Quadro RTX 4000 with Max-Q Design/PCIe/SSE2
     value: 21
   - gpuNameRaw: Quadro RTX 4000/PCIe/SSE2

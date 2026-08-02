@@ -56,17 +56,24 @@ export default async function August2026Report(): Promise<ReactNode> {
     <ReportLayout metadata={reportMetadata}>
       <div className="lead mb-5">
         <p>
-          The headline in July is that the RTX 50-series scalper tax has mostly
-          lifted. The <Link href="/gpu/shop/nvidia-geforce-rtx-5080">5080</Link>{" "}
-          ($959), <Link href="/gpu/shop/nvidia-geforce-rtx-5070">5070</Link>{" "}
-          ($507), <Link href="/gpu/shop/nvidia-geforce-rtx-5060">5060</Link>{" "}
-          ($258), and <Link href="/gpu/shop/nvidia-geforce-rtx-5050">5050</Link>{" "}
-          ($250) all sit at or below MSRP now, and only the{" "}
+          The headline in July is that the RTX 50-series scalper tax (the resale
+          markup over MSRP that inflated street prices during the launch
+          scramble) has mostly lifted. The{" "}
+          <Link href="/gpu/shop/nvidia-geforce-rtx-5080">5080</Link> ($959),{" "}
+          <Link href="/gpu/shop/nvidia-geforce-rtx-5070">5070</Link> ($507),{" "}
+          <Link href="/gpu/shop/nvidia-geforce-rtx-5060">5060</Link> ($258), and{" "}
+          <Link href="/gpu/shop/nvidia-geforce-rtx-5050">5050</Link> ($250) all
+          sit at or below MSRP now, and only the{" "}
           <Link href="/gpu/shop/nvidia-geforce-rtx-5090">5090</Link> still
           carries a large premium (about 44% over its $1,999 sticker), and even
-          that eased slightly from June. The other surprise is that June&apos;s
-          across-the-board price slide did not continue. It split by tier: the
-          priciest cards eased (the{" "}
+          that eased slightly from June. Cheaper isn&apos;t the same as smarter,
+          though: the 5060 and 5050 ship with just 8GB of VRAM, so you&apos;re
+          buying a current-gen GPU that runs out of memory before it runs out of
+          horsepower &mdash; a poor bet in 2026. The 5080 is the only card below
+          the 5090 here with 16GB, and the 5090&apos;s premium at least buys the
+          one genuinely uncompromised card in the stack (32GB). The other
+          surprise is that June&apos;s across-the-board price slide did not
+          continue. It split by tier: the priciest cards eased (the{" "}
           <Link href="/gpu/shop/nvidia-geforce-rtx-4080">RTX 4080</Link> fell
           13%) while the mid-range firmed up (the{" "}
           <Link href="/gpu/shop/amd-radeon-rx-6800-xt">RX 6800 XT</Link> jumped
@@ -79,6 +86,60 @@ export default async function August2026Report(): Promise<ReactNode> {
           pricing across eBay and Amazon (average of the 3 cheapest listings).
         </p>
       </div>
+
+      <ChartSection title="Where's the RTX 3090? A Note on Memory-Aware Value">
+        <p className="mb-4">
+          A personal favorite of mine is the{" "}
+          <Link href="/gpu/shop/nvidia-geforce-rtx-3090">RTX 3090</Link>, the
+          24GB Ampere flagship. It never appears in any of the rankings below,
+          and July&apos;s data shows why. Its best deal landed at{" "}
+          <strong>$990</strong> (34% under its $1,499 MSRP), which sounds
+          fantastic until you notice the 3 cheapest are fleeting &mdash; the
+          bulk of listings sit in the $1,200&ndash;1,600 range &mdash; and that
+          the price is <strong>rising, not falling</strong> (up 3.6% month over
+          month, from $956 in June). It&apos;s riding the same older-card
+          firming as the{" "}
+          <Link href="/gpu/shop/amd-radeon-rx-6800-xt">RX 6800 XT</Link> and{" "}
+          <Link href="/gpu/shop/nvidia-geforce-rtx-3060">RTX 3060</Link>.
+        </p>
+        <p className="mb-4">
+          On cost-per-compute it simply loses. Even at the $990 best deal it
+          works out to about{" "}
+          <Link href="/gpu/price-compare/ai/int8-tops">
+            <strong>$3.47 per INT8 TOP</strong> (285 dense TOPS)
+          </Link>{" "}
+          and{" "}
+          <Link href="/gpu/price-compare/ai/fp32-flops">
+            <strong>$27.80 per FP32 TFLOP</strong> (35.6 TFLOPS)
+          </Link>{" "}
+          &mdash; see the full cost-per-compute rankings for yourself &mdash;
+          both roughly 2&ndash;3&times; the leaders and well off the bottom of
+          the charts, where the{" "}
+          <Link href="/gpu/shop/intel-arc-b570">Arc B570</Link> ($1.00/TOP) and{" "}
+          <Link href="/gpu/shop/nvidia-tesla-p100">Tesla P100</Link>{" "}
+          ($6.80/TFLOP) sit. The 3090&apos;s one genuine edge is the axis none
+          of these charts reward: 24GB of VRAM.
+        </p>
+        <h3 className="h5 mt-4 mb-3">The missing memory-aware ranking</h3>
+        <p className="mb-4">
+          And that&apos;s the honest limitation of this report. Ranking by{" "}
+          $/FPS, $/INT8 TOP, and $/TFLOP is easy to compute and hard to argue
+          with, but it treats a 8GB card and a 24GB card as interchangeable so
+          long as the throughput-per-dollar matches. For AI inference and
+          training, memory capacity is often the thing that decides whether a
+          model runs at all &mdash; so a card that looks &quot;expensive&quot;
+          on $/TOP can be the only affordable option once your model needs the
+          VRAM. I don&apos;t want to settle that with my own bias toward the
+          3090; I&apos;d rather settle it with data. We&apos;re planning a
+          memory-aware value ranking &mdash; something that weighs cost against
+          both compute <em>and</em> usable VRAM for real inference and training
+          workloads &mdash; and we want to build it around how you actually
+          choose. If you buy GPUs for AI, tell us what capacity thresholds and
+          workloads matter to you on the{" "}
+          <Link href="/contact">contact page</Link>. Your feedback will shape
+          the metric.
+        </p>
+      </ChartSection>
 
       <ChartSection title="1440p Gaming Best Bang for Your Buck in August 2026">
         <p className="mb-4">

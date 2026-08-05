@@ -4,6 +4,16 @@ metadata:
   name: app
 spec:
   replicas: 1
+  # Codifies the effective default (25%/25% on 1 replica rounds to surge=1,
+  # unavailable=0): a rollout always surges a new pod and keeps the old one until
+  # the new pod is Ready. NOTE: this protects the rollout window only, not a
+  # running single replica that later crash-loops (see
+  # home-infra-k8s-flux docs/specs/gpupoet-app-rollout-availability/spec.md).
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
   selector:
     matchLabels:
       app: app
@@ -113,17 +123,34 @@ spec:
                   key: AMAZON_AFFILIATE_TAG
                   optional: true
 
+          # Gates liveness/readiness until the app is genuinely up. The container
+          # runs a Prisma DB seed before `next start` binds :3000; without this,
+          # a slow boot trips the liveness probe and crash-loops (incident
+          # 2026-08-02). ~5 min budget (10s x 30).
+          startupProbe:
+            httpGet:
+              path: /api/health/readiness
+              port: 3000
+            periodSeconds: 10
+            failureThreshold: 30
+            timeoutSeconds: 5
+
           readinessProbe:
             httpGet:
               path: /api/health/readiness
               port: 3000
-            # next is a pig
-            initialDelaySeconds: 40
+            # startupProbe handles the slow cold start, so no initialDelay here.
             periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 3
 
           livenessProbe:
             httpGet:
               path: /api/health/liveness
               port: 3000
-            initialDelaySeconds: 40
+            # Tolerant on purpose: an already-serving pod must survive a GC pause
+            # or brief event-loop block. The default timeoutSeconds:1 killed a
+            # healthy pod on 2026-08-02. startupProbe gates the initial delay.
             periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 6

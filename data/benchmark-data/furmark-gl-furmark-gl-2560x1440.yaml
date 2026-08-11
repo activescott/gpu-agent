@@ -13,8 +13,8 @@ description: Median FPS in FurMark 2 (OpenGL), a GPU stress test and benchmark
 descriptionDollarsPer: Dollars per FPS in FurMark 2 (OpenGL). Lower values
   indicate better cost efficiency for GPU compute-heavy rendering.
 category: gaming
-collectedSamples: 150005
-updatedAt: 2026-08-09T16:46:34.318Z
+collectedSamples: 152472
+updatedAt: 2026-08-11T01:21:03.953Z
 results:
   - gpuNameRaw: AMD  Radeon RX 7800 XT
     value: 167
@@ -78,7 +78,7 @@ results:
   - gpuNameRaw: AMD Radeon 780M Graphics
     value: 18
   - gpuNameRaw: AMD Radeon AI PRO R9700
-    value: 241
+    value: 240
   - gpuNameRaw: AMD Radeon Graphics
     value: 17
   - gpuNameRaw: AMD Radeon Graphics (radeonsi gfx1200 LLVM 20.1.2 DRM 3.64
@@ -97,7 +97,7 @@ results:
   - gpuNameRaw: AMD Radeon Pro V620
     value: 162
   - gpuNameRaw: AMD Radeon Pro VII
-    value: 93
+    value: 92
   - gpuNameRaw: AMD Radeon Pro W5700
     value: 74
   - gpuNameRaw: AMD Radeon R7 200 Series
@@ -250,11 +250,11 @@ results:
   - gpuNameRaw: AMD Radeon RX 7900 XT
     value: 211
   - gpuNameRaw: AMD Radeon RX 7900 XT (radeonsi navi31 ACO DRM 3.64 7.0.0-28-generic)
-    value: 203
+    value: 194
   - gpuNameRaw: AMD Radeon RX 7900 XT (radeonsi navi31 ACO DRM 3.64 7.1.4-204.fc44.x86_64)
     value: 254
   - gpuNameRaw: AMD Radeon RX 7900 XTX
-    value: 263
+    value: 264
   - gpuNameRaw: AMD Radeon RX 7900 XTX (radeonsi navi31 ACO DRM 3.64 6.17.0-35-generic)
     value: 263
   - gpuNameRaw: AMD Radeon RX 7900 XTX (radeonsi navi31 ACO DRM 3.64
@@ -449,7 +449,7 @@ results:
   - gpuNameRaw: GeForce GTX 970/PCIe/SSE2
     value: 39
   - gpuNameRaw: GeForce RTX 2060 SUPER/PCIe/SSE2
-    value: 83
+    value: 82
   - gpuNameRaw: GeForce RTX 2060/PCIe/SSE2
     value: 72
   - gpuNameRaw: GeForce RTX 2070 SUPER/PCIe/SSE2
@@ -577,7 +577,7 @@ results:
   - gpuNameRaw: NVIDIA GeForce GTX 1650 SUPER/PCIe/SSE2
     value: 37
   - gpuNameRaw: NVIDIA GeForce GTX 1650 Ti/PCIe/SSE2
-    value: 30
+    value: 29
   - gpuNameRaw: NVIDIA GeForce GTX 1650 with Max-Q Design/PCIe/SSE2
     value: 21
   - gpuNameRaw: NVIDIA GeForce GTX 1650/PCIe/SSE2
@@ -613,7 +613,7 @@ results:
   - gpuNameRaw: NVIDIA GeForce GTX 960/PCIe/SSE2
     value: 23
   - gpuNameRaw: NVIDIA GeForce GTX 970/PCIe/SSE2
-    value: 35
+    value: 36
   - gpuNameRaw: NVIDIA GeForce GTX 980 Ti/PCIe/SSE2
     value: 56
   - gpuNameRaw: NVIDIA GeForce GTX 980/PCIe/SSE2
@@ -621,7 +621,7 @@ results:
   - gpuNameRaw: NVIDIA GeForce GTX TITAN X/PCIe/SSE2
     value: 52
   - gpuNameRaw: NVIDIA GeForce MX450/PCIe/SSE2
-    value: 15
+    value: 17
   - gpuNameRaw: NVIDIA GeForce RTX 2050/PCIe/SSE2
     value: 29
   - gpuNameRaw: NVIDIA GeForce RTX 2060 SUPER/PCIe/SSE2
@@ -707,7 +707,7 @@ results:
   - gpuNameRaw: NVIDIA GeForce RTX 4070/PCIe/SSE2
     value: 152
   - gpuNameRaw: NVIDIA GeForce RTX 4080 Laptop GPU/PCIe/SSE2
-    value: 160
+    value: 159
   - gpuNameRaw: NVIDIA GeForce RTX 4080 SUPER/PCIe/SSE2
     value: 261
   - gpuNameRaw: NVIDIA GeForce RTX 4080/PCIe/SSE2
@@ -715,7 +715,7 @@ results:
   - gpuNameRaw: NVIDIA GeForce RTX 4090 D/PCIe/SSE2
     value: 308
   - gpuNameRaw: NVIDIA GeForce RTX 4090 Laptop GPU/PCIe/SSE2
-    value: 185
+    value: 186
   - gpuNameRaw: NVIDIA GeForce RTX 4090/PCIe/SSE2
     value: 324
   - gpuNameRaw: NVIDIA GeForce RTX 5050 Laptop GPU/PCIe/SSE2
@@ -763,7 +763,7 @@ results:
   - gpuNameRaw: NVIDIA RTX 3500 Ada Generation Laptop GPU/PCIe/SSE2
     value: 105
   - gpuNameRaw: NVIDIA RTX 4000 Ada Generation Laptop GPU/PCIe/SSE2
-    value: 141
+    value: 140
   - gpuNameRaw: NVIDIA RTX 4000 SFF Ada Generation/PCIe/SSE2
     value: 83
   - gpuNameRaw: NVIDIA RTX 4500 Ada Generation/PCIe/SSE2
@@ -797,7 +797,7 @@ results:
   - gpuNameRaw: NVIDIA RTX A4000 Laptop GPU/PCIe/SSE2
     value: 81
   - gpuNameRaw: NVIDIA RTX A4000/PCIe/SSE2
-    value: 65
+    value: 66
   - gpuNameRaw: NVIDIA RTX A4500 Laptop GPU/PCIe/SSE2
     value: 47
   - gpuNameRaw: NVIDIA RTX A5000 Laptop GPU/PCIe/SSE2
@@ -833,7 +833,7 @@ results:
   - gpuNameRaw: NVIDIA T1000/PCIe/SSE2
     value: 25
   - gpuNameRaw: NVIDIA T1200 Laptop GPU/PCIe/SSE2
-    value: 28
+    value: 29
   - gpuNameRaw: NVIDIA T400 4GB/PCIe/SSE2
     value: 12
   - gpuNameRaw: NVIDIA T550 Laptop GPU/PCIe/SSE2
@@ -841,7 +841,7 @@ results:
   - gpuNameRaw: NVIDIA TITAN RTX/PCIe/SSE2
     value: 137
   - gpuNameRaw: NVIDIA TITAN V/PCIe/SSE2
-    value: 119
+    value: 118
   - gpuNameRaw: NVIDIA TITAN X (Pascal)/PCIe/SSE2
     value: 100
   - gpuNameRaw: NVIDIA TITAN Xp/PCIe/SSE2
@@ -883,7 +883,7 @@ results:
   - gpuNameRaw: Radeon (TM) Pro WX 4100
     value: 13
   - gpuNameRaw: Radeon (TM) RX 470 Graphics
-    value: 33
+    value: 34
   - gpuNameRaw: Radeon (TM) RX 480 Graphics
     value: 41
   - gpuNameRaw: Radeon 5

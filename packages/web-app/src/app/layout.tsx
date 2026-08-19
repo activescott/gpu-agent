@@ -8,6 +8,7 @@ import {
 } from "@/pkgs/client/analytics/provider"
 import { SiteHeader } from "@/pkgs/client/components/SiteHeader"
 import { Alert } from "@/pkgs/client/components/Alert"
+import { AffiliateDisclosureBar } from "@/pkgs/client/components/AffiliateDisclosure"
 import Link from "next/link"
 import { maxLength } from "@/pkgs/isomorphic/string"
 import { GoogleAdsTag } from "@/pkgs/client/analytics/GoogleAdsTag"
@@ -92,20 +93,28 @@ export default function RootLayout({
       <body>
         <AnalyticsProvider>
           <SiteHeader />
-          <div className="d-flex">
-            <SiteSidebar />
-            <main className="p-3 container-xl">
-              <Alert kind="secondary">
-                I&apos;d love to hear what you think! Please{" "}
-                <Link href="/contact" className="alert-link">
-                  drop me a line
-                </Link>{" "}
-                and let me know what you like and what could be better. 🙏
-              </Alert>
-              {children}
-            </main>
+          {/*
+          The affiliate disclosure is last in the DOM but hoisted to the top
+          visually with flex ordering, so page content — not the disclosure
+          boilerplate — is the first text search engines and extractors read.
+          */}
+          <div className="d-flex flex-column">
+            <div className="d-flex">
+              <SiteSidebar />
+              <main className="p-3 container-xl">
+                <Alert kind="secondary">
+                  I&apos;d love to hear what you think! Please{" "}
+                  <Link href="/contact" className="alert-link">
+                    drop me a line
+                  </Link>{" "}
+                  and let me know what you like and what could be better. 🙏
+                </Alert>
+                {children}
+              </main>
+            </div>
+            <SiteFooter />
+            <AffiliateDisclosureBar />
           </div>
-          <SiteFooter />
         </AnalyticsProvider>
         <AnalyticsPageView />
         {/*

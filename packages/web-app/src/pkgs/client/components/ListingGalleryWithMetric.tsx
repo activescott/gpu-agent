@@ -2,6 +2,7 @@
 import { Listing, ListingWithMetric } from "../../isomorphic/model"
 import { ListingCardWithMetric } from "./ListingCardWithMetric"
 import { BootstrapIcon } from "./BootstrapIcon"
+import { AffiliateDisclosureInline } from "./AffiliateDisclosure"
 import { useState, useMemo, useCallback, type JSX } from "react"
 
 export interface MetricInfo {
@@ -120,6 +121,7 @@ export function ListingGalleryWithMetric({
           </button>
         </div>
       </div>
+      <AffiliateDisclosureInline />
       <div id="listingContainer" className="d-flex flex-wrap">
         {sortedListings.map(({ item }, index) => (
           <ListingCardWithMetric

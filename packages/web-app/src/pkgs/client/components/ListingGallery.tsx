@@ -2,7 +2,6 @@
 import { useSorting, type SortKey } from "@/pkgs/client/components/SortPanel"
 import { Gpu, Listing } from "../../isomorphic/model"
 import { ListingCardWithMetric } from "./ListingCardWithMetric"
-import { AffiliateDisclosureInline } from "./AffiliateDisclosure"
 import { useMemo, type JSX } from "react"
 import { divideSafe } from "@/pkgs/isomorphic/math"
 import { createClientLogger } from "@/lib/clientLogger"
@@ -47,7 +46,6 @@ export function ListingGallery({
   return (
     <div id="listingContainer" className="d-flex flex-wrap">
       {hideSort == false && sortPanel}
-      <AffiliateDisclosureInline />
       {sortedListings.map(({ item, specs }, index) => (
         <ListingCardWithMetric
           key={`${item.itemId}-${index.toString()}`}

@@ -13,8 +13,8 @@ description: Median FPS in FurMark 2 (OpenGL), a GPU stress test and benchmark
 descriptionDollarsPer: Dollars per FPS in FurMark 2 (OpenGL). Lower values
   indicate better cost efficiency for GPU compute-heavy rendering.
 category: gaming
-collectedSamples: 40791
-updatedAt: 2026-08-11T22:04:07.143Z
+collectedSamples: 41073
+updatedAt: 2026-08-19T14:34:34.757Z
 results:
   - gpuNameRaw: AMD  Radeon RX 7800 XT
     value: 87
@@ -254,7 +254,7 @@ results:
   - gpuNameRaw: Mesa Intel(R) Arc(tm) Pro B50 Graphics (BMG G21)
     value: 21
   - gpuNameRaw: NVIDIA CMP 30HX/PCIe/SSE2
-    value: 27
+    value: 26
   - gpuNameRaw: NVIDIA CMP 40HX/PCIe/SSE2
     value: 39
   - gpuNameRaw: NVIDIA GeForce GT 1030/PCIe/SSE2
@@ -376,7 +376,7 @@ results:
   - gpuNameRaw: NVIDIA GeForce RTX 3070 Laptop GPU/PCIe/SSE2
     value: 38
   - gpuNameRaw: NVIDIA GeForce RTX 3070 Ti Laptop GPU/PCIe/SSE2
-    value: 41
+    value: 42
   - gpuNameRaw: NVIDIA GeForce RTX 3070 Ti/PCIe/SSE2
     value: 68
   - gpuNameRaw: NVIDIA GeForce RTX 3070/PCIe/SSE2
@@ -424,11 +424,11 @@ results:
   - gpuNameRaw: NVIDIA GeForce RTX 4090/PCIe/SSE2
     value: 193
   - gpuNameRaw: NVIDIA GeForce RTX 5050 Laptop GPU/PCIe/SSE2
-    value: 38
+    value: 36
   - gpuNameRaw: NVIDIA GeForce RTX 5050/PCIe/SSE2
     value: 33
   - gpuNameRaw: NVIDIA GeForce RTX 5060 Laptop GPU/PCIe/SSE2
-    value: 41
+    value: 40
   - gpuNameRaw: NVIDIA GeForce RTX 5060 Ti/PCIe/SSE2
     value: 65
   - gpuNameRaw: NVIDIA GeForce RTX 5060/PCIe/SSE2
@@ -446,7 +446,7 @@ results:
   - gpuNameRaw: NVIDIA GeForce RTX 5080/PCIe/SSE2
     value: 165
   - gpuNameRaw: NVIDIA GeForce RTX 5090 D v2/PCIe/SSE2
-    value: 234
+    value: 235
   - gpuNameRaw: NVIDIA GeForce RTX 5090 D V2/PCIe/SSE2
     value: 234
   - gpuNameRaw: NVIDIA GeForce RTX 5090 D/PCIe/SSE2
@@ -524,7 +524,7 @@ results:
   - gpuNameRaw: Quadro M2200/PCIe/SSE2
     value: 6
   - gpuNameRaw: Quadro M4000/PCIe/SSE2
-    value: 11
+    value: 10
   - gpuNameRaw: Quadro P1000/PCIe/SSE2
     value: 7
   - gpuNameRaw: Quadro P2000/PCIe/SSE2
@@ -538,7 +538,7 @@ results:
   - gpuNameRaw: Quadro P620/PCIe/SSE2
     value: 6
   - gpuNameRaw: Quadro RTX 3000/PCIe/SSE2
-    value: 19
+    value: 20
   - gpuNameRaw: Quadro RTX 4000 with Max-Q Design/PCIe/SSE2
     value: 21
   - gpuNameRaw: Quadro RTX 4000/PCIe/SSE2

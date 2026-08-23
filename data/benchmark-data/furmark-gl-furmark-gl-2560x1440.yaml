@@ -13,8 +13,8 @@ description: Median FPS in FurMark 2 (OpenGL), a GPU stress test and benchmark
 descriptionDollarsPer: Dollars per FPS in FurMark 2 (OpenGL). Lower values
   indicate better cost efficiency for GPU compute-heavy rendering.
 category: gaming
-collectedSamples: 159119
-updatedAt: 2026-08-21T19:22:30.674Z
+collectedSamples: 161654
+updatedAt: 2026-08-23T03:52:54.855Z
 results:
   - gpuNameRaw: AMD  Radeon RX 7800 XT
     value: 167
@@ -76,7 +76,7 @@ results:
   - gpuNameRaw: AMD Radeon (TM) RX 480
     value: 37
   - gpuNameRaw: AMD Radeon 760M Graphics
-    value: 11
+    value: 8
   - gpuNameRaw: AMD Radeon 780M Graphics
     value: 18
   - gpuNameRaw: AMD Radeon AI PRO R9700
@@ -147,6 +147,8 @@ results:
     value: 25
   - gpuNameRaw: AMD Radeon RX 6500 XT
     value: 51
+  - gpuNameRaw: AMD Radeon RX 6500XT
+    value: 38
   - gpuNameRaw: AMD Radeon RX 6600
     value: 70
   - gpuNameRaw: AMD Radeon RX 6600 (radeonsi navi23 ACO DRM 3.64 6.17.7-ba29.fc43.x86_64)
@@ -197,12 +199,12 @@ results:
   - gpuNameRaw: AMD Radeon RX 6800 (radeonsi navi21 ACO DRM 3.64 7.0.0-28-generic)
     value: 135
   - gpuNameRaw: AMD Radeon RX 6800 XT
-    value: 179
+    value: 178
   - gpuNameRaw: AMD Radeon RX 6800 XT (radeonsi navi21 LLVM 21.1.6 DRM 3.64
       6.18.7-2-cachyos)
     value: 167
   - gpuNameRaw: AMD Radeon RX 6800M
-    value: 76
+    value: 77
   - gpuNameRaw: AMD Radeon RX 6800S
     value: 67
   - gpuNameRaw: AMD Radeon RX 6900 XT
@@ -210,7 +212,7 @@ results:
   - gpuNameRaw: AMD Radeon RX 6900 XT (radeonsi navi21 ACO DRM 3.64 7.0.0-28-generic)
     value: 186
   - gpuNameRaw: AMD Radeon RX 6950 XT
-    value: 200
+    value: 199
   - gpuNameRaw: AMD Radeon RX 6950 XT (radeonsi navi21 ACO DRM 3.64
       6.19.14-ogc2.1.fc44.x86_64)
     value: 210
@@ -267,6 +269,8 @@ results:
   - gpuNameRaw: AMD Radeon RX 7900 XTX (radeonsi navi31 ACO DRM 3.64
       7.0.9-ogc3.2.fc44.x86_64)
     value: 307
+  - gpuNameRaw: AMD Radeon RX 7900 XTX (radeonsi navi31 ACO DRM 3.64 7.1.8-1-cachyos)
+    value: 290
   - gpuNameRaw: AMD Radeon RX 7900 XTX (radeonsi navi31 LLVM 21.1.8 DRM 3.64
       6.17.7-ba25.fc43.x86_64)
     value: 284
@@ -330,7 +334,7 @@ results:
     value: 253
   - gpuNameRaw: AMD Radeon RX 9070 XT (radeonsi gfx1201 ACO DRM 3.64
       6.19.14-ogc2.1.fc44.x86_64)
-    value: 251
+    value: 248
   - gpuNameRaw: AMD Radeon RX 9070 XT (radeonsi gfx1201 ACO DRM 3.64
       6.19.14-ogc5.1.fc44.x86_64)
     value: 241
@@ -364,7 +368,7 @@ results:
   - gpuNameRaw: AMD Radeon RX 9070 XT (radeonsi gfx1201 ACO DRM 3.64 7.1.5-1-cachyos)
     value: 240
   - gpuNameRaw: AMD Radeon RX 9070 XT (radeonsi gfx1201 ACO DRM 3.64 7.1.8-1-cachyos)
-    value: 247
+    value: 254
   - gpuNameRaw: AMD Radeon RX 9070 XT (radeonsi gfx1201 LLVM 20.1.2 DRM 3.64
       7.0.0-28-generic)
     value: 257
@@ -401,7 +405,7 @@ results:
   - gpuNameRaw: AMD Radeon(TM) Graphics
     value: 7
   - gpuNameRaw: AMD Radeon(TM) RX 560 Series
-    value: 13
+    value: 15
   - gpuNameRaw: AMD Radeon(TM) RX 5600M Series
     value: 41
   - gpuNameRaw: AMD Radeon(TM) RX 6400
@@ -491,7 +495,7 @@ results:
   - gpuNameRaw: Intel(R) Arc(TM) 130T GPU (16GB)
     value: 26
   - gpuNameRaw: Intel(R) Arc(TM) 130T GPU (8GB)
-    value: 24
+    value: 21
   - gpuNameRaw: Intel(R) Arc(TM) 130V GPU (8GB)
     value: 23
   - gpuNameRaw: Intel(R) Arc(TM) 140T GPU (16GB)
@@ -500,6 +504,8 @@ results:
     value: 27
   - gpuNameRaw: Intel(R) Arc(TM) 140V GPU (16GB)
     value: 22
+  - gpuNameRaw: Intel(R) Arc(TM) 140V GPU (8GB)
+    value: 23
   - gpuNameRaw: Intel(R) Arc(TM) A310 Graphics
     value: 22
   - gpuNameRaw: Intel(R) Arc(TM) A380 Graphics
@@ -579,7 +585,7 @@ results:
   - gpuNameRaw: NVIDIA GeForce GTX 1060 6GB/PCIe/SSE2
     value: 42
   - gpuNameRaw: NVIDIA GeForce GTX 1060/PCIe/SSE2
-    value: 33
+    value: 34
   - gpuNameRaw: NVIDIA GeForce GTX 1070 Ti/PCIe/SSE2
     value: 58
   - gpuNameRaw: NVIDIA GeForce GTX 1070/PCIe/SSE2
@@ -595,7 +601,7 @@ results:
   - gpuNameRaw: NVIDIA GeForce GTX 1650 with Max-Q Design/PCIe/SSE2
     value: 21
   - gpuNameRaw: NVIDIA GeForce GTX 1650/PCIe/SSE2
-    value: 30
+    value: 31
   - gpuNameRaw: NVIDIA GeForce GTX 1660 SUPER/PCIe/SSE2
     value: 55
   - gpuNameRaw: NVIDIA GeForce GTX 1660 Ti with Max-Q Design/PCIe/SSE2
@@ -657,7 +663,7 @@ results:
   - gpuNameRaw: NVIDIA GeForce RTX 2080 Super/PCIe/SSE2
     value: 91
   - gpuNameRaw: NVIDIA GeForce RTX 2080 SUPER/PCIe/SSE2
-    value: 107
+    value: 106
   - gpuNameRaw: NVIDIA GeForce RTX 2080 Ti/PCIe/SSE2
     value: 121
   - gpuNameRaw: NVIDIA GeForce RTX 2080 with Max-Q Design/PCIe/SSE2
@@ -691,7 +697,7 @@ results:
   - gpuNameRaw: NVIDIA GeForce RTX 3070/PCIe/SSE2
     value: 112
   - gpuNameRaw: NVIDIA GeForce RTX 3080 Laptop GPU/PCIe/SSE2
-    value: 84
+    value: 83
   - gpuNameRaw: NVIDIA GeForce RTX 3080 Ti Laptop GPU/PCIe/SSE2
     value: 85
   - gpuNameRaw: NVIDIA GeForce RTX 3080 Ti/PCIe/SSE2
@@ -761,7 +767,7 @@ results:
   - gpuNameRaw: NVIDIA GeForce RTX 5090 Laptop GPU/PCIe/SSE2
     value: 197
   - gpuNameRaw: NVIDIA GeForce RTX 5090/PCIe/SSE2
-    value: 395
+    value: 396
   - gpuNameRaw: NVIDIA Graphics Device/PCIe/SSE2
     value: 121
   - gpuNameRaw: NVIDIA P104-100/PCIe/SSE2
@@ -871,7 +877,7 @@ results:
   - gpuNameRaw: Quadro M2000/PCIe/SSE2
     value: 11
   - gpuNameRaw: Quadro M4000/PCIe/SSE2
-    value: 22
+    value: 21
   - gpuNameRaw: Quadro M6000/PCIe/SSE2
     value: 47
   - gpuNameRaw: Quadro P1000/PCIe/SSE2
@@ -910,10 +916,12 @@ results:
     value: 17
   - gpuNameRaw: Radeon Instinct MI60
     value: 98
+  - gpuNameRaw: Radeon Pro 555
+    value: 12
   - gpuNameRaw: Radeon Pro 560X
     value: 15
   - gpuNameRaw: Radeon RX 470 Series
-    value: 27
+    value: 30
   - gpuNameRaw: Radeon RX 5500
     value: 46
   - gpuNameRaw: Radeon RX 5500 XT

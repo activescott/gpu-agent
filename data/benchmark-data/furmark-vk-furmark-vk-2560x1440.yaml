@@ -12,13 +12,13 @@ description: Median FPS in FurMark 2 (Vulkan), a GPU stress test and benchmark
 descriptionDollarsPer: Dollars per FPS in FurMark 2 (Vulkan). Lower values
   indicate better cost efficiency for GPU compute-heavy rendering.
 category: gaming
-collectedSamples: 8392
-updatedAt: 2026-08-22T11:32:26.623Z
+collectedSamples: 8500
+updatedAt: 2026-08-23T20:09:26.972Z
 results:
   - gpuNameRaw: AMD  Radeon RX 7800 XT
-    value: 164
+    value: 165
   - gpuNameRaw: AMD BC-250 (RADV GFX1013)
-    value: 79
+    value: 80
   - gpuNameRaw: AMD Radeon (TM) R9 380 Series
     value: 29
   - gpuNameRaw: AMD Radeon 780M Graphics
@@ -91,6 +91,8 @@ results:
     value: 96
   - gpuNameRaw: AMD Radeon RX 7600 XT
     value: 100
+  - gpuNameRaw: AMD Radeon RX 7600M XT
+    value: 70
   - gpuNameRaw: AMD Radeon RX 7600M XT (RADV NAVI33)
     value: 82
   - gpuNameRaw: AMD Radeon RX 7700 XT
@@ -108,13 +110,13 @@ results:
   - gpuNameRaw: AMD Radeon RX 7900 GRE (RADV NAVI31)
     value: 170
   - gpuNameRaw: AMD Radeon RX 7900 XT
-    value: 201
+    value: 202
   - gpuNameRaw: AMD Radeon RX 7900 XT (RADV NAVI31)
     value: 209
   - gpuNameRaw: AMD Radeon RX 7900 XTX
     value: 255
   - gpuNameRaw: AMD Radeon RX 7900 XTX (RADV NAVI31)
-    value: 253
+    value: 257
   - gpuNameRaw: AMD Radeon RX 9060 XT
     value: 139
   - gpuNameRaw: AMD Radeon RX 9060 XT (RADV GFX1200)
@@ -200,7 +202,7 @@ results:
   - gpuNameRaw: NVIDIA GeForce RTX 2080 SUPER
     value: 101
   - gpuNameRaw: NVIDIA GeForce RTX 2080 Ti
-    value: 118
+    value: 119
   - gpuNameRaw: NVIDIA GeForce RTX 3050
     value: 51
   - gpuNameRaw: NVIDIA GeForce RTX 3050 Laptop GPU
@@ -252,15 +254,15 @@ results:
   - gpuNameRaw: NVIDIA GeForce RTX 4070 Ti
     value: 213
   - gpuNameRaw: NVIDIA GeForce RTX 4070 Ti SUPER
-    value: 208
+    value: 207
   - gpuNameRaw: NVIDIA GeForce RTX 4080
     value: 248
   - gpuNameRaw: NVIDIA GeForce RTX 4080 Laptop GPU
     value: 165
   - gpuNameRaw: NVIDIA GeForce RTX 4080 SUPER
-    value: 255
+    value: 253
   - gpuNameRaw: NVIDIA GeForce RTX 4090
-    value: 346
+    value: 345
   - gpuNameRaw: NVIDIA GeForce RTX 4090 Laptop GPU
     value: 188
   - gpuNameRaw: NVIDIA GeForce RTX 5050
@@ -270,9 +272,9 @@ results:
   - gpuNameRaw: NVIDIA GeForce RTX 5060
     value: 109
   - gpuNameRaw: NVIDIA GeForce RTX 5060 Laptop GPU
-    value: 97
+    value: 98
   - gpuNameRaw: NVIDIA GeForce RTX 5060 Ti
-    value: 144
+    value: 143
   - gpuNameRaw: NVIDIA GeForce RTX 5070
     value: 205
   - gpuNameRaw: NVIDIA GeForce RTX 5070 Laptop GPU
@@ -290,7 +292,7 @@ results:
   - gpuNameRaw: NVIDIA GeForce RTX 5090 D v2
     value: 433
   - gpuNameRaw: NVIDIA GeForce RTX 5090 Laptop GPU
-    value: 200
+    value: 203
   - gpuNameRaw: NVIDIA RTX PRO 6000 Blackwell Workstation Edition
     value: 490
   - gpuNameRaw: NVIDIA T1200 Laptop GPU

@@ -12,8 +12,8 @@ description: Median FPS in FurMark 2 (Vulkan), a GPU stress test and benchmark
 descriptionDollarsPer: Dollars per FPS in FurMark 2 (Vulkan). Lower values
   indicate better cost efficiency for GPU compute-heavy rendering.
 category: gaming
-collectedSamples: 8861
-updatedAt: 2026-08-27T23:53:58.330Z
+collectedSamples: 8979
+updatedAt: 2026-08-29T02:05:50.839Z
 results:
   - gpuNameRaw: AMD  Radeon RX 7800 XT
     value: 165
@@ -66,7 +66,7 @@ results:
   - gpuNameRaw: AMD Radeon RX 6750 XT
     value: 113
   - gpuNameRaw: AMD Radeon RX 6750 XT (RADV NAVI22)
-    value: 114
+    value: 109
   - gpuNameRaw: AMD Radeon RX 6800
     value: 128
   - gpuNameRaw: AMD Radeon RX 6800 (RADV NAVI21)
@@ -94,11 +94,11 @@ results:
   - gpuNameRaw: AMD Radeon RX 7600 XT
     value: 100
   - gpuNameRaw: AMD Radeon RX 7600M XT
-    value: 70
+    value: 77
   - gpuNameRaw: AMD Radeon RX 7600M XT (RADV NAVI33)
     value: 82
   - gpuNameRaw: AMD Radeon RX 7700 XT
-    value: 139
+    value: 138
   - gpuNameRaw: AMD Radeon RX 7700 XT (RADV NAVI32)
     value: 153
   - gpuNameRaw: AMD Radeon RX 7700S
@@ -106,11 +106,11 @@ results:
   - gpuNameRaw: AMD Radeon RX 7800 XT
     value: 152
   - gpuNameRaw: AMD Radeon RX 7800 XT (RADV NAVI32)
-    value: 176
+    value: 175
   - gpuNameRaw: AMD Radeon RX 7900 GRE
-    value: 192
+    value: 194
   - gpuNameRaw: AMD Radeon RX 7900 GRE (RADV NAVI31)
-    value: 170
+    value: 183
   - gpuNameRaw: AMD Radeon RX 7900 XT
     value: 202
   - gpuNameRaw: AMD Radeon RX 7900 XT (RADV NAVI31)
@@ -120,7 +120,7 @@ results:
   - gpuNameRaw: AMD Radeon RX 7900 XTX (RADV NAVI31)
     value: 257
   - gpuNameRaw: AMD Radeon RX 9060 XT
-    value: 139
+    value: 138
   - gpuNameRaw: AMD Radeon RX 9060 XT (RADV GFX1200)
     value: 134
   - gpuNameRaw: AMD Radeon RX 9070
@@ -264,7 +264,7 @@ results:
   - gpuNameRaw: NVIDIA GeForce RTX 4080 SUPER
     value: 253
   - gpuNameRaw: NVIDIA GeForce RTX 4090
-    value: 345
+    value: 344
   - gpuNameRaw: NVIDIA GeForce RTX 4090 Laptop GPU
     value: 188
   - gpuNameRaw: NVIDIA GeForce RTX 5050
@@ -274,7 +274,7 @@ results:
   - gpuNameRaw: NVIDIA GeForce RTX 5060
     value: 109
   - gpuNameRaw: NVIDIA GeForce RTX 5060 Laptop GPU
-    value: 97
+    value: 99
   - gpuNameRaw: NVIDIA GeForce RTX 5060 Ti
     value: 143
   - gpuNameRaw: NVIDIA GeForce RTX 5070
@@ -284,7 +284,7 @@ results:
   - gpuNameRaw: NVIDIA GeForce RTX 5070 Ti
     value: 228
   - gpuNameRaw: NVIDIA GeForce RTX 5070 Ti Laptop GPU
-    value: 136
+    value: 137
   - gpuNameRaw: NVIDIA GeForce RTX 5080
     value: 297
   - gpuNameRaw: NVIDIA GeForce RTX 5080 Laptop GPU
@@ -302,7 +302,7 @@ results:
   - gpuNameRaw: Radeon (TM) RX 480 Graphics
     value: 41
   - gpuNameRaw: Radeon RX 5500 XT
-    value: 45
+    value: 46
   - gpuNameRaw: Radeon RX 570 Series
     value: 37
   - gpuNameRaw: Radeon RX 580 Series

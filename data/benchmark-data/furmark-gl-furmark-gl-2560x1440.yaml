@@ -13,8 +13,8 @@ description: Median FPS in FurMark 2 (OpenGL), a GPU stress test and benchmark
 descriptionDollarsPer: Dollars per FPS in FurMark 2 (OpenGL). Lower values
   indicate better cost efficiency for GPU compute-heavy rendering.
 category: gaming
-collectedSamples: 171912
-updatedAt: 2026-08-28T16:11:40.232Z
+collectedSamples: 173095
+updatedAt: 2026-08-29T07:52:03.736Z
 results:
   - gpuNameRaw: AMD  Radeon RX 7800 XT
     value: 167
@@ -59,7 +59,7 @@ results:
   - gpuNameRaw: AMD BC-250 (radeonsi gfx1013 ACO DRM 3.64 7.2.0-1.54-cachyos-bc250)
     value: 78
   - gpuNameRaw: AMD BC-250 (radeonsi gfx1013 ACO DRM 3.64 7.2.0-ogc6.1.fc44.x86_64)
-    value: 56
+    value: 62
   - gpuNameRaw: AMD BC-250 (radeonsi gfx1013 LLVM 21.1.8 DRM 3.64
       6.16.4-116.bazzite.fc42.x86_64)
     value: 41
@@ -80,7 +80,7 @@ results:
   - gpuNameRaw: AMD Radeon (TM) R9 390 Series
     value: 42
   - gpuNameRaw: AMD Radeon (TM) R9 Fury Series
-    value: 48
+    value: 49
   - gpuNameRaw: AMD Radeon (TM) RX 480
     value: 37
   - gpuNameRaw: AMD Radeon 760M Graphics
@@ -216,7 +216,7 @@ results:
       6.18.7-2-cachyos)
     value: 167
   - gpuNameRaw: AMD Radeon RX 6800M
-    value: 77
+    value: 76
   - gpuNameRaw: AMD Radeon RX 6800S
     value: 67
   - gpuNameRaw: AMD Radeon RX 6900 XT
@@ -382,7 +382,7 @@ results:
   - gpuNameRaw: AMD Radeon RX 9070 XT (radeonsi gfx1201 ACO DRM 3.64 7.1.8-1-cachyos)
     value: 251
   - gpuNameRaw: AMD Radeon RX 9070 XT (radeonsi gfx1201 ACO DRM 3.64 7.2.0-1-cachyos)
-    value: 236
+    value: 240
   - gpuNameRaw: AMD Radeon RX 9070 XT (radeonsi gfx1201 LLVM 20.1.2 DRM 3.64
       7.0.0-28-generic)
     value: 257
@@ -403,11 +403,11 @@ results:
   - gpuNameRaw: AMD Radeon RX Vega (radeonsi vega10 ACO DRM 3.64 6.17.7-ba29.fc43.x86_64)
     value: 62
   - gpuNameRaw: AMD Radeon RX590 GME
-    value: 41
+    value: 42
   - gpuNameRaw: AMD Radeon RX6500 XT
     value: 53
   - gpuNameRaw: AMD Radeon VII
-    value: 103
+    value: 102
   - gpuNameRaw: AMD Radeon(TM) 780M
     value: 18
   - gpuNameRaw: AMD Radeon(TM) 8060S Graphics
@@ -536,6 +536,8 @@ results:
     value: 97
   - gpuNameRaw: Intel(R) Arc(TM) A770 Graphics
     value: 108
+  - gpuNameRaw: Intel(R) Arc(TM) A770M Graphics
+    value: 76
   - gpuNameRaw: Intel(R) Arc(TM) B370 GPU
     value: 37
   - gpuNameRaw: Intel(R) Arc(TM) B390 GPU
@@ -601,7 +603,7 @@ results:
   - gpuNameRaw: NVIDIA GeForce GTX 1050/PCIe/SSE2
     value: 19
   - gpuNameRaw: NVIDIA GeForce GTX 1060 3GB/PCIe/SSE2
-    value: 39
+    value: 40
   - gpuNameRaw: NVIDIA GeForce GTX 1060 5GB/PCIe/SSE2
     value: 37
   - gpuNameRaw: NVIDIA GeForce GTX 1060 6GB/PCIe/SSE2
@@ -619,7 +621,7 @@ results:
   - gpuNameRaw: NVIDIA GeForce GTX 1650 SUPER/PCIe/SSE2
     value: 37
   - gpuNameRaw: NVIDIA GeForce GTX 1650 Ti/PCIe/SSE2
-    value: 29
+    value: 30
   - gpuNameRaw: NVIDIA GeForce GTX 1650 with Max-Q Design/PCIe/SSE2
     value: 21
   - gpuNameRaw: NVIDIA GeForce GTX 1650/PCIe/SSE2
@@ -669,7 +671,7 @@ results:
   - gpuNameRaw: NVIDIA GeForce RTX 2050/PCIe/SSE2
     value: 28
   - gpuNameRaw: NVIDIA GeForce RTX 2060 SUPER/PCIe/SSE2
-    value: 81
+    value: 80
   - gpuNameRaw: NVIDIA GeForce RTX 2060 with Max-Q Design/PCIe/SSE2
     value: 43
   - gpuNameRaw: NVIDIA GeForce RTX 2060/PCIe/SSE2
@@ -691,7 +693,7 @@ results:
   - gpuNameRaw: NVIDIA GeForce RTX 2080 Ti/PCIe/SSE2
     value: 121
   - gpuNameRaw: NVIDIA GeForce RTX 2080 with Max-Q Design/PCIe/SSE2
-    value: 52
+    value: 51
   - gpuNameRaw: NVIDIA GeForce RTX 2080/PCIe/SSE2
     value: 101
   - gpuNameRaw: NVIDIA GeForce RTX 3050 4GB Laptop GPU/PCIe/SSE2
@@ -721,7 +723,7 @@ results:
   - gpuNameRaw: NVIDIA GeForce RTX 3070/PCIe/SSE2
     value: 112
   - gpuNameRaw: NVIDIA GeForce RTX 3080 Laptop GPU/PCIe/SSE2
-    value: 84
+    value: 83
   - gpuNameRaw: NVIDIA GeForce RTX 3080 Ti Laptop GPU/PCIe/SSE2
     value: 84
   - gpuNameRaw: NVIDIA GeForce RTX 3080 Ti/PCIe/SSE2
@@ -763,7 +765,7 @@ results:
   - gpuNameRaw: NVIDIA GeForce RTX 4090/PCIe/SSE2
     value: 324
   - gpuNameRaw: NVIDIA GeForce RTX 5050 Laptop GPU/PCIe/SSE2
-    value: 85
+    value: 86
   - gpuNameRaw: NVIDIA GeForce RTX 5050/PCIe/SSE2
     value: 87
   - gpuNameRaw: NVIDIA GeForce RTX 5060 Laptop GPU/PCIe/SSE2
@@ -835,7 +837,7 @@ results:
   - gpuNameRaw: NVIDIA RTX A2000/PCIe/SSE2
     value: 41
   - gpuNameRaw: NVIDIA RTX A3000 12GB Laptop GPU/PCIe/SSE2
-    value: 40
+    value: 41
   - gpuNameRaw: NVIDIA RTX A3000 Laptop GPU/PCIe/SSE2
     value: 49
   - gpuNameRaw: NVIDIA RTX A400/PCIe/SSE2

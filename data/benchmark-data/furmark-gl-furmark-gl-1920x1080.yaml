@@ -13,8 +13,8 @@ description: Median FPS in FurMark 2 (OpenGL), a GPU stress test and benchmark
 descriptionDollarsPer: Dollars per FPS in FurMark 2 (OpenGL). Lower values
   indicate better cost efficiency for GPU compute-heavy rendering.
 category: gaming
-collectedSamples: 383912
-updatedAt: 2026-08-29T17:47:48.625Z
+collectedSamples: 384170
+updatedAt: 2026-08-29T19:19:25.823Z
 results:
   - gpuNameRaw: /PCIe/SSE2
     value: 77
@@ -653,7 +653,7 @@ results:
   - gpuNameRaw: AMD Radeon RX 7600M
     value: 36
   - gpuNameRaw: AMD Radeon RX 7600M XT
-    value: 103
+    value: 105
   - gpuNameRaw: AMD Radeon RX 7600M XT (radeonsi navi33 LLVM 20.1.2 DRM 3.64
       6.17.0-20-generic)
     value: 122

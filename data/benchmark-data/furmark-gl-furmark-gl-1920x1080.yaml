@@ -13,8 +13,8 @@ description: Median FPS in FurMark 2 (OpenGL), a GPU stress test and benchmark
 descriptionDollarsPer: Dollars per FPS in FurMark 2 (OpenGL). Lower values
   indicate better cost efficiency for GPU compute-heavy rendering.
 category: gaming
-collectedSamples: 384385
-updatedAt: 2026-08-29T20:53:02.011Z
+collectedSamples: 384396
+updatedAt: 2026-08-29T21:00:07.937Z
 results:
   - gpuNameRaw: /PCIe/SSE2
     value: 77
@@ -620,7 +620,7 @@ results:
       6.18.9-1-cachyos-bore)
     value: 292
   - gpuNameRaw: AMD Radeon RX 6800M
-    value: 116
+    value: 115
   - gpuNameRaw: AMD Radeon RX 6800S
     value: 106
   - gpuNameRaw: AMD Radeon RX 6850M XT

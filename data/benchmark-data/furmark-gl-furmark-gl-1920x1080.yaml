@@ -13,8 +13,8 @@ description: Median FPS in FurMark 2 (OpenGL), a GPU stress test and benchmark
 descriptionDollarsPer: Dollars per FPS in FurMark 2 (OpenGL). Lower values
   indicate better cost efficiency for GPU compute-heavy rendering.
 category: gaming
-collectedSamples: 382280
-updatedAt: 2026-08-29T07:52:03.721Z
+collectedSamples: 383031
+updatedAt: 2026-08-29T12:23:23.320Z
 results:
   - gpuNameRaw: /PCIe/SSE2
     value: 77
@@ -101,7 +101,7 @@ results:
   - gpuNameRaw: AMD BC-250 (radeonsi gfx1013 ACO DRM 3.64 7.2.0-ogc4.1.fc44.x86_64)
     value: 109
   - gpuNameRaw: AMD BC-250 (radeonsi gfx1013 ACO DRM 3.64 7.2.0-ogc6.1.fc44.x86_64)
-    value: 113
+    value: 114
   - gpuNameRaw: AMD BC-250 (radeonsi gfx1013 LLVM 21.1.7 DRM 3.64 6.17.7-ba22.fc43.x86_64)
     value: 77
   - gpuNameRaw: AMD BC-250 (radeonsi gfx1013 LLVM 21.1.8 DRM 3.64
@@ -404,7 +404,7 @@ results:
   - gpuNameRaw: AMD Radeon R7 450
     value: 11
   - gpuNameRaw: AMD Radeon R7 M265 Series
-    value: 6
+    value: 7
   - gpuNameRaw: AMD Radeon R9 200 / HD 7900 Series
     value: 49
   - gpuNameRaw: AMD Radeon R9 200 Series
@@ -569,7 +569,7 @@ results:
     value: 140
   - gpuNameRaw: AMD Radeon RX 6600 XT (radeonsi navi23 LLVM 20.1.2 DRM 3.64
       6.17.0-35-generic)
-    value: 127
+    value: 129
   - gpuNameRaw: AMD Radeon RX 6600M
     value: 110
   - gpuNameRaw: AMD Radeon RX 6600S
@@ -588,7 +588,7 @@ results:
     value: 161
   - gpuNameRaw: AMD Radeon RX 6700 XT (radeonsi navi22 ACO DRM 3.64
       6.17.7-ba29.fc43.x86_64)
-    value: 169
+    value: 170
   - gpuNameRaw: AMD Radeon RX 6700 XT (radeonsi navi22 LLVM 21.1.8 DRM 3.64
       6.17.0-19-generic)
     value: 147
@@ -618,7 +618,7 @@ results:
       6.18.9-1-cachyos-bore)
     value: 292
   - gpuNameRaw: AMD Radeon RX 6800M
-    value: 115
+    value: 116
   - gpuNameRaw: AMD Radeon RX 6800S
     value: 106
   - gpuNameRaw: AMD Radeon RX 6850M XT
@@ -651,7 +651,7 @@ results:
   - gpuNameRaw: AMD Radeon RX 7600M
     value: 36
   - gpuNameRaw: AMD Radeon RX 7600M XT
-    value: 105
+    value: 103
   - gpuNameRaw: AMD Radeon RX 7600M XT (radeonsi navi33 LLVM 20.1.2 DRM 3.64
       6.17.0-20-generic)
     value: 122
@@ -1237,7 +1237,7 @@ results:
   - gpuNameRaw: GeForce RTX 3060/PCIe/SSE2
     value: 103
   - gpuNameRaw: GeForce RTX 3070 Laptop GPU/PCIe/SSE2
-    value: 99
+    value: 100
   - gpuNameRaw: GeForce RTX 3070/PCIe/SSE2
     value: 155
   - gpuNameRaw: GeForce RTX 3080/PCIe/SSE2
@@ -1655,7 +1655,7 @@ results:
   - gpuNameRaw: NVIDIA GeForce RTX 2080 Ti/PCIe/SSE2
     value: 167
   - gpuNameRaw: NVIDIA GeForce RTX 2080 with Max-Q Design/PCIe/SSE2
-    value: 69
+    value: 71
   - gpuNameRaw: NVIDIA GeForce RTX 2080/PCIe/SSE2
     value: 150
   - gpuNameRaw: NVIDIA GeForce RTX 3050 4GB Laptop GPU/PCIe/SSE2
@@ -1691,7 +1691,7 @@ results:
   - gpuNameRaw: NVIDIA GeForce RTX 3080 Laptop GPU/PCIe/SSE2
     value: 113
   - gpuNameRaw: NVIDIA GeForce RTX 3080 Ti Laptop GPU/PCIe/SSE2
-    value: 106
+    value: 105
   - gpuNameRaw: NVIDIA GeForce RTX 3080 Ti/PCIe/SSE2
     value: 160
   - gpuNameRaw: NVIDIA GeForce RTX 3080/PCIe/SSE2
@@ -1719,7 +1719,7 @@ results:
   - gpuNameRaw: NVIDIA GeForce RTX 4070/PCIe/SSE2
     value: 204
   - gpuNameRaw: NVIDIA GeForce RTX 4080 Laptop GPU/PCIe/SSE2
-    value: 212
+    value: 211
   - gpuNameRaw: NVIDIA GeForce RTX 4080 SUPER/PCIe/SSE2
     value: 345
   - gpuNameRaw: NVIDIA GeForce RTX 4080/PCIe/SSE2
@@ -1855,7 +1855,7 @@ results:
   - gpuNameRaw: NVIDIA RTX PRO 4500 Blackwell/PCIe/SSE2
     value: 291
   - gpuNameRaw: NVIDIA RTX PRO 500 Blackwell Generation Laptop GPU/PCIe/SSE2
-    value: 73
+    value: 74
   - gpuNameRaw: NVIDIA RTX PRO 5000 Blackwell Generation Laptop GPU/PCIe/SSE2
     value: 211
   - gpuNameRaw: NVIDIA RTX PRO 5000 Blackwell/PCIe/SSE2
@@ -1891,7 +1891,7 @@ results:
   - gpuNameRaw: NVIDIA TITAN X (Pascal)/PCIe/SSE2
     value: 144
   - gpuNameRaw: NVIDIA TITAN Xp COLLECTORS EDITION/PCIe/SSE2
-    value: 154
+    value: 153
   - gpuNameRaw: NVIDIA TITAN Xp/PCIe/SSE2
     value: 153
   - gpuNameRaw: P106-090/PCIe/SSE2

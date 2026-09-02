@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest"
-import { applyFilters, getFilterSummary } from "./filterLogic"
+import { applyFilters, getFilterSummary, getOperatorLabel } from "./filterLogic"
 import type { FilterState } from "./types"
 
 describe("applyFilters", () => {
@@ -73,6 +73,51 @@ describe("applyFilters", () => {
   })
 })
 
+describe("applyFilters with hasAll operator", () => {
+  const items = [
+    { name: "A", precision: ["FP8", "FP4", "INT8"] },
+    { name: "B", precision: ["FP8", "INT8"] },
+    { name: "C", precision: [] as string[] },
+    { name: "D", precision: null },
+  ]
+
+  const getFieldValue = (item: (typeof items)[0], field: string) => {
+    return item[field as keyof typeof item]
+  }
+
+  it("matches item with a single required value", () => {
+    const filters: FilterState = {
+      precision: { operator: "hasAll", value: ["FP4"] },
+    }
+    const result = applyFilters(items, filters, getFieldValue)
+    expect(result.map((i) => i.name)).toEqual(["A"])
+  })
+
+  it("is AND not OR: excludes item missing one of multiple required values", () => {
+    const filters: FilterState = {
+      precision: { operator: "hasAll", value: ["FP8", "FP4"] },
+    }
+    const result = applyFilters(items, filters, getFieldValue)
+    expect(result.map((i) => i.name)).toEqual(["A"])
+  })
+
+  it("empty required list matches all items with an array value", () => {
+    const filters: FilterState = {
+      precision: { operator: "hasAll", value: [] },
+    }
+    const result = applyFilters(items, filters, getFieldValue)
+    expect(result.map((i) => i.name)).toEqual(["A", "B", "C"])
+  })
+
+  it("excludes non-array, null, and empty-array item values when values required", () => {
+    const filters: FilterState = {
+      precision: { operator: "hasAll", value: ["FP8"] },
+    }
+    const result = applyFilters(items, filters, getFieldValue)
+    expect(result.map((i) => i.name)).toEqual(["A", "B"])
+  })
+})
+
 describe("getFilterSummary", () => {
   it("formats gte operator correctly", () => {
     const summary = getFilterSummary(
@@ -106,5 +151,19 @@ describe("getFilterSummary", () => {
       "Condition",
     )
     expect(summary).toBe("Condition: 2 selected")
+  })
+
+  it("formats hasAll operator by listing required values", () => {
+    const summary = getFilterSummary(
+      { operator: "hasAll", value: ["FP8", "FP4"] },
+      "Precision Support",
+    )
+    expect(summary).toBe("Precision Support: FP8 + FP4")
+  })
+})
+
+describe("getOperatorLabel", () => {
+  it("labels hasAll as supports all of", () => {
+    expect(getOperatorLabel("hasAll")).toBe("supports all of")
   })
 })

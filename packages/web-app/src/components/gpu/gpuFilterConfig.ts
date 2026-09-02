@@ -4,6 +4,7 @@ import type {
   NumericFilterConfig,
 } from "@/components/filter-items"
 import type { PricedGpu } from "@/pkgs/server/db/GpuRepository"
+import { HardwarePrecisions } from "@/pkgs/isomorphic/model/specs"
 
 // Constants for filter ranges
 const PRICE_MIN = 0
@@ -50,6 +51,23 @@ const FALLBACK_STEP = 10
 const TDP_MIN = 100
 const TDP_MAX = 600
 const TDP_STEP = 25
+
+const PRECISION_FILTER_MAX_HEIGHT = 220
+
+/**
+ * Shared "Precision Support" filter config used by both GPU and listing filter builders.
+ * Uses "hasAll" selection mode: checking FP8 + FP4 means "cards that support both."
+ */
+function buildPrecisionFilterConfig(): CategoricalFilterConfig {
+  return {
+    type: "categorical",
+    name: "precision",
+    displayName: "Precision Support",
+    selectionMode: "hasAll",
+    options: HardwarePrecisions.map((p) => ({ value: p, label: p })),
+    maxHeight: PRECISION_FILTER_MAX_HEIGHT,
+  }
+}
 
 // FPS range for gaming benchmarks
 const FPS_MIN = 0
@@ -181,6 +199,10 @@ export function buildGpuFilterConfigs(
     } satisfies NumericFilterConfig)
   }
 
+  // Precision Support filter (categorical, hasAll) - ungrouped so it lands in the
+  // primary "Filters" section; FilterItems' accordion only opens the first section.
+  configs.push(buildPrecisionFilterConfig())
+
   // Add gaming benchmark filters (for cross-category filtering)
   // This allows users to filter by gaming FPS while viewing AI rankings, or vice versa
   if (options.gamingBenchmarks && options.gamingBenchmarks.length > 0) {
@@ -267,6 +289,9 @@ export function getGpuFieldValue(
     }
     case "series": {
       return pricedGpu.gpu.series
+    }
+    case "precision": {
+      return pricedGpu.gpu.supportedHardwareOperations
     }
 
     // Percentile if available
@@ -421,6 +446,9 @@ export function buildListingFilterConfigs(
       defaultOperator: "gte",
     } satisfies NumericFilterConfig)
 
+    // Precision Support filter (categorical, hasAll)
+    configs.push(buildPrecisionFilterConfig())
+
     // Add gaming benchmark filters grouped by resolution
     if (gamingBenchmarks && gamingBenchmarks.length > 0) {
       for (const benchmark of gamingBenchmarks) {
@@ -495,6 +523,9 @@ export function getListingFieldValue(
     }
     case "fp32TFLOPS": {
       return listing.item.gpu.fp32TFLOPS
+    }
+    case "precision": {
+      return listing.item.gpu.supportedHardwareOperations
     }
     default: {
       // Try to access the field from listing.item or listing.item.gpu

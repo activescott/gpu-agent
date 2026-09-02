@@ -202,10 +202,7 @@ export async function getAllMetricValuesForCategory(
   return gpuMetrics
 }
 
-type PricedGpuInfo = Omit<
-  Gpu,
-  "summary" | "references" | "supportedHardwareOperations" | "gpuArchitecture"
->
+type PricedGpuInfo = Omit<Gpu, "summary" | "references" | "gpuArchitecture">
 
 export type PricedGpu = {
   gpu: PricedGpuInfo
@@ -270,13 +267,10 @@ export async function calculateGpuPriceStats(): Promise<PricedGpu[]> {
       /*
         NOTE: React/Next.js server components dump all the props into the client-delivered JS making the page huge: https://github.com/vercel/next.js/discussions/42170
         Lighthouse complained about the JS size and this removed about ~16KB of JS from the page.
+        summary + references were the overwhelming majority of that; supportedHardwareOperations
+        is kept (~4% of the original 16KB gzipped) since the Precision Support filter needs it.
         */
-      const gpuMinimal = omit(gpu, [
-        "summary",
-        "references",
-        "supportedHardwareOperations",
-        "gpuArchitecture",
-      ])
+      const gpuMinimal = omit(gpu, ["summary", "references", "gpuArchitecture"])
       return {
         gpu: gpuMinimal,
         price: stats,

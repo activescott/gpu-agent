@@ -86,6 +86,19 @@ function matchesFilter(itemValue: unknown, filter: FilterValue): boolean {
       return filterValues.includes(itemString)
     }
 
+    case "hasAll": {
+      // For categorical filters: item's array value must contain every required option
+      const required = Array.isArray(value) ? value : [value]
+      if (required.length === 0) {
+        return true
+      }
+      if (!Array.isArray(itemValue)) {
+        return false
+      }
+      const itemSet = new Set(itemValue.map(String))
+      return required.every((r) => itemSet.has(String(r)))
+    }
+
     default: {
       // Unknown operator - don't filter
       return true
@@ -145,6 +158,10 @@ export function getFilterSummary(
       }
       return `${displayName}: ${values.length} selected`
     }
+    case "hasAll": {
+      const values = Array.isArray(value) ? value : [value]
+      return `${displayName}: ${values.join(" + ")}`
+    }
     default: {
       return `${displayName}: ${value}`
     }
@@ -197,6 +214,9 @@ export function getOperatorLabel(operator: FilterValue["operator"]): string {
     }
     case "in": {
       return "is one of"
+    }
+    case "hasAll": {
+      return "supports all of"
     }
     default: {
       return operator

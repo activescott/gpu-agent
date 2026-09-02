@@ -138,6 +138,15 @@
         "type": "string"
       }
     },
+    "unverifiedSpecs": {
+      "type": "array",
+      "description": "Field names that could not be confirmed from authoritative sources and were deliberately left null rather than guessed. Distinguishes 'hardware genuinely lacks this' from 'we couldn't find the data'. Each entry requires a matching notes entry starting 'NOT FOUND: <field>' explaining what was searched.",
+      "items": {
+        "type": "string",
+        "enum": ["fp8TFLOPS", "fp4TFLOPS", "supportedHardwareOperations"]
+      },
+      "uniqueItems": true
+    },
     "manufacturerIdentifiers": {
       "type": "array",
       "description": "Official identifiers from the GPU manufacturer (NVIDIA, AMD, Intel). Only include model numbers, part numbers, and SKUs - NOT PCI device IDs or other hardware bus identifiers. Manufacturers often have MULTIPLE identifier types - for example, NVIDIA uses both 'Product SKU' (e.g., PG133 SKU 242) AND 'NVPN' part numbers (e.g., 900-2G133-0080-000). Include ALL official identifiers found in datasheets and product documentation.",

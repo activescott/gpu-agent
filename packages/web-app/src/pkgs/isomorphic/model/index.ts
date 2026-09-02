@@ -2,7 +2,7 @@ export { GpuSchema, parseGpu } from "./gpu"
 export type { Gpu, ManufacturerIdentifier, ThirdPartyProduct } from "./gpu"
 export { MlModelSchema, getModelTypeLabel } from "./mlModel"
 export type { MlModel } from "./mlModel"
-export { type GpuSpecKey, GpuSpecKeys, GpuSpecsDescription } from "./specs"
+export { type GpuSpecKey, GpuSpecsDescription } from "./specs"
 export {
   type GpuMetricKey,
   GpuMetricKeys,

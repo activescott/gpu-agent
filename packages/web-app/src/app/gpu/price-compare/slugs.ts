@@ -28,6 +28,8 @@ export function mapMetricToSlug(metric: GpuMetricKey): string {
     fp32TFLOPS: "fp32-flops",
     fp16TFLOPS: "fp16-flops",
     int8TOPS: "int8-tops",
+    fp8TFLOPS: "fp8-flops",
+    fp4TFLOPS: "fp4-flops",
     tensorCoreCount: "tensor-cores",
     memoryCapacityGB: "memory-gb",
     memoryBandwidthGBs: "memory-bandwidth-gbs",

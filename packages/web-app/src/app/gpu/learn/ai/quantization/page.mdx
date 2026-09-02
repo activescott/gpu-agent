@@ -16,6 +16,12 @@ Quantitizing has the following benefits:
 - Faster Computation: On many GPUs or TPUs (Tensor Processing Units), using FP16 or INT8 can speed up arithmetic operations over FP32, reducing training time.
 - Improved Resource Utilization: Certain GPUs are optimized for FP16 operations, allowing for more efficient utilization of these resources.
 
+## Hardware-Native FP8 and FP4
+
+Newer GPU generations go a step further than software-driven quantization: recent tensor/matrix cores natively execute FP8 and FP4 matrix multiplication in hardware, rather than emulating it on top of higher-precision units. NVIDIA's Hopper and Blackwell architectures and AMD's CDNA 3/4 datacenter parts publish dedicated FP8 and FP4 TFLOPS figures for exactly this reason — hardware-native low-precision inference is now a first-class performance metric, not just a memory-savings trick.
+
+Because hardware FP8/FP4 support varies significantly by GPU — even within the same product generation — see <Link href="/gpu/ranking/ai/fp8-flops">GPUs ranked by $ / FP8 TFLOP</Link> and <Link href="/gpu/ranking/ai/fp4-flops">GPUs ranked by $ / FP4 TFLOP</Link> to compare cost-performance across cards that support these precisions in hardware.
+
 ## Is Quantization Necessary?
 
 FP16 is increasingly being used right from the start of training new models, particularly in deep learning. This approach is known as mixed precision training. It combines the use of FP32 and FP16 to optimize the training process.

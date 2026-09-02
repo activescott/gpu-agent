@@ -1,6 +1,6 @@
 # GPU Spec Metric Definitions
 # These metrics represent hardware specifications that are extracted from GPU spec YAML files
-updatedAt: "2025-12-25T00:00:00Z"
+updatedAt: "2026-09-02T00:00:00Z"
 metrics:
   - slug: tensor-cores
     name: Tensor Core Count
@@ -41,6 +41,26 @@ metrics:
     description: The number of 8-bit operations per second the card can perform in trillions.
     descriptionDollarsPer: Dollars per 8-bit integer operations per second indicates how much you pay for each trillion operations per second. Lower is better.
     gpuField: int8TOPS
+
+  - slug: fp8-flops
+    name: FP8 TFLOPs
+    category: ai
+    metricType: spec
+    unit: FP8 TFLOPs
+    unitShortest: TFLOPs
+    description: The number of 8-bit floating-point matrix operations per second the card can perform in trillions (dense).
+    descriptionDollarsPer: Dollars per 8-bit floating-point operations per second indicates how much you pay for each trillion operations per second. Lower is better.
+    gpuField: fp8TFLOPS
+
+  - slug: fp4-flops
+    name: FP4 TFLOPs
+    category: ai
+    metricType: spec
+    unit: FP4 TFLOPs
+    unitShortest: TFLOPs
+    description: The number of 4-bit floating-point matrix operations per second the card can perform in trillions (dense).
+    descriptionDollarsPer: Dollars per 4-bit floating-point operations per second indicates how much you pay for each trillion operations per second. Lower is better.
+    gpuField: fp4TFLOPS
 
   - slug: memory-gb
     name: Memory Capacity (GB)

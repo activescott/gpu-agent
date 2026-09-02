@@ -22,6 +22,12 @@ describe("slug mapping functions", () => {
         "fp16TFLOPS",
       )
       expect(mapSlugToMetric("int8-tops" as RankingSlug, "ai")).toBe("int8TOPS")
+      expect(mapSlugToMetric("fp8-flops" as RankingSlug, "ai")).toBe(
+        "fp8TFLOPS",
+      )
+      expect(mapSlugToMetric("fp4-flops" as RankingSlug, "ai")).toBe(
+        "fp4TFLOPS",
+      )
       expect(mapSlugToMetric("memory-gb" as RankingSlug, "ai")).toBe(
         "memoryCapacityGB",
       )
@@ -52,6 +58,8 @@ describe("slug mapping functions", () => {
       expect(metricToSlug("tensorCoreCount", "ai")).toBe("tensor-cores")
       expect(metricToSlug("fp16TFLOPS", "ai")).toBe("fp16-flops")
       expect(metricToSlug("int8TOPS", "ai")).toBe("int8-tops")
+      expect(metricToSlug("fp8TFLOPS", "ai")).toBe("fp8-flops")
+      expect(metricToSlug("fp4TFLOPS", "ai")).toBe("fp4-flops")
       expect(metricToSlug("memoryCapacityGB", "ai")).toBe("memory-gb")
       expect(metricToSlug("memoryBandwidthGBs", "ai")).toBe(
         "memory-bandwidth-gbs",
@@ -85,9 +93,11 @@ describe("slug mapping functions", () => {
       expect(slugs).toContain("tensor-cores")
       expect(slugs).toContain("fp16-flops")
       expect(slugs).toContain("int8-tops")
+      expect(slugs).toContain("fp8-flops")
+      expect(slugs).toContain("fp4-flops")
       expect(slugs).toContain("memory-gb")
       expect(slugs).toContain("memory-bandwidth-gbs")
-      expect(slugs).toHaveLength(6)
+      expect(slugs).toHaveLength(8)
     })
 
     it("should return empty for gaming (use database)", () => {

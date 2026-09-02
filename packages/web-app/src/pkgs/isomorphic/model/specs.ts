@@ -19,6 +19,8 @@ export const GpuSpecsSchema = z.object({
   fp16TFLOPS: z.number(),
   // .. | null because prisma :/
   int8TOPS: z.number().optional().nullable(),
+  fp8TFLOPS: z.number().optional().nullable(),
+  fp4TFLOPS: z.number().optional().nullable(),
   memoryCapacityGB: z.number(),
   memoryBandwidthGBs: z.number(),
 })
@@ -34,6 +36,8 @@ export const GpuSpecKeys: GpuSpecKey[] = [
   "memoryCapacityGB",
   "memoryBandwidthGBs",
   "int8TOPS",
+  "fp8TFLOPS",
+  "fp4TFLOPS",
 ]
 
 interface GpuSpecItem {
@@ -83,6 +87,26 @@ export const GpuSpecsDescription: Record<GpuSpecKey, GpuSpecItem> = {
       "The number of 8-bit operations per second the card can perform in trillions.",
     descriptionDollarsPer:
       "Dollars per 8-bit integer operations per second indicates how much you pay for each trillion operations per second. Lower is better.",
+    category: "ai",
+  },
+  fp8TFLOPS: {
+    label: "FP8 TFLOPs",
+    unit: "FP8 TFLOPs",
+    unitShortest: "TFLOPs",
+    description:
+      "The number of 8-bit floating-point matrix operations per second the card can perform in trillions (dense).",
+    descriptionDollarsPer:
+      "Dollars per 8-bit floating-point operations per second indicates how much you pay for each trillion operations per second. Lower is better.",
+    category: "ai",
+  },
+  fp4TFLOPS: {
+    label: "FP4 TFLOPs",
+    unit: "FP4 TFLOPs",
+    unitShortest: "TFLOPs",
+    description:
+      "The number of 4-bit floating-point matrix operations per second the card can perform in trillions (dense).",
+    descriptionDollarsPer:
+      "Dollars per 4-bit floating-point operations per second indicates how much you pay for each trillion operations per second. Lower is better.",
     category: "ai",
   },
   memoryCapacityGB: {

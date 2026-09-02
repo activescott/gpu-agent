@@ -52,6 +52,8 @@ const _GpuMetricsSchema = z.object({
   fp32TFLOPS: z.number(),
   fp16TFLOPS: z.number(),
   int8TOPS: z.number().optional().nullable(),
+  fp8TFLOPS: z.number().optional().nullable(),
+  fp4TFLOPS: z.number().optional().nullable(),
   memoryCapacityGB: z.number(),
   memoryBandwidthGBs: z.number(),
 })

@@ -113,16 +113,20 @@ export default async function Page(props: RankingParams) {
       getAllMetricValuesForCategory("gaming"),
     ])
 
-  // Merge percentile, metric value, and benchmark data into PricedGpu objects
-  const gpusWithPercentiles = unsortedPricedGpus.map((pricedGpu) => ({
-    ...pricedGpu,
-    percentile: percentileMap.get(pricedGpu.gpu.name),
-    metricValue: valueMap.get(pricedGpu.gpu.name),
-    // Convert Map to plain object for serialization to client
-    benchmarkValues: Object.fromEntries(
-      gamingBenchmarkValues.get(pricedGpu.gpu.name) ?? new Map(),
-    ),
-  }))
+  // Merge percentile, metric value, and benchmark data into PricedGpu objects.
+  // Filter out GPUs with no value for this metric (e.g. most GPUs lack fp4TFLOPS)
+  // rather than rendering a page full of blank rows.
+  const gpusWithPercentiles = unsortedPricedGpus
+    .map((pricedGpu) => ({
+      ...pricedGpu,
+      percentile: percentileMap.get(pricedGpu.gpu.name),
+      metricValue: valueMap.get(pricedGpu.gpu.name),
+      // Convert Map to plain object for serialization to client
+      benchmarkValues: Object.fromEntries(
+        gamingBenchmarkValues.get(pricedGpu.gpu.name) ?? new Map(),
+      ),
+    }))
+    .filter((pricedGpu) => pricedGpu.metricValue !== undefined)
 
   // Prepare metric definitions for the selector (only the fields needed)
   const metricDefinitionsForSelector = allMetricDefinitions.map((m) => ({

@@ -105,6 +105,10 @@ const AI_CAROUSEL_SUBTITLES: Record<GpuSpecKey, string> = {
     "Best price per GB of VRAM — useful for large-model fine-tuning and high-resolution rendering.",
   memoryBandwidthGBs:
     "Best price per GB/s of memory bandwidth — useful for memory-bound LLM inference.",
+  fp8TFLOPS:
+    "Best price per FP8 TFLOP — useful for quantized inference and training on FP8-capable hardware.",
+  fp4TFLOPS:
+    "Best price per FP4 TFLOP — useful for aggressively quantized LLM inference on FP4-capable hardware.",
 }
 
 function TopListingsCarousel({

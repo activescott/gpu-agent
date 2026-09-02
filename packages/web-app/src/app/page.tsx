@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import { GpuSpecKeys } from "@/pkgs/isomorphic/model"
+import type { GpuSpecKey } from "@/pkgs/isomorphic/model"
 import {
   topNListingsByCostPerformance,
   listingsByCostPerformanceBySlug,
@@ -31,13 +31,27 @@ const MIN_AI_VRAM_GB = 10
 const BANNER_NEWS_COUNT = 2
 const CAROUSEL_NEWS_MAX_AGE_MONTHS = 5
 
+/**
+ * Curated subset of GpuSpecKeys shown as home page carousels. Deliberately
+ * NOT all of GpuSpecKeys — sparsely-populated specs (e.g. fp8TFLOPS, fp4TFLOPS)
+ * would silently add thin, mostly-empty carousels if this iterated the full list.
+ */
+const HOME_AI_SPEC_KEYS: GpuSpecKey[] = [
+  "fp32TFLOPS",
+  "fp16TFLOPS",
+  "tensorCoreCount",
+  "memoryCapacityGB",
+  "memoryBandwidthGBs",
+  "int8TOPS",
+]
+
 export default async function Page() {
   const allMetrics = await listMetricDefinitions()
   const gamingMetrics = allMetrics.filter(
     (m) => m.category === "gaming" && m.slug.includes(HOME_GAMING_RESOLUTION),
   )
 
-  const aiListingsPromises = GpuSpecKeys.map(async (spec) => {
+  const aiListingsPromises = HOME_AI_SPEC_KEYS.map(async (spec) => {
     const listings = await topNListingsByCostPerformance(
       spec,
       TOP_N_LISTINGS,

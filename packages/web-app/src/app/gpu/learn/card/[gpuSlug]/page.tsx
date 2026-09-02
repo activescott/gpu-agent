@@ -118,6 +118,8 @@ function generateProsCons(
     memoryCapacityGB: "memory capacity",
     memoryBandwidthGBs: "memory bandwidth",
     int8TOPS: "INT8 inference performance",
+    fp8TFLOPS: "FP8 matrix performance",
+    fp4TFLOPS: "FP4 matrix performance",
   }
 
   const percentMultiplier = 100

@@ -28,7 +28,6 @@ import {
   Listing,
   ListingWithMetric,
   ListingSource,
-  Gpu,
   parseGpu,
 } from "@/pkgs/isomorphic/model"
 import { createLogger } from "@/lib/logger"
@@ -562,7 +561,7 @@ export async function topNListingsByCostPerformance(
       source: row.source === "amazon" ? "amazon" : "ebay",
       cachedAt: row.cachedAt,
       // GPU object with all specs and benchmarks
-      gpu: {
+      gpu: parseGpu({
         // Required fields
         name: row.name,
         label: row.label,
@@ -590,7 +589,7 @@ export async function topNListingsByCostPerformance(
         // MSRP and notes
         msrpUSD: row.msrpUSD ?? undefined,
         notes: row.notes ?? [],
-      } satisfies Gpu,
+      }),
     }
 
     return listing
@@ -672,7 +671,7 @@ export async function listingsByCostPerformanceBySlug(
       metricValue: row.metricValue,
       // GPU object - note: we include legacy fields for backwards compatibility
       // but the metric value is retrieved from GpuMetricValue, not GPU table
-      gpu: {
+      gpu: parseGpu({
         // Required fields
         name: row.name,
         label: row.label,
@@ -700,7 +699,7 @@ export async function listingsByCostPerformanceBySlug(
         // MSRP and notes
         msrpUSD: row.msrpUSD ?? undefined,
         notes: row.notes ?? [],
-      } satisfies Gpu,
+      }),
     }
 
     return listing

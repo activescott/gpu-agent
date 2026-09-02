@@ -1,6 +1,6 @@
 import { stripIndents } from "common-tags"
 import { z } from "zod"
-import { GpuSpecsSchema } from "./specs"
+import { GpuSpecsSchema, HardwarePrecisions } from "./specs"
 
 // Manufacturer identifiers (NVPN, OPN, board_id, product_sku, etc.)
 const ManufacturerIdentifierSchema = z.object({
@@ -31,7 +31,8 @@ export const GpuSchema = z
     // GPU market segment: "gaming" (consumer), "workstation" (professional), "datacenter" (enterprise/AI)
     category: GpuCategorySchema.optional().nullable(),
     gpuArchitecture: z.string(),
-    supportedHardwareOperations: z.array(z.string()).describe(stripIndents`
+    supportedHardwareOperations: z.array(z.enum(HardwarePrecisions))
+      .describe(stripIndents`
       A list of the supported precisions for hardware-accelerated generalized
       matrix multiplication operations (GEMM). Each value indicates a precision
       that is supported. In most cases this won't matter that much as the result

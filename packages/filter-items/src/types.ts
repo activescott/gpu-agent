@@ -7,8 +7,17 @@
  * - lte: less than or equal to
  * - range: between min and max (inclusive)
  * - in: value is in array (for categorical)
+ * - hasAll: item's array value contains every selected option (AND, for categorical)
  */
-export type FilterOperator = "eq" | "gt" | "gte" | "lt" | "lte" | "range" | "in"
+export type FilterOperator =
+  | "eq"
+  | "gt"
+  | "gte"
+  | "lt"
+  | "lte"
+  | "range"
+  | "in"
+  | "hasAll"
 
 /**
  * Represents an active filter value with its operator
@@ -36,6 +45,12 @@ export interface CategoricalFilterConfig {
   group?: string
   /** Max height in pixels for the options list. Overflows scroll. */
   maxHeight?: number
+  /**
+   * Selection semantics: "oneOf" (default) is an OR match against selected
+   * options, unselected = everything shown. "hasAll" is an AND match
+   * requiring every selected option, unselected = nothing required.
+   */
+  selectionMode?: "oneOf" | "hasAll"
 }
 
 /**

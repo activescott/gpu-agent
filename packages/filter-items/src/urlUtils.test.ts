@@ -36,6 +36,24 @@ describe("parseFiltersFromURL", () => {
     const result = parseFiltersFromURL(params)
     expect(result.price).toBeUndefined()
   })
+
+  it("parses hasAll filter as comma-separated values", () => {
+    const params = new URLSearchParams("filter.precision[hasAll]=FP8,FP4")
+    const result = parseFiltersFromURL(params)
+    expect(result.precision).toEqual({
+      operator: "hasAll",
+      value: ["FP8", "FP4"],
+    })
+  })
+
+  it("trims whitespace in hasAll values", () => {
+    const params = new URLSearchParams("filter.precision[hasAll]=FP8, FP4")
+    const result = parseFiltersFromURL(params)
+    expect(result.precision).toEqual({
+      operator: "hasAll",
+      value: ["FP8", "FP4"],
+    })
+  })
 })
 
 describe("serializeFiltersToURL", () => {
@@ -51,6 +69,22 @@ describe("serializeFiltersToURL", () => {
       category: { operator: "in", value: ["New", "Used"] },
     })
     expect(params.get("filter.category[in]")).toBe("New,Used")
+  })
+
+  it("serializes hasAll filter", () => {
+    const params = serializeFiltersToURL({
+      precision: { operator: "hasAll", value: ["FP8", "FP4"] },
+    })
+    expect(params.get("filter.precision[hasAll]")).toBe("FP8,FP4")
+  })
+
+  it("round-trips hasAll filter through parse and serialize", () => {
+    const original = new URLSearchParams(
+      "filter.precision[hasAll]=FP8,FP4",
+    )
+    const parsed = parseFiltersFromURL(original)
+    const serialized = serializeFiltersToURL(parsed)
+    expect(serialized.get("filter.precision[hasAll]")).toBe("FP8,FP4")
   })
 })
 

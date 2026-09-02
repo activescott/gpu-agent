@@ -23,6 +23,7 @@ const VALID_OPERATORS = new Set<FilterOperator>([
   "lte",
   "range",
   "in",
+  "hasAll",
 ])
 
 /**
@@ -50,7 +51,7 @@ export function parseFiltersFromURL(
     let parsedValue: FilterValue["value"]
     let maxValue: number | undefined
 
-    if (operator === "in") {
+    if (operator === "in" || operator === "hasAll") {
       // Categorical: comma-separated values
       parsedValue = value.split(",").map((v) => v.trim())
     } else if (operator === "range") {

@@ -21,9 +21,11 @@ export function CategoricalFilter({
   onChange,
 }: CategoricalFilterProps): JSX.Element {
   const { options, displayName, name, maxHeight } = config
+  const isHasAll = config.selectionMode === "hasAll"
 
-  // Get currently selected values (if no filter, all are shown/selected)
-  const selectedValues = getSelectedValues(currentValue, options)
+  // Get currently selected values. In "oneOf" mode, no filter = all shown/selected.
+  // In "hasAll" mode, no filter = nothing required (none checked).
+  const selectedValues = getSelectedValues(currentValue, options, isHasAll)
   const allSelected = selectedValues.length === options.length
   const noneSelected = selectedValues.length === 0
 
@@ -33,6 +35,17 @@ export function CategoricalFilter({
     const newSelected = isChecked
       ? [...selectedValues, optionValue]
       : selectedValues.filter((v) => v !== optionValue)
+
+    if (isHasAll) {
+      // Only clear when nothing is required; all-checked is a legitimate,
+      // empty-result filter and must not be treated the same as "no filter."
+      if (newSelected.length === 0) {
+        onChange(null)
+      } else {
+        onChange({ operator: "hasAll", value: newSelected })
+      }
+      return
+    }
 
     // If all are selected or none are selected, clear the filter
     if (newSelected.length === options.length || newSelected.length === 0) {
@@ -48,13 +61,17 @@ export function CategoricalFilter({
   // Handle "only X" exclusive selection
   const handleSelectOnly = (optionValue: string): void => {
     onChange({
-      operator: "in",
+      operator: isHasAll ? "hasAll" : "in",
       value: [optionValue],
     })
   }
 
   // Calculate active count for badge
-  const activeCount = allSelected || noneSelected ? 0 : selectedValues.length
+  const activeCount = isHasAll
+    ? selectedValues.length
+    : allSelected || noneSelected
+      ? 0
+      : selectedValues.length
 
   return (
     <div className="filter-categorical">
@@ -70,7 +87,7 @@ export function CategoricalFilter({
         <span className="fw-semibold">{displayName}</span>
         {activeCount > 0 && (
           <span className="badge bg-secondary">
-            {activeCount} of {options.length}
+            {isHasAll ? `${activeCount} required` : `${activeCount} of ${options.length}`}
           </span>
         )}
       </div>
@@ -87,10 +104,11 @@ export function CategoricalFilter({
           {options.map((option) => (
             <FilterCheckbox
               key={option.value}
+              filterName={name}
               option={option}
               isChecked={selectedValues.includes(option.value)}
               onToggle={handleToggle}
-              onSelectOnly={handleSelectOnly}
+              onSelectOnly={isHasAll ? undefined : handleSelectOnly}
             />
           ))}
         </div>
@@ -100,56 +118,62 @@ export function CategoricalFilter({
 }
 
 interface FilterCheckboxProps {
+  filterName: string
   option: FilterOption
   isChecked: boolean
   onToggle: (value: string, isChecked: boolean) => void
-  onSelectOnly: (value: string) => void
+  onSelectOnly?: (value: string) => void
 }
 
 function FilterCheckbox({
+  filterName,
   option,
   isChecked,
   onToggle,
   onSelectOnly,
 }: FilterCheckboxProps): JSX.Element {
+  const checkboxId = `filter-${filterName}-${option.value}`
   return (
     <div className="form-check d-flex align-items-center gap-2">
       <input
         className="form-check-input"
         type="checkbox"
-        id={`filter-${option.value}`}
+        id={checkboxId}
         checked={isChecked}
         onChange={(e) => onToggle(option.value, e.target.checked)}
       />
       <label
         className="form-check-label flex-grow-1"
-        htmlFor={`filter-${option.value}`}
+        htmlFor={checkboxId}
       >
         {option.label}
       </label>
-      <button
-        type="button"
-        className="btn btn-link btn-sm text-muted p-0"
-        onClick={() => onSelectOnly(option.value)}
-        title={`Show only ${option.label}`}
-      >
-        only
-      </button>
+      {onSelectOnly && (
+        <button
+          type="button"
+          className="btn btn-link btn-sm text-muted p-0"
+          onClick={() => onSelectOnly(option.value)}
+          title={`Show only ${option.label}`}
+        >
+          only
+        </button>
+      )}
     </div>
   )
 }
 
 /**
- * Get the currently selected values from filter state
- * If no filter is active, returns all options (showing everything)
+ * Get the currently selected values from filter state.
+ * "oneOf" mode: no filter = all options selected (showing everything).
+ * "hasAll" mode: no filter = nothing selected (nothing required).
  */
 function getSelectedValues(
   currentValue: FilterValue | undefined,
   options: FilterOption[],
+  isHasAll: boolean,
 ): string[] {
   if (!currentValue) {
-    // No filter = all selected
-    return options.map((o) => o.value)
+    return isHasAll ? [] : options.map((o) => o.value)
   }
 
   const { value } = currentValue

@@ -1,5 +1,17 @@
 import { z } from "zod"
 
+export const HardwarePrecisions = [
+  "FP64",
+  "FP32",
+  "TF32",
+  "BF16",
+  "FP16",
+  "FP8",
+  "FP4",
+  "INT8",
+  "INT4",
+] as const
+
 export const GpuSpecsSchema = z.object({
   // .. | nullable because prisma seems to want that for optionals :/
   tensorCoreCount: z.number().optional().nullable(),

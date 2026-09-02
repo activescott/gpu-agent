@@ -1,4 +1,5 @@
 import { Gpu } from "@/pkgs/isomorphic/model"
+import { HardwarePrecisions } from "@/pkgs/isomorphic/model/specs"
 import { BootstrapIcon } from "./BootstrapIcon"
 
 import type { JSX } from "react"
@@ -26,18 +27,6 @@ function formatMsrp(msrpUSD: number): string {
   return `$${msrpUSD.toLocaleString()} USD`
 }
 
-const HARDWARE_PRECISIONS = [
-  "FP16",
-  "FP32",
-  "BF16",
-  "FP8",
-  "INT8",
-  "INT4",
-  "TF32",
-  "FP64",
-  "INT1",
-] as const
-
 /**
  * Displays quick info about a GPU: release date, MSRP, architecture,
  * hardware-accelerated GEMM operations, and CUDA compute capability.
@@ -55,7 +44,7 @@ export function GpuQuickInfo({ gpu }: GpuQuickInfoProps): JSX.Element {
         Hardware-Accelerated{" "}
         <abbr title="Generalized Matrix Multiplication">GEMM</abbr> Operations:
         <div className="d-flex flex-row flex-wrap">
-          {HARDWARE_PRECISIONS.map((precision) => {
+          {HardwarePrecisions.map((precision) => {
             const supported =
               gpu.supportedHardwareOperations.includes(precision)
             const title = supported ? "supported" : "not supported"

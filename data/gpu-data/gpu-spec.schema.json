@@ -63,6 +63,16 @@
       "description": "8-bit integer non-sparse (dense) performance in TOPS. For GPUs with 2:4 structured sparsity (e.g. NVIDIA Ampere+), use the dense value without sparsity for fair cross-vendor comparison. Sparse performance is typically 2x dense. Null if not applicable.",
       "minimum": 0
     },
+    "fp8TFLOPS": {
+      "type": ["number", "null"],
+      "description": "8-bit floating-point non-sparse (dense) matrix/tensor performance in TFLOPS, unconditionally dense for both NVIDIA and AMD. For GPUs with 2:4 structured sparsity, use the dense value without sparsity for fair cross-vendor comparison. Sparse performance is typically 2x dense. Null if not applicable.",
+      "minimum": 0
+    },
+    "fp4TFLOPS": {
+      "type": ["number", "null"],
+      "description": "4-bit floating-point non-sparse (dense) matrix/tensor performance in TFLOPS, unconditionally dense for both NVIDIA and AMD. NVIDIA consumer Blackwell product pages publish only sparse 'AI TOPS' figures; derive the dense value as AI TOPS ÷ 2. Null if not applicable.",
+      "minimum": 0
+    },
     "memoryCapacityGB": {
       "type": "number",
       "description": "VRAM capacity in gigabytes",

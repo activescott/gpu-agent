@@ -15,6 +15,8 @@ const AI_SLUG_MAP = {
   "tensor-cores": "tensorCoreCount" as GpuMetricKey,
   "fp16-flops": "fp16TFLOPS" as GpuMetricKey,
   "int8-tops": "int8TOPS" as GpuMetricKey,
+  "fp8-flops": "fp8TFLOPS" as GpuMetricKey,
+  "fp4-flops": "fp4TFLOPS" as GpuMetricKey,
   "memory-gb": "memoryCapacityGB" as GpuMetricKey,
   "memory-bandwidth-gbs": "memoryBandwidthGBs" as GpuMetricKey,
 }

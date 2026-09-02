@@ -212,6 +212,8 @@ async function seedGpus(prisma: PrismaClient): Promise<void> {
       fp32TFLOPS: gpu.fp32TFLOPS,
       fp16TFLOPS: gpu.fp16TFLOPS,
       int8TOPS: gpu.int8TOPS,
+      fp8TFLOPS: gpu.fp8TFLOPS,
+      fp4TFLOPS: gpu.fp4TFLOPS,
       memoryCapacityGB: gpu.memoryCapacityGB,
       memoryBandwidthGBs: gpu.memoryBandwidthGBs,
       maxTDPWatts: gpu.maxTDPWatts,

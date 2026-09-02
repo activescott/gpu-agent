@@ -24,6 +24,8 @@ model gpu {
   fp32TFLOPS                  Float
   fp16TFLOPS                  Float
   int8TOPS                    Float?
+  fp8TFLOPS                   Float?
+  fp4TFLOPS                   Float?
   memoryCapacityGB            Float
   memoryBandwidthGBs          Float
   // maximum thermal design power was added later and not all GPUs have it listed in our DB. See the seed.

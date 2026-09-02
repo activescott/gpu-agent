@@ -11,7 +11,7 @@ spec:
       containers:
         - name: app
           image: gpupoet-dev
-          # Use local image built by skaffold in minikube's Docker daemon
+          # Use local image built by skaffold and loaded into the kind node
           imagePullPolicy: IfNotPresent
           env:
             - name: CHOKIDAR_USEPOLLING

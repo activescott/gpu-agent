@@ -28,4 +28,4 @@ die () {
     exit 1
 }
 
-minikube kubectl -- --namespace gpupoet-dev logs -f -l app=app
+kubectl --context kind-kind --namespace gpupoet-dev logs -f -l app=app

@@ -1,0 +1,56 @@
+# kind cluster config for local dev and the e2e job.
+#
+# A kind "node" is a Docker container, so nothing inside the cluster is
+# reachable from the host unless the port is published at creation time. That
+# is the only reason this file exists: publish the ingress controller's
+# hostPort 80 (k8s/kind-ingress-nginx.yaml) as host ports (gpu-poet on 3400;
+# see the mapping comments below), so requests reach the app the same way
+# production does — through an ingress — instead of through
+# `kubectl port-forward`, whose tunnel dropped connections under load and
+# surfaced in e2e as "socket hang up" against a healthy app (see fernfiles'
+# copy of this file for the original incident).
+#
+# extraPortMappings apply only when the cluster is CREATED; an existing cluster
+# cannot gain them. scripts/dev detects that and tells you to recreate.
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+nodes:
+  - role: control-plane
+    # ingress-ready is what upstream's kind recipe selects on; harmless now,
+    # and keeps a future manifest revision schedulable.
+    kubeadmConfigPatches:
+      - |
+        kind: InitConfiguration
+        nodeRegistration:
+          kubeletExtraArgs:
+            node-labels: "ingress-ready=true"
+    extraPortMappings:
+      # hostPort 3300 -> the ingress controller's hostPort 80 on the node,
+      # for fernfiles. The local kind cluster is shared between projects and
+      # whichever project runs first creates it, so this config must carry
+      # every project's port mapping (mappings can only be set at creation).
+      # fernfiles serves on http://fernfiles.localhost:3300; ingress-nginx
+      # matches the Host header excluding port, so every project stays
+      # separated no matter which published port a request arrives on.
+      - containerPort: 80
+        hostPort: 3300
+        listenAddress: "0.0.0.0"
+        protocol: TCP
+      # hostPort 3200 -> the same controller port, for ramblefeed.
+      # ramblefeed serves on http://localhost:3200.
+      - containerPort: 80
+        hostPort: 3200
+        listenAddress: "0.0.0.0"
+        protocol: TCP
+      # hostPort 3100 -> the same controller port, for tinkerbell.
+      # tinkerbell serves on http://localhost:3100.
+      - containerPort: 80
+        hostPort: 3100
+        listenAddress: "0.0.0.0"
+        protocol: TCP
+      # hostPort 3400 -> the same controller port, for gpu-poet.
+      # gpu-poet serves on http://gpupoet.localhost:3400.
+      - containerPort: 80
+        hostPort: 3400
+        listenAddress: "0.0.0.0"
+        protocol: TCP

@@ -29,19 +29,15 @@ die () {
     exit 1
 }
 
-check_minikube() {
-    if ! command -v minikube &> /dev/null; then
-        die "minikube is not installed. Install it with: brew install minikube"
-    fi
-
-    if ! minikube status &> /dev/null; then
-        die "minikube is not running. Start it with: ./scripts/dev"
+check_kind() {
+    if ! kubectl --context kind-kind cluster-info &> /dev/null; then
+        die "kind cluster not reachable on context kind-kind. Start it with: ./scripts/dev"
     fi
 }
 
 reseed() {
     echo "Running database seed in app container..."
-    minikube kubectl -- exec -it -n gpupoet-dev deploy/app -- npm run prisma-seed --workspace=packages/web-app
+    kubectl --context kind-kind exec -it -n gpupoet-dev deploy/app -- npm run prisma-seed --workspace=packages/web-app
     echo "Database seed completed!"
 }
 
@@ -62,7 +58,7 @@ cd "$workspace_root"
 
 echo "=== Reseeding GPUPoet Database ==="
 
-check_minikube
+check_kind
 reseed
 
 echo "Reseed completed!"

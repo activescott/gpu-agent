@@ -44,18 +44,14 @@ die () {
     exit 1
 }
 
-check_minikube() {
-    if ! command -v minikube &> /dev/null; then
-        die "minikube is not installed. Install it with: brew install minikube"
-    fi
-
-    if ! minikube status &> /dev/null; then
-        die "minikube is not running. Start it with: ./scripts/dev"
+check_kind() {
+    if ! kubectl --context kind-kind cluster-info &> /dev/null; then
+        die "kind cluster not reachable on context kind-kind. Start it with: ./scripts/dev"
     fi
 }
 
 get_app_pod() {
-    local pod=$(minikube kubectl -- --context minikube -n gpupoet-dev get pods -l app=app -o jsonpath='{.items[0].metadata.name}' 2>/dev/null)
+    local pod=$(kubectl --context kind-kind -n gpupoet-dev get pods -l app=app -o jsonpath='{.items[0].metadata.name}' 2>/dev/null)
     if [[ -z "$pod" ]]; then
         die "No app pod found. Is the dev server running? Start it with: ./scripts/dev"
     fi
@@ -68,7 +64,7 @@ run_in_container() {
 
     echo "Running in pod $pod: $cmd"
     echo "---"
-    minikube kubectl -- --context minikube -n gpupoet-dev exec "$pod" -- sh -c "cd /app/packages/web-app && $cmd"
+    kubectl --context kind-kind -n gpupoet-dev exec "$pod" -- sh -c "cd /app/packages/web-app && $cmd"
 }
 
 # Parse arguments
@@ -79,7 +75,7 @@ fi
 
 cd "$workspace_root"
 
-check_minikube
+check_kind
 
 case $1 in
     -h|--help)
@@ -116,13 +112,13 @@ case $1 in
                 local_migrations_dir="packages/web-app/prisma/migrations"
                 container_migrations_dir="/app/packages/web-app/prisma/migrations"
                 pod=$(get_app_pod)
-                before_migrations=$(minikube kubectl -- --context minikube -n gpupoet-dev exec "$pod" -- ls "$container_migrations_dir" 2>/dev/null | sort)
+                before_migrations=$(kubectl --context kind-kind -n gpupoet-dev exec "$pod" -- ls "$container_migrations_dir" 2>/dev/null | sort)
 
                 # Run the migration
                 run_in_container "npx prisma migrate dev $args"
 
                 # Get list of migrations after
-                after_migrations=$(minikube kubectl -- --context minikube -n gpupoet-dev exec "$pod" -- ls "$container_migrations_dir" 2>/dev/null | sort)
+                after_migrations=$(kubectl --context kind-kind -n gpupoet-dev exec "$pod" -- ls "$container_migrations_dir" 2>/dev/null | sort)
 
                 # Find new migrations and copy them back
                 new_migrations=$(comm -13 <(echo "$before_migrations") <(echo "$after_migrations"))
@@ -135,7 +131,7 @@ case $1 in
                         fi
                         echo "Copying migration: $migration"
                         mkdir -p "$local_migrations_dir/$migration"
-                        minikube kubectl -- --context minikube -n gpupoet-dev cp "${pod}:${container_migrations_dir}/${migration}/migration.sql" "$local_migrations_dir/$migration/migration.sql"
+                        kubectl --context kind-kind -n gpupoet-dev cp "${pod}:${container_migrations_dir}/${migration}/migration.sql" "$local_migrations_dir/$migration/migration.sql"
                         echo "  -> $local_migrations_dir/$migration/migration.sql"
                     done
                     echo ""

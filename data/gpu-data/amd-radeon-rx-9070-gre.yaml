@@ -7,6 +7,7 @@ tensorCoreCount: 96
 fp32TFLOPS: 34.3
 fp16TFLOPS: 137
 int8TOPS: 274
+fp8TFLOPS: 274
 memoryCapacityGB: 12
 memoryBandwidthGBs: 432
 maxTDPWatts: 220
@@ -18,7 +19,7 @@ supportedHardwareOperations:
   - INT8
   - INT4
 releaseDate: "2026-06-02"
-lastModified: "2026-06-02T00:00:00Z"
+lastModified: "2026-09-02T00:00:00Z"
 
 summary: |
   The AMD Radeon RX 9070 GRE (Golden Rabbit Edition) is a mid-range gaming graphics card
@@ -80,6 +81,9 @@ notes:
   - 'fp32TFLOPS of 34.3 is sourced directly from the AMD official product page (https://www.amd.com/en/products/graphics/desktops/radeon/9000-series/amd-radeon-rx-9070-gre.html). Cross-check: 3,072 stream processors x 2,790 MHz boost x 4 (RDNA 4 dual-issue packed factor) = 34.3 TFLOPS.'
   - 'fp16TFLOPS of 137 represents FP16 Matrix throughput (dense) via the 2nd-gen AI Accelerators (WMMA), as published on the AMD product page (Peak Half Precision (FP16 Matrix) Performance = 137 TFLOPS; with 2:4 structured sparsity = 274 TFLOPS). This is the cross-vendor analog of NVIDIA tensor-core FP16. AMD also publishes FP16 Vector = FP32 Vector = 34.3 TFLOPS (SIMD path); that vector value is NOT used here because it understates AI throughput vs. the matrix path. The existing AMD RDNA 3/4 sibling files in this repo store fp16TFLOPS = 2x FP32 (packed-FP16 architectural capability); those files need migration to the matrix value — see project policy in .claude/agents/gpu-researcher.md.'
   - 'int8TOPS of 274 represents the non-sparse (dense) INT8 matrix performance per AMD official product page (https://www.amd.com/en/products/graphics/desktops/radeon/9000-series/amd-radeon-rx-9070-gre.html). The AMD product page also lists 549 TOPS with structured sparsity (2x dense), confirming the dense value is 274 TOPS. Dense value used for consistent cross-vendor comparison per project convention.'
+  - 'fp8TFLOPS of 274 is the peak FP8 Matrix (dense, no structured sparsity) performance per the AMD official product page (https://www.amd.com/en/products/graphics/desktops/radeon/9000-series/amd-radeon-rx-9070-gre.html), which lists "FP8 Peak (Matrix) Performance" = 274 TFLOPS and "FP8 Peak (Matrix, Structured Sparsity)" = 549 TFLOPS. Dense value used for consistent cross-vendor comparison. This equals both int8TOPS (274) and 2x fp16TFLOPS (137), consistent with AMD''s halving-bitwidth-doubles-throughput Matrix Core design pattern confirmed across all six RDNA 4 SKUs audited on 2026-09-02 (RX 9070 GRE, AI PRO R9700, RX 9070 XT, RX 9070, RX 9060 XT, RX 9060).'
+  - 'fp4TFLOPS is intentionally omitted (not set to null-with-unverifiedSpecs) because RDNA 4''s AMD official product page lists no FP4 Matrix performance row, and no FP4 WMMA input format is documented in the RDNA4 Instruction Set Architecture Reference Guide. This is a confirmed hardware negative (RDNA 4 has no FP4 support), not a research gap, so unverifiedSpecs does not apply per project convention.'
+  - 'Phase 5 audit (2026-09-02): confirmed via direct fetch of AMD''s official product pages that FP8 Matrix performance is published for all six RDNA 4 desktop/workstation SKUs (RX 9070 GRE, AI PRO R9700, RX 9070 XT, RX 9070, RX 9060 XT, RX 9060), spanning both the Navi 48 die (GRE, R9700, 9070, 9070 XT) and the Navi 44 die (9060, 9060 XT). This confirms FP8 WMMA support is an architecture-wide (GFX12/RDNA 4) Compute Unit capability, not a die-specific or SKU-specific feature. The prior absence of FP8 and fp8TFLOPS from the RX 9070 XT/RX 9070/RX 9060/RX 9060 XT spec files was a data-entry gap in those files (they were not checked against AMD''s FP8 Matrix spec row at the time), not a real hardware difference from this GRE file. See the canonical RDNA 4 table in .claude/agents/gpu-researcher.md for the full determination.'
   - 'Memory bandwidth of 432 GB/s is calculated as 192-bit interface x 18 Gbps = 432 GB/s, confirmed by AMD official product page and multiple third-party reviews (Wikipedia, pcvenus.com, guru3d.com).'
   - 'Infinity Cache is 48 MB (3rd-generation), confirmed by AMD official product page and Tom''s Hardware review. This is smaller than the 64 MB on the RX 9070 (256-bit bus), proportional to the 192-bit bus width.'
   - 'TDP is 220 W Total Board Power per AMD official product page. Some AIB partner cards (e.g., Sapphire PULSE OC) may have higher factory power limits. HotHardware notes up to 375 W available to the card in boosted scenarios.'

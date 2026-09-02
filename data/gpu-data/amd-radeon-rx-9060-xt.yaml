@@ -6,6 +6,8 @@ msrpUSD: 350
 tensorCoreCount: 64
 fp32TFLOPS: 25.6
 fp16TFLOPS: 102.4
+int8TOPS: 205
+fp8TFLOPS: 205
 memoryCapacityGB: 16
 memoryBandwidthGBs: 320
 maxTDPWatts: 160
@@ -13,10 +15,11 @@ gpuArchitecture: RDNA 4
 supportedHardwareOperations:
   - FP16
   - BF16
+  - FP8
   - INT8
   - INT4
 releaseDate: "2025-06-05"
-lastModified: "2026-06-03T00:00:00Z"
+lastModified: "2026-09-02T00:00:00Z"
 
 summary: |
   The AMD Radeon RX 9060 XT is a mainstream graphics card released in May 2025,
@@ -129,6 +132,9 @@ notes:
   - fp32TFLOPS calculated as 2,048 stream processors × 3.32 GHz boost clock × 2 = 13.6 TFLOPS theoretical, but AMD publishes 25.6 TFLOPS likely accounting for RDNA 4's optimized dual-issue capabilities.
   - 'fp16TFLOPS of 102.4 represents FP16 Matrix throughput (dense) via the 2nd-generation AI Accelerators (WMMA), per AMD product page convention (Peak Half Precision (FP16 Matrix) Performance). RDNA 4 matrix throughput is 4x FP32 vector (verified against AMD-published values for RX 9070=145, RX 9060=86, RX 9070 GRE=137). AMD also publishes FP16 Vector = FP32 Vector (25.6 TFLOPS) on the same product page; that SIMD path is NOT used here in favor of the matrix path which is the cross-vendor analog of NVIDIA tensor-core FP16. See policy in .claude/agents/gpu-researcher.md.'
   - The RX 9060 XT features INT4 performance up to 821 TOPS, showcasing RDNA 4's enhanced AI capabilities.
+  - 'int8TOPS of 205 and fp8TFLOPS of 205 are the peak INT8 Matrix (dense) and FP8 Matrix (dense, E5M2/E4M3) performance per the AMD official product page (https://www.amd.com/en/products/graphics/desktops/radeon/9000-series/amd-radeon-rx-9060xt.html), which also lists structured-sparsity values of 410 TOPS INT8 Matrix and 410 TFLOPS FP8 Matrix (2x dense). Both fields were previously missing from this file entirely; added during the Phase 5 precision-filters audit (2026-09-02) directly from AMD''s published compute specifications table. The dense fp8TFLOPS value equals both int8TOPS (205) and 2x fp16TFLOPS (102.4), consistent with AMD''s halving-bitwidth-doubles-throughput Matrix Core pattern confirmed across all six RDNA 4 SKUs audited this batch.'
+  - 'supportedHardwareOperations updated to add FP8 (Phase 5 audit, 2026-09-02). AMD''s official product page publishes an FP8 Matrix performance row (205 TFLOPS dense) for the RX 9060 XT, confirming 2nd-generation AI Accelerator FP8 support is present on this Navi 44-die SKU. Direct verification this batch confirmed FP8 is published on AMD''s official product pages for all six RDNA 4 desktop/workstation SKUs, spanning both the Navi 44 die (this card, plus RX 9060) and the Navi 48 die (RX 9070 GRE/AI PRO R9700/RX 9070/RX 9070 XT), so FP8 WMMA support is architecture-wide (GFX12/RDNA 4), not die-specific. See the canonical RDNA 4 row in .claude/agents/gpu-researcher.md.'
+  - 'fp4TFLOPS is intentionally omitted (not set to null-with-unverifiedSpecs) because no FP4 Matrix row is published on the AMD product page and no FP4 WMMA input format is documented in the RDNA4 Instruction Set Architecture Reference Guide. This is a confirmed hardware negative (RDNA 4 has no FP4 support), not a research gap, so unverifiedSpecs does not apply per project convention.'
   - Memory bandwidth calculated as 128-bit interface × 20 Gbps = 320 GB/s, with effective bandwidth enhanced by 32MB Infinity Cache.
   - TDP is 160W for the 16GB model.
   - Process node is TSMC 4nm with Navi 44 GPU die sized at 199mm².

@@ -7,6 +7,7 @@ tensorCoreCount: 128
 fp32TFLOPS: 47.8
 fp16TFLOPS: 191.2
 int8TOPS: 383
+fp8TFLOPS: 383
 memoryCapacityGB: 32
 memoryBandwidthGBs: 640
 maxTDPWatts: 300
@@ -19,7 +20,7 @@ supportedHardwareOperations:
   - INT4
   - FP8
 releaseDate: "2025-07-23"
-lastModified: "2026-06-03T00:00:00Z"
+lastModified: "2026-09-02T00:00:00Z"
 
 summary: |
   The AMD Radeon AI PRO R9700 is a professional AI workstation GPU released on July 23, 2025,
@@ -70,7 +71,6 @@ references:
   - https://www.guru3d.com/story/amd-radeon-ai-pro-r9700-gpu-launch-date-and-specifications/
   - https://www.guru3d.com/story/amd-radeon-ai-pro-r9700-gddr6-price-and-release-date/
   - https://www.newegg.com/insider/news-amd-radeon-ai-pro-r9700-launches-july-23-what-you-need-to-know/
-  - https://videocardz.net/amd-radeon-ai-pro-r9700
   - https://www.tweaktown.com/news/105297/amd-radeon-ai-pro-r9700-gpu-announced-rdna-4-and-32gb-of-memory/index.html
   - https://technical.city/en/video/Radeon-AI-PRO-R9700
   - https://cputronic.com/en/gpu/amd-radeon-ai-pro-r9700
@@ -80,6 +80,9 @@ notes:
   - FP32 TFLOPS of 47.8 calculated as 4,096 stream processors × 2,920 MHz boost clock × 4 ops/cycle (dual-issue) ÷ 1,000,000 = 47.8 TFLOPS. RDNA 4 architecture features dual-issue FP32 capability, effectively doubling shader throughput compared to single-issue designs.
   - 'fp16TFLOPS of 191.2 represents FP16 Matrix throughput (dense) via the 2nd-generation AI Accelerators (WMMA), per AMD official datasheet (radeon-ai-pro-r9700-datasheet.pdf, where AMD lists 191 TFLOPs FP16 matrix dense and 383 TFLOPs with structured sparsity; calculated value 4 × 47.8 = 191.2). The previously-stored value of 95.7 was the FP16 vector (packed) throughput, NOT the matrix path. The matrix path is the cross-vendor analog of NVIDIA tensor-core FP16. See policy in .claude/agents/gpu-researcher.md.'
   - INT8 TOPS of 383 is the peak INT8 matrix (dense) performance per the AMD official datasheet. With structured sparsity, INT8 reaches 766 TOPS. INT4 matrix is 766 TOPS dense, 1,531 TOPS sparse. FP8 matrix is 383 TFLOPS dense, 766 TFLOPS sparse.
+  - 'fp8TFLOPS of 383 is the peak FP8 Matrix (dense, no structured sparsity) performance per the AMD official datasheet (radeon-ai-pro-r9700-datasheet.pdf), which lists 383 TFLOPs FP8 matrix dense and 766 TFLOPs with structured sparsity. Dense value used for consistent cross-vendor comparison. This equals both int8TOPS (383) and 2x fp16TFLOPS (191.2), consistent with AMD''s halving-bitwidth-doubles-throughput Matrix Core pattern confirmed across all six RDNA 4 SKUs audited on 2026-09-02 (RX 9070 GRE, AI PRO R9700, RX 9070 XT, RX 9070, RX 9060 XT, RX 9060).'
+  - 'fp4TFLOPS is intentionally omitted (not set to null-with-unverifiedSpecs) because RDNA 4 has no documented FP4 Matrix/WMMA support anywhere in AMD''s official datasheet, product page, or the RDNA4 Instruction Set Architecture Reference Guide. This is a confirmed hardware negative, not a research gap, so unverifiedSpecs does not apply per project convention.'
+  - 'Phase 5 audit (2026-09-02): confirmed FP8 Matrix support (already present in supportedHardwareOperations and datasheet-sourced notes on this file) is an architecture-wide RDNA 4 (GFX12) capability, not specific to this AI PRO R9700 / Navi 48 die. Direct fetches of AMD''s official product pages for all six RDNA 4 desktop/workstation SKUs (RX 9070 GRE, AI PRO R9700, RX 9070 XT, RX 9070, RX 9060 XT, RX 9060) confirm FP8 Matrix performance is published for every SKU, spanning both the Navi 48 die (this card, plus GRE/9070/9070 XT) and the Navi 44 die (9060/9060 XT). See the canonical RDNA 4 table in .claude/agents/gpu-researcher.md and the amd-radeon-rx-9070-gre.yaml notes for the full cross-SKU verification.'
   - tensorCoreCount of 128 represents the 2nd-generation AI Accelerators (2 per compute unit × 64 compute units), which are AMD's dedicated matrix multiplication units for AI workloads.
   - Memory bandwidth calculated as 256-bit interface × 20 Gbps ÷ 8 bits/byte = 640 GB/s, confirmed by AMD specifications.
   - RDNA 4 architecture includes redesigned 3rd-generation Ray Tracing Accelerators and 2nd-generation AI Accelerators with support for sparsity acceleration.

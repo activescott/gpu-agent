@@ -7,20 +7,21 @@ tensorCoreCount: 184
 fp32TFLOPS: 58.2
 fp16TFLOPS: 233.2
 int8TOPS: 233.2
+fp8TFLOPS: 233.2
 memoryCapacityGB: 12
 memoryBandwidthGBs: 504
 maxTDPWatts: 200
 gpuArchitecture: ada
 supportedHardwareOperations:
-  - FP16
-  - INT8
-  - TF32
-  - INT4
-  - BF16
   - FP8
+  - FP16
+  - BF16
+  - TF32
+  - INT8
+  - INT4
 supportedCUDAComputeCapability: 8.9
 releaseDate: "2023-04-13"
-lastModified: "2026-02-24T00:00:00Z"
+lastModified: "2026-09-02T00:00:00Z"
 
 summary: |
   The NVIDIA GeForce RTX 4070 is a graphics card released in 2022,
@@ -103,6 +104,8 @@ notes:
   - MSRP of $599 USD sourced from NVIDIA's official announcement. A Founders Edition was available at this price. The official MSRP was later lowered to $549 following the launch of the RTX 4070 SUPER in January 2024.
   - fp16TFLOPS is "Peak FP16 Tensor TFLOPS with FP16 Accumulate" as that's what NVIDIA publishes. Using the "with sparsity" metric.
   - 'int8TOPS of 233.2 represents non-sparse (dense) INT8 performance, derived from sparse INT8 of 466.4 TOPS ÷ 2 per NVIDIA Ada architecture whitepaper. With 2:4 structured sparsity, INT8 performance is 466.4 TOPS. Dense value used for consistent cross-vendor comparison.'
+  - 'fp8TFLOPS of 233.2 represents non-sparse (dense) FP8 performance. NVIDIA''s Ada Lovelace 4th-generation Tensor Cores process FP8 and INT8 at identical per-clock throughput (both are 8-bit formats) per the NVIDIA Ada GPU Architecture whitepaper; this equal-rate relationship is confirmed by official NVIDIA per-SKU datasheets (e.g. RTX 4090, L40, L40S, L4 all publish identical FP8 and INT8 dense/sparse figures). Dense FP8 = dense INT8 = 233.2 TFLOPS. Dense value used for consistent cross-vendor comparison.'
+  - Ada Lovelace has no FP4 hardware path (FP4 tensor core support was introduced in Blackwell) — fp4TFLOPS is left null and is a confirmed hardware negative, not a research gap, so it is not added to unverifiedSpecs.
   - Power based on what NVIDIA refers to as "TGP (Total Graphics Power)"
   - NVIDIA part number 900-1G141-2544-000 sourced from Amazon and PCPartPicker listings for the Founders Edition
   - Product SKU PG141 SKU 344 sourced from VideoCardz and NotebookCheck technical articles

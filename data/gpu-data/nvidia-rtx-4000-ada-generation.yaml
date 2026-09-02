@@ -7,21 +7,21 @@ tensorCoreCount: 192
 fp32TFLOPS: 26.7
 fp16TFLOPS: 213.8
 int8TOPS: 213.8
+fp8TFLOPS: 213.8
 memoryCapacityGB: 20
 memoryBandwidthGBs: 360
 maxTDPWatts: 130
 gpuArchitecture: ada
 supportedHardwareOperations:
-  - FP32
-  - FP16
-  - TF32
-  - BF16
   - FP8
+  - FP16
+  - BF16
+  - TF32
   - INT8
   - INT4
 supportedCUDAComputeCapability: 8.9
 releaseDate: "2023-08-09"
-lastModified: "2026-02-24T00:00:00Z"
+lastModified: "2026-09-02T00:00:00Z"
 
 manufacturerIdentifiers:
   - type: nvpn
@@ -111,6 +111,8 @@ notes:
   - Tensor performance of 427.6 TFLOPS represents peak FP8 tensor performance with sparsity, as published by NVIDIA and confirmed across multiple official sources including Leadtek and NVIDIA product pages.
   - FP16 TFLOPS of 213.8 is calculated based on the Ada Lovelace tensor core architecture where FP16 with sparsity delivers approximately half the performance of FP8 with sparsity (427.6 TFLOPS ÷ 2 = 213.8 TFLOPS).
   - 'int8TOPS of 213.8 represents non-sparse (dense) INT8 performance, derived from sparse INT8 of 427.6 TOPS ÷ 2 per NVIDIA Ada Lovelace architecture. With 2:4 structured sparsity, INT8 performance is 427.6 TOPS. Dense value used for consistent cross-vendor comparison.'
+  - 'fp8TFLOPS of 213.8 represents non-sparse (dense) FP8 performance, derived from the peak FP8 tensor performance of 427.6 TFLOPS with sparsity (this file''s pre-existing note, sourced from Leadtek and NVIDIA product pages) ÷ 2. NVIDIA''s Ada Lovelace 4th-generation Tensor Cores process FP8 and INT8 at identical per-clock throughput (both are 8-bit formats), so dense FP8 (213.8) numerically equals dense INT8 (213.8). Dense value used for consistent cross-vendor comparison.'
+  - Ada Lovelace has no FP4 hardware path (FP4 tensor core support was introduced in Blackwell) — fp4TFLOPS is left null and is a confirmed hardware negative, not a research gap, so it is not added to unverifiedSpecs.
   - Memory bandwidth calculated as 160-bit interface × 18 Gbps ÷ 8 bits/byte = 360 GB/s.
   - Fourth-generation Tensor Cores support FP8 in both E4M3 and E5M2 formats, along with TF32, BF16, FP16, INT8, and INT4 precision modes.
   - CUDA Compute Capability 8.9 confirmed from TechPowerUp specifications for Ada Lovelace AD104 chip.
@@ -126,3 +128,4 @@ notes:
   - PNY offers VCNRTX4000ADA-PB (single-slot) and VCNRTX4000ADALP-PB (SFF dual-slot). Sources from pny.com and ProVantage.
   - Supermicro part number GPU-NVQRTX4000-ADA-SFF for the SFF variant. Source from Senetic UK.
   - Multiple NVIDIA part number variants exist for different OEM configurations and form factors. The base part number format is 900-5G190-XXXX-XXX with different suffixes indicating specific SKU configurations.
+  - 'supportedHardwareOperations corrected during the 2026-09-02 Phase 5 audit to remove FP32: per the canonical Ada Lovelace supportedHardwareOperations table (locked precision-filters plan definition, "hardware-accelerated matrix/tensor-core path support only"), FP32 is not a standalone Ada Tensor Core format — it only appears as plain shader/CUDA-core ALU throughput or as the TF32 reduced-precision tensor proxy. Canonical set is FP8, FP16, BF16, TF32, INT8, INT4, uniform across all Ada SKUs (GeForce, professional, and datacenter) per the NVIDIA Ada GPU Architecture whitepaper.'

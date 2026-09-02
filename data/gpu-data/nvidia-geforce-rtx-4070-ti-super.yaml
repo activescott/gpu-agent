@@ -7,20 +7,21 @@ tensorCoreCount: 264
 fp32TFLOPS: 44.10
 fp16TFLOPS: 353
 int8TOPS: 353
+fp8TFLOPS: 353
 memoryCapacityGB: 16
 memoryBandwidthGBs: 672.3
 maxTDPWatts: 285
 gpuArchitecture: ada
 supportedHardwareOperations:
-  - FP16
-  - INT8
-  - TF32
-  - INT4
-  - BF16
   - FP8
+  - FP16
+  - BF16
+  - TF32
+  - INT8
+  - INT4
 supportedCUDAComputeCapability: 8.9
 releaseDate: "2024-01-24"
-lastModified: "2026-02-24T00:00:00Z"
+lastModified: "2026-09-02T00:00:00Z"
 
 summary: |
   The NVIDIA GeForce RTX 4070 Ti SUPER is a high-performance graphics card released in January 2024,
@@ -171,6 +172,8 @@ notes:
   - fp32TFLOPS of 44.10 per TechPowerUp GPU Database, which represents shader FP32 performance calculated as 8,448 CUDA cores × 2.610 GHz boost clock × 2 ops/cycle / 1000 = 44.10 TFLOPS.
   - fp16TFLOPS of 353 represents Peak FP16 Tensor TFLOPS with sparsity, derived from the architectural behavior of 4th-gen tensor cores where each core performs 256 FP16 operations per clock (512 with sparsity). Calculated as 264 tensor cores × 512 ops × 2.610 GHz / 1000 ≈ 353 TFLOPS. Note that NVIDIA does not explicitly publish FP16 tensor performance for GeForce GPUs.
   - 'int8TOPS of 353 represents non-sparse (dense) INT8 performance, derived from sparse INT8 of 706 TOPS ÷ 2 per NVIDIA Ada architecture whitepaper. With 2:4 structured sparsity, INT8 performance is 706 TOPS. Dense value used for consistent cross-vendor comparison.'
+  - 'fp8TFLOPS of 353 represents non-sparse (dense) FP8 performance. NVIDIA''s Ada Lovelace 4th-generation Tensor Cores process FP8 and INT8 at identical per-clock throughput (both are 8-bit formats) per the NVIDIA Ada GPU Architecture whitepaper; this equal-rate relationship is confirmed by official NVIDIA per-SKU datasheets (e.g. RTX 4090, L40, L40S, L4 all publish identical FP8 and INT8 dense/sparse figures). Dense FP8 = dense INT8 = 353 TFLOPS. Dense value used for consistent cross-vendor comparison.'
+  - Ada Lovelace has no FP4 hardware path (FP4 tensor core support was introduced in Blackwell) — fp4TFLOPS is left null and is a confirmed hardware negative, not a research gap, so it is not added to unverifiedSpecs.
   - FP8 is supported at the hardware level by 4th-gen tensor cores. However, NVIDIA's Transformer Engine library requires compute capability 9.x (Hopper/H100) and does not support Ada GPUs (8.9) for FP8 operations. Lower-level libraries like cuBLASLt, TensorRT-LLM, and llama.cpp can utilize FP8 on Ada GPUs. See https://forums.developer.nvidia.com/t/4090-doesnt-have-fp8-compute/232256
   - Power based on what NVIDIA refers to as "TGP (Total Graphics Power)".
   - The RTX 4070 Ti SUPER uses the AD103-275-A1 variant of the AD103 chip.

@@ -7,21 +7,21 @@ tensorCoreCount: 136
 fp32TFLOPS: 22.06
 fp16TFLOPS: 176.5
 int8TOPS: 176.5
+fp8TFLOPS: 176.5
 memoryCapacityGB: 8
 memoryBandwidthGBs: 288
 maxTDPWatts: 160
 gpuArchitecture: ada
 supportedHardwareOperations:
+  - FP8
   - FP16
-  - FP32
+  - BF16
+  - TF32
   - INT8
   - INT4
-  - TF32
-  - BF16
-  - FP8
 supportedCUDAComputeCapability: 8.9
 releaseDate: "2023-05-24"
-lastModified: "2026-02-24T00:00:00Z"
+lastModified: "2026-09-02T00:00:00Z"
 
 summary: |
   The NVIDIA GeForce RTX 4060 Ti is a mid-range gaming graphics card released in May 2023,
@@ -134,6 +134,7 @@ references:
   - https://www.nvidia.com/en-us/geforce/graphics-cards/40-series/rtx-4060-4060ti/
   - https://www.nvidia.com/en-us/geforce/news/geforce-rtx-4060-4060ti/
   - https://images.nvidia.com/aem-dam/Solutions/Data-Center/l4/nvidia-ada-gpu-architecture-whitepaper-v2.1.pdf
+  - https://images.nvidia.com/aem-dam/Solutions/geforce/ada/nvidia-ada-gpu-architecture.pdf
   - https://en.wikipedia.org/wiki/GeForce_RTX_40_series
   - https://videocardz.com/nvidia/geforce-40/geforce-rtx-4060-ti
   - https://videocardz.com/newz/nvidia-geforce-rtx-4060-ti-16gb-to-feature-ad106-351-gpu-and-165w-tdp
@@ -151,9 +152,12 @@ notes:
   - FP32 TFLOPS of 22.06 sourced from NVIDIA official specifications. Calculated as 4,352 CUDA cores x 2.535 GHz boost clock x 2 ops/cycle = 22.06 TFLOPS. Ada Lovelace architecture maintains the dual FP32 datapath introduced in Ampere.
   - FP16 TFLOPS of 176.5 represents Peak FP16 Tensor TFLOPS with sparsity enabled on 4th-generation tensor cores. Dense FP16 performance is approximately 88.25 TFLOPS. NVIDIA publishes sparse tensor performance as the headline metric.
   - 'int8TOPS of 176.5 represents non-sparse (dense) INT8 performance, derived from sparse INT8 of 353 TOPS ÷ 2 per NVIDIA Ada architecture whitepaper. With 2:4 structured sparsity, INT8 performance is 353 TOPS. Dense value used for consistent cross-vendor comparison.'
+  - 'fp8TFLOPS of 176.5 represents non-sparse (dense) FP8 performance. NVIDIA''s Ada Lovelace 4th-generation Tensor Cores process FP8 and INT8 at identical per-clock throughput (both are 8-bit formats) per the NVIDIA Ada GPU Architecture whitepaper; this equal-rate relationship is confirmed by official NVIDIA per-SKU datasheets (e.g. RTX 4090, L40, L40S, L4 all publish identical FP8 and INT8 dense/sparse figures). Dense FP8 = dense INT8 = 176.5 TFLOPS. Dense value used for consistent cross-vendor comparison.'
+  - Ada Lovelace has no FP4 hardware path (FP4 tensor core support was introduced in Blackwell) — fp4TFLOPS is left null and is a confirmed hardware negative, not a research gap, so it is not added to unverifiedSpecs.
   - Memory bandwidth calculated as 128-bit interface x 18 Gbps = 288 GB/s. The card features an expanded 32MB L2 cache, 8x larger than RTX 3060 Ti, to compensate for the narrower memory bus.
   - The RTX 4060 Ti uses a PCIe 4.0 x8 interface rather than the full x16 used by other RTX 40 series cards. This is the first consumer RTX card to use x8 lanes.
-  - Supported hardware operations include FP32, FP16, FP8 (E4M3/E5M2), INT8, INT4, TF32, and BF16. Ada Lovelace's 4th-generation tensor cores add FP8 support compared to Ampere's 3rd-generation cores. Note that while the tensor cores support FP8 data types, the Transformer Engine feature (automatic FP8/FP16 dynamic precision switching) is only available on datacenter GPUs like H100 and requires specific software support.
+  - 'supportedHardwareOperations corrected during the 2026-09-02 Phase 5 audit to remove FP32: per the canonical Ada Lovelace supportedHardwareOperations table (locked precision-filters plan definition, "hardware-accelerated matrix/tensor-core path support only"), FP32 is not a standalone Ada Tensor Core format — it only appears as plain shader/CUDA-core ALU throughput or as the TF32 reduced-precision tensor proxy. The FP32 entry previously present in this file was a data-entry inconsistency versus sibling Ada files (e.g. RTX 4090), not a real hardware difference. Canonical set is FP8, FP16, BF16, TF32, INT8, INT4, uniform across all Ada SKUs per the NVIDIA Ada GPU Architecture whitepaper.'
+  - Supported hardware operations include FP8 (E4M3/E5M2), FP16, BF16, TF32, INT8, and INT4 on the 4th-generation tensor cores. Note that while the tensor cores support FP8 data types, the Transformer Engine feature (automatic FP8/FP16 dynamic precision switching) is only available on datacenter GPUs like H100 and requires specific software support.
   - Board identifier PG190 SKU 361 for the 8GB model (SKU 363 for 16GB). Interestingly, the RTX 4060 Ti uses the same PG190 board design as the RTX 3060 Ti, which is uncommon for next-generation GPU upgrades.
   - The GPU uses AD106-350-A1 chip for the 8GB variant and AD106-351 for the 16GB variant. The AD106 die contains 34 enabled SMs out of a possible total.
   - NVIDIA Founders Edition part number (NVPN) 900-1G141-2560-000 for the 8GB model sourced from PCPartPicker and retail product listings.

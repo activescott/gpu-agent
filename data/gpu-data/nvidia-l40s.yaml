@@ -7,20 +7,21 @@ tensorCoreCount: 568
 fp32TFLOPS: 183
 fp16TFLOPS: 362
 int8TOPS: 733
+fp8TFLOPS: 733
 memoryCapacityGB: 48
 memoryBandwidthGBs: 864
 maxTDPWatts: 350
 gpuArchitecture: ada
 supportedHardwareOperations:
-  - FP16
-  - INT8
-  - TF32
-  - INT4
-  - BF16
   - FP8
+  - FP16
+  - BF16
+  - TF32
+  - INT8
+  - INT4
 supportedCUDAComputeCapability: 8.9
 releaseDate: "2023-08-08"
-lastModified: "2026-02-24T00:00:00Z"
+lastModified: "2026-09-02T00:00:00Z"
 
 summary: The NVIDIA L40S GPU was introduced in August 2023 (part number
   900-2g133-0080-000). It is the successor to the NVIDIA L40 (part number
@@ -107,6 +108,8 @@ notes:
     pdf"
   - "fp16TFLOPS: L40 is 181.05"
   - 'int8TOPS of 733 represents non-sparse (dense) INT8 performance, derived from sparse INT8 of 1466 TOPS ÷ 2 per NVIDIA Ada architecture whitepaper. With 2:4 structured sparsity, INT8 performance is 1466 TOPS. Dense value used for consistent cross-vendor comparison. Source: Lenovo Press (lenovopress.lenovo.com/lp1812) and Exxact Corp comparison.'
+  - 'fp8TFLOPS of 733 represents non-sparse (dense) FP8 performance. Per NVIDIA''s official L40S datasheet, the FP8 Tensor Core row and INT8 Tensor Core row publish identical dense/sparse figures (733 TFLOPS/TOPS dense, 1,466 with sparsity) — NVIDIA''s Ada Lovelace 4th-generation Tensor Cores process FP8 and INT8 at identical per-clock throughput since both are 8-bit formats. Dense FP8 = dense INT8 = 733 TFLOPS. Dense value used for consistent cross-vendor comparison.'
+  - Ada Lovelace has no FP4 hardware path (FP4 tensor core support was introduced in Blackwell) — fp4TFLOPS is left null and is a confirmed hardware negative, not a research gap, so it is not added to unverifiedSpecs.
   - "Estimated MSRP of $45,000 USD for the NVIDIA L40S based on OEM list prices. NVIDIA does not publish official MSRP for data center GPUs. OEM list prices corroborated by 2 independent sources: Lenovo ThinkSystem NVIDIA L40S (4X67A90669) has MSRP of $51,579 per multioculus.com, and Cisco UCSX-GPU-L40S has MSRP of $39,094.50 per Bluum. The $45,000 estimate represents the midpoint of these OEM list prices. Note: Current market/resale prices (~$7,500) are significantly lower due to depreciation but do not reflect original launch list pricing."
   - "NVIDIA part number 900-2G133-0080-000 sourced from multiple vendor listings and official NVIDIA product documentation"
   - "NVIDIA part number 900-2G133-0180-030 found at serverorbit.com and serversupply.com for L40S variant"

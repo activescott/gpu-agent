@@ -7,20 +7,21 @@ tensorCoreCount: 304
 fp32TFLOPS: 97.4
 fp16TFLOPS: 398.8
 int8TOPS: 389.91
+fp8TFLOPS: 389.91
 memoryCapacityGB: 16
 memoryBandwidthGBs: 716.8
 maxTDPWatts: 320
 gpuArchitecture: ada
 supportedHardwareOperations:
-  - FP16
-  - INT8
-  - TF32
-  - INT4
-  - BF16
   - FP8
+  - FP16
+  - BF16
+  - TF32
+  - INT8
+  - INT4
 supportedCUDAComputeCapability: 8.9
 releaseDate: "2022-11-16"
-lastModified: "2026-02-24T00:00:00Z"
+lastModified: "2026-09-02T00:00:00Z"
 
 summary: |
   The NVIDIA GeForce RTX 4080 is a graphics card released in 2022,
@@ -146,6 +147,8 @@ notes:
   - fp32TFLOPS calculated as 9,728 CUDA cores × 2.505 GHz boost clock × 4 ops/cycle = 97.48 TFLOPS. The "4 ops/cycle" comes from Ada Lovelace's dual-issue FP32 capability where each SM can execute 2 FP32 operations on the dedicated FP32 pipeline plus 2 more FP32 operations on the INT32/FP32 shared pipeline, totaling 4 FP32 ops per cycle under optimal conditions.
   - fp16TFLOPS is "Peak FP16 Tensor TFLOPS with FP16 Accumulate" as that's what NVIDIA publishes. Using the "with sparsity" metric.
   - 'int8TOPS of 389.91 represents non-sparse (dense) INT8 performance, derived from sparse INT8 of 779.82 TOPS ÷ 2 per NVIDIA Ada architecture whitepaper. With 2:4 structured sparsity, INT8 performance is 779.82 TOPS. Dense value used for consistent cross-vendor comparison.'
+  - 'fp8TFLOPS of 389.91 represents non-sparse (dense) FP8 performance. NVIDIA''s Ada Lovelace 4th-generation Tensor Cores process FP8 and INT8 at identical per-clock throughput (both are 8-bit formats) per the NVIDIA Ada GPU Architecture whitepaper; this equal-rate relationship is confirmed by official NVIDIA per-SKU datasheets (e.g. RTX 4090, L40, L40S, L4 all publish identical FP8 and INT8 dense/sparse figures). Dense FP8 = dense INT8 = 389.91 TFLOPS. Dense value used for consistent cross-vendor comparison.'
+  - Ada Lovelace has no FP4 hardware path (FP4 tensor core support was introduced in Blackwell) — fp4TFLOPS is left null and is a confirmed hardware negative, not a research gap, so it is not added to unverifiedSpecs.
   - Power based on what NVIDIA refers to as "TGP (Total Graphics Power)"
   - The RTX 4080 uses 76 of 80 streaming multiprocessors on the AD103 chip, whereas the RTX 4080 SUPER uses all 80 SMs
   - NVIDIA part number (NVPN) 900-1G136-2560-000 sourced from NVIDIA Founders Edition product listings on PCPartPicker, Newegg, and Best Buy

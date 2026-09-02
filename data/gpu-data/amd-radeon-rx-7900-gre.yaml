@@ -5,9 +5,10 @@ category: gaming
 msrpUSD: 549
 gpuArchitecture: RDNA 3
 supportedHardwareOperations:
-  - FP32
   - FP16
+  - BF16
   - INT8
+  - INT4
 tensorCoreCount: 160
 fp32TFLOPS: 45.98
 fp16TFLOPS: 91.96
@@ -16,7 +17,7 @@ memoryCapacityGB: 16
 memoryBandwidthGBs: 576
 maxTDPWatts: 260
 releaseDate: "2024-02-27"
-lastModified: "2026-06-03T00:00:00Z"
+lastModified: "2026-09-02T00:00:00Z"
 
 summary: |
   The AMD Radeon RX 7900 GRE (Golden Rabbit Edition) is a mid-to-high-end gaming graphics card based on AMD's RDNA 3 architecture, featuring the Navi 31 GPU. Released globally on February 27, 2024 at $549 MSRP, it was initially exclusive to the Chinese market before expanding worldwide. The RX 7900 GRE is strategically positioned between the RX 7800 XT and RX 7900 XT, offering 80 compute units with 5,120 stream processors and 160 AI Accelerators. It delivers 45.98 TFLOPS of FP32 performance at 2245 MHz boost clock and 91.96 TFLOPS of FP16 performance. The card features 16GB of GDDR6 memory on a 256-bit bus running at 18 Gbps, providing 576 GB/s of memory bandwidth, along with 64MB of AMD Infinity Cache. With a 260W TDP, the RX 7900 GRE offers better power efficiency than the higher-tier RX 7900 XT (315W) while delivering approximately 90-95% of its performance, making it an excellent choice for 1440p and 4K gaming as well as AI workloads.
@@ -88,6 +89,7 @@ references:
   - https://www.gigabyte.com/Graphics-Card/GV-R79GREGAMING-OC-16GD
   - https://www.asrock.com/Graphics-Card/AMD/Radeon%20RX%207900%20GRE%20Challenger%2016GB%20OC/
   - https://www.asrock.com/Graphics-Card/AMD/Radeon%20RX%207900%20GRE%20Steel%20Legend%2016GB%20OC/
+  - https://gpuopen.com/learn/wmma_on_rdna3/
 
 notes:
   - "tensorCoreCount of 160 calculated as: RDNA 3 has 2 AI Accelerators per CU, 80 CUs × 2 = 160 AI Accelerators"
@@ -104,3 +106,5 @@ notes:
   - "Manufacturer identifier: AMD device ID 1002:744C (Navi 31 XL). This PCI device ID is shared across all Navi 31 variants (RX 7900 XT/XTX/GRE), with specific cards differentiated by subsystem IDs. AMD does not publish a traditional OPN (Ordering Part Number) for consumer GPUs."
   - "Third-party products include major AIB partners: Sapphire (NITRO+, PULSE), XFX (Speedster MERC), PowerColor (Red Devil, Hellhound, Fighter), ASUS (TUF Gaming, Dual), Gigabyte (Gaming OC), and ASRock (Challenger, Steel Legend). Model numbers verified from official manufacturer product pages and retailer listings."
   - MSI does not manufacture a Radeon RX 7900 GRE variant; their RX 7900 series lineup includes only the RX 7900 XT and RX 7900 XTX.
+  - 'Phase 5 audit (2026-09-02): supportedHardwareOperations corrected from [FP32, FP16, INT8] to the canonical RDNA 3 set [FP16, BF16, INT8, INT4] per AMD GPUOpen, "How to accelerate AI applications on RDNA 3 using WMMA" (https://gpuopen.com/learn/wmma_on_rdna3/), which documents WMMA input formats on RDNA 3 Compute Units as FP16, BF16, and 8-bit/4-bit integer (IU8/IU4) only. This was the data-entry error flagged in .claude/agents/gpu-researcher.md''s canonical RDNA 3 table: FP32 was removed (a plain shader-ALU precision, not WMMA-accelerated), and BF16/INT4 were added to match the RX 7900 XTX file, which shares the identical Navi 31 Compute Unit/WMMA design with no documented per-SKU precision differences.'
+  - 'fp8TFLOPS and fp4TFLOPS are left null as a confirmed hardware negative, not a missing-data gap: RDNA 3''s WMMA AI Accelerators support only FP16, BF16, and 8-bit/4-bit integer input formats per AMD GPUOpen (https://gpuopen.com/learn/wmma_on_rdna3/). FP8 support was added one generation later in RDNA 4, and no AMD consumer/prosumer GPU family has shipped FP4 matrix hardware to date. Per the not-found-marking rules in .claude/agents/gpu-researcher.md, this confirmed negative is NOT added to unverifiedSpecs.'

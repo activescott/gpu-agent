@@ -13,12 +13,11 @@ maxTDPWatts: 190
 gpuArchitecture: RDNA 3
 supportedHardwareOperations:
   - FP16
-  - FP32
   - BF16
   - INT8
   - INT4
 releaseDate: "2023-11-13"
-lastModified: "2026-06-03T00:00:00Z"
+lastModified: "2026-09-02T00:00:00Z"
 
 summary: >-
   The AMD Radeon Pro W7700 is a professional workstation graphics card launched in November 2023,
@@ -58,11 +57,11 @@ references:
   - https://www.amd.com/en/products/graphics/workstations/radeon-pro/w7700.html
   - https://www.amd.com/en/newsroom/press-releases/2023-11-13-new-amd-radeon-pro-workstation-graphics-card-to-po.html
   - https://www.techpowerup.com/315699/amd-announces-new-radeon-pro-w7700-workstation-graphics-card
-  - https://www.anandtech.com/show/21137/amd-intros-radeon-pro-w7700-rounding-out-rdna-3-for-workstations
   - https://ir.amd.com/news-events/press-releases/detail/1165/new-amd-radeon-pro-workstation-graphics-card-to-power-next-generation-professional-content-creation-cad-and-ai-applications
   - https://www.bhphotovideo.com/c/product/1801478-REG/amd_100_300000006_radeon_pro_w7700_graphic.html
   - https://www.dell.com/en-us/shop/dell-amd-radeon-pro-w7700-16-gb-gddr6-full-height-pcie-40x16-graphics-card/apd/490-bkkf/graphic-video-cards
   - https://www.lenovo.com/au/en/p/accessories-and-software/graphics-cards/graphics_cards/78806877
+  - https://gpuopen.com/learn/wmma_on_rdna3/
 notes:
   - FP32 TFLOPS of 31.95 calculated as 3,072 stream processors × 2,600 MHz boost clock × 2 ops/cycle = 31.95 TFLOPS
   - 'fp16TFLOPS of 63.9 represents FP16 Matrix throughput (dense) via RDNA 3 AI Accelerators (WMMA), per AMD product page convention. This equals 2x FP32 vector on RDNA 3 silicon. AMD also publishes FP16 Vector = FP32 Vector on the same product page; that SIMD path is NOT used here in favor of the matrix path which is the cross-vendor analog of NVIDIA tensor-core FP16. See policy in .claude/agents/gpu-researcher.md.'
@@ -79,3 +78,5 @@ notes:
   - Dell part number 490-BKKF and OEM part number 3VM76 sourced from Dell.com official product page
   - Lenovo part number 78806877 sourced from Lenovo Australia official product page
   - HP/HPE part numbers could not be verified from publicly available sources; HP Z4 G4 and Z4 G5 workstations are confirmed compatible but specific option part numbers were not found
+  - 'Phase 5 audit (2026-09-02): supportedHardwareOperations corrected from [FP16, FP32, BF16, INT8, INT4] to the canonical RDNA 3 set [FP16, BF16, INT8, INT4] per AMD GPUOpen, "How to accelerate AI applications on RDNA 3 using WMMA" (https://gpuopen.com/learn/wmma_on_rdna3/), which documents WMMA input formats on RDNA 3 Compute Units as FP16, BF16, and 8-bit/4-bit integer (IU8/IU4) only. FP32 was removed: it is a plain shader-ALU precision, not accelerated through the AI Accelerator/WMMA matrix path, matching the canonical RDNA 3 row in .claude/agents/gpu-researcher.md.'
+  - 'fp8TFLOPS and fp4TFLOPS are left null as a confirmed hardware negative, not a missing-data gap: RDNA 3''s WMMA AI Accelerators support only FP16, BF16, and 8-bit/4-bit integer input formats per AMD GPUOpen (https://gpuopen.com/learn/wmma_on_rdna3/). FP8 support was added one generation later in RDNA 4, and no AMD consumer/prosumer GPU family has shipped FP4 matrix hardware to date. Per the not-found-marking rules in .claude/agents/gpu-researcher.md, this confirmed negative is NOT added to unverifiedSpecs.'

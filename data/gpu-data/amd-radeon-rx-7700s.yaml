@@ -13,12 +13,11 @@ maxTDPWatts: 100
 gpuArchitecture: RDNA 3
 supportedHardwareOperations:
   - FP16
-  - FP32
   - BF16
   - INT8
   - INT4
 releaseDate: "2023-01-04"
-lastModified: "2026-06-03T00:00:00Z"
+lastModified: "2026-09-02T00:00:00Z"
 
 summary: >-
   The AMD Radeon RX 7700S is a mobile graphics card launched in January 2023, featuring
@@ -35,13 +34,13 @@ summary: >-
 references:
   - https://www.techpowerup.com/gpu-specs/radeon-rx-7700s.c4015
   - https://www.notebookcheck.net/AMD-Radeon-RX-7700S-GPU-Benchmarks-and-Specs.679277.0.html
-  - https://videocardz.com/newz/amd-radeon-rx-7600-to-launch-with-269-e299-msrp
   - https://computercity.com/laptops/amd-radeon-rx-7700s
   - https://www.amd.com/en/products/graphics/amd-radeon-rx-7700s
   - https://www.asus.com/us/laptops/for-gaming/tuf-gaming/asus-tuf-gaming-a16-advantage-edition-2023/
   - https://frame.work/products/16-graphics-module-amd-radeon-rx-7700s
   - https://www.bestbuy.com/product/asus-tuf-gaming-a16-16-165hz-gaming-laptop-fhd-amd-ryzen-7-7735hs-with-16gb-ddr5-memory-radeon-rx7700s-512gb-pcie-ssd-off-black/JJGGLRTC4R
   - https://laptopmedia.com/video-card/amd-radeon-rx-7700s/
+  - https://gpuopen.com/learn/wmma_on_rdna3/
 notes:
   - FP32 TFLOPS of 20.48 per TechPowerUp GPU Database and multiple authoritative sources
   - 'fp16TFLOPS of 40.96 represents FP16 Matrix throughput (dense) via RDNA 3 AI Accelerators (WMMA), per AMD product page convention. This equals 2x FP32 vector on RDNA 3 silicon. AMD also publishes FP16 Vector = FP32 Vector on the same product page; that SIMD path is NOT used here in favor of the matrix path which is the cross-vendor analog of NVIDIA tensor-core FP16. See policy in .claude/agents/gpu-researcher.md.'
@@ -57,6 +56,8 @@ notes:
   - No official AMD OPN (Ordering Part Number) or other manufacturer identifiers were found in public documentation for the RX 7700S. AMD does not typically publish OPNs for mobile consumer GPUs, which are integrated into laptop designs rather than sold as discrete retail products.
   - The RX 7700S is a mobile GPU sold only through OEM laptop manufacturers. As of December 2025, primary OEM partners include ASUS (TUF Gaming A16 Advantage Edition) and Framework (Laptop 16 Graphics Module). ASUS ROG Strix filter pages show the RX 7700S GPU option but no specific ROG Strix models were found with this GPU.
   - A 120W variant of the RX 7700S exists in some laptop configurations, offering higher performance at increased power consumption.
+  - 'Phase 5 audit (2026-09-02): supportedHardwareOperations corrected from [FP16, FP32, BF16, INT8, INT4] to the canonical RDNA 3 set [FP16, BF16, INT8, INT4] per AMD GPUOpen, "How to accelerate AI applications on RDNA 3 using WMMA" (https://gpuopen.com/learn/wmma_on_rdna3/), which documents WMMA input formats on RDNA 3 Compute Units as FP16, BF16, and 8-bit/4-bit integer (IU8/IU4) only. FP32 was removed: it is a plain shader-ALU precision, not accelerated through the AI Accelerator/WMMA matrix path, matching the canonical RDNA 3 row in .claude/agents/gpu-researcher.md. The RX 7700S uses the same Navi 33 Compute Unit/WMMA design as the desktop RX 7600, which already matched the canonical set.'
+  - 'fp8TFLOPS and fp4TFLOPS are left null as a confirmed hardware negative, not a missing-data gap: RDNA 3''s WMMA AI Accelerators support only FP16, BF16, and 8-bit/4-bit integer input formats per AMD GPUOpen (https://gpuopen.com/learn/wmma_on_rdna3/). FP8 support was added one generation later in RDNA 4, and no AMD consumer/prosumer GPU family has shipped FP4 matrix hardware to date. Per the not-found-marking rules in .claude/agents/gpu-researcher.md, this confirmed negative is NOT added to unverifiedSpecs.'
 manufacturerIdentifiers: []
 thirdPartyProducts:
   - company: ASUS

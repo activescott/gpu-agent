@@ -13,12 +13,11 @@ maxTDPWatts: 200
 gpuArchitecture: RDNA 3
 supportedHardwareOperations:
   - FP16
-  - FP32
   - BF16
   - INT8
   - INT4
 releaseDate: "2024-09-18"
-lastModified: "2026-06-03T00:00:00Z"
+lastModified: "2026-09-02T00:00:00Z"
 
 summary: >-
   The AMD Radeon RX 7700 is a desktop gaming graphics card based on the RDNA 3 architecture
@@ -38,6 +37,7 @@ references:
   - https://www.amd.com/en/products/graphics/desktops/radeon/7000-series/amd-radeon-rx-7700.html
   - https://www.techpowerup.com/341166/asrock-launches-radeon-rx-7700-challenger-graphics-cards-with-16-gb-memory
   - https://asrock.com/Graphics-Card/AMD/Radeon%20RX%207700%20Challenger%2016GB/index.asp
+  - https://gpuopen.com/learn/wmma_on_rdna3/
 notes:
   - FP32 TFLOPS of 26.62 calculated as 2,560 stream processors × 2,600 MHz boost clock × 2 ops/cycle = 26.62 TFLOPS
   - 'fp16TFLOPS of 53.25 represents FP16 Matrix throughput (dense) via RDNA 3 AI Accelerators (WMMA), per AMD product page convention. This equals 2x FP32 vector on RDNA 3 silicon. AMD also publishes FP16 Vector = FP32 Vector on the same product page; that SIMD path is NOT used here in favor of the matrix path which is the cross-vendor analog of NVIDIA tensor-core FP16. See policy in .claude/agents/gpu-researcher.md.'
@@ -50,5 +50,7 @@ notes:
   - MSRP of $350 is an estimated value. AMD did not announce an official MSRP when the RX 7700 was quietly added to AMD's product page on September 18, 2024. Tom's Hardware analysis suggested the card would need to be priced at ~$350 or less to avoid cannibalizing the lineup. As of December 2025, only ASRock has announced a Challenger model with no retail pricing disclosed. The card appears primarily in pre-built systems (e.g., CyberPowerPC) rather than standalone retail availability.
   - No official AMD OPN (Ordering Part Number) or other manufacturer identifiers were found in public documentation for the RX 7700. AMD does not typically publish OPNs for desktop consumer GPUs.
   - Only ASRock has announced an AIB partner product for the RX 7700 (non-XT) as of December 2025. Other major AIB partners (Sapphire, PowerColor, XFX, Gigabyte, ASUS, MSI) have not announced RX 7700 products, likely due to the card's limited retail availability and OEM/pre-built focus.
+  - 'Phase 5 audit (2026-09-02): supportedHardwareOperations corrected from [FP16, FP32, BF16, INT8, INT4] to the canonical RDNA 3 set [FP16, BF16, INT8, INT4] per AMD GPUOpen, "How to accelerate AI applications on RDNA 3 using WMMA" (https://gpuopen.com/learn/wmma_on_rdna3/), which documents WMMA input formats on RDNA 3 Compute Units as FP16, BF16, and 8-bit/4-bit integer (IU8/IU4) only. FP32 was removed: it is a plain shader-ALU precision, not accelerated through the AI Accelerator/WMMA matrix path, matching the canonical RDNA 3 row in .claude/agents/gpu-researcher.md.'
+  - 'fp8TFLOPS and fp4TFLOPS are left null as a confirmed hardware negative, not a missing-data gap: RDNA 3''s WMMA AI Accelerators support only FP16, BF16, and 8-bit/4-bit integer input formats per AMD GPUOpen (https://gpuopen.com/learn/wmma_on_rdna3/). FP8 support was added one generation later in RDNA 4, and no AMD consumer/prosumer GPU family has shipped FP4 matrix hardware to date. Per the not-found-marking rules in .claude/agents/gpu-researcher.md, this confirmed negative is NOT added to unverifiedSpecs.'
 manufacturerIdentifiers: []
 thirdPartyProducts: []

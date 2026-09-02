@@ -13,12 +13,11 @@ maxTDPWatts: 70
 gpuArchitecture: RDNA 3
 supportedHardwareOperations:
   - FP16
-  - FP32
   - BF16
   - INT8
   - INT4
 releaseDate: "2023-08-03"
-lastModified: "2026-06-03T00:00:00Z"
+lastModified: "2026-09-02T00:00:00Z"
 
 summary: >-
   The AMD Radeon Pro W7500 is a professional workstation graphics card launched on August 3, 2023,
@@ -63,6 +62,7 @@ references:
   - https://www.bhphotovideo.com/c/product/1781099-REG/amd_100_300000078_radeon_pro_w7500_graphic.html
   - https://www.dell.com/en-us/shop/dell-amd-radeon-pro-w7500-8-gb-gddr6-full-height-pcie-40x8-4-dp-graphics-card/apd/490-bjzg/graphic-video-cards
   - https://en.wikipedia.org/wiki/RDNA_3
+  - https://gpuopen.com/learn/wmma_on_rdna3/
 notes:
   - FP32 TFLOPS of 12.19 sourced from multiple technical databases (CG Channel, WCCFtech, CpuTronic, GPU Decision), calculated as 1,792 stream processors × 1,700 MHz boost clock × 2 ops/cycle ÷ 1000 = 6.09 TFLOPS per compute operation, with full precision yielding 12.19 TFLOPS
   - 'fp16TFLOPS of 24.38 represents FP16 Matrix throughput (dense) via RDNA 3 AI Accelerators (WMMA), per AMD product page convention. This equals 2x FP32 vector on RDNA 3 silicon. AMD also publishes FP16 Vector = FP32 Vector on the same product page; that SIMD path is NOT used here in favor of the matrix path which is the cross-vendor analog of NVIDIA tensor-core FP16. See policy in .claude/agents/gpu-researcher.md.'
@@ -82,3 +82,5 @@ notes:
   - Dell part number 490-BJZG sourced from Dell.com official product page; OEM part number JN93N also confirmed from Dell sources
   - HP part number 8D6C2AA sourced from HP authorized resellers and retail listings
   - Lenovo part numbers could not be verified from publicly available sources; Lenovo workstation compatibility was not documented in available sources
+  - 'Phase 5 audit (2026-09-02): supportedHardwareOperations corrected from [FP16, FP32, BF16, INT8, INT4] to the canonical RDNA 3 set [FP16, BF16, INT8, INT4] per AMD GPUOpen, "How to accelerate AI applications on RDNA 3 using WMMA" (https://gpuopen.com/learn/wmma_on_rdna3/), which documents WMMA input formats on RDNA 3 Compute Units as FP16, BF16, and 8-bit/4-bit integer (IU8/IU4) only. FP32 was removed: it is a plain shader-ALU precision, not accelerated through the AI Accelerator/WMMA matrix path, matching the canonical RDNA 3 row in .claude/agents/gpu-researcher.md.'
+  - 'fp8TFLOPS and fp4TFLOPS are left null as a confirmed hardware negative, not a missing-data gap: RDNA 3''s WMMA AI Accelerators support only FP16, BF16, and 8-bit/4-bit integer input formats per AMD GPUOpen (https://gpuopen.com/learn/wmma_on_rdna3/). FP8 support was added one generation later in RDNA 4, and no AMD consumer/prosumer GPU family has shipped FP4 matrix hardware to date. Per the not-found-marking rules in .claude/agents/gpu-researcher.md, this confirmed negative is NOT added to unverifiedSpecs.'

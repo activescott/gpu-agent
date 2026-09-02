@@ -13,12 +13,11 @@ maxTDPWatts: 295
 gpuArchitecture: RDNA 3
 supportedHardwareOperations:
   - FP16
-  - FP32
   - BF16
   - INT8
   - INT4
 releaseDate: "2023-04-13"
-lastModified: "2026-06-03T00:00:00Z"
+lastModified: "2026-09-02T00:00:00Z"
 
 summary: >-
   The AMD Radeon Pro W7900 is AMD's flagship RDNA 3 professional workstation graphics card, launched in
@@ -49,6 +48,7 @@ references:
   - https://www.amd.com/en/products/graphics/workstations/radeon-pro/w7900.html
   - https://www.amd.com/en/newsroom/press-releases/2023-1-4-amd-radeon-pro-w7000-series-workstation-graphics-.html
   - https://ir.amd.com/news-events/press-releases/detail/1138/amd-radeon-pro-w7000-series-workstation-graphics-cards
+  - https://gpuopen.com/learn/wmma_on_rdna3/
 
 notes:
   - FP32 TFLOPS of 61 per AMD official specifications for peak single-precision performance
@@ -62,3 +62,5 @@ notes:
   - AMD Ordering Part Number (OPN) 100-300000049 sourced from retail listings
   - Released April 13, 2023 as AMD's flagship professional workstation GPU
   - Competes with NVIDIA RTX 6000 Ada Generation in the professional workstation segment
+  - 'Phase 5 audit (2026-09-02): supportedHardwareOperations corrected from [FP16, FP32, BF16, INT8, INT4] to the canonical RDNA 3 set [FP16, BF16, INT8, INT4] per AMD GPUOpen, "How to accelerate AI applications on RDNA 3 using WMMA" (https://gpuopen.com/learn/wmma_on_rdna3/), which documents WMMA input formats on RDNA 3 Compute Units as FP16, BF16, and 8-bit/4-bit integer (IU8/IU4) only. FP32 was removed: it is a plain shader-ALU precision, not accelerated through the AI Accelerator/WMMA matrix path, matching the canonical RDNA 3 row in .claude/agents/gpu-researcher.md.'
+  - 'fp8TFLOPS and fp4TFLOPS are left null as a confirmed hardware negative, not a missing-data gap: RDNA 3''s WMMA AI Accelerators support only FP16, BF16, and 8-bit/4-bit integer input formats per AMD GPUOpen (https://gpuopen.com/learn/wmma_on_rdna3/). FP8 support was added one generation later in RDNA 4, and no AMD consumer/prosumer GPU family has shipped FP4 matrix hardware to date. Per the not-found-marking rules in .claude/agents/gpu-researcher.md, this confirmed negative is NOT added to unverifiedSpecs.'

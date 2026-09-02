@@ -11,11 +11,9 @@ memoryCapacityGB: 16
 memoryBandwidthGBs: 512
 maxTDPWatts: 250
 gpuArchitecture: RDNA 2
-supportedHardwareOperations:
-  - FP32
-  - FP16
+supportedHardwareOperations: []
 releaseDate: "2020-11-18"
-lastModified: "2025-12-21T00:00:00Z"
+lastModified: "2026-09-02T00:00:00Z"
 
 summary: >-
   The AMD Radeon RX 6800 was released in November 2020 alongside the RX 6800 XT as part
@@ -83,7 +81,9 @@ thirdPartyProducts:
 references:
   - https://www.techpowerup.com/gpu-specs/radeon-rx-6800.c3713
   - https://www.amd.com/en/products/graphics/desktops/radeon/6000-series/amd-radeon-rx-6800.html
+  - https://www.amd.com/en/technologies/rdna.html
   - https://en.wikipedia.org/wiki/Radeon_RX_6000_series
+  - https://en.wikipedia.org/wiki/RDNA_2
   - https://www.sapphiretech.com/en/consumer/pulse-radeon-rx-6800-16g-gddr6
   - https://www.sapphiretech.com/en/consumer/nitro-radeon-rx-6800-16g-gddr6
   - https://www.xfxforce.com/shop/xfx-amd-radeon-tm-rx-6800-16gb-gddr6
@@ -99,6 +99,8 @@ notes:
   - FP32 TFLOPS calculated as 3,840 stream processors × 2,105 MHz boost clock × 2 ops/cycle = 16.17 TFLOPS
   - Memory bandwidth calculated as 256-bit bus × 16 Gbps effective = 512 GB/s
   - RDNA 2 architecture does not include dedicated AI/ML accelerators or tensor cores
+  - 'supportedHardwareOperations is an empty array: RDNA 2 has no matrix/tensor-core (GEMM-accelerated) hardware path of any kind. Per AMD''s own RDNA architecture technology page, the generational feature-comparison table''s "AI Accelerators" row is blank for both the "RDNA" and "RDNA 2" columns and first shows "1st Gen" at "RDNA 3" -- confirmed independently by Wikipedia''s RDNA 2 article, which makes no mention of AI accelerators or matrix-multiply hardware. RDNA 2''s ray accelerator is a distinct fixed-function ray-intersection unit, unrelated to matrix/GEMM support. Sources: https://www.amd.com/en/technologies/rdna.html, https://en.wikipedia.org/wiki/RDNA_2'
+  - 'fp8TFLOPS and fp4TFLOPS are left null and intentionally NOT listed in unverifiedSpecs: this is a confirmed hardware negative rather than a research gap. RDNA 2 predates AMD''s AI Accelerators/WMMA matrix engines entirely (introduced in RDNA 3), so no FP8 or FP4 matrix throughput exists on this architecture to report.'
   - The 128MB Infinity Cache significantly improves effective memory bandwidth beyond the raw 512 GB/s specification
   - Built on TSMC 7nm process with the same 520 mm² die size as RX 6800 XT, with some compute units disabled
   - MSRP of $579 USD verified from multiple sources including Wikipedia, Tom's Guide, and TechArena24 at launch on November 18, 2020

@@ -11,11 +11,9 @@ memoryCapacityGB: 12
 memoryBandwidthGBs: 432
 maxTDPWatts: 250
 gpuArchitecture: RDNA 2
-supportedHardwareOperations:
-  - FP32
-  - FP16
+supportedHardwareOperations: []
 releaseDate: "2022-05-10"
-lastModified: "2025-12-21T00:00:00Z"
+lastModified: "2026-09-02T00:00:00Z"
 
 summary: >-
   The AMD Radeon RX 6750 XT was released in May 2022 as a refreshed mid-range gaming
@@ -83,6 +81,7 @@ thirdPartyProducts:
 references:
   - https://www.techpowerup.com/gpu-specs/radeon-rx-6750-xt.c3879
   - https://www.amd.com/en/products/graphics/desktops/radeon/6000-series/amd-radeon-rx-6750-xt.html
+  - https://www.amd.com/en/technologies/rdna.html
   - https://www.tomshardware.com/reviews/amd-radeon-rx-6750-xt-review
   - https://en.wikipedia.org/wiki/RDNA_2
   - https://wccftech.com/amd-radeon-rx-6950-xt-rx-6750-xt-rx-6650-xt-official-launch-specs-prices-performance/
@@ -103,7 +102,9 @@ notes:
   - FP16 performance is 26.62 TFLOPS calculated at 2:1 ratio to FP32, which is standard for RDNA 2 architecture
   - Memory bandwidth of 432 GB/s calculated as 192-bit bus × 18 Gbps effective / 8
   - RDNA 2 architecture does not include dedicated AI accelerators or tensor cores (added in RDNA 3), so tensorCoreCount is null
-  - "RDNA 2 CUs support INT8 and INT4 data types and have INT8 matrix core support per ROCm documentation, but lack the WMMA (Wave Matrix Multiply Accumulate) instructions added in RDNA 3. AMD does not publish INT8 TOPS for consumer RDNA 2 GPUs, so int8TOPS is null. Sources: https://en.wikipedia.org/wiki/RDNA_2, https://rocm.docs.amd.com/en/latest/reference/precision-support.html"
+  - 'supportedHardwareOperations is an empty array: RDNA 2 has no matrix/tensor-core (GEMM-accelerated) hardware path of any kind. Per AMD''s own RDNA architecture technology page, the generational feature-comparison table''s "AI Accelerators" row is blank for both the "RDNA" and "RDNA 2" columns and first shows "1st Gen" at "RDNA 3" -- confirmed independently by Wikipedia''s RDNA 2 article, which makes no mention of AI accelerators or matrix-multiply hardware. RDNA 2''s ray accelerator is a distinct fixed-function ray-intersection unit, unrelated to matrix/GEMM support. Sources: https://www.amd.com/en/technologies/rdna.html, https://en.wikipedia.org/wiki/RDNA_2'
+  - 'fp8TFLOPS and fp4TFLOPS are left null and intentionally NOT listed in unverifiedSpecs: this is a confirmed hardware negative rather than a research gap. RDNA 2 predates AMD''s AI Accelerators/WMMA matrix engines entirely (introduced in RDNA 3), so no FP8 or FP4 matrix throughput exists on this architecture to report.'
+  - 'RDNA 2 CUs execute INT8 and INT4 operations via standard ALU/dot-product instructions, not a dedicated matrix or tensor core -- RDNA 2 predates AMD''s AI Accelerators (WMMA), which were introduced in RDNA 3. AMD does not publish INT8 TOPS for consumer RDNA 2 GPUs, so int8TOPS is null. Sources: https://en.wikipedia.org/wiki/RDNA_2, https://www.amd.com/en/technologies/rdna.html'
   - The 96MB Infinity Cache significantly improves effective memory bandwidth beyond the raw 432 GB/s specification
   - Built on TSMC 7nm process with 335 mm² die size containing 17.2 billion transistors
   - Released as a refresh of the RX 6700 XT with higher clocks (2,600 MHz vs 2,581 MHz boost), faster memory (18 Gbps vs 16 Gbps), and higher TDP (250W vs 230W)

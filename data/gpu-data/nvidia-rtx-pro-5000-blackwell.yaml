@@ -7,22 +7,23 @@ tensorCoreCount: 440
 fp32TFLOPS: 65.0
 fp16TFLOPS: 516.0
 int8TOPS: 516.0
+fp4TFLOPS: 1032
 memoryCapacityGB: 48
 memoryBandwidthGBs: 1344
 maxTDPWatts: 300
 gpuArchitecture: blackwell
 supportedHardwareOperations:
-  - FP32
-  - FP16
-  - TF32
-  - BF16
-  - FP8
   - FP4
+  - FP8
+  - FP16
+  - BF16
+  - TF32
   - INT8
-  - INT4
+unverifiedSpecs:
+  - fp8TFLOPS
 supportedCUDAComputeCapability: 12.0
 releaseDate: "2025-03-18"
-lastModified: "2026-06-02T00:00:00Z"
+lastModified: "2026-09-02T00:00:00Z"
 
 manufacturerIdentifiers:
   - type: nvpn
@@ -60,12 +61,12 @@ summary: |
 
   The card features 48 GB of GDDR7 ECC memory on a 384-bit memory bus providing 1,344 GB/s
   bandwidth. The fifth-generation Tensor Cores support FP4 and FP8 precisions alongside BF16,
-  TF32, FP16, INT8, and INT4, enabling broad AI and machine learning workloads. The
+  TF32, FP16, and INT8, enabling broad AI and machine learning workloads. The
   fourth-generation RT Cores provide hardware-accelerated ray tracing with doubled throughput
   versus the prior generation. The card also includes Multi-Instance GPU (MIG) support,
   allowing the GPU to be partitioned into up to two independent 24GB instances.
 
-  With a TDP of 300W in a dual-slot, full-height form factor (4.4" H x 10.5" L), the RTX PRO
+  With a TDP of 300W in a dual-slot, full-height form factor (4.4" H × 10.5" L), the RTX PRO
   5000 Blackwell requires one 16-pin PCIe CEM5 power connector. It connects via PCIe 5.0 x16
   and provides four DisplayPort 2.1b outputs. Video engine support includes three ninth-
   generation NVENC encoders, three sixth-generation NVDEC decoders, and one JPEG encoder.
@@ -107,8 +108,11 @@ notes:
   - 'TDP of 300W confirmed by official NVIDIA datasheet, PNY product page, CG Channel, Newegg, CDW, and ServeTheHome. Requires one 16-pin PCIe CEM5 power connector.'
   - 'GPU die is GB202-250-A1 on TSMC 4nm process with 92.2 billion transistors and 762 mm2 die area (per hmc-tech, consistent with GB202 parameters). Architecture uses compute capability 12.0 (sm_120), consistent with all Blackwell consumer and professional GPUs using GB202 or GB203 dies. RTX 5090 (also GB202) is confirmed sm_120 at developer.nvidia.com/cuda-gpus; the RTX PRO 5000 uses the same die so the same compute capability applies.'
   - 'Release date of March 18, 2025 per TechPowerUp GPU database and CG Channel (cgchannel.com, March 2025 article). NVIDIA announced the RTX PRO Blackwell GPU family at GTC25 Spring on March 18, 2025. OEM availability through Dell, HP, and Lenovo workstation systems followed in summer 2025.'
-  - 'FP4 hardware precision is supported by 5th-generation Tensor Cores. FP8, BF16, TF32, FP16, INT8, and INT4 are also supported by Blackwell architecture tensor cores. The card supports MIG (Multi-Instance GPU) with up to 2x24GB instances per the official NVIDIA datasheet.'
+  - 'FP4 hardware precision is supported by 5th-generation Tensor Cores. FP8, BF16, TF32, FP16, and INT8 are also supported by Blackwell architecture tensor cores. The card supports MIG (Multi-Instance GPU) with up to 2x24GB instances per the official NVIDIA datasheet.'
   - '3x NVENC (9th generation) and 3x NVDEC (6th generation) encoders/decoders confirmed by PNY product page and CDW listing. The earlier version of the official GTC25 datasheet PDF listed 2x NVENC and 2x NVDEC; the updated PNY product page (and CDW listing) shows 3x NVENC, 3x NVDEC, and 1x JPEG encoder, consistent with the GB202 die capabilities. The higher video engine count versus the RTX PRO 4500 Blackwell (GB203, 2x NVENC) reflects the larger die.'
   - 'Estimated MSRP of $4,199 USD based on launch-time retail list pricing. NVIDIA does not publish an official MSRP for professional workstation GPUs. Central Computer listed the NVIDIA OEM 48GB variant (NVPN 900-5G153-2550-000) at $4,199.99 at launch; this price is independently cited by TechRadar in their December 2025 article on the 72GB variant (techradar.com, in references). CG Channel cited a Connection reseller price of ~$4,569 at launch. Dell lists the 490-BLQB variant at $5,299.99 on dell.com (OEM configuration includes Dell overhead). Note: NVIDIA also assigned NVPN 900-5G153-2250-000 to the same 48GB product (listed on Newegg and B&H); the two NVPNs (2250-000 and 2550-000) appear to represent the same SKU with different packaging or revision. The $4,199 figure reflects the lowest documented retail list price for the 48GB variant, verified from 2 sources.'
   - 'NVPN 900-5G153-2250-000 sourced from Newegg product listing (N82E16814132111) and B&H Photo (product 1943539-REG), both listing this as the manufacturer part number for the OEM 48GB variant. A second NVPN, 900-5G153-2550-000, also exists for the same 48GB product (listed by Central Computer, exxactcorp, and others); the two NVPNs likely reflect different OEM/retail packaging revisions. The board_id prefix 5G153 identifies the GB202-based RTX PRO 5000 Blackwell product family. The 72GB variant uses NVPN 900-5G153-2270-000 (sourced from B&H Photo product listing 1938762-REG, confirmed by esaitech and serversupply.com).'
   - 'PNY retail SKU VCNRTXPRO5000B-PB and bulk SKU VCNRTXPRO5000B-BLK confirmed from PNY product page (pny.com). Dell part number 490-BLQB confirmed from dell.com official product page. HP part number B11F1AA confirmed from redcorp.com product listing. Lenovo part number 4X61T68168 confirmed from lenovo.com (Ireland) product page for the 48GB GDDR7 variant.'
+  - 'fp4TFLOPS of 1032 represents non-sparse (dense) FP4 performance, derived from the already-cited AI TOPS figure of 2,064 (FP4 sparse, per Newegg listing and wccftech article) ÷ 2. Dense value used for consistent cross-vendor comparison.'
+  - 'NOT FOUND: fp8TFLOPS — the official NVIDIA RTX PRO 5000 Blackwell datasheets and product page (URLs in references) publish only AI TOPS (FP4 sparse), Single-Precision Performance (FP32), and RT Core Performance — no standalone FP8 TFLOPS row, unlike the RTX PRO 4500/6000 Server Editions which do publish one. Left null rather than guessed from the INT8 dense value.'
+  - 'supportedHardwareOperations: FP32 and INT4 removed per the locked GEMM-only definition (2026-09) — the 65.0 TFLOPS fp32TFLOPS figure is plain CUDA-core (non-tensor) throughput, and neither consumer nor datacenter Blackwell documentation lists INT4 Tensor Core support (dropped starting with Blackwell per gpu-researcher.md''s canonical Blackwell table). This is a workstation (not B100/B200-class datacenter) SKU, so no FP64 is added. The array now matches the canonical consumer/professional Blackwell baseline of FP4, FP8, FP16, BF16, TF32, INT8.'

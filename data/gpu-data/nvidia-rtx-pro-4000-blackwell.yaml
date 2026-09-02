@@ -7,22 +7,23 @@ tensorCoreCount: 280
 fp32TFLOPS: 40.0
 fp16TFLOPS: 322.5
 int8TOPS: 322.5
+fp4TFLOPS: 645
 memoryCapacityGB: 24
 memoryBandwidthGBs: 672
 maxTDPWatts: 145
 gpuArchitecture: blackwell
 supportedHardwareOperations:
-  - FP32
-  - FP16
-  - TF32
-  - BF16
-  - FP8
   - FP4
+  - FP8
+  - FP16
+  - BF16
+  - TF32
   - INT8
-  - INT4
+unverifiedSpecs:
+  - fp8TFLOPS
 supportedCUDAComputeCapability: 12.0
 releaseDate: "2025-03-18"
-lastModified: "2026-06-02T00:00:00Z"
+lastModified: "2026-09-02T00:00:00Z"
 
 manufacturerIdentifiers:
   - type: nvpn
@@ -61,10 +62,10 @@ summary: |
   The card features 24 GB of GDDR7 ECC memory on a 192-bit memory bus providing 672 GB/s
   bandwidth, a significant improvement over the predecessor's 20GB GDDR6 at 360 GB/s. The
   fifth-generation Tensor Cores introduce FP4 precision support alongside FP8, BF16, TF32,
-  FP16, INT8, and INT4, enabling broader AI and machine learning workloads. The fourth-generation
+  FP16, and INT8, enabling broader AI and machine learning workloads. The fourth-generation
   RT Cores double the ray-triangle intersection rate versus the prior generation.
 
-  With a TDP of 145W in a single-slot, full-height form factor (4.4" H x 9.5" L), the RTX PRO
+  With a TDP of 145W in a single-slot, full-height form factor (4.4" H × 9.5" L), the RTX PRO
   4000 Blackwell requires one 16-pin power connector. It connects via PCIe 5.0 x16 and provides
   four DisplayPort 2.1b outputs supporting up to four independent displays at 4K 165 Hz or two
   displays at 8K 100 Hz. Video engine support includes one ninth-generation NVENC encoder and
@@ -102,3 +103,6 @@ notes:
   - 'Estimated MSRP of $1,799 USD based on launch-time market pricing. NVIDIA does not publish official MSRP for professional workstation GPUs. Dell lists the card (part 490-BLNG) at $1,799.99 at dell.com. Wiredzone lists the NVIDIA OEM variant (NVPN 900-5G147-0070-000) at $1,824.00. The $1,799 price represents the consistent retail/OEM list price at launch.'
   - 'NVPN 900-5G147-2270-000 (bulk/OEM) sourced from B&H Photo product listing (product ID 1938761-REG). NVPN 900-5G147-2570-000 (retail) confirmed from gpus.net, serversupply.com, and centralcomputer.com. NVPN 900-5G147-0070-000 (Wiredzone OEM direct) sourced from Wiredzone product listing. The board_id prefix is 5G147 (analogous to other NVIDIA workstation cards using 5G-prefix board IDs).'
   - 'PNY SKU VCNRTXPRO4000B-PB confirmed from Newegg, Provantage, and B&H Photo product listings. Dell part number 490-BLNG confirmed from dell.com official product page. HP part number B11F3AA confirmed from gpus.net and ProVantage. Lenovo part number 4X61T95636 confirmed from lenovo.com product page URL (GB English locale).'
+  - 'fp4TFLOPS of 645 represents non-sparse (dense) FP4 performance, derived from the already-cited AI TOPS figure of 1,290 (FP4 sparse, per the NVIDIA official product page) ÷ 2. Dense value used for consistent cross-vendor comparison.'
+  - 'NOT FOUND: fp8TFLOPS — the official NVIDIA RTX PRO 4000 Blackwell product page (URLs in references) publishes only AI Performance (FP4 sparse TOPS), RT Core Performance, and Single-Precision Performance — no standalone FP8 TFLOPS row, unlike the RTX PRO 4500/6000 Server Editions which do publish one on their data-center product pages. Left null rather than guessed from the INT8 dense value.'
+  - 'supportedHardwareOperations: FP32 and INT4 removed per the locked GEMM-only definition (2026-09) — the 40.0 TFLOPS fp32TFLOPS figure is plain CUDA-core (non-tensor) throughput, and neither consumer nor datacenter Blackwell documentation lists INT4 Tensor Core support (dropped starting with Blackwell per gpu-researcher.md''s canonical Blackwell table). This is a workstation (not B100/B200-class datacenter) SKU, so no FP64 is added. The array now matches the canonical consumer/professional Blackwell baseline of FP4, FP8, FP16, BF16, TF32, INT8.'

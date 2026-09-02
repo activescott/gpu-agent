@@ -7,22 +7,23 @@ tensorCoreCount: 752
 fp32TFLOPS: 125.0
 fp16TFLOPS: 1000.0
 int8TOPS: 1000.0
+fp4TFLOPS: 2000
 memoryCapacityGB: 96
 memoryBandwidthGBs: 1792
 maxTDPWatts: 600
 gpuArchitecture: blackwell
 supportedHardwareOperations:
-  - FP32
-  - FP16
-  - TF32
-  - BF16
-  - FP8
   - FP4
+  - FP8
+  - FP16
+  - BF16
+  - TF32
   - INT8
-  - INT4
+unverifiedSpecs:
+  - fp8TFLOPS
 supportedCUDAComputeCapability: 12.0
 releaseDate: "2025-03-18"
-lastModified: "2026-06-02T00:00:00Z"
+lastModified: "2026-09-02T00:00:00Z"
 
 manufacturerIdentifiers:
   - type: nvpn
@@ -62,7 +63,7 @@ summary: |
   GB202-based product shipping, surpassing the consumer GeForce RTX 5090 which enables 170 of 192 SMs
   (21,760 CUDA cores). It delivers 96 GB GDDR7 ECC memory on a 512-bit memory bus providing
   1,792 GB/s bandwidth, compared to the RTX 5090's 32 GB on a 512-bit bus. The 5th-generation Tensor Cores support FP4
-  and FP8 precisions alongside BF16, TF32, FP16, INT8, and INT4, delivering 4,000 AI TOPS (FP4
+  and FP8 precisions alongside BF16, TF32, FP16, and INT8, delivering 4,000 AI TOPS (FP4
   with sparsity) and 125 TFLOPS of FP32 compute.
 
   The card uses NVIDIA's Double Flow Through active thermal design with dual fans in a dual-slot,
@@ -87,7 +88,7 @@ references:
 
 notes:
   - 'FP32 TFLOPS of 125.0 is the peak single-precision performance published in the official NVIDIA RTX PRO 6000 Blackwell Workstation Edition datasheet (workstation-blackwell-rtx-pro-6000-workstation-edition-nvidia-us-3519208-web.pdf, footnote: "Peak rates based on GPU Boost Clock"). Confirmed by CG Channel article (125 TFLOPs) and TweakTown article (125 TFLOPS). Sanity check: 24,064 CUDA cores x 2,617 MHz boost x 2 ops/cycle / 1,000,000 = 125.96 TFLOPS, consistent with the official 125 TFLOPS figure.'
-  - 'AI TOPS of 4,000 sourced from the official NVIDIA RTX PRO 6000 Blackwell Workstation Edition datasheet and confirmed by the NVIDIA product page. Per datasheet footnotes: "Peak rates based on GPU Boost Clock. Effective FP4 TOPS with sparsity." This represents FP4 sparse theoretical peak performance.'
+  - 'AI TOPS of 4,000 sourced from the official NVIDIA RTX PRO 6000 Blackwell Workstation Edition datasheet and confirmed by the NVIDIA product page. Per datasheet footnotes: "Peak rates based on GPU Boost Clock. Effective FP4 TOPS with sparsity." This represents FP4 sparse theoretical peak performance. The datasheet''s specifications table lists only "AI TOPS," "Single-Precision Performance," and "RT Core Performance" — no separate FP8/FP16/INT8 rows are published for this specific card.'
   - 'int8TOPS of 1,000.0 represents non-sparse (dense) INT8 performance, derived from FP4 sparse TOPS: 4,000 (FP4 sparse) / 4 = 1,000 TOPS. Derivation: FP4 sparse = 2x INT8 sparse = 4x INT8 dense per Blackwell 5th-gen tensor core architecture. Dense value used for consistent cross-vendor comparison. Sanity check: 1,000 TOPS / 125 TFLOPS FP32 = 8:1 ratio, consistent with RTX PRO 5000 Blackwell (516 TOPS INT8 dense / 65 TFLOPS FP32 = 7.9:1).'
   - 'fp16TFLOPS of 1,000.0 is FP16 Tensor Core throughput with 2:4 structured sparsity, derived from FP4 sparse TOPS using the Blackwell tensor core ratio (FP16 sparse = FP4 sparse / 4): 4,000 / 4 = 1,000 TFLOPS. Dense FP16 Tensor = 1,000 / 2 = 500 TFLOPS. The official NVIDIA datasheet for this workstation card does not publish FP16 Tensor performance separately.'
   - 'Memory bandwidth of 1,792 GB/s confirmed by official NVIDIA datasheet and product page. Arithmetic check: 512-bit bus x 28 Gbps / 8 = 512 / 8 x 28,000 = 1,792 GB/s. Consistent with 96 GB GDDR7 configuration using dual-sided memory modules (48 GB per side).'
@@ -96,8 +97,11 @@ notes:
   - 'TDP of 600 W confirmed by official NVIDIA datasheet, product page, CG Channel article, and multiple resellers. Requires one 16-pin PCIe CEM5 power connector. The Workstation Edition uses NVIDIA''s Double Flow Through active cooling with dual fans; the related Max-Q Workstation Edition uses the same die at 300 W TDP.'
   - 'GPU die is GB202 on TSMC 4nm (4NP) process with 92.2 billion transistors and approximately 750 mm2 die area, per gpus.net and consistent with RTX 5090 GB202 parameters. Architecture uses CUDA compute capability 12.0 (sm_120), confirmed by developer.nvidia.com/cuda-gpus for the RTX PRO 6000 Blackwell Workstation Edition. All Blackwell workstation GPUs use compute capability 12.0.'
   - 'Release date of March 18, 2025 reflects the GTC25 Spring announcement date. CG Channel reports the RTX PRO 6000 Blackwell Workstation Edition became available through PNY and TD SYNNEX distribution in April 2025. The Tweaktown article (March 23, 2025) anticipated a May 2025 launch based on retailer listings; actual distribution availability was April 2025 per CG Channel.'
-  - 'FP4 hardware precision is supported by 5th-generation Tensor Cores. FP8, BF16, TF32, FP16, INT8, and INT4 are also supported by Blackwell architecture tensor cores. The official NVIDIA datasheet footnote states the product is based on a published Khronos specification. MIG support allows up to 4 fully isolated GPU instances per the NVIDIA product page.'
+  - 'FP4 hardware precision is supported by 5th-generation Tensor Cores. FP8, BF16, TF32, FP16, and INT8 are also supported by Blackwell architecture tensor cores. The official NVIDIA datasheet footnote states the product is based on a published Khronos specification. MIG support allows up to 4 fully isolated GPU instances per the NVIDIA product page.'
   - '4x NVENC (9th generation) and 4x NVDEC (6th generation) encoders/decoders confirmed by the official NVIDIA product page. This is more than the RTX PRO 5000 Blackwell (3x NVENC, 3x NVDEC) reflecting the larger GB202 die with full SM count versus the RTX PRO 5000''s 110-of-170 SM configuration.'
   - 'Estimated MSRP of $8,565 USD based on launch-time retailer listing pricing. NVIDIA does not publish an official MSRP for professional workstation GPUs. The boxed retail version (900-5G144-2500-000) was listed at $8,565 and the bulk OEM version (900-5G144-2200-000) at $8,435 by Connection (US-based IT reseller) shortly after the March 2025 announcement. These prices are independently reported by TweakTown, Tom''s Hardware, and KillerStartups in articles from March 2025. The $8,565 figure represents the retail boxed price. Note: current market prices are higher ($10,000-$12,500+) as demand exceeds supply.'
   - 'NVPN 900-5G144-2200-000 (OEM/bulk) sourced from B&H Photo product listing (product 1895402-REG), Newegg listing, serversupply.com, and CDW (CDW part 9039015). NVPN 900-5G144-2500-000 (retail boxed) sourced from B&H Photo product listing (product 1903949-REG) and gpus.net. The board_id prefix 5G144 identifies the GB202-based RTX PRO 6000 Blackwell Workstation Edition product family. Compare: the RTX PRO 5000 Blackwell (also GB202) uses the 5G153 prefix.'
   - 'PNY retail SKU VCNRTXPRO6000B-PB confirmed from Dell.com product page (AD368558, listing manufacturer part VCNRTXPRO6000B-PB). PNY bulk SKU VCNRTXPRO6000B-SB confirmed from gpus.net vendor listing. Dell part number AD368558 confirmed from dell.com official product page for the 600W Workstation Edition. HP part number B11F0AA confirmed from gpus.net vendor listing (HP price: $11,520).'
+  - 'fp4TFLOPS of 2000 represents non-sparse (dense) FP4 performance, derived from the already-cited AI TOPS figure of 4,000 (FP4 sparse, per the official NVIDIA datasheet) ÷ 2. Dense value used for consistent cross-vendor comparison. Matches the fp4TFLOPS value published on the sibling RTX PRO 6000 Blackwell Server Edition, which uses the same GB202 die and boost-clock-based ratios.'
+  - 'NOT FOUND: fp8TFLOPS — the official NVIDIA RTX PRO 6000 Blackwell Workstation Edition datasheet specifications table (URL in references) publishes only AI TOPS (FP4 sparse), Single-Precision Performance (FP32), and RT Core Performance — no standalone FP8 TFLOPS row, unlike the sibling RTX PRO 6000 Blackwell Server Edition which does publish one (FP8 = 2 PFLOPS) on its official data-center product page. Left null rather than guessed from the INT8 dense value.'
+  - 'supportedHardwareOperations: FP32 and INT4 removed per the locked GEMM-only definition (2026-09) — the 125.0 TFLOPS fp32TFLOPS figure is plain CUDA-core (non-tensor) throughput, and neither consumer nor datacenter Blackwell documentation lists INT4 Tensor Core support (dropped starting with Blackwell per gpu-researcher.md''s canonical Blackwell table). This is a workstation (not B100/B200-class datacenter) SKU, so no FP64 is added. The array now matches the canonical consumer/professional Blackwell baseline of FP4, FP8, FP16, BF16, TF32, INT8.'

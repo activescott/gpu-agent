@@ -7,22 +7,22 @@ tensorCoreCount: 328
 fp32TFLOPS: 51.0
 fp16TFLOPS: 406.0
 int8TOPS: 405.5
+fp8TFLOPS: 405.5
+fp4TFLOPS: 811
 memoryCapacityGB: 32
 memoryBandwidthGBs: 800
 maxTDPWatts: 165
 gpuArchitecture: blackwell
 supportedHardwareOperations:
-  - FP32
-  - FP16
-  - TF32
-  - BF16
-  - FP8
   - FP4
+  - FP8
+  - FP16
+  - BF16
+  - TF32
   - INT8
-  - INT4
 supportedCUDAComputeCapability: 12.0
 releaseDate: "2026-03-17"
-lastModified: "2026-06-02T00:00:00Z"
+lastModified: "2026-09-02T00:00:00Z"
 
 manufacturerIdentifiers:
   - type: nvpn
@@ -93,7 +93,7 @@ notes:
   - 'TDP of 165W per NVIDIA official product page and Lenovo ThinkSystem product guide. Requires one 16-pin PCIe CEM5 power connector. The workstation variant has a 200W TDP; the server edition is reduced due to lower GDDR7 memory speed and passive cooling optimization.'
   - 'Tensor core count of 328 confirmed by TechPowerUp GPU database search snippet (gpu-specs/rtx-pro-4500-blackwell-server.c4387: "Also included are 328 tensor cores"). Matches the SM count: 82 SMs × 4 tensor cores per SM = 328 tensor cores. RT core count is 82 (one per SM, 4th generation), also confirmed by NVIDIA official page.'
   - 'CUDA core count of 10,496 confirmed by NVIDIA official product page, Lenovo ThinkSystem product guide, and TechPowerUp GPU database. Same die (GB203) as the RTX PRO 4500 Workstation Edition with 82 of 84 SMs enabled (same as workstation).'
-  - 'GPU die is GB203 on TSMC 4nm process per TechPowerUp GPU database. Architecture uses CUDA compute capability 12.0 (sm_120), confirmed by developer.nvidia.com/cuda-gpus where RTX PRO 4500 Blackwell (both variants) uses CC 12.0. 5th-generation Tensor Cores support FP4, FP8, BF16, TF32, FP16, INT8, and INT4.'
+  - 'GPU die is GB203 on TSMC 4nm process per TechPowerUp GPU database. Architecture uses CUDA compute capability 12.0 (sm_120), confirmed by developer.nvidia.com/cuda-gpus where RTX PRO 4500 Blackwell (both variants) uses CC 12.0. 5th-generation Tensor Cores support FP4, FP8, BF16, TF32, FP16, and INT8.'
   - 'Form factor is single-slot, full-height full-length (FHFL), passive cooling, 4.4" H x 10.5" L, as confirmed by NVIDIA official page and Lenovo product guide. No display outputs (headless server design). Supports PCIe 5.0 x16.'
   - 'MIG support: up to 2 MIG instances of 16 GB each, per NVIDIA official page and Lenovo product guide. NVENC: 3x 9th-gen encoders. NVDEC: 3x 6th-gen decoders with 4:2:2 support per Lenovo product guide.'
   - 'Release date of March 17, 2026 per TechPowerUp news announcement (techpowerup.com/347466). The NVIDIA data center page also states availability "from leading system builders and cloud service providers" at launch.'
@@ -102,3 +102,6 @@ notes:
   - 'Lenovo part number 4X67B12675 sourced from Lenovo ThinkSystem product guide (lenovopress.lenovo.com/lp2391). Compatible ThinkSystem server: SR665 V3.'
   - 'HPE part number S6W30C sourced from HPE buy portal (buy.hpe.com/us/en/options/.../p/s6w30c) and HPE PSNow product sheet (hpe.com/psnow/doc/PSN1014927694IEEN). Product name: "NVIDIA RTX PRO 4500 Blackwell Server Edition 32GB PCIe Accelerator for HPE."'
   - 'Estimated MSRP of $4,053 USD based on launch-time market pricing. NVIDIA does not publish official MSRP for data center GPUs. CDW lists PNY SKU NVRTXPRO4500TCGPU-KIT at $4,052.99 (cdw.com/product/9133423). The NVIDIA-branded OEM variant (900-2G147-0000-000) is listed as quote-only at CDW (product/9077550). This GPU is primarily sold through server OEM channels (Lenovo ThinkSystem SR665 V3, HPE ProLiant, Supermicro) without published standalone pricing.'
+  - 'fp8TFLOPS of 405.5 represents non-sparse (dense) FP8 performance, derived from the already-cited FP8 sparse figure of 811 TFLOPS (per the NVIDIA official product page) ÷ 2. With 2:4 structured sparsity, FP8 performance is 811 TFLOPS. Dense value used for consistent cross-vendor comparison.'
+  - 'fp4TFLOPS of 811 represents non-sparse (dense) FP4 performance. NVIDIA''s official product page (URL in references) publishes FP4 sparse as "1.6 PFLOPS" in the summary copy but does not print a precise numeric FP4 row in the specs table fetched for this audit; the precise figure is derived from the already-cited FP8 sparse value of 811 TFLOPS using the Blackwell 5th-gen tensor core convention that FP4 sparse = 2x FP8 sparse (halving bit width doubles throughput): FP4 sparse = 811 x 2 = 1,622 TFLOPS (≈1.6 PFLOPS, consistent with the summary copy); dense = 1,622 / 2 = 811 TFLOPS. This derivation chain is corroborated by the same 4x-INT8-dense relationship used throughout the Blackwell RTX PRO family (405.5 dense INT8 x 4 = 1,622).'
+  - 'supportedHardwareOperations: FP32 and INT4 removed per the locked GEMM-only definition (2026-09) — the 51.0 TFLOPS fp32TFLOPS figure is plain CUDA-core (non-tensor) throughput, and neither consumer nor datacenter Blackwell documentation lists INT4 Tensor Core support (dropped starting with Blackwell per gpu-researcher.md''s canonical Blackwell table). Although this SKU''s category is "datacenter," it is a professional/workstation-derived GB203 server card, not a B100/B200-class datacenter Blackwell GPU, so per gpu-researcher.md''s explicit guidance no FP64 is added. The array now matches the canonical consumer/professional Blackwell baseline of FP4, FP8, FP16, BF16, TF32, INT8.'

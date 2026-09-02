@@ -6,6 +6,7 @@ msrpUSD: 549
 
 memoryCapacityGB: 12
 int8TOPS: 246.95
+fp4TFLOPS: 494
 maxTDPWatts: 250
 memoryBandwidthGBs: 672
 tensorCoreCount: 192
@@ -14,16 +15,17 @@ fp16TFLOPS: 246.9
 
 gpuArchitecture: blackwell
 supportedHardwareOperations:
-  - FP16
-  - INT8
-  - TF32
-  - INT4
-  - BF16
-  - FP8
   - FP4
+  - FP8
+  - FP16
+  - BF16
+  - TF32
+  - INT8
+unverifiedSpecs:
+  - fp8TFLOPS
 supportedCUDAComputeCapability: 12.8
 releaseDate: "2025-03-05"
-lastModified: "2026-02-24T00:00:00Z"
+lastModified: "2026-09-02T00:00:00Z"
 
 manufacturerIdentifiers:
   - type: nvpn
@@ -131,6 +133,7 @@ references:
   - https://images.nvidia.com/aem-dam/Solutions/geforce/blackwell/nvidia-rtx-blackwell-gpu-architecture.pdf
   - https://nvidianews.nvidia.com/news/nvidia-blackwell-geforce-rtx-50-series-opens-new-world-of-ai-computer-graphics
   - https://www.nvidia.com/en-us/geforce/news/rtx-50-series-graphics-cards-gpu-laptop-announcements/
+  - https://www.nvidia.com/en-us/geforce/graphics-cards/compare/
   - https://www.techpowerup.com/gpu-specs/geforce-rtx-5070.c4218
   - https://www.asus.com/us/motherboards-components/graphics-cards/prime/prime-rtx5070-12g/techspec/
   - https://www.msi.com/Graphics-Card/GeForce-RTX-5070-12G-GAMING-TRIO-OC
@@ -151,3 +154,6 @@ notes:
   - Board variants include PG146 and PG147 based on available documentation.
   - Third-party product identifiers sourced from manufacturer websites including ASUS, MSI, Gigabyte, PNY, Zotac, Palit, and Gainward official product pages.
   - EVGA does not manufacture RTX 5070 cards as they exited the GPU market in 2022.
+  - 'fp4TFLOPS of 494 represents non-sparse (dense) FP4 performance, derived from the official NVIDIA AI TOPS figure of 988 (FP4 sparse, per nvidia.com/en-us/geforce/graphics-cards/compare/) ÷ 2. Dense value used for consistent cross-vendor comparison.'
+  - 'NOT FOUND: fp8TFLOPS — NVIDIA does not publish a standalone dense or sparse FP8 TFLOPS figure for consumer GeForce Blackwell cards; searched the NVIDIA RTX Blackwell architecture whitepaper and the official RTX 5070/compare pages (URLs in references), which list only AI TOPS (FP4 sparse), Peak TF32 Tensor TFLOPS, Peak FP16 Tensor TFLOPS, and INT8 TOPS. Left null rather than guessed from the INT8 dense value.'
+  - 'supportedHardwareOperations: INT4 removed per the locked GEMM-only definition (2026-09) — neither the consumer nor datacenter Blackwell documentation lists INT4 Tensor Core support (dropped starting with Blackwell per gpu-researcher.md''s canonical Blackwell table); the array now matches the canonical consumer Blackwell baseline of FP4, FP8, FP16, BF16, TF32, INT8.'

@@ -7,22 +7,23 @@ tensorCoreCount: 576
 fp32TFLOPS: 2200
 fp16TFLOPS: 4500
 int8TOPS: 4500
+fp8TFLOPS: 4500
+fp4TFLOPS: 9000
 memoryCapacityGB: 180
 memoryBandwidthGBs: 7700
 maxTDPWatts: 1000
 gpuArchitecture: blackwell
 supportedHardwareOperations:
-  - FP16
-  - FP32
-  - FP64
-  - INT8
-  - TF32
-  - BF16
-  - FP8
   - FP4
+  - FP8
+  - FP16
+  - BF16
+  - TF32
+  - INT8
+  - FP64
 supportedCUDAComputeCapability: 10.0
 releaseDate: "2024-11-01"
-lastModified: "2026-06-03T00:00:00Z"
+lastModified: "2026-09-02T00:00:00Z"
 
 summary: >-
   The NVIDIA B200 is the flagship Blackwell-architecture datacenter GPU
@@ -110,3 +111,6 @@ notes:
   - 'Estimated MSRP of $35,000 USD for B200 SXM based on launch-time statements and market analysis. NVIDIA does not publish official MSRP for datacenter GPUs. Tom''s Hardware (tomshardware.com) reports Jensen Huang stated in a CNBC interview that Blackwell GPUs would cost $30,000-$40,000 per unit; paulscannon.com and epoch.ai corroborate the $30,000-$40,000 range. The $35,000 midpoint is used. Note: A separate HSBC analyst estimate (cited in WccfTech, May 2024) placed B200 ASP at $60,000-$70,000, which may reflect the GB200 Superchip (Grace CPU + 2 B200 GPUs) rather than the standalone B200 GPU. Jensen Huang''s directly-stated $30,000-$40,000 range is used as the primary reference. NVIDIA does not sell standalone B200 GPU modules; pricing is reflected in HGX B200 multi-GPU baseboard configurations.'
   - 'manufacturerIdentifiers: NVPN values 935-26287-27A1-000 (liquid-cooled HGX B200 board) and 935-26287-27A0-000 (air-cooled HGX B200 board) are confirmed from the Lenovo HGX B200 product guide (lp2226.pdf) as "NVIDIA part numbers" for the 8-GPU HGX B200 baseboard products. These are board-level identifiers for the complete HGX B200 multi-GPU module, not individual GPU chip identifiers. No NVIDIA board_id or individual GPU product_sku for the B200 SXM was found in publicly available documentation.'
   - 'thirdPartyProducts: Lenovo SR680a V3 and SR780a V3 confirmed as NVIDIA-certified HGX B200 systems per NVIDIA Certified Systems documentation (docs.nvidia.com/certification-programs). Supermicro SYS-822GS-NBRT (air-cooled 8U) and SYS-422GA-NBRT-LCC (liquid-cooled 4U) confirmed from NVIDIA Certified Systems documentation and servethehome.com OCP 2024 coverage. Note: the liquid-cooled model is SYS-422GA-NBRT-LCC (confirmed by servethehome.com and NVIDIA Certified Systems); an earlier draft incorrectly listed SYS-422GS-NBRT-LCC. Dell PowerEdge XE9780 confirmed as NVIDIA-certified HGX B200 system. Dell XE9780 is the B200-era successor to the XE9680 (H100/H200 platform).'
+  - 'fp8TFLOPS of 4500 represents non-sparse (dense) FP8 performance per the Lenovo HGX B200 product guide (lp2226.pdf), which lists FP8 Tensor Core as "4.5 / 9 PFLOPS" (dense / sparse). With 2:4 structured sparsity, FP8 performance is 9000 TFLOPS. Dense value used for consistent cross-vendor comparison.'
+  - 'fp4TFLOPS of 9000 represents non-sparse (dense) FP4 performance per the Lenovo HGX B200 product guide (lp2226.pdf), which lists FP4 Tensor Core as "9 / 18 PFLOPS" (dense / sparse). Dense value used for consistent cross-vendor comparison.'
+  - 'supportedHardwareOperations: FP32 removed per the locked GEMM-only definition (2026-09) — the 2200 fp32TFLOPS figure stored on this file is Peak TF32 Tensor TFLOPS with sparsity (a reduced-precision tensor format), not a literal FP32 Tensor Core row; TF32 alone represents the tensor-accelerated near-FP32 path. FP64 retained because datacenter Blackwell B100/B200 have a documented 37 TFLOPS FP64 Tensor Core path per the Lenovo HGX B200 product guide, per gpu-researcher.md''s canonical Blackwell table. Array now matches the canonical datacenter Blackwell baseline of FP4, FP8, FP16, BF16, TF32, INT8, FP64.'

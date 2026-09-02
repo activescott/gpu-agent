@@ -7,21 +7,23 @@ tensorCoreCount: 144
 fp32TFLOPS: 23.70
 fp16TFLOPS: 94.81
 int8TOPS: 189.63
+fp4TFLOPS: 379.5
 memoryCapacityGB: 16
 memoryBandwidthGBs: 448
 maxTDPWatts: 180
 gpuArchitecture: blackwell
 supportedHardwareOperations:
-  - FP16
-  - INT8
-  - TF32
-  - INT4
-  - BF16
-  - FP8
   - FP4
+  - FP8
+  - FP16
+  - BF16
+  - TF32
+  - INT8
+unverifiedSpecs:
+  - fp8TFLOPS
 supportedCUDAComputeCapability: 12.8
 releaseDate: "2025-04-16"
-lastModified: "2026-02-24T00:00:00Z"
+lastModified: "2026-09-02T00:00:00Z"
 
 summary: |
   The NVIDIA GeForce RTX 5060 Ti is a mid-range graphics card released in 2025,
@@ -79,6 +81,7 @@ thirdPartyProducts:
 references:
   - https://images.nvidia.com/aem-dam/Solutions/geforce/blackwell/nvidia-rtx-blackwell-gpu-architecture.pdf
   - https://www.nvidia.com/en-us/geforce/graphics-cards/50-series/rtx-5060-family/
+  - https://www.nvidia.com/en-us/geforce/graphics-cards/compare/
   - https://www.waredb.com/processor/nvidia-geforce-rtx-5060-ti
   - https://www.techpowerup.com/gpu-specs/geforce-rtx-5060-ti.c4408
   - https://www.nvidia.com/en-us/geforce/news/ultimate-guide-to-5060/
@@ -98,3 +101,6 @@ notes:
   - MSRP of $429 USD for the 16GB model sourced from nvidia.com official product page (https://www.nvidia.com/en-us/geforce/news/ultimate-guide-to-5060/). An 8GB variant is also available at $379 USD. No Founders Edition available; pricing is for partner cards.
   - No NVIDIA Founders Edition was released for the RTX 5060 Ti. All cards are from AIB partners including ASUS, MSI, Gigabyte, Zotac, PNY, Palit, Gainward, Colorful, INNO3D, GALAX/KFA2.
   - Third-party product identifiers sourced from official manufacturer websites (ASUS, Gigabyte), Tom's Hardware RTX 5060 Ti roundup, Newegg, and Best Buy product listings.
+  - 'fp4TFLOPS of 379.5 represents non-sparse (dense) FP4 performance, derived from the official NVIDIA AI TOPS figure of 759 (FP4 sparse, per nvidia.com/en-us/geforce/graphics-cards/compare/) ÷ 2. Dense value used for consistent cross-vendor comparison.'
+  - 'NOT FOUND: fp8TFLOPS — NVIDIA does not publish a standalone dense or sparse FP8 TFLOPS figure for consumer GeForce Blackwell cards; searched the NVIDIA RTX Blackwell architecture whitepaper and the official RTX 5060 Ti/compare pages (URLs in references), which list only AI TOPS (FP4 sparse), Peak TF32 Tensor TFLOPS, Peak FP16 Tensor TFLOPS, and INT8 TOPS. Left null rather than guessed from the INT8 dense value.'
+  - 'supportedHardwareOperations: INT4 removed per the locked GEMM-only definition (2026-09) — neither the consumer nor datacenter Blackwell documentation lists INT4 Tensor Core support (dropped starting with Blackwell per gpu-researcher.md''s canonical Blackwell table); the array now matches the canonical consumer Blackwell baseline of FP4, FP8, FP16, BF16, TF32, INT8.'

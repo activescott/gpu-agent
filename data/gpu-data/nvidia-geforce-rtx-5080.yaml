@@ -6,6 +6,7 @@ msrpUSD: 999
 
 memoryCapacityGB: 16
 int8TOPS: 450.2
+fp4TFLOPS: 900.5
 maxTDPWatts: 360
 memoryBandwidthGBs: 960
 tensorCoreCount: 336
@@ -14,16 +15,17 @@ fp16TFLOPS: 450.2
 
 gpuArchitecture: blackwell
 supportedHardwareOperations:
-  - FP16
-  - INT8
-  - TF32
-  - INT4
-  - BF16
-  - FP8
   - FP4
+  - FP8
+  - FP16
+  - BF16
+  - TF32
+  - INT8
+unverifiedSpecs:
+  - fp8TFLOPS
 supportedCUDAComputeCapability: 12.8
 releaseDate: "2025-01-30"
-lastModified: "2026-02-24T00:00:00Z"
+lastModified: "2026-09-02T00:00:00Z"
 
 manufacturerIdentifiers:
   - type: product_sku
@@ -149,3 +151,6 @@ notes:
   - MSRP of $999 USD for the Founders Edition sourced from nvidia.com official press release (https://nvidianews.nvidia.com/news/nvidia-blackwell-geforce-rtx-50-series-opens-new-world-of-ai-computer-graphics).
   - Manufacturer identifiers sourced from VideoCardz.com and TechPowerUp GPU Database, which report the RTX 5080 uses PG144/147 SKU 45 board and GB203-400-A1 GPU die. Founders Edition NVPN (900-1G144-2545-000) sourced from PCPartPicker and Best Buy retail listings.
   - Third-party products represent major AIB partners (ASUS, MSI, Gigabyte, PNY, Zotac, Palit, Gainward). Model numbers sourced from manufacturer websites, retail listings (Best Buy, Micro Center, Newegg), and TechPowerUp GPU Database. Note that EVGA exited the graphics card business in 2022 and does not produce RTX 5080 cards.
+  - 'fp4TFLOPS of 900.5 represents non-sparse (dense) FP4 performance, derived from the official NVIDIA AI TOPS figure of 1801 (FP4 sparse, per nvidia.com/en-us/geforce/graphics-cards/compare/) ÷ 2. Dense value used for consistent cross-vendor comparison.'
+  - 'NOT FOUND: fp8TFLOPS — NVIDIA does not publish a standalone dense or sparse FP8 TFLOPS figure for consumer GeForce Blackwell cards; searched the NVIDIA RTX Blackwell architecture whitepaper and the official RTX 5080 product/compare pages (URLs in references), which list only AI TOPS (FP4 sparse), Peak TF32 Tensor TFLOPS, Peak FP16 Tensor TFLOPS, and INT8 TOPS. Left null rather than guessed from the INT8 dense value.'
+  - 'supportedHardwareOperations: INT4 removed per the locked GEMM-only definition (2026-09) — neither the consumer nor datacenter Blackwell documentation lists INT4 Tensor Core support (dropped starting with Blackwell per gpu-researcher.md''s canonical Blackwell table); the array now matches the canonical consumer Blackwell baseline of FP4, FP8, FP16, BF16, TF32, INT8.'

@@ -7,22 +7,23 @@ tensorCoreCount: 136
 fp32TFLOPS: 17.0
 fp16TFLOPS: 136.25
 int8TOPS: 136.25
+fp4TFLOPS: 272.5
 memoryCapacityGB: 16
 memoryBandwidthGBs: 288
 maxTDPWatts: 70
 gpuArchitecture: blackwell
 supportedHardwareOperations:
-  - FP32
-  - FP16
-  - TF32
-  - BF16
-  - FP8
   - FP4
+  - FP8
+  - FP16
+  - BF16
+  - TF32
   - INT8
-  - INT4
+unverifiedSpecs:
+  - fp8TFLOPS
 supportedCUDAComputeCapability: 12.0
 releaseDate: "2025-08-11"
-lastModified: "2026-06-02T00:00:00Z"
+lastModified: "2026-09-02T00:00:00Z"
 
 manufacturerIdentifiers:
   - type: nvpn
@@ -52,7 +53,7 @@ summary: |
 
   It features 16 GB of GDDR7 ECC memory on a 128-bit memory bus providing 288 GB/s bandwidth,
   a significant step up from the Ada predecessor's 224 GB/s GDDR6. The fifth-generation Tensor
-  Cores add FP4 precision support alongside FP8, BF16, TF32, FP16, INT8, and INT4, enabling
+  Cores add FP4 precision support alongside FP8, BF16, TF32, FP16, and INT8, enabling
   broader AI and machine learning workloads. The fourth-generation RT Cores double the intersection
   rate of the prior generation, accelerating ray tracing for professional visualization.
 
@@ -92,3 +93,6 @@ notes:
   - 'NVPN 900-5G195-2250-000 sourced from B&H Photo, Newegg, and Wiredzone product listings for the NVIDIA OEM version. No official board ID documented for this GPU; other NVIDIA workstation GPUs use a PG-prefixed board ID (e.g., L40 uses PG133, RTX A5000 uses PG132) derived separately from the NVPN.'
   - 'PNY SKU VCNRTXPRO2000B-PB confirmed from Newegg and ProVantage product listings. HP part number B5CH7AA confirmed from ProVantage and Hashrate.no product listings. Lenovo part number 4X61T95638 confirmed from lenovo.com product page listing and eBay listing.'
   - 'No external power connector required; 70W TDP supplied entirely via PCIe slot. Same power envelope as predecessor RTX 2000 Ada Generation (also 70W).'
+  - 'fp4TFLOPS of 272.5 represents non-sparse (dense) FP4 performance, derived from the official NVIDIA AI TOPS figure of 545 (FP4 sparse, per the NVIDIA official datasheet) ÷ 2. Dense value used for consistent cross-vendor comparison.'
+  - 'NOT FOUND: fp8TFLOPS — the official NVIDIA RTX PRO 2000 Blackwell datasheet and product page (URLs in references) publish only AI TOPS (FP4 sparse), Single-Precision Performance (FP32), and RT Core Performance — no standalone FP8 TFLOPS row, unlike the RTX PRO 4500/6000 Server Editions which do publish one. Left null rather than guessed from the INT8 dense value.'
+  - 'supportedHardwareOperations: FP32 and INT4 removed per the locked GEMM-only definition (2026-09) — the 17.0 TFLOPS fp32TFLOPS figure is plain CUDA-core (non-tensor) throughput, and neither consumer nor datacenter Blackwell documentation lists INT4 Tensor Core support (dropped starting with Blackwell per gpu-researcher.md''s canonical Blackwell table). RTX PRO 2000 is a workstation (not B100/B200-class datacenter) SKU, so no FP64 is added either. The array now matches the canonical consumer/professional Blackwell baseline of FP4, FP8, FP16, BF16, TF32, INT8.'

@@ -6,6 +6,7 @@ msrpUSD: 749
 
 memoryCapacityGB: 16
 int8TOPS: 351.5
+fp4TFLOPS: 703
 maxTDPWatts: 300
 memoryBandwidthGBs: 896
 tensorCoreCount: 280
@@ -14,16 +15,17 @@ fp16TFLOPS: 351.5
 
 gpuArchitecture: blackwell
 supportedHardwareOperations:
-  - FP16
-  - INT8
-  - TF32
-  - INT4
-  - BF16
-  - FP8
   - FP4
+  - FP8
+  - FP16
+  - BF16
+  - TF32
+  - INT8
+unverifiedSpecs:
+  - fp8TFLOPS
 supportedCUDAComputeCapability: 12.8
 releaseDate: "2025-02-20"
-lastModified: "2026-02-25T00:00:00Z"
+lastModified: "2026-09-02T00:00:00Z"
 
 manufacturerIdentifiers: []
 
@@ -215,3 +217,6 @@ notes:
   - No NVIDIA manufacturer identifiers (NVPN, Product SKU) were found in available documentation. The RTX 5070 Ti is only available through AIB partners.
   - Third-party product identifiers sourced from manufacturer websites including ASUS, MSI, Gigabyte, PNY, Zotac, and Palit official product pages.
   - EVGA does not manufacture RTX 5070 Ti cards as they exited the GPU market.
+  - 'fp4TFLOPS of 703 represents non-sparse (dense) FP4 performance, derived from the official NVIDIA AI TOPS figure of 1406 (FP4 sparse, per nvidia.com/en-us/geforce/graphics-cards/compare/) ÷ 2. Dense value used for consistent cross-vendor comparison.'
+  - 'NOT FOUND: fp8TFLOPS — NVIDIA does not publish a standalone dense or sparse FP8 TFLOPS figure for consumer GeForce Blackwell cards; searched the NVIDIA RTX Blackwell architecture whitepaper and the official RTX 5070 Ti/compare pages (URLs in references), which list only AI TOPS (FP4 sparse), Peak TF32 Tensor TFLOPS, Peak FP16 Tensor TFLOPS, and INT8 TOPS. Left null rather than guessed from the INT8 dense value.'
+  - 'supportedHardwareOperations: INT4 removed per the locked GEMM-only definition (2026-09) — neither the consumer nor datacenter Blackwell documentation lists INT4 Tensor Core support (dropped starting with Blackwell per gpu-researcher.md''s canonical Blackwell table); the array now matches the canonical consumer Blackwell baseline of FP4, FP8, FP16, BF16, TF32, INT8.'

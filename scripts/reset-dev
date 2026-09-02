@@ -17,9 +17,12 @@ Completely resets the GPUPoet development environment.
 
 WARNING: This is a DESTRUCTIVE operation that will:
    - Delete the gpupoet-dev namespace and all resources
-   - Delete the minikube cluster
-   - Remove all persistent volumes and data
-   - Clear any cached Docker images
+   - Remove gpu-poet's persistent volumes and database data
+   - Clear any cached gpu-poet Docker images
+
+This does NOT delete the shared 'kind' cluster — it's shared with other
+local projects (fernfiles, ramblefeed, tinkerbell). To recreate the cluster
+itself (e.g. to pick up a new port mapping), see k8s/kind-cluster.yaml.
 
 This cannot be undone!
 
@@ -42,9 +45,11 @@ confirm_reset() {
     echo ""
     echo "This will:"
     echo "  - Delete the gpupoet-dev namespace and all resources"
-    echo "  - Delete the minikube cluster"
-    echo "  - Remove all persistent volumes and database data"
-    echo "  - Clear cached Docker images"
+    echo "  - Remove gpu-poet's persistent volumes and database data"
+    echo "  - Clear cached gpu-poet Docker images"
+    echo ""
+    echo "The shared 'kind' cluster itself is NOT deleted (other local"
+    echo "projects share it)."
     echo ""
     echo "This operation CANNOT be undone!"
     echo ""
@@ -58,18 +63,12 @@ confirm_reset() {
 reset_development() {
     echo "=== Resetting GPUPoet Development Environment ==="
 
-    # Check if minikube is available
-    if command -v minikube &> /dev/null; then
-        echo "Stopping and deleting minikube cluster..."
-        minikube delete || true
-    else
-        echo "Minikube not found, skipping minikube cleanup"
-    fi
-
-    # Check if kubectl is available and clean up any remaining resources
+    # Delete only gpu-poet's own namespace on the shared kind cluster — never
+    # the cluster itself, which other local projects (fernfiles, ramblefeed,
+    # tinkerbell) also depend on.
     if command -v kubectl &> /dev/null; then
-        echo "Cleaning up any remaining Kubernetes resources..."
-        kubectl delete namespace gpupoet-dev --ignore-not-found=true || true
+        echo "Deleting gpupoet-dev namespace on the shared kind cluster..."
+        kubectl --context kind-kind delete namespace gpupoet-dev --ignore-not-found=true || true
     fi
 
     # Clean up Docker images if Docker is available

@@ -1,6 +1,27 @@
 #!/usr/bin/env bash
+#
+# Shared kind+skaffold dev-environment runner.
+#
+# This script is the canonical dev runner used across multiple local
+# projects. Keep all copies in sync — the ONLY part that should differ
+# between projects is the "Project-specific configuration" block below.
+# Everything else (cluster setup, namespace lifecycle, stop logic,
+# skaffold invocation) is shared.
+#
+# Copies live at:
+#   /Users/scott/src/activescott/ramblefeed/scripts/dev
+#   /Users/scott/src/activescott/tinkerbell/scripts/dev
+#   /Users/scott/src/activescott/fernfiles/scripts/dev
+#   /Users/scott/src/activescott/fernfiles-ios-keyboard/scripts/dev
+#   /Users/scott/src/activescott/fernfiles-metrics/scripts/dev
+#   /Users/scott/src/activescott/fernfiles-mobile-toolbar/scripts/dev
+#   /Users/scott/src/activescott/gpu-poet/scripts/dev
+#
+# When you change behavior here, mirror the change in every copy.
+#
 this_dir=$(cd $(dirname "$0"); pwd) # this script's directory
 this_script=$(basename $0)
+this_script_base=$(basename "$0" .sh)
 workspace_root=$(cd "$this_dir/.."; pwd)
 
 #-e: Exits immediately if any command returns a non-zero status (i.e., fails)
@@ -8,35 +29,167 @@ workspace_root=$(cd "$this_dir/.."; pwd)
 #-o pipefail: If any command in a pipeline fails, the entire pipeline fails
 set -euo pipefail
 
+# ============================================================================
+# Project-specific configuration — this block is the only intended
+# difference between project copies of this script.
+# ============================================================================
+app_name="gpupoet"
+# scripts/lib/dev-env.sh sets app_port, app_host, dev_namespace, and
+# dev_log_file for this checkout's dev instance. The main checkout keeps the
+# original identity (gpupoet-dev / gpupoet.localhost); each git worktree
+# gets its own namespace and hostname so multiple agents can run dev servers
+# concurrently. .localhost names resolve to 127.0.0.1 natively (RFC 6761)
+# and the per-instance ingress host rule keeps instances (and other
+# projects) separate on the shared kind cluster — ingress-nginx matches the
+# Host header excluding port. Projects whose dev ingress has no host rule
+# use app_host="localhost" here instead.
+source "$this_dir/lib/dev-env.sh"
+# The per-instance namespace manifest is generated (with the overlay) by
+# generate_dev_instance_overlay in the pre-skaffold hook below.
+namespace_manifest="$workspace_root/k8s/overlays/dev-instance/namespace.yaml"
+# Optional pre-skaffold hook. Set to a shell function or script path to run
+# extra setup before the namespace is applied and skaffold starts (e.g.
+# generating manifests or building sidecar images). Leave empty if the
+# project doesn't need one.
+extra_setup_script="generate_dev_instance_overlay"
+# ============================================================================
+
+# Shared local kind cluster (default name 'kind').
+# Other local projects may share this cluster; each project stays isolated in
+# its own namespace. scripts/dev creates the cluster only if it doesn't
+# already exist and never deletes it.
+kind_cluster="kind"
+kube_context="${kube_context:-kind-${kind_cluster}}"
+dev_namespace="${dev_namespace:-${app_name}-dev}"
+namespace_manifest="${namespace_manifest:-$workspace_root/k8s/overlays/dev/namespace.yaml}"
+# When set, the skaffold run's combined output is teed here (truncated each
+# start) so agents and tools can read the server log without owning the
+# terminal.
+dev_log_file="${dev_log_file:-}"
+
 help () {
   echo
   cat << END_DOC
 USAGE: $this_script [OPTIONS]
 
-Starts development environment using minikube and skaffold.
+Starts $app_name development environment using kind and skaffold.
 
 Options:
   -h, --help    Show this help message
+  -v, --verbose Enable debug logging (shows why skaffold rebuilds)
+  stop          Stop the development server for this project
 
 END_DOC
 }
 
+stop_dev_server() {
+    echo "Stopping $app_name development server..."
+    local found=false
+
+    # Find skaffold processes running for THIS checkout specifically. Other
+    # checkouts (worktrees) and other projects may run their own skaffold on
+    # this machine; only signal — and only wait on — the PIDs whose cwd is
+    # this workspace.
+    local signaled_pids=()
+    local skaffold_pids=$(pgrep -f "skaffold dev" 2>/dev/null || true)
+    if [[ -n "$skaffold_pids" ]]; then
+        for pid in $skaffold_pids; do
+            # Get the working directory of the process
+            local proc_cwd=$(lsof -p "$pid" 2>/dev/null | grep cwd | awk '{print $NF}')
+            if [[ "$proc_cwd" == "$workspace_root" ]]; then
+                # Send SIGINT (Ctrl+C equivalent) so skaffold's signal handler
+                # runs cleanup=true and deletes deployed resources. SIGTERM/SIGKILL
+                # leaves stale pods, services, and ingress behind.
+                echo "Sending SIGINT to skaffold process $pid (cwd: $proc_cwd) for graceful cleanup..."
+                kill -INT "$pid" 2>/dev/null || true
+                signaled_pids+=("$pid")
+                found=true
+            fi
+        done
+
+        # Wait for the signaled processes to exit (give them up to 30s)
+        if [[ "$found" == "true" ]]; then
+            echo "Waiting for skaffold to clean up resources..."
+            for i in {1..30}; do
+                local still_running=false
+                for pid in "${signaled_pids[@]}"; do
+                    if kill -0 "$pid" 2>/dev/null; then
+                        still_running=true
+                        break
+                    fi
+                done
+                if [[ "$still_running" == "false" ]]; then
+                    break
+                fi
+                sleep 1
+            done
+        fi
+    fi
+
+    # Belt-and-braces: even if skaffold's cleanup ran, force-delete any stale
+    # workload resources in the dev namespace.
+    #
+    # We DO NOT delete the namespace itself — that would cascade-delete the
+    # StatefulSet's PVC and wipe the DB. Namespace lifecycle is owned by
+    # this script (applied separately, kept out of skaffold's manifest
+    # render) precisely so skaffold's cleanup never reaches it. We also do
+    # NOT include `pvc` in the resource list below — even if the StatefulSet
+    # is gone, k8s keeps the PVC around so the next dev start mounts the
+    # same data. See the block comment in k8s/overlays/dev/namespace.yaml
+    # for the full rationale.
+    if kubectl --context "$kube_context" get namespace "$dev_namespace" > /dev/null 2>&1; then
+        echo "Removing any stale dev workloads in $dev_namespace namespace..."
+        kubectl --context "$kube_context" -n "$dev_namespace" delete \
+            deployments,statefulsets,services,ingress,jobs,cronjobs --all \
+            --ignore-not-found=true --wait=false > /dev/null 2>&1 || true
+    fi
+
+    if [[ "$found" == "false" ]]; then
+        echo "No $app_name dev server found running (workloads cleaned up regardless)."
+    else
+        echo "$app_name development server stopped."
+    fi
+}
+
+# Environment/setup errors: say what's wrong and how to fix it, nothing else.
 die () {
-    echo "*** ERROR ***"
+    echo >&2 "ERROR: $@"
+    exit 1
+}
+
+# Bad invocation: the usage text is the fix, so show it.
+usage_error () {
     echo >&2 "ERROR: $@"
     help
     exit 1
 }
 
-check_minikube() {
-    if ! command -v minikube &> /dev/null; then
-        die "minikube is not installed. Install it with: brew install minikube"
+check_kind() {
+    if ! command -v kind &> /dev/null; then
+        die "kind is not installed. Install it with: brew install kind"
     fi
 }
 
 check_skaffold() {
     if ! command -v skaffold &> /dev/null; then
         die "skaffold is not installed. Install it with: brew install skaffold"
+    fi
+}
+
+check_kubectl() {
+    if ! command -v kubectl &> /dev/null; then
+        die "kubectl is not installed. Install it with: brew install kubectl"
+    fi
+}
+
+check_docker() {
+    if ! command -v docker &> /dev/null; then
+        die "docker is not installed. Install Docker Desktop (or colima + docker CLI)."
+    fi
+    # kind and skaffold both need the daemon; catch it here instead of a
+    # confusing failure mid-cluster-setup.
+    if ! docker info > /dev/null 2>&1; then
+        die "The Docker daemon is not running. Start Docker Desktop (or 'colima start') and retry."
     fi
 }
 
@@ -49,56 +202,74 @@ check_dev_server_not_running() {
             # Get the working directory of the process
             local proc_cwd=$(lsof -p "$pid" 2>/dev/null | grep cwd | awk '{print $NF}')
             if [[ "$proc_cwd" == "$workspace_root" ]]; then
-                die "Dev server is already running for this project (skaffold pid $pid). Stop it first with Ctrl+C or 'kill $pid'"
+                echo "Found running skaffold processes:"
+                pgrep -f "skaffold dev" | xargs -I{} lsof -p {} -a -d cwd 2>/dev/null || true
+                die "Dev server is already running for this project. Stop it first with './scripts/dev stop'"
             fi
         done
     fi
 
-    # Check if port 3000 is already in use (the app port)
-    # Use -sTCP:LISTEN to only check for listeners, not client connections
-    if lsof -nP -iTCP:3000 -sTCP:LISTEN > /dev/null 2>&1; then
-        die "Port 3000 is already in use. A dev server may already be running. Stop it first."
+    # NOT a port-in-use check: the kind node publishes $app_port for as long as
+    # the cluster exists, so something always listens there. What matters is
+    # whether an app is already answering on it.
+    if curl -fsS -m 2 "${liveness_url:-http://$app_host:$app_port/api/health/liveness}" > /dev/null 2>&1; then
+        die "Something is already serving at http://$app_host:$app_port. A dev server may already be running. Stop it first with './scripts/dev stop'"
     fi
 }
 
-setup_minikube() {
-    echo "Checking minikube status..."
+setup_kind() {
+    echo "Checking kind cluster '$kind_cluster'..."
 
-    # Check if minikube cluster exists and is running
-    if ! minikube status &> /dev/null; then
-        echo "Starting minikube..."
-        minikube start
+    # Idempotent: create the cluster only if it doesn't already exist.
+    # This cluster is shared across local dev projects; never delete it here.
+    if kind get clusters 2>/dev/null | grep -q "^${kind_cluster}\$"; then
+        echo "Kind cluster '$kind_cluster' already exists"
+
+        # Port mappings can only be set when a cluster is created, so a cluster
+        # made before k8s/kind-cluster.yaml existed silently has none and the
+        # app would be unreachable. Say so now instead of failing at wait-on.
+        if ! docker port "${kind_cluster}-control-plane" 2>/dev/null | grep -q ":${app_port}\$"; then
+            die "Kind cluster '$kind_cluster' has no hostPort ${app_port} mapping, so the app cannot be reached at http://${app_host}:${app_port}. Port mappings can only be set at creation, so recreate it: kind delete cluster --name $kind_cluster (then rerun this script). Note this deletes the dev database (all projects sharing the cluster)."
+        fi
     else
-        echo "Minikube is already running"
+        echo "Creating kind cluster '$kind_cluster'..."
+        kind create cluster --name "$kind_cluster" --config "$workspace_root/k8s/kind-cluster.yaml"
     fi
 
-    # Check and enable ingress addon
-    if ! minikube addons list | grep -q "ingress.*enabled"; then
-        echo "Enabling minikube ingress addon..."
-        minikube addons enable ingress
-    else
-        echo "Ingress addon already enabled"
+    # Make sure kubectl can actually reach the cluster on the expected context
+    if ! kubectl --context "$kube_context" cluster-info > /dev/null 2>&1; then
+        die "Cannot reach kind cluster on context '$kube_context'. Try: kind export kubeconfig --name $kind_cluster"
     fi
 
-    # Check and enable ingress-dns addon
-    if ! minikube addons list | grep -q "ingress-dns.*enabled"; then
-        echo "Enabling minikube ingress-dns addon..."
-        minikube addons enable ingress-dns
-    else
-        echo "Ingress-dns addon already enabled"
-    fi
-
-    # Wait for ingress controller to be ready
-    echo "Waiting for minikube ingress controller to be ready..."
-    if ! minikube kubectl -- wait --namespace ingress-nginx \
-        --for=condition=ready pod \
-        --selector=app.kubernetes.io/component=controller \
-        --timeout=120s 2>/dev/null; then
-        echo "Warning: Ingress controller not ready yet, but continuing..."
-    else
-        echo "Ingress controller is ready"
-    fi
+    echo "✅ Kind cluster '$kind_cluster' ready on context '$kube_context'"
 }
+
+setup_ingress() {
+    # The app is reached through an ingress (prod-like) rather than
+    # `kubectl port-forward`, whose tunnel dropped connections under load. The
+    # controller binds the node's hostPort 80, which kind publishes as
+    # host port $app_port (k8s/kind-cluster.yaml).
+    #
+    # Manifest is vendored rather than fetched so the version is pinned and the
+    # cluster-shared install is reproducible; refresh it from
+    # https://kind.sigs.k8s.io/examples/ingress/deploy-ingress-nginx.yaml
+    if ! kubectl --context "$kube_context" -n ingress-nginx get deployment ingress-nginx-controller > /dev/null 2>&1; then
+        echo "Installing ingress-nginx..."
+        kubectl --context "$kube_context" apply -f "$workspace_root/k8s/kind-ingress-nginx.yaml"
+    fi
+
+    echo "Waiting for ingress-nginx to be ready..."
+    # The admission webhook rejects Ingress objects until its cert job has run,
+    # so skaffold's deploy fails if it starts before the controller is ready.
+    # `rollout status`, not `wait --for=condition=ready pod`: the latter exits
+    # "no matching resources found" when the pod hasn't been created yet.
+    kubectl --context "$kube_context" -n ingress-nginx rollout status \
+        deployment/ingress-nginx-controller --timeout=180s
+
+    echo "✅ ingress-nginx ready; app will be served at http://$app_host:$app_port"
+}
+
+skaffold_verbosity="--verbosity=info"
 
 # Parse arguments
 while [[ $# -gt 0 ]]; do
@@ -107,36 +278,84 @@ while [[ $# -gt 0 ]]; do
             help
             exit 0
             ;;
+        -v|--verbose)
+            skaffold_verbosity="--verbosity=debug"
+            shift
+            ;;
+        stop)
+            stop_dev_server
+            exit 0
+            ;;
         *)
-            die "Unknown option: $1"
+            usage_error "Unknown option: $1"
             ;;
     esac
 done
 
 cd "$workspace_root"
 
-echo "=== Setting up Development Environment ==="
+echo "=== Setting up $app_name Development Environment ==="
 
 check_dev_server_not_running
-check_minikube
+check_kind
+check_kubectl
 check_skaffold
-setup_minikube
+check_docker
+setup_kind
+setup_ingress
+
+if [[ -n "$extra_setup_script" ]]; then
+    echo ""
+    echo "Running project-specific pre-skaffold setup ($extra_setup_script)..."
+    "$extra_setup_script"
+fi
+
+echo ""
+# Apply the dev namespace directly. We deliberately keep namespace
+# lifecycle out of skaffold so that `./scripts/dev stop` (which triggers
+# skaffold cleanup) doesn't delete it — namespace deletion would cascade
+# to the DB's PVC and silently wipe dev data. See the block comment in
+# k8s/overlays/dev/namespace.yaml for the full rationale.
+echo "Ensuring $dev_namespace namespace exists..."
+kubectl --context "$kube_context" apply -f "$namespace_manifest" > /dev/null
 
 echo ""
 echo "Starting skaffold development with HMR..."
-echo "The app will be available at http://localhost:3000"
+echo "The app will be served at http://$app_host:$app_port (namespace $dev_namespace)"
 echo "Press Ctrl+C to stop"
 echo ""
 
-# Configure Docker to use minikube's Docker daemon
-# This ensures skaffold builds images inside minikube
-echo "Configuring Docker to use minikube's Docker daemon..."
-eval $(minikube docker-env)
-
 # Run skaffold dev with proper context
-# --cleanup=true (default): Delete deployed resources (Deployments, CronJobs, Services)
-#   when stopping with Ctrl+C. This prevents the dev CronJob from continuing to
-#   hit eBay's API in the background after the dev session ends (dev and prod share
-#   the same API key). Database PVCs are safe — Kubernetes retains StatefulSet PVCs
-#   even when the StatefulSet is deleted, so DB data persists between dev runs.
-skaffold dev --port-forward
+# --cleanup=true (default): Delete deployed resources (Deployments, StatefulSets,
+#   Services, Ingress, CronJobs) when stopping with Ctrl+C. This prevents stale
+#   pods running old code — and the dev CronJobs hitting eBay/Amazon's APIs in
+#   the background — from sticking around between dev sessions.
+# Skaffold builds images against the host Docker daemon and uses
+# `kind load docker-image` (auto-detected from the `kind-*` kubecontext
+# prefix) to push them into the kind nodes — no registry needed, no
+# eval-docker-env dance required.
+# Database data persists across restarts because:
+#   1. The DB StatefulSet's `volumeClaimTemplates` makes k8s dynamically
+#      create a PVC that k8s keeps even when the StatefulSet is deleted.
+#   2. The Namespace is intentionally NOT in the kustomize render so
+#      skaffold's cleanup never touches it. (Namespace deletion would
+#      cascade-delete the PVC regardless of any retention policy — see the
+#      comment in k8s/overlays/dev/namespace.yaml for why annotating the
+#      PVC won't help.)
+# --kube-context overrides the active kubectl context for the whole skaffold
+# run (build + deploy). Without it, skaffold inspects the active kubectl
+# context to decide how to ship images — if the active context is `minikube`,
+# skaffold builds against minikube's docker daemon, and the image never
+# reaches the kind cluster (resulting in ImagePullBackOff on deploy).
+#
+# When dev_log_file is set, tee the combined output there (truncated per
+# start) so it can be read without owning this terminal. Piping makes
+# skaffold drop ANSI color, so the file stays grep-able. Signal handling is
+# unchanged: interactive Ctrl+C signals the whole foreground process group,
+# and `./scripts/dev stop` signals the skaffold PID directly.
+if [[ -n "$dev_log_file" ]]; then
+    echo "Server output is teed to $dev_log_file"
+    skaffold dev --kube-context "$kube_context" $skaffold_verbosity 2>&1 | tee "$dev_log_file"
+else
+    skaffold dev --kube-context "$kube_context" $skaffold_verbosity
+fi

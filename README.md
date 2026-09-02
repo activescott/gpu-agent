@@ -23,17 +23,17 @@ GPU Poet is open source:
 ### Prerequisites
 
 ```bash
-brew install minikube skaffold
+brew install kind skaffold kubectl
 ```
 
 ### Quick Start
 
 ```bash
-# Start development environment (minikube + skaffold)
+# Start development environment (kind + skaffold)
 npm run dev
 ```
 
-`scripts/dev` is a long-running process — it runs skaffold in dev mode watching for file changes. Run it in a separate terminal. The app will be available at http://localhost:3000.
+`scripts/dev` is a long-running process — it runs skaffold in dev mode watching for file changes. Run it in a separate terminal. The app runs on a shared local `kind` cluster (also used by other local projects, isolated by namespace/hostname) and will be available at http://gpupoet.localhost:3400.
 
 ### Environment Setup
 
@@ -109,8 +109,8 @@ cd e2e-tests && npm run test:prod               # Against production
 
 ### Health Checks
 
-- Application: http://localhost:3000/api/health
-- Metrics: http://localhost:3000/ops/metrics
+- Application: http://gpupoet.localhost:3400/api/health
+- Metrics: http://gpupoet.localhost:3400/ops/metrics
 
 ### Listing Revalidation
 
@@ -118,9 +118,9 @@ The app needs listing revalidation to populate listing data. In dev, trigger it 
 
 ```bash
 # eBay listings
-curl -X POST http://localhost:3000/ops/revalidate-ebay
+curl -X POST http://gpupoet.localhost:3400/ops/revalidate-ebay
 # Amazon listings
-curl -X POST http://localhost:3000/ops/revalidate-amazon
+curl -X POST http://gpupoet.localhost:3400/ops/revalidate-amazon
 ```
 
 In production, separate K8s CronJobs run eBay (every 20 min) and Amazon (every 10 min) automatically.

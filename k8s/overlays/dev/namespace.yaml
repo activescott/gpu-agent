@@ -1,3 +1,36 @@
+# DEV DB PERSISTENCE — this Namespace is APPLIED BY scripts/dev (idempotent
+# `kubectl apply -f`, generated per-checkout at
+# k8s/overlays/dev-instance/namespace.yaml — this file is the main
+# checkout's static fallback identity), NOT by skaffold. It is intentionally
+# absent from k8s/overlays/dev/kustomization.yaml's `resources` list. The
+# kustomization still references the namespace via its `namespace:` field,
+# so skaffold deploys workloads into this existing namespace without
+# managing its lifecycle.
+#
+# Why this matters — the chain that protects dev DB data across
+# `./scripts/dev stop && ./scripts/dev` cycles:
+#
+# 1. The dev DB is a StatefulSet (k8s/base/db-deployment.yaml) whose
+#    `volumeClaimTemplates` causes Kubernetes to dynamically create a PVC.
+#    We never write a PVC manifest — k8s does.
+# 2. By default, k8s RETAINS PVCs created from volumeClaimTemplates when the
+#    StatefulSet is deleted. So `kubectl delete statefulset db` is safe.
+# 3. BUT deleting a Namespace cascades to every resource inside it, INCLUDING
+#    PVCs, and that cascade IGNORES retention policies, reclaim policies, and
+#    finalizers. The data is gone.
+# 4. Skaffold's `--cleanup=true` (default, used by scripts/dev so workloads
+#    don't go stale on stop) runs `kubectl delete` against everything in the
+#    rendered kustomize manifest. By NOT listing this file in `resources`,
+#    we keep the Namespace out of skaffold's blast radius.
+# 5. `skaffold.dev/no-prune: "true"` is NOT honored by skaffold's cleanup —
+#    don't bother re-adding it.
+# 6. We could not put any annotation on the PVC: the PVC isn't in any
+#    manifest (it's created from the StatefulSet's volumeClaimTemplate), and
+#    even if it were, namespace cascade-deletion ignores annotations.
+#
+# If you remove this file or add it back to kustomize/resources without
+# replacing the persistence story, you will silently wipe dev DB data on
+# every restart.
 apiVersion: v1
 kind: Namespace
 metadata:

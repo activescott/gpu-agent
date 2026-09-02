@@ -84,11 +84,11 @@ if [ "$count" = "0" ]; then
   debug_dir="/tmp/amazon-searcher-debug/$slug"
   local_dir="/tmp/amazon-searcher-debug-local/$slug"
   mkdir -p "$local_dir"
-  pod=$(kubectl --context minikube -n gpupoet-dev get pods -l app=amazon-searcher -o jsonpath='{.items[0].metadata.name}' 2>/dev/null || true)
+  pod=$(kubectl --context kind-kind -n gpupoet-dev get pods -l app=amazon-searcher -o jsonpath='{.items[0].metadata.name}' 2>/dev/null || true)
   if [ -n "$pod" ]; then
     echo "Pulling debug artifacts from pod $pod..."
-    kubectl --context minikube -n gpupoet-dev cp "$pod:$debug_dir/trace.zip" "$local_dir/trace.zip" 2>/dev/null && echo "  Trace: $local_dir/trace.zip" && echo "  View: npx playwright show-trace $local_dir/trace.zip" || echo "  (no trace)"
-    kubectl --context minikube -n gpupoet-dev cp "$pod:$debug_dir/page.html" "$local_dir/page.html" 2>/dev/null && echo "  HTML: $local_dir/page.html" || echo "  (no HTML)"
+    kubectl --context kind-kind -n gpupoet-dev cp "$pod:$debug_dir/trace.zip" "$local_dir/trace.zip" 2>/dev/null && echo "  Trace: $local_dir/trace.zip" && echo "  View: npx playwright show-trace $local_dir/trace.zip" || echo "  (no trace)"
+    kubectl --context kind-kind -n gpupoet-dev cp "$pod:$debug_dir/page.html" "$local_dir/page.html" 2>/dev/null && echo "  HTML: $local_dir/page.html" || echo "  (no HTML)"
   fi
   exit 1
 fi

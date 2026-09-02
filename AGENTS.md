@@ -19,13 +19,14 @@ GPU specs, model specs, and benchmark data are authored in the private `gpu-poet
 ## Important Instructions
 
 - Always use scripts/dev to start the dev environment:
-  - Don't use minikube commands directly to start it.
+  - Don't use kind/skaffold commands directly to start it.
   - Run `./scripts/dev` directly without output redirection - it provides all needed output
   - Don't redirect output (e.g., `> /tmp/file.log`) - it causes permission prompts
   - To stop: `./scripts/dev stop`
   - To restart: `./scripts/dev stop && ./scripts/dev`
   - The dev environment takes ~33s to start. Start it in background and use `sleep 33` right away.
-- Always use `minikube kubectl` instead of bare `kubectl` for the correct context.
+  - The app runs on a shared local `kind` cluster (also used by other local projects) at `http://gpupoet.localhost:3400`, not `localhost:3000`.
+- Always use `kubectl --context kind-kind` for the correct context.
 - Save all approved plans to `/Users/scott/src/activescott/gpu-poet-data/docs/plans/` with format `YYYY-MM-DD-plan-name.md`.
 - **Taking screenshots**: Use `./scripts/screenshot <url> [output-dir]` to capture pages for visual verification. It auto-splits long pages into viewport-sized chunks. Dev environment must be running first. Use `SELECTOR='.my-class'` to capture a specific element.
 
@@ -84,7 +85,7 @@ echo 'ALTER TABLE "TableName" ADD COLUMN "columnName" TYPE;' > packages/web-app/
 
 ## Amazon Searcher Testing
 
-The amazon-searcher microservice runs in minikube alongside the main app. Code lives in `packages/amazon-searcher/`. Oxylabs proxy credentials go in `k8s/overlays/dev/.env.dev.app` (see `.env.dev.app.example`).
+The amazon-searcher microservice runs in the local kind cluster alongside the main app. Code lives in `packages/amazon-searcher/`. Oxylabs proxy credentials go in `k8s/overlays/dev/.env.dev.app` (see `.env.dev.app.example`).
 
 - **Test a search**: `./scripts/test-amazon-searcher` (random GPU) or `./scripts/test-amazon-searcher "AMD Radeon RX 9070 XT"`
 - **Test full revalidation flow**: `./scripts/test-amazon-revalidation`
@@ -94,7 +95,7 @@ The amazon-searcher microservice runs in minikube alongside the main app. Code l
 ## Production Deployment (K8s Manifests)
 
 K8s manifests exist in **two places** that must be kept in sync:
-- **`gpu-poet/k8s/base/`** — used by local dev (minikube via skaffold)
+- **`gpu-poet/k8s/base/`** — used by local dev (kind via skaffold)
 - **`home-infra-k8s-flux/apps/base/gpupoet/`** — used by production (Flux GitOps)
 
 When changing CronJobs, ingress rules, deployments, or services, update both repos.

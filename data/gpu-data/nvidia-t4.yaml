@@ -124,8 +124,6 @@ notes:
   - "NVPN 900-2G183-0000-000 is the base order part number with low profile bracket preinstalled, sourced from exxactcorp.com and NVIDIA Product Brief"
   - "NVPN 900-2G183-0000-001 is the order part number with ATX bracket preinstalled, sourced from exxactcorp.com"
   - "Board ID PG183 sourced from NVIDIA T4 Product Brief and technical documentation"
-  - "PCI Device ID 0x1EB8 sourced from devicehunt.com and NVIDIA Developer Forums (forums.developer.nvidia.com)"
-  - "PCI Subsystem ID 0x12A2 sourced from NVIDIA T4 Product Brief and devicehunt.com"
   - "GPU SKU TU104-895 sourced from TechPowerUp GPU Database and NVIDIA Product Brief"
   - "Dell part number HCKJM and 0HCKJM sourced from marigoldsystems.com and expresscomputersystems.com. Same part, different format (with/without leading zero)"
   - "Dell part number 7PH29 sourced from expresscomputersystems.com as alternate Dell part number"

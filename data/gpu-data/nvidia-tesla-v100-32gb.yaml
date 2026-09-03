@@ -5,13 +5,13 @@ category: datacenter
 msrpUSD: 11500
 tensorCoreCount: 640
 fp32TFLOPS: 14
-fp16TFLOPS: 28
+fp16TFLOPS: 112
 int8TOPS: 56
 fp8TFLOPS: null
 fp4TFLOPS: null
 memoryCapacityGB: 32
 memoryBandwidthGBs: 900
-maxTDPWatts: 300
+maxTDPWatts: 250
 gpuArchitecture: volta
 supportedHardwareOperations:
   - FP16
@@ -120,6 +120,7 @@ references:
   - https://www.provantage.com/cisco-systems-ucsc-gpu-v100-32~7CSC8WRL.htm
   - https://www.itcreations.com/product/121318
   - https://images.nvidia.com/content/volta-architecture/pdf/volta-architecture-whitepaper.pdf
+  - https://www.nvidia.com/en-au/data-center/v100/
 
 notes:
   - "supportedCUDAComputeCapability: lookup GPU Compute Capability at
@@ -145,3 +146,5 @@ notes:
   - "Cisco part number UCSC-GPUV100SXM32 (SXM2 version) sourced from itcreations.com"
   - 'supportedHardwareOperations corrected 2026-09-02 to the canonical Volta baseline (FP16 only) documented in .claude/agents/gpu-researcher.md, sourced from the NVIDIA Tesla V100 GPU Architecture whitepaper (images.nvidia.com/content/volta-architecture/pdf/volta-architecture-whitepaper.pdf): "Tensor Cores operate on FP16 input data with FP32 accumulation." Removed FP64, FP32, and INT8 — Volta''s 1st-generation Tensor Cores support only FP16-in/FP32-accumulate matrix multiply; there is no INT8/INT4 Tensor Core path (added in Turing), no TF32/BF16 (Ampere), no FP8 (Ada), and no FP64 Tensor Core path (added in Ampere''s A100). The 32GB SKU shares the identical GV100 die and Tensor Core design with the 16GB variant, differing only in HBM2 capacity, so the precision set is identical. The int8TOPS value of 56 that remains on this file reflects V100''s DP4A 4-element dot-product ALU instruction, a plain CUDA-core path (not a Tensor Core/GEMM path), the same distinction already applied to Pascal Tesla P4/P40 DP4A support in the canonical table — so it is retained as a numeric spec but INT8 is correctly excluded from supportedHardwareOperations under the GEMM-only definition.'
   - 'fp8TFLOPS and fp4TFLOPS are null: Volta predates both FP8 (introduced in Ada) and FP4 (introduced in Blackwell) Tensor Core support. Confirmed hardware negative per the NVIDIA Tesla V100 GPU Architecture whitepaper, which documents only FP16 Tensor Core input support. Not added to unverifiedSpecs since these are confirmed negatives, not data gaps.'
+  - 'CORRECTED 2026-09-02: maxTDPWatts changed from 300W to 250W. This file describes the PCIe form factor (confirmed by the cited Tesla-V100-PCIe-Product-Brief.pdf reference, the PCIe-specific thirdPartyProducts part numbers including Cisco''s "UCSC-GPU-V100-32= 250W" listing, and the summary text), and 300W is the SXM2 TDP, not PCIe. NVIDIA''s official V100 product page (nvidia.com/en-au/data-center/v100/) lists Maximum Power Consumption / TDP as 300W for "V100 for NVLink (SXM-2)" versus 250W for "V100 for PCIe (32 GB)" — matching the 250W figure independently confirmed in the Tesla-V100-PCIe-Product-Brief.pdf Thermal Specifications table (Table 5, Total Board Power), and further corroborated by the existing Cisco thirdPartyProducts entry which explicitly names the PCIe 32GB card "250W" in its product description.'
+  - 'CORRECTED 2026-09-02: fp16TFLOPS changed from 28 to 112. The prior value of 28 was the plain vector/non-tensor FP16 rate (2x FP32''s 14 TFLOPS), not the Tensor Core path required by this project''s fp16TFLOPS convention (use the matrix/tensor AI-accelerator path, not the SIMD vector path; see .claude/agents/gpu-researcher.md and project memory). NVIDIA''s official V100 product page (nvidia.com/en-au/data-center/v100/) specs table lists Deep-Learning/Tensor FP16 performance as 125 TFLOPS for "V100 for NVLink (SXM-2)" versus 112 TFLOPS for "V100 for PCIe (32 GB)" — the PCIe row also lists FP32=14.0 TFLOPS and FP64=7.0 TFLOPS, matching this file''s existing fp32TFLOPS=14 value and confirming this file describes the original (non-V100S) 32GB PCIe variant. Cross-validated against Microway''s independently sourced comparison table (microway.com/knowledge-center-articles/in-depth-comparison-of-nvidia-tesla-volta-gpu-accelerators/), which lists "TensorFLOPS, 125 TFLOPS [SXM2], 112 TFLOPS [PCIe]" and "Integer Operations (INT8)*, 62.8 TOPS [SXM2], 56 [PCIe]" — the INT8 figure of 56 matches this file''s existing int8TOPS value, further confirming the PCIe column is the correct one for this SKU.'

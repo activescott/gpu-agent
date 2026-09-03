@@ -14,7 +14,6 @@ maxTDPWatts: 300
 gpuArchitecture: RDNA 4
 supportedHardwareOperations:
   - FP16
-  - FP32
   - BF16
   - INT8
   - INT4
@@ -86,7 +85,7 @@ notes:
   - tensorCoreCount of 128 represents the 2nd-generation AI Accelerators (2 per compute unit × 64 compute units), which are AMD's dedicated matrix multiplication units for AI workloads.
   - Memory bandwidth calculated as 256-bit interface × 20 Gbps ÷ 8 bits/byte = 640 GB/s, confirmed by AMD specifications.
   - RDNA 4 architecture includes redesigned 3rd-generation Ray Tracing Accelerators and 2nd-generation AI Accelerators with support for sparsity acceleration.
-  - Supported hardware operations include FP8, FP16, BF16, INT8, and INT4 on AI Accelerators, with FP32 operations on general shader units. Sparsity acceleration enables up to 4× FP16 and 8× INT8 throughput.
+  - 'Phase 5 precision audit (2026-09-02): supportedHardwareOperations corrected to FP16, BF16, INT8, INT4, FP8 (removed FP32) per the canonical RDNA 4 baseline in gpu-researcher.md - FP32 runs on general-purpose shader units, not the WMMA/AI Accelerator matrix path, so it is excluded under the GEMM-only definition of this field (fp32TFLOPS above still reports the shader-ALU throughput). Sparsity acceleration enables up to 4x FP16 and 8x INT8 throughput.'
   - The GPU uses the Navi 48 GPU die manufactured on TSMC's 4nm process with 64 Compute Units.
   - Clock speeds specified by AMD as Base Clock 1,620 MHz, Game Clock 2,350 MHz, Boost Clock up to 2,920 MHz.
   - Board partners include ASRock, ASUS, Gigabyte, PowerColor, Sapphire, XFX, and Yeston. Part numbers sourced from XFX official product page and third-party retail listings.

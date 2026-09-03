@@ -1,6 +1,11 @@
 name: Build IndexNow Notifier
 
 on:
+  # Manual trigger: publishes a fresh timestamp-tagged image even when
+  # packages/indexnow-notifier has not changed (e.g. to exercise the
+  # home-infra Flux image automation).
+  workflow_dispatch:
+
   push:
     branches: [main]
     paths:

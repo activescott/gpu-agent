@@ -11,7 +11,7 @@ maxTDPWatts: 175
 gpuArchitecture: Graphics Core Next 4
 supportedHardwareOperations: []
 releaseDate: "2018-11-15"
-lastModified: "2025-12-21T00:00:00Z"
+lastModified: "2026-09-02T00:00:00Z"
 
 summary: The AMD Radeon RX 590, launched on November 15th, 2018, uses the 12 nm
   process with the Polaris 30 graphics processor. It's a performance-segment
@@ -61,7 +61,8 @@ references:
   - https://www.techpowerup.com/gpu-specs/radeon-rx-590.c3322
   - https://en.wikipedia.org/wiki/Graphics_Core_Next
   - https://www.techpowerup.com/249540/amd-radeon-rx-590-launch-price-other-details-revealed
-  - https://videocardz.com/amd/radeon-500/radeon-rx-590
+  - https://web.archive.org/web/20161221085854/http://radeon.wpengine.netdna-cdn.com/wp-content/uploads/2016/08/Polaris-Architecture-Whitepaper-Final-08042016.pdf
+  - https://gpuopen.com/learn/amd-lab-notes/amd-lab-notes-matrix-cores-readme/
   - https://pcpartpicker.com/product/nLNv6h/sapphire-radeon-rx-590-8-gb-nitro-video-card-11289-01-20g
   - https://pcpartpicker.com/product/hPyV3C/sapphire-radeon-rx-590-8-gb-nitro-video-card-11289-05-20g
   - https://pcpartpicker.com/product/jX97YJ/sapphire-radeon-rx-590-8-gb-nitro-video-card-11289-07-20g
@@ -83,7 +84,8 @@ notes:
     GEMM wasn't supported in previous architectures and I can find no reference
     to them in GCN)
     – https://gpuopen.com/learn/amd-lab-notes/amd-lab-notes-matrix-cores-README/"
-  - MSRP of $279 USD sourced from AMD official announcement verified by TechPowerUp and VideoCardz coverage.
+  - 'Phase 5 audit (2026-09-02): confirmed empty supportedHardwareOperations array against the canonical GCN 4 baseline in gpu-researcher.md (GCN 4/Polaris predates AMD Matrix Core hardware entirely, first introduced with CDNA/MI100 in 2020). Located and fetched a second, primary-source citation: the official AMD Polaris Architecture whitepaper (originally hosted at radeon.wpengine.netdna-cdn.com, now retrieved via Wayback Machine archive dated 2016-12-21, added to references above). A full-text search of that whitepaper found no mention of matrix multiplication units, tensor/matrix cores, GEMM acceleration, or fast INT8/FP16 dot-product hardware anywhere in the document, corroborating the gpuopen.com Matrix Cores lab note already cited. fp8TFLOPS and fp4TFLOPS remain intentionally omitted (confirmed hardware negative, not a research gap) since GCN 4 has no matrix/tensor engine of any kind; no unverifiedSpecs entry is needed per the schema''s distinction between "not found" and "hardware does not support this."'
+  - MSRP of $279 USD sourced from AMD official announcement, verified by TechPowerUp coverage.
   - "AMD does not publish OPN (Ordering Part Numbers) for consumer GPUs like the RX 590. AIB partners (Sapphire, PowerColor, XFX, ASUS, MSI, Gigabyte, ASRock) manufactured all RX 590 cards with their own part numbers."
   - "Sapphire NITRO+ RX 590 part numbers sourced from PCPartPicker and official Sapphire product pages. Models include Special Edition (11289-01-20G) in blue/white and standard editions (11289-05-20G, 11289-07-20G) with different color schemes."
   - "PowerColor RX 590 part numbers sourced from Amazon and official PowerColor product pages. Red Devil model (AXRX 590 8GBD5-3DH/OC) features 1576MHz boost clock while Red Dragon (AXRX 590 8GBD5-DHD) runs at 1545MHz."

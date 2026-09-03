@@ -7,6 +7,8 @@ tensorCoreCount: 1024
 fp32TFLOPS: 144.2
 fp16TFLOPS: 4600
 int8TOPS: 4600
+fp8TFLOPS: 4600
+fp4TFLOPS: 9200
 memoryCapacityGB: 288
 memoryBandwidthGBs: 8000
 maxTDPWatts: 1000
@@ -20,7 +22,7 @@ supportedHardwareOperations:
   - FP8
   - FP4
 releaseDate: "2025-06-12"
-lastModified: "2026-06-03T00:00:00Z"
+lastModified: "2026-09-02T00:00:00Z"
 
 summary: >-
   The AMD Instinct MI350X is AMD's first CDNA 4 architecture AI and HPC
@@ -60,6 +62,7 @@ thirdPartyProducts:
 references:
   - https://www.amd.com/en/products/accelerators/instinct/mi350/mi350x.html
   - https://www.amd.com/en/products/accelerators/instinct/mi350.html
+  - https://www.amd.com/content/dam/amd/en/documents/instinct-tech-docs/white-papers/amd-cdna-4-architecture-whitepaper.pdf
   - https://ir.amd.com/news-events/press-releases/detail/1255/amd-unveils-vision-for-an-open-ai-ecosystem-detailing-new-silicon-software-and-systems-at-advancing-ai-2025
   - https://www.extremetech.com/computing/amd-launches-instinct-mi350x-and-mi355x-ai-gpus
   - https://www.trendforce.com/news/2025/06/13/news-unpacking-amds-mi350-powered-by-tsmcs-n3p-with-samsung-micron-as-dual-hbm3e-suppliers/
@@ -73,6 +76,9 @@ notes:
   - 'fp32TFLOPS of 144.2 represents peak FP32 vector performance per AMD official product page (amd.com/en/products/accelerators/instinct/mi350/mi350x.html). AMD also lists FP32 matrix performance at 144.2 TFLOPS. Note: CDNA 4 achieves FP32 vector equals FP32 matrix parity, unlike earlier CDNA architectures where FP32 vector did not equal FP64 matrix.'
   - 'fp16TFLOPS of 4600 represents peak FP16 matrix performance with 2:4 structured sparsity (4.6 PFLOPs) per AMD official product page. Dense (non-sparse) FP16 matrix performance is 2300 TFLOPS (2.3 PFLOPs). Sparse value used per agent policy (FP16 Matrix SPARSE). BF16 has identical dense/sparse values: 2.3 PFLOPs dense / 4.6 PFLOPs sparse.'
   - 'int8TOPS of 4600 represents non-sparse (dense) INT8 matrix performance per AMD official product page (listed as "Peak INT8 Matrix Performance: 4.6 POPs"). With 2:4 structured sparsity, INT8 performance is 9200 TOPS (9.2 POPs). Dense value used for consistent cross-vendor comparison.'
+  - 'fp8TFLOPS of 4600 represents non-sparse (dense) OCP-FP8 (E5M2, E4M3) matrix performance per AMD official product page. With 2:4 structured sparsity, FP8 performance is 9200 TFLOPS. Dense value used for consistent cross-vendor comparison. Field added 2026-09-02 during the Phase 5 precision-filters audit; the underlying 4.6 PFLOPs dense figure was already documented in this file''s "Additional precision performance" note but had not previously been populated into the fp8TFLOPS schema field.'
+  - 'fp4TFLOPS of 9200 (9.2 PFLOPS) represents MXFP4 matrix performance per AMD official product page. AMD publishes FP4/MXFP4 as a single microscaling-format peak rate (no separate dense-vs-sparse split is listed). Field added 2026-09-02 during the Phase 5 precision-filters audit; the underlying 9.2 PFLOPs figure was already documented in this file''s "Additional precision performance" note but had not previously been populated into the fp4TFLOPS schema field.'
+  - 'CORRECTION (2026-09-02, Phase 5 audit): the gpu-researcher.md agent doc''s canonical CDNA 4 table asserted a "genuine SKU-level deviation" in which the CDNA 4 whitepaper''s MI350X-vs-MI355X comparison table allegedly shows the Matrix MXFP6/MXFP4 row as "NA" for the MI350X (FP4 present only on MI355X). This audit independently re-verified that claim and found it NOT supported: (1) a fresh fetch of the AMD MI350X official product page (amd.com/en/products/accelerators/instinct/mi350/mi350x.html) lists FP4 (MXFP4) matrix performance at 9.2 PFLOPs for the MI350X, consistent with this file''s pre-existing notes; (2) a fetch of the AMD CDNA 4 architecture whitepaper''s Table 2 (product specifications table) likewise lists an MXFP6/MXFP4 matrix figure for the MI350X (9.2 PF), not "NA"; (3) Wikipedia''s AMD Instinct article also cites a 9.2 PFLOPS FP4 figure consistent with the MI350X. No source found during this audit shows MI350X lacking FP4/MXFP4 support. Conclusion: the MI350X DOES support FP4 at the hardware level (9.2 PFLOPS dense/peak, no published sparse variant), and FP4 correctly remains in this file''s supportedHardwareOperations array — no change was made to that array. The canonical table''s claimed MI350X/MI355X FP4 split should be treated as unconfirmed/likely erroneous pending further verification against the primary whitepaper PDF (table extraction from the whitepaper PDF was inconsistent across repeated fetches due to PDF-table-to-text conversion artifacts, but no extraction attempt during this audit produced an "NA" result for MI350X FP4).'
   - 'Additional precision performance per AMD official product page: FP64 vector 72.1 TFLOPS; FP64 matrix 72.1 TFLOPS; FP8 MXFP8 dense 4.6 PFLOPs; FP8 OCP-FP8 (E5M2, E4M3) dense 4.6 PFLOPs; FP8 OCP sparse 9.2 PFLOPs; FP6 (MXFP6) 9.2 PFLOPs; FP4 (MXFP4) 9.2 PFLOPs. Note: FP6 support is not representable in the schema''s supportedHardwareOperations enum but CDNA 4 supports native MXFP6 precision.'
   - 'tensorCoreCount of 1024 represents AMD Matrix Cores per AMD official product page listing "Matrix Cores: 1,024". CDNA 4 has 4 Matrix Cores per compute unit x 256 compute units = 1,024. AMD uses the term "Matrix Cores" rather than "Tensor Cores".'
   - 'memoryBandwidthGBs of 8000 represents peak theoretical bandwidth of 8 TB/s from 288 GB HBM3E via 8192-bit memory interface at 8 GHz per AMD official product page. Confirmed by ExtremeTech launch article and TrendForce supply chain report. The 8 GHz memory clock uses 12-high HBM3E stacks supplied by Samsung and Micron (per TrendForce).'
@@ -86,3 +92,4 @@ notes:
   - 'MSRP is null because AMD does not publish official MSRP for datacenter GPU accelerators. No verified OEM list prices were found from resellers (CDW, WiredZone, etc.) at time of research - the MI350X is sold exclusively through OEM system partnerships (Dell, HPE, Lenovo, Supermicro, Cisco, Gigabyte) rather than as a standalone retail module. AMD official MI350 Series page lists OEM partners but provides no pricing. Mass production was slated for Q3 2025. Analyst estimates for MI350 series were not independently confirmed from two separate authoritative sources.'
   - 'Third-party products: Supermicro AS-8126GS-TNMR (8U dual-processor system with 8x AMD Instinct MI325X/MI350X GPUs) confirmed from Supermicro official product page (supermicro.com) and StorageReview H14 review (storagereview.com). The AMD Instinct MI350X is also supported by Dell (PowerEdge XE-class servers), HPE (ProLiant AI servers), Lenovo (ThinkSystem), and Cisco compute platforms per AMD official MI350 Series page, but no standalone GPU OAM module part numbers were found for those vendors - they sell complete server systems.'
   - 'Manufacturer OPN identifiers were not found in publicly available reseller listings or documentation at time of research. The AMD MI300X OPN was 100-300000045H and MI325X was 100-300000108H; MI350X likely follows the same 100-3XXXXXXH format but the specific number was not confirmed from authoritative sources.'
+  - 'Phase 5 audit (2026-09-02): supportedHardwareOperations re-verified against canonical CDNA 4 baseline (FP64, FP32, FP16, BF16, FP8, INT8, FP4) per the gpu-researcher.md agent doc — already correct, no changes made to this array. See the CORRECTION note above regarding the FP4 MI350X/MI355X split.'

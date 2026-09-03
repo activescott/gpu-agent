@@ -11,7 +11,7 @@ maxTDPWatts: 185
 gpuArchitecture: Graphics Core Next 4
 supportedHardwareOperations: []
 releaseDate: "2018-04-11"
-lastModified: "2025-12-21T00:00:00Z"
+lastModified: "2026-09-02T00:00:00Z"
 
 summary: The AMD Radeon RX 580X, launched on April 11th, 2018, is built on a 14
   nm process and features the Polaris 20 graphics processor. It's a dual-slot
@@ -32,8 +32,9 @@ references:
   - https://www.tomshardware.com/reviews/amd-radeon-rx-580-review,5020.html
   - https://www.techpowerup.com/gpu-specs/radeon-rx-580x.c3190
   - https://www.techpowerup.com/gpu-specs/radeon-rx-580.c2938
-  - https://videocardz.com/amd/radeon-500/radeon-rx-580
   - https://en.wikipedia.org/wiki/Graphics_Core_Next
+  - https://web.archive.org/web/20161221085854/http://radeon.wpengine.netdna-cdn.com/wp-content/uploads/2016/08/Polaris-Architecture-Whitepaper-Final-08042016.pdf
+  - https://gpuopen.com/learn/amd-lab-notes/amd-lab-notes-matrix-cores-readme/
   - https://www.ebay.com/itm/256556359244
   - https://www.ebay.com/itm/135878393264
   - https://www.techforless.com/products/Dell/Video_Cards/8XPPN.html
@@ -42,9 +43,10 @@ references:
 notes:
   - 'int8TOPS: "More Information Needed"'
   - The RX 580X was an OEM-only variant of the RX 580 with slightly higher guaranteed clock speeds, sold exclusively to system builders like Dell and HP. No public MSRP was established as it was not sold at retail.
-  - MSRP of $229 is based on the AMD Radeon RX 580 8GB launch price (April 18, 2017), which is the appropriate reference since the RX 580X is an OEM-equivalent variant with nearly identical specifications. The RX 580 8GB MSRP of $229 was confirmed by TechPowerUp GPU Database and VideoCardz.
+  - MSRP of $229 is based on the AMD Radeon RX 580 8GB launch price (April 18, 2017), which is the appropriate reference since the RX 580X is an OEM-equivalent variant with nearly identical specifications. The RX 580 8GB MSRP of $229 was confirmed by TechPowerUp GPU Database.
   - "AMD does not publish OPN (Ordering Part Numbers) for OEM-exclusive GPUs like the RX 580X. This card was sold exclusively through system builders like Dell and HP with their own part numbers."
   - "Dell part number 8XPPN (also listed as 08XPPN) sourced from eBay listings, TechForLess, and BargainHardware. This is the primary Dell part number for the RX 580X 8GB variant."
   - "Dell part number 065VH5 sourced from eBay listings and European retailers. Listed as 'Dell Grafikkarte AMD Radeon RX 580X 8GB GPU Schwarz Full Profile 065VH5'. This appears to be an alternate Dell part number for the RX 580X."
   - "The RX 580X was manufactured exclusively as an OEM product. Dell was the primary OEM partner. HP also used RX 580 OEM variants but specific RX 580X part numbers for HP were not found in research."
   - "Dell RX 580X specifications: 8GB GDDR5, 256-bit bus, PCIe 3.0 x16, 2304 cores, 3x DisplayPort + 1x HDMI outputs, full height form factor."
+  - 'Phase 5 audit (2026-09-02): confirmed empty supportedHardwareOperations array against the canonical GCN 4 baseline in gpu-researcher.md (GCN 4/Polaris predates AMD Matrix Core hardware entirely, first introduced with CDNA/MI100 in 2020; the RX 580X uses the Polaris 20 die, same GCN 4 generation as the RX 590''s Polaris 30). Located and fetched a second, primary-source citation: the official AMD Polaris Architecture whitepaper (originally hosted at radeon.wpengine.netdna-cdn.com, now retrieved via Wayback Machine archive dated 2016-12-21, added to references above). A full-text search of that whitepaper found no mention of matrix multiplication units, tensor/matrix cores, GEMM acceleration, or fast INT8/FP16 dot-product hardware anywhere in the document, corroborating the gpuopen.com Matrix Cores lab note already cited. fp8TFLOPS and fp4TFLOPS remain intentionally omitted (confirmed hardware negative, not a research gap) since GCN 4 has no matrix/tensor engine of any kind; no unverifiedSpecs entry is needed per the schema''s distinction between "not found" and "hardware does not support this."'

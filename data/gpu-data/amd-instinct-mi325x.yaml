@@ -7,6 +7,7 @@ tensorCoreCount: 1216
 fp32TFLOPS: 163.4
 fp16TFLOPS: 2614.9
 int8TOPS: 2614.9
+fp8TFLOPS: 2614.9
 memoryCapacityGB: 256
 memoryBandwidthGBs: 6000
 maxTDPWatts: 1000
@@ -20,7 +21,7 @@ supportedHardwareOperations:
   - BF16
   - FP8
 releaseDate: "2024-10-10"
-lastModified: "2026-06-03T00:00:00Z"
+lastModified: "2026-09-02T00:00:00Z"
 
 summary: >-
   The AMD Instinct MI325X is AMD's Q4 2024 refresh of the MI300X, launched on
@@ -81,6 +82,8 @@ notes:
   - 'fp32TFLOPS of 163.4 represents peak FP32 vector performance per AMD official product page (amd.com/en/products/accelerators/instinct/mi300/mi325x.html). AMD also lists FP32 matrix and FP64 matrix performance at 163.4 TFLOPS. Note: FP32 vector equals FP64 matrix on CDNA 3 due to architecture design.'
   - 'fp16TFLOPS of 2614.9 represents peak FP16 matrix performance with 2:4 structured sparsity per AMD official product page. Dense (non-sparse) FP16 matrix performance is 1307.4 TFLOPS (1.30 PFLOPs per AMD page). Sparse value used to maintain consistency with MI300X sibling file and agent policy (FP16 Matrix SPARSE).'
   - 'int8TOPS of 2614.9 represents non-sparse (dense) INT8 matrix performance per AMD official product page (listed as "Peak INT8 Performance: 2.6 POPs"). With 2:4 structured sparsity, INT8 performance is 5229.8 TOPS. Dense value used for consistent cross-vendor comparison.'
+  - 'fp8TFLOPS of 2614.9 represents non-sparse (dense) FP8 matrix performance per AMD official product page (E5M2 and E4M3 formats), identical to the MI300X sibling since the MI325X uses the same CDNA 3 compute silicon. With 2:4 structured sparsity, FP8 performance is 5229.8 TFLOPS. Dense value used for consistent cross-vendor comparison. Field added 2026-09-02 during the Phase 5 precision-filters audit; the underlying 2614.9 dense figure was already documented in this file''s "Additional precision performance" note but had not previously been populated into the fp8TFLOPS schema field.'
+  - 'fp4TFLOPS is intentionally omitted (not applicable): CDNA 3''s Matrix Cores support FP64, FP32, TF32, FP16, BF16, FP8, and INT8 per the AMD official product page; no FP4 row is listed anywhere in AMD''s CDNA 3 documentation. FP4/MXFP4 support was introduced one generation later, in CDNA 4 (confirmed present on the MI325X''s CDNA 4 successors, MI350X/MI355X). This is a confirmed hardware negative, not a research gap, so fp4TFLOPS is left null without an unverifiedSpecs entry.'
   - 'Additional precision performance per AMD official product page: FP64 vector 81.7 TFLOPS; FP64 matrix 163.4 TFLOPS; TF32 dense 653.7 TFLOPS / sparse 1307.4 TFLOPS (1.30 PFLOPs); BF16 dense 1307.4 TFLOPS / sparse 2614.9 TFLOPS (2.61 PFLOPs); FP8 dense 2614.9 TFLOPS / sparse 5229.8 TFLOPS (5.22 PFLOPs).'
   - 'tensorCoreCount of 1216 represents AMD Matrix Cores (4 per compute unit x 304 compute units = 1216). AMD uses the term "Matrix Cores" rather than "Tensor Cores". Confirmed on AMD official product page which lists "Matrix Cores: 1,216".'
   - 'memoryBandwidthGBs of 6000 represents peak theoretical bandwidth of 6.0 TB/s from 256 GB HBM3e via 8192-bit memory interface at 6 GHz per AMD official product page. Confirmed by multiple independent sources (wccftech, datacenterdynamics, computeprices.com).'
@@ -92,3 +95,4 @@ notes:
   - 'MSRP is null because AMD does not publish official MSRP for datacenter GPU accelerators and no verified OEM list price could be confirmed from authoritative launch-time sources. Cloud compute pricing for MI325X instances (mid-2025): approximately $2.00-$2.29 per GPU-hour (Vultr, DigitalOcean). Analyst estimates and market reports from late 2024 suggest per-module pricing in the $10,000-$20,000 range, but no single authoritative OEM list price was confirmed. Note: MI325X is deployed as an OAM module within complete server systems rather than sold as a standalone retail product.'
   - 'Third-party products: Supermicro AS-4126GS-NMR-LCC (4U dual-CPU system with 8x MI325X GPUs and liquid cooling) confirmed from anewtech.net and serversimply.com reseller listings (serversimply.com describes it as supporting "MI325X / MI355X 8-GPU"). Note: Supermicro''s own product page for AS-4126GS-NMR-LCC was updated to feature MI355X by mid-2025, but the chassis supports both generations. Gigabyte G893-ZX1-AAX2 (8U GPU server with 8x MI325X OAM modules) confirmed from gigabyte.com official product page. HPE ProLiant Compute XD685 and Lenovo ThinkSystem servers also support MI325X but no standalone GPU module part numbers were found — these OEMs sell complete server systems rather than individual MI325X OAM modules with their own part numbers.'
   - 'AMD OPN (Ordering Part Number) 100-300000108H confirmed for the AMD Instinct MI325X 256GB HBM3e from wiredzone.com reseller listing (both Direct Liquid Cooling / UBB8 and Air Cooling variants). AMD official product page does not list an OPN directly, but the 100-300000108H OPN follows AMD''s standard format (same as MI300X OPN 100-300000045H). Source: wiredzone.com product listings for AMD-100-300000108H.'
+  - 'Phase 5 audit (2026-09-02): supportedHardwareOperations verified against canonical CDNA 3 baseline (FP64, FP32, TF32, FP16, BF16, FP8, INT8) per the gpu-researcher.md agent doc — already correct, no changes made to this array.'

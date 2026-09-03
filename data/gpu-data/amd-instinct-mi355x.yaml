@@ -7,6 +7,8 @@ tensorCoreCount: 1024
 fp32TFLOPS: 157.3
 fp16TFLOPS: 5000
 int8TOPS: 5000
+fp8TFLOPS: 5000
+fp4TFLOPS: 10100
 memoryCapacityGB: 288
 memoryBandwidthGBs: 8000
 maxTDPWatts: 1400
@@ -20,7 +22,7 @@ supportedHardwareOperations:
   - FP8
   - FP4
 releaseDate: "2025-06-12"
-lastModified: "2026-06-03T00:00:00Z"
+lastModified: "2026-09-02T00:00:00Z"
 
 summary: >-
   The AMD Instinct MI355X is the liquid-cooled flagship variant of AMD's CDNA 4
@@ -38,18 +40,19 @@ summary: >-
   reaches 5.0 PFLOPS for FP16/BF16, 10.1 PFLOPS for FP8 and INT8, and 10.1
   PFLOPS for FP4/MXFP4 — the highest per-GPU AI compute AMD has published.
   Dense (non-sparse) matrix performance is 2.5 PFLOPS for FP16/BF16, 5.0 PFLOPS
-  for FP8/INT8, and 10.1 PFLOPS for FP4. Native support for CDNA 4's new
-  microscaling formats (MXFP4, MXFP6, MXFP8) enables very high throughput for
-  quantized AI inference. The memory subsystem is identical to the MI350X: 288 GB
-  of 12-high HBM3E via an 8,192-bit interface at 8 TB/s (8,000 GB/s) peak
-  bandwidth — a 33% improvement over the MI325X. The MI355X uses the OAM (OCP
-  Accelerator Module) form factor with passive-plus-active cooling infrastructure
-  requiring direct liquid cooling, PCIe 5.0 x16 host interface, and 7
-  fourth-generation Infinity Fabric links at 153 GB/s each. AMD named the MI355X
-  the direct competitor to the NVIDIA B200 and HGX B200, and announced Oracle
-  Cloud Infrastructure as the first hyperscaler deploying the MI355X at scale —
-  with OCI planning clusters of up to 131,072 MI355X GPUs. Mass production and
-  customer shipments were slated for Q3 2025.
+  for FP8/INT8, and 10.1 PFLOPS for FP4 (AMD publishes FP4/MXFP4 as a single
+  microscaling-format rate with no separate dense/sparse split). Native support
+  for CDNA 4's new microscaling formats (MXFP4, MXFP6, MXFP8) enables very high
+  throughput for quantized AI inference. The memory subsystem is identical to
+  the MI350X: 288 GB of 12-high HBM3E via an 8,192-bit interface at 8 TB/s
+  (8,000 GB/s) peak bandwidth — a 33% improvement over the MI325X. The MI355X
+  uses the OAM (OCP Accelerator Module) form factor with passive-plus-active
+  cooling infrastructure requiring direct liquid cooling, PCIe 5.0 x16 host
+  interface, and 7 fourth-generation Infinity Fabric links at 153 GB/s each.
+  AMD named the MI355X the direct competitor to the NVIDIA B200 and HGX B200,
+  and announced Oracle Cloud Infrastructure as the first hyperscaler deploying
+  the MI355X at scale — with OCI planning clusters of up to 131,072 MI355X
+  GPUs. Mass production and customer shipments were slated for Q3 2025.
 
 manufacturerIdentifiers: []
 
@@ -62,6 +65,7 @@ thirdPartyProducts:
 references:
   - https://www.amd.com/en/products/accelerators/instinct/mi350/mi355x.html
   - https://www.amd.com/en/products/accelerators/instinct/mi350.html
+  - https://www.amd.com/content/dam/amd/en/documents/instinct-tech-docs/white-papers/amd-cdna-4-architecture-whitepaper.pdf
   - https://www.amd.com/en/developer/resources/technical-articles/2025/amd-instinct-mi335x-gpu-supports-deepseek-v3-2-exp.html
   - https://ir.amd.com/news-events/press-releases/detail/1255/amd-unveils-vision-for-an-open-ai-ecosystem-detailing-new-silicon-software-and-systems-at-advancing-ai-2025
   - https://www.extremetech.com/computing/amd-launches-instinct-mi350x-and-mi355x-ai-gpus
@@ -74,6 +78,8 @@ notes:
   - 'fp32TFLOPS of 157.3 represents peak FP32 vector (and matrix) performance per AMD official product page (amd.com/en/products/accelerators/instinct/mi350/mi355x.html). The MI355X achieves 157.3 TFLOPS vs 144.2 TFLOPS for the MI350X, reflecting the higher 2,400 MHz engine clock vs 2,200 MHz. CDNA 4 achieves FP32 vector equals FP32 matrix parity, unlike earlier CDNA architectures.'
   - 'fp16TFLOPS of 5000 represents peak FP16 matrix performance with 2:4 structured sparsity (5.0 PFLOPs) per AMD official product page. Dense (non-sparse) FP16 matrix performance is 2,500 TFLOPS (2.5 PFLOPs). Sparse value used per agent policy (FP16 Matrix SPARSE). BF16 has identical values: 2.5 PFLOPs dense / 5.0 PFLOPs sparse. Note: AMD developer article (amd.com/en/developer/resources/technical-articles/2025/amd-instinct-mi335x-gpu-supports-deepseek-v3-2-exp.html) cites 5.03 PFLOPS for FP16/BF16; AMD official product page value of 5.0 PFLOPS used as authoritative.'
   - 'int8TOPS of 5000 represents non-sparse (dense) INT8 matrix performance per AMD official product page (listed as "Peak INT8 Matrix Performance: 5 POPs"). With 2:4 structured sparsity, INT8 performance is 10,100 TOPS (10.1 POPs). Dense value used for consistent cross-vendor comparison.'
+  - 'fp8TFLOPS of 5000 represents non-sparse (dense) OCP-FP8 (E5M2, E4M3) matrix performance per AMD official product page. With 2:4 structured sparsity, FP8 performance is 10,100 TFLOPS. Dense value used for consistent cross-vendor comparison. Field added 2026-09-02 during the Phase 5 precision-filters audit; the underlying 5.0 PFLOPs dense figure was already documented in this file''s "Additional precision performance" note but had not previously been populated into the fp8TFLOPS schema field.'
+  - 'fp4TFLOPS of 10100 (10.1 PFLOPS) represents MXFP4 matrix performance per AMD official product page. AMD publishes FP4/MXFP4 as a single microscaling-format peak rate (no separate dense-vs-sparse split is listed, unlike FP16/BF16/FP8/INT8 which have distinct dense and 2:4-structured-sparsity figures) — this single published rate is treated as the dense value per the microscaling (MX) format convention, consistent with how the sibling MI350X''s 9.2 PFLOPS FP4 figure is treated. Cross-checked against the AMD CDNA 4 architecture whitepaper (amd.com/.../amd-cdna-4-architecture-whitepaper.pdf), whose Table 2 product-specifications table lists an MXFP6/MXFP4 matrix row of 10 PF for the MI355X, consistent with the product page''s 10.1 PF figure within rounding. Field added 2026-09-02 during the Phase 5 precision-filters audit.'
   - 'Additional precision performance per AMD official product page: FP64 vector 78.6 TFLOPS; FP64 matrix 78.6 TFLOPS; MXFP8 (microscaling FP8) matrix 5.0 PFLOPs; OCP-FP8 (E5M2, E4M3) matrix dense 5.0 PFLOPs, sparse 10.1 PFLOPs; MXFP6 matrix 10.1 PFLOPs (native rate; AMD lists no separate dense/sparse split for MXFP6); FP4 (MXFP4) matrix 10.1 PFLOPs. Note: FP6 support is not representable in the schema''s supportedHardwareOperations enum but CDNA 4 supports native MXFP6 precision.'
   - 'tensorCoreCount of 1024 represents AMD Matrix Cores per AMD official product page listing "Matrix Cores: 1,024". CDNA 4 has 4 Matrix Cores per compute unit x 256 compute units = 1,024. AMD uses the term "Matrix Cores" rather than "Tensor Cores".'
   - 'memoryBandwidthGBs of 8000 represents peak theoretical bandwidth of 8 TB/s from 288 GB HBM3E via 8,192-bit memory interface per AMD official product page. Memory bandwidth is identical to the air-cooled MI350X; only clock speeds differ between the two models.'
@@ -84,4 +90,4 @@ notes:
   - 'MSRP is null because AMD does not publish official MSRP for datacenter GPU accelerators. The MI355X is sold through OEM system partnerships (Supermicro, Oracle, and others) rather than as a standalone retail module. No verified OEM list prices were found at time of research. AMD official MI355X product page provides no pricing.'
   - 'Third-party products: Supermicro AS-4126GS-NMR-LCC (4U dual-processor liquid-cooled system with 8x AMD Instinct MI355X GPUs) confirmed from Supermicro official product page (supermicro.com/en/products/system/gpu/4u/as-4126gs-nmr-lcc) and Supermicro press release (June 12, 2025). Additional OEM server partners are expected (Oracle OCI is adopting MI355X at hyperscale per AMD press release), but standalone GPU OAM module part numbers from other vendors were not found at time of research.'
   - 'Manufacturer OPN identifiers were not found in publicly available documentation at time of research. AMD MI350X OPN is not publicly listed; MI355X likely follows the same 100-3XXXXXXH pattern (per MI300X = 100-300000045H, MI325X = 100-300000108H) but the specific number was not confirmed from authoritative sources.'
-  - 'FP4 (MXFP4) performance is 10.1 PFLOPs per AMD official product page. This is listed as the matrix performance without a separate "dense" vs "sparse" distinction for FP4, consistent with microscaling (MX) format semantics where 10.1 PFLOPS is the peak rate. For comparison, MI350X FP4 is 9.2 PFLOPS — consistent with the clock speed ratio (2400 MHz / 2200 MHz ≈ 1.091 for ~9% higher performance).'
+  - 'Phase 5 audit (2026-09-02): supportedHardwareOperations re-verified against canonical CDNA 4 baseline (FP64, FP32, FP16, BF16, FP8, INT8, FP4) per the gpu-researcher.md agent doc — already correct, no changes made to this array. Re-fetched amd.com/en/products/accelerators/instinct/mi350/mi355x.html directly and cross-checked against the AMD CDNA 4 architecture whitepaper''s Table 2 (product specifications table); both confirm the MI355X supports MXFP4 at a 10.1 (whitepaper: ~10) PFLOPS peak rate.'

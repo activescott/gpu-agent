@@ -7,18 +7,17 @@ tensorCoreCount: 640
 fp32TFLOPS: 14
 fp16TFLOPS: 28
 int8TOPS: 56
+fp8TFLOPS: null
+fp4TFLOPS: null
 memoryCapacityGB: 16
 memoryBandwidthGBs: 900
 maxTDPWatts: 300
 gpuArchitecture: volta
 supportedHardwareOperations:
   - FP16
-  - FP64
-  - FP32
-  - INT8
 supportedCUDAComputeCapability: 7
 releaseDate: "2017-06-21"
-lastModified: "2025-12-19T00:00:00Z"
+lastModified: "2026-09-02T00:00:00Z"
 
 summary: The NVIDIA Tesla V100 16GB version, introduced with NVIDIA's Volta
   architecture, is a high-end data center GPU. It was the first GPU to feature
@@ -123,13 +122,12 @@ references:
   - https://www.wiredzone.com/shop/product/10027795-supermicro-gpu-nvtv100-16-nvidia-tesla-v100-16gb-cowos-hbm2-pcie-3-0-passive-cooling-1891
   - https://www.connection.com/product/cisco-nvidia-tesla-v100-pcie-gpu-16gb/ucsc-gpu-v100/35528075
   - https://www.techpowerup.com/gpu-specs/tesla-v100-pcie-32-gb.c3184
+  - https://images.nvidia.com/content/volta-architecture/pdf/volta-architecture-whitepaper.pdf
 
 notes:
   - "int8TOPS: from
     https://www.microway.com/knowledge-center-articles/in-depth-comparison-of-n\
     vidia-tesla-volta-gpu-accelerators/"
-  - 'supportedHardwareOperations: see "Supported Tensor Core precisions" in
-    table at end of https://www.nvidia.com/en-us/data-center/tensor-cores/'
   - "supportedCUDAComputeCapability: lookup GPU Compute Capability at
     https://developer.nvidia.com/cuda-gpus"
   - "Estimated MSRP of $10,000 USD for Tesla V100 16GB PCIe based on launch-time market pricing. NVIDIA does not publish official MSRP for data center GPUs. Multiple sources from 2017-2018 cite pricing in the $8,000-$10,664 range: Microway's price analysis lists single-unit list price at $10,664, CDW retailer pricing from March 2018 at $9,900 (per Next Platform), and general tech sources cite launch range of $8,000-$10,000. Note: Pricing varies by form factor (PCIe vs SXM2) and purchase volume."
@@ -151,3 +149,5 @@ notes:
   - "Supermicro part number GPU-NVTV100-16 for PCIe version sourced from Newegg, Wiredzone, and smicro.eu"
   - "Supermicro part number GPU-NVTV100-SXM2 for SXM2 version with NVLink sourced from Exxact and SabrePC"
   - "Cisco part number UCSC-GPU-V100= sourced from connection.com, macconnection.com, and consutronix.com"
+  - 'supportedHardwareOperations corrected 2026-09-02 to the canonical Volta baseline (FP16 only) documented in .claude/agents/gpu-researcher.md, sourced from the NVIDIA Tesla V100 GPU Architecture whitepaper (images.nvidia.com/content/volta-architecture/pdf/volta-architecture-whitepaper.pdf): "Tensor Cores operate on FP16 input data with FP32 accumulation." Removed FP64, FP32, and INT8 — Volta''s 1st-generation Tensor Cores support only FP16-in/FP32-accumulate matrix multiply; there is no INT8/INT4 Tensor Core path (added in Turing), no TF32/BF16 (Ampere), no FP8 (Ada), and no FP64 Tensor Core path (added in Ampere''s A100). The int8TOPS value of 56 that remains on this file reflects V100''s DP4A 4-element dot-product ALU instruction, a plain CUDA-core path (not a Tensor Core/GEMM path), the same distinction already applied to Pascal Tesla P4/P40 DP4A support in the canonical table — so it is retained as a numeric spec but INT8 is correctly excluded from supportedHardwareOperations under the GEMM-only definition.'
+  - 'fp8TFLOPS and fp4TFLOPS are null: Volta predates both FP8 (introduced in Ada) and FP4 (introduced in Blackwell) Tensor Core support. Confirmed hardware negative per the NVIDIA Tesla V100 GPU Architecture whitepaper, which documents only FP16 Tensor Core input support. Not added to unverifiedSpecs since these are confirmed negatives, not data gaps.'

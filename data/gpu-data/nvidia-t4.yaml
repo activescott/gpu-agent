@@ -7,6 +7,8 @@ tensorCoreCount: 320
 fp32TFLOPS: 8.1
 fp16TFLOPS: 65
 int8TOPS: 130
+fp8TFLOPS: null
+fp4TFLOPS: null
 memoryCapacityGB: 16
 memoryBandwidthGBs: 320
 maxTDPWatts: 70
@@ -17,7 +19,7 @@ supportedHardwareOperations:
   - INT4
 supportedCUDAComputeCapability: 7.5
 releaseDate: "2018-09-13"
-lastModified: "2025-12-19T00:00:00Z"
+lastModified: "2026-09-02T00:00:00Z"
 
 summary: The NVIDIA T4 is a powerful and versatile GPU designed for a variety of
   applications, including machine learning, data analytics, and virtual desktop
@@ -111,6 +113,7 @@ references:
   - https://www.provantage.com/cisco-systems-ucsc-gpu-t4-16~7CSC8YWF.htm
   - https://www.connection.com/product/cisco-nvidia-t4-pcie-graphics-card-16gb/ucsc-gpu-t4-16/36831711
   - https://devicehunt.com/view/type/pci/vendor/10DE/device/1EB8
+  - https://images.nvidia.com/aem-dam/en-zz/Solutions/design-visualization/technologies/turing-architecture/NVIDIA-Turing-Architecture-Whitepaper.pdf
 
 notes:
   - 'supportedHardwareOperations: see "Supported Tensor Core precisions" in
@@ -135,3 +138,5 @@ notes:
   - "Supermicro part number GPU-NVTT4 sourced from ahead-it.eu and wiredzone.com"
   - "Cisco part number UCSC-GPU-T4-16 sourced from provantage.com and connection.com. UCSC prefix indicates UCS C-Series rack servers"
   - "Cisco OEM part number 699-2G183-0200-100 sourced from connection.com as the NVIDIA part number for Cisco T4 variant"
+  - 'supportedHardwareOperations re-verified 2026-09-02 against the canonical Turing baseline for Tensor Core-equipped SKUs (FP16, INT8, INT4) documented in .claude/agents/gpu-researcher.md, sourced from the NVIDIA Turing GPU Architecture whitepaper (images.nvidia.com/aem-dam/en-zz/Solutions/design-visualization/technologies/turing-architecture/NVIDIA-Turing-Architecture-Whitepaper.pdf): "Turing Tensor Cores add new INT8 and INT4 precision modes for inferencing workloads that can tolerate quantization. FP16 is also fully supported." T4 is a TU104-based datacenter card (per GPU SKU TU104-895 above) and, unlike the Tensor-Core-less GeForce GTX 16-series (TU116/TU117), retains full 2nd-generation Tensor Cores confirmed by the NVIDIA T4 product brief and the precision table at nvidia.com/en-us/data-center/tensor-cores/. No changes were required for this file; it already matched the canonical set.'
+  - 'fp8TFLOPS and fp4TFLOPS are null: Turing predates both FP8 (introduced in Ada) and FP4 (introduced in Blackwell) Tensor Core support. Confirmed hardware negative per the NVIDIA Turing GPU Architecture whitepaper, which documents only FP16/INT8/INT4 Tensor Core input support. Not added to unverifiedSpecs since these are confirmed negatives, not data gaps.'

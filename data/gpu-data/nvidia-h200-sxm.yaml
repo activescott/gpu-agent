@@ -7,13 +7,14 @@ tensorCoreCount: 528
 fp32TFLOPS: 67
 fp16TFLOPS: 1979
 int8TOPS: 1979
+fp8TFLOPS: 1979
+fp4TFLOPS: null
 memoryCapacityGB: 141
 memoryBandwidthGBs: 4800
 maxTDPWatts: 700
 gpuArchitecture: hopper
 supportedHardwareOperations:
   - FP16
-  - FP32
   - FP64
   - INT8
   - TF32
@@ -21,7 +22,7 @@ supportedHardwareOperations:
   - FP8
 supportedCUDAComputeCapability: 9
 releaseDate: "2024-11-18"
-lastModified: "2026-06-02T00:00:00Z"
+lastModified: "2026-09-02T00:00:00Z"
 
 summary: >-
   The NVIDIA H200 SXM is a datacenter GPU accelerator built on the
@@ -88,6 +89,8 @@ notes:
   - 'int8TOPS of 1979 represents non-sparse (dense) INT8 Tensor Core performance, derived from sparse INT8 of 3958 TOPS / 2 per the NVIDIA H200 datasheet (nor-tech.com). The datasheet footnote indicates that tensor-core values shown are with 2:4 structured sparsity. With sparsity, INT8 performance is 3958 TOPS. Dense value used for consistent cross-vendor comparison.'
   - 'TF32 Tensor Core performance with sparsity is 989 TFLOPS per the NVIDIA H200 datasheet. Without sparsity, TF32 is approximately 494.5 TFLOPS.'
   - 'FP8 Tensor Core performance with sparsity is 3958 TFLOPS; without sparsity approximately 1979 TFLOPS per the NVIDIA H200 datasheet.'
+  - 'fp8TFLOPS field of 1979 populated 2026-09-02: this is the dense value already derived in the FP8 note above (3958 sparse / 2), now stored in the numeric fp8TFLOPS field per gpu-researcher.md FP8/FP4 sourcing conventions. Re-confirmed directly against the official nvidia.com/en-us/data-center/h200/ specification table, which lists "FP8 Tensor Core 3,958 TFLOPS" (with sparsity) for H200 SXM, matching the nor-tech.com datasheet mirror exactly.'
+  - 'fp4TFLOPS is null: Hopper predates FP4 support, which was introduced in Blackwell. Confirmed hardware negative — the official nvidia.com/en-us/data-center/h200/ specification table and the nor-tech.com datasheet mirror list no FP4 Tensor Core row for H200. Not added to unverifiedSpecs since this is a confirmed negative, not a data gap.'
   - 'FP64 performance: 34 TFLOPS (CUDA core) and 67 TFLOPS (FP64 Tensor Core), per the NVIDIA H200 datasheet and confirmed by multiple sources including Exxact blog and AIwiki.'
   - 'Memory bandwidth of 4800 GB/s (4.8 TB/s) confirmed across all sources. Memory is 141 GB HBM3e on a 6144-bit bus at 9.2 Gb/s per pin, using six 24 GB active HBM3e stacks.'
   - 'Release date of 2024-11-18 (November 18, 2024) per TechPowerUp GPU Database, corresponding to general availability at SC24. The GPU was announced at SC23 on November 13, 2023, and first OEM customer shipments began Q2 2024. Release date reflects general commercial availability.'
@@ -95,3 +98,4 @@ notes:
   - 'Estimated MSRP of $40,000 USD for H200 SXM based on launch-time market pricing from multiple independent sources. NVIDIA does not publish official MSRP for datacenter GPUs. Sources from 2024 launch period cite: jarvislabs.ai lists $40,000-$55,000 SXM launch MSRP; mercatus-ai.com documents Q4 2024 launch pricing at $40,000-$48,000 per single SXM GPU; thepricer.org cites $30,000-$40,000 per unit. Estimate of $40,000 represents the lower bound of launch-period SXM pricing consistent across sources. Note: H200 SXM is not sold as a standalone PCIe card; it is deployed only in HGX H200 server baseboard configurations. Pricing varies by form factor (SXM vs NVL) and system configuration (4-GPU vs 8-GPU HGX board).'
   - 'thirdPartyProducts: Lenovo HGX baseboard part numbers 935-24287-2740-000, 935-24287-2741-000, and 935-23087-2741-000 are confirmed from Lenovo Press product guide lp1944 (lenovopress.lenovo.com/lp1944). These are multi-GPU HGX baseboard part numbers listed as NVIDIA part numbers in the Lenovo press guide; they identify specific Lenovo ThinkSystem HGX H200 products. Individual per-GPU module part numbers are not available because the H200 SXM is only sold in HGX multi-GPU baseboard configurations. Cisco C885A M8 server (UCSC-C885A-M8) identified from Cisco documentation at cisco.com. Dell PowerEdge XE9680 is the primary Dell server platform for H200 SXM deployments; individual H200 SXM GPU module part numbers for Dell were not found in available documentation.'
   - 'manufacturerIdentifiers: No board_id or product_sku for the H200 SXM were confirmed from an official NVIDIA datasheet or authoritative source during research. The H100 SXM used PG506; PG520 has been cited in some community sources as the H200 SXM board design, but this could not be verified. The manufacturerIdentifiers section is omitted until an authoritative source confirms the correct identifiers.'
+  - 'supportedHardwareOperations corrected 2026-09-02: removed FP32 (plain CUDA-core throughput is not a Tensor Core/GEMM-accelerated format on Hopper — only TF32 is the tensor-accelerated near-FP32 path) to match the canonical Hopper baseline (FP64, TF32, BF16, FP16, FP8, INT8) documented in .claude/agents/gpu-researcher.md. Verified H200-specific (not just inherited from H100) against the official nvidia.com/en-us/data-center/h200/ specification table, which lists the identical Tensor Core precision rows (FP64, FP64 Tensor Core, FP32, TF32 Tensor Core, BFLOAT16 Tensor Core, FP16 Tensor Core, FP8 Tensor Core, INT8 Tensor Core) for both H200 SXM and H200 NVL — confirming the canonical set applies uniformly and is not merely inherited from H100 without verification. No FP4 or INT4 Tensor Core row exists in that table.'

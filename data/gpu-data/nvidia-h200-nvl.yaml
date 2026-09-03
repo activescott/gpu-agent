@@ -7,13 +7,14 @@ tensorCoreCount: 528
 fp32TFLOPS: 60
 fp16TFLOPS: 1671
 int8TOPS: 1671
+fp8TFLOPS: 1671
+fp4TFLOPS: null
 memoryCapacityGB: 141
 memoryBandwidthGBs: 4800
 maxTDPWatts: 600
 gpuArchitecture: hopper
 supportedHardwareOperations:
   - FP16
-  - FP32
   - FP64
   - INT8
   - TF32
@@ -21,7 +22,7 @@ supportedHardwareOperations:
   - FP8
 supportedCUDAComputeCapability: 9
 releaseDate: "2024-11-18"
-lastModified: "2026-06-02T00:00:00Z"
+lastModified: "2026-09-02T00:00:00Z"
 
 summary: >-
   The NVIDIA H200 NVL is a PCIe form-factor datacenter GPU accelerator built on
@@ -102,6 +103,8 @@ notes:
   - 'int8TOPS of 1671 represents non-sparse (dense) INT8 Tensor Core performance, derived from sparse INT8 of 3341 TOPS / 2 per the NVIDIA H200 SC24 datasheet. The datasheet footnote indicates tensor-core values are with 2:4 structured sparsity. Dense value used for consistent cross-vendor comparison. Note: the Lenovo H200 NVL product guide (lenovopress.lenovo.com/lp1944.pdf) lists the NVL INT8 dense value as 1,570 TOPS, which does not follow 2x sparsity arithmetic (1570 x 2 = 3140, not 3341). NVIDIA does not publish a separate dense INT8 value; 3341 / 2 = 1671 is used here per database convention, consistent with how other Hopper GPUs in this database are specified.'
   - 'TF32 Tensor Core performance with sparsity is 835 TFLOPS per the NVIDIA H200 SC24 datasheet. Without sparsity, TF32 is approximately 418 TFLOPS per the Lenovo H200 NVL product guide.'
   - 'FP8 Tensor Core performance with sparsity is 3341 TFLOPS per the NVIDIA H200 SC24 datasheet; without sparsity approximately 1671 TFLOPS (3341 / 2 per database convention). Note: the Lenovo H200 NVL product guide (lenovopress.lenovo.com/lp1944.pdf) lists FP8 dense as 1,570 TFLOPS, which is approximately 6% lower than 3341 / 2 and does not follow strict 2x sparsity arithmetic. The Lenovo figure may reflect a different measurement methodology or a document error; 3341 / 2 is used here for consistency with the H200 SXM and other Hopper GPUs in this database.'
+  - 'fp8TFLOPS field of 1671 populated 2026-09-02: this is the dense value already derived in the FP8 note above (3341 sparse / 2), now stored in the numeric fp8TFLOPS field per gpu-researcher.md FP8/FP4 sourcing conventions. Re-confirmed directly against the official nvidia.com/en-us/data-center/h200/ specification table, which lists "FP8 Tensor Core 3,341 TFLOPS" (with sparsity) for H200 NVL, matching the openzeka.com SC24 datasheet mirror exactly.'
+  - 'fp4TFLOPS is null: Hopper predates FP4 support, which was introduced in Blackwell. Confirmed hardware negative — the official nvidia.com/en-us/data-center/h200/ specification table and the SC24 datasheet list no FP4 Tensor Core row for H200. Not added to unverifiedSpecs since this is a confirmed negative, not a data gap.'
   - 'FP64 performance: 30 TFLOPS (CUDA core) and 60 TFLOPS (FP64 Tensor Core with sparsity) per the NVIDIA H200 SC24 datasheet. These values are lower than the H200 SXM (34 TFLOPS CUDA, 67 TFLOPS Tensor Core) due to the lower clock speed in the 600W NVL configuration.'
   - 'Memory bandwidth of 4800 GB/s (4.8 TB/s) and 141 GB HBM3e confirmed by the NVIDIA H200 SC24 datasheet. Memory subsystem is identical to the H200 SXM; bandwidth is limited only by the HBM3e stacks, not by the thermal configuration.'
   - 'TDP of 600W is the maximum configurable power for the H200 NVL per the NVIDIA H200 SC24 datasheet. The Dell product listing (490-BKRM) specifies 450W-600W configurable range, confirming the card can operate at lower power profiles for constrained rack environments.'
@@ -112,3 +115,4 @@ notes:
   - 'Estimated MSRP of $34,500 USD for H200 NVL PCIe based on OEM list prices. NVIDIA does not publish official MSRP for datacenter GPUs. OEM list prices corroborated by 2 independent sources: DirectMacro lists HPE S3U30C at $34,500 USD (directmacro.com), and Newegg lists the NVIDIA reference card (900-21010-0040-000) at $35,998 (newegg.com). The $34,500 estimate uses the HPE OEM list price as the more conservative and directly sourced OEM list price. TRG Datacenters price guide estimates $31,000-$32,000 per NVL card, suggesting market pricing at or below OEM list prices. Note: pricing varies by configuration and reseller.'
   - 'manufacturerIdentifiers: NVPN 900-21010-0040-000 is the primary NVIDIA reference card part number confirmed across multiple resellers including Newegg and Dihuni. NVPN 900-21010-0140-030 is a Dell-specific variant confirmed from itcreations.com (900-21010-0140-030-DELL) and serversupply.com. Board ID for the H200 NVL was not confirmed from an official NVIDIA document; community sources suggest PG520 but this could not be verified, so it is omitted.'
   - 'thirdPartyProducts: HPE part number S3U30C confirmed from directmacro.com and kcomputers.com listings. Dell part numbers P6RPC (eBay listing from Dell, ubbcentral.com) and 490-BKRM (Dell product page dell.com/en-sg/shop) confirmed. Lenovo part number 4X67A97315 confirmed from lenovopress.lenovo.com/lp1944.pdf and serverproven.lenovo.com. Cisco part numbers UCSC-GPU-H200-NVL and UCSC-GPU-H200-NVL= confirmed from neobits.com and aztekcomputers.com. PNY SKU NVH200NVLTCGPU-KIT confirmed from dihuni.com, sabrepc.com, and exxactcorp.com.'
+  - 'supportedHardwareOperations corrected 2026-09-02: removed FP32 (plain CUDA-core throughput is not a Tensor Core/GEMM-accelerated format on Hopper — only TF32 is the tensor-accelerated near-FP32 path) to match the canonical Hopper baseline (FP64, TF32, BF16, FP16, FP8, INT8) documented in .claude/agents/gpu-researcher.md. Verified H200-specific (not just inherited from H100) against the official nvidia.com/en-us/data-center/h200/ specification table, which lists the identical Tensor Core precision rows (FP64, FP64 Tensor Core, FP32, TF32 Tensor Core, BFLOAT16 Tensor Core, FP16 Tensor Core, FP8 Tensor Core, INT8 Tensor Core) for both H200 SXM and H200 NVL — confirming the canonical set applies uniformly and is not merely inherited from H100 without verification. No FP4 or INT4 Tensor Core row exists in that table.'

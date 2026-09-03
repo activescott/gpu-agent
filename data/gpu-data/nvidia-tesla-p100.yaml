@@ -5,16 +5,16 @@ category: datacenter
 msrpUSD: 5699
 fp32TFLOPS: 10.6
 fp16TFLOPS: 21.2
+fp8TFLOPS: null
+fp4TFLOPS: null
 memoryCapacityGB: 16
 memoryBandwidthGBs: 732
 maxTDPWatts: 300
 gpuArchitecture: pascal
-supportedHardwareOperations:
-  - FP16
-  - FP32
+supportedHardwareOperations: []
 supportedCUDAComputeCapability: 6
 releaseDate: "2016-06-20"
-lastModified: "2025-12-19T00:00:00Z"
+lastModified: "2026-09-02T00:00:00Z"
 
 summary: The NVIDIA Tesla P100 was announced in 2016 as the first of their
   Pascal architecture powered Tesla cards. The Tesla P100 came in PCIe and SXM
@@ -113,9 +113,7 @@ thirdPartyProducts:
     identifierType: part_number
 
 references:
-  - https://www.anandtech.com/show/10433/nvidia-announces-pci-express-tesla-p100
   - https://developer.nvidia.com/blog/mixed-precision-programming-cuda-8/
-  - https://www.anandtech.com/show/10222/nvidia-announces-tesla-p100-accelerator-pascal-power-for-hpc
   - https://technical.city/en/video/Tesla-P100-PCIe-16-GB
   - https://www.techpowerup.com/gpu-specs/tesla-p100-pcie-16-gb.c2888
   - https://www.bhphotovideo.com/c/product/1368043-REG/nvidia_nvidia_900_2h400_0000_000_tesla_p100_16gb_cowos.html
@@ -128,15 +126,18 @@ references:
   - https://www.sabrepc.com/7X67A00068-Lenovo-S729687
   - https://support.hpe.com/hpesc/public/docDisplay?docId=a00069881en_us&page=GUID-ADF9D45D-2BBD-459F-9B46-951204022110.html&docLocale=en_US
   - https://pcserverandparts.com/dell-nvidia-tesla-p100-pascal-16gb-hbm2-graphics-accelerator-used-h7wfc/
+  - https://images.nvidia.com/content/pdf/tesla/whitepaper/pascal-architecture-whitepaper.pdf
 
 notes:
   - "tensorCoreCount: Tesla P100 only has CUDA cores"
+  - 'supportedHardwareOperations corrected 2026-09-02 to the canonical Pascal baseline (empty array) documented in .claude/agents/gpu-researcher.md, sourced from the NVIDIA Pascal Architecture whitepaper for GP100 (images.nvidia.com/content/pdf/tesla/whitepaper/pascal-architecture-whitepaper.pdf), which never mentions "Tensor Core" — Tensor Cores were introduced one generation later, in Volta. Under the locked GEMM-only definition of supportedHardwareOperations (hardware-accelerated matrix/tensor-core path support only, not "the ALU can execute this precision"), FP16 and FP32 were removed: P100''s 2x-rate FP16 ("Using FP16 computation improves performance up to 2x compared to FP32 arithmetic") is described under standard SM/CUDA-core arithmetic in the whitepaper, not a separate matrix engine, and plain FP32 is likewise a CUDA-core ALU path with no tensor-accelerated row in any Pascal documentation.'
   - 'supportedHardwareOperations: It appears that hardware-accelerated GEMM
     operations require "Warp matrix functions" supported in Compute Capability
     >=7.x:
     https://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html#compute-capabilities'
   - "supportedHardwareOperations: The 8-bit and 16-bit DP4A and DP2A dot product
     instructions are supported on GP102-GP106, but not on GP100."
+  - 'fp8TFLOPS and fp4TFLOPS are null: Pascal predates both FP8 (introduced in Ada) and FP4 (introduced in Blackwell). Confirmed hardware negative per the NVIDIA Pascal Architecture whitepaper (GP100), which documents no matrix/tensor engine at all — only standard CUDA-core FP16/FP32/FP64 SIMD throughput. Not added to unverifiedSpecs since these are confirmed negatives, not data gaps.'
   - MSRP of $5,699 USD for the 16GB PCIe model sourced from technical.city and TechPowerUp GPU Database, which both cite the official NVIDIA launch price on June 20, 2016.
   - "Manufacturer identifiers: NVPN (NVIDIA Part Number) format 699-2H400-0201-XXX is for 16GB PCIe variants, 699-2H400-0202-XXX is for 12GB PCIe variants. The 900-2H400-XXXX numbers are product SKUs. The 900-2H403-0000-000 SKU is for the SXM2 16GB variant."
   - "GPU chip variants: GP100-890-A1 (SXM2), GP100-892-A1 (PCIe 12GB), GP100-893-A1 (PCIe 16GB) as documented in NVIDIA datasheets and TechPowerUp GPU Database."

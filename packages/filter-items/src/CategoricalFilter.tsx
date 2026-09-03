@@ -141,6 +141,7 @@ function FilterCheckbox({
         id={checkboxId}
         checked={isChecked}
         onChange={(e) => onToggle(option.value, e.target.checked)}
+        aria-label={option.label}
       />
       <label
         className="form-check-label flex-grow-1"

@@ -13,15 +13,13 @@ maxTDPWatts: 350
 gpuArchitecture: Ampere
 supportedHardwareOperations:
   - FP16
-  - FP32
-  - FP64
   - INT8
   - INT4
   - TF32
   - BF16
 supportedCUDAComputeCapability: 8.6
 releaseDate: "2020-09-24"
-lastModified: "2026-02-24T00:00:00Z"
+lastModified: "2026-09-02T00:00:00Z"
 
 summary: |
   The NVIDIA GeForce RTX 3090 is NVIDIA's flagship consumer graphics card launched in September 2020,
@@ -163,6 +161,7 @@ references:
   - https://www.palit.com/palit/vgapro.php?id=3731&lang=en
   - https://www.gainward.com/main/vgapro.php?id=1091&lang=en
   - https://www.techpowerup.com/gpu-specs/kfa2-rtx-3090-sg-1-click-oc.b7990
+  - https://forums.developer.nvidia.com/t/what-is-the-fp64-rpeak-value-for-a5000/196056
 
 notes:
   - fp32TFLOPS of 35.58 calculated as 10,496 CUDA cores × 1.695 GHz boost clock × 2 ops/cycle = 35.58 TFLOPS, per TechPowerUp GPU Database. Ampere architecture features 2 FP32 ops per cycle through dedicated FP32 datapath and shared INT32/FP32 datapath.
@@ -173,9 +172,11 @@ notes:
   - The RTX 3090 uses 82 of the 84 possible streaming multiprocessors on the GA102 die, with each SM containing 128 CUDA cores, 4 tensor cores, and 1 RT core.
   - Memory bandwidth calculated as 384-bit interface × 19.5 Gbps GDDR6X = 936.2 GB/s.
   - The 3rd-generation Tensor Cores support TF32 (TensorFloat-32), BF16 (BFloat16), FP16, INT8, and INT4 precisions. INT8 operates at 2x the rate of FP16, and INT4 at 4x the FP16 rate.
-  - FP64 (double precision) performance is 1:64 ratio of FP32, yielding approximately 556 GFLOPS.
+  - FP64 (double precision) performance is 1:64 ratio of FP32, yielding approximately 556 GFLOPS. This is plain CUDA-core ALU throughput, not a Tensor Core-accelerated path, so it is not listed in supportedHardwareOperations under the locked GEMM-only definition.
   - The RTX 3090 and RTX 3090 Ti are the only GeForce 30-series cards that support 2-way NVLink for multi-GPU configurations.
   - Released September 24, 2020 at $1,499 USD MSRP, positioned as a "BFGPU" (Big Ferocious GPU) targeting both gamers and content creators.
   - MSRP of $1499 USD sourced from NVIDIA official product announcement at https://www.nvidia.com/en-us/geforce/news/introducing-rtx-30-series-graphics-cards/
   - NVIDIA Founders Edition uses board ID PG136 and NVPN 900-1G136-2510-000 per multiple retail sources and schematics.
   - Third-party products include AIB partner cards from ASUS (ROG STRIX, TUF Gaming), MSI (Gaming X Trio, Ventus), Gigabyte (Gaming OC, AORUS Master/Xtreme), PNY (XLR8 REVEL/UPRISING), Zotac (Trinity), EVGA (FTW3, XC3), Palit (GamingPro), Gainward (Phantom), and KFA2 (SG, EX Gamer, HOF). Each AIB partner offers multiple variants with different cooling solutions, factory overclocks, and RGB lighting.
+  - 'Phase 5 audit (2026-09-02): FP32 and FP64 removed from supportedHardwareOperations per the locked GEMM-only definition in .claude/agents/gpu-researcher.md — neither is a standalone Tensor Core format on Ampere (FP32 is CUDA-core ALU throughput reported via fp32TFLOPS; only TF32 is the Tensor Core-accelerated reduced-precision format). FP64 removal also confirmed by die: the RTX 3090 uses the GA102 die (not GA100), and per an NVIDIA staff reply on NVIDIA Developer Forums, ''The Tensor core units in the GA102 chip architecture do not contain the FP64 path that is present in e.g. the Tensor core units in the A100 GPU'' (https://forums.developer.nvidia.com/t/what-is-the-fp64-rpeak-value-for-a5000/196056). Canonical GA10x Ampere baseline (TF32, BF16, FP16, INT8, INT4) applied; FP64 Tensor Core support is reserved for GA100-based SKUs (A100, A30) only. gpuArchitecture was already correctly cased as "Ampere".'
+  - 'fp8TFLOPS and fp4TFLOPS are left null (field omitted) and not added to unverifiedSpecs — this is a confirmed hardware negative, not a research gap. The RTX 3090''s Ampere 3rd-generation Tensor Cores predate both FP8 (introduced in Ada Lovelace/Hopper) and FP4 (introduced in Blackwell) tensor formats, per the canonical architecture table in .claude/agents/gpu-researcher.md.'

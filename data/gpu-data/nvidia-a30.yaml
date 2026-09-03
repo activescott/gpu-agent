@@ -10,7 +10,7 @@ int8TOPS: 330
 memoryCapacityGB: 24
 memoryBandwidthGBs: 933.3
 maxTDPWatts: 165
-gpuArchitecture: ampere
+gpuArchitecture: Ampere
 supportedHardwareOperations:
   - FP16
   - INT8
@@ -20,7 +20,7 @@ supportedHardwareOperations:
   - BF16
 supportedCUDAComputeCapability: 8
 releaseDate: "2021-04-12"
-lastModified: "2025-12-19T00:00:00Z"
+lastModified: "2026-09-02T00:00:00Z"
 
 summary: The NVIDIA A30, launched on April 12th, 2021 with part number
   900-21001-0040-100, is a professional-grade accelerator geared towards machine
@@ -128,3 +128,6 @@ notes:
   - "Supermicro part number GPU-NVTA30 sourced from exxactcorp.com and sabrepc.com for Supermicro A30 Passive 24 GB HBM2 Graphic Card"
   - "Supermicro part number GPU-NVA30-NC sourced from ahead-it.eu for NVIDIA A30 24GB CoWoS HBM2 PCIe 4.0 without CEC (corresponding to NVIDIA part number 900-21001-0040-100)"
   - "Cisco part number UCSC-GPU-A30= sourced from Cisco official datasheet (cisco.com) for NVIDIA A30 Tensor Core GPU for UCS C-Series rack servers"
+  - 'Phase 5 audit (2026-09-02): gpuArchitecture normalized from lowercase ''ampere'' to canonical ''Ampere'' capitalization per the canonical table in .claude/agents/gpu-researcher.md.'
+  - 'Phase 5 audit (2026-09-02): supportedHardwareOperations reviewed against the canonical Ampere baseline in .claude/agents/gpu-researcher.md (TF32, BF16, FP16, INT8, INT4) — file already matched. FP64 is retained because the A30 is GA100-based (explicitly stated in the summary above: "Built on the GA100 graphics processor"), and per NVIDIA''s Ampere architecture whitepaper the GA100 die''s 3rd-gen Tensor Cores add a dedicated FP64 Tensor Core path not present on GA10x consumer/professional dies. No change made to the array.'
+  - 'fp8TFLOPS and fp4TFLOPS are left null (field omitted) and not added to unverifiedSpecs — this is a confirmed hardware negative, not a research gap. The A30''s Ampere 3rd-generation Tensor Cores predate both FP8 (introduced in Ada Lovelace/Hopper) and FP4 (introduced in Blackwell) tensor formats, per the canonical architecture table in .claude/agents/gpu-researcher.md.'

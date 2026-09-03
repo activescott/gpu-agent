@@ -10,17 +10,16 @@ int8TOPS: 250
 memoryCapacityGB: 24
 memoryBandwidthGBs: 600
 maxTDPWatts: 150
-gpuArchitecture: ampere
+gpuArchitecture: Ampere
 supportedHardwareOperations:
   - FP16
   - INT8
   - INT4
-  - FP64
   - TF32
   - BF16
 supportedCUDAComputeCapability: 8.6
 releaseDate: "2021-04-12"
-lastModified: "2025-12-19T00:00:00Z"
+lastModified: "2026-09-02T00:00:00Z"
 
 summary: The NVIDIA A10 (part number 900-2G133-0020-000) is a high-performance
   GPU designed for professional applications, including machine learning and AI.
@@ -104,6 +103,7 @@ references:
   - https://www.serversupply.com/GPU/GDDR6/APPLICATION%20ACCELERATOR/NVIDIA/900-2G133-0020-000_395888.htm
   - https://www.cisco.com/c/dam/en/us/products/collateral/servers-unified-computing/ucs-c-series-rack-servers/nvidia-a10-gpu.pdf
   - https://www.advantech.com/en-us/products/8d6a8886-b57e-493f-87c8-6f1e02d0608a/sky-tesl-a10-24p/mod_d9268799-585b-46b7-91d5-d49d126718b9
+  - https://forums.developer.nvidia.com/t/what-is-the-fp64-rpeak-value-for-a5000/196056
 
 notes:
   - "fp16TFLOPS: NOTE: FP16 Tensor Core"
@@ -121,3 +121,6 @@ notes:
   - "Supermicro part number GPU-NVTA10 sourced from Exxact and Supermicro retailers (exxactcorp.com, smicro.eu)"
   - "Cisco part number UCSC-GPU-A10 sourced from Cisco official datasheet (cisco.com) and vendor listings. Compatible with UCS C220/C225/C240/C245 M6 servers"
   - "Advantech part number SKY-TESL-A10-24P sourced from Advantech official website (advantech.com) and datasheet listings"
+  - 'Phase 5 audit (2026-09-02): gpuArchitecture normalized from lowercase ''ampere'' to canonical ''Ampere'' capitalization per the canonical table in .claude/agents/gpu-researcher.md.'
+  - 'Phase 5 audit (2026-09-02): FP64 removed from supportedHardwareOperations. The A10 uses the GA102 die (confirmed in the summary above), not GA100. Per an NVIDIA staff reply on NVIDIA Developer Forums, ''The Tensor core units in the GA102 chip architecture do not contain the FP64 path that is present in e.g. the Tensor core units in the A100 GPU'' (https://forums.developer.nvidia.com/t/what-is-the-fp64-rpeak-value-for-a5000/196056). Canonical Ampere baseline (TF32, BF16, FP16, INT8, INT4) applied per gpu-researcher.md; FP64 Tensor Core support is reserved for GA100-based SKUs (A100, A30) only.'
+  - 'fp8TFLOPS and fp4TFLOPS are left null (field omitted) and not added to unverifiedSpecs — this is a confirmed hardware negative, not a research gap. The A10''s Ampere 3rd-generation Tensor Cores predate both FP8 (introduced in Ada Lovelace/Hopper) and FP4 (introduced in Blackwell) tensor formats, per the canonical architecture table in .claude/agents/gpu-researcher.md.'

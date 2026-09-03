@@ -13,13 +13,13 @@ maxTDPWatts: 200
 gpuArchitecture: Ampere
 supportedHardwareOperations:
   - FP16
-  - FP32
   - TF32
   - BF16
   - INT8
+  - INT4
 supportedCUDAComputeCapability: 8.6
 releaseDate: "2020-12-02"
-lastModified: "2026-02-24T00:00:00Z"
+lastModified: "2026-09-02T00:00:00Z"
 
 summary: |
   The NVIDIA GeForce RTX 3060 Ti is a mainstream gaming graphics card launched on December 2, 2020,
@@ -191,3 +191,5 @@ notes:
   - MSRP of $399 USD sourced from NVIDIA official product announcement at https://www.nvidia.com/en-us/geforce/news/geforce-rtx-3060-ti-out-december-2/
   - "Manufacturer identifiers: Board ID PG142 with Product SKU 'PG142 SKU 20' confirmed from TechPowerUp and multiple sources. The NVIDIA Founders Edition uses NVPN 900-1G142-2520-000 per Best Buy and PCPartPicker listings."
   - "Third-party products: Model numbers and part numbers sourced from official vendor websites. ASUS uses ROG-STRIX, TUF, DUAL, and KO product lines with model numbers following the pattern [SERIES]-RTX3060TI-[VRAM][SUFFIX]-[VARIANT]. MSI uses GAMING X and VENTUS series. Gigabyte uses GV-N306T prefix for all RTX 3060 Ti models including VISION, GAMING, EAGLE, and AORUS variants. EVGA uses 08G-P5-36XX part number format where suffix KR indicates standard retail, KL indicates LHR (Lite Hash Rate), and different XX values indicate FTW3 (67) vs XC (63) models. Zotac uses ZT-A306XXX format. PNY uses VCG3060T8LDFXPPB for their XLR8 Gaming REVEL EPIC-X RGB model. Dell uses component part number 86RMK with multiple sales SKUs (490-BGIL for non-LHR, 490-BHIW for LHR). HP uses part number M31640-001 for non-LHR variant."
+  - 'Phase 5 audit (2026-09-02): FP32 removed from supportedHardwareOperations per the locked GEMM-only definition in .claude/agents/gpu-researcher.md — FP32 is executed on CUDA/shader ALUs, not accelerated through a standalone Tensor Core path on Ampere (only the TF32 reduced-precision format is Tensor Core-accelerated); FP32 continues to be reported separately via the fp32TFLOPS field above. INT4 added to match the canonical GA10x Ampere baseline (TF32, BF16, FP16, INT8, INT4) per the same source. gpuArchitecture was already correctly cased as "Ampere".'
+  - 'fp8TFLOPS and fp4TFLOPS are left null (field omitted) and not added to unverifiedSpecs — this is a confirmed hardware negative, not a research gap. The RTX 3060 Ti''s Ampere 3rd-generation Tensor Cores predate both FP8 (introduced in Ada Lovelace/Hopper) and FP4 (introduced in Blackwell) tensor formats, per the canonical architecture table in .claude/agents/gpu-researcher.md.'

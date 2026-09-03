@@ -10,15 +10,16 @@ int8TOPS: 162.51
 memoryCapacityGB: 8
 memoryBandwidthGBs: 448
 maxTDPWatts: 220
-gpuArchitecture: ampere
+gpuArchitecture: Ampere
 supportedHardwareOperations:
   - FP16
   - INT8
+  - INT4
   - TF32
   - BF16
 supportedCUDAComputeCapability: 8.6
 releaseDate: "2020-10-29"
-lastModified: "2026-02-24T00:00:00Z"
+lastModified: "2026-09-02T00:00:00Z"
 
 manufacturerIdentifiers:
   - type: board_id
@@ -195,3 +196,6 @@ notes:
   - PCI Device ID 10DE 2484 represents NVIDIA vendor ID (10DE) and RTX 3070 device ID (2484). LHR variant uses device ID 2488.
   - Third-party manufacturers include major AIB partners including ASUS, MSI, Gigabyte, PNY, Zotac, EVGA, Colorful, and Palit.
   - Part numbers and model numbers sourced from manufacturer product pages, TechPowerUp GPU Database, and authorized retailer listings.
+  - 'Phase 5 audit (2026-09-02): gpuArchitecture normalized from lowercase ''ampere'' to canonical ''Ampere'' capitalization per the canonical table in .claude/agents/gpu-researcher.md.'
+  - 'Phase 5 audit (2026-09-02): INT4 added to supportedHardwareOperations to match the canonical GA10x Ampere baseline (TF32, BF16, FP16, INT8, INT4) per .claude/agents/gpu-researcher.md and the NVIDIA Ampere GA-102 architecture whitepaper''s description of 3rd-generation Tensor Core INT4 support (already cited above). No FP32 or FP64 added — under the locked GEMM-only definition neither is a standalone Tensor Core format on Ampere; the RTX 3070''s GA104 die is not GA100-based so it also does not get FP64.'
+  - 'fp8TFLOPS and fp4TFLOPS are left null (field omitted) and not added to unverifiedSpecs — this is a confirmed hardware negative, not a research gap. The RTX 3070''s Ampere 3rd-generation Tensor Cores predate both FP8 (introduced in Ada Lovelace/Hopper) and FP4 (introduced in Blackwell) tensor formats, per the canonical architecture table in .claude/agents/gpu-researcher.md.'

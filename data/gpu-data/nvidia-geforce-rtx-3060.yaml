@@ -13,15 +13,13 @@ maxTDPWatts: 170
 gpuArchitecture: Ampere
 supportedHardwareOperations:
   - FP16
-  - FP32
-  - FP64
   - INT8
   - INT4
   - TF32
   - BF16
 supportedCUDAComputeCapability: 8.6
 releaseDate: "2021-02-25"
-lastModified: "2026-02-24T00:00:00Z"
+lastModified: "2026-09-02T00:00:00Z"
 
 summary: |
   The NVIDIA GeForce RTX 3060 is a mainstream gaming graphics card released in February 2021,
@@ -109,6 +107,7 @@ references:
   - https://www.gigabyte.com/Graphics-Card/GV-N3060GAMING-OC-12GD
   - https://www.zotac.com/us/product/graphics_card/zotac-gaming-geforce-rtx-3060-twin-edge-oc
   - https://www.pny.com/geforce-rtx-3060-12gb-xlr8-revel-epic-x-rgb-df
+  - https://forums.developer.nvidia.com/t/what-is-the-fp64-rpeak-value-for-a5000/196056
 
 notes:
   - "FP16 TFLOPS of 101.9 represents Peak Sparse Tensor Core performance (8x FP32). Dense Tensor performance is ~51 TFLOPS."
@@ -125,3 +124,5 @@ notes:
   - MSRP of $329 USD sourced from NVIDIA official product announcement at https://www.nvidia.com/en-us/geforce/news/geforce-rtx-3060/
   - No NVIDIA Founders Edition was released for the RTX 3060 (only RTX 3060 Ti had a Founders Edition). All RTX 3060 cards are from AIB partners.
   - Third-party product identifiers sourced from official manufacturer websites, TechPowerUp GPU Database, Newegg, and Best Buy product listings.
+  - 'Phase 5 audit (2026-09-02): FP32 and FP64 removed from supportedHardwareOperations. FP32 is executed on CUDA/shader ALUs, not accelerated through a standalone Tensor Core path on Ampere (only the TF32 reduced-precision format is Tensor Core-accelerated) — FP32 continues to be reported separately via the fp32TFLOPS field. FP64 removed because the RTX 3060 uses the GA106 die (confirmed in the summary above), not GA100; per an NVIDIA staff reply on NVIDIA Developer Forums, ''The Tensor core units in the GA102 chip architecture do not contain the FP64 path that is present in e.g. the Tensor core units in the A100 GPU'' (https://forums.developer.nvidia.com/t/what-is-the-fp64-rpeak-value-for-a5000/196056) — the same reasoning extends to the smaller GA106 die, which shares the same 3rd-gen Tensor Core design as GA102. Canonical GA10x Ampere baseline (TF32, BF16, FP16, INT8, INT4) applied per .claude/agents/gpu-researcher.md; FP64 Tensor Core support is reserved for GA100-based SKUs (A100, A30) only. gpuArchitecture was already correctly cased as "Ampere".'
+  - 'fp8TFLOPS and fp4TFLOPS are left null (field omitted) and not added to unverifiedSpecs — this is a confirmed hardware negative, not a research gap. The RTX 3060''s Ampere 3rd-generation Tensor Cores predate both FP8 (introduced in Ada Lovelace/Hopper) and FP4 (introduced in Blackwell) tensor formats, per the canonical architecture table in .claude/agents/gpu-researcher.md.'

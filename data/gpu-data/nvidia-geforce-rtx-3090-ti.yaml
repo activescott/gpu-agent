@@ -13,15 +13,13 @@ maxTDPWatts: 450
 gpuArchitecture: Ampere
 supportedHardwareOperations:
   - FP16
-  - FP32
-  - FP64
   - INT8
   - INT4
   - TF32
   - BF16
 supportedCUDAComputeCapability: 8.6
 releaseDate: "2022-03-29"
-lastModified: "2026-02-24T00:00:00Z"
+lastModified: "2026-09-02T00:00:00Z"
 
 summary: |
   The NVIDIA GeForce RTX 3090 Ti is NVIDIA's ultimate consumer graphics card launched in March 2022,
@@ -127,6 +125,7 @@ references:
   - https://www.pny.com/geforce-rtx-3090ti-xlr8-gaming-uprising-epic-x-rgb-triple-fan
   - https://www.zotac.com/us/product/graphics_card/zotac-gaming-geforce-rtx-3090-ti-amp-extreme-holo
   - https://www.palit.com/palit/vgapro.php?id=4548&lang=en&pn=NED309T019SB-1022G
+  - https://forums.developer.nvidia.com/t/what-is-the-fp64-rpeak-value-for-a5000/196056
 
 notes:
   - fp32TFLOPS of 40.00 calculated as 10,752 CUDA cores × 1.860 GHz boost clock × 2 ops/cycle = 40.00 TFLOPS. Ampere architecture features 2 FP32 ops per cycle through dedicated FP32 datapath and shared INT32/FP32 datapath. This represents approximately 11% increase over RTX 3090's 35.58 TFLOPS.
@@ -138,10 +137,12 @@ notes:
   - The RTX 3090 Ti uses all 84 of 84 possible streaming multiprocessors on the GA102-350-A1 die, making it the first fully unlocked GA102 GPU. Each SM contains 128 CUDA cores, 4 tensor cores, and 1 RT core, totaling 10,752 CUDA cores, 336 tensor cores, and 84 RT cores.
   - Memory bandwidth calculated as 384-bit interface × 21 Gbps GDDR6X = 1,008 GB/s, making the RTX 3090 Ti the first GeForce card in history to surpass 1 TB/s memory bandwidth. This represents a 7.7% increase over the RTX 3090's 936.2 GB/s.
   - The 3rd-generation Tensor Cores support TF32 (TensorFloat-32), BF16 (BFloat16), FP16, INT8, and INT4 precisions. INT8 operates at 2x the rate of FP16, and INT4 at 4x the FP16 rate. The sparsity feature provides 2x acceleration when enabled.
-  - FP64 (double precision) performance is 1:64 ratio of FP32, yielding approximately 625 GFLOPS.
+  - FP64 (double precision) performance is 1:64 ratio of FP32, yielding approximately 625 GFLOPS. This is plain CUDA-core ALU throughput, not a Tensor Core-accelerated path, so it is not listed in supportedHardwareOperations under the locked GEMM-only definition.
   - The RTX 3090 Ti uses Micron's 2GB GDDR6X memory modules (MT61K512M32KPA-21U) running at 21 Gbps, compared to 1GB modules at 19.5 Gbps on the RTX 3090. This reduced the module count from 24 to 12, improving power efficiency despite higher memory speeds.
   - Released March 29, 2022 at $1,999 USD MSRP, positioned as the ultimate GeForce GPU and spiritual successor to the Titan series. The $500 premium over RTX 3090 reflected the fully unlocked die, faster memory, and higher power delivery requirements.
   - MSRP of $1999 USD sourced from NVIDIA official product announcement at https://www.nvidia.com/en-us/geforce/news/geforce-rtx-3090-ti-out-now/ and https://www.tomshardware.com/news/nvidia-geforce-rtx-3090-ti-launches-at-1999-dollars
   - NVIDIA Founders Edition uses board ID PG136C (revision of PG136 used on RTX 3090) and NVPN 900-1G136-2505-000 per PCPartPicker and TweakTown sources. The "C" revision accommodated the 12-pin power connector and higher power delivery requirements.
   - Third-party products include AIB partner cards from ASUS (TUF Gaming), MSI (Gaming X Trio, SUPRIM X/SE), Gigabyte (Gaming OC, AORUS XTREME WATERFORCE), EVGA (FTW3), PNY (XLR8 UPRISING), Zotac (AMP Extreme Holo, PGF), and Palit (GameRock). Many AIB variants feature enhanced cooling solutions and power delivery to handle the 450W TDP.
   - The RTX 3090 Ti features a new 12-pin PCIe Gen 5 power connector on the Founders Edition (compatible with included 3×8-pin adapter), while some AIB partners use three 8-pin connectors or other configurations to meet the 450W power requirement.
+  - 'Phase 5 audit (2026-09-02): FP32 and FP64 removed from supportedHardwareOperations per the locked GEMM-only definition in .claude/agents/gpu-researcher.md — neither is a standalone Tensor Core format on Ampere (FP32 is CUDA-core ALU throughput reported via fp32TFLOPS; only TF32 is the Tensor Core-accelerated reduced-precision format). FP64 removal also confirmed by die: the RTX 3090 Ti uses the GA102-350-A1 die (not GA100), and per an NVIDIA staff reply on NVIDIA Developer Forums, ''The Tensor core units in the GA102 chip architecture do not contain the FP64 path that is present in e.g. the Tensor core units in the A100 GPU'' (https://forums.developer.nvidia.com/t/what-is-the-fp64-rpeak-value-for-a5000/196056). Canonical GA10x Ampere baseline (TF32, BF16, FP16, INT8, INT4) applied; FP64 Tensor Core support is reserved for GA100-based SKUs (A100, A30) only. gpuArchitecture was already correctly cased as "Ampere".'
+  - 'fp8TFLOPS and fp4TFLOPS are left null (field omitted) and not added to unverifiedSpecs — this is a confirmed hardware negative, not a research gap. The RTX 3090 Ti''s Ampere 3rd-generation Tensor Cores predate both FP8 (introduced in Ada Lovelace/Hopper) and FP4 (introduced in Blackwell) tensor formats, per the canonical architecture table in .claude/agents/gpu-researcher.md.'

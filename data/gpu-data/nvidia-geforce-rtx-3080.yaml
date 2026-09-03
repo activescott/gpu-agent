@@ -10,15 +10,16 @@ int8TOPS: 238.14
 memoryCapacityGB: 10
 memoryBandwidthGBs: 760
 maxTDPWatts: 320
-gpuArchitecture: ampere
+gpuArchitecture: Ampere
 supportedHardwareOperations:
   - FP16
   - INT8
+  - INT4
   - TF32
   - BF16
 supportedCUDAComputeCapability: 8.6
 releaseDate: "2020-09-17"
-lastModified: "2026-02-24T00:00:00Z"
+lastModified: "2026-09-02T00:00:00Z"
 
 summary: |
   The NVIDIA GeForce RTX 3080 is a high-end graphics card released in September 2020,
@@ -125,3 +126,6 @@ notes:
   - PNY XLR8 part number VCG308010TFXMPB sourced from official PNY product page.
   - Zotac part numbers (ZT-A30800D-10P, ZT-A30800J-10PLHR) sourced from official Zotac product pages.
   - Palit part number NED3080019IA-132AA sourced from official Palit product page and EKWB compatibility list.
+  - 'Phase 5 audit (2026-09-02): gpuArchitecture normalized from lowercase ''ampere'' to canonical ''Ampere'' capitalization per the canonical table in .claude/agents/gpu-researcher.md.'
+  - 'Phase 5 audit (2026-09-02): INT4 added to supportedHardwareOperations to match the canonical GA10x Ampere baseline (TF32, BF16, FP16, INT8, INT4) per .claude/agents/gpu-researcher.md and the NVIDIA Ampere GA-102 architecture whitepaper''s description of 3rd-generation Tensor Core INT4 support (already cited above). No FP32 or FP64 added — under the locked GEMM-only definition neither is a standalone Tensor Core format on Ampere; the RTX 3080''s GA102-200 die is not GA100-based so it also does not get FP64.'
+  - 'fp8TFLOPS and fp4TFLOPS are left null (field omitted) and not added to unverifiedSpecs — this is a confirmed hardware negative, not a research gap. The RTX 3080''s Ampere 3rd-generation Tensor Cores predate both FP8 (introduced in Ada Lovelace/Hopper) and FP4 (introduced in Blackwell) tensor formats, per the canonical architecture table in .claude/agents/gpu-researcher.md.'

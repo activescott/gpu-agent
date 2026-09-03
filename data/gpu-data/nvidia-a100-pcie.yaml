@@ -10,7 +10,7 @@ int8TOPS: 624
 memoryCapacityGB: 80
 memoryBandwidthGBs: 1935
 maxTDPWatts: 300
-gpuArchitecture: ampere
+gpuArchitecture: Ampere
 supportedHardwareOperations:
   - FP16
   - INT8
@@ -20,7 +20,7 @@ supportedHardwareOperations:
   - BF16
 supportedCUDAComputeCapability: 8
 releaseDate: "2021-06-28"
-lastModified: "2025-12-19T00:00:00Z"
+lastModified: "2026-09-02T00:00:00Z"
 
 manufacturerIdentifiers:
   - type: Board Number
@@ -143,3 +143,6 @@ notes:
   - "Supermicro part number GPU-NVA100-80-NC verified from Supermicro official store and authorized resellers. This part corresponds to NVIDIA base part 900-21001-0020-100."
   - "Cisco part numbers UCSC-GPU-A100-80, UCSC-GPU-A100-80=, and UCSC-GPUA100-80-D verified from Express Computer Systems, Provantage, and Cisco documentation. Note: Cisco requires unique SBIOS ID for GPU cards, so all A100 cards must be procured from Cisco."
   - "Advantech part number SKY-TESL-A100-80P verified from Advantech official product page and pf-electronic.pl. This is a bundle sale item including ATX bracket."
+  - 'Phase 5 audit (2026-09-02): gpuArchitecture normalized from lowercase ''ampere'' to canonical ''Ampere'' capitalization per the canonical table in .claude/agents/gpu-researcher.md.'
+  - 'Phase 5 audit (2026-09-02): supportedHardwareOperations reviewed against the canonical Ampere baseline in .claude/agents/gpu-researcher.md (TF32, BF16, FP16, INT8, INT4) — file already matched. FP64 is retained because the A100 is GA100-based (confirmed by PCI Device ID 20B5 = GA100 per the Device Hunt reference above), and per NVIDIA''s A100 architecture whitepaper the GA100 die''s 3rd-gen Tensor Cores add a dedicated FP64 Tensor Core path not present on GA10x consumer/professional dies. No change made to the array.'
+  - 'fp8TFLOPS and fp4TFLOPS are left null (field omitted) and not added to unverifiedSpecs — this is a confirmed hardware negative, not a research gap. The A100''s Ampere 3rd-generation Tensor Cores predate both FP8 (introduced in Ada Lovelace/Hopper) and FP4 (introduced in Blackwell) tensor formats, per the canonical architecture table in .claude/agents/gpu-researcher.md.'

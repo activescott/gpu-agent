@@ -10,18 +10,16 @@ int8TOPS: 53.9
 memoryCapacityGB: 8
 memoryBandwidthGBs: 192
 maxTDPWatts: 50
-gpuArchitecture: ampere
+gpuArchitecture: Ampere
 supportedHardwareOperations:
-  - FP32
   - FP16
   - TF32
   - BF16
   - INT8
   - INT4
-  - FP64
 supportedCUDAComputeCapability: 8.6
 releaseDate: "2024-04-16"
-lastModified: "2026-02-24T00:00:00Z"
+lastModified: "2026-09-02T00:00:00Z"
 
 manufacturerIdentifiers:
   - type: nvpn
@@ -74,6 +72,7 @@ references:
   - https://lenovopress.lenovo.com/lp2172-thinksystem-nvidia-rtx-a1000-8gb-pcie-gen4-active-gpu
   - https://www.leadtek.com/eng/products/workstation_graphics(2)/NVIDIA_RTX_A1000(51012)/detail
   - https://www.pny.com/en-eu/rtx-a1000
+  - https://forums.developer.nvidia.com/t/what-is-the-fp64-rpeak-value-for-a5000/196056
 
 notes:
   - FP32 TFLOPS of 6.74 sourced from NVIDIA official product page and Lenovo Press documentation.
@@ -85,3 +84,6 @@ notes:
   - TDP is 50W, no auxiliary power connector required.
   - Released April 16, 2024, filling the entry-level workstation gap with RT and tensor capabilities.
   - MSRP of $365 USD from NVIDIA marketplace listing.
+  - 'Phase 5 audit (2026-09-02): gpuArchitecture normalized from lowercase ''ampere'' to canonical ''Ampere'' capitalization per the canonical table in .claude/agents/gpu-researcher.md.'
+  - 'Phase 5 audit (2026-09-02): FP32 and FP64 removed from supportedHardwareOperations. FP32 is executed on CUDA/shader ALUs, not accelerated through a standalone Tensor Core path on Ampere (only the TF32 reduced-precision format is Tensor Core-accelerated) — FP32 continues to be reported separately via the fp32TFLOPS field. FP64 removed because the RTX A1000 uses the GA107 chip (confirmed in the summary above), a smaller die than GA102 and not GA100-based; per an NVIDIA staff reply on NVIDIA Developer Forums, ''The Tensor core units in the GA102 chip architecture do not contain the FP64 path that is present in e.g. the Tensor core units in the A100 GPU'' (https://forums.developer.nvidia.com/t/what-is-the-fp64-rpeak-value-for-a5000/196056) — the same reasoning extends to the smaller GA107 die, which shares the same 3rd-gen Tensor Core design as GA102/GA104/GA106. Canonical Ampere baseline (TF32, BF16, FP16, INT8, INT4) applied per gpu-researcher.md; FP64 Tensor Core support is reserved for GA100-based SKUs (A100, A30) only.'
+  - 'fp8TFLOPS and fp4TFLOPS are left null (field omitted) and not added to unverifiedSpecs — this is a confirmed hardware negative, not a research gap. The RTX A1000''s Ampere 3rd-generation Tensor Cores predate both FP8 (introduced in Ada Lovelace/Hopper) and FP4 (introduced in Blackwell) tensor formats, per the canonical architecture table in .claude/agents/gpu-researcher.md.'

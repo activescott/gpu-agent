@@ -10,15 +10,16 @@ int8TOPS: 174.00
 memoryCapacityGB: 8
 memoryBandwidthGBs: 608
 maxTDPWatts: 290
-gpuArchitecture: ampere
+gpuArchitecture: Ampere
 supportedHardwareOperations:
   - FP16
   - INT8
+  - INT4
   - TF32
   - BF16
 supportedCUDAComputeCapability: 8.6
 releaseDate: "2021-06-10"
-lastModified: "2026-02-24T00:00:00Z"
+lastModified: "2026-09-02T00:00:00Z"
 
 summary: |
   The NVIDIA GeForce RTX 3070 Ti is a high-performance graphics card released in June 2021,
@@ -119,3 +120,6 @@ notes:
   - MSRP of $599 USD sourced from NVIDIA official product announcement at https://www.nvidia.com/en-us/geforce/news/rtx-3080-ti-3070-ti-graphics-cards/
   - NVIDIA manufacturer identifiers include Board ID PG143 SKU 15, NVPN part number 900-1G143-2515-000 for Founders Edition, GPU variant GA104-400-A1, and PCI Device ID 10DE:2482. Sources from TechPowerUp GPU Database and PCPartPicker.
   - Third-party products listed include major AIB partners ASUS, MSI, Gigabyte, PNY, EVGA, Zotac, and Palit with their official model numbers and part numbers sourced from manufacturer websites and product databases.
+  - 'Phase 5 audit (2026-09-02): gpuArchitecture normalized from lowercase ''ampere'' to canonical ''Ampere'' capitalization per the canonical table in .claude/agents/gpu-researcher.md.'
+  - 'Phase 5 audit (2026-09-02): INT4 added to supportedHardwareOperations to match the canonical GA10x Ampere baseline (TF32, BF16, FP16, INT8, INT4) per .claude/agents/gpu-researcher.md and the NVIDIA Ampere GA-102 architecture whitepaper''s description of 3rd-generation Tensor Core INT4 support (already cited above). No FP32 or FP64 added — under the locked GEMM-only definition neither is a standalone Tensor Core format on Ampere; the RTX 3070 Ti''s GA104 die is not GA100-based so it also does not get FP64.'
+  - 'fp8TFLOPS and fp4TFLOPS are left null (field omitted) and not added to unverifiedSpecs — this is a confirmed hardware negative, not a research gap. The RTX 3070 Ti''s Ampere 3rd-generation Tensor Cores predate both FP8 (introduced in Ada Lovelace/Hopper) and FP4 (introduced in Blackwell) tensor formats, per the canonical architecture table in .claude/agents/gpu-researcher.md.'

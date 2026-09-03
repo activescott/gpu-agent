@@ -10,23 +10,18 @@ int8TOPS: 197
 memoryCapacityGB: 24
 memoryBandwidthGBs: 456
 maxTDPWatts: 200
-gpuArchitecture: Xe2
+gpuArchitecture: Xe2-HPG (Battlemage)
 supportedHardwareOperations:
   - FP16
-  - FP32
-  - FP64
   - BF16
-  - TF32
   - INT8
   - INT4
 releaseDate: "2025-09-19"
-lastModified: "2026-01-06T00:00:00Z"
+lastModified: "2026-09-02T00:00:00Z"
 
 manufacturerIdentifiers:
   - type: product_code
     value: "243916"
-  - type: device_pci_id
-    value: "0xE211"
 
 thirdPartyProducts:
   - company: ASRock
@@ -43,12 +38,12 @@ thirdPartyProducts:
     identifierType: model_number
 
 summary: |
-  The Intel Arc Pro B60 is a professional workstation GPU released in September 2025, built on the Xe2 (Battlemage)
+  The Intel Arc Pro B60 is a professional workstation GPU released in September 2025, built on the Xe2-HPG (Battlemage)
   architecture using TSMC's 5nm process. It features 20 Xe2 cores, 160 XMX (Xe Matrix eXtension) engines for AI
   acceleration, and 20 ray tracing units, paired with 24GB of GDDR6 memory. The GPU delivers 12.28 TFLOPS of FP32
   compute performance and 197 peak TOPS of INT8 AI inference performance, making it highly competitive for AI
-  workstation and inference workloads at its $599 price point. The XMX engines support a wide range of precision
-  formats including INT2, INT4, INT8, FP16, BF16, and TF32, providing exceptional flexibility for AI inference
+  workstation and inference workloads at its $599 price point. The XMX engines support precision formats
+  including INT4, INT8, FP16, and BF16, providing exceptional flexibility for AI inference
   tasks that can leverage lower precision for improved performance. The Arc Pro B60 features 456 GB/s of memory
   bandwidth through a 192-bit memory interface running at 19 Gbps, with a boost clock of 2400 MHz and a TBP of
   200W (with a low-power mode available at 120-200W and 2000 MHz). Intel positions this GPU as an 'inference
@@ -65,11 +60,8 @@ references:
   - https://www.intel.com/content/www/us/en/products/docs/discrete-gpus/arc/workstations/b-series/overview.html
   - https://download.intel.com/newsroom/2025/client-computing/Intel-Arc-Pro-B60-Data-Sheet.pdf
   - https://newsroom.intel.com/client-computing/computex-intel-unveils-new-gpus-ai-workstations
-  - https://videocardz.com/newz/intel-arc-pro-b60-24gb-professional-gpu-listed-at-599-in-stock-and-shipping
   - https://wccftech.com/intel-arc-pro-b60-24-gb-b50-16-gb-battlemage-gpus-pro-ai-3x-faster-dual-gpu-variant/
   - https://www.tomshardware.com/pc-components/gpus/intel-launches-usd299-arc-pro-b50-with-16gb-of-memory-project-battlematrix-workstations-with-24gb-arc-pro-b60-gpus
-  - https://videocardz.com/newz/intel-announces-arc-pro-b60-24gb-and-b50-16gb-cards-dual-b60-features-48gb-memory
-  - https://videocardz.com/intel-arc-pro-b60
   - https://www.asrock.com/Graphics-Card/Intel/Intel%20Arc%20Pro%20B60%20Creator%2024GB/
   - https://asrock.com/Graphics-Card/Intel/Intel%20Arc%20Pro%20B60%20Passive%2024GB/
   - https://www.maxsun.com/products/intel-arc-pro-b60-dual-48g-turbo
@@ -80,16 +72,17 @@ references:
   - https://en.wikipedia.org/wiki/Intel_Arc
   - https://community.intel.com/t5/GPU-Compute-Software/What-is-the-Intel-Arc-pro-b60-quot-FP64-quot-performance/m-p/1722047
   - https://github.com/intel/compute-runtime/blob/master/shared/source/dll/devices/devices_base.inl
+  - https://www.intel.com/content/www/us/en/docs/vtune-profiler/user-guide/2025-1/xve-fp16-bf16-int8-int4-int2-xmx-instructions.html
+  - https://www.intel.com/content/dam/www/central-libraries/us/en/documents/2026-03/datasheet-b70-gpu.pdf
 
 notes:
   - FP32 TFLOPS of 12.28 sourced directly from Intel's official product specifications page at intel.com.
   - FP16 TFLOPS of 24.58 sourced from third-party GPU databases (SiliconCat, CpuTronic) based on Xe2 architecture specifications. Intel does not publish FP16 performance in official specs, but the 2:1 ratio of FP16 to FP32 is consistent with Xe2 architecture documentation.
-  - INT8 TOPS of 197 represents peak INT8 AI performance and is sourced directly from Intel's official product specifications.
+  - INT8 TOPS of 197 represents peak INT8 AI performance (Int8 Dense per Intel's official B60 datasheet) and is sourced directly from Intel's official product specifications.
   - Memory bandwidth calculated as 192-bit interface × 19 Gbps ÷ 8 bits/byte = 456 GB/s, confirmed by Intel official specifications.
   - TBP (Thermal Base Power) is 200W at 2400 MHz boost clock. Intel also specifies a low-power mode ranging from 120-200W at 2000 MHz.
   - XMX (Xe Matrix eXtension) engine count of 160 sourced from Intel official specifications. These are Intel's dedicated AI accelerators, equivalent to tensor cores in NVIDIA GPUs.
-  - Xe2 architecture XMX engines support INT2, INT4, INT8, FP16, BF16, and TF32 precision formats on dedicated matrix multiplication hardware, as documented in Xe2 architecture analysis.
-  - FP64 double precision performance is not officially published by Intel. Third-party sources report FP64 at 1:4 ratio to FP32 (approximately 3.07 TFLOPS), but this is unverified. FP64 is listed in supportedHardwareOperations based on Xe2 architecture documentation confirming FP64 support on general-purpose shader units (XVEs).
+  - FP64 double precision performance is not officially published by Intel. Third-party sources report FP64 at 1:4 ratio to FP32 (approximately 3.07 TFLOPS), but this is unverified. FP64, when supported, runs on the general-purpose shader units (XVEs), not the XMX matrix engine, so it is not included in supportedHardwareOperations under the GEMM-only definition (see Phase 5 audit note below).
   - The GPU uses the BMG-G21 chip with 272mm² die size and 19.6 billion transistors, manufactured on TSMC's N5 (5nm) process.
   - MSRP of $599 USD based on retail pricing at launch from US retailer Central Computers for the ASRock Arc Pro B60 Creator 24GB. Intel did not officially publish MSRP but indicated an estimated value around $500 at Computex 2025 announcement.
   - Release date of September 19, 2025 based on multiple sources confirming the GPU launched in September 2025 with availability in North America. The GPU was announced at Computex 2025 in May 2025, with sampling to AIB partners beginning in June 2025.
@@ -100,3 +93,6 @@ notes:
   - Intel positions the Arc Pro B60 as delivering up to 3× faster performance compared to previous generation professional GPUs at this price point, with significantly better performance per dollar.
   - The GPU supports DirectX 12 Ultimate and OpenGL 4.6 APIs.
   - Intel's Project Battlematrix showcases dual-GPU and multi-GPU configurations, with systems featuring up to 8 Arc Pro B60 GPUs providing 192GB of combined VRAM for large-scale AI inference workloads.
+  - 'Phase 5 precision audit (2026-09-02): supportedHardwareOperations corrected to FP16, BF16, INT8, INT4 (removed FP32, FP64, and TF32) per the canonical Xe2-HPG (Battlemage) supportedHardwareOperations definition in gpu-researcher.md. TF32 was a data-entry inconsistency: it is not listed anywhere in Intel''s official Arc Pro B60 datasheet or specifications page, is not present on the sibling B570/B580/Pro B50 files (same Xe2-HPG generation, same XMX design), and appears to have been over-applied from Intel''s generic oneAPI XMX documentation ("Intel XMX supports...int8, fp16, bf16, and tf32...depending on hardware generation") which describes TF32 support on the separate Xe-HPC (Ponte Vecchio / Data Center GPU Max Series) architecture, not Xe2/Battlemage. FP32 and FP64 were removed because this field is scoped to hardware-accelerated XMX matrix/tensor (GEMM) paths only; FP32/FP64 run on the general-purpose Xe Vector Engines (XVEs), per Intel VTune Profiler documentation which defines a dedicated XMX instruction-count metric scoped to FP16/BF16/INT8/INT4/INT2 only, distinct from a separate XVE metric covering INT16/INT32/INT64/FP16/FP32/FP64.'
+  - 'fp8TFLOPS and fp4TFLOPS are intentionally omitted (not added to unverifiedSpecs) because this is a confirmed hardware negative, not a research gap: Intel''s official Arc Pro B60 datasheet (which does list "Int8 Dense" AI TOPS explicitly) and the B70 datasheet make no mention of FP8 or FP4 XMX data type support anywhere, and the chipsandcheese Battlemage architecture analysis likewise documents no FP8/FP4 XMX support for the Xe2/Xe2-HPG generation.'
+  - 'gpuArchitecture changed from "Xe2" to "Xe2-HPG (Battlemage)" during the 2026-09-02 audit to normalize naming across all six Arc B/Pro B-series files. Intel''s own official Arc Pro B60 datasheet (PDF one-pager, download.intel.com/newsroom/2025/client-computing/Intel-Arc-Pro-B60-Data-Sheet.pdf) explicitly labels its Xe-cores "20 Xe2-HPG" in the Specifications table, confirming Intel itself uses the "Xe2-HPG" designation for this Pro-tier product, not just consumer B570/B580. No genuine hardware-based Pro-vs-consumer naming split was found; both tiers share the same Xe2-HPG/Battlemage generation and BMG-G21 die.'

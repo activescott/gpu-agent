@@ -13,13 +13,11 @@ maxTDPWatts: 190
 gpuArchitecture: Xe2-HPG (Battlemage)
 supportedHardwareOperations:
   - FP16
-  - FP32
-  - FP64
   - BF16
   - INT8
   - INT4
 releaseDate: "2024-12-13"
-lastModified: "2025-12-21T00:00:00Z"
+lastModified: "2026-09-02T00:00:00Z"
 
 summary: |
   The Intel Arc B580 is a discrete graphics card launched in December 2024, featuring Intel's second-generation
@@ -98,6 +96,7 @@ references:
   - https://www.intel.com/content/www/us/en/developer/articles/technical/introduction-to-the-xe-hpg-architecture.html
   - https://chipsandcheese.com/p/intels-battlemage-architecture
   - https://www.intel.com/content/www/us/en/docs/oneapi/optimization-guide-gpu/2024-1/xmx.html
+  - https://www.intel.com/content/www/us/en/docs/vtune-profiler/user-guide/2025-1/xve-fp16-bf16-int8-int4-int2-xmx-instructions.html
   - https://www.tomshardware.com/pc-components/gpus/intel-arc-b580-review-the-new-usd249-gpu-champion-has-arrived
   - https://www.asrock.com/Graphics-Card/Intel/Intel%20Arc%20B580%20Steel%20Legend%2012GB%20OC/
   - https://www.asrock.com/Graphics-Card/Intel/Intel%20Arc%20B580%20Challenger%2012GB%20OC/
@@ -119,6 +118,8 @@ references:
   - https://www.newegg.com/onix-lumi-8346-00278-arc-b580-12gb-graphics-card-double-fans/p/N82E16814987002
   - https://www.newegg.com/onix-odyssey-8346-00178-arc-b580-12gb-graphics-card-double-fans/p/N82E16814987001
   - https://www.guru3d.com/story/intel-arc-b580-and-b580-graphics-cards-has-6-brands-partners-but-not-msi-asus-and/
+  - https://download.intel.com/newsroom/2025/client-computing/Intel-Arc-Pro-B60-Data-Sheet.pdf
+  - https://www.intel.com/content/dam/www/central-libraries/us/en/documents/2026-03/datasheet-b70-gpu.pdf
 
 notes:
   - "FP32 TFLOPS calculated as 2,560 shading units × 2.670 GHz boost clock × 2 ops/cycle ÷ 1000 = 13.67 TFLOPS"
@@ -146,3 +147,6 @@ notes:
   - "Acer Nitro part number DP.Z4BWW.P01 sourced from B&H Photo retailer listing"
   - "Onix LUMI part number 8346-00278 and ODYSSEY part number 8346-00178 sourced from Newegg and official Onix Technology website. Onix is reportedly affiliated with Sapphire Technology"
   - "Intel Arc B580 has 6 AIB partners at launch: ASRock, Sparkle, Gunnir, Maxsun, Acer, and Onix. Major brands like MSI, ASUS, and Gigabyte are notably absent from the B580 lineup"
+  - 'Phase 5 precision audit (2026-09-02): supportedHardwareOperations narrowed to FP16, BF16, INT8, INT4 (removed FP32 and FP64) per the canonical Xe2-HPG (Battlemage) supportedHardwareOperations definition in gpu-researcher.md, which scopes this field to hardware-accelerated XMX matrix/tensor (GEMM) paths only, not general ALU-executed precisions. FP32 and FP64 run on the general-purpose Xe Vector Engines (XVEs), not the XMX matrix engine, per Intel VTune Profiler documentation which defines a dedicated XMX instruction-count metric scoped to FP16/BF16/INT8/INT4/INT2 only, distinct from a separate XVE metric covering INT16/INT32/INT64/FP16/FP32/FP64.'
+  - 'fp8TFLOPS and fp4TFLOPS are intentionally omitted (not added to unverifiedSpecs) because this is a confirmed hardware negative, not a research gap: Intel''s official Arc Pro B60 and B70 datasheets (PDF one-pagers, same Xe2-HPG/Battlemage generation and XMX design as the B580) and the chipsandcheese Battlemage architecture analysis document no FP8 or FP4 XMX data type support anywhere in the Xe2/Xe2-HPG generation.'
+  - 'gpuArchitecture of Xe2-HPG (Battlemage) confirmed unchanged during the 2026-09-02 audit. Intel''s own Arc Pro B60 and B70 datasheets label their Xe-cores "Xe2-HPG" (e.g. "20 Xe2-HPG" Xe-cores, "32 Xe2-HPG" Xe-cores), showing "Xe2-HPG" is used by Intel across both consumer and Pro/workstation tiers rather than being a consumer-only designation, and confirming this file''s existing value as the correct canonical form for normalization across the Arc B/Pro B-series family.'

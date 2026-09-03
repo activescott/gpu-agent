@@ -10,16 +10,14 @@ int8TOPS: 170
 memoryCapacityGB: 16
 memoryBandwidthGBs: 224
 maxTDPWatts: 70
-gpuArchitecture: Xe2
+gpuArchitecture: Xe2-HPG (Battlemage)
 supportedHardwareOperations:
-  - FP32
   - FP16
-  - FP64
   - BF16
   - INT8
   - INT4
 releaseDate: "2025-09-03"
-lastModified: "2026-01-06T00:00:00Z"
+lastModified: "2026-09-02T00:00:00Z"
 
 manufacturerIdentifiers:
   - type: product_code
@@ -54,7 +52,6 @@ references:
   - https://www.intel.com/content/www/us/en/products/sku/242615/intel-arc-pro-b50-graphics/ordering.html
   - https://www.intel.com/content/www/us/en/products/docs/discrete-gpus/arc/workstations/b-series/overview.html
   - https://newsroom.intel.com/client-computing/computex-intel-unveils-new-gpus-ai-workstations
-  - https://videocardz.com/newz/intel-launches-arc-pro-b50-graphics-card-at-349
   - https://www.tomshardware.com/pc-components/gpus/intel-launches-usd299-arc-pro-b50-with-16gb-of-memory-project-battlematrix-workstations-with-24gb-arc-pro-b60-gpus
   - https://www.storagereview.com/review/intel-arc-pro-b50-gpu-review-an-affordable-low-power-workstation-gpu
   - https://www.guru3d.com/story/intel-arc-pro-b50-gpu-launched-at-for-compact-workstations/
@@ -63,6 +60,8 @@ references:
   - https://www.intel.com/content/www/us/en/docs/vtune-profiler/user-guide/2025-1/xve-fp16-bf16-int8-int4-int2-xmx-instructions.html
   - https://chipsandcheese.com/p/intels-battlemage-architecture
   - https://www.hwcooling.net/en/batttlemage-details-of-intel-xe2-gpu-architecture-analysis/
+  - https://download.intel.com/newsroom/2025/client-computing/Intel-Arc-Pro-B60-Data-Sheet.pdf
+  - https://www.intel.com/content/dam/www/central-libraries/us/en/documents/2026-03/datasheet-b70-gpu.pdf
 
 notes:
   - FP32 TFLOPS of 10.65 sourced directly from Intel's official product specifications page at intel.com.
@@ -83,3 +82,6 @@ notes:
   - API support includes DirectX 12 Ultimate, Vulkan 1.4, OpenGL 4.6, OpenCL 3.0, Intel oneAPI, OpenVINO, XeSS, and PyTorch IPEX extension.
   - No OEM/third-party products documented yet as the GPU is newly launched (September 2025) and OEM adoption is still ramping up. Dell, HP, Lenovo, and Supermicro part numbers were not available in public sources at time of research.
   - Performance analysis from Puget Systems and StorageReview confirms the Arc Pro B50 delivers competitive performance in professional workloads including 3D rendering, video editing, and AI inference at its price point.
+  - 'Phase 5 precision audit (2026-09-02): supportedHardwareOperations narrowed to FP16, BF16, INT8, INT4 (removed FP32 and FP64) per the canonical Xe2-HPG (Battlemage) supportedHardwareOperations definition in gpu-researcher.md, which scopes this field to hardware-accelerated XMX matrix/tensor (GEMM) paths only, not general ALU-executed precisions. FP32 and FP64 run on the general-purpose Xe Vector Engines (XVEs), not the XMX matrix engine, per Intel VTune Profiler documentation which defines a dedicated XMX instruction-count metric scoped to FP16/BF16/INT8/INT4/INT2 only, distinct from a separate XVE metric covering INT16/INT32/INT64/FP16/FP32/FP64.'
+  - 'fp8TFLOPS and fp4TFLOPS are intentionally omitted (not added to unverifiedSpecs) because this is a confirmed hardware negative, not a research gap: Intel''s official Arc Pro B60 and B70 datasheets (PDF one-pagers, same Xe2-HPG/Battlemage generation and XMX design as the B50) and the chipsandcheese Battlemage architecture analysis document no FP8 or FP4 XMX data type support anywhere in the Xe2/Xe2-HPG generation.'
+  - 'gpuArchitecture changed from "Xe2" to "Xe2-HPG (Battlemage)" during the 2026-09-02 audit to normalize naming across all six Arc B/Pro B-series files. Intel''s own ARK specification page for the B50 lists the architecture field simply as "Xe2" with no Xe-core sub-label, but Intel''s official Arc Pro B60 and B70 marketing datasheets (PDF one-pagers) explicitly label their Xe-cores "Xe2-HPG" (e.g. "20 Xe2-HPG" Xe-cores, "32 Xe2-HPG" Xe-cores), confirming "Xe2-HPG" is Intel''s own designation for this die/Xe-core family and is used across both consumer and Pro/workstation tiers, not consumer-exclusive. The B50 shares the same BMG-G21 die and Battlemage architecture generation as the B570/B580 (which already used the "Xe2-HPG (Battlemage)" label) and the B60 (whose own datasheet confirms the "Xe2-HPG" label), so no genuine hardware-based naming split was found; the discrepancy was a documentation-format artifact (terse ARK spec-table field vs. fuller marketing datasheet) rather than an architectural difference.'

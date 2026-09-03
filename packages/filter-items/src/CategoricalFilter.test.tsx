@@ -126,4 +126,21 @@ describe("CategoricalFilter", () => {
     )
     expect(document.getElementById("filter-condition-New")).not.toBeNull()
   })
+
+  it("checkbox has an aria-label independent of label[for] association", () => {
+    // FilterLayout renders the filter panel twice (desktop sidebar + mobile
+    // offcanvas), giving every checkbox id a duplicate elsewhere in the
+    // document. label[for] resolves ambiguously across duplicate ids, so the
+    // accessible name must not depend on it.
+    render(
+      <CategoricalFilter
+        config={oneOfConfig}
+        currentValue={undefined}
+        onChange={vi.fn()}
+      />,
+    )
+    expect(getCheckbox("condition", "New").getAttribute("aria-label")).toBe(
+      "New",
+    )
+  })
 })

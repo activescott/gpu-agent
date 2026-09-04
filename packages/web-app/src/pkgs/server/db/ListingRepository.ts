@@ -419,10 +419,79 @@ export type GpuPriceStats = {
   minPrice: number
   maxPrice: number
   activeListingCount: number
+  /** Count of active listings classified as used/refurbished by classifyListingCondition(). */
+  usedListingCount: number
+  /** Count of active listings classified as new by classifyListingCondition(). */
+  newListingCount: number
+  /** Average of the 3 lowest-priced used/refurbished listings, or null when usedListingCount is 0. */
+  usedMinPrice: number | null
   latestListingDate: Date
   /** Image URL from a representative listing, for use in structured data */
   representativeImageUrl: string | null
 }
+
+/**
+ * Classifies a raw `Listing.condition` value as "new", "used", or "unknown".
+ *
+ * `condition` is stored verbatim from the marketplace (eBay reports its own
+ * grading strings, in several languages; Amazon defaults to "New" when it
+ * reports nothing). This reads the raw value against explicit allow-lists
+ * rather than treating "not New" as "used", so an unrecognized or missing
+ * value returns "unknown" instead of silently landing in either bucket.
+ *
+ * "Open box" and its literal translations ("Aperto - mai usato",
+ * "Opened – never used") are classified as "used": they represent the same
+ * discounted, non-sealed condition tier as other secondhand grades, and
+ * shoppers who search "open box" are treated as used-intent by this project's
+ * shop-page SEO experiments.
+ */
+export function classifyListingCondition(
+  condition: string | null | undefined,
+): "new" | "used" | "unknown" {
+  if (!condition) {
+    return "unknown"
+  }
+  const normalized = condition.trim().toLowerCase()
+  if (NEW_CONDITIONS.has(normalized)) {
+    return "new"
+  }
+  if (USED_CONDITIONS.has(normalized)) {
+    return "used"
+  }
+  return "unknown"
+}
+
+const NEW_CONDITIONS = new Set([
+  "new",
+  "brand new",
+  "neu",
+  "neu: sonstige (siehe artikelbeschreibung)",
+  "nuovo",
+  "neuf",
+])
+
+const USED_CONDITIONS = new Set([
+  "used",
+  "open box",
+  "opened – never used",
+  "opened - never used",
+  "aperto - mai usato",
+  "excellent - refurbished",
+  "very good - refurbished",
+  "good - refurbished",
+  "sehr gut - refurbished",
+  "gut - refurbished",
+  "hervorragend - refurbished",
+  "certified refurbished",
+  "refurbished",
+  "renewed",
+  "molto buono - ricondizionato",
+  "eccellente - ricondizionato",
+  "gebraucht",
+  "usato",
+  "d'occasion",
+  "boîte ouverte",
+])
 
 export async function getPriceStats(
   gpuName: string,
@@ -430,6 +499,8 @@ export async function getPriceStats(
 ): Promise<GpuPriceStats> {
   // minPrice is calculated as the average of the 3 lowest priced listings
   // (or fewer if less than 3 listings exist) to provide a more stable price indicator
+  const usedConditions = [...USED_CONDITIONS]
+  const newConditions = [...NEW_CONDITIONS]
   const result = (await prisma.$queryRaw`
     SELECT
       AVG("priceValue"::float) as "avgPrice",
@@ -442,6 +513,20 @@ export async function getPriceStats(
       ) lowest_three) as "minPrice",
       MAX("priceValue"::float) as "maxPrice",
       COUNT(*)::float as "activeListingCount",
+      COUNT(*) FILTER (
+        WHERE LOWER(TRIM("condition")) = ANY(${usedConditions}::text[])
+      )::float as "usedListingCount",
+      COUNT(*) FILTER (
+        WHERE LOWER(TRIM("condition")) = ANY(${newConditions}::text[])
+      )::float as "newListingCount",
+      (SELECT AVG(price) FROM (
+        SELECT "priceValue"::float as price
+        FROM "Listing"
+        WHERE "gpuName" = ${gpuName} AND "archived" = false AND "exclude" = false AND "source" IN ('ebay', 'amazon')
+          AND LOWER(TRIM("condition")) = ANY(${usedConditions})
+        ORDER BY "priceValue"::float ASC
+        LIMIT 3
+      ) lowest_three_used) as "usedMinPrice",
       MAX("itemCreationDate") as "latestListingDate"
     FROM "Listing"
   WHERE
@@ -449,7 +534,7 @@ export async function getPriceStats(
     AND "archived" = false
     AND "exclude" = false
     AND "source" IN ('ebay', 'amazon')
-  ;`) as GpuPriceStats[]
+  ;`) as Omit<GpuPriceStats, "representativeImageUrl">[]
 
   if (result.length === 0) {
     log.error(`No price stats found for gpu ${gpuName}`)
@@ -458,6 +543,9 @@ export async function getPriceStats(
       minPrice: 0,
       maxPrice: 0,
       activeListingCount: 0,
+      usedListingCount: 0,
+      newListingCount: 0,
+      usedMinPrice: null,
       latestListingDate: EPOCH,
       representativeImageUrl: null,
     }

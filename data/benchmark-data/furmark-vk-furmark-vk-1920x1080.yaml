@@ -12,13 +12,13 @@ description: Median FPS in FurMark 2 (Vulkan), a GPU stress test and benchmark
 descriptionDollarsPer: Dollars per FPS in FurMark 2 (Vulkan). Lower values
   indicate better cost efficiency for GPU compute-heavy rendering.
 category: gaming
-collectedSamples: 18890
-updatedAt: 2026-09-03T10:17:45.034Z
+collectedSamples: 19147
+updatedAt: 2026-09-04T18:53:39.633Z
 results:
   - gpuNameRaw: AMD  Radeon RX 7800 XT
     value: 216
   - gpuNameRaw: AMD BC-250 (RADV GFX1013)
-    value: 116
+    value: 117
   - gpuNameRaw: AMD Custom GPU 0405 (RADV VANGOGH)
     value: 18
   - gpuNameRaw: AMD Radeon (TM) Graphics
@@ -47,6 +47,8 @@ results:
     value: 81
   - gpuNameRaw: AMD Radeon Graphics (RADV GFX1200)
     value: 188
+  - gpuNameRaw: AMD Radeon Graphics (RADV REMBRANDT)
+    value: 19
   - gpuNameRaw: AMD Radeon Graphics (RADV RENOIR)
     value: 13
   - gpuNameRaw: AMD Radeon Graphics (RADV VEGA20)
@@ -60,13 +62,17 @@ results:
   - gpuNameRaw: AMD Radeon Pro v540
     value: 91
   - gpuNameRaw: AMD Radeon Pro VII
-    value: 126
+    value: 124
   - gpuNameRaw: AMD Radeon Pro W5700
     value: 111
+  - gpuNameRaw: AMD Radeon Pro WX 2100
+    value: 12
   - gpuNameRaw: AMD Radeon R5 M445 Series (RADV ICELAND)
     value: 6
   - gpuNameRaw: AMD Radeon R7 200 Series
     value: 11
+  - gpuNameRaw: AMD Radeon R9 200 / HD 7900 Series
+    value: 32
   - gpuNameRaw: AMD Radeon R9 200 Series
     value: 51
   - gpuNameRaw: AMD Radeon R9 200 Series (RADV HAWAII)
@@ -120,7 +126,7 @@ results:
   - gpuNameRaw: AMD Radeon RX 6600 XT (RADV NAVI23)
     value: 132
   - gpuNameRaw: AMD Radeon RX 6600M
-    value: 88
+    value: 87
   - gpuNameRaw: AMD Radeon RX 6600M (RADV NAVI23)
     value: 90
   - gpuNameRaw: AMD Radeon RX 6650 XT
@@ -134,7 +140,7 @@ results:
   - gpuNameRaw: AMD Radeon RX 6700 (RADV NAVI22)
     value: 130
   - gpuNameRaw: AMD Radeon RX 6700 XT
-    value: 154
+    value: 153
   - gpuNameRaw: AMD Radeon RX 6700 XT (RADV NAVI22)
     value: 164
   - gpuNameRaw: AMD Radeon RX 6700M
@@ -146,7 +152,7 @@ results:
   - gpuNameRaw: AMD Radeon RX 6750 XT
     value: 160
   - gpuNameRaw: AMD Radeon RX 6750 XT (RADV NAVI22)
-    value: 170
+    value: 171
   - gpuNameRaw: AMD Radeon RX 6800
     value: 177
   - gpuNameRaw: AMD Radeon RX 6800 (RADV NAVI21)
@@ -162,7 +168,7 @@ results:
   - gpuNameRaw: AMD Radeon RX 6900 XT
     value: 254
   - gpuNameRaw: AMD Radeon RX 6950 XT
-    value: 245
+    value: 247
   - gpuNameRaw: AMD Radeon RX 6950 XT (RADV NAVI21)
     value: 305
   - gpuNameRaw: AMD Radeon RX 7600
@@ -192,7 +198,7 @@ results:
   - gpuNameRaw: AMD Radeon RX 7800 XT (RADV NAVI32)
     value: 233
   - gpuNameRaw: AMD Radeon RX 7900 GRE
-    value: 257
+    value: 252
   - gpuNameRaw: AMD Radeon RX 7900 GRE (RADV NAVI31)
     value: 291
   - gpuNameRaw: AMD Radeon RX 7900 XT
@@ -200,7 +206,7 @@ results:
   - gpuNameRaw: AMD Radeon RX 7900 XT (RADV NAVI31)
     value: 330
   - gpuNameRaw: AMD Radeon RX 7900 XTX
-    value: 339
+    value: 343
   - gpuNameRaw: AMD Radeon RX 7900 XTX (RADV NAVI31)
     value: 417
   - gpuNameRaw: AMD Radeon RX 9060 XT
@@ -374,7 +380,7 @@ results:
   - gpuNameRaw: NVIDIA GeForce GTX 1080
     value: 105
   - gpuNameRaw: NVIDIA GeForce GTX 1080 Ti
-    value: 134
+    value: 133
   - gpuNameRaw: NVIDIA GeForce GTX 1650
     value: 41
   - gpuNameRaw: NVIDIA GeForce GTX 1650 SUPER
@@ -400,13 +406,13 @@ results:
   - gpuNameRaw: NVIDIA GeForce GTX 980
     value: 57
   - gpuNameRaw: NVIDIA GeForce MX450
-    value: 24
+    value: 25
   - gpuNameRaw: NVIDIA GeForce MX550
     value: 24
   - gpuNameRaw: NVIDIA GeForce RTX 2050
     value: 42
   - gpuNameRaw: NVIDIA GeForce RTX 2060
-    value: 101
+    value: 102
   - gpuNameRaw: NVIDIA GeForce RTX 2060 SUPER
     value: 113
   - gpuNameRaw: NVIDIA GeForce RTX 2060 with Max-Q Design
@@ -420,7 +426,7 @@ results:
   - gpuNameRaw: NVIDIA GeForce RTX 2080
     value: 148
   - gpuNameRaw: NVIDIA GeForce RTX 2080 SUPER
-    value: 164
+    value: 165
   - gpuNameRaw: NVIDIA GeForce RTX 2080 Super with Max-Q Design
     value: 87
   - gpuNameRaw: NVIDIA GeForce RTX 2080 Ti
@@ -448,7 +454,7 @@ results:
   - gpuNameRaw: NVIDIA GeForce RTX 3070 Laptop GPU
     value: 118
   - gpuNameRaw: NVIDIA GeForce RTX 3070 Ti
-    value: 194
+    value: 193
   - gpuNameRaw: NVIDIA GeForce RTX 3070 Ti Laptop GPU
     value: 102
   - gpuNameRaw: NVIDIA GeForce RTX 3080
@@ -468,7 +474,7 @@ results:
   - gpuNameRaw: NVIDIA GeForce RTX 4060
     value: 115
   - gpuNameRaw: NVIDIA GeForce RTX 4060 Laptop GPU
-    value: 133
+    value: 134
   - gpuNameRaw: NVIDIA GeForce RTX 4060 Ti
     value: 178
   - gpuNameRaw: NVIDIA GeForce RTX 4070
@@ -492,13 +498,13 @@ results:
   - gpuNameRaw: NVIDIA GeForce RTX 4090 Laptop GPU
     value: 227
   - gpuNameRaw: NVIDIA GeForce RTX 5050
-    value: 129
+    value: 130
   - gpuNameRaw: NVIDIA GeForce RTX 5050 Laptop GPU
     value: 128
   - gpuNameRaw: NVIDIA GeForce RTX 5060
     value: 155
   - gpuNameRaw: NVIDIA GeForce RTX 5060 Laptop GPU
-    value: 144
+    value: 143
   - gpuNameRaw: NVIDIA GeForce RTX 5060 Ti
     value: 197
   - gpuNameRaw: NVIDIA GeForce RTX 5070
@@ -514,7 +520,7 @@ results:
   - gpuNameRaw: NVIDIA GeForce RTX 5080 Laptop GPU
     value: 243
   - gpuNameRaw: NVIDIA GeForce RTX 5090
-    value: 573
+    value: 572
   - gpuNameRaw: NVIDIA GeForce RTX 5090 D v2
     value: 562
   - gpuNameRaw: NVIDIA GeForce RTX 5090 Laptop GPU
@@ -538,7 +544,7 @@ results:
   - gpuNameRaw: NVIDIA RTX A3000 Laptop GPU
     value: 79
   - gpuNameRaw: NVIDIA RTX A4000
-    value: 92
+    value: 95
   - gpuNameRaw: NVIDIA RTX A4000 Laptop GPU
     value: 101
   - gpuNameRaw: NVIDIA RTX A5000
@@ -548,7 +554,7 @@ results:
   - gpuNameRaw: NVIDIA RTX PRO 6000 Blackwell Workstation Edition
     value: 569
   - gpuNameRaw: NVIDIA T1200 Laptop GPU
-    value: 39
+    value: 40
   - gpuNameRaw: NVIDIA TITAN RTX
     value: 186
   - gpuNameRaw: P104-100
@@ -557,6 +563,8 @@ results:
     value: 57
   - gpuNameRaw: Quadro RTX 4000
     value: 81
+  - gpuNameRaw: Quadro RTX 4000 with Max-Q Design
+    value: 76
   - gpuNameRaw: Quadro RTX 5000
     value: 115
   - gpuNameRaw: Quadro T1000
@@ -585,6 +593,8 @@ results:
     value: 52
   - gpuNameRaw: Radeon RX 5500 XT
     value: 66
+  - gpuNameRaw: Radeon RX 5500M
+    value: 55
   - gpuNameRaw: Radeon RX 560 Series
     value: 25
   - gpuNameRaw: Radeon RX 560 XT

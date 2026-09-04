@@ -10,6 +10,7 @@ export enum AnalyticsActions {
   BuyNow = "Buy Now",
   RedirectToAffiliate = "Redirect to Affiliate",
   FilterInteraction = "Filter Interaction",
+  HeaderSortClick = "Header Sort Click",
 }
 
 // avoid any here and be more constrained

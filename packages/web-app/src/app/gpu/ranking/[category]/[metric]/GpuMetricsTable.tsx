@@ -6,8 +6,11 @@ import {
   useState,
   useMemo,
   useCallback,
+  useRef,
+  useEffect,
   type JSX,
   type CSSProperties,
+  type KeyboardEvent,
   Fragment,
 } from "react"
 import { composeComparers } from "@/pkgs/isomorphic/collection"
@@ -19,15 +22,43 @@ import {
   TIER_THRESHOLDS,
   type TierThreshold,
 } from "@/pkgs/isomorphic/model/tiers"
+import {
+  useAnalytics,
+  AnalyticsActions,
+} from "@/pkgs/client/analytics/reporter"
 
 type RankingSortField = "price" | "percentile" | "dollarsPer" | "name"
 type SortDirection = "asc" | "desc"
+
+interface SortState {
+  field: RankingSortField
+  direction: SortDirection
+}
 
 const DEFAULT_DIRECTIONS: Record<RankingSortField, SortDirection> = {
   price: "asc",
   dollarsPer: "asc",
   percentile: "desc",
   name: "asc",
+}
+
+/** Number of leading rows compared to detect whether a sort changed row order. */
+const TOP_ROW_SAMPLE_SIZE = 5
+
+function getTopRowIds(gpus: PricedGpu[]): string[] {
+  return gpus.slice(0, TOP_ROW_SAMPLE_SIZE).map((gpu) => gpu.gpu.name)
+}
+
+function topRowIdsEqual(a: string[], b: string[]): boolean {
+  if (a.length !== b.length) return false
+  return a.every((id, index) => id === b[index])
+}
+
+type AriaSort = "ascending" | "descending" | "none"
+
+function getAriaSort(isActive: boolean, direction: SortDirection): AriaSort {
+  if (!isActive) return "none"
+  return direction === "asc" ? "ascending" : "descending"
 }
 
 function getDollarsPer(gpu: PricedGpu): number | null {
@@ -196,12 +227,14 @@ export function GpuMetricsTable({
   showTierDividers = true,
   header,
 }: GpuMetricsTableProps): JSX.Element {
-  const [sortField, setSortField] = useState<RankingSortField>("dollarsPer")
-  const [sortDirection, setSortDirection] = useState<SortDirection>("asc")
+  const [sort, setSort] = useState<SortState>({
+    field: "dollarsPer",
+    direction: "asc",
+  })
 
   const sortedGpus = useMemo(
-    () => sortGpusByField(gpuList, sortField, sortDirection),
-    [gpuList, sortField, sortDirection],
+    () => sortGpusByField(gpuList, sort.field, sort.direction),
+    [gpuList, sort.field, sort.direction],
   )
 
   const costPercentiles = useMemo(
@@ -209,21 +242,66 @@ export function GpuMetricsTable({
     [gpuList],
   )
 
-  const handleHeaderClick = useCallback(
-    (field: RankingSortField) => {
-      if (field === sortField) {
-        setSortDirection((d) => (d === "asc" ? "desc" : "asc"))
-      } else {
-        setSortField(field)
-        setSortDirection(DEFAULT_DIRECTIONS[field])
-      }
-    },
-    [sortField],
-  )
+  const handleHeaderClick = useCallback((field: RankingSortField) => {
+    setSort((prev) =>
+      prev.field === field
+        ? { field, direction: prev.direction === "asc" ? "desc" : "asc" }
+        : { field, direction: DEFAULT_DIRECTIONS[field] },
+    )
+  }, [])
+
+  const analytics = useAnalytics()
+  const mountTimeRef = useRef<number | undefined>()
+  const prevSortRef = useRef<SortState>(sort)
+  const prevTopRowIdsRef = useRef<string[]>(getTopRowIds(sortedGpus))
+
+  useEffect(() => {
+    mountTimeRef.current = Date.now()
+  }, [])
+
+  // Fires only when `sort` has actually changed since the last time this ran,
+  // so it reports one event per header click rather than per render. This is
+  // the only place that knows both the previous and the resulting sort state,
+  // which avoids re-deriving `prevSortField`/`prevSortDirection` from a
+  // closure that could go stale between the click and this effect running.
+  useEffect(() => {
+    const prevSort = prevSortRef.current
+    if (
+      prevSort.field === sort.field &&
+      prevSort.direction === sort.direction
+    ) {
+      return
+    }
+
+    const topRowIds = getTopRowIds(sortedGpus)
+    const topRowsChanged = !topRowIdsEqual(prevTopRowIdsRef.current, topRowIds)
+    const zeroListingRowCount = gpuList.reduce(
+      (count, gpu) => (gpu.price.activeListingCount === 0 ? count + 1 : count),
+      0,
+    )
+
+    analytics.trackAction(AnalyticsActions.HeaderSortClick, {
+      field: sort.field,
+      prev_sort_field: prevSort.field,
+      prev_sort_direction: prevSort.direction,
+      next_sort_field: sort.field,
+      next_sort_direction: sort.direction,
+      row_count: gpuList.length,
+      zero_listing_row_count: zeroListingRowCount,
+      ms_since_mount:
+        mountTimeRef.current === undefined
+          ? -1
+          : Date.now() - mountTimeRef.current,
+      top_rows_changed: topRowsChanged,
+    })
+
+    prevSortRef.current = sort
+    prevTopRowIdsRef.current = topRowIds
+  }, [sort, gpuList, sortedGpus, analytics])
 
   const renderedTiers = new Set<number>()
   const displayGpus = maxRows ? sortedGpus.slice(0, maxRows) : sortedGpus
-  const showTiers = showTierDividers && sortField === "percentile"
+  const showTiers = showTierDividers && sort.field === "percentile"
 
   return (
     <div className="table-responsive-lg">
@@ -242,24 +320,24 @@ export function GpuMetricsTable({
             <SortableHeader
               field="name"
               label="GPU"
-              activeField={sortField}
-              direction={sortDirection}
+              activeField={sort.field}
+              direction={sort.direction}
               onClick={handleHeaderClick}
               style={{ textAlign: "left", whiteSpace: "nowrap", width: "1%" }}
             />
             <SortableHeader
               field="price"
               label="Lowest Average Price"
-              activeField={sortField}
-              direction={sortDirection}
+              activeField={sort.field}
+              direction={sort.direction}
               onClick={handleHeaderClick}
               style={{ textAlign: "right", whiteSpace: "nowrap", width: "1%" }}
             />
             <SortableHeader
               field="percentile"
               label="Raw Performance Ranking (Percentile)"
-              activeField={sortField}
-              direction={sortDirection}
+              activeField={sort.field}
+              direction={sort.direction}
               onClick={handleHeaderClick}
               style={{
                 textAlign: "left",
@@ -270,8 +348,8 @@ export function GpuMetricsTable({
             <SortableHeader
               field="dollarsPer"
               label={`$ per ${metricUnit}`}
-              activeField={sortField}
-              direction={sortDirection}
+              activeField={sort.field}
+              direction={sort.direction}
               onClick={handleHeaderClick}
               style={{ textAlign: "right", whiteSpace: "nowrap", width: "1%" }}
             />
@@ -422,10 +500,27 @@ function SortableHeader({
   style,
 }: SortableHeaderProps): JSX.Element {
   const isActive = field === activeField
+  const ariaSort = getAriaSort(isActive, direction)
+
+  const handleKeyDown = (event: KeyboardEvent<HTMLTableCellElement>): void => {
+    if (event.key === "Enter") {
+      onClick(field)
+    } else if (event.key === " ") {
+      // Space scrolls the page by default; this header is not a <button> so
+      // the browser does not suppress that behavior on its own.
+      event.preventDefault()
+      onClick(field)
+    }
+  }
+
   return (
     <th
       style={{ ...style, cursor: "pointer", userSelect: "none" }}
       onClick={() => onClick(field)}
+      role="button"
+      tabIndex={0}
+      aria-sort={ariaSort}
+      onKeyDown={handleKeyDown}
     >
       {label}{" "}
       {isActive ? (

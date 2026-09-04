@@ -493,6 +493,41 @@ const USED_CONDITIONS = new Set([
   "boîte ouverte",
 ])
 
+/**
+ * Raw `condition` values already reported by warnUnknownConditions(), so a
+ * value that matches neither allow-list is logged once per process instead of
+ * on every request for every GPU that has it.
+ */
+const warnedUnknownConditions = new Set<string>()
+
+/**
+ * Logs each distinct `Listing.condition` value that matched neither allow-list,
+ * so new marketplace grading strings can be found in the logs and added.
+ * Marketplaces introduce these without notice (new locales, new refurbished
+ * tiers), and an unrecognized value is counted as neither used nor new, so it
+ * silently shrinks both buckets.
+ */
+function warnUnknownConditions(
+  gpuName: string,
+  unknownConditions: (string | null)[],
+): void {
+  for (const condition of unknownConditions) {
+    const key = condition ?? "(null)"
+    if (warnedUnknownConditions.has(key)) {
+      continue
+    }
+    warnedUnknownConditions.add(key)
+    log.warn(
+      `Unrecognized Listing.condition ${JSON.stringify(key)} (first seen on gpu ${gpuName}). It is counted as neither used nor new. Add it to USED_CONDITIONS or NEW_CONDITIONS in ListingRepository.ts.`,
+    )
+  }
+}
+
+type GpuPriceStatsRow = Omit<GpuPriceStats, "representativeImageUrl"> & {
+  /** Distinct raw condition values matching neither allow-list. Null when a listing has no condition. */
+  unknownConditions: (string | null)[]
+}
+
 export async function getPriceStats(
   gpuName: string,
   prisma: PrismaClientWithinTransaction = prismaSingleton,
@@ -527,14 +562,24 @@ export async function getPriceStats(
         ORDER BY "priceValue"::float ASC
         LIMIT 3
       ) lowest_three_used) as "usedMinPrice",
-      MAX("itemCreationDate") as "latestListingDate"
+      MAX("itemCreationDate") as "latestListingDate",
+      COALESCE(
+        ARRAY_AGG(DISTINCT "condition") FILTER (
+          WHERE "condition" IS NULL
+            OR (
+              LOWER(TRIM("condition")) <> ALL(${usedConditions}::text[])
+              AND LOWER(TRIM("condition")) <> ALL(${newConditions}::text[])
+            )
+        ),
+        '{}'
+      ) as "unknownConditions"
     FROM "Listing"
   WHERE
     "gpuName" = ${gpuName}
     AND "archived" = false
     AND "exclude" = false
     AND "source" IN ('ebay', 'amazon')
-  ;`) as Omit<GpuPriceStats, "representativeImageUrl">[]
+  ;`) as GpuPriceStatsRow[]
 
   if (result.length === 0) {
     log.error(`No price stats found for gpu ${gpuName}`)
@@ -551,6 +596,9 @@ export async function getPriceStats(
     }
   }
 
+  const { unknownConditions, ...stats } = result[0]
+  warnUnknownConditions(gpuName, unknownConditions)
+
   // Get a representative image from the most recent active listing
   const listingWithImage = await prisma.listing.findFirst({
     where: {
@@ -564,7 +612,7 @@ export async function getPriceStats(
   })
 
   return {
-    ...result[0],
+    ...stats,
     representativeImageUrl: listingWithImage?.thumbnailImageUrl ?? null,
   }
 }

@@ -157,7 +157,10 @@ export function convertAmazonResultToListing(
     sellerUsername: "Amazon",
     sellerFeedbackPercentage: "100",
     sellerFeedbackScore: 1000,
-    condition: result.condition ?? "New",
+    // amazon-searcher always populates this (see its parser.ts), so the
+    // fallback is defensive; null rather than "New" so an absent value is
+    // classified as unknown instead of silently counted as new.
+    condition: result.condition ?? null,
     conditionId: null,
     itemAffiliateWebUrl: result.affiliateUrl,
     thumbnailImageUrl: result.mainImageUrl ?? "",

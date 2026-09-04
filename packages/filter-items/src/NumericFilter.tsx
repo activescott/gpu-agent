@@ -1,9 +1,17 @@
-import { useState, useRef, useEffect, type JSX, type ChangeEvent, type KeyboardEvent } from "react"
+import { useState, useRef, useEffect, useMemo, type JSX, type ChangeEvent, type KeyboardEvent } from "react"
+import debounce from "lodash-es/debounce"
 import type { FilterValue, NumericFilterConfig } from "./types"
 
 type NumericOperator = "gte" | "lte" | "range"
 
 const MIDPOINT_DIVISOR = 2
+
+/**
+ * Debounce delay for the "slider_drag" analytics event (ms).
+ * Fires once after the user stops dragging, instead of once per tick,
+ * to avoid flooding analytics with near-zero-value events.
+ */
+const SLIDER_DRAG_TRACK_DEBOUNCE_MS = 500
 
 interface NumericFilterProps {
   config: NumericFilterConfig
@@ -59,6 +67,21 @@ export function NumericFilter({
     }
   }, [isEditing])
 
+  // onTrack is re-wrapped by the parent on every render, so read it from a
+  // ref inside the debounced callback instead of closing over the prop
+  // directly — that keeps the debounced function's identity (and its
+  // pending timer) stable across renders.
+  const onTrackRef = useRef(onTrack)
+  onTrackRef.current = onTrack
+
+  const trackSliderDrag = useMemo(
+    () =>
+      debounce((value: number) => {
+        onTrackRef.current?.("slider_drag", value)
+      }, SLIDER_DRAG_TRACK_DEBOUNCE_MS),
+    [],
+  )
+
   const handleOperatorChange = (e: ChangeEvent<HTMLSelectElement>): void => {
     const newOperator = e.target.value as NumericOperator
     const boundaryValue = newOperator === "lte" ? max : min
@@ -68,7 +91,7 @@ export function NumericFilter({
   const handleSliderChange = (e: ChangeEvent<HTMLInputElement>): void => {
     const newValue = Number(e.target.value)
     applyValue(newValue)
-    onTrack?.("slider_drag", newValue)
+    trackSliderDrag(newValue)
   }
 
   const handlePresetClick = (presetValue: number): void => {

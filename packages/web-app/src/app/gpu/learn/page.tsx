@@ -97,7 +97,7 @@ export default async function Page() {
               </Link>
             </li>
             <li>
-              <Link href="/gpu/price-compare/gaming/cost-per-counter-strike-2-fps-3840x2160">
+              <Link href="/gpu/price-compare/gaming/counter-strike-2-fps-3840x2160">
                 Shop GPUs by Gaming Performance
               </Link>
             </li>

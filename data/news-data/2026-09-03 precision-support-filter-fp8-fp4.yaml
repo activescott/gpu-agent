@@ -1,0 +1,39 @@
+# yaml-language-server: $schema=./news-article.schema.json
+id: gpu0903sep2026prc
+slug: precision-support-filter-fp8-fp4
+title: "Filter GPUs by Precision Support, Plus FP8 and FP4 Rankings"
+content: |
+  If you're running a quantized model, precision support is a gate you apply before you look at price. A model quantized to FP8 or FP4 only hits full speed on hardware with a native path for it. On a card without one, the values get upcast and throughput drops well below the headline numbers. That makes the practical question "which of the GPUs I can afford runs my format natively," not "which GPU is fastest."
+
+  GPU Poet now answers that in one step: filter the list down to the precisions you need, then sort by price or cost-per-performance.
+
+  ## Precision Support Filter
+
+  On [ranking](/gpu/ranking/ai/fp8-flops) and [price-compare](/gpu/price-compare/ai/fp8-flops) pages, the new Precision Support filter narrows results by which precisions a GPU's tensor cores handle: FP64, FP32, TF32, BF16, FP16, FP8, FP4, INT8, and INT4. Checking multiple boxes uses AND logic, so selecting FP8 and FP4 gives you only GPUs that support both, not either one. Combine it with the budget slider to get the cheapest card that runs your format. The filter state lives in the URL (`?filter.precision[hasAll]=FP8,FP4`), so a shortlist is shareable and bookmarkable.
+
+  FP4 was also missing from the precision list on GPU detail pages, which meant cards that do support it were shown as not supporting it. That's fixed. FP4 is a useful dividing line right now, since native FP4 separates the current generation from everything before it.
+
+  ## FP8 and FP4 TFLOPS
+
+  Once you know a card supports a format, the next question is how fast. Two new specs track dense (non-sparse) FP8 and FP4 throughput, using the same dense convention as the existing INT8 metric so numbers compare fairly across NVIDIA, AMD, and Intel. Vendors often quote sparse figures instead, which are 2x and not what most inference workloads see.
+
+  New pages:
+  - [FP8 TFLOPS ranking](/gpu/ranking/ai/fp8-flops)
+  - [FP4 TFLOPS ranking](/gpu/ranking/ai/fp4-flops)
+  - [FP8 TFLOPS price-compare](/gpu/price-compare/ai/fp8-flops)
+  - [FP4 TFLOPS price-compare](/gpu/price-compare/ai/fp4-flops)
+
+  A precision filter is only as good as the data behind it, so populating these metrics meant re-auditing what "supported precisions" actually means for every GPU in the database — 96 GPUs across 14 architecture families (NVIDIA Blackwell through Turing and Pascal, AMD RDNA and CDNA, Intel Xe2), checked against each vendor's own published specs. 54 of the 96 had drifted out of sync with the rest of their own architecture family. FP32 and FP64 came off most cards in the process, since those precisions typically run on general-purpose shader cores rather than the tensor/matrix units this field describes. Where no official FP8 or FP4 figure exists for a card, it's marked unverified rather than guessed. A new automated check now flags any future drift within an architecture family.
+
+  The [quantization guide](/gpu/learn/ai/quantization) also picked up a new section on hardware-native FP8 and FP4 support, linking to the ranking pages above.
+status: PUBLISHED
+tags:
+  - update
+  - feature
+  - ai
+  - filtering
+  - database
+authorFullName: "Scott Willeke"
+createdAt: "2026-09-03T16:00:00Z"
+updatedAt: "2026-09-03T16:00:00Z"
+publishedAt: "2026-09-03T16:00:00Z"

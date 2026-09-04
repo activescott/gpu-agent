@@ -1,0 +1,66 @@
+export const metadata = {
+  title: "Why Are GPUs So Expensive? Scalper Prices vs. Real Cost Increases",
+  description:
+    "GPU prices sit above MSRP for two very different reasons: scalpers reselling limited stock, or the cards genuinely costing more to build. Here is how to tell which one you are paying.",
+  alternates: {
+    canonical: "https://gpupoet.com/gpu/learn/why-gpus-are-so-expensive",
+  },
+}
+
+# Why Are GPUs So Expensive? Scalper Prices vs. Real Cost Increases
+
+If you have shopped for a graphics card lately, you have run into the same thing everyone else has: the price on the box is not the price you pay. The useful question is not how far above MSRP a card sits. It is **who is collecting that difference**, because the answer changes what you should do about it.
+
+There are two very different reasons a GPU costs more than its MSRP, and they call for opposite strategies.
+
+## The scalper tax
+
+The **scalper tax** is the part of the gap created by resellers who buy limited stock to flip it, rather than by what it costs to build the card. It shows up hardest at launch, when supply is thin for the first few months, demand is concentrated into a handful of drop events, and automated checkout bots clear retail inventory faster than a person can fill out a shipping form. Whatever the flipper paid at retail, the next buyer pays the resale price, and the difference goes to the flipper.
+
+GPU scalping is worth waiting out. The money is going to a middleman, not into the product, and the premium evaporates once supply catches up.
+
+## A real cost increase
+
+The other reason is that the card genuinely costs more than it used to. Memory and other component costs rise. MSRP is set once at launch and then usually never updated, so an unchanged number quietly stops describing anything real as input costs move. Tariffs land on top of that. None of that money goes to a scalper, and none of it goes away when supply catches up.
+
+Waiting does not help here. If anything, you pay more later.
+
+## Telling them apart
+
+|                          | Scalper tax                                  | Real cost increase                    |
+| ------------------------ | -------------------------------------------- | ------------------------------------- |
+| **Retail stock**         | Exists at or near MSRP, sells out in seconds | Priced above MSRP and stays there     |
+| **Resale vs. retail**    | Resale sits well **above** retail            | Resale is at or **below** retail      |
+| **Scope**                | One hot SKU                                  | The whole product tier moves together |
+| **When supply improves** | The gap collapses                            | The gap stays                         |
+| **What to do**           | Wait it out                                  | Buy when you need it                  |
+
+The single most useful check is the middle row. If people are flipping cards, resale has to be more expensive than retail, because that is the entire business model. When resale is **cheaper** than retail, you are not looking at scalping.
+
+A note on what "retail" means here. I use the price of a **new** card from a major online retailer, which in practice usually means Amazon, Newegg, or Best Buy. It does not have to be a physical store. What matters is that you are buying new stock at a listed price rather than buying somebody's flip. In the numbers below I use new listings on Amazon, since that is the new-stock pricing I track directly.
+
+## A worked example: the RTX 50 series in August 2026
+
+Here is what that test looks like against real numbers. These are the RTX 50 cards in August 2026, with best-deal resale pricing next to what the same card cost new on Amazon that month. Both columns are the average of the 3 cheapest listings, from the same month, so they are directly comparable:
+
+| GPU         |   MSRP | Best resale deal | New on Amazon |
+| ----------- | -----: | ---------------: | ------------: |
+| RTX 5090    | $1,999 |           $3,254 |        $4,262 |
+| RTX 5080    |   $999 |           $1,039 |        $1,245 |
+| RTX 5070 Ti |   $749 |             $849 |          $914 |
+
+Now walk the table above, row by row:
+
+- **Retail stock?** Priced well above MSRP, and it stayed there. That points at a real cost increase.
+- **Resale vs. retail?** Resale is cheaper on all three cards, by 7% to 24%. Flipping does not work when you would have to undercut the store to move the card.
+- **Scope?** The entire tier moved, from the halo card down. All seven RTX 50 cards showed the same pattern, not just the popular ones.
+
+So August 2026 was a real cost increase, not a scalper tax, even though every one of those cards was selling far above MSRP. The driver was AI datacenter demand making GDDR7 memory scarce enough that consumer cards competed for whatever was left over. Somebody looking only at the MSRP column would have concluded the opposite and waited for a price drop that was not coming.
+
+One caveat on the numbers. I can tell that an Amazon listing is for a new card, but I cannot always tell whether the seller is Amazon itself or a third party on their marketplace, so read that column as "what a new one cost on Amazon" rather than as an official storefront price. As a sanity check, Tom's Hardware's [GPU Price Index](https://www.tomshardware.com/pc-components/gpus/lowest-gpu-prices-tracking), which tracks Amazon, Newegg, and Best Buy, had these same cards within about 6% of my figures for the same period.
+
+## How I measure this
+
+Every month I track the premium over MSRP for the RTX 50 series and chart it in the [monthly GPU market reports](/gpu/market-report/gpu-market-report-september-2026). All of it uses best-deal pricing, the average of the 3 cheapest current listings across eBay and Amazon, which is steadier than a single lowest listing without being dragged around by outliers.
+
+Be clear about what that number is: these are **listed** asking prices on resale marketplaces, not sold prices. A seller can ask whatever they want. You can see the listings behind any of these figures on a shop page such as [NVIDIA GeForce RTX 5090](/gpu/shop/nvidia-geforce-rtx-5090), and there is more on the pricing methodology in the [GPU price comparison FAQ](/gpu/learn/faq).

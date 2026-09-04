@@ -104,6 +104,29 @@ export default async function Page() {
           </ul>
         </Feature>
 
+        <Feature title="GPU Prices" icon="cash-coin">
+          <p>
+            Understand how GPUs are priced and how our price data is put
+            together.
+          </p>
+          <ul>
+            <li>
+              <Link href="/gpu/learn/why-gpus-are-so-expensive">
+                Why Are GPUs So Expensive? Scalper Prices vs. Real Cost
+                Increases
+              </Link>
+            </li>
+            <li>
+              <Link href="/gpu/learn/faq">GPU Price Comparison FAQ</Link>
+            </li>
+            <li>
+              <Link href="/gpu/market-report/gpu-market-report-september-2026">
+                Monthly GPU Market Report
+              </Link>
+            </li>
+          </ul>
+        </Feature>
+
         <Feature title="GPU Specifications" icon="motherboard">
           <p>
             Detailed specifications and performance data for individual GPUs.

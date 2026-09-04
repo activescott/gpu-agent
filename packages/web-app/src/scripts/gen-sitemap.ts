@@ -55,6 +55,7 @@ const filterOutPagePredicates: FilterOutPagePredicate[] = [
     shouldExclude: (item) =>
       !item.path.startsWith("/gpu/learn/ai") &&
       !item.path.startsWith("/gpu/learn/faq") &&
+      !item.path.startsWith("/gpu/learn/why-gpus-are-so-expensive") &&
       !item.path.startsWith("/policy") &&
       !item.path.startsWith("/about"),
   },

@@ -19,9 +19,12 @@ import { createLogger } from "@/lib/logger"
 import { listModels } from "@/pkgs/server/data/ModelRepository"
 import { listMetricDefinitions } from "@/pkgs/server/data/MetricRepository"
 import {
+  getCurrentYearMonth,
   getYearMonthContentLastModified,
   listValidYearMonths,
 } from "@/pkgs/isomorphic/yearMonth"
+
+const MONTHS_PER_YEAR = 12
 
 /* eslint-disable import/no-unused-modules */
 
@@ -368,18 +371,44 @@ async function gpuPriceByMonthSitemap(
     lastModifiedByMonth.set(ym.slug, getYearMonthContentLastModified(ym, now))
   }
 
+  // Every month since Jan 2026 is emitted for every GPU, so a GPU has one
+  // near-duplicate page per elapsed month. Previously all of them claimed
+  // changeFrequency "daily" and priority 0.7, which gave Google no way to tell
+  // the live month from a settled one — and it picked wrong: in September 2026
+  // the query "rtx 4090 price 2026" was served the June 2026 page.
+  //
+  // A closed month's numbers do not change daily; the only thing that can move
+  // them is a late exclude-flag correction, so "monthly" is the honest hint.
+  // Priority decays with age for the same reason. Both are weak signals Google
+  // may ignore — the load-bearing fix is the on-page current-month notice.
+  const currentYm = getCurrentYearMonth()
   const entries: SitemapItem[] = []
   for (const gpu of gpus) {
     for (const ym of validMonths) {
+      const monthsOld =
+        (currentYm.year - ym.year) * MONTHS_PER_YEAR +
+        (currentYm.month - ym.month)
       entries.push({
         url: `${domain_url}/gpu/learn/price/${ym.slug}/${gpu.name}`,
-        changeFrequency: "daily",
-        priority: 0.7,
+        changeFrequency: monthsOld === 0 ? "daily" : "monthly",
+        priority: priceMonthPriority(monthsOld),
         lastModified: lastModifiedByMonth.get(ym.slug),
       })
     }
   }
   return entries
+}
+
+const PRICE_MONTH_PRIORITY_CURRENT = 0.9
+const PRICE_MONTH_PRIORITY_RECENT = 0.6
+const PRICE_MONTH_PRIORITY_OLD = 0.3
+const PRICE_MONTH_RECENT_CUTOFF = 3
+
+/** Sitemap priority for a price-by-month page, decaying with the month's age. */
+function priceMonthPriority(monthsOld: number): number {
+  if (monthsOld === 0) return PRICE_MONTH_PRIORITY_CURRENT
+  if (monthsOld <= PRICE_MONTH_RECENT_CUTOFF) return PRICE_MONTH_PRIORITY_RECENT
+  return PRICE_MONTH_PRIORITY_OLD
 }
 
 function staticSitemap(domain_url: string): SitemapItem[] {

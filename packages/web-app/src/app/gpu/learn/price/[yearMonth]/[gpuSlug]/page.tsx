@@ -307,6 +307,23 @@ export default async function Page(props: CurrentPriceParams) {
               View full {gpu.label} specifications and benchmarks →
             </Link>
           </p>
+          {/*
+            Every elapsed month has a near-duplicate page per GPU, and Google
+            picks among them on generic queries: in September 2026 the query
+            "rtx 4090 price 2026" was served the June 2026 page. A visitor
+            landing there had to scroll past the whole chart to find the link
+            to the live month. This states the page is historical at the point
+            the reader forms an impression, and links out at the same place.
+          */}
+          {!isTargetCurrentMonth && (
+            <p className="alert alert-secondary py-2 px-3 mb-0">
+              This page reports {gpu.label} prices for {target.display}, which
+              has ended.{" "}
+              <Link href={`/gpu/learn/price/${currentMonthSlug}/${gpu.name}`}>
+                See current {currentYm.display} {gpu.label} prices →
+              </Link>
+            </p>
+          )}
         </header>
 
         <section className="row mb-4">

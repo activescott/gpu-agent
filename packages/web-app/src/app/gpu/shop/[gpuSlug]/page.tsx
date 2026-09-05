@@ -65,20 +65,27 @@ function msrpClause(gpu: Gpu, lowestPrice: number): string {
 }
 
 /**
- * Builds the shop-page meta title and description. Leads with used/refurbished
- * inventory when there is enough of it (Branch A), falls back to generic
- * "for Sale" copy when there are only new listings (Branch B), and falls back
- * further to a price-history pitch when there are no listings at all (Branch C).
+ * Builds the shop-page meta title, meta description, and `h1`. Leads with
+ * used/refurbished inventory when there is enough of it (Branch A), falls back
+ * to generic "for Sale" copy when there are only new listings (Branch B), and
+ * falls back further to a price-history pitch when there are no listings at all
+ * (Branch C).
+ *
+ * The `h1` is built here, in the same branch, rather than in the page body:
+ * Google treats the `h1` as a title candidate and rewrites `<title>` when the
+ * two disagree. Leaving a static "{label} Listings" heading under a
+ * "Used {label} for Sale" title invites exactly that rewrite, which would make
+ * the used-intent experiment measure nothing.
  *
  * Every branch states a single "from" price and never a range. The high end of
  * the range is the worst listing on the page and answers nobody's question, and
  * it made our SERP snippet ("from $2917 to $7258") read as the most expensive
  * result on a used-price query.
  */
-function buildShopMetadataCopy(
+function buildShopCopy(
   gpu: Gpu,
   stats: GpuPriceStats,
-): { title: string; description: string } {
+): { title: string; description: string; heading: string } {
   const gpuLabel = gpu.label
   const hasUsed =
     stats.usedListingCount >= MIN_USED_LISTINGS_FOR_USED_BRANCH &&
@@ -89,6 +96,10 @@ function buildShopMetadataCopy(
     return {
       title: `Used ${gpuLabel} for Sale — ${stats.usedListingCount} Listings from ${formatUsd(stats.usedMinPrice)}`,
       description: `${stats.usedListingCount} used & refurbished ${gpuLabel} from ${formatUsd(stats.usedMinPrice)}${msrpClause(gpu, stats.usedMinPrice)}. Scam and accessory listings removed. eBay + Amazon, updated every 30 min.`,
+      // Matches the title prefix so the two reinforce rather than compete. The
+      // page does also carry new listings, so this heading is a mild stretch;
+      // the lead paragraph immediately below states the exact used/new split.
+      heading: `Used ${gpuLabel} for Sale`,
     }
   }
 
@@ -96,12 +107,14 @@ function buildShopMetadataCopy(
     return {
       title: `${gpuLabel} for Sale — ${stats.activeListingCount} Listings from ${formatUsd(stats.minPrice)} | GPU Poet`,
       description: `${stats.activeListingCount} ${gpuLabel} listings from ${formatUsd(stats.minPrice)}${msrpClause(gpu, stats.minPrice)}. Scam and accessory listings removed. eBay + Amazon, updated every 30 min.`,
+      heading: `${gpuLabel} for Sale`,
     }
   }
 
   return {
     title: `${gpuLabel} Used & New Price History — Availability Tracker | GPU Poet`,
     description: `No ${gpuLabel} listings right now. See used and new ${gpuLabel} price history, typical secondhand prices, and get alerted when listings appear. Tracked by GPU Poet.`,
+    heading: `${gpuLabel} Price History & Availability`,
   }
 }
 
@@ -166,7 +179,7 @@ export async function generateMetadata(props: GpuParams) {
   log.debug({ gpuSlug }, "generateStaticMetadata for gpu")
   const gpu = await getGpu(gpuSlug)
   const stats = await getPriceStats(gpuSlug)
-  const { title, description } = buildShopMetadataCopy(gpu, stats)
+  const { title, description } = buildShopCopy(gpu, stats)
 
   return {
     title,
@@ -197,6 +210,7 @@ export default async function Page(props: GpuParams) {
 
   const initialSortKey: SortKey =
     sortBy && isValidSortKey(sortBy) ? sortBy : "price"
+  const { heading } = buildShopCopy(gpu, stats)
 
   return (
     <main>
@@ -206,7 +220,7 @@ export default async function Page(props: GpuParams) {
           __html: JSON.stringify(buildShopStructuredData(gpu, stats)),
         }}
       />
-      <h1>{gpu.label} Listings</h1>
+      <h1>{heading}</h1>
       <ShopLead gpu={gpu} stats={stats} />
       <Suspense fallback={<ListingsFallback />}>
         <ShopListingsWithFilters

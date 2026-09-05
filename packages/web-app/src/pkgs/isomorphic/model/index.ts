@@ -1,4 +1,4 @@
-export { GpuSchema, parseGpu } from "./gpu"
+export { GpuSchema, parseGpu, extractBrandName } from "./gpu"
 export type { Gpu, ManufacturerIdentifier, ThirdPartyProduct } from "./gpu"
 export { MlModelSchema, getModelTypeLabel } from "./mlModel"
 export type { MlModel } from "./mlModel"

@@ -49,3 +49,7 @@ export async function GET() {
     checks,
   })
 }
+
+// Rendered per request: this route reads the database, which is not reachable
+// during the Docker image build.
+export const dynamic = "force-dynamic"

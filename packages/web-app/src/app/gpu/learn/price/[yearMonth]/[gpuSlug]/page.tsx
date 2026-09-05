@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation"
 import Link from "next/link"
 import { memoize } from "lodash"
-import { Gpu } from "@/pkgs/isomorphic/model"
+import { Gpu, extractBrandName } from "@/pkgs/isomorphic/model"
 import {
   parseYearMonthSlug,
   getCurrentYearMonth,
@@ -74,17 +74,6 @@ function calculateChartMonths(target: YearMonth): number {
     (now.getMonth() - chartStart.getMonth()) +
     1
   return Math.max(MIN_CHART_MONTHS, monthsDiff)
-}
-
-/**
- * Extracts the brand name from the GPU label (e.g., "NVIDIA RTX 4090" -> "NVIDIA").
- */
-function extractBrandName(label: string): string {
-  const brand = label.split(" ")[0]
-  if (brand.toUpperCase() === "AMD") return "AMD"
-  if (brand.toUpperCase() === "NVIDIA") return "NVIDIA"
-  if (brand.toUpperCase() === "INTEL") return "Intel"
-  return brand
 }
 
 /**

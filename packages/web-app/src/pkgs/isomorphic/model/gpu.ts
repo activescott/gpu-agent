@@ -75,3 +75,16 @@ export type Gpu = z.infer<typeof GpuSchema>
 export function parseGpu(data: unknown): Gpu {
   return GpuSchema.parse(data)
 }
+
+/**
+ * Extracts the brand name from a GPU label for use as a Schema.org Brand
+ * (e.g. "NVIDIA GeForce RTX 4090" -> "NVIDIA"), normalizing the casing of the
+ * three vendors whose labels are not already title-cased.
+ */
+export function extractBrandName(label: string): string {
+  const brand = label.split(" ")[0]
+  if (brand.toUpperCase() === "AMD") return "AMD"
+  if (brand.toUpperCase() === "NVIDIA") return "NVIDIA"
+  if (brand.toUpperCase() === "INTEL") return "Intel"
+  return brand
+}

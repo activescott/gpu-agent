@@ -41,3 +41,7 @@ export async function POST(request: Request) {
     )
   }
 }
+
+// Rendered per request: this route reads the database, which is not reachable
+// during the Docker image build.
+export const dynamic = "force-dynamic"

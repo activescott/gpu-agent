@@ -1,6 +1,6 @@
 import { GpuInfo, BenchmarkPercentile } from "@/pkgs/client/components/GpuInfo"
 import { GpuSpecKey, GpuSpecKeys } from "@/pkgs/isomorphic/model/specs"
-import { Gpu } from "@/pkgs/isomorphic/model"
+import { Gpu, extractBrandName } from "@/pkgs/isomorphic/model"
 import {
   PERCENTILE_TOP_TIER,
   PERCENTILE_ENTRY_TIER,
@@ -23,24 +23,9 @@ import { memoize } from "lodash"
 // revalidate the data at most every hour:
 export const revalidate = 3600
 
-// Force dynamic rendering to avoid database dependency during Docker build
-export const dynamic = "force-dynamic"
-
 const log = createLogger("learn:gpuSlug")
 
 const getGpu = memoize(getGpuWithoutCache)
-
-/**
- * Extracts the brand name from the GPU label (e.g., "NVIDIA RTX 4090" -> "NVIDIA")
- */
-function extractBrandName(label: string): string {
-  const brand = label.split(" ")[0]
-  // Handle common brand name normalizations
-  if (brand.toUpperCase() === "AMD") return "AMD"
-  if (brand.toUpperCase() === "NVIDIA") return "NVIDIA"
-  if (brand.toUpperCase() === "INTEL") return "Intel"
-  return brand
-}
 
 /**
  * Formats manufacturer identifier type to human-readable label for JSON-LD.
@@ -232,8 +217,9 @@ function buildStructuredData(
   if (priceStats.activeListingCount > 0 && priceStats.minPrice > 0) {
     structuredData.offers = {
       "@type": "AggregateOffer",
+      // No highPrice: including it makes Google render a range ("$2,846.33 to
+      // $6,656.00"). The top of the range is the worst listing we have.
       lowPrice: priceStats.minPrice.toFixed(priceDecimalPlaces),
-      highPrice: priceStats.maxPrice.toFixed(priceDecimalPlaces),
       priceCurrency: "USD",
       offerCount: Math.floor(priceStats.activeListingCount),
       availability: "https://schema.org/InStock",

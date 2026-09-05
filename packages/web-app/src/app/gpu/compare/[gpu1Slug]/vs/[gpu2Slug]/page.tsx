@@ -1,5 +1,5 @@
 import { GpuSpecKey, GpuSpecKeys } from "@/pkgs/isomorphic/model/specs"
-import { Gpu } from "@/pkgs/isomorphic/model"
+import { Gpu, extractBrandName } from "@/pkgs/isomorphic/model"
 import {
   getGpu,
   gpuSpecAsPercent,
@@ -43,17 +43,6 @@ function normalizeComparisonUrl(
 }
 
 /**
- * Extracts the brand name from the GPU label
- */
-function extractBrandName(label: string): string {
-  const brand = label.split(" ")[0]
-  if (brand.toUpperCase() === "AMD") return "AMD"
-  if (brand.toUpperCase() === "NVIDIA") return "NVIDIA"
-  if (brand.toUpperCase() === "INTEL") return "Intel"
-  return brand
-}
-
-/**
  * Builds JSON-LD structured data for the comparison page.
  */
 const PRICE_DECIMALS = 2
@@ -73,8 +62,9 @@ function buildProductEntity(gpu: Gpu, priceStats: GpuPriceStats): object {
   if (priceStats.activeListingCount > 0 && priceStats.minPrice > 0) {
     product.offers = {
       "@type": "AggregateOffer",
+      // No highPrice: including it makes Google render a price range whose top
+      // end is the worst listing we have.
       lowPrice: priceStats.minPrice.toFixed(PRICE_DECIMALS),
-      highPrice: priceStats.maxPrice.toFixed(PRICE_DECIMALS),
       priceCurrency: "USD",
       offerCount: Math.floor(priceStats.activeListingCount),
       availability: "https://schema.org/InStock",

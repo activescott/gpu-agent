@@ -2,6 +2,8 @@ import Link from "next/link"
 import { getPriceStats } from "@/pkgs/server/db/ListingRepository"
 import { FormatCurrency } from "@/pkgs/client/components/FormatCurrency"
 
+export const dynamic = "force-dynamic"
+
 # Quantization in Machine Learning and Deep Learning
 
 Floating-point precision (FP32) is the most common precision used for training new models, while FP16, INT8, and others are employed for quantization. Quantization involves converting higher-precision values to lower-precision values, resulting in a loss of precision that may degrade model prediction quality. However, quantization offers several benefits:
@@ -35,5 +37,7 @@ To gain a more intuitive understanding of quantization, I recommend Tim Dettmers
 - [A Gentle Introduction to 8-bit Matrix Multiplication for transformers at scale using Hugging Face Transformers, Accelerate and bitsandbytes by Hugging Face](https://huggingface.co/blog/hf-bitsandbytes-integration).
 
 [^1]: [Dettmers, Tim, et al. "Llm. int8 (): 8-bit matrix multiplication for transformers at scale." arXiv preprint arXiv:2208.07339 (2022).](https://arxiv.org/abs/2310.16836)
+
 [^2]: [Liu, Shih-yang, et al. "LLM-FP4: 4-Bit Floating-Point Quantized Transformers." arXiv preprint arXiv:2310.16836 (2023).](https://arxiv.org/abs/2310.16836)
+
 [^3]: [A Gentle Introduction to 8-bit Matrix Multiplication for transformers at scale using Hugging Face Transformers, Accelerate and bitsandbytes by Hugging Face](https://huggingface.co/blog/hf-bitsandbytes-integration)

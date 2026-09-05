@@ -13,8 +13,8 @@ description: Median FPS in FurMark 2 (OpenGL), a GPU stress test and benchmark
 descriptionDollarsPer: Dollars per FPS in FurMark 2 (OpenGL). Lower values
   indicate better cost efficiency for GPU compute-heavy rendering.
 category: gaming
-collectedSamples: 46107
-updatedAt: 2026-09-04T02:36:53.210Z
+collectedSamples: 46685
+updatedAt: 2026-09-05T11:12:11.632Z
 results:
   - gpuNameRaw: AMD  Radeon RX 7800 XT
     value: 88
@@ -23,6 +23,8 @@ results:
     value: 40
   - gpuNameRaw: AMD BC-250 (radeonsi gfx1013 ACO DRM 3.64 6.17.7-ba29.fc43.x86_64)
     value: 29
+  - gpuNameRaw: AMD BC-250 (radeonsi gfx1013 ACO DRM 3.64 6.19.14-ogc5.1.fc44.x86_64)
+    value: 34
   - gpuNameRaw: AMD BC-250 (radeonsi gfx1013 ACO DRM 3.64 7.0.12-1-cachyos)
     value: 33
   - gpuNameRaw: AMD BC-250 (radeonsi gfx1013 ACO DRM 3.64 7.0.9-ogc3.2.fc44.x86_64)
@@ -70,7 +72,7 @@ results:
   - gpuNameRaw: AMD Radeon RX 5700 XT 50th Anniversary
     value: 44
   - gpuNameRaw: AMD Radeon RX 580 2048SP
-    value: 18
+    value: 17
   - gpuNameRaw: AMD Radeon RX 6500 XT
     value: 15
   - gpuNameRaw: AMD Radeon RX 6600
@@ -130,7 +132,7 @@ results:
   - gpuNameRaw: AMD Radeon RX 7900 XT
     value: 110
   - gpuNameRaw: AMD Radeon RX 7900 XTX
-    value: 135
+    value: 136
   - gpuNameRaw: AMD Radeon RX 7900 XTX (radeonsi navi31 ACO DRM 3.64 6.19.10-1-cachyos)
     value: 129
   - gpuNameRaw: AMD Radeon RX 9060 XT
@@ -216,9 +218,9 @@ results:
   - gpuNameRaw: AMD Radeon(TM) 890M Graphics
     value: 10
   - gpuNameRaw: AMD Radeon(TM) Graphics
-    value: 4
+    value: 5
   - gpuNameRaw: AMD Radeon(TM) RX 6400
-    value: 13
+    value: 14
   - gpuNameRaw: AMD Radeon(TM) Vega 11 Graphics
     value: 4
   - gpuNameRaw: GeForce GTX 1050 Ti/PCIe/SSE2
@@ -274,7 +276,7 @@ results:
   - gpuNameRaw: Intel(R) Arc(TM) Pro B50 Graphics
     value: 22
   - gpuNameRaw: Intel(R) Arc(TM) Pro B70 Graphics
-    value: 66
+    value: 68
   - gpuNameRaw: Intel(R) Graphics
     value: 7
   - gpuNameRaw: Intel(R) Iris(R) Xe Graphics
@@ -394,7 +396,7 @@ results:
   - gpuNameRaw: NVIDIA GeForce RTX 2080 SUPER/PCIe/SSE2
     value: 54
   - gpuNameRaw: NVIDIA GeForce RTX 2080 Ti/PCIe/SSE2
-    value: 65
+    value: 64
   - gpuNameRaw: NVIDIA GeForce RTX 2080 with Max-Q Design/PCIe/SSE2
     value: 22
   - gpuNameRaw: NVIDIA GeForce RTX 2080/PCIe/SSE2
@@ -430,7 +432,7 @@ results:
   - gpuNameRaw: NVIDIA GeForce RTX 3080/PCIe/SSE2
     value: 70
   - gpuNameRaw: NVIDIA GeForce RTX 3090 Ti/PCIe/SSE2
-    value: 92
+    value: 91
   - gpuNameRaw: NVIDIA GeForce RTX 3090/PCIe/SSE2
     value: 81
   - gpuNameRaw: NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2
@@ -452,7 +454,7 @@ results:
   - gpuNameRaw: NVIDIA GeForce RTX 4070/PCIe/SSE2
     value: 69
   - gpuNameRaw: NVIDIA GeForce RTX 4080 Laptop GPU/PCIe/SSE2
-    value: 84
+    value: 82
   - gpuNameRaw: NVIDIA GeForce RTX 4080 SUPER/PCIe/SSE2
     value: 135
   - gpuNameRaw: NVIDIA GeForce RTX 4080/PCIe/SSE2
@@ -546,7 +548,7 @@ results:
   - gpuNameRaw: NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition/PCIe/SSE2
     value: 185
   - gpuNameRaw: NVIDIA RTX PRO 6000 Blackwell Workstation Edition/PCIe/SSE2
-    value: 252
+    value: 251
   - gpuNameRaw: NVIDIA T1000 8GB/PCIe/SSE2
     value: 13
   - gpuNameRaw: NVIDIA T1200 Laptop GPU/PCIe/SSE2
@@ -576,7 +578,7 @@ results:
   - gpuNameRaw: Quadro P2000 with Max-Q Design/PCIe/SSE2
     value: 8
   - gpuNameRaw: Quadro P2000/PCIe/SSE2
-    value: 9
+    value: 8
   - gpuNameRaw: Quadro P3000/PCIe/SSE2
     value: 16
   - gpuNameRaw: Quadro P3200/PCIe/SSE2
@@ -602,7 +604,7 @@ results:
   - gpuNameRaw: Quadro T1000 with Max-Q Design/PCIe/SSE2
     value: 12
   - gpuNameRaw: Quadro T1000/PCIe/SSE2
-    value: 11
+    value: 12
   - gpuNameRaw: Quadro T2000 with Max-Q Design/PCIe/SSE2
     value: 11
   - gpuNameRaw: Quadro T2000/PCIe/SSE2

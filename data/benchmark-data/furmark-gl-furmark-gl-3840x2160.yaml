@@ -13,8 +13,8 @@ description: Median FPS in FurMark 2 (OpenGL), a GPU stress test and benchmark
 descriptionDollarsPer: Dollars per FPS in FurMark 2 (OpenGL). Lower values
   indicate better cost efficiency for GPU compute-heavy rendering.
 category: gaming
-collectedSamples: 47246
-updatedAt: 2026-09-06T15:06:46.649Z
+collectedSamples: 47277
+updatedAt: 2026-09-06T17:16:24.634Z
 results:
   - gpuNameRaw: AMD  Radeon RX 7800 XT
     value: 89
@@ -506,6 +506,8 @@ results:
     value: 20
   - gpuNameRaw: NVIDIA RTX 2000 Ada Generation/PCIe/SSE2
     value: 28
+  - gpuNameRaw: NVIDIA RTX 3000 Ada Generation Laptop GPU/PCIe/SSE2
+    value: 26
   - gpuNameRaw: NVIDIA RTX 3500 Ada Generation Laptop GPU/PCIe/SSE2
     value: 67
   - gpuNameRaw: NVIDIA RTX 4000 Ada Generation Laptop GPU/PCIe/SSE2
@@ -587,7 +589,7 @@ results:
   - gpuNameRaw: Quadro P3000/PCIe/SSE2
     value: 16
   - gpuNameRaw: Quadro P3200/PCIe/SSE2
-    value: 10
+    value: 11
   - gpuNameRaw: Quadro P4000/PCIe/SSE2
     value: 22
   - gpuNameRaw: Quadro P5000/PCIe/SSE2

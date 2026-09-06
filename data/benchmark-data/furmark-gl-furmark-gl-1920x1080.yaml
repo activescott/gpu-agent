@@ -13,8 +13,8 @@ description: Median FPS in FurMark 2 (OpenGL), a GPU stress test and benchmark
 descriptionDollarsPer: Dollars per FPS in FurMark 2 (OpenGL). Lower values
   indicate better cost efficiency for GPU compute-heavy rendering.
 category: gaming
-collectedSamples: 402423
-updatedAt: 2026-09-06T15:06:46.629Z
+collectedSamples: 402777
+updatedAt: 2026-09-06T17:16:24.551Z
 results:
   - gpuNameRaw: /PCIe/SSE2
     value: 76
@@ -109,7 +109,7 @@ results:
   - gpuNameRaw: AMD BC-250 (radeonsi gfx1013 ACO DRM 3.64 7.2.1-ogc3.1.fc44.x86_64)
     value: 132
   - gpuNameRaw: AMD BC-250 (radeonsi gfx1013 ACO DRM 3.64 7.2.1-ogc4.1.fc44.x86_64)
-    value: 135
+    value: 134
   - gpuNameRaw: AMD BC-250 (radeonsi gfx1013 ACO DRM 3.64 7.2.2-1-cachyos-deckify)
     value: 68
   - gpuNameRaw: AMD BC-250 (radeonsi gfx1013 ACO DRM 3.64 7.2.2-1-cachyos)
@@ -376,7 +376,7 @@ results:
   - gpuNameRaw: AMD Radeon HD 8670D
     value: 5
   - gpuNameRaw: AMD Radeon HD 8790M
-    value: 9
+    value: 8
   - gpuNameRaw: AMD Radeon HD7670
     value: 22
   - gpuNameRaw: AMD Radeon Pro 5300M
@@ -598,7 +598,7 @@ results:
   - gpuNameRaw: AMD Radeon RX 6600 LE
     value: 106
   - gpuNameRaw: AMD Radeon RX 6600 XT
-    value: 142
+    value: 143
   - gpuNameRaw: AMD Radeon RX 6600 XT (radeonsi navi23 ACO DRM 3.64 7.1.7-zen1-1-zen)
     value: 140
   - gpuNameRaw: AMD Radeon RX 6600 XT (radeonsi navi23 LLVM 20.1.2 DRM 3.64
@@ -821,6 +821,8 @@ results:
   - gpuNameRaw: AMD Radeon RX 9070 XT (radeonsi gfx1201 ACO DRM 3.64
       7.0.9-ogc3.2.fc44.x86_64)
     value: 338
+  - gpuNameRaw: AMD Radeon RX 9070 XT (radeonsi gfx1201 ACO DRM 3.64 7.2.3-1-cachyos)
+    value: 363
   - gpuNameRaw: AMD Radeon RX 9070 XT (radeonsi gfx1201 LLVM 20.1.2 DRM 3.64
       6.17.0-20-generic)
     value: 327
@@ -1415,7 +1417,7 @@ results:
   - gpuNameRaw: Intel(R) UHD Graphics 770
     value: 12
   - gpuNameRaw: Intel(R) UHD Graphics P630
-    value: 6
+    value: 5
   - gpuNameRaw: Jingjia JM1100
     value: 1
   - gpuNameRaw: LISUAN 7G100 Series Graphics
@@ -2156,7 +2158,7 @@ results:
   - gpuNameRaw: Radeon RX 560 Series
     value: 26
   - gpuNameRaw: Radeon RX 560 XT
-    value: 55
+    value: 54
   - gpuNameRaw: Radeon RX 560X
     value: 25
   - gpuNameRaw: Radeon RX 560X Series

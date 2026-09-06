@@ -13,8 +13,8 @@ description: Median FPS in FurMark 2 (OpenGL), a GPU stress test and benchmark
 descriptionDollarsPer: Dollars per FPS in FurMark 2 (OpenGL). Lower values
   indicate better cost efficiency for GPU compute-heavy rendering.
 category: gaming
-collectedSamples: 183301
-updatedAt: 2026-09-06T21:58:22.546Z
+collectedSamples: 183304
+updatedAt: 2026-09-06T22:04:59.430Z
 results:
   - gpuNameRaw: AMD  Radeon RX 7800 XT
     value: 167

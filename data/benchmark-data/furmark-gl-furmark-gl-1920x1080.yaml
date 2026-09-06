@@ -13,8 +13,8 @@ description: Median FPS in FurMark 2 (OpenGL), a GPU stress test and benchmark
 descriptionDollarsPer: Dollars per FPS in FurMark 2 (OpenGL). Lower values
   indicate better cost efficiency for GPU compute-heavy rendering.
 category: gaming
-collectedSamples: 403033
-updatedAt: 2026-09-06T18:55:11.617Z
+collectedSamples: 403168
+updatedAt: 2026-09-06T19:50:24.145Z
 results:
   - gpuNameRaw: /PCIe/SSE2
     value: 76
@@ -109,7 +109,7 @@ results:
   - gpuNameRaw: AMD BC-250 (radeonsi gfx1013 ACO DRM 3.64 7.2.1-ogc3.1.fc44.x86_64)
     value: 132
   - gpuNameRaw: AMD BC-250 (radeonsi gfx1013 ACO DRM 3.64 7.2.1-ogc4.1.fc44.x86_64)
-    value: 134
+    value: 133
   - gpuNameRaw: AMD BC-250 (radeonsi gfx1013 ACO DRM 3.64 7.2.2-1-cachyos-deckify)
     value: 68
   - gpuNameRaw: AMD BC-250 (radeonsi gfx1013 ACO DRM 3.64 7.2.2-1-cachyos)
@@ -118,7 +118,7 @@ results:
     value: 140
   - gpuNameRaw: AMD BC-250 (radeonsi gfx1013 ACO DRM 3.65
       6.18.46-valve1-1-neptune-618-g2e13b4367b17)
-    value: 130
+    value: 132
   - gpuNameRaw: AMD BC-250 (radeonsi gfx1013 ACO DRM 3.65
       7.2.0-valve1-1-neptune-72-gd39b4282853d)
     value: 131

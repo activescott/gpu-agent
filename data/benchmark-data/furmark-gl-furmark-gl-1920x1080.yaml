@@ -13,8 +13,8 @@ description: Median FPS in FurMark 2 (OpenGL), a GPU stress test and benchmark
 descriptionDollarsPer: Dollars per FPS in FurMark 2 (OpenGL). Lower values
   indicate better cost efficiency for GPU compute-heavy rendering.
 category: gaming
-collectedSamples: 400718
-updatedAt: 2026-09-06T04:12:02.927Z
+collectedSamples: 401586
+updatedAt: 2026-09-06T09:55:10.910Z
 results:
   - gpuNameRaw: /PCIe/SSE2
     value: 76
@@ -108,8 +108,10 @@ results:
     value: 132
   - gpuNameRaw: AMD BC-250 (radeonsi gfx1013 ACO DRM 3.64 7.2.1-ogc4.1.fc44.x86_64)
     value: 136
+  - gpuNameRaw: AMD BC-250 (radeonsi gfx1013 ACO DRM 3.64 7.2.2-1-cachyos-deckify)
+    value: 68
   - gpuNameRaw: AMD BC-250 (radeonsi gfx1013 ACO DRM 3.64 7.2.2-1-cachyos)
-    value: 107
+    value: 102
   - gpuNameRaw: AMD BC-250 (radeonsi gfx1013 ACO DRM 3.64 7.2.2-1.75-cachyos-bc250)
     value: 140
   - gpuNameRaw: AMD BC-250 (radeonsi gfx1013 ACO DRM 3.65
@@ -680,7 +682,7 @@ results:
   - gpuNameRaw: AMD Radeon RX 7600M
     value: 36
   - gpuNameRaw: AMD Radeon RX 7600M XT
-    value: 103
+    value: 104
   - gpuNameRaw: AMD Radeon RX 7600M XT (radeonsi navi33 LLVM 20.1.2 DRM 3.64
       6.17.0-20-generic)
     value: 122
@@ -727,7 +729,7 @@ results:
       7.0.9-ogc3.2.fc44.x86_64)
     value: 305
   - gpuNameRaw: AMD Radeon RX 7900 XT
-    value: 300
+    value: 301
   - gpuNameRaw: AMD Radeon RX 7900 XT (radeonsi navi31 ACO DRM 3.64 7.0.0-1-cachyos)
     value: 284
   - gpuNameRaw: AMD Radeon RX 7900 XT (radeonsi navi31 ACO DRM 3.64 7.0.3-1-cachyos)
@@ -917,7 +919,7 @@ results:
   - gpuNameRaw: AMD Radeon(TM) RX 6500M
     value: 51
   - gpuNameRaw: AMD Radeon(TM) RX 6550M
-    value: 63
+    value: 64
   - gpuNameRaw: AMD Radeon(TM) RX 6650M
     value: 105
   - gpuNameRaw: AMD Radeon(TM) RX 6650M XT
@@ -1740,7 +1742,7 @@ results:
   - gpuNameRaw: NVIDIA GeForce RTX 3090 Ti/PCIe/SSE2
     value: 255
   - gpuNameRaw: NVIDIA GeForce RTX 3090/PCIe/SSE2
-    value: 194
+    value: 195
   - gpuNameRaw: NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2
     value: 109
   - gpuNameRaw: NVIDIA GeForce RTX 4060 Laptop GPU/PCIe/SSE2
@@ -2112,7 +2114,7 @@ results:
   - gpuNameRaw: Radeon 7
     value: 28
   - gpuNameRaw: Radeon 8060S Graphics
-    value: 138
+    value: 135
   - gpuNameRaw: Radeon 8060S Graphics (radeonsi strix_halo ACO DRM 3.64
       6.17.7-ba29.fc43.x86_64)
     value: 139
@@ -2193,7 +2195,7 @@ results:
   - gpuNameRaw: "SVGA3D build: RELEASE"
     value: 19
   - gpuNameRaw: "SVGA3D build: RELEASE  LLVM"
-    value: 125
+    value: 123
   - gpuNameRaw: Tesla M40 24GB/PCIe/SSE2
     value: 80
   - gpuNameRaw: Tesla M40/PCIe/SSE2
@@ -2214,5 +2216,7 @@ results:
     value: 131
   - gpuNameRaw: unknown board/PCIe/SSE2
     value: 44
+  - gpuNameRaw: zink Vulkan 1.4(NVIDIA GeForce GTX 1650 (NVK TU117) (MESA_NVK))
+    value: 30
   - gpuNameRaw: zink Vulkan 1.4(NVIDIA GeForce RTX 3060 (NVK GA106) (MESA_NVK))
     value: 4

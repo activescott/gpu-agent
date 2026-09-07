@@ -14,7 +14,7 @@ descriptionDollarsPer: Dollars per FPS in FurMark 2 (OpenGL). Lower values
   indicate better cost efficiency for GPU compute-heavy rendering.
 category: gaming
 collectedSamples: 183387
-updatedAt: 2026-09-07T00:44:12.707Z
+updatedAt: 2026-09-07T00:47:08.243Z
 results:
   - gpuNameRaw: AMD  Radeon RX 7800 XT
     value: 167

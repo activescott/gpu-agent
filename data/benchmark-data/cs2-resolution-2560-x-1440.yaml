@@ -13,8 +13,11 @@ description: Average FPS in Counter-Strike 2, Valve's 2023 competitive shooter
 descriptionDollarsPer: Dollars per FPS in Counter-Strike 2. Lower values
   indicate better cost efficiency for competitive gaming performance.
 category: gaming
+profileVersion: 1.0.x
+publicResultsSince: 2024-02-17
+latestDataAsOf: 2025-07-21
 collectedSamples: 273
-updatedAt: 2026-09-07T17:23:05.056Z
+updatedAt: 2026-09-07T18:38:56.133Z
 results:
   - gpuNameRaw: AMD Navi 48
     value: 265
@@ -78,6 +81,3 @@ results:
     value: 383
   - gpuNameRaw: XFX AMD Radeon RX 7900 XTX
     value: 413
-profileVersion: 1.0.x
-publicResultsSince: 2024-02-17
-latestDataAsOf: 2025-07-21

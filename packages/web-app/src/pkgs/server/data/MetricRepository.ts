@@ -52,6 +52,10 @@ const BenchmarkDataSchema = z.object({
   category: z.enum(["ai", "gaming"]),
   collectedSamples: z.number(),
   updatedAt: z.string(),
+  // Upstream freshness — only present for sources that publish it
+  latestDataAsOf: z.string().optional(),
+  publicResultsSince: z.string().optional(),
+  profileVersion: z.string().optional(),
   results: z.array(
     z.object({
       gpuNameRaw: z.string(),
@@ -82,6 +86,10 @@ interface MetricDefinition {
   configurationId?: string
   // For benchmarks: number of public benchmark results this metric is based on
   collectedSamples?: number
+  // For benchmarks: date of the source's most recent result for this metric
+  latestDataAsOf?: Date
+  // For benchmarks: test-profile version the results come from, e.g. "1.0.x"
+  profileVersion?: string
   // When the metric definition was last updated (from source YAML)
   updatedAt: Date
 }
@@ -241,6 +249,10 @@ async function loadBenchmarkDefinitions(): Promise<MetricDefinition[]> {
       configuration: benchmark.configuration,
       configurationId: benchmark.configurationId,
       collectedSamples: benchmark.collectedSamples,
+      latestDataAsOf: benchmark.latestDataAsOf
+        ? new Date(benchmark.latestDataAsOf)
+        : undefined,
+      profileVersion: benchmark.profileVersion,
       updatedAt: new Date(benchmark.updatedAt),
     })
   }

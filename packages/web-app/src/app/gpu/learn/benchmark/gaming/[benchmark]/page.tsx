@@ -22,6 +22,17 @@ Benchmark" */ function benchmarkTitle(metricName: string): string {
   )
 }
 
+/** Formats a benchmark data date as "8 July 2026" in UTC, matching how the
+source states it and avoiding a server/client timezone shift. */
+function formatDataDate(date: Date): string {
+  return date.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    timeZone: "UTC",
+  })
+}
+
 export async function generateMetadata(props: BenchmarkParams) {
   const params = await props.params
   const { benchmark } = params
@@ -121,6 +132,19 @@ export default async function Page(props: BenchmarkParams) {
             </a>
             , an open-source benchmark database that aggregates real-world
             performance data from hardware enthusiasts around the world.
+          </p>
+        )}
+        {metric.latestDataAsOf && (
+          <p className="text-muted small">
+            Most recent result in this data set:{" "}
+            <time dateTime={metric.latestDataAsOf.toISOString().split("T")[0]}>
+              {formatDataDate(metric.latestDataAsOf)}
+            </time>
+            {metric.profileVersion
+              ? ` (test profile ${metric.profileVersion}).`
+              : "."}{" "}
+            Results from different test-profile versions measure different
+            builds, so each ranking uses a single version.
           </p>
         )}
       </section>

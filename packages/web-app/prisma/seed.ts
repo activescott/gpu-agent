@@ -51,6 +51,10 @@ const BenchmarkDataSchema = z.object({
   category: z.enum(["ai", "gaming"]),
   collectedSamples: z.number(),
   updatedAt: z.string(),
+  // UPSTREAM FRESHNESS - only present for sources that publish it
+  latestDataAsOf: z.string().optional(),
+  publicResultsSince: z.string().optional(),
+  profileVersion: z.string().optional(),
   results: z.array(
     z.object({
       gpuNameRaw: z.string(),
@@ -61,6 +65,20 @@ const BenchmarkDataSchema = z.object({
 })
 
 type BenchmarkData = z.infer<typeof BenchmarkDataSchema>
+
+/** Upstream-freshness columns. Only OpenBenchmarking publishes these; FurMark
+files have neither, so both are null there. */
+function benchmarkFreshnessFields(benchmarkData: BenchmarkData): {
+  latestDataAsOf: Date | null
+  profileVersion: string | null
+} {
+  return {
+    latestDataAsOf: benchmarkData.latestDataAsOf
+      ? new Date(benchmarkData.latestDataAsOf)
+      : null,
+    profileVersion: benchmarkData.profileVersion ?? null,
+  }
+}
 
 async function main() {
   const prisma = new PrismaClient()
@@ -423,6 +441,8 @@ async function seedMetricDefinitions(prisma: PrismaClient): Promise<void> {
       ? `${benchmarkData.benchmarkName} ${resolutionLabel}`
       : benchmarkData.benchmarkName
 
+    const freshness = benchmarkFreshnessFields(benchmarkData)
+
     // Benchmarks don't map to GPU table fields - values are stored in GpuMetricValue
     await prisma.metricDefinition.upsert({
       where: { slug },
@@ -439,6 +459,7 @@ async function seedMetricDefinitions(prisma: PrismaClient): Promise<void> {
         configuration: benchmarkData.configuration,
         configurationId: benchmarkData.configurationId,
         collectedSamples: benchmarkData.collectedSamples,
+        ...freshness,
         gpuField: null,
       },
       create: {
@@ -455,6 +476,7 @@ async function seedMetricDefinitions(prisma: PrismaClient): Promise<void> {
         configuration: benchmarkData.configuration,
         configurationId: benchmarkData.configurationId,
         collectedSamples: benchmarkData.collectedSamples,
+        ...freshness,
         gpuField: null,
       },
     })

@@ -30,6 +30,10 @@ export interface MetricDefinitionRecord {
   benchmarkId: string | null
   /** For benchmarks: number of public benchmark results this metric is based on */
   collectedSamples: number | null
+  /** For benchmarks: date of the source's most recent result. Distinct from when we last fetched. */
+  latestDataAsOf: Date | null
+  /** For benchmarks: test-profile version the results come from, e.g. "1.0.x" */
+  profileVersion: string | null
 }
 
 /**
@@ -87,6 +91,8 @@ async function getMetricDefinitions(
       gpuField: true,
       benchmarkId: true,
       collectedSamples: true,
+      latestDataAsOf: true,
+      profileVersion: true,
     },
     // Sort by name to group related benchmarks together (e.g., Counter-Strike 2 configs grouped)
     // and by slug as secondary sort to order resolutions logically (1920x1080 < 2560x1440 < 3840x2160)

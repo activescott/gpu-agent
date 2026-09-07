@@ -14,7 +14,7 @@ descriptionDollarsPer: Dollars per FPS in FurMark 2 (OpenGL). Lower values
   indicate better cost efficiency for GPU compute-heavy rendering.
 category: gaming
 collectedSamples: 403599
-updatedAt: 2026-09-07T01:32:31.833Z
+updatedAt: 2026-09-07T01:36:08.524Z
 results:
   - gpuNameRaw: /PCIe/SSE2
     value: 76

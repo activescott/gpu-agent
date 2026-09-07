@@ -93,6 +93,14 @@ model MetricDefinition {
   // For benchmarks: number of public benchmark results this metric is based on
   collectedSamples  Int?
 
+  // For benchmarks: how fresh the upstream data is, as the source reports it.
+  // Distinct from updatedAt below, which is when we last fetched.
+  latestDataAsOf    DateTime?    // Source's most recent result, e.g. 2026-07-08
+  // For benchmarks: test-profile version the results come from, e.g. "1.0.x".
+  // Results from different profile versions are different test builds and are
+  // not comparable, so one metric holds exactly one version.
+  profileVersion    String?
+
   values            GpuMetricValue[]
 
   createdAt         DateTime @default(now())

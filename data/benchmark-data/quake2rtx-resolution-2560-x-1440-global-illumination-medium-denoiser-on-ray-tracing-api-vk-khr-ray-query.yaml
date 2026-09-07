@@ -15,8 +15,11 @@ description: Average FPS in Quake II RTX, NVIDIA's path-traced remaster of id
 descriptionDollarsPer: Dollars per FPS in Quake II RTX. Lower values indicate
   better cost efficiency for ray tracing performance.
 category: gaming
+profileVersion: 1.6.x
+publicResultsSince: 2022-01-21
+latestDataAsOf: 2024-12-07
 collectedSamples: 147
-updatedAt: 2026-06-24T14:21:27.630Z
+updatedAt: 2026-09-07T17:53:16.357Z
 results:
   - gpuNameRaw: AMD Radeon RX 6800
     value: 20

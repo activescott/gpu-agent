@@ -1,0 +1,117 @@
+metricSlug: 3dmark-wildlife-extreme-fps-1920x1080
+benchmarkId: 3dmark
+benchmarkName: 3DMark Wild Life Extreme
+configuration: "pts/3dmark-1.0.x - Resolution: 1920 x 1080"
+configurationId: 251684d1fa3c186574f1dd35f0bee61979b0c293
+metricName: Frames Per Second (Average)
+unit: FPS
+unitShortest: FPS
+description: Average FPS in 3DMark Wild Life Extreme, a cross-platform GPU
+  benchmark by UL Benchmarks. Renders at 4K (3840x2160) using Vulkan on
+  Windows/Android, Metal on iOS/Mac, and DirectX 12 on Windows ARM. Enables
+  direct performance comparisons across desktop, laptop, and mobile devices.
+descriptionDollarsPer: Dollars per FPS in 3DMark Wild Life Extreme. Lower values
+  indicate better cost efficiency for GPU rendering performance.
+category: gaming
+profileVersion: 1.0.x
+publicResultsSince: 2023-05-12
+latestDataAsOf: 2026-07-08
+collectedSamples: 633
+updatedAt: 2026-09-07T17:29:15.442Z
+results:
+  - gpuNameRaw: AMD Phoenix1
+    value: 88
+  - gpuNameRaw: AMD Phoenix2
+    value: 45
+  - gpuNameRaw: AMD Radeon 890M
+    value: 96
+  - gpuNameRaw: AMD Radeon PRO W7500
+    value: 162
+  - gpuNameRaw: AMD Radeon PRO W7600
+    value: 278
+  - gpuNameRaw: AMD Radeon Pro W7700
+    value: 481
+  - gpuNameRaw: AMD Radeon PRO W7700
+    value: 437
+  - gpuNameRaw: AMD Radeon Pro W7900
+    value: 595
+  - gpuNameRaw: AMD Radeon RX 56
+    value: 252
+  - gpuNameRaw: AMD Radeon RX 5700
+    value: 271
+  - gpuNameRaw: AMD Radeon RX 5700 XT
+    value: 329
+  - gpuNameRaw: AMD Radeon RX 6600 XT
+    value: 334
+  - gpuNameRaw: AMD Radeon RX 6700 XT
+    value: 436
+  - gpuNameRaw: AMD Radeon RX 6750 XT
+    value: 435
+  - gpuNameRaw: AMD Radeon RX 6800
+    value: 544
+  - gpuNameRaw: AMD Radeon RX 7600
+    value: 335
+  - gpuNameRaw: AMD Radeon RX 7700S
+    value: 343
+  - gpuNameRaw: AMD Radeon RX 7800 XT
+    value: 583
+  - gpuNameRaw: AMD Radeon RX 7900 GRE
+    value: 581
+  - gpuNameRaw: eVGA NVIDIA GeForce RTX 3060
+    value: 300
+  - gpuNameRaw: Gigabyte AMD Radeon AI PRO R9700
+    value: 652
+  - gpuNameRaw: Gigabyte AMD Radeon RX 6600
+    value: 280
+  - gpuNameRaw: Intel Arc A380 DG2
+    value: 105
+  - gpuNameRaw: Intel Arc A580 DG2
+    value: 282
+  - gpuNameRaw: Intel Arc A750 DG2
+    value: 327
+  - gpuNameRaw: Intel Arc A770 DG2
+    value: 330
+  - gpuNameRaw: Intel Arc Pro B50 BMG G21
+    value: 183
+  - gpuNameRaw: Intel BMG G31
+    value: 427
+  - gpuNameRaw: Intel Iris Plus ICL GT2
+    value: 28
+  - gpuNameRaw: MSI Intel ADL GT2
+    value: 65
+  - gpuNameRaw: MSI Intel Iris Xe ADL GT2
+    value: 53
+  - gpuNameRaw: MSI NVIDIA GeForce RTX 4060
+    value: 376
+  - gpuNameRaw: NVIDIA GeForce RTX 2060 SUPER
+    value: 303
+  - gpuNameRaw: NVIDIA GeForce RTX 3060 Ti
+    value: 405
+  - gpuNameRaw: NVIDIA GeForce RTX 3070
+    value: 439
+  - gpuNameRaw: NVIDIA GeForce RTX 3070 Ti
+    value: 490
+  - gpuNameRaw: NVIDIA GeForce RTX 3080
+    value: 549
+  - gpuNameRaw: NVIDIA GeForce RTX 3090
+    value: 612
+  - gpuNameRaw: NVIDIA GeForce RTX 4080
+    value: 835
+  - gpuNameRaw: NVIDIA GeForce RTX 4090
+    value: 966
+  - gpuNameRaw: NVIDIA GeForce RTX 5090
+    value: 1067
+  - gpuNameRaw: NVIDIA RTX 2000 Ada Generation
+    value: 244
+  - gpuNameRaw: NVIDIA RTX 4000 Ada Generation
+    value: 386
+  - gpuNameRaw: NVIDIA RTX A1000
+    value: 143
+  - gpuNameRaw: Sapphire AMD Radeon AI PRO R9700
+    value: 673
+  - gpuNameRaw: Sapphire AMD Radeon RX 590
+    value: 170
+  - gpuNameRaw: XFX AMD Radeon RX 7700S
+    value: 385
+  - gpuNameRaw: XFX AMD Radeon RX 7900 XTX
+    value: 723

@@ -85,6 +85,23 @@
       "format": "date-time",
       "description": "ISO 8601 timestamp of when this data was last scraped/updated."
     },
+    "latestDataAsOf": {
+      "type": "string",
+      "format": "date",
+      "description": "Optional. ISO 8601 date of the most recent result the source has for this configuration ('latest data as of' on OpenBenchmarking). Distinct from updatedAt, which is when we last fetched. Absent for sources that do not publish it.",
+      "examples": ["2026-07-08"]
+    },
+    "publicResultsSince": {
+      "type": "string",
+      "format": "date",
+      "description": "Optional. ISO 8601 date of the oldest result the source has for this configuration.",
+      "examples": ["2023-05-12"]
+    },
+    "profileVersion": {
+      "type": "string",
+      "description": "Optional. Test-profile version the results come from. Results from different profile versions are different test builds and are not comparable, so a file holds exactly one version.",
+      "examples": ["1.0.x", "1.6.x"]
+    },
     "results": {
       "type": "array",
       "description": "Benchmark results for each GPU.",

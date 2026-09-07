@@ -14,7 +14,7 @@ descriptionDollarsPer: Dollars per FPS in Counter-Strike 2. Lower values
   indicate better cost efficiency for competitive gaming performance.
 category: gaming
 collectedSamples: 312
-updatedAt: 2026-06-24T14:18:22.585Z
+updatedAt: 2026-09-07T17:16:18.219Z
 results:
   - gpuNameRaw: AMD Radeon RX 7900 XTX
     value: 95
@@ -70,3 +70,6 @@ results:
     value: 178
   - gpuNameRaw: XFX AMD Radeon RX 7900 XTX
     value: 268
+profileVersion: 1.0.x
+publicResultsSince: 2024-02-17
+latestDataAsOf: 2025-07-14

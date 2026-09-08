@@ -13,8 +13,8 @@ description: Median FPS in FurMark 2 (OpenGL), a GPU stress test and benchmark
 descriptionDollarsPer: Dollars per FPS in FurMark 2 (OpenGL). Lower values
   indicate better cost efficiency for GPU compute-heavy rendering.
 category: gaming
-collectedSamples: 184234
-updatedAt: 2026-09-08T05:50:35.122Z
+collectedSamples: 184835
+updatedAt: 2026-09-08T14:30:52.407Z
 results:
   - gpuNameRaw: AMD  Radeon RX 7800 XT
     value: 167
@@ -129,7 +129,7 @@ results:
   - gpuNameRaw: AMD Radeon R9 200 / HD 7900 Series
     value: 34
   - gpuNameRaw: AMD Radeon R9 200 Series
-    value: 36
+    value: 35
   - gpuNameRaw: AMD Radeon R9 270 1024SP
     value: 16
   - gpuNameRaw: AMD RADEON R9 M395
@@ -724,7 +724,7 @@ results:
   - gpuNameRaw: NVIDIA GeForce RTX 2080 SUPER/PCIe/SSE2
     value: 106
   - gpuNameRaw: NVIDIA GeForce RTX 2080 Ti/PCIe/SSE2
-    value: 121
+    value: 120
   - gpuNameRaw: NVIDIA GeForce RTX 2080 with Max-Q Design/PCIe/SSE2
     value: 51
   - gpuNameRaw: NVIDIA GeForce RTX 2080/PCIe/SSE2
@@ -740,7 +740,7 @@ results:
   - gpuNameRaw: NVIDIA GeForce RTX 3050 Ti Laptop GPU/PCIe/SSE2
     value: 45
   - gpuNameRaw: NVIDIA GeForce RTX 3050/PCIe/SSE2
-    value: 52
+    value: 53
   - gpuNameRaw: NVIDIA GeForce RTX 3060 Laptop GPU/PCIe/SSE2
     value: 67
   - gpuNameRaw: NVIDIA GeForce RTX 3060 Ti/PCIe/SSE2

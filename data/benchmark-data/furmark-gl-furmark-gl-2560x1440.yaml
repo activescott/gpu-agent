@@ -13,8 +13,8 @@ description: Median FPS in FurMark 2 (OpenGL), a GPU stress test and benchmark
 descriptionDollarsPer: Dollars per FPS in FurMark 2 (OpenGL). Lower values
   indicate better cost efficiency for GPU compute-heavy rendering.
 category: gaming
-collectedSamples: 184835
-updatedAt: 2026-09-08T14:30:52.407Z
+collectedSamples: 185253
+updatedAt: 2026-09-08T21:20:43.223Z
 results:
   - gpuNameRaw: AMD  Radeon RX 7800 XT
     value: 167
@@ -98,7 +98,7 @@ results:
   - gpuNameRaw: AMD Radeon 780M Graphics
     value: 18
   - gpuNameRaw: AMD Radeon AI PRO R9700
-    value: 240
+    value: 239
   - gpuNameRaw: AMD Radeon Graphics
     value: 16
   - gpuNameRaw: AMD Radeon Graphics (radeonsi gfx1200 LLVM 20.1.2 DRM 3.64
@@ -608,7 +608,7 @@ results:
   - gpuNameRaw: Mesa Intel(R) Arc(tm) B570 Graphics (BMG G21)
     value: 84
   - gpuNameRaw: Mesa Intel(R) Arc(tm) B580 Graphics (BMG G21)
-    value: 99
+    value: 102
   - gpuNameRaw: Mesa Intel(R) Arc(tm) Pro B50 Graphics (BMG G21)
     value: 47
   - gpuNameRaw: Mesa Intel(R) Iris(R) Xe Graphics (ADL GT2)
@@ -816,7 +816,7 @@ results:
   - gpuNameRaw: NVIDIA GeForce RTX 5070/PCIe/SSE2
     value: 207
   - gpuNameRaw: NVIDIA GeForce RTX 5080 Laptop GPU/PCIe/SSE2
-    value: 171
+    value: 172
   - gpuNameRaw: NVIDIA GeForce RTX 5080/PCIe/SSE2
     value: 283
   - gpuNameRaw: NVIDIA GeForce RTX 5090 D v2/PCIe/SSE2
@@ -824,7 +824,7 @@ results:
   - gpuNameRaw: NVIDIA GeForce RTX 5090 D/PCIe/SSE2
     value: 393
   - gpuNameRaw: NVIDIA GeForce RTX 5090 Laptop GPU/PCIe/SSE2
-    value: 196
+    value: 197
   - gpuNameRaw: NVIDIA GeForce RTX 5090/PCIe/SSE2
     value: 396
   - gpuNameRaw: NVIDIA Graphics Device/PCIe/SSE2

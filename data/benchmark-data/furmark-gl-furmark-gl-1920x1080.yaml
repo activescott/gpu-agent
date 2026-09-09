@@ -13,8 +13,8 @@ description: Median FPS in FurMark 2 (OpenGL), a GPU stress test and benchmark
 descriptionDollarsPer: Dollars per FPS in FurMark 2 (OpenGL). Lower values
   indicate better cost efficiency for GPU compute-heavy rendering.
 category: gaming
-collectedSamples: 408889
-updatedAt: 2026-09-09T08:48:11.322Z
+collectedSamples: 409061
+updatedAt: 2026-09-09T10:35:04.913Z
 results:
   - gpuNameRaw: /PCIe/SSE2
     value: 76
@@ -545,6 +545,9 @@ results:
     value: 48
   - gpuNameRaw: AMD Radeon RX 580 2048SP (radeonsi polaris10 ACO DRM 3.64 7.1.6-1-cachyos)
     value: 54
+  - gpuNameRaw: AMD Radeon RX 580 2048SP (radeonsi polaris10 ACO DRM 3.64
+      7.2.3-ogc3.1.fc44.x86_64)
+    value: 37
   - gpuNameRaw: AMD Radeon RX 580 Series (radeonsi polaris10 ACO DRM 3.61
       6.14.0-37-generic)
     value: 68

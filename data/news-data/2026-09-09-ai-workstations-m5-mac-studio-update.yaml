@@ -1,0 +1,31 @@
+# yaml-language-server: $schema=./news-article.schema.json
+id: gpu0909sep2026aws
+slug: ai-workstations-m5-mac-studio-update
+title: "AI Workstations Guide Update: Mac Studio M5 Max and M5 Ultra Added"
+content: |
+  I've refreshed the [AI Workstations (GPU+CPU Combos) guide](/gpu/learn/ai/use-case/gpu-cpu-combos) and renamed it around the term I now use for the category.
+
+  These systems pair a CPU and GPU with shared unified memory, so local inference can draw on far more memory than a single graphics card carries.
+  I keep them in this guide rather than the ranking tables because they compete against a full multi-GPU build, not against one card.
+
+  ## What's new
+
+  - **Mac Studio M5 Max and M5 Ultra.** Apple announced both on August 25, 2026, with shipments starting September 22.
+    I cover the M5 Max configurable to 128GB of unified memory and the M5 Ultra configurable to 256GB and 512GB.
+    Configurations at 512GB follow in late October. No independent benchmarks exist yet, so I treat vendor figures as claims for now.
+  - **Dated price history.** The guide's price table now shows May 2026 alongside September 2026, so shifts over time stay visible in one place.
+  - **Coverage additions.** I added the RTX Spark N1X ahead of its October 2026 arrival, and I updated the DGX Station GB300 to reflect that it is now shipping.
+
+  ## Links
+
+  - [AI Workstations (GPU+CPU Combos) guide](/gpu/learn/ai/use-case/gpu-cpu-combos)
+status: PUBLISHED
+tags:
+  - update
+  - ai
+  - apple
+  - nvidia
+authorFullName: "Scott Willeke"
+createdAt: "2026-09-09T12:00:00Z"
+updatedAt: "2026-09-09T12:00:00Z"
+publishedAt: "2026-09-09T12:00:00Z"

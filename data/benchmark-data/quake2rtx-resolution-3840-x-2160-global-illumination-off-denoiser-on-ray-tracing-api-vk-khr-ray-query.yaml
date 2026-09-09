@@ -19,7 +19,7 @@ profileVersion: 1.6.x
 publicResultsSince: 2022-01-21
 latestDataAsOf: 2025-03-25
 collectedSamples: 333
-updatedAt: 2026-09-09T11:46:53.114Z
+updatedAt: 2026-09-09T14:08:31.842Z
 results:
   - gpuNameRaw: AMD Radeon RX 6700 XT
     value: 23

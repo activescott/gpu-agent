@@ -13,8 +13,8 @@ description: Median FPS in FurMark 2 (OpenGL), a GPU stress test and benchmark
 descriptionDollarsPer: Dollars per FPS in FurMark 2 (OpenGL). Lower values
   indicate better cost efficiency for GPU compute-heavy rendering.
 category: gaming
-collectedSamples: 408410
-updatedAt: 2026-09-09T02:44:02.015Z
+collectedSamples: 408498
+updatedAt: 2026-09-09T04:02:00.514Z
 results:
   - gpuNameRaw: /PCIe/SSE2
     value: 76
@@ -1749,7 +1749,7 @@ results:
   - gpuNameRaw: NVIDIA GeForce RTX 3070 Laptop GPU/PCIe/SSE2
     value: 105
   - gpuNameRaw: NVIDIA GeForce RTX 3070 Ti Laptop GPU/PCIe/SSE2
-    value: 110
+    value: 109
   - gpuNameRaw: NVIDIA GeForce RTX 3070 Ti/PCIe/SSE2
     value: 168
   - gpuNameRaw: NVIDIA GeForce RTX 3070/PCIe/SSE2

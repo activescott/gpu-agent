@@ -13,8 +13,8 @@ description: Median FPS in FurMark 2 (OpenGL), a GPU stress test and benchmark
 descriptionDollarsPer: Dollars per FPS in FurMark 2 (OpenGL). Lower values
   indicate better cost efficiency for GPU compute-heavy rendering.
 category: gaming
-collectedSamples: 410076
-updatedAt: 2026-09-09T18:54:25.114Z
+collectedSamples: 410562
+updatedAt: 2026-09-09T22:44:00.809Z
 results:
   - gpuNameRaw: /PCIe/SSE2
     value: 76
@@ -123,7 +123,7 @@ results:
   - gpuNameRaw: AMD BC-250 (radeonsi gfx1013 ACO DRM 3.64 7.2.3-1.87-cachyos-bore-bc250)
     value: 90
   - gpuNameRaw: AMD BC-250 (radeonsi gfx1013 ACO DRM 3.64 7.2.3-ogc3.1.fc44.x86_64)
-    value: 124
+    value: 121
   - gpuNameRaw: AMD BC-250 (radeonsi gfx1013 ACO DRM 3.65
       6.18.46-valve1-1-neptune-618-g2e13b4367b17)
     value: 130
@@ -591,7 +591,7 @@ results:
   - gpuNameRaw: AMD Radeon RX 6500
     value: 49
   - gpuNameRaw: AMD Radeon RX 6500 XT
-    value: 85
+    value: 84
   - gpuNameRaw: AMD Radeon RX 6500 XT (radeonsi navi24 ACO DRM 3.64 7.0.1)
     value: 74
   - gpuNameRaw: AMD Radeon RX 6500M
@@ -1141,7 +1141,7 @@ results:
   - gpuNameRaw: GeForce GTX 1660 Ti with Max-Q Design/PCIe/SSE2
     value: 53
   - gpuNameRaw: GeForce GTX 1660 Ti/PCIe/SSE2
-    value: 68
+    value: 69
   - gpuNameRaw: GeForce GTX 1660/PCIe/SSE2
     value: 62
   - gpuNameRaw: GeForce GTX 260/PCIe/SSE2
@@ -1847,7 +1847,7 @@ results:
   - gpuNameRaw: NVIDIA RTX 1000 Ada Generation Laptop GPU/PCIe/SSE2
     value: 89
   - gpuNameRaw: NVIDIA RTX 2000 Ada Generation Laptop GPU/PCIe/SSE2
-    value: 96
+    value: 97
   - gpuNameRaw: NVIDIA RTX 2000 Ada Generation/PCIe/SSE2
     value: 109
   - gpuNameRaw: NVIDIA RTX 3000 Ada Generation Laptop GPU/PCIe/SSE2

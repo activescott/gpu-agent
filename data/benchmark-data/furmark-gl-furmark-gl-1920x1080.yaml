@@ -13,8 +13,8 @@ description: Median FPS in FurMark 2 (OpenGL), a GPU stress test and benchmark
 descriptionDollarsPer: Dollars per FPS in FurMark 2 (OpenGL). Lower values
   indicate better cost efficiency for GPU compute-heavy rendering.
 category: gaming
-collectedSamples: 411650
-updatedAt: 2026-09-10T12:58:12.231Z
+collectedSamples: 411962
+updatedAt: 2026-09-10T15:39:00.134Z
 results:
   - gpuNameRaw: /PCIe/SSE2
     value: 76
@@ -123,7 +123,7 @@ results:
   - gpuNameRaw: AMD BC-250 (radeonsi gfx1013 ACO DRM 3.64 7.2.3-1.87-cachyos-bore-bc250)
     value: 90
   - gpuNameRaw: AMD BC-250 (radeonsi gfx1013 ACO DRM 3.64 7.2.3-ogc3.1.fc44.x86_64)
-    value: 120
+    value: 121
   - gpuNameRaw: AMD BC-250 (radeonsi gfx1013 ACO DRM 3.65
       6.18.46-valve1-1-neptune-618-g2e13b4367b17)
     value: 130
@@ -576,6 +576,8 @@ results:
     value: 39
   - gpuNameRaw: AMD Radeon RX 580 Series (radeonsi polaris10 ACO DRM 3.64 7.0.0-29-generic)
     value: 68
+  - gpuNameRaw: AMD Radeon RX 580 Series (radeonsi polaris10 ACO DRM 3.64 7.0.0-31-generic)
+    value: 65
   - gpuNameRaw: AMD Radeon RX 580 Series (radeonsi polaris10 ACO DRM 3.64 7.0.1-1-cachyos)
     value: 65
   - gpuNameRaw: AMD Radeon RX 590 Series (radeonsi polaris10 ACO DRM 3.64 6.19.8-pikaos)
@@ -619,7 +621,7 @@ results:
   - gpuNameRaw: AMD Radeon RX 6600 LE
     value: 106
   - gpuNameRaw: AMD Radeon RX 6600 XT
-    value: 142
+    value: 143
   - gpuNameRaw: AMD Radeon RX 6600 XT (radeonsi navi23 ACO DRM 3.64 7.1.7-zen1-1-zen)
     value: 140
   - gpuNameRaw: AMD Radeon RX 6600 XT (radeonsi navi23 LLVM 20.1.2 DRM 3.64
@@ -1766,7 +1768,7 @@ results:
   - gpuNameRaw: NVIDIA GeForce RTX 3070/PCIe/SSE2
     value: 154
   - gpuNameRaw: NVIDIA GeForce RTX 3080 Laptop GPU/PCIe/SSE2
-    value: 111
+    value: 112
   - gpuNameRaw: NVIDIA GeForce RTX 3080 Ti Laptop GPU/PCIe/SSE2
     value: 105
   - gpuNameRaw: NVIDIA GeForce RTX 3080 Ti/PCIe/SSE2
@@ -1798,7 +1800,7 @@ results:
   - gpuNameRaw: NVIDIA GeForce RTX 4080 Laptop GPU/PCIe/SSE2
     value: 211
   - gpuNameRaw: NVIDIA GeForce RTX 4080 SUPER/PCIe/SSE2
-    value: 344
+    value: 345
   - gpuNameRaw: NVIDIA GeForce RTX 4080/PCIe/SSE2
     value: 353
   - gpuNameRaw: NVIDIA GeForce RTX 4090 D/PCIe/SSE2
@@ -1902,7 +1904,7 @@ results:
   - gpuNameRaw: NVIDIA RTX A4000H/PCIe/SSE2
     value: 110
   - gpuNameRaw: NVIDIA RTX A4500 Laptop GPU/PCIe/SSE2
-    value: 90
+    value: 89
   - gpuNameRaw: NVIDIA RTX A4500/PCIe/SSE2
     value: 144
   - gpuNameRaw: NVIDIA RTX A500 Laptop GPU/PCIe/SSE2

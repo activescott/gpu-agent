@@ -13,8 +13,8 @@ description: Median FPS in FurMark 2 (OpenGL), a GPU stress test and benchmark
 descriptionDollarsPer: Dollars per FPS in FurMark 2 (OpenGL). Lower values
   indicate better cost efficiency for GPU compute-heavy rendering.
 category: gaming
-collectedSamples: 410562
-updatedAt: 2026-09-09T22:44:00.809Z
+collectedSamples: 410773
+updatedAt: 2026-09-10T01:04:38.934Z
 results:
   - gpuNameRaw: /PCIe/SSE2
     value: 76
@@ -678,7 +678,7 @@ results:
   - gpuNameRaw: AMD Radeon RX 6850M XT
     value: 134
   - gpuNameRaw: AMD Radeon RX 6900 XT
-    value: 276
+    value: 277
   - gpuNameRaw: AMD Radeon RX 6950 XT
     value: 292
   - gpuNameRaw: AMD Radeon RX 6950 XT (radeonsi navi21 ACO DRM 3.64
@@ -1591,7 +1591,7 @@ results:
   - gpuNameRaw: NVIDIA GeForce GTX 1080 with Max-Q Design/PCIe/SSE2
     value: 74
   - gpuNameRaw: NVIDIA GeForce GTX 1080/PCIe/SSE2
-    value: 99
+    value: 100
   - gpuNameRaw: NVIDIA GeForce GTX 1630/PCIe/SSE2
     value: 32
   - gpuNameRaw: NVIDIA GeForce GTX 1650 SUPER/PCIe/SSE2

@@ -19,7 +19,7 @@ profileVersion: 1.6.x
 publicResultsSince: 2022-01-21
 latestDataAsOf: 2025-03-26
 collectedSamples: 158
-updatedAt: 2026-09-10T08:44:30.728Z
+updatedAt: 2026-09-10T10:17:10.653Z
 results:
   - gpuNameRaw: AMD Radeon RX 6500 XT
     value: 19

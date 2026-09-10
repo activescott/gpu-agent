@@ -32,6 +32,12 @@ GPU specs, model specs, and benchmark data are authored in the private `gpu-poet
 
 ## Database Query Gotchas
 
+### How to Query Postgres
+- Always use `./scripts/psql` (dev database) or `./scripts/psql-prod` (production) — never `psql` directly and never read `.env` for connection strings.
+- dev takes the query on stdin: `echo 'SELECT ...' | ./scripts/psql`
+- prod takes the query as an argument: `./scripts/psql-prod 'SELECT ...'`
+- Prefer read-only `SELECT` queries. The dev database is usually empty of listings — use prod for real listing/price data.
+
 ### Query Filter Rules
 - Queries for **current/active listings** should filter `archived = false` AND `exclude = false`
 - Queries for **historical analysis** (market report charts, price trends) should **NOT** filter on `archived` — listings are archived after just 6 hours off eBay, so all past-month data is archived

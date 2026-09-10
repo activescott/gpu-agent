@@ -13,8 +13,8 @@ description: Median FPS in FurMark 2 (OpenGL), a GPU stress test and benchmark
 descriptionDollarsPer: Dollars per FPS in FurMark 2 (OpenGL). Lower values
   indicate better cost efficiency for GPU compute-heavy rendering.
 category: gaming
-collectedSamples: 411296
-updatedAt: 2026-09-10T09:19:31.437Z
+collectedSamples: 411458
+updatedAt: 2026-09-10T10:55:57.730Z
 results:
   - gpuNameRaw: /PCIe/SSE2
     value: 76
@@ -1243,7 +1243,7 @@ results:
   - gpuNameRaw: GeForce GTX 980/PCIe/SSE2
     value: 64
   - gpuNameRaw: GeForce GTX 980M/PCIe/SSE2
-    value: 42
+    value: 41
   - gpuNameRaw: GeForce GTX TITAN Black/PCIe/SSE2
     value: 59
   - gpuNameRaw: GeForce GTX TITAN X/PCIe/SSE2
@@ -1443,7 +1443,7 @@ results:
   - gpuNameRaw: LISUAN 7G100 Series Graphics
     value: 88
   - gpuNameRaw: Mesa Intel(R) Arc(tm) A310 Graphics (DG2)
-    value: 27
+    value: 16
   - gpuNameRaw: Mesa Intel(R) Arc(tm) A380 Graphics (DG2)
     value: 39
   - gpuNameRaw: Mesa Intel(R) Arc(tm) A750 Graphics (DG2)

@@ -13,8 +13,8 @@ description: Median FPS in FurMark 2 (OpenGL), a GPU stress test and benchmark
 descriptionDollarsPer: Dollars per FPS in FurMark 2 (OpenGL). Lower values
   indicate better cost efficiency for GPU compute-heavy rendering.
 category: gaming
-collectedSamples: 48197
-updatedAt: 2026-09-10T01:04:39.013Z
+collectedSamples: 48208
+updatedAt: 2026-09-10T02:20:48.418Z
 results:
   - gpuNameRaw: AMD  Radeon RX 7800 XT
     value: 89
@@ -451,7 +451,7 @@ results:
   - gpuNameRaw: NVIDIA GeForce RTX 4070 Laptop GPU/PCIe/SSE2
     value: 43
   - gpuNameRaw: NVIDIA GeForce RTX 4070 SUPER/PCIe/SSE2
-    value: 81
+    value: 80
   - gpuNameRaw: NVIDIA GeForce RTX 4070 Ti SUPER/PCIe/SSE2
     value: 104
   - gpuNameRaw: NVIDIA GeForce RTX 4070 Ti/PCIe/SSE2

@@ -13,8 +13,8 @@ description: Median FPS in FurMark 2 (OpenGL), a GPU stress test and benchmark
 descriptionDollarsPer: Dollars per FPS in FurMark 2 (OpenGL). Lower values
   indicate better cost efficiency for GPU compute-heavy rendering.
 category: gaming
-collectedSamples: 411169
-updatedAt: 2026-09-10T07:42:05.636Z
+collectedSamples: 411296
+updatedAt: 2026-09-10T09:19:31.437Z
 results:
   - gpuNameRaw: /PCIe/SSE2
     value: 76
@@ -687,7 +687,7 @@ results:
   - gpuNameRaw: AMD Radeon RX 7400
     value: 56
   - gpuNameRaw: AMD Radeon RX 7600
-    value: 143
+    value: 142
   - gpuNameRaw: AMD Radeon RX 7600 (radeonsi navi33 ACO DRM 3.64 6.17.0-35-generic)
     value: 140
   - gpuNameRaw: AMD Radeon RX 7600 (radeonsi navi33 ACO DRM 3.64 7.0.0-14-generic)
@@ -1442,6 +1442,8 @@ results:
     value: 1
   - gpuNameRaw: LISUAN 7G100 Series Graphics
     value: 88
+  - gpuNameRaw: Mesa Intel(R) Arc(tm) A310 Graphics (DG2)
+    value: 27
   - gpuNameRaw: Mesa Intel(R) Arc(tm) A380 Graphics (DG2)
     value: 39
   - gpuNameRaw: Mesa Intel(R) Arc(tm) A750 Graphics (DG2)
@@ -1897,7 +1899,7 @@ results:
   - gpuNameRaw: NVIDIA RTX A4000H/PCIe/SSE2
     value: 110
   - gpuNameRaw: NVIDIA RTX A4500 Laptop GPU/PCIe/SSE2
-    value: 89
+    value: 90
   - gpuNameRaw: NVIDIA RTX A4500/PCIe/SSE2
     value: 144
   - gpuNameRaw: NVIDIA RTX A500 Laptop GPU/PCIe/SSE2

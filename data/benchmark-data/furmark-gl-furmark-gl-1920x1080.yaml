@@ -13,8 +13,8 @@ description: Median FPS in FurMark 2 (OpenGL), a GPU stress test and benchmark
 descriptionDollarsPer: Dollars per FPS in FurMark 2 (OpenGL). Lower values
   indicate better cost efficiency for GPU compute-heavy rendering.
 category: gaming
-collectedSamples: 414449
-updatedAt: 2026-09-11T17:01:06.733Z
+collectedSamples: 414883
+updatedAt: 2026-09-11T20:26:45.712Z
 results:
   - gpuNameRaw: /PCIe/SSE2
     value: 76
@@ -655,7 +655,7 @@ results:
       6.17.0-20-generic)
     value: 138
   - gpuNameRaw: AMD Radeon RX 6700M
-    value: 114
+    value: 113
   - gpuNameRaw: AMD Radeon RX 6700S
     value: 101
   - gpuNameRaw: AMD Radeon RX 6750 GRE 10GB
@@ -683,7 +683,7 @@ results:
   - gpuNameRaw: AMD Radeon RX 6850M XT
     value: 134
   - gpuNameRaw: AMD Radeon RX 6900 XT
-    value: 276
+    value: 277
   - gpuNameRaw: AMD Radeon RX 6950 XT
     value: 292
   - gpuNameRaw: AMD Radeon RX 6950 XT (radeonsi navi21 ACO DRM 3.64
@@ -710,7 +710,7 @@ results:
   - gpuNameRaw: AMD Radeon RX 7600M
     value: 36
   - gpuNameRaw: AMD Radeon RX 7600M XT
-    value: 104
+    value: 103
   - gpuNameRaw: AMD Radeon RX 7600M XT (radeonsi navi33 LLVM 20.1.2 DRM 3.64
       6.17.0-20-generic)
     value: 122
@@ -1765,7 +1765,7 @@ results:
   - gpuNameRaw: NVIDIA GeForce RTX 3070 Laptop GPU/PCIe/SSE2
     value: 105
   - gpuNameRaw: NVIDIA GeForce RTX 3070 Ti Laptop GPU/PCIe/SSE2
-    value: 109
+    value: 110
   - gpuNameRaw: NVIDIA GeForce RTX 3070 Ti/PCIe/SSE2
     value: 168
   - gpuNameRaw: NVIDIA GeForce RTX 3070/PCIe/SSE2
@@ -1803,7 +1803,7 @@ results:
   - gpuNameRaw: NVIDIA GeForce RTX 4080 Laptop GPU/PCIe/SSE2
     value: 211
   - gpuNameRaw: NVIDIA GeForce RTX 4080 SUPER/PCIe/SSE2
-    value: 345
+    value: 344
   - gpuNameRaw: NVIDIA GeForce RTX 4080/PCIe/SSE2
     value: 353
   - gpuNameRaw: NVIDIA GeForce RTX 4090 D/PCIe/SSE2
@@ -2218,7 +2218,7 @@ results:
   - gpuNameRaw: Radeon(TM) RX 460 Graphics
     value: 26
   - gpuNameRaw: Radeon(TM) RX 470 Graphics
-    value: 50
+    value: 48
   - gpuNameRaw: Radeon(TM) RX 480
     value: 44
   - gpuNameRaw: Radeon(TM) RX 550

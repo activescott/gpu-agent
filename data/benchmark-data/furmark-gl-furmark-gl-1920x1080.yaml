@@ -13,8 +13,8 @@ description: Median FPS in FurMark 2 (OpenGL), a GPU stress test and benchmark
 descriptionDollarsPer: Dollars per FPS in FurMark 2 (OpenGL). Lower values
   indicate better cost efficiency for GPU compute-heavy rendering.
 category: gaming
-collectedSamples: 413518
-updatedAt: 2026-09-11T08:13:53.631Z
+collectedSamples: 413680
+updatedAt: 2026-09-11T10:11:33.551Z
 results:
   - gpuNameRaw: /PCIe/SSE2
     value: 76
@@ -1771,7 +1771,7 @@ results:
   - gpuNameRaw: NVIDIA GeForce RTX 3070/PCIe/SSE2
     value: 154
   - gpuNameRaw: NVIDIA GeForce RTX 3080 Laptop GPU/PCIe/SSE2
-    value: 112
+    value: 111
   - gpuNameRaw: NVIDIA GeForce RTX 3080 Ti Laptop GPU/PCIe/SSE2
     value: 105
   - gpuNameRaw: NVIDIA GeForce RTX 3080 Ti/PCIe/SSE2
@@ -1881,7 +1881,7 @@ results:
   - gpuNameRaw: NVIDIA RTX 6000 Ada Generation/PCIe/SSE2
     value: 319
   - gpuNameRaw: NVIDIA RTX A1000 6GB Laptop GPU/PCIe/SSE2
-    value: 47
+    value: 46
   - gpuNameRaw: NVIDIA RTX A1000 Laptop GPU/PCIe/SSE2
     value: 44
   - gpuNameRaw: NVIDIA RTX A1000/PCIe/SSE2
@@ -2057,7 +2057,7 @@ results:
   - gpuNameRaw: Quadro P3000/PCIe/SSE2
     value: 50
   - gpuNameRaw: Quadro P3200 with Max-Q Design/PCIe/SSE2
-    value: 51
+    value: 50
   - gpuNameRaw: Quadro P3200/PCIe/SSE2
     value: 49
   - gpuNameRaw: Quadro P400/PCIe/SSE2

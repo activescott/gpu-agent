@@ -13,8 +13,8 @@ description: Median FPS in FurMark 2 (OpenGL), a GPU stress test and benchmark
 descriptionDollarsPer: Dollars per FPS in FurMark 2 (OpenGL). Lower values
   indicate better cost efficiency for GPU compute-heavy rendering.
 category: gaming
-collectedSamples: 414883
-updatedAt: 2026-09-11T20:26:45.712Z
+collectedSamples: 415251
+updatedAt: 2026-09-11T23:44:38.851Z
 results:
   - gpuNameRaw: /PCIe/SSE2
     value: 76
@@ -621,7 +621,7 @@ results:
   - gpuNameRaw: AMD Radeon RX 6600 LE
     value: 106
   - gpuNameRaw: AMD Radeon RX 6600 XT
-    value: 143
+    value: 142
   - gpuNameRaw: AMD Radeon RX 6600 XT (radeonsi navi23 ACO DRM 3.64 7.1.7-zen1-1-zen)
     value: 140
   - gpuNameRaw: AMD Radeon RX 6600 XT (radeonsi navi23 LLVM 20.1.2 DRM 3.64
@@ -726,6 +726,9 @@ results:
   - gpuNameRaw: AMD Radeon RX 7600M XT (radeonsi navi33 LLVM 20.1.2 DRM 3.64
       6.17.0-35-generic)
     value: 122
+  - gpuNameRaw: AMD Radeon RX 7600M XT (radeonsi navi33 LLVM 20.1.2 DRM 3.64
+      7.0.0-30-generic)
+    value: 125
   - gpuNameRaw: AMD Radeon RX 7600S
     value: 104
   - gpuNameRaw: AMD Radeon RX 7650 GRE
@@ -1149,7 +1152,7 @@ results:
   - gpuNameRaw: GeForce GTX 1660 Ti with Max-Q Design/PCIe/SSE2
     value: 53
   - gpuNameRaw: GeForce GTX 1660 Ti/PCIe/SSE2
-    value: 69
+    value: 68
   - gpuNameRaw: GeForce GTX 1660/PCIe/SSE2
     value: 62
   - gpuNameRaw: GeForce GTX 260/PCIe/SSE2
@@ -1601,7 +1604,7 @@ results:
   - gpuNameRaw: NVIDIA GeForce GTX 1080 with Max-Q Design/PCIe/SSE2
     value: 74
   - gpuNameRaw: NVIDIA GeForce GTX 1080/PCIe/SSE2
-    value: 99
+    value: 100
   - gpuNameRaw: NVIDIA GeForce GTX 1630/PCIe/SSE2
     value: 32
   - gpuNameRaw: NVIDIA GeForce GTX 1650 SUPER/PCIe/SSE2
@@ -1765,7 +1768,7 @@ results:
   - gpuNameRaw: NVIDIA GeForce RTX 3070 Laptop GPU/PCIe/SSE2
     value: 105
   - gpuNameRaw: NVIDIA GeForce RTX 3070 Ti Laptop GPU/PCIe/SSE2
-    value: 110
+    value: 109
   - gpuNameRaw: NVIDIA GeForce RTX 3070 Ti/PCIe/SSE2
     value: 168
   - gpuNameRaw: NVIDIA GeForce RTX 3070/PCIe/SSE2
@@ -1929,7 +1932,7 @@ results:
   - gpuNameRaw: NVIDIA RTX PRO 3000 Blackwell Generation Laptop GPU/PCIe/SSE2
     value: 176
   - gpuNameRaw: NVIDIA RTX PRO 4000 Blackwell Generation Laptop GPU/PCIe/SSE2
-    value: 208
+    value: 207
   - gpuNameRaw: NVIDIA RTX PRO 4000 Blackwell SFF Edition/PCIe/SSE2
     value: 142
   - gpuNameRaw: NVIDIA RTX PRO 4000 Blackwell/PCIe/SSE2
@@ -1961,7 +1964,7 @@ results:
   - gpuNameRaw: NVIDIA T500/PCIe/SSE2
     value: 20
   - gpuNameRaw: NVIDIA T550 Laptop GPU/PCIe/SSE2
-    value: 20
+    value: 19
   - gpuNameRaw: NVIDIA T600 Laptop GPU/PCIe/SSE2
     value: 32
   - gpuNameRaw: NVIDIA T600/PCIe/SSE2

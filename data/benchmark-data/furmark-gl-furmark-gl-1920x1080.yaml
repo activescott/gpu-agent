@@ -13,8 +13,8 @@ description: Median FPS in FurMark 2 (OpenGL), a GPU stress test and benchmark
 descriptionDollarsPer: Dollars per FPS in FurMark 2 (OpenGL). Lower values
   indicate better cost efficiency for GPU compute-heavy rendering.
 category: gaming
-collectedSamples: 413680
-updatedAt: 2026-09-11T10:11:33.551Z
+collectedSamples: 413867
+updatedAt: 2026-09-11T11:55:34.238Z
 results:
   - gpuNameRaw: /PCIe/SSE2
     value: 76
@@ -405,7 +405,7 @@ results:
   - gpuNameRaw: AMD Radeon Pro v540
     value: 111
   - gpuNameRaw: AMD Radeon Pro VII
-    value: 131
+    value: 130
   - gpuNameRaw: AMD Radeon Pro W5500
     value: 66
   - gpuNameRaw: AMD Radeon Pro W5700
@@ -621,7 +621,7 @@ results:
   - gpuNameRaw: AMD Radeon RX 6600 LE
     value: 106
   - gpuNameRaw: AMD Radeon RX 6600 XT
-    value: 142
+    value: 143
   - gpuNameRaw: AMD Radeon RX 6600 XT (radeonsi navi23 ACO DRM 3.64 7.1.7-zen1-1-zen)
     value: 140
   - gpuNameRaw: AMD Radeon RX 6600 XT (radeonsi navi23 LLVM 20.1.2 DRM 3.64
@@ -1411,7 +1411,7 @@ results:
   - gpuNameRaw: Intel(R) Iris(R) Plus Graphics
     value: 8
   - gpuNameRaw: Intel(R) Iris(R) Plus Graphics 640
-    value: 8
+    value: 9
   - gpuNameRaw: Intel(R) Iris(R) Plus Graphics 645
     value: 8
   - gpuNameRaw: Intel(R) Iris(R) Plus Graphics 650
@@ -1771,7 +1771,7 @@ results:
   - gpuNameRaw: NVIDIA GeForce RTX 3070/PCIe/SSE2
     value: 154
   - gpuNameRaw: NVIDIA GeForce RTX 3080 Laptop GPU/PCIe/SSE2
-    value: 111
+    value: 112
   - gpuNameRaw: NVIDIA GeForce RTX 3080 Ti Laptop GPU/PCIe/SSE2
     value: 105
   - gpuNameRaw: NVIDIA GeForce RTX 3080 Ti/PCIe/SSE2
@@ -1857,7 +1857,7 @@ results:
   - gpuNameRaw: NVIDIA RTX 1000 Ada Generation Laptop GPU/PCIe/SSE2
     value: 89
   - gpuNameRaw: NVIDIA RTX 2000 Ada Generation Laptop GPU/PCIe/SSE2
-    value: 96
+    value: 94
   - gpuNameRaw: NVIDIA RTX 2000 Ada Generation/PCIe/SSE2
     value: 109
   - gpuNameRaw: NVIDIA RTX 3000 Ada Generation Laptop GPU/PCIe/SSE2

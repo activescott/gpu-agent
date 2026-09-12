@@ -13,8 +13,8 @@ description: Median FPS in FurMark 2 (OpenGL), a GPU stress test and benchmark
 descriptionDollarsPer: Dollars per FPS in FurMark 2 (OpenGL). Lower values
   indicate better cost efficiency for GPU compute-heavy rendering.
 category: gaming
-collectedSamples: 415449
-updatedAt: 2026-09-12T01:38:25.435Z
+collectedSamples: 415542
+updatedAt: 2026-09-12T03:00:48.609Z
 results:
   - gpuNameRaw: /PCIe/SSE2
     value: 76

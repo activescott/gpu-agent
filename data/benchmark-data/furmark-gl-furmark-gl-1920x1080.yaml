@@ -13,8 +13,8 @@ description: Median FPS in FurMark 2 (OpenGL), a GPU stress test and benchmark
 descriptionDollarsPer: Dollars per FPS in FurMark 2 (OpenGL). Lower values
   indicate better cost efficiency for GPU compute-heavy rendering.
 category: gaming
-collectedSamples: 415251
-updatedAt: 2026-09-11T23:44:38.851Z
+collectedSamples: 415449
+updatedAt: 2026-09-12T01:38:25.435Z
 results:
   - gpuNameRaw: /PCIe/SSE2
     value: 76
@@ -692,7 +692,7 @@ results:
   - gpuNameRaw: AMD Radeon RX 7400
     value: 56
   - gpuNameRaw: AMD Radeon RX 7600
-    value: 142
+    value: 143
   - gpuNameRaw: AMD Radeon RX 7600 (radeonsi navi33 ACO DRM 3.64 6.17.0-35-generic)
     value: 140
   - gpuNameRaw: AMD Radeon RX 7600 (radeonsi navi33 ACO DRM 3.64 7.0.0-14-generic)
@@ -900,6 +900,8 @@ results:
     value: 10
   - gpuNameRaw: AMD Radeon VII
     value: 132
+  - gpuNameRaw: AMD Radeon(TM)  820M Graphics
+    value: 14
   - gpuNameRaw: AMD Radeon(TM)  840M Graphics
     value: 20
   - gpuNameRaw: AMD Radeon(TM)  860M Graphics
@@ -2249,7 +2251,7 @@ results:
   - gpuNameRaw: Tesla P40/PCIe/SSE2
     value: 121
   - gpuNameRaw: Tesla T4/PCIe/SSE2
-    value: 54
+    value: 52
   - gpuNameRaw: Tesla V100-PCIE-16GB/PCIe/SSE2
     value: 146
   - gpuNameRaw: Tesla V100-SXM2-16GB/PCIe/SSE2

@@ -16,8 +16,8 @@ category: gaming
 profileVersion: 1.0.x
 publicResultsSince: 2023-05-12
 latestDataAsOf: 2026-05-27
-collectedSamples: 308
-updatedAt: 2026-09-15T07:54:30.398Z
+collectedSamples: 315
+updatedAt: 2026-09-16T08:27:50.219Z
 results:
   - gpuNameRaw: AMD Radeon Pro W7700
     value: 311
@@ -46,7 +46,7 @@ results:
   - gpuNameRaw: AMD Radeon RX 7900 GRE
     value: 396
   - gpuNameRaw: AMD Radeon RX 7900 XT
-    value: 513
+    value: 519
   - gpuNameRaw: AMD Radeon RX 7900 XTX
     value: 592
   - gpuNameRaw: ASUS AMD Radeon RX 9070 XT
@@ -59,6 +59,12 @@ results:
     value: 169
   - gpuNameRaw: Gigabyte AMD Radeon RX 9060 XT
     value: 254
+  - gpuNameRaw: Intel Arc A580
+    value: 229
+  - gpuNameRaw: Intel Arc A770
+    value: 291
+  - gpuNameRaw: Intel Arc B580
+    value: 307
   - gpuNameRaw: Intel BMG G21
     value: 246
   - gpuNameRaw: Intel BMG G31

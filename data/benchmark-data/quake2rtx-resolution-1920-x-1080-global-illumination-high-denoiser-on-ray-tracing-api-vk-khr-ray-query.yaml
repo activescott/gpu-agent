@@ -18,11 +18,11 @@ category: gaming
 profileVersion: 1.6.x
 publicResultsSince: 2022-01-21
 latestDataAsOf: 2025-03-26
-collectedSamples: 158
-updatedAt: 2026-09-15T08:06:19.509Z
+collectedSamples: 208
+updatedAt: 2026-09-16T08:48:43.831Z
 results:
   - gpuNameRaw: AMD Radeon RX 6500 XT
-    value: 19
+    value: 20
   - gpuNameRaw: AMD Radeon RX 7900 XT
     value: 88
   - gpuNameRaw: eVGA NVIDIA GeForce RTX 3060
@@ -35,12 +35,14 @@ results:
     value: 56
   - gpuNameRaw: NVIDIA GeForce RTX 2070 SUPER
     value: 66
+  - gpuNameRaw: NVIDIA GeForce RTX 2080
+    value: 75
   - gpuNameRaw: NVIDIA GeForce RTX 2080 Ti
     value: 96
   - gpuNameRaw: NVIDIA GeForce RTX 3060 Ti
     value: 91
   - gpuNameRaw: NVIDIA GeForce RTX 3070
-    value: 102
+    value: 103
   - gpuNameRaw: NVIDIA GeForce RTX 3070 Ti
     value: 113
   - gpuNameRaw: NVIDIA GeForce RTX 3080
@@ -48,6 +50,8 @@ results:
   - gpuNameRaw: NVIDIA GeForce RTX 3080 Laptop GPU + Intel UHD
     value: 93
   - gpuNameRaw: NVIDIA GeForce RTX 3080 Ti
-    value: 154
+    value: 155
+  - gpuNameRaw: NVIDIA GeForce RTX 3090 + NVIDIA GeForce RTX 3090
+    value: 157
   - gpuNameRaw: NVIDIA Quadro RTX 4000
     value: 51

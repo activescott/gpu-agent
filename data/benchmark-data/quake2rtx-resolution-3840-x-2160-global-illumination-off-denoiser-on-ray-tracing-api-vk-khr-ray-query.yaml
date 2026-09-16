@@ -18,9 +18,11 @@ category: gaming
 profileVersion: 1.6.x
 publicResultsSince: 2022-01-21
 latestDataAsOf: 2025-03-25
-collectedSamples: 333
-updatedAt: 2026-09-15T08:04:37.340Z
+collectedSamples: 378
+updatedAt: 2026-09-16T08:43:43.455Z
 results:
+  - gpuNameRaw: AMD Radeon RX 6600 XT
+    value: 18
   - gpuNameRaw: AMD Radeon RX 6700 XT
     value: 23
   - gpuNameRaw: AMD Radeon RX 6750 XT
@@ -28,13 +30,17 @@ results:
   - gpuNameRaw: AMD Radeon RX 6800
     value: 31
   - gpuNameRaw: AMD Radeon RX 6800 XT
-    value: 37
+    value: 36
+  - gpuNameRaw: AMD Radeon RX 6900 XT
+    value: 39
   - gpuNameRaw: AMD Radeon RX 7800 XT
     value: 39
   - gpuNameRaw: AMD Radeon RX 7900 GRE
     value: 43
+  - gpuNameRaw: AMD Radeon RX 7900 XT
+    value: 55
   - gpuNameRaw: AMD Radeon RX 7900 XTX
-    value: 61
+    value: 62
   - gpuNameRaw: ASUS AMD Radeon RX 7800 XT
     value: 40
   - gpuNameRaw: ASUS AMD Radeon RX 7900 GRE
@@ -73,6 +79,8 @@ results:
     value: 22
   - gpuNameRaw: NVIDIA GeForce RTX 2070 SUPER
     value: 25
+  - gpuNameRaw: NVIDIA GeForce RTX 2080
+    value: 24
   - gpuNameRaw: NVIDIA GeForce RTX 2080 Ti
     value: 38
   - gpuNameRaw: NVIDIA GeForce RTX 3060 Ti
@@ -88,7 +96,7 @@ results:
   - gpuNameRaw: NVIDIA GeForce RTX 3080 Ti
     value: 67
   - gpuNameRaw: NVIDIA GeForce RTX 3090
-    value: 70
+    value: 71
   - gpuNameRaw: NVIDIA GeForce RTX 4070
     value: 53
   - gpuNameRaw: NVIDIA GeForce RTX 4070 SUPER

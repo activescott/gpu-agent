@@ -16,8 +16,8 @@ category: gaming
 profileVersion: 1.0.x
 publicResultsSince: 2023-05-12
 latestDataAsOf: 2026-08-06
-collectedSamples: 533
-updatedAt: 2026-09-15T07:50:00.116Z
+collectedSamples: 545
+updatedAt: 2026-09-16T08:23:13.925Z
 results:
   - gpuNameRaw: AMD Radeon 8060S
     value: 116
@@ -48,7 +48,7 @@ results:
   - gpuNameRaw: AMD Radeon RX 7900 GRE
     value: 222
   - gpuNameRaw: AMD Radeon RX 7900 XT
-    value: 274
+    value: 280
   - gpuNameRaw: ASUS AMD Radeon RX 7800 XT
     value: 190
   - gpuNameRaw: ASUS AMD Radeon RX 7900 GRE
@@ -87,8 +87,14 @@ results:
     value: 138
   - gpuNameRaw: Gigabyte AMD Radeon RX 9070
     value: 250
+  - gpuNameRaw: Intel Arc A580
+    value: 120
+  - gpuNameRaw: Intel Arc A770
+    value: 154
   - gpuNameRaw: Intel Arc B570 BMG G21
     value: 111
+  - gpuNameRaw: Intel Arc B580
+    value: 164
   - gpuNameRaw: Intel Arc B580 BMG G21
     value: 134
   - gpuNameRaw: Intel BMG G21
@@ -128,7 +134,7 @@ results:
   - gpuNameRaw: NVIDIA RTX A1000
     value: 49
   - gpuNameRaw: NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition
-    value: 418
+    value: 428
   - gpuNameRaw: Sapphire AMD Radeon AI PRO R9700
     value: 266
   - gpuNameRaw: XFX AMD Radeon RX 7700 XT

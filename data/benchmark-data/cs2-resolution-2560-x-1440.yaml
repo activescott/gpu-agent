@@ -16,8 +16,8 @@ category: gaming
 profileVersion: 1.0.x
 publicResultsSince: 2024-02-17
 latestDataAsOf: 2025-07-21
-collectedSamples: 293
-updatedAt: 2026-09-16T08:11:51.333Z
+collectedSamples: 273
+updatedAt: 2026-09-17T07:50:02.644Z
 results:
   - gpuNameRaw: AMD Navi 48
     value: 265
@@ -28,9 +28,9 @@ results:
   - gpuNameRaw: AMD Radeon RX 6800 XT
     value: 235
   - gpuNameRaw: AMD Radeon RX 7900 XT
-    value: 302
+    value: 306
   - gpuNameRaw: AMD Radeon RX 9070 XT
-    value: 339
+    value: 344
   - gpuNameRaw: ASUS AMD Radeon RX 7600
     value: 160
   - gpuNameRaw: ASUS AMD Radeon RX 7600 XT
@@ -59,14 +59,8 @@ results:
     value: 282
   - gpuNameRaw: Gigabyte AMD Radeon RX 9070
     value: 335
-  - gpuNameRaw: Intel Arc A580
-    value: 95
-  - gpuNameRaw: Intel Arc A770
-    value: 139
   - gpuNameRaw: Intel Arc A770 DG2
     value: 78
-  - gpuNameRaw: Intel Arc B580
-    value: 184
   - gpuNameRaw: Intel BMG G21
     value: 130
   - gpuNameRaw: MSI NVIDIA GeForce RTX 4060
@@ -85,7 +79,5 @@ results:
     value: 310
   - gpuNameRaw: NVIDIA GeForce RTX 4090
     value: 383
-  - gpuNameRaw: NVIDIA GeForce RTX 5090 + AMD Radeon
-    value: 454
   - gpuNameRaw: XFX AMD Radeon RX 7900 XTX
     value: 413

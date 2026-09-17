@@ -13,8 +13,8 @@ description: Median FPS in FurMark 2 (OpenGL), a GPU stress test and benchmark
 descriptionDollarsPer: Dollars per FPS in FurMark 2 (OpenGL). Lower values
   indicate better cost efficiency for GPU compute-heavy rendering.
 category: gaming
-collectedSamples: 425647
-updatedAt: 2026-09-16T09:32:28.418Z
+collectedSamples: 427880
+updatedAt: 2026-09-17T08:55:05.752Z
 results:
   - gpuNameRaw: /PCIe/SSE2
     value: 76
@@ -129,7 +129,7 @@ results:
   - gpuNameRaw: AMD BC-250 (radeonsi gfx1013 ACO DRM 3.64 7.2.3-ogc3.1.fc44.x86_64)
     value: 121
   - gpuNameRaw: AMD BC-250 (radeonsi gfx1013 ACO DRM 3.64 7.2.4-ogc3.1.fc44.x86_64)
-    value: 111
+    value: 106
   - gpuNameRaw: AMD BC-250 (radeonsi gfx1013 ACO DRM 3.65
       6.18.46-valve1-1-neptune-618-g2e13b4367b17)
     value: 130
@@ -593,7 +593,7 @@ results:
   - gpuNameRaw: AMD Radeon RX 590 Series (radeonsi polaris10 ACO DRM 3.64 6.19.8-pikaos)
     value: 70
   - gpuNameRaw: AMD Radeon RX 6300
-    value: 23
+    value: 24
   - gpuNameRaw: AMD Radeon RX 640
     value: 21
   - gpuNameRaw: AMD Radeon RX 640 Series
@@ -658,6 +658,9 @@ results:
     value: 170
   - gpuNameRaw: AMD Radeon RX 6700 XT (radeonsi navi22 ACO DRM 3.64 7.0.0-30-generic)
     value: 165
+  - gpuNameRaw: AMD Radeon RX 6700 XT (radeonsi navi22 LLVM 20.1.2 DRM 3.64
+      7.0.0-31-generic)
+    value: 173
   - gpuNameRaw: AMD Radeon RX 6700 XT (radeonsi navi22 LLVM 21.1.8 DRM 3.64
       6.17.0-19-generic)
     value: 147
@@ -1402,7 +1405,7 @@ results:
   - gpuNameRaw: Intel(R) Arc(TM) Pro B70 Graphics
     value: 195
   - gpuNameRaw: Intel(R) Arc(TM) Pro Graphics
-    value: 31
+    value: 30
   - gpuNameRaw: Intel(R) Graphics
     value: 17
   - gpuNameRaw: Intel(R) HD Graphics 4600
@@ -1442,7 +1445,7 @@ results:
   - gpuNameRaw: Intel(R) Iris(R) Xe MAX Graphics
     value: 19
   - gpuNameRaw: Intel(R) RaptorLake-S Mobile Graphics Controller
-    value: 10
+    value: 9
   - gpuNameRaw: Intel(R) UHD Graphics
     value: 10
   - gpuNameRaw: Intel(R) UHD Graphics 600
@@ -1794,7 +1797,7 @@ results:
   - gpuNameRaw: NVIDIA GeForce RTX 3080 Laptop GPU/PCIe/SSE2
     value: 111
   - gpuNameRaw: NVIDIA GeForce RTX 3080 Ti Laptop GPU/PCIe/SSE2
-    value: 105
+    value: 106
   - gpuNameRaw: NVIDIA GeForce RTX 3080 Ti/PCIe/SSE2
     value: 160
   - gpuNameRaw: NVIDIA GeForce RTX 3080/PCIe/SSE2
@@ -1960,7 +1963,7 @@ results:
   - gpuNameRaw: NVIDIA RTX PRO 500 Blackwell Generation Laptop GPU/PCIe/SSE2
     value: 75
   - gpuNameRaw: NVIDIA RTX PRO 5000 Blackwell Generation Laptop GPU/PCIe/SSE2
-    value: 211
+    value: 210
   - gpuNameRaw: NVIDIA RTX PRO 5000 Blackwell/PCIe/SSE2
     value: 397
   - gpuNameRaw: NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition/PCIe/SSE2
@@ -2112,7 +2115,7 @@ results:
   - gpuNameRaw: Quadro RTX 4000 with Max-Q Design/PCIe/SSE2
     value: 64
   - gpuNameRaw: Quadro RTX 4000/PCIe/SSE2
-    value: 91
+    value: 92
   - gpuNameRaw: Quadro RTX 5000 with Max-Q Design/PCIe/SSE2
     value: 62
   - gpuNameRaw: Quadro RTX 5000/PCIe/SSE2
@@ -2174,7 +2177,7 @@ results:
   - gpuNameRaw: Radeon 550X Series
     value: 9
   - gpuNameRaw: Radeon 7
-    value: 28
+    value: 27
   - gpuNameRaw: Radeon 8060S Graphics
     value: 135
   - gpuNameRaw: Radeon 8060S Graphics (radeonsi strix_halo ACO DRM 3.64

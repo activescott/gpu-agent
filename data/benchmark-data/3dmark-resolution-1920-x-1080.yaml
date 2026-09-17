@@ -16,8 +16,8 @@ category: gaming
 profileVersion: 1.0.x
 publicResultsSince: 2023-05-12
 latestDataAsOf: 2026-07-08
-collectedSamples: 647
-updatedAt: 2026-09-16T08:21:54.620Z
+collectedSamples: 633
+updatedAt: 2026-09-17T07:58:23.135Z
 results:
   - gpuNameRaw: AMD Phoenix1
     value: 88
@@ -65,18 +65,12 @@ results:
     value: 280
   - gpuNameRaw: Intel Arc A380 DG2
     value: 105
-  - gpuNameRaw: Intel Arc A580
-    value: 352
   - gpuNameRaw: Intel Arc A580 DG2
     value: 282
   - gpuNameRaw: Intel Arc A750 DG2
     value: 327
-  - gpuNameRaw: Intel Arc A770
-    value: 428
   - gpuNameRaw: Intel Arc A770 DG2
     value: 330
-  - gpuNameRaw: Intel Arc B580
-    value: 443
   - gpuNameRaw: Intel Arc Pro B50 BMG G21
     value: 183
   - gpuNameRaw: Intel BMG G31

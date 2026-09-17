@@ -16,31 +16,25 @@ category: gaming
 profileVersion: 1.0.x
 publicResultsSince: 2024-02-17
 latestDataAsOf: 2025-07-17
-collectedSamples: 229
-updatedAt: 2026-09-16T08:04:35.703Z
+collectedSamples: 209
+updatedAt: 2026-09-17T07:37:11.933Z
 results:
   - gpuNameRaw: AMD Radeon 8060S
-    value: 175
+    value: 177
   - gpuNameRaw: AMD Radeon RX 6800 XT
     value: 332
   - gpuNameRaw: AMD Radeon RX 7900 GRE
     value: 346
   - gpuNameRaw: AMD Radeon RX 7900 XT
-    value: 395
+    value: 397
   - gpuNameRaw: AMD Radeon RX 7900 XTX
     value: 318
   - gpuNameRaw: AMD Radeon RX 9070 XT
-    value: 404
+    value: 416
   - gpuNameRaw: ASUS AMD Radeon RX 7900 XTX
     value: 385
   - gpuNameRaw: ASUS NVIDIA GeForce RTX 4070 Ti SUPER
     value: 372
-  - gpuNameRaw: Intel Arc A580
-    value: 151
-  - gpuNameRaw: Intel Arc A770
-    value: 172
-  - gpuNameRaw: Intel Arc B580
-    value: 249
   - gpuNameRaw: Intel BMG G21
     value: 176
   - gpuNameRaw: MSI NVIDIA GeForce RTX 4060

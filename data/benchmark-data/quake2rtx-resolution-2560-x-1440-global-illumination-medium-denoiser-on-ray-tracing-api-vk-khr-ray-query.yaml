@@ -18,8 +18,8 @@ category: gaming
 profileVersion: 1.6.x
 publicResultsSince: 2022-01-21
 latestDataAsOf: 2024-12-07
-collectedSamples: 192
-updatedAt: 2026-09-16T08:52:31.928Z
+collectedSamples: 147
+updatedAt: 2026-09-17T08:24:42.253Z
 results:
   - gpuNameRaw: AMD Radeon RX 6800
     value: 20
@@ -37,8 +37,6 @@ results:
     value: 37
   - gpuNameRaw: NVIDIA GeForce RTX 2070 SUPER
     value: 43
-  - gpuNameRaw: NVIDIA GeForce RTX 2080
-    value: 46
   - gpuNameRaw: NVIDIA GeForce RTX 2080 Ti
     value: 63
   - gpuNameRaw: NVIDIA GeForce RTX 3060 Ti
@@ -52,4 +50,4 @@ results:
   - gpuNameRaw: NVIDIA GeForce RTX 3080 Laptop GPU + Intel UHD
     value: 61
   - gpuNameRaw: NVIDIA GeForce RTX 3080 Ti
-    value: 106
+    value: 105

@@ -13,8 +13,8 @@ description: Median FPS in FurMark 2 (OpenGL), a GPU stress test and benchmark
 descriptionDollarsPer: Dollars per FPS in FurMark 2 (OpenGL). Lower values
   indicate better cost efficiency for GPU compute-heavy rendering.
 category: gaming
-collectedSamples: 50148
-updatedAt: 2026-09-17T08:55:05.824Z
+collectedSamples: 50395
+updatedAt: 2026-09-18T09:33:18.649Z
 results:
   - gpuNameRaw: AMD  Radeon RX 7800 XT
     value: 88
@@ -107,7 +107,7 @@ results:
   - gpuNameRaw: AMD Radeon RX 6900 XT
     value: 105
   - gpuNameRaw: AMD Radeon RX 6950 XT
-    value: 104
+    value: 105
   - gpuNameRaw: AMD Radeon RX 7600
     value: 49
   - gpuNameRaw: AMD Radeon RX 7600 XT
@@ -323,7 +323,7 @@ results:
   - gpuNameRaw: NVIDIA GeForce GTX 1050/PCIe/SSE2
     value: 9
   - gpuNameRaw: NVIDIA GeForce GTX 1060 3GB/PCIe/SSE2
-    value: 19
+    value: 20
   - gpuNameRaw: NVIDIA GeForce GTX 1060 5GB/PCIe/SSE2
     value: 18
   - gpuNameRaw: NVIDIA GeForce GTX 1060 6GB/PCIe/SSE2
@@ -619,7 +619,7 @@ results:
   - gpuNameRaw: Quadro RTX 5000 with Max-Q Design/PCIe/SSE2
     value: 23
   - gpuNameRaw: Quadro RTX 5000/PCIe/SSE2
-    value: 42
+    value: 28
   - gpuNameRaw: Quadro T1000 with Max-Q Design/PCIe/SSE2
     value: 12
   - gpuNameRaw: Quadro T1000/PCIe/SSE2
@@ -651,7 +651,7 @@ results:
   - gpuNameRaw: Radeon RX550/550 Series
     value: 5
   - gpuNameRaw: "SVGA3D build: RELEASE  LLVM"
-    value: 50
+    value: 32
   - gpuNameRaw: Tesla P40/PCIe/SSE2
     value: 42
   - gpuNameRaw: Tesla V100-SXM2-16GB/PCIe/SSE2

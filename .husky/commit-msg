@@ -1,0 +1,9 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+# Run the global commit-msg hook, which husky's repo-local core.hooksPath displaces.
+# Skipped when it is not installed. activescott/activeassistant#129
+global_hook="$HOME/.githooks/commit-msg"
+if [ -x "$global_hook" ]; then
+  "$global_hook" "$1" || exit $?
+fi

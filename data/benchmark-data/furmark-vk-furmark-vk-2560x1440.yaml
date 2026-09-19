@@ -12,8 +12,8 @@ description: Median FPS in FurMark 2 (Vulkan), a GPU stress test and benchmark
 descriptionDollarsPer: Dollars per FPS in FurMark 2 (Vulkan). Lower values
   indicate better cost efficiency for GPU compute-heavy rendering.
 category: gaming
-collectedSamples: 10211
-updatedAt: 2026-09-18T09:55:31.623Z
+collectedSamples: 10289
+updatedAt: 2026-09-19T09:03:15.327Z
 results:
   - gpuNameRaw: AMD  Radeon RX 7800 XT
     value: 165
@@ -30,7 +30,7 @@ results:
   - gpuNameRaw: AMD Radeon R9 200 Series
     value: 27
   - gpuNameRaw: AMD Radeon RX 5600 XT
-    value: 67
+    value: 68
   - gpuNameRaw: AMD Radeon RX 570 Series (RADV POLARIS10)
     value: 37
   - gpuNameRaw: AMD Radeon RX 5700
@@ -39,6 +39,8 @@ results:
     value: 85
   - gpuNameRaw: AMD Radeon RX 5700 XT (RADV NAVI10)
     value: 80
+  - gpuNameRaw: AMD Radeon RX 5700 XT 50th Anniversary
+    value: 83
   - gpuNameRaw: AMD Radeon RX 580 2048SP
     value: 34
   - gpuNameRaw: AMD Radeon RX 580 Series (RADV POLARIS10)
@@ -70,7 +72,7 @@ results:
   - gpuNameRaw: AMD Radeon RX 6750 XT (RADV NAVI22)
     value: 113
   - gpuNameRaw: AMD Radeon RX 6800
-    value: 128
+    value: 127
   - gpuNameRaw: AMD Radeon RX 6800 (RADV NAVI21)
     value: 143
   - gpuNameRaw: AMD Radeon RX 6800 XT
@@ -118,9 +120,9 @@ results:
   - gpuNameRaw: AMD Radeon RX 7900 XT
     value: 202
   - gpuNameRaw: AMD Radeon RX 7900 XT (RADV NAVI31)
-    value: 206
+    value: 202
   - gpuNameRaw: AMD Radeon RX 7900 XTX
-    value: 254
+    value: 255
   - gpuNameRaw: AMD Radeon RX 7900 XTX (RADV NAVI31)
     value: 252
   - gpuNameRaw: AMD Radeon RX 9060 XT
@@ -148,7 +150,7 @@ results:
   - gpuNameRaw: AMD Radeon(TM) Graphics
     value: 6
   - gpuNameRaw: Intel(R) Arc(TM) 140T GPU (16GB)
-    value: 30
+    value: 31
   - gpuNameRaw: Intel(R) Arc(TM) 140V GPU (16GB)
     value: 29
   - gpuNameRaw: Intel(R) Arc(TM) A750 Graphics
@@ -162,7 +164,7 @@ results:
   - gpuNameRaw: Intel(R) Arc(TM) B580 Graphics
     value: 107
   - gpuNameRaw: Intel(R) Arc(tm) B580 Graphics (BMG G21)
-    value: 96
+    value: 98
   - gpuNameRaw: Intel(R) Arc(TM) Graphics
     value: 23
   - gpuNameRaw: Intel(R) Arc(TM) Pro B70 Graphics
@@ -188,7 +190,7 @@ results:
   - gpuNameRaw: NVIDIA GeForce GTX 1080 Ti
     value: 91
   - gpuNameRaw: NVIDIA GeForce GTX 1650
-    value: 28
+    value: 27
   - gpuNameRaw: NVIDIA GeForce GTX 1650 SUPER
     value: 34
   - gpuNameRaw: NVIDIA GeForce GTX 1650 with Max-Q Design
@@ -216,7 +218,7 @@ results:
   - gpuNameRaw: NVIDIA GeForce RTX 3050
     value: 51
   - gpuNameRaw: NVIDIA GeForce RTX 3050 Laptop GPU
-    value: 37
+    value: 34
   - gpuNameRaw: NVIDIA GeForce RTX 3050 Ti Laptop GPU
     value: 46
   - gpuNameRaw: NVIDIA GeForce RTX 3060
@@ -272,7 +274,7 @@ results:
   - gpuNameRaw: NVIDIA GeForce RTX 4080 SUPER
     value: 253
   - gpuNameRaw: NVIDIA GeForce RTX 4090
-    value: 345
+    value: 340
   - gpuNameRaw: NVIDIA GeForce RTX 4090 Laptop GPU
     value: 191
   - gpuNameRaw: NVIDIA GeForce RTX 5050
@@ -286,9 +288,9 @@ results:
   - gpuNameRaw: NVIDIA GeForce RTX 5060 Ti
     value: 144
   - gpuNameRaw: NVIDIA GeForce RTX 5070
-    value: 205
+    value: 206
   - gpuNameRaw: NVIDIA GeForce RTX 5070 Laptop GPU
-    value: 107
+    value: 108
   - gpuNameRaw: NVIDIA GeForce RTX 5070 Ti
     value: 229
   - gpuNameRaw: NVIDIA GeForce RTX 5070 Ti Laptop GPU

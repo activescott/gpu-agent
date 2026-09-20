@@ -144,6 +144,9 @@ function buildShopStructuredData(gpu: Gpu, stats: GpuPriceStats): object {
     ]
   }
 
+  // highPrice is back deliberately, accepted to clear the Search Console
+  // Product snippets warning: Google renders a range topped by our priciest
+  // active listing. Scott decided this on 2026-09-20, reversing e3c8dbb; see #68.
   if (stats.activeListingCount > 0 && stats.minPrice > 0) {
     structuredData.offers = {
       "@type": "AggregateOffer",

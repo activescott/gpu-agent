@@ -217,6 +217,9 @@ function buildStructuredData(
   if (priceStats.activeListingCount > 0 && priceStats.minPrice > 0) {
     structuredData.offers = {
       "@type": "AggregateOffer",
+      // highPrice is back deliberately: it renders a range topped by our
+      // priciest listing, accepted to clear the Search Console Product
+      // snippets warning. Scott reversed e3c8dbb on 2026-09-20; see #68.
       lowPrice: priceStats.minPrice.toFixed(priceDecimalPlaces),
       highPrice: priceStats.maxPrice.toFixed(priceDecimalPlaces),
       priceCurrency: "USD",

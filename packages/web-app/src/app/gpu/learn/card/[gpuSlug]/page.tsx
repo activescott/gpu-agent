@@ -217,9 +217,8 @@ function buildStructuredData(
   if (priceStats.activeListingCount > 0 && priceStats.minPrice > 0) {
     structuredData.offers = {
       "@type": "AggregateOffer",
-      // No highPrice: including it makes Google render a range ("$2,846.33 to
-      // $6,656.00"). The top of the range is the worst listing we have.
       lowPrice: priceStats.minPrice.toFixed(priceDecimalPlaces),
+      highPrice: priceStats.maxPrice.toFixed(priceDecimalPlaces),
       priceCurrency: "USD",
       offerCount: Math.floor(priceStats.activeListingCount),
       availability: "https://schema.org/InStock",

@@ -144,13 +144,11 @@ function buildShopStructuredData(gpu: Gpu, stats: GpuPriceStats): object {
     ]
   }
 
-  // No highPrice: it is optional on AggregateOffer, and including it is what
-  // makes Google render "$2,846.33 to $6,656.00" instead of a single price.
-  // The top of the range is the worst listing we have and helps no shopper.
   if (stats.activeListingCount > 0 && stats.minPrice > 0) {
     structuredData.offers = {
       "@type": "AggregateOffer",
       lowPrice: stats.minPrice.toFixed(priceDecimals),
+      highPrice: stats.maxPrice.toFixed(priceDecimals),
       priceCurrency: "USD",
       offerCount: Math.floor(stats.activeListingCount),
       availability: "https://schema.org/InStock",

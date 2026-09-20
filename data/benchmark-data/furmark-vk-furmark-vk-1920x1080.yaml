@@ -12,8 +12,8 @@ description: Median FPS in FurMark 2 (Vulkan), a GPU stress test and benchmark
 descriptionDollarsPer: Dollars per FPS in FurMark 2 (Vulkan). Lower values
   indicate better cost efficiency for GPU compute-heavy rendering.
 category: gaming
-collectedSamples: 21034
-updatedAt: 2026-09-19T09:03:15.326Z
+collectedSamples: 21158
+updatedAt: 2026-09-20T08:36:06.827Z
 results:
   - gpuNameRaw: AMD  Radeon RX 7800 XT
     value: 216
@@ -62,7 +62,7 @@ results:
   - gpuNameRaw: AMD Radeon Pro v540
     value: 80
   - gpuNameRaw: AMD Radeon Pro VII
-    value: 124
+    value: 121
   - gpuNameRaw: AMD Radeon Pro W5700
     value: 111
   - gpuNameRaw: AMD Radeon Pro WX 2100
@@ -162,13 +162,13 @@ results:
   - gpuNameRaw: AMD Radeon RX 6800
     value: 179
   - gpuNameRaw: AMD Radeon RX 6800 (RADV NAVI21)
-    value: 215
+    value: 214
   - gpuNameRaw: AMD Radeon RX 6800 XT
     value: 243
   - gpuNameRaw: AMD Radeon RX 6800M
     value: 128
   - gpuNameRaw: AMD Radeon RX 6800M (RADV NAVI22)
-    value: 141
+    value: 145
   - gpuNameRaw: AMD Radeon RX 6850M XT
     value: 120
   - gpuNameRaw: AMD Radeon RX 6900 XT
@@ -390,7 +390,7 @@ results:
   - gpuNameRaw: NVIDIA GeForce GTX 1080
     value: 104
   - gpuNameRaw: NVIDIA GeForce GTX 1080 Ti
-    value: 133
+    value: 134
   - gpuNameRaw: NVIDIA GeForce GTX 1650
     value: 41
   - gpuNameRaw: NVIDIA GeForce GTX 1650 SUPER
@@ -398,7 +398,7 @@ results:
   - gpuNameRaw: NVIDIA GeForce GTX 1650 Ti
     value: 41
   - gpuNameRaw: NVIDIA GeForce GTX 1650 with Max-Q Design
-    value: 30
+    value: 29
   - gpuNameRaw: NVIDIA GeForce GTX 1660
     value: 56
   - gpuNameRaw: NVIDIA GeForce GTX 1660 SUPER
@@ -416,7 +416,7 @@ results:
   - gpuNameRaw: NVIDIA GeForce GTX 980
     value: 57
   - gpuNameRaw: NVIDIA GeForce MX450
-    value: 25
+    value: 26
   - gpuNameRaw: NVIDIA GeForce MX550
     value: 24
   - gpuNameRaw: NVIDIA GeForce RTX 2050
@@ -492,7 +492,7 @@ results:
   - gpuNameRaw: NVIDIA GeForce RTX 4070 Laptop GPU
     value: 155
   - gpuNameRaw: NVIDIA GeForce RTX 4070 SUPER
-    value: 237
+    value: 238
   - gpuNameRaw: NVIDIA GeForce RTX 4070 Ti
     value: 289
   - gpuNameRaw: NVIDIA GeForce RTX 4070 Ti SUPER
@@ -502,13 +502,13 @@ results:
   - gpuNameRaw: NVIDIA GeForce RTX 4080 Laptop GPU
     value: 220
   - gpuNameRaw: NVIDIA GeForce RTX 4080 SUPER
-    value: 360
+    value: 359
   - gpuNameRaw: NVIDIA GeForce RTX 4090
     value: 447
   - gpuNameRaw: NVIDIA GeForce RTX 4090 Laptop GPU
     value: 227
   - gpuNameRaw: NVIDIA GeForce RTX 5050
-    value: 129
+    value: 130
   - gpuNameRaw: NVIDIA GeForce RTX 5050 Laptop GPU
     value: 127
   - gpuNameRaw: NVIDIA GeForce RTX 5060
@@ -536,7 +536,7 @@ results:
   - gpuNameRaw: NVIDIA GeForce RTX 5090 Laptop GPU
     value: 311
   - gpuNameRaw: NVIDIA P104-100
-    value: 49
+    value: 54
   - gpuNameRaw: NVIDIA P106-100
     value: 55
   - gpuNameRaw: NVIDIA RTX 1000 Ada Generation Laptop GPU

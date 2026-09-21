@@ -62,9 +62,10 @@ function buildProductEntity(gpu: Gpu, priceStats: GpuPriceStats): object {
   if (priceStats.activeListingCount > 0 && priceStats.minPrice > 0) {
     product.offers = {
       "@type": "AggregateOffer",
-      // No highPrice: including it makes Google render a price range whose top
-      // end is the worst listing we have.
+      // highPrice is back deliberately, accepted to clear the Search Console
+      // Product snippets warning. Scott reversed e3c8dbb on 2026-09-20; see #68.
       lowPrice: priceStats.minPrice.toFixed(PRICE_DECIMALS),
+      highPrice: priceStats.maxPrice.toFixed(PRICE_DECIMALS),
       priceCurrency: "USD",
       offerCount: Math.floor(priceStats.activeListingCount),
       availability: "https://schema.org/InStock",

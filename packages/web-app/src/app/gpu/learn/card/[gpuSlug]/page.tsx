@@ -217,9 +217,11 @@ function buildStructuredData(
   if (priceStats.activeListingCount > 0 && priceStats.minPrice > 0) {
     structuredData.offers = {
       "@type": "AggregateOffer",
-      // No highPrice: including it makes Google render a range ("$2,846.33 to
-      // $6,656.00"). The top of the range is the worst listing we have.
+      // highPrice is back deliberately: it renders a range topped by our
+      // priciest listing, accepted to clear the Search Console Product
+      // snippets warning. Scott reversed e3c8dbb on 2026-09-20; see #68.
       lowPrice: priceStats.minPrice.toFixed(priceDecimalPlaces),
+      highPrice: priceStats.maxPrice.toFixed(priceDecimalPlaces),
       priceCurrency: "USD",
       offerCount: Math.floor(priceStats.activeListingCount),
       availability: "https://schema.org/InStock",

@@ -11,7 +11,7 @@ permissions:
 
 jobs:
   cleanup:
-    runs-on: ubuntu-latest
+    runs-on: gpu-agent-runners
 
     steps:
       # https://github.com/actions/delete-package-versions

@@ -7,7 +7,9 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-24.04
+    # Fork PRs stay on GitHub-hosted runners: this repo is public and the
+    # self-hosted runner is a privileged dind pod on the cluster's only node.
+    runs-on: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name != github.repository && 'ubuntu-latest' || 'gpu-agent-runners' }}
     env:
       POSTGRES_PRISMA_URL: postgresql://dummy:dummy@localhost:5432/dummy
       POSTGRES_URL_NON_POOLING: postgresql://dummy:dummy@localhost:5432/dummy
@@ -53,7 +55,7 @@ jobs:
 
   docker:
     needs: build
-    runs-on: ubuntu-24.04
+    runs-on: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name != github.repository && 'ubuntu-latest' || 'gpu-agent-runners' }}
     permissions:
       contents: read
       packages: write

@@ -204,7 +204,7 @@ cp /path/to/gpu-poet/k8s/base/amazon-searcher-service.yaml \
 # Add image policy for amazon-searcher in production overlay:
 #   images:
 #     - name: amazon-searcher-image-placeholder
-#       newName: ghcr.io/activescott/gpu-agent/amazon-searcher
+#       newName: ghcr.io/activescott/gpu-poet/amazon-searcher
 #       newTag: latest
 ```
 
@@ -223,8 +223,8 @@ The amazon-searcher Dockerfile should be built and pushed to GHCR. Add it to the
 
 ```bash
 cd packages/amazon-searcher
-docker build -t ghcr.io/activescott/gpu-agent/amazon-searcher:latest .
-docker push ghcr.io/activescott/gpu-agent/amazon-searcher:latest
+docker build -t ghcr.io/activescott/gpu-poet/amazon-searcher:latest .
+docker push ghcr.io/activescott/gpu-poet/amazon-searcher:latest
 ```
 
 ### Step 4: Deploy and verify

@@ -73,5 +73,7 @@ jobs:
           tags: |
             ghcr.io/${{ github.repository }}/indexnow-notifier:v${{ steps.timestamp.outputs.tag }}
             ghcr.io/${{ github.repository }}/indexnow-notifier:latest
+            ghcr.io/activescott/gpu-poet/indexnow-notifier:v${{ steps.timestamp.outputs.tag }}
+            ghcr.io/activescott/gpu-poet/indexnow-notifier:latest
           cache-from: type=gha
           cache-to: type=gha,mode=max

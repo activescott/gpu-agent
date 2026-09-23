@@ -18,7 +18,7 @@ jobs:
       - name: "delete all packages except the latest N versions"
         uses: actions/delete-package-versions@v5
         with:
-          package-name: "gpu-agent/app"
+          package-name: "gpu-poet/app"
           package-type: "container"
           # note that each tag seems to have two untagged containers pushed that
           # are needed due to multi-stage builds. So we have to be careful to
@@ -28,6 +28,6 @@ jobs:
       - name: "delete all packages except the latest N versions"
         uses: actions/delete-package-versions@v5
         with:
-          package-name: "gpu-agent/indexnow-notifier"
+          package-name: "gpu-poet/indexnow-notifier"
           package-type: "container"
           min-versions-to-keep: 12

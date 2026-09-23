@@ -86,7 +86,6 @@ jobs:
           push: ${{ github.ref == 'refs/heads/main' }}
           tags: |
             ghcr.io/${{ github.repository }}/app:v${{ steps.timestamp.outputs.tag }}
-            ghcr.io/activescott/gpu-poet/app:v${{ steps.timestamp.outputs.tag }}
           # OCI labels link this container to the repo, enabling GitHub to send
           # package webhook events to the repo when images are published to GHCR.
           # Without these labels, webhooks (e.g., for Flux image automation) won't fire.

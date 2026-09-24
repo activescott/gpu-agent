@@ -13,8 +13,8 @@ description: Median FPS in FurMark 2 (OpenGL), a GPU stress test and benchmark
 descriptionDollarsPer: Dollars per FPS in FurMark 2 (OpenGL). Lower values
   indicate better cost efficiency for GPU compute-heavy rendering.
 category: gaming
-collectedSamples: 200530
-updatedAt: 2026-09-23T09:50:04.044Z
+collectedSamples: 201378
+updatedAt: 2026-09-24T07:03:54.523Z
 results:
   - gpuNameRaw: AMD  Radeon RX 7800 XT
     value: 167
@@ -119,7 +119,7 @@ results:
   - gpuNameRaw: AMD Radeon HD 7800 Series
     value: 16
   - gpuNameRaw: AMD Radeon HD 7900 Series
-    value: 21
+    value: 22
   - gpuNameRaw: AMD Radeon Pro 5500M
     value: 18
   - gpuNameRaw: AMD Radeon Pro V620
@@ -269,7 +269,7 @@ results:
   - gpuNameRaw: AMD Radeon RX 7600M XT
     value: 73
   - gpuNameRaw: AMD Radeon RX 7650 GRE
-    value: 103
+    value: 104
   - gpuNameRaw: AMD Radeon RX 7700
     value: 57
   - gpuNameRaw: AMD Radeon RX 7700 XT
@@ -416,7 +416,7 @@ results:
       7.2.4-ogc3.1.fc44.x86_64)
     value: 209
   - gpuNameRaw: AMD Radeon RX 9070 XT (radeonsi gfx1201 ACO DRM 3.64 7.2.6-1-cachyos)
-    value: 269
+    value: 268
   - gpuNameRaw: AMD Radeon RX 9070 XT (radeonsi gfx1201 LLVM 20.1.2 DRM 3.64
       7.0.0-28-generic)
     value: 257
@@ -639,6 +639,8 @@ results:
     value: 3
   - gpuNameRaw: Moore Threads MTT S80
     value: 54
+  - gpuNameRaw: NV134
+    value: 5
   - gpuNameRaw: NVIDIA CMP 30HX/PCIe/SSE2
     value: 54
   - gpuNameRaw: NVIDIA CMP 40HX/PCIe/SSE2
@@ -750,13 +752,13 @@ results:
   - gpuNameRaw: NVIDIA GeForce RTX 2080 with Max-Q Design/PCIe/SSE2
     value: 51
   - gpuNameRaw: NVIDIA GeForce RTX 2080/PCIe/SSE2
-    value: 101
+    value: 100
   - gpuNameRaw: NVIDIA GeForce RTX 3050 4GB Laptop GPU/PCIe/SSE2
     value: 25
   - gpuNameRaw: NVIDIA GeForce RTX 3050 6GB Laptop GPU/PCIe/SSE2
     value: 36
   - gpuNameRaw: NVIDIA GeForce RTX 3050 Laptop GPU/PCIe/SSE2
-    value: 42
+    value: 41
   - gpuNameRaw: NVIDIA GeForce RTX 3050 OEM/PCIe/SSE2
     value: 51
   - gpuNameRaw: NVIDIA GeForce RTX 3050 Ti Laptop GPU/PCIe/SSE2
@@ -768,11 +770,11 @@ results:
   - gpuNameRaw: NVIDIA GeForce RTX 3060 Ti/PCIe/SSE2
     value: 97
   - gpuNameRaw: NVIDIA GeForce RTX 3060/PCIe/SSE2
-    value: 76
+    value: 77
   - gpuNameRaw: NVIDIA GeForce RTX 3070 Laptop GPU/PCIe/SSE2
     value: 78
   - gpuNameRaw: NVIDIA GeForce RTX 3070 Ti Laptop GPU/PCIe/SSE2
-    value: 84
+    value: 83
   - gpuNameRaw: NVIDIA GeForce RTX 3070 Ti/PCIe/SSE2
     value: 127
   - gpuNameRaw: NVIDIA GeForce RTX 3070/PCIe/SSE2
@@ -786,7 +788,7 @@ results:
   - gpuNameRaw: NVIDIA GeForce RTX 3080/PCIe/SSE2
     value: 114
   - gpuNameRaw: NVIDIA GeForce RTX 3090 Ti/PCIe/SSE2
-    value: 172
+    value: 171
   - gpuNameRaw: NVIDIA GeForce RTX 3090/PCIe/SSE2
     value: 144
   - gpuNameRaw: NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2

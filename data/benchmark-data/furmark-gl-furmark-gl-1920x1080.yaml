@@ -13,8 +13,8 @@ description: Median FPS in FurMark 2 (OpenGL), a GPU stress test and benchmark
 descriptionDollarsPer: Dollars per FPS in FurMark 2 (OpenGL). Lower values
   indicate better cost efficiency for GPU compute-heavy rendering.
 category: gaming
-collectedSamples: 441903
-updatedAt: 2026-09-23T09:50:04.025Z
+collectedSamples: 443953
+updatedAt: 2026-09-24T07:03:54.452Z
 results:
   - gpuNameRaw: /PCIe/SSE2
     value: 76
@@ -219,7 +219,7 @@ results:
   - gpuNameRaw: AMD Radeon (TM) Pro WX 3200 Graphics
     value: 11
   - gpuNameRaw: AMD Radeon (TM) Pro WX 7100 Graphics
-    value: 52
+    value: 51
   - gpuNameRaw: AMD Radeon (TM) R5 340
     value: 4
   - gpuNameRaw: AMD Radeon (TM) R5 M330
@@ -570,6 +570,9 @@ results:
       6.14.0-37-generic)
     value: 54
   - gpuNameRaw: AMD Radeon RX 580 2048SP (radeonsi polaris10 ACO DRM 3.64
+      6.16.12-valve24.5-1-neptune-616-gb2f7cfe85e45)
+    value: 55
+  - gpuNameRaw: AMD Radeon RX 580 2048SP (radeonsi polaris10 ACO DRM 3.64
       6.17.7-ba29.fc43.x86_64)
     value: 48
   - gpuNameRaw: AMD Radeon RX 580 2048SP (radeonsi polaris10 ACO DRM 3.64 7.1.6-1-cachyos)
@@ -655,7 +658,7 @@ results:
   - gpuNameRaw: AMD Radeon RX 6600S
     value: 103
   - gpuNameRaw: AMD Radeon RX 6650 XT
-    value: 146
+    value: 147
   - gpuNameRaw: AMD Radeon RX 6650M
     value: 99
   - gpuNameRaw: AMD Radeon RX 6700
@@ -996,7 +999,7 @@ results:
   - gpuNameRaw: AMD Radeon(TM) RX 6500M
     value: 51
   - gpuNameRaw: AMD Radeon(TM) RX 6550M
-    value: 65
+    value: 66
   - gpuNameRaw: AMD Radeon(TM) RX 6650M
     value: 105
   - gpuNameRaw: AMD Radeon(TM) RX 6650M XT
@@ -1393,7 +1396,7 @@ results:
   - gpuNameRaw: Intel(R) Arc(TM) A350M Graphics
     value: 28
   - gpuNameRaw: Intel(R) Arc(TM) A370M Graphics
-    value: 35
+    value: 34
   - gpuNameRaw: Intel(R) Arc(TM) A380 Graphics
     value: 43
   - gpuNameRaw: Intel(R) Arc(TM) A530M Graphics
@@ -1649,7 +1652,7 @@ results:
   - gpuNameRaw: NVIDIA GeForce GTX 1080 with Max-Q Design/PCIe/SSE2
     value: 74
   - gpuNameRaw: NVIDIA GeForce GTX 1080/PCIe/SSE2
-    value: 100
+    value: 99
   - gpuNameRaw: NVIDIA GeForce GTX 1630/PCIe/SSE2
     value: 32
   - gpuNameRaw: NVIDIA GeForce GTX 1650 SUPER/PCIe/SSE2
@@ -1751,7 +1754,7 @@ results:
   - gpuNameRaw: NVIDIA GeForce MX350/PCIe/SSE2
     value: 15
   - gpuNameRaw: NVIDIA GeForce MX450/PCIe/SSE2
-    value: 20
+    value: 21
   - gpuNameRaw: NVIDIA GeForce MX550/PCIe/SSE2
     value: 23
   - gpuNameRaw: NVIDIA GeForce MX570 A/PCIe/SSE2
@@ -1779,7 +1782,7 @@ results:
   - gpuNameRaw: NVIDIA GeForce RTX 2080 Super with Max-Q Design/PCIe/SSE2
     value: 77
   - gpuNameRaw: NVIDIA GeForce RTX 2080 Super/PCIe/SSE2
-    value: 130
+    value: 131
   - gpuNameRaw: NVIDIA GeForce RTX 2080 SUPER/PCIe/SSE2
     value: 161
   - gpuNameRaw: NVIDIA GeForce RTX 2080 Ti/PCIe/SSE2
@@ -1827,7 +1830,7 @@ results:
   - gpuNameRaw: NVIDIA GeForce RTX 3080/PCIe/SSE2
     value: 140
   - gpuNameRaw: NVIDIA GeForce RTX 3090 Ti/PCIe/SSE2
-    value: 255
+    value: 256
   - gpuNameRaw: NVIDIA GeForce RTX 3090/PCIe/SSE2
     value: 195
   - gpuNameRaw: NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2
@@ -1897,7 +1900,7 @@ results:
   - gpuNameRaw: NVIDIA P104-100/PCIe/SSE2
     value: 82
   - gpuNameRaw: NVIDIA P106-090/PCIe/SSE2
-    value: 24
+    value: 25
   - gpuNameRaw: NVIDIA P106-100/PCIe/SSE2
     value: 57
   - gpuNameRaw: NVIDIA Quadro K6000/PCIe/SSE2
@@ -1911,7 +1914,7 @@ results:
   - gpuNameRaw: NVIDIA RTX 3000 Ada Generation Laptop GPU/PCIe/SSE2
     value: 111
   - gpuNameRaw: NVIDIA RTX 3500 Ada Generation Laptop GPU/PCIe/SSE2
-    value: 168
+    value: 169
   - gpuNameRaw: NVIDIA RTX 4000 Ada Generation Laptop GPU/PCIe/SSE2
     value: 177
   - gpuNameRaw: NVIDIA RTX 4000 Ada Generation/PCIe/SSE2
@@ -1945,9 +1948,9 @@ results:
   - gpuNameRaw: NVIDIA RTX A3000 12GB Laptop GPU/PCIe/SSE2
     value: 89
   - gpuNameRaw: NVIDIA RTX A3000 Laptop GPU/PCIe/SSE2
-    value: 72
+    value: 73
   - gpuNameRaw: NVIDIA RTX A400/PCIe/SSE2
-    value: 29
+    value: 28
   - gpuNameRaw: NVIDIA RTX A4000 Laptop GPU/PCIe/SSE2
     value: 106
   - gpuNameRaw: NVIDIA RTX A4000/PCIe/SSE2
@@ -2248,13 +2251,13 @@ results:
   - gpuNameRaw: Radeon RX 570 Series
     value: 58
   - gpuNameRaw: Radeon RX 5700
-    value: 118
+    value: 117
   - gpuNameRaw: Radeon RX 580 Series
     value: 63
   - gpuNameRaw: Radeon RX 590 Series
     value: 64
   - gpuNameRaw: Radeon RX Vega
-    value: 94
+    value: 93
   - gpuNameRaw: Radeon RX Vega (radeonsi vega10 ACO DRM 3.64 6.17.0-29-generic)
     value: 101
   - gpuNameRaw: Radeon RX Vega 56 Series
@@ -2288,7 +2291,7 @@ results:
   - gpuNameRaw: "SVGA3D build: RELEASE"
     value: 19
   - gpuNameRaw: "SVGA3D build: RELEASE  LLVM"
-    value: 122
+    value: 120
   - gpuNameRaw: Tesla M40 24GB/PCIe/SSE2
     value: 80
   - gpuNameRaw: Tesla M40/PCIe/SSE2
